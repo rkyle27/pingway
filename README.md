@@ -1,0 +1,2 @@
+# pingway
+ffxiv discord bot
