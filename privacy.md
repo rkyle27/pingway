@@ -1,6 +1,3 @@
-Here is a professional Privacy Policy draft tailored for Pingway.
-
-You can copy this text into a second GitHub Gist (named privacy.md), grab the raw link, and paste it into your Discord Developer Portal!
 Privacy Policy for Pingway
 
 Effective Date: July 26, 2026
