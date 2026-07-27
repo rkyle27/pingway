@@ -11,8 +11,10 @@ Invite Link:
     [Invite to server](https://discord.com/oauth2/authorize?client_id=1530586586524418048)
     
 📄 Legal & Policies
-* Read our [Terms of Service](YOUR_TOS_GIST_RAW_LINK_HERE)
-* Read our [Privacy Policy](YOUR_PRIVACY_GIST_RAW_LINK_HERE)
-  
+* Read our [Terms of Service](https://raw.githubusercontent.com/rkyle27/pingway/refs/heads/main/terms.md)
+* Read our [Privacy Policy](https://raw.githubusercontent.com/rkyle27/pingway/refs/heads/main/privacy.md)
+
+If you wanna support me, here's a link to my Kofi :  [Privacy Policy](https://ko-fi.com/riverzola)
+
  📜 License
 This project is open-source and licensed under the GNU Affero General Public License v3.0 (AGPLv3). See the LICENSE file for more details.
