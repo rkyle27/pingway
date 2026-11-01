@@ -53,7 +53,9 @@ let subscribedWorlds = new Set();
 let subscribers = []; // [{ userId, dcs: ['Mana', ...] }]
 
 const baselineCache = new Map();  // 'itemId:dc' -> { time, data }
-const itemNameCache = new Map();  // itemId -> name
+const itemNameCache = new Map();  // itemId -> { name, time } (cleared after 24h, max 5,000 names)
+const NAME_CACHE_MS = 24 * 60 * 60 * 1000;
+const NAME_CACHE_MAX = 5000;
 const alertCooldowns = new Map(); // 'user:item:world:quality' -> time
 const pendingAlerts = new Map();  // userId -> Map('itemId:quality' -> { itemId, hq, rows: Map(worldId -> row) })
 let flushTimer = null;
@@ -323,11 +325,17 @@ async function passesListingCheck(itemId, dc, quality, listing) {
 }
 
 async function getItemName(itemId) {
-    if (itemNameCache.has(itemId)) return itemNameCache.get(itemId);
+    const cachedName = itemNameCache.get(itemId);
+    if (cachedName && Date.now() - cachedName.time < NAME_CACHE_MS) return cachedName.name;
     try {
         const res = await axios.get('https://v2.xivapi.com/api/sheet/Item/' + itemId, { timeout: 5000 });
         const name = res.data && res.data.fields && res.data.fields.Name ? res.data.fields.Name : null;
-        if (name) itemNameCache.set(itemId, name);
+        if (name) {
+            itemNameCache.delete(itemId);
+            itemNameCache.set(itemId, { name, time: Date.now() });
+            // Keep at most NAME_CACHE_MAX names (oldest are dropped first)
+            while (itemNameCache.size > NAME_CACHE_MAX) itemNameCache.delete(itemNameCache.keys().next().value);
+        }
         return name;
     } catch (e) {
         return null;
@@ -553,6 +561,9 @@ async function refresh(client) {
         }
         for (const [k, t] of alertCooldowns) {
             if (now - t > ALERT_COOLDOWN_MS) alertCooldowns.delete(k);
+        }
+        for (const [k, v] of itemNameCache) {
+            if (now - v.time > NAME_CACHE_MS) itemNameCache.delete(k);
         }
 
         if (subscribers.length === 0) {
