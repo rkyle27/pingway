@@ -150,41 +150,8 @@ async function clearAllUserReminders(userId) {
     }
 }
 
-// Helper function to build help guide embed
-function buildHelpEmbed() {
-    return new EmbedBuilder()
-        .setTitle('📖 Pingway Bot Commands Guide')
-        .setColor('#00ffcc')
-        .setDescription('Here is a complete list of commands and natural AI capabilities available in Pingway:')
-        .addFields(
-            { name: '/price <item>', value: 'Check cross-world market board prices for an FFXIV item based on your configured Data Centers.' },
-            { name: '/datacenter', value: 'Configure your preferred Data Centers for market board price lookups.' },
-            { name: '/raid', value: 'View the upcoming 7-day raid schedule synced with Google Sheets.' },
-            { name: '/timer', value: 'Check dynamic FFXIV reset timers, housing lottery status, and countdowns.' },
-            { name: '/todo', value: 'Interactive checklist for daily and weekly FFXIV activities.' },
-            { name: '/firmament', value: 'View or set up personal Skyrise Celebration / Firmament timers.' },
-            { name: '/pf', value: 'Create and manage custom Party Finder listings with job slot claims.' },
-            { name: '/poll', value: 'Create a poll.' },
-            { name: '/status', value: 'Check FFXIV server status & toggle notification.' },
-            { name: '/ign', value: 'Generate a Card containing your Lodestone info, QR code to Lodestone, etc.' },
-            { name: '/ignconfig', value: 'Link your Lodestone, Custom Photo, and other info.' },
-            { name: '/ailistenhere', value: 'Toggle AI auto-listening in the current channel. (ADMIN)' },
-            { name: '/notifhere', value: 'Set channel for notifications such as party finder, etc. (ADMIN)' },
-            { name: '/clean', value: 'Wipe all bot messages or cached history. (ADMIN)' },
-            { name: '/logger', value: 'Set up a Google Sheet to log commands used: Who, When & What command. (ADMIN)' },
-            { name: '/clearbotdms', value: 'Clean up direct messages sent by the bot (Use inside Direct Messages with the bot).' },
-            { 
-                name: '🤖 AI Natural Language Features (messageCreate)', 
-                value: '• **Set Reminders:** *"Remind me to do raid in 2 hours"* or *"Set daily reminder for roulette"*\n' +
-                       '• **Edit/Delete Reminders:** *"Update reminder 12 to new text"* or *"Delete reminder 5"*\n' +
-                       '• **Clear Reminders:** *"Clear all my reminders"*\n' +
-                       '• **Save/Append Notes & Facts:** *"Remember my static composition is..."* or *"Add BRD to my jobs"*\n' +
-                       '• **Wipe AI Memory:** *"release recollection"*\n' +
-                       '• **Tasks & Todo List:** *"Add task Buy Pots"* or *"Show my task list"*'
-            }
-        )
-        .setFooter({ text: 'Pingway FFXIV Discord Bot Assistant • Developed by River Zola' });
-}
+// Shared help list (same as /help)
+const { buildHelpPayload } = require('../utils/helpContent');
 
 // Utility to send long Discord messages safely
 async function sendChunkedReply(message, content) {
@@ -227,15 +194,34 @@ module.exports = {
         const pfSession = global.pfSessions ? global.pfSessions.get(message.author.id) : null;
         if (pfSession && pfSession.step === 'name') return;
 
-        const userPrompt = message.content;
         const userId = message.author.id;
+        const channelId = message.channelId;
+        const guildId = message.guildId;
+        const botId = message.client.user.id;
+
+        // Pingway only answers in AI channels (/ailistenhere) or when someone @mentions it
+        const mentionRe = new RegExp('<@!?' + botId + '>', 'g');
+        const mentioned = mentionRe.test(message.content);
+        let isAiChannel = false;
+        try {
+            const [aiRows] = await pool.execute(
+                `SELECT channel_id FROM ai_active_channels WHERE guild_id = ? AND channel_id = ?`,
+                [guildId, channelId]
+            );
+            isAiChannel = aiRows.length > 0;
+        } catch (e) {
+            console.error('❌ Failed to check AI channel:', e.message);
+            return;
+        }
+        if (!isAiChannel && !mentioned) return;
+
+        const userPrompt = message.content.replace(mentionRe, '').trim();
         const lowerPrompt = userPrompt.toLowerCase().trim();
 
-        // --- FAST SHORT-CIRCUITS (Run before DB queries to save resources) ---
-        if (['help', 'commands', 'command list', 'bot commands', 'pingway help', 'show commands'].includes(lowerPrompt)) {
-            const helpEmbed = buildHelpEmbed();
-            const aiIntro = "Here is the complete list of slash commands and AI assistant capabilities available in Pingway! Let me know if you need help with any of them.";
-            return message.reply({ content: aiIntro, embeds: [helpEmbed] });
+        // --- QUICK REPLIES (no AI used) ---
+        const helpWords = ['help', 'commands', 'command list', 'bot commands', 'pingway help', 'show commands', 'info', 'features', 'what can you do', 'website', 'dashboard'];
+        if (helpWords.includes(lowerPrompt.replace(/[?!.]+$/, '')) || (mentioned && lowerPrompt === '')) {
+            return message.reply({ content: 'Here is everything Pingway can do! You can also manage Pingway in your browser 🌐', ...buildHelpPayload() });
         }
         if (lowerPrompt === 'release recollection') {
             chatHistoryMap.delete(userId);
@@ -257,15 +243,12 @@ module.exports = {
             return message.reply({ content: "I am prohibited by the Dev from generating large code files." });
         }
 
-        const channelId = message.channelId;
-        const guildId = message.guildId;
+        // Mentioned outside an AI channel: point to /help instead of using AI here
+        if (!isAiChannel) {
+            return message.reply({ content: '👋 Hi! Type **/help** (or mention me with "help") to see what I can do. AI chat only works in channels an admin enabled with **/ailistenhere**.' });
+        }
 
         try {
-            const [rows] = await pool.execute(
-                `SELECT channel_id FROM ai_active_channels WHERE guild_id = ? AND channel_id = ?`,
-                [guildId, channelId]
-            );
-            if (!rows || rows.length === 0) return;
 
             await message.channel.sendTyping();
 
