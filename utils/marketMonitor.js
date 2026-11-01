@@ -299,6 +299,7 @@ async function passesListingCheck(itemId, dc, quality, listing) {
         const wantHq = quality === 'hq';
         const others = (res.data && Array.isArray(res.data.listings) ? res.data.listings : [])
             .filter(l => Boolean(l.hq) === wantHq)
+            .filter(l => !l.onMannequin)                                                     // ignore mannequin listings
             .filter(l => !(listing.listingID && l.listingID === listing.listingID))       // not the new listing itself
             .filter(l => !(listing.retainerName && l.retainerName === listing.retainerName)) // not the same seller's copies
             .map(l => l.pricePerUnit)
@@ -349,6 +350,7 @@ async function handleListingsAdd(client, message) {
     const cheapest = {};
     for (const l of listings) {
         if (typeof l.pricePerUnit !== 'number' || l.pricePerUnit <= 0) continue;
+        if (l.onMannequin) continue; // housing mannequin listings (often gifts to alts) - never alert
         const quality = l.hq ? 'hq' : 'nq';
         if (!cheapest[quality] || l.pricePerUnit < cheapest[quality].pricePerUnit) cheapest[quality] = l;
     }
