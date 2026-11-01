@@ -1,0 +1,12 @@
+# 📢 Pingway Announcement
+
+##✨ Updates & Fixes
+- Updated /poll — Poll creators and server administrators can now view who voted for each specific option.
+- Updated & Fixed /status — Your currently selected world and its live status will now display immediately when running /status. Fixed an issue where saved world selections were re-set/overwritten automatically.
+- Fixed /timer Release Notifications — Resolved an issue causing alert notifications to deliver at incorrect times following Pingway's physical data center migration last month.
+- Updated /raid — Added support for the "S" (Subbed) status for members who are absent but have secured a substitute.
+⚠️ Existing /raid Users: If you already have an active Raid Planner sheet, please join our Support Discord so I can help update your Google Sheet setup!
+
+Thank you for your support!
+
+— River Zola (Solo Developer) ❤️

@@ -1,0 +1,176 @@
+{
+  "tanks": [
+    {
+      "name": "Any Tank",
+      "code": "Tank",
+      "emote": "<:tank:1530597204270649364>"
+    },
+    {
+      "name": "Bastion",
+      "code": "BAS",
+      "emote": "<:tank:1530597204270649364>"
+    },
+    {
+      "name": "Paladin",
+      "code": "PLD",
+      "emote": "<:PLD:1530597135203045549>"
+    },
+    {
+      "name": "Warrior",
+      "code": "WAR",
+      "emote": "<:WAR:1530597131134570608>"
+    },
+    {
+      "name": "Dark Knight",
+      "code": "DRK",
+      "emote": "<:DRK:1530597113354916011>"
+    },
+    {
+      "name": "Gunbreaker",
+      "code": "GNB",
+      "emote": "<:GNB:1530597110263709897>"
+    }
+  ],
+  "healers": [
+    {
+      "name": "Any Healer",
+      "code": "Healer",
+      "emote": "<:healer:1530597202811031723>"
+    },
+    {
+      "name": "White Mage",
+      "code": "WHM",
+      "emote": "<:WHM:1530597132422348810>"
+    },
+    {
+      "name": "Scholar",
+      "code": "SCH",
+      "emote": "<:SCH:1530597122100039912>"
+    },
+    {
+      "name": "Astrologian",
+      "code": "AST",
+      "emote": "<:AST:1530597112105144521>"
+    },
+    {
+      "name": "Sage",
+      "code": "SGE",
+      "emote": "<:SGE:1530597102105657384>"
+    }
+  ],
+  "dps": [
+    {
+      "name": "Any DPS",
+      "code": "DPS",
+      "emote": "<:dps:1530597201527439400>"
+    }
+  ],
+  "meleedps": [
+    {
+      "name": "Any Melee",
+      "code": "Melee",
+      "emote": "<:melee:1530597772561088744>"
+    },
+    {
+      "name": "Monk",
+      "code": "MNK",
+      "emote": "<:MNK:1530597133894291546>"
+    },
+    {
+      "name": "Dragoon",
+      "code": "DRG",
+      "emote": "<:DRG:1530597129532346418>"
+    },
+    {
+      "name": "Ninja",
+      "code": "NIN",
+      "emote": "<:NIN:1530597120795738264>"
+    },
+    {
+      "name": "Samurai",
+      "code": "SAM",
+      "emote": "<:SAM:1530597116819537950>"
+    },
+    {
+      "name": "Reaper",
+      "code": "RPR",
+      "emote": "<:RPR:1530597100612751402>"
+    },
+    {
+      "name": "Viper",
+      "code": "VPR",
+      "emote": "<:VPR:1530597104177774774>"
+    }
+  ],
+  "physicalrangeddps": [
+    {
+      "name": "Any Range",
+      "code": "Range",
+      "emote": "<:range:1530597774016647178>"
+    },
+    {
+      "name": "8.0 Range",
+      "code": "rnge",
+      "emote": "<:range:1530597774016647178>"
+    },
+    {
+      "name": "Bard",
+      "code": "BRD",
+      "emote": "<:BRD:1530597128336834753>"
+    },
+    {
+      "name": "Machinist",
+      "code": "MCH",
+      "emote": "<:MCH:1530597118287282400>"
+    },
+    {
+      "name": "Dancer",
+      "code": "DNC",
+      "emote": "<:DNC:1530597106786631890>"
+    }
+  ],
+  "magicalrangeddps": [
+    {
+      "name": "Any Caster",
+      "code": "Caster",
+      "emote": "<:caster:1530597770275324116>"
+    },
+    {
+      "name": "Black Mage",
+      "code": "BLM",
+      "emote": "<:BLM:1530597124813754559>"
+    },
+    {
+      "name": "Summoner",
+      "code": "SMN",
+      "emote": "<:SMN:1530597126109921463>"
+    },
+    {
+      "name": "Red Mage",
+      "code": "RDM",
+      "emote": "<:RDM:1530597114621460620>"
+    },
+    {
+      "name": "Pictomancer",
+      "code": "PCT",
+      "emote": "<:PCT:1530597099253530695>"
+    }
+  ],
+  "other": [
+    {
+      "name": "Blue Mage",
+      "code": "BLU",
+      "emote": "<:BLU:1530597105540792330>"
+    },
+    {
+      "name": "Beastmaster",
+      "code": "BST",
+      "emote": "<:BST:1530596980919767131>"
+    },
+    {
+      "name": "All-Rounder",
+      "code": "FLEX",
+      "emote": "<:allrounder:1530596983696396348>"
+    }
+  ]
+}

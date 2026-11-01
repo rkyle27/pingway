@@ -1,0 +1,1 @@
+# One Discord server ID per line: servers allowed to use /nissi

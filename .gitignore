@@ -1,0 +1,23 @@
+# Secrets - never commit
+.env
+.env.*
+!.env.example
+google-credentials.json
+*.pem
+*.key
+
+# Runtime data (contains real user / server IDs)
+maintewhitelist.json
+data/nissi.txt
+data/marketalert.txt
+data/command_hashes.json
+data/maintenance_state.json
+
+# Dependencies, caches, backups
+node_modules/
+.npm/
+.cache/
+*.tar.gz
+*.zip
+*.sql
+*.log
