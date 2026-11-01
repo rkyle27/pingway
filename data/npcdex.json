@@ -1,0 +1,2502 @@
+[
+  {
+    "id": "npc_001",
+    "name": "Brenden",
+    "title": "Wood Wailer Recruit",
+    "rarity": 1,
+    "expansion": "A Realm Reborn",
+    "hp": 260,
+    "atk": 26,
+    "additional_effect": "Spear Thrust: Deals basic physical damage with no extra effect."
+  },
+  {
+    "id": "npc_002",
+    "name": "Edda Blackbosom",
+    "title": "Novice Adventurer",
+    "rarity": 7,
+    "expansion": "A Realm Reborn",
+    "hp": 1050,
+    "atk": 92,
+    "additional_effect": "Cure I: Restores 10% of max HP when below 30% health once per battle."
+  },
+  {
+    "id": "npc_003",
+    "name": "Aethelwaert",
+    "title": "Godsivern Sentinel",
+    "rarity": 1,
+    "expansion": "A Realm Reborn",
+    "hp": 275,
+    "atk": 22,
+    "additional_effect": "Guard Stance: Increases defense by 5%."
+  },
+  {
+    "id": "npc_004",
+    "name": "Liavin",
+    "title": "Scion Guard",
+    "rarity": 1,
+    "expansion": "A Realm Reborn",
+    "hp": 250,
+    "atk": 26,
+    "additional_effect": "Crossbow Shot: Deals minor ranged physical damage."
+  },
+  {
+    "id": "npc_005",
+    "name": "Aethelthryth",
+    "title": "Limsa Lominsan Merchant",
+    "rarity": 1,
+    "expansion": "A Realm Reborn",
+    "hp": 220,
+    "atk": 18,
+    "additional_effect": "Haggle: Reduces shop item costs by 3%."
+  },
+  {
+    "id": "npc_006",
+    "name": "Boreas",
+    "title": "Lancer Recruit",
+    "rarity": 1,
+    "expansion": "A Realm Reborn",
+    "hp": 245,
+    "atk": 27,
+    "additional_effect": "True Thrust: Basic physical combo opener."
+  },
+  {
+    "id": "npc_007",
+    "name": "September",
+    "title": "Sylph Friend",
+    "rarity": 1,
+    "expansion": "A Realm Reborn",
+    "hp": 210,
+    "atk": 22,
+    "additional_effect": "Sylph Dust: Confuses enemy for 1 turn."
+  },
+  {
+    "id": "npc_008",
+    "name": "F'lhaminn Qesh",
+    "title": "Songstress of Ul'dah",
+    "rarity": 2,
+    "expansion": "A Realm Reborn",
+    "hp": 280,
+    "atk": 24,
+    "additional_effect": "Soothing Voice: Restores 15 HP to all allies at the start of battle."
+  },
+  {
+    "id": "npc_009",
+    "name": "Slafborn",
+    "title": "Revenant's Toll Overseer",
+    "rarity": 2,
+    "expansion": "A Realm Reborn",
+    "hp": 320,
+    "atk": 32,
+    "additional_effect": "Frontier Wisdom: Grants 5% extra experience from battles."
+  },
+  {
+    "id": "npc_010",
+    "name": "Buscarron",
+    "title": "Proprietor of Buscarron's Druthers",
+    "rarity": 2,
+    "expansion": "A Realm Reborn",
+    "hp": 315,
+    "atk": 29,
+    "additional_effect": "Warm Mead: Increases ally Max HP by 5% for 3 turns."
+  },
+  {
+    "id": "npc_011",
+    "name": "Baderon Tenfingers",
+    "title": "Drowned Dolphin Owner",
+    "rarity": 2,
+    "expansion": "A Realm Reborn",
+    "hp": 310,
+    "atk": 31,
+    "additional_effect": "Sailor's Tale: Briefly boosts ally critical hit chance by 3%."
+  },
+  {
+    "id": "npc_012",
+    "name": "Momodi Modi",
+    "title": "Quicksand Proprietress",
+    "rarity": 2,
+    "expansion": "A Realm Reborn",
+    "hp": 275,
+    "atk": 25,
+    "additional_effect": "Information Network: Reveals enemy elemental weakness."
+  },
+  {
+    "id": "npc_013",
+    "name": "Severian",
+    "title": "Alchemists' Guildmaster",
+    "rarity": 2,
+    "expansion": "A Realm Reborn",
+    "hp": 270,
+    "atk": 34,
+    "additional_effect": "Volatile Concoction: Poisons enemy for 15 damage per turn."
+  },
+  {
+    "id": "npc_014",
+    "name": "Hamon Holyfist",
+    "title": "Pugilists' Guildmaster",
+    "rarity": 2,
+    "expansion": "A Realm Reborn",
+    "hp": 305,
+    "atk": 36,
+    "additional_effect": "Old Man's Might: Has a 10% chance to strike with massive power."
+  },
+  {
+    "id": "npc_015",
+    "name": "Mylla",
+    "title": "Gladiators' Guildmaster",
+    "rarity": 2,
+    "expansion": "A Realm Reborn",
+    "hp": 340,
+    "atk": 30,
+    "additional_effect": "Shield Bash: 15% chance to stun the enemy for 1 turn."
+  },
+  {
+    "id": "npc_016",
+    "name": "Geva",
+    "title": "Leatherworkers' Guildmaster",
+    "rarity": 2,
+    "expansion": "A Realm Reborn",
+    "hp": 290,
+    "atk": 28,
+    "additional_effect": "Toughened Hide: Boosts base party armor by 5%."
+  },
+  {
+    "id": "npc_017",
+    "name": "Briardien",
+    "title": "Inquisitor Inspector",
+    "rarity": 2,
+    "expansion": "A Realm Reborn",
+    "hp": 285,
+    "atk": 31,
+    "additional_effect": "Deductive Reasoning: Reduces enemy dodge chance by 10%."
+  },
+  {
+    "id": "npc_018",
+    "name": "Nashu Mhakaracca",
+    "title": "Sub-inspector",
+    "rarity": 3,
+    "expansion": "A Realm Reborn",
+    "hp": 330,
+    "atk": 42,
+    "additional_effect": "Extra Powerful Bomb: 20% chance to deal double damage."
+  },
+  {
+    "id": "npc_019",
+    "name": "Hoary Boulder",
+    "title": "Stalwart Scion",
+    "rarity": 3,
+    "expansion": "A Realm Reborn",
+    "hp": 410,
+    "atk": 33,
+    "additional_effect": "Rock Solid: Boosts defense by 15% at start of battle."
+  },
+  {
+    "id": "npc_020",
+    "name": "Coultenet Darthe",
+    "title": "Scion Strategist",
+    "rarity": 3,
+    "expansion": "A Realm Reborn",
+    "hp": 345,
+    "atk": 38,
+    "additional_effect": "Tactical Insight: Boosts party critical hit damage by 10%."
+  },
+  {
+    "id": "npc_021",
+    "name": "Aenor Journale",
+    "title": "Eager Scion",
+    "rarity": 3,
+    "expansion": "A Realm Reborn",
+    "hp": 350,
+    "atk": 37,
+    "additional_effect": "Brotherly Focus: Attack increases when paired with Boulder brothers."
+  },
+  {
+    "id": "npc_022",
+    "name": "Ocher Boulder",
+    "title": "Scion Warrior",
+    "rarity": 3,
+    "expansion": "A Realm Reborn",
+    "hp": 425,
+    "atk": 34,
+    "additional_effect": "Overpower: Deals area-of-effect physical damage."
+  },
+  {
+    "id": "npc_023",
+    "name": "Clemence Journale",
+    "title": "Scion Healer",
+    "rarity": 3,
+    "expansion": "A Realm Reborn",
+    "hp": 330,
+    "atk": 28,
+    "additional_effect": "Medical Aid: Heals lowest HP ally for 15% Max HP."
+  },
+  {
+    "id": "npc_024",
+    "name": "Alianne",
+    "title": "Crystal Brave Unit Commander",
+    "rarity": 3,
+    "expansion": "A Realm Reborn",
+    "hp": 365,
+    "atk": 38,
+    "additional_effect": "Brave Command: Grants +5% ATK to low-rarity allies."
+  },
+  {
+    "id": "npc_025",
+    "name": "Wilred",
+    "title": "Youth of Little Ala Mhigo",
+    "rarity": 3,
+    "expansion": "A Realm Reborn",
+    "hp": 340,
+    "atk": 37,
+    "additional_effect": "Youthful Ambition: Boosts speed by 10% for first 2 turns."
+  },
+  {
+    "id": "npc_026",
+    "name": "Riol",
+    "title": "Ex-Company of Heroes Operative",
+    "rarity": 3,
+    "expansion": "A Realm Reborn",
+    "hp": 355,
+    "atk": 41,
+    "additional_effect": "Reconnaissance: Grants immunity to ambush attacks."
+  },
+  {
+    "id": "npc_027",
+    "name": "Laurentius",
+    "title": "Wavering Guard",
+    "rarity": 3,
+    "expansion": "A Realm Reborn",
+    "hp": 360,
+    "atk": 35,
+    "additional_effect": "Desperate Strike: Deals double damage when under 20% HP."
+  },
+  {
+    "id": "npc_028",
+    "name": "Francie de Haollenarte",
+    "title": "Count of House Haollenarte",
+    "rarity": 3,
+    "expansion": "Heavensward",
+    "hp": 370,
+    "atk": 30,
+    "additional_effect": "Skybuilders' Union: Boosts material drop rates post-combat."
+  },
+  {
+    "id": "npc_029",
+    "name": "Handeloup",
+    "title": "Temple Knight Commander",
+    "rarity": 3,
+    "expansion": "Heavensward",
+    "hp": 395,
+    "atk": 35,
+    "additional_effect": "Guard Duty: Shields back-line allies for 1 turn."
+  },
+  {
+    "id": "npc_030",
+    "name": "Joy",
+    "title": "Machinist Companion",
+    "rarity": 3,
+    "expansion": "Heavensward",
+    "hp": 340,
+    "atk": 42,
+    "additional_effect": "Rapid Fire: Launches 3 rapid shots dealing low physical damage."
+  },
+  {
+    "id": "npc_031",
+    "name": "Tataru Taru",
+    "title": "Scion Treasurer",
+    "rarity": 8,
+    "expansion": "A Realm Reborn",
+    "hp": 1400,
+    "atk": 105,
+    "additional_effect": "Coin Toss: Increases gil earned from victory by 35%."
+  },
+  {
+    "id": "npc_032",
+    "name": "Hildibrand Manderville",
+    "title": "Agent of Inquiry",
+    "rarity": 8,
+    "expansion": "A Realm Reborn",
+    "hp": 1850,
+    "atk": 125,
+    "additional_effect": "Gentlemanly Pose: Survives fatal damage once per battle with 1 HP."
+  },
+  {
+    "id": "npc_033",
+    "name": "Godbert Manderville",
+    "title": "Goldsmith Extraordinaire",
+    "expansion": "A Realm Reborn",
+    "stars": 10,
+    "hp": 9999,
+    "atk": 999,
+    "additional_effect": "Manderville Hammer: Instantly shatters target armor and delivers massive non-elemental damage."
+  },
+  {
+    "id": "npc_034",
+    "name": "Moenbryda Wilfswyn",
+    "title": "Archon of Sharlayan",
+    "rarity": 8,
+    "expansion": "A Realm Reborn",
+    "hp": 1650,
+    "atk": 138,
+    "additional_effect": "Aetheric Device: Shields allies for 20% max HP."
+  },
+  {
+    "id": "npc_035",
+    "name": "Pipin Steelheart",
+    "title": "Vice-Marshal of the Immortal Flames",
+    "rarity": 4,
+    "expansion": "A Realm Reborn",
+    "hp": 460,
+    "atk": 46,
+    "additional_effect": "Tizona Cut: Armor-piercing slash dealing high damage."
+  },
+  {
+    "id": "npc_036",
+    "name": "Lucia goe Junius",
+    "title": "First Commander of Temple Knights",
+    "rarity": 4,
+    "expansion": "Heavensward",
+    "hp": 480,
+    "atk": 42,
+    "additional_effect": "Ishgardian Resolve: Grants immunity to fear and charm."
+  },
+  {
+    "id": "npc_037",
+    "name": "Hilda Ware",
+    "title": "The Mongrel Leader",
+    "rarity": 4,
+    "expansion": "Heavensward",
+    "hp": 435,
+    "atk": 48,
+    "additional_effect": "Custom Shot: Explosive shot causing burn damage."
+  },
+  {
+    "id": "npc_038",
+    "name": "M'naago Rahz",
+    "title": "Resistance Officer",
+    "rarity": 4,
+    "expansion": "Stormblood",
+    "hp": 440,
+    "atk": 46,
+    "additional_effect": "Archers' Volley: Hits target and two adjacent targets."
+  },
+  {
+    "id": "npc_039",
+    "name": "Cirina Mol",
+    "title": "Dotharl-reared Xaela",
+    "rarity": 4,
+    "expansion": "Stormblood",
+    "hp": 425,
+    "atk": 41,
+    "additional_effect": "Prayer to Dawn Father: Boosts party accuracy/speed."
+  },
+  {
+    "id": "npc_040",
+    "name": "Arenvald Lentinus",
+    "title": "Scion Gladiator",
+    "rarity": 8,
+    "expansion": "Stormblood",
+    "hp": 1780,
+    "atk": 122,
+    "additional_effect": "Echoes of Ala Mhigo: Gains massive damage resistance at low HP."
+  },
+  {
+    "id": "npc_041",
+    "name": "Giott",
+    "title": "Dwarven Warrior",
+    "rarity": 4,
+    "expansion": "Shadowbringers",
+    "hp": 490,
+    "atk": 44,
+    "additional_effect": "Heavy Stagger: Stuns target enemy for 1 turn."
+  },
+  {
+    "id": "npc_042",
+    "name": "Burti",
+    "title": "Pelupelu Trader",
+    "rarity": 4,
+    "expansion": "Dawntrail",
+    "hp": 410,
+    "atk": 35,
+    "additional_effect": "Trade Network: Increases overall victory rewards by 10%."
+  },
+  {
+    "id": "npc_043",
+    "name": "Cutter",
+    "title": "Moblin Artisan",
+    "rarity": 4,
+    "expansion": "Dawntrail",
+    "hp": 420,
+    "atk": 38,
+    "additional_effect": "Quick Craft: Repairs ally shields mid-combat."
+  },
+  {
+    "id": "npc_044",
+    "name": "Livia sas Junius",
+    "title": "Tribunus of XIVth Legion",
+    "rarity": 4,
+    "expansion": "A Realm Reborn",
+    "hp": 450,
+    "atk": 50,
+    "additional_effect": "Aglaia Fire: Launches barrage of high-damage shells."
+  },
+  {
+    "id": "npc_045",
+    "name": "Rhitahtyn sas Arvina",
+    "title": "Praefectus of XIVth Legion",
+    "rarity": 4,
+    "expansion": "A Realm Reborn",
+    "hp": 520,
+    "atk": 39,
+    "additional_effect": "Vartan Shields: Blocks front-line attacks."
+  },
+  {
+    "id": "npc_046",
+    "name": "Haurchefant Greystone",
+    "title": "Knight of House Fortemps",
+    "rarity": 8,
+    "expansion": "Heavensward",
+    "hp": 1750,
+    "atk": 125,
+    "additional_effect": "A Smile Better Suits a Hero: Intercepts fatal blow for ally with complete invulnerability."
+  },
+  {
+    "id": "npc_047",
+    "name": "Krile Mayer Baldesion",
+    "title": "Head of Students of Baldesion",
+    "rarity": 8,
+    "expansion": "Heavensward",
+    "hp": 1480,
+    "atk": 142,
+    "additional_effect": "Whispers of Echo: Increases team damage by 20%."
+  },
+  {
+    "id": "npc_048",
+    "name": "Magnai Oronir",
+    "title": "Sun of the Azim Steppe",
+    "rarity": 5,
+    "expansion": "Stormblood",
+    "hp": 610,
+    "atk": 56,
+    "additional_effect": "Nhaama's Quest: Increases damage against female enemies."
+  },
+  {
+    "id": "npc_049",
+    "name": "Sadu Dotharl",
+    "title": "Khatun of the Dotharl",
+    "rarity": 5,
+    "expansion": "Stormblood",
+    "hp": 550,
+    "atk": 62,
+    "additional_effect": "Immortal Flame: Revives once per battle with 10% HP."
+  },
+  {
+    "id": "npc_050",
+    "name": "Hien Rijjin",
+    "title": "Lord of Doma",
+    "rarity": 8,
+    "expansion": "Stormblood",
+    "hp": 1620,
+    "atk": 136,
+    "additional_effect": "Domain's Resolve: Boosts team ATK vs boss units by 20%."
+  },
+  {
+    "id": "npc_051",
+    "name": "Yugiri Mistwalker",
+    "title": "Doman Shinobi",
+    "rarity": 8,
+    "expansion": "A Realm Reborn",
+    "hp": 1520,
+    "atk": 145,
+    "additional_effect": "Trick Attack: Target takes 25% more damage for 2 turns."
+  },
+  {
+    "id": "npc_052",
+    "name": "Gosetsu Evercrest",
+    "title": "Doman Samurai",
+    "rarity": 8,
+    "expansion": "Stormblood",
+    "hp": 1790,
+    "atk": 130,
+    "additional_effect": "Midare Setsugekka: Massive single-target physical slash."
+  },
+  {
+    "id": "npc_053",
+    "name": "Matoya",
+    "title": "Hermit Witch",
+    "rarity": 5,
+    "expansion": "Heavensward",
+    "hp": 520,
+    "atk": 59,
+    "additional_effect": "Brooms' Chores: Spawns constructs absorbing 1 attack."
+  },
+  {
+    "id": "npc_054",
+    "name": "Mikoto Jinba",
+    "title": "Bozjan Researcher",
+    "rarity": 5,
+    "expansion": "Shadowbringers",
+    "hp": 535,
+    "atk": 48,
+    "additional_effect": "Clairvoyance: Grants party 100% dodge against next hit."
+  },
+  {
+    "id": "npc_055",
+    "name": "Erenville",
+    "title": "Gleaner of Sharlayan",
+    "rarity": 8,
+    "expansion": "Endwalker",
+    "hp": 1500,
+    "atk": 115,
+    "additional_effect": "Gleaner's Survival: Grants party +20% speed and movement agility."
+  },
+  {
+    "id": "npc_056",
+    "name": "Lyse Hext",
+    "title": "Liberator of Ala Mhigo",
+    "rarity": 8,
+    "expansion": "Stormblood",
+    "hp": 1600,
+    "atk": 140,
+    "additional_effect": "Fists of Rhalgr: Boosts critical hit rate by 25%."
+  },
+  {
+    "id": "npc_057",
+    "name": "Asahi sas Brutus",
+    "title": "Imperial Ambassador",
+    "rarity": 5,
+    "expansion": "Stormblood",
+    "hp": 560,
+    "atk": 52,
+    "additional_effect": "Deceptive Malice: Confuses target enemy."
+  },
+  {
+    "id": "npc_058",
+    "name": "Runar",
+    "title": "Blessed of the Night",
+    "rarity": 8,
+    "expansion": "Shadowbringers",
+    "hp": 1640,
+    "atk": 128,
+    "additional_effect": "Night's Devotion: Increases Y'shtola's ATK if in party."
+  },
+  {
+    "id": "npc_059",
+    "name": "Lyna",
+    "title": "Captain of the Guard",
+    "rarity": 5,
+    "expansion": "Shadowbringers",
+    "hp": 590,
+    "atk": 58,
+    "additional_effect": "Crystarium Defense: Boosts team speed/dodge by 15%."
+  },
+  {
+    "id": "npc_060",
+    "name": "Fourchenault Leveilleur",
+    "title": "Member of the Forum",
+    "rarity": 5,
+    "expansion": "Endwalker",
+    "hp": 600,
+    "atk": 51,
+    "additional_effect": "Sage Nodal Barrier: Shields front-row allies."
+  },
+  {
+    "id": "npc_061",
+    "name": "Ifrit",
+    "title": "Lord of the Inferno",
+    "rarity": 5,
+    "expansion": "A Realm Reborn",
+    "hp": 580,
+    "atk": 59,
+    "additional_effect": "Hellfire: Burns all enemies for 3 turns."
+  },
+  {
+    "id": "npc_062",
+    "name": "Titan",
+    "title": "Lord of the Crags",
+    "rarity": 5,
+    "expansion": "A Realm Reborn",
+    "hp": 650,
+    "atk": 49,
+    "additional_effect": "Earthen Fury: Deals heavy earth AOE damage."
+  },
+  {
+    "id": "npc_063",
+    "name": "Garuda",
+    "title": "Lady of the Vortex",
+    "rarity": 5,
+    "expansion": "A Realm Reborn",
+    "hp": 540,
+    "atk": 61,
+    "additional_effect": "Aerial Blast: High wind damage piercing shields."
+  },
+  {
+    "id": "npc_064",
+    "name": "King Moggle Mog XII",
+    "title": "Mogguard Sovereign",
+    "rarity": 5,
+    "expansion": "A Realm Reborn",
+    "hp": 570,
+    "atk": 53,
+    "additional_effect": "Mogbeckoned: Summons moogle allies to buff damage."
+  },
+  {
+    "id": "npc_065",
+    "name": "Leviathan",
+    "title": "Lord of the Whorl",
+    "rarity": 5,
+    "expansion": "A Realm Reborn",
+    "hp": 600,
+    "atk": 55,
+    "additional_effect": "Tidal Wave: Knocks target turns back by 1."
+  },
+  {
+    "id": "npc_066",
+    "name": "Ramuh",
+    "title": "Lord of Levin",
+    "rarity": 5,
+    "expansion": "A Realm Reborn",
+    "hp": 575,
+    "atk": 57,
+    "additional_effect": "Judgment Bolt: Paralyzes target for 1 turn."
+  },
+  {
+    "id": "npc_067",
+    "name": "Shiva",
+    "title": "Lady of Frost",
+    "rarity": 5,
+    "expansion": "A Realm Reborn",
+    "hp": 560,
+    "atk": 60,
+    "additional_effect": "Diamond Dust: Freezes all targets for 1 turn."
+  },
+  {
+    "id": "npc_068",
+    "name": "Ravana",
+    "title": "Lord of the Hive",
+    "rarity": 5,
+    "expansion": "Heavensward",
+    "hp": 595,
+    "atk": 63,
+    "additional_effect": "Chandrahas: Deals massive physical blade strikes."
+  },
+  {
+    "id": "npc_069",
+    "name": "Bismarck",
+    "title": "Lord of the Mists",
+    "rarity": 5,
+    "expansion": "Heavensward",
+    "hp": 670,
+    "atk": 48,
+    "additional_effect": "Turbulence: Reduces enemy defense by 20%."
+  },
+  {
+    "id": "npc_070",
+    "name": "Susano",
+    "title": "Lord of the Revel",
+    "rarity": 5,
+    "expansion": "Stormblood",
+    "hp": 620,
+    "atk": 58,
+    "additional_effect": "Ame-no-Murakumo: Giant blade cleave on whole party."
+  },
+  {
+    "id": "npc_071",
+    "name": "Alphinaud Leveilleur",
+    "title": "Academic Scion",
+    "rarity": 9,
+    "expansion": "Endwalker",
+    "hp": 2350,
+    "atk": 185,
+    "additional_effect": "Nophica's Wisdom: Restores 15% HP and shields party each round."
+  },
+  {
+    "id": "npc_072",
+    "name": "Alisaie Leveilleur",
+    "title": "Fiery Red Mage",
+    "rarity": 9,
+    "expansion": "Endwalker",
+    "hp": 2300,
+    "atk": 218,
+    "additional_effect": "Verflare: Massive magic burst attack every 2nd turn."
+  },
+  {
+    "id": "npc_073",
+    "name": "Y'shtola Rhul",
+    "title": "Witch of Ink Zai",
+    "rarity": 9,
+    "expansion": "Shadowbringers",
+    "hp": 2280,
+    "atk": 222,
+    "additional_effect": "Spiritual Insight: Ignores 40% of enemy magic defense."
+  },
+  {
+    "id": "npc_074",
+    "name": "Thancred Waters",
+    "title": "Stalwart Gunbreaker",
+    "rarity": 9,
+    "expansion": "Shadowbringers",
+    "hp": 2680,
+    "atk": 192,
+    "additional_effect": "Superbolide: Negates incoming damage for 2 turns at 1 HP."
+  },
+  {
+    "id": "npc_075",
+    "name": "Urianger Augurelt",
+    "title": "Scion Astrologian",
+    "rarity": 9,
+    "expansion": "Shadowbringers",
+    "hp": 2250,
+    "atk": 195,
+    "additional_effect": "Draw Card: Applies random ultra party buff every turn."
+  },
+  {
+    "id": "npc_076",
+    "name": "Fordola rem Lupis",
+    "title": "Commander of Crania Lupi",
+    "rarity": 6,
+    "expansion": "Stormblood",
+    "hp": 770,
+    "atk": 74,
+    "additional_effect": "Resonant Strike: Parries incoming physical hits."
+  },
+  {
+    "id": "npc_077",
+    "name": "Gaius van Baelsar",
+    "title": "The Shadowhunter",
+    "rarity": 6,
+    "expansion": "Shadowbringers",
+    "hp": 820,
+    "atk": 72,
+    "additional_effect": "Terminus Est: Leaves slice marks causing bleed over time."
+  },
+  {
+    "id": "npc_078",
+    "name": "Zero",
+    "title": "Memoriate of Thirteenth",
+    "rarity": 10,
+    "expansion": "Endwalker",
+    "hp": 3900,
+    "atk": 335,
+    "additional_effect": "Void Slash: Converts 20% damage dealt into personal shield."
+  },
+  {
+    "id": "npc_079",
+    "name": "G'raha Tia",
+    "title": "Allagan Historian & Scion",
+    "rarity": 9,
+    "expansion": "Endwalker",
+    "hp": 2450,
+    "atk": 205,
+    "additional_effect": "Versatile Mastery: Adapts role depending on party needs and boosts stats."
+  },
+  {
+    "id": "npc_080",
+    "name": "Estinien Wyrmblood",
+    "title": "The Azure Dragoon",
+    "rarity": 9,
+    "expansion": "Heavensward",
+    "hp": 2420,
+    "atk": 228,
+    "additional_effect": "Stardiver: Flying jump attack that stuns target and cleaves adjacent foes."
+  },
+  {
+    "id": "npc_081",
+    "name": "Lakshmi",
+    "title": "Lady of Bliss",
+    "rarity": 6,
+    "expansion": "Stormblood",
+    "hp": 750,
+    "atk": 69,
+    "additional_effect": "Divine Denial: Nullifies target's current buffs."
+  },
+  {
+    "id": "npc_082",
+    "name": "Byakko",
+    "title": "White Tiger of Four Lords",
+    "rarity": 6,
+    "expansion": "Stormblood",
+    "hp": 800,
+    "atk": 71,
+    "additional_effect": "Highest Sky: Slams target into floor for heavy physical hit."
+  },
+  {
+    "id": "npc_083",
+    "name": "Suzaku",
+    "title": "Scarlet Phoenix of Four Lords",
+    "rarity": 6,
+    "expansion": "Stormblood",
+    "hp": 760,
+    "atk": 75,
+    "additional_effect": "South Song: Applies burn damage to all enemies."
+  },
+  {
+    "id": "npc_084",
+    "name": "Seiryu",
+    "title": "Azure Dragon of Four Lords",
+    "rarity": 6,
+    "expansion": "Stormblood",
+    "hp": 810,
+    "atk": 68,
+    "additional_effect": "Curse-keeper: Reflects 15% damage taken back."
+  },
+  {
+    "id": "npc_085",
+    "name": "Titania",
+    "title": "Ruler of Il Mheg",
+    "rarity": 6,
+    "expansion": "Shadowbringers",
+    "hp": 775,
+    "atk": 73,
+    "additional_effect": "Bright Sabbath: Arena-wide magic AOE damage."
+  },
+  {
+    "id": "npc_086",
+    "name": "Innocence",
+    "title": "Lord Eulmore",
+    "rarity": 6,
+    "expansion": "Shadowbringers",
+    "hp": 780,
+    "atk": 76,
+    "additional_effect": "Rightful Reprobation: Swords slice all enemy units."
+  },
+  {
+    "id": "npc_087",
+    "name": "Ruby Weapon",
+    "title": "Garlean Warmachine",
+    "rarity": 6,
+    "expansion": "Shadowbringers",
+    "hp": 840,
+    "atk": 72,
+    "additional_effect": "Optimized Ultima: Devastating magic explosion."
+  },
+  {
+    "id": "npc_088",
+    "name": "Emerald Weapon",
+    "title": "Garlean Warmachine",
+    "rarity": 6,
+    "expansion": "Shadowbringers",
+    "hp": 830,
+    "atk": 73,
+    "additional_effect": "Aire Tam Storm: Fires energy beams at all foes."
+  },
+  {
+    "id": "npc_089",
+    "name": "Diamond Weapon",
+    "title": "Garlean Warmachine",
+    "rarity": 6,
+    "expansion": "Shadowbringers",
+    "hp": 860,
+    "atk": 67,
+    "additional_effect": "Adamant Purge: High defensive posture shielding self."
+  },
+  {
+    "id": "npc_090",
+    "name": "Zoraal Ja",
+    "title": "Tural Trial Boss",
+    "rarity": 6,
+    "expansion": "Dawntrail",
+    "hp": 810,
+    "atk": 74,
+    "additional_effect": "Dawn Slash: Cleaves target piercing 15% defense."
+  },
+  {
+    "id": "npc_091",
+    "name": "Aymeric de Borel",
+    "title": "Lord Commander of Temple Knights",
+    "rarity": 7,
+    "expansion": "Heavensward",
+    "hp": 1120,
+    "atk": 98,
+    "additional_effect": "Commanding Presence: Boosts party Attack by 15%."
+  },
+  {
+    "id": "npc_092",
+    "name": "Raubahn Aldynn",
+    "title": "The Bull of Ala Mhigo",
+    "rarity": 7,
+    "expansion": "A Realm Reborn",
+    "hp": 1220,
+    "atk": 102,
+    "additional_effect": "Tizona Cleave: High cone-area physical fire damage."
+  },
+  {
+    "id": "npc_093",
+    "name": "Merlwyb Bloefhiswyn",
+    "title": "Admiral of Limsa Lominsa",
+    "rarity": 7,
+    "expansion": "A Realm Reborn",
+    "hp": 1080,
+    "atk": 100,
+    "additional_effect": "Death Penalty: Double pistol shot dealing heavy critical hit."
+  },
+  {
+    "id": "npc_094",
+    "name": "Kan-E-Senna",
+    "title": "Elder Seedseer of Gridania",
+    "rarity": 7,
+    "expansion": "A Realm Reborn",
+    "hp": 1020,
+    "atk": 82,
+    "additional_effect": "Elementals' Grace: Cures all debuffs and fully heals lowest HP ally."
+  },
+  {
+    "id": "npc_095",
+    "name": "Nanamo Ul Namo",
+    "title": "Sultanah of Ul'dah",
+    "rarity": 7,
+    "expansion": "A Realm Reborn",
+    "hp": 920,
+    "atk": 75,
+    "additional_effect": "Royal Decree: Summons Raubahn to absorb incoming damage."
+  },
+  {
+    "id": "npc_096",
+    "name": "Regula van Hydrus",
+    "title": "Legatus of VIth Legion",
+    "rarity": 7,
+    "expansion": "Heavensward",
+    "hp": 1140,
+    "atk": 97,
+    "additional_effect": "Bastard Sword Cleave: Heavy physical attack piercing shields."
+  },
+  {
+    "id": "npc_097",
+    "name": "Varis zos Galvus",
+    "title": "High Emperor of Garlemald",
+    "rarity": 7,
+    "expansion": "Stormblood",
+    "hp": 1200,
+    "atk": 104,
+    "additional_effect": "Imperial Will: Forces enemy units to deal 15% less damage."
+  },
+  {
+    "id": "npc_098",
+    "name": "Yotsuyu goe Brutus",
+    "title": "Viceroy of Doma",
+    "rarity": 7,
+    "expansion": "Stormblood",
+    "hp": 1050,
+    "atk": 96,
+    "additional_effect": "Pipe Smoke Intoxication: Debuffs target accuracy by 25%."
+  },
+  {
+    "id": "npc_099",
+    "name": "Ryne",
+    "title": "Oracle of Light",
+    "rarity": 10,
+    "expansion": "Shadowbringers",
+    "hp": 3750,
+    "atk": 315,
+    "additional_effect": "Light's Blessing: Infuses party attacks with massive Holy bonus damage."
+  },
+  {
+    "id": "npc_100",
+    "name": "Gaia",
+    "title": "Oracle of Darkness",
+    "rarity": 7,
+    "expansion": "Shadowbringers",
+    "hp": 1090,
+    "atk": 101,
+    "additional_effect": "Delayed Eternity: Heavy hammer strike dealing delayed burst damage."
+  },
+  {
+    "id": "npc_101",
+    "name": "Koana",
+    "title": "Second Promise of Tural",
+    "rarity": 7,
+    "expansion": "Dawntrail",
+    "hp": 1070,
+    "atk": 95,
+    "additional_effect": "Sharlayan Magitek Strategy: Grants party +15% critical hit rate."
+  },
+  {
+    "id": "npc_102",
+    "name": "Bakool Ja Ja",
+    "title": "Two-headed Mamool Ja",
+    "rarity": 7,
+    "expansion": "Dawntrail",
+    "hp": 1180,
+    "atk": 99,
+    "additional_effect": "Dual Might: Attacks twice per round."
+  },
+  {
+    "id": "npc_103",
+    "name": "King Thordan",
+    "title": "King Thordan",
+    "rarity": 7,
+    "expansion": "Heavensward",
+    "hp": 1150,
+    "atk": 93,
+    "additional_effect": "Ultimate End: Holy magic explosion striking all enemies."
+  },
+  {
+    "id": "npc_104",
+    "name": "Nidhogg",
+    "title": "The Dragon of the Song",
+    "rarity": 7,
+    "expansion": "Heavensward",
+    "hp": 1190,
+    "atk": 102,
+    "additional_effect": "Ahk Morn: Multihit fire damage compounding each hit."
+  },
+  {
+    "id": "npc_105",
+    "name": "Shinryu",
+    "title": "Primal of Malice",
+    "rarity": 7,
+    "expansion": "Stormblood",
+    "hp": 1210,
+    "atk": 101,
+    "additional_effect": "Tidal Wave: Clears all enemy positive status buffs."
+  },
+  {
+    "id": "npc_106",
+    "name": "Hades",
+    "title": "Sorcerer Ascian",
+    "rarity": 7,
+    "expansion": "Shadowbringers",
+    "hp": 1160,
+    "atk": 98,
+    "additional_effect": "Gigantomachy: Massive dark AOE damage across arena."
+  },
+  {
+    "id": "npc_107",
+    "name": "Warrior of Light",
+    "title": "Hero of Light",
+    "rarity": 7,
+    "expansion": "Shadowbringers",
+    "hp": 1140,
+    "atk": 97,
+    "additional_effect": "To the Edge: Grants immune status to self and attacks target."
+  },
+  {
+    "id": "npc_108",
+    "name": "Hydaelyn",
+    "title": "Will of the Star",
+    "rarity": 7,
+    "expansion": "Endwalker",
+    "hp": 1120,
+    "atk": 95,
+    "additional_effect": "Crystalline Weapon: Swaps weapon form to boost ATK or DEF."
+  },
+  {
+    "id": "npc_109",
+    "name": "Zodiark",
+    "title": "Dark Primal",
+    "rarity": 7,
+    "expansion": "Endwalker",
+    "hp": 1220,
+    "atk": 96,
+    "additional_effect": "Astral Eclipse: Dark stars rain down dealing AOE damage."
+  },
+  {
+    "id": "npc_110",
+    "name": "Valigarmanda",
+    "title": "Sky-ruin Primal",
+    "rarity": 7,
+    "expansion": "Dawntrail",
+    "hp": 1150,
+    "atk": 100,
+    "additional_effect": "Tridisaster: Elemental fire, ice, and lightning attack."
+  },
+  {
+    "id": "npc_111",
+    "name": "Wuk Lamat",
+    "title": "Dawnservant of Tural",
+    "rarity": 10,
+    "expansion": "Dawntrail",
+    "hp": 4100,
+    "atk": 310,
+    "additional_effect": "Resolve of the Dawn: Dramatically increases party defense when taking damage."
+  },
+  {
+    "id": "npc_112",
+    "name": "Zenos yae Galvus",
+    "title": "Legatus of XIIth Legion",
+    "rarity": 8,
+    "expansion": "Stormblood",
+    "hp": 1680,
+    "atk": 145,
+    "additional_effect": "Unquenchable Thirst: Attack increases by 10% each round."
+  },
+  {
+    "id": "npc_113",
+    "name": "Emet-Selch",
+    "title": "Architect of Ascians",
+    "rarity": 8,
+    "expansion": "Shadowbringers",
+    "hp": 1580,
+    "atk": 139,
+    "additional_effect": "Remember Us: Deals dark damage and drains 15% damage back as HP."
+  },
+  {
+    "id": "npc_114",
+    "name": "Lahabrea",
+    "title": "Speaker of Convocation",
+    "rarity": 8,
+    "expansion": "A Realm Reborn",
+    "hp": 1560,
+    "atk": 137,
+    "additional_effect": "Prime Flame: Burns all enemies for fire damage."
+  },
+  {
+    "id": "npc_115",
+    "name": "Elidibus",
+    "title": "Emissary of Ascians",
+    "rarity": 8,
+    "expansion": "Shadowbringers",
+    "hp": 1620,
+    "atk": 133,
+    "additional_effect": "Warrior of Light Mirage: Summons illusionary warriors."
+  },
+  {
+    "id": "npc_116",
+    "name": "Fandaniel",
+    "title": "Ascian of Convocation",
+    "rarity": 8,
+    "expansion": "Endwalker",
+    "hp": 1520,
+    "atk": 135,
+    "additional_effect": "Madness of the End: Scrambles enemy turn order."
+  },
+  {
+    "id": "npc_117",
+    "name": "Golbez",
+    "title": "Shadow of the Void",
+    "rarity": 8,
+    "expansion": "Endwalker",
+    "hp": 1710,
+    "atk": 131,
+    "additional_effect": "Binding Cold: Freezes target preventing action for 1 turn."
+  },
+  {
+    "id": "npc_118",
+    "name": "Ketenramm",
+    "title": "Legendary Explorer",
+    "rarity": 8,
+    "expansion": "Dawntrail",
+    "hp": 1590,
+    "atk": 129,
+    "additional_effect": "Navigator's Chart: Increases overall party item drop rarity."
+  },
+  {
+    "id": "npc_119",
+    "name": "Twintania",
+    "title": "Dreadwyrm Boss",
+    "rarity": 8,
+    "expansion": "A Realm Reborn",
+    "hp": 1650,
+    "atk": 136,
+    "additional_effect": "Death Sentence: High physical slash applying healing debuff."
+  },
+  {
+    "id": "npc_120",
+    "name": "Nael van Darnus",
+    "title": "White Raven",
+    "rarity": 8,
+    "expansion": "A Realm Reborn",
+    "hp": 1600,
+    "atk": 141,
+    "additional_effect": "Megaflare: Devastating dragonfire explosion."
+  },
+  {
+    "id": "npc_121",
+    "name": "Bahamut Prime",
+    "title": "Dreadwyrm Sovereign",
+    "rarity": 8,
+    "expansion": "A Realm Reborn",
+    "hp": 1720,
+    "atk": 144,
+    "additional_effect": "Teraflare: Ultimate dragon magic wipes enemy buffs."
+  },
+  {
+    "id": "npc_122",
+    "name": "Alexander Prime",
+    "title": "Ideal of Salvation",
+    "rarity": 8,
+    "expansion": "Heavensward",
+    "hp": 1750,
+    "atk": 138,
+    "additional_effect": "Temporal Stasis: Freezes all enemies for 1 turn."
+  },
+  {
+    "id": "npc_123",
+    "name": "Cruise Chaser",
+    "title": "G-100 Unit",
+    "rarity": 8,
+    "expansion": "Heavensward",
+    "hp": 1580,
+    "atk": 140,
+    "additional_effect": "Alpha Sword: Triple slashed physical burst."
+  },
+  {
+    "id": "npc_124",
+    "name": "Neo Exdeath",
+    "title": "Void Sovereign",
+    "rarity": 8,
+    "expansion": "Stormblood",
+    "hp": 1690,
+    "atk": 142,
+    "additional_effect": "Grand Cross: Applies random status debuffs to all targets."
+  },
+  {
+    "id": "npc_125",
+    "name": "God Kefka",
+    "title": "Mad God",
+    "rarity": 8,
+    "expansion": "Stormblood",
+    "hp": 1610,
+    "atk": 146,
+    "additional_effect": "Forsaken: Extreme magic strike dealing AOE damage."
+  },
+  {
+    "id": "npc_126",
+    "name": "Final Omega",
+    "title": "Synthetic Sovereign",
+    "rarity": 8,
+    "expansion": "Stormblood",
+    "hp": 1730,
+    "atk": 139,
+    "additional_effect": "Ion Efflux: Electric explosion causing paralysis."
+  },
+  {
+    "id": "npc_127",
+    "name": "Titan",
+    "title": "Lord of the Crags Prime",
+    "rarity": 8,
+    "expansion": "Shadowbringers",
+    "hp": 1820,
+    "atk": 128,
+    "additional_effect": "Massive Landslide: Destroys target defenses."
+  },
+  {
+    "id": "npc_128",
+    "name": "Shiva",
+    "title": "Light-Rampant Sovereign",
+    "rarity": 8,
+    "expansion": "Shadowbringers",
+    "hp": 1570,
+    "atk": 143,
+    "additional_effect": "Light Rampant: Devastating light magic barrage."
+  },
+  {
+    "id": "npc_129",
+    "name": "Oracle of Darkness",
+    "title": "Gaia Prime",
+    "rarity": 8,
+    "expansion": "Shadowbringers",
+    "hp": 1630,
+    "atk": 141,
+    "additional_effect": "Terminal Relativity: Time-delayed massive explosion."
+  },
+  {
+    "id": "npc_130",
+    "name": "Hesperos",
+    "title": "Vampiric Lord",
+    "rarity": 8,
+    "expansion": "Endwalker",
+    "hp": 1610,
+    "atk": 137,
+    "additional_effect": "Decouplement: Splits target physical defenses."
+  },
+  {
+    "id": "npc_131",
+    "name": "Hephaistos",
+    "title": "Flame Sovereign",
+    "rarity": 8,
+    "expansion": "Endwalker",
+    "hp": 1670,
+    "atk": 142,
+    "additional_effect": "Ego Death: High single-target execution move."
+  },
+  {
+    "id": "npc_132",
+    "name": "Athena",
+    "title": "The Ultima Prime",
+    "rarity": 8,
+    "expansion": "Endwalker",
+    "hp": 1700,
+    "atk": 144,
+    "additional_effect": "Ultima Blade: Cleaves field with absolute magic."
+  },
+  {
+    "id": "npc_133",
+    "name": "Wicked Thunder",
+    "title": "Arcadion Champion",
+    "rarity": 8,
+    "expansion": "Dawntrail",
+    "hp": 1640,
+    "atk": 143,
+    "additional_effect": "Electrope Burst: High lightning elemental cleave."
+  },
+  {
+    "id": "npc_134",
+    "name": "Crystal Exarch",
+    "title": "Ruler of the Crystarium",
+    "rarity": 10,
+    "expansion": "Shadowbringers",
+    "hp": 3920,
+    "atk": 320,
+    "additional_effect": "Tower of Light: Reflects 35% incoming magic damage."
+  },
+  {
+    "id": "npc_135",
+    "name": "Venat",
+    "title": "Former Azem",
+    "rarity": 10,
+    "expansion": "Endwalker",
+    "hp": 4180,
+    "atk": 340,
+    "additional_effect": "Sundering Light: Clears all party status ailments and strikes foes."
+  },
+  {
+    "id": "npc_136",
+    "name": "Hythlodaeus",
+    "title": "Chief of Bureau of Architect",
+    "rarity": 9,
+    "expansion": "Endwalker",
+    "hp": 2300,
+    "atk": 190,
+    "additional_effect": "Creation Magic: Creates ethereal bow to strike back-line."
+  },
+  {
+    "id": "npc_137",
+    "name": "Hermes",
+    "title": "Fanon of Elpis",
+    "rarity": 9,
+    "expansion": "Endwalker",
+    "hp": 2380,
+    "atk": 198,
+    "additional_effect": "Trismegistus: Deals wind magic and slows enemies."
+  },
+  {
+    "id": "npc_138",
+    "name": "Thordan VII",
+    "title": "Archbishop of Ishgard",
+    "rarity": 9,
+    "expansion": "Heavensward",
+    "hp": 2520,
+    "atk": 185,
+    "additional_effect": "Knights of Round: Sequential Holy damage strikes."
+  },
+  {
+    "id": "npc_139",
+    "name": "Hesperos",
+    "title": "Key-bearer of Pandæmonium",
+    "rarity": 9,
+    "expansion": "Endwalker",
+    "hp": 2400,
+    "atk": 202,
+    "additional_effect": "Hell's Sting: Poisonous physical stab."
+  },
+  {
+    "id": "npc_140",
+    "name": "Hephaistos",
+    "title": "Master of Creation",
+    "rarity": 9,
+    "expansion": "Endwalker",
+    "hp": 2480,
+    "atk": 208,
+    "additional_effect": "Flameviper: Scorching line fire strike."
+  },
+  {
+    "id": "npc_141",
+    "name": "Athena",
+    "title": "Architect of the Soul",
+    "rarity": 9,
+    "expansion": "Endwalker",
+    "hp": 2500,
+    "atk": 210,
+    "additional_effect": "Trinity of Souls: Triple-elemental barrage."
+  },
+  {
+    "id": "npc_142",
+    "name": "Cloud of Darkness",
+    "title": "Void Sovereign",
+    "rarity": 9,
+    "expansion": "Shadowbringers",
+    "hp": 2420,
+    "atk": 206,
+    "additional_effect": "Zero-Form Particle Beam: Massive beam piercing armor."
+  },
+  {
+    "id": "npc_143",
+    "name": "Exdeath",
+    "title": "Void Sovereign",
+    "rarity": 9,
+    "expansion": "Stormblood",
+    "hp": 2460,
+    "atk": 204,
+    "additional_effect": "Black Hole: Drains 20% HP from all enemies."
+  },
+  {
+    "id": "npc_144",
+    "name": "Kefka",
+    "title": "Mad Clown",
+    "rarity": 9,
+    "expansion": "Stormblood",
+    "hp": 2360,
+    "atk": 212,
+    "additional_effect": "Hyperdrive: High single-target nuclear explosion."
+  },
+  {
+    "id": "npc_145",
+    "name": "Omega",
+    "title": "Synthetic Lifeform",
+    "rarity": 9,
+    "expansion": "Stormblood",
+    "hp": 2550,
+    "atk": 196,
+    "additional_effect": "Wave Cannon: Line energy strike."
+  },
+  {
+    "id": "npc_146",
+    "name": "Brute Justice",
+    "title": "Combiner Mech",
+    "rarity": 9,
+    "expansion": "Heavensward",
+    "hp": 2600,
+    "atk": 194,
+    "additional_effect": "J-Kick: High physical entry slam."
+  },
+  {
+    "id": "npc_147",
+    "name": "Meteion",
+    "title": "Singer of Despair",
+    "rarity": 10,
+    "expansion": "Endwalker",
+    "hp": 3650,
+    "atk": 350,
+    "additional_effect": "Song of Oblivion: 15% chance to reduce enemy HP by 50%."
+  },
+  {
+    "id": "npc_148",
+    "name": "Hydaelyn",
+    "title": "Will of the Star",
+    "rarity": 10,
+    "expansion": "Endwalker",
+    "hp": 4050,
+    "atk": 315,
+    "additional_effect": "Blessing of Light: Revives fallen ally at 50% HP once per fight."
+  },
+  {
+    "id": "npc_149",
+    "name": "Zodiark",
+    "title": "Keeper of Order",
+    "rarity": 10,
+    "expansion": "Endwalker",
+    "hp": 4300,
+    "atk": 310,
+    "additional_effect": "Astral Eclipse: Summons dark stars dealing extreme damage."
+  },
+  {
+    "id": "npc_150",
+    "name": "Endsinger",
+    "title": "Despair Manifest",
+    "rarity": 10,
+    "expansion": "Endwalker",
+    "hp": 3850,
+    "atk": 345,
+    "additional_effect": "Elegia: Causes enemy attacks to harm their own party."
+  },
+  {
+    "id": "npc_151",
+    "name": "Midgardsormr",
+    "title": "Father of Dragons",
+    "rarity": 10,
+    "expansion": "Heavensward",
+    "hp": 4450,
+    "atk": 300,
+    "additional_effect": "Wyrmking's Aura: Grants dragon allies +20% HP/ATK."
+  },
+  {
+    "id": "npc_152",
+    "name": "Shinryu",
+    "title": "Dragon of Malice",
+    "rarity": 10,
+    "expansion": "Stormblood",
+    "hp": 4120,
+    "atk": 338,
+    "additional_effect": "Tidal Wave: Washes away positive buffs from all foes."
+  },
+  {
+    "id": "npc_153",
+    "name": "Hraesvelgr",
+    "title": "Great Wyrm of First Brood",
+    "rarity": 10,
+    "expansion": "Heavensward",
+    "hp": 4350,
+    "atk": 305,
+    "additional_effect": "Holy Feather: Shields allies and counterattacks."
+  },
+  {
+    "id": "npc_154",
+    "name": "Nidhogg",
+    "title": "Dragon of Dragon-Song War",
+    "rarity": 10,
+    "expansion": "Heavensward",
+    "hp": 4200,
+    "atk": 332,
+    "additional_effect": "Ahk Morn: Multihit compounding fire damage."
+  },
+  {
+    "id": "npc_155",
+    "name": "Zeromus",
+    "title": "Abyssal Voidsent",
+    "rarity": 10,
+    "expansion": "Endwalker",
+    "hp": 4380,
+    "atk": 322,
+    "additional_effect": "Big Bang: High dark damage and reduces enemy healing by 50%."
+  },
+  {
+    "id": "npc_156",
+    "name": "Sphene",
+    "title": "Eternal Queen of Alexandria",
+    "rarity": 10,
+    "expansion": "Dawntrail",
+    "hp": 3980,
+    "atk": 318,
+    "additional_effect": "Endless Memory: Revives with full health once when defeated."
+  },
+  {
+    "id": "npc_157",
+    "name": "Golden Bahamut",
+    "title": "UCOB Sovereign",
+    "rarity": 10,
+    "expansion": "Stormblood",
+    "hp": 4600,
+    "atk": 370,
+    "additional_effect": "Golden Bahamut Exaflare: Absolute devastation wipes enemy party."
+  },
+  {
+    "id": "npc_158",
+    "name": "Ultima Weapon",
+    "title": "UWU Sovereign",
+    "rarity": 10,
+    "expansion": "Stormblood",
+    "hp": 4500,
+    "atk": 375,
+    "additional_effect": "Ultima Weapon Unleashed: Tri-elemental absolute wipe."
+  },
+  {
+    "id": "npc_159",
+    "name": "Perfect Alexander",
+    "title": "TEA Sovereign",
+    "rarity": 10,
+    "expansion": "Shadowbringers",
+    "hp": 4750,
+    "atk": 360,
+    "additional_effect": "Perfect Alexander Fate Calibration: Time manipulation skips enemy turn."
+  },
+  {
+    "id": "npc_160",
+    "name": "Dragon-King Thordan",
+    "title": "DSR Sovereign",
+    "rarity": 10,
+    "expansion": "Endwalker",
+    "hp": 4850,
+    "atk": 380,
+    "additional_effect": "Dragon-King Thordan Gigaflare: Extreme Holy-Dragon annihilation."
+  },
+  {
+    "id": "npc_161",
+    "name": "Alpha Omega",
+    "title": "TOP Sovereign",
+    "rarity": 10,
+    "expansion": "Endwalker",
+    "hp": 4900,
+    "atk": 385,
+    "additional_effect": "Alpha-Omega Dynamis: Unstoppable damage scaling with turns."
+  },
+  {
+    "id": "npc_162",
+    "name": "Oracle of Darkness & Ryne",
+    "title": "FRU Sovereign",
+    "rarity": 10,
+    "expansion": "Dawntrail",
+    "hp": 4950,
+    "atk": 390,
+    "additional_effect": "Absolute Fate Rewriting: Resets fight state while restoring party HP."
+  },
+  {
+    "id": "npc_163",
+    "name": "Geryon",
+    "title": "Guildmaster Assistant",
+    "rarity": 1,
+    "expansion": "A Realm Reborn",
+    "hp": 235,
+    "atk": 23,
+    "additional_effect": "Simple Advice: Boosts low level ally ATK by 2%."
+  },
+  {
+    "id": "npc_164",
+    "name": "O'rhondu",
+    "title": "Gridanian Guard",
+    "rarity": 1,
+    "expansion": "A Realm Reborn",
+    "hp": 255,
+    "atk": 26,
+    "additional_effect": "Arrow Shot: Basic ranged damage."
+  },
+  {
+    "id": "npc_165",
+    "name": "Ceolred",
+    "title": "Miner Recruit",
+    "rarity": 1,
+    "expansion": "A Realm Reborn",
+    "hp": 270,
+    "atk": 21,
+    "additional_effect": "Pickaxe Strike: Deals basic physical damage."
+  },
+  {
+    "id": "npc_166",
+    "name": "Fuofu",
+    "title": "Sylph Trickster",
+    "rarity": 1,
+    "expansion": "A Realm Reborn",
+    "hp": 220,
+    "atk": 27,
+    "additional_effect": "Prank: Minor enemy turn delay."
+  },
+  {
+    "id": "npc_167",
+    "name": "Bylfyda",
+    "title": "Lominsan Sailor",
+    "rarity": 1,
+    "expansion": "A Realm Reborn",
+    "hp": 265,
+    "atk": 25,
+    "additional_effect": "Swab Deck: Minor defense buff."
+  },
+  {
+    "id": "npc_168",
+    "name": "S'ndhabi",
+    "title": "Fisher Apprentice",
+    "rarity": 1,
+    "expansion": "A Realm Reborn",
+    "hp": 230,
+    "atk": 20,
+    "additional_effect": "Hook Shot: Low physical attack."
+  },
+  {
+    "id": "npc_169",
+    "name": "Harding",
+    "title": "Brass Blade Recruit",
+    "rarity": 1,
+    "expansion": "A Realm Reborn",
+    "hp": 280,
+    "atk": 24,
+    "additional_effect": "Bribe: Reduces damage taken from humanoid enemies."
+  },
+  {
+    "id": "npc_170",
+    "name": "Tessan",
+    "title": "Gridanian botanist",
+    "rarity": 1,
+    "expansion": "A Realm Reborn",
+    "hp": 225,
+    "atk": 17,
+    "additional_effect": "Herbal Remedy: Low health restoration."
+  },
+  {
+    "id": "npc_171",
+    "name": "Kikipu",
+    "title": "Ul'dahn Weaver Guild Hand",
+    "rarity": 1,
+    "expansion": "A Realm Reborn",
+    "hp": 215,
+    "atk": 19,
+    "additional_effect": "Thread Bind: Slows enemy target speed."
+  },
+  {
+    "id": "npc_172",
+    "name": "Norcia",
+    "title": "Camp Dragonhead Guard",
+    "rarity": 1,
+    "expansion": "Heavensward",
+    "hp": 285,
+    "atk": 24,
+    "additional_effect": "Cold Guard: Minor ice resistance."
+  },
+  {
+    "id": "npc_173",
+    "name": "Chocobo Porter",
+    "title": "Travel Helper",
+    "rarity": 1,
+    "expansion": "A Realm Reborn",
+    "hp": 200,
+    "atk": 12,
+    "additional_effect": "Quick Escape: Allows party to flee non-boss battles easily."
+  },
+  {
+    "id": "npc_174",
+    "name": "Landen",
+    "title": "Thanalan Merchant",
+    "rarity": 1,
+    "expansion": "A Realm Reborn",
+    "hp": 220,
+    "atk": 16,
+    "additional_effect": "Bargain: Decreases store prices slightly."
+  },
+  {
+    "id": "npc_175",
+    "name": "Souns Mael",
+    "title": "Maelstrom Ensign",
+    "rarity": 2,
+    "expansion": "A Realm Reborn",
+    "hp": 300,
+    "atk": 31,
+    "additional_effect": "Commanding Shout: Boosts ally ATK by 3%."
+  },
+  {
+    "id": "npc_176",
+    "name": "Swift",
+    "title": "Immortal Flames Officer",
+    "rarity": 2,
+    "expansion": "A Realm Reborn",
+    "hp": 310,
+    "atk": 29,
+    "additional_effect": "Flames' Will: Boosts defense by 5%."
+  },
+  {
+    "id": "npc_177",
+    "name": "Vorsaile Heuloix",
+    "title": "Twin Adder Commander",
+    "rarity": 2,
+    "expansion": "A Realm Reborn",
+    "hp": 305,
+    "atk": 30,
+    "additional_effect": "Serpent's Blessing: Restores 10 HP to party per turn."
+  },
+  {
+    "id": "npc_178",
+    "name": "Wyrnzoen",
+    "title": "Marauders' Guildmaster",
+    "rarity": 2,
+    "expansion": "A Realm Reborn",
+    "hp": 350,
+    "atk": 33,
+    "additional_effect": "Heavy Swing: Strong physical strike."
+  },
+  {
+    "id": "npc_179",
+    "name": "Jacke",
+    "title": "Rogues' Guildmaster",
+    "rarity": 2,
+    "expansion": "A Realm Reborn",
+    "hp": 285,
+    "atk": 37,
+    "additional_effect": "Mutilate: Applies bleed damage over time."
+  },
+  {
+    "id": "npc_180",
+    "name": "Stephanivien de Haollenarte",
+    "title": "Machinists' Guildmaster",
+    "rarity": 2,
+    "expansion": "Heavensward",
+    "hp": 290,
+    "atk": 32,
+    "additional_effect": "Turret Deployment: Spawns turret to fire automatically."
+  },
+  {
+    "id": "npc_181",
+    "name": "Jannequinard de Durendaire",
+    "title": "Astrologians' Guildmaster",
+    "rarity": 2,
+    "expansion": "Heavensward",
+    "hp": 280,
+    "atk": 28,
+    "additional_effect": "Benefic: Low ally HP recovery."
+  },
+  {
+    "id": "npc_182",
+    "name": "X'rhun Tia",
+    "title": "Red Mage Tutor",
+    "rarity": 2,
+    "expansion": "Stormblood",
+    "hp": 295,
+    "atk": 35,
+    "additional_effect": "Corps-a-corps: Rushes target dealing physical damage."
+  },
+  {
+    "id": "npc_183",
+    "name": "Radian",
+    "title": "Bozjan Resistance Guard",
+    "rarity": 2,
+    "expansion": "Shadowbringers",
+    "hp": 325,
+    "atk": 31,
+    "additional_effect": "Frontline Defense: Increases party defense by 4%."
+  },
+  {
+    "id": "npc_184",
+    "name": "Alisaie (Young)",
+    "title": "Twin Prodigy",
+    "rarity": 2,
+    "expansion": "A Realm Reborn",
+    "hp": 260,
+    "atk": 32,
+    "additional_effect": "Aetheric Spark: Minor magic strike."
+  },
+  {
+    "id": "npc_185",
+    "name": "Alphinaud (Young)",
+    "title": "Twin Scholar",
+    "rarity": 2,
+    "expansion": "A Realm Reborn",
+    "hp": 260,
+    "atk": 27,
+    "additional_effect": "Physick: Minor targeted heal."
+  },
+  {
+    "id": "npc_186",
+    "name": "Meteion (Blue)",
+    "title": "Elpis Bird Girl",
+    "rarity": 2,
+    "expansion": "Endwalker",
+    "hp": 240,
+    "atk": 22,
+    "additional_effect": "Empathy: Shares buffs across adjacent allies."
+  },
+  {
+    "id": "npc_187",
+    "name": "Emanellien de Fortemps",
+    "title": "Highborn Noble",
+    "rarity": 3,
+    "expansion": "Heavensward",
+    "hp": 360,
+    "atk": 34,
+    "additional_effect": "Careless Flamboyance: 20% chance to boost party ATK, 10% to lower DEF."
+  },
+  {
+    "id": "npc_188",
+    "name": "Artoirel de Fortemps",
+    "title": "Eldest Son of House Fortemps",
+    "rarity": 3,
+    "expansion": "Heavensward",
+    "hp": 400,
+    "atk": 35,
+    "additional_effect": "Shield Stance: Absorbs 10% damage taken for allies."
+  },
+  {
+    "id": "npc_189",
+    "name": "Honoroit",
+    "title": "Valet to House Fortemps",
+    "rarity": 3,
+    "expansion": "Heavensward",
+    "hp": 310,
+    "atk": 26,
+    "additional_effect": "First Aid: Heals target ally for 10% max HP."
+  },
+  {
+    "id": "npc_190",
+    "name": "Charibert",
+    "title": "Heaven's Ward Knight",
+    "rarity": 3,
+    "expansion": "Heavensward",
+    "hp": 350,
+    "atk": 42,
+    "additional_effect": "Holy Fire: Burns target for fire damage."
+  },
+  {
+    "id": "npc_191",
+    "name": "Grinnaux",
+    "title": "Heaven's Ward Knight",
+    "rarity": 3,
+    "expansion": "Heavensward",
+    "hp": 380,
+    "atk": 39,
+    "additional_effect": "Dimensional Slash: Physical strike cutting defense."
+  },
+  {
+    "id": "npc_192",
+    "name": "Zephirin",
+    "title": "Heaven's Ward Commander",
+    "rarity": 3,
+    "expansion": "Heavensward",
+    "hp": 390,
+    "atk": 40,
+    "additional_effect": "Spear of the Halone: Heavy piercing hit."
+  },
+  {
+    "id": "npc_193",
+    "name": "Lupin Guard",
+    "title": "Doman Defender",
+    "rarity": 3,
+    "expansion": "Stormblood",
+    "hp": 375,
+    "atk": 36,
+    "additional_effect": "Howl: Increases ally ATK by 5%."
+  },
+  {
+    "id": "npc_194",
+    "name": "Magi",
+    "title": "Ananta Warrior",
+    "rarity": 3,
+    "expansion": "Stormblood",
+    "hp": 350,
+    "atk": 39,
+    "additional_effect": "Serpent Strike: Poisons target enemy."
+  },
+  {
+    "id": "npc_195",
+    "name": "Chai-Nuzz",
+    "title": "Mayor of Eulmore",
+    "rarity": 3,
+    "expansion": "Shadowbringers",
+    "hp": 330,
+    "atk": 22,
+    "additional_effect": "Talos Logistics: Restores team defense barrier."
+  },
+  {
+    "id": "npc_196",
+    "name": "Dulia-Chai",
+    "title": "Matron of Eulmore",
+    "rarity": 3,
+    "expansion": "Shadowbringers",
+    "hp": 340,
+    "atk": 18,
+    "additional_effect": "Warm Encouragement: Restores ally HP by 10%."
+  },
+  {
+    "id": "npc_197",
+    "name": "Livingway",
+    "title": "Loporrit Leader",
+    "rarity": 3,
+    "expansion": "Endwalker",
+    "hp": 300,
+    "atk": 35,
+    "additional_effect": "Moonway Protocol: Increases team speed by 10%."
+  },
+  {
+    "id": "npc_198",
+    "name": "Puddingway",
+    "title": "Loporrit Enthusiast",
+    "rarity": 3,
+    "expansion": "Endwalker",
+    "hp": 315,
+    "atk": 24,
+    "additional_effect": "Pudding Break: Heals party for low HP."
+  },
+  {
+    "id": "npc_199",
+    "name": "Jullus",
+    "title": "Garlean Soldier",
+    "rarity": 4,
+    "expansion": "Endwalker",
+    "hp": 470,
+    "atk": 44,
+    "additional_effect": "Garlean Grit: Increases defense when below 30% HP."
+  },
+  {
+    "id": "npc_200",
+    "name": "Meteion (Black)",
+    "title": "Harbinger of Despair",
+    "rarity": 4,
+    "expansion": "Endwalker",
+    "hp": 410,
+    "atk": 49,
+    "additional_effect": "Gloom Wave: Applies small bleed to all foes."
+  },
+  {
+    "id": "npc_201",
+    "name": "Krile (Picto)",
+    "title": "Pictomancer Scion",
+    "rarity": 8,
+    "expansion": "Dawntrail",
+    "hp": 1510,
+    "atk": 144,
+    "additional_effect": "Motif Paint: Greatly buffs random party member ATK."
+  },
+  {
+    "id": "npc_202",
+    "name": "Gurfurlur",
+    "title": "Arcadion Fighter",
+    "rarity": 4,
+    "expansion": "Dawntrail",
+    "hp": 500,
+    "atk": 45,
+    "additional_effect": "Brawler Slam: Deals physical strike with stun chance."
+  },
+  {
+    "id": "npc_203",
+    "name": "Igeyorhm",
+    "title": "Ascian Prime Component",
+    "rarity": 4,
+    "expansion": "Heavensward",
+    "hp": 430,
+    "atk": 47,
+    "additional_effect": "Deep Freeze: Ice magic dealing targeted damage."
+  },
+  {
+    "id": "npc_204",
+    "name": "Nabriales",
+    "title": "Lesser Ascian",
+    "rarity": 4,
+    "expansion": "A Realm Reborn",
+    "hp": 425,
+    "atk": 46,
+    "additional_effect": "Quake: Earth magic strikes front-line enemies."
+  },
+  {
+    "id": "npc_205",
+    "name": "Ameliance Leveilleur",
+    "title": "Matriarch of House Leveilleur",
+    "rarity": 4,
+    "expansion": "Endwalker",
+    "hp": 400,
+    "atk": 32,
+    "additional_effect": "Motherly Care: Restores 15% Max HP to twin Scions."
+  },
+  {
+    "id": "npc_206",
+    "name": "Vrtra",
+    "title": "Satrap of Radz-at-Han",
+    "rarity": 5,
+    "expansion": "Endwalker",
+    "hp": 640,
+    "atk": 57,
+    "additional_effect": "Dragon Breath: High line-area fire attack."
+  },
+  {
+    "id": "npc_207",
+    "name": "Varshan",
+    "title": "Vrtra's Vessel",
+    "rarity": 5,
+    "expansion": "Endwalker",
+    "hp": 570,
+    "atk": 53,
+    "additional_effect": "Satrap's Command: Boosts party speed and accuracy."
+  },
+  {
+    "id": "npc_208",
+    "name": "Barbariccia",
+    "title": "Archfiend of Wind",
+    "rarity": 5,
+    "expansion": "Endwalker",
+    "hp": 560,
+    "atk": 61,
+    "additional_effect": "Tornado Slash: Multi-hit wind physical slice."
+  },
+  {
+    "id": "npc_209",
+    "name": "Rubicante",
+    "title": "Archfiend of Fire",
+    "rarity": 5,
+    "expansion": "Endwalker",
+    "hp": 590,
+    "atk": 58,
+    "additional_effect": "Inferno: Scorches foes and grants honor heal to target."
+  },
+  {
+    "id": "npc_210",
+    "name": "Cagnazzo",
+    "title": "Archfiend of Water",
+    "rarity": 5,
+    "expansion": "Endwalker",
+    "hp": 630,
+    "atk": 51,
+    "additional_effect": "Tsunami: Water wave knocking enemy actions back."
+  },
+  {
+    "id": "npc_211",
+    "name": "Scarmiglione",
+    "title": "Archfiend of Earth",
+    "rarity": 5,
+    "expansion": "Endwalker",
+    "hp": 600,
+    "atk": 54,
+    "additional_effect": "Necrospasm: Poisons targets and revives once at 5% HP."
+  },
+  {
+    "id": "npc_212",
+    "name": "Zarool Ja",
+    "title": "First Promise of Tural",
+    "rarity": 5,
+    "expansion": "Dawntrail",
+    "hp": 580,
+    "atk": 59,
+    "additional_effect": "Resonant Blade: Cleaves target with physical force."
+  },
+  {
+    "id": "npc_213",
+    "name": "Gaius van Baelsar",
+    "title": "The Black Wolf",
+    "rarity": 6,
+    "expansion": "A Realm Reborn",
+    "hp": 790,
+    "atk": 73,
+    "additional_effect": "Heorot Slash: Piercing physical blade combo."
+  },
+  {
+    "id": "npc_214",
+    "name": "Ultima Weapon",
+    "title": "Ancient Allagan Warmachine",
+    "rarity": 6,
+    "expansion": "A Realm Reborn",
+    "hp": 830,
+    "atk": 72,
+    "additional_effect": "Ultima Ray: Destructive laser striking all targets."
+  },
+  {
+    "id": "npc_215",
+    "name": "Nael van Darnus",
+    "title": "Legatus of VIIth Legion",
+    "rarity": 6,
+    "expansion": "A Realm Reborn",
+    "hp": 760,
+    "atk": 75,
+    "additional_effect": "Iron Chariot: Cleaves surrounding units."
+  },
+  {
+    "id": "npc_216",
+    "name": "Ascian Prime",
+    "title": "Fused Ascian Abomination",
+    "rarity": 6,
+    "expansion": "Heavensward",
+    "hp": 800,
+    "atk": 71,
+    "additional_effect": "Ancient Circle: Traps enemy in dark sphere."
+  },
+  {
+    "id": "npc_217",
+    "name": "Tsukuyomi",
+    "title": "Primal of Longing",
+    "rarity": 6,
+    "expansion": "Stormblood",
+    "hp": 740,
+    "atk": 76,
+    "additional_effect": "Nightfall: Swaps light and dark aspects causing burn."
+  },
+  {
+    "id": "npc_218",
+    "name": "Anima",
+    "title": "Primal of Agony",
+    "rarity": 6,
+    "expansion": "Endwalker",
+    "hp": 850,
+    "atk": 67,
+    "additional_effect": "Oblivion: Pulls all targets into dark void."
+  },
+  {
+    "id": "npc_219",
+    "name": "Zoraal Ja (Resonant)",
+    "title": "King of Alexandria",
+    "rarity": 6,
+    "expansion": "Dawntrail",
+    "hp": 780,
+    "atk": 76,
+    "additional_effect": "Regicide Slash: Massive critical physical hit."
+  },
+  {
+    "id": "npc_220",
+    "name": "Valigarmanda",
+    "title": "Sky-ruin Primal",
+    "rarity": 6,
+    "expansion": "Dawntrail",
+    "hp": 810,
+    "atk": 70,
+    "additional_effect": "Freezing Dust: Ice AOE slowing all foes."
+  },
+  {
+    "id": "npc_221",
+    "name": "Geryon",
+    "title": "Guild Champion",
+    "rarity": 6,
+    "expansion": "A Realm Reborn",
+    "hp": 820,
+    "atk": 69,
+    "additional_effect": "Heavy Cleave: Broad physical cleave hitting entire front row."
+  },
+  {
+    "id": "npc_222",
+    "name": "Good King Moggle Mog",
+    "title": "Moogle Sovereign",
+    "rarity": 6,
+    "expansion": "A Realm Reborn",
+    "hp": 750,
+    "atk": 72,
+    "additional_effect": "Mog-Magic Burst: High magic explosion across enemy lines."
+  },
+  {
+    "id": "npc_223",
+    "name": "Odin",
+    "title": "Dark Divinity",
+    "rarity": 7,
+    "expansion": "A Realm Reborn",
+    "hp": 1130,
+    "atk": 102,
+    "additional_effect": "Zantetsuken: Instantly slays targets below 15% HP."
+  },
+  {
+    "id": "npc_224",
+    "name": "Sophia",
+    "title": "The Goddess",
+    "rarity": 7,
+    "expansion": "Heavensward",
+    "hp": 1090,
+    "atk": 97,
+    "additional_effect": "Balance: Tilts arena reducing target accuracy."
+  },
+  {
+    "id": "npc_225",
+    "name": "Zurvan",
+    "title": "The Demon",
+    "rarity": 7,
+    "expansion": "Heavensward",
+    "hp": 1160,
+    "atk": 98,
+    "additional_effect": "Wave Cannon: High fire and dark line beam."
+  },
+  {
+    "id": "npc_226",
+    "name": "Sephirot",
+    "title": "The Fiend",
+    "rarity": 7,
+    "expansion": "Heavensward",
+    "hp": 1210,
+    "atk": 94,
+    "additional_effect": "Ein Soph: Expands giant arm slamming all foes."
+  },
+  {
+    "id": "npc_227",
+    "name": "Shinryu",
+    "title": "Domain Primal",
+    "rarity": 7,
+    "expansion": "Stormblood",
+    "hp": 1170,
+    "atk": 99,
+    "additional_effect": "Judgement Bolt: Lightning strike causing paralysis."
+  },
+  {
+    "id": "npc_228",
+    "name": "Varis yae Galvus",
+    "title": "High Emperor",
+    "rarity": 7,
+    "expansion": "Shadowbringers",
+    "hp": 1200,
+    "atk": 96,
+    "additional_effect": "Alius Slash: Cleaves party with magitek energy."
+  },
+  {
+    "id": "npc_229",
+    "name": "Endsinger",
+    "title": "Despair Manifest",
+    "rarity": 7,
+    "expansion": "Endwalker",
+    "hp": 1100,
+    "atk": 103,
+    "additional_effect": "Telomania: Multihit cosmic magic strikes."
+  },
+  {
+    "id": "npc_230",
+    "name": "Golbez",
+    "title": "Abyssal Shadow",
+    "rarity": 7,
+    "expansion": "Endwalker",
+    "hp": 1180,
+    "atk": 97,
+    "additional_effect": "Azza Dragon: Summons shadow dragon to crush foes."
+  },
+  {
+    "id": "npc_231",
+    "name": "Zeromus",
+    "title": "Abyssal Void",
+    "rarity": 7,
+    "expansion": "Endwalker",
+    "hp": 1220,
+    "atk": 98,
+    "additional_effect": "Nox Burst: Dark magic explosion suppressing heals."
+  },
+  {
+    "id": "npc_232",
+    "name": "Sphene",
+    "title": "Queen Alexandria",
+    "rarity": 7,
+    "expansion": "Dawntrail",
+    "hp": 1060,
+    "atk": 94,
+    "additional_effect": "Memory Wipe: Nullifies current target buffs."
+  },
+  {
+    "id": "npc_233",
+    "name": "Living Liquid",
+    "title": "Alexander Construct",
+    "rarity": 8,
+    "expansion": "Heavensward",
+    "hp": 1680,
+    "atk": 130,
+    "additional_effect": "Cascade: Heavy water wave striking all enemies."
+  },
+  {
+    "id": "npc_234",
+    "name": "Brute Justice",
+    "title": "Combiner Mech",
+    "rarity": 8,
+    "expansion": "Heavensward",
+    "hp": 1720,
+    "atk": 135,
+    "additional_effect": "Mega Beam: High physical beam execution."
+  },
+  {
+    "id": "npc_235",
+    "name": "Omega",
+    "title": "Synthetic Lifeform",
+    "rarity": 8,
+    "expansion": "Stormblood",
+    "hp": 1660,
+    "atk": 138,
+    "additional_effect": "Starboard/Larboard: Directional energy blast."
+  },
+  {
+    "id": "npc_236",
+    "name": "Voidwalker",
+    "title": "Eden Construct",
+    "rarity": 8,
+    "expansion": "Shadowbringers",
+    "hp": 1590,
+    "atk": 139,
+    "additional_effect": "Entropy: Dark magic blast applying bleed."
+  },
+  {
+    "id": "npc_237",
+    "name": "Shadowkeeper",
+    "title": "Eden Construct",
+    "rarity": 8,
+    "expansion": "Shadowbringers",
+    "hp": 1640,
+    "atk": 134,
+    "additional_effect": "Shadow Warrior: Creates clones to strike foes."
+  },
+  {
+    "id": "npc_238",
+    "name": "Hippokampos",
+    "title": "Pandæmonium Creation",
+    "rarity": 8,
+    "expansion": "Endwalker",
+    "hp": 1650,
+    "atk": 132,
+    "additional_effect": "Sewage Deluge: High water AOE damage."
+  },
+  {
+    "id": "npc_239",
+    "name": "Pandæmonium",
+    "title": "Pandæmonium Sovereign",
+    "rarity": 8,
+    "expansion": "Endwalker",
+    "hp": 1710,
+    "atk": 137,
+    "additional_effect": "Ultima Slice: Physical blade wave."
+  },
+  {
+    "id": "npc_240",
+    "name": "Honey B. Lovely",
+    "title": "Arcadion Idol",
+    "rarity": 8,
+    "expansion": "Dawntrail",
+    "hp": 1530,
+    "atk": 140,
+    "additional_effect": "Temptation Heart: Chanting charm effect."
+  },
+  {
+    "id": "npc_241",
+    "name": "Brute Bomber",
+    "title": "Arcadion Heavy",
+    "rarity": 8,
+    "expansion": "Dawntrail",
+    "hp": 1740,
+    "atk": 131,
+    "additional_effect": "Infernal Lariat: Heavy physical clothesline strike."
+  },
+  {
+    "id": "npc_242",
+    "name": "Shinryu",
+    "title": "Dragon of Malice Unleashed",
+    "rarity": 9,
+    "expansion": "Stormblood",
+    "hp": 2450,
+    "atk": 208,
+    "additional_effect": "Akh Rhai: Sky dragon beams piercing armor."
+  },
+  {
+    "id": "npc_243",
+    "name": "Hades",
+    "title": "Sorcerer Ascian Unleashed",
+    "rarity": 9,
+    "expansion": "Shadowbringers",
+    "hp": 2420,
+    "atk": 204,
+    "additional_effect": "Gigantomachy Prime: Devastating dark energy wave."
+  },
+  {
+    "id": "npc_244",
+    "name": "Warrior of Light",
+    "title": "Elidibus Manifested",
+    "rarity": 9,
+    "expansion": "Shadowbringers",
+    "hp": 2390,
+    "atk": 210,
+    "additional_effect": "Absolute Holy: Light burst hitting whole screen."
+  },
+  {
+    "id": "npc_245",
+    "name": "Proto-Carbuncle",
+    "title": "Devouring Beast",
+    "rarity": 9,
+    "expansion": "Endwalker",
+    "hp": 2350,
+    "atk": 215,
+    "additional_effect": "Devour: Drains enemy current HP."
+  },
+  {
+    "id": "npc_246",
+    "name": "Themisto",
+    "title": "Creation Sovereign",
+    "rarity": 9,
+    "expansion": "Endwalker",
+    "hp": 2480,
+    "atk": 200,
+    "additional_effect": "Eunomia: Holy magic strike disabling enemy skills."
+  },
+  {
+    "id": "npc_247",
+    "name": "Golden Bahamut",
+    "title": "Golden Dreadwyrm",
+    "rarity": 10,
+    "expansion": "Stormblood",
+    "hp": 4550,
+    "atk": 365,
+    "additional_effect": "Morn Afah: Compounding dragonfire wipes enemy party."
+  },
+  {
+    "id": "npc_248",
+    "name": "Ultima Weapon",
+    "title": "UWU Sovereign Phase",
+    "rarity": 10,
+    "expansion": "Stormblood",
+    "hp": 4450,
+    "atk": 370,
+    "additional_effect": "Ultima: Instant annihilation wipe."
+  },
+  {
+    "id": "npc_249",
+    "name": "Perfect Alexander",
+    "title": "TEA Sovereign Phase",
+    "rarity": 10,
+    "expansion": "Shadowbringers",
+    "hp": 4700,
+    "atk": 355,
+    "additional_effect": "Temporal Prison: Exiles enemy party members."
+  },
+  {
+    "id": "npc_250",
+    "name": "Alpha Omega",
+    "title": "TOP Sovereign Phase",
+    "rarity": 10,
+    "expansion": "Endwalker",
+    "hp": 4850,
+    "atk": 380,
+    "additional_effect": "Dynamis Wave: Unstoppable damage cap strike."
+  }
+]

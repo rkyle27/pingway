@@ -1,0 +1,1758 @@
+const { 
+    SlashCommandBuilder, 
+    EmbedBuilder, 
+    ActionRowBuilder, 
+    ButtonBuilder, 
+    ButtonStyle, 
+    StringSelectMenuBuilder,
+    MessageFlags
+} = require('discord.js');
+const path = require('path');
+const { pool } = require('../utils/db');
+
+// Load NPC Dataset
+const npcDex = require(path.join(__dirname, '..', 'data', 'npcdex.json'));
+
+// In-memory game state store per user across ephemeral transitions
+const activeSessions = new Map();
+
+module.exports = {
+    data: new SlashCommandBuilder()
+        .setName('sciondex')
+        .setDescription('Open your global FFXIV ScionDex game menu.'),
+
+    async execute(interaction) {
+        try {
+            const userId = String(interaction.user.id);
+
+            // Fetch initial state to check if user is a brand new entry
+            const [existingRows] = await pool.execute('SELECT user_id FROM sciondex_users WHERE user_id = ?', [userId]);
+            const isFirstTimeUser = existingRows.length === 0;
+
+            // Ensure user exists in MySQL DB with stars defaulted to 0
+            await pool.execute(
+                `INSERT INTO sciondex_users (user_id, shards, phoenix_downs, stars) 
+                 VALUES (?, 0, 0, 0) 
+                 ON DUPLICATE KEY UPDATE user_id = user_id`,
+                [userId]
+            );
+
+            // Initialize user session state
+            activeSessions.set(userId, {
+                activeBoss: null,
+                bossSource: null, // 'duty', 'summon', or 'recruit'
+                pendingNpcToReplace: null,
+                savedBossHp: 0,
+                savedPartyHp: 0,
+                maxBossHp: 0,
+                lbUses: 0, // Track limit break usage (max 4 per boss encounter)
+                lbTriggeredThisFight: false,
+                reachedUnder5Percent: false,
+                hiddenPhoenixLoot: 0, // Hidden Phoenix Down loot memory pool
+                lastBonusRate: 0
+            });
+
+            await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
+
+            // Send tutorial ephemeral message for first-time users
+            if (isFirstTimeUser) {
+                const tutorialEmbed = new EmbedBuilder()
+                    .setTitle('📜 Short Tutorial:')
+                    .setDescription(
+                        `On your Game Window there will be 3 items:\n\n` +
+                        `"⭐ **Stars**"\n` +
+                        `- accumulated from boss random drops or by releasing current party (minimum of total 10 stars to use release party).\n` +
+                        `- use to increase recruit chance.\n\n` +
+                        `"💎 **Shards**"\n` +
+                        `- accumulated from boss random drops or collected from defeated boss.\n` +
+                        `- use to summon 8-10★ NPC. Need 20 💎 per summon.\n\n` +
+                        `"🪶 **Phoenix Down**"\n` +
+                        `- accumulated from boss fights random drops. Cap at 10.\n` +
+                        `- use to revive party when wiped by the boss.`
+                    )
+                    .setColor('#F1C40F');
+
+                const tutorialRow = new ActionRowBuilder().addComponents(
+                    new ButtonBuilder().setCustomId('btn_tutorial_ok').setLabel('OK').setStyle(ButtonStyle.Success)
+                );
+
+                return await interaction.editReply({ embeds: [tutorialEmbed], components: [tutorialRow] });
+            }
+
+            const initialPayload = await renderGameWindow(interaction, null);
+            
+            if (!initialPayload) {
+                return await interaction.editReply({ content: '❌ Failed to fetch user data. Please try again later.' });
+            }
+
+            await interaction.editReply(initialPayload);
+        } catch (err) {
+            console.error('❌ Error executing /sciondex command:', err);
+            if (!interaction.replied && !interaction.deferred) {
+                await interaction.reply({ content: '❌ An error occurred while opening ScionDex.', flags: [MessageFlags.Ephemeral] }).catch(() => {});
+            }
+        }
+    }
+};
+
+// ==========================================
+// --- HELPER FUNCTIONS ---
+// ==========================================
+
+async function getUserData(userId) {
+    const cleanUserId = String(userId);
+    const [rows] = await pool.execute('SELECT * FROM sciondex_users WHERE user_id = ?', [cleanUserId]);
+    return rows[0] || null;
+}
+
+async function getUserParty(userId) {
+    const cleanUserId = String(userId);
+    const [rows] = await pool.execute(
+        'SELECT slot, npc_id, star, hp, atk FROM sciondex_user_party WHERE user_id = ? ORDER BY slot ASC',
+        [cleanUserId]
+    );
+    if (!rows || rows.length === 0) return [];
+
+    return rows.map(r => {
+        const npc = npcDex.find(n => String(n.id) === String(r.npc_id));
+        if (!npc) return null;
+        return {
+            slot: Number(r.slot),
+            ...npc,
+            rarity: r.star !== null ? Number(r.star) : Number(npc.rarity),
+            hp: r.hp !== null ? Number(r.hp) : Number(npc.hp),
+            atk: r.atk !== null ? Number(r.atk) : Number(npc.atk),
+            nativeRarity: Number(npc.rarity)
+        };
+    }).filter(Boolean);
+}
+
+// Release party star calculation multiplier formula (4x of current as requested)
+function calculateNpcReleaseStars(rarity) {
+    const r = Number(rarity);
+    let baseStars = 0;
+    if (r <= 4) baseStars = r * 1;
+    else if (r <= 7) baseStars = r * 2;
+    else if (r <= 9) baseStars = r * 3;
+    else baseStars = r * 5;
+    return baseStars * 4;
+}
+
+function calculatePartyStats(party) {
+    const totalHp = party.reduce((sum, npc) => sum + (npc && npc.hp ? Number(npc.hp) : 0), 0);
+    const totalAtk = party.reduce((sum, npc) => sum + (npc && npc.atk ? Number(npc.atk) : 0), 0);
+    const totalReleaseStars = party.reduce((sum, npc) => sum + (npc && npc.rarity ? calculateNpcReleaseStars(npc.rarity) : 0), 0);
+    return { totalHp, totalAtk, totalReleaseStars };
+}
+
+function getBossHpMultiplier(rarity) {
+    const safeRarity = Number(rarity);
+    if (safeRarity <= 1) return 100;
+    if (safeRarity >= 10) return 300;
+    return 100 + ((safeRarity - 1) * (200 / 9));
+}
+
+function getRandomNpcByRarity(targetRarity) {
+    const poolByRarity = npcDex.filter(n => Number(n.rarity) === Number(targetRarity));
+    if (poolByRarity.length === 0) return npcDex[Math.floor(Math.random() * npcDex.length)];
+    return poolByRarity[Math.floor(Math.random() * poolByRarity.length)];
+}
+
+function getRandomDutyFinderNpc() {
+    const rarityTable = [
+        { rarity: 10, chance: 0.010 },
+        { rarity: 9,  chance: 0.015 },
+        { rarity: 8,  chance: 0.020 },
+        { rarity: 7,  chance: 0.030 },
+        { rarity: 6,  chance: 0.050 },
+        { rarity: 5,  chance: 0.080 },
+        { rarity: 4,  chance: 0.150 },
+        { rarity: 3,  chance: 0.300 },
+        { rarity: 2,  chance: 0.520 },
+        { rarity: 1,  chance: 0.900 }
+    ];
+
+    let targetRarity = 1;
+    for (const check of rarityTable) {
+        if (Math.random() <= check.chance) {
+            targetRarity = check.rarity;
+            break;
+        }
+    }
+
+    return getRandomNpcByRarity(targetRarity);
+}
+
+// Recruit Button Roll Logic for players with 4 NPCs (Restricted 4★-10★)
+function getRandom4to10StarRecruitNpc() {
+    const spawnWeights = [
+        { rarity: 4, chance: 0.80 },
+        { rarity: 5, chance: 0.60 },
+        { rarity: 6, chance: 0.45 },
+        { rarity: 7, chance: 0.30 },
+        { rarity: 8, chance: 0.20 },
+        { rarity: 9, chance: 0.10 },
+        { rarity: 10, chance: 0.05 }
+    ];
+
+    const rolledRarities = spawnWeights.filter(w => Math.random() <= w.chance);
+    
+    let selectedRarity = 4;
+    if (rolledRarities.length > 0) {
+        rolledRarities.sort((a, b) => b.rarity - a.rarity);
+        selectedRarity = rolledRarities[0].rarity;
+    }
+
+    return getRandomNpcByRarity(selectedRarity);
+}
+
+function getRandomSummonNpc() {
+    const roll = Math.random() * 100;
+    let targetRarity = 8;
+
+    if (roll < 10) targetRarity = 10;
+    else if (roll < 40) targetRarity = 9;
+    else targetRarity = 8;
+
+    return getRandomNpcByRarity(targetRarity);
+}
+
+// Base Recruitment Rates
+function getBaseRecruitChance(rarity, source) {
+    const safeRarity = Number(rarity);
+    if (source === 'summon') {
+        if (safeRarity === 10) return 0.15;
+        if (safeRarity === 9)  return 0.25;
+        return 0.30;                   
+    } else if (source === 'recruit') {
+        const recruitRates = {
+            4: 0.90,
+            5: 0.70,
+            6: 0.55,
+            7: 0.40,
+            8: 0.30,
+            9: 0.20,
+            10: 0.15
+        };
+        return recruitRates[safeRarity] || 0.50;
+    } else {
+        const dutyRates = {
+            1: 1.00,
+            2: 0.90,
+            3: 0.77,
+            4: 0.60,
+            5: 0.44,
+            6: 0.35,
+            7: 0.27,
+            8: 0.20,
+            9: 0.15,
+            10: 0.10
+        };
+        return dutyRates[safeRarity] || 0.10;
+    }
+}
+
+// Random bonus rates
+function rollRecruitmentBonus() {
+    const roll = Math.random() * 100;
+    if (roll < 0.5) return 0.50;  
+    if (roll < 10.5) return 0.30; 
+    if (roll < 50.0) return 0.10; 
+    return 0.00;                  
+}
+
+// Updated Star Drop Ranges per Rarity Tier
+function calculateMobLootDrops(rarity) {
+    const r = Number(rarity);
+    let starsDropped = 0;
+    let shardsDropped = 0;
+
+    const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+    if (r <= 3) {
+        starsDropped = getRandomInt(3, 6);
+        shardsDropped = Math.random() < 0.60 ? 1 : 2;
+    } else if (r <= 6) {
+        starsDropped = getRandomInt(5, 10);
+        shardsDropped = getRandomInt(1, 3);
+    } else if (r <= 9) {
+        starsDropped = getRandomInt(12, 30);
+        shardsDropped = getRandomInt(3, 5);
+    } else { 
+        starsDropped = getRandomInt(40, 50);
+        shardsDropped = getRandomInt(5, 8);
+    }
+
+    return { starsDropped, shardsDropped };
+}
+
+function renderLoadingWindow(statusText = 'Loading...') {
+    const embed = new EmbedBuilder()
+        .setTitle('LOADING...')
+        .setDescription(statusText)
+        .setColor('#E67E22');
+
+    return { content: null, embeds: [embed], components: [] };
+}
+
+async function renderGameWindow(interaction, customText = null, cachedUserData = null, cachedParty = null) {
+    const userId = String(interaction.user.id);
+    const userData = cachedUserData || await getUserData(userId);
+    if (!userData) return null;
+
+    const party = cachedParty || await getUserParty(userId);
+    const { totalHp, totalAtk } = calculatePartyStats(party);
+    const userStars = userData.stars !== null && userData.stars !== undefined ? Number(userData.stars) : 0;
+    const currentPhoenix = userData.phoenix_downs !== null && userData.phoenix_downs !== undefined ? Number(userData.phoenix_downs) : 0;
+    const shardsCount = userData.shards !== null && userData.shards !== undefined ? Number(userData.shards) : 0;
+
+    const embed = new EmbedBuilder()
+        .setTitle(`📜 ScionDex - ${interaction.user.username}'s Command Center`)
+        .setColor('#2F3136')
+        .addFields(
+            { name: '⭐ Stars', value: `${userStars}`, inline: false },
+            { name: '💎 Shards', value: `${shardsCount}`, inline: true },
+            { name: '🪶 Phoenix Downs', value: `${currentPhoenix}/10`, inline: true },
+            { name: '\u200B', value: '\u200B', inline: true }
+        );
+
+    let partyDesc = '';
+    for (let i = 1; i <= 4; i++) {
+        const member = party.find(p => p.slot === i);
+        if (member) {
+            partyDesc += `**Slot ${i}:** [${member.rarity}★] **${member.name}** (HP: ${member.hp} | ATK: ${member.atk})\n`;
+        } else {
+            partyDesc += `**Slot ${i}:** *Empty*\n`;
+        }
+    }
+    embed.addFields(
+        { name: '⚔️ Current Party', value: partyDesc || 'None' },
+        { name: '📊 Your Total Stats', value: `❤️ **Total HP:** ${totalHp} | ⚔️ **Total ATK:** ${totalAtk}`, inline: false }
+    );
+
+    if (customText) {
+        embed.setDescription(customText);
+    }
+
+    const hasNoNpc = party.length === 0;
+    const summonDisabled = hasNoNpc || shardsCount < 20;
+
+    const row1 = new ActionRowBuilder().addComponents(
+        new ButtonBuilder().setCustomId('btn_recruit').setLabel('Recruit').setStyle(ButtonStyle.Primary),
+        new ButtonBuilder().setCustomId('btn_duty').setLabel('Duty Finder').setStyle(ButtonStyle.Success).setDisabled(hasNoNpc),
+        new ButtonBuilder().setCustomId('btn_summon').setLabel('Summon (20 Shards)').setStyle(ButtonStyle.Secondary).setDisabled(summonDisabled)
+    );
+
+    const row2 = new ActionRowBuilder().addComponents(
+        new ButtonBuilder().setCustomId('btn_manage_party').setLabel('Manage Party').setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('btn_exit').setLabel('Exit').setStyle(ButtonStyle.Danger)
+    );
+
+    return { content: null, embeds: [embed], components: [row1, row2] };
+}
+
+async function renderPartyManagementWindow(interaction, customText = null) {
+    const userId = String(interaction.user.id);
+    const party = await getUserParty(userId);
+    const userData = await getUserData(userId);
+    const userStars = userData && userData.stars !== null ? Number(userData.stars) : 0;
+    const { totalHp, totalAtk, totalReleaseStars } = calculatePartyStats(party);
+
+    const embed = new EmbedBuilder()
+        .setTitle('Party Management')
+        .setColor('#3498DB')
+        .addFields({ name: '⭐ Stars', value: `${userStars}`, inline: false });
+
+    let partyDesc = '';
+    for (let i = 1; i <= 4; i++) {
+        const member = party.find(p => p.slot === i);
+        if (member) {
+            partyDesc += `**Slot ${i}:** [${member.rarity}★] **${member.name}** (HP: ${member.hp} | ATK: ${member.atk})\n`;
+        } else {
+            partyDesc += `**Slot ${i}:** *Empty*\n`;
+        }
+    }
+
+    embed.addFields(
+        { name: '👥 Current Party', value: partyDesc || 'None' },
+        { name: '📊 Total Stats', value: `❤️ **Total HP:** ${totalHp} | ⚔️ **Total ATK:** ${totalAtk}` }
+    );
+
+    if (customText) {
+        embed.setDescription(customText);
+    }
+
+    const hasNoNpc = party.length === 0;
+    const hasTenStarNpc = party.some(p => p.rarity >= 10);
+
+    const row1 = new ActionRowBuilder().addComponents(
+        new ButtonBuilder().setCustomId('btn_show_party_pm').setLabel('Show Party').setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder()
+            .setCustomId('btn_release_prompt')
+            .setLabel(`Release Party (${totalReleaseStars}★)`)
+            .setStyle(ButtonStyle.Secondary)
+            .setDisabled(totalReleaseStars < 10 || hasNoNpc),
+        new ButtonBuilder()
+            .setCustomId('btn_levelup_prompt')
+            .setLabel('Level UP! ⬆️')
+            .setStyle(ButtonStyle.Primary)
+            .setDisabled(hasNoNpc),
+        new ButtonBuilder()
+            .setCustomId('btn_changestat_prompt')
+            .setLabel('Change Stat 🎲 (20⭐)')
+            .setStyle(ButtonStyle.Secondary)
+            .setDisabled(!hasTenStarNpc)
+    );
+
+    const row2 = new ActionRowBuilder().addComponents(
+        new ButtonBuilder().setCustomId('btn_back_to_game').setLabel('Back').setStyle(ButtonStyle.Secondary)
+    );
+
+    return { content: null, embeds: [embed], components: [row1, row2] };
+}
+
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+async function transitionEphemeralFlow(interaction, getNewPayloadFn, statusText = 'Loading...') {
+    try {
+        const loadingMessage = await interaction.update({
+            ...renderLoadingWindow(statusText),
+            withResponse: true
+        }).then(res => res?.resource?.message ?? null);
+
+        const newPayload = await getNewPayloadFn();
+        if (!newPayload) {
+            await interaction.followUp({ content: '❌ Failed to fetch user data. Please try again.', flags: [MessageFlags.Ephemeral] });
+            await delay(1000);
+            if (loadingMessage) await interaction.webhook.deleteMessage(loadingMessage.id).catch(() => {});
+            return false;
+        }
+
+        await interaction.followUp({ ...newPayload, flags: [MessageFlags.Ephemeral] });
+
+        await delay(500);
+        if (loadingMessage && loadingMessage.id) {
+            await interaction.webhook.deleteMessage(loadingMessage.id).catch(() => {});
+        }
+
+        return true;
+    } catch (err) {
+        console.warn(`⚠️ Failed interaction transition (ID: ${interaction.id}):`, err.message);
+        return false;
+    }
+}
+
+function getRandomArrayItem(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// Level requirement map for dynamic dropdown labels
+const levelUpRequirements = {
+    1: { stars: 10, failRate: 0.10 },
+    2: { stars: 15, failRate: 0.13 },
+    3: { stars: 20, failRate: 0.16 },
+    4: { stars: 30, failRate: 0.20 },
+    5: { stars: 45, failRate: 0.24 },
+    6: { stars: 60, failRate: 0.29 },
+    7: { stars: 80, failRate: 0.35 },
+    8: { stars: 100, failRate: 0.42 },
+    9: { stars: 150, failRate: 0.50 }
+};
+
+// ==========================================
+// --- GLOBAL INTERACTION EVENT LISTENER ---
+// ==========================================
+
+module.exports.handleButtonInteraction = async function(interaction) {
+    if (!interaction.isButton() && !interaction.isStringSelectMenu()) return;
+    if (!interaction.customId.startsWith('btn_') && !interaction.customId.startsWith('select_')) return;
+
+    try {
+        const userId = String(interaction.user.id);
+
+        // --- TUTORIAL OK BUTTON ---
+        if (interaction.customId === 'btn_tutorial_ok') {
+            return await transitionEphemeralFlow(interaction, async () => {
+                return await renderGameWindow(interaction, 'Welcome to ScionDex!');
+            }, 'Opening Game Window...');
+        }
+
+        // --- MANAGE PARTY BUTTON ---
+        if (interaction.customId === 'btn_manage_party') {
+            return await transitionEphemeralFlow(interaction, async () => {
+                return await renderPartyManagementWindow(interaction);
+            }, 'Opening Party Management...');
+        }
+
+        // --- BACK TO GAME WINDOW ---
+        if (interaction.customId === 'btn_back_to_game') {
+            return await transitionEphemeralFlow(interaction, async () => {
+                return await renderGameWindow(interaction);
+            }, 'Returning to Game Window...');
+        }
+
+        // --- SHOW PARTY BUTTON (FROM PARTY MANAGEMENT) ---
+        if (interaction.customId === 'btn_show_party_pm') {
+            const party = await getUserParty(userId);
+
+            if (!party || party.length === 0) {
+                await interaction.channel.send(`📜 <@${userId}> currently has **no NPCs** in their ScionDex party!`).catch(() => {});
+                return await interaction.reply({ content: '📢 Shared to the channel that you currently have no NPCs.', flags: [MessageFlags.Ephemeral] });
+            }
+
+            const { totalHp, totalAtk } = calculatePartyStats(party);
+            
+            const embed = new EmbedBuilder()
+                .setTitle(`⚔️ ${interaction.user.username}'s ScionDex Party`)
+                .setColor('#3498DB')
+                .setThumbnail(interaction.user.displayAvatarURL());
+
+            let partyDesc = '';
+            for (let i = 1; i <= 4; i++) {
+                const member = party.find(p => p.slot === i);
+                if (member) {
+                    partyDesc += `**Slot ${i}:** [${member.rarity}★] **${member.name}**\n↳ *HP: ${member.hp} | ATK: ${member.atk}*\n`;
+                } else {
+                    partyDesc += `**Slot ${i}:** *Empty*\n`;
+                }
+            }
+
+            embed.addFields(
+                { name: '👥 Party Members', value: partyDesc },
+                { name: '📊 Your Total Stats', value: `❤️ **Total HP:** ${totalHp} | ⚔️ **Total ATK:** ${totalAtk}`, inline: false }
+            );
+
+            await interaction.channel.send({ content: `📜 Here is <@${userId}>'s current ScionDex party:`, embeds: [embed] }).catch(() => {});
+            return await interaction.reply({ content: '📢 Shared your current party to the public channel!', flags: [MessageFlags.Ephemeral] });
+        }
+
+        // --- LEVEL UP PROMPT ---
+        if (interaction.customId === 'btn_levelup_prompt') {
+            return await transitionEphemeralFlow(interaction, async () => {
+                const party = await getUserParty(userId);
+                const eligibleNpcs = party.filter(p => p.rarity < 10);
+
+                if (eligibleNpcs.length === 0) {
+                    return await renderPartyManagementWindow(interaction, '⚠️ All party members are already at maximum 10★ rank!');
+                }
+
+                const options = eligibleNpcs.map(p => {
+                    const req = levelUpRequirements[p.rarity];
+                    return {
+                        label: `Slot ${p.slot}: ${p.name} (${p.rarity}★)`,
+                        description: `Cost: ${req ? req.stars : 0}★ | HP: ${p.hp} | ATK: ${p.atk}`,
+                        value: String(p.slot)
+                    };
+                });
+
+                const selectMenu = new StringSelectMenuBuilder()
+                    .setCustomId('select_levelup_slot')
+                    .setPlaceholder('Select an NPC to level up...')
+                    .addOptions(options);
+
+                const row1 = new ActionRowBuilder().addComponents(selectMenu);
+                const row2 = new ActionRowBuilder().addComponents(
+                    new ButtonBuilder().setCustomId('btn_levelup_cancel').setLabel('Cancel').setStyle(ButtonStyle.Secondary),
+                    new ButtonBuilder().setCustomId('btn_levelup_ok_dummy').setLabel('OK (-⭐)').setStyle(ButtonStyle.Success).setDisabled(true)
+                );
+
+                const embed = new EmbedBuilder()
+                    .setTitle('⬆️ Level UP! NPC Selection')
+                    .setDescription('Select an NPC from your party to level up to the next star rank:')
+                    .setColor('#3498DB');
+
+                return { content: null, embeds: [embed], components: [row1, row2] };
+            }, 'Preparing Level Up...');
+        }
+
+        // --- LEVEL UP SELECT DROPDOWN (CHANGES OK BUTTON DYNAMICALLY) ---
+        if (interaction.customId === 'select_levelup_slot' && interaction.isStringSelectMenu()) {
+            const chosenSlot = parseInt(interaction.values[0], 10);
+            const party = await getUserParty(userId);
+            const targetNpc = party.find(p => p.slot === chosenSlot);
+
+            if (!targetNpc || targetNpc.rarity >= 10) {
+                return await interaction.update({ content: '⚠️ Invalid selection.' });
+            }
+
+            const req = levelUpRequirements[targetNpc.rarity];
+            const starCost = req ? req.stars : 0;
+
+            // Preserve select menu options
+            const eligibleNpcs = party.filter(p => p.rarity < 10);
+            const options = eligibleNpcs.map(p => {
+                const r = levelUpRequirements[p.rarity];
+                return {
+                    label: `Slot ${p.slot}: ${p.name} (${p.rarity}★)`,
+                    description: `Cost: ${r ? r.stars : 0}★ | HP: ${p.hp} | ATK: ${p.atk}`,
+                    value: String(p.slot),
+                    default: Number(p.slot) === chosenSlot
+                };
+            });
+
+            const selectMenu = new StringSelectMenuBuilder()
+                .setCustomId('select_levelup_slot')
+                .setPlaceholder(`Selected: Slot ${chosenSlot} (${targetNpc.name})`)
+                .addOptions(options);
+
+            const row1 = new ActionRowBuilder().addComponents(selectMenu);
+            const row2 = new ActionRowBuilder().addComponents(
+                new ButtonBuilder().setCustomId('btn_levelup_cancel').setLabel('Cancel').setStyle(ButtonStyle.Secondary),
+                new ButtonBuilder().setCustomId(`btn_levelup_confirm_${chosenSlot}`).setLabel(`OK (${starCost}⭐)`).setStyle(ButtonStyle.Success)
+            );
+
+            const embed = new EmbedBuilder()
+                .setTitle('⬆️ Level UP! NPC Selection')
+                .setDescription(`Selected **${targetNpc.name}** [${targetNpc.rarity}★ ➔ ${targetNpc.rarity + 1}★]. Cost: **${starCost} Stars**.\nClick OK to confirm:`)
+                .setColor('#3498DB');
+
+            return await interaction.update({ embeds: [embed], components: [row1, row2] });
+        }
+
+        // --- LEVEL UP CANCEL ---
+        if (interaction.customId === 'btn_levelup_cancel') {
+            return await transitionEphemeralFlow(interaction, async () => {
+                return await renderPartyManagementWindow(interaction, 'Cancelled Level UP.');
+            }, 'Returning to Party Management...');
+        }
+
+        // --- LEVEL UP CONFIRM BUTTON ---
+        if (interaction.customId.startsWith('btn_levelup_confirm_')) {
+            const chosenSlot = parseInt(interaction.customId.split('_')[3], 10);
+            return await transitionEphemeralFlow(interaction, async () => {
+                const party = await getUserParty(userId);
+                const targetNpc = party.find(p => p.slot === chosenSlot);
+
+                if (!targetNpc || targetNpc.rarity >= 10) {
+                    return await renderPartyManagementWindow(interaction, '⚠️ Invalid selection or NPC is already maxed out.');
+                }
+
+                const currentRarity = targetNpc.rarity;
+                const nextRarity = currentRarity + 1;
+                const req = levelUpRequirements[currentRarity];
+                
+                const userData = await getUserData(userId);
+                const userStars = userData && userData.stars !== null ? Number(userData.stars) : 0;
+
+                if (userStars < req.stars) {
+                    return await renderPartyManagementWindow(interaction, `⚠️ Not enough stars! You need **${req.stars}★** (You have ${userStars}★).`);
+                }
+
+                // Deduct stars
+                await pool.execute('UPDATE sciondex_users SET stars = stars - ? WHERE user_id = ?', [req.stars, userId]);
+
+                // Roll success/fail
+                const failed = Math.random() < req.failRate;
+
+                if (failed) {
+                    await interaction.channel.send(`❌ <@${userId}> failed to level up **${targetNpc.name}** to ${nextRarity}★!`).catch(() => {});
+                    return await renderPartyManagementWindow(interaction, `❌ Failed to level up **${targetNpc.name}** to ${nextRarity}★ (Lost ${req.stars}★).`);
+                }
+
+                // Success: Calculate new stats (+19% to +21%)
+                const increasePercent = (19 + Math.random() * 2) / 100;
+                const newHp = Math.round(targetNpc.hp * (1 + increasePercent));
+                const newAtk = Math.round(targetNpc.atk * (1 + increasePercent));
+
+                await pool.execute(
+                    `UPDATE sciondex_user_party 
+                     SET star = ?, hp = ?, atk = ? 
+                     WHERE user_id = ? AND slot = ?`,
+                    [nextRarity, newHp, newAtk, userId, chosenSlot]
+                );
+
+                await interaction.channel.send(`🎉 <@${userId}> successfully leveled up **${targetNpc.name}** [${currentRarity}★] to [${nextRarity}★]!`).catch(() => {});
+
+                return await renderPartyManagementWindow(interaction, `🎉 Successfully leveled up **${targetNpc.name}** to **${nextRarity}★**!\n❤️ New HP: ${newHp} | ⚔️ New ATK: ${newAtk}`);
+            }, 'Processing Level UP...');
+        }
+
+        // --- CHANGE STAT PROMPT ---
+        if (interaction.customId === 'btn_changestat_prompt') {
+            return await transitionEphemeralFlow(interaction, async () => {
+                const party = await getUserParty(userId);
+                const userData = await getUserData(userId);
+                const userStars = userData && userData.stars !== null ? Number(userData.stars) : 0;
+
+                if (userStars < 20) {
+                    return await renderPartyManagementWindow(interaction, '⚠️ You need at least **20 Stars** to change stats!');
+                }
+
+                // Exclude Godbert from changing stats
+                const eligibleNpcs = party.filter(p => p.rarity >= 10 && p.name.toLowerCase() !== 'godbert manderville');
+
+                if (eligibleNpcs.length === 0) {
+                    return await renderPartyManagementWindow(interaction, '⚠️ You have no eligible 10★ NPCs (Godbert cannot change stats).');
+                }
+
+                const options = eligibleNpcs.map(p => ({
+                    label: `Slot ${p.slot}: ${p.name} (10★)`,
+                    description: `Current HP: ${p.hp} | ATK: ${p.atk}`,
+                    value: String(p.slot)
+                }));
+
+                const selectMenu = new StringSelectMenuBuilder()
+                    .setCustomId('select_changestat_slot')
+                    .setPlaceholder('Select a 10★ NPC to change stats...')
+                    .addOptions(options);
+
+                const row1 = new ActionRowBuilder().addComponents(selectMenu);
+                const row2 = new ActionRowBuilder().addComponents(
+                    new ButtonBuilder().setCustomId('btn_changestat_cancel').setLabel('Cancel').setStyle(ButtonStyle.Secondary),
+                    new ButtonBuilder().setCustomId('btn_changestat_ok_dummy').setLabel('OK (20⭐)').setStyle(ButtonStyle.Success).setDisabled(true)
+                );
+
+                const embed = new EmbedBuilder()
+                    .setTitle('🎲 Change Stat - 10★ NPC Selection')
+                    .setDescription('Select a 10★ NPC from your party to reroll stats (Cost: **20 Stars**):')
+                    .setColor('#E67E22');
+
+                return { content: null, embeds: [embed], components: [row1, row2] };
+            }, 'Preparing Stat Reroll...');
+        }
+
+        // --- CHANGE STAT SELECT SLOT MENU ---
+        if (interaction.customId === 'select_changestat_slot' && interaction.isStringSelectMenu()) {
+            const chosenSlot = parseInt(interaction.values[0], 10);
+            const party = await getUserParty(userId);
+            const targetNpc = party.find(p => p.slot === chosenSlot);
+
+            if (!targetNpc) {
+                return await interaction.update({ content: '⚠️ Invalid selection.' });
+            }
+
+            const eligibleNpcs = party.filter(p => p.rarity >= 10 && p.name.toLowerCase() !== 'godbert manderville');
+            const options = eligibleNpcs.map(p => ({
+                label: `Slot ${p.slot}: ${p.name} (10★)`,
+                description: `Current HP: ${p.hp} | ATK: ${p.atk}`,
+                value: String(p.slot),
+                default: Number(p.slot) === chosenSlot
+            }));
+
+            const selectMenu = new StringSelectMenuBuilder()
+                .setCustomId('select_changestat_slot')
+                .setPlaceholder(`Selected: Slot ${chosenSlot} (${targetNpc.name})`)
+                .addOptions(options);
+
+            const row1 = new ActionRowBuilder().addComponents(selectMenu);
+            const row2 = new ActionRowBuilder().addComponents(
+                new ButtonBuilder().setCustomId('btn_changestat_cancel').setLabel('Cancel').setStyle(ButtonStyle.Secondary),
+                new ButtonBuilder().setCustomId(`btn_changestat_confirm_${chosenSlot}`).setLabel('OK (20⭐)').setStyle(ButtonStyle.Success)
+            );
+
+            const embed = new EmbedBuilder()
+                .setTitle('🎲 Change Stat - 10★ NPC Selection')
+                .setDescription(`Selected **${targetNpc.name}** [10★]. Cost: **20 Stars**. Click OK to reroll:`)
+                .setColor('#E67E22');
+
+            return await interaction.update({ embeds: [embed], components: [row1, row2] });
+        }
+
+        // --- CHANGE STAT CANCEL ---
+        if (interaction.customId === 'btn_changestat_cancel') {
+            return await transitionEphemeralFlow(interaction, async () => {
+                return await renderPartyManagementWindow(interaction, 'Cancelled Stat Reroll.');
+            }, 'Returning to Party Management...');
+        }
+
+        // --- CHANGE STAT CONFIRM BUTTON ---
+        if (interaction.customId.startsWith('btn_changestat_confirm_')) {
+            const chosenSlot = parseInt(interaction.customId.split('_')[3], 10);
+            return await transitionEphemeralFlow(interaction, async () => {
+                const userData = await getUserData(userId);
+                const userStars = userData && userData.stars !== null ? Number(userData.stars) : 0;
+
+                if (userStars < 20) {
+                    return await renderPartyManagementWindow(interaction, '⚠️ Not enough stars! You need **20 Stars**.');
+                }
+
+                const party = await getUserParty(userId);
+                const targetNpc = party.find(p => p.slot === chosenSlot);
+
+                if (!targetNpc || targetNpc.rarity < 10 || targetNpc.name.toLowerCase() === 'godbert manderville') {
+                    return await renderPartyManagementWindow(interaction, '⚠️ Invalid selection.');
+                }
+
+                // Deduct 20 stars
+                await pool.execute('UPDATE sciondex_users SET stars = stars - 20 WHERE user_id = ?', [userId]);
+
+                // Find lowest and highest HP/ATK among all 10-star NPCs in npcdex.json
+                const tenStarDex = npcDex.filter(n => Number(n.rarity) === 10);
+                const minHp = Math.min(...tenStarDex.map(n => n.hp));
+                const maxHp = Math.max(...tenStarDex.map(n => n.hp));
+                const minAtk = Math.min(...tenStarDex.map(n => n.atk));
+                const maxAtk = Math.max(...tenStarDex.map(n => n.atk));
+
+                const newHp = Math.floor(Math.random() * (maxHp - minHp + 1)) + minHp;
+                const newAtk = Math.floor(Math.random() * (maxAtk - minAtk + 1)) + minAtk;
+
+                const oldHp = targetNpc.hp;
+                const oldAtk = targetNpc.atk;
+
+                // Save new stats to database immediately
+                await pool.execute(
+                    `UPDATE sciondex_user_party 
+                     SET hp = ?, atk = ? 
+                     WHERE user_id = ? AND slot = ?`,
+                    [newHp, newAtk, userId, chosenSlot]
+                );
+
+                const hpArrow = newHp > oldHp ? '📈' : (newHp < oldHp ? '📉' : '➡️');
+                const atkArrow = newAtk > oldAtk ? '📈' : (newAtk < oldAtk ? '📉' : '➡️');
+
+                const embed = new EmbedBuilder()
+                    .setTitle(`🎲 Stat Reroll: ${targetNpc.name} [10★]`)
+                    .setDescription(
+                        `Successfully spent **20 Stars**!\n\n` +
+                        `Here are the new stats for **${targetNpc.name}**:\n\n` +
+                        `❤️ **HP:** ${oldHp} ➔ **${newHp}** ${hpArrow}\n` +
+                        `⚔️ **ATK:** ${oldAtk} ➔ **${newAtk}** ${atkArrow}`
+                    )
+                    .setColor('#2ECC71');
+
+                const row = new ActionRowBuilder().addComponents(
+                    new ButtonBuilder().setCustomId('btn_changestat_ok').setLabel('OK').setStyle(ButtonStyle.Success)
+                );
+
+                return { content: null, embeds: [embed], components: [row] };
+            }, 'Rerolling stats...');
+        }
+
+        // --- CHANGE STAT OK BUTTON ---
+        if (interaction.customId === 'btn_changestat_ok') {
+            return await transitionEphemeralFlow(interaction, async () => {
+                return await renderPartyManagementWindow(interaction, 'Successfully updated NPC stats!');
+            }, 'Returning to Party Management...');
+        }
+
+        // --- RELEASE PARTY PROMPT ---
+        if (interaction.customId === 'btn_release_prompt') {
+            return await transitionEphemeralFlow(interaction, async () => {
+                const party = await getUserParty(userId);
+                if (!party || party.length === 0) {
+                    return await renderPartyManagementWindow(interaction, '⚠️ You currently have no party members to release.');
+                }
+
+                const { totalReleaseStars } = calculatePartyStats(party);
+
+                if (totalReleaseStars < 10) {
+                    return await renderPartyManagementWindow(interaction, '⚠️ Your total party release stars must be at least 10★ to release your party.');
+                }
+
+                const embed = new EmbedBuilder()
+                    .setTitle('⚠️ Release Party Confirmation')
+                    .setDescription(`Are you sure you want to release your current party?\n\nThis will remove all party members and add **+${totalReleaseStars}★** to your accumulated stars balance.`)
+                    .setColor('#E67E22');
+
+                const row = new ActionRowBuilder().addComponents(
+                    new ButtonBuilder().setCustomId('btn_confirm_release').setLabel('Yes, Release Party').setStyle(ButtonStyle.Danger),
+                    new ButtonBuilder().setCustomId('btn_cancel_release').setLabel('No, Cancel').setStyle(ButtonStyle.Secondary)
+                );
+
+                return { content: null, embeds: [embed], components: [row] };
+            }, 'Preparing party release prompt...');
+        }
+
+        // --- CONFIRM RELEASE PARTY ---
+        if (interaction.customId === 'btn_confirm_release') {
+            return await transitionEphemeralFlow(interaction, async () => {
+                const party = await getUserParty(userId);
+                const { totalReleaseStars } = calculatePartyStats(party);
+
+                if (totalReleaseStars < 10) {
+                    return await renderPartyManagementWindow(interaction, '⚠️ Action denied. Total party release stars are under 10★.');
+                }
+
+                let partyListBlock = '```\n';
+                for (let i = 1; i <= 4; i++) {
+                    const member = party.find(p => p.slot === i);
+                    if (member) {
+                        partyListBlock += `${member.name} [${member.rarity}★]\n`;
+                    }
+                }
+                partyListBlock += '```';
+
+                const publicMessage = `🕊️ <@${userId}> released their current party:\n${partyListBlock}\nfor a total of ${totalReleaseStars}★.`;
+                await interaction.channel.send(publicMessage).catch(() => {});
+
+                await pool.execute(
+                    `UPDATE sciondex_users 
+                     SET stars = COALESCE(stars, 0) + ? 
+                     WHERE user_id = ?`,
+                    [totalReleaseStars, userId]
+                );
+
+                await pool.execute('DELETE FROM sciondex_user_party WHERE user_id = ?', [userId]);
+
+                return await renderPartyManagementWindow(interaction, `✅ Released party! Added **${totalReleaseStars}★** to your total balance.`);
+            }, 'Releasing party...');
+        }
+
+        // --- CANCEL RELEASE PARTY ---
+        if (interaction.customId === 'btn_cancel_release') {
+            return await transitionEphemeralFlow(interaction, async () => {
+                return await renderPartyManagementWindow(interaction, 'Cancelled party release.');
+            }, 'Returning to Party Management...');
+        }
+
+        // --- USE STARS FOR RECRUITMENT ---
+        if (interaction.customId.startsWith('btn_use_stars_')) {
+            return await transitionEphemeralFlow(interaction, async () => {
+                const parts = interaction.customId.split('_');
+                const starsToUse = parseInt(parts[3], 10);
+                const targetBoostChance = parseFloat(parts[4]);
+
+                const gameState = activeSessions.get(userId) || {};
+                const targetNpc = gameState.activeBoss;
+
+                if (!targetNpc) {
+                    return await renderGameWindow(interaction, '⚠️ Encounter expired or no target boss available.');
+                }
+
+                // Confirmation window for use star button
+                const embed = new EmbedBuilder()
+                    .setTitle('⭐ Use Stars Confirmation')
+                    .setDescription(`Are you sure you want to use **${starsToUse} Stars** to boost your recruit chance to **${Math.round(targetBoostChance * 100)}%** for **${targetNpc.name}**?`)
+                    .setColor('#F1C40F');
+
+                const row = new ActionRowBuilder().addComponents(
+                    new ButtonBuilder().setCustomId(`btn_confirm_usestars_${starsToUse}_${targetBoostChance}`).setLabel('Confirm').setStyle(ButtonStyle.Success),
+                    new ButtonBuilder().setCustomId('btn_cancel_usestars').setLabel('Cancel').setStyle(ButtonStyle.Secondary)
+                );
+
+                return { content: null, embeds: [embed], components: [row] };
+            }, 'Preparing star usage confirmation...');
+        }
+
+        // --- CANCEL USE STARS (FIXES BUG: PRESERVES VICTORY WINDOW & BONUS WITHOUT RESENDING BOSS DEFEATED) ---
+        if (interaction.customId === 'btn_cancel_usestars') {
+            return await transitionEphemeralFlow(interaction, async () => {
+                const gameState = activeSessions.get(userId) || {};
+                if (!gameState.activeBoss) {
+                    return await renderGameWindow(interaction, 'Cancelled star usage.');
+                }
+                return await getBossVictoryPayload(interaction, gameState, userId, false);
+            }, 'Returning to victory window...');
+        }
+
+        // --- CONFIRM USE STARS ---
+        if (interaction.customId.startsWith('btn_confirm_usestars_')) {
+            return await transitionEphemeralFlow(interaction, async () => {
+                const parts = interaction.customId.split('_');
+                const starsToUse = parseInt(parts[3], 10);
+                const targetBoostChance = parseFloat(parts[4]);
+
+                const gameState = activeSessions.get(userId) || {};
+                const targetNpc = gameState.activeBoss;
+
+                if (!targetNpc) {
+                    return await renderGameWindow(interaction, '⚠️ Encounter expired or no target boss available.');
+                }
+
+                await pool.execute(
+                    `UPDATE sciondex_users 
+                     SET stars = GREATEST(0, COALESCE(stars, 0) - ?) 
+                     WHERE user_id = ?`,
+                    [starsToUse, userId]
+                );
+
+                const success = Math.random() <= targetBoostChance;
+
+                if (!success) {
+                    const consolationShards = Math.floor(Number(targetNpc.rarity) / 2);
+                    if (consolationShards > 0) {
+                        await pool.execute('UPDATE sciondex_users SET shards = shards + ? WHERE user_id = ?', [consolationShards, userId]);
+                    }
+
+                    gameState.activeBoss = null;
+                    activeSessions.set(userId, gameState);
+
+                    return await renderGameWindow(
+                        interaction, 
+                        `❌ **Recruitment Failed!** Even with **${starsToUse} Stars** used (${Math.round(targetBoostChance * 100)}% chance), **${targetNpc.name}** fled!\n` +
+                        `💎 Received **${consolationShards} Shard(s)** as consolation.`
+                    );
+                }
+
+                await interaction.channel.send(`🎉 <@${userId}> used **${starsToUse} Stars** and successfully recruited **${targetNpc.name}** [${targetNpc.rarity}★]!`).catch(() => {});
+
+                const party = await getUserParty(userId);
+                gameState.pendingNpcToReplace = targetNpc;
+
+                if (party.length < 4) {
+                    const nextSlot = party.length + 1;
+                    const safeNpcId = String(targetNpc.id);
+                    await pool.execute(
+                        `INSERT INTO sciondex_user_party (user_id, slot, npc_id, star, hp, atk) 
+                         VALUES (?, ?, ?, ?, ?, ?) 
+                         ON DUPLICATE KEY UPDATE npc_id = VALUES(npc_id), star = VALUES(star), hp = VALUES(hp), atk = VALUES(atk)`,
+                        [userId, nextSlot, safeNpcId, targetNpc.rarity, targetNpc.hp, targetNpc.atk]
+                    );
+
+                    gameState.activeBoss = null;
+                    gameState.pendingNpcToReplace = null;
+                    activeSessions.set(userId, gameState);
+
+                    return await renderGameWindow(interaction, `🎉 Successfully recruited **${targetNpc.name}** into Slot ${nextSlot}! Used **${starsToUse} Stars**.`);
+                }
+
+                const shardReward = Number(targetNpc.rarity);
+                const options = party.map(p => ({
+                    label: `Slot ${p.slot}: ${p.name} (${p.rarity}★)`,
+                    description: `HP: ${p.hp} | ATK: ${p.atk}`,
+                    value: String(p.slot)
+                }));
+
+                const selectMenu = new StringSelectMenuBuilder()
+                    .setCustomId('select_replace_slot')
+                    .setPlaceholder('Select a party member to replace...')
+                    .addOptions(options);
+
+                const row1 = new ActionRowBuilder().addComponents(selectMenu);
+                const row2 = new ActionRowBuilder().addComponents(
+                    new ButtonBuilder()
+                        .setCustomId(`btn_get_shards_${shardReward}`)
+                        .setLabel(`Get Shard Instead (${shardReward})`)
+                        .setStyle(ButtonStyle.Secondary)
+                );
+
+                const embed = new EmbedBuilder()
+                    .setTitle(`Replace a Party Member with ${targetNpc.name} [${targetNpc.rarity}★]`)
+                    .setDescription(
+                        `Used **${starsToUse} Stars** to successfully recruit!\n\n` +
+                        `❤️ **HP:** ${targetNpc.hp} | ⚔️ **ATK:** ${targetNpc.atk}\n` +
+                        `🏷️ **Title:** ${targetNpc.title || 'None'}\n` +
+                        `🌍 **Expansion:** ${targetNpc.expansion || 'Unknown'}\n\n` +
+                        `Choose which slot you wish to overwrite or collect shards instead:`
+                    )
+                    .setColor('#E67E22');
+
+                return { content: null, embeds: [embed], components: [row1, row2] };
+            }, 'Applying stars and recruiting...');
+        }
+
+        // --- REPLACE MEMBER PROMPT ---
+        if (interaction.customId === 'btn_replace_prompt') {
+            const gameState = activeSessions.get(userId) || {};
+            const targetNpc = gameState.pendingNpcToReplace || gameState.activeBoss;
+
+            if (!targetNpc) {
+                return await interaction.reply({ content: '⚠️ Encounter expired or no target NPC available.', flags: [MessageFlags.Ephemeral] });
+            }
+
+            if (gameState.activeBoss) {
+                const baseChance = getBaseRecruitChance(targetNpc.rarity, gameState.bossSource);
+                const bonusChance = gameState.lastBonusRate || 0;
+                const totalChance = Math.min(1.0, baseChance + bonusChance);
+                
+                const success = Math.random() <= totalChance;
+
+                if (!success) {
+                    const consolationShards = Math.floor(Number(targetNpc.rarity) / 2);
+                    if (consolationShards > 0) {
+                        await pool.execute('UPDATE sciondex_users SET shards = shards + ? WHERE user_id = ?', [consolationShards, userId]);
+                    }
+
+                    gameState.activeBoss = null;
+                    activeSessions.set(userId, gameState);
+
+                    const oldFailMsg = await interaction.update({
+                        content: `❌ **Recruitment Failed!** **${targetNpc.name}** fled before joining your party.\n💎 You received **${consolationShards} Shard(s)** as consolation.`,
+                        embeds: [],
+                        components: [],
+                        withResponse: true
+                    }).then(res => res?.resource?.message ?? null);
+
+                    const failGamePayload = await renderGameWindow(interaction, `❌ Failed to recruit **${targetNpc.name}**. Received **${consolationShards} Shard(s)**.`);
+                    await interaction.followUp({ ...failGamePayload, flags: [MessageFlags.Ephemeral] });
+
+                    await delay(2000);
+                    if (oldFailMsg && oldFailMsg.id) {
+                        await interaction.webhook.deleteMessage(oldFailMsg.id).catch(() => {});
+                    }
+                    return;
+                }
+
+                await interaction.channel.send(`🎉 <@${userId}> successfully recruited **${targetNpc.name}** [${targetNpc.rarity}★] after defeating them!`).catch(() => {});
+            }
+
+            const oldMsg = await interaction.update({
+                content: '⏳ *Saving...*',
+                embeds: [],
+                components: [],
+                withResponse: true
+            }).then(res => res?.resource?.message ?? null);
+
+            const party = await getUserParty(userId);
+            const shardReward = Number(targetNpc.rarity);
+
+            const options = party.map(p => ({
+                label: `Slot ${p.slot}: ${p.name} (${p.rarity}★)`,
+                description: `HP: ${p.hp} | ATK: ${p.atk}`,
+                value: String(p.slot)
+            }));
+
+            const selectMenu = new StringSelectMenuBuilder()
+                .setCustomId('select_replace_slot')
+                .setPlaceholder('Select a party member to replace...')
+                .addOptions(options);
+
+            const row1 = new ActionRowBuilder().addComponents(selectMenu);
+            const row2 = new ActionRowBuilder().addComponents(
+                new ButtonBuilder()
+                    .setCustomId(`btn_get_shards_${shardReward}`)
+                    .setLabel(`Get Shard Instead (${shardReward})`)
+                    .setStyle(ButtonStyle.Secondary)
+            );
+
+            const embed = new EmbedBuilder()
+                .setTitle(`Replace a Party Member with ${targetNpc.name} [${targetNpc.rarity}★]`)
+                .setDescription(
+                    `❤️ **HP:** ${targetNpc.hp} | ⚔️ **ATK:** ${targetNpc.atk}\n` +
+                    `🏷️ **Title:** ${targetNpc.title || 'None'}\n` +
+                    `🌍 **Expansion:** ${targetNpc.expansion || 'Unknown'}\n\n` +
+                    `Choose which slot you wish to overwrite or get shards instead:`
+                )
+                .setColor('#E67E22');
+
+            await interaction.followUp({ embeds: [embed], components: [row1, row2], flags: [MessageFlags.Ephemeral] });
+
+            await delay(2000);
+            if (oldMsg && oldMsg.id) {
+                await interaction.webhook.deleteMessage(oldMsg.id).catch(() => {});
+            }
+            return;
+        }
+
+        // --- SELECT SLOT MENU ---
+        if (interaction.customId === 'select_replace_slot' && interaction.isStringSelectMenu()) {
+            const chosenSlot = parseInt(interaction.values[0], 10);
+            const gameState = activeSessions.get(userId) || {};
+            const newNpc = gameState.pendingNpcToReplace || gameState.activeBoss;
+
+            if (!newNpc || chosenSlot < 1 || chosenSlot > 4) {
+                return await interaction.update({ content: '⚠️ Session expired or invalid selection.', embeds: [], components: [] });
+            }
+
+            const dropdownMsg = await interaction.update({
+                content: '⏳ *Saving slot selection...*',
+                embeds: [],
+                components: [],
+                withResponse: true
+            }).then(res => res?.resource?.message ?? null);
+
+            const safeNpcId = String(newNpc.id);
+
+            await pool.execute(
+                `INSERT INTO sciondex_user_party (user_id, slot, npc_id, star, hp, atk) 
+                 VALUES (?, ?, ?, ?, ?, ?) 
+                 ON DUPLICATE KEY UPDATE npc_id = VALUES(npc_id), star = VALUES(star), hp = VALUES(hp), atk = VALUES(atk)`,
+                [userId, chosenSlot, safeNpcId, newNpc.rarity, newNpc.hp, newNpc.atk]
+            );
+
+            gameState.pendingNpcToReplace = null;
+            gameState.activeBoss = null;
+            activeSessions.set(userId, gameState);
+
+            const newGamePayload = await renderGameWindow(interaction, `Successfully placed **${newNpc.name}** into Slot ${chosenSlot}!`);
+            await interaction.followUp({ ...newGamePayload, flags: [MessageFlags.Ephemeral] });
+
+            await delay(2000);
+            if (dropdownMsg && dropdownMsg.id) {
+                await interaction.webhook.deleteMessage(dropdownMsg.id).catch(() => {});
+            }
+            return;
+        }
+
+        // --- EXIT ---
+        if (interaction.customId === 'btn_exit') {
+            activeSessions.delete(userId);
+            await interaction.update({
+                content: '👋 *Closed ScionDex session.*',
+                embeds: [],
+                components: []
+            }).catch(() => {});
+
+            setTimeout(async () => {
+                await interaction.webhook.deleteMessage('@original').catch(() => {});
+            }, 1000);
+            return;
+        }
+
+        // --- RECRUIT ---
+        if (interaction.customId === 'btn_recruit') {
+            return await transitionEphemeralFlow(interaction, async () => {
+                const userData = await getUserData(userId);
+                if (!userData) return null;
+
+                const today = new Date().toISOString().split('T')[0];
+                const party = await getUserParty(userId);
+
+                if (!party || party.length === 0) {
+                    await pool.execute('UPDATE sciondex_users SET phoenix_downs = 10, last_recruit_date = ? WHERE user_id = ?', [today, userId]);
+
+                    const newRecruits = [];
+                    const twoStarCount = Math.random() < 0.5 ? 1 : 2;
+                    const oneStarCount = 4 - twoStarCount;
+
+                    for (let i = 0; i < twoStarCount; i++) {
+                        newRecruits.push(getRandomNpcByRarity(2));
+                    }
+                    for (let i = 0; i < oneStarCount; i++) {
+                        newRecruits.push(getRandomNpcByRarity(1));
+                    }
+
+                    for (let slot = 1; slot <= 4; slot++) {
+                        const npc = newRecruits[slot - 1];
+                        const safeNpcId = String(npc.id);
+                        await pool.execute(
+                            `INSERT INTO sciondex_user_party (user_id, slot, npc_id, star, hp, atk) 
+                             VALUES (?, ?, ?, ?, ?, ?) 
+                             ON DUPLICATE KEY UPDATE npc_id = VALUES(npc_id), star = VALUES(star), hp = VALUES(hp), atk = VALUES(atk)`,
+                            [userId, slot, safeNpcId, npc.rarity, npc.hp, npc.atk]
+                        );
+                    }
+
+                    const recruitNames = newRecruits.map(n => `**${n.name}** [${n.rarity}★]`).join(', ');
+                    await interaction.channel.send(`🎉 <@${userId}> received their starter party: ${recruitNames}!`).catch(() => {});
+
+                    return await renderGameWindow(interaction, `🎉 Welcome! You received your starter party (100% recruit rate):\n${recruitNames}`);
+                }
+
+                if (userData.last_recruit_date === today) {
+                    return await renderGameWindow(interaction, '⚠️ You have already recruited today! Come back tomorrow.', userData);
+                }
+
+                await pool.execute('UPDATE sciondex_users SET last_recruit_date = ? WHERE user_id = ?', [today, userId]);
+
+                const gameState = activeSessions.get(userId) || {};
+                const rolledNpc = getRandom4to10StarRecruitNpc(); 
+                gameState.pendingNpcToReplace = rolledNpc;
+                gameState.bossSource = 'recruit';
+                gameState.lastBonusRate = rollRecruitmentBonus();
+                activeSessions.set(userId, gameState);
+
+                const shardReward = Number(rolledNpc.rarity);
+
+                const embed = new EmbedBuilder()
+                    .setTitle('🎉 Daily Recruit Encounter!')
+                    .setDescription(`You encountered **${rolledNpc.name}** [${rolledNpc.rarity}★]!\nTitle: *${rolledNpc.title || 'None'}*\nHP: ${rolledNpc.hp} | ATK: ${rolledNpc.atk}\nEffect: ${rolledNpc.additional_effect || 'None'}\n\nWhat would you like to do?`)
+                    .setColor('#F1C40F');
+
+                const row = new ActionRowBuilder().addComponents(
+                    new ButtonBuilder().setCustomId('btn_replace_prompt').setLabel('Replace Member').setStyle(ButtonStyle.Primary),
+                    new ButtonBuilder().setCustomId(`btn_get_shards_${shardReward}`).setLabel(`Get Shard Instead (${shardReward})`).setStyle(ButtonStyle.Secondary)
+                );
+
+                await interaction.channel.send(`🔍 <@${userId}> is trying to recruit... and encountered **${rolledNpc.name}** [${rolledNpc.rarity}★]!`).catch(() => {});
+
+                return { content: null, embeds: [embed], components: [row] };
+            }, 'Recruiting...');
+        }
+
+        // --- DUTY FINDER ENCOUNTER ---
+        if (interaction.customId === 'btn_duty') {
+            return await transitionEphemeralFlow(interaction, async () => {
+                const party = await getUserParty(userId);
+                if (party.length === 0) {
+                    return await renderGameWindow(interaction, "⚠️ You don't have any NPCs! Click Recruit first to receive your starter party.", null, party);
+                }
+
+                const gameState = activeSessions.get(userId) || {};
+                const boss = getRandomDutyFinderNpc();
+                gameState.activeBoss = boss;
+                gameState.bossSource = 'duty';
+                gameState.lbUses = 0;
+                gameState.lbTriggeredThisFight = false;
+                gameState.reachedUnder5Percent = false;
+                gameState.doubleHpActive = false;
+                gameState.tankShieldTurns = 0;
+                gameState.hiddenPhoenixLoot = 0; 
+
+                const hpMult = getBossHpMultiplier(boss.rarity);
+                const calcHp = Math.round(boss.hp * hpMult);
+                
+                gameState.savedBossHp = calcHp;
+                gameState.maxBossHp = calcHp;
+                
+                const partyStats = calculatePartyStats(party);
+                gameState.savedPartyHp = partyStats.totalHp;
+
+                activeSessions.set(userId, gameState);
+
+                await interaction.channel.send(`⚔️ <@${userId}> queued into Duty Finder and encountered Boss **${boss.name}** [${boss.rarity}★]!`).catch(() => {});
+
+                const embed = new EmbedBuilder()
+                    .setTitle('🚩 Duty Finder Boss Encounter!')
+                    .setDescription(`**Boss:** ${boss.name} [${boss.rarity}★]\n**Boss HP:** ${gameState.savedBossHp} (Boss HP multiplier: ${Math.round(hpMult)}x)\n**Boss ATK:** ${boss.atk}\n[Original HP: ${boss.hp}]\n\nDo you want to fight or leave?`)
+                    .setColor('#E74C3C')
+                    .addFields({ name: '📊 Your Total Stats', value: `❤️ **Total HP:** ${partyStats.totalHp} | ⚔️ **Total ATK:** ${partyStats.totalAtk}`, inline: false });
+
+                const row = new ActionRowBuilder().addComponents(
+                    new ButtonBuilder().setCustomId('btn_start_fight').setLabel('Fight!').setStyle(ButtonStyle.Danger),
+                    new ButtonBuilder().setCustomId('btn_leave_duty').setLabel('Leave').setStyle(ButtonStyle.Secondary)
+                );
+
+                return { content: null, embeds: [embed], components: [row] };
+            }, 'Searching Duty Finder...');
+        }
+
+        // --- HIGH-TIER SUMMON ENCOUNTER ---
+        if (interaction.customId === 'btn_summon') {
+            return await transitionEphemeralFlow(interaction, async () => {
+                const party = await getUserParty(userId);
+                if (party.length === 0) {
+                    return await renderGameWindow(interaction, "⚠️ You don't have any NPCs! Click Recruit first to receive your starter party.", null, party);
+                }
+
+                const userData = await getUserData(userId);
+                if (!userData || Number(userData.shards) < 20) {
+                    return await renderGameWindow(interaction, `⚠️ Not enough shards! You have ${userData.shards}/20 shards.`, userData, party);
+                }
+
+                const gameState = activeSessions.get(userId) || {};
+                await pool.execute('UPDATE sciondex_users SET shards = shards - 20 WHERE user_id = ?', [userId]);
+
+                const boss = getRandomSummonNpc();
+                gameState.activeBoss = boss;
+                gameState.bossSource = 'summon';
+                gameState.lbUses = 0;
+                gameState.lbTriggeredThisFight = false;
+                gameState.reachedUnder5Percent = false;
+                gameState.doubleHpActive = false;
+                gameState.tankShieldTurns = 0;
+                gameState.hiddenPhoenixLoot = 0; 
+
+                const hpMult = getBossHpMultiplier(boss.rarity);
+                const calcHp = Math.round(boss.hp * hpMult);
+
+                gameState.savedBossHp = calcHp;
+                gameState.maxBossHp = calcHp;
+
+                const partyStats = calculatePartyStats(party);
+                gameState.savedPartyHp = partyStats.totalHp;
+
+                activeSessions.set(userId, gameState);
+
+                await interaction.channel.send(`🔮 <@${userId}> spent 20 Shards and summoned High-Tier Boss **${boss.name}** [${boss.rarity}★]!`).catch(() => {});
+
+                const embed = new EmbedBuilder()
+                    .setTitle('🔮 High-Tier Summon Boss Encounter!')
+                    .setDescription(`**Boss:** ${boss.name} [${boss.rarity}★]\n**Boss HP:** ${gameState.savedBossHp} (Boss HP multiplier: ${Math.round(hpMult)}x)\n**Boss ATK:** ${boss.atk}\n[Original HP: ${boss.hp}]\n\nDo you want to fight or leave?`)
+                    .setColor('#9B59B6')
+                    .addFields({ name: '📊 Your Total Stats', value: `❤️ **Total HP:** ${partyStats.totalHp} | ⚔️ **Total ATK:** ${partyStats.totalAtk}`, inline: false });
+
+                const row = new ActionRowBuilder().addComponents(
+                    new ButtonBuilder().setCustomId('btn_start_fight').setLabel('Fight!').setStyle(ButtonStyle.Danger),
+                    new ButtonBuilder().setCustomId('btn_leave_duty').setLabel('Leave').setStyle(ButtonStyle.Secondary)
+                );
+
+                return { content: null, embeds: [embed], components: [row] };
+            }, 'Summoning Boss...');
+        }
+
+        // --- LEAVE FIGHT ---
+        if (interaction.customId === 'btn_leave_duty') {
+            return await transitionEphemeralFlow(interaction, async () => {
+                const gameState = activeSessions.get(userId) || {};
+                const boss = gameState.activeBoss;
+                const rarityTag = boss && boss.rarity ? ` [${boss.rarity}★]` : '';
+                const bossName = boss ? boss.name : 'the boss';
+                
+                gameState.activeBoss = null;
+                activeSessions.set(userId, gameState);
+
+                await interaction.channel.send(`<@${userId}> ran away from **${bossName}**${rarityTag}.`).catch(() => {});
+
+                return await renderGameWindow(interaction, `You ran away from **${bossName}**.`);
+            }, 'Leaving battle...');
+        }
+
+        // --- COMBAT HANDLER ---
+        if (interaction.customId === 'btn_start_fight' || interaction.customId === 'btn_use_phoenix' || interaction.customId === 'btn_execute_lb') {
+            return await transitionEphemeralFlow(interaction, async () => {
+                const gameState = activeSessions.get(userId) || {};
+                const boss = gameState.activeBoss;
+
+                if (!boss) {
+                    return await renderGameWindow(interaction, '⚠️ No active encounter found.');
+                }
+
+                const party = await getUserParty(userId);
+                const partyStats = calculatePartyStats(party);
+                
+                let currentPartyHp = gameState.savedPartyHp || partyStats.totalHp;
+                let currentBossHp = gameState.savedBossHp;
+                const maxBossHp = gameState.maxBossHp || currentBossHp;
+
+                if (interaction.customId === 'btn_use_phoenix') {
+                    await pool.execute(
+                        `UPDATE sciondex_users 
+                         SET phoenix_downs = GREATEST(0, COALESCE(phoenix_downs, 0) - 1) 
+                         WHERE user_id = ?`,
+                        [userId]
+                    );
+                    
+                    if (Math.random() <= 0.50) {
+                        gameState.hiddenPhoenixLoot = (gameState.hiddenPhoenixLoot || 0) + 1;
+                    }
+
+                    currentPartyHp = partyStats.totalHp; 
+                    gameState.doubleHpActive = false;    
+                    gameState.tankShieldTurns = 0;
+                    
+                    await interaction.channel.send(`🪶 <@${userId}> used a Phoenix Down! Party fully revived.`).catch(() => {});
+                }
+
+                if (interaction.customId === 'btn_execute_lb') {
+                    if ((gameState.lbUses || 0) < 4) {
+                        gameState.lbUses = (gameState.lbUses || 0) + 1;
+                        
+                        for (const member of party) {
+                            if (member && member.additional_effect && Math.random() <= 0.40) {
+                                const hiddenDamage = Math.round(maxBossHp * 0.08);
+                                currentBossHp -= hiddenDamage;
+
+                                await interaction.channel.send(`✨ <@${userId}>' Party Member used an ability! **${member.name}** used *${member.additional_effect}..*`).catch(() => {});
+                            }
+                        }
+
+                        if (currentBossHp <= 0) {
+                            return await getBossVictoryPayload(interaction, gameState, userId, true);
+                        }
+
+                        const lbRoll = Math.random() * 100;
+
+                        if (lbRoll < 10) { 
+                            const meleeNames = ['Final Heaven', 'Dragonsong Dive', 'Chimatsuri', 'Doom of the Living', 'The End', 'World-swallower'];
+                            const chosenSkill = getRandomArrayItem(meleeNames);
+                            
+                            await interaction.channel.send(`⚔️ <@${userId}> used Melee LB3 ${chosenSkill} to end **${boss.name}**! ⚔️`).catch(() => {});
+                            return await getBossVictoryPayload(interaction, gameState, userId, true);
+                        } else if (lbRoll < 50) { 
+                            const lbDamage = partyStats.totalAtk * 50;
+                            currentBossHp -= lbDamage;
+
+                            await interaction.channel.send(`💥 <@${userId}> used LB1 Braver to **${boss.name}** and dealt **${lbDamage}** damage! 💥`).catch(() => {});
+
+                            if (currentBossHp <= 0) {
+                                return await getBossVictoryPayload(interaction, gameState, userId, true);
+                            }
+                        } else if (lbRoll < 75) { 
+                            const isRange = Math.random() < 0.50;
+                            const lbDamage = partyStats.totalAtk * 250;
+                            currentBossHp -= lbDamage;
+
+                            if (isRange) {
+                                const rangeNames = ['Sagittarius Arrow', 'Satellite Beam', 'Crimson Lotus'];
+                                const chosenSkill = getRandomArrayItem(rangeNames);
+                                await interaction.channel.send(`🏹 <@${userId}> used Range LB3 ${chosenSkill} to **${boss.name}** and dealt **${lbDamage}** damage! 🏹`).catch(() => {});
+                            } else {
+                                const casterNames = ['Meteor', 'Teraflare', 'Vermillion Scourge', 'Chromatic Fantasy'];
+                                const chosenSkill = getRandomArrayItem(casterNames);
+                                await interaction.channel.send(`☄️ <@${userId}> used Caster LB3 ${chosenSkill} to **${boss.name}** and dealt **${lbDamage}** damage! ☄️`).catch(() => {});
+                            }
+
+                            if (currentBossHp <= 0) {
+                                return await getBossVictoryPayload(interaction, gameState, userId, true);
+                            }
+                        } else { 
+                            const subRoll = Math.random();
+
+                            if (subRoll < (1 / 3)) {
+                                const healerNames = ['Pulse of Life', 'Angel Feathers', 'Astral Stasis', 'Techne Makre'];
+                                const chosenSkill = getRandomArrayItem(healerNames);
+
+                                currentPartyHp = partyStats.totalHp * 2;
+                                gameState.doubleHpActive = true;
+
+                                await interaction.channel.send(`✨ <@${userId}> used Healer LB3 ${chosenSkill}. Party's HP Fully Recovered! ✨`).catch(() => {});
+                            } else if (subRoll < (2 / 3)) {
+                                const lbDamage = partyStats.totalAtk * 150;
+                                currentBossHp -= lbDamage;
+
+                                await interaction.channel.send(`⚔️ <@${userId}> used LB2 Blade Dance to **${boss.name}** and dealt **${lbDamage}** damage! ⚔️`).catch(() => {});
+
+                                if (currentBossHp <= 0) {
+                                    return await getBossVictoryPayload(interaction, gameState, userId, true);
+                                }
+                            } else {
+                                const tankNames = ['Land Waker', 'Last Bastion', 'Dark Force', 'Gunmetal Soul'];
+                                const chosenSkill = getRandomArrayItem(tankNames);
+
+                                gameState.tankShieldTurns = 30;
+                                await interaction.channel.send(`🛡️ <@${userId}> used Tank LB3 ${chosenSkill} to shield the party 🛡️`).catch(() => {});
+                            }
+                        }
+                    } else {
+                        await interaction.channel.send(`⚠️ <@${userId}> has reached the maximum of 4 Limit Breaks for this encounter!`).catch(() => {});
+                    }
+                }
+
+                let limitBreakTriggered = false;
+                let partyDied = false;
+                const effectiveMaxHp = gameState.doubleHpActive ? (partyStats.totalHp * 2) : partyStats.totalHp;
+
+                for (let turn = 1; turn <= 50; turn++) {
+                    if (Math.random() > 0.10) {
+                        currentBossHp -= partyStats.totalAtk;
+                    }
+
+                    if (currentBossHp <= 0) break;
+
+                    if (Math.random() > 0.10) {
+                        if ((gameState.tankShieldTurns || 0) > 0) {
+                            gameState.tankShieldTurns -= 1;
+                        } else {
+                            currentPartyHp -= boss.atk;
+                        }
+                    }
+
+                    if (currentPartyHp > 0 && currentPartyHp <= effectiveMaxHp * 0.25) {
+                        gameState.lbTriggeredThisFight = true;
+
+                        if (currentPartyHp <= effectiveMaxHp * 0.05) {
+                            gameState.reachedUnder5Percent = true;
+                        }
+
+                        if ((gameState.lbUses || 0) < 4 && Math.random() <= 0.10) {
+                            limitBreakTriggered = true;
+                            gameState.savedBossHp = currentBossHp;
+                            gameState.savedPartyHp = currentPartyHp;
+                            break;
+                        }
+                    }
+
+                    if (currentPartyHp <= 0) {
+                        partyDied = true;
+                        gameState.savedBossHp = currentBossHp;
+                        gameState.savedPartyHp = 0;
+                        gameState.doubleHpActive = false;
+                        break;
+                    }
+                }
+
+                gameState.savedPartyHp = currentPartyHp;
+                gameState.savedBossHp = currentBossHp;
+                activeSessions.set(userId, gameState);
+
+                if (limitBreakTriggered) {
+                    const embed = new EmbedBuilder()
+                        .setTitle('⚠️ DANGER! PARTY HP CRITICAL!')
+                        .setDescription(`Your party is under heavy pressure!\n\n💥 **USE LIMIT BREAK NOW!**`)
+                        .setColor('#F1C40F');
+
+                    const row = new ActionRowBuilder().addComponents(
+                        new ButtonBuilder().setCustomId('btn_execute_lb').setLabel('💥 LIMIT BREAK').setStyle(ButtonStyle.Danger)
+                    );
+
+                    return { content: null, embeds: [embed], components: [row] };
+                }
+
+                if (partyDied) {
+                    gameState.hiddenPhoenixLoot = 0;
+                    activeSessions.set(userId, gameState);
+
+                    const latestUserData = await getUserData(userId);
+                    const rarityTag = boss.rarity ? ` [${boss.rarity}★]` : '';
+                    const remainingHpPercent = Math.max(0, Math.round((gameState.savedBossHp / maxBossHp) * 100));
+
+                    if (latestUserData && Number(latestUserData.phoenix_downs) > 0) {
+                        const embed = new EmbedBuilder()
+                            .setTitle('💀 Party Wiped Out!')
+                            .setDescription(`Your party was defeated by **${boss.name}**${rarityTag}!\nBoss remaining HP: **${gameState.savedBossHp} (${remainingHpPercent}%)**\n\nYou have **${latestUserData.phoenix_downs}/10 Phoenix Down(s)**. Use one to revive?`)
+                            .setColor('#C0392B');
+
+                        const row = new ActionRowBuilder().addComponents(
+                            new ButtonBuilder().setCustomId('btn_use_phoenix').setLabel('Use Phoenix Down').setStyle(ButtonStyle.Danger),
+                            new ButtonBuilder().setCustomId('btn_give_up').setLabel('Give Up').setStyle(ButtonStyle.Secondary)
+                        );
+
+                        return { content: null, embeds: [embed], components: [row] };
+                    } else {
+                        gameState.activeBoss = null;
+                        activeSessions.set(userId, gameState);
+
+                        await interaction.channel.send(`💀 <@${userId}>'s party was wiped out by **${boss.name}**${rarityTag}!`).catch(() => {});
+                        return await renderGameWindow(interaction, `💀 Your party was defeated by **${boss.name}**${rarityTag}.`);
+                    }
+                }
+
+                return await getBossVictoryPayload(interaction, gameState, userId, true);
+            }, 'Processing Combat...');
+        }
+
+        // --- GIVE UP ---
+        if (interaction.customId === 'btn_give_up') {
+            return await transitionEphemeralFlow(interaction, async () => {
+                const gameState = activeSessions.get(userId) || {};
+                const boss = gameState.activeBoss;
+                const bossName = boss ? boss.name : 'the boss';
+
+                gameState.hiddenPhoenixLoot = 0;
+                gameState.activeBoss = null;
+                activeSessions.set(userId, gameState);
+
+                return await renderGameWindow(interaction, `You gave up the battle against **${bossName}**.`);
+            }, 'Giving up fight...');
+        }
+
+        // --- GET SHARDS ---
+        if (interaction.customId.startsWith('btn_get_shards_')) {
+            return await transitionEphemeralFlow(interaction, async () => {
+                const shardsEarned = parseInt(interaction.customId.split('_')[3], 10);
+
+                await pool.execute('UPDATE sciondex_users SET shards = shards + ? WHERE user_id = ?', [shardsEarned, userId]);
+
+                const gameState = activeSessions.get(userId) || {};
+                const targetNpc = gameState.pendingNpcToReplace || gameState.activeBoss;
+                
+                gameState.pendingNpcToReplace = null;
+                gameState.activeBoss = null;
+                activeSessions.set(userId, gameState);
+
+                const npcName = targetNpc ? targetNpc.name : 'Encounter';
+                return await renderGameWindow(interaction, `Claimed **${shardsEarned} Shard(s)** from **${npcName}**!`);
+            }, 'Claiming shards...');
+        }
+    } catch (err) {
+        console.error('❌ Error handling ScionDex button interaction:', err);
+    }
+};
+
+// ==========================================
+// --- VICTORY HELPER ---
+// ==========================================
+
+async function getBossVictoryPayload(interaction, gameState, userId, isFirstVictoryRoll = true) {
+    const boss = gameState.activeBoss;
+    let starsDropped = 0;
+    let shardsDropped = 0;
+    let totalRawPhoenixDrops = 0;
+    let actualAcquiredPhoenix = 0;
+    let currentHeld = 0;
+
+    if (isFirstVictoryRoll) {
+        let droppedPhoenix = 0;
+        if (Math.random() <= 0.90) droppedPhoenix += 1;
+        if (Math.random() <= 0.40) droppedPhoenix += 1;
+        if (Math.random() <= 0.15) droppedPhoenix += 1;
+
+        const hiddenLootAcquired = gameState.hiddenPhoenixLoot || 0;
+        totalRawPhoenixDrops = droppedPhoenix + hiddenLootAcquired;
+
+        const mobLoot = calculateMobLootDrops(boss.rarity);
+        starsDropped = mobLoot.starsDropped;
+        shardsDropped = mobLoot.shardsDropped;
+
+        await pool.execute(
+            `UPDATE sciondex_users 
+             SET stars = COALESCE(stars, 0) + ?, 
+                 shards = COALESCE(shards, 0) + ? 
+             WHERE user_id = ?`,
+            [starsDropped, shardsDropped, String(userId)]
+        );
+
+        const userData = await getUserData(userId);
+        currentHeld = userData && userData.phoenix_downs !== null ? Number(userData.phoenix_downs) : 0;
+        const availableSpace = Math.max(0, 10 - currentHeld);
+        actualAcquiredPhoenix = Math.min(totalRawPhoenixDrops, availableSpace);
+
+        if (actualAcquiredPhoenix > 0) {
+            await pool.execute(
+                `UPDATE sciondex_users 
+                 SET phoenix_downs = LEAST(10, COALESCE(phoenix_downs, 0) + ?) 
+                 WHERE user_id = ?`,
+                [actualAcquiredPhoenix, String(userId)]
+            );
+        }
+
+        gameState.hiddenPhoenixLoot = 0;
+        gameState.lastDroppedStars = starsDropped;
+        gameState.lastDroppedShards = shardsDropped;
+        gameState.lastPhoenixDrops = totalRawPhoenixDrops;
+        gameState.lastAcquiredPhoenix = actualAcquiredPhoenix;
+        gameState.lastBonusRate = rollRecruitmentBonus();
+
+        await interaction.channel.send(`🏆 <@${userId}> defeated **${boss.name}** [${boss.rarity}★]!`).catch(() => {});
+    } else {
+        starsDropped = gameState.lastDroppedStars || 0;
+        shardsDropped = gameState.lastDroppedShards || 0;
+        totalRawPhoenixDrops = gameState.lastPhoenixDrops || 0;
+        actualAcquiredPhoenix = gameState.lastAcquiredPhoenix || 0;
+    }
+
+    const userData = await getUserData(userId);
+    currentHeld = userData && userData.phoenix_downs !== null ? Number(userData.phoenix_downs) : 0;
+    const userStars = userData && userData.stars !== null ? Number(userData.stars) : 0;
+
+    let phoenixMessage = '';
+    if (totalRawPhoenixDrops === 0) {
+        phoenixMessage = '🪶 **Phoenix Down:** 0x Phoenix Down(s) dropped. :feather:';
+    } else if (currentHeld >= 10 && isFirstVictoryRoll) {
+        phoenixMessage = `🪶 **Phoenix Down:** ${totalRawPhoenixDrops}x Phoenix Down(s) dropped, but your inventory is FULL (10/10)! :feather:`;
+    } else if (actualAcquiredPhoenix < totalRawPhoenixDrops && isFirstVictoryRoll) {
+        phoenixMessage = `🪶 **Phoenix Down:** ${totalRawPhoenixDrops}x Phoenix Down(s) dropped! Acquired **${actualAcquiredPhoenix}x** due to inventory cap (10/10). :feather:`;
+    } else {
+        phoenixMessage = `🪶 **Phoenix Down:** You obtained **${actualAcquiredPhoenix}x Phoenix Down(s)**! :feather:`;
+    }
+
+    const bonusRate = gameState.lastBonusRate || 0;
+    const baseChance = getBaseRecruitChance(boss.rarity, gameState.bossSource);
+    const currentTotalChance = Math.min(1.0, baseChance + bonusRate);
+    const baseChancePercent = Math.min(100, Math.round(currentTotalChance * 100));
+
+    const neededStarsForMax = Math.max(0, 100 - baseChancePercent);
+
+    let starsToUse = 0;
+    let boostFinalPercent = baseChancePercent;
+
+    if (userStars > 0 && neededStarsForMax > 0) {
+        starsToUse = Math.min(userStars, neededStarsForMax);
+        boostFinalPercent = Math.min(100, baseChancePercent + starsToUse);
+    }
+
+    const shardReward = Number(boss.rarity);
+
+    const embed = new EmbedBuilder()
+        .setTitle(`🏆 VICTORY! Defeated ${boss.name}!`)
+        .setDescription(
+            `⭐ **Stars Balance:** ${userStars}\n\n` +
+            `You defeated **${boss.name}** [${boss.rarity}★]!\n` +
+            `❤️ **HP:** ${boss.hp} | ⚔️ **ATK:** ${boss.atk}\n` +
+            `🏷️ **Title:** ${boss.title || 'None'}\n` +
+            `🌍 **Expansion:** ${boss.expansion || 'Unknown'}\n\n` +
+            `🎁 Loot drops:\n` +
+            `${phoenixMessage}\n` +
+            `:gem: **Shard:** ${shardsDropped} :gem:\n` +
+            `:star: **Star:** ${starsDropped} :star:\n\n` +
+            `✨ **Current Recruit Chance:** **${baseChancePercent}%** (Base: ${Math.round(baseChance * 100)}% | Bonus: +${Math.round(bonusRate * 100)}%)\n\n` +
+            `Choose your reward:`
+        )
+        .setColor('#2ECC71');
+
+    const row = new ActionRowBuilder().addComponents(
+        new ButtonBuilder()
+            .setCustomId('btn_replace_prompt')
+            .setLabel(`Recruit (${baseChancePercent}%)`)
+            .setStyle(ButtonStyle.Success)
+    );
+
+    if (starsToUse > 0) {
+        row.addComponents(
+            new ButtonBuilder()
+                .setCustomId(`btn_use_stars_${starsToUse}_${(boostFinalPercent / 100).toFixed(2)}`)
+                .setLabel(`Use Stars (${starsToUse} stars) (${boostFinalPercent}%)`)
+                .setStyle(ButtonStyle.Primary)
+        );
+    }
+
+    row.addComponents(
+        new ButtonBuilder()
+            .setCustomId(`btn_get_shards_${shardReward}`)
+            .setLabel(`Get Shard Instead (${shardReward})`)
+            .setStyle(ButtonStyle.Secondary)
+    );
+
+    return { content: null, embeds: [embed], components: [row] };
+}
