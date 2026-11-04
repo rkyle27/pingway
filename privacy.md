@@ -1,6 +1,6 @@
 # Privacy Policy for Pingway
 
-**Effective date: November 6, 2026** (replaces the version of November 1, 2026)
+**Effective date: November 4, 2026** (replaces the version of November 1, 2026)
 
 This policy explains what the Pingway Discord bot and the Pingway website (https://pingway.app) collect, why, who it is shared with, and how to delete it. Pingway is a personal fan project run by one developer (River Zola) in Japan.
 
@@ -34,7 +34,7 @@ Newer features (Retainer Watch, Supporter Perks, Pingway Trivia, Honeypot, Ticke
 
 ### Points & Supporter Perks
 - **Ko-fi payments** are matched to your Discord account by a **hashed email** (a scrambled form that can't be turned back into your email) or by a **claim code**.
-- **What is stored:** your point lots (amount, where they came from — Ko-fi or top.gg — and their expiry, 180 days), and your Supporter Perks state and dates.
+- **What is stored:** your point lots (amount, where they came from — Ko-fi, top.gg or other Pingway rewards — and their expiry, 180 days), and your Supporter Perks state and dates.
 - **Payments are handled by Ko-fi.** Pingway never sees your card or payment details.
 
 ### top.gg vote rewards
