@@ -215,24 +215,25 @@ module.exports = {
             }
         }
 
+        // Called after ack(i): the screen is changed with editReply, notices go out as private follow-ups
         async function doShare(i) {
             const day = W.dayOf();
             const st = await T.dayStatus(userId, day);
             const chId = await shareInfo(st);
-            if (!chId) return i.reply({ content: 'Nothing to share right now.', flags: [MessageFlags.Ephemeral] });
+            if (!chId) return await i.followUp({ content: 'Nothing to share right now.', flags: [MessageFlags.Ephemeral] });
             const channel = await interaction.guild.channels.fetch(chId).catch(() => null);
-            if (!channel || typeof channel.send !== 'function') return i.reply({ content: '⚠️ The Trivia share channel is gone. Ask an admin to pick a new one on the website.', flags: [MessageFlags.Ephemeral] });
-            if (!(await T.markShared(userId, day, st.solved.difficulty))) return i.reply({ content: 'Already shared. 🙂', flags: [MessageFlags.Ephemeral] });
+            if (!channel || typeof channel.send !== 'function') return await i.followUp({ content: '⚠️ The Trivia share channel is gone. Ask an admin to pick a new one on the website.', flags: [MessageFlags.Ephemeral] });
+            if (!(await T.markShared(userId, day, st.solved.difficulty))) return await i.followUp({ content: 'Already shared. 🙂', flags: [MessageFlags.Ephemeral] });
             const u = await T.getUser(userId);
             try {
                 await channel.send({ content: T.shareLine(displayNameOf(interaction), st.solved.difficulty, st.solved, W.liveStreak(u, day)), allowedMentions: { parse: [] } });
             } catch (err) {
                 await T.markShared(userId, day, st.solved.difficulty, true).catch(() => {});
-                return i.reply({ content: '⚠️ Pingway can\'t post in <#' + chId + '>. Ask an admin to check its permissions there.', flags: [MessageFlags.Ephemeral], allowedMentions: { parse: [] } });
+                return await i.followUp({ content: '⚠️ Pingway can\'t post in <#' + chId + '>. Ask an admin to check its permissions there.', flags: [MessageFlags.Ephemeral], allowedMentions: { parse: [] } });
             }
             const p = await home();
             p.content += '\n\n📣 Shared in <#' + chId + '>!';
-            return i.update({ ...p, allowedMentions: { parse: [] } });
+            return await i.editReply({ ...p, allowedMentions: { parse: [] } });
         }
 
         async function doGuess(i, prev) {
@@ -277,20 +278,39 @@ module.exports = {
             try {
                 last = i;
                 const id = i.customId;
-                if (id === 'tv_home') { feedback = ''; return i.update(await home()); }
-                if (id === 'tv_howto') return i.update(howTo());
-                if (id === 'tv_play' || id === 'tv_back') { feedback = ''; return i.update(await menu()); }
-                if (id === 'tv_share') return doShare(i);
-                if (id === 'tv_today') return i.update(await todayScreen('tv_home'));
-                if (id === 'tv_today_menu') return i.update(await todayScreen('tv_back'));
+                if (id === 'tv_home') {
+                    if (!(await ack(i))) { last = prev; return; }
+                    feedback = '';
+                    return await i.editReply(await home());
+                }
+                if (id === 'tv_howto') {
+                    if (!(await ack(i))) { last = prev; return; }
+                    return await i.editReply(howTo());
+                }
+                if (id === 'tv_play' || id === 'tv_back') {
+                    if (!(await ack(i))) { last = prev; return; }
+                    feedback = '';
+                    return await i.editReply(await menu());
+                }
+                if (id === 'tv_share') {
+                    if (!(await ack(i))) { last = prev; return; }
+                    return await doShare(i);
+                }
+                if (id === 'tv_today' || id === 'tv_today_menu') {
+                    if (!(await ack(i))) { last = prev; return; }
+                    return await i.editReply(await todayScreen(id === 'tv_today' ? 'tv_home' : 'tv_back'));
+                }
                 if (id.startsWith('tv_d_')) {
                     const key = id.slice(5);
-                    if (!W.DIFF[key]) return i.update(await menu());
                     if (!(await ack(i))) { last = prev; return; }
+                    if (!W.DIFF[key]) return await i.editReply(await menu());
                     diff = key; feedback = '';
                     return await i.editReply(await openDiff());
                 }
-                if (!diff) return i.update(await menu());
+                if (!diff) {
+                    if (!(await ack(i))) { last = prev; return; }
+                    return await i.editReply(await menu());
+                }
                 if (id === 'tv_guess') return doGuess(i, prev);
                 if (id === 'tv_hint') {
                     if (!(await ack(i))) { last = prev; return; }
@@ -304,7 +324,8 @@ module.exports = {
                     return await i.editReply(gameScreen(words[diff], r.play));
                 }
                 if (id === 'tv_giveup') {
-                    return i.update({
+                    if (!(await ack(i))) { last = prev; return; }
+                    return await i.editReply({
                         content: TITLE + '\n🏳️ **Give up?** This difficulty locks for today. (The answer is not shown until tomorrow.)',
                         components: [row(btn('tv_giveup_yes', 'Yes, give up', ButtonStyle.Danger), btn('tv_giveup_no', 'No, keep playing', ButtonStyle.Secondary))]
                     });
