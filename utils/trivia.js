@@ -626,9 +626,10 @@ async function adminTrivia(args) {
 }
 
 let started = false;
-function start() {
+function start(client) {
     if (started) return;
     started = true;
+    require('./triviaRewards').start(client); // season end: hidden monthly bits reward (DM) and server top-3 roles
     const run = async () => {
         try {
             await ensureTables();
