@@ -2,6 +2,7 @@
 // Pingway creates a "Tickets" category with an "open-a-ticket" channel (with the Open Ticket button) and a
 // private "ticket-logs" channel. Each ticket is a private channel only the member and the support roles can see.
 // Closing a ticket saves a text transcript to ticket-logs (if turned on) and deletes the ticket channel.
+// The transcript is a file posted in the server's own ticket-logs channel: Pingway does not keep a copy.
 
 const {
     Events, ChannelType, PermissionFlagsBits, MessageFlags, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle,
@@ -14,6 +15,13 @@ const P = PermissionFlagsBits;
 const DEFAULT_PANEL = 'Need help? Click **Open Ticket** to talk privately with the staff team.';
 const DEFAULT_WELCOME = 'Thanks for opening a ticket! Tell us what you need, and a staff member will help you soon.';
 const TRANSCRIPT_MAX_MESSAGES = 2000;
+// Retention (owner decision): closed tickets in the tickets table (who opened/closed/claimed, the request text, times)
+// are kept for 180 days after closing, then deleted automatically. Open tickets are never deleted.
+// Transcripts are only in the server's Discord ticket-logs channel (owned by the server), so they are not touched.
+const RETENTION_DAYS = 180;
+const CLEANUP_FIRST_MS = 2 * 60 * 1000;
+const CLEANUP_EVERY_MS = 24 * 60 * 60 * 1000;
+const CLEANUP_BATCH = 1000;
 
 let tablesReady = false;
 let started = false;
@@ -377,9 +385,33 @@ async function onInteraction(client, interaction) {
     }
 }
 
+// Daily: delete closed tickets older than RETENTION_DAYS (by closed_at), 1000 rows at a time
+async function cleanupOldTickets() {
+    try {
+        const cutoff = Date.now() - RETENTION_DAYS * 24 * 60 * 60 * 1000;
+        let total = 0;
+        for (;;) {
+            const [rows] = await pool.query("SELECT id FROM tickets WHERE status = 'closed' AND COALESCE(closed_at, created_at) < ? ORDER BY id LIMIT " + CLEANUP_BATCH, [cutoff]);
+            if (!rows.length) break;
+            const [res] = await pool.query('DELETE FROM tickets WHERE id IN (' + rows.map(() => '?').join(',') + ") AND status = 'closed'", rows.map(r => r.id));
+            const n = Number(res && res.affectedRows) || 0;
+            total += n;
+            if (!n || rows.length < CLEANUP_BATCH) break;
+        }
+        if (total) console.log('🧹 [TICKETS] Deleted ' + total + ' closed ticket' + (total === 1 ? '' : 's') + ' older than ' + RETENTION_DAYS + ' days.');
+        return total;
+    } catch (err) {
+        if (err.code === 'ER_NO_SUCH_TABLE' || /no such table|doesn't exist/i.test(err.message)) return 0; // no tickets yet
+        console.error('❌ [TICKETS] Ticket cleanup failed:', err.message);
+        return 0;
+    }
+}
+
 function start(client) {
     if (started) return;
     started = true;
+    setTimeout(cleanupOldTickets, CLEANUP_FIRST_MS).unref();
+    setInterval(cleanupOldTickets, CLEANUP_EVERY_MS).unref();
     client.on(Events.InteractionCreate, interaction => onInteraction(client, interaction).catch(() => {}));
     // A ticket channel deleted by hand counts as closed
     client.on(Events.ChannelDelete, channel => {
@@ -389,4 +421,4 @@ function start(client) {
     setInterval(() => load(client), RELOAD_MS);
 }
 
-module.exports = { start, load, ensureTables };
+module.exports = { start, load, ensureTables, cleanupOldTickets };

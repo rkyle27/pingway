@@ -55,10 +55,12 @@ Newer features (Retainer Watch, Supporter Perks, Pingway Trivia, Honeypot, Ticke
 - A "do not chat here" channel that removes hacked accounts posting spam.
 - **For each caught account, Pingway stores:** user ID, username, display name, server nickname, the channel, the result, whether a DM was sent to them, and the time.
 - This log is **visible to that server's staff** on the website, and the **server owner gets a DM report**.
+- Caught-account entries are **deleted automatically after 90 days**.
 
 ### Tickets (server admins)
 - Pingway stores the server's ticket channels and settings.
-- **If the server turns transcripts on**, a transcript of the ticket's messages is saved for the server's staff when the ticket is closed.
+- **For each ticket, Pingway stores:** the ticket number and channel, who opened, claimed and closed it (user IDs), the request text (up to 500 characters) and the times. Closed tickets are **deleted automatically 180 days after closing**.
+- **Transcripts:** if the server turns them on, the transcript is posted as a file in the **server's own ticket-logs channel** on Discord when the ticket is closed. **Pingway does not keep a copy.** It stays in that channel for as long as the server keeps it, and the server's admins can delete it at any time.
 
 ### Reaction Roles (server admins)
 - **What is stored per server:** the message, channel and emoji → role settings.
@@ -121,6 +123,8 @@ We may also disclose data if required by law.
 - Reminders: deleted after they are sent (repeating reminders stay until removed).
 - Pingway Trivia daily games: deleted after 100 days.
 - Points: each point lot expires 180 days after it was given.
+- Honeypot catches: deleted after 90 days.
+- Tickets: closed tickets are deleted 180 days after closing. Transcripts are not kept by Pingway (they are only in the server's own ticket-logs channel).
 - AI chat memory: memory only, cleared on restart or "release recollection".
 - If Pingway is removed from a server, that server's settings may be deleted. Personal settings are kept until you ask for deletion, because they are used in every server.
 
