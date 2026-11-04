@@ -25,9 +25,21 @@ async function getDmEnabled(userId) {
     return rows.length > 0 ? Number(rows[0].dm_enabled) === 1 : false;
 }
 
+// DM interval chosen on the website (minutes). Missing column or row = 1 minute.
+async function getInterval(userId) {
+    try {
+        const [rows] = await pool.execute('SELECT alert_interval FROM market_alerts WHERE user_id = ?', [userId]);
+        const m = rows.length > 0 ? Number(rows[0].alert_interval) : 1;
+        return [1, 2, 5, 10, 15, 30].includes(m) ? m : 1;
+    } catch (e) {
+        return 1;
+    }
+}
+
 async function buildPayload(userId, notice) {
     const dmEnabled = await getDmEnabled(userId);
     const dcs = await getUserDCs(userId);
+    const interval = await getInterval(userId);
     const dcText = dcs.length > 0
         ? BT + dcs.join(', ') + BT
         : '*None set* — use ' + BT + '/datacenter' + BT + ' to choose your Data Centers. No alerts are sent until you do.';
@@ -35,7 +47,8 @@ async function buildPayload(userId, notice) {
     const content = (notice ? notice + '\n\n' : '') +
         '📢 **Market Alert Settings**\n\n' +
         '• **DM Notifications:** ' + (dmEnabled ? '🟢 Enabled' : '🔴 Disabled') + '\n' +
-        '• **Data Centers (from /datacenter):** ' + dcText;
+        '• **Data Centers (from /datacenter):** ' + dcText + '\n' +
+        '• **DM interval:** every ' + interval + (interval === 1 ? ' minute' : ' minutes') + ' (also used for retainer undercuts; change it in My Settings on https://pingway.app/me.html)';
 
     const row = new ActionRowBuilder().addComponents(
         new ButtonBuilder()
@@ -54,7 +67,7 @@ async function buildPayload(userId, notice) {
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('marketalert')
-        .setDescription('Turn market price drop alert DMs on or off (uses your /datacenter Data Centers)'),
+        .setDescription('Turn market price drop alert DMs on or off (DM interval is set on the website)'),
 
     async execute(interaction) {
         try {

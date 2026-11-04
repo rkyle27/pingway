@@ -1,12 +1,12 @@
 # Privacy Policy for Pingway
 
-**Effective date: November 1, 2026** (replaces the version of July 26, 2026)
+**Effective date: November 6, 2026** (replaces the version of November 1, 2026)
 
-This policy explains what the Pingway Discord bot and the Pingway website (https://pingway.vercel.app) collect, why, who it is shared with, and how to delete it. Pingway is a personal fan project run by one developer (River Zola) in Japan.
+This policy explains what the Pingway Discord bot and the Pingway website (https://pingway.app) collect, why, who it is shared with, and how to delete it. Pingway is a personal fan project run by one developer (River Zola) in Japan.
 
 ## 1. What we collect
 
-**Discord identifiers** — your Discord user ID, and the IDs of servers, channels and roles where you use Pingway. We do not collect your email address, password or payment details.
+**Discord identifiers** — your Discord user ID, and the IDs of servers, channels and roles where you use Pingway. We do not collect your password or payment card details. We do not store your email address; for Ko-fi supporters only a hashed (scrambled) form of it is used to match payments (see *Points & Supporter Perks* in section 1a).
 
 **Settings and data you create with Pingway**, only when you use the feature:
 | Feature | What is stored |
@@ -21,7 +21,71 @@ This policy explains what the Pingway Discord bot and the Pingway website (https
 | `/sciondex` | Your game progress (party, shards, stars) |
 | Server settings (admins) | Channel and role choices, release event, Google Sheet IDs for `/raid` and `/logger` |
 
+Newer features (Retainer Watch, Supporter Perks, Pingway Trivia, Honeypot, Tickets and more) are explained one by one in section 1a.
+
 **Command usage** — the bot's console log records which command was used, by which user ID, and in which server, to fix bugs. These logs are not shared.
+
+## 1a. Features in detail
+
+### Retainer Watch (website → Retainers)
+- **What is stored:** your Discord user ID, the retainers you add (world, retainer name, and one item it sells), the listing prices Pingway tracks for them, and the alert state (what you were already told about).
+- **Why:** to DM you when someone undercuts your retainer's listing.
+- **Your choice:** remove a retainer at any time on the Retainers page; its data goes with it.
+
+### Points & Supporter Perks
+- **Ko-fi payments** are matched to your Discord account by a **hashed email** (a scrambled form that can't be turned back into your email) or by a **claim code**.
+- **What is stored:** your point lots (amount, where they came from — Ko-fi or top.gg — and their expiry, 180 days), and your Supporter Perks state and dates.
+- **Payments are handled by Ko-fi.** Pingway never sees your card or payment details.
+
+### top.gg vote rewards
+- **What is stored:** the vote ID, your Discord user ID, the points you got, the time of the vote, and whether the thank-you DM was sent.
+
+### Market tools (Supporter Perk: `/bestsellers`, `/buysell`, website market tools)
+- **What is stored:** your market tool settings (world, filters, sort), saved to your account so they are the same on the website and in Discord.
+- Market data comes from **Universalis**; item data comes from **XIVAPI**.
+- Pingway also keeps a **shared table of popular items per region**. It contains no personal data.
+
+### Market alerts in a server channel
+- **What is stored:** which servers and channels you picked to receive your market alerts.
+
+### DM status
+- If Pingway can't DM you (DMs closed, or no shared server), it remembers your user ID, the reason and when to try again, so your alerts pause instead of failing over and over. The website shows a warning and an "I fixed it" button that clears it.
+
+### Honeypot (server admins)
+- A "do not chat here" channel that removes hacked accounts posting spam.
+- **For each caught account, Pingway stores:** user ID, username, display name, server nickname, the channel, the result, whether a DM was sent to them, and the time.
+- This log is **visible to that server's staff** on the website, and the **server owner gets a DM report**.
+
+### Tickets (server admins)
+- Pingway stores the server's ticket channels and settings.
+- **If the server turns transcripts on**, a transcript of the ticket's messages is saved for the server's staff when the ticket is closed.
+
+### Reaction Roles (server admins)
+- **What is stored per server:** the message, channel and emoji → role settings.
+- For extra messages above the free limit: which admin's Supporter Perks keep them running (that admin's user ID).
+
+### FFXIV News (server admins)
+- **What is stored per server:** the news channel, language/region and topics chosen. No personal data.
+
+### Raid & Logger sheets (server admins)
+- **What is stored per server:** sheet names, Google Sheet IDs, the role that can see each sheet, whether it is on or off, which admin created a sheet, and whose Supporter Perks keep it on.
+- **Sheets Pingway creates** are owned by a Google account run by Pingway and are shared as **"anyone with the link can edit"**. Pingway's own service account is added as an editor so it can read raid schedules and write logs.
+- **Logger sheets record** who used which command, when and where: user tag, user ID, server, channel, command and options.
+- **Removing a sheet Pingway made deletes it.**
+
+### AI Assistant (server admins)
+- One AI channel per server. Only that setting is stored (see section 3a for how AI is used).
+
+### Bot status
+- The bot saves a heartbeat (the time, and whether maintenance is on) so the website can show its status pill. No personal data.
+
+### Pingway Trivia (`/trivia`)
+- **About you:** your Discord user ID, display name and avatar (updated each time you play, used only for leaderboards); your bits (all time and this month), streak, last solve day, and whether you chose to hide from leaderboards.
+- **Each day's games** (status, number of wrong guesses, hints used, letters shown, bits, the server where you started, whether you shared) are **deleted after 100 days**.
+- **Per server**, Pingway remembers who played there (to build that server's leaderboard) and the share channel an admin picked.
+- **Your typed guesses are never stored.**
+- **Leaderboards** show only name, avatar, bits and streak, and only to logged-in members of that server. Hide yourself in **My Settings → Pingway Trivia**.
+- Word data comes from **XIVAPI**.
 
 ## 2. Why we use it
 Only to run Pingway's features (reminders, alerts, settings, games), to keep it working, and to prevent abuse. We do not sell, rent or trade your data, we do not show ads, and we do not build profiles of you.
@@ -31,8 +95,10 @@ Pingway needs these services to work. They only receive what the feature needs:
 - **Cybrancee** — hosts the bot and its database.
 - **Vercel** — hosts the website.
 - **OpenRouter → Google (Gemini AI model)** — **only** used for the AI assistant, see section 3a below.
-- **Google Sheets** — only if a server admin sets up `/logger`: who used which command and when is written to **that server's own Google Sheet**. `/raid` only reads the sheet the admins chose.
-- **Universalis, XIVAPI, xivup, The Lodestone** — Pingway looks up item prices, item names, world status and Lodestone character pages. Only item names/IDs, Data Centers or your Lodestone character ID are sent — never your Discord data.
+- **Google Sheets / Google Drive** — only if a server admin sets up Raid or Logger sheets: who used which command and when is written to **that server's Logger sheet**, and `/raid` reads the server's Raid sheets. Sheets Pingway creates are kept in a Google account run by Pingway (see section 1a).
+- **Ko-fi** — handles Supporter Perks payments. Pingway only receives what is needed to give you your points and perks (see section 1a), never card details.
+- **top.gg** — tells Pingway when you vote, so you get your vote reward points.
+- **Universalis, XIVAPI, xivup, The Lodestone, Lodestone News API (lodestonenews.com)** — Pingway looks up item prices, item and trivia word data, world status, Lodestone character pages and FFXIV news. Only item names/IDs, Data Centers or your Lodestone character ID are sent — never your Discord data.
 
 We may also disclose data if required by law.
 
@@ -53,12 +119,17 @@ We may also disclose data if required by law.
 ## 5. How long we keep it
 - Settings and game data: until you delete them or ask us to.
 - Reminders: deleted after they are sent (repeating reminders stay until removed).
+- Pingway Trivia daily games: deleted after 100 days.
+- Points: each point lot expires 180 days after it was given.
 - AI chat memory: memory only, cleared on restart or "release recollection".
 - If Pingway is removed from a server, that server's settings may be deleted. Personal settings are kept until you ask for deletion, because they are used in every server.
 
 ## 6. Your choices and deleting your data
-- Change or turn off most settings yourself with the slash commands or at https://pingway.vercel.app.
+- Change or turn off most settings yourself with the slash commands or at https://pingway.app.
 - AI: say "release recollection", "clear all my reminders", or ask Pingway to forget a note.
+- Retainer Watch: remove a retainer at any time on the website's Retainers page.
+- Pingway Trivia: hide yourself from leaderboards in **My Settings → Pingway Trivia**.
+- Server admins: removing a Raid or Logger sheet that Pingway made deletes the sheet.
 - To delete **all** your data, contact the developer in the [support server](https://discord.gg/DDdV48X4G2). We will delete it within 30 days.
 
 ## 7. Security

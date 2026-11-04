@@ -1,4 +1,4 @@
-﻿const { SlashCommandBuilder, PermissionFlagsBits, MessageFlags } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits, MessageFlags } = require('discord.js');
 const { setBotBusy, isBotBusy } = require('../utils/lock');
 
 // Helper to delay execution and prevent hitting Discord rate limits

@@ -1,4 +1,4 @@
-﻿let isBusy = false;
+let isBusy = false;
 let currentTaskName = '';
 
 module.exports = {

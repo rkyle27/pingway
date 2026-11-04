@@ -90,6 +90,17 @@ async function initDatabase() {
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
         `);
 
+        // One AI channel per server: servers that still have several keep only the newest channel
+        // (Discord channel IDs grow over time, so the highest ID is the most recently made channel).
+        try {
+            await connection.execute(`
+                DELETE a FROM ai_active_channels a
+                JOIN ai_active_channels b ON a.guild_id = b.guild_id AND CAST(a.channel_id AS UNSIGNED) < CAST(b.channel_id AS UNSIGNED)
+            `);
+        } catch (err) {
+            console.warn('⚠️ [AI] Could not reduce servers to one AI channel:', err.message);
+        }
+
         await connection.execute(`
             CREATE TABLE IF NOT EXISTS firmament_personal_data (
                 user_id VARCHAR(64) PRIMARY KEY,
@@ -278,6 +289,24 @@ async function initDatabase() {
     } finally {
         if (connection) connection.release();
     }
+}
+
+// The database host closes connections that sit idle too long. The next query on such a connection fails
+// with "disconnected by the server because of inactivity" before it runs, so it is safe to try once more
+// on a fresh connection (the pool drops the dead one by itself).
+function isIdleDisconnect(err) {
+    return Boolean(err) && (err.errno === 4031 || /disconnected by the server because of inactivity/i.test(String(err.message || '')));
+}
+for (const method of ['execute', 'query']) {
+    const original = pool[method].bind(pool);
+    pool[method] = async (...args) => {
+        try {
+            return await original(...args);
+        } catch (err) {
+            if (!isIdleDisconnect(err)) throw err;
+            return original(...args);
+        }
+    };
 }
 
 module.exports = { pool, initDatabase };

@@ -1,0 +1,85 @@
+PINGWAY - CONSOLE COMMANDS
+=========================
+Type these in the Cybrancee panel Console tab and press Enter.
+Commands are not case sensitive. <id> = a Discord user ID (numbers only, e.g. 123456789012345678).
+Tip: in Discord, turn on Developer Mode, then right-click a user -> Copy User ID.
+
+
+BOT CONTROL
+-----------
+maintenance   (or: maint)
+    Turns maintenance mode ON or OFF (each use switches it).
+    While ON, all slash commands and AI replies are blocked.
+
+status
+    Shows whether maintenance mode is ON or OFF.
+
+
+SERVERS
+-------
+server list   (or: servers)
+    Lists every server Pingway is in: name, server ID, member count, owner ID.
+
+announce
+    PREVIEW only - nothing is sent.
+    Reads announcement.txt and shows where each server would get it
+    (Community updates channel -> moderator channel -> /notifhere channel,
+    otherwise one DM to the server owner).
+
+announce confirm
+    Sends the announcement shown in the preview.
+    Must be typed within 2 minutes of "announce". Never pings anyone.
+
+purge
+    PREVIEW only - nothing is deleted.
+    Lists leftover data from servers Pingway is no longer in.
+
+purge confirm
+    Deletes the leftover server data shown in the preview.
+    Must be typed within 60 seconds of "purge". Personal user data is never deleted.
+
+
+USERS
+-----
+whois <id>
+    Read only. Shows the user's Discord name, market alert setting,
+    /datacenter Data Centers and /ignconfig details.
+
+
+retainers <id>
+    Read only. Shows each retainer the user has (Watching / OFF / PAUSED), its check item,
+    every item the bot is tracking with the tracked price, when it was last seen,
+    and a live Universalis check: your price vs the lowest other price -> OK or UNDERCUT.
+    Checks up to 20 items.
+
+POINTS (Retainer Watch + Supporter Perks)
+-----------------------------------------
+Points come from Ko-fi memberships and tips: $5 = 50, $10 = 110, $20 = 250, $50 = 700, $100 = 1,500,
+and 10 points per dollar for the rest (e.g. $11 = 120). 1 point = 1 extra retainer for a month.
+Supporter Perks cost 10 points a month (users turn them on in My Settings on the website).
+The old "credits ..." commands still work and do the same thing.
+
+points <id>
+    Read only. Shows the user's Supporter Perks (on/canceled/off and the date), point balance and
+    when each part expires, their current retainer month (start -> end), paid slots, and their
+    retainers (switched-off ones are marked [off], paused ones [paused]).
+
+points add <id> <amount>
+    Gives 1-100000 points. They expire 180 days from today (same as payments).
+    Works like a Ko-fi payment: the points only go into the balance. They are used when the
+    user switches retainers ON or enables Supporter Perks on the website (or at the monthly renewal).
+    Paused retainers are NOT resumed automatically. Creates a supporter account + claim code if they have none.
+    Use for: gifts, giveaways, payments held for review (not USD / under $1), testing.
+
+points remove <id> <amount>
+    Takes points off after a refund or chargeback (newest points first).
+    If some were already used this month, it also lowers their paid slots
+    and pauses the newest extra retainers that were ON.
+
+
+NOTES
+-----
+- Retainer Watch tables are created the first time someone opens the Retainers page.
+  Until then, the points commands say the tables do not exist yet.
+- Nov 2026: credits became points. Old balances were multiplied by 10 once (automatically).
+- Unknown commands just print: Unknown console command.

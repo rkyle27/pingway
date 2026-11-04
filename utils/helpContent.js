@@ -1,7 +1,7 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 
 // One shared help list for /help and the chat "help" reply, so they never drift apart.
-const WEBSITE_URL = 'https://pingway.vercel.app';
+const WEBSITE_URL = 'https://pingway.app';
 const INVITE_URL = 'https://discord.com/oauth2/authorize?client_id=1530586586524418048';
 const SUPPORT_URL = 'https://discord.gg/DDdV48X4G2';
 const PRIVACY_URL = 'https://github.com/rkyle27/pingway/blob/main/privacy.md';
@@ -16,7 +16,14 @@ function buildHelpPayload() {
                 name: '💰 Market Board',
                 value: '**/price <item>** — Cross-world prices across your Data Centers.\n' +
                        '**/datacenter** — Choose your Data Centers (used everywhere).\n' +
-                       '**/marketalert** — DMs every 5 min with listings 80%+ below the usual price.'
+                       '**/marketalert** — DMs listings 80%+ below the usual price (every minute by default; change the DM interval on the website).'
+            },
+            {
+                name: '💜 Supporter Perks',
+                value: '**/bestsellers** — Top selling items on your world or data center.\n' +
+                       '**/buysell** — Popular items cheaper on another world than on yours.\n' +
+                       '**/retainers** — Your watched retainers and their undercut items.\n' +
+                       'Settings: website → Retainers → Market tools. Perks: 10 points a month (vote on top.gg for points).'
             },
             {
                 name: '🌍 Status & Timers',
@@ -38,21 +45,24 @@ function buildHelpPayload() {
             },
             {
                 name: '🃏 Games',
-                value: '**/sciondex** — Recruit NPCs, build a party, fight bosses.\n' +
+                value: '**/trivia** — Guess the FFXIV word of the day (6 difficulties), earn bits, keep your streak.\n' +
+                       '**/sciondex** — Recruit NPCs, build a party, fight bosses.\n' +
                        '**/nissi** — TEA Nissi mechanics quiz.'
             },
             {
                 name: '🤖 AI Assistant',
-                value: 'Only in channels an admin enabled with **/ailistenhere**. Chat naturally, e.g.\n' +
+                value: 'Only in the AI channel an admin set with **/ailistenhere** (one per server). Chat naturally, e.g.\n' +
                        '*"Remind me to do roulettes in 2 hours"* · *"Add task Buy Pots"* · *"Show my task list"*\n' +
                        'Say **release recollection** to wipe the short chat memory.'
             },
             {
                 name: '🛠️ Admin',
-                value: '**/ailistenhere** — Turn AI chat on/off in this channel.\n' +
+                value: '**/ailistenhere** — Move AI chat to this channel (run it again there to turn it off).\n' +
                        '**/notifhere** — Set this channel for Pingway notifications.\n' +
                        '**/clean** — Bulk-delete messages (also older than 14 days).\n' +
-                       '**/logger** — Log command usage to a Google Sheet.'
+                       '**/honeypot** — "Do not chat here" channel that removes hacked spam accounts.\n' +
+                       '**/logger** — Log command usage to a Google Sheet.\n' +
+                       '🌐 On the website: **Reaction Roles**, **Tickets** (help desk) and **FFXIV News** channels.'
             },
             {
                 name: '📨 Other',

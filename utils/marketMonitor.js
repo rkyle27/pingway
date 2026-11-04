@@ -1,8 +1,10 @@
 const WebSocket = require('ws');
 const { BSON } = require('bson');
 const axios = require('axios');
-const { EmbedBuilder } = require('discord.js');
+const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const { pool } = require('./db');
+const retainerWatch = require('./retainerWatch');
+const dmStatus = require('./dmStatus');
 
 const UNIVERSALIS_WS_URL = 'wss://universalis.app/api/ws';
 const UNIVERSALIS_API = 'https://universalis.app/api/v2';
@@ -33,7 +35,8 @@ const MIN_SALES_FOR_MEDIAN = 5;               // Need at least 5 recent sales of
 const HISTORY_ENTRIES = 80;                   // Recent sales fetched per item/DC to compute the median
 const RECENT_WINDOW_MS = 7 * 24 * 60 * 60 * 1000; // Median window like the Universalis website: last 7 days
 const LISTING_CHECK_COUNT = 3;                // Check 2: compare against the average of the next 3 cheapest other listings
-const FLUSH_INTERVAL_MS = 5 * 60 * 1000;      // Send collected alerts every 5 minutes
+const FLUSH_INTERVAL_MS = 60 * 1000;          // Check every minute whether collected alerts are due
+const ALERT_INTERVALS = [1, 2, 5, 10, 15, 30]; // DM interval choices in minutes (set on the website, default 1)
 const MAX_ITEMS_PER_MESSAGE = 10;             // Up to 10 items per DM message (no limit on messages)
 const MAX_MESSAGE_CHARS = 5800;               // Stay under Discord's 6,000 character limit per message
 const BASELINE_CACHE_MS = 15 * 60 * 1000;     // Cache Universalis price baselines for 15 minutes
@@ -50,6 +53,7 @@ let reconnectDelay = 10000;
 let messageCount = 0;
 let started = false;
 let subscribedWorlds = new Set();
+let subscribedRemoveWorlds = new Set(); // Retainer Watch: listings/remove channels
 let subscribers = []; // [{ userId, dcs: ['Mana', ...] }]
 
 const baselineCache = new Map();  // 'itemId:dc' -> { time, data }
@@ -60,6 +64,10 @@ const alertCooldowns = new Map(); // 'user:item:world:quality' -> time
 const pendingAlerts = new Map();  // userId -> Map('itemId:quality' -> { itemId, hq, rows: Map(worldId -> row) })
 let flushTimer = null;
 let flushing = false;
+const alertIntervals = new Map(); // userId -> minutes (only users who chose something other than 1)
+const lastSentAt = new Map();     // userId -> time of their last alert DM
+let alertTargets = new Map();     // userId -> [{ guildId, channelId }] for users who chose "Server channel" (set on the website)
+const targetWarned = new Map();   // 'userId:guildId' -> time (keeps the console quiet)
 let pendingLookups = 0;
 let nextLookupAt = 0;
 
@@ -124,12 +132,59 @@ async function loadSubscribers() {
     }
     const byUser = new Map();
     for (const [userId, c] of chosen) byUser.set(userId, new Set(parseDCList(c.datacenters)));
+    await loadTargets();
     const list = [];
     for (const [userId, dcSet] of byUser) {
+        // Can't DM them right now: don't collect alerts for nothing (unless their alerts go to a server channel)
+        if (dmStatus.isBlocked(userId) && !alertTargets.has(userId)) continue;
         const dcs = Array.from(dcSet).filter(dc => DC_WORLD_MAP[dc]);
         if (dcs.length > 0) list.push({ userId, dcs });
     }
     return { list, enabledCount: byUser.size };
+}
+
+// Users who send market alerts to server channels instead of DMs (up to 3 servers they own or are admin in).
+// Missing column/table (website not opened yet) = everyone gets DMs.
+async function loadTargets() {
+    const next = new Map();
+    try {
+        // Two simple queries instead of a JOIN: the two tables were created with different collations
+        const [users] = await pool.execute("SELECT user_id FROM market_alerts WHERE alert_target = 'server'");
+        const serverUsers = new Set(users.map(u => String(u.user_id)));
+        const [rows] = serverUsers.size
+            ? await pool.execute('SELECT user_id, guild_id, channel_id FROM market_alert_channels ORDER BY user_id, position')
+            : [[]];
+        for (const r of rows) {
+            const id = String(r.user_id);
+            if (!serverUsers.has(id)) continue;
+            if (!next.has(id)) next.set(id, []);
+            next.get(id).push({ guildId: String(r.guild_id), channelId: String(r.channel_id) });
+        }
+    } catch (err) {
+        if (!/Unknown column|doesn't exist/i.test(err.message)) console.error('❌ [MARKET] Could not load alert channels:', err.message);
+    }
+    alertTargets = next;
+}
+
+// DM interval per user (market alerts + retainer undercuts). Missing column or error = everyone 1 minute.
+async function loadIntervals() {
+    try {
+        const [rows] = await pool.execute('SELECT user_id, alert_interval FROM market_alerts WHERE alert_interval <> 1');
+        alertIntervals.clear();
+        for (const r of rows) {
+            const m = Number(r.alert_interval);
+            if (ALERT_INTERVALS.includes(m)) alertIntervals.set(String(r.user_id), m);
+        }
+    } catch (err) {
+        if (!/Unknown column/i.test(err.message)) console.error('❌ [MARKET] Could not load DM intervals:', err.message);
+    }
+}
+
+// Due when the user's last alert DM was at least their interval ago (5 seconds of slack for timer drift)
+function isDue(userId, now) {
+    const last = lastSentAt.get(userId);
+    if (!last) return true;
+    return now - last >= (alertIntervals.get(userId) || 1) * 60 * 1000 - 5000;
 }
 
 function getNeededWorlds() {
@@ -137,6 +192,7 @@ function getNeededWorlds() {
     for (const sub of subscribers) {
         for (const dc of sub.dcs) DC_WORLD_MAP[dc].forEach(id => worlds.add(id));
     }
+    for (const id of retainerWatch.getWorlds()) worlds.add(id); // worlds of watched retainers
     return worlds;
 }
 
@@ -164,6 +220,20 @@ function syncSubscriptions() {
             added++;
         }
     }
+    // Retainer Watch: also hear when listings are sold or pulled on watched worlds
+    const removeNeeded = retainerWatch.getWorlds();
+    for (const id of Array.from(subscribedRemoveWorlds)) {
+        if (!removeNeeded.has(id)) {
+            sendBson({ event: 'unsubscribe', channel: 'listings/remove{world=' + id + '}' });
+            subscribedRemoveWorlds.delete(id);
+        }
+    }
+    for (const id of removeNeeded) {
+        if (!subscribedRemoveWorlds.has(id)) {
+            sendBson({ event: 'subscribe', channel: 'listings/remove{world=' + id + '}' });
+            subscribedRemoveWorlds.add(id);
+        }
+    }
     if (added || removed) {
         console.log('📡 [WS] Subscriptions updated: +' + added + ' / -' + removed + ' (watching ' + subscribedWorlds.size + ' worlds).');
     }
@@ -185,6 +255,7 @@ function cleanupSocket() {
         ws = null;
     }
     subscribedWorlds = new Set();
+    subscribedRemoveWorlds = new Set();
 }
 
 function connect(client) {
@@ -212,12 +283,17 @@ function connect(client) {
             console.error('❌ [PARSE ERROR] Could not decode WS message:', error.message);
             return;
         }
+        if (message && message.event === 'listings/remove') {
+            retainerWatch.onListingsRemove(message).catch(err => console.error('❌ [RETAINER ERROR]:', err.message));
+            return;
+        }
+        retainerWatch.onListingsAdd(message).catch(err => console.error('❌ [RETAINER ERROR]:', err.message));
         handleListingsAdd(client, message).catch(err => console.error('❌ [EVAL ERROR]:', err.message));
     });
 
     ws.on('close', (code, reason) => {
         cleanupSocket();
-        if (subscribers.length === 0) return; // nothing to watch; the refresh loop reconnects when needed
+        if (subscribers.length === 0 && !retainerWatch.hasWatches()) return; // nothing to watch; the refresh loop reconnects when needed
         const reasonText = reason && reason.length ? reason.toString() : 'None';
         console.log('⚠️ [WS CLOSED] Code: ' + code + ', Reason: ' + reasonText + '. Reconnecting in ' + Math.round(reconnectDelay / 1000) + 's...');
         reconnectTimer = setTimeout(() => connect(client), reconnectDelay);
@@ -397,7 +473,7 @@ async function handleListingsAdd(client, message) {
     }
 }
 
-// Collect matches per user; they are sent together every 5 minutes by flushAlerts()
+// Collect matches per user; they are sent together by flushAlerts() at each user's DM interval
 function notifySubscribedUsers(client, alertData) {
     const now = Date.now();
     const quality = alertData.hq ? 'hq' : 'nq';
@@ -459,7 +535,7 @@ function bestPercent(entry) {
 
 function buildItemEmbed(entry, itemName) {
     const rows = sortRows(Array.from(entry.rows.values()));
-    const worldCells = rows.map(r => (WORLD_NAMES[r.worldId] || ('World ' + r.worldId)) + ' (' + r.dc + ')');
+    const worldCells = rows.map(r => '[' + r.dc + '] ' + (WORLD_NAMES[r.worldId] || ('World ' + r.worldId)));
     const priceCells = rows.map(r => r.price.toLocaleString('en-US') + ' Gil');
     const avgCells = rows.map(r => Math.round(r.avg).toLocaleString('en-US') + ' Gil');
 
@@ -484,27 +560,109 @@ function buildItemEmbed(entry, itemName) {
     if (shown < rows.length) lines.push('...and ' + (rows.length - shown) + ' more world(s)');
 
     const name = itemName ? itemName + ' (#' + entry.itemId + ')' : 'Item #' + entry.itemId;
+    // Item name alone in its own box (Discord shows a copy button) for pasting into the in-game market board search
+    const nameBox = itemName ? CODE_FENCE + '\n' + String(itemName).replace(/`/g, '') + '\n' + CODE_FENCE + '\n' : '';
     const title = '🚨 ' + name + ' — ' + (entry.hq ? 'HQ' : 'NQ') + ' (up to ' + bestPercent(entry).toFixed(1) + '%)';
 
     return new EmbedBuilder()
         .setTitle(title.slice(0, 256))
         .setURL('https://universalis.app/market/' + entry.itemId)
         .setColor('#e74c3c')
-        .setDescription(CODE_FENCE + '\n' + lines.join('\n') + '\n' + CODE_FENCE);
+        .setDescription(nameBox + CODE_FENCE + '\n' + lines.join('\n') + '\n' + CODE_FENCE);
+}
+
+// Split embeds into messages: max 10 items each, and under Discord's character limit
+function chunkEmbeds(embeds) {
+    const messages = [];
+    let current = [];
+    let chars = 0;
+    for (const embed of embeds) {
+        const size = (embed.data.title || '').length + (embed.data.description || '').length;
+        if (current.length >= MAX_ITEMS_PER_MESSAGE || (current.length > 0 && chars + size > MAX_MESSAGE_CHARS)) {
+            messages.push(current);
+            current = [];
+            chars = 0;
+        }
+        current.push(embed);
+        chars += size;
+    }
+    if (current.length) messages.push(current);
+    return messages;
+}
+
+// "Server channel" mode: post the market alerts in each chosen channel (no pings). The user must still be the
+// server's owner or an admin; otherwise that server is skipped.
+async function postToChannels(client, userId, targets, embeds) {
+    let sent = 0;
+    for (const t of targets) {
+        const guild = client.guilds.cache.get(t.guildId);
+        const channel = guild && guild.channels.cache.get(t.channelId);
+        const warnKey = userId + ':' + t.guildId;
+        const warn = text => {
+            if (Date.now() - (targetWarned.get(warnKey) || 0) < 6 * 60 * 60 * 1000) return;
+            targetWarned.set(warnKey, Date.now());
+            console.error('❌ [MARKET] ' + text);
+        };
+        if (!guild || !channel || !channel.isTextBased()) { warn('Alert channel for user ' + userId + ' not found (server ' + t.guildId + ').'); continue; }
+        const member = guild.ownerId === userId ? null : await guild.members.fetch(userId).catch(() => null);
+        if (guild.ownerId !== userId && !(member && member.permissions.has(PermissionFlagsBits.Administrator))) {
+            warn('User ' + userId + ' is no longer owner/admin of ' + guild.name + ': market alerts not posted there.');
+            continue;
+        }
+        for (const group of chunkEmbeds(embeds)) {
+            group[group.length - 1].setFooter({ text: ALERT_FOOTER }).setTimestamp();
+            try {
+                await channel.send({ embeds: group, allowedMentions: { parse: [] } });
+                sent++;
+            } catch (err) {
+                warn('Could not post market alerts in #' + channel.name + ' (' + guild.name + '): ' + err.message);
+                break;
+            }
+        }
+    }
+    if (sent) console.log('✅ [ALERTS POSTED] Market alerts for user ' + userId + ' posted in ' + sent + ' message(s) to server channel(s).');
+    return sent;
 }
 
 async function flushAlerts(client) {
-    if (flushing || pendingAlerts.size === 0) return;
+    if (flushing || (pendingAlerts.size === 0 && !retainerWatch.hasPending())) return;
     flushing = true;
-    const batch = new Map(pendingAlerts);
-    pendingAlerts.clear();
+    const now = Date.now();
+    const due = userId => isDue(userId, now);
+    // Only users whose DM interval has passed; everyone else keeps collecting until their next DM
+    const batch = new Map();
+    for (const [userId, items] of Array.from(pendingAlerts)) {
+        if (!due(userId)) continue;
+        batch.set(userId, items);
+        pendingAlerts.delete(userId);
+    }
+    const undercuts = retainerWatch.takePending(due); // Retainer Watch: same DM, sent first
+    for (const userId of undercuts.keys()) if (!batch.has(userId)) batch.set(userId, new Map());
 
     try {
         for (const [userId, items] of batch) {
             // Biggest discount first
-            const entries = Array.from(items.values()).sort((a, b) => bestPercent(a) - bestPercent(b));
+            let entries = Array.from(items.values()).sort((a, b) => bestPercent(a) - bestPercent(b));
+
+            // "Server channel" mode: market alerts go to the channels; retainer undercuts still go to the DM below
+            const targets = alertTargets.get(userId);
+            if (targets && targets.length && entries.length) {
+                const itemEmbeds = [];
+                for (const entry of entries) itemEmbeds.push(buildItemEmbed(entry, await getItemName(entry.itemId)));
+                await postToChannels(client, userId, targets, itemEmbeds);
+                lastSentAt.set(userId, now);
+                entries = [];
+            }
+            const hasUndercuts = undercuts.get(userId) && undercuts.get(userId).size;
+            if (!entries.length && !hasUndercuts) continue;
 
             const embeds = [];
+            const userUndercuts = undercuts.get(userId);
+            if (userUndercuts && userUndercuts.size) {
+                const names = new Map();
+                for (const u of userUndercuts.values()) if (!names.has(u.itemId)) names.set(u.itemId, await getItemName(u.itemId));
+                embeds.push(retainerWatch.buildUndercutEmbed(userUndercuts, names));
+            }
             for (const entry of entries) {
                 embeds.push(buildItemEmbed(entry, await getItemName(entry.itemId)));
             }
@@ -525,21 +683,33 @@ async function flushAlerts(client) {
             }
             if (current.length) messages.push(current);
 
+            const userUndercuts0 = undercuts.get(userId);
+            if (dmStatus.isBlocked(userId)) {
+                if (userUndercuts0 && userUndercuts0.size) await retainerWatch.forgetAlerts(userUndercuts0);
+                continue;
+            }
             let user;
             try {
                 user = await client.users.fetch(userId);
             } catch (err) {
                 console.error('❌ [DM FAILED] Could not find user ' + userId + ': ' + err.message);
+                if (err && err.code === 10013) await dmStatus.markFailed(userId, 'unknown_user');
+                if (userUndercuts0 && userUndercuts0.size) await retainerWatch.forgetAlerts(userUndercuts0);
                 continue;
             }
 
             for (const group of messages) {
-                group[group.length - 1].setFooter({ text: ALERT_FOOTER }).setTimestamp();
+                group[group.length - 1].setFooter({ text: entries.length ? ALERT_FOOTER : 'Data provided by Universalis Live Feed' }).setTimestamp();
                 try {
                     await user.send({ embeds: group });
-                    console.log('✅ [DM SENT] Price alert message (' + group.length + ' item(s)) sent to user ' + userId);
+                    lastSentAt.set(userId, now);
+                    console.log('✅ [DM SENT] Alert message (' + group.length + ' embed(s)) sent to user ' + userId);
+                    await dmStatus.markOk(userId);
                 } catch (err) {
                     console.error('❌ [DM FAILED] Could not send DM to user ' + userId + '. Reason: ' + err.message + ' (Check direct message privacy settings)');
+                    // 50007 = DMs closed or no server shared with Pingway: pause this user's alerts for a while
+                    if (err && err.code === 50007) await dmStatus.markFailed(userId, 'dm_closed');
+                    if (userUndercuts0 && userUndercuts0.size) await retainerWatch.forgetAlerts(userUndercuts0); // alert again later
                     break;
                 }
             }
@@ -551,8 +721,11 @@ async function flushAlerts(client) {
 
 async function refresh(client) {
     try {
+        await dmStatus.load();
         const { list, enabledCount } = await loadSubscribers();
         subscribers = list;
+        await loadIntervals();
+        await retainerWatch.load();
 
         // Prune old cache entries
         const now = Date.now();
@@ -565,8 +738,11 @@ async function refresh(client) {
         for (const [k, v] of itemNameCache) {
             if (now - v.time > NAME_CACHE_MS) itemNameCache.delete(k);
         }
+        for (const [k, t] of lastSentAt) {
+            if (now - t > 60 * 60 * 1000) lastSentAt.delete(k);
+        }
 
-        if (subscribers.length === 0) {
+        if (subscribers.length === 0 && !retainerWatch.hasWatches()) {
             if (ws || reconnectTimer) {
                 console.log('ℹ️ [MARKET] No subscribers with saved Data Centers. Closing feed and standing by...');
                 cleanupSocket();
@@ -579,7 +755,7 @@ async function refresh(client) {
         } else {
             syncSubscriptions();
         }
-        return { enabledCount, ready: subscribers.length };
+        return { enabledCount, ready: subscribers.length, retainers: retainerWatch.getWorlds().size };
     } catch (err) {
         console.error('❌ [MARKET] Failed to refresh subscribers:', err.message);
         return null;
@@ -594,6 +770,7 @@ async function initMarketMonitor(client) {
     await loadWorldData();
     const result = await refresh(client);
     if (result) {
+        if (result.retainers) console.log('🏷️ [INIT] Retainer Watch active on ' + result.retainers + ' world(s).');
         if (result.ready === 0) {
             console.log('⚠️ [INIT] ' + result.enabledCount + ' user(s) have market alerts on, but none have Data Centers saved with /datacenter. Monitor standing by...');
         } else {

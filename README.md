@@ -3,16 +3,17 @@
 **Your FFXIV companion, right inside Discord.**
 Pingway tracks reset timers, server status, market board deals, Party Finder listings and more — so your Free Company never misses a thing.
 
-[**➕ Invite Pingway**](https://discord.com/oauth2/authorize?client_id=1530586586524418048) · [**🌐 Website & Dashboard**](https://pingway.vercel.app) · [**💬 Support Server**](https://discord.gg/DDdV48X4G2) · [**☕ Ko-fi**](https://ko-fi.com/riverzola)
+[**➕ Invite Pingway**](https://discord.com/oauth2/authorize?client_id=1530586586524418048) · [**🌐 Website & Dashboard**](https://pingway.app) · [**💬 Support Server**](https://discord.gg/DDdV48X4G2) · [**☕ Ko-fi**](https://ko-fi.com/riverzola)
 
 ---
 
 ## 🌐 New: manage Pingway in your browser!
 
-Go to **[pingway.vercel.app](https://pingway.vercel.app)** and log in with Discord.
+Go to **[pingway.app](https://pingway.app)** and log in with Discord.
 
-- **Server settings** (for anyone with *Manage Server*): notification channel, release event countdown, AI assistant channels, ScionDex channel, raid & logger Google Sheets.
-- **Personal settings** (used in every server): your Data Centers, market price alerts, server status alerts, IGN character card, and Firmament reminders.
+- **Server settings** (for anyone with *Manage Server*): notification channel, release event countdown, AI assistant channel, ScionDex channel, Raid & Logger sheets, Reaction Roles, Tickets, FFXIV News channels and the Honeypot.
+- **Personal settings** (used in every server): your Data Centers, market price alerts, Retainer Watch, server status alerts, IGN character card, Firmament reminders and Pingway Trivia.
+- **Supporter Perks & points:** see your points, vote rewards and perks.
 - Invite Pingway to your servers in one click.
 - Light and dark mode, works on phones too.
 
@@ -27,10 +28,16 @@ Everything you change on the website works right away in Discord — and you can
 ### 💰 Market Board
 - **`/price <item>`** — Cross-world market prices for any FFXIV item across your chosen Data Centers (top 5 NQ and HQ listings per Data Center, with world names).
 - **`/datacenter`** — Choose your Data Centers once; used by `/price` and market alerts in every server.
-- **`/marketalert`** — Turn on price drop DMs. Pingway watches the Universalis live feed and sends you a grouped DM every 5 minutes with listings that are **at least 80% below the usual price**:
+- **`/marketalert`** — Turn on price drop DMs. Pingway watches the Universalis live feed and sends you a grouped DM (every minute by default — change the DM interval on the website) with listings that are **at least 80% below the usual price**:
   - Compared against the **median of the last 7 days of real sales** on that Data Center (troll sales can't fake the price).
   - Double-checked against the **next 3 cheapest listings from other sellers**, so it only alerts on real mistakes (a missing zero, a pasted wrong price) — not on items whose market just dropped.
   - NQ and HQ are checked separately. Results are sorted lowest price first and grouped by Data Center in an aligned table.
+
+### 💜 Supporter Perks & Points
+- **Supporter Perks** unlock extra market tools and higher limits (for example more Reaction Role messages and Raid & Logger sheets). Perks cost points; get points by supporting on [Ko-fi](https://ko-fi.com/riverzola) or by **voting for Pingway on [top.gg](https://top.gg/bot/1530586586524418048/vote)** (vote rewards come with a thank-you DM).
+- **`/bestsellers`** — Top selling items on your world or Data Center.
+- **`/buysell`** — Popular items that are cheaper on another world than on yours.
+- **`/retainers`** — Your watched retainers and their undercut items. Add retainers on the website (**Retainer Watch**) and Pingway DMs you when someone undercuts them.
 
 ### 🌍 Server Status
 - **`/status`** — Live status of every world in a Data Center. Pick a world to track and get a **DM when it goes down for maintenance or comes back up**. New users start with alerts off.
@@ -43,7 +50,8 @@ Everything you change on the website works right away in Discord — and you can
 
 ### 🎯 Party Finder & Raids
 - **`/pf`** — Create Party Finder listings (4 or 8 players) with a date, time and your time zone. Members join by picking their role and job; hosts can edit or delete their listing.
-- **`/raid`** — Shows your static's raid schedule for the next 7 days, read from a Google Sheet (template included).
+- **`/raid`** — Shows your static's raid schedule for the next 7 days, read from a Google Sheet.
+- **Raid & Logger sheets** — Admins create raid planner and command-log Google Sheets for the server in one click on the website (several per server, each can be limited to a role).
 - **`/poll`** — Interactive polls with multiple answers, role-limited voting, single or multiple choice, and results. Creators and admins can see who voted for what.
 
 ### 🪪 Character Cards
@@ -51,6 +59,7 @@ Everything you change on the website works right away in Discord — and you can
 - **`/ign`** — Generates a character card image with your Lodestone info and a QR code to your Lodestone page.
 
 ### 🃏 Games & Practice
+- **`/trivia`** — **Pingway Trivia:** guess the FFXIV word of the day in 6 difficulties, earn bits, keep your streak and climb your server's leaderboard.
 - **`/sciondex`** — A collecting game: recruit FFXIV NPCs, build a party of 4, fight bosses in Duty Finder, level up and earn stars. Played in a channel the server admins choose.
 - **`/nissi`** — A quiz to practise TEA Nissi mechanics.
 
@@ -62,6 +71,10 @@ Everything you change on the website works right away in Discord — and you can
 ### 🛠️ Server Admin Tools
 - **`/clean`** — Bulk-delete messages (including ones older than 14 days).
 - **`/logger`** — Log who used which command and when, to your own Google Sheet.
+- **`/honeypot`** — A "do not chat here" channel that removes hacked accounts posting spam (the server owner gets a DM report).
+- **Reaction Roles** (website) — Members react with an emoji to get a role.
+- **Tickets** (website) — A help desk with private ticket channels and optional transcripts.
+- **FFXIV News** (website) — Post Lodestone news (topics, notices, maintenance, updates) to your channels, in your language.
 - **`/notifhere`** — Choose the channel Pingway uses for notifications.
 - **`/clearbotdms`** — Clean up Pingway's messages in your DMs.
 - **`/help`** — The full command list.
@@ -84,6 +97,7 @@ This repository contains the **Pingway Discord bot** only. Secrets (bot token, d
 - Market data: [Universalis](https://universalis.app)
 - Item data: [XIVAPI](https://xivapi.com)
 - Server status: [xivup](https://is.xivup.com)
+- FFXIV news: [Lodestone News API](https://lodestonenews.com)
 - Built with [discord.js](https://discord.js.org)
 
 FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd. FINAL FANTASY XIV © SQUARE ENIX. Pingway is a fan project and is not affiliated with or endorsed by Square Enix or Discord.
