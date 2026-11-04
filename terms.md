@@ -7,6 +7,8 @@ By inviting Pingway to a Discord server, using its commands, or using the Pingwa
 ## 1. The service
 Pingway is a free FFXIV utility bot for Discord, with a website for managing its settings. It is a personal fan project, provided **"as is" and "as available"**, without warranties of any kind.
 
+Optional supporter points and Supporter Perks (from Ko-fi support or votes) are covered by the separate [Supporter Terms](https://pingway.app/support-terms.html), which apply in addition to these Terms.
+
 ## 2. Open source (GNU AGPL-3.0)
 Pingway's source code is public under the GNU Affero General Public License v3.0. You may view, copy and modify it under that license. If you run a modified version for other people (for example as a bot or website), you must make your modified source code available under the same license. These Terms cover the official Pingway bot and website run by the developer.
 
