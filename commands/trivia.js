@@ -99,11 +99,11 @@ module.exports = {
                 content: [TITLE,
                     '• Each box is one letter: ⬜ hidden, 🇦 shown. Spaces and symbols are always shown.',
                     '• Press **Guess** and type the whole answer. Case, accents, spaces and symbols don\'t matter.',
-                    '• A wrong guess shows one more letter. Too many wrong guesses and that difficulty locks for the day.',
-                    '• **Hint** gives a clue (no letters). **Give up** locks that difficulty for today; you can still try another.',
+                    '• A wrong guess shows the letters you got in the right place, plus one more. All letters shown = solved. Too many wrong guesses and that difficulty locks for the day.',
+                    '• **Hint:** up to ' + W.HINTS_PER_GUESS + ' per guess (resets after each wrong guess). Clues first, then letters. **Give up** locks that difficulty for today; you can still try another.',
                     '• After one solve you\'re done for the day, in every server. New words at 0:00 JST.',
                     '',
-                    '**Bits:** base × (2 − (hints + wrong guesses) ÷ guess limit), never below base. A perfect solve gives double.',
+                    '**Bits:** fewer letters revealed = more bits, up to double. Never below base.',
                     W.DIFFICULTIES.map(d => d.emoji + ' ' + d.name + ': ' + d.base + ' bit' + (d.base === 1 ? '' : 's') + ', ' + d.limit + ' wrong guesses').join(' · '),
                     '**Streak:** solve on days in a row. Bonus at 5/10/15/20/30 days: +10/+20/+30/+40/+60 bits. Streaks and the monthly leaderboard start again on the 1st.',
                     'Leaderboards: pingway.app → Trivia. You can hide yourself in My Settings.'].join('\n'),
@@ -131,7 +131,7 @@ module.exports = {
             const d = W.DIFF[diff];
             const left = d.limit - play.wrong;
             const hints = play.hintsUsed.map(i => word.hints[i]).filter(Boolean);
-            const lines = [TITLE, d.emoji + ' **' + d.name + '** · ' + left + ' wrong guess' + (left === 1 ? '' : 'es') + ' left · ' + hints.length + '/' + word.hints.length + ' hints', '',
+            const lines = [TITLE, d.emoji + ' **' + d.name + '** · ' + left + ' wrong guess' + (left === 1 ? '' : 'es') + ' left · 💡 ' + play.hintsLeft + '/' + W.HINTS_PER_GUESS + ' hints', '',
                 W.renderBoxes(word.word, play.revealed), ''];
             if (hints.length) lines.push(hints.map(h => '💡 ' + h).join('\n'));
             if (feedback) lines.push(feedback);
@@ -139,7 +139,7 @@ module.exports = {
                 content: lines.join('\n'),
                 components: [row(
                     btn('tv_guess', 'Guess', ButtonStyle.Primary, '✏️'),
-                    btn('tv_hint', 'Hint', ButtonStyle.Secondary, '💡', hints.length >= word.hints.length),
+                    btn('tv_hint', 'Hint', ButtonStyle.Secondary, '💡', play.hintsLeft <= 0),
                     btn('tv_giveup', 'Give up', ButtonStyle.Danger, '🏳️'),
                     btn('tv_back', 'Back', ButtonStyle.Secondary, '↩'))]
             };
@@ -161,9 +161,11 @@ module.exports = {
             return lore ? ['', '📖 **About ' + word.word.replace(/[*_~`|\\]/g, '\\$&') + '**', lore] : ['', '📖 The answer was **' + word.word + '**.'];
         };
 
-        async function solvedScreen(play, award, word) {
+        async function solvedScreen(play, award, word, allRevealed) {
             const d = W.DIFF[play.difficulty];
-            const lines = [TITLE, '✅ **Solved!** ' + d.emoji + ' ' + d.name + ' · +' + award.bits + ' bits (base ' + award.base + ', bonus ' + award.bonus + ')'];
+            const lines = [TITLE];
+            if (allRevealed) lines.push('🎉 **Congratulations! All letters revealed!**');
+            lines.push('✅ **Solved!** ' + d.emoji + ' ' + d.name + ' · +' + award.bits + ' bits (base ' + award.base + ', bonus ' + award.bonus + ')');
             lines.push('🔥 Streak ' + award.streak + (award.streak === 1 ? ' day' : ' days') + (award.milestone ? ' · 🎉 Streak bonus +' + award.milestone + ' bits!' : ''));
             lines.push('💎 ' + n(award.seasonBits) + ' bits this month · ' + n(award.total) + ' all time');
             if (word) lines.push(...aboutBlock(word));
@@ -217,11 +219,11 @@ module.exports = {
             if (!words) return sub.update(warming());
             const answer = String(sub.fields.getTextInputValue('answer') || '').slice(0, 100);
             const r = await T.guess(userId, day, diff, words[diff], answer);
-            if (r.result === 'solved') return sub.update({ ...(await solvedScreen(r.play, r.award, words[diff])), allowedMentions: { parse: [] } });
+            if (r.result === 'solved') return sub.update({ ...(await solvedScreen(r.play, r.award, words[diff], r.allRevealed)), allowedMentions: { parse: [] } });
             if (r.result === 'failed') return sub.update(lockedScreen(r.play));
             if (r.result === 'wrong') {
                 const left = W.DIFF[diff].limit - r.play.wrong;
-                feedback = '❌ Not it' + (r.newLetter ? ' — one more letter is shown.' : '.') + ' ' + left + ' wrong guess' + (left === 1 ? '' : 'es') + ' left.';
+                feedback = '❌ Not it' + (r.shown ? ' — revealed ' + r.shown + ' letter' + (r.shown === 1 ? '' : 's') + '.' : '.') + ' ' + left + ' wrong guess' + (left === 1 ? '' : 'es') + ' left.';
                 return sub.update(gameScreen(words[diff], r.play));
             }
             feedback = '';
@@ -255,8 +257,9 @@ module.exports = {
                     const words = await T.wordsOf(day);
                     if (!words) return i.update(warming());
                     const r = await T.useHint(userId, day, diff, words[diff]);
-                    if (!r.play || r.play.status !== 'playing') return i.update(await menu());
-                    feedback = r.ok ? '' : 'No more hints for this word.';
+                    if (r.result === 'solved') { feedback = ''; return i.update({ ...(await solvedScreen(r.play, r.award, words[diff], true)), allowedMentions: { parse: [] } }); }
+                    if (!r.play || r.play.status !== 'playing' || r.result) return i.update(await menu());
+                    feedback = r.letter ? '💡 One more letter is shown.' : r.ok ? '' : r.limit ? 'No hints left — you get ' + W.HINTS_PER_GUESS + ' more after a wrong guess.' : 'No more hints for this word.';
                     return i.update(gameScreen(words[diff], r.play));
                 }
                 if (id === 'tv_giveup') {

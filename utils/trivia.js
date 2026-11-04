@@ -9,6 +9,10 @@
 //   the same difficulty within 90 days.
 // - One solve per person per JST day, in all servers. Giving up or running out of guesses locks that difficulty
 //   for the day; another one can still be tried. Games in progress are saved, so /trivia continues them anywhere.
+// - Hints: up to 3 per guess (trivia_plays.hint_round = hints used since the last wrong guess; a wrong guess sets it
+//   back to 0). A hint shows an unused clue; when all clues are used it shows one hidden letter instead.
+// - A wrong guess shows the letters in the right place plus one random letter. When every letter is shown, the game
+//   is solved the same way as a right guess (bits = base then, see bitsFor in utils/triviaWords.js).
 // - Stored per person (trivia_users): display name and avatar for the leaderboards, bits (all time and this
 //   month), streak, last solve day and "hide me" (set on the website). trivia_players: who played in which server
 //   (a server's leaderboard). trivia_guild: the share channel an admin picked on the website.
@@ -56,9 +60,17 @@ async function ensureTables() {
         started_at BIGINT NOT NULL DEFAULT 0,
         finished_at BIGINT DEFAULT NULL,
         shared TINYINT(1) NOT NULL DEFAULT 0,
+        hint_round INT NOT NULL DEFAULT 0,
         PRIMARY KEY (user_id, day, difficulty),
         KEY idx_day (day)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`);
+    // Older tables: add hint_round (a second bot start doing the same at once only gets "Duplicate column")
+    const [hintCol] = await pool.execute("SHOW COLUMNS FROM trivia_plays LIKE 'hint_round'");
+    if (!hintCol.length) {
+        await pool.execute('ALTER TABLE trivia_plays ADD COLUMN hint_round INT NOT NULL DEFAULT 0').catch(err => {
+            if (err.code !== 'ER_DUP_FIELDNAME' && !/Duplicate column/i.test(err.message)) throw err;
+        });
+    }
     await pool.execute(`CREATE TABLE IF NOT EXISTS trivia_users (
         user_id VARCHAR(32) PRIMARY KEY,
         display_name VARCHAR(64) DEFAULT NULL,
@@ -260,8 +272,11 @@ async function shareChannel(guildId) {
 // ---------- games ----------
 const playView = r => r ? {
     difficulty: r.difficulty, status: r.status, wrong: Number(r.wrong) || 0, hintsUsed: parseList(r.hints_used).map(Number),
-    revealed: parseList(r.revealed).map(Number), bits: Number(r.bits) || 0, shared: Number(r.shared) === 1, guildId: r.guild_id || null
+    revealed: parseList(r.revealed).map(Number), bits: Number(r.bits) || 0, shared: Number(r.shared) === 1, guildId: r.guild_id || null,
+    hintRound: Number(r.hint_round) || 0, hintsLeft: Math.max(0, W.HINTS_PER_GUESS - (Number(r.hint_round) || 0))
 } : null;
+// True when every letter of the answer is shown
+const allShown = (word, revealed) => W.letterPositions(word.word).every(i => revealed.includes(i));
 
 // Today's games of a person: { easy: play|null, ... }, and whether they solved one
 async function dayStatus(userId, day) {
@@ -292,17 +307,31 @@ async function startPlay(userId, day, diff, guildId) {
     return { ok: true, play: await getPlay(userId, day, diff) };
 }
 
-// A random hint that hasn't been shown yet
+// A hint (up to 3 per guess): a random clue that hasn't been shown yet, or when all clues are used, one hidden letter.
+// Returns { ok, play, hint? , letter? } or { ok: false, play, limit|none } — or a solve result ({ result: 'solved'|'already'|
+// 'locked', play, award?, allRevealed: true }) when that letter was the last hidden one.
 async function useHint(userId, day, diff, word) {
     const p = await getPlay(userId, day, diff);
     if (!p || p.status !== 'playing') return { ok: false, play: p };
+    if (p.hintsLeft <= 0) return { ok: false, play: p, limit: true };
+    const where = " WHERE user_id = ? AND day = ? AND difficulty = ? AND status = 'playing' AND hint_round = ?";
+    const key = [String(userId), day, diff, p.hintRound];
     const left = word.hints.map((h, i) => i).filter(i => !p.hintsUsed.includes(i));
-    if (!left.length) return { ok: false, play: p, none: true };
-    const pick = left[Math.floor(Math.random() * left.length)];
-    const used = [...p.hintsUsed, pick];
-    await pool.execute("UPDATE trivia_plays SET hints_used = ? WHERE user_id = ? AND day = ? AND difficulty = ? AND status = 'playing'",
-        [JSON.stringify(used), String(userId), day, diff]);
-    return { ok: true, play: await getPlay(userId, day, diff), hint: word.hints[pick] };
+    if (left.length) {
+        const pick = left[Math.floor(Math.random() * left.length)];
+        const used = [...p.hintsUsed, pick];
+        const [r] = await pool.execute('UPDATE trivia_plays SET hints_used = ?, hint_round = hint_round + 1' + where, [JSON.stringify(used), ...key]);
+        if (!(Number(r.affectedRows) > 0)) return { ok: false, play: await getPlay(userId, day, diff) };
+        return { ok: true, play: await getPlay(userId, day, diff), hint: word.hints[pick] };
+    }
+    const hidden = W.letterPositions(word.word).filter(i => !p.revealed.includes(i));
+    if (!hidden.length) return { ok: false, play: p, none: true };
+    const revealed = [...p.revealed, hidden[Math.floor(Math.random() * hidden.length)]];
+    const [r] = await pool.execute('UPDATE trivia_plays SET revealed = ?, hint_round = hint_round + 1' + where, [JSON.stringify(revealed), ...key]);
+    const play = await getPlay(userId, day, diff);
+    if (!(Number(r.affectedRows) > 0)) return { ok: false, play };
+    if (allShown(word, play.revealed)) return { ...(await solve(userId, day, diff, play, word)), ok: true, allRevealed: true };
+    return { ok: true, play, letter: true };
 }
 
 async function giveUp(userId, day, diff) {
@@ -311,27 +340,37 @@ async function giveUp(userId, day, diff) {
     return getPlay(userId, day, diff);
 }
 
-// A guess. Returns { result: 'solved'|'wrong'|'failed'|'locked'|'already', play, award? }
+// A guess. Returns { result: 'solved'|'wrong'|'failed'|'locked'|'already', play, award?, shown?, allRevealed? }
+// A wrong guess first shows the letters in the right place and one random letter; if that shows every letter, it is
+// solved (even on the last allowed wrong guess), otherwise too many wrong guesses = failed.
 async function guess(userId, day, diff, word, answer) {
     const p = await getPlay(userId, day, diff);
     if (!p || p.status !== 'playing') return { result: 'locked', play: p };
     const d = W.DIFF[diff];
-    if (W.sameAnswer(answer, word.word)) return solve(userId, day, diff, p);
+    if (W.sameAnswer(answer, word.word)) return solve(userId, day, diff, p, word);
     const wrong = p.wrong + 1;
+    const matched = W.matchingLetters(word.word, answer).filter(i => !p.revealed.includes(i));
+    const afterMatch = [...p.revealed, ...matched];
+    const hidden = W.letterPositions(word.word).filter(i => !afterMatch.includes(i));
+    const revealed = hidden.length ? [...afterMatch, hidden[Math.floor(Math.random() * hidden.length)]] : afterMatch;
+    const shown = revealed.length - p.revealed.length;
+    if (allShown(word, revealed)) {
+        await pool.execute("UPDATE trivia_plays SET wrong = ?, revealed = ?, hint_round = 0 WHERE user_id = ? AND day = ? AND difficulty = ? AND status = 'playing'",
+            [wrong, JSON.stringify(revealed), String(userId), day, diff]);
+        return { ...(await solve(userId, day, diff, await getPlay(userId, day, diff), word)), allRevealed: true, shown };
+    }
     if (wrong >= d.limit) {
         await pool.execute("UPDATE trivia_plays SET wrong = ?, status = 'failed', finished_at = ? WHERE user_id = ? AND day = ? AND difficulty = ? AND status = 'playing'",
             [wrong, Date.now(), String(userId), day, diff]);
         return { result: 'failed', play: await getPlay(userId, day, diff) };
     }
-    const hidden = W.letterPositions(word.word).filter(i => !p.revealed.includes(i));
-    const revealed = hidden.length ? [...p.revealed, hidden[Math.floor(Math.random() * hidden.length)]] : p.revealed;
-    await pool.execute("UPDATE trivia_plays SET wrong = ?, revealed = ? WHERE user_id = ? AND day = ? AND difficulty = ? AND status = 'playing'",
+    await pool.execute("UPDATE trivia_plays SET wrong = ?, revealed = ?, hint_round = 0 WHERE user_id = ? AND day = ? AND difficulty = ? AND status = 'playing'",
         [wrong, JSON.stringify(revealed), String(userId), day, diff]);
-    return { result: 'wrong', play: await getPlay(userId, day, diff), newLetter: hidden.length > 0 };
+    return { result: 'wrong', play: await getPlay(userId, day, diff), newLetter: hidden.length > 0, shown };
 }
 
 // Solve: one transaction for the game and the person's bits/streak/season (and only one solve per day)
-async function solve(userId, day, diff, p) {
+async function solve(userId, day, diff, p, word) {
     const conn = await pool.getConnection();
     let award = null;
     try {
@@ -344,7 +383,8 @@ async function solve(userId, day, diff, p) {
             await conn.rollback();
             return { result: done ? 'already' : 'locked', play: await getPlay(userId, day, diff) };
         }
-        const bits = W.bitsFor(diff, p.hintsUsed.length, p.wrong);
+        const letters = W.letterPositions(word.word);
+        const bits = W.bitsFor(diff, letters.filter(i => !p.revealed.includes(i)).length, letters.length);
         const { streak, bonus } = W.nextStreak(u, day);
         const season = W.seasonOf(day);
         const seasonBits = (u.season_key === season ? Number(u.season_bits) || 0 : 0) + bits + bonus;
