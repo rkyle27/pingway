@@ -1,8 +1,8 @@
 # Terms of Service for Pingway
 
-**Effective date: November 1, 2026** (replaces the version of July 26, 2026)
+**Effective date: November 6, 2026** (replaces the version of November 1, 2026)
 
-By inviting Pingway to a Discord server, using its commands, or using the Pingway website (https://pingway.vercel.app), you agree to these Terms. If you do not agree, please do not use Pingway and remove it from your server.
+By inviting Pingway to a Discord server, using its commands, or using the Pingway website (https://pingway.app), you agree to these Terms. If you do not agree, please do not use Pingway and remove it from your server.
 
 ## 1. The service
 Pingway is a free FFXIV utility bot for Discord, with a website for managing its settings. It is a personal fan project, provided **"as is" and "as available"**, without warranties of any kind.

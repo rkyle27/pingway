@@ -1,4 +1,4 @@
-﻿const { SlashCommandBuilder, MessageFlags } = require('discord.js');
+const { SlashCommandBuilder, MessageFlags } = require('discord.js');
 const { setBotBusy } = require('../utils/lock');
 
 module.exports = {

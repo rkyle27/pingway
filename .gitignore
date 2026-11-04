@@ -21,3 +21,11 @@ node_modules/
 *.zip
 *.sql
 *.log
+
+# More runtime data, backups and flags
+data/sheets_helper.json
+data/trivia_bank.json
+data/trivia_bank.json.tmp
+data/trivia_salt.txt
+*.bak*
+sheets-selftest.flag

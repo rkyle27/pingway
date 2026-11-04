@@ -47,11 +47,11 @@ function getGoogleSheetsClient() {
  * Fetches the raid schedule from the configured Google Sheet for a given server.
  * Uses fixed layout: Column C for dates, Column M for status formula output, Row 1 for player headers (E-L).
  */
-async function fetchRaidSchedule(guildId) {
+async function fetchRaidSchedule(guildId, sheetId) {
     try {
         // 1. Fetch spreadsheet ID for this guild from MySQL database
         const [rows] = await pool.execute('SELECT raid_sheet_id FROM server_settings WHERE guild_id = ?', [guildId]);
-        const spreadsheetId = rows[0]?.raid_sheet_id;
+        const spreadsheetId = sheetId || rows[0]?.raid_sheet_id; // sheetId: one of the server's named raid sheets (/raid)
 
         if (!spreadsheetId) {
             return '⚠️ **Raid Planner Sheet not configured!** An administrator must configure the sheet link first.';

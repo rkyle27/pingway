@@ -38,15 +38,15 @@ async function handleInteraction(interaction) {
     }
 
     try {
-        // Fetch logger sheet ID from database for this specific server
-        const [rows] = await pool.execute(
-            'SELECT logger_sheet_id FROM server_settings WHERE guild_id = ?',
-            [interaction.guildId]
-        );
-
-        const spreadsheetId = rows[0]?.logger_sheet_id;
-        if (!spreadsheetId) {
-            return; 
+        // The server's logger sheets that are ON (Raid & Logger on the website, or /logger)
+        let rows = [];
+        try {
+            [rows] = await pool.execute("SELECT sheet_id FROM guild_sheets WHERE guild_id = ? AND kind = 'log' AND enabled = 1 AND state = 'ok' AND sheet_id IS NOT NULL", [interaction.guildId]);
+        } catch (e) {
+            return; // table not made yet
+        }
+        if (!rows.length) {
+            return;
         }
 
         const api = getSheetsApi();
@@ -71,12 +71,14 @@ async function handleInteraction(interaction) {
 
         const rowData = [timestamp, userTag, userId, guildName, guildId, channelName, commandName, optionsSummary];
 
-        await api.spreadsheets.values.append({
-            spreadsheetId: spreadsheetId,
-            range: `${SHEET_NAME}!A:H`,
-            valueInputOption: 'USER_ENTERED',
-            requestBody: { values: [rowData] }
-        });
+        for (const { sheet_id: spreadsheetId } of rows) {
+            await api.spreadsheets.values.append({
+                spreadsheetId: spreadsheetId,
+                range: `${SHEET_NAME}!A:H`,
+                valueInputOption: 'USER_ENTERED',
+                requestBody: { values: [rowData] }
+            }).catch(err => console.error('❌ Failed to log command to Google Sheets:', err.message));
+        }
     } catch (error) {
         console.error('❌ Failed to log command to Google Sheets:', error.message);
     }

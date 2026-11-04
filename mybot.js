@@ -16,7 +16,8 @@ const client = new Client({
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
         GatewayIntentBits.GuildMembers,
-        GatewayIntentBits.GuildVoiceStates
+        GatewayIntentBits.GuildVoiceStates,
+        GatewayIntentBits.GuildMessageReactions // reaction roles
     ]
 });
 
@@ -107,10 +108,19 @@ client.on(Events.MessageCreate, async (message) => {
 client.once(Events.ClientReady, () => {
     console.log(`🚀 [SCHEDULER] Starting background clock services...`);
     startPfScheduler(client);
+    require('./utils/honeypot').start(client); // "do not chat here" channels
+    require('./utils/reactionRoles').start(client); // emoji -> role messages (website)
+    require('./utils/tickets').start(client); // help desk tickets (website)
+    require('./utils/lodestoneNews').start(client); // FFXIV news channels (website)
+    require('./utils/voteRewards').start(client); // top.gg vote thank-you DMs (points added by the website)
+    require('./utils/heartbeat').start(); // Online / Maintenance / Offline status on the website
+    require('./utils/guildSheets').start(client); // Raid & Logger sheets: website requests, sharing, Supporter Perks limits
+    require('./utils/trivia').start(client); // Pingway Trivia: word bank from XIVAPI (data/trivia_bank.json), tables, cleanup
 
     // Startup check for leftover data from servers Pingway is no longer in (read-only)
     setTimeout(async () => {
         try {
+            await ensurePointsMigration(require('./utils/db').pool).catch(err => console.error('⚠️ [POINTS] Conversion check failed:', err.message));
             const leftovers = await findLeftoverServerData();
             if (leftovers.size > 0) {
                 console.log('🧹 [PURGE CHECK] ' + leftovers.size + ' server(s) Pingway is no longer in still have data. Type "purge" to review.');
@@ -119,13 +129,13 @@ client.once(Events.ClientReady, () => {
             console.error('⚠️ [PURGE CHECK] Failed:', err.message);
         }
     }, 15000);
-    console.log(`\n💡 [CONSOLE CONTROL] Available commands: "maintenance" (or "maint"), "status", "announce" (preview) / "announce confirm", "whois <id>", "server list", "purge"\n`);
+    console.log(`\n💡 [CONSOLE CONTROL] Available commands: "maintenance" (or "maint"), "status", "announce" (preview) / "announce confirm", "whois <id>", "server list", "purge", "points <id>" / "points add <id> <amount>" / "points remove <id> <amount>", "retainers <id>"\n`);
 });
 
 // --- Leftover Server Data (servers Pingway is no longer in) ---
 // Only server-level tables. Personal data (reminders, facts, /datacenter, market alerts,
 // ScionDex, IGN, /status, firmament) is never touched.
-const SERVER_TABLES = ['server_settings', 'ai_active_channels', 'server_releases', 'guild_polls', 'party_finders'];
+const SERVER_TABLES = ['server_settings', 'ai_active_channels', 'server_releases', 'guild_polls', 'party_finders', 'honeypot_settings', 'honeypot_log', 'rr_messages', 'ticket_settings', 'tickets', 'news_channels'];
 let pendingPurge = null; // { expires, guildIds }
 
 async function findLeftoverServerData() {
@@ -344,6 +354,165 @@ async function announceConfirm() {
     console.log('📢 Done. ' + sentChannels + ' server channel(s), ' + dms + ' owner DM(s).\n');
 }
 
+// --- Points (console only; called "credits" in the database) ---
+// "points <id>" shows a user's points; "points add <id> <amount>" gives points (expire like payments, used
+// only when the user switches retainers ON or enables Supporter Perks on the website);
+// "points remove <id> <amount>" takes points off after a refund or chargeback. "credits ..." still works too.
+const POINTS_MIGRATION = 'credits_to_points_x10_2026_11';
+
+// Nov 2026: credits became points worth 10x. The website runs the same one-time step; whichever runs first wins
+// (the bot_migrations insert can only succeed once), so balances are never multiplied twice.
+async function ensurePointsMigration(pool) {
+    await pool.execute('CREATE TABLE IF NOT EXISTS bot_migrations (name VARCHAR(100) PRIMARY KEY, ran_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci');
+    const [done] = await pool.execute('SELECT name FROM bot_migrations WHERE name = ?', [POINTS_MIGRATION]);
+    if (done.length) return;
+    const [tables] = await pool.query("SHOW TABLES LIKE 'credit_lots'");
+    if (!tables.length) return; // Retainer Watch never used: the website sets everything up later
+    const conn = await pool.getConnection();
+    try {
+        await conn.beginTransaction();
+        try {
+            await conn.execute('INSERT INTO bot_migrations (name) VALUES (?)', [POINTS_MIGRATION]);
+        } catch (e) {
+            if (e.code === 'ER_DUP_ENTRY') { await conn.rollback(); return; }
+            throw e;
+        }
+        await conn.execute('UPDATE credit_lots SET credits_total = credits_total * 10, credits_left = credits_left * 10');
+        const [kp] = await conn.query("SHOW TABLES LIKE 'kofi_payments'");
+        if (kp.length) await conn.execute('UPDATE kofi_payments SET credits = credits * 10');
+        await conn.commit();
+        console.log('🔄 One-time migration done: credits are now points (x10).');
+    } catch (err) {
+        await conn.rollback().catch(() => {});
+        throw err;
+    } finally {
+        conn.release();
+    }
+}
+const FREE_RETAINERS = 2;
+const CREDIT_VALIDITY_DAYS = 180;
+
+function newClaimCode() {
+    const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let code = 'PW-';
+    for (const b of require('crypto').randomBytes(6)) code += alphabet[b % alphabet.length];
+    return code;
+}
+
+async function creditsAdd(conn, userId, amount, now) {
+    let [[acct]] = await conn.execute('SELECT * FROM supporter_account WHERE user_id = ? FOR UPDATE', [userId]);
+    if (!acct) {
+        for (let i = 0; i < 5 && !acct; i++) {
+            try {
+                await conn.execute('INSERT INTO supporter_account (user_id, claim_code, created_at) VALUES (?, ?, ?)', [userId, newClaimCode(), now]);
+            } catch (e) {
+                if (e.code !== 'ER_DUP_ENTRY') throw e;
+            }
+            [[acct]] = await conn.execute('SELECT * FROM supporter_account WHERE user_id = ? FOR UPDATE', [userId]);
+        }
+        if (!acct) throw new Error('could not create supporter account');
+    }
+    await conn.execute(
+        'INSERT INTO credit_lots (user_id, credits_total, credits_left, source, ref, created_at, expires_at) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        [userId, amount, amount, 'manual', 'console', now, now + CREDIT_VALIDITY_DAYS * 864e5]
+    );
+
+    // Like a Ko-fi payment: points only wait in the balance. They are used when the user switches retainers ON or enables perks.
+}
+async function creditsCommand(args) {
+    const { pool } = require('./utils/db');
+    const remove = args[0] === 'remove';
+    const add = args[0] === 'add';
+    const userId = remove || add ? args[1] : args[0];
+    const amount = remove || add ? Number(args[2]) : 0;
+    if (!userId || !/^\d{15,22}$/.test(userId) ||
+        (remove && (!Number.isInteger(amount) || amount <= 0 || amount > 1000000)) ||
+        (add && (!Number.isInteger(amount) || amount <= 0 || amount > 100000))) {
+        console.log('[CONSOLE] Usage: points <discord user id>  |  points add <discord user id> <1-100000>  |  points remove <discord user id> <amount>');
+        return;
+    }
+    try {
+        await ensurePointsMigration(pool);
+    } catch (err) {
+        console.error('[POINTS] Could not convert credits to points:', err.message);
+        return;
+    }
+    const now = Date.now();
+    const fmt = ts => ts ? new Date(Number(ts)).toISOString().slice(0, 10) : 'never';
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        await conn.beginTransaction();
+        if (add) {
+            await creditsAdd(conn, userId, amount, now);
+            await conn.commit();
+            const [[b]] = await pool.execute('SELECT COALESCE(SUM(credits_left), 0) AS bal FROM credit_lots WHERE user_id = ? AND credits_left > 0 AND (expires_at = 0 OR expires_at > ?)', [userId, now]);
+            console.log('\n💎 [POINTS] Added ' + amount + ' point(s) to ' + userId + ' (expire ' + fmt(now + CREDIT_VALIDITY_DAYS * 864e5) + '). Balance now: ' + Number(b.bal) + '.');
+            console.log('  Points are used when they switch retainers ON, enable Supporter Perks, or at renewal. Paused retainers are not resumed automatically.\n');
+            return;
+        }
+        const [[acct]] = await conn.execute('SELECT * FROM supporter_account WHERE user_id = ? FOR UPDATE', [userId]);
+        const [lots] = await conn.execute(
+            'SELECT id, credits_left, created_at, expires_at FROM credit_lots WHERE user_id = ? AND credits_left > 0 AND (expires_at = 0 OR expires_at > ?) ORDER BY created_at DESC, id DESC FOR UPDATE',
+            [userId, now]
+        );
+        const balance = lots.reduce((sum, l) => sum + Number(l.credits_left), 0);
+
+        if (!remove) {
+            await conn.commit();
+            const [rows] = await pool.execute('SELECT world_name, retainer_name, enabled FROM retainer_watch WHERE user_id = ? ORDER BY created_at, id', [userId]);
+            let perks = 'off';
+            try {
+                const [[pk]] = await pool.execute('SELECT state, cycle_end FROM supporter_perks WHERE user_id = ?', [userId]);
+                if (pk && pk.state !== 'off' && pk.cycle_end) perks = pk.state + (pk.state === 'active' ? ', renews ' : ', ends ') + fmt(pk.cycle_end);
+            } catch (e) { /* table not created yet */ }
+            console.log('\n💎 [POINTS] ' + userId);
+            console.log('  Supporter Perks: ' + perks);
+            console.log('  Balance: ' + balance + ' point(s)' + (lots.length ? ' (' + lots.map(l => l.credits_left + ' expires ' + fmt(l.expires_at)).join(', ') + ')' : ''));
+            console.log('  Month: ' + (acct && acct.cycle_end ? fmt(acct.cycle_start) + ' -> ' + fmt(acct.cycle_end) : 'not started') +
+                ' | Paid slots: ' + (acct ? acct.paid_slots : 0));
+            console.log('  Retainers: ' + (rows.length ? rows.map(r => r.retainer_name + ' (' + r.world_name + ')' + ({ 0: ' [off]', 2: ' [paused]' }[Number(r.enabled)] || '')).join(', ') : 'none') + '\n');
+            return;
+        }
+
+        // Take from the newest points first (the refunded payment is usually the latest)
+        let left = amount;
+        for (const lot of lots) {
+            if (left <= 0) break;
+            const take = Math.min(left, Number(lot.credits_left));
+            await conn.execute('UPDATE credit_lots SET credits_left = credits_left - ? WHERE id = ?', [take, lot.id]);
+            left -= take;
+        }
+        const removed = amount - left;
+
+        // Points that were already spent on this month: take those paid slots away too
+        let paidSlots = acct ? Number(acct.paid_slots) || 0 : 0;
+        if (acct && left > 0) {
+            paidSlots = Math.max(0, paidSlots - left);
+            await conn.execute('UPDATE supporter_account SET paid_slots = ?, paused = 1 WHERE user_id = ?', [paidSlots, userId]);
+        }
+        // Retainers switched ON beyond the free + paid slots become PAUSED (newest first)
+        const [rows] = await conn.execute('SELECT id FROM retainer_watch WHERE user_id = ? AND enabled = 1 ORDER BY created_at, id', [userId]);
+        let pausedNow = 0;
+        for (let i = FREE_RETAINERS + paidSlots; i < rows.length; i++) {
+            await conn.execute('UPDATE retainer_watch SET enabled = 2, active = 0 WHERE id = ?', [rows[i].id]);
+            pausedNow++;
+        }
+        await conn.commit();
+        console.log('\n💎 [POINTS] Removed ' + removed + ' unused point(s) from ' + userId + '. Balance now: ' + (balance - removed) + '.');
+        if (left > 0 && acct) console.log('  ' + left + ' point(s) were already used this month: paid slots reduced to ' + paidSlots + (pausedNow ? ', ' + pausedNow + ' retainer(s) paused' : '') + '.');
+        else if (left > 0) console.log('  This user has no supporter account, so nothing else was changed.');
+        console.log('');
+    } catch (err) {
+        if (conn) await conn.rollback().catch(() => {});
+        if (err && err.code === 'ER_NO_SUCH_TABLE') console.log('[POINTS] Retainer Watch tables do not exist yet (no one has used the Retainers page).');
+        else if (err && err.code === 'ER_BAD_FIELD_ERROR') console.log('[POINTS] The database needs the new switch column: open the Retainers page on the website once, then try again.');
+        else console.error('❌ [POINTS] Failed:', err.message);
+    } finally {
+        if (conn) conn.release();
+    }
+}
+
 // --- Centralized Terminal Console Listener ---
 const rl = readline.createInterface({
     input: process.stdin,
@@ -426,6 +595,20 @@ rl.on('line', async (line) => {
         } catch (err) {
             console.error('❌ [WHOIS] Lookup failed:', err.message);
         }
+    } else if (input === 'retainers' || input.startsWith('retainers ')) {
+        // Read-only: what Retainer Watch tracks for a user, with live Universalis prices
+        const targetId = input.split(/\s+/)[1];
+        if (!targetId || !/^\d{15,22}$/.test(targetId)) {
+            console.log('[CONSOLE] Usage: retainers <discord user id>');
+            return;
+        }
+        try {
+            await require('./utils/retainerWatch').describeUser(targetId);
+        } catch (err) {
+            console.error('❌ [RETAINERS] Lookup failed:', err.message);
+        }
+    } else if (input === 'points' || input.startsWith('points ') || input === 'credits' || input.startsWith('credits ')) {
+        await creditsCommand(input.split(/\s+/).slice(1));
     } else if (input.length > 0) {
         console.log(`[CONSOLE] Unknown console command: "${input}".`);
     }

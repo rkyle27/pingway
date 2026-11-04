@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { pool } = require('../utils/db');
 const { isMaintenance } = require('../maintenance');
+const honeypot = require('../utils/honeypot');
 
 const openrouter = new OpenAI({
     baseURL: 'https://openrouter.ai/api/v1',
@@ -188,6 +189,11 @@ async function sendChunkedReply(message, content) {
 module.exports = {
     name: 'messageCreate',
     async execute(message) {
+        // Honeypot channel: handled first, even during maintenance (it protects the server)
+        if (message.guild && honeypot.isTrap(message)) {
+            await honeypot.handle(message).catch(err => console.error('❌ [HONEYPOT] Failed:', err.message));
+            return;
+        }
         if (isMaintenance(message.guildId) || message.author.bot || !message.guild) return;
 
         // Don't let the AI reply while the user is typing their Party Finder name in the /pf wizard
