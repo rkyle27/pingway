@@ -169,25 +169,49 @@ function goodName(name) {
 function giveaway(word) {
     return String(word).split(/[\s\-']+/).map(fold).filter(w => w.length >= 4);
 }
-// Clean list of 3-6 hints: no empty ones, no repeats, none that contain (a big part of) the answer
-function makeHints(word, specific) {
-    const bad = giveaway(word);
+// True when a text contains the answer or a big part of it
+function leaks(word, value) {
+    const f = fold(value);
     const whole = fold(word);
-    const words = String(word).trim().split(/\s+/).length;
+    return f.includes(whole) || giveaway(word).some(w => f.includes(w));
+}
+// A hint is a plain string, or { text, letter } when it shows a letter of the answer (letter = 0-based letter index,
+// spaces/symbols/digits not counted). Old saved words have plain strings only.
+const hintText = h => (h && typeof h === 'object') ? String(h.text || '') : String(h === undefined || h === null ? '' : h);
+// Cell position of the letter a clue shows (for the boxes / revealed), or -1. Plain strings: the "First letter: X" format.
+function hintLetter(word, h) {
+    const lp = letterPositions(word);
+    let k = -1;
+    if (h && typeof h === 'object') {
+        if (Number.isInteger(h.letter)) k = h.letter;
+    } else if (/^First letter: \S$/u.test(String(h || '').trim())) {
+        k = 0;
+    }
+    if (k < 0 || k >= lp.length) return -1;
+    // The letter named in the text must be that letter of the answer
+    const m = /:\s*(\S)$/u.exec(hintText(h).trim());
+    if (m && foldChar(m[1]).charAt(0) !== cells(word)[lp[k]].l) return -1;
+    return lp[k];
+}
+const MAX_HINTS = 10;
+// Clean list of up to 10 hints (Category first, First letter last): no empty ones, no repeats, none that contain
+// (a big part of) the answer
+function makeHints(word, specific) {
     const out = [];
-    const add = h => {
-        if (!h || out.length >= 6) return;
-        const value = String(h).split(': ').slice(1).join(': ') || String(h);
-        const f = fold(value);
-        if (!f) return;
-        if (f.includes(whole) || bad.some(w => f.includes(w))) return;
-        if (!out.includes(h)) out.push(h);
+    const seenText = new Set();
+    const add = (h, room) => {
+        const t = hintText(h).trim();
+        if (!t || out.length >= room) return;
+        const value = t.split(': ').slice(1).join(': ') || t;
+        if (!fold(value) || leaks(word, value)) return;
+        if (seenText.has(t)) return;
+        seenText.add(t);
+        out.push(h);
     };
-    for (const h of specific) add(h);
-    add(words === 1 ? 'It is one word' : 'It has ' + words + ' words');
     const first = cells(word).find(c => c.t === 'letter');
-    if (first) add('First letter: ' + first.l.toUpperCase());
-    return out.slice(0, 6);
+    for (const h of specific) add(h, first ? MAX_HINTS - 1 : MAX_HINTS);
+    if (first) add({ text: 'First letter: ' + first.l.toUpperCase(), letter: 0 }, MAX_HINTS);
+    return out;
 }
 
 // Helpers to read XIVAPI v2 fields: links are { value, row_id, fields }, plain values are numbers/strings
@@ -230,9 +254,40 @@ function quoteLines(raw) {
 }
 const byRow = rows => new Map((rows || []).map(r => [Number(r.row_id), r.fields || {}]));
 
+// A short one-line clue from a game text (Description / Tooltip): no markup, the answer's words masked as ???,
+// first sentence (or first ~150 characters). '' when too short. makeHints still drops it if a part of the answer is left.
+const escRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+function textHint(label, raw, word, max = 150) {
+    let t = cleanLore(typeof raw === 'string' ? raw : '', 600).replace(/\s*\n\s*/g, ' ').trim();
+    if (!t) return '';
+    const parts = [String(word)].concat(String(word).split(/[\s\-']+/).filter(w => fold(w).length >= 4));
+    for (const w of parts) t = t.replace(new RegExp('\\p{L}*' + escRe(w) + '\\p{L}*', 'giu'), '???');
+    const m = /^.*?[.!?…](?=\s|$)/u.exec(t);
+    if (m && m[0].length >= 20) t = m[0];
+    if (t.length > max) {
+        const cut = t.slice(0, max);
+        const sp = cut.lastIndexOf(' ');
+        t = cut.slice(0, sp > max * 0.5 ? sp : max).trim() + '…';
+    }
+    t = t.replace(/[*_~`|\\]/g, '').replace(/@/g, '@​').trim();
+    return t.replace(/\?\?\?/g, '').replace(/[^\p{L}]/gu, '').length >= 10 ? label + ': ' + t : '';
+}
+const yes = v => v === true || v === 1;
+const listOf = (items, max = 3) => items.filter(Boolean).slice(0, max).join(', ');
+// The first name in `names` that doesn't give `word` away
+const safeOther = (word, names) => names.find(n => n && fold(n) !== fold(word) && !leaks(word, n)) || '';
+
+const STAT_NAMES = { 1: 'Strength', 2: 'Dexterity', 3: 'Vitality', 4: 'Intelligence', 5: 'Mind' };
+const RARITY = { 1: 'Common (white)', 2: 'Uncommon (green)', 3: 'Rare (blue)', 4: 'Relic (purple)', 7: 'Aetherial (pink)' };
+const CRAFTERS = { woodworking: 'Carpenter', smithing: 'Blacksmith', armorcraft: 'Armorer', goldsmithing: 'Goldsmith', leatherworking: 'Leatherworker', clothcraft: 'Weaver', alchemy: 'Alchemist', cooking: 'Culinarian' };
+const ROULETTES = [['LevelingRoulette', 'Leveling'], ['HighLevelRoulette', 'High-level Dungeons'], ['ExpertRoulette', 'Expert'], ['TrialRoulette', 'Trials'],
+    ['AllianceRoulette', 'Alliance Raids'], ['NormalRaidRoulette', 'Normal Raids'], ['MSQRoulette', 'Main Scenario']];
+const secs = v => { const s = num(v) / 10; return (Math.round(s * 10) / 10) + 's'; };
+
 // Sorts the raw XIVAPI rows into the 6 pools. raw = { classJobs, territories, content, mounts, minions, actions, items,
-// and the *Transient sheets mountLore, minionLore, actionLore, contentLore (same row_id as the base sheet) }
+// recipes, and the *Transient sheets mountLore, minionLore, actionLore, contentLore (same row_id as the base sheet) }
 // (arrays of { row_id, fields }). Returns { easy: [{ word, category, hints, lore }], ... }.
+// Fields that are missing in the data just give no hint.
 function buildPools(raw) {
     const pools = { easy: [], normal: [], hard: [], extreme: [], savage: [], ultimate: [] };
     const seen = { easy: new Set(), normal: new Set(), hard: new Set(), extreme: new Set(), savage: new Set(), ultimate: new Set() };
@@ -242,46 +297,78 @@ function buildPools(raw) {
         const body = text(f.DescriptionEnhanced) || text(f.Description);
         return loreOf(body, quoteLines(text(f.Tooltip)));
     };
+    // Quote (Tooltip) and description clues of a mount/minion
+    const transientHints = (map, id, word) => {
+        const f = map.get(Number(id)) || {};
+        return [textHint('Quote', text(f.Tooltip), word), textHint('Description', text(f.DescriptionEnhanced) || text(f.Description), word)];
+    };
     const put = (diff, word, category, hints, lore) => {
         word = String(word || '').trim().replace(/\s+/g, ' ');
         if (!goodName(word)) return;
         const key = fold(word);
         if (seen[diff].has(key)) return;
         seen[diff].add(key);
-        pools[diff].push({ word, category, hints: makeHints(word, ['Category: ' + category, ...hints]), lore: lore || '' });
+        // Text clues are made for the name before cleaning; make them again if the name changed
+        pools[diff].push({ word, category, hints: makeHints(word, ['Category: ' + category, ...hints.map(h => (typeof h === 'function' ? h(word) : h))]), lore: lore || '' });
     };
     const longName = w => String(w).trim().split(/\s+/).length >= 3 || String(w).trim().length >= 20;
 
     // Easy: jobs and classes
-    for (const r of raw.classJobs || []) {
+    const jobRows = (raw.classJobs || []).map(r => {
         const f = r.fields || {};
-        const name = titleCase(text(field(f, 'Name')));
+        return { f, name: titleCase(text(field(f, 'Name'))), isJob: num(field(f, 'JobIndex')) > 0, parent: titleCase(text(field(f, 'ClassJobParent.Name'))) };
+    });
+    for (const { f, name, isJob, parent } of jobRows) {
         if (!name || name.toLowerCase() === 'adventurer') continue;
-        const isJob = num(field(f, 'JobIndex')) > 0;
-        const parent = titleCase(text(field(f, 'ClassJobParent.Name')));
         const role = ROLE_NAMES[num(field(f, 'Role'))];
         const abbr = text(field(f, 'Abbreviation'));
+        const disciple = text(field(f, 'ClassJobCategory.Name'));
+        const town = text(field(f, 'StartingTown.Name')).replace(/^nowheresville$/i, ''); // "Nowheresville" = the game's placeholder (no real starting city)
+        const startLevel = num(field(f, 'StartingLevel'));
+        const stat = STAT_NAMES[num(field(f, 'PrimaryStat'))];
+        const becomes = isJob ? '' : safeOther(name, jobRows.filter(j => j.isJob && j.parent === name).map(j => j.name));
         put('easy', name, isJob ? 'Job' : 'Class', [
             role ? 'Role: ' + role : '',
-            abbr ? 'Abbreviation: ' + abbr : '',
-            isJob && parent && parent !== name ? 'It starts as: ' + parent : ''
+            /^disciples? of /i.test(disciple) ? 'Type: ' + disciple : '',
+            stat ? 'Main stat: ' + stat : '',
+            town ? 'Starting city: ' + town : '',
+            startLevel > 1 ? 'Starts at level ' + startLevel : '',
+            yes(field(f, 'IsLimitedJob')) ? 'It is a limited job' : '',
+            becomes ? 'It becomes: ' + becomes : '',
+            isJob && parent && parent !== name ? 'It starts as: ' + parent : '',
+            abbr ? 'Abbreviation: ' + abbr : ''
         ], loreOf(name + (abbr ? ' (' + abbr + ')' : '') + ' — ' + (role ? role + ' ' : '') + (isJob ? 'job' : 'class') +
             (isJob && parent && parent !== name ? ', starts as ' + parent : '') + '.'));
     }
     // Easy: cities and regions. Normal: field zones.
-    const regionSeen = new Set();
-    for (const r of raw.territories || []) {
+    const places = (raw.territories || []).map(r => {
         const f = r.fields || {};
-        const place = text(field(f, 'PlaceName.Name'));
-        const region = text(field(f, 'PlaceNameRegion.Name'));
-        const exp = text(field(f, 'ExVersion.Name'));
-        const use = num(field(f, 'TerritoryIntendedUse'));
+        return { place: text(field(f, 'PlaceName.Name')), region: text(field(f, 'PlaceNameRegion.Name')), area: text(field(f, 'PlaceNameZone.Name')),
+            exp: text(field(f, 'ExVersion.Name')), use: num(field(f, 'TerritoryIntendedUse')) };
+    }).filter(t => t.use === 0 || t.use === 1);
+    const inRegion = (region, use) => places.filter(t => t.place && t.region === region && (use === undefined || t.use === use)).map(t => capFirst(t.place))
+        .filter((n, i, a) => a.indexOf(n) === i);
+    const regionSeen = new Set();
+    for (const t of places) {
+        const { place, region, area, exp, use } = t;
+        const name = capFirst(place);
         const where = (region ? ' in ' + region : '') + (exp ? ' (' + exp + ')' : '') + '.';
-        if (use === 0 && place) put('easy', capFirst(place), 'City', [region ? 'Region: ' + region : '', exp ? 'Expansion: ' + exp : ''], 'A city' + where);
-        if (use === 1 && place) put('normal', capFirst(place), 'Zone', [region ? 'Region: ' + region : '', exp ? 'Expansion: ' + exp : ''], 'A zone' + where);
-        if ((use === 0 || use === 1) && region && !regionSeen.has(region)) {
+        const hints = [region ? 'Region: ' + region : '', exp ? 'Expansion: ' + exp : '',
+            area && fold(area) !== fold(place) && fold(area) !== fold(region) ? 'Area: ' + area : '',
+            region ? 'Also in this region: ' + safeOther(name, inRegion(region)) : ''].filter(h => !/: $/.test(h));
+        if (use === 0 && place) put('easy', name, 'City', hints, 'A city' + where);
+        if (use === 1 && place) put('normal', name, 'Zone', hints, 'A zone' + where);
+        if (region && !regionSeen.has(region)) {
             regionSeen.add(region);
-            put('easy', capFirst(region), 'Region', [exp ? 'Expansion: ' + exp : ''], 'A region of the world' + (exp ? ', first seen in ' + exp : '') + '.');
+            const R = capFirst(region);
+            const zones = inRegion(region, 1), cities = inRegion(region, 0);
+            const zone2 = safeOther(R, zones);
+            put('easy', R, 'Region', [exp ? 'Expansion: ' + exp : '',
+                zones.length ? zones.length + (zones.length === 1 ? ' field zone' : ' field zones') : '',
+                cities.length ? 'A city there: ' + safeOther(R, cities) : '',
+                zone2 ? 'A zone there: ' + zone2 : '',
+                zone2 ? 'Another zone there: ' + safeOther(R, zones.filter(z => z !== zone2)) : ''
+            ].filter(h => !/: $/.test(h)), 'A region of the world' + (exp ? ', first seen in ' + exp : '') + '.');
         }
     }
     // Hard: dungeons. Extreme: trials and raids.
@@ -290,25 +377,55 @@ function buildPools(raw) {
         const name = capFirst(text(field(f, 'Name')));
         const type = text(field(f, 'ContentType.Name'));
         const level = num(field(f, 'ClassJobLevelRequired'));
+        const sync = num(field(f, 'ClassJobLevelSync'));
+        const ilvl = num(field(f, 'ItemLevelRequired'));
+        const ilvlSync = num(field(f, 'ItemLevelSync'));
         const zone = text(field(f, 'TerritoryType.PlaceName.Name'));
+        const region = text(field(f, 'TerritoryType.PlaceNameRegion.Name'));
         const exp = text(field(f, 'TerritoryType.ExVersion.Name'));
-        const hints = [level ? 'Level ' + level : '', exp ? 'Expansion: ' + exp : '', zone && fold(zone) !== fold(name) ? 'Zone: ' + zone : ''];
+        const roulettes = ROULETTES.filter(([k]) => yes(field(f, k))).map(([, n]) => n);
+        const desc = text(field(contentLore.get(Number(r.row_id)) || {}, 'Description'));
+        const hints = [level ? 'Level ' + level : '', exp ? 'Expansion: ' + exp : '', ilvl ? 'Item level ' + ilvl : '',
+            roulettes.length ? 'Roulette: ' + listOf(roulettes) : '', region ? 'Region: ' + region : '',
+            zone && fold(zone) !== fold(name) ? 'Zone: ' + zone : '', yes(field(f, 'HighEndDuty')) ? 'It is a high-end duty' : '',
+            sync && sync !== level ? 'Level sync ' + sync : '', ilvlSync ? 'Item level sync ' + ilvlSync : '',
+            w => textHint('Description', desc, w)];
         const cat = /^dungeons?$/i.test(type) ? 'Dungeon' : /trial/i.test(type) ? 'Trial' : (/raid/i.test(type) && !/ultimate/i.test(type)) ? (/alliance/i.test(type) ? 'Alliance Raid' : 'Raid') : null;
         if (!cat) continue;
-        const lore = loreOf([cat, level ? 'Level ' + level : '', exp].filter(Boolean).join(' · '), text(field(contentLore.get(Number(r.row_id)) || {}, 'Description')));
+        const lore = loreOf([cat, level ? 'Level ' + level : '', exp].filter(Boolean).join(' · '), desc);
         put(cat === 'Dungeon' ? 'hard' : 'extreme', name, cat, hints, lore);
     }
     // Mounts: Normal (short names) or Ultimate (long names)
     for (const r of raw.mounts || []) {
-        const name = titleCase(text(field(r.fields || {}, 'Singular')));
+        const f = r.fields || {};
+        const name = titleCase(text(field(f, 'Singular')));
         if (!name) continue;
-        put(longName(name) ? 'ultimate' : 'normal', name, 'Mount', [], transient(mountLore, r.row_id));
+        const seats = field(f, 'ExtraSeats');
+        const riders = seats === undefined || seats === null ? 0 : num(seats) + 1;
+        put(longName(name) ? 'ultimate' : 'normal', name, 'Mount', [
+            riders ? 'Seats: ' + riders + (riders === 1 ? ' rider' : ' riders') : '',
+            w => transientHints(mountLore, r.row_id, w)[0], w => transientHints(mountLore, r.row_id, w)[1]
+        ], transient(mountLore, r.row_id));
     }
     // Minions: Extreme (short names) or Ultimate (long names)
     for (const r of raw.minions || []) {
-        const name = titleCase(text(field(r.fields || {}, 'Singular')));
+        const f = r.fields || {};
+        const name = titleCase(text(field(f, 'Singular')));
         if (!name) continue;
-        put(longName(name) ? 'ultimate' : 'extreme', name, 'Minion', [], transient(minionLore, r.row_id));
+        const t = minionLore.get(Number(r.row_id)) || {};
+        const race = text(field(f, 'MinionRace.Name'));
+        const move = text(field(f, 'Behavior.Name'));
+        const skill = text(field(t, 'MinionSkillType.Name'));
+        const special = text(field(t, 'SpecialActionName'));
+        const atk = num(field(t, 'Attack')), def = num(field(t, 'Defense')), spd = num(field(t, 'Speed'));
+        put(longName(name) ? 'ultimate' : 'extreme', name, 'Minion', [
+            race ? 'Minion race: ' + race : '',
+            move ? 'Behavior: ' + move : '',
+            skill ? 'Verminion skill type: ' + skill : '',
+            special ? 'Special action: ' + special : '',
+            atk || def || spd ? 'Verminion stats: ATK ' + atk + ' / DEF ' + def + ' / SPD ' + spd : '',
+            w => transientHints(minionLore, r.row_id, w)[0], w => transientHints(minionLore, r.row_id, w)[1]
+        ], transient(minionLore, r.row_id));
     }
     // Actions: Hard (level 50 or lower), Savage (all of them)
     for (const r of raw.actions || []) {
@@ -319,10 +436,40 @@ function buildPools(raw) {
         const level = num(field(f, 'ClassJobLevel'));
         if (!name || !level) continue;
         const who = job && job.toLowerCase() !== 'adventurer' ? job : 'Role action';
-        const hints = [who === job ? 'Job: ' + job : 'Role action', 'Level ' + level];
-        const lore = loreOf(who + ' · Level ' + level, text(field(actionLore.get(Number(r.row_id)) || {}, 'Description')));
+        const kind = text(field(f, 'ActionCategory.Name'));
+        const users = text(field(f, 'ClassJobCategory.Name'));
+        const cast = field(f, 'Cast100ms'), recast = field(f, 'Recast100ms');
+        const range = num(field(f, 'Range')), radius = num(field(f, 'EffectRange')), charges = num(field(f, 'MaxCharges'));
+        const targets = [yes(field(f, 'CanTargetHostile')) ? 'enemies' : '', yes(field(f, 'CanTargetParty')) ? 'party members' : '',
+            yes(field(f, 'CanTargetSelf')) ? 'self' : ''].filter(Boolean);
+        const desc = text(field(actionLore.get(Number(r.row_id)) || {}, 'Description'));
+        const hints = [who === job ? 'Job: ' + job : 'Role action', 'Level ' + level,
+            kind ? 'Action type: ' + kind : '',
+            w => textHint('Description', desc, w),
+            cast === undefined || cast === null ? '' : num(cast) > 0 ? 'Cast time: ' + secs(cast) : 'Instant cast',
+            recast === undefined || recast === null || num(recast) <= 0 ? '' : 'Recast: ' + secs(recast),
+            who === job && yes(field(f, 'IsRoleAction')) ? 'Role action' : '',
+            yes(field(f, 'TargetArea')) ? 'It is ground-targeted' : targets.length ? 'Targets: ' + targets.join(', ') : '',
+            range > 0 ? 'Range: ' + range + ' yalms' : '',
+            radius > 0 ? 'Effect radius: ' + radius + ' yalms' : '',
+            charges > 1 ? charges + ' charges' : '',
+            users && users.length <= 60 ? 'Used by: ' + users : ''];
+        const lore = loreOf(who + ' · Level ' + level, desc);
         if (level <= 50) put('hard', name, 'Action', hints, lore);
         put('savage', name, 'Action', hints, lore);
+    }
+    // Who crafts each item (Recipe sheet, joined in memory)
+    const crafted = new Map();
+    for (const r of raw.recipes || []) {
+        const f = r.fields || {};
+        const id = num(field(f, 'ItemResult'));
+        const craft = text(field(f, 'CraftType.Name'));
+        if (!id || !craft) continue;
+        const job = CRAFTERS[craft.toLowerCase()] || craft;
+        const c = crafted.get(id) || { jobs: [], expert: false };
+        if (!c.jobs.includes(job)) c.jobs.push(job);
+        if (yes(field(f, 'IsExpert'))) c.expert = true;
+        crafted.set(id, c);
     }
     // Ultimate: marketable items with 2+ words
     for (const r of raw.items || []) {
@@ -331,8 +478,31 @@ function buildPools(raw) {
         if (!name || name.split(/\s+/).length < 2 || num(field(f, 'ItemSearchCategory')) <= 0) continue;
         const ilvl = num(field(f, 'LevelItem'));
         const kind = text(field(f, 'ItemUICategory.Name'));
-        put('ultimate', name, 'Item', [kind ? 'Item type: ' + kind : '', ilvl ? 'Item level ' + ilvl : ''],
-            loreOf([kind, ilvl ? 'Item level ' + ilvl : ''].filter(Boolean).join(' · '), text(field(f, 'Description'))));
+        const market = text(field(f, 'ItemSearchCategory.Name'));
+        const equip = num(field(f, 'LevelEquip'));
+        const users = text(field(f, 'ClassJobCategory.Name'));
+        const rarity = RARITY[num(field(f, 'Rarity'))];
+        const craft = crafted.get(Number(r.row_id));
+        const gc = text(field(f, 'GrandCompany.Name'));
+        const series = text(field(f, 'ItemSeries.Name'));
+        const melds = num(field(f, 'MateriaSlotCount')), dyes = num(field(f, 'DyeCount')), stack = num(field(f, 'StackSize'));
+        const desc = text(field(f, 'Description'));
+        put('ultimate', name, 'Item', [kind ? 'Item type: ' + kind : '', ilvl ? 'Item level ' + ilvl : '',
+            equip > 1 ? 'Equip level ' + equip : '',
+            users && users.length <= 60 ? 'Usable by: ' + users : '',
+            craft ? 'Crafted by: ' + listOf(craft.jobs) + (craft.expert ? ' (expert recipe)' : '') : '',
+            rarity ? 'Rarity: ' + rarity : '',
+            market && fold(market) !== fold(kind) ? 'Market board: ' + market : '',
+            w => textHint('Description', desc, w),
+            gc ? 'Grand Company: ' + gc : '',
+            series ? 'Item series: ' + series : '',
+            melds ? melds + (melds === 1 ? ' materia slot' : ' materia slots') : '',
+            dyes ? 'It can be dyed' : '',
+            stack > 1 ? 'Stacks up to ' + stack : '',
+            yes(field(f, 'CanBeHq')) ? 'It can be high quality' : '',
+            yes(field(f, 'IsUnique')) ? 'It is unique' : '',
+            yes(field(f, 'IsCollectable')) ? 'It is a collectable' : ''],
+            loreOf([kind, ilvl ? 'Item level ' + ilvl : ''].filter(Boolean).join(' · '), desc));
     }
     return pools;
 }
@@ -342,5 +512,5 @@ module.exports = {
     dayOf, addDays, seasonOf, msToReset,
     fold, foldChar, sameAnswer, cells, letterPositions, matchingLetters, renderBoxes, indicator,
     bitsFor, liveStreak, nextStreak, seedOf, pickWord,
-    titleCase, capFirst, goodName, makeHints, field, num, text, buildPools, cleanLore
+    titleCase, capFirst, goodName, makeHints, hintText, hintLetter, field, num, text, buildPools, cleanLore
 };

@@ -1,6 +1,7 @@
 // Pingway Trivia: word bank, database and game steps for /trivia (the screens are in commands/trivia.js).
 // - Word bank: built from XIVAPI (jobs, cities, zones, dungeons, trials, raids, mounts, minions, actions, items)
-//   and kept in data/trivia_bank.json. Rebuilt in the background when it is missing or older than 30 days.
+//   and kept in data/trivia_bank.json. Rebuilt in the background when it is missing, older than 30 days or made with
+//   an older bank format (BANK_FORMAT: raise it when the hints change, so new daily words get the new hints).
 //   If a rebuild fails, the old bank stays in use.
 // - Each word has a short "lore" text (XIVAPI descriptions, or an info line for jobs and places), shown only after
 //   a solve. It is copied into trivia_words with the word, so it never changes during the day.
@@ -10,7 +11,8 @@
 // - One solve per person per JST day, in all servers. Giving up or running out of guesses locks that difficulty
 //   for the day; another one can still be tried. Games in progress are saved, so /trivia continues them anywhere.
 // - Hints: up to 3 per guess (trivia_plays.hint_round = hints used since the last wrong guess; a wrong guess sets it
-//   back to 0). A hint shows an unused clue; when all clues are used it shows one hidden letter instead.
+//   back to 0). A hint shows an unused clue (a clue that shows a letter, like "First letter", comes last and also
+//   opens that letter's box); when all clues are used it shows one hidden letter instead.
 // - A wrong guess shows the letters in the right place plus one random letter. When every letter is shown, the game
 //   is solved the same way as a right guess (bits = base then, see bitsFor in utils/triviaWords.js).
 // - Stored per person (trivia_users): display name and avatar for the leaderboards, bits (all time and this
@@ -30,6 +32,7 @@ const BANK_MAX_AGE = 30 * 24 * 60 * 60 * 1000;
 const NO_REPEAT_DAYS = 90;
 const KEEP_DAYS = 100;
 const MIN_POOL = 15;
+const BANK_FORMAT = 3; // 2 = more hints per word, no word-count hint, First letter as { text, letter }; 3 = no "Nowheresville" starting city
 
 let tablesReady = false;
 let bank = null;          // { builtAt, pools }
@@ -114,7 +117,7 @@ function getBank() {
     if (!bank) bank = loadBankFile();
     return bank;
 }
-const bankIsOld = b => !b || !Number(b.builtAt) || Date.now() - Number(b.builtAt) > BANK_MAX_AGE;
+const bankIsOld = b => !b || !Number(b.builtAt) || (Number(b.format) || 1) < BANK_FORMAT || Date.now() - Number(b.builtAt) > BANK_MAX_AGE;
 
 async function getJson(url) {
     let lastErr;
@@ -163,16 +166,22 @@ async function searchRows(sheet, query, fields, maxPages = 40) {
 
 async function buildBank() {
     const raw = {
-        classJobs: await sheetRows('ClassJob', 'Name,Abbreviation,Role,ClassJobParent.Name,JobIndex'),
-        territories: await sheetRows('TerritoryType', 'PlaceName.Name,PlaceNameRegion.Name,ExVersion.Name,TerritoryIntendedUse'),
-        content: await sheetRows('ContentFinderCondition', 'Name,ContentType.Name,ClassJobLevelRequired,TerritoryType.PlaceName.Name,TerritoryType.ExVersion.Name'),
+        classJobs: await sheetRows('ClassJob', 'Name,Abbreviation,Role,ClassJobParent.Name,JobIndex,ClassJobCategory.Name,StartingTown.Name,StartingLevel,PrimaryStat,IsLimitedJob'),
+        territories: await sheetRows('TerritoryType', 'PlaceName.Name,PlaceNameRegion.Name,PlaceNameZone.Name,ExVersion.Name,TerritoryIntendedUse'),
+        content: await sheetRows('ContentFinderCondition', 'Name,ContentType.Name,ClassJobLevelRequired,ClassJobLevelSync,ItemLevelRequired,ItemLevelSync,HighEndDuty,' +
+            'LevelingRoulette,HighLevelRoulette,ExpertRoulette,TrialRoulette,AllianceRoulette,NormalRaidRoulette,MSQRoulette,' +
+            'TerritoryType.PlaceName.Name,TerritoryType.PlaceNameRegion.Name,TerritoryType.ExVersion.Name'),
         contentLore: await sheetRows('ContentFinderConditionTransient', 'Description'),
-        mounts: await sheetRows('Mount', 'Singular'),
+        mounts: await sheetRows('Mount', 'Singular,ExtraSeats'),
         mountLore: await sheetRows('MountTransient', 'Description,DescriptionEnhanced,Tooltip'),
-        minions: await sheetRows('Companion', 'Singular'),
-        minionLore: await sheetRows('CompanionTransient', 'Description,DescriptionEnhanced,Tooltip'),
-        actions: await searchRows('Action', '+IsPlayerAction=true +IsPvP=false', 'Name,ClassJob.Name,ClassJobLevel,IsPvP,IsPlayerAction'),
-        items: await sheetRows('Item', 'Name,Description,ItemSearchCategory,LevelItem,ItemUICategory.Name')
+        minions: await sheetRows('Companion', 'Singular,MinionRace.Name,Behavior.Name'),
+        minionLore: await sheetRows('CompanionTransient', 'Description,DescriptionEnhanced,Tooltip,SpecialActionName,MinionSkillType.Name,Attack,Defense,Speed'),
+        actions: await searchRows('Action', '+IsPlayerAction=true +IsPvP=false', 'Name,ClassJob.Name,ClassJobLevel,IsPvP,IsPlayerAction,ActionCategory.Name,ClassJobCategory.Name,' +
+            'Cast100ms,Recast100ms,Range,EffectRange,MaxCharges,IsRoleAction,CanTargetHostile,CanTargetParty,CanTargetSelf,TargetArea'),
+        items: await sheetRows('Item', 'Name,Description,ItemSearchCategory.Name,LevelItem,ItemUICategory.Name,LevelEquip,ClassJobCategory.Name,Rarity,' +
+            'GrandCompany.Name,ItemSeries.Name,MateriaSlotCount,DyeCount,StackSize,CanBeHq,IsUnique,IsCollectable'),
+        // Who crafts what (joined to the items in memory)
+        recipes: await sheetRows('Recipe', 'ItemResult.Name,CraftType.Name,IsExpert')
     };
     // Lore of actions: only the rows of the actions found above (ActionTransient has the same row_id)
     const actionIds = new Set(raw.actions.map(r => Number(r.row_id)));
@@ -180,7 +189,7 @@ async function buildBank() {
     const pools = W.buildPools(raw);
     const small = W.DIFFICULTIES.filter(d => pools[d.key].length < MIN_POOL).map(d => d.name);
     if (small.length) throw new Error('too few words for ' + small.join(', '));
-    const b = { builtAt: Date.now(), pools };
+    const b = { builtAt: Date.now(), format: BANK_FORMAT, pools };
     fs.mkdirSync(path.dirname(BANK_FILE), { recursive: true });
     const tmp = BANK_FILE + '.tmp';
     fs.writeFileSync(tmp, JSON.stringify(b));
@@ -307,9 +316,11 @@ async function startPlay(userId, day, diff, guildId) {
     return { ok: true, play: await getPlay(userId, day, diff) };
 }
 
-// A hint (up to 3 per guess): a random clue that hasn't been shown yet, or when all clues are used, one hidden letter.
-// Returns { ok, play, hint? , letter? } or { ok: false, play, limit|none } — or a solve result ({ result: 'solved'|'already'|
-// 'locked', play, award?, allRevealed: true }) when that letter was the last hidden one.
+// A hint (up to 3 per guess): a random clue that hasn't been shown yet (clues that show a letter, like "First letter", only
+// when no other clue is left; they also open that letter's box), or when all clues are used, one hidden letter.
+// Returns { ok, play, hint?, letter?, position? } (position = 1-based letter number that was just opened) or
+// { ok: false, play, limit|none } — or a solve result ({ result: 'solved'|'already'|'locked', play, award?, allRevealed: true })
+// when that letter was the last hidden one.
 async function useHint(userId, day, diff, word) {
     const p = await getPlay(userId, day, diff);
     if (!p || p.status !== 'playing') return { ok: false, play: p };
@@ -317,21 +328,32 @@ async function useHint(userId, day, diff, word) {
     const where = " WHERE user_id = ? AND day = ? AND difficulty = ? AND status = 'playing' AND hint_round = ?";
     const key = [String(userId), day, diff, p.hintRound];
     const left = word.hints.map((h, i) => i).filter(i => !p.hintsUsed.includes(i));
+    const letterNo = at => W.letterPositions(word.word).indexOf(at) + 1;
     if (left.length) {
-        const pick = left[Math.floor(Math.random() * left.length)];
+        const plain = left.filter(i => W.hintLetter(word.word, word.hints[i]) < 0);
+        const from = plain.length ? plain : left;
+        const pick = from[Math.floor(Math.random() * from.length)];
         const used = [...p.hintsUsed, pick];
-        const [r] = await pool.execute('UPDATE trivia_plays SET hints_used = ?, hint_round = hint_round + 1' + where, [JSON.stringify(used), ...key]);
-        if (!(Number(r.affectedRows) > 0)) return { ok: false, play: await getPlay(userId, day, diff) };
-        return { ok: true, play: await getPlay(userId, day, diff), hint: word.hints[pick] };
+        const at = W.hintLetter(word.word, word.hints[pick]);
+        const opens = at >= 0 && !p.revealed.includes(at);
+        const [r] = opens
+            ? await pool.execute('UPDATE trivia_plays SET hints_used = ?, revealed = ?, hint_round = hint_round + 1' + where, [JSON.stringify(used), JSON.stringify([...p.revealed, at]), ...key])
+            : await pool.execute('UPDATE trivia_plays SET hints_used = ?, hint_round = hint_round + 1' + where, [JSON.stringify(used), ...key]);
+        const play = await getPlay(userId, day, diff);
+        if (!(Number(r.affectedRows) > 0)) return { ok: false, play };
+        const hint = W.hintText(word.hints[pick]);
+        if (opens && allShown(word, play.revealed)) return { ...(await solve(userId, day, diff, play, word)), ok: true, allRevealed: true, hint };
+        return opens ? { ok: true, play, hint, position: letterNo(at) } : { ok: true, play, hint };
     }
     const hidden = W.letterPositions(word.word).filter(i => !p.revealed.includes(i));
     if (!hidden.length) return { ok: false, play: p, none: true };
-    const revealed = [...p.revealed, hidden[Math.floor(Math.random() * hidden.length)]];
+    const at = hidden[Math.floor(Math.random() * hidden.length)];
+    const revealed = [...p.revealed, at];
     const [r] = await pool.execute('UPDATE trivia_plays SET revealed = ?, hint_round = hint_round + 1' + where, [JSON.stringify(revealed), ...key]);
     const play = await getPlay(userId, day, diff);
     if (!(Number(r.affectedRows) > 0)) return { ok: false, play };
     if (allShown(word, play.revealed)) return { ...(await solve(userId, day, diff, play, word)), ok: true, allRevealed: true };
-    return { ok: true, play, letter: true };
+    return { ok: true, play, letter: true, position: letterNo(at) };
 }
 
 async function giveUp(userId, day, diff) {
@@ -621,7 +643,7 @@ function start() {
 }
 
 module.exports = {
-    BANK_FILE, ensureTables, getBank, refreshBank, buildBank, bankIsOld, wordsOf, yesterdayAnswers,
+    BANK_FILE, BANK_FORMAT, ensureTables, getBank, refreshBank, buildBank, bankIsOld, wordsOf, yesterdayAnswers,
     touchPlayer, getUser, shareChannel, dayStatus, getPlay, startPlay, useHint, giveUp, guess, markShared, shareLine, cleanup, start, adminTrivia,
     _reset: () => { bank = null; building = null; tablesReady = false; }
 };
