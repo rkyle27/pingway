@@ -133,7 +133,7 @@ module.exports = {
         function gameScreen(word, play) {
             const d = W.DIFF[diff];
             const left = d.limit - play.wrong;
-            const hints = play.hintsUsed.map(i => word.hints[i]).filter(Boolean);
+            const hints = play.hintsUsed.map(i => W.hintText(word.hints[i])).filter(Boolean);
             const lines = [TITLE, d.emoji + ' **' + d.name + '** · ' + left + ' wrong guess' + (left === 1 ? '' : 'es') + ' left · 💡 ' + play.hintsLeft + '/' + W.HINTS_PER_GUESS + ' hints', '',
                 W.renderBoxes(word.word, play.revealed), ''];
             if (hints.length) lines.push(hints.map(h => '💡 ' + h).join('\n'));
@@ -300,7 +300,7 @@ module.exports = {
                     const r = await T.useHint(userId, day, diff, words[diff]);
                     if (r.result === 'solved') { feedback = ''; return await i.editReply({ ...(await solvedScreen(r.play, r.award, words[diff], true)), allowedMentions: { parse: [] } }); }
                     if (!r.play || r.play.status !== 'playing' || r.result) return await i.editReply(await menu());
-                    feedback = r.letter ? '💡 One more letter is shown.' : r.ok ? '' : r.limit ? 'No hints left — you get ' + W.HINTS_PER_GUESS + ' more after a wrong guess.' : 'No more hints for this word.';
+                    feedback = r.position ? '💡 Letter ' + r.position + ' revealed.' : r.ok ? '' : r.limit ? 'No hints left — you get ' + W.HINTS_PER_GUESS + ' more after a wrong guess.' : 'No more hints for this word.';
                     return await i.editReply(gameScreen(words[diff], r.play));
                 }
                 if (id === 'tv_giveup') {
