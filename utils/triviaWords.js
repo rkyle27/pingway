@@ -3,7 +3,11 @@
 // - Letters: accents are folded (ä -> a, œ -> oe, æ -> ae, ß -> ss). Answers are compared on the letters a-z only,
 //   so case, accents, spaces, symbols and digits never matter.
 // - The word is shown as one box per letter: ⬜ hidden, 🇦..🇿 shown. Spaces are a gap, symbols and digits are shown as they are.
-// - Bits on a solve: base x (2 - (hints + wrong guesses) / guess limit), rounded, never below base. Perfect = double.
+// - Bits on a solve: base + base x (letters still hidden / all letters), rounded. Never below base, never above double.
+//   Nothing shown = double; every letter shown = base. Hints cost nothing by themselves (a letter hint shows a letter).
+// - Hints: up to 3 per guess (the count starts again after each wrong guess). Clues first, then one letter each.
+// - A wrong guess shows every letter that is the same letter in the same place as the answer (k-th letter vs
+//   k-th letter, spaces/symbols/digits skipped, accents folded), plus one more random letter.
 // - Streak: days in a row with a solve. It starts again at 1 on the 1st of every month (new season).
 // - The word bank (built from XIVAPI data by utils/trivia.js) is sorted into the 6 difficulties here.
 
@@ -19,6 +23,7 @@ const DIFFICULTIES = [
 ];
 const DIFF = Object.fromEntries(DIFFICULTIES.map(d => [d.key, d]));
 const MILESTONES = { 5: 10, 10: 20, 15: 30, 20: 40, 30: 60 };
+const HINTS_PER_GUESS = 3;
 
 // ---------- JST days ----------
 const JST_MS = 9 * 60 * 60 * 1000;
@@ -57,6 +62,15 @@ function cells(word) {
     });
 }
 const letterPositions = word => cells(word).map((c, i) => (c.t === 'letter' ? i : -1)).filter(i => i >= 0);
+// Letter positions of the answer where the guess has the same letter in the same place:
+// the k-th letter of the guess vs the k-th letter of the answer (spaces, symbols and digits skipped, accents folded)
+function matchingLetters(word, guessText) {
+    const ans = cells(word).map((c, i) => ({ c, i })).filter(x => x.c.t === 'letter');
+    const g = cells(guessText).filter(c => c.t === 'letter').map(c => c.l);
+    const out = [];
+    for (let k = 0; k < ans.length && k < g.length; k++) if (ans[k].c.l === g[k]) out.push(ans[k].i);
+    return out;
+}
 
 const ZWSP = '​';
 const HIDDEN = '⬜';
@@ -79,10 +93,12 @@ function renderBoxes(word, revealed, showAll) {
 }
 
 // ---------- bits & streak ----------
-function bitsFor(diffKey, hints, wrong) {
+// hidden = letters not shown at the moment of the solve, total = all letters of the answer
+function bitsFor(diffKey, hidden, total) {
     const d = DIFF[diffKey];
-    const raw = Math.round(d.base * (2 - (Number(hints) + Number(wrong)) / d.limit));
-    return Math.max(d.base, raw);
+    const t = Number(total) || 0;
+    const raw = t > 0 ? d.base + Math.round(d.base * (Number(hidden) || 0) / t) : d.base;
+    return Math.min(d.base * 2, Math.max(d.base, raw));
 }
 
 // Streak shown on a given day (0 when the last solve was before yesterday, or in an earlier month)
@@ -322,9 +338,9 @@ function buildPools(raw) {
 }
 
 module.exports = {
-    DIFFICULTIES, DIFF, MILESTONES, ZWSP, HIDDEN,
+    DIFFICULTIES, DIFF, MILESTONES, HINTS_PER_GUESS, ZWSP, HIDDEN,
     dayOf, addDays, seasonOf, msToReset,
-    fold, foldChar, sameAnswer, cells, letterPositions, renderBoxes, indicator,
+    fold, foldChar, sameAnswer, cells, letterPositions, matchingLetters, renderBoxes, indicator,
     bitsFor, liveStreak, nextStreak, seedOf, pickWord,
     titleCase, capFirst, goodName, makeHints, field, num, text, buildPools, cleanLore
 };
