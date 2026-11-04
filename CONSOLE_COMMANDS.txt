@@ -77,6 +77,32 @@ points remove <id> <amount>
     and pauses the newest extra retainers that were ON.
 
 
+PINGWAY TRIVIA
+--------------
+Days are JST days (a new day starts at 0:00 JST). Only the user you name is touched;
+the daily words and server share channels are never changed.
+
+trivia <id>
+    Read only. Shows the user's Trivia name, bits (all time and this season), streak,
+    last solve day, hidden (yes/no), and today's plays per difficulty (status, wrong guesses, bits).
+
+trivia reset <id> today
+    PREVIEW only - nothing is changed.
+    Shows today's plays (all difficulties) that will be deleted and, if one was solved,
+    the bits that will be removed and the streak / last solve day it goes back to.
+    After the reset they can play today again and get the same streak (and streak bonus) as before.
+    Their server list for the leaderboards is kept.
+
+trivia reset <id> purge
+    PREVIEW only - nothing is deleted.
+    Shows how many rows of ALL their Trivia data will be deleted
+    (games of every day, bits/streak/name, server list).
+
+trivia reset confirm
+    Does the reset shown in the preview (one at a time).
+    Must be typed within 60 seconds of "trivia reset <id> today" / "trivia reset <id> purge".
+
+
 NOTES
 -----
 - Retainer Watch tables are created the first time someone opens the Retainers page.
