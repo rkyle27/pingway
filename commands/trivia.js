@@ -90,6 +90,7 @@ module.exports = {
             lines.push(y.length ? y.map(d => d.emoji + ' ' + d.name + ': ||' + yest[d.key] + '||').join('\n') : '_None yet — come back tomorrow!_');
             const buttons = [btn('tv_play', st.solved ? 'Today\'s results' : playing ? 'Continue' : 'Play', ButtonStyle.Primary, st.solved ? '📋' : '▶'),
                 btn('tv_howto', 'How to play', ButtonStyle.Secondary, '❓')];
+            if (st.solved) buttons.push(btn('tv_today', 'Today\'s word', ButtonStyle.Secondary, '📖'));
             if (await shareInfo(st)) buttons.push(btn('tv_share', 'Share result', ButtonStyle.Success, '📣'));
             return { content: lines.join('\n'), components: [row(...buttons)] };
         }
@@ -124,7 +125,9 @@ module.exports = {
                 return btn('tv_d_' + d.key, d.name, s === 'solved' ? ButtonStyle.Success : s === 'playing' ? ButtonStyle.Primary : locked ? ButtonStyle.Danger : ButtonStyle.Secondary,
                     s ? STATUS_ICON[s] : d.emoji, locked);
             });
-            return { content: lines.join('\n'), components: [row(...buttons.slice(0, 3)), row(...buttons.slice(3)), row(btn('tv_home', 'Back', ButtonStyle.Secondary, '↩'))] };
+            const nav = [btn('tv_home', 'Back', ButtonStyle.Secondary, '↩')];
+            if (st.solved) nav.push(btn('tv_today_menu', 'Today\'s word', ButtonStyle.Secondary, '📖'));
+            return { content: lines.join('\n'), components: [row(...buttons.slice(0, 3)), row(...buttons.slice(3)), row(...nav)] };
         }
 
         function gameScreen(word, play) {
@@ -184,7 +187,34 @@ module.exports = {
             };
         }
 
+        // "Today's word": only the word of the difficulty they SOLVED today (the others are still playable, no spoilers).
+        // back = 'tv_home' (from the start screen) or 'tv_back' (from the difficulty menu).
+        async function todayScreen(back) {
+            const day = W.dayOf();
+            const [st, words] = await Promise.all([T.dayStatus(userId, day), T.wordsOf(day)]);
+            if (!words) return warming();
+            if (!st.solved) return back === 'tv_back' ? menu() : home();
+            const d = W.DIFF[st.solved.difficulty];
+            return {
+                content: [TITLE, '✅ You solved today\'s **' + d.name + '**', ...aboutBlock(words[st.solved.difficulty])].join('\n'),
+                components: [row(btn(back, 'Back', ButtonStyle.Secondary, '↩'))],
+                allowedMentions: { parse: [] }
+            };
+        }
+
         // ---------- actions ----------
+        // The host can be slow and Discord wants an answer within 3 s: acknowledge first (deferUpdate), then show the
+        // screen with editReply. False when it is already too late (interaction expired): logged once, nothing more sent.
+        async function ack(x) {
+            try {
+                await x.deferUpdate();
+                return true;
+            } catch (err) {
+                console.error('❌ [TRIVIA] too late to answer:', err.message);
+                return false;
+            }
+        }
+
         async function doShare(i) {
             const day = W.dayOf();
             const st = await T.dayStatus(userId, day);
@@ -205,7 +235,7 @@ module.exports = {
             return i.update({ ...p, allowedMentions: { parse: [] } });
         }
 
-        async function doGuess(i) {
+        async function doGuess(i, prev) {
             const modalId = 'tv_modal_' + i.id;
             const modal = new ModalBuilder().setCustomId(modalId).setTitle('Your guess (' + W.DIFF[diff].name + ')')
                 .addComponents(row(new TextInputBuilder().setCustomId('answer').setLabel('Type the whole answer')
@@ -213,21 +243,27 @@ module.exports = {
             await i.showModal(modal);
             const sub = await i.awaitModalSubmit({ filter: m => m.customId === modalId && m.user.id === userId, time: 10 * 60 * 1000 }).catch(() => null);
             if (!sub) return;
+            if (!(await ack(sub))) { last = prev; return; }
             last = sub;
-            const day = W.dayOf();
-            const words = await T.wordsOf(day);
-            if (!words) return sub.update(warming());
-            const answer = String(sub.fields.getTextInputValue('answer') || '').slice(0, 100);
-            const r = await T.guess(userId, day, diff, words[diff], answer);
-            if (r.result === 'solved') return sub.update({ ...(await solvedScreen(r.play, r.award, words[diff], r.allRevealed)), allowedMentions: { parse: [] } });
-            if (r.result === 'failed') return sub.update(lockedScreen(r.play));
-            if (r.result === 'wrong') {
-                const left = W.DIFF[diff].limit - r.play.wrong;
-                feedback = '❌ Not it' + (r.shown ? ' — revealed ' + r.shown + ' letter' + (r.shown === 1 ? '' : 's') + '.' : '.') + ' ' + left + ' wrong guess' + (left === 1 ? '' : 'es') + ' left.';
-                return sub.update(gameScreen(words[diff], r.play));
+            try {
+                const day = W.dayOf();
+                const words = await T.wordsOf(day);
+                if (!words) return await sub.editReply(warming());
+                const answer = String(sub.fields.getTextInputValue('answer') || '').slice(0, 100);
+                const r = await T.guess(userId, day, diff, words[diff], answer);
+                if (r.result === 'solved') return await sub.editReply({ ...(await solvedScreen(r.play, r.award, words[diff], r.allRevealed)), allowedMentions: { parse: [] } });
+                if (r.result === 'failed') return await sub.editReply(lockedScreen(r.play));
+                if (r.result === 'wrong') {
+                    const left = W.DIFF[diff].limit - r.play.wrong;
+                    feedback = '❌ Not it' + (r.shown ? ' — revealed ' + r.shown + ' letter' + (r.shown === 1 ? '' : 's') + '.' : '.') + ' ' + left + ' wrong guess' + (left === 1 ? '' : 'es') + ' left.';
+                    return await sub.editReply(gameScreen(words[diff], r.play));
+                }
+                feedback = '';
+                return await sub.editReply(await menu());
+            } catch (err) {
+                console.error('❌ [TRIVIA] guess:', err.message);
+                await sub.editReply({ content: '❌ Something went wrong. Please run /trivia again.', components: [] }).catch(() => {});
             }
-            feedback = '';
-            return sub.update(await menu());
         }
 
         const p0 = await home().catch(err => { console.error('❌ [TRIVIA] home:', err.message); return { content: '❌ Trivia is not available right now. Please try again in a minute.', components: [] }; });
@@ -237,6 +273,7 @@ module.exports = {
 
         const collector = message.createMessageComponentCollector({ filter: i => i.user.id === userId && String(i.customId).startsWith('tv_'), idle: IDLE_MS });
         collector.on('collect', async i => {
+            const prev = last;
             try {
                 last = i;
                 const id = i.customId;
@@ -244,23 +281,27 @@ module.exports = {
                 if (id === 'tv_howto') return i.update(howTo());
                 if (id === 'tv_play' || id === 'tv_back') { feedback = ''; return i.update(await menu()); }
                 if (id === 'tv_share') return doShare(i);
+                if (id === 'tv_today') return i.update(await todayScreen('tv_home'));
+                if (id === 'tv_today_menu') return i.update(await todayScreen('tv_back'));
                 if (id.startsWith('tv_d_')) {
                     const key = id.slice(5);
                     if (!W.DIFF[key]) return i.update(await menu());
+                    if (!(await ack(i))) { last = prev; return; }
                     diff = key; feedback = '';
-                    return i.update(await openDiff());
+                    return await i.editReply(await openDiff());
                 }
                 if (!diff) return i.update(await menu());
-                if (id === 'tv_guess') return doGuess(i);
+                if (id === 'tv_guess') return doGuess(i, prev);
                 if (id === 'tv_hint') {
+                    if (!(await ack(i))) { last = prev; return; }
                     const day = W.dayOf();
                     const words = await T.wordsOf(day);
-                    if (!words) return i.update(warming());
+                    if (!words) return await i.editReply(warming());
                     const r = await T.useHint(userId, day, diff, words[diff]);
-                    if (r.result === 'solved') { feedback = ''; return i.update({ ...(await solvedScreen(r.play, r.award, words[diff], true)), allowedMentions: { parse: [] } }); }
-                    if (!r.play || r.play.status !== 'playing' || r.result) return i.update(await menu());
+                    if (r.result === 'solved') { feedback = ''; return await i.editReply({ ...(await solvedScreen(r.play, r.award, words[diff], true)), allowedMentions: { parse: [] } }); }
+                    if (!r.play || r.play.status !== 'playing' || r.result) return await i.editReply(await menu());
                     feedback = r.letter ? '💡 One more letter is shown.' : r.ok ? '' : r.limit ? 'No hints left — you get ' + W.HINTS_PER_GUESS + ' more after a wrong guess.' : 'No more hints for this word.';
-                    return i.update(gameScreen(words[diff], r.play));
+                    return await i.editReply(gameScreen(words[diff], r.play));
                 }
                 if (id === 'tv_giveup') {
                     return i.update({
@@ -269,15 +310,20 @@ module.exports = {
                     });
                 }
                 if (id === 'tv_giveup_yes') {
+                    if (!(await ack(i))) { last = prev; return; }
                     const play = await T.giveUp(userId, W.dayOf(), diff);
                     feedback = '';
-                    if (!play || play.status === 'playing') return i.update(await menu());
-                    return i.update(play.status === 'solved' ? await menu() : lockedScreen(play));
+                    if (!play || play.status === 'playing') return await i.editReply(await menu());
+                    return await i.editReply(play.status === 'solved' ? await menu() : lockedScreen(play));
                 }
-                if (id === 'tv_giveup_no') return i.update(await openDiff());
+                if (id === 'tv_giveup_no') {
+                    if (!(await ack(i))) { last = prev; return; }
+                    return await i.editReply(await openDiff());
+                }
             } catch (err) {
                 console.error('❌ [TRIVIA] button:', err.message);
                 if (!i.replied && !i.deferred) await i.reply({ content: '❌ Something went wrong. Please run /trivia again.', flags: [MessageFlags.Ephemeral] }).catch(() => {});
+                else if (i.deferred) await i.editReply({ content: '❌ Something went wrong. Please run /trivia again.', components: [] }).catch(() => {});
             }
         });
         collector.on('end', (c, reason) => {

@@ -129,7 +129,7 @@ client.once(Events.ClientReady, () => {
             console.error('⚠️ [PURGE CHECK] Failed:', err.message);
         }
     }, 15000);
-    console.log(`\n💡 [CONSOLE CONTROL] Available commands: "maintenance" (or "maint"), "status", "announce" (preview) / "announce confirm", "whois <id>", "server list", "purge", "points <id>" / "points add <id> <amount>" / "points remove <id> <amount>", "retainers <id>"\n`);
+    console.log(`\n💡 [CONSOLE CONTROL] Available commands: "maintenance" (or "maint"), "status", "announce" (preview) / "announce confirm", "whois <id>", "server list", "purge", "points <id>" / "points add <id> <amount>" / "points remove <id> <amount>", "retainers <id>", "trivia <id>" / "trivia reset <id> today|purge" / "trivia reset confirm"\n`);
 });
 
 // --- Leftover Server Data (servers Pingway is no longer in) ---
@@ -609,6 +609,13 @@ rl.on('line', async (line) => {
         }
     } else if (input === 'points' || input.startsWith('points ') || input === 'credits' || input.startsWith('credits ')) {
         await creditsCommand(input.split(/\s+/).slice(1));
+    } else if (input === 'trivia' || input.startsWith('trivia ')) {
+        // Pingway Trivia: "trivia <id>" (read only), "trivia reset <id> today|purge" (preview) / "trivia reset confirm"
+        try {
+            await require('./utils/trivia').adminTrivia(input.split(/\s+/).slice(1));
+        } catch (err) {
+            console.error('❌ [TRIVIA] Console command failed:', err.message);
+        }
     } else if (input.length > 0) {
         console.log(`[CONSOLE] Unknown console command: "${input}".`);
     }
