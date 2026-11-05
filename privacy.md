@@ -34,11 +34,12 @@ Newer features (Retainer Watch, Supporter Perks, Pingway Trivia, Honeypot, Ticke
 
 ### Points & Supporter Perks
 - **Ko-fi payments** are matched to your Discord account by a **hashed email** (a scrambled form that can't be turned back into your email) or by a **claim code**.
-- **What is stored:** your point lots (amount, where they came from — Ko-fi, top.gg or other Pingway rewards — and their expiry, 180 days), and your Supporter Perks state and dates.
+- **What is stored:** your point lots (amount, where they came from — Ko-fi, top.gg, discordbotlist.com or other Pingway rewards — and their expiry, 180 days), and your Supporter Perks state and dates.
 - **Payments are handled by Ko-fi.** Pingway never sees your card or payment details.
 
-### top.gg vote rewards
+### Vote rewards (top.gg and discordbotlist.com)
 - **What is stored:** the vote ID, your Discord user ID, the points you got, the time of the vote, and whether the thank-you DM was sent.
+- For discordbotlist.com votes, Pingway also keeps the time of your last vote there, so a vote is only counted once per 12 hours.
 
 ### Market tools (Supporter Perk: `/bestsellers`, `/buysell`, website market tools)
 - **What is stored:** your market tool settings (world, filters, sort), saved to your account so they are the same on the website and in Discord.
@@ -100,6 +101,7 @@ Pingway needs these services to work. They only receive what the feature needs:
 - **Google Sheets / Google Drive** — only if a server admin sets up Raid or Logger sheets: who used which command and when is written to **that server's Logger sheet**, and `/raid` reads the server's Raid sheets. Sheets Pingway creates are kept in a Google account run by Pingway (see section 1a).
 - **Ko-fi** — handles Supporter Perks payments. Pingway only receives what is needed to give you your points and perks (see section 1a), never card details.
 - **top.gg** — tells Pingway when you vote, so you get your vote reward points.
+- **discordbotlist.com** — tells Pingway when you vote (your Discord user ID and username), so you get your vote reward points.
 - **Universalis, XIVAPI, xivup, The Lodestone, Lodestone News API (lodestonenews.com)** — Pingway looks up item prices, item and trivia word data, world status, Lodestone character pages and FFXIV news. Only item names/IDs, Data Centers or your Lodestone character ID are sent — never your Discord data.
 
 We may also disclose data if required by law.
