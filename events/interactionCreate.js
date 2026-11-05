@@ -179,6 +179,14 @@ module.exports = {
                     }
                 }
 
+                // Voice (/vc panel)
+                if (cid.startsWith('vc_')) {
+                    const vcCommand = client.commands.get('vc');
+                    if (vcCommand && typeof vcCommand.handleInteraction === 'function') {
+                        return await vcCommand.handleInteraction(interaction);
+                    }
+                }
+
                 // Price
                 if (cid.startsWith('price_')) {
                     const priceCommand = client.commands.get('price');
