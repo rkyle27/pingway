@@ -393,7 +393,7 @@ test('requests: claimed once; sent / dm_closed / failed; old rows deleted', asyn
     assert.strictEqual(state(8), undefined, 'older than 1 day: deleted');
     assert.strictEqual(state(9), 'failed', 'not a member');
     assert.strictEqual(ok.dms.length, 1, 'only one DM to adm1 (rows 4,5,6 not sent)');
-    assert.strictEqual(ok.dms[0].content, 'Here\'s a test of your welcome card for **Test \\*Server\\*** (design Cozy Café).');
+    assert.strictEqual(ok.dms[0].content, 'Here\'s a test of your welcome card for **Test \\*Server\\*** (design: Cozy Café).');
     assert.strictEqual(ok.dms[0].files.length, 1);
     const r1 = renders.find(r => r.design === 'c22');
     assert.strictEqual(r1.message, 'Yo Admin One at Test *Server* (77)');
