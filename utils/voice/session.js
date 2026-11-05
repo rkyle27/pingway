@@ -36,7 +36,7 @@ class VoiceSession extends EventEmitter {
      * @param {string} o.channelId
      * @param {object} o.voice      the @discordjs/voice module (or a fake in tests)
      * @param {object} o.connection VoiceConnection
-     * @param {object} o.deps       { synthesize(text, voice) -> Buffer (Ogg Opus) | {type:'ogg'|'pcm', data}, openAudio(url) -> {stream, live, title},
+     * @param {object} o.deps       { synthesize(text, voice, session) -> Buffer (Ogg Opus) | {type:'ogg'|'pcm', data}, openAudio(url) -> {stream, live, title},
      *                                spawnFfmpeg({seekSeconds}) -> {proc, ogg}, clock, ttsEnabled: () => bool }
      */
     constructor({ guildId, channelId, voice, connection, deps }) {
@@ -60,6 +60,14 @@ class VoiceSession extends EventEmitter {
         this.aloneTimer = null;
         this.idleTimer = null;
         this.lastNotice = null;
+
+        // the person whose /vc brought Pingway into this call (Google voice rules, see members.js)
+        this.callerId = null;
+        this._callerPresent = null;
+        this._sendNote = null;
+        this.googleWindow = [];      // Google characters in the last hour: [{ at, n }]
+        this.memberGoogleUsed = false;
+        this.charsNoteSent = false;
 
         const behaviors = { noSubscriber: voice.NoSubscriberBehavior.Pause };
         this.musicPlayer = voice.createAudioPlayer({ behaviors });
@@ -97,6 +105,40 @@ class VoiceSession extends EventEmitter {
         };
     }
 
+    // ---------------- caller ----------------
+    /**
+     * @param {string} userId who ran /vc to bring Pingway here (a later /vc that moves Pingway replaces it)
+     * @param {{ isPresent: () => boolean, sendNote: (text) => any }} hooks
+     */
+    setCaller(userId, { isPresent, sendNote } = {}) {
+        if (userId !== this.callerId) {
+            this.memberGoogleUsed = false;
+            this.charsNoteSent = false;
+        }
+        this.callerId = userId || null;
+        this._callerPresent = typeof isPresent === 'function' ? isPresent : null;
+        this._sendNote = typeof sendNote === 'function' ? sendNote : null;
+    }
+
+    callerPresent() {
+        if (!this.callerId || !this._callerPresent) return false;
+        try {
+            return !!this._callerPresent();
+        } catch {
+            return false;
+        }
+    }
+
+    /** One short line in the voice channel's chat (never fails the speech). */
+    sendNote(text) {
+        if (!this._sendNote || this.destroyed) return;
+        try {
+            Promise.resolve(this._sendNote(text)).catch(err => this._log('note failed: ' + (err && (err.code || err.message))));
+        } catch (err) {
+            this._log('note failed: ' + (err && err.message));
+        }
+    }
+
     // ---------------- TTS ----------------
     /** @returns {boolean} false when the speech queue is full or TTS is off */
     enqueueTts(text, voiceName) {
@@ -116,7 +158,7 @@ class VoiceSession extends EventEmitter {
         this.ttsBusy = true;
         let out;
         try {
-            out = await this.deps.synthesize(item.text, item.voice);
+            out = await this.deps.synthesize(item.text, item.voice, this);
         } catch (err) {
             this._log('speech failed: ' + (err && err.message)); // message never contains the text or key
             this.ttsBusy = false;

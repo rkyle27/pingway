@@ -129,7 +129,7 @@ client.once(Events.ClientReady, () => {
             console.error('⚠️ [PURGE CHECK] Failed:', err.message);
         }
     }, 15000);
-    console.log(`\n💡 [CONSOLE CONTROL] Available commands: "maintenance" (or "maint"), "status", "announce" (preview) / "announce confirm", "whois <id>", "server list", "purge", "points <id>" / "points add <id> <amount>" / "points remove <id> <amount>", "retainers <id>", "trivia <id>" / "trivia reset <id> today|purge" / "trivia reset confirm"\n`);
+    console.log(`\n💡 [CONSOLE CONTROL] Available commands: "maintenance" (or "maint"), "status", "announce" (preview) / "announce confirm", "whois <id>", "server list", "purge", "points <id>" / "points add <id> <amount>" / "points remove <id> <amount>", "retainers <id>", "trivia <id>" / "trivia reset <id> today|purge" / "trivia reset confirm", "tts" / "tts google on|off"\n`);
 });
 
 // --- Leftover Server Data (servers Pingway is no longer in) ---
@@ -615,6 +615,13 @@ rl.on('line', async (line) => {
             await require('./utils/trivia').adminTrivia(input.split(/\s+/).slice(1));
         } catch (err) {
             console.error('❌ [TRIVIA] Console command failed:', err.message);
+        }
+    } else if (input === 'tts' || input.startsWith('tts ')) {
+        // /vc voices: "tts" (Google on/off, free period, today's free characters, calls) / "tts google on|off" (kill switch)
+        try {
+            await require('./utils/voice/settings').ttsConsole(input.split(/\s+/).slice(1));
+        } catch (err) {
+            console.error('❌ [TTS] Console command failed:', err.message);
         }
     } else if (input.length > 0) {
         console.log(`[CONSOLE] Unknown console command: "${input}".`);

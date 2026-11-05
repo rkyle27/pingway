@@ -102,6 +102,15 @@ trivia reset confirm
     Does the reset shown in the preview (one at a time).
     Must be typed within 60 seconds of "trivia reset <id> today" / "trivia reset <id> purge".
 
+tts
+    Read only. /vc voices: Google on/off (kill switch), whether the free period is active,
+    today's free Google characters vs the daily cap, and how many calls are active / using Google.
+
+tts google off
+tts google on
+    Kill switch. OFF = everyone gets the backup voice (eSpeak) from the next message; ON = normal rules.
+    Saved in voice-settings.json in the bot folder, so it survives restarts (missing file = on).
+
 
 NOTES
 -----

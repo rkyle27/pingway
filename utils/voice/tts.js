@@ -3,10 +3,12 @@
 // Output is OGG_OPUS at 48 kHz, which @discordjs/voice plays as StreamType.OggOpus without any transcoding.
 // speak() picks the engine: Google when allowed (key set, daily safety limit not reached, no quota error today),
 // otherwise the eSpeak NG backup voice (raw PCM, see espeak.js).
+// The console kill switch (settings.js) and the per-call rules (opts.plan, see members.js) can also say "backup voice".
 
 const { languageCodeOf, VOICES, espeakVoiceFor } = require('./voices');
 const espeak = require('./espeak');
 const { getUsage } = require('./usage');
+const killSwitch = require('./settings');
 
 const ENDPOINT = 'https://texttospeech.googleapis.com/v1/text:synthesize';
 const VOICES_ENDPOINT = 'https://texttospeech.googleapis.com/v1/voices';
@@ -97,6 +99,9 @@ async function synthesize(text, voiceName, opts = {}) {
 
 /**
  * Speaks with Google if allowed, else with the eSpeak backup.
+ * opts.plan(chars) (optional, per call): { google, dailyCap, onAccepted(n) } - see members.planGoogle().
+ *   dailyCap false = the caller's own characters: the global daily safety cap is skipped (a Google quota block still applies),
+ *   and onAccepted(n) is called only when Google really returned audio.
  * @returns {Promise<{type: 'ogg'|'pcm', data: Buffer, engine: 'google'|'espeak'}>}
  *   ogg = Ogg Opus (StreamType.OggOpus), pcm = 48 kHz stereo s16le (StreamType.Raw)
  */
@@ -104,13 +109,28 @@ async function speak(text, voiceName, opts = {}) {
     const key = opts.key === undefined ? apiKey() : opts.key;
     const usage = opts.usage || getUsage();
     const backup = opts.espeak || espeak;
-    if (key) {
+    const googleOn = opts.googleOn === undefined ? killSwitch.isGoogleOn() : opts.googleOn;
+    if (key && googleOn) {
         const chars = Array.from(String(text)).length;
-        const gate = await usage.check(chars);
+        let plan = null;
+        if (typeof opts.plan === 'function') {
+            try {
+                plan = await opts.plan(chars);
+            } catch (err) {
+                console.error('⚠️ [VC] voice plan failed:', err.code || err.message);
+                plan = { google: false };
+            }
+        }
+        const capped = !plan || plan.dailyCap !== false;
+        let gate = plan && !plan.google ? { ok: false } : await usage.check(capped ? chars : 0);
+        if (!capped && !gate.ok && gate.reason === 'limit') gate = { ok: true }; // the daily cap is for free use only
         if (gate.ok) {
             try {
                 const data = await synthesize(text, voiceName, { fetchImpl: opts.fetchImpl, key });
-                usage.add(chars);
+                if (capped) usage.add(chars);
+                if (plan && typeof plan.onAccepted === 'function') {
+                    try { await plan.onAccepted(chars); } catch (err) { console.error('⚠️ [VC] character count failed:', err.code || err.message); }
+                }
                 return { type: 'ogg', data, engine: 'google' };
             } catch (err) {
                 if (isBlockingError(err)) usage.block(err.detail || err.reason || ('HTTP ' + err.status));
@@ -128,6 +148,7 @@ function engineStatus(opts = {}) {
     const key = opts.key === undefined ? apiKey() : opts.key;
     const backupOk = (opts.espeak || espeak).isInstalled();
     if (!key) return { mode: backupOk ? 'backup' : 'off', reason: 'no_key' };
+    if (!(opts.googleOn === undefined ? killSwitch.isGoogleOn() : opts.googleOn)) return { mode: backupOk ? 'backup' : 'off', reason: 'switch' };
     const st = (opts.usage || getUsage()).state();
     if (st.reason) return { mode: backupOk ? 'backup' : 'off', reason: st.reason };
     return { mode: 'google', reason: null };

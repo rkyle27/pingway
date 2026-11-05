@@ -14,6 +14,7 @@ const { checkUrl, looksLikeUrl, openAudioUrl, UrlRefused } = require('../utils/v
 const { ID, DEFAULT_VALUE, buildPanel, buildPlayModal } = require('../utils/voice/panel');
 const { resolveVoice, isKnownVoice, getVoice, getLanguage, languageCodeOf } = require('../utils/voice/voices');
 const { getSession, joinChannel, destroySession } = require('../utils/voice/session');
+const members = require('../utils/voice/members');
 
 const EPHEMERAL = 64;            // MessageFlags.Ephemeral
 const GUILD_STAGE_VOICE = 13;    // ChannelType.GuildStageVoice
@@ -35,7 +36,8 @@ function stateOf(guildId, userId) {
 }
 
 const realDeps = {
-    synthesize: (text, voiceName) => tts.speak(text, voiceName), // Google, or the eSpeak backup voice
+    // Google, or the eSpeak backup voice; the session's caller decides Google after the free period (members.js)
+    synthesize: (text, voiceName, session) => tts.speak(text, voiceName, session ? { plan: chars => members.planGoogle(session, chars) } : {}),
     openAudio: url => openAudioUrl(url),
     spawnFfmpeg: opts => lib.spawnFfmpeg(opts),
     ttsEnabled: () => tts.isEnabled()
@@ -54,6 +56,32 @@ async function availableQuick() {
     return Promise.race([tts.availableVoices(), new Promise(r => setTimeout(() => r(null), 1500))]);
 }
 
+/** Engine for the panel: only ever "Google voice" or "backup voice" (names nobody). */
+async function callEngine(session, { engineStatus = tts.engineStatus, plan = members.planGoogle } = {}) {
+    const eng = engineStatus();
+    if (!session || eng.mode === 'off' || eng.reason === 'no_key' || eng.reason === 'switch' || eng.reason === 'quota') return eng;
+    try {
+        const p = await plan(session, 1, { dryRun: true });
+        if (!p.google) return { mode: 'backup', reason: 'call' };
+        if (p.reason === 'member') return { mode: 'google', reason: null }; // the daily cap is for free use only
+    } catch { /* keep the global status */ }
+    return eng;
+}
+
+/** Remembers who brought Pingway into this call (Google voice rules) and how to post a short note in its chat. */
+function setCaller(session, guild, userId) {
+    session.setCaller(userId, {
+        isPresent: () => {
+            const vs = guild.voiceStates && guild.voiceStates.cache.get(userId);
+            return !!vs && vs.channelId === session.channelId;
+        },
+        sendNote: text => {
+            const ch = guild.channels.cache.get(session.channelId);
+            if (ch && typeof ch.send === 'function') return ch.send({ content: text, allowedMentions: { parse: [] } });
+        }
+    });
+}
+
 async function render(interaction, notice, extra = {}) {
     const guildId = interaction.guildId;
     const userId = interaction.user.id;
@@ -67,7 +95,7 @@ async function render(interaction, notice, extra = {}) {
         status: session ? session.status() : null,
         voiceReady: !!lib.loadVoice(),
         ttsEnabled: tts.isEnabled(),
-        ttsEngine: tts.engineStatus(),
+        ttsEngine: await callEngine(session),
         voiceName,
         voiceIsDefault: !userVoice,
         selectedLang: st.lang,
@@ -112,6 +140,7 @@ async function ensureJoined(interaction, { allowMove = false } = {}) {
 
     try {
         const s = await joinChannel({ guild, channel, voice, deps: realDeps });
+        setCaller(s, guild, interaction.user.id); // joined or moved by this /vc: this person is the caller now
         s.setHumanCount(humansIn(channel));
         return { session: s, joined: true };
     } catch (err) {
@@ -319,5 +348,5 @@ module.exports = {
     },
 
     // exported for tests
-    _internal: { ensureJoined, render, stateOf, realDeps }
+    _internal: { ensureJoined, render, stateOf, realDeps, callEngine, setCaller }
 };

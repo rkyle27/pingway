@@ -16,9 +16,10 @@ function cut(text, max) {
 /**
  * @param {string} content raw message content
  * @param {object} [resolve] { user(id) -> name, role(id) -> name, channel(id) -> name }
+ * @param {number} [max] max characters (the caller's "Max characters per message", 20..200; default 200)
  * @returns {string|null} speakable text, or null when the message should not be read
  */
-function cleanText(content, resolve = {}) {
+function cleanText(content, resolve = {}, max = MAX_CHARS) {
     if (typeof content !== 'string') return null;
     let t = content.trim();
     if (!t) return null;
@@ -62,7 +63,8 @@ function cleanText(content, resolve = {}) {
 
     t = t.replace(/\s+/g, ' ').trim();
     if (!t || !/[\p{L}\p{N}]/u.test(t)) return null;
-    return cut(t, MAX_CHARS);
+    const limit = Number.isInteger(max) && max > 0 && max < MAX_CHARS ? max : MAX_CHARS;
+    return cut(t, limit);
 }
 
 /**
