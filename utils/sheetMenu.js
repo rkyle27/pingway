@@ -41,7 +41,7 @@ async function run(interaction, kind) {
     collector.on('collect', async i => {
         try {
             if (i.customId === 'gs_open') {
-                return i.update({
+                return await i.update({
                     content: title + '\n' + visible.map(s => '• **' + s.name + '**').join('\n') + (kind === 'raid' ? '\n\n' + S.LAYOUT_WARNING : ''),
                     components: linkRows(visible)
                 });
@@ -51,7 +51,7 @@ async function run(interaction, kind) {
                 if (!id) {
                     const menu = new StringSelectMenuBuilder().setCustomId('gs_pick').setPlaceholder('Which raid sheet?')
                         .addOptions(visible.slice(0, 25).map(s => ({ label: String(s.name).slice(0, 100), value: String(s.id) })));
-                    return i.update({ content: '📅 Pick a raid sheet:', components: [new ActionRowBuilder().addComponents(menu)] });
+                    return await i.update({ content: '📅 Pick a raid sheet:', components: [new ActionRowBuilder().addComponents(menu)] });
                 }
                 const sheet = visible.find(s => s.id === id);
                 await i.deferUpdate();
@@ -59,11 +59,11 @@ async function run(interaction, kind) {
                 let text = await fetchRaidSchedule(interaction.guildId, sheet.sheet_id);
                 text = '**' + sheet.name + '**\n' + text;
                 if (text.length > 1900) text = text.slice(0, 1890) + '\n…';
-                return i.editReply({ content: text, components: linkRows([sheet]) });
+                return await i.editReply({ content: text, components: linkRows([sheet]) });
             }
             if (i.customId === 'gs_create') {
-                if (!i.member.permissions.has(PermissionFlagsBits.Administrator)) return i.reply({ content: '⚠️ Only administrators can create sheets.', flags: [MessageFlags.Ephemeral] });
-                if (!S.helperReady()) return i.update({ content: '⚠️ Pingway can\'t create sheets right now. Please try again later.', components: [] });
+                if (!i.member.permissions.has(PermissionFlagsBits.Administrator)) return await i.reply({ content: '⚠️ Only administrators can create sheets.', flags: [MessageFlags.Ephemeral] });
+                if (!S.helperReady()) return await i.update({ content: '⚠️ Pingway can\'t create sheets right now. Please try again later.', components: [] });
                 const modal = new ModalBuilder().setCustomId('gs_create_modal_' + i.id).setTitle(kind === 'raid' ? 'New raid sheet' : 'New logger sheet')
                     .addComponents(new ActionRowBuilder().addComponents(new TextInputBuilder().setCustomId('name').setLabel('Sheet name')
                         .setStyle(TextInputStyle.Short).setRequired(true).setMaxLength(100).setPlaceholder(kind === 'raid' ? 'e.g. Static A' : 'e.g. Command log')));
@@ -83,8 +83,8 @@ async function run(interaction, kind) {
                 const roleId = pick.customId === 'gs_role' ? pick.values[0] : null;
                 await pick.editReply({ content: '⏳ Creating **' + name + '**…', components: [] });
                 const res = await S.createSheet(interaction.guild, { kind, name, roleId, userId: interaction.user.id }).catch(err => ({ ok: false, error: err.message }));
-                if (!res.ok) return pick.editReply({ content: '❌ ' + res.error });
-                return pick.editReply({
+                if (!res.ok) return await pick.editReply({ content: '❌ ' + res.error });
+                return await pick.editReply({
                     content: '✅ **' + name + '** is ready' + (roleId ? ' for <@&' + roleId + '>' : ' for everyone') + '. Anyone with the link can edit it.' +
                         (kind === 'raid' ? '\n' + S.LAYOUT_WARNING : ''),
                     components: linkRows([res.row]), allowedMentions: { parse: [] }

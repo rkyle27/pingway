@@ -155,13 +155,13 @@ module.exports = {
             collector.on('collect', async i => {
                 if (i.customId === 'release_sel_hour') {
                     state.hour = i.values[0];
-                    await i.deferUpdate();
+                    await i.deferUpdate().catch(() => {});
                 } else if (i.customId === 'release_sel_minute') {
                     state.minute = i.values[0];
-                    await i.deferUpdate();
+                    await i.deferUpdate().catch(() => {});
                 } else if (i.customId === 'release_sel_gmt') {
                     state.gmt = parseInt(i.values[0], 10);
-                    await i.deferUpdate();
+                    await i.deferUpdate().catch(() => {});
                 } else if (i.customId === 'release_time_done') {
                     const y = parseInt(state.year, 10);
                     const m = parseInt(state.month, 10) - 1;

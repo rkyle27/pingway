@@ -140,7 +140,7 @@ module.exports = {
                 // --- TOGGLE NOTIFICATION BUTTON ---
                 if (i.customId === 'toggle_notif') {
                     if (!hasReleaseDate) {
-                        return i.reply({
+                        return await i.reply({
                             content: '❌ No Release date is set yet.',
                             flags: [MessageFlags.Ephemeral]
                         });
@@ -157,7 +157,7 @@ module.exports = {
                     }
 
                     if (!dbRoleId) {
-                        return i.reply({
+                        return await i.reply({
                             content: '⚠️ Ask an Admin to click the **Role** button to configure a notification role first.',
                             flags: [MessageFlags.Ephemeral]
                         });
@@ -165,7 +165,7 @@ module.exports = {
 
                     const targetRole = i.guild.roles.cache.get(dbRoleId);
                     if (!targetRole) {
-                        return i.reply({
+                        return await i.reply({
                             content: '⚠️ The configured notification role no longer exists in this server. Ask an Admin to set a new role.',
                             flags: [MessageFlags.Ephemeral]
                         });
@@ -188,7 +188,7 @@ module.exports = {
                         }
                     } catch (roleErr) {
                         console.error('[ERROR] Permission error adding/removing role:', roleErr);
-                        return i.reply({
+                        return await i.reply({
                             content: '❌ **Failed to update role:** Please ensure my bot role is placed above the notification role in Server Settings.',
                             flags: [MessageFlags.Ephemeral]
                         });
@@ -198,7 +198,7 @@ module.exports = {
                 // --- ROLE BUTTON (ADMIN ONLY) ---
                 if (i.customId === 'set_role') {
                     if (!i.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
-                        return i.reply({ content: '❌ Only Administrators can change the notification role for this server.', flags: [MessageFlags.Ephemeral] });
+                        return await i.reply({ content: '❌ Only Administrators can change the notification role for this server.', flags: [MessageFlags.Ephemeral] });
                     }
 
                     let selectedRoleId = null;
@@ -253,7 +253,7 @@ module.exports = {
                             // --- CONFIRM BUTTON (SAVE TO DB) ---
                             if (subI.customId === 'role_confirm') {
                                 if (!selectedRoleId) {
-                                    return subI.reply({
+                                    return await subI.reply({
                                         content: '⚠️ Please select a role from the dropdown menu first.',
                                         flags: [MessageFlags.Ephemeral]
                                     });
@@ -273,7 +273,7 @@ module.exports = {
                                     });
                                 } catch (dbErr) {
                                     console.error('[ERROR] Failed to save notification role to database:', dbErr);
-                                    return subI.update({
+                                    return await subI.update({
                                         content: '❌ Failed to save the role to the database.',
                                         components: []
                                     });

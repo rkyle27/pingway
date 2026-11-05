@@ -10,6 +10,7 @@ const path = require('path');
 const { isBotBusy, getBusyTask } = require('../utils/lock');
 const { isMaintenance } = require('../maintenance');
 const { pool } = require('../utils/db');
+const { isSlowError, isDiscordApiError, redactApiError, describeInteraction } = require('../utils/discordErrors');
 
 module.exports = {
     name: Events.InteractionCreate,
@@ -18,7 +19,7 @@ module.exports = {
             // Global Maintenance Check
             if (isMaintenance(interaction.guildId)) {
                 if (!interaction.isRepliable()) return; // e.g. autocomplete cannot be replied to
-                return interaction.reply({
+                return await interaction.reply({
                     content: '⚠️ **The bot is currently undergoing maintenance.** Please try again later!',
                     flags: [MessageFlags.Ephemeral]
                 });
@@ -38,14 +39,14 @@ module.exports = {
 
                 const isDM = !interaction.guildId;
                 if (isDM && commandName !== 'clearbotdms') {
-                    return interaction.reply({
+                    return await interaction.reply({
                         content: "⚠️ **Slash commands cannot be used in DMs.**\nPlease run this command inside a server channel.",
                         flags: [MessageFlags.Ephemeral]
                     });
                 }
 
                 if (isBotBusy() && commandName !== 'clean' && commandName !== 'clearbotdms') {
-                    return interaction.reply({
+                    return await interaction.reply({
                         content: `⚠️ **Sorry, I'm busy right now!** (${getBusyTask()})\nPlease try again in a few moments.`,
                         flags: [MessageFlags.Ephemeral]
                     });
@@ -77,7 +78,7 @@ module.exports = {
                                 ? '⚠️ **ScionDex has not been set up on this server yet!**\nAs an admin, please select the dedicated channel where members can play ScionDex:'
                                 : `⚠️ **ScionDex is restricted to <#${configuredChannelId}>.**\nAs an admin, you can reassign the dedicated channel below:`;
 
-                            return interaction.reply({
+                            return await interaction.reply({
                                 content: adminNotice,
                                 components: [row],
                                 flags: [MessageFlags.Ephemeral]
@@ -87,7 +88,7 @@ module.exports = {
                                 ? '⚠️ **ScionDex is not set up on this server yet.**\nPlease ask a server administrator to set up a channel first before anyone can play ScionDex!'
                                 : `⚠️ **ScionDex can only be played in <#${configuredChannelId}>!**\nPlease ask a server administrator if you need help.`;
 
-                            return interaction.reply({
+                            return await interaction.reply({
                                 content: userNotice,
                                 flags: [MessageFlags.Ephemeral]
                             });
@@ -97,7 +98,7 @@ module.exports = {
 
                 const command = client.commands.get(commandName);
                 if (!command) {
-                    return interaction.reply({
+                    return await interaction.reply({
                         content: `❌ Command \`/${commandName}\` not found.`,
                         flags: [MessageFlags.Ephemeral]
                     });
@@ -279,7 +280,13 @@ module.exports = {
             }
 
         } catch (error) {
-            console.error('❌ Error handling interaction:', error);
+            const ctx = describeInteraction(interaction);
+            if (isSlowError(error)) {
+                // Discord gave up on the interaction (slow host) - one short line, no dump
+                console.error(`⏱️ [SLOW] ${error.message} (${error.code}) | ${ctx}`);
+            } else {
+                console.error(`❌ Error handling interaction | ${ctx}:`, isDiscordApiError(error) ? redactApiError(error) : error);
+            }
             if (!interaction.replied && !interaction.deferred) {
                 await interaction.reply({
                     content: '❌ An error occurred while executing this interaction.',
