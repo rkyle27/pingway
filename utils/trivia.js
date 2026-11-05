@@ -439,7 +439,14 @@ function shareLine(name, diff, play, streak) {
     const guesses = play.wrong + 1;
     const hints = play.hintsUsed.length;
     return '🧩 **' + safe + '** solved today\'s **' + W.DIFF[diff].name + '** Pingway Trivia in ' + guesses + ' guess' + (guesses === 1 ? '' : 'es') +
-        (hints ? ' with ' + hints + ' hint' + (hints === 1 ? '' : 's') : ' with no hints') + '!' + (streak > 1 ? ' 🔥 Streak ' + streak : '');
+        (hints ? ' with ' + hints + ' hint' + (hints === 1 ? '' : 's') : ' with no hints') + '!' + (streak > 1 ? ' 🔥 Streak ' + streak : '') +
+        '\n-# Think you can beat that? Use ' + triviaCommand() + ' to guess today\'s FFXIV word, earn bits and build your streak!';
+}
+
+// Clickable </trivia:id> once the command id is known (fetched in start), plain **/trivia** until then
+let triviaCmdId = null;
+function triviaCommand() {
+    return triviaCmdId ? '</trivia:' + triviaCmdId + '>' : '**/trivia**';
 }
 
 async function cleanup() {
@@ -629,6 +636,11 @@ let started = false;
 function start(client) {
     if (started) return;
     started = true;
+    if (client && client.application) {
+        client.application.commands.fetch()
+            .then(cmds => { const c = cmds.find(x => x.name === 'trivia'); if (c) triviaCmdId = c.id; })
+            .catch(() => { /* keep plain /trivia text */ });
+    }
     require('./triviaRewards').start(client); // season end: hidden monthly bits reward (DM) and server top-3 roles
     const run = async () => {
         try {
