@@ -623,6 +623,17 @@ rl.on('line', async (line) => {
 
 // --- Crash Safety Net (log errors instead of crashing the bot) ---
 process.on('unhandledRejection', (reason) => {
+    const { isDiscordApiError, isSlowError, apiWhere, redactApiError } = require('./utils/discordErrors');
+    if (isSlowError(reason)) {
+        // Interaction expired / already answered (slow host) - one short line, no dump
+        console.error(`⏱️ [SLOW] [UNHANDLED REJECTION] ${reason.message} (${reason.code}) | ${apiWhere(reason)}`);
+        return;
+    }
+    if (isDiscordApiError(reason)) {
+        // Never dump reason itself: its url holds the interaction token
+        console.error(`❌ [UNHANDLED REJECTION] DiscordAPIError ${reason.code} | ${apiWhere(reason)}`, redactApiError(reason));
+        return;
+    }
     console.error('❌ [UNHANDLED REJECTION]', reason);
 });
 process.on('uncaughtException', (err) => {
