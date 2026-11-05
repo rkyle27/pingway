@@ -29,3 +29,5 @@ data/trivia_bank.json.tmp
 data/trivia_salt.txt
 *.bak*
 sheets-selftest.flag
+voice-settings.json
+voice-settings.json.tmp

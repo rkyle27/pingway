@@ -38,7 +38,7 @@ function resolvers(message) {
 /**
  * @returns {Promise<string>} why it was (not) read - used by tests and debugging, never contains text
  */
-async function handleMessage(message, { getSession, store, now = Date.now() }) {
+async function handleMessage(message, { getSession, store, members, now = Date.now() }) {
     if (!message || !message.guild || !message.author) return 'no_guild';
     if (message.author.bot || message.webhookId || message.system) return 'not_human';
     const session = getSession(message.guild.id);
@@ -52,17 +52,25 @@ async function handleMessage(message, { getSession, store, now = Date.now() }) {
     const last = lastByUser.get(key);
     if (last !== undefined && now - last < USER_GAP_MS) return 'rate_limited';
 
-    let text = cleanText(message.content, resolvers(message));
+    // My Settings: the caller's "Max characters per message" applies to every message in this call,
+    // and each speaker's own nickname (if set) is read instead of their display name
+    const m = members || require('./members').getMembers();
+    const callerSet = session.callerId ? await m.getUserSettings(session.callerId) : null;
+    const maxChars = callerSet && callerSet.maxChars ? callerSet.maxChars : undefined;
+
+    let text = cleanText(message.content, resolvers(message), maxChars);
     const fileOnly = !text && !String(message.content || '').trim() && !!(message.attachments && message.attachments.size);
     if (!text && !fileOnly) return 'empty';
 
     lastByUser.set(key, now);
     sweep(now);
 
-    const [userVoice, settings] = await Promise.all([store.getUserVoice(message.author.id), store.getGuildSettings(message.guild.id)]);
+    const [userVoice, settings, mine] = await Promise.all([
+        store.getUserVoice(message.author.id), store.getGuildSettings(message.guild.id), m.getUserSettings(message.author.id)
+    ]);
     const voiceName = resolveVoice(userVoice, settings.defaultVoice);
     const speech = withSpeaker(text || '', {
-        guildId: message.guild.id, userId: message.author.id, displayName: member.displayName, now, lastSpeaker, fileOnly
+        guildId: message.guild.id, userId: message.author.id, displayName: (mine && mine.nickname) || member.displayName, now, lastSpeaker, fileOnly
     });
 
     return session.enqueueTts(speech, voiceName) ? 'queued' : 'queue_full';

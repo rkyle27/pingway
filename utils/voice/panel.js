@@ -31,7 +31,7 @@ const trim = (s, n) => {
  * @param {object|null} p.status       session.status() or null when not connected
  * @param {boolean} p.voiceReady       @discordjs/voice installed
  * @param {boolean} p.ttsEnabled       Google key set or eSpeak backup installed
- * @param {object|null} p.ttsEngine    tts.engineStatus(): { mode: 'google'|'backup'|'off', reason }
+ * @param {object|null} p.ttsEngine    tts.engineStatus(): { mode: 'google'|'backup'|'off', reason } ('call' = this call uses the backup voice)
  * @param {string}  p.voiceName        the user's effective voice
  * @param {boolean} p.voiceIsDefault   true when it comes from the server / global default
  * @param {string|null} p.selectedLang language picked in the first menu (shows the voice menu)
@@ -69,7 +69,10 @@ function buildPanel(p) {
     }
     const eng = p.ttsEngine;
     if (p.ttsEnabled && eng && eng.mode === 'backup') {
-        lines.push(eng.reason === 'no_key' ? '*🤖 Backup voice (no Google key)*' : '*🤖 Using the backup voice today (Google voices come back after midnight Pacific time)*');
+        lines.push(eng.reason === 'no_key' ? '*🤖 Backup voice (no Google key)*'
+            : eng.reason === 'call' ? '*🤖 Using the backup voice for this call*'   // per-call rules (names nobody)
+            : eng.reason === 'switch' ? '*🤖 Using the backup voice*'
+            : '*🤖 Using the backup voice today (Google voices come back after midnight Pacific time)*');
     }
 
     const v = getVoice(p.voiceName);
