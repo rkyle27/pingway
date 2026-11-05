@@ -15,7 +15,6 @@ This policy explains what the Pingway Discord bot and the Pingway website (https
 | `/status` | The world you track; whether status DMs are on |
 | `/ignconfig`, `/ign` | Your Lodestone character ID, main job, image links, Tomestone and FFLogs links |
 | `/firmament` | Your Skyrise Celebration timer and DM setting |
-| Voice (My Settings) | The optional nickname and message length you set for `/vc` text-to-speech |
 | `/todo`, reminders | Task names, reminder text and times |
 | AI assistant | Notes/facts you ask Pingway to remember (see section 3) |
 | `/pf`, `/poll` | Listings, poll questions, answers and votes |

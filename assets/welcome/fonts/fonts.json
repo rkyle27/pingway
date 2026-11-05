@@ -1,0 +1,159 @@
+[
+ {
+  "family": "WC Poppins-600",
+  "weight": 600,
+  "style": "normal",
+  "file": "Poppins-600.ttf"
+ },
+ {
+  "family": "WC Inter-400",
+  "weight": 400,
+  "style": "normal",
+  "file": "Inter-400.otf"
+ },
+ {
+  "family": "WC Fredoka-600",
+  "weight": 600,
+  "style": "normal",
+  "file": "Fredoka-600.ttf"
+ },
+ {
+  "family": "WC CormorantGaramond-600Italic",
+  "weight": 600,
+  "style": "italic",
+  "file": "CormorantGaramond-600Italic.ttf"
+ },
+ {
+  "family": "WC Inter-600",
+  "weight": 600,
+  "style": "normal",
+  "file": "Inter-600.otf"
+ },
+ {
+  "family": "WC Lora-500Italic",
+  "weight": 500,
+  "style": "italic",
+  "file": "Lora-500Italic.ttf"
+ },
+ {
+  "family": "WC Caveat-700",
+  "weight": 700,
+  "style": "normal",
+  "file": "Caveat-700.ttf"
+ },
+ {
+  "family": "WC Caveat-600",
+  "weight": 600,
+  "style": "normal",
+  "file": "Caveat-600.ttf"
+ },
+ {
+  "family": "WC Orbitron-700",
+  "weight": 700,
+  "style": "normal",
+  "file": "Orbitron-700.ttf"
+ },
+ {
+  "family": "WC Inter-700",
+  "weight": 700,
+  "style": "normal",
+  "file": "Inter-700.otf"
+ },
+ {
+  "family": "WC BebasNeue-400",
+  "weight": 400,
+  "style": "normal",
+  "file": "BebasNeue-400.ttf"
+ },
+ {
+  "family": "WC PressStart2P-400",
+  "weight": 400,
+  "style": "normal",
+  "file": "PressStart2P-400.ttf"
+ },
+ {
+  "family": "WC SpaceMono-700",
+  "weight": 700,
+  "style": "normal",
+  "file": "SpaceMono-700.ttf"
+ },
+ {
+  "family": "WC SpaceMono-400",
+  "weight": 400,
+  "style": "normal",
+  "file": "SpaceMono-400.ttf"
+ },
+ {
+  "family": "WC ShipporiMincho-600",
+  "weight": 600,
+  "style": "normal",
+  "file": "ShipporiMincho-600.ttf"
+ },
+ {
+  "family": "WC Rubik-500",
+  "weight": 500,
+  "style": "normal",
+  "file": "Rubik-500.ttf"
+ },
+ {
+  "family": "WC Fredoka-500",
+  "weight": 500,
+  "style": "normal",
+  "file": "Fredoka-500.ttf"
+ },
+ {
+  "family": "WC Nunito-700",
+  "weight": 700,
+  "style": "normal",
+  "file": "Nunito-700.ttf"
+ },
+ {
+  "family": "WC Nunito-400",
+  "weight": 400,
+  "style": "normal",
+  "file": "Nunito-400.ttf"
+ },
+ {
+  "family": "WC Mulish-700",
+  "weight": 700,
+  "style": "normal",
+  "file": "Mulish-700.ttf"
+ },
+ {
+  "family": "WC Mulish-400",
+  "weight": 400,
+  "style": "normal",
+  "file": "Mulish-400.ttf"
+ },
+ {
+  "family": "WC Rajdhani-700",
+  "weight": 700,
+  "style": "normal",
+  "file": "Rajdhani-700.ttf"
+ },
+ {
+  "family": "WC Rajdhani-500",
+  "weight": 500,
+  "style": "normal",
+  "file": "Rajdhani-500.ttf"
+ },
+ {
+  "family": "WC Baloo2-700",
+  "weight": 700,
+  "style": "normal",
+  "file": "Baloo2-700.ttf"
+ },
+ {
+  "family": "WC ZenMaruGothic-700",
+  "weight": 700,
+  "style": "normal",
+  "file": "ZenMaruGothic-700.ttf"
+ },
+ {
+  "family": "WC ZenMaruGothic-500",
+  "weight": 500,
+  "style": "normal",
+  "file": "ZenMaruGothic-500.ttf",
+  "fallback": "jp"
+ }
+]

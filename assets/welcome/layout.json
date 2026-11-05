@@ -1,0 +1,3439 @@
+{
+ "pw01": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 74,
+   "cy": 130,
+   "r": 46,
+   "placeholder": {
+    "fill": "#D8C8F5",
+    "bg": "rgb(109, 40, 217)"
+   }
+  },
+  "name": {
+   "x": 144,
+   "y": 108.86,
+   "w": 182,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Poppins",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(233, 213, 255)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 132.25,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Poppins SemiBold",
+    "postScriptName": "Poppins-SemiBold",
+    "file": "Poppins-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Poppins-600"
+   }
+  },
+  "message": {
+   "x": 144,
+   "y": 138.25,
+   "w": 182,
+   "h": 60.89,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(228, 218, 247)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw02": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "28px"
+  },
+  "avatar": {
+   "cx": 74,
+   "cy": 130,
+   "r": 45,
+   "placeholder": {
+    "fill": "#6D28D9",
+    "bg": "rgb(196, 176, 240)"
+   }
+  },
+  "name": {
+   "x": 144,
+   "y": 108.86,
+   "w": 182,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Poppins",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(46, 16, 101)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 132.25,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Poppins SemiBold",
+    "postScriptName": "Poppins-SemiBold",
+    "file": "Poppins-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Poppins-600"
+   }
+  },
+  "message": {
+   "x": 144,
+   "y": 138.25,
+   "w": 182,
+   "h": 60.89,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(74, 53, 112)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw03": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 77,
+   "cy": 130,
+   "r": 47,
+   "placeholder": {
+    "fill": "#8B5CF6",
+    "bg": "rgb(237, 228, 251)"
+   }
+  },
+  "name": {
+   "x": 147,
+   "y": 119,
+   "w": 176,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Poppins",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(31, 18, 53)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 142.390625,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Poppins SemiBold",
+    "postScriptName": "Poppins-SemiBold",
+    "file": "Poppins-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Poppins-600"
+   }
+  },
+  "message": {
+   "x": 147,
+   "y": 148.39,
+   "w": 176,
+   "h": 40.59,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(75, 69, 96)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw04": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 74,
+   "cy": 130,
+   "r": 46,
+   "placeholder": {
+    "fill": "#C4B5FD",
+    "bg": "rgb(46, 16, 101)"
+   }
+  },
+  "name": {
+   "x": 144,
+   "y": 119,
+   "w": 182,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Poppins",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(255, 255, 255)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 142.390625,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Poppins SemiBold",
+    "postScriptName": "Poppins-SemiBold",
+    "file": "Poppins-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Poppins-600"
+   }
+  },
+  "message": {
+   "x": 144,
+   "y": 148.39,
+   "w": 182,
+   "h": 40.59,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(211, 203, 234)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw05": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 75,
+   "cy": 130,
+   "r": 45,
+   "placeholder": {
+    "fill": "#4C1D95",
+    "bg": "rgb(196, 176, 240)"
+   }
+  },
+  "name": {
+   "x": 145,
+   "y": 108.86,
+   "w": 180,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Poppins",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(109, 40, 217)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 132.25,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Poppins SemiBold",
+    "postScriptName": "Poppins-SemiBold",
+    "file": "Poppins-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Poppins-600"
+   }
+  },
+  "message": {
+   "x": 145,
+   "y": 138.25,
+   "w": 180,
+   "h": 60.89,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(75, 69, 96)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw06": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "32px"
+  },
+  "avatar": {
+   "cx": 74,
+   "cy": 130,
+   "r": 45,
+   "placeholder": {
+    "fill": "#9D174D",
+    "bg": "rgb(251, 207, 232)"
+   }
+  },
+  "name": {
+   "x": 144,
+   "y": 110.86,
+   "w": 182,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Fredoka",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(59, 7, 100)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 134.25,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Fredoka Light",
+    "postScriptName": "Fredoka-Light",
+    "file": "Fredoka-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Fredoka-600"
+   }
+  },
+  "message": {
+   "x": 144,
+   "y": 140.25,
+   "w": 182,
+   "h": 60.89,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(91, 58, 122)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw07": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 74,
+   "cy": 130,
+   "r": 47,
+   "placeholder": {
+    "fill": "#A78BFA",
+    "bg": "rgb(46, 16, 101)"
+   }
+  },
+  "name": {
+   "x": 144,
+   "y": 119,
+   "w": 182,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Poppins",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(255, 255, 255)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 142.390625,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Poppins SemiBold",
+    "postScriptName": "Poppins-SemiBold",
+    "file": "Poppins-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Poppins-600"
+   }
+  },
+  "message": {
+   "x": 144,
+   "y": 148.39,
+   "w": 182,
+   "h": 40.59,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(207, 200, 232)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw08": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 74,
+   "cy": 130,
+   "r": 46,
+   "placeholder": {
+    "fill": "#6D28D9",
+    "bg": "rgb(253, 230, 138)"
+   }
+  },
+  "name": {
+   "x": 144,
+   "y": 119,
+   "w": 182,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Poppins",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(76, 29, 149)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 142.390625,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Poppins SemiBold",
+    "postScriptName": "Poppins-SemiBold",
+    "file": "Poppins-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Poppins-600"
+   }
+  },
+  "message": {
+   "x": 144,
+   "y": 148.39,
+   "w": 182,
+   "h": 40.59,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(59, 42, 10)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw09": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 74,
+   "cy": 130,
+   "r": 46,
+   "placeholder": {
+    "fill": "#EDE4FB",
+    "bg": "rgb(139, 92, 246)"
+   }
+  },
+  "name": {
+   "x": 144,
+   "y": 119,
+   "w": 182,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Poppins",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(253, 230, 138)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 142.390625,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Poppins SemiBold",
+    "postScriptName": "Poppins-SemiBold",
+    "file": "Poppins-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Poppins-600"
+   }
+  },
+  "message": {
+   "x": 144,
+   "y": 148.39,
+   "w": 182,
+   "h": 40.59,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(243, 237, 255)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw10": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 85,
+   "cy": 130,
+   "r": 45,
+   "placeholder": {
+    "fill": "#C4B5FD",
+    "bg": "rgb(76, 29, 149)"
+   }
+  },
+  "name": {
+   "x": 151,
+   "y": 118.66,
+   "w": 188,
+   "h": 22.09,
+   "align": "left",
+   "font": {
+    "family": "Poppins",
+    "weight": 600,
+    "style": "normal",
+    "size": 17,
+    "lineHeight": 22.1,
+    "baseline": 17
+   },
+   "color": "rgb(196, 181, 253)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 140.75,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Poppins SemiBold",
+    "postScriptName": "Poppins-SemiBold",
+    "file": "Poppins-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Poppins-600"
+   }
+  },
+  "message": {
+   "x": 151,
+   "y": 146.75,
+   "w": 188,
+   "h": 40.59,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(228, 218, 247)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 243,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw11": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 74,
+   "cy": 130,
+   "r": 45,
+   "placeholder": {
+    "fill": "#5B21B6",
+    "bg": "rgb(196, 176, 240)"
+   }
+  },
+  "name": {
+   "x": 144,
+   "y": 108.86,
+   "w": 182,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Poppins",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(46, 16, 101)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 132.25,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Poppins SemiBold",
+    "postScriptName": "Poppins-SemiBold",
+    "file": "Poppins-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Poppins-600"
+   }
+  },
+  "message": {
+   "x": 144,
+   "y": 138.25,
+   "w": 182,
+   "h": 60.89,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(74, 53, 112)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw12": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "6px"
+  },
+  "avatar": {
+   "cx": 81,
+   "cy": 130,
+   "r": 47,
+   "placeholder": {
+    "fill": "#8B5CF6",
+    "bg": "rgb(243, 238, 252)"
+   }
+  },
+  "name": {
+   "x": 147,
+   "y": 122.16,
+   "w": 200,
+   "h": 24.69,
+   "align": "left",
+   "font": {
+    "family": "Cormorant Garamond",
+    "weight": 600,
+    "style": "italic",
+    "size": 19,
+    "lineHeight": 24.7,
+    "baseline": 18
+   },
+   "color": "rgb(46, 16, 101)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 146.84375,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Cormorant Garamond Light",
+    "postScriptName": "CormorantGaramond-LightItalic",
+    "file": "CormorantGaramond-600Italic.ttf",
+    "weight": 600,
+    "italic": true,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC CormorantGaramond-600Italic"
+   }
+  },
+  "message": {
+   "x": 147,
+   "y": 152.84,
+   "w": 200,
+   "h": 39,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 13,
+    "lineHeight": 19.5,
+    "baseline": 14
+   },
+   "color": "rgb(75, 69, 96)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw13": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 69,
+   "cy": 160,
+   "r": 42,
+   "placeholder": {
+    "fill": "#7C3AED",
+    "bg": "rgb(237, 228, 251)"
+   }
+  },
+  "name": {
+   "x": 133,
+   "y": 149.36,
+   "w": 200,
+   "h": 22.09,
+   "align": "left",
+   "font": {
+    "family": "Poppins",
+    "weight": 600,
+    "style": "normal",
+    "size": 17,
+    "lineHeight": 22.1,
+    "baseline": 17
+   },
+   "color": "rgb(31, 18, 53)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 171.453125,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Poppins SemiBold",
+    "postScriptName": "Poppins-SemiBold",
+    "file": "Poppins-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Poppins-600"
+   }
+  },
+  "message": {
+   "x": 133,
+   "y": 175.45,
+   "w": 200,
+   "h": 39.19,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 19.6,
+    "baseline": 15
+   },
+   "color": "rgb(75, 69, 96)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw14": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "26px"
+  },
+  "avatar": {
+   "cx": 74,
+   "cy": 130,
+   "r": 45,
+   "placeholder": {
+    "fill": "#9D174D",
+    "bg": "rgb(249, 168, 212)"
+   }
+  },
+  "name": {
+   "x": 144,
+   "y": 110.86,
+   "w": 182,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Fredoka",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(76, 29, 149)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 134.25,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Fredoka Light",
+    "postScriptName": "Fredoka-Light",
+    "file": "Fredoka-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Fredoka-600"
+   }
+  },
+  "message": {
+   "x": 144,
+   "y": 140.25,
+   "w": 182,
+   "h": 60.89,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(107, 33, 72)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw15": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 74,
+   "cy": 130,
+   "r": 45,
+   "placeholder": {
+    "fill": "#4C1D95",
+    "bg": "rgb(196, 181, 253)"
+   }
+  },
+  "name": {
+   "x": 144,
+   "y": 108.86,
+   "w": 182,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Poppins",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(46, 16, 101)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 132.25,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Poppins SemiBold",
+    "postScriptName": "Poppins-SemiBold",
+    "file": "Poppins-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Poppins-600"
+   }
+  },
+  "message": {
+   "x": 144,
+   "y": 138.25,
+   "w": 182,
+   "h": 60.89,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(59, 42, 96)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw16": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 74,
+   "cy": 130,
+   "r": 46,
+   "placeholder": {
+    "fill": "#D8C8F5",
+    "bg": "rgb(76, 29, 149)"
+   }
+  },
+  "name": {
+   "x": 144,
+   "y": 108.86,
+   "w": 182,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Poppins",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(244, 197, 66)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 132.25,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Poppins SemiBold",
+    "postScriptName": "Poppins-SemiBold",
+    "file": "Poppins-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Poppins-600"
+   }
+  },
+  "message": {
+   "x": 144,
+   "y": 138.25,
+   "w": 182,
+   "h": 60.89,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(228, 218, 247)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw17": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "18px"
+  },
+  "avatar": {
+   "cx": 76,
+   "cy": 130,
+   "r": 46,
+   "placeholder": {
+    "fill": "#A5B4FC",
+    "bg": "rgb(30, 41, 59)"
+   }
+  },
+  "name": {
+   "x": 146,
+   "y": 108.86,
+   "w": 178,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Poppins",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(165, 243, 252)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 132.25,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Poppins SemiBold",
+    "postScriptName": "Poppins-SemiBold",
+    "file": "Poppins-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Poppins-600"
+   }
+  },
+  "message": {
+   "x": 146,
+   "y": 138.25,
+   "w": 178,
+   "h": 60.89,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(203, 213, 225)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw18": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 77,
+   "cy": 130,
+   "r": 47,
+   "placeholder": {
+    "fill": "#7C3AED",
+    "bg": "rgb(237, 228, 251)"
+   }
+  },
+  "name": {
+   "x": 147,
+   "y": 110.86,
+   "w": 176,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Fredoka",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(46, 16, 101)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 134.25,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Fredoka Light",
+    "postScriptName": "Fredoka-Light",
+    "file": "Fredoka-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Fredoka-600"
+   }
+  },
+  "message": {
+   "x": 147,
+   "y": 140.25,
+   "w": 176,
+   "h": 60.89,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(75, 69, 96)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw19": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 74,
+   "cy": 130,
+   "r": 46,
+   "placeholder": {
+    "fill": "#EDE4FB",
+    "bg": "rgb(124, 58, 237)"
+   }
+  },
+  "name": {
+   "x": 144,
+   "y": 119,
+   "w": 182,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Poppins",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(244, 197, 66)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 142.390625,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Poppins SemiBold",
+    "postScriptName": "Poppins-SemiBold",
+    "file": "Poppins-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Poppins-600"
+   }
+  },
+  "message": {
+   "x": 144,
+   "y": 148.39,
+   "w": 182,
+   "h": 40.59,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(237, 228, 251)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "pw20": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 75,
+   "cy": 124.5,
+   "r": 46,
+   "placeholder": {
+    "fill": "#6D28D9",
+    "bg": "rgb(237, 228, 251)"
+   }
+  },
+  "name": {
+   "x": 145,
+   "y": 103.36,
+   "w": 180,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Poppins",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(31, 18, 53)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 126.75,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Poppins SemiBold",
+    "postScriptName": "Poppins-SemiBold",
+    "file": "Poppins-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Poppins-600"
+   }
+  },
+  "message": {
+   "x": 145,
+   "y": 132.75,
+   "w": 180,
+   "h": 60.89,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(75, 69, 96)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "c20": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 84,
+   "cy": 130,
+   "r": 53,
+   "placeholder": {
+    "fill": "#9AA6FF",
+    "bg": "rgb(27, 27, 75)"
+   }
+  },
+  "name": {
+   "x": 164,
+   "y": 121,
+   "w": 274,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(154, 166, 255)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 144.390625,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Inter SemiBold",
+    "postScriptName": "Inter-SemiBold",
+    "file": "Inter-600.otf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-600"
+   }
+  },
+  "message": {
+   "x": 164,
+   "y": 150.39,
+   "w": 274,
+   "h": 40.59,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(199, 203, 234)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "c22": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "20px"
+  },
+  "avatar": {
+   "cx": 84,
+   "cy": 130,
+   "r": 52,
+   "placeholder": {
+    "fill": "#F3E5D0",
+    "bg": "rgb(139, 102, 80)"
+   }
+  },
+  "name": {
+   "x": 164,
+   "y": 120.91,
+   "w": 280,
+   "h": 24.69,
+   "align": "left",
+   "font": {
+    "family": "Lora",
+    "weight": 500,
+    "style": "italic",
+    "size": 19,
+    "lineHeight": 24.7,
+    "baseline": 19
+   },
+   "color": "rgb(247, 197, 159)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 145.59375,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Lora",
+    "postScriptName": "Lora-Italic",
+    "file": "Lora-500Italic.ttf",
+    "weight": 500,
+    "italic": true,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Lora-500Italic"
+   }
+  },
+  "message": {
+   "x": 164,
+   "y": 151.59,
+   "w": 280,
+   "h": 43.5,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 15,
+    "lineHeight": 21.75,
+    "baseline": 16
+   },
+   "color": "rgb(235, 218, 198)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "c28": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 80,
+   "cy": 130,
+   "r": 51,
+   "placeholder": {
+    "fill": "#B02E3A",
+    "bg": "rgb(255, 214, 217)"
+   }
+  },
+  "name": {
+   "x": 176,
+   "y": 121,
+   "w": 264,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Fredoka",
+    "weight": 600,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(58, 46, 46)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 144.390625,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Fredoka Light",
+    "postScriptName": "Fredoka-Light",
+    "file": "Fredoka-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Fredoka-600"
+   }
+  },
+  "message": {
+   "x": 176,
+   "y": 150.39,
+   "w": 264,
+   "h": 40.59,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(90, 74, 74)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 190.98,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "c30": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "10px"
+  },
+  "avatar": {
+   "cx": 114,
+   "cy": 130,
+   "r": 51,
+   "placeholder": {
+    "fill": "#3D5A80",
+    "bg": "rgb(224, 236, 247)"
+   }
+  },
+  "name": {
+   "x": 190,
+   "y": 116.66,
+   "w": 280,
+   "h": 31.19,
+   "align": "left",
+   "font": {
+    "family": "Caveat",
+    "weight": 700,
+    "style": "normal",
+    "size": 26,
+    "lineHeight": 31.2,
+    "baseline": 24
+   },
+   "color": "rgb(224, 122, 95)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 147.84375,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Caveat",
+    "postScriptName": "Caveat-Regular",
+    "file": "Caveat-700.ttf",
+    "weight": 700,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Caveat-700"
+   }
+  },
+  "message": {
+   "x": 190,
+   "y": 149.84,
+   "w": 280,
+   "h": 52.5,
+   "align": "left",
+   "font": {
+    "family": "Caveat",
+    "weight": 600,
+    "style": "normal",
+    "size": 21,
+    "lineHeight": 26.25,
+    "baseline": 20
+   },
+   "color": "rgb(41, 50, 65)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Caveat",
+    "postScriptName": "Caveat-Regular",
+    "file": "Caveat-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Caveat-600"
+   }
+  }
+ },
+ "c31": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "14px"
+  },
+  "avatar": {
+   "cx": 86,
+   "cy": 130,
+   "r": 53,
+   "placeholder": {
+    "fill": "#05D9E8",
+    "bg": "rgb(26, 11, 59)"
+   }
+  },
+  "name": {
+   "x": 166,
+   "y": 118.66,
+   "w": 288,
+   "h": 22.09,
+   "align": "left",
+   "font": {
+    "family": "Orbitron",
+    "weight": 700,
+    "style": "normal",
+    "size": 17,
+    "lineHeight": 22.1,
+    "baseline": 17
+   },
+   "color": "rgb(5, 217, 232)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 140.75,
+   "template": "{name}",
+   "case": "upper",
+   "face": {
+    "used": "Orbitron",
+    "postScriptName": "Orbitron-Regular",
+    "file": "Orbitron-700.ttf",
+    "weight": 700,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Orbitron-700"
+   }
+  },
+  "message": {
+   "x": 166,
+   "y": 148.75,
+   "w": 288,
+   "h": 40.59,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(209, 247, 255)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "c36": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "16px"
+  },
+  "avatar": {
+   "cx": 76,
+   "cy": 130,
+   "r": 50,
+   "placeholder": {
+    "fill": "#264653",
+    "bg": "rgb(247, 197, 159)"
+   }
+  },
+  "name": {
+   "x": 150,
+   "y": 134.91,
+   "w": 281,
+   "h": 23.39,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 700,
+    "style": "normal",
+    "size": 18,
+    "lineHeight": 23.4,
+    "baseline": 18
+   },
+   "color": "rgb(29, 53, 64)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 158.296875,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Bold",
+    "file": "Inter-700.otf",
+    "weight": 700,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-700"
+   }
+  },
+  "message": {
+   "x": 150,
+   "y": 162.3,
+   "w": 281,
+   "h": 40.59,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(47, 74, 85)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  },
+  "count": {
+   "x": 406.98,
+   "y": 117,
+   "w": 202.05,
+   "h": 26,
+   "align": "left",
+   "font": {
+    "family": "Bebas Neue",
+    "weight": 400,
+    "style": "normal",
+    "size": 26,
+    "lineHeight": 26,
+    "baseline": 20
+   },
+   "color": "rgb(255, 255, 255)",
+   "letterSpacing": 3.9,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "cx": 508.01,
+   "cy": 130,
+   "angle": 90,
+   "maxLen": 240,
+   "template": "ADMIT ONE · #{count}",
+   "face": {
+    "used": "Bebas Neue",
+    "postScriptName": "BebasNeue-Regular",
+    "file": "BebasNeue-400.ttf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC BebasNeue-400"
+   }
+  }
+ },
+ "c37": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "10px"
+  },
+  "avatar": {
+   "cx": 81,
+   "cy": 130,
+   "r": 49,
+   "placeholder": {
+    "fill": "#39FF14",
+    "bg": "rgb(16, 42, 16)"
+   }
+  },
+  "name": {
+   "x": 157,
+   "y": 139.89,
+   "w": 302,
+   "h": 18,
+   "align": "left",
+   "font": {
+    "family": "Press Start 2P",
+    "weight": 400,
+    "style": "normal",
+    "size": 12,
+    "lineHeight": 18,
+    "baseline": 15
+   },
+   "color": "rgb(255, 255, 255)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 157.890625,
+   "template": "{name}",
+   "case": "upper",
+   "face": {
+    "used": "Press Start 2P",
+    "postScriptName": "PressStart2P-Regular",
+    "file": "PressStart2P-400.ttf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC PressStart2P-400"
+   }
+  },
+  "message": {
+   "x": 157,
+   "y": 169.89,
+   "w": 302,
+   "h": 17.59,
+   "align": "left",
+   "font": {
+    "family": "Press Start 2P",
+    "weight": 400,
+    "style": "normal",
+    "size": 11,
+    "lineHeight": 17.6,
+    "baseline": 14
+   },
+   "color": "rgb(155, 232, 155)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "upper",
+   "face": {
+    "used": "Press Start 2P",
+    "postScriptName": "PressStart2P-Regular",
+    "file": "PressStart2P-400.ttf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC PressStart2P-400"
+   }
+  }
+ },
+ "c39": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "8px"
+  },
+  "avatar": {
+   "cx": 84,
+   "cy": 130,
+   "r": 53,
+   "placeholder": {
+    "fill": "#CCCCCC",
+    "bg": "rgb(42, 42, 42)"
+   }
+  },
+  "name": {
+   "x": 164,
+   "y": 124.3,
+   "w": 284,
+   "h": 20.8,
+   "align": "left",
+   "font": {
+    "family": "Space Mono",
+    "weight": 700,
+    "style": "normal",
+    "size": 16,
+    "lineHeight": 20.8,
+    "baseline": 16
+   },
+   "color": "rgb(0, 240, 255)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 145.09375,
+   "template": "> {name}.exe",
+   "case": "lower_underscore",
+   "face": {
+    "used": "Space Mono",
+    "postScriptName": "SpaceMono-Bold",
+    "file": "SpaceMono-700.ttf",
+    "weight": 700,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC SpaceMono-700"
+   }
+  },
+  "message": {
+   "x": 164,
+   "y": 153.09,
+   "w": 284,
+   "h": 40.59,
+   "align": "left",
+   "font": {
+    "family": "Space Mono",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(187, 187, 187)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "lower",
+   "face": {
+    "used": "Space Mono",
+    "postScriptName": "SpaceMono-Regular",
+    "file": "SpaceMono-400.ttf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC SpaceMono-400"
+   }
+  }
+ },
+ "c41": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "18px"
+  },
+  "avatar": {
+   "cx": 82,
+   "cy": 130,
+   "r": 52,
+   "placeholder": {
+    "fill": "#B8A1E0",
+    "bg": "rgb(46, 26, 74)"
+   }
+  },
+  "name": {
+   "x": 162,
+   "y": 125.36,
+   "w": 278,
+   "h": 24.69,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 600,
+    "style": "normal",
+    "size": 19,
+    "lineHeight": 24.7,
+    "baseline": 18
+   },
+   "color": "rgb(242, 232, 255)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 150.046875,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Inter SemiBold",
+    "postScriptName": "Inter-SemiBold",
+    "file": "Inter-600.otf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-600"
+   }
+  },
+  "message": {
+   "x": 162,
+   "y": 156.05,
+   "w": 278,
+   "h": 40.59,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(205, 189, 230)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "c42": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 82,
+   "cy": 130,
+   "r": 51,
+   "placeholder": {
+    "fill": "#1D4E89",
+    "bg": "rgb(169, 203, 242)"
+   }
+  },
+  "name": {
+   "x": 162,
+   "y": 125.36,
+   "w": 284,
+   "h": 24.69,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 600,
+    "style": "normal",
+    "size": 19,
+    "lineHeight": 24.7,
+    "baseline": 18
+   },
+   "color": "rgb(22, 58, 102)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 150.046875,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Inter SemiBold",
+    "postScriptName": "Inter-SemiBold",
+    "file": "Inter-600.otf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-600"
+   }
+  },
+  "message": {
+   "x": 162,
+   "y": 156.05,
+   "w": 284,
+   "h": 40.59,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(45, 79, 120)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "c50": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "8px"
+  },
+  "avatar": {
+   "cx": 82,
+   "cy": 130,
+   "r": 53,
+   "placeholder": {
+    "fill": "#4A4A4A",
+    "bg": "rgb(230, 223, 208)"
+   }
+  },
+  "name": {
+   "x": 162,
+   "y": 133.5,
+   "w": 284,
+   "h": 24.69,
+   "align": "left",
+   "font": {
+    "family": "Shippori Mincho",
+    "weight": 600,
+    "style": "normal",
+    "size": 19,
+    "lineHeight": 24.7,
+    "baseline": 20
+   },
+   "color": "rgb(26, 26, 26)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 158.1875,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Shippori Mincho SemiBold",
+    "postScriptName": "ShipporiMincho-SemiBold",
+    "file": "ShipporiMincho-600.ttf",
+    "weight": 600,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC ShipporiMincho-600"
+   }
+  },
+  "message": {
+   "x": 162,
+   "y": 164.19,
+   "w": 284,
+   "h": 20.3,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14,
+    "lineHeight": 20.3,
+    "baseline": 15
+   },
+   "color": "rgb(77, 74, 66)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "f2": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "10px"
+  },
+  "avatar": {
+   "cx": 82,
+   "cy": 115,
+   "r": 49,
+   "placeholder": {
+    "fill": "#C9725A",
+    "bg": "rgb(59, 42, 44)"
+   }
+  },
+  "name": {
+   "x": 158,
+   "y": 116.38,
+   "w": 276,
+   "h": 26,
+   "align": "left",
+   "font": {
+    "family": "Rubik",
+    "weight": 500,
+    "style": "normal",
+    "size": 20,
+    "lineHeight": 26,
+    "baseline": 20
+   },
+   "color": "rgb(255, 241, 234)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 142.375,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Rubik Light",
+    "postScriptName": "Rubik-Light",
+    "file": "Rubik-500.ttf",
+    "weight": 500,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Rubik-500"
+   }
+  },
+  "message": {
+   "x": 158,
+   "y": 146.38,
+   "w": 276,
+   "h": 42.03,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14.5,
+    "lineHeight": 21.03,
+    "baseline": 16
+   },
+   "color": "rgb(217, 195, 189)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 230,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "w3": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "130px 28px 28px 130px"
+  },
+  "avatar": {
+   "cx": 95,
+   "cy": 130,
+   "r": 54,
+   "placeholder": {
+    "fill": "#2A8F9C",
+    "bg": "rgb(181, 232, 236)"
+   }
+  },
+  "name": {
+   "x": 189,
+   "y": 121.58,
+   "w": 246,
+   "h": 27.3,
+   "align": "left",
+   "font": {
+    "family": "Fredoka",
+    "weight": 500,
+    "style": "normal",
+    "size": 21,
+    "lineHeight": 27.3,
+    "baseline": 21
+   },
+   "color": "rgb(14, 59, 68)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 148.875,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Fredoka Light",
+    "postScriptName": "Fredoka-Light",
+    "file": "Fredoka-500.ttf",
+    "weight": 500,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Fredoka-500"
+   }
+  },
+  "message": {
+   "x": 189,
+   "y": 152.88,
+   "w": 246,
+   "h": 42.03,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14.5,
+    "lineHeight": 21.03,
+    "baseline": 16
+   },
+   "color": "rgb(45, 85, 92)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "e4": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px 22px 80px"
+  },
+  "avatar": {
+   "cx": 84,
+   "cy": 112,
+   "r": 52,
+   "placeholder": {
+    "fill": "#B86A2E",
+    "bg": "rgb(242, 201, 140)"
+   }
+  },
+  "name": {
+   "x": 164,
+   "y": 100.69,
+   "w": 268,
+   "h": 24.69,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 700,
+    "style": "normal",
+    "size": 19,
+    "lineHeight": 24.7,
+    "baseline": 18
+   },
+   "color": "rgb(58, 30, 10)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 125.375,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Bold",
+    "file": "Inter-700.otf",
+    "weight": 700,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-700"
+   }
+  },
+  "message": {
+   "x": 164,
+   "y": 131.38,
+   "w": 268,
+   "h": 42.03,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 14.5,
+    "lineHeight": 21.03,
+    "baseline": 16
+   },
+   "color": "rgb(94, 58, 28)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 224,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "a1": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 84,
+   "cy": 130,
+   "r": 52,
+   "placeholder": {
+    "fill": "#6E9E68",
+    "bg": "rgb(207, 232, 196)"
+   }
+  },
+  "name": {
+   "x": 164,
+   "y": 120.25,
+   "w": 268,
+   "h": 26,
+   "align": "left",
+   "font": {
+    "family": "Nunito",
+    "weight": 700,
+    "style": "normal",
+    "size": 20,
+    "lineHeight": 26,
+    "baseline": 19
+   },
+   "color": "rgb(28, 58, 34)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 146.25,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Nunito ExtraLight",
+    "postScriptName": "Nunito-ExtraLight",
+    "file": "Nunito-700.ttf",
+    "weight": 700,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Nunito-700"
+   }
+  },
+  "message": {
+   "x": 164,
+   "y": 152.25,
+   "w": 268,
+   "h": 43.5,
+   "align": "left",
+   "font": {
+    "family": "Nunito",
+    "weight": 400,
+    "style": "normal",
+    "size": 15,
+    "lineHeight": 21.75,
+    "baseline": 15
+   },
+   "color": "rgb(54, 85, 60)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Nunito ExtraLight",
+    "postScriptName": "Nunito-ExtraLight",
+    "file": "Nunito-400.ttf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Nunito-400"
+   }
+  }
+ },
+ "i1": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 84,
+   "cy": 130,
+   "r": 52,
+   "placeholder": {
+    "fill": "#8FD0E6",
+    "bg": "rgb(26, 106, 138)"
+   }
+  },
+  "name": {
+   "x": 164,
+   "y": 109.38,
+   "w": 268,
+   "h": 26,
+   "align": "left",
+   "font": {
+    "family": "Mulish",
+    "weight": 700,
+    "style": "normal",
+    "size": 20,
+    "lineHeight": 26,
+    "baseline": 20
+   },
+   "color": "rgb(158, 221, 242)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 135.375,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Mulish ExtraLight",
+    "postScriptName": "Mulish-ExtraLight",
+    "file": "Mulish-700.ttf",
+    "weight": 700,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Mulish-700"
+   }
+  },
+  "message": {
+   "x": 164,
+   "y": 141.38,
+   "w": 268,
+   "h": 65.25,
+   "align": "left",
+   "font": {
+    "family": "Mulish",
+    "weight": 400,
+    "style": "normal",
+    "size": 15,
+    "lineHeight": 21.75,
+    "baseline": 16
+   },
+   "color": "rgb(207, 230, 239)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Mulish ExtraLight",
+    "postScriptName": "Mulish-ExtraLight",
+    "file": "Mulish-400.ttf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Mulish-400"
+   }
+  }
+ },
+ "l5": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "130px 22px 22px 130px"
+  },
+  "avatar": {
+   "cx": 78,
+   "cy": 130,
+   "r": 56,
+   "placeholder": {
+    "fill": "#B48CE8",
+    "bg": "rgb(58, 26, 110)"
+   }
+  },
+  "name": {
+   "x": 162,
+   "y": 122.48,
+   "w": 270,
+   "h": 26.25,
+   "align": "left",
+   "font": {
+    "family": "Rajdhani",
+    "weight": 700,
+    "style": "normal",
+    "size": 21,
+    "lineHeight": 26.25,
+    "baseline": 19
+   },
+   "color": "rgb(217, 168, 255)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 148.734375,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Rajdhani",
+    "postScriptName": "Rajdhani-Bold",
+    "file": "Rajdhani-700.ttf",
+    "weight": 700,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Rajdhani-700"
+   }
+  },
+  "message": {
+   "x": 162,
+   "y": 154.73,
+   "w": 270,
+   "h": 44.78,
+   "align": "left",
+   "font": {
+    "family": "Rajdhani",
+    "weight": 500,
+    "style": "normal",
+    "size": 16,
+    "lineHeight": 22.4,
+    "baseline": 15
+   },
+   "color": "rgb(205, 187, 232)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Rajdhani Medium",
+    "postScriptName": "Rajdhani-Medium",
+    "file": "Rajdhani-500.ttf",
+    "weight": 500,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Rajdhani-500"
+   }
+  }
+ },
+ "s3": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 78,
+   "cy": 130,
+   "r": 51,
+   "placeholder": {
+    "fill": "#BDEFF8",
+    "bg": "rgb(14, 124, 153)"
+   }
+  },
+  "name": {
+   "x": 170,
+   "y": 120.39,
+   "w": 256,
+   "h": 24,
+   "align": "left",
+   "font": {
+    "family": "Baloo 2",
+    "weight": 700,
+    "style": "normal",
+    "size": 20,
+    "lineHeight": 24,
+    "baseline": 18
+   },
+   "color": "rgb(18, 50, 61)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 144.390625,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Baloo 2",
+    "postScriptName": "Baloo2-Regular",
+    "file": "Baloo2-700.ttf",
+    "weight": 700,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Baloo2-700"
+   }
+  },
+  "message": {
+   "x": 170,
+   "y": 148.39,
+   "w": 256,
+   "h": 43.5,
+   "align": "left",
+   "font": {
+    "family": "Inter",
+    "weight": 400,
+    "style": "normal",
+    "size": 15,
+    "lineHeight": 21.75,
+    "baseline": 16
+   },
+   "color": "rgb(63, 94, 104)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 191.89,
+   "case": "none",
+   "face": {
+    "used": "Inter",
+    "postScriptName": "Inter-Regular",
+    "file": "Inter-400.otf",
+    "weight": 400,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC Inter-400"
+   }
+  }
+ },
+ "k1": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 84,
+   "cy": 140,
+   "r": 52,
+   "placeholder": {
+    "fill": "#B9A9E0",
+    "bg": "rgb(45, 40, 88)"
+   }
+  },
+  "name": {
+   "x": 164,
+   "y": 130.25,
+   "w": 268,
+   "h": 27.3,
+   "align": "left",
+   "font": {
+    "family": "Zen Maru Gothic",
+    "weight": 700,
+    "style": "normal",
+    "size": 21,
+    "lineHeight": 27.3,
+    "baseline": 22
+   },
+   "color": "rgb(255, 255, 255)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 157.546875,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Zen Maru Gothic",
+    "postScriptName": "ZenMaruGothic-Bold",
+    "file": "ZenMaruGothic-700.ttf",
+    "weight": 700,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC ZenMaruGothic-700"
+   }
+  },
+  "message": {
+   "x": 164,
+   "y": 163.55,
+   "w": 268,
+   "h": 45,
+   "align": "left",
+   "font": {
+    "family": "Zen Maru Gothic",
+    "weight": 500,
+    "style": "normal",
+    "size": 15,
+    "lineHeight": 22.5,
+    "baseline": 17
+   },
+   "color": "rgb(207, 200, 230)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Zen Maru Gothic Medium",
+    "postScriptName": "ZenMaruGothic-Medium",
+    "file": "ZenMaruGothic-500.ttf",
+    "weight": 500,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC ZenMaruGothic-500"
+   }
+  }
+ },
+ "k2": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 84,
+   "cy": 130,
+   "r": 52,
+   "placeholder": {
+    "fill": "#F29BB8",
+    "bg": "rgb(255, 255, 255)"
+   }
+  },
+  "name": {
+   "x": 164,
+   "y": 120.25,
+   "w": 268,
+   "h": 27.3,
+   "align": "left",
+   "font": {
+    "family": "Zen Maru Gothic",
+    "weight": 700,
+    "style": "normal",
+    "size": 21,
+    "lineHeight": 27.3,
+    "baseline": 22
+   },
+   "color": "rgb(42, 42, 58)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 147.546875,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Zen Maru Gothic",
+    "postScriptName": "ZenMaruGothic-Bold",
+    "file": "ZenMaruGothic-700.ttf",
+    "weight": 700,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC ZenMaruGothic-700"
+   }
+  },
+  "message": {
+   "x": 164,
+   "y": 153.55,
+   "w": 268,
+   "h": 45,
+   "align": "left",
+   "font": {
+    "family": "Zen Maru Gothic",
+    "weight": 500,
+    "style": "normal",
+    "size": 15,
+    "lineHeight": 22.5,
+    "baseline": 17
+   },
+   "color": "rgb(69, 80, 95)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Zen Maru Gothic Medium",
+    "postScriptName": "ZenMaruGothic-Medium",
+    "file": "ZenMaruGothic-500.ttf",
+    "weight": 500,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC ZenMaruGothic-500"
+   }
+  }
+ },
+ "k4": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 84,
+   "cy": 130,
+   "r": 51,
+   "placeholder": {
+    "fill": "#E89AB5",
+    "bg": "rgb(253, 241, 245)"
+   }
+  },
+  "name": {
+   "x": 164,
+   "y": 125.75,
+   "w": 264,
+   "h": 26,
+   "align": "left",
+   "font": {
+    "family": "Zen Maru Gothic",
+    "weight": 700,
+    "style": "normal",
+    "size": 20,
+    "lineHeight": 26,
+    "baseline": 21
+   },
+   "color": "rgb(43, 43, 51)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 151.75,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Zen Maru Gothic",
+    "postScriptName": "ZenMaruGothic-Bold",
+    "file": "ZenMaruGothic-700.ttf",
+    "weight": 700,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC ZenMaruGothic-700"
+   }
+  },
+  "message": {
+   "x": 164,
+   "y": 159.75,
+   "w": 264,
+   "h": 45,
+   "align": "left",
+   "font": {
+    "family": "Zen Maru Gothic",
+    "weight": 500,
+    "style": "normal",
+    "size": 15,
+    "lineHeight": 22.5,
+    "baseline": 17
+   },
+   "color": "rgb(102, 96, 106)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 246,
+   "case": "none",
+   "face": {
+    "used": "Zen Maru Gothic Medium",
+    "postScriptName": "ZenMaruGothic-Medium",
+    "file": "ZenMaruGothic-500.ttf",
+    "weight": 500,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC ZenMaruGothic-500"
+   }
+  }
+ },
+ "k5": {
+  "card": {
+   "w": 560,
+   "h": 260,
+   "radius": "22px"
+  },
+  "avatar": {
+   "cx": 84,
+   "cy": 115,
+   "r": 51,
+   "placeholder": {
+    "fill": "#D9628E",
+    "bg": "rgb(248, 187, 208)"
+   }
+  },
+  "name": {
+   "x": 164,
+   "y": 88.75,
+   "w": 268,
+   "h": 27.3,
+   "align": "left",
+   "font": {
+    "family": "Zen Maru Gothic",
+    "weight": 700,
+    "style": "normal",
+    "size": 21,
+    "lineHeight": 27.3,
+    "baseline": 22
+   },
+   "color": "rgb(58, 31, 43)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 116.046875,
+   "template": "{name}",
+   "case": "none",
+   "face": {
+    "used": "Zen Maru Gothic",
+    "postScriptName": "ZenMaruGothic-Bold",
+    "file": "ZenMaruGothic-700.ttf",
+    "weight": 700,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC ZenMaruGothic-700"
+   }
+  },
+  "message": {
+   "x": 164,
+   "y": 122.05,
+   "w": 268,
+   "h": 45,
+   "align": "left",
+   "font": {
+    "family": "Zen Maru Gothic",
+    "weight": 500,
+    "style": "normal",
+    "size": 15,
+    "lineHeight": 22.5,
+    "baseline": 17
+   },
+   "color": "rgb(110, 68, 86)",
+   "letterSpacing": 0,
+   "transform": "none",
+   "shadows": [],
+   "stroke": null,
+   "maxBottom": 173.05,
+   "case": "none",
+   "face": {
+    "used": "Zen Maru Gothic Medium",
+    "postScriptName": "ZenMaruGothic-Medium",
+    "file": "ZenMaruGothic-500.ttf",
+    "weight": 500,
+    "italic": false,
+    "synthBold": false,
+    "synthItalic": false,
+    "family": "WC ZenMaruGothic-500"
+   }
+  }
+ }
+}

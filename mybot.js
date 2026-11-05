@@ -1,4 +1,5 @@
 require('dotenv').config();
+require('./utils/welcomeCards'); // welcome card fonts: must load before any other canvas use
 const { Client, GatewayIntentBits, Collection, Events, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
@@ -116,6 +117,7 @@ client.once(Events.ClientReady, () => {
     require('./utils/heartbeat').start(); // Online / Maintenance / Offline status on the website
     require('./utils/guildSheets').start(client); // Raid & Logger sheets: website requests, sharing, Supporter Perks limits
     require('./utils/trivia').start(client); // Pingway Trivia: word bank from XIVAPI (data/trivia_bank.json), tables, cleanup
+    require('./utils/welcome').start(client); // Welcome cards for new members (/welcomehere + website)
 
     // Startup check for leftover data from servers Pingway is no longer in (read-only)
     setTimeout(async () => {
@@ -135,7 +137,7 @@ client.once(Events.ClientReady, () => {
 // --- Leftover Server Data (servers Pingway is no longer in) ---
 // Only server-level tables. Personal data (reminders, facts, /datacenter, market alerts,
 // ScionDex, IGN, /status, firmament) is never touched.
-const SERVER_TABLES = ['server_settings', 'ai_active_channels', 'server_releases', 'guild_polls', 'party_finders', 'honeypot_settings', 'honeypot_log', 'rr_messages', 'ticket_settings', 'tickets', 'news_channels'];
+const SERVER_TABLES = ['server_settings', 'ai_active_channels', 'server_releases', 'guild_polls', 'party_finders', 'honeypot_settings', 'honeypot_log', 'rr_messages', 'ticket_settings', 'tickets', 'news_channels', 'welcome_settings', 'welcome_requests'];
 let pendingPurge = null; // { expires, guildIds }
 
 async function findLeftoverServerData() {
