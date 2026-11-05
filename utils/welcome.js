@@ -276,7 +276,7 @@ async function handleRequest(client, row) {
         if (!member) { await setState(row.id, 'failed'); return 'failed'; }
         const { png, design: used } = await renderFor(member, guild, {}, { design: design || W.randomDefault(), message });
         await member.send({
-            content: 'Here\'s a test of your welcome card for **' + escapeMarkdown(guild.name) + '** (design ' + used + ').',
+            content: 'Here\'s a test of your welcome card for **' + escapeMarkdown(guild.name) + '** (design ' + (design ? used : 'default') + ').',
             files: [new AttachmentBuilder(png, { name: 'welcome-test.png' })]
         });
     } catch (err) {
