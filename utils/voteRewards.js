@@ -18,7 +18,7 @@ const SITE = 'https://pingway.app';
 const VOTE_SITES = {
     topgg: { name: 'top.gg', url: 'https://top.gg/bot/1530586586524418048/vote', match: id => /^v[01]:/.test(id), weekendDouble: true, every: '12 hours' },
     dbl:   { name: 'discordbotlist.com', url: 'https://discordbotlist.com/bots/pingway/upvote', match: id => id.startsWith('dbl:'), weekendDouble: false, every: '12 hours' },
-    dlist: { name: 'discordlist.gg', url: 'https://discordlist.gg/bot/1530586586524418048', match: id => id.startsWith('dlist:'), weekendDouble: false, every: '12 hours' }
+    dlist: { name: 'discordlist.gg', url: 'https://discordlist.gg/bot/1530586586524418048/vote', match: id => id.startsWith('dlist:'), weekendDouble: false, every: '12 hours' }
 };
 
 function siteFor(voteId) {

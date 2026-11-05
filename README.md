@@ -34,7 +34,7 @@ Everything you change on the website works right away in Discord — and you can
   - NQ and HQ are checked separately. Results are sorted lowest price first and grouped by Data Center in an aligned table.
 
 ### 💜 Supporter Perks & Points
-- **Supporter Perks** unlock extra market tools and higher limits (for example more Reaction Role messages and Raid & Logger sheets). Perks cost points; get points by supporting on [Ko-fi](https://ko-fi.com/riverzola) or by **voting for Pingway on [top.gg](https://top.gg/bot/1530586586524418048/vote) or [discordbotlist.com](https://discordbotlist.com/bots/pingway/upvote) or [discordlist.gg](https://discordlist.gg/bot/1530586586524418048)** (vote rewards come with a thank-you DM).
+- **Supporter Perks** unlock extra market tools and higher limits (for example more Reaction Role messages and Raid & Logger sheets). Perks cost points; get points by supporting on [Ko-fi](https://ko-fi.com/riverzola) or by **voting for Pingway on [top.gg](https://top.gg/bot/1530586586524418048/vote) or [discordbotlist.com](https://discordbotlist.com/bots/pingway/upvote) or [discordlist.gg](https://discordlist.gg/bot/1530586586524418048/vote)** (vote rewards come with a thank-you DM).
 - **`/bestsellers`** — Top selling items on your world or Data Center.
 - **`/buysell`** — Popular items that are cheaper on another world than on yours.
 - **`/retainers`** — Your watched retainers and their undercut items. Add retainers on the website (**Retainer Watch**) and Pingway DMs you when someone undercuts them.
