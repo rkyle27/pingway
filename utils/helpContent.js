@@ -59,6 +59,7 @@ function buildHelpPayload() {
                 name: '🛠️ Admin',
                 value: '**/ailistenhere** — Move AI chat to this channel (run it again there to turn it off).\n' +
                        '**/notifhere** — Set this channel for Pingway notifications.\n' +
+                       '**/welcomehere** — Post welcome cards for new members in this channel (`action: off` to stop).\n' +
                        '**/clean** — Bulk-delete messages (also older than 14 days).\n' +
                        '**/honeypot** — "Do not chat here" channel that removes hacked spam accounts.\n' +
                        '**/logger** — Log command usage to a Google Sheet.\n' +
