@@ -16,7 +16,7 @@ const SITE = 'https://pingway.app';
 // A vote_id no entry matches still gets a plain thank-you DM (no site name, no vote button).
 const VOTE_SITES = {
     topgg: { name: 'top.gg', url: 'https://top.gg/bot/1530586586524418048/vote', match: id => /^v[01]:/.test(id), weekendDouble: true, every: '12 hours' },
-    dbl:   { name: 'discordbotlist.com', url: 'https://discordbotlist.com/bots/pingway', match: id => id.startsWith('dbl:'), weekendDouble: false, every: '12 hours' }
+    dbl:   { name: 'discordbotlist.com', url: 'https://discordbotlist.com/bots/pingway/upvote', match: id => id.startsWith('dbl:'), weekendDouble: false, every: '12 hours' }
 };
 
 function siteFor(voteId) {
