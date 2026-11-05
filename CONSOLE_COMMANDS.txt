@@ -112,6 +112,43 @@ tts google on
     Saved in voice-settings.json in the bot folder, so it survives restarts (missing file = on).
 
 
+GOOGLE VOICE CREDITS (Ko-fi members, /vc)
+-----------------------------------------
+$1 = 100 credits ($5 = 500). 1 credit = 2,000 characters (about 50 messages).
+Ko-fi membership payments (USD) add them automatically. All amounts below are in CREDITS.
+The database keeps exact characters; credits shown = whole credits (characters / 2,000, rounded down).
+Not the same as points: "credits <id>" (without kofi) is still the old name of "points <id>".
+Changes reach calls that are already running within about a minute.
+
+kofi <id>
+    Read only. Shows the user's Google voice credits left (and exact characters), each batch
+    (credits left, from a Ko-fi payment or the console, expiry date), member status
+    (Ko-fi membership payment in the last 35 days, or console member until <date>),
+    their Google switch (My Settings), nickname and max characters per message.
+    Example: kofi 123456789012345678
+
+kofi give <id> <credits>
+    Gives 1-1000000 credits as a new batch. It expires 180 days from now
+    (same CREDIT_VALIDITY_DAYS setting as the website; 0 = never expire). Shows the new balance.
+    Use for: gifts, giveaways, payments held for review, testing.
+    Example: kofi give 123456789012345678 500      (= $5 = 1,000,000 characters)
+
+kofi remove <id> <credits>
+    Takes credits off (refund / chargeback / mistake), oldest-expiring batch first.
+    Expired batches are skipped and the balance never goes below 0.
+    Shows what was removed and the new balance.
+    Example: kofi remove 123456789012345678 100
+
+kofi member <id> <days>
+kofi member <id> off
+    Console membership: the user counts as an active member (the Google voice part shows in
+    My Settings) for 1-3650 days from now, even without a Ko-fi payment. "off" ends it right away.
+    A Ko-fi membership payment in the last 35 days still counts on its own.
+    Members still need credits for the Google voice: use "kofi give" for those.
+    Example: kofi member 123456789012345678 30
+    Example: kofi member 123456789012345678 off
+
+
 NOTES
 -----
 - Retainer Watch tables are created the first time someone opens the Retainers page.
