@@ -2,7 +2,8 @@
 //
 // Audio layout (keeps memory low on the 512 MB host):
 //   musicPlayer  <- ffmpeg stdout (ONE ffmpeg per guild at most, killed on skip / stop / leave)
-//   ttsPlayer    <- Google TTS Ogg Opus buffer (no ffmpeg, no JS encoder)
+//   ttsPlayer    <- Google TTS Ogg Opus buffer (no ffmpeg, no JS encoder), or the eSpeak backup's
+//                   48 kHz PCM (encoded by opusscript; still no ffmpeg)
 // The connection is subscribed to exactly one player at a time.
 //
 // TTS priority: when speech arrives while music plays, the music player is paused and the connection switches
@@ -35,7 +36,7 @@ class VoiceSession extends EventEmitter {
      * @param {string} o.channelId
      * @param {object} o.voice      the @discordjs/voice module (or a fake in tests)
      * @param {object} o.connection VoiceConnection
-     * @param {object} o.deps       { synthesize(text, voice) -> Buffer, openAudio(url) -> {stream, live, title},
+     * @param {object} o.deps       { synthesize(text, voice) -> Buffer (Ogg Opus) | {type:'ogg'|'pcm', data}, openAudio(url) -> {stream, live, title},
      *                                spawnFfmpeg({seekSeconds}) -> {proc, ogg}, clock, ttsEnabled: () => bool }
      */
     constructor({ guildId, channelId, voice, connection, deps }) {
@@ -113,9 +114,9 @@ class VoiceSession extends EventEmitter {
         const item = this.ttsQueue.shift();
         if (!item) return this._afterTts();
         this.ttsBusy = true;
-        let buf;
+        let out;
         try {
-            buf = await this.deps.synthesize(item.text, item.voice);
+            out = await this.deps.synthesize(item.text, item.voice);
         } catch (err) {
             this._log('speech failed: ' + (err && err.message)); // message never contains the text or key
             this.ttsBusy = false;
@@ -125,9 +126,11 @@ class VoiceSession extends EventEmitter {
         if (this.destroyed) return;
         this._holdMusic();
         this.connection.subscribe(this.ttsPlayer);
+        // Google -> Ogg Opus buffer; eSpeak backup -> { type: 'pcm', data } (48 kHz stereo s16le, Opus-encoded by opusscript)
+        const pcm = out && !Buffer.isBuffer(out) && out.type === 'pcm';
         const input = new PassThrough();
-        input.end(buf);
-        const resource = this.voice.createAudioResource(input, { inputType: this.voice.StreamType.OggOpus });
+        input.end(Buffer.isBuffer(out) ? out : out.data);
+        const resource = this.voice.createAudioResource(input, { inputType: pcm ? this.voice.StreamType.Raw : this.voice.StreamType.OggOpus });
         this.ttsPlayer.play(resource);
         this.emit('update');
     }

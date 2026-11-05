@@ -35,7 +35,7 @@ function stateOf(guildId, userId) {
 }
 
 const realDeps = {
-    synthesize: (text, voiceName) => tts.synthesize(text, voiceName),
+    synthesize: (text, voiceName) => tts.speak(text, voiceName), // Google, or the eSpeak backup voice
     openAudio: url => openAudioUrl(url),
     spawnFfmpeg: opts => lib.spawnFfmpeg(opts),
     ttsEnabled: () => tts.isEnabled()
@@ -67,6 +67,7 @@ async function render(interaction, notice, extra = {}) {
         status: session ? session.status() : null,
         voiceReady: !!lib.loadVoice(),
         ttsEnabled: tts.isEnabled(),
+        ttsEngine: tts.engineStatus(),
         voiceName,
         voiceIsDefault: !userVoice,
         selectedLang: st.lang,

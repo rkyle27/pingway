@@ -30,7 +30,8 @@ const trim = (s, n) => {
  * @param {object} p
  * @param {object|null} p.status       session.status() or null when not connected
  * @param {boolean} p.voiceReady       @discordjs/voice installed
- * @param {boolean} p.ttsEnabled       GOOGLE_TTS_API_KEY set
+ * @param {boolean} p.ttsEnabled       Google key set or eSpeak backup installed
+ * @param {object|null} p.ttsEngine    tts.engineStatus(): { mode: 'google'|'backup'|'off', reason }
  * @param {string}  p.voiceName        the user's effective voice
  * @param {boolean} p.voiceIsDefault   true when it comes from the server / global default
  * @param {string|null} p.selectedLang language picked in the first menu (shows the voice menu)
@@ -64,7 +65,11 @@ function buildPanel(p) {
             ? `**Text-to-speech:** on - I read messages posted in <#${st.channelId}>'s text chat by people in the channel.`
             : '**Text-to-speech:** on - once I join, I read the voice channel\'s text chat.');
     } else {
-        lines.push('**Text-to-speech:** off - the bot owner has not set a Google TTS key. Music still works.');
+        lines.push('**Text-to-speech:** off - no voice engine is available on this bot. Music still works.');
+    }
+    const eng = p.ttsEngine;
+    if (p.ttsEnabled && eng && eng.mode === 'backup') {
+        lines.push(eng.reason === 'no_key' ? '*🤖 Backup voice (no Google key)*' : '*🤖 Using the backup voice today (Google voices come back after midnight Pacific time)*');
     }
 
     const v = getVoice(p.voiceName);
