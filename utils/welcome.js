@@ -262,6 +262,20 @@ async function setState(id, state) {
     await pool.execute('UPDATE welcome_requests SET state = ? WHERE id = ?', [state, id]).catch(() => {});
 }
 
+// Names shown on the website's Custom picker (keep in sync with WELCOME_DESIGNS in the website's app.js)
+const DESIGN_NAMES = {
+    c20: 'Starfield', c22: 'Cozy Café', c28: 'Picnic Gingham', c30: 'Notebook', c31: 'Neon Cyber',
+    c36: 'Concert Ticket', c37: 'Arcade', c39: 'Glitch', c41: 'Halloween', c42: 'Winter Snow',
+    c50: 'Sumi Ink', f2: 'Lava Flow', w3: 'Bubble Pop', e4: 'Desert Dunes', a1: 'Meadow Breeze',
+    i1: 'Glacier Blue', l5: 'Purple Plasma', s3: 'Pool Tiles', k1: 'Yozakura Night', k2: 'Petals on Water',
+    k4: 'Falling Petals', k5: 'Sakura Mochi'
+};
+// pw01..pw20 (random default) -> "default"; custom designs -> their website name
+function designLabel(id) {
+    if (W.DEFAULT_POOL.includes(id)) return 'default';
+    return DESIGN_NAMES[id] || id;
+}
+
 async function handleRequest(client, row) {
     const guild = client.guilds.cache.get(String(row.guild_id));
     const design = row.design ? String(row.design) : null;
@@ -276,7 +290,7 @@ async function handleRequest(client, row) {
         if (!member) { await setState(row.id, 'failed'); return 'failed'; }
         const { png, design: used } = await renderFor(member, guild, {}, { design: design || W.randomDefault(), message });
         await member.send({
-            content: 'Here\'s a test of your welcome card for **' + escapeMarkdown(guild.name) + '** (design ' + (W.DEFAULT_POOL.includes(used) ? 'default' : used) + ').',
+            content: 'Here\'s a test of your welcome card for **' + escapeMarkdown(guild.name) + '** (design ' + designLabel(used) + ').',
             files: [new AttachmentBuilder(png, { name: 'welcome-test.png' })]
         });
     } catch (err) {
