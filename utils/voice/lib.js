@@ -18,9 +18,14 @@ function loadVoice() {
 }
 
 function ffmpegPath() {
+    // @ffmpeg-installer ships the binary inside the npm package (no install script needed on the host)
+    try {
+        const p = require('@ffmpeg-installer/ffmpeg').path;
+        if (p && require('fs').existsSync(p)) return p;
+    } catch { /* try the next one */ }
     try {
         const p = require('ffmpeg-static');
-        if (p) return p;
+        if (p && require('fs').existsSync(p)) return p;
     } catch { /* fall back to system ffmpeg */ }
     return 'ffmpeg';
 }
