@@ -1,4 +1,4 @@
-// Vote thank-you DMs (top.gg, discordbotlist.com, discordlist.gg). The website (/api/topgg, /api/dblvote, /api/dlistvote) gives the points and records each vote in topgg_votes;
+// Vote thank-you DMs (top.gg, discordbotlist.com). The website (/api/topgg, /api/dblvote) gives the points and records each vote in topgg_votes;
 // this module DMs the voter once per vote with their new balance and links to the website.
 // dm_state: 0 = waiting, 3 = sending, 1 = sent, 2 = could not DM, 4 = skipped (too old, e.g. bot was offline).
 
@@ -13,12 +13,10 @@ const SITE = 'https://pingway.app';
 // vote_id prefixes written by the website:
 //   top.gg             'v1:<top.gg vote id>' (v1 webhooks) or 'v0:<userId>:<ms>' (legacy webhooks)   - pingway-dashboard/api/topgg.js
 //   discordbotlist.com 'dbl:<userId>:<ms>'                                                        - pingway-dashboard/api/dblvote.js
-//   discordlist.gg     'dlist:<userId>:<ms>'                                                      - pingway-dashboard/api/dlistvote.js
 // A vote_id no entry matches still gets a plain thank-you DM (no site name, no vote button).
 const VOTE_SITES = {
     topgg: { name: 'top.gg', url: 'https://top.gg/bot/1530586586524418048/vote', match: id => /^v[01]:/.test(id), weekendDouble: true, every: '12 hours' },
-    dbl:   { name: 'discordbotlist.com', url: 'https://discordbotlist.com/bots/pingway/upvote', match: id => id.startsWith('dbl:'), weekendDouble: false, every: '12 hours' },
-    dlist: { name: 'discordlist.gg', url: 'https://discordlist.gg/bot/1530586586524418048/vote', match: id => id.startsWith('dlist:'), weekendDouble: false, every: '12 hours' }
+    dbl:   { name: 'discordbotlist.com', url: 'https://discordbotlist.com/bots/pingway/upvote', match: id => id.startsWith('dbl:'), weekendDouble: false, every: '12 hours' }
 };
 
 function siteFor(voteId) {
