@@ -16,6 +16,7 @@
     "retainer": "Retainer",
     "yours": "Yours",
     "lowest": "Lowest",
+    "by": "lowest by {name}",
     "more": "...and {count} more",
     "title": "🏷️ Your retainers were undercut ({count})",
     "note": "\nPrices are per unit in Gil. Manage retainers on the Pingway website."
