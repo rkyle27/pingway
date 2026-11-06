@@ -642,7 +642,14 @@ async function flushAlerts(client) {
         batch.set(userId, items);
         pendingAlerts.delete(userId);
     }
-    const undercuts = retainerWatch.takePending(due); // Retainer Watch: same DM, sent first
+    // Retainer Watch: same DM, sent first. Each undercut is checked again with fresh data (false alerts are dropped).
+    let undercuts;
+    try {
+        undercuts = await retainerWatch.takeChecked(due);
+    } catch (err) {
+        console.error('❌ [RETAINERS] Could not re-check undercuts:', err.message);
+        undercuts = new Map();
+    }
     for (const userId of undercuts.keys()) if (!batch.has(userId)) batch.set(userId, new Map());
 
     try {

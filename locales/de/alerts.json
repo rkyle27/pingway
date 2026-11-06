@@ -16,6 +16,7 @@
     "retainer": "Gehilfe",
     "yours": "Deiner",
     "lowest": "Niedrigster",
+    "by": "günstigster: {name}",
     "more": "...und {count} weitere",
     "title": "🏷️ Deine Gehilfen wurden unterboten ({count})",
     "note": "\nPreise pro Stück in Gil. Verwalte deine Gehilfen auf der Pingway-Website."

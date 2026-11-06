@@ -16,6 +16,7 @@
     "retainer": "Servant",
     "yours": "Ton prix",
     "lowest": "Plus bas",
+    "by": "le moins cher : {name}",
     "more": "...et {count} de plus",
     "title": "🏷️ Tes servants ont été sous-cotés ({count})",
     "note": "\nPrix à l'unité en Gil. Gère tes servants sur le site de Pingway."
