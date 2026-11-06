@@ -3,6 +3,8 @@ const { isMaintenance } = require('../maintenance');
 
 // Shared database pool (same as the rest of the bot)
 const { pool: db } = require('./db');
+const { t } = require('./i18n');
+const userLanguage = require('./userLanguage');
 
 function startPfScheduler(client) {
     setInterval(async () => {
@@ -119,15 +121,16 @@ function startPfScheduler(client) {
                 }
                 if (listing.userId) participantIds.add(listing.userId);
 
+                const lang = userLanguage.forGuild(targetChannel.guild); // public post: the server's language
                 const pingList = Array.from(participantIds).map(id => `<@${id}>`).join(' ');
-                const dutyName = listing.name || 'Event';
+                const dutyName = listing.name || t(lang, 'pf.alert.event');
                 const hammertimeStr = toDiscordTimestamp(targetTimestampMs, 'f');
 
                 let updated = false;
 
                 if (needs30Min) {
                     await targetChannel.send({
-                        content: `⏰ **Party Finder Reminder:** Reminder for **${dutyName}** starts in **30 minutes** (${hammertimeStr})! ${pingList}`,
+                        content: t(lang, 'pf.alert.in30', { name: dutyName, time: hammertimeStr, pings: pingList }),
                     }).catch(() => {});
                     listing.notified30Min = true;
                     updated = true;
@@ -135,7 +138,7 @@ function startPfScheduler(client) {
 
                 if (needsExact) {
                     await targetChannel.send({
-                        content: `🚨 **Party Finder Alert:** **${dutyName}** is starting **NOW**! Get in position! ${pingList}`,
+                        content: t(lang, 'pf.alert.now', { name: dutyName, pings: pingList }),
                     }).catch(() => {});
                     listing.notifiedExact = true;
                     listing.status = 'started';

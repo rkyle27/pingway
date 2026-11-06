@@ -1,0 +1,11 @@
+{
+  "cmd": {
+    "description": "🧹 Bulk delete messages (including older than 14 days).",
+    "target": "Number of messages to delete (e.g. 5, 67) or \"all\""
+  },
+  "alreadyRunning": "⚠️ A cleanup task is already running in the background! Please wait for it to finish.",
+  "invalid": "❌ Invalid input. Please enter a positive number (e.g., `/clean 5`) or `\"all\"`.",
+  "progress": "🧹 Cleaning in progress... Deleted **{deletedTotal}** message(s) so far.",
+  "complete": "🧹 **Clean Complete!** Successfully deleted **{deletedTotal}** message(s).",
+  "failed": "❌ An error occurred during channel cleanup."
+}

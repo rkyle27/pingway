@@ -1,0 +1,21 @@
+{
+  "title": "Nissi-Quiz (Elemental- / Tuffless-Strategie)",
+  "subtitle": "Teste dein Wissen über die Nissi-Mechaniken (TEA)!",
+  "take": "Quiz starten",
+  "results": "Ergebnisse zeigen",
+  "exit": "Beenden",
+  "currentScores": "Aktuelle Punktestände:\n\n",
+  "noScores": "Noch keine Punktestände gespeichert!",
+  "currentScoresTitle": "Aktuelle Punktestände:",
+  "back": "Zurück",
+  "notEnough": "❌ Im Fragenkatalog sind nicht genug Fragen vorhanden.",
+  "yourScore": "Deine Punkte:",
+  "score": "{score} / 10 !",
+  "backLower": "zurück",
+  "question": "Frage {n} von 10 (verbleibende Zeit: {seconds} s)",
+  "cmd": {
+    "description": "Übungsquiz zu den Nissi-Mechaniken (TEA)."
+  },
+  "notAvailable": "Sorry, dieser Befehl ist für dich nicht verfügbar. Wende dich an den Entwickler, wenn du Zugang möchtest.\nEr dient zum Üben von Nissi Pass/Take 3 & 4 in TEA für DDs mit der Tuufless-Strategie.",
+  "exiting": "Wird beendet..."
+}

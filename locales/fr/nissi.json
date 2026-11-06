@@ -1,0 +1,21 @@
+{
+  "title": "Quiz Nissi (stratégie Elemental / Tuffless)",
+  "subtitle": "Teste tes connaissances des mécaniques de Nissi (TEA) !",
+  "take": "Faire le quiz",
+  "results": "Voir les résultats",
+  "exit": "Quitter",
+  "currentScores": "Scores actuels :\n\n",
+  "noScores": "Aucun score enregistré pour l'instant !",
+  "currentScoresTitle": "Scores actuels :",
+  "back": "Retour",
+  "notEnough": "❌ Pas assez de questions disponibles dans la banque de questions.",
+  "yourScore": "Ton score :",
+  "score": "{score} / 10 !",
+  "backLower": "retour",
+  "question": "Question {n} sur 10 (temps restant : {seconds} s)",
+  "cmd": {
+    "description": "Quiz d'entraînement aux mécaniques de Nissi (TEA)."
+  },
+  "notAvailable": "Désolé, cette commande n'est pas disponible pour toi. Contacte le développeur si tu veux y avoir accès.\nElle sert à s'entraîner aux passes/prises 3 & 4 de Nissi (TEA) pour les DPS avec la stratégie Tuufless.",
+  "exiting": "Fermeture..."
+}

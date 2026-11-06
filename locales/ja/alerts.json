@@ -1,0 +1,23 @@
+{
+  "footer": "データ提供：Universalis ライブフィード • データセンターの変更は /datacenter",
+  "worldFallback": "ワールド {id}",
+  "headers": {
+    "world": "ワールド",
+    "price": "出品価格",
+    "median": "DC販売中央値"
+  },
+  "moreWorlds": "...ほか{count}ワールド",
+  "itemFallback": "アイテム #{id}",
+  "footerShort": "データ提供：Universalis ライブフィード",
+  "title": "🚨 {name} — {quality}（最大{percent}%）",
+  "gil": "{n}ギル",
+  "undercut": {
+    "item": "アイテム",
+    "retainer": "リテイナー",
+    "yours": "あなた",
+    "lowest": "最安値",
+    "more": "...ほか{count}件",
+    "title": "🏷️ リテイナーの出品が値下げされました（{count}）",
+    "note": "\n価格は1個あたりのギルです。リテイナーの管理はPingwayウェブサイトで。"
+  }
+}

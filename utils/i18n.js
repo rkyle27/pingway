@@ -66,6 +66,12 @@ function t(lang, key, vars) {
     return v;
 }
 
+// Like t(), but returns fallback when the text does not exist (e.g. a job or item name that has no translation)
+function tOr(lang, key, fallback, vars) {
+    const v = t(lang, key, vars);
+    return v === key ? fallback : v;
+}
+
 // Same key in all 4 languages, for Discord command localizations ({ fr: '...', de: '...', ja: '...' }).
 // Only languages that really have the text are included (Discord rejects empty strings).
 const DISCORD_CODES = { fr: 'fr', de: 'de', ja: 'ja' };
@@ -80,4 +86,8 @@ function discordLocalizations(key) {
 
 function clearCache() { cache.clear(); }
 
-module.exports = { LANGS, DEFAULT_LANG, isLang, fromDiscordLocale, t, discordLocalizations, clearCache };
+// Locale for numbers and dates written as text (toLocaleString / toLocaleDateString)
+const LOCALES = { en: 'en-US', fr: 'fr-FR', de: 'de-DE', ja: 'ja-JP' };
+function localeOf(lang) { return LOCALES[isLang(lang) ? lang : DEFAULT_LANG]; }
+
+module.exports = { LANGS, DEFAULT_LANG, isLang, fromDiscordLocale, t, tOr, discordLocalizations, clearCache, localeOf };

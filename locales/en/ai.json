@@ -1,0 +1,22 @@
+{
+  "helpIntro": "Here is everything Pingway can do! You can also manage Pingway in your browser 🌐",
+  "recollection": "✨ *Release_Recollection_PROTOCOL Initialized.* — RAM history wiped clean.",
+  "invite": "Add Pingway using this link:\nhttps://discord.com/oauth2/authorize?client_id=1530586586524418048",
+  "support": "Join the support server here:\nhttps://discord.gg/DDdV48X4G2",
+  "donate": "💖 Support future updates and cover token costs here:\n<https://ko-fi.com/riverzola>",
+  "areYouBot": "No, I'm the Developer manually replying. Send help. (Kidding, yes i am an AI) <https://ko-fi.com/riverzola>",
+  "noCode": "I am prohibited by the Dev from generating large code files.",
+  "notHere": "👋 Hi! Type **/help** (or mention me with \"help\") to see what I can do. AI chat only works in channels an admin enabled with **/ailistenhere**.",
+  "notice": {
+    "cleared": "\n\n🗑️ *[System: Cleared entire reminder/task list]*",
+    "edited": "\n\n✏️ *[System: Updated reminder text]*",
+    "deleted": "\n\n🗑️ *[System: Removed specific reminder]*",
+    "recurring": " (Daily Recurring 🔁)",
+    "count": " ({count} saved)",
+    "set": "\n\n⏰ *[System: Reminder set{repeat}{count}]*",
+    "appended": "\n\n📝 *[System: Appended text to fact/note]*",
+    "forgot": "\n\n🧹 *[System: Forgot saved fact]*",
+    "saved": "\n\n🧠 *[System: Saved new fact]*"
+  },
+  "done": "Done!"
+}

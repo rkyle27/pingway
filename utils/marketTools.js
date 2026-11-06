@@ -106,15 +106,17 @@ async function worldName(id) {
     return worldNames.get(Number(id)) || null;
 }
 
-const itemCache = new Map(); // id -> { id, name, icon }
-async function itemNames(ids) {
-    const need = [...new Set(ids)].filter(id => !itemCache.has(id));
+const itemCache = new Map(); // id (English) or 'lang:id' -> { id, name, icon }
+// lang: en (default), fr, de or ja - XIVAPI has the item names in all four; cached per language
+async function itemNames(ids, lang = 'en') {
+    const key = id => (lang === 'en' ? id : lang + ':' + id);
+    const need = [...new Set(ids)].filter(id => !itemCache.has(key(id)));
     for (let i = 0; i < need.length; i += 100) {
         const part = need.slice(i, i + 100);
-        const data = await getJson(XIV + '/sheet/Item?rows=' + part.join(',') + '&fields=Name', 8000);
-        for (const row of data.rows || []) itemCache.set(row.row_id, { id: row.row_id, name: row.fields && row.fields.Name || ('Item ' + row.row_id) });
+        const data = await getJson(XIV + '/sheet/Item?rows=' + part.join(',') + '&fields=Name' + (lang === 'en' ? '' : '&language=' + lang), 8000);
+        for (const row of data.rows || []) itemCache.set(key(row.row_id), { id: row.row_id, name: row.fields && row.fields.Name || ('Item ' + row.row_id) });
     }
-    return new Map(ids.map(id => [id, itemCache.get(id) || { id, name: 'Item ' + id }]));
+    return new Map(ids.map(id => [id, itemCache.get(key(id)) || { id, name: 'Item ' + id }]));
 }
 
 // Item search with suggestions (marketable items only: ItemSearchCategory > 0)
@@ -212,7 +214,7 @@ async function popularIds(pool, uniRegion, limit) {
 
 // ---------- tools ----------
 // Best sellers on a world or a whole data center
-async function bestSellers(pool, { world, scope }) {
+async function bestSellers(pool, { world, scope, lang = 'en' }) {
     const where = regionOfWorld(world);
     if (!where) throw new Error('Unknown world');
     const ids = await popularIds(pool, where.uniRegion);
@@ -221,7 +223,7 @@ async function bestSellers(pool, { world, scope }) {
     const data = await aggregated(world, ids);
     const rows = ids.map(id => ({ id, perDay: velocity(data.get(id), level), avg: avgPrice(data.get(id), level) }))
         .filter(r => r.perDay > 0).sort((a, b) => b.perDay - a.perDay).slice(0, 25);
-    const names = await itemNames(rows.map(r => r.id));
+    const names = await itemNames(rows.map(r => r.id), lang);
     return { scope: level, place: level === 'dc' ? where.dc : world, items: rows.map(r => ({ ...r, perDay: Math.round(r.perDay * 10) / 10, name: names.get(r.id).name })) };
 }
 
@@ -229,7 +231,7 @@ async function bestSellers(pool, { world, scope }) {
 // mode 'dc' = your data center, 'region' = your whole region; materia = also look at Materia (travel rules: NA, EU and
 // JP characters may visit Materia; Materia characters may not leave Oceania).
 // sorts: any of 'profit', 'percent', 'fast', 'cheap' (equal weight: sum of ranks).
-async function buySell(pool, { world, mode, materia, minDiff, minSales, sorts }) {
+async function buySell(pool, { world, mode, materia, minDiff, minSales, sorts, lang = 'en' }) {
     const where = regionOfWorld(world);
     if (!where) throw new Error('Unknown world');
     const ids = await popularIds(pool, where.uniRegion);
@@ -264,7 +266,7 @@ async function buySell(pool, { world, mode, materia, minDiff, minSales, sorts })
         [...rows].sort((a, b) => keys[k](a) - keys[k](b)).forEach((r, i) => score.set(r.id, score.get(r.id) + i));
     }
     const top = rows.sort((a, b) => score.get(a.id) - score.get(b.id) || b.profit - a.profit).slice(0, 10);
-    const names = await itemNames(top.map(r => r.id));
+    const names = await itemNames(top.map(r => r.id), lang);
     for (const r of top) { r.name = names.get(r.id).name; r.buyWorld = await worldName(r.buyWorldId); delete r.buyWorldId; }
     return { mode: level, materia: useMateria, items: top };
 }

@@ -1,0 +1,14 @@
+{
+  "categories": {
+    "topics": "Themen",
+    "notices": "Hinweise",
+    "maintenance": "Wartung",
+    "updates": "Updates",
+    "status": "Status"
+  },
+  "nothing": "nichts (keine Kategorien gewählt)",
+  "welcome": "📰 **FFXIV-News** vom Lodestone ({edition}) werden hier gepostet: {categories}.",
+  "fallbackTitle": "Lodestone-News",
+  "footer": "Lodestone · {category} · {edition}",
+  "when": "🕒 <t:{start}:f> → <t:{end}:f> (deine Zeitzone)"
+}

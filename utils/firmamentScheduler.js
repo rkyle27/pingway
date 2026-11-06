@@ -1,5 +1,7 @@
 const { pool } = require('./db');
 const { isMaintenance } = require('../maintenance');
+const { t } = require('./i18n');
+const userLanguage = require('./userLanguage');
 
 function startFirmamentScheduler(client) {
     // Check every 10 seconds
@@ -40,8 +42,9 @@ function startFirmamentScheduler(client) {
                     [nextCelebration, userId]
                 ).catch(err => console.error(`[ERROR] Failed to update celebration timestamp for user ${userId}:`, err.message));
 
+                const lang = await userLanguage.forUser(userId); // DM: the user's language
                 // Fetch guild name if available
-                let serverName = "this server";
+                let serverName = t(lang, 'firmament.thisServer');
                 if (guildId) {
                     try {
                         const guild = await client.guilds.fetch(guildId).catch(() => null);
@@ -57,7 +60,7 @@ function startFirmamentScheduler(client) {
                 try {
                     const user = await client.users.fetch(userId).catch(() => null);
                     if (user) {
-                        const messageText = `🎉 **Skyrise Celebration is starting now!** Use \`/firmament\` on ${serverName} to manage or remove notifications.`;
+                        const messageText = t(lang, 'firmament.dmStarting', { server: serverName });
                         await user.send(messageText);
                         console.log(`[SUCCESS] Sent Firmament DM notification to user ${userId}`);
                     }

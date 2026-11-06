@@ -1,0 +1,70 @@
+{
+  "warning": {
+    "title": "🚫 IN DIESEM KANAL NICHTS POSTEN",
+    "text": "Dieser Kanal fängt **gehackte Konten**, die in jedem Kanal Links spammen.\n\nWer hier etwas postet, wird **automatisch vom Server entfernt**, und seine Nachrichten der letzten Stunde werden gelöscht.\n\n*Das Team ist davon nicht betroffen. Wenn dir das aus Versehen passiert ist, bitte ein Mitglied um eine neue Einladung.*",
+    "footer": "Pingway Honeypot"
+  },
+  "dm": {
+    "title": "⚠️ Dein Discord-Konto wurde vielleicht gehackt",
+    "text": "Gerade wurde von deinem Konto eine Nachricht in **#{channel}** auf **{server}** gesendet, einem Kanal, in dem niemand posten sollte. Konten, die das tun, sind fast immer gehackt. Deshalb wurdest du von diesem Server entfernt und deine Nachrichten der letzten Stunde dort wurden gelöscht.\n\n**Was du jetzt tun solltest**\n1. Ändere dein Discord-Passwort.\n2. Schalte die Zwei-Faktor-Authentifizierung ein (Benutzereinstellungen → Mein Account).\n3. Prüfe Benutzereinstellungen → Geräte und melde alles ab, was du nicht kennst.\n4. Bitte ein Mitglied von **{server}** um eine neue Einladung.\n\nWenn du dort aus Versehen selbst gepostet hast, frag einfach nach einer Einladung. Du bist nicht gebannt.",
+    "footer": "Gesendet von Pingway"
+  },
+  "report": {
+    "title": "🍯 Honeypot hat ein Mitglied gefangen",
+    "dmSent": "\nDM gesendet ✅",
+    "dmNotSent": "\nDM nicht gesendet",
+    "names": " · {names}"
+  },
+  "fields": {
+    "member": "Mitglied",
+    "userId": "Benutzer-ID",
+    "result": "Ergebnis",
+    "when": "Wann"
+  },
+  "owner": {
+    "nickname": "Spitzname: {nickname}",
+    "displayName": "Anzeigename: {displayName}",
+    "title": "🍯 Honeypot hat ein Mitglied in {server} gefangen",
+    "text": "Jemand hat in **#{channel}** gepostet, deinem „Hier nicht schreiben“-Kanal. Das bedeutet meist, dass das Konto gehackt wurde.",
+    "memberValue": "<@{userId}>\nBenutzername: @{username}{names}",
+    "dmSent": "\nDie Person hat eine DM „Dein Konto wurde vielleicht gehackt“ bekommen.",
+    "footer": "Pingway Honeypot · Ganze Liste: Pingway-Website → Server-Einstellungen → Honeypot",
+    "summary": "🍯 Der Honeypot in **{server}** hat in den letzten Minuten **{count} weitere** Mitglied(er) gefangen. Alle findest du auf der Pingway-Website → Server-Einstellungen → Honeypot."
+  },
+  "results": {
+    "softbanned": "Softban",
+    "needsBan": "nicht entfernt: Pingway braucht „Mitglieder bannen“",
+    "roleAbove": "nicht entfernt: die Rolle steht über Pingway",
+    "unbanFailed": "gebannt (Entbannen fehlgeschlagen: bitte manuell entbannen)",
+    "notRemoved": "nicht entfernt: {error}"
+  },
+  "cmd": {
+    "description": "🍯 „Hier nicht schreiben“-Kanal, der gehackte Konten entfernt.",
+    "set": "Einen Kanal als Honeypot nutzen (Pingway postet dort eine Warnung).",
+    "channel": "Der Kanal, in dem niemand schreiben soll",
+    "off": "Den Honeypot ausschalten.",
+    "dm": "Gefangenen Mitgliedern per DM sagen, dass ihr Konto vielleicht gehackt ist.",
+    "dmOn": "Die DM senden?",
+    "warning": "Pingways „Hier nicht posten“-Warnung im Honeypot-Kanal zeigen.",
+    "warningOn": "Die Warnung zeigen?",
+    "status": "Die Honeypot-Einstellungen anzeigen."
+  },
+  "perms": {
+    "ban": "Mitglieder bannen",
+    "manage": "Nachrichten verwalten"
+  },
+  "and": " und ",
+  "missingPerms": "\n\n⚠️ Pingway fehlt **{perms}**. Gib seiner Rolle diese Berechtigungen, sonst können gefangene Mitglieder nicht entfernt werden.",
+  "posted": " Pingway hat dort eine Warnung gepostet.",
+  "isNow": "🍯 <#{channelId}> ist jetzt der Honeypot.{posted} Wer außer dem Team dort postet, bekommt einen Softban (entfernt, Nachrichten der letzten Stunde gelöscht; später wieder beitreten ist möglich).{permNote}",
+  "turnedOff": "🍯 Honeypot ausgeschaltet. Du kannst die Warnung im alten Kanal löschen.",
+  "dmOn": "📨 Gefangene Mitglieder bekommen eine DM, dass ihr Konto vielleicht gehackt ist.",
+  "dmOff": "📨 Gefangene Mitglieder bekommen keine DM.",
+  "warningOn": "🚫 Pingway postet seine „Hier nicht posten“-Warnung im Honeypot-Kanal.",
+  "warningOff": "🚫 Pingways Warnung ist aus (und wurde entfernt, falls sie gepostet war). Sorge dafür, dass dein Kanal den Mitgliedern sagt, dort nichts zu posten, sonst bekommen sie vielleicht aus Versehen einen Softban.",
+  "on": "an",
+  "off": "aus",
+  "status": "🍯 Honeypot: <#{channelId}> · DM: {dm} · Warnung: {warning}\nDie Liste der gefangenen Mitglieder steht auf der Pingway-Website (Server-Einstellungen).{permNote}",
+  "statusOff": "🍯 Der Honeypot ist aus. Nutze `/honeypot set`, um einen Kanal zu wählen.{permNote}",
+  "failed": "❌ Etwas ist schiefgelaufen. Bitte versuche es noch einmal."
+}

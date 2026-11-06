@@ -1,0 +1,18 @@
+{
+  "title": "💜 Danke, dass du für Pingway gestimmt hast!",
+  "gotOne": "Du hast **+{points} Punkt** bekommen",
+  "gotMany": "Du hast **+{points} Punkte** bekommen",
+  "forSite": " für deine Stimme auf **{site}**",
+  "weekend": " (doppelte Wochenend-Stimme!)",
+  "end": ".",
+  "balanceOne": "Dein Guthaben: **{balance} Punkt**",
+  "balanceMany": "Dein Guthaben: **{balance} Punkte**",
+  "perks": "• 1 Punkt = 1 zusätzlicher Gehilfe in Retainer Watch für einen Monat\n• 10 Punkte = Supporter-Vorteile für einen Monat",
+  "again": "Du kannst auf {site} in {every} wieder abstimmen.",
+  "every12h": "12 Stunden",
+  "manage": "Verwalte deine Punkte auf der [Pingway-Website]({url}).",
+  "footer": "Stimmpunkte verfallen 180 Tage nach der Abstimmung.",
+  "website": "Pingway-Website",
+  "perksButton": "Supporter-Vorteile",
+  "voteAgain": "Erneut auf {site} abstimmen"
+}

@@ -4,6 +4,7 @@
 
 const { cleanText, withSpeaker } = require('./textClean');
 const { resolveVoice } = require('./voices');
+const i18n = require('../i18n');
 
 const USER_GAP_MS = 2000;
 
@@ -58,7 +59,9 @@ async function handleMessage(message, { getSession, store, members, now = Date.n
     const callerSet = session.callerId ? await m.getUserSettings(session.callerId) : null;
     const maxChars = callerSet && callerSet.maxChars ? callerSet.maxChars : undefined;
 
-    let text = cleanText(message.content, resolvers(message), maxChars);
+    // the words Pingway adds ("a link", "Ana says:") are spoken in the server's language
+    const lang = i18n.fromDiscordLocale(message.guild.preferredLocale) || 'en';
+    let text = cleanText(message.content, resolvers(message), maxChars, lang);
     const fileOnly = !text && !String(message.content || '').trim() && !!(message.attachments && message.attachments.size);
     if (!text && !fileOnly) return 'empty';
 
@@ -70,7 +73,7 @@ async function handleMessage(message, { getSession, store, members, now = Date.n
     ]);
     const voiceName = resolveVoice(userVoice, settings.defaultVoice);
     const speech = withSpeaker(text || '', {
-        guildId: message.guild.id, userId: message.author.id, displayName: (mine && mine.nickname) || member.displayName, now, lastSpeaker, fileOnly
+        guildId: message.guild.id, userId: message.author.id, displayName: (mine && mine.nickname) || member.displayName, now, lastSpeaker, fileOnly, lang
     });
 
     return session.enqueueTts(speech, voiceName) ? 'queued' : 'queue_full';

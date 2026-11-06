@@ -1,0 +1,69 @@
+{
+  "cmd": {
+    "description": "⚙️ FFXIVキャラクターのプロフィール、メインジョブ、写真、Tomestone、FFLogsを設定します。"
+  },
+  "needPhoto": "⚠️ **全身写真** を追加しないと、ポートレートはオフにできません！",
+  "selectRole": "メインジョブのロールを選んでください",
+  "roles": {
+    "tank": "タンク",
+    "healer": "ヒーラー",
+    "melee": "近接DPS",
+    "ranged": "物理遠隔DPS",
+    "caster": "魔法遠隔DPS"
+  },
+  "backDashboard": "設定画面に戻る",
+  "selectRoleTitle": "⚔️ メインジョブのロールを選ぶ",
+  "selectRoleHelp": "下のメニューからキャラクターのロールを選んでください。",
+  "linkTitle": "ロードストーンのキャラクターを連携",
+  "lodestoneLabel": "ロードストーンのURLまたはID",
+  "portraitTitle": "ポートレートを追加",
+  "portraitLabel": "ポートレート画像の直接リンク",
+  "leaveBlank": "空欄ならデフォルトを使います",
+  "photoTitle": "全身写真を追加",
+  "photoLabel": "全身写真の直接リンク",
+  "tomestoneTitle": "Tomestoneのリンクを追加",
+  "tomestoneLabel": "TomestoneのURL（空欄で削除）",
+  "fflogsTitle": "FFLogsのリンクを追加",
+  "fflogsLabel": "FFLogsのURL（空欄で削除）",
+  "closed": "設定を終了しました。",
+  "selectJob": "{role}のジョブを選んでください",
+  "backRoles": "ロール選択に戻る",
+  "selectJobTitle": "⚔️ {role}のジョブを選ぶ",
+  "selectJobHelp": "下のメニューからメインジョブを選んでください。",
+  "invalidLodestone": "❌ ロードストーンのURLかIDの形式が正しくありません。",
+  "dashTitle": "⚙️ FFXIVキャラクター設定",
+  "dashHelp": "ボタンを押したり入力を送信したりすると、変更は自動で保存されます。",
+  "fields": {
+    "lodestone": "🔗 ロードストーンID",
+    "mainJob": "⚔️ メインジョブ",
+    "portrait": "🖼️ ポートレート",
+    "photo": "🌅 全身写真",
+    "portraitState": "👁️ ポートレート表示",
+    "tomestone": "🏛️ Tomestoneのリンク",
+    "fflogs": "📊 FFLogsのリンク"
+  },
+  "notSet": "*未設定*",
+  "usingDefault": "*デフォルト*",
+  "noneSet": "*なし*",
+  "on": "🟢 オン",
+  "off": "🔴 オフ",
+  "btn": {
+    "link": "ロードストーン連携",
+    "mainJob": "メインジョブ",
+    "portrait": "ポートレート追加",
+    "photo": "全身写真を追加",
+    "on": "オン",
+    "off": "オフ",
+    "portraitToggle": "ポートレート：{state}",
+    "tomestone": "Tomestoneのリンク",
+    "fflogs": "FFLogsのリンク",
+    "exit": "終了"
+  },
+  "roleShort": {
+    "Tank": "タンク",
+    "Healer": "ヒーラー",
+    "Melee": "近接DPS",
+    "Range": "物理遠隔DPS",
+    "Caster": "魔法遠隔DPS"
+  }
+}

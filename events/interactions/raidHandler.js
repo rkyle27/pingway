@@ -2,6 +2,7 @@ const { google } = require('googleapis');
 const path = require('path');
 const fs = require('fs');
 const { pool } = require('../../utils/db');
+const { t } = require('../../utils/i18n');
 
 const CREDENTIALS_PATH = path.join(__dirname, '..', '..', 'google-credentials.json');
 
@@ -47,14 +48,14 @@ function getGoogleSheetsClient() {
  * Fetches the raid schedule from the configured Google Sheet for a given server.
  * Uses fixed layout: Column C for dates, Column M for status formula output, Row 1 for player headers (E-L).
  */
-async function fetchRaidSchedule(guildId, sheetId) {
+async function fetchRaidSchedule(guildId, sheetId, lang = 'en') {
     try {
         // 1. Fetch spreadsheet ID for this guild from MySQL database
         const [rows] = await pool.execute('SELECT raid_sheet_id FROM server_settings WHERE guild_id = ?', [guildId]);
         const spreadsheetId = sheetId || rows[0]?.raid_sheet_id; // sheetId: one of the server's named raid sheets (/raid)
 
         if (!spreadsheetId) {
-            return '⚠️ **Raid Planner Sheet not configured!** An administrator must configure the sheet link first.';
+            return t(lang, 'raid.notConfigured');
         }
 
         // 2. Query Google Sheets API for sheet data
@@ -67,7 +68,7 @@ async function fetchRaidSchedule(guildId, sheetId) {
 
         const sheetValues = response.data.values;
         if (!sheetValues || sheetValues.length === 0) {
-            return '❌ **No data found in the Raid Planner Sheet.**';
+            return t(lang, 'raid.noData');
         }
 
         // Row 1 (index 0) contains player names in Columns E through L (indices 4 to 11)
@@ -80,7 +81,7 @@ async function fetchRaidSchedule(guildId, sheetId) {
         });
 
         if (dataRows.length === 0) {
-            return '❌ **Could not parse any valid date entries in the Google Sheet.**';
+            return t(lang, 'raid.noDates');
         }
 
         // 3. Find starting index relative to current date
@@ -156,32 +157,32 @@ async function fetchRaidSchedule(guildId, sheetId) {
             }
 
             let statusEmoji = '';
-            if (statusUpper === 'RAID') statusEmoji = '⚔️ **RAID**';
-            if (statusUpper === 'UNSURE') statusEmoji = '❓ **UNSURE**';
-            if (statusUpper === 'FILL PLEASE') statusEmoji = '📝 **FILL PLEASE**';
-            if (statusUpper === 'NO') statusEmoji = '❌ **NO RAID**';
+            if (statusUpper === 'RAID') statusEmoji = t(lang, 'raid.status.raid');
+            if (statusUpper === 'UNSURE') statusEmoji = t(lang, 'raid.status.unsure');
+            if (statusUpper === 'FILL PLEASE') statusEmoji = t(lang, 'raid.status.fill');
+            if (statusUpper === 'NO') statusEmoji = t(lang, 'raid.status.no');
 
             let entryText = `📅 **${dateStr}${dayOfWeek ? ` (${dayOfWeek})` : ''}** - ${statusEmoji}\n`;
 
             if (statusUpper === 'FILL PLEASE') {
                 if (pendingPlayers.length > 0) {
-                    entryText += `> 📝 **Pending Response (${pendingPlayers.length}):** ${pendingPlayers.join(', ')}\n`;
+                    entryText += t(lang, 'raid.pending', { count: pendingPlayers.length, list: pendingPlayers.join(', ') });
                 }
             } else {
                 if (availablePlayers.length > 0) {
-                    entryText += `> ✅ **Available (${availablePlayers.length}):** ${availablePlayers.join(', ')}\n`;
+                    entryText += t(lang, 'raid.available', { count: availablePlayers.length, list: availablePlayers.join(', ') });
                 }
                 if (latePlayers.length > 0) {
-                    entryText += `> ⏰ **Late (${latePlayers.length}):** ${latePlayers.join(', ')}\n`;
+                    entryText += t(lang, 'raid.late', { count: latePlayers.length, list: latePlayers.join(', ') });
                 }
                 if (subbedPlayers.length > 0) {
-                    entryText += `> 🟡 **Subbed (${subbedPlayers.length}):** ${subbedPlayers.join(', ')}\n`; // <--- Renders Subbed players
+                    entryText += t(lang, 'raid.subbed', { count: subbedPlayers.length, list: subbedPlayers.join(', ') }); // <--- Renders Subbed players
                 }
                 if (unsurePlayers.length > 0) {
-                    entryText += `> ❓ **Unsure (${unsurePlayers.length}):** ${unsurePlayers.join(', ')}\n`;
+                    entryText += t(lang, 'raid.unsure', { count: unsurePlayers.length, list: unsurePlayers.join(', ') });
                 }
                 if (absentPlayers.length > 0) {
-                    entryText += `> ❌ **Absent (${absentPlayers.length}):** ${absentPlayers.join(', ')}\n`;
+                    entryText += t(lang, 'raid.absent', { count: absentPlayers.length, list: absentPlayers.join(', ') });
                 }
             }
 
@@ -189,17 +190,17 @@ async function fetchRaidSchedule(guildId, sheetId) {
         }
 
         if (scheduleOutputs.length === 0) {
-            return 'ℹ️ **No raid days scheduled found.**\nMake sure to not change the layout and on correct date format.';
+            return t(lang, 'raid.noDays');
         }
 
-        return `📊 **Upcoming Raid Schedule:**\n\n${scheduleOutputs.join('\n\n')}`;
+        return t(lang, 'raid.upcoming', { list: scheduleOutputs.join('\n\n') });
 
     } catch (error) {
         console.error('❌ Error fetching raid schedule from Google Sheets:', error);
         if (error.code === 403 || error.code === 404) {
-            return '❌ **Google Sheets API Access Error:** Please make sure the sheet is shared with the bot service account email and that the link is correct.';
+            return t(lang, 'raid.accessError');
         }
-        return '❌ **Failed to retrieve raid schedule.** Please check the console log for details.';
+        return t(lang, 'raid.failed');
     }
 }
 

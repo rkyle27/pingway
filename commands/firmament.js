@@ -1,14 +1,18 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, MessageFlags } = require('discord.js');
 const { pool } = require('../utils/db');
 const { isMaintenance } = require('../maintenance');
+const { t, discordLocalizations } = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
 
 module.exports = {
-    data: { name: 'firmament' },
+    // events/ready.js gives commands without a description "Execute the <name> command" (English stays as it was)
+    data: { name: 'firmament', description_localizations: discordLocalizations('firmament.cmd.description') },
     async execute(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         // Maintenance Check: Block command execution when maintenance mode is ON (allows whitelisted servers to bypass)
         if (isMaintenance(interaction.guildId)) {
             return interaction.reply({
-                content: '⚠️ **The bot is currently undergoing maintenance.** Please try again later!',
+                content: t(lang, 'core.maintenance'),
                 flags: [MessageFlags.Ephemeral]
             });
         }
@@ -30,14 +34,14 @@ module.exports = {
             const actionRow = new ActionRowBuilder().addComponents(
                 new ButtonBuilder()
                     .setCustomId('sync_firmament_timer')
-                    .setLabel('⚙️ Set Actual Countdown')
+                    .setLabel(t(lang, 'firmament.setCountdown'))
                     .setStyle(ButtonStyle.Primary)
             );
 
             const embed = new EmbedBuilder()
-                .setTitle('🏗️ Ishgard Restoration Tracker')
+                .setTitle(t(lang, 'firmament.trackerTitleNew'))
                 .setColor('#f1c40f')
-                .setDescription('⚠️ No personalized countdown found for you yet.\n\nCan only be done while Skyrise Celebration is on cooldown. Click the button below to set up your personal anchor!');
+                .setDescription(t(lang, 'firmament.noCountdown'));
 
             return interaction.reply({ embeds: [embed], components: [actionRow], flags: [MessageFlags.Ephemeral] });
         }
@@ -67,14 +71,14 @@ module.exports = {
         let statusTitle = "", statusDescription = "", countdownString = "";
 
         const formatMs = (ms) => {
-            if (typeof ms !== 'number' || isNaN(ms) || ms < 0) return "Calculating...";
+            if (typeof ms !== 'number' || isNaN(ms) || ms < 0) return t(lang, 'firmament.calculating');
             const totalHours = Math.floor(ms / (1000 * 60 * 60));
             const days = Math.floor(totalHours / 24);
             const hours = totalHours % 24;
             const minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
 
-            if (days > 0) return `${days}d ${hours}h ${minutes}m`;
-            return `${hours}h ${minutes}m`;
+            if (days > 0) return t(lang, 'core.time.dhm', { d: days, h: hours, m: minutes });
+            return t(lang, 'core.time.hm', { h: hours, m: minutes });
         };
 
         if (currentMacroCycleMs < ACTIVE_PERIOD) {
@@ -82,36 +86,36 @@ module.exports = {
             const activeSessionIndex = Math.floor(currentMacroCycleMs / SESSION_INTERVAL) + 1;
 
             if (sessionProgressMs < SESSION_DURATION) {
-                statusTitle = "🏰🎉 Skyrise Celebration is LIVE!🎉";
-                statusDescription = `Running session **${activeSessionIndex} of 12**!`;
-                countdownString = `**Time Remaining:** ${formatMs(SESSION_DURATION - sessionProgressMs)}`;
+                statusTitle = t(lang, 'firmament.live');
+                statusDescription = t(lang, 'firmament.running', { session: activeSessionIndex });
+                countdownString = t(lang, 'firmament.timeRemaining', { time: formatMs(SESSION_DURATION - sessionProgressMs) });
             } else {
-                statusTitle = "⏱️ Between Sessions !!!";
-                statusDescription = `Preparing for session **${activeSessionIndex + 1} of 12**.`;
-                countdownString = `**Next session starts in:** ${formatMs(SESSION_INTERVAL - sessionProgressMs)}`;
+                statusTitle = t(lang, 'firmament.between');
+                statusDescription = t(lang, 'firmament.preparing', { session: activeSessionIndex + 1 });
+                countdownString = t(lang, 'firmament.nextSession', { time: formatMs(SESSION_INTERVAL - sessionProgressMs) });
             }
         } else {
-            statusTitle = "💤 Skyrise Celebration is on cooldown...";
-            countdownString = `**Next 24-hour celebration begins in:** ${formatMs(nextCelebrationTimestamp - now)}`;
+            statusTitle = t(lang, 'firmament.cooldown');
+            countdownString = t(lang, 'firmament.nextCelebration', { time: formatMs(nextCelebrationTimestamp - now) });
         }
 
         const embed = new EmbedBuilder()
-            .setTitle('🏰 Ishgard Restoration Tracker')
+            .setTitle(t(lang, 'firmament.trackerTitle'))
             .setColor('#f1c40f')
-            .setDescription(`**Status:** ${statusTitle}\n${statusDescription}\n\n${countdownString}`);
+            .setDescription(t(lang, 'firmament.status', { title: statusTitle, description: statusDescription, countdown: countdownString }));
 
         const actionRow = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
                 .setCustomId('toggle_firmament_dm')
-                .setLabel(notifyDm ? '🔕 Disable DM Alerts' : '🔔 Get Notification DM')
+                .setLabel(notifyDm ? t(lang, 'firmament.disableDm') : t(lang, 'firmament.getDm'))
                 .setStyle(notifyDm ? ButtonStyle.Success : ButtonStyle.Secondary),
             new ButtonBuilder()
                 .setCustomId('sync_firmament_timer')
-                .setLabel('⚙️ Set Actual Countdown')
+                .setLabel(t(lang, 'firmament.setCountdown'))
                 .setStyle(ButtonStyle.Primary),
             new ButtonBuilder()
                 .setCustomId('remove_firmament_counter')
-                .setLabel('🗑️ Remove Current Counter')
+                .setLabel(t(lang, 'firmament.remove'))
                 .setStyle(ButtonStyle.Danger)
         );
 

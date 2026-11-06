@@ -5,6 +5,8 @@ const path = require('path');
 const { pool } = require('../utils/db');
 const { isMaintenance } = require('../maintenance');
 const honeypot = require('../utils/honeypot');
+const { t } = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
 
 const openrouter = new OpenAI({
     baseURL: 'https://openrouter.ai/api/v1',
@@ -220,6 +222,7 @@ module.exports = {
             return;
         }
         if (!isAiChannel && !mentioned) return;
+        const lang = await userLanguage.forUser(userId); // Pingway's fixed texts; the AI itself answers in the language people write
 
         const userPrompt = message.content.replace(mentionRe, '').trim();
         const lowerPrompt = userPrompt.toLowerCase().trim();
@@ -227,31 +230,31 @@ module.exports = {
         // --- QUICK REPLIES (no AI used) ---
         const helpWords = ['help', 'commands', 'command list', 'bot commands', 'pingway help', 'show commands', 'info', 'features', 'what can you do', 'website', 'dashboard'];
         if (helpWords.includes(lowerPrompt.replace(/[?!.]+$/, '')) || (mentioned && lowerPrompt === '')) {
-            return message.reply({ content: 'Here is everything Pingway can do! You can also manage Pingway in your browser 🌐', ...buildHelpPayload() });
+            return message.reply({ content: t(lang, 'ai.helpIntro'), ...buildHelpPayload(lang) });
         }
         if (lowerPrompt === 'release recollection') {
             chatHistoryMap.delete(userId);
-            return message.reply({ content: "✨ *Release_Recollection_PROTOCOL Initialized.* — RAM history wiped clean." });
+            return message.reply({ content: t(lang, 'ai.recollection') });
         }
         if (lowerPrompt.includes('invite link') || lowerPrompt.includes('add the bot')) {
-            return message.reply({ content: "Add Pingway using this link:\nhttps://discord.com/oauth2/authorize?client_id=1530586586524418048" });
+            return message.reply({ content: t(lang, 'ai.invite') });
         }
         if (lowerPrompt.includes('support link') || lowerPrompt.includes('help server')) {
-            return message.reply({ content: "Join the support server here:\nhttps://discord.gg/DDdV48X4G2" });
+            return message.reply({ content: t(lang, 'ai.support') });
         }
         if (['support dev', 'support developer', 'help dev', 'donate dev'].some(k => lowerPrompt.includes(k))) {
-            return message.reply({ content: "💖 Support future updates and cover token costs here:\n<https://ko-fi.com/riverzola>" });
+            return message.reply({ content: t(lang, 'ai.donate') });
         }
         if (['are you a bot', 'are you ai'].some(k => lowerPrompt.includes(k))) {
-            return message.reply({ content: "No, I'm the Developer manually replying. Send help. (Kidding, yes i am an AI) <https://ko-fi.com/riverzola>" });
+            return message.reply({ content: t(lang, 'ai.areYouBot') });
         }
         if (['full code', 'write a script', 'generate code'].some(k => lowerPrompt.includes(k))) {
-            return message.reply({ content: "I am prohibited by the Dev from generating large code files." });
+            return message.reply({ content: t(lang, 'ai.noCode') });
         }
 
         // Mentioned outside an AI channel: point to /help instead of using AI here
         if (!isAiChannel) {
-            return message.reply({ content: '👋 Hi! Type **/help** (or mention me with "help") to see what I can do. AI chat only works in channels an admin enabled with **/ailistenhere**.' });
+            return message.reply({ content: t(lang, 'ai.notHere') });
         }
 
         try {
@@ -395,24 +398,24 @@ ${userFactsList}`;
             // Generate System Notification
             let staticNotice = "";
             if (remindersCleared) {
-                staticNotice = "\n\n🗑️ *[System: Cleared entire reminder/task list]*";
+                staticNotice = t(lang, 'ai.notice.cleared');
             } else if (reminderEdited) {
-                staticNotice = "\n\n✏️ *[System: Updated reminder text]*";
+                staticNotice = t(lang, 'ai.notice.edited');
             } else if (reminderDeleted) {
-                staticNotice = "\n\n🗑️ *[System: Removed specific reminder]*";
+                staticNotice = t(lang, 'ai.notice.deleted');
             } else if (reminderSavedCount > 0) {
-                const repeatNotice = isRecurringSaved ? " (Daily Recurring 🔁)" : "";
-                const countTag = reminderSavedCount > 1 ? ` (${reminderSavedCount} saved)` : '';
-                staticNotice = `\n\n⏰ *[System: Reminder set${repeatNotice}${countTag}]*`;
+                const repeatNotice = isRecurringSaved ? t(lang, 'ai.notice.recurring') : "";
+                const countTag = reminderSavedCount > 1 ? t(lang, 'ai.notice.count', { count: reminderSavedCount }) : '';
+                staticNotice = t(lang, 'ai.notice.set', { repeat: repeatNotice, count: countTag });
             } else if (factsAppended > 0) {
-                staticNotice = "\n\n📝 *[System: Appended text to fact/note]*";
+                staticNotice = t(lang, 'ai.notice.appended');
             } else if (factsDeleted > 0) {
-                staticNotice = "\n\n🧹 *[System: Forgot saved fact]*";
+                staticNotice = t(lang, 'ai.notice.forgot');
             } else if (factsSaved > 0) {
-                staticNotice = "\n\n🧠 *[System: Saved new fact]*";
+                staticNotice = t(lang, 'ai.notice.saved');
             }
 
-            const finalReply = (cleanReply || "Done!") + staticNotice;
+            const finalReply = (cleanReply || t(lang, 'ai.done')) + staticNotice;
             await sendChunkedReply(message, finalReply);
 
         } catch (error) {

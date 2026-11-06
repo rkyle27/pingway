@@ -1,0 +1,23 @@
+{
+  "footer": "Data provided by Universalis Live Feed • Use /datacenter to change your Data Centers",
+  "worldFallback": "World {id}",
+  "headers": {
+    "world": "World",
+    "price": "Listed Price",
+    "median": "DC Median Sale"
+  },
+  "moreWorlds": "...and {count} more world(s)",
+  "itemFallback": "Item #{id}",
+  "footerShort": "Data provided by Universalis Live Feed",
+  "title": "🚨 {name} — {quality} (up to {percent}%)",
+  "gil": "{n} Gil",
+  "undercut": {
+    "item": "Item",
+    "retainer": "Retainer",
+    "yours": "Yours",
+    "lowest": "Lowest",
+    "more": "...and {count} more",
+    "title": "🏷️ Your retainers were undercut ({count})",
+    "note": "\nPrices are per unit in Gil. Manage retainers on the Pingway website."
+  }
+}

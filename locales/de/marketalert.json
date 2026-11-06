@@ -1,0 +1,18 @@
+{
+  "noneSet": "*Keine festgelegt* — nutze `/datacenter`, um deine Datenzentren zu wählen. Bis dahin werden keine Alarme gesendet.",
+  "disable": "Benachrichtigungen ausschalten",
+  "enable": "Benachrichtigungen einschalten",
+  "done": "Fertig",
+  "cmd": {
+    "description": "Preisalarm-DMs ein- oder ausschalten (das DM-Intervall stellst du auf der Website ein)"
+  },
+  "loadFailed": "❌ Deine Marktalarm-Einstellungen konnten nicht geladen werden.",
+  "enabledNotice": "🔔 Marktalarm-DMs sind jetzt **eingeschaltet 🟢**.",
+  "disabledNotice": "🔕 Marktalarm-DMs sind jetzt **ausgeschaltet 🔴**.",
+  "updateFailed": "❌ Die Benachrichtigungseinstellungen konnten nicht aktualisiert werden.",
+  "settings": "📢 **Marktalarm-Einstellungen**\n\n• **DM-Benachrichtigungen:** {dm}\n• **Datenzentren (aus /datacenter):** {dcs}\n• **DM-Intervall:** alle {interval} (gilt auch für unterbotene Gehilfen-Angebote; ändere es unter Meine Einstellungen auf https://pingway.app/me.html)",
+  "on": "🟢 Ein",
+  "off": "🔴 Aus",
+  "minute": "{n} Minute",
+  "minutes": "{n} Minuten"
+}

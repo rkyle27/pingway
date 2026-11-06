@@ -1,0 +1,8 @@
+{
+  "cmd": {
+    "description": "🔍 Affiche ta carte de personnage FFXIV."
+  },
+  "notConfigured": "⚠️ Tu n'as pas encore configuré ton personnage FFXIV ! Utilise `/ignconfig` pour le faire.",
+  "fetchFailed": "❌ Impossible de récupérer les données de ton personnage sur le Lodestone. Vérifie ton ID Lodestone.",
+  "cardFailed": "❌ Impossible de générer l'image de ta carte de personnage (image vide)."
+}

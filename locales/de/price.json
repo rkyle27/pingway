@@ -1,0 +1,24 @@
+{
+  "noDcs": "⚠️ **Keine Datenzentren ausgewählt!**\nBitte nutze zuerst den Befehl `/datacenter`, um deine Datenzentren festzulegen.",
+  "notFound": "Für **{item}** wurde kein Gegenstand gefunden.",
+  "close": "Schließen",
+  "lookingUp": "🔍 **Preise für {name} werden gesucht... Bitte warten!**",
+  "recommendations": "Vorschläge",
+  "didYouMean": "Für **{item}** wurde kein Gegenstand gefunden. Meinst du:",
+  "unknownItem": "Unbekannter Gegenstand",
+  "matching": "Passende Gegenstände",
+  "error": "Bei der Marktsuche ist ein Fehler aufgetreten.",
+  "noDcsShort": "⚠️ **Keine Datenzentren ausgewählt!**\nBitte nutze zuerst den Befehl `/datacenter`.",
+  "title": "Marktpreise: {name}",
+  "legend": "{nq} = normale Qualität | {hq} = hohe Qualität",
+  "top5": "**{icon} Top 5:**\n",
+  "noListings": "Keine Angebote gefunden.",
+  "fetchFailed": "Daten konnten nicht abgerufen werden.",
+  "footer": "Mit /datacenter wählst du, welche DZ /price anzeigt.\nDaten von Universalis & XIVAPI",
+  "reminder": "🔒 *Nur du siehst diese Nachricht! Sie verschwindet nach einer Weile. Kopiere sie oder mach einen Screenshot, wenn du die Angebote behalten willst.*",
+  "cmd": {
+    "description": "Marktbrett-Preise für einen FFXIV-Gegenstand prüfen",
+    "item": "Der Name des gesuchten Gegenstands"
+  },
+  "fetching": "⏳ **Preise werden geladen... Bitte warten!**"
+}

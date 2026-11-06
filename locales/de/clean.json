@@ -1,0 +1,11 @@
+{
+  "cmd": {
+    "description": "🧹 Löscht viele Nachrichten auf einmal (auch älter als 14 Tage).",
+    "target": "Anzahl der zu löschenden Nachrichten (z. B. 5, 67) oder \"all\""
+  },
+  "alreadyRunning": "⚠️ Im Hintergrund läuft schon eine Aufräumaktion! Bitte warte, bis sie fertig ist.",
+  "invalid": "❌ Ungültige Eingabe. Bitte gib eine positive Zahl (z. B. `/clean 5`) oder `\"all\"` ein.",
+  "progress": "🧹 Aufräumen läuft... Bisher **{deletedTotal}** Nachricht(en) gelöscht.",
+  "complete": "🧹 **Aufräumen fertig!** **{deletedTotal}** Nachricht(en) gelöscht.",
+  "failed": "❌ Beim Aufräumen des Kanals ist ein Fehler aufgetreten."
+}

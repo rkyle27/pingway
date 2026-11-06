@@ -103,11 +103,12 @@ async function clickStation(uuid, fallbackUrl, { fetchImpl = globalThis.fetch, s
 }
 
 /** Select-menu option label/description for a station (Discord limit 100, we keep <= 80). */
-function stationOption(st) {
+function stationOption(st, lang = 'en') {
+    const { t } = require('../i18n');
     const parts = [st.country, st.bitrate ? st.bitrate + ' kbps' : null, st.codec || null].filter(Boolean);
     return {
-        label: clean(st.name, 80) || 'Station',
-        description: clean(parts.join(' · ') || 'Internet radio', 80),
+        label: clean(st.name, 80) || t(lang, 'vc.station'),
+        description: clean(parts.join(' · ') || t(lang, 'vc.internetRadio'), 80),
         value: st.uuid
     };
 }

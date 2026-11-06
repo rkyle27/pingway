@@ -52,6 +52,17 @@ retainers <id>
     and a live Universalis check: your price vs the lowest other price -> OK or UNDERCUT.
     Checks up to 20 items.
 
+REVIEWS (website)
+-----------------
+reviews
+    Read only. Shows how many reviews there are, the average stars, and the latest 10
+    (date in UTC, stars, name, language, approved or not, text). The user ID is never shown.
+
+reviews all
+    Read only. Shows every review, newest first, in blocks of 20.
+    If the website has not created the reviews table yet, it says so.
+
+
 POINTS (Retainer Watch + Supporter Perks)
 -----------------------------------------
 Points come from Ko-fi memberships and tips: $5 = 50, $10 = 110, $20 = 250, $50 = 700, $100 = 1,500,

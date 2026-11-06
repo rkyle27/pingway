@@ -1,0 +1,21 @@
+{
+  "title": "ニシ クイズ（Elemental / Tuffless 処理）",
+  "subtitle": "絶アレキサンダー討滅戦のニシのギミック知識を試そう！",
+  "take": "クイズに挑戦",
+  "results": "結果を見る",
+  "exit": "終了",
+  "currentScores": "現在のスコア：\n\n",
+  "noScores": "まだスコアがありません！",
+  "currentScoresTitle": "現在のスコア：",
+  "back": "戻る",
+  "notEnough": "❌ 問題集の問題が足りません。",
+  "yourScore": "あなたのスコア：",
+  "score": "{score} / 10！",
+  "backLower": "戻る",
+  "question": "第{n}問 / 10問（残り時間：{seconds}秒）",
+  "cmd": {
+    "description": "絶アレキサンダー討滅戦のニシのギミック練習クイズ。"
+  },
+  "notAvailable": "ごめんなさい、このコマンドはあなたには使えません。使いたい場合は開発者に連絡してください。\nTuufless処理でのDPSのニシ3・4回目の受け渡し練習用です。",
+  "exiting": "終了しています..."
+}

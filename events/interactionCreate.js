@@ -11,16 +11,29 @@ const { isBotBusy, getBusyTask } = require('../utils/lock');
 const { isMaintenance } = require('../maintenance');
 const { pool } = require('../utils/db');
 const { isSlowError, isDiscordApiError, redactApiError, describeInteraction } = require('../utils/discordErrors');
+const { t } = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
+
+// "I'm busy" reply: the running task's name in the reader's language when it is a known one
+const BUSY_TASKS = { 'Clearing Bot DM Messages': 'clearDms', 'Cleaning channel messages': 'cleanChannel' };
+async function busyText(langOf) {
+    const lang = await langOf();
+    const task = getBusyTask();
+    return t(lang, 'core.busy', { task: BUSY_TASKS[task] ? t(lang, 'core.tasks.' + BUSY_TASKS[task]) : task });
+}
 
 module.exports = {
     name: Events.InteractionCreate,
     async execute(interaction, client) {
+        // Remember the user's Discord app language (for DMs and background messages) - never blocks
+        if (interaction.user) userLanguage.noteLocale(interaction.user.id, interaction.locale).catch(() => {});
+        const langOf = () => userLanguage.forInteraction(interaction); // cached 60s
         try {
             // Global Maintenance Check
             if (isMaintenance(interaction.guildId)) {
                 if (!interaction.isRepliable()) return; // e.g. autocomplete cannot be replied to
                 return await interaction.reply({
-                    content: '⚠️ **The bot is currently undergoing maintenance.** Please try again later!',
+                    content: t(await langOf(), 'core.maintenance'),
                     flags: [MessageFlags.Ephemeral]
                 });
             }
@@ -38,16 +51,16 @@ module.exports = {
                 console.log(`💻 [SLASH COMMAND] /${commandName} | User: ${userTag} (${userId}) | Location: ${location}`);
 
                 const isDM = !interaction.guildId;
-                if (isDM && commandName !== 'clearbotdms') {
+                if (isDM && commandName !== 'clearbotdms' && commandName !== 'pingway') {
                     return await interaction.reply({
-                        content: "⚠️ **Slash commands cannot be used in DMs.**\nPlease run this command inside a server channel.",
+                        content: t(await langOf(), 'core.noDms'),
                         flags: [MessageFlags.Ephemeral]
                     });
                 }
 
                 if (isBotBusy() && commandName !== 'clean' && commandName !== 'clearbotdms') {
                     return await interaction.reply({
-                        content: `⚠️ **Sorry, I'm busy right now!** (${getBusyTask()})\nPlease try again in a few moments.`,
+                        content: await busyText(langOf),
                         flags: [MessageFlags.Ephemeral]
                     });
                 }
@@ -69,14 +82,14 @@ module.exports = {
                         if (isAdmin) {
                             const channelSelect = new ChannelSelectMenuBuilder()
                                 .setCustomId('select_sciondex_channel')
-                                .setPlaceholder('Select a channel for ScionDex...')
+                                .setPlaceholder(t(await langOf(), 'core.sciondexSelect'))
                                 .setChannelTypes(ChannelType.GuildText);
 
                             const row = new ActionRowBuilder().addComponents(channelSelect);
 
                             const adminNotice = !configuredChannelId
-                                ? '⚠️ **ScionDex has not been set up on this server yet!**\nAs an admin, please select the dedicated channel where members can play ScionDex:'
-                                : `⚠️ **ScionDex is restricted to <#${configuredChannelId}>.**\nAs an admin, you can reassign the dedicated channel below:`;
+                                ? t(await langOf(), 'core.sciondexAdminNotSetUp')
+                                : t(await langOf(), 'core.sciondexAdminRestricted', { channelId: configuredChannelId });
 
                             return await interaction.reply({
                                 content: adminNotice,
@@ -85,8 +98,8 @@ module.exports = {
                             });
                         } else {
                             const userNotice = !configuredChannelId
-                                ? '⚠️ **ScionDex is not set up on this server yet.**\nPlease ask a server administrator to set up a channel first before anyone can play ScionDex!'
-                                : `⚠️ **ScionDex can only be played in <#${configuredChannelId}>!**\nPlease ask a server administrator if you need help.`;
+                                ? t(await langOf(), 'core.sciondexNotSetUp')
+                                : t(await langOf(), 'core.sciondexOnlyIn', { channelId: configuredChannelId });
 
                             return await interaction.reply({
                                 content: userNotice,
@@ -99,7 +112,7 @@ module.exports = {
                 const command = client.commands.get(commandName);
                 if (!command) {
                     return await interaction.reply({
-                        content: `❌ Command \`/${commandName}\` not found.`,
+                        content: t(await langOf(), 'core.commandNotFound', { commandName }),
                         flags: [MessageFlags.Ephemeral]
                     });
                 }
@@ -148,7 +161,7 @@ module.exports = {
                     );
 
                     return await interaction.reply({
-                        content: `✅ **ScionDex channel successfully set up to <#${selectedChannelId}>!**\nUsers can now use \`/sciondex\` inside that channel.`,
+                        content: t(await langOf(), 'core.sciondexChannelSet', { channelId: selectedChannelId }),
                         flags: [MessageFlags.Ephemeral]
                     });
                 }
@@ -297,7 +310,7 @@ module.exports = {
             }
             if (!interaction.replied && !interaction.deferred) {
                 await interaction.reply({
-                    content: '❌ An error occurred while executing this interaction.',
+                    content: t(await langOf(), 'core.interactionError'),
                     flags: [MessageFlags.Ephemeral]
                 }).catch(() => { });
             }

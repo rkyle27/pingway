@@ -6,6 +6,8 @@
 const axios = require('axios');
 const { EmbedBuilder } = require('discord.js');
 const { pool } = require('./db');
+const { t } = require('./i18n');
+const userLanguage = require('./userLanguage');
 
 const POLL_MS = 10 * 60 * 1000;      // check the Lodestone every 10 minutes
 const RELOAD_MS = 60 * 1000;         // pick up website changes within a minute
@@ -78,9 +80,10 @@ async function reload(client) {
             if (Number(row.welcomed) !== 1) {
                 const channel = guild.channels.cache.get(row.channel_id);
                 if (!channel || !channel.isTextBased()) { await setStatus(entry, 'Channel not found'); continue; }
-                const cats = Array.from(entry.categories).map(c => CATEGORIES[c].label).join(', ') || 'nothing (no categories picked)';
+                const lang = userLanguage.forGuild(guild); // public post: the server's language
+                const cats = Array.from(entry.categories).map(c => catLabel(c, lang)).join(', ') || t(lang, 'news.nothing');
                 try {
-                    await channel.send({ content: '📰 **FFXIV news** from the Lodestone (' + LOCALES[row.locale] + ') will be posted here: ' + cats + '.', allowedMentions: { parse: [] } });
+                    await channel.send({ content: t(lang, 'news.welcome', { edition: LOCALES[row.locale], categories: cats }), allowedMentions: { parse: [] } });
                     await pool.execute('UPDATE news_channels SET welcomed = 1 WHERE id = ?', [row.id]);
                     await setStatus(entry, 'ok');
                 } catch (err) {
@@ -114,16 +117,19 @@ const unix = t => {
     return Number.isFinite(ms) ? Math.floor(ms / 1000) : null;
 };
 
-function buildEmbed(item, locale, category) {
+// Category name in the reader's language (CATEGORIES[..].label is the English one, used in the console)
+const catLabel = (category, lang) => t(lang, 'news.categories.' + category);
+
+function buildEmbed(item, locale, category, lang = 'en') {
     const c = CATEGORIES[category];
     const embed = new EmbedBuilder()
         .setColor(c.color)
-        .setTitle((c.emoji + ' ' + String(item.title || 'Lodestone news')).slice(0, 256))
-        .setFooter({ text: 'Lodestone · ' + c.label + ' · ' + LOCALES[locale] });
+        .setTitle((c.emoji + ' ' + String(item.title || t(lang, 'news.fallbackTitle'))).slice(0, 256))
+        .setFooter({ text: t(lang, 'news.footer', { category: catLabel(category, lang), edition: LOCALES[locale] }) });
     if (/^https:\/\//.test(item.url || '')) embed.setURL(item.url);
     let text = item.description ? String(item.description).replace(/\s+\n/g, '\n').slice(0, 600) : '';
     const start = unix(item.start), end = unix(item.end);
-    if (start && end) text = (text ? text + '\n\n' : '') + '🕒 <t:' + start + ':f> → <t:' + end + ':f> (your time zone)';
+    if (start && end) text = (text ? text + '\n\n' : '') + t(lang, 'news.when', { start, end });
     if (text) embed.setDescription(text);
     if (/^https:\/\//.test(item.image || '')) embed.setImage(item.image);
     const time = Date.parse(item.time);
@@ -156,16 +162,19 @@ async function poll(client) {
                 const time = Date.parse(item.time);
                 if (firstTime || (Number.isFinite(time) && time < Date.now() - OLD_ITEM_MS)) continue; // never post old news
 
-                const embed = buildEmbed(item, locale, category);
-                for (const t of targets) {
-                    const guild = client.guilds.cache.get(t.guildId);
-                    const channel = guild && guild.channels.cache.get(t.channelId);
-                    if (!channel || !channel.isTextBased()) { await setStatus(t, 'Channel not found'); continue; }
+                const embeds = new Map(); // lang -> embed (each server gets its own language)
+                for (const target of targets) {
+                    const guild = client.guilds.cache.get(target.guildId);
+                    const channel = guild && guild.channels.cache.get(target.channelId);
+                    if (!channel || !channel.isTextBased()) { await setStatus(target, 'Channel not found'); continue; }
+                    const lang = userLanguage.forGuild(guild);
+                    if (!embeds.has(lang)) embeds.set(lang, buildEmbed(item, locale, category, lang));
+                    const embed = embeds.get(lang);
                     try {
                         await channel.send({ embeds: [embed], allowedMentions: { parse: [] } });
-                        await setStatus(t, 'ok');
+                        await setStatus(target, 'ok');
                     } catch (err) {
-                        await setStatus(t, 'Pingway cannot post in that channel');
+                        await setStatus(target, 'Pingway cannot post in that channel');
                     }
                 }
                 console.log('📰 [NEWS] ' + LOCALES[locale] + ' ' + CATEGORIES[category].label + ': ' + String(item.title).slice(0, 80));

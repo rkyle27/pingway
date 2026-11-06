@@ -1,0 +1,18 @@
+{
+  "title": "💜 Pingwayへの投票ありがとうございます！",
+  "gotOne": "**+{points}ポイント** をゲットしました",
+  "gotMany": "**+{points}ポイント** をゲットしました",
+  "forSite": "（**{site}** での投票）",
+  "weekend": "（週末は2倍！）",
+  "end": "。",
+  "balanceOne": "残高：**{balance}ポイント**",
+  "balanceMany": "残高：**{balance}ポイント**",
+  "perks": "• 1ポイント = Retainer Watchのリテイナー枠+1（1か月）\n• 10ポイント = サポーター特典（1か月）",
+  "again": "{site} では{every}後にまた投票できます。",
+  "every12h": "12時間",
+  "manage": "ポイントの管理は [Pingwayウェブサイト]({url}) で。",
+  "footer": "投票ポイントは投票から180日で失効します。",
+  "website": "Pingwayウェブサイト",
+  "perksButton": "サポーター特典",
+  "voteAgain": "{site}でもう一度投票"
+}

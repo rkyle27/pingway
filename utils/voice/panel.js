@@ -4,6 +4,7 @@
 
 const { LANGUAGES, getLanguage, getVoice, voicesFor } = require('./voices');
 const { stationOption } = require('./radio');
+const { t, tOr } = require('../i18n');
 
 const ID = {
     join: 'vc_join', move: 'vc_move', leave: 'vc_leave', refresh: 'vc_refresh',
@@ -40,78 +41,84 @@ const trim = (s, n) => {
  * @param {string|null} p.moveOffer    channel id Pingway can be moved out of (empty of humans)
  * @param {string|null} p.djRoleId
  * @param {string|null} p.notice       one-line feedback for this user
+ * @param {string} [p.lang]            the reader's language (en, fr, de, ja); texts in locales/<lang>/vc.json
  */
 function buildPanel(p) {
+    const lang = p.lang || 'en';
     const st = p.status;
     const connected = !!st;
     const lines = [];
 
     if (!p.voiceReady) {
-        lines.push('⚠️ Voice is not installed on this bot yet (missing voice libraries).');
+        lines.push(t(lang, 'vc.panel.notInstalled'));
     } else if (connected) {
-        lines.push(`**Channel:** <#${st.channelId}>`);
+        lines.push(t(lang, 'vc.panel.channel', { channelId: st.channelId }));
     } else {
-        lines.push('**Channel:** not connected - join a voice channel and press **Join**.');
+        lines.push(t(lang, 'vc.panel.notConnected'));
     }
 
     if (connected) {
         const np = st.nowPlaying;
-        lines.push('**Now playing:** ' + (np ? `${np.live ? '📻' : '🎵'} ${trim(np.title, 80)}${np.paused ? ' (paused)' : ''}` : 'nothing'));
-        lines.push(`**Queue:** ${st.musicQueue} track${st.musicQueue === 1 ? '' : 's'} · ${st.ttsQueue} message${st.ttsQueue === 1 ? '' : 's'} to read${st.speaking ? ' · 🗣️ speaking' : ''}`);
+        lines.push(t(lang, 'vc.panel.nowPlaying', { what: np ? `${np.live ? '📻' : '🎵'} ${trim(np.title, 80)}${np.paused ? t(lang, 'vc.panel.paused') : ''}` : t(lang, 'vc.panel.nothing') }));
+        lines.push(t(lang, 'vc.panel.queue', {
+            tracks: t(lang, st.musicQueue === 1 ? 'vc.panel.track' : 'vc.panel.tracks', { n: st.musicQueue }),
+            messages: t(lang, st.ttsQueue === 1 ? 'vc.panel.message' : 'vc.panel.messages', { n: st.ttsQueue }),
+            speaking: st.speaking ? t(lang, 'vc.panel.speaking') : ''
+        }));
     }
 
     if (p.ttsEnabled) {
         lines.push(connected
-            ? `**Text-to-speech:** on - I read messages posted in <#${st.channelId}>'s text chat by people in the channel.`
-            : '**Text-to-speech:** on - once I join, I read the voice channel\'s text chat.');
+            ? t(lang, 'vc.panel.ttsOnIn', { channelId: st.channelId })
+            : t(lang, 'vc.panel.ttsOnLater'));
     } else {
-        lines.push('**Text-to-speech:** off - no voice engine is available on this bot. Music still works.');
+        lines.push(t(lang, 'vc.panel.ttsOff'));
     }
     const eng = p.ttsEngine;
     if (p.ttsEnabled && eng && eng.mode === 'backup') {
-        lines.push(eng.reason === 'no_key' ? '*🤖 Backup voice (no Google key)*'
-            : eng.reason === 'call' ? '*🤖 Using the backup voice for this call*'   // per-call rules (names nobody)
-            : eng.reason === 'switch' ? '*🤖 Using the backup voice*'
-            : '*🤖 Using the backup voice today (Google voices come back after midnight Pacific time)*');
+        lines.push(eng.reason === 'no_key' ? t(lang, 'vc.panel.backupNoKey')
+            : eng.reason === 'call' ? t(lang, 'vc.panel.backupCall')   // per-call rules (names nobody)
+            : eng.reason === 'switch' ? t(lang, 'vc.panel.backup')
+            : t(lang, 'vc.panel.backupToday'));
     }
 
     const v = getVoice(p.voiceName);
-    lines.push(`**Your voice:** ${v ? v.label : p.voiceName}${p.voiceIsDefault ? ' (default)' : ''}`);
-    if (p.djRoleId) lines.push(`**DJ role:** <@&${p.djRoleId}> (needed for Play, Pause, Skip, Clear and Leave)`);
+    lines.push(t(lang, 'vc.panel.yourVoice', { voice: v ? v.label : p.voiceName, isDefault: p.voiceIsDefault ? t(lang, 'vc.panel.default') : '' }));
+    if (p.djRoleId) lines.push(t(lang, 'vc.panel.djRole', { roleId: p.djRoleId }));
     if (p.notice) lines.push('', trim(p.notice, 300));
 
     const embed = {
-        title: '🔊 Pingway Voice',
+        title: t(lang, 'vc.panel.title'),
         description: trim(lines.join('\n'), 4000),
         color: 0x5865f2,
-        footer: { text: 'Play: paste an audio / radio link, or type words to search internet radio.' }
+        footer: { text: t(lang, 'vc.panel.footer') }
     };
 
     const disabledAll = !p.voiceReady;
     const np = connected && st.nowPlaying;
     const components = [];
 
-    const r1 = [button(ID.join, 'Join', 'success', { emoji: '🔊', disabled: disabledAll })];
-    if (p.moveOffer) r1.push(button(ID.move, 'Move here', 'primary', { emoji: '↪️', disabled: disabledAll }));
-    r1.push(button(ID.leave, 'Leave', 'danger', { emoji: '👋', disabled: disabledAll || !connected }));
-    r1.push(button(ID.refresh, 'Refresh', 'secondary', { emoji: '🔄' }));
+    const r1 = [button(ID.join, t(lang, 'vc.panel.join'), 'success', { emoji: '🔊', disabled: disabledAll })];
+    if (p.moveOffer) r1.push(button(ID.move, t(lang, 'vc.panel.move'), 'primary', { emoji: '↪️', disabled: disabledAll }));
+    r1.push(button(ID.leave, t(lang, 'vc.panel.leave'), 'danger', { emoji: '👋', disabled: disabledAll || !connected }));
+    r1.push(button(ID.refresh, t(lang, 'vc.panel.refresh'), 'secondary', { emoji: '🔄' }));
     components.push(row(...r1));
 
     components.push(row(
-        button(ID.play, 'Play', 'primary', { emoji: '▶️', disabled: disabledAll }),
-        button(ID.pause, np && np.paused ? 'Resume' : 'Pause', 'secondary', { emoji: np && np.paused ? '▶️' : '⏸️', disabled: disabledAll || !np }),
-        button(ID.skip, 'Skip', 'secondary', { emoji: '⏭️', disabled: disabledAll || !(np || (connected && st.speaking)) }),
-        button(ID.clear, 'Clear queue', 'secondary', { emoji: '🧹', disabled: disabledAll || !(connected && (st.musicQueue || st.ttsQueue)) })
+        button(ID.play, t(lang, 'vc.panel.play'), 'primary', { emoji: '▶️', disabled: disabledAll }),
+        button(ID.pause, np && np.paused ? t(lang, 'vc.panel.resume') : t(lang, 'vc.panel.pause'), 'secondary', { emoji: np && np.paused ? '▶️' : '⏸️', disabled: disabledAll || !np }),
+        button(ID.skip, t(lang, 'vc.panel.skip'), 'secondary', { emoji: '⏭️', disabled: disabledAll || !(np || (connected && st.speaking)) }),
+        button(ID.clear, t(lang, 'vc.panel.clear'), 'secondary', { emoji: '🧹', disabled: disabledAll || !(connected && (st.musicQueue || st.ttsQueue)) })
     ));
 
     components.push(row({
         type: 3,
         custom_id: ID.lang,
-        placeholder: 'Choose your TTS voice: language…',
+        placeholder: t(lang, 'vc.panel.chooseLanguage'),
         min_values: 1,
         max_values: 1,
         options: LANGUAGES.slice(0, 25).map(l => ({
-            label: trim(l.label, 80), value: l.code, emoji: { name: l.emoji }, default: l.code === p.selectedLang
+            label: trim(tOr(lang, 'vc.languages.' + l.code, l.label), 80), value: l.code, emoji: { name: l.emoji }, default: l.code === p.selectedLang
         }))
     }));
 
@@ -120,11 +127,11 @@ function buildPanel(p) {
         components.push(row({
             type: 3,
             custom_id: ID.voice,
-            placeholder: trim('Choose a ' + getLanguage(p.selectedLang).label + ' voice…', 150),
+            placeholder: trim(t(lang, 'vc.panel.chooseVoice', { language: tOr(lang, 'vc.languages.' + p.selectedLang, getLanguage(p.selectedLang).label) }), 150),
             min_values: 1,
             max_values: 1,
             options: [
-                { label: 'Use the server default voice', value: DEFAULT_VALUE, emoji: { name: '↩️' } },
+                { label: t(lang, 'vc.panel.serverDefault'), value: DEFAULT_VALUE, emoji: { name: '↩️' } },
                 ...list.map(x => ({ label: trim(x.label, 80), value: x.name, default: x.name === p.voiceName && !p.voiceIsDefault }))
             ]
         }));
@@ -134,25 +141,25 @@ function buildPanel(p) {
         components.push(row({
             type: 3,
             custom_id: ID.radio,
-            placeholder: 'Pick a radio station to play…',
+            placeholder: t(lang, 'vc.panel.pickStation'),
             min_values: 1,
             max_values: 1,
-            options: p.radioResults.slice(0, 10).map(stationOption)
+            options: p.radioResults.slice(0, 10).map(x => stationOption(x, lang))
         }));
     }
 
     return { embeds: [embed], components };
 }
 
-function buildPlayModal() {
+function buildPlayModal(lang = 'en') {
     return {
-        title: 'Play audio or internet radio',
+        title: t(lang, 'vc.modal.title'),
         custom_id: ID.modal,
         components: [row({
             type: 4,
             custom_id: ID.modalInput,
             style: 1,
-            label: 'Audio / radio link, or radio search words',
+            label: t(lang, 'vc.modal.label'),
             placeholder: 'https://example.com/stream.mp3  or  lofi',
             min_length: 2,
             max_length: 400,

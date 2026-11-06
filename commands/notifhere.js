@@ -2,14 +2,17 @@ const { SlashCommandBuilder, PermissionFlagsBits, MessageFlags } = require('disc
 const { pool } = require('../utils/db');
 const fs = require('fs');
 const path = require('path');
+const { t, discordLocalizations } = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('notifhere')
-        .setDescription('⚙️ Set this channel for startup notifications.')
+        .setDescription(t('en', 'notifhere.cmd.description')).setDescriptionLocalizations(discordLocalizations('notifhere.cmd.description'))
         .setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels),
 
     async execute(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         const guildId = interaction.guild.id;
         const channelId = interaction.channel.id;
 
@@ -40,13 +43,13 @@ module.exports = {
             }
 
             return await interaction.reply({
-                content: `✅ Notifications for this server will now be sent to <#${channelId}>!${randomJoke}`,
+                content: t(lang, 'notifhere.saved', { channelId, joke: randomJoke }),
                 flags: [MessageFlags.Ephemeral]
             });
         } catch (error) {
             console.error('❌ Failed to save startup channel to database:', error);
             return await interaction.reply({
-                content: '❌ An error occurred while saving the notification channel setting.',
+                content: t(lang, 'notifhere.failed'),
                 flags: [MessageFlags.Ephemeral]
             });
         }

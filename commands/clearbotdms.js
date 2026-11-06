@@ -1,16 +1,19 @@
 const { SlashCommandBuilder, MessageFlags } = require('discord.js');
 const { setBotBusy } = require('../utils/lock');
+const { t, discordLocalizations } = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('clearbotdms')
-        .setDescription('🧹 Clear all direct messages sent by the bot in this DM channel.'),
+        .setDescription(t('en', 'clearbotdms.cmd.description')).setDescriptionLocalizations(discordLocalizations('clearbotdms.cmd.description')),
 
     async execute(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         // Ensure this command is only used in Direct Messages (DMs)
         if (interaction.guildId) {
             return interaction.reply({
-                content: '⚠️ This command can only be used in **Direct Messages (DMs)** with the bot.',
+                content: t(lang, 'clearbotdms.onlyDms'),
                 flags: [MessageFlags.Ephemeral]
             });
         }
@@ -55,13 +58,13 @@ module.exports = {
             }
 
             return await interaction.editReply({
-                content: `✅ Successfully cleaned up **${deletedCount}** message(s) sent by the bot in this DM.`
+                content: t(lang, 'clearbotdms.done', { deletedCount })
             });
 
         } catch (error) {
             console.error('❌ Error executing /clearbotdms:', error);
             return await interaction.editReply({
-                content: '❌ An error occurred while clearing DM messages.'
+                content: t(lang, 'clearbotdms.failed')
             });
         } finally {
             // Always release the lock when finished

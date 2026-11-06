@@ -1,5 +1,7 @@
 const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, MessageFlags } = require('discord.js');
 const { pool } = require('../utils/db');
+const { t, discordLocalizations } = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
 
 const BT = String.fromCharCode(96); // backtick for inline code formatting
 
@@ -36,28 +38,29 @@ async function getInterval(userId) {
     }
 }
 
-async function buildPayload(userId, notice) {
+async function buildPayload(userId, notice, lang = 'en') {
     const dmEnabled = await getDmEnabled(userId);
     const dcs = await getUserDCs(userId);
     const interval = await getInterval(userId);
     const dcText = dcs.length > 0
         ? BT + dcs.join(', ') + BT
-        : '*None set* — use ' + BT + '/datacenter' + BT + ' to choose your Data Centers. No alerts are sent until you do.';
+        : t(lang, 'marketalert.noneSet');
 
     const content = (notice ? notice + '\n\n' : '') +
-        '📢 **Market Alert Settings**\n\n' +
-        '• **DM Notifications:** ' + (dmEnabled ? '🟢 Enabled' : '🔴 Disabled') + '\n' +
-        '• **Data Centers (from /datacenter):** ' + dcText + '\n' +
-        '• **DM interval:** every ' + interval + (interval === 1 ? ' minute' : ' minutes') + ' (also used for retainer undercuts; change it in My Settings on https://pingway.app/me.html)';
+        t(lang, 'marketalert.settings', {
+            dm: dmEnabled ? t(lang, 'marketalert.on') : t(lang, 'marketalert.off'),
+            dcs: dcText,
+            interval: t(lang, interval === 1 ? 'marketalert.minute' : 'marketalert.minutes', { n: interval })
+        });
 
     const row = new ActionRowBuilder().addComponents(
         new ButtonBuilder()
             .setCustomId('marketalert_toggle_dm')
-            .setLabel(dmEnabled ? 'Disable Notifications' : 'Enable Notifications')
+            .setLabel(dmEnabled ? t(lang, 'marketalert.disable') : t(lang, 'marketalert.enable'))
             .setStyle(dmEnabled ? ButtonStyle.Danger : ButtonStyle.Success),
         new ButtonBuilder()
             .setCustomId('marketalert_done')
-            .setLabel('Done')
+            .setLabel(t(lang, 'marketalert.done'))
             .setStyle(ButtonStyle.Secondary)
     );
 
@@ -67,16 +70,17 @@ async function buildPayload(userId, notice) {
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('marketalert')
-        .setDescription('Turn market price drop alert DMs on or off (DM interval is set on the website)'),
+        .setDescription(t('en', 'marketalert.cmd.description')).setDescriptionLocalizations(discordLocalizations('marketalert.cmd.description')),
 
     async execute(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         try {
-            const payload = await buildPayload(interaction.user.id);
+            const payload = await buildPayload(interaction.user.id, undefined, lang);
             return interaction.reply(Object.assign(payload, { flags: [MessageFlags.Ephemeral] }));
         } catch (error) {
             console.error('Error opening /marketalert:', error);
             return interaction.reply({
-                content: '❌ Failed to load your market alert settings.',
+                content: t(lang, 'marketalert.loadFailed'),
                 flags: [MessageFlags.Ephemeral]
             }).catch(() => {});
         }
@@ -85,6 +89,7 @@ module.exports = {
     async handleInteraction(interaction) {
         if (!interaction.isButton()) return;
         const userId = interaction.user.id;
+        const lang = await userLanguage.forInteraction(interaction);
 
         if (interaction.customId === 'marketalert_toggle_dm') {
             try {
@@ -94,13 +99,13 @@ module.exports = {
                     [userId, newStatus]
                 );
                 const notice = newStatus === 1
-                    ? '🔔 Market alert DM notifications are now **enabled 🟢**.'
-                    : '🔕 Market alert DM notifications are now **disabled 🔴**.';
-                return interaction.update(await buildPayload(userId, notice));
+                    ? t(lang, 'marketalert.enabledNotice')
+                    : t(lang, 'marketalert.disabledNotice');
+                return interaction.update(await buildPayload(userId, notice, lang));
             } catch (error) {
                 console.error('Error toggling marketalert DM status in MySQL:', error);
                 return interaction.reply({
-                    content: '❌ Failed to update notification settings.',
+                    content: t(lang, 'marketalert.updateFailed'),
                     flags: [MessageFlags.Ephemeral]
                 }).catch(() => {});
             }

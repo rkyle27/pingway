@@ -1,0 +1,21 @@
+{
+  "title": "Nissi Quiz (Elemental / Tuffless Strat)",
+  "subtitle": "Test your knowledge for TEA Nissi mechanics!",
+  "take": "Take Quiz",
+  "results": "Show Results",
+  "exit": "Exit",
+  "currentScores": "Current Scores:\n\n",
+  "noScores": "No scores recorded yet!",
+  "currentScoresTitle": "Current Scores:",
+  "back": "Back",
+  "notEnough": "❌ Not enough questions available in the question bank.",
+  "yourScore": "Your Score:",
+  "score": "{score} / 10 !",
+  "backLower": "back",
+  "question": "Question {n} of 10 (Time Remaining: {seconds}s)",
+  "cmd": {
+    "description": "Practice quiz for TEA Nissi mechanics."
+  },
+  "notAvailable": "Sorry, this command isn't available for you. Please contact the developer if you want access.\nThis is for practicing TEA's Nissi 3rd & 4th pass/take for DPS using Tuufless Strat.",
+  "exiting": "Exiting..."
+}

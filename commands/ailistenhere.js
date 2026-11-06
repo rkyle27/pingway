@@ -1,15 +1,18 @@
 const { SlashCommandBuilder, PermissionFlagsBits, MessageFlags } = require('discord.js');
 const { pool } = require('../utils/db');
+const { t, discordLocalizations } = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
 
 // The AI listens in ONE channel per server. Running this in another channel moves it here;
 // running it in the AI channel itself turns the AI off.
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('ailistenhere')
-        .setDescription('🎙️ Move the AI to this channel, or turn it off if it is already here (Admin only).')
+        .setDescription(t('en', 'ailistenhere.cmd.description')).setDescriptionLocalizations(discordLocalizations('ailistenhere.cmd.description'))
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 
     async execute(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         const channelId = interaction.channelId;
         const guildId = interaction.guildId;
 
@@ -23,7 +26,7 @@ module.exports = {
                 await conn.execute(`DELETE FROM ai_active_channels WHERE guild_id = ?`, [guildId]);
                 await conn.commit();
                 return interaction.reply({
-                    content: `🔴 AI is no longer listening in <#${channelId}>.`,
+                    content: t(lang, 'ailistenhere.off', { channelId }),
                     flags: [MessageFlags.Ephemeral]
                 });
             }
@@ -31,16 +34,16 @@ module.exports = {
             await conn.execute(`DELETE FROM ai_active_channels WHERE guild_id = ?`, [guildId]);
             await conn.execute(`INSERT INTO ai_active_channels (guild_id, channel_id) VALUES (?, ?)`, [guildId, channelId]);
             await conn.commit();
-            const moved = old.length ? ` It moved here from ${old.map(id => `<#${id}>`).join(', ')} (one AI channel per server).` : '';
+            const moved = old.length ? t(lang, 'ailistenhere.moved', { channels: old.map(id => `<#${id}>`).join(', ') }) : '';
             return interaction.reply({
-                content: `🟢 AI is now actively listening in <#${channelId}>! All normal messages in this channel will get AI responses.${moved}`,
+                content: t(lang, 'ailistenhere.on', { channelId, moved }),
                 flags: [MessageFlags.Ephemeral]
             });
         } catch (e) {
             await conn.rollback().catch(() => {});
             console.error('Failed to set the AI channel in MySQL:', e);
             return interaction.reply({
-                content: `❌ Failed to update the AI channel.`,
+                content: t(lang, 'ailistenhere.failed'),
                 flags: [MessageFlags.Ephemeral]
             });
         } finally {

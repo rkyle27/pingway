@@ -1,65 +1,66 @@
 const { SlashCommandBuilder, PermissionFlagsBits, MessageFlags, ChannelType } = require('discord.js');
 const honeypot = require('../utils/honeypot');
+const { t, discordLocalizations } = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('honeypot')
-        .setDescription('🍯 "Do not chat here" channel that removes hacked accounts.')
+        .setDescription(t('en', 'honeypot.cmd.description')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.description'))
         .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
         .setDMPermission(false)
-        .addSubcommand(s => s.setName('set').setDescription('Use a channel as the honeypot (Pingway posts a warning there).')
-            .addChannelOption(o => o.setName('channel').setDescription('The do-not-chat channel').setRequired(true)
+        .addSubcommand(s => s.setName('set').setDescription(t('en', 'honeypot.cmd.set')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.set'))
+            .addChannelOption(o => o.setName('channel').setDescription(t('en', 'honeypot.cmd.channel')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.channel')).setRequired(true)
                 .addChannelTypes(ChannelType.GuildText)))
-        .addSubcommand(s => s.setName('off').setDescription('Turn the honeypot off.'))
-        .addSubcommand(s => s.setName('dm').setDescription('DM caught members that their account may be hacked.')
-            .addBooleanOption(o => o.setName('on').setDescription('Send the DM?').setRequired(true)))
-        .addSubcommand(s => s.setName('warning').setDescription('Post Pingway\'s "do not post here" warning in the honeypot channel.')
-            .addBooleanOption(o => o.setName('on').setDescription('Show the warning?').setRequired(true)))
-        .addSubcommand(s => s.setName('status').setDescription('Show the honeypot settings.')),
+        .addSubcommand(s => s.setName('off').setDescription(t('en', 'honeypot.cmd.off')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.off')))
+        .addSubcommand(s => s.setName('dm').setDescription(t('en', 'honeypot.cmd.dm')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.dm'))
+            .addBooleanOption(o => o.setName('on').setDescription(t('en', 'honeypot.cmd.dmOn')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.dmOn')).setRequired(true)))
+        .addSubcommand(s => s.setName('warning').setDescription(t('en', 'honeypot.cmd.warning')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.warning'))
+            .addBooleanOption(o => o.setName('on').setDescription(t('en', 'honeypot.cmd.warningOn')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.warningOn')).setRequired(true)))
+        .addSubcommand(s => s.setName('status').setDescription(t('en', 'honeypot.cmd.status')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.status'))),
 
     async execute(interaction) {
         const sub = interaction.options.getSubcommand();
         const guild = interaction.guild;
+        const lang = await userLanguage.forInteraction(interaction);
         const reply = content => interaction.reply({ content, flags: [MessageFlags.Ephemeral] });
         try {
             const me = guild.members.me;
             const canBan = me && me.permissions.has(PermissionFlagsBits.BanMembers);
             const canDelete = me && me.permissions.has(PermissionFlagsBits.ManageMessages);
             const permNote = (!canBan || !canDelete)
-                ? '\n\n⚠️ Pingway is missing **' + [!canBan && 'Ban Members', !canDelete && 'Manage Messages'].filter(Boolean).join(' and ') +
-                  '**. Give its role these permissions, or caught members can\'t be removed.'
+                ? t(lang, 'honeypot.missingPerms', { perms: [!canBan && t(lang, 'honeypot.perms.ban'), !canDelete && t(lang, 'honeypot.perms.manage')].filter(Boolean).join(t(lang, 'honeypot.and')) })
                 : '';
 
             if (sub === 'set') {
                 const channel = interaction.options.getChannel('channel', true);
                 await honeypot.setChannel(interaction.client, guild.id, channel.id);
-                const t = honeypot.getTrap(guild.id);
-                return reply('🍯 <#' + channel.id + '> is now the honeypot.' + (t && !t.warning ? '' : ' Pingway posted a warning there.') + ' Anyone except staff who posts in it is softbanned ' +
-                    '(removed, with their messages from the last hour deleted; they can rejoin later).' + permNote);
+                const trapNow = honeypot.getTrap(guild.id);
+                return reply(t(lang, 'honeypot.isNow', { channelId: channel.id, posted: trapNow && !trapNow.warning ? '' : t(lang, 'honeypot.posted'), permNote }));
             }
             if (sub === 'off') {
                 await honeypot.setChannel(interaction.client, guild.id, null);
-                return reply('🍯 Honeypot turned off. You can delete the warning message in the old channel.');
+                return reply(t(lang, 'honeypot.turnedOff'));
             }
             if (sub === 'dm') {
                 const on = interaction.options.getBoolean('on', true);
                 await honeypot.setDm(guild.id, on);
-                return reply(on ? '📨 Caught members will get a DM saying their account may be hacked.' : '📨 No DM will be sent to caught members.');
+                return reply(on ? t(lang, 'honeypot.dmOn') : t(lang, 'honeypot.dmOff'));
             }
             if (sub === 'warning') {
                 const on = interaction.options.getBoolean('on', true);
                 await honeypot.setWarning(interaction.client, guild.id, on);
                 return reply(on
-                    ? '🚫 Pingway will post its "do not post here" warning in the honeypot channel.'
-                    : '🚫 Pingway\'s warning is off (and removed if it was posted). Make sure your channel tells members not to post there, or they may be softbanned by mistake.');
+                    ? t(lang, 'honeypot.warningOn')
+                    : t(lang, 'honeypot.warningOff'));
             }
             const trap = honeypot.getTrap(guild.id);
             return reply(trap
-                ? '🍯 Honeypot: <#' + trap.channelId + '> · DM: ' + (trap.dm ? 'on' : 'off') + ' · Warning: ' + (trap.warning ? 'on' : 'off') + '\nSee the list of caught members on the Pingway website (server settings).' + permNote
-                : '🍯 The honeypot is off. Use `/honeypot set` to choose a channel.' + permNote);
+                ? t(lang, 'honeypot.status', { channelId: trap.channelId, dm: trap.dm ? t(lang, 'honeypot.on') : t(lang, 'honeypot.off'), warning: trap.warning ? t(lang, 'honeypot.on') : t(lang, 'honeypot.off'), permNote })
+                : t(lang, 'honeypot.statusOff', { permNote }));
         } catch (err) {
             console.error('❌ [HONEYPOT] Command failed:', err.message);
-            return reply('❌ Something went wrong. Please try again.');
+            return reply(t(lang, 'honeypot.failed'));
         }
     }
 };

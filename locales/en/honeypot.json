@@ -1,0 +1,70 @@
+{
+  "warning": {
+    "title": "🚫 DO NOT POST IN THIS CHANNEL",
+    "text": "This channel catches **hacked accounts** that spam links in every channel.\n\nAnyone who posts here is **removed from the server automatically**, and their messages from the last hour are deleted.\n\n*Staff are not affected. If this happened to you by mistake, ask a member for a new invite.*",
+    "footer": "Pingway honeypot"
+  },
+  "dm": {
+    "title": "⚠️ Your Discord account may be hacked",
+    "text": "A message was just sent from your account in **#{channel}** on **{server}**, a channel nobody should post in. Accounts that do this are almost always hacked, so you were removed from that server and your messages there from the last hour were deleted.\n\n**What to do now**\n1. Change your Discord password.\n2. Turn on two-factor authentication (User Settings → My Account).\n3. Check User Settings → Devices and log out anything you don't recognise.\n4. Ask a member of **{server}** for a new invite to rejoin.\n\nIf you posted there yourself by mistake, just ask for an invite. You are not banned.",
+    "footer": "Sent by Pingway"
+  },
+  "report": {
+    "title": "🍯 Honeypot caught a member",
+    "dmSent": "\nDM sent ✅",
+    "dmNotSent": "\nDM not sent",
+    "names": " · {names}"
+  },
+  "fields": {
+    "member": "Member",
+    "userId": "User ID",
+    "result": "Result",
+    "when": "When"
+  },
+  "owner": {
+    "nickname": "Nickname: {nickname}",
+    "displayName": "Display name: {displayName}",
+    "title": "🍯 Honeypot caught a member in {server}",
+    "text": "Someone posted in **#{channel}**, your do-not-chat channel. This usually means their account was hacked.",
+    "memberValue": "<@{userId}>\nUsername: @{username}{names}",
+    "dmSent": "\nThey were sent a \"your account may be hacked\" DM.",
+    "footer": "Pingway honeypot · Full list: Pingway website → server settings → Honeypot",
+    "summary": "🍯 The honeypot in **{server}** caught **{count} more** member(s) in the last few minutes. See all of them on the Pingway website → server settings → Honeypot."
+  },
+  "results": {
+    "softbanned": "softbanned",
+    "needsBan": "not removed: Pingway needs Ban Members",
+    "roleAbove": "not removed: their role is above Pingway",
+    "unbanFailed": "banned (unban failed: unban them manually)",
+    "notRemoved": "not removed: {error}"
+  },
+  "cmd": {
+    "description": "🍯 \"Do not chat here\" channel that removes hacked accounts.",
+    "set": "Use a channel as the honeypot (Pingway posts a warning there).",
+    "channel": "The do-not-chat channel",
+    "off": "Turn the honeypot off.",
+    "dm": "DM caught members that their account may be hacked.",
+    "dmOn": "Send the DM?",
+    "warning": "Post Pingway's \"do not post here\" warning in the honeypot channel.",
+    "warningOn": "Show the warning?",
+    "status": "Show the honeypot settings."
+  },
+  "perms": {
+    "ban": "Ban Members",
+    "manage": "Manage Messages"
+  },
+  "and": " and ",
+  "missingPerms": "\n\n⚠️ Pingway is missing **{perms}**. Give its role these permissions, or caught members can't be removed.",
+  "posted": " Pingway posted a warning there.",
+  "isNow": "🍯 <#{channelId}> is now the honeypot.{posted} Anyone except staff who posts in it is softbanned (removed, with their messages from the last hour deleted; they can rejoin later).{permNote}",
+  "turnedOff": "🍯 Honeypot turned off. You can delete the warning message in the old channel.",
+  "dmOn": "📨 Caught members will get a DM saying their account may be hacked.",
+  "dmOff": "📨 No DM will be sent to caught members.",
+  "warningOn": "🚫 Pingway will post its \"do not post here\" warning in the honeypot channel.",
+  "warningOff": "🚫 Pingway's warning is off (and removed if it was posted). Make sure your channel tells members not to post there, or they may be softbanned by mistake.",
+  "on": "on",
+  "off": "off",
+  "status": "🍯 Honeypot: <#{channelId}> · DM: {dm} · Warning: {warning}\nSee the list of caught members on the Pingway website (server settings).{permNote}",
+  "statusOff": "🍯 The honeypot is off. Use `/honeypot set` to choose a channel.{permNote}",
+  "failed": "❌ Something went wrong. Please try again."
+}

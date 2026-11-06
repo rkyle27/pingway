@@ -1,0 +1,11 @@
+{
+  "cmd": {
+    "description": "🧹 Supprime des messages en masse (même de plus de 14 jours).",
+    "target": "Nombre de messages à supprimer (ex. 5, 67) ou \"all\""
+  },
+  "alreadyRunning": "⚠️ Un nettoyage est déjà en cours en arrière-plan ! Attends qu'il se termine.",
+  "invalid": "❌ Saisie invalide. Entre un nombre positif (ex. `/clean 5`) ou `\"all\"`.",
+  "progress": "🧹 Nettoyage en cours... **{deletedTotal}** message(s) supprimé(s) pour l'instant.",
+  "complete": "🧹 **Nettoyage terminé !** **{deletedTotal}** message(s) supprimé(s).",
+  "failed": "❌ Une erreur s'est produite pendant le nettoyage du salon."
+}

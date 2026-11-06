@@ -1,6 +1,8 @@
 const { pool } = require('./db');
 const { REST, Routes } = require('discord.js');
 const { isMaintenance } = require('../maintenance');
+const { t } = require('./i18n');
+const userLanguage = require('./userLanguage');
 
 // Give up on a reminder after this many failed delivery attempts (channel gone AND DMs closed)
 const MAX_SEND_ATTEMPTS = 5;
@@ -38,7 +40,8 @@ function startReminderScheduler(client) {
                 try {
                     let sentSuccessfully = false;
                     const discordUnix = Math.floor(reminder.target_timestamp / 1000);
-                    const messageContent = `⏰ <@${reminder.user_id}>, here is your reminder: **"${reminder.reminder_text}"** (set <t:${discordUnix}:R>).`;
+                    const lang = await userLanguage.forUser(reminder.user_id); // a reminder for one user: their language
+                    const messageContent = t(lang, 'reminders.channel', { userId: reminder.user_id, text: reminder.reminder_text, time: discordUnix });
 
                     // 1. Try sending directly to the channel via Discord REST API
                     try {
@@ -59,7 +62,7 @@ function startReminderScheduler(client) {
 
                             if (dmChannel && dmChannel.id) {
                                 await rest.post(Routes.channelMessages(dmChannel.id), {
-                                    body: { content: `⏰ **Reminder Alert:**\nHere is your reminder: **"${reminder.reminder_text}"**` }
+                                    body: { content: t(lang, 'reminders.dm', { text: reminder.reminder_text }) }
                                 });
                                 sentSuccessfully = true;
                             }

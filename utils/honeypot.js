@@ -6,6 +6,8 @@
 
 const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const { pool } = require('./db');
+const { t } = require('./i18n');
+const userLanguage = require('./userLanguage');
 
 const DELETE_MESSAGES_SECONDS = 3600;              // softban removes their messages from the last hour
 const LOG_KEEP_MS = 90 * 24 * 60 * 60 * 1000;      // catches are kept for 90 days
@@ -50,16 +52,14 @@ async function ensureTables() {
     tableReady = true;
 }
 
-function warningEmbed() {
+function warningEmbed(lang = 'en') {
     return new EmbedBuilder()
         .setColor('#ed4245')
-        .setTitle('🚫 DO NOT POST IN THIS CHANNEL')
+        .setTitle(t(lang, 'honeypot.warning.title'))
         .setDescription(
-            'This channel catches **hacked accounts** that spam links in every channel.\n\n' +
-            'Anyone who posts here is **removed from the server automatically**, and their messages from the last hour are deleted.\n\n' +
-            '*Staff are not affected. If this happened to you by mistake, ask a member for a new invite.*'
+            t(lang, 'honeypot.warning.text')
         )
-        .setFooter({ text: 'Pingway honeypot' });
+        .setFooter({ text: t(lang, 'honeypot.warning.footer') });
 }
 
 // Post (and pin) the warning in the trap channel when it is new or changed
@@ -73,7 +73,7 @@ async function postWarning(client, guildId, trap) {
             const old = guild.channels.cache.get(trap.warningChannelId);
             if (old && old.isTextBased()) await old.messages.delete(trap.warningMessageId).catch(() => {});
         }
-        const msg = await channel.send({ embeds: [warningEmbed()] });
+        const msg = await channel.send({ embeds: [warningEmbed(userLanguage.forGuild(guild))] }); // public: the server's language
         await msg.pin().catch(() => {});
         await pool.execute('UPDATE honeypot_settings SET warning_channel_id = ?, warning_message_id = ? WHERE guild_id = ?', [trap.channelId, msg.id, guildId]);
         trap.warningChannelId = trap.channelId;
@@ -144,21 +144,25 @@ function isStaff(member, guild) {
     ]);
 }
 
-function hackedDm(guild, channelName) {
+function hackedDm(guild, channelName, lang = 'en') {
     return new EmbedBuilder()
         .setColor('#f0ad28')
-        .setTitle('⚠️ Your Discord account may be hacked')
+        .setTitle(t(lang, 'honeypot.dm.title'))
         .setDescription(
-            'A message was just sent from your account in **#' + channelName + '** on **' + guild.name + '**, a channel nobody should post in. ' +
-            'Accounts that do this are almost always hacked, so you were removed from that server and your messages there from the last hour were deleted.\n\n' +
-            '**What to do now**\n' +
-            '1. Change your Discord password.\n' +
-            '2. Turn on two-factor authentication (User Settings → My Account).\n' +
-            '3. Check User Settings → Devices and log out anything you don\'t recognise.\n' +
-            '4. Ask a member of **' + guild.name + '** for a new invite to rejoin.\n\n' +
-            'If you posted there yourself by mistake, just ask for an invite. You are not banned.'
+            t(lang, 'honeypot.dm.text', { channel: channelName, server: guild.name })
         )
-        .setFooter({ text: 'Sent by Pingway' });
+        .setFooter({ text: t(lang, 'honeypot.dm.footer') });
+}
+
+// entry.result is saved in English (website list); shown in the reader's language
+function resultText(result, lang) {
+    const r = String(result || '');
+    if (r === 'softbanned') return t(lang, 'honeypot.results.softbanned');
+    if (r === 'not removed: Pingway needs Ban Members') return t(lang, 'honeypot.results.needsBan');
+    if (r === 'not removed: their role is above Pingway') return t(lang, 'honeypot.results.roleAbove');
+    if (r === 'banned (unban failed: unban them manually)') return t(lang, 'honeypot.results.unbanFailed');
+    if (r.startsWith('not removed: ')) return t(lang, 'honeypot.results.notRemoved', { error: r.slice('not removed: '.length) });
+    return r;
 }
 
 async function report(guild, entry) {
@@ -166,14 +170,15 @@ async function report(guild, entry) {
         const [[row]] = await pool.execute('SELECT startup_channel_id FROM server_settings WHERE guild_id = ?', [guild.id]);
         const channel = row && row.startup_channel_id ? guild.channels.cache.get(String(row.startup_channel_id)) : null;
         if (!channel || !channel.isTextBased()) return;
+        const lang = userLanguage.forGuild(guild); // posted in the server's notification channel
         const names = [entry.nickname, entry.displayName].filter(Boolean).join(' / ');
         const embed = new EmbedBuilder()
             .setColor('#9b6bff')
-            .setTitle('🍯 Honeypot caught a member')
+            .setTitle(t(lang, 'honeypot.report.title'))
             .addFields(
-                { name: 'Member', value: '<@' + entry.userId + '>' + (names ? ' · ' + names : '') + '\n@' + entry.username, inline: true },
-                { name: 'User ID', value: entry.userId, inline: true },
-                { name: 'Result', value: entry.result + (entry.dmSent ? '\nDM sent ✅' : '\nDM not sent'), inline: true }
+                { name: t(lang, 'honeypot.fields.member'), value: '<@' + entry.userId + '>' + (names ? t(lang, 'honeypot.report.names', { names }) : '') + '\n@' + entry.username, inline: true },
+                { name: t(lang, 'honeypot.fields.userId'), value: entry.userId, inline: true },
+                { name: t(lang, 'honeypot.fields.result'), value: resultText(entry.result, lang) + (entry.dmSent ? t(lang, 'honeypot.report.dmSent') : t(lang, 'honeypot.report.dmNotSent')), inline: true }
             )
             .setTimestamp();
         await channel.send({ embeds: [embed], allowedMentions: { parse: [] } });
@@ -199,18 +204,19 @@ async function dmOwner(guild, entry, channelName) {
         }
         w.sent++;
         const owner = await guild.fetchOwner();
-        const names = [entry.nickname && 'Nickname: ' + entry.nickname, entry.displayName && 'Display name: ' + entry.displayName].filter(Boolean).join('\n');
+        const lang = await userLanguage.forUser(owner.id);
+        const names = [entry.nickname && t(lang, 'honeypot.owner.nickname', { nickname: entry.nickname }), entry.displayName && t(lang, 'honeypot.owner.displayName', { displayName: entry.displayName })].filter(Boolean).join('\n');
         const embed = new EmbedBuilder()
             .setColor('#9b6bff')
-            .setTitle('🍯 Honeypot caught a member in ' + guild.name)
-            .setDescription('Someone posted in **#' + channelName + '**, your do-not-chat channel. This usually means their account was hacked.')
+            .setTitle(t(lang, 'honeypot.owner.title', { server: guild.name }))
+            .setDescription(t(lang, 'honeypot.owner.text', { channel: channelName }))
             .addFields(
-                { name: 'Member', value: '<@' + entry.userId + '>\nUsername: @' + entry.username + (names ? '\n' + names : '') },
-                { name: 'User ID', value: entry.userId, inline: true },
-                { name: 'When', value: '<t:' + Math.floor(now / 1000) + ':F>', inline: true },
-                { name: 'Result', value: entry.result + (entry.dmSent ? '\nThey were sent a "your account may be hacked" DM.' : ''), inline: false }
+                { name: t(lang, 'honeypot.fields.member'), value: t(lang, 'honeypot.owner.memberValue', { userId: entry.userId, username: entry.username, names: names ? '\n' + names : '' }) },
+                { name: t(lang, 'honeypot.fields.userId'), value: entry.userId, inline: true },
+                { name: t(lang, 'honeypot.fields.when'), value: '<t:' + Math.floor(now / 1000) + ':F>', inline: true },
+                { name: t(lang, 'honeypot.fields.result'), value: resultText(entry.result, lang) + (entry.dmSent ? t(lang, 'honeypot.owner.dmSent') : ''), inline: false }
             )
-            .setFooter({ text: 'Pingway honeypot · Full list: Pingway website → server settings → Honeypot' })
+            .setFooter({ text: t(lang, 'honeypot.owner.footer') })
             .setTimestamp();
         await owner.send({ embeds: [embed], allowedMentions: { parse: [] } });
     } catch (err) {
@@ -229,8 +235,8 @@ async function flushOwnerSummary(guild) {
 async function sendOwnerSummary(guild, count) {
     try {
         const owner = await guild.fetchOwner();
-        await owner.send({ content: '🍯 The honeypot in **' + guild.name + '** caught **' + count + ' more** member(s) in the last few minutes. ' +
-            'See all of them on the Pingway website → server settings → Honeypot.', allowedMentions: { parse: [] } });
+        const lang = await userLanguage.forUser(owner.id);
+        await owner.send({ content: t(lang, 'honeypot.owner.summary', { server: guild.name, count }), allowedMentions: { parse: [] } });
     } catch (e) { /* DMs closed */ }
 }
 
@@ -257,7 +263,7 @@ async function handle(message) {
     // DM first: after the softban they no longer share a server, so Discord would block the DM
     if (trap && trap.dm) {
         try {
-            await user.send({ embeds: [hackedDm(guild, message.channel.name || 'channel')] });
+            await user.send({ embeds: [hackedDm(guild, message.channel.name || 'channel', await userLanguage.forUser(user.id))] });
             entry.dmSent = true;
         } catch (e) { /* DMs closed */ }
     }

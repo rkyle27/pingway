@@ -1,0 +1,52 @@
+{
+  "cmd": {
+    "description": "📖 Liste toutes les commandes de Pingway et comment les utiliser."
+  },
+  "title": "📖 Guide des commandes Pingway",
+  "description": "🌐 **Gère Pingway dans ton navigateur !** Paramètres du serveur et paramètres perso sur **{url}**\n\nVoici tout ce que Pingway sait faire :",
+  "fields": {
+    "market": {
+      "name": "💰 Tableau des ventes",
+      "value": "**/price <item>** — Prix multi-mondes sur tes centres de données.\n**/datacenter** — Choisis tes centres de données (utilisés partout).\n**/marketalert** — Envoie en MP les offres à 80 % ou plus sous le prix habituel (chaque minute par défaut ; change l'intervalle des MP sur le site)."
+    },
+    "perks": {
+      "name": "💜 Avantages Supporter",
+      "value": "**/bestsellers** — Objets les plus vendus sur ton monde ou ton centre de données.\n**/buysell** — Objets populaires moins chers sur un autre monde que sur le tien.\n**/retainers** — Tes servants surveillés et leurs objets sous-cotés.\nRéglages : site → Retainers → Market tools. Avantages : 10 points par mois (vote sur top.gg pour des points)."
+    },
+    "status": {
+      "name": "🌍 État & minuteurs",
+      "value": "**/status** — État des mondes, et alertes en MP pour ton monde.\n**/timer** — Réinitialisations quotidiennes/hebdo, loterie immobilière, comptes à rebours de sortie.\n**/todo** — Ta liste quotidienne & hebdomadaire.\n**/firmament** — Minuteur perso des festivités du Firmament avec MP."
+    },
+    "party": {
+      "name": "🎯 Groupes & raids",
+      "value": "**/pf** — Annonces de Recherche d'équipe avec places par rôle & job.\n**/raid** — Planning de raid sur 7 jours depuis Google Sheets.\n**/poll** — Sondages avec vote limité par rôle et résultats."
+    },
+    "character": {
+      "name": "🪪 Personnage",
+      "value": "**/ign** — Ta carte de personnage avec infos Lodestone & QR code.\n**/ignconfig** — Lie Lodestone, job principal, photos, Tomestone & FFLogs."
+    },
+    "games": {
+      "name": "🃏 Jeux",
+      "value": "**/trivia** — Devine le mot FFXIV du jour (6 difficultés), gagne des bits, garde ta série.\n**/sciondex** — Recrute des PNJ, forme une équipe, affronte des boss.\n**/nissi** — Quiz sur les mécaniques de Nissi (TEA)."
+    },
+    "ai": {
+      "name": "🤖 Assistant IA",
+      "value": "Seulement dans le salon IA choisi par un admin avec **/ailistenhere** (un par serveur). Parle naturellement, par ex.\n*« Rappelle-moi de faire les roulettes dans 2 heures »* · *« Ajoute la tâche Acheter des potions »* · *« Montre ma liste de tâches »*\nDis **release recollection** pour effacer la courte mémoire de discussion."
+    },
+    "admin": {
+      "name": "🛠️ Admin",
+      "value": "**/ailistenhere** — Déplace le chat IA dans ce salon (relance-la là-bas pour la désactiver).\n**/notifhere** — Choisis ce salon pour les notifications de Pingway.\n**/welcomehere** — Publie des cartes de bienvenue pour les nouveaux membres dans ce salon (`action: off` pour arrêter).\n**/clean** — Supprime des messages en masse (même de plus de 14 jours).\n**/honeypot** — Salon « ne pas écrire ici » qui retire les comptes piratés qui spamment.\n**/logger** — Enregistre l'utilisation des commandes dans un Google Sheet.\n🌐 Sur le site : **Rôles par réaction**, **Tickets** (support) et salons **Actus FFXIV**."
+    },
+    "other": {
+      "name": "📨 Autres",
+      "value": "**/clearbotdms** — Nettoie les messages de Pingway dans tes MP.\n**/pingway** — Choisis la langue de Pingway pour toi (en, fr, de, jp ou auto).\n**/help** — Ce guide."
+    }
+  },
+  "footer": "Pingway, bot Discord FFXIV • Développé par River Zola",
+  "buttons": {
+    "website": "Site web",
+    "invite": "Inviter",
+    "support": "Support",
+    "privacy": "Confidentialité"
+  }
+}

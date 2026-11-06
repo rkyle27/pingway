@@ -11,6 +11,8 @@ const { isMaintenance } = require('../maintenance');
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
+const { t, discordLocalizations } = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
 
 // Load Data Centers and Worlds directly from data/datacenter.json
 let DATA_CENTERS = {};
@@ -79,10 +81,10 @@ async function fetchWorldStatuses() {
     }
 }
 
-function getStatusDisplay(worldStatus) {
-    if (worldStatus === 'UP') return { icon: '🟢', text: 'Online' };
-    if (worldStatus === 'DOWN') return { icon: '🔧', text: 'Offline / Maintenance' };
-    return { icon: '➖', text: 'No Data' };
+function getStatusDisplay(worldStatus, lang = 'en') {
+    if (worldStatus === 'UP') return { icon: '🟢', text: t(lang, 'status.online') };
+    if (worldStatus === 'DOWN') return { icon: '🔧', text: t(lang, 'status.offline') };
+    return { icon: '➖', text: t(lang, 'status.noData') };
 }
 
 async function getSubscription(userId) {
@@ -114,20 +116,21 @@ function getViewedDc(interaction) {
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('status')
-        .setDescription('🔍 Check FFXIV server status and toggle alert notifications.'),
+        .setDescription(t('en', 'status.cmd.description')).setDescriptionLocalizations(discordLocalizations('status.cmd.description')),
 
     async execute(interaction) {
         if (isMaintenance(interaction.guildId)) {
             return interaction.reply({
-                content: '⚠️ **The bot is currently undergoing maintenance.** Please try again later!',
+                content: t(await userLanguage.forInteraction(interaction), 'core.maintenance'),
                 flags: [MessageFlags.Ephemeral]
             });
         }
 
         await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
+        const lang = await userLanguage.forInteraction(interaction);
 
         // Open straight on the user's saved Data Center (nothing is saved until they pick a world)
-        const payload = await getDashboardPayload(interaction.user.id, null);
+        const payload = await getDashboardPayload(interaction.user.id, null, lang);
         return interaction.editReply(payload);
     },
 
@@ -140,11 +143,12 @@ module.exports = {
         if (interaction.customId === 'status_toggle_notif') {
             await interaction.deferUpdate();
             const userId = interaction.user.id;
+            const lang = await userLanguage.forInteraction(interaction);
             const sub = await getSubscription(userId);
 
             if (!sub || !sub.world) {
                 return interaction.followUp({
-                    content: '⚠️ Please select a World to track first before enabling notifications!',
+                    content: t(lang, 'status.pickWorldFirst'),
                     flags: [MessageFlags.Ephemeral]
                 });
             }
@@ -152,7 +156,7 @@ module.exports = {
             const newState = !Boolean(sub.notifications_enabled);
             await pool.execute('UPDATE user_server_subscriptions SET notifications_enabled = ? WHERE user_id = ?', [newState ? 1 : 0, userId]);
 
-            const payload = await getDashboardPayload(userId, getViewedDc(interaction));
+            const payload = await getDashboardPayload(userId, getViewedDc(interaction), lang);
             return interaction.editReply(payload);
         }
     },
@@ -160,10 +164,10 @@ module.exports = {
     async handleSelect(interaction) {
         await interaction.deferUpdate();
         const userId = interaction.user.id;
-
+        const lang = await userLanguage.forInteraction(interaction);
         // Picking a Data Center only changes what is shown. The tracked world is NOT changed.
         if (interaction.customId === 'status_select_dc') {
-            const payload = await getDashboardPayload(userId, interaction.values[0]);
+            const payload = await getDashboardPayload(userId, interaction.values[0], lang);
             return interaction.editReply(payload);
         }
 
@@ -183,13 +187,13 @@ module.exports = {
                 );
             }
 
-            const payload = await getDashboardPayload(userId, dc);
+            const payload = await getDashboardPayload(userId, dc, lang);
             return interaction.editReply(payload);
         }
     }
 };
 
-async function getDashboardPayload(userId, viewDc) {
+async function getDashboardPayload(userId, viewDc, lang = 'en') {
     const sub = await getSubscription(userId);
     const trackedWorld = sub && sub.world ? sub.world : null;
     const trackedDc = trackedWorld ? (findDcForWorld(trackedWorld) || sub.datacenter) : null;
@@ -202,33 +206,33 @@ async function getDashboardPayload(userId, viewDc) {
 
     const { statuses, isFallback } = await fetchWorldStatuses();
 
-    let description = '### 🌍 FFXIV Status: **' + activeDc + '** Data Center\n';
+    let description = t(lang, 'status.title', { dc: activeDc });
 
     if (isFallback) {
-        description += '⚠️ **Warning:** Could not retrieve live data from xivup API. Statuses shown as no data (-).\n';
+        description += t(lang, 'status.fallback');
     }
 
     if (trackedWorld) {
-        description += 'Selected World Tracking: **' + trackedWorld + '** (DM Alerts: **' + (notifEnabled ? 'Enabled' : 'Disabled') + '**)\n';
+        description += t(lang, 'status.tracking', { world: trackedWorld, alerts: notifEnabled ? t(lang, 'status.enabled') : t(lang, 'status.disabled') });
         // Tracked world is on another Data Center: still show its status
         if (!worlds.includes(trackedWorld)) {
-            const tracked = getStatusDisplay(statuses[trackedWorld]);
-            description += tracked.icon + ' **' + trackedWorld + '** (' + trackedDc + ') — *' + tracked.text + '*\n';
+            const tracked = getStatusDisplay(statuses[trackedWorld], lang);
+            description += t(lang, 'status.trackedLine', { icon: tracked.icon, world: trackedWorld, dc: trackedDc, status: tracked.text });
         }
     } else {
-        description += 'Selected World Tracking: **None** — pick a World below to track it.\n';
+        description += t(lang, 'status.trackingNone');
     }
     description += '\n';
 
     for (const w of worlds) {
-        const display = getStatusDisplay(statuses[w]);
-        description += display.icon + ' **' + w + '** — *' + display.text + '*\n';
+        const display = getStatusDisplay(statuses[w], lang);
+        description += t(lang, 'status.worldLine', { icon: display.icon, world: w, status: display.text });
     }
 
     const dcRow = new ActionRowBuilder().addComponents(
         new StringSelectMenuBuilder()
             .setCustomId('status_select_dc')
-            .setPlaceholder('Switch Data Center')
+            .setPlaceholder(t(lang, 'status.switchDc'))
             .addOptions(
                 dcKeys.slice(0, 25).map(dc => ({
                     label: dc,
@@ -241,19 +245,19 @@ async function getDashboardPayload(userId, viewDc) {
     const worldRow = new ActionRowBuilder().addComponents(
         new StringSelectMenuBuilder()
             .setCustomId('status_select_world')
-            .setPlaceholder('Select World to Track')
+            .setPlaceholder(t(lang, 'status.selectWorld'))
             .addOptions(worlds.slice(0, 25).map(w => ({ label: w, value: w, default: w === trackedWorld })))
     );
 
     const buttonRow = new ActionRowBuilder().addComponents(
         new ButtonBuilder()
             .setCustomId('status_toggle_notif')
-            .setLabel(notifEnabled ? '🔕 Disable DM Alerts' : '🔔 Enable DM Alerts')
+            .setLabel(notifEnabled ? t(lang, 'status.disableDm') : t(lang, 'status.enableDm'))
             .setStyle(notifEnabled ? ButtonStyle.Danger : ButtonStyle.Success)
             .setDisabled(!trackedWorld),
         new ButtonBuilder()
             .setCustomId('status_exit')
-            .setLabel('Exit')
+            .setLabel(t(lang, 'status.exit'))
             .setStyle(ButtonStyle.Secondary)
     );
 

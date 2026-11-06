@@ -1,0 +1,23 @@
+{
+  "online": "Online",
+  "offline": "Offline / Maintenance",
+  "noData": "No Data",
+  "cmd": {
+    "description": "🔍 Check FFXIV server status and toggle alert notifications."
+  },
+  "pickWorldFirst": "⚠️ Please select a World to track first before enabling notifications!",
+  "title": "### 🌍 FFXIV Status: **{dc}** Data Center\n",
+  "fallback": "⚠️ **Warning:** Could not retrieve live data from xivup API. Statuses shown as no data (-).\n",
+  "enabled": "Enabled",
+  "disabled": "Disabled",
+  "tracking": "Selected World Tracking: **{world}** (DM Alerts: **{alerts}**)\n",
+  "trackedLine": "{icon} **{world}** ({dc}) — *{status}*\n",
+  "trackingNone": "Selected World Tracking: **None** — pick a World below to track it.\n",
+  "worldLine": "{icon} **{world}** — *{status}*\n",
+  "switchDc": "Switch Data Center",
+  "selectWorld": "Select World to Track",
+  "disableDm": "🔕 Disable DM Alerts",
+  "enableDm": "🔔 Enable DM Alerts",
+  "exit": "Exit",
+  "alertDm": "🟢 **FFXIV Server Alert!**\nWorld **{world}** ({dc}) has recovered from maintenance and is now **ONLINE**!"
+}

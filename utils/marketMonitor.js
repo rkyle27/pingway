@@ -5,6 +5,8 @@ const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const { pool } = require('./db');
 const retainerWatch = require('./retainerWatch');
 const dmStatus = require('./dmStatus');
+const { t, localeOf } = require('./i18n');
+const userLanguage = require('./userLanguage');
 
 const UNIVERSALIS_WS_URL = 'wss://universalis.app/api/ws';
 const UNIVERSALIS_API = 'https://universalis.app/api/v2';
@@ -400,15 +402,17 @@ async function passesListingCheck(itemId, dc, quality, listing) {
     }
 }
 
-async function getItemName(itemId) {
-    const cachedName = itemNameCache.get(itemId);
+// lang: the reader's language (XIVAPI has item names in en, fr, de and ja); cached per language
+async function getItemName(itemId, lang = 'en') {
+    const cacheKey = lang === 'en' ? itemId : lang + ':' + itemId;
+    const cachedName = itemNameCache.get(cacheKey);
     if (cachedName && Date.now() - cachedName.time < NAME_CACHE_MS) return cachedName.name;
     try {
-        const res = await axios.get('https://v2.xivapi.com/api/sheet/Item/' + itemId, { timeout: 5000 });
+        const res = await axios.get('https://v2.xivapi.com/api/sheet/Item/' + itemId + (lang === 'en' ? '' : '?language=' + lang), { timeout: 5000 });
         const name = res.data && res.data.fields && res.data.fields.Name ? res.data.fields.Name : null;
         if (name) {
-            itemNameCache.delete(itemId);
-            itemNameCache.set(itemId, { name, time: Date.now() });
+            itemNameCache.delete(cacheKey);
+            itemNameCache.set(cacheKey, { name, time: Date.now() });
             // Keep at most NAME_CACHE_MAX names (oldest are dropped first)
             while (itemNameCache.size > NAME_CACHE_MAX) itemNameCache.delete(itemNameCache.keys().next().value);
         }
@@ -505,7 +509,7 @@ function notifySubscribedUsers(client, alertData) {
 }
 
 const CODE_FENCE = String.fromCharCode(96).repeat(3); // Discord code block fence for the aligned table
-const ALERT_FOOTER = 'Data provided by Universalis Live Feed • Use /datacenter to change your Data Centers';
+const ALERT_FOOTER = t('en', 'alerts.footer');
 
 function padRight(text, width) {
     text = String(text);
@@ -533,13 +537,13 @@ function bestPercent(entry) {
     return Math.min(...Array.from(entry.rows.values()).map(r => r.percent));
 }
 
-function buildItemEmbed(entry, itemName) {
+function buildItemEmbed(entry, itemName, lang = 'en') {
     const rows = sortRows(Array.from(entry.rows.values()));
-    const worldCells = rows.map(r => '[' + r.dc + '] ' + (WORLD_NAMES[r.worldId] || ('World ' + r.worldId)));
-    const priceCells = rows.map(r => r.price.toLocaleString('en-US') + ' Gil');
-    const avgCells = rows.map(r => Math.round(r.avg).toLocaleString('en-US') + ' Gil');
+    const worldCells = rows.map(r => '[' + r.dc + '] ' + (WORLD_NAMES[r.worldId] || (t(lang, 'alerts.worldFallback', { id: r.worldId }))));
+    const priceCells = rows.map(r => t(lang, 'alerts.gil', { n: r.price.toLocaleString(localeOf(lang)) }));
+    const avgCells = rows.map(r => t(lang, 'alerts.gil', { n: Math.round(r.avg).toLocaleString(localeOf(lang)) }));
 
-    const headers = ['World', 'Listed Price', 'DC Median Sale'];
+    const headers = [t(lang, 'alerts.headers.world'), t(lang, 'alerts.headers.price'), t(lang, 'alerts.headers.median')];
     const w1 = Math.max(headers[0].length, ...worldCells.map(c => c.length));
     const w2 = Math.max(headers[1].length, ...priceCells.map(c => c.length));
     const w3 = Math.max(headers[2].length, ...avgCells.map(c => c.length));
@@ -557,12 +561,12 @@ function buildItemEmbed(entry, itemName) {
         length += line.length + 1;
         shown++;
     }
-    if (shown < rows.length) lines.push('...and ' + (rows.length - shown) + ' more world(s)');
+    if (shown < rows.length) lines.push(t(lang, 'alerts.moreWorlds', { count: rows.length - shown }));
 
-    const name = itemName ? itemName + ' (#' + entry.itemId + ')' : 'Item #' + entry.itemId;
+    const name = itemName ? itemName + ' (#' + entry.itemId + ')' : t(lang, 'alerts.itemFallback', { id: entry.itemId });
     // Item name alone in its own box (Discord shows a copy button) for pasting into the in-game market board search
     const nameBox = itemName ? CODE_FENCE + '\n' + String(itemName).replace(/`/g, '') + '\n' + CODE_FENCE + '\n' : '';
-    const title = '🚨 ' + name + ' — ' + (entry.hq ? 'HQ' : 'NQ') + ' (up to ' + bestPercent(entry).toFixed(1) + '%)';
+    const title = t(lang, 'alerts.title', { name, quality: entry.hq ? 'HQ' : 'NQ', percent: bestPercent(entry).toFixed(1) });
 
     return new EmbedBuilder()
         .setTitle(title.slice(0, 256))
@@ -592,25 +596,27 @@ function chunkEmbeds(embeds) {
 
 // "Server channel" mode: post the market alerts in each chosen channel (no pings). The user must still be the
 // server's owner or an admin; otherwise that server is skipped.
-async function postToChannels(client, userId, targets, embeds) {
+// embedsFor(lang): the alert embeds in that language (each server channel gets its server's language)
+async function postToChannels(client, userId, targets, embedsFor) {
     let sent = 0;
-    for (const t of targets) {
-        const guild = client.guilds.cache.get(t.guildId);
-        const channel = guild && guild.channels.cache.get(t.channelId);
-        const warnKey = userId + ':' + t.guildId;
+    for (const target of targets) {
+        const guild = client.guilds.cache.get(target.guildId);
+        const channel = guild && guild.channels.cache.get(target.channelId);
+        const warnKey = userId + ':' + target.guildId;
         const warn = text => {
             if (Date.now() - (targetWarned.get(warnKey) || 0) < 6 * 60 * 60 * 1000) return;
             targetWarned.set(warnKey, Date.now());
             console.error('❌ [MARKET] ' + text);
         };
-        if (!guild || !channel || !channel.isTextBased()) { warn('Alert channel for user ' + userId + ' not found (server ' + t.guildId + ').'); continue; }
+        if (!guild || !channel || !channel.isTextBased()) { warn('Alert channel for user ' + userId + ' not found (server ' + target.guildId + ').'); continue; }
         const member = guild.ownerId === userId ? null : await guild.members.fetch(userId).catch(() => null);
         if (guild.ownerId !== userId && !(member && member.permissions.has(PermissionFlagsBits.Administrator))) {
             warn('User ' + userId + ' is no longer owner/admin of ' + guild.name + ': market alerts not posted there.');
             continue;
         }
-        for (const group of chunkEmbeds(embeds)) {
-            group[group.length - 1].setFooter({ text: ALERT_FOOTER }).setTimestamp();
+        const lang = userLanguage.forGuild(guild); // public post: the server's language
+        for (const group of chunkEmbeds(await embedsFor(lang))) {
+            group[group.length - 1].setFooter({ text: t(lang, 'alerts.footer') }).setTimestamp();
             try {
                 await channel.send({ embeds: group, allowedMentions: { parse: [] } });
                 sent++;
@@ -647,24 +653,29 @@ async function flushAlerts(client) {
             // "Server channel" mode: market alerts go to the channels; retainer undercuts still go to the DM below
             const targets = alertTargets.get(userId);
             if (targets && targets.length && entries.length) {
-                const itemEmbeds = [];
-                for (const entry of entries) itemEmbeds.push(buildItemEmbed(entry, await getItemName(entry.itemId)));
-                await postToChannels(client, userId, targets, itemEmbeds);
+                const channelEntries = entries;
+                const embedsFor = async lang => {
+                    const itemEmbeds = [];
+                    for (const entry of channelEntries) itemEmbeds.push(buildItemEmbed(entry, await getItemName(entry.itemId, lang), lang));
+                    return itemEmbeds;
+                };
+                await postToChannels(client, userId, targets, embedsFor);
                 lastSentAt.set(userId, now);
                 entries = [];
             }
             const hasUndercuts = undercuts.get(userId) && undercuts.get(userId).size;
             if (!entries.length && !hasUndercuts) continue;
 
+            const lang = await userLanguage.forUser(userId); // DM: the user's language
             const embeds = [];
             const userUndercuts = undercuts.get(userId);
             if (userUndercuts && userUndercuts.size) {
                 const names = new Map();
-                for (const u of userUndercuts.values()) if (!names.has(u.itemId)) names.set(u.itemId, await getItemName(u.itemId));
-                embeds.push(retainerWatch.buildUndercutEmbed(userUndercuts, names));
+                for (const u of userUndercuts.values()) if (!names.has(u.itemId)) names.set(u.itemId, await getItemName(u.itemId, lang));
+                embeds.push(retainerWatch.buildUndercutEmbed(userUndercuts, names, lang));
             }
             for (const entry of entries) {
-                embeds.push(buildItemEmbed(entry, await getItemName(entry.itemId)));
+                embeds.push(buildItemEmbed(entry, await getItemName(entry.itemId, lang), lang));
             }
 
             // Split into messages: max 10 items each, and under Discord's character limit
@@ -699,7 +710,7 @@ async function flushAlerts(client) {
             }
 
             for (const group of messages) {
-                group[group.length - 1].setFooter({ text: entries.length ? ALERT_FOOTER : 'Data provided by Universalis Live Feed' }).setTimestamp();
+                group[group.length - 1].setFooter({ text: entries.length ? t(lang, 'alerts.footer') : t(lang, 'alerts.footerShort') }).setTimestamp();
                 try {
                     await user.send({ embeds: group });
                     lastSentAt.set(userId, now);

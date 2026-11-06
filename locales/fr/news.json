@@ -1,0 +1,14 @@
+{
+  "categories": {
+    "topics": "À la une",
+    "notices": "Annonces",
+    "maintenance": "Maintenance",
+    "updates": "Mises à jour",
+    "status": "État"
+  },
+  "nothing": "rien (aucune catégorie choisie)",
+  "welcome": "📰 Les **actus FFXIV** du Lodestone ({edition}) seront publiées ici : {categories}.",
+  "fallbackTitle": "Actus du Lodestone",
+  "footer": "Lodestone · {category} · {edition}",
+  "when": "🕒 <t:{start}:f> → <t:{end}:f> (dans ton fuseau horaire)"
+}

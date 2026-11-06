@@ -1,0 +1,15 @@
+{
+  "cmd": {
+    "description": "Choisis tes centres de données préférés pour la commande /price"
+  },
+  "region": "Région : {region}",
+  "noneConfigured": "❌ **Erreur :** aucun centre de données trouvé dans le fichier de configuration.",
+  "placeholder": "Choisis tes centres de données (plusieurs possibles)",
+  "done": "Terminé",
+  "clear": "Effacer les données enregistrées",
+  "intro": "🌐 **Réglage des centres de données :** choisis les centres de données à vérifier lors des recherches `/price` (enregistrement automatique) :",
+  "updated": "✅ **Centres de données mis à jour !**\nSélection : `{list}`",
+  "saveFailed": "❌ Impossible d'enregistrer tes centres de données dans la base de données.",
+  "cleared": "🗑️ **Centres de données enregistrés effacés !** Tu n'as plus aucun centre de données sélectionné.",
+  "clearFailed": "❌ Impossible d'effacer tes données enregistrées."
+}

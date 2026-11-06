@@ -1,0 +1,8 @@
+{
+  "cmd": {
+    "description": "🧹 Clear all direct messages sent by the bot in this DM channel."
+  },
+  "onlyDms": "⚠️ This command can only be used in **Direct Messages (DMs)** with the bot.",
+  "done": "✅ Successfully cleaned up **{deletedCount}** message(s) sent by the bot in this DM.",
+  "failed": "❌ An error occurred while clearing DM messages."
+}

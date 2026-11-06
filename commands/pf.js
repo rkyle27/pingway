@@ -9,6 +9,10 @@ const { isMaintenance } = require('../maintenance');
 
 // --- DATABASE POOL (shared with the rest of the bot) ---
 const { pool: db } = require('../utils/db');
+const { t, tOr, discordLocalizations } = require('../utils/i18n');
+// Job names from data/jobs.json are English; shown in the reader's language when there is a translation (locales/*/jobs.json)
+const jobName = (name, lang) => tOr(lang, 'jobs.' + name, name);
+const userLanguage = require('../utils/userLanguage');
 
 // --- JOBS.JSON LOADER ---
 function loadJobsJSON() {
@@ -262,13 +266,14 @@ function getDynamicCounts(listing) {
 }
 
 async function buildPFEmbedAndRows(listing, guild, authorTag) {
+    const lang = userLanguage.forGuild(guild); // the listing is public: the server's language
     ensureListingClaims(listing);
     migrateOldJobCodes(listing);
     const jobsDB = loadJobsJSON();
     const dyn = getDynamicCounts(listing);
 
     const formatSlotEntries = (entries) => {
-        if (!entries || entries.length === 0) return '*None*';
+        if (!entries || entries.length === 0) return t(lang, 'pf.none');
         return entries.map((e, idx) => {
             let jobDisplay = '🎭';
             if (e && e.job) {
@@ -285,46 +290,46 @@ async function buildPFEmbedAndRows(listing, guild, authorTag) {
                     jobDisplay = e.job;
                 }
             }
-            const userIdTag = e?.userId ? `<@${e.userId}>` : 'Unknown';
+            const userIdTag = e?.userId ? `<@${e.userId}>` : t(lang, 'pf.unknown');
             return `[${idx + 1}] ${jobDisplay} ${userIdTag}`;
         }).join('\n');
     };
 
     const fieldsArr = [];
 
-    fieldsArr.push({ name: `🛡️ Tanks (${listing.claims.tanks.length}/${listing.tanks})`, value: formatSlotEntries(listing.claims.tanks), inline: true });
-    fieldsArr.push({ name: `💚 Healers (${listing.claims.healers.length}/${listing.healers})`, value: formatSlotEntries(listing.claims.healers), inline: true });
-    fieldsArr.push({ name: `⚔️ DPS (${dyn.currentDpsUsed}/${dyn.maxDpsPool})`, value: formatSlotEntries([...listing.claims.dps, ...listing.claims.meleedps, ...listing.claims.range, ...listing.claims.caster]), inline: true });
+    fieldsArr.push({ name: t(lang, 'pf.f.tanks', { n: listing.claims.tanks.length, max: listing.tanks }), value: formatSlotEntries(listing.claims.tanks), inline: true });
+    fieldsArr.push({ name: t(lang, 'pf.f.healers', { n: listing.claims.healers.length, max: listing.healers }), value: formatSlotEntries(listing.claims.healers), inline: true });
+    fieldsArr.push({ name: t(lang, 'pf.f.dps', { n: dyn.currentDpsUsed, max: dyn.maxDpsPool }), value: formatSlotEntries([...listing.claims.dps, ...listing.claims.meleedps, ...listing.claims.range, ...listing.claims.caster]), inline: true });
 
-    fieldsArr.push({ name: `🗡️ MeleeDPS (${listing.claims.meleedps.length}/${listing.meleedps})`, value: formatSlotEntries(listing.claims.meleedps), inline: true });
-    fieldsArr.push({ name: `🏹 RangeDPS (${listing.claims.range.length}/${listing.range})`, value: formatSlotEntries(listing.claims.range), inline: true });
-    fieldsArr.push({ name: `✨ CasterDPS (${listing.claims.caster.length}/${listing.caster})`, value: formatSlotEntries(listing.claims.caster), inline: true });
+    fieldsArr.push({ name: t(lang, 'pf.f.melee', { n: listing.claims.meleedps.length, max: listing.meleedps }), value: formatSlotEntries(listing.claims.meleedps), inline: true });
+    fieldsArr.push({ name: t(lang, 'pf.f.range', { n: listing.claims.range.length, max: listing.range }), value: formatSlotEntries(listing.claims.range), inline: true });
+    fieldsArr.push({ name: t(lang, 'pf.f.caster', { n: listing.claims.caster.length, max: listing.caster }), value: formatSlotEntries(listing.claims.caster), inline: true });
 
-    fieldsArr.push({ name: `📌 Other (${dyn.currentOtherUsed}/${dyn.maxOtherPool})`, value: formatSlotEntries(listing.claims.other), inline: false });
-    fieldsArr.push({ name: `📥 Reserves / Bench (${listing.claims.reserves.length})`, value: formatSlotEntries(listing.claims.reserves), inline: false });
+    fieldsArr.push({ name: t(lang, 'pf.f.other', { n: dyn.currentOtherUsed, max: dyn.maxOtherPool }), value: formatSlotEntries(listing.claims.other), inline: false });
+    fieldsArr.push({ name: t(lang, 'pf.f.reserves', { n: listing.claims.reserves.length }), value: formatSlotEntries(listing.claims.reserves), inline: false });
 
     const targetMs = parseListingTimestamp(listing.date);
     const hammertimeDisplay = targetMs ? ` (${toDiscordTimestamp(targetMs, 'f')} / ${toDiscordTimestamp(targetMs, 'R')})` : '';
 
     const embed = new EmbedBuilder()
-        .setTitle(`⚔️ Party Finder: ${listing.name}`)
-        .setDescription(`Hosted by <@${listing.userId}>\nScheduled for: **${listing.date}**${hammertimeDisplay}\n\nParty Size: **${listing.size}**\n\nClick **Join** below to pick your role and job, or manage your listing!`)
+        .setTitle(t(lang, 'pf.title', { name: listing.name }))
+        .setDescription(t(lang, 'pf.description', { host: listing.userId, date: listing.date, timestamps: hammertimeDisplay, size: listing.size }))
         .setColor('#f1c40f')
         .addFields(fieldsArr)
-        .setFooter({ text: `ID: ${listing.id}` });
+        .setFooter({ text: t(lang, 'pf.footerId', { id: listing.id }) });
 
     if (listing.imageUrl) {
         embed.setImage(listing.imageUrl);
     }
 
     const actionRowComps = [
-        new ButtonBuilder().setCustomId(`pf_join_modal_${listing.id}`).setLabel('Join [📝]').setStyle(ButtonStyle.Success),
-        new ButtonBuilder().setCustomId(`pf_leave_${listing.id}`).setLabel('Leave / Cancel [🚪]').setStyle(ButtonStyle.Secondary)
+        new ButtonBuilder().setCustomId(`pf_join_modal_${listing.id}`).setLabel(t(lang, 'pf.join')).setStyle(ButtonStyle.Success),
+        new ButtonBuilder().setCustomId(`pf_leave_${listing.id}`).setLabel(t(lang, 'pf.leave')).setStyle(ButtonStyle.Secondary)
     ];
 
     const actionRowAdminComps = [
-        new ButtonBuilder().setCustomId(`pf_pub_edit_${listing.id}`).setLabel('Edit Date & Time 📅').setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder().setCustomId(`pf_pub_delete_${listing.id}`).setLabel('Delete Listing 🗑️').setStyle(ButtonStyle.Danger)
+        new ButtonBuilder().setCustomId(`pf_pub_edit_${listing.id}`).setLabel(t(lang, 'pf.editDate')).setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId(`pf_pub_delete_${listing.id}`).setLabel(t(lang, 'pf.deleteListing')).setStyle(ButtonStyle.Danger)
     ];
 
     const components = [
@@ -352,6 +357,7 @@ async function updateChannelListingEmbed(interaction, listing) {
 }
 
 async function sendTimezoneSelectEphemeral(interaction, session, update = false) {
+    const lang = await userLanguage.forInteraction(interaction);
     session.step = 'sel_timezone';
     if (session.data.gmt === undefined) session.data.gmt = 9;
 
@@ -363,15 +369,15 @@ async function sendTimezoneSelectEphemeral(interaction, session, update = false)
 
     const gmtMenu = new StringSelectMenuBuilder()
         .setCustomId('pf_sel_gmt_menu')
-        .setPlaceholder(`Select Timezone (Current: GMT${session.data.gmt >= 0 ? '+' + session.data.gmt : session.data.gmt})`)
+        .setPlaceholder(t(lang, 'pf.selectTz', { gmt: session.data.gmt >= 0 ? '+' + session.data.gmt : session.data.gmt }))
         .addOptions(gmtOptions);
 
     const row1 = new ActionRowBuilder().addComponents(gmtMenu);
     const row2 = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('pf_timezone_done').setLabel('Confirm Timezone ✅').setStyle(ButtonStyle.Success)
+        new ButtonBuilder().setCustomId('pf_timezone_done').setLabel(t(lang, 'pf.confirmTz')).setStyle(ButtonStyle.Success)
     );
 
-    const payload = { content: "🌍 **Step 3:** Select your **Timezone / GMT Offset** first so we can calculate your local date and time accurately:", components: [row1, row2], embeds: [], flags: [MessageFlags.Ephemeral] };
+    const payload = { content: t(lang, 'pf.step3'), components: [row1, row2], embeds: [], flags: [MessageFlags.Ephemeral] };
 
     if (update) {
         return await interaction.update(payload);
@@ -381,6 +387,7 @@ async function sendTimezoneSelectEphemeral(interaction, session, update = false)
 }
 
 async function sendDateModal(interaction, session) {
+    const lang = await userLanguage.forInteraction(interaction);
     session.step = 'modal_date';
 
     const gmtOffset = session.data.gmt ?? 9;
@@ -391,12 +398,12 @@ async function sendDateModal(interaction, session) {
 
     const modal = new ModalBuilder()
         .setCustomId('pf_modal_date')
-        .setTitle('Date Setup')
+        .setTitle(t(lang, 'pf.dateSetup'))
         .addComponents(
             new ActionRowBuilder().addComponents(
                 new TextInputBuilder()
                     .setCustomId('year_input')
-                    .setLabel('Year (YYYY)')
+                    .setLabel(t(lang, 'pf.year'))
                     .setStyle(TextInputStyle.Short)
                     .setValue(session.data.year || currentYear)
                     .setRequired(true)
@@ -404,7 +411,7 @@ async function sendDateModal(interaction, session) {
             new ActionRowBuilder().addComponents(
                 new TextInputBuilder()
                     .setCustomId('month_input')
-                    .setLabel('Month (1-12)')
+                    .setLabel(t(lang, 'pf.month'))
                     .setStyle(TextInputStyle.Short)
                     .setValue(session.data.month || currentMonth)
                     .setRequired(true)
@@ -412,7 +419,7 @@ async function sendDateModal(interaction, session) {
             new ActionRowBuilder().addComponents(
                 new TextInputBuilder()
                     .setCustomId('day_input')
-                    .setLabel('Day (1-31)')
+                    .setLabel(t(lang, 'pf.day'))
                     .setStyle(TextInputStyle.Short)
                     .setValue(session.data.day || currentDay)
                     .setRequired(true)
@@ -427,19 +434,20 @@ async function sendDateModal(interaction, session) {
 }
 
 async function sendImageModal(interaction, session) {
+    const lang = await userLanguage.forInteraction(interaction);
     session.step = 'modal_image';
 
     const modal = new ModalBuilder()
         .setCustomId('pf_modal_image')
-        .setTitle('PF Cover Photo Setup')
+        .setTitle(t(lang, 'pf.photoSetup'))
         .addComponents(
             new ActionRowBuilder().addComponents(
                 new TextInputBuilder()
                     .setCustomId('image_url_input')
-                    .setLabel('Cover Photo URL')
+                    .setLabel(t(lang, 'pf.photoUrl'))
                     .setStyle(TextInputStyle.Short)
                     .setValue(session.data.imageUrl || '')
-                    .setPlaceholder('can leave blank to use random preset image')
+                    .setPlaceholder(t(lang, 'pf.photoBlank'))
                     .setRequired(false)
             )
         );
@@ -452,6 +460,7 @@ async function sendImageModal(interaction, session) {
 }
 
 async function sendRoleConfigEphemeral(interaction, session, update = false) {
+    const lang = await userLanguage.forInteraction(interaction);
     session.step = 'config_roles';
     const partySize = session.data.size;
     const tanks = session.data.tanks ?? (partySize === 4 ? 1 : 2);
@@ -471,42 +480,42 @@ async function sendRoleConfigEphemeral(interaction, session, update = false) {
 
     let warningText = "";
     if (totalAssigned > partySize) {
-        warningText = `⚠️ **Warning:** Selected role total (**${totalAssigned}**) exceeds party size (**${partySize}**)!\n\n`;
+        warningText = t(lang, 'pf.roles.tooMany', { total: totalAssigned, size: partySize });
     } else if (totalAssigned < partySize) {
-        warningText = `⚠️ **Warning:** Selected role total (**${totalAssigned}**) is less than party size (**${partySize}**)! Must be equal.\n\n`;
+        warningText = t(lang, 'pf.roles.tooFew', { total: totalAssigned, size: partySize });
     } else {
-        warningText = `✅ Total assigned roles: **${totalAssigned} / ${partySize}** (Equal to party size).\n\n`;
+        warningText = t(lang, 'pf.roles.ok', { total: totalAssigned, size: partySize });
     }
 
     const description = warningText +
-        `👉 **Click the role buttons below to change slot counts:**\n` +
-        `• **Tanks:** ${tanks}\n` +
-        `• **Healers:** ${healers}\n` +
-        `• **MeleeDPS:** ${melee}\n` +
-        `• **RangeDPS:** ${range}\n` +
-        `• **CasterDPS:** ${caster}`;
+        t(lang, 'pf.roles.click') +
+        t(lang, 'pf.roles.tanks', { n: tanks }) +
+        t(lang, 'pf.roles.healers', { n: healers }) +
+        t(lang, 'pf.roles.melee', { n: melee }) +
+        t(lang, 'pf.roles.range', { n: range }) +
+        t(lang, 'pf.roles.caster', { n: caster });
 
     const embed = new EmbedBuilder()
-        .setTitle('⚙️ Configure Role Slots')
+        .setTitle(t(lang, 'pf.roles.title'))
         .setDescription(description)
         .setColor(isMismatch ? '#e74c3c' : '#3498db');
 
     const row1 = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('pf_cfg_tanks').setLabel('Tank').setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder().setCustomId('pf_cfg_healers').setLabel('Healer').setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder().setCustomId('pf_cfg_meleedps').setLabel('MeleeDPS').setStyle(ButtonStyle.Secondary)
+        new ButtonBuilder().setCustomId('pf_cfg_tanks').setLabel(t(lang, 'pf.roles.tank')).setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('pf_cfg_healers').setLabel(t(lang, 'pf.roles.healer')).setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('pf_cfg_meleedps').setLabel(t(lang, 'pf.roles.meleeBtn')).setStyle(ButtonStyle.Secondary)
     );
 
     const row2 = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('pf_cfg_range').setLabel('RangeDPS').setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder().setCustomId('pf_cfg_caster').setLabel('CasterDPS').setStyle(ButtonStyle.Secondary)
+        new ButtonBuilder().setCustomId('pf_cfg_range').setLabel(t(lang, 'pf.roles.rangeBtn')).setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('pf_cfg_caster').setLabel(t(lang, 'pf.roles.casterBtn')).setStyle(ButtonStyle.Secondary)
     );
 
     const row3 = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('pf_cfg_confirm').setLabel('Confirm Roles ✅').setStyle(ButtonStyle.Success).setDisabled(isMismatch)
+        new ButtonBuilder().setCustomId('pf_cfg_confirm').setLabel(t(lang, 'pf.roles.confirm')).setStyle(ButtonStyle.Success).setDisabled(isMismatch)
     );
 
-    const payload = { content: "Configure the slots for your Party Finder via ephemeral message:", embeds: [embed], components: [row1, row2, row3], flags: [MessageFlags.Ephemeral] };
+    const payload = { content: t(lang, 'pf.roles.configure'), embeds: [embed], components: [row1, row2, row3], flags: [MessageFlags.Ephemeral] };
 
     if (update) {
         return await interaction.update(payload);
@@ -516,6 +525,7 @@ async function sendRoleConfigEphemeral(interaction, session, update = false) {
 }
 
 async function sendConfirmationDashboard(interaction, session, isUpdate = false) {
+    const lang = await userLanguage.forInteraction(interaction);
     session.step = 'confirmation';
 
     const gmtOffsetVal = session.data.gmt ?? 9;
@@ -525,30 +535,30 @@ async function sendConfirmationDashboard(interaction, session, isUpdate = false)
     const previewHammertime = parsedTargetMs ? ` (${toDiscordTimestamp(parsedTargetMs, 'f')} / ${toDiscordTimestamp(parsedTargetMs, 'R')})` : '';
 
     const embed = new EmbedBuilder()
-        .setTitle('📋 Party Finder Preview Dashboard')
-        .setDescription('Review your event configuration below. Click any button to edit specific fields or finish publishing!')
+        .setTitle(t(lang, 'pf.preview.title'))
+        .setDescription(t(lang, 'pf.preview.help'))
         .setColor(isPast ? '#e74c3c' : '#3498db')
         .addFields(
-            { name: 'Duty & Size', value: `• Name: **${session.data.name}**\n• Size: **${session.data.size} Players**`, inline: false },
-            { name: 'Role Breakdown', value: `• Tanks: **${session.data.tanks}**\n• Healers: **${session.data.healers}**\n• MeleeDPS: **${session.data.meleedps}**\n• RangeDPS: **${session.data.range}**\n• CasterDPS: **${session.data.caster}**\n*(DPS & Other slots are dynamically handled)*`, inline: false },
-            { name: 'Scheduled Date & Time', value: `• **${session.data.dateStr} at ${session.data.time} (GMT${gmtOffsetVal >= 0 ? '+' + gmtOffsetVal : gmtOffsetVal})**${previewHammertime}`, inline: false },
-            { name: 'Cover Photo', value: session.data.imageUrl ? `[View Image URL](${session.data.imageUrl})` : '*Using Random Preset Image*', inline: false }
+            { name: t(lang, 'pf.preview.duty'), value: t(lang, 'pf.preview.dutyValue', { name: session.data.name, size: session.data.size }), inline: false },
+            { name: t(lang, 'pf.preview.roles'), value: t(lang, 'pf.preview.rolesValue', { tanks: session.data.tanks, healers: session.data.healers, melee: session.data.meleedps, range: session.data.range, caster: session.data.caster }), inline: false },
+            { name: t(lang, 'pf.preview.date'), value: t(lang, 'pf.preview.dateValue', { date: session.data.dateStr, time: session.data.time, gmt: gmtOffsetVal >= 0 ? '+' + gmtOffsetVal : gmtOffsetVal, timestamps: previewHammertime }), inline: false },
+            { name: t(lang, 'pf.preview.photo'), value: session.data.imageUrl ? t(lang, 'pf.preview.viewImage', { url: session.data.imageUrl }) : t(lang, 'pf.preview.randomImage'), inline: false }
         );
 
-    let contentMsg = "✅ Configuration generated successfully!";
+    let contentMsg = t(lang, 'pf.preview.generated');
     if (isPast) {
-        contentMsg = "⚠️ **Cannot make PF for the past!**";
+        contentMsg = t(lang, 'pf.preview.past');
     }
 
     const row1 = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('pf_edit_name_size').setLabel('Edit Duty/Size').setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder().setCustomId('pf_edit_roles').setLabel('Edit Roles').setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder().setCustomId('pf_edit_date').setLabel('Edit Date/Time').setStyle(ButtonStyle.Secondary)
+        new ButtonBuilder().setCustomId('pf_edit_name_size').setLabel(t(lang, 'pf.preview.editDuty')).setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('pf_edit_roles').setLabel(t(lang, 'pf.preview.editRoles')).setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('pf_edit_date').setLabel(t(lang, 'pf.preview.editDate')).setStyle(ButtonStyle.Secondary)
     );
 
     const row2 = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('pf_edit_image').setLabel('Change Photo 🖼️').setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder().setCustomId('pf_finish').setLabel('🚀 Finish & Announce').setStyle(ButtonStyle.Success).setDisabled(isPast)
+        new ButtonBuilder().setCustomId('pf_edit_image').setLabel(t(lang, 'pf.preview.changePhoto')).setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('pf_finish').setLabel(t(lang, 'pf.preview.finish')).setStyle(ButtonStyle.Success).setDisabled(isPast)
     );
 
     if (isUpdate) {
@@ -561,28 +571,31 @@ async function sendConfirmationDashboard(interaction, session, isUpdate = false)
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('pf')
-        .setDescription('Open the party finder wizard interface.'),
+        .setDescription(t('en', 'pf.cmd.description')).setDescriptionLocalizations(discordLocalizations('pf.cmd.description')),
 
     async execute(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         if (!global.pfSessions) global.pfSessions = new Map();
         global.pfSessions.set(interaction.user.id, { step: 'idle', data: {} });
 
         const row = new ActionRowBuilder().addComponents(
-            new ButtonBuilder().setCustomId('pf_create').setLabel('Create New').setStyle(ButtonStyle.Primary),
-            new ButtonBuilder().setCustomId('pf_check').setLabel('Check My PF(s)').setStyle(ButtonStyle.Secondary)
+            new ButtonBuilder().setCustomId('pf_create').setLabel(t(lang, 'pf.createNew')).setStyle(ButtonStyle.Primary),
+            new ButtonBuilder().setCustomId('pf_check').setLabel(t(lang, 'pf.checkMine')).setStyle(ButtonStyle.Secondary)
         );
 
         return await interaction.reply({
-            content: "Welcome to party finder wizard interface!\nPlease select your request:",
+            content: t(lang, 'pf.welcome'),
             components: [row],
             flags: [MessageFlags.Ephemeral]
         });
     },
 
     async handleInteraction(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
+        const glang = userLanguage.forGuild(interaction.guild); // public channel posts: the server's language
         if (isMaintenance(interaction.guildId)) {
             return interaction.reply({
-                content: '⚠️ **The bot is currently undergoing maintenance.** Please try again later!',
+                content: t(lang, 'core.maintenance'),
                 flags: [MessageFlags.Ephemeral]
             });
         }
@@ -599,11 +612,11 @@ module.exports = {
                 const dbData = await loadDB();
                 const listing = dbData.pfDatabase.find(l => l.id === listingId);
 
-                if (!listing) return interaction.reply({ content: "⚠️ This listing no longer exists.", flags: [MessageFlags.Ephemeral] });
+                if (!listing) return interaction.reply({ content: t(lang, 'pf.gone'), flags: [MessageFlags.Ephemeral] });
 
                 const isAdmin = interaction.memberPermissions?.has(PermissionFlagsBits.Administrator) || interaction.memberPermissions?.has(PermissionFlagsBits.ManageChannels);
                 if (listing.userId !== userId && !isAdmin) {
-                    return await interaction.reply({ content: "❌ Only the **host** or an **admin** can edit this listing's date & time.", flags: [MessageFlags.Ephemeral] });
+                    return await interaction.reply({ content: t(lang, 'pf.onlyHostEdit'), flags: [MessageFlags.Ephemeral] });
                 }
 
                 global.pfSessions.set(userId, { step: 'sel_timezone', data: { id: listing.id, isDirectEdit: true, name: listing.name, size: listing.size, imageUrl: listing.imageUrl } });
@@ -615,20 +628,20 @@ module.exports = {
                 const dbData = await loadDB();
                 const listing = dbData.pfDatabase.find(l => l.id === listingId);
 
-                if (!listing) return interaction.reply({ content: "⚠️ This listing no longer exists.", flags: [MessageFlags.Ephemeral] });
+                if (!listing) return interaction.reply({ content: t(lang, 'pf.gone'), flags: [MessageFlags.Ephemeral] });
 
                 const isAdmin = interaction.memberPermissions?.has(PermissionFlagsBits.Administrator) || interaction.memberPermissions?.has(PermissionFlagsBits.ManageChannels);
                 if (listing.userId !== userId && !isAdmin) {
-                    return await interaction.reply({ content: "❌ Only the **host** or an **admin** can delete this PF listing.", flags: [MessageFlags.Ephemeral] });
+                    return await interaction.reply({ content: t(lang, 'pf.onlyHostDelete'), flags: [MessageFlags.Ephemeral] });
                 }
 
                 const confirmRow = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setCustomId(`pf_confirm_pub_del_${listingId}`).setLabel('Yes, Delete Listing').setStyle(ButtonStyle.Danger),
-                    new ButtonBuilder().setCustomId(`pf_cancel_pub_del_${listingId}`).setLabel('No, Cancel').setStyle(ButtonStyle.Secondary)
+                    new ButtonBuilder().setCustomId(`pf_confirm_pub_del_${listingId}`).setLabel(t(lang, 'pf.yesDelete')).setStyle(ButtonStyle.Danger),
+                    new ButtonBuilder().setCustomId(`pf_cancel_pub_del_${listingId}`).setLabel(t(lang, 'pf.noCancel')).setStyle(ButtonStyle.Secondary)
                 );
 
                 return await interaction.reply({
-                    content: `⚠️ **Are you sure you want to delete "${listing.name}"?**\nThis will remove the channel announcement and clear this Party Finder listing permanently.`,
+                    content: t(lang, 'pf.confirmDelete', { name: listing.name }),
                     components: [confirmRow],
                     flags: [MessageFlags.Ephemeral]
                 });
@@ -655,19 +668,19 @@ module.exports = {
                     await deleteListingFromDB(listingId);
 
                     await interaction.channel.send({
-                        content: `🗑️ **User (<@${userId}>) deleted PF: (${listing.name}) set for (${listing.date}).**`
+                        content: t(glang, 'pf.deletedNotice', { userId, name: listing.name, date: listing.date })
                     }).catch(() => { });
                 }
 
                 return await interaction.update({
-                    content: "✅ Listing and announcement successfully deleted.",
+                    content: t(lang, 'pf.deleted'),
                     components: [],
                     embeds: []
                 });
             }
 
             if (cid.startsWith('pf_cancel_pub_del_')) {
-                return await interaction.update({ content: "❌ Deletion cancelled.", components: [], embeds: [] });
+                return await interaction.update({ content: t(lang, 'pf.deleteCancelled'), components: [], embeds: [] });
             }
 
             if (cid.startsWith('pf_delete_listing_')) {
@@ -677,18 +690,18 @@ module.exports = {
 
                 if (!listing) {
                     return interaction.reply({
-                        content: "⚠️ **Notice:** This Party Finder listing has already been deleted or does not exist.",
+                        content: t(lang, 'pf.alreadyDeleted'),
                         flags: [MessageFlags.Ephemeral]
                     });
                 }
 
                 const confirmRow = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setCustomId(`pf_confirm_del_${listingId}`).setLabel('Yes, Delete Listing').setStyle(ButtonStyle.Danger),
-                    new ButtonBuilder().setCustomId(`pf_cancel_del_${listingId}`).setLabel('No, Cancel').setStyle(ButtonStyle.Secondary)
+                    new ButtonBuilder().setCustomId(`pf_confirm_del_${listingId}`).setLabel(t(lang, 'pf.yesDelete')).setStyle(ButtonStyle.Danger),
+                    new ButtonBuilder().setCustomId(`pf_cancel_del_${listingId}`).setLabel(t(lang, 'pf.noCancel')).setStyle(ButtonStyle.Secondary)
                 );
 
                 return await interaction.reply({
-                    content: `⚠️ **Are you sure you want to delete "${listing.name}"?**\nThis will remove the channel announcement and clear this Party Finder listing permanently.`,
+                    content: t(lang, 'pf.confirmDelete', { name: listing.name }),
                     components: [confirmRow],
                     flags: [MessageFlags.Ephemeral]
                 });
@@ -715,19 +728,19 @@ module.exports = {
                     await deleteListingFromDB(listingId);
 
                     await interaction.channel.send({
-                        content: `🗑️ **User (<@${listing.userId}>) deleted PF: (${listing.name}) set for (${listing.date}).**`
+                        content: t(glang, 'pf.deletedNotice', { userId: listing.userId, name: listing.name, date: listing.date })
                     }).catch(() => { });
                 }
 
                 return await interaction.update({
-                    content: "✅ Listing and announcement successfully deleted.",
+                    content: t(lang, 'pf.deleted'),
                     components: [],
                     embeds: []
                 });
             }
 
             if (cid.startsWith('pf_cancel_del_')) {
-                return await interaction.update({ content: "❌ Deletion cancelled.", components: [] });
+                return await interaction.update({ content: t(lang, 'pf.deleteCancelled'), components: [] });
             }
 
             if (cid === 'pf_create') {
@@ -735,14 +748,14 @@ module.exports = {
 
                 const modal = new ModalBuilder()
                     .setCustomId('pf_modal_duty')
-                    .setTitle('Party Finder Setup')
+                    .setTitle(t(lang, 'pf.setupTitle'))
                     .addComponents(
                         new ActionRowBuilder().addComponents(
                             new TextInputBuilder()
                                 .setCustomId('duty_name')
-                                .setLabel('Duty / Event Name')
+                                .setLabel(t(lang, 'pf.dutyName'))
                                 .setStyle(TextInputStyle.Short)
-                                .setPlaceholder('e.g. Ultimate Raid / Extreme Trial')
+                                .setPlaceholder(t(lang, 'pf.dutyExample'))
                                 .setRequired(true)
                         )
                     );
@@ -753,7 +766,7 @@ module.exports = {
 
             if (cid === 'pf_sel_size_menu') {
                 const session = global.pfSessions.get(userId);
-                if (!session) return interaction.reply({ content: "❌ Session expired. Please start over using `/pf`.", flags: [MessageFlags.Ephemeral] });
+                if (!session) return interaction.reply({ content: t(lang, 'pf.expiredStart'), flags: [MessageFlags.Ephemeral] });
 
                 const partySize = parseInt(interaction.values[0]);
                 session.data.size = partySize;
@@ -778,7 +791,7 @@ module.exports = {
             if (cid.startsWith('pf_cfg_')) {
                 const roleType = cid.replace('pf_cfg_', '');
                 const session = global.pfSessions.get(userId);
-                if (!session) return interaction.reply({ content: "❌ Session expired.", flags: [MessageFlags.Ephemeral] });
+                if (!session) return interaction.reply({ content: t(lang, 'pf.expired'), flags: [MessageFlags.Ephemeral] });
 
                 if (roleType === 'confirm') {
                     return await sendTimezoneSelectEphemeral(interaction, session, true);
@@ -787,12 +800,12 @@ module.exports = {
                 session.data.activeRoleEdit = roleType;
                 const modal = new ModalBuilder()
                     .setCustomId('pf_modal_role_count')
-                    .setTitle(`Configure ${roleType.toUpperCase()} Slots`)
+                    .setTitle(t(lang, 'pf.configureSlots', { role: roleType.toUpperCase() }))
                     .addComponents(
                         new ActionRowBuilder().addComponents(
                             new TextInputBuilder()
                                 .setCustomId('role_count_input')
-                                .setLabel('Number of Slots')
+                                .setLabel(t(lang, 'pf.slotCount'))
                                 .setStyle(TextInputStyle.Short)
                                 .setValue(String(session.data[roleType] ?? 0))
                                 .setRequired(true)
@@ -804,7 +817,7 @@ module.exports = {
 
             if (cid === 'pf_sel_gmt_menu') {
                 const session = global.pfSessions.get(userId);
-                if (!session) return interaction.reply({ content: "❌ Session expired.", flags: [MessageFlags.Ephemeral] });
+                if (!session) return interaction.reply({ content: t(lang, 'pf.expired'), flags: [MessageFlags.Ephemeral] });
 
                 session.data.gmt = parseInt(interaction.values[0], 10);
                 return await interaction.deferUpdate();
@@ -812,14 +825,14 @@ module.exports = {
 
             if (cid === 'pf_timezone_done') {
                 const session = global.pfSessions.get(userId);
-                if (!session) return interaction.reply({ content: "❌ Session expired.", flags: [MessageFlags.Ephemeral] });
+                if (!session) return interaction.reply({ content: t(lang, 'pf.expired'), flags: [MessageFlags.Ephemeral] });
 
                 return await sendDateModal(interaction, session);
             }
 
             if (cid === 'pf_sel_hour_menu' || cid === 'pf_sel_minute_menu' || cid === 'pf_time_done') {
                 const session = global.pfSessions.get(userId);
-                if (!session) return interaction.reply({ content: "❌ Session expired. Please start over using `/pf`.", flags: [MessageFlags.Ephemeral] });
+                if (!session) return interaction.reply({ content: t(lang, 'pf.expiredStart'), flags: [MessageFlags.Ephemeral] });
 
                 if (cid === 'pf_sel_hour_menu') {
                     session.data.hour = interaction.values[0];
@@ -844,20 +857,20 @@ module.exports = {
             if (cid.startsWith('pf_edit_')) {
                 const field = cid.replace('pf_edit_', '');
                 const session = global.pfSessions.get(userId);
-                if (!session) return interaction.reply({ content: "❌ Session expired.", flags: [MessageFlags.Ephemeral] });
+                if (!session) return interaction.reply({ content: t(lang, 'pf.expired'), flags: [MessageFlags.Ephemeral] });
 
                 if (field === 'name_size') {
                     session.step = 'sel_size';
                     const sizeRow = new ActionRowBuilder().addComponents(
                         new StringSelectMenuBuilder()
                             .setCustomId('pf_sel_size_menu')
-                            .setPlaceholder('Select Party Size')
+                            .setPlaceholder(t(lang, 'pf.selectSize'))
                             .addOptions([
-                                { label: '4 Members (Light Party)', value: '4', description: 'Standard 4-person duty' },
-                                { label: '8 Members (Full Party)', value: '8', description: 'Standard 8-person raid/trial' }
+                                { label: t(lang, 'pf.size4'), value: '4', description: t(lang, 'pf.size4desc') },
+                                { label: t(lang, 'pf.size8'), value: '8', description: t(lang, 'pf.size8desc') }
                             ])
                     );
-                    return await interaction.update({ content: `✏️ **Edit Party Size**\nCurrent Name: **${session.data.name}**\nSelect your new **Party Size**:`, components: [sizeRow], embeds: [] });
+                    return await interaction.update({ content: t(lang, 'pf.editSize', { name: session.data.name }), components: [sizeRow], embeds: [] });
                 }
 
                 if (field === 'roles') {
@@ -875,7 +888,7 @@ module.exports = {
 
             if (cid === 'pf_finish') {
                 const session = global.pfSessions.get(userId);
-                if (!session) return interaction.reply({ content: "❌ Session expired.", flags: [MessageFlags.Ephemeral] });
+                if (!session) return interaction.reply({ content: t(lang, 'pf.expired'), flags: [MessageFlags.Ephemeral] });
 
                 const gmtVal = session.data.gmt ?? 9;
                 const gmtStr = `GMT${gmtVal >= 0 ? '+' + gmtVal : gmtVal}`;
@@ -918,7 +931,7 @@ module.exports = {
 
                 const { embed, components } = await buildPFEmbedAndRows(listing, interaction.guild, `<@${userId}>`);
                 const sentMessage = await interaction.channel.send({
-                    content: '@here A new Party Finder listing has been published!',
+                    content: t(glang, 'pf.published'),
                     embeds: [embed],
                     components
                 });
@@ -929,18 +942,18 @@ module.exports = {
 
                 let photoStatusMsg = "";
                 if (imageStatus === 'success_custom') {
-                    photoStatusMsg = "\n🖼️ **Photo Status:** Custom cover photo was successfully attached and used!";
+                    photoStatusMsg = t(lang, 'pf.photo.custom');
                 } else if (imageStatus === 'success_random') {
-                    photoStatusMsg = "\n🎲 **Photo Status:** Cover photo field was left blank, successfully loaded a random preset image from JSON!";
+                    photoStatusMsg = t(lang, 'pf.photo.random');
                 } else if (imageStatus === 'failed_invalid') {
-                    photoStatusMsg = "\n⚠️ **Photo Status:** Custom URL was invalid/inaccessible. Attempted random preset fallback, but it also failed.";
+                    photoStatusMsg = t(lang, 'pf.photo.invalid');
                 } else if (imageStatus === 'failed_random') {
-                    photoStatusMsg = "\n⚠️ **Photo Status:** Preset image lookup failed or json files are empty.";
+                    photoStatusMsg = t(lang, 'pf.photo.presetFailed');
                 } else {
-                    photoStatusMsg = "\nℹ️ **Photo Status:** Cover photo was left blank.";
+                    photoStatusMsg = t(lang, 'pf.photo.blank');
                 }
 
-                const successNote = `🎉 **Party Finder successfully posted to the channel!**${photoStatusMsg}`;
+                const successNote = t(lang, 'pf.posted', { photo: photoStatusMsg });
                 return await interaction.update({ content: successNote, components: [], embeds: [] });
             }
 
@@ -948,22 +961,22 @@ module.exports = {
                 const listingId = cid.replace('pf_join_modal_', '');
                 const dbData = await loadDB();
                 const listing = dbData.pfDatabase.find(l => l.id === listingId);
-                if (!listing) return interaction.reply({ content: "❌ This listing no longer exists.", flags: [MessageFlags.Ephemeral] });
+                if (!listing) return interaction.reply({ content: t(lang, 'pf.gone2'), flags: [MessageFlags.Ephemeral] });
 
                 const roleMenuRow = new ActionRowBuilder().addComponents(
                     new StringSelectMenuBuilder()
                         .setCustomId(`pf_role_pick_${listingId}`)
-                        .setPlaceholder('Select Role Category...')
+                        .setPlaceholder(t(lang, 'pf.pick.category'))
                         .addOptions([
-                            { label: 'Tank', value: 'tanks', description: 'Select a Tank role/job', emoji: '🛡️' },
-                            { label: 'Healer', value: 'healers', description: 'Select a Healer role/job', emoji: '💚' },
-                            { label: 'DPS', value: 'dps_root', description: 'Select DPS jobs, Melee, Range, or Caster', emoji: '⚔️' },
-                            { label: 'Other', value: 'other', description: 'Select an Other role/job', emoji: '📌' }
+                            { label: t(lang, 'pf.pick.tank'), value: 'tanks', description: t(lang, 'pf.pick.tankDesc'), emoji: '🛡️' },
+                            { label: t(lang, 'pf.pick.healer'), value: 'healers', description: t(lang, 'pf.pick.healerDesc'), emoji: '💚' },
+                            { label: t(lang, 'pf.pick.dps'), value: 'dps_root', description: t(lang, 'pf.pick.dpsDesc'), emoji: '⚔️' },
+                            { label: t(lang, 'pf.pick.other'), value: 'other', description: t(lang, 'pf.pick.otherDesc'), emoji: '📌' }
                         ])
                 );
 
                 return interaction.reply({
-                    content: "🛡️ **Step 1:** Select your desired **Role Category**:",
+                    content: t(lang, 'pf.pick.step1'),
                     components: [roleMenuRow],
                     flags: [MessageFlags.Ephemeral]
                 });
@@ -975,60 +988,60 @@ module.exports = {
 
                 const dbData = await loadDB();
                 const listing = dbData.pfDatabase.find(l => l.id === listingId);
-                if (!listing) return interaction.update({ content: "❌ This listing no longer exists.", components: [] });
+                if (!listing) return interaction.update({ content: t(lang, 'pf.gone2'), components: [] });
 
                 const jobsDB = loadJobsJSON();
                 let options = [];
 
                 if (roleKey === 'tanks') {
                     options = (jobsDB.tanks || []).map(j => ({
-                        label: `${j.name} (${j.code})`,
+                        label: `${jobName(j.name, lang)} (${j.code})`,
                         value: `tanks_${j.code}`,
-                        description: `Job Code: ${j.code}`
+                        description: t(lang, 'pf.pick.jobCode', { code: j.code })
                     }));
                 } else if (roleKey === 'healers') {
                     options = (jobsDB.healers || []).map(j => ({
-                        label: `${j.name} (${j.code})`,
+                        label: `${jobName(j.name, lang)} (${j.code})`,
                         value: `healers_${j.code}`,
-                        description: `Job Code: ${j.code}`
+                        description: t(lang, 'pf.pick.jobCode', { code: j.code })
                     }));
                 } else if (roleKey === 'other') {
                     options = (jobsDB.other || []).map(j => ({
-                        label: `${j.name} (${j.code})`,
+                        label: `${jobName(j.name, lang)} (${j.code})`,
                         value: `other_${j.code}`,
-                        description: `Job Code: ${j.code}`
+                        description: t(lang, 'pf.pick.jobCode', { code: j.code })
                     }));
                 } else if (roleKey === 'dps_root') {
                     const dpsJobs = (jobsDB.dps || []).map(j => ({
-                        label: `${j.name} (${j.code})`,
+                        label: `${jobName(j.name, lang)} (${j.code})`,
                         value: `dps_${j.code}`,
-                        description: `DPS job: ${j.code}`
+                        description: t(lang, 'pf.pick.dpsJob', { code: j.code })
                     }));
 
                     const literalOptions = [
-                        { label: 'Melee', value: 'sub_meleedps', description: 'Select to choose a Melee job' },
-                        { label: 'Range', value: 'sub_range', description: 'Select to choose a Range job' },
-                        { label: 'Caster', value: 'sub_caster', description: 'Select to choose a Caster job' }
+                        { label: t(lang, 'pf.pick.melee'), value: 'sub_meleedps', description: t(lang, 'pf.pick.meleeDesc') },
+                        { label: t(lang, 'pf.pick.range'), value: 'sub_range', description: t(lang, 'pf.pick.rangeDesc') },
+                        { label: t(lang, 'pf.pick.caster'), value: 'sub_caster', description: t(lang, 'pf.pick.casterDesc') }
                     ];
 
                     options = [...dpsJobs, ...literalOptions];
                 } else if (roleKey === 'sub_meleedps') {
                     options = (jobsDB.meleedps || []).map(j => ({
-                        label: `${j.name} (${j.code})`,
+                        label: `${jobName(j.name, lang)} (${j.code})`,
                         value: `meleedps_${j.code}`,
-                        description: `Melee job: ${j.code}`
+                        description: t(lang, 'pf.pick.meleeJob', { code: j.code })
                     }));
                 } else if (roleKey === 'sub_range') {
                     options = (jobsDB.physicalrangeddps || []).map(j => ({
-                        label: `${j.name} (${j.code})`,
+                        label: `${jobName(j.name, lang)} (${j.code})`,
                         value: `range_${j.code}`,
-                        description: `Range job: ${j.code}`
+                        description: t(lang, 'pf.pick.rangeJob', { code: j.code })
                     }));
                 } else if (roleKey === 'sub_caster') {
                     options = (jobsDB.magicalrangeddps || []).map(j => ({
-                        label: `${j.name} (${j.code})`,
+                        label: `${jobName(j.name, lang)} (${j.code})`,
                         value: `caster_${j.code}`,
-                        description: `Caster job: ${j.code}`
+                        description: t(lang, 'pf.pick.casterJob', { code: j.code })
                     }));
                 }
 
@@ -1036,11 +1049,11 @@ module.exports = {
                     const subMenuRow = new ActionRowBuilder().addComponents(
                         new StringSelectMenuBuilder()
                             .setCustomId(`pf_jobsel_${listingId}`)
-                            .setPlaceholder('Select Specific Job...')
-                            .addOptions(options.length > 0 ? options.slice(0, 25) : [{ label: 'General / Any', value: `${roleKey}_ANY` }])
+                            .setPlaceholder(t(lang, 'pf.pick.specific'))
+                            .addOptions(options.length > 0 ? options.slice(0, 25) : [{ label: t(lang, 'pf.pick.any'), value: `${roleKey}_ANY` }])
                     );
                     return interaction.update({
-                        content: `✨ Choose your specific job:`,
+                        content: t(lang, 'pf.pick.chooseJob'),
                         components: [subMenuRow]
                     });
                 }
@@ -1048,12 +1061,12 @@ module.exports = {
                 const menuRow = new ActionRowBuilder().addComponents(
                     new StringSelectMenuBuilder()
                         .setCustomId(`pf_jobsel_${listingId}`)
-                        .setPlaceholder('Select your Specific Job...')
-                        .addOptions(options.length > 0 ? options.slice(0, 25) : [{ label: 'General / Any', value: `${roleKey}_ANY` }])
+                        .setPlaceholder(t(lang, 'pf.pick.specificYour'))
+                        .addOptions(options.length > 0 ? options.slice(0, 25) : [{ label: t(lang, 'pf.pick.any'), value: `${roleKey}_ANY` }])
                 );
 
                 return interaction.update({
-                    content: `✨ **Step 2:** Choose your specific job:`,
+                    content: t(lang, 'pf.pick.step2'),
                     components: [menuRow]
                 });
             }
@@ -1069,32 +1082,32 @@ module.exports = {
 
                     if (rawVal === 'sub_meleedps') {
                         options = (jobsDB.meleedps || []).map(j => ({
-                            label: `${j.name} (${j.code})`,
+                            label: `${jobName(j.name, lang)} (${j.code})`,
                             value: `meleedps_${j.code}`,
-                            description: `Melee job: ${j.code}`
+                            description: t(lang, 'pf.pick.meleeJob', { code: j.code })
                         }));
                     } else if (rawVal === 'sub_range') {
                         options = (jobsDB.physicalrangeddps || []).map(j => ({
-                            label: `${j.name} (${j.code})`,
+                            label: `${jobName(j.name, lang)} (${j.code})`,
                             value: `range_${j.code}`,
-                            description: `Range job: ${j.code}`
+                            description: t(lang, 'pf.pick.rangeJob', { code: j.code })
                         }));
                     } else if (rawVal === 'sub_caster') {
                         options = (jobsDB.magicalrangeddps || []).map(j => ({
-                            label: `${j.name} (${j.code})`,
+                            label: `${jobName(j.name, lang)} (${j.code})`,
                             value: `caster_${j.code}`,
-                            description: `Caster job: ${j.code}`
+                            description: t(lang, 'pf.pick.casterJob', { code: j.code })
                         }));
                     }
 
                     const subMenuRow = new ActionRowBuilder().addComponents(
                         new StringSelectMenuBuilder()
                             .setCustomId(`pf_jobsel_${listingId}`)
-                            .setPlaceholder('Select Specific Job...')
-                            .addOptions(options.length > 0 ? options.slice(0, 25) : [{ label: 'General / Any', value: `${subRoleKey}_ANY` }])
+                            .setPlaceholder(t(lang, 'pf.pick.specific'))
+                            .addOptions(options.length > 0 ? options.slice(0, 25) : [{ label: t(lang, 'pf.pick.any'), value: `${subRoleKey}_ANY` }])
                     );
                     return interaction.update({
-                        content: `✨ Choose your specific sub-job:`,
+                        content: t(lang, 'pf.pick.chooseSub'),
                         components: [subMenuRow]
                     });
                 }
@@ -1106,16 +1119,16 @@ module.exports = {
                 const confirmButtonRow = new ActionRowBuilder().addComponents(
                     new ButtonBuilder()
                         .setCustomId(`pf_confirm_join_${listingId}_${roleKey}_${selectedJobCode}`)
-                        .setLabel('Confirm Job Selection ✅')
+                        .setLabel(t(lang, 'pf.pick.confirm'))
                         .setStyle(ButtonStyle.Success),
                     new ButtonBuilder()
                         .setCustomId(`pf_cancel_join_${listingId}`)
-                        .setLabel('Cancel ❌')
+                        .setLabel(t(lang, 'pf.pick.cancel'))
                         .setStyle(ButtonStyle.Secondary)
                 );
 
                 return interaction.update({
-                    content: `👉 You selected role **${roleKey.toUpperCase()}** with job **${selectedJobCode}**. Click **Confirm Job Selection** to finalize!`,
+                    content: t(lang, 'pf.pick.selected', { role: roleKey.toUpperCase(), job: selectedJobCode }),
                     components: [confirmButtonRow]
                 });
             }
@@ -1128,7 +1141,7 @@ module.exports = {
 
                 const dbData = await loadDB();
                 const listing = dbData.pfDatabase.find(l => l.id === listingId);
-                if (!listing) return interaction.update({ content: "❌ This listing no longer exists.", components: [] });
+                if (!listing) return interaction.update({ content: t(lang, 'pf.gone2'), components: [] });
 
                 migrateOldJobCodes(listing);
                 ensureListingClaims(listing);
@@ -1199,23 +1212,23 @@ module.exports = {
                 await saveListingToDB(listing);
                 await updateChannelListingEmbed(interaction, listing);
 
-                let replyText = `✅ Successfully registered as **${selectedJobCode}**!`;
+                let replyText = t(lang, 'pf.registered', { job: selectedJobCode });
                 if (isBench) {
-                    replyText = `⚠️ **That slot/party is full, so you have been placed into Reserves/Bench (${selectedJobCode})**!`;
+                    replyText = t(lang, 'pf.reserves', { job: selectedJobCode });
                 }
 
                 return interaction.update({ content: replyText, components: [] });
             }
 
             if (cid.startsWith('pf_cancel_join_')) {
-                return interaction.update({ content: "❌ Job selection cancelled.", components: [] });
+                return interaction.update({ content: t(lang, 'pf.joinCancelled'), components: [] });
             }
 
             if (cid.startsWith('pf_leave_')) {
                 const listingId = cid.replace('pf_leave_', '');
                 const dbData = await loadDB();
                 const listing = dbData.pfDatabase.find(l => l.id === listingId);
-                if (!listing) return interaction.reply({ content: "❌ This listing no longer exists.", flags: [MessageFlags.Ephemeral] });
+                if (!listing) return interaction.reply({ content: t(lang, 'pf.gone2'), flags: [MessageFlags.Ephemeral] });
 
                 migrateOldJobCodes(listing);
                 ensureListingClaims(listing);
@@ -1227,7 +1240,7 @@ module.exports = {
                 await saveListingToDB(listing);
                 await updateChannelListingEmbed(interaction, listing);
 
-                return interaction.reply({ content: "🚪 You have left/cancelled your slot in this party finder.", flags: [MessageFlags.Ephemeral] });
+                return interaction.reply({ content: t(lang, 'pf.left'), flags: [MessageFlags.Ephemeral] });
             }
 
             if (cid === 'pf_check') {
@@ -1235,15 +1248,15 @@ module.exports = {
                 const userListings = dbData.pfDatabase.filter(l => String(l.userId) === userId && String(l.guildId) === guildId);
 
                 if (userListings.length === 0) {
-                    return interaction.reply({ content: "❌ You don't have any active Party Finder listings in this server.", flags: [MessageFlags.Ephemeral] });
+                    return interaction.reply({ content: t(lang, 'pf.noListings'), flags: [MessageFlags.Ephemeral] });
                 }
 
                 const rows = userListings.map(l => new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setCustomId(`pf_show_${l.id}`).setLabel(`🔄 Show Again: ${l.name.substring(0, 60)}`).setStyle(ButtonStyle.Primary),
-                    new ButtonBuilder().setCustomId(`pf_delete_listing_${l.id}`).setLabel(`🗑️ Delete`).setStyle(ButtonStyle.Danger)
+                    new ButtonBuilder().setCustomId(`pf_show_${l.id}`).setLabel(t(lang, 'pf.showAgain', { name: l.name.substring(0, 60) })).setStyle(ButtonStyle.Primary),
+                    new ButtonBuilder().setCustomId(`pf_delete_listing_${l.id}`).setLabel(t(lang, 'pf.delete')).setStyle(ButtonStyle.Danger)
                 ));
 
-                return interaction.reply({ content: "📋 **Your Active Party Finder Listings:**", components: rows, flags: [MessageFlags.Ephemeral] });
+                return interaction.reply({ content: t(lang, 'pf.yourListings'), components: rows, flags: [MessageFlags.Ephemeral] });
             }
 
             if (cid.startsWith('pf_show_')) {
@@ -1252,7 +1265,7 @@ module.exports = {
                 const listing = dbData.pfDatabase.find(l => l.id === listingId);
 
                 if (!listing) {
-                    return interaction.update({ content: "❌ Listing no longer exists.", components: [] });
+                    return interaction.update({ content: t(lang, 'pf.gone3'), components: [] });
                 }
                 migrateOldJobCodes(listing);
                 ensureListingClaims(listing);
@@ -1274,19 +1287,19 @@ module.exports = {
                     embed.setImage(listing.imageUrl);
                 }
 
-                const newMsg = await interaction.channel.send({ content: '@here Party Finder listing refreshed:', embeds: [embed], components });
+                const newMsg = await interaction.channel.send({ content: t(glang, 'pf.refreshed'), embeds: [embed], components });
 
                 listing.messageId = newMsg.id;
                 await saveListingToDB(listing);
 
-                return interaction.update({ content: "🔄 **Party Finder successfully re-posted/shown again in the channel!**", components: [] });
+                return interaction.update({ content: t(lang, 'pf.reposted'), components: [] });
             }
         }
 
         if (interaction.isModalSubmit()) {
             const mId = interaction.customId;
             const session = global.pfSessions.get(userId);
-            if (!session) return interaction.reply({ content: "❌ Session expired. Please start over using `/pf`.", flags: [MessageFlags.Ephemeral] });
+            if (!session) return interaction.reply({ content: t(lang, 'pf.expiredStart'), flags: [MessageFlags.Ephemeral] });
 
             if (mId === 'pf_modal_duty') {
                 session.data.name = interaction.fields.getTextInputValue('duty_name');
@@ -1295,19 +1308,19 @@ module.exports = {
                 const row = new ActionRowBuilder().addComponents(
                     new StringSelectMenuBuilder()
                         .setCustomId('pf_sel_size_menu')
-                        .setPlaceholder('Select Party Size')
+                        .setPlaceholder(t(lang, 'pf.selectSize'))
                         .addOptions([
-                            { label: '4 Members (Light Party)', value: '4', description: 'Standard 4-person duty' },
-                            { label: '8 Members (Full Party)', value: '8', description: 'Standard 8-person raid/trial' }
+                            { label: t(lang, 'pf.size4'), value: '4', description: t(lang, 'pf.size4desc') },
+                            { label: t(lang, 'pf.size8'), value: '8', description: t(lang, 'pf.size8desc') }
                         ])
                 );
-                return await interaction.reply({ content: `👥 **Party Size Setup**\nDuty: **${session.data.name}**\nNow select your **Party Size**:`, components: [row], flags: [MessageFlags.Ephemeral] });
+                return await interaction.reply({ content: t(lang, 'pf.sizeSetup', { name: session.data.name }), components: [row], flags: [MessageFlags.Ephemeral] });
             }
 
             if (mId === 'pf_modal_role_count') {
                 const countVal = parseInt(interaction.fields.getTextInputValue('role_count_input'), 10);
                 if (isNaN(countVal) || countVal < 0) {
-                    return await interaction.reply({ content: "❌ Please enter a valid non-negative number.", flags: [MessageFlags.Ephemeral] });
+                    return await interaction.reply({ content: t(lang, 'pf.invalidNumber'), flags: [MessageFlags.Ephemeral] });
                 }
 
                 const roleKey = session.data.activeRoleEdit;
@@ -1324,15 +1337,15 @@ module.exports = {
                 const dayText = interaction.fields.getTextInputValue('day_input').trim();
 
                 if (!/^\d{4}$/.test(yearText)) {
-                    return await interaction.reply({ content: "❌ Invalid year format. Please provide a 4-digit year (e.g., `2026`).", flags: [MessageFlags.Ephemeral] });
+                    return await interaction.reply({ content: t(lang, 'pf.invalidYear'), flags: [MessageFlags.Ephemeral] });
                 }
                 const monthNum = parseInt(monthText, 10);
                 if (isNaN(monthNum) || monthNum < 1 || monthNum > 12) {
-                    return await interaction.reply({ content: "❌ Invalid month. Please provide a number between 1 and 12.", flags: [MessageFlags.Ephemeral] });
+                    return await interaction.reply({ content: t(lang, 'pf.invalidMonth'), flags: [MessageFlags.Ephemeral] });
                 }
                 const dayNum = parseInt(dayText, 10);
                 if (isNaN(dayNum) || dayNum < 1 || dayNum > 31) {
-                    return await interaction.reply({ content: "❌ Invalid day. Please provide a number between 1 and 31.", flags: [MessageFlags.Ephemeral] });
+                    return await interaction.reply({ content: t(lang, 'pf.invalidDay'), flags: [MessageFlags.Ephemeral] });
                 }
 
                 session.data.year = yearText;
@@ -1365,20 +1378,20 @@ module.exports = {
                     return { label: m, value: m };
                 });
 
-                const hoursMenu = new StringSelectMenuBuilder().setCustomId('pf_sel_hour_menu').setPlaceholder(`Hour [${session.data.hour}]`).addOptions(hoursOptions);
-                const minutesMenu = new StringSelectMenuBuilder().setCustomId('pf_sel_minute_menu').setPlaceholder(`Minute [${session.data.minute}]`).addOptions(minutesOptions);
+                const hoursMenu = new StringSelectMenuBuilder().setCustomId('pf_sel_hour_menu').setPlaceholder(t(lang, 'pf.hour', { hour: session.data.hour })).addOptions(hoursOptions);
+                const minutesMenu = new StringSelectMenuBuilder().setCustomId('pf_sel_minute_menu').setPlaceholder(t(lang, 'pf.minute', { minute: session.data.minute })).addOptions(minutesOptions);
 
                 const row1 = new ActionRowBuilder().addComponents(hoursMenu);
                 const row2 = new ActionRowBuilder().addComponents(minutesMenu);
                 const row3 = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setCustomId('pf_time_done').setLabel('Confirm Time ✅').setStyle(ButtonStyle.Success)
+                    new ButtonBuilder().setCustomId('pf_time_done').setLabel(t(lang, 'pf.confirmTime')).setStyle(ButtonStyle.Success)
                 );
 
                 if (session.data.isDirectEdit) {
-                    return await interaction.update({ content: `⏰ **Time Setup (Direct Edit)**\nSelected Date: **${session.data.dateStr}** (GMT${gmtOffset >= 0 ? '+' + gmtOffset : gmtOffset})\nSelect **Hour** and **Minute**, then click Confirm:`, components: [row1, row2, row3] });
+                    return await interaction.update({ content: t(lang, 'pf.timeSetupEdit', { date: session.data.dateStr, gmt: gmtOffset >= 0 ? '+' + gmtOffset : gmtOffset }), components: [row1, row2, row3] });
                 }
 
-                return await interaction.update({ content: `⏰ **Time Setup**\nSelected Date: **${session.data.dateStr}** (GMT${gmtOffset >= 0 ? '+' + gmtOffset : gmtOffset})\nSelect **Hour** and **Minute**, then click Confirm:`, components: [row1, row2, row3] });
+                return await interaction.update({ content: t(lang, 'pf.timeSetup', { date: session.data.dateStr, gmt: gmtOffset >= 0 ? '+' + gmtOffset : gmtOffset }), components: [row1, row2, row3] });
             }
 
             if (mId === 'pf_modal_image') {
@@ -1412,7 +1425,7 @@ module.exports = {
                     }
                     global.pfSessions.delete(userId);
                     return await interaction.update({
-                        content: `✅ Successfully updated listing details!`,
+                        content: t(lang, 'pf.updated'),
                         components: [],
                         embeds: []
                     });

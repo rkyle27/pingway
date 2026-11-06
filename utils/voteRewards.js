@@ -4,6 +4,8 @@
 
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { pool } = require('./db');
+const { t, localeOf } = require('./i18n');
+const userLanguage = require('./userLanguage');
 
 const POLL_MS = 30 * 1000;
 const MAX_AGE_MS = 24 * 60 * 60 * 1000;   // don't DM about votes older than a day
@@ -39,24 +41,24 @@ async function balance(userId) {
     return Number(row.bal) || 0;
 }
 
-function buildMessage(points, bal, voteId) {
+// lang: the voter's language (texts in locales/<lang>/votes.json)
+function buildMessage(points, bal, voteId, lang = 'en') {
     const site = siteFor(voteId);
     const embed = new EmbedBuilder()
         .setColor('#a78bfa')
-        .setTitle('💜 Thanks for voting for Pingway!')
+        .setTitle(t(lang, 'votes.title'))
         .setDescription(
-            'You got **+' + points + ' point' + (points === 1 ? '' : 's') + '**' + (site ? ' for voting on **' + site.name + '**' : '') + (site && site.weekendDouble && points === 2 ? ' (weekend double vote!)' : '') + '.\n' +
-            'Your balance: **' + bal.toLocaleString('en-US') + ' point' + (bal === 1 ? '' : 's') + '**\n\n' +
-            '• 1 point = 1 extra Retainer Watch retainer for a month\n' +
-            '• 10 points = Supporter Perks for a month\n\n' +
-            (site ? 'You can vote again on ' + site.name + ' in ' + site.every + '. ' : '') + 'Manage your points on the [Pingway website](' + SITE + ').'
+            t(lang, points === 1 ? 'votes.gotOne' : 'votes.gotMany', { points }) + (site ? t(lang, 'votes.forSite', { site: site.name }) : '') + (site && site.weekendDouble && points === 2 ? t(lang, 'votes.weekend') : '') + t(lang, 'votes.end') + '\n' +
+            t(lang, bal === 1 ? 'votes.balanceOne' : 'votes.balanceMany', { balance: bal.toLocaleString(localeOf(lang)) }) + '\n\n' +
+            t(lang, 'votes.perks') + '\n\n' +
+            (site ? t(lang, 'votes.again', { site: site.name, every: site.every === '12 hours' ? t(lang, 'votes.every12h') : site.every }) + ' ' : '') + t(lang, 'votes.manage', { url: SITE })
         )
-        .setFooter({ text: 'Vote points expire 180 days after the vote.' });
+        .setFooter({ text: t(lang, 'votes.footer') });
     const row = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel('Pingway website').setEmoji('🌐').setURL(SITE + '/retainers.html'),
-        new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel('Supporter Perks').setEmoji('✨').setURL(SITE + '/me.html#perks')
+        new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel(t(lang, 'votes.website')).setEmoji('🌐').setURL(SITE + '/retainers.html'),
+        new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel(t(lang, 'votes.perksButton')).setEmoji('✨').setURL(SITE + '/me.html#perks')
     );
-    if (site) row.addComponents(new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel('Vote again on ' + site.name).setEmoji('🗳️').setURL(site.url));
+    if (site) row.addComponents(new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel(t(lang, 'votes.voteAgain', { site: site.name })).setEmoji('🗳️').setURL(site.url));
     return { embeds: [embed], components: [row] };
 }
 
@@ -73,7 +75,7 @@ async function tick(client) {
             let state = 2;
             try {
                 const user = await client.users.fetch(String(v.user_id));
-                await user.send(buildMessage(Number(v.points) || 1, await balance(String(v.user_id)), v.vote_id));
+                await user.send(buildMessage(Number(v.points) || 1, await balance(String(v.user_id)), v.vote_id, await userLanguage.forUser(String(v.user_id))));
                 state = 1;
                 console.log('🗳️ [VOTE] Thank-you DM sent to user ' + v.user_id + ' (+' + v.points + ').');
             } catch (err) {

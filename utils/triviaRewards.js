@@ -14,11 +14,15 @@
 //    ended (players of that server, not hidden, still members; most bits first, a tie goes to who reached the total
 //    first) gets the roles. Last month's holders (trivia_role_holders) lose them. Holders keep the role all month.
 //    Roles Pingway can't manage (deleted, above Pingway's role, managed by an integration, no Manage Roles) are skipped.
+// Languages: the reward DM uses the player's language (utils/userLanguage.js forUser), the role change reason (audit
+// log) the server's language. Texts: locales/<lang>/trivia.json (reward.*). Console lines stay English.
 
 const { PermissionFlagsBits } = require('discord.js');
 const { pool } = require('./db');
 const W = require('./triviaWords');
 const dmStatus = require('./dmStatus');
+const i18n = require('./i18n');
+const userLanguage = require('./userLanguage');
 
 const FIRST_SEASON = '2026-11';
 const POLL_MS = 10 * 60 * 1000;
@@ -89,15 +93,21 @@ async function ensureTables() {
 // ---------- helpers ----------
 const prevSeason = season => W.seasonOf(W.addDays(season + '-01', -1));
 const nextSeason = season => W.seasonOf(W.addDays(season + '-01', 32));
-const seasonName = season => MONTHS[Number(season.slice(5, 7)) - 1] + ' ' + season.slice(0, 4);
+function seasonName(season, lang) {
+    const m = Number(season.slice(5, 7)) - 1;
+    if (!lang || lang === 'en') return MONTHS[m] + ' ' + season.slice(0, 4);
+    const months = i18n.t(lang, 'trivia.reward.months');
+    return i18n.t(lang, 'trivia.reward.month', { month: Array.isArray(months) && months[m] ? months[m] : MONTHS[m], year: season.slice(0, 4) });
+}
 const seasonRange = season => [season + '-01', nextSeason(season) + '-01']; // day >= from AND day < to
 // When a Discord account was made (from its id)
 const accountCreatedAt = id => { try { return Number((BigInt(String(id)) >> 22n) + 1420070400000n); } catch (e) { return Date.now(); } };
 const pointsFor = bits => { for (const [min, pts] of REWARD_TIERS) if (bits >= min) return pts; return 0; };
 
-function rewardMessage(bits, points, season) {
-    return '🎉 Congratulations! You earned **' + bits.toLocaleString('en-US') + ' bits** in Pingway Trivia in ' + seasonName(season) +
-        ' — here are **' + points + ' points** as a thank-you. Use them for extra retainers or Supporter Perks at ' + SITE + '/me.html';
+const NUMBER_LOCALE = { en: 'en-US', fr: 'fr-FR', de: 'de-DE', ja: 'ja-JP' };
+function rewardMessage(bits, points, season, lang) {
+    const l = i18n.isLang(lang) ? lang : 'en';
+    return i18n.t(l, 'trivia.reward.dm', { bits: bits.toLocaleString(NUMBER_LOCALE[l]), month: seasonName(season, l), points, url: SITE + '/me.html' });
 }
 
 // ---------- points (copied from the website's lib/credits.js, same rules as vote/Ko-fi points) ----------
@@ -273,8 +283,9 @@ async function sendRewardDm(client, userId, bits, points, season) {
         if (err && err.code === 10013) await dmStatus.markFailed(userId, 'unknown_user');
         return;
     }
+    const lang = await userLanguage.forUser(userId).catch(() => 'en');
     try {
-        await user.send(rewardMessage(bits, points, season));
+        await user.send(rewardMessage(bits, points, season, lang));
         await dmStatus.markOk(userId);
     } catch (err) {
         console.log('🎁 [TRIVIA] Could not DM user ' + userId + ' about the reward (' + (err.code || err.message) + '). Points were still added.');
@@ -363,6 +374,8 @@ async function runGuildRoles(client, g, season, holders) {
     const guildId = String(g.guild_id);
     const guild = client.guilds.cache.get(guildId) || await client.guilds.fetch(guildId).catch(() => null);
     if (!guild) return; // Pingway is not in this server anymore
+    const lang = userLanguage.forGuild(guild); // audit log reasons
+    const seasonText = seasonName(season, lang === 'en' ? null : lang);
     const me = guild.members.me || await guild.members.fetchMe();
     const roleIds = { 1: g.role_top1 ? String(g.role_top1) : null, 2: g.role_top2 ? String(g.role_top2) : null, 3: g.role_top3 ? String(g.role_top3) : null };
     const old = {};
@@ -401,7 +414,8 @@ async function runGuildRoles(client, g, season, holders) {
         if (!h || keep.has(h.userId + ':' + h.roleId) || !usable[h.roleId].remove) continue;
         const member = await fetchMember(guild, h.userId);
         if (member && member.roles.cache.has(h.roleId)) {
-            await member.roles.remove(h.roleId, 'Pingway Trivia: top ' + r + ' of ' + season + ' went to someone else').catch(err => roleError(err, 'remove a role'));
+            await member.roles.remove(h.roleId, lang === 'en' ? 'Pingway Trivia: top ' + r + ' of ' + season + ' went to someone else'
+                : i18n.t(lang, 'trivia.reward.roleTaken', { rank: r, season: seasonText })).catch(err => roleError(err, 'remove a role'));
         }
     }
     // Then give them to this month's top 3, and save who has them
@@ -411,7 +425,8 @@ async function runGuildRoles(client, g, season, holders) {
         const member = await fetchMember(guild, winners[r]);
         if (!member) continue;
         if (!member.roles.cache.has(roleIds[r])) {
-            const okGive = await member.roles.add(roleIds[r], 'Pingway Trivia: top ' + r + ' of ' + season).then(() => true, err => { roleError(err, 'give a role'); return false; });
+            const okGive = await member.roles.add(roleIds[r], lang === 'en' ? 'Pingway Trivia: top ' + r + ' of ' + season
+                : i18n.t(lang, 'trivia.reward.roleGiven', { rank: r, season: seasonText })).then(() => true, err => { roleError(err, 'give a role'); return false; });
             if (!okGive) continue;
         }
         await pool.execute('INSERT INTO trivia_role_holders (guild_id, `rank`, user_id, role_id, season) VALUES (?, ?, ?, ?, ?)', [guildId, r, winners[r], roleIds[r], season]);
@@ -479,4 +494,4 @@ function start(client) {
     setInterval(() => tick(client), POLL_MS);
 }
 
-module.exports = { start, tick, rewardMessage, pointsFor, accountCreatedAt, prevSeason, guildRanking, _reset: () => { tablesReady = false; running = false; roleTries.clear(); errorLogged.clear(); } };
+module.exports = { start, tick, rewardMessage, seasonName, pointsFor, accountCreatedAt, prevSeason, guildRanking, _reset: () => { tablesReady = false; running = false; roleTries.clear(); errorLogged.clear(); } };

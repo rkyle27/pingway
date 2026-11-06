@@ -12,6 +12,8 @@ const {
     StringSelectMenuOptionBuilder
 } = require('discord.js');
 const { pool } = require('../utils/db');
+const { t, tOr, discordLocalizations } = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
 
 function extractLodestoneId(input) {
     if (!input) return null;
@@ -30,12 +32,18 @@ const ffxivJobs = {
     Caster: ['Black Mage', 'Summoner', 'Red Mage', 'Pictomancer']
 };
 
+// Job values stay English (saved in the database, used by /ign); only the shown names are translated
+const jobName = (job, lang) => tOr(lang, 'jobs.' + job, job);
+const jobList = (role, lang) => (ffxivJobs[role] || []).map(j => jobName(j, lang)).join(', ');
+const roleName = (role, lang) => tOr(lang, 'ignconfig.roleShort.' + role, role);
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('ignconfig')
-        .setDescription('⚙️ Configure your FFXIV character profile, main job, portraits, Tomestone, and FFLogs settings.'),
+        .setDescription(t('en', 'ignconfig.cmd.description')).setDescriptionLocalizations(discordLocalizations('ignconfig.cmd.description')),
 
     async execute(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         const userId = interaction.user.id;
         const [rows] = await pool.execute('SELECT * FROM user_ign_config WHERE user_id = ?', [userId]);
         const existing = rows.length > 0 ? rows[0] : null;
@@ -51,10 +59,11 @@ module.exports = {
             fflogs_url: existing && existing.fflogs_url ? existing.fflogs_url : ''
         };
 
-        return sendConfigDashboard(interaction, true);
+        return sendConfigDashboard(interaction, true, lang);
     },
 
     async handleButton(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         const userId = interaction.user.id;
         global.ignSessions = global.ignSessions || {};
         let session = global.ignSessions[userId];
@@ -77,7 +86,7 @@ module.exports = {
         if (interaction.customId === 'ign_toggle_portrait') {
             if (session.portrait_toggle === true && (!session.full_photo_url || session.full_photo_url.trim() === '')) {
                 return interaction.reply({
-                    content: '⚠️ You cannot turn off the portrait unless a **Full Photo** has been added!',
+                    content: t(lang, 'ignconfig.needPhoto'),
                     flags: [MessageFlags.Ephemeral]
                 });
             }
@@ -85,30 +94,30 @@ module.exports = {
             await interaction.deferUpdate().catch(() => { });
             session.portrait_toggle = !session.portrait_toggle;
             await saveSessionToDb(userId, session);
-            return sendConfigDashboard(interaction, false);
+            return sendConfigDashboard(interaction, false, lang);
         }
 
         if (interaction.customId === 'ign_btn_main_job') {
             const roleSelect = new StringSelectMenuBuilder()
                 .setCustomId('ign_select_role')
-                .setPlaceholder('Select your main job role')
+                .setPlaceholder(t(lang, 'ignconfig.selectRole'))
                 .addOptions(
-                    new StringSelectMenuOptionBuilder().setLabel('Tank').setValue('Tank').setDescription('Paladin, Warrior, Dark Knight, Gunbreaker'),
-                    new StringSelectMenuOptionBuilder().setLabel('Healer').setValue('Healer').setDescription('White Mage, Scholar, Astrologian, Sage'),
-                    new StringSelectMenuOptionBuilder().setLabel('Melee DPS').setValue('Melee').setDescription('Monk, Dragoon, Ninja, Samurai, Reaper, Viper'),
-                    new StringSelectMenuOptionBuilder().setLabel('Physical Ranged DPS').setValue('Range').setDescription('Bard, Machinist, Dancer'),
-                    new StringSelectMenuOptionBuilder().setLabel('Magical Caster DPS').setValue('Caster').setDescription('Black Mage, Summoner, Red Mage, Pictomancer')
+                    new StringSelectMenuOptionBuilder().setLabel(t(lang, 'ignconfig.roles.tank')).setValue('Tank').setDescription(jobList('Tank', lang)),
+                    new StringSelectMenuOptionBuilder().setLabel(t(lang, 'ignconfig.roles.healer')).setValue('Healer').setDescription(jobList('Healer', lang)),
+                    new StringSelectMenuOptionBuilder().setLabel(t(lang, 'ignconfig.roles.melee')).setValue('Melee').setDescription(jobList('Melee', lang)),
+                    new StringSelectMenuOptionBuilder().setLabel(t(lang, 'ignconfig.roles.ranged')).setValue('Range').setDescription(jobList('Range', lang)),
+                    new StringSelectMenuOptionBuilder().setLabel(t(lang, 'ignconfig.roles.caster')).setValue('Caster').setDescription(jobList('Caster', lang))
                 );
 
             const row = new ActionRowBuilder().addComponents(roleSelect);
             const backRow = new ActionRowBuilder().addComponents(
-                new ButtonBuilder().setCustomId('ign_btn_back_dashboard').setLabel('Back to Dashboard').setStyle(ButtonStyle.Secondary)
+                new ButtonBuilder().setCustomId('ign_btn_back_dashboard').setLabel(t(lang, 'ignconfig.backDashboard')).setStyle(ButtonStyle.Secondary)
             );
 
             const embed = new EmbedBuilder()
                 .setColor(0x3498db)
-                .setTitle('⚔️ Select Main Job Role')
-                .setDescription('Please choose your character role category from the dropdown below.');
+                .setTitle(t(lang, 'ignconfig.selectRoleTitle'))
+                .setDescription(t(lang, 'ignconfig.selectRoleHelp'));
 
             return interaction.update({ embeds: [embed], components: [row, backRow] }).catch(() => { });
         }
@@ -116,11 +125,11 @@ module.exports = {
         if (interaction.customId === 'ign_btn_link') {
             const modal = new ModalBuilder()
                 .setCustomId('ign_modal_link')
-                .setTitle('Link Lodestone Character');
+                .setTitle(t(lang, 'ignconfig.linkTitle'));
 
             const urlInput = new TextInputBuilder()
                 .setCustomId('lodestone_url_input')
-                .setLabel('Lodestone URL or ID')
+                .setLabel(t(lang, 'ignconfig.lodestoneLabel'))
                 .setStyle(TextInputStyle.Short)
                 .setPlaceholder('https://na.finalfantasyxiv.com/lodestone/character/12345678/')
                 .setValue(session.lodestone_id ? `https://na.finalfantasyxiv.com/lodestone/character/${session.lodestone_id}/` : '')
@@ -133,13 +142,13 @@ module.exports = {
         if (interaction.customId === 'ign_btn_portrait') {
             const modal = new ModalBuilder()
                 .setCustomId('ign_modal_portrait')
-                .setTitle('Add Portrait');
+                .setTitle(t(lang, 'ignconfig.portraitTitle'));
 
             const portraitInput = new TextInputBuilder()
                 .setCustomId('portrait_url_input')
-                .setLabel('Portrait Direct URL')
+                .setLabel(t(lang, 'ignconfig.portraitLabel'))
                 .setStyle(TextInputStyle.Short)
-                .setPlaceholder('leave blank to use default')
+                .setPlaceholder(t(lang, 'ignconfig.leaveBlank'))
                 .setValue(session.portrait_url || '')
                 .setRequired(false);
 
@@ -150,13 +159,13 @@ module.exports = {
         if (interaction.customId === 'ign_btn_full_photo') {
             const modal = new ModalBuilder()
                 .setCustomId('ign_modal_full_photo')
-                .setTitle('Add Full Photo');
+                .setTitle(t(lang, 'ignconfig.photoTitle'));
 
             const fullPhotoInput = new TextInputBuilder()
                 .setCustomId('full_photo_url_input')
-                .setLabel('Full Photo Direct URL')
+                .setLabel(t(lang, 'ignconfig.photoLabel'))
                 .setStyle(TextInputStyle.Short)
-                .setPlaceholder('leave blank to use default')
+                .setPlaceholder(t(lang, 'ignconfig.leaveBlank'))
                 .setValue(session.full_photo_url || '')
                 .setRequired(false);
 
@@ -167,11 +176,11 @@ module.exports = {
         if (interaction.customId === 'ign_btn_tomestone_link') {
             const modal = new ModalBuilder()
                 .setCustomId('ign_modal_tomestone')
-                .setTitle('Add Tomestone Link');
+                .setTitle(t(lang, 'ignconfig.tomestoneTitle'));
 
             const input = new TextInputBuilder()
                 .setCustomId('tomestone_url_input')
-                .setLabel('Tomestone URL (leave blank to clear)')
+                .setLabel(t(lang, 'ignconfig.tomestoneLabel'))
                 .setStyle(TextInputStyle.Short)
                 .setPlaceholder('https://tomestone.gg/character/...')
                 .setValue(session.tomestone_url || '')
@@ -184,11 +193,11 @@ module.exports = {
         if (interaction.customId === 'ign_btn_fflogs_link') {
             const modal = new ModalBuilder()
                 .setCustomId('ign_modal_fflogs')
-                .setTitle('Add FFLogs Link');
+                .setTitle(t(lang, 'ignconfig.fflogsTitle'));
 
             const input = new TextInputBuilder()
                 .setCustomId('fflogs_url_input')
-                .setLabel('FFLogs URL (leave blank to clear)')
+                .setLabel(t(lang, 'ignconfig.fflogsLabel'))
                 .setStyle(TextInputStyle.Short)
                 .setPlaceholder('https://www.fflogs.com/character/...')
                 .setValue(session.fflogs_url || '')
@@ -199,12 +208,12 @@ module.exports = {
         }
 
         if (interaction.customId === 'ign_btn_back_dashboard') {
-            return sendConfigDashboard(interaction, false);
+            return sendConfigDashboard(interaction, false, lang);
         }
 
         if (interaction.customId === 'ign_btn_exit') {
             delete global.ignSessions[userId];
-            await interaction.update({ content: 'Configuration session closed.', embeds: [], components: [] }).catch(() => { });
+            await interaction.update({ content: t(lang, 'ignconfig.closed'), embeds: [], components: [] }).catch(() => { });
             setTimeout(() => {
                 interaction.deleteReply().catch(() => { });
             }, 3000);
@@ -213,6 +222,7 @@ module.exports = {
     },
 
     async handleSelectMenu(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         const userId = interaction.user.id;
         global.ignSessions = global.ignSessions || {};
         let session = global.ignSessions[userId];
@@ -225,18 +235,18 @@ module.exports = {
 
             const jobSelect = new StringSelectMenuBuilder()
                 .setCustomId('ign_select_job')
-                .setPlaceholder(`Select your ${selectedRole} job`)
-                .addOptions(jobs.map(job => new StringSelectMenuOptionBuilder().setLabel(job).setValue(job)));
+                .setPlaceholder(t(lang, 'ignconfig.selectJob', { role: roleName(selectedRole, lang) }))
+                .addOptions(jobs.map(job => new StringSelectMenuOptionBuilder().setLabel(jobName(job, lang)).setValue(job)));
 
             const row = new ActionRowBuilder().addComponents(jobSelect);
             const backRow = new ActionRowBuilder().addComponents(
-                new ButtonBuilder().setCustomId('ign_btn_main_job').setLabel('Back to Roles').setStyle(ButtonStyle.Secondary)
+                new ButtonBuilder().setCustomId('ign_btn_main_job').setLabel(t(lang, 'ignconfig.backRoles')).setStyle(ButtonStyle.Secondary)
             );
 
             const embed = new EmbedBuilder()
                 .setColor(0x3498db)
-                .setTitle(`⚔️ Select ${selectedRole} Job`)
-                .setDescription('Choose your specific main job from the dropdown below.');
+                .setTitle(t(lang, 'ignconfig.selectJobTitle', { role: roleName(selectedRole, lang) }))
+                .setDescription(t(lang, 'ignconfig.selectJobHelp'));
 
             return interaction.update({ embeds: [embed], components: [row, backRow] }).catch(() => { });
         }
@@ -245,11 +255,12 @@ module.exports = {
             await interaction.deferUpdate().catch(() => { });
             session.main_job = interaction.values[0];
             await saveSessionToDb(userId, session);
-            return sendConfigDashboard(interaction, false);
+            return sendConfigDashboard(interaction, false, lang);
         }
     },
 
     async handleModal(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         const userId = interaction.user.id;
         global.ignSessions = global.ignSessions || {};
         let session = global.ignSessions[userId];
@@ -263,39 +274,39 @@ module.exports = {
             const rawInput = interaction.fields.getTextInputValue('lodestone_url_input');
             const extractedId = extractLodestoneId(rawInput);
             if (!extractedId) {
-                return interaction.followUp({ content: '❌ Invalid Lodestone URL or ID format.', flags: [MessageFlags.Ephemeral] }).catch(() => { });
+                return interaction.followUp({ content: t(lang, 'ignconfig.invalidLodestone'), flags: [MessageFlags.Ephemeral] }).catch(() => { });
             }
             session.lodestone_id = extractedId;
             await saveSessionToDb(userId, session);
-            return sendConfigDashboard(interaction, false);
+            return sendConfigDashboard(interaction, false, lang);
         }
 
         if (interaction.customId === 'ign_modal_portrait') {
             await interaction.deferUpdate().catch(() => { });
             session.portrait_url = interaction.fields.getTextInputValue('portrait_url_input').trim();
             await saveSessionToDb(userId, session);
-            return sendConfigDashboard(interaction, false);
+            return sendConfigDashboard(interaction, false, lang);
         }
 
         if (interaction.customId === 'ign_modal_full_photo') {
             await interaction.deferUpdate().catch(() => { });
             session.full_photo_url = interaction.fields.getTextInputValue('full_photo_url_input').trim();
             await saveSessionToDb(userId, session);
-            return sendConfigDashboard(interaction, false);
+            return sendConfigDashboard(interaction, false, lang);
         }
 
         if (interaction.customId === 'ign_modal_tomestone') {
             await interaction.deferUpdate().catch(() => { });
             session.tomestone_url = interaction.fields.getTextInputValue('tomestone_url_input').trim();
             await saveSessionToDb(userId, session);
-            return sendConfigDashboard(interaction, false);
+            return sendConfigDashboard(interaction, false, lang);
         }
 
         if (interaction.customId === 'ign_modal_fflogs') {
             await interaction.deferUpdate().catch(() => { });
             session.fflogs_url = interaction.fields.getTextInputValue('fflogs_url_input').trim();
             await saveSessionToDb(userId, session);
-            return sendConfigDashboard(interaction, false);
+            return sendConfigDashboard(interaction, false, lang);
         }
     }
 };
@@ -319,36 +330,36 @@ async function saveSessionToDb(userId, session) {
     );
 }
 
-async function sendConfigDashboard(interaction, isInitial = false) {
+async function sendConfigDashboard(interaction, isInitial = false, lang = 'en') {
     const userId = interaction.user.id;
     const session = global.ignSessions[userId];
 
     const embed = new EmbedBuilder()
         .setColor(0x3498db)
-        .setTitle('⚙️ FFXIV Character Configuration Dashboard')
-        .setDescription('Changes save automatically when you click buttons or submit modals.')
+        .setTitle(t(lang, 'ignconfig.dashTitle'))
+        .setDescription(t(lang, 'ignconfig.dashHelp'))
         .addFields(
-            { name: '🔗 Lodestone ID', value: session.lodestone_id ? `\`${session.lodestone_id}\`` : '*Not set*', inline: false },
-            { name: '⚔️ Main Job', value: session.main_job ? session.main_job : '*Not set*', inline: false },
-            { name: '🖼️ Add Portrait', value: session.portrait_url ? session.portrait_url : '*Using Default*', inline: false },
-            { name: '🌅 Add Full Photo', value: session.full_photo_url ? session.full_photo_url : '*None set*', inline: false },
-            { name: '👁️ Portrait State', value: session.portrait_toggle ? '🟢 ON' : '🔴 OFF', inline: true },
-            { name: '🏛️ Tomestone Link', value: session.tomestone_url ? session.tomestone_url : '*None set*', inline: false },
-            { name: '📊 FFLogs Link', value: session.fflogs_url ? session.fflogs_url : '*None set*', inline: false }
+            { name: t(lang, 'ignconfig.fields.lodestone'), value: session.lodestone_id ? `\`${session.lodestone_id}\`` : t(lang, 'ignconfig.notSet'), inline: false },
+            { name: t(lang, 'ignconfig.fields.mainJob'), value: session.main_job ? jobName(session.main_job, lang) : t(lang, 'ignconfig.notSet'), inline: false },
+            { name: t(lang, 'ignconfig.fields.portrait'), value: session.portrait_url ? session.portrait_url : t(lang, 'ignconfig.usingDefault'), inline: false },
+            { name: t(lang, 'ignconfig.fields.photo'), value: session.full_photo_url ? session.full_photo_url : t(lang, 'ignconfig.noneSet'), inline: false },
+            { name: t(lang, 'ignconfig.fields.portraitState'), value: session.portrait_toggle ? t(lang, 'ignconfig.on') : t(lang, 'ignconfig.off'), inline: true },
+            { name: t(lang, 'ignconfig.fields.tomestone'), value: session.tomestone_url ? session.tomestone_url : t(lang, 'ignconfig.noneSet'), inline: false },
+            { name: t(lang, 'ignconfig.fields.fflogs'), value: session.fflogs_url ? session.fflogs_url : t(lang, 'ignconfig.noneSet'), inline: false }
         );
 
     const row1 = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('ign_btn_link').setLabel('Link Lodestone').setStyle(ButtonStyle.Primary),
-        new ButtonBuilder().setCustomId('ign_btn_main_job').setLabel('Main Job').setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder().setCustomId('ign_btn_portrait').setLabel('Add Portrait').setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder().setCustomId('ign_btn_full_photo').setLabel('Add Full Photo').setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder().setCustomId('ign_toggle_portrait').setLabel(`Portrait: ${session.portrait_toggle ? 'ON' : 'OFF'}`).setStyle(session.portrait_toggle ? ButtonStyle.Success : ButtonStyle.Secondary)
+        new ButtonBuilder().setCustomId('ign_btn_link').setLabel(t(lang, 'ignconfig.btn.link')).setStyle(ButtonStyle.Primary),
+        new ButtonBuilder().setCustomId('ign_btn_main_job').setLabel(t(lang, 'ignconfig.btn.mainJob')).setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('ign_btn_portrait').setLabel(t(lang, 'ignconfig.btn.portrait')).setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('ign_btn_full_photo').setLabel(t(lang, 'ignconfig.btn.photo')).setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('ign_toggle_portrait').setLabel(t(lang, 'ignconfig.btn.portraitToggle', { state: session.portrait_toggle ? t(lang, 'ignconfig.btn.on') : t(lang, 'ignconfig.btn.off') })).setStyle(session.portrait_toggle ? ButtonStyle.Success : ButtonStyle.Secondary)
     );
 
     const row2 = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('ign_btn_tomestone_link').setLabel('Add Tomestone Link').setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder().setCustomId('ign_btn_fflogs_link').setLabel('Add FFLogs Link').setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder().setCustomId('ign_btn_exit').setLabel('Exit').setStyle(ButtonStyle.Danger)
+        new ButtonBuilder().setCustomId('ign_btn_tomestone_link').setLabel(t(lang, 'ignconfig.btn.tomestone')).setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('ign_btn_fflogs_link').setLabel(t(lang, 'ignconfig.btn.fflogs')).setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('ign_btn_exit').setLabel(t(lang, 'ignconfig.btn.exit')).setStyle(ButtonStyle.Danger)
     );
 
     if (isInitial) {

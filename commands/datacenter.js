@@ -5,6 +5,8 @@ const { pool } = require('../utils/db');
 const PERSONAL_DC_KEY = 'personal';
 const fs = require('fs');
 const path = require('path');
+const { t, discordLocalizations } = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
 
 const DC_JSON_PATH = path.join(__dirname, '..', 'data', 'datacenter.json');
 
@@ -28,9 +30,10 @@ function getDatacenterData() {
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('datacenter')
-        .setDescription('Select your preferred Data Centers for the /price command'),
+        .setDescription(t('en', 'datacenter.cmd.description')).setDescriptionLocalizations(discordLocalizations('datacenter.cmd.description')),
 
     async execute(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         const guildId = interaction.guildId;
         const userId = interaction.user.id;
 
@@ -57,7 +60,7 @@ module.exports = {
                     new StringSelectMenuOptionBuilder()
                         .setLabel(`${dcName}`)
                         .setValue(dcName)
-                        .setDescription(`Region: ${regionName}`)
+                        .setDescription(t(lang, 'datacenter.region', { region: regionName }))
                         .setDefault(userDCs.includes(dcName))
                 );
             }
@@ -65,14 +68,14 @@ module.exports = {
 
         if (options.length === 0) {
             return interaction.reply({
-                content: '❌ **Error:** No data centers found in configuration file.',
+                content: t(lang, 'datacenter.noneConfigured'),
                 flags: [MessageFlags.Ephemeral]
             });
         }
 
         const selectMenu = new StringSelectMenuBuilder()
             .setCustomId('dc_select_menu')
-            .setPlaceholder('Select your Data Centers (Multiple allowed)')
+            .setPlaceholder(t(lang, 'datacenter.placeholder'))
             .setMinValues(1)
             .setMaxValues(Math.min(options.length, 25))
             .addOptions(options);
@@ -82,22 +85,23 @@ module.exports = {
         const buttonRow = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
                 .setCustomId('dc_btn_done')
-                .setLabel('Done')
+                .setLabel(t(lang, 'datacenter.done'))
                 .setStyle(ButtonStyle.Success),
             new ButtonBuilder()
                 .setCustomId('dc_btn_clear')
-                .setLabel('Clear Saved Data')
+                .setLabel(t(lang, 'datacenter.clear'))
                 .setStyle(ButtonStyle.Danger)
         );
 
         return interaction.reply({
-            content: '🌐 **Data Center Setup:** Choose which Data Centers you want queries to check during `/price` lookups (Changes auto-save):',
+            content: t(lang, 'datacenter.intro'),
             components: [selectRow, buttonRow],
             flags: [MessageFlags.Ephemeral]
         });
     },
 
     async handleInteraction(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         const guildId = interaction.guildId;
         const userId = interaction.user.id;
 
@@ -112,13 +116,13 @@ module.exports = {
                 );
 
                 return interaction.update({
-                    content: `✅ **Data Centers successfully updated!**\nSelected: \`${selectedDCs.join(', ')}\``,
+                    content: t(lang, 'datacenter.updated', { list: selectedDCs.join(', ') }),
                     components: interaction.message.components
                 });
             } catch (error) {
                 console.error('Error saving datacenters to MySQL:', error);
                 return interaction.reply({
-                    content: '❌ Failed to save your Data Center preferences to database.',
+                    content: t(lang, 'datacenter.saveFailed'),
                     flags: [MessageFlags.Ephemeral]
                 });
             }
@@ -139,13 +143,13 @@ module.exports = {
                     );
 
                     return interaction.update({
-                        content: '🗑️ **Saved data center cache cleared!** You have no data centers selected now.',
+                        content: t(lang, 'datacenter.cleared'),
                         components: []
                     });
                 } catch (error) {
                     console.error('Error clearing datacenters from MySQL:', error);
                     return interaction.reply({
-                        content: '❌ Failed to clear your saved data.',
+                        content: t(lang, 'datacenter.clearFailed'),
                         flags: [MessageFlags.Ephemeral]
                     });
                 }

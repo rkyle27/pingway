@@ -1,0 +1,52 @@
+{
+  "cmd": {
+    "description": "📖 Pingwayのコマンドと使い方の一覧を表示します。"
+  },
+  "title": "📖 Pingway コマンドガイド",
+  "description": "🌐 **Pingwayはブラウザでも管理できます！** サーバー設定と個人設定は **{url}** から\n\nPingwayでできることはこちら：",
+  "fields": {
+    "market": {
+      "name": "💰 マーケットボード",
+      "value": "**/price <item>** — あなたのデータセンター全体のワールド別価格。\n**/datacenter** — データセンターを選ぶ（どこでも使われます）。\n**/marketalert** — 普段の価格より80%以上安い出品をDMでお知らせ（初期設定は1分ごと。DMの間隔はウェブサイトで変更できます）。"
+    },
+    "perks": {
+      "name": "💜 サポーター特典",
+      "value": "**/bestsellers** — あなたのワールドやデータセンターでよく売れているアイテム。\n**/buysell** — あなたのワールドより他のワールドの方が安い人気アイテム。\n**/retainers** — 見守り中のリテイナーと、値下げされたアイテム。\n設定：ウェブサイト → Retainers → Market tools。特典：月10ポイント（top.ggで投票するとポイントがもらえます）。"
+    },
+    "status": {
+      "name": "🌍 ステータス & タイマー",
+      "value": "**/status** — ワールドの状態と、あなたのワールドのDM通知。\n**/timer** — デイリー/ウィークリーのリセット、ハウジング抽選、リリースのカウントダウン。\n**/todo** — デイリー & ウィークリーのチェックリスト。\n**/firmament** — 蒼天街の祭典（Skyrise Celebration）の個人タイマー（DM付き）。"
+    },
+    "party": {
+      "name": "🎯 パーティ & レイド",
+      "value": "**/pf** — ロール & ジョブ枠つきのパーティ募集。\n**/raid** — Googleスプレッドシートから7日間のレイド予定。\n**/poll** — ロール限定の投票と結果つきのアンケート。"
+    },
+    "character": {
+      "name": "🪪 キャラクター",
+      "value": "**/ign** — ロードストーン情報とQRコード入りのキャラクターカード。\n**/ignconfig** — ロードストーン、メインジョブ、写真、Tomestone & FFLogsを連携。"
+    },
+    "games": {
+      "name": "🃏 ゲーム",
+      "value": "**/trivia** — 今日のFFXIVワードを当てよう（6つの難易度）。ビットを集めて連続記録をキープ。\n**/sciondex** — NPCを仲間にしてパーティを組み、ボスと戦おう。\n**/nissi** — 絶アレキサンダー討滅戦のニシ・ギミック練習クイズ。"
+    },
+    "ai": {
+      "name": "🤖 AIアシスタント",
+      "value": "管理者が **/ailistenhere** で設定したAIチャンネルだけで使えます（サーバーに1つ）。普通に話しかけてください。例：\n*「2時間後にルーレットをやるのをリマインドして」* · *「タスク ポーションを買う を追加」* · *「タスク一覧を見せて」*\n**release recollection** と言うと、短いチャットの記憶を消せます。"
+    },
+    "admin": {
+      "name": "🛠️ 管理者",
+      "value": "**/ailistenhere** — AIチャットをこのチャンネルに移動（そこでもう一度実行するとオフ）。\n**/notifhere** — このチャンネルをPingwayの通知用に設定。\n**/welcomehere** — このチャンネルに新メンバーのウェルカムカードを投稿（`action: off` で停止）。\n**/clean** — メッセージを一括削除（14日より古いものも）。\n**/honeypot** — 乗っ取られたスパムアカウントを排除する「ここに書き込まないで」チャンネル。\n**/logger** — コマンドの使用履歴をGoogleスプレッドシートに記録。\n🌐 ウェブサイトで：**リアクションロール**、**チケット**（サポート窓口）、**FFXIVニュース**チャンネル。"
+    },
+    "other": {
+      "name": "📨 その他",
+      "value": "**/clearbotdms** — DMにあるPingwayのメッセージを片付けます。\n**/pingway** — あなた用のPingwayの言語を選びます（en、fr、de、jp、auto）。\n**/help** — このガイド。"
+    }
+  },
+  "footer": "Pingway FFXIV Discord Bot • 開発：River Zola",
+  "buttons": {
+    "website": "ウェブサイト",
+    "invite": "招待",
+    "support": "サポート",
+    "privacy": "プライバシー"
+  }
+}

@@ -1,0 +1,260 @@
+{
+  "command": {
+    "description": "🧩 Errate das FFXIV-Wort des Tages in 6 Schwierigkeitsgraden, sammle Bits und halte deine Serie."
+  },
+  "title": "🧩 **Pingway Trivia — Errate das Wort**",
+  "diff": {
+    "easy": "Leicht",
+    "normal": "Normal",
+    "hard": "Schwer",
+    "extreme": "Extrem",
+    "savage": "Episch",
+    "ultimate": "Fatal"
+  },
+  "maintenance": "⚠️ **Der Bot wird gerade gewartet.** Bitte versuche es später noch einmal!",
+  "notAvailable": "❌ Trivia ist gerade nicht verfügbar. Bitte versuche es in einer Minute noch einmal.",
+  "warming": "⏳ Trivia wird vorbereitet, versuche es in einer Minute noch einmal.",
+  "error": "❌ Etwas ist schiefgelaufen. Bitte starte /trivia neu.",
+  "ended": "⌛ Sitzung beendet — starte /trivia neu.",
+  "time": {
+    "hm": "{h} Std. {m} Min.",
+    "m": "{m} Min."
+  },
+  "count": {
+    "bits_one": "{n} Bit",
+    "bits_other": "{n} Bits",
+    "guesses_one": "{n} Versuch",
+    "guesses_other": "{n} Versuchen",
+    "limit_one": "{n} Versuch",
+    "limit_other": "{n} Versuche",
+    "wrongGuesses_one": "{n} Fehlversuch",
+    "wrongGuesses_other": "{n} Fehlversuche",
+    "wrongLeft_one": "Noch {n} Fehlversuch übrig",
+    "wrongLeft_other": "Noch {n} Fehlversuche übrig",
+    "streakDays_one": "{n} Tag",
+    "streakDays_other": "{n} Tage"
+  },
+  "status": {
+    "solved": "gelöst",
+    "gaveup": "aufgegeben",
+    "failed": "keine Versuche mehr",
+    "playing": "läuft",
+    "new": "neu"
+  },
+  "buttons": {
+    "play": "Spielen",
+    "continue": "Weiter",
+    "results": "Heutiges Ergebnis",
+    "howto": "Spielregeln",
+    "todayWord": "Heutiges Wort",
+    "share": "Ergebnis teilen",
+    "back": "Zurück",
+    "guess": "Raten",
+    "hint": "Tipp",
+    "giveUp": "Aufgeben",
+    "giveUpYes": "Ja, aufgeben",
+    "giveUpNo": "Nein, weiterspielen"
+  },
+  "home": {
+    "intro": "Errate das FFXIV-Wort des Tages. 6 Schwierigkeitsgrade, jeder mit eigenem Wort. Eine Lösung pro Tag, auf allen Servern.",
+    "you": "**Du:** 🔥 Serie {streak} · 💎 {season} Bits diesen Monat · {total} insgesamt",
+    "solved": "✅ Du hast das heutige Wort in **{diff}** gelöst (+{bits} Bits). Komm nach 0:00 Uhr JST wieder! (in {time})",
+    "waiting": "▶ Dein Spiel in **{diff}** wartet auf dich.",
+    "newWords": "⏳ Neue Wörter in {time} (0:00 Uhr JST).",
+    "yesterday": "**Lösungen von gestern**",
+    "yesterdayNone": "_Noch keine — komm morgen wieder!_"
+  },
+  "howto": {
+    "rules": [
+      "• Jedes Kästchen ist ein Buchstabe: ⬜ verdeckt, 🇦 aufgedeckt. Umlaute und ß werden als echter Buchstabe gezeigt (Ü). Leerzeichen und Symbole sind immer sichtbar.",
+      "• Drücke **Raten** und gib die ganze Antwort ein. Groß/klein, Akzente, Leerzeichen und Symbole sind egal (ü = u = ue, ß = ss).",
+      "• Ein falscher Versuch deckt die Buchstaben an der richtigen Stelle auf, plus einen weiteren. Alle Buchstaben aufgedeckt = gelöst. Zu viele Fehlversuche, und dieser Schwierigkeitsgrad ist für heute gesperrt.",
+      "• **Tipp:** bis zu {hints} pro Versuch (nach jedem Fehlversuch wieder voll). Erst Hinweise, dann Buchstaben. **Aufgeben** sperrt diesen Schwierigkeitsgrad für heute; du kannst noch einen anderen versuchen.",
+      "• Nach einer Lösung bist du für heute fertig, auf allen Servern. Neue Wörter um 0:00 Uhr JST. Das Wort des Tages ist für alle gleich und wird in deiner Sprache gezeigt (ändern mit /pingway)."
+    ],
+    "bits": "**Bits:** weniger aufgedeckte Buchstaben = mehr Bits, bis zum Doppelten. Nie weniger als die Basis.",
+    "diff": "{emoji} {name}: {bits}, {wrong}",
+    "streak": "**Serie:** löse an mehreren Tagen hintereinander. Bonus nach 5/10/15/20/30 Tagen: +10/+20/+30/+40/+60 Bits. Serien und die Monatsrangliste beginnen am 1. neu.",
+    "boards": "Ranglisten: pingway.app → Trivia. In My Settings kannst du dich verbergen."
+  },
+  "menu": {
+    "solved": "✅ Du hast das heutige Wort in **{diff}** gelöst. Komm nach 0:00 Uhr JST wieder!",
+    "pick": "Wähle einen Schwierigkeitsgrad. Jeder hat sein eigenes Wort des Tages.",
+    "line": "{emoji} **{name}** · {bits} · {limit} — {status}"
+  },
+  "game": {
+    "header": "{emoji} **{name}** · {left} · 💡 {hints}/{max} Tipps"
+  },
+  "feedback": {
+    "wrongShown_one": "❌ Leider falsch — {n} Buchstabe aufgedeckt. {left}.",
+    "wrongShown_other": "❌ Leider falsch — {n} Buchstaben aufgedeckt. {left}.",
+    "wrong": "❌ Leider falsch. {left}."
+  },
+  "hint": {
+    "letter": "💡 Buchstabe {n} aufgedeckt.",
+    "limit": "Keine Tipps mehr — nach einem Fehlversuch bekommst du {n} neue.",
+    "none": "Keine weiteren Tipps für dieses Wort."
+  },
+  "giveup": {
+    "ask": "🏳️ **Aufgeben?** Dieser Schwierigkeitsgrad wird für heute gesperrt. (Die Lösung siehst du erst morgen.)"
+  },
+  "solved": {
+    "allRevealed": "🎉 **Glückwunsch! Alle Buchstaben aufgedeckt!**",
+    "line": "✅ **Gelöst!** {emoji} {name} · +{bits} Bits (Basis {base}, Bonus {bonus})",
+    "streak": "🔥 Serie: {days}",
+    "milestone": " · 🎉 Serienbonus +{bits} Bits!",
+    "bits": "💎 {season} Bits diesen Monat · {total} insgesamt",
+    "done": "Das war's für heute — komm nach 0:00 Uhr JST wieder (in {time})."
+  },
+  "about": {
+    "title": "📖 **Über {word}**",
+    "answer": "📖 Die Lösung war **{word}**."
+  },
+  "locked": {
+    "gaveup": "🏳️ Du hast **{name}** aufgegeben.",
+    "failed": "❌ Keine Versuche mehr in **{name}**.",
+    "today": "{why} Für heute gesperrt.",
+    "other": "Du kannst noch einen anderen Schwierigkeitsgrad versuchen. Die Lösung erscheint nach 0:00 Uhr JST bei „Lösungen von gestern“."
+  },
+  "today": {
+    "solved": "✅ Du hast das heutige Wort in **{name}** gelöst"
+  },
+  "modal": {
+    "title": "Dein Tipp ({name})",
+    "label": "Gib die ganze Antwort ein"
+  },
+  "share": {
+    "nothing": "Gerade gibt es nichts zu teilen.",
+    "gone": "⚠️ Der Trivia-Kanal zum Teilen existiert nicht mehr. Bitte einen Admin, auf der Website einen neuen zu wählen.",
+    "already": "Schon geteilt. 🙂",
+    "cantPost": "⚠️ Pingway kann in <#{channel}> nicht schreiben. Bitte einen Admin, die Berechtigungen dort zu prüfen.",
+    "done": "📣 In <#{channel}> geteilt!",
+    "line": "🧩 **{name}** hat das heutige Pingway-Trivia-Wort in **{diff}** in {guesses}{hints} gelöst!{streak}",
+    "guesses_one": "{n} Versuch",
+    "guesses_other": "{n} Versuchen",
+    "hints_one": " mit {n} Tipp",
+    "hints_other": " mit {n} Tipps",
+    "noHints": " ohne Tipps",
+    "streak": " 🔥 Serie {n}",
+    "invite": "-# Kannst du das schlagen? Nutze {command}, um das FFXIV-Wort des Tages zu erraten, Bits zu sammeln und deine Serie aufzubauen!"
+  },
+  "reward": {
+    "dm": "🎉 Glückwunsch! Du hast im {month} **{bits} Bits** in Pingway Trivia gesammelt — als Dankeschön bekommst du **{points} Punkte**. Nutze sie für zusätzliche Gehilfen oder Supporter Perks auf {url}",
+    "month": "{month} {year}",
+    "months": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+    "roleGiven": "Pingway Trivia: Top {rank} im {season}",
+    "roleTaken": "Pingway Trivia: Top {rank} im {season} ging an jemand anderen"
+  },
+  "hints": {
+    "labelValue": "{label}: {v}",
+    "listSep": ", ",
+    "loreSep": " · ",
+    "category": "Kategorie: {v}",
+    "cat": {
+      "job": "Job",
+      "class": "Klasse",
+      "city": "Stadt",
+      "zone": "Gebiet",
+      "region": "Region",
+      "dungeon": "Dungeon",
+      "trial": "Prüfung",
+      "allianceRaid": "Allianz-Raid",
+      "raid": "Raid",
+      "mount": "Reittier",
+      "minion": "Begleiter",
+      "action": "Aktion",
+      "item": "Gegenstand"
+    },
+    "roles": { "1": "Verteidiger", "2": "Nahkampf-Angreifer", "3": "Fernkampf-Angreifer", "4": "Heiler" },
+    "stats": { "1": "Stärke", "2": "Geschick", "3": "Konstitution", "4": "Intelligenz", "5": "Willenskraft" },
+    "rarities": { "1": "Gewöhnlich (weiß)", "2": "Ungewöhnlich (grün)", "3": "Selten (blau)", "4": "Relikt (lila)", "7": "Ätherisch (rosa)" },
+    "roulettes": {
+      "LevelingRoulette": "Stufensteigerung",
+      "HighLevelRoulette": "Hochstufige Dungeons",
+      "ExpertRoulette": "Experte",
+      "TrialRoulette": "Prüfungen",
+      "AllianceRoulette": "Allianz-Raids",
+      "NormalRaidRoulette": "Normale Raids",
+      "MSQRoulette": "Hauptszenario"
+    },
+    "role": "Rolle: {v}",
+    "type": "Typ: {v}",
+    "mainStat": "Hauptattribut: {v}",
+    "startingCity": "Startstadt: {v}",
+    "startsAtLevel": "Beginnt auf Stufe {n}",
+    "limitedJob": "Es ist ein limitierter Job",
+    "becomes": "Wird zu: {v}",
+    "startsAs": "Beginnt als: {v}",
+    "abbreviation": "Abkürzung: {v}",
+    "region": "Region: {v}",
+    "expansion": "Erweiterung: {v}",
+    "area": "Bereich: {v}",
+    "alsoInRegion": "Auch in dieser Region: {v}",
+    "fieldZones_one": "{n} Gebiet",
+    "fieldZones_other": "{n} Gebiete",
+    "cityThere": "Eine Stadt dort: {v}",
+    "zoneThere": "Ein Gebiet dort: {v}",
+    "anotherZoneThere": "Noch ein Gebiet dort: {v}",
+    "level": "Stufe {n}",
+    "itemLevel": "Gegenstandsstufe {n}",
+    "roulette": "Zufallsinhalt: {v}",
+    "zone": "Gebiet: {v}",
+    "highEnd": "Es ist ein High-End-Inhalt",
+    "levelSync": "Stufensynchronisierung {n}",
+    "itemLevelSync": "Gegenstandsstufen-Synchronisierung {n}",
+    "description": "Beschreibung",
+    "quote": "Zitat",
+    "seats_one": "Plätze: {n} Reiter",
+    "seats_other": "Plätze: {n} Reiter",
+    "minionRace": "Begleiter-Art: {v}",
+    "behavior": "Verhalten: {v}",
+    "skillType": "Begleiterspiel-Fähigkeitstyp: {v}",
+    "specialAction": "Spezialaktion: {v}",
+    "verminionStats": "Begleiterspiel-Werte: ANG {atk} / VER {def} / TEM {spd}",
+    "job": "Job: {v}",
+    "roleAction": "Rollenaktion",
+    "actionType": "Aktionstyp: {v}",
+    "castTime": "Zauberzeit: {v}",
+    "instant": "Sofort",
+    "recast": "Wiederaufladezeit: {v}",
+    "seconds": "{n} s",
+    "groundTargeted": "Sie wird auf den Boden gewirkt",
+    "targets": "Ziele: {v}",
+    "targetEnemies": "Gegner",
+    "targetParty": "Gruppenmitglieder",
+    "targetSelf": "selbst",
+    "range": "Reichweite: {n} Yalm",
+    "radius": "Wirkungsradius: {n} Yalm",
+    "charges": "{n} Aufladungen",
+    "usedBy": "Benutzt von: {v}",
+    "itemType": "Gegenstandstyp: {v}",
+    "equipLevel": "Anlegbar ab Stufe {n}",
+    "usableBy": "Nutzbar für: {v}",
+    "craftedBy": "Hergestellt von: {v}",
+    "expertRecipe": " (Expertenrezept)",
+    "rarity": "Seltenheit: {v}",
+    "marketBoard": "Marktbrett: {v}",
+    "grandCompany": "Staatliche Gesellschaft: {v}",
+    "itemSeries": "Gegenstandsreihe: {v}",
+    "materia_one": "{n} Materia-Platz",
+    "materia_other": "{n} Materia-Plätze",
+    "dyeable": "Es kann gefärbt werden",
+    "stacks": "Stapelbar bis {n}",
+    "hq": "Es gibt es in hoher Qualität",
+    "unique": "Es ist einzigartig",
+    "collectable": "Es ist ein Sammlerstück",
+    "firstLetter": "Erster Buchstabe: {l}",
+    "lore": {
+      "line": "{name}{abbr} — {what}{startsAs}.",
+      "abbr": " ({v})",
+      "job": "Job",
+      "jobRole": "Job ({role})",
+      "class": "Klasse",
+      "classRole": "Klasse ({role})",
+      "startsAs": ", beginnt als {v}",
+      "city": { "full": "Eine Stadt in {region} ({exp}).", "region": "Eine Stadt in {region}.", "exp": "Eine Stadt ({exp}).", "plain": "Eine Stadt." },
+      "zone": { "full": "Ein Gebiet in {region} ({exp}).", "region": "Ein Gebiet in {region}.", "exp": "Ein Gebiet ({exp}).", "plain": "Ein Gebiet." },
+      "region": { "exp": "Eine Region der Welt, zuerst in {exp}.", "plain": "Eine Region der Welt." }
+    }
+  }
+}
