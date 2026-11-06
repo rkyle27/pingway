@@ -1,0 +1,69 @@
+{
+  "cmd": {
+    "description": "⚙️ Configure ton profil FFXIV : job principal, portraits, Tomestone et FFLogs."
+  },
+  "needPhoto": "⚠️ Tu ne peux pas désactiver le portrait tant qu'aucune **photo complète** n'a été ajoutée !",
+  "selectRole": "Choisis le rôle de ton job principal",
+  "roles": {
+    "tank": "Tank",
+    "healer": "Soigneur",
+    "melee": "DPS de mêlée",
+    "ranged": "DPS physique à distance",
+    "caster": "DPS magique à distance"
+  },
+  "backDashboard": "Retour au tableau de bord",
+  "selectRoleTitle": "⚔️ Choisis le rôle de ton job principal",
+  "selectRoleHelp": "Choisis la catégorie de rôle de ton personnage dans la liste ci-dessous.",
+  "linkTitle": "Lier un personnage du Lodestone",
+  "lodestoneLabel": "URL ou ID Lodestone",
+  "portraitTitle": "Ajouter un portrait",
+  "portraitLabel": "Lien direct du portrait",
+  "leaveBlank": "laisse vide pour utiliser celui par défaut",
+  "photoTitle": "Ajouter une photo complète",
+  "photoLabel": "Lien direct de la photo complète",
+  "tomestoneTitle": "Ajouter le lien Tomestone",
+  "tomestoneLabel": "URL Tomestone (vide pour effacer)",
+  "fflogsTitle": "Ajouter le lien FFLogs",
+  "fflogsLabel": "URL FFLogs (vide pour effacer)",
+  "closed": "Session de configuration fermée.",
+  "selectJob": "Choisis ton job ({role})",
+  "backRoles": "Retour aux rôles",
+  "selectJobTitle": "⚔️ Choisis ton job ({role})",
+  "selectJobHelp": "Choisis ton job principal dans la liste ci-dessous.",
+  "invalidLodestone": "❌ Format d'URL ou d'ID Lodestone invalide.",
+  "dashTitle": "⚙️ Configuration du personnage FFXIV",
+  "dashHelp": "Les changements sont enregistrés automatiquement quand tu cliques sur un bouton ou valides une fenêtre.",
+  "fields": {
+    "lodestone": "🔗 ID Lodestone",
+    "mainJob": "⚔️ Job principal",
+    "portrait": "🖼️ Portrait",
+    "photo": "🌅 Photo complète",
+    "portraitState": "👁️ Affichage du portrait",
+    "tomestone": "🏛️ Lien Tomestone",
+    "fflogs": "📊 Lien FFLogs"
+  },
+  "notSet": "*Non défini*",
+  "usingDefault": "*Par défaut*",
+  "noneSet": "*Aucun*",
+  "on": "🟢 ACTIVÉ",
+  "off": "🔴 DÉSACTIVÉ",
+  "btn": {
+    "link": "Lier le Lodestone",
+    "mainJob": "Job principal",
+    "portrait": "Ajouter un portrait",
+    "photo": "Ajouter une photo complète",
+    "on": "ACTIVÉ",
+    "off": "DÉSACTIVÉ",
+    "portraitToggle": "Portrait : {state}",
+    "tomestone": "Lien Tomestone",
+    "fflogs": "Lien FFLogs",
+    "exit": "Quitter"
+  },
+  "roleShort": {
+    "Tank": "tank",
+    "Healer": "soigneur",
+    "Melee": "mêlée",
+    "Range": "distance physique",
+    "Caster": "distance magique"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "channel": "⏰ <@{userId}>, hier ist deine Erinnerung: **\"{text}\"** (fällig <t:{time}:R>).",
+  "dm": "⏰ **Erinnerung:**\nHier ist deine Erinnerung: **\"{text}\"**"
+}

@@ -11,6 +11,8 @@ const {
     MessageFlags
 } = require('discord.js');
 const { pool } = require('../utils/db');
+const { t, discordLocalizations } = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
 
 // In-memory storage for active poll creation wizards
 const wizardSessions = new Map();
@@ -29,21 +31,23 @@ function safeJsonParse(val, fallback = []) {
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('poll')
-        .setDescription('Create and manage interactive custom polls.'),
+        .setDescription(t('en', 'poll.cmd.description')).setDescriptionLocalizations(discordLocalizations('poll.cmd.description')),
 
     async execute(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
+        const glang = userLanguage.forGuild(interaction.guild); // the public poll message: the server's language
         try {
             // ---------------------------------------------------------
             // 1. Handle Slash Command Initiation
             // ---------------------------------------------------------
             if (interaction.isChatInputCommand() && interaction.commandName === 'poll') {
                 const row = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setCustomId('poll_main_create').setLabel('Create Poll').setStyle(ButtonStyle.Primary),
-                    new ButtonBuilder().setCustomId('poll_main_list').setLabel('Show List').setStyle(ButtonStyle.Secondary)
+                    new ButtonBuilder().setCustomId('poll_main_create').setLabel(t(lang, 'poll.create')).setStyle(ButtonStyle.Primary),
+                    new ButtonBuilder().setCustomId('poll_main_list').setLabel(t(lang, 'poll.showList')).setStyle(ButtonStyle.Secondary)
                 );
 
                 return await interaction.reply({
-                    content: '📊 **What would you like to do?**',
+                    content: t(lang, 'poll.whatToDo'),
                     components: [row],
                     flags: [MessageFlags.Ephemeral]
                 });
@@ -57,12 +61,12 @@ module.exports = {
                     const question = interaction.fields.getTextInputValue('poll_question_input');
 
                     const row = new ActionRowBuilder().addComponents(
-                        new ButtonBuilder().setCustomId('poll_multi_true').setLabel('Yes').setStyle(ButtonStyle.Success),
-                        new ButtonBuilder().setCustomId('poll_multi_false').setLabel('No').setStyle(ButtonStyle.Danger)
+                        new ButtonBuilder().setCustomId('poll_multi_true').setLabel(t(lang, 'poll.yes')).setStyle(ButtonStyle.Success),
+                        new ButtonBuilder().setCustomId('poll_multi_false').setLabel(t(lang, 'poll.no')).setStyle(ButtonStyle.Danger)
                     );
 
                     const reply = await interaction.update({
-                        content: `**Question:** ${question}\n\nDo you want to **allow multiple answers**?`,
+                        content: t(lang, 'poll.askMultiple', { question }),
                         components: [row],
                         withResponse: true
                     });
@@ -78,13 +82,13 @@ module.exports = {
                 else if (interaction.customId.startsWith('poll_modal_answer_')) {
                     const session = wizardSessions.get(interaction.user.id);
                     if (!session) {
-                        return interaction.update({ content: 'Session expired.', components: [] });
+                        return interaction.update({ content: t(lang, 'poll.expired'), components: [] });
                     }
 
                     const answerText = interaction.fields.getTextInputValue('poll_answer_input');
                     session.answers.push(answerText);
 
-                    await updateConfigWindow(interaction, session);
+                    await updateConfigWindow(interaction, session, lang);
                 }
             }
 
@@ -99,11 +103,11 @@ module.exports = {
                 if (interaction.customId === 'poll_main_create') {
                     const modal = new ModalBuilder()
                         .setCustomId('poll_modal_question')
-                        .setTitle('Create Poll - Question');
+                        .setTitle(t(lang, 'poll.modalQuestionTitle'));
 
                     const questionInput = new TextInputBuilder()
                         .setCustomId('poll_question_input')
-                        .setLabel('Poll Name / Question')
+                        .setLabel(t(lang, 'poll.questionLabel'))
                         .setStyle(TextInputStyle.Short)
                         .setRequired(true)
                         .setMaxLength(256);
@@ -118,20 +122,20 @@ module.exports = {
                     );
 
                     if (rows.length === 0) {
-                        return interaction.update({ content: '❌ No poll had been created by you in this server.', components: [] });
+                        return interaction.update({ content: t(lang, 'poll.noPolls'), components: [] });
                     }
 
                     const selectMenu = new StringSelectMenuBuilder()
                         .setCustomId('poll_list_manage_select')
-                        .setPlaceholder('Select a poll to manage')
+                        .setPlaceholder(t(lang, 'poll.selectManage'))
                         .addOptions(rows.map(poll => ({
                             label: poll.question.substring(0, 90),
-                            description: `ID: ${poll.poll_id}`,
+                            description: t(lang, 'poll.idLabel', { id: poll.poll_id }),
                             value: poll.poll_id
                         })));
 
                     return interaction.update({
-                        content: '📋 **Your Created Polls:** Select a poll below to manage:',
+                        content: t(lang, 'poll.yourPolls'),
                         components: [new ActionRowBuilder().addComponents(selectMenu)]
                     });
                 }
@@ -140,7 +144,7 @@ module.exports = {
                 else if (interaction.customId.startsWith('poll_manage_repost_')) {
                     const pollId = interaction.customId.split('_')[3];
                     const [rows] = await pool.execute(`SELECT * FROM guild_polls WHERE poll_id = ?`, [pollId]);
-                    if (rows.length === 0) return interaction.update({ content: 'Poll no longer exists in database.', components: [] });
+                    if (rows.length === 0) return interaction.update({ content: t(lang, 'poll.gone'), components: [] });
 
                     const pollData = rows[0];
                     const answers = safeJsonParse(pollData.answers);
@@ -155,7 +159,7 @@ module.exports = {
                     } catch { }
 
                     const roleTags = roles.length > 0 ? roles.map(r => `<@&${r}>`).join(' ') : '';
-                    let contentStr = `${roleTags}\n## ${pollData.question}\nby: <@${pollData.creator_id}>\n\n`;
+                    let contentStr = t(glang, 'poll.post', { roles: roleTags, question: pollData.question, creator: pollData.creator_id });
                     answers.forEach((ans, idx) => {
                         contentStr += `${idx + 1}. ${ans}\n`;
                     });
@@ -177,9 +181,9 @@ module.exports = {
                     if (currentRow.components.length > 0) components.push(currentRow);
 
                     components.push(new ActionRowBuilder().addComponents(
-                        new ButtonBuilder().setCustomId(`poll_action_change_vote_${newPollId}`).setLabel('Change Vote').setStyle(ButtonStyle.Primary),
-                        new ButtonBuilder().setCustomId(`poll_action_results_${newPollId}`).setLabel('Show Result').setStyle(ButtonStyle.Success),
-                        new ButtonBuilder().setCustomId(`poll_action_delete_${newPollId}`).setLabel('Remove Poll').setStyle(ButtonStyle.Danger)
+                        new ButtonBuilder().setCustomId(`poll_action_change_vote_${newPollId}`).setLabel(t(glang, 'poll.changeVote')).setStyle(ButtonStyle.Primary),
+                        new ButtonBuilder().setCustomId(`poll_action_results_${newPollId}`).setLabel(t(glang, 'poll.showResult')).setStyle(ButtonStyle.Success),
+                        new ButtonBuilder().setCustomId(`poll_action_delete_${newPollId}`).setLabel(t(glang, 'poll.removePoll')).setStyle(ButtonStyle.Danger)
                     ));
 
                     await newMsg.edit({ components });
@@ -190,15 +194,15 @@ module.exports = {
                         [newPollId, interaction.guildId, interaction.channelId, pollData.creator_id, pollData.question, pollData.allow_multiple, typeof pollData.answers === 'string' ? pollData.answers : JSON.stringify(pollData.answers), typeof pollData.roles === 'string' ? pollData.roles : JSON.stringify(pollData.roles)]
                     );
 
-                    return interaction.update({ content: '✅ Poll successfully reposted to this channel!', components: [] });
+                    return interaction.update({ content: t(lang, 'poll.reposted'), components: [] });
                 }
                 else if (interaction.customId.startsWith('poll_manage_delete_prompt_')) {
                     const pollId = interaction.customId.split('_')[4];
                     const confirmRow = new ActionRowBuilder().addComponents(
-                        new ButtonBuilder().setCustomId(`poll_manage_delete_yes_${pollId}`).setLabel('Yes, Delete').setStyle(ButtonStyle.Danger),
-                        new ButtonBuilder().setCustomId(`poll_manage_delete_no_${pollId}`).setLabel('Cancel').setStyle(ButtonStyle.Secondary)
+                        new ButtonBuilder().setCustomId(`poll_manage_delete_yes_${pollId}`).setLabel(t(lang, 'poll.yesDelete')).setStyle(ButtonStyle.Danger),
+                        new ButtonBuilder().setCustomId(`poll_manage_delete_no_${pollId}`).setLabel(t(lang, 'poll.cancel')).setStyle(ButtonStyle.Secondary)
                     );
-                    return interaction.update({ content: '⚠️ Are you sure you want to delete this poll permanently from database and Discord?', components: [confirmRow] });
+                    return interaction.update({ content: t(lang, 'poll.confirmDeleteDb'), components: [confirmRow] });
                 }
                 else if (interaction.customId.startsWith('poll_manage_delete_yes_')) {
                     const pollId = interaction.customId.split('_')[4];
@@ -218,109 +222,109 @@ module.exports = {
                         await pool.execute(`DELETE FROM guild_polls WHERE poll_id = ?`, [pollId]);
                     }
 
-                    return interaction.update({ content: '🗑️ Poll successfully deleted.', components: [] });
+                    return interaction.update({ content: t(lang, 'poll.deleted'), components: [] });
                 }
                 else if (interaction.customId.startsWith('poll_manage_delete_no_')) {
-                    return interaction.update({ content: 'Action cancelled.', components: [] });
+                    return interaction.update({ content: t(lang, 'poll.cancelled'), components: [] });
                 }
 
                 // -- Wizard Config Options --
                 else if (interaction.customId === 'poll_multi_true' || interaction.customId === 'poll_multi_false') {
-                    if (!session) return interaction.update({ content: 'Session expired.', components: [] });
+                    if (!session) return interaction.update({ content: t(lang, 'poll.expired'), components: [] });
                     session.allowMultiple = (interaction.customId === 'poll_multi_true');
-                    await updateConfigWindow(interaction, session);
+                    await updateConfigWindow(interaction, session, lang);
                 }
                 else if (interaction.customId === 'poll_config_toggle_multi') {
-                    if (!session) return interaction.update({ content: 'Session expired.', components: [] });
+                    if (!session) return interaction.update({ content: t(lang, 'poll.expired'), components: [] });
                     session.allowMultiple = !session.allowMultiple;
-                    await updateConfigWindow(interaction, session);
+                    await updateConfigWindow(interaction, session, lang);
                 }
                 else if (interaction.customId === 'poll_config_add_answer') {
-                    if (!session) return interaction.update({ content: 'Session expired.', components: [] });
+                    if (!session) return interaction.update({ content: t(lang, 'poll.expired'), components: [] });
                     if (session.answers.length >= 20) {
-                        return interaction.reply({ content: 'Maximum limit of 20 answers reached.', flags: [MessageFlags.Ephemeral] });
+                        return interaction.reply({ content: t(lang, 'poll.maxAnswers'), flags: [MessageFlags.Ephemeral] });
                     }
-                    return await showAnswerModal(interaction, session.answers.length + 1);
+                    return await showAnswerModal(interaction, session.answers.length + 1, lang);
                 }
                 else if (interaction.customId === 'poll_config_remove_answer') {
                     if (!session || session.answers.length === 0) {
-                        return interaction.reply({ content: 'No answers to remove.', flags: [MessageFlags.Ephemeral] });
+                        return interaction.reply({ content: t(lang, 'poll.noAnswers'), flags: [MessageFlags.Ephemeral] });
                     }
                     const selectMenu = new StringSelectMenuBuilder()
                         .setCustomId('poll_select_remove_answer')
-                        .setPlaceholder('Select answer to remove')
+                        .setPlaceholder(t(lang, 'poll.selectAnswerRemove'))
                         .addOptions(session.answers.map((ans, idx) => ({
                             label: `${idx + 1}. ${ans.substring(0, 90)}`,
                             value: idx.toString()
                         })));
 
                     await interaction.update({
-                        content: 'Select the answer number you wish to remove:',
+                        content: t(lang, 'poll.pickAnswerRemove'),
                         components: [new ActionRowBuilder().addComponents(selectMenu)]
                     });
                 }
                 else if (interaction.customId === 'poll_config_add_role') {
-                    if (!session) return interaction.update({ content: 'Session expired.', components: [] });
+                    if (!session) return interaction.update({ content: t(lang, 'poll.expired'), components: [] });
                     const roles = interaction.guild.roles.cache.filter(r => r.id !== interaction.guild.id);
                     if (roles.size === 0) {
-                        return interaction.reply({ content: 'No assignable roles found in this server.', flags: [MessageFlags.Ephemeral] });
+                        return interaction.reply({ content: t(lang, 'poll.noRoles'), flags: [MessageFlags.Ephemeral] });
                     }
 
                     const selectMenu = new StringSelectMenuBuilder()
                         .setCustomId('poll_select_add_role')
-                        .setPlaceholder('Select a role to tag')
+                        .setPlaceholder(t(lang, 'poll.selectRoleTag'))
                         .addOptions(roles.first(25).map(r => ({
                             label: r.name,
                             value: r.id
                         })));
 
                     await interaction.update({
-                        content: 'Select a role to add:',
+                        content: t(lang, 'poll.pickRoleAdd'),
                         components: [new ActionRowBuilder().addComponents(selectMenu)]
                     });
                 }
                 else if (interaction.customId === 'poll_config_remove_role') {
                     if (!session || session.roles.length === 0) {
-                        return interaction.reply({ content: 'No roles currently added.', flags: [MessageFlags.Ephemeral] });
+                        return interaction.reply({ content: t(lang, 'poll.noRolesAdded'), flags: [MessageFlags.Ephemeral] });
                     }
 
                     const selectMenu = new StringSelectMenuBuilder()
                         .setCustomId('poll_select_remove_role')
-                        .setPlaceholder('Select a role to remove')
+                        .setPlaceholder(t(lang, 'poll.selectRoleRemove'))
                         .addOptions(session.roles.map(roleId => {
                             const role = interaction.guild.roles.cache.get(roleId);
                             return {
-                                label: role ? role.name : 'Unknown Role',
+                                label: role ? role.name : t(lang, 'poll.unknownRole'),
                                 value: roleId
                             };
                         }));
 
                     await interaction.update({
-                        content: 'Select the role you wish to remove:',
+                        content: t(lang, 'poll.pickRoleRemove'),
                         components: [new ActionRowBuilder().addComponents(selectMenu)]
                     });
                 }
                 else if (interaction.customId === 'poll_config_cancel') {
                     const confirmRow = new ActionRowBuilder().addComponents(
-                        new ButtonBuilder().setCustomId('poll_cancel_yes').setLabel('Yes, Exit').setStyle(ButtonStyle.Danger),
-                        new ButtonBuilder().setCustomId('poll_cancel_no').setLabel('No, Continue').setStyle(ButtonStyle.Secondary)
+                        new ButtonBuilder().setCustomId('poll_cancel_yes').setLabel(t(lang, 'poll.yesExit')).setStyle(ButtonStyle.Danger),
+                        new ButtonBuilder().setCustomId('poll_cancel_no').setLabel(t(lang, 'poll.noContinue')).setStyle(ButtonStyle.Secondary)
                     );
-                    await interaction.update({ content: 'Are you sure you want to exit the poll creation wizard? All progress will be lost.', components: [confirmRow] });
+                    await interaction.update({ content: t(lang, 'poll.confirmExit'), components: [confirmRow] });
                 }
                 else if (interaction.customId === 'poll_cancel_yes') {
                     wizardSessions.delete(userId);
-                    await interaction.update({ content: 'Poll creation wizard cancelled.', components: [] });
+                    await interaction.update({ content: t(lang, 'poll.wizardCancelled'), components: [] });
                 }
                 else if (interaction.customId === 'poll_cancel_no') {
-                    await updateConfigWindow(interaction, session);
+                    await updateConfigWindow(interaction, session, lang);
                 }
                 else if (interaction.customId === 'poll_config_finish') {
                     if (!session || session.answers.length < 2) {
-                        return interaction.reply({ content: 'You must have at least 2 answers minimum to finish the poll.', flags: [MessageFlags.Ephemeral] });
+                        return interaction.reply({ content: t(lang, 'poll.min2'), flags: [MessageFlags.Ephemeral] });
                     }
 
                     const roleTags = session.roles.length > 0 ? session.roles.map(r => `<@&${r}>`).join(' ') : '';
-                    let contentStr = `${roleTags}\n## ${session.question}\nby: <@${interaction.user.id}>\n\n`;
+                    let contentStr = t(glang, 'poll.post', { roles: roleTags, question: session.question, creator: interaction.user.id });
                     session.answers.forEach((ans, idx) => {
                         contentStr += `${idx + 1}. ${ans}\n`;
                     });
@@ -342,9 +346,9 @@ module.exports = {
                     if (currentRow.components.length > 0) components.push(currentRow);
 
                     components.push(new ActionRowBuilder().addComponents(
-                        new ButtonBuilder().setCustomId(`poll_action_change_vote_${pollId}`).setLabel('Change Vote').setStyle(ButtonStyle.Primary),
-                        new ButtonBuilder().setCustomId(`poll_action_results_${pollId}`).setLabel('Show Result').setStyle(ButtonStyle.Success),
-                        new ButtonBuilder().setCustomId(`poll_action_delete_${pollId}`).setLabel('Remove Poll').setStyle(ButtonStyle.Danger)
+                        new ButtonBuilder().setCustomId(`poll_action_change_vote_${pollId}`).setLabel(t(glang, 'poll.changeVote')).setStyle(ButtonStyle.Primary),
+                        new ButtonBuilder().setCustomId(`poll_action_results_${pollId}`).setLabel(t(glang, 'poll.showResult')).setStyle(ButtonStyle.Success),
+                        new ButtonBuilder().setCustomId(`poll_action_delete_${pollId}`).setLabel(t(glang, 'poll.removePoll')).setStyle(ButtonStyle.Danger)
                     ));
 
                     await pollMessage.edit({ components });
@@ -355,7 +359,7 @@ module.exports = {
                     );
 
                     wizardSessions.delete(userId);
-                    await interaction.update({ content: 'Poll successfully created and posted!', components: [] });
+                    await interaction.update({ content: t(lang, 'poll.created'), components: [] });
                 }
 
                 // -- Voting and Active Poll Actions --
@@ -365,7 +369,7 @@ module.exports = {
                     const answerIndex = parseInt(parts[3], 10);
 
                     const [rows] = await pool.execute(`SELECT * FROM guild_polls WHERE poll_id = ?`, [pollId]);
-                    if (rows.length === 0) return interaction.reply({ content: 'This poll is no longer active.', flags: [MessageFlags.Ephemeral] });
+                    if (rows.length === 0) return interaction.reply({ content: t(lang, 'poll.inactive'), flags: [MessageFlags.Ephemeral] });
                     const pollData = rows[0];
                     const roles = safeJsonParse(pollData.roles);
 
@@ -373,7 +377,7 @@ module.exports = {
                         const member = await interaction.guild.members.fetch(interaction.user.id);
                         const hasRole = roles.some(roleId => member.roles.cache.has(roleId));
                         if (!hasRole) {
-                            return interaction.reply({ content: 'You do not have the required role(s) to vote on this poll.', flags: [MessageFlags.Ephemeral] });
+                            return interaction.reply({ content: t(lang, 'poll.noRole'), flags: [MessageFlags.Ephemeral] });
                         }
                     }
 
@@ -384,7 +388,7 @@ module.exports = {
                     if (!pollData.allow_multiple) {
                         if (userVotes.length > 0 && !hasVotedThisOption) {
                             return interaction.reply({
-                                content: 'Only one answer is allowed for this poll. Please use **Change Vote** to reset your votes first.',
+                                content: t(lang, 'poll.onlyOne'),
                                 flags: [MessageFlags.Ephemeral]
                             });
                         }
@@ -392,31 +396,31 @@ module.exports = {
 
                     if (hasVotedThisOption) {
                         await pool.execute(`DELETE FROM poll_votes WHERE poll_id = ? AND user_id = ? AND answer_index = ?`, [pollId, interaction.user.id, answerIndex]);
-                        await interaction.reply({ content: `Removed your vote for option ${answerIndex + 1}.`, flags: [MessageFlags.Ephemeral] });
+                        await interaction.reply({ content: t(lang, 'poll.voteRemoved', { n: answerIndex + 1 }), flags: [MessageFlags.Ephemeral] });
                     } else {
                         if (!pollData.allow_multiple) {
                             await pool.execute(`DELETE FROM poll_votes WHERE poll_id = ? AND user_id = ?`, [pollId, interaction.user.id]);
                         }
                         await pool.execute(`INSERT INTO poll_votes (poll_id, user_id, answer_index) VALUES (?, ?, ?)`, [pollId, interaction.user.id, answerIndex]);
-                        await interaction.reply({ content: `Successfully voted for option ${answerIndex + 1}!`, flags: [MessageFlags.Ephemeral] });
+                        await interaction.reply({ content: t(lang, 'poll.voted', { n: answerIndex + 1 }), flags: [MessageFlags.Ephemeral] });
                     }
                 }
                 else if (interaction.customId.startsWith('poll_action_change_vote_')) {
                     const pollId = interaction.customId.split('_')[4];
                     const confirmRow = new ActionRowBuilder().addComponents(
-                        new ButtonBuilder().setCustomId(`poll_confirm_remove_vote_${pollId}`).setLabel('Confirm Vote Removal').setStyle(ButtonStyle.Danger)
+                        new ButtonBuilder().setCustomId(`poll_confirm_remove_vote_${pollId}`).setLabel(t(lang, 'poll.confirmVoteRemoval')).setStyle(ButtonStyle.Danger)
                     );
-                    await interaction.reply({ content: 'Are you sure you want to remove all your current votes on this poll?', components: [confirmRow], flags: [MessageFlags.Ephemeral] });
+                    await interaction.reply({ content: t(lang, 'poll.confirmRemoveVotes'), components: [confirmRow], flags: [MessageFlags.Ephemeral] });
                 }
                 else if (interaction.customId.startsWith('poll_confirm_remove_vote_')) {
                     const pollId = interaction.customId.split('_')[4];
                     await pool.execute(`DELETE FROM poll_votes WHERE poll_id = ? AND user_id = ?`, [pollId, interaction.user.id]);
-                    await interaction.update({ content: 'Your votes have been completely removed from the database.', components: [] });
+                    await interaction.update({ content: t(lang, 'poll.votesRemoved'), components: [] });
                 }
                 else if (interaction.customId.startsWith('poll_action_results_')) {
                     const pollId = interaction.customId.split('_')[3];
                     const [rows] = await pool.execute(`SELECT * FROM guild_polls WHERE poll_id = ?`, [pollId]);
-                    if (rows.length === 0) return interaction.reply({ content: 'This poll is no longer active.', flags: [MessageFlags.Ephemeral] });
+                    if (rows.length === 0) return interaction.reply({ content: t(lang, 'poll.inactive'), flags: [MessageFlags.Ephemeral] });
                     const pollData = rows[0];
 
                     // Check privileges
@@ -439,28 +443,28 @@ module.exports = {
                         }
                     });
 
-                    let resultText = `📊 **Poll Results: ${pollData.question}**\n\n`;
+                    let resultText = t(lang, 'poll.resultsTitle', { question: pollData.question });
                     answers.forEach((ans, idx) => {
                         const voters = votesByOption[idx];
                         const count = voters.length;
                         const percentage = totalVoters > 0 ? ((count / totalVoters) * 100).toFixed(1) : '0.0';
 
                         if (canSeeVoters) {
-                            const userListStr = voters.length > 0 ? voters.join(', ') : '_No votes_';
-                            resultText += `**${idx + 1}. ${ans}** — ${count} votes (${percentage}%)\n`;
-                            resultText += `> **Voters:** ${userListStr}\n\n`;
+                            const userListStr = voters.length > 0 ? voters.join(', ') : t(lang, 'poll.noVotes');
+                            resultText += t(lang, 'poll.resultLineVoters', { n: idx + 1, answer: ans, count, percentage });
+                            resultText += t(lang, 'poll.voters', { list: userListStr });
                         } else {
-                            resultText += `**${idx + 1}. ${ans}**\n- Votes: ${count} (${percentage}%)\n\n`;
+                            resultText += t(lang, 'poll.resultLine', { n: idx + 1, answer: ans, count, percentage });
                         }
                     });
-                    resultText += `**Total Unique Voters:** ${totalVoters}`;
+                    resultText += t(lang, 'poll.totalVoters', { total: totalVoters });
 
                     await interaction.reply({ content: resultText, flags: [MessageFlags.Ephemeral] });
                 }
                 else if (interaction.customId.startsWith('poll_action_delete_')) {
                     const pollId = interaction.customId.split('_')[3];
                     const [rows] = await pool.execute(`SELECT * FROM guild_polls WHERE poll_id = ?`, [pollId]);
-                    if (rows.length === 0) return interaction.reply({ content: 'This poll is no longer active.', flags: [MessageFlags.Ephemeral] });
+                    if (rows.length === 0) return interaction.reply({ content: t(lang, 'poll.inactive'), flags: [MessageFlags.Ephemeral] });
                     const pollData = rows[0];
 
                     const member = await interaction.guild.members.fetch(interaction.user.id);
@@ -468,18 +472,18 @@ module.exports = {
                     const isCreator = interaction.user.id === pollData.creator_id;
 
                     if (!isAdmin && !isCreator) {
-                        return interaction.reply({ content: 'Only administrators and the poll creator can delete this poll.', flags: [MessageFlags.Ephemeral] });
+                        return interaction.reply({ content: t(lang, 'poll.onlyCreator'), flags: [MessageFlags.Ephemeral] });
                     }
 
                     const confirmRow = new ActionRowBuilder().addComponents(
-                        new ButtonBuilder().setCustomId(`poll_confirm_delete_${pollId}`).setLabel('Confirm Deletion').setStyle(ButtonStyle.Danger)
+                        new ButtonBuilder().setCustomId(`poll_confirm_delete_${pollId}`).setLabel(t(lang, 'poll.confirmDeletion')).setStyle(ButtonStyle.Danger)
                     );
-                    await interaction.reply({ content: 'Are you sure you want to delete this poll permanently?', components: [confirmRow], flags: [MessageFlags.Ephemeral] });
+                    await interaction.reply({ content: t(lang, 'poll.confirmDelete'), components: [confirmRow], flags: [MessageFlags.Ephemeral] });
                 }
                 else if (interaction.customId.startsWith('poll_confirm_delete_')) {
                     const pollId = interaction.customId.split('_')[3];
                     const [rows] = await pool.execute(`SELECT * FROM guild_polls WHERE poll_id = ?`, [pollId]);
-                    if (rows.length === 0) return interaction.update({ content: 'Poll already removed.', components: [] });
+                    if (rows.length === 0) return interaction.update({ content: t(lang, 'poll.alreadyRemoved'), components: [] });
 
                     const pollData = rows[0];
                     const member = await interaction.guild.members.fetch(interaction.user.id);
@@ -487,7 +491,7 @@ module.exports = {
                     const isCreator = interaction.user.id === pollData.creator_id;
 
                     if (!isAdmin && !isCreator) {
-                        return interaction.update({ content: 'Permission denied.', components: [] });
+                        return interaction.update({ content: t(lang, 'poll.denied'), components: [] });
                     }
 
                     try {
@@ -500,7 +504,7 @@ module.exports = {
                     await pool.execute(`DELETE FROM poll_votes WHERE poll_id = ?`, [pollId]);
                     await pool.execute(`DELETE FROM guild_polls WHERE poll_id = ?`, [pollId]);
 
-                    await interaction.update({ content: 'Poll deleted successfully from database and channel.', components: [] });
+                    await interaction.update({ content: t(lang, 'poll.deletedFull'), components: [] });
                 }
             }
 
@@ -513,45 +517,45 @@ module.exports = {
                 if (interaction.customId === 'poll_list_manage_select') {
                     const pollId = interaction.values[0];
                     const [rows] = await pool.execute(`SELECT * FROM guild_polls WHERE poll_id = ?`, [pollId]);
-                    if (rows.length === 0) return interaction.update({ content: 'Poll no longer found.', components: [] });
+                    if (rows.length === 0) return interaction.update({ content: t(lang, 'poll.notFound'), components: [] });
 
                     const poll = rows[0];
                     const manageRow = new ActionRowBuilder().addComponents(
-                        new ButtonBuilder().setCustomId(`poll_manage_repost_${poll.poll_id}`).setLabel('Repost').setStyle(ButtonStyle.Primary),
-                        new ButtonBuilder().setCustomId(`poll_manage_delete_prompt_${poll.poll_id}`).setLabel('Delete').setStyle(ButtonStyle.Danger)
+                        new ButtonBuilder().setCustomId(`poll_manage_repost_${poll.poll_id}`).setLabel(t(lang, 'poll.repost')).setStyle(ButtonStyle.Primary),
+                        new ButtonBuilder().setCustomId(`poll_manage_delete_prompt_${poll.poll_id}`).setLabel(t(lang, 'poll.delete')).setStyle(ButtonStyle.Danger)
                     );
 
                     return interaction.update({
-                        content: `Managing poll: **${poll.question}**\nChoose an action below:`,
+                        content: t(lang, 'poll.managing', { question: poll.question }),
                         components: [manageRow]
                     });
                 }
 
                 const session = wizardSessions.get(userId);
-                if (!session) return interaction.update({ content: 'Session expired.', components: [] });
+                if (!session) return interaction.update({ content: t(lang, 'poll.expired'), components: [] });
 
                 if (interaction.customId === 'poll_select_remove_answer') {
                     const removeIdx = parseInt(interaction.values[0]);
                     session.answers.splice(removeIdx, 1);
-                    await updateConfigWindow(interaction, session);
+                    await updateConfigWindow(interaction, session, lang);
                 }
                 else if (interaction.customId === 'poll_select_add_role') {
                     const roleId = interaction.values[0];
                     if (!session.roles.includes(roleId)) {
                         session.roles.push(roleId);
                     }
-                    await updateConfigWindow(interaction, session);
+                    await updateConfigWindow(interaction, session, lang);
                 }
                 else if (interaction.customId === 'poll_select_remove_role') {
                     const roleId = interaction.values[0];
                     session.roles = session.roles.filter(r => r !== roleId);
-                    await updateConfigWindow(interaction, session);
+                    await updateConfigWindow(interaction, session, lang);
                 }
             }
         } catch (err) {
             console.error(err);
             if (!interaction.replied && !interaction.deferred) {
-                await interaction.reply({ content: 'An error occurred while executing this action.', flags: [MessageFlags.Ephemeral] }).catch(() => { });
+                await interaction.reply({ content: t(lang, 'poll.error'), flags: [MessageFlags.Ephemeral] }).catch(() => { });
             }
         }
     }
@@ -560,15 +564,15 @@ module.exports = {
 // ---------------------------------------------------------
 // Helper Functions
 // ---------------------------------------------------------
-async function showAnswerModal(interaction, answerNum) {
+async function showAnswerModal(interaction, answerNum, lang = 'en') {
     const is20th = answerNum === 20;
     const modal = new ModalBuilder()
         .setCustomId(`poll_modal_answer_${is20th ? 'done' : 'next'}`)
-        .setTitle(`Answer #${answerNum} ${is20th ? '(20th - Max Limit)' : ''}`);
+        .setTitle(t(lang, 'poll.answerTitle', { n: answerNum, max: is20th ? t(lang, 'poll.maxLimit') : '' }));
 
     const answerInput = new TextInputBuilder()
         .setCustomId('poll_answer_input')
-        .setLabel(`Enter text for answer ${answerNum}`)
+        .setLabel(t(lang, 'poll.answerLabel', { n: answerNum }))
         .setStyle(TextInputStyle.Short)
         .setRequired(true)
         .setMaxLength(100);
@@ -577,37 +581,33 @@ async function showAnswerModal(interaction, answerNum) {
     await interaction.showModal(modal);
 }
 
-async function updateConfigWindow(interaction, session) {
-    let roleListStr = session.roles.length > 0 ? session.roles.map(r => `<@&${r}>`).join(', ') : 'none';
+async function updateConfigWindow(interaction, session, lang = 'en') {
+    let roleListStr = session.roles.length > 0 ? session.roles.map(r => `<@&${r}>`).join(', ') : t(lang, 'poll.none');
 
-    let configText = `**Poll Config Window**\n` +
-        `**Question:** ${session.question}\n` +
-        `**Allow Multiple Status:** ${session.allowMultiple}\n` +
-        `**Role(s) to Tag:** ${roleListStr}\n\n` +
-        `**Answers:**\n`;
+    let configText = t(lang, 'poll.config', { question: session.question, multi: lang === 'en' ? session.allowMultiple : t(lang, session.allowMultiple ? 'poll.yes' : 'poll.no'), roles: roleListStr });
 
     if (session.answers.length === 0) {
-        configText += `1. (empty)\n2. (empty)\n`;
+        configText += t(lang, 'poll.empty2');
     } else {
         session.answers.forEach((ans, idx) => {
             configText += `${idx + 1}. ${ans}\n`;
         });
         if (session.answers.length === 1) {
-            configText += `2. (empty)\n`;
+            configText += t(lang, 'poll.empty1');
         }
     }
 
     const row1 = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('poll_config_add_answer').setLabel('Add Answer').setStyle(ButtonStyle.Primary),
-        new ButtonBuilder().setCustomId('poll_config_remove_answer').setLabel('Remove Answer').setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder().setCustomId('poll_config_toggle_multi').setLabel('Toggle Allow Multiple').setStyle(ButtonStyle.Secondary)
+        new ButtonBuilder().setCustomId('poll_config_add_answer').setLabel(t(lang, 'poll.addAnswer')).setStyle(ButtonStyle.Primary),
+        new ButtonBuilder().setCustomId('poll_config_remove_answer').setLabel(t(lang, 'poll.removeAnswer')).setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('poll_config_toggle_multi').setLabel(t(lang, 'poll.toggleMulti')).setStyle(ButtonStyle.Secondary)
     );
 
     const row2 = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('poll_config_add_role').setLabel('Add Role').setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder().setCustomId('poll_config_remove_role').setLabel('Remove Role').setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder().setCustomId('poll_config_finish').setLabel('Finish').setStyle(ButtonStyle.Success),
-        new ButtonBuilder().setCustomId('poll_config_cancel').setLabel('Cancel').setStyle(ButtonStyle.Danger)
+        new ButtonBuilder().setCustomId('poll_config_add_role').setLabel(t(lang, 'poll.addRole')).setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('poll_config_remove_role').setLabel(t(lang, 'poll.removeRole')).setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('poll_config_finish').setLabel(t(lang, 'poll.finish')).setStyle(ButtonStyle.Success),
+        new ButtonBuilder().setCustomId('poll_config_cancel').setLabel(t(lang, 'poll.cancel')).setStyle(ButtonStyle.Danger)
     );
 
     await interaction.update({

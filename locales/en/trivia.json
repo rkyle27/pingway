@@ -1,0 +1,260 @@
+{
+  "command": {
+    "description": "🧩 Guess the FFXIV word of the day in 6 difficulties, earn bits and keep your streak."
+  },
+  "title": "🧩 **Pingway Trivia — Guess the word**",
+  "diff": {
+    "easy": "Easy",
+    "normal": "Normal",
+    "hard": "Hard",
+    "extreme": "Extreme",
+    "savage": "Savage",
+    "ultimate": "Ultimate"
+  },
+  "maintenance": "⚠️ **The bot is currently undergoing maintenance.** Please try again later!",
+  "notAvailable": "❌ Trivia is not available right now. Please try again in a minute.",
+  "warming": "⏳ Trivia is warming up, try again in a minute.",
+  "error": "❌ Something went wrong. Please run /trivia again.",
+  "ended": "⌛ Session ended — run /trivia again.",
+  "time": {
+    "hm": "{h} h {m} min",
+    "m": "{m} min"
+  },
+  "count": {
+    "bits_one": "{n} bit",
+    "bits_other": "{n} bits",
+    "guesses_one": "{n} guess",
+    "guesses_other": "{n} guesses",
+    "limit_one": "{n} guesses",
+    "limit_other": "{n} guesses",
+    "wrongGuesses_one": "{n} wrong guesses",
+    "wrongGuesses_other": "{n} wrong guesses",
+    "wrongLeft_one": "{n} wrong guess left",
+    "wrongLeft_other": "{n} wrong guesses left",
+    "streakDays_one": "{n} day",
+    "streakDays_other": "{n} days"
+  },
+  "status": {
+    "solved": "solved",
+    "gaveup": "gave up",
+    "failed": "out of guesses",
+    "playing": "in progress",
+    "new": "new"
+  },
+  "buttons": {
+    "play": "Play",
+    "continue": "Continue",
+    "results": "Today's results",
+    "howto": "How to play",
+    "todayWord": "Today's word",
+    "share": "Share result",
+    "back": "Back",
+    "guess": "Guess",
+    "hint": "Hint",
+    "giveUp": "Give up",
+    "giveUpYes": "Yes, give up",
+    "giveUpNo": "No, keep playing"
+  },
+  "home": {
+    "intro": "Guess the FFXIV word of the day. 6 difficulties, each with its own word. One solve a day, in every server.",
+    "you": "**You:** 🔥 Streak {streak} · 💎 {season} bits this month · {total} all time",
+    "solved": "✅ You solved today's **{diff}** (+{bits} bits). Come back after 0:00 JST! (in {time})",
+    "waiting": "▶ Your **{diff}** game is waiting for you.",
+    "newWords": "⏳ New words in {time} (0:00 JST).",
+    "yesterday": "**Yesterday's answers**",
+    "yesterdayNone": "_None yet — come back tomorrow!_"
+  },
+  "howto": {
+    "rules": [
+      "• Each box is one letter: ⬜ hidden, 🇦 shown. Spaces and symbols are always shown.",
+      "• Press **Guess** and type the whole answer. Case, accents, spaces and symbols don't matter.",
+      "• A wrong guess shows the letters you got in the right place, plus one more. All letters shown = solved. Too many wrong guesses and that difficulty locks for the day.",
+      "• **Hint:** up to {hints} per guess (resets after each wrong guess). Clues first, then letters. **Give up** locks that difficulty for today; you can still try another.",
+      "• After one solve you're done for the day, in every server. New words at 0:00 JST."
+    ],
+    "bits": "**Bits:** fewer letters revealed = more bits, up to double. Never below base.",
+    "diff": "{emoji} {name}: {bits}, {wrong}",
+    "streak": "**Streak:** solve on days in a row. Bonus at 5/10/15/20/30 days: +10/+20/+30/+40/+60 bits. Streaks and the monthly leaderboard start again on the 1st.",
+    "boards": "Leaderboards: pingway.app → Trivia. You can hide yourself in My Settings."
+  },
+  "menu": {
+    "solved": "✅ You solved today's **{diff}**. Come back after 0:00 JST!",
+    "pick": "Pick a difficulty. Each one has its own word of the day.",
+    "line": "{emoji} **{name}** · {bits} · {limit} — {status}"
+  },
+  "game": {
+    "header": "{emoji} **{name}** · {left} · 💡 {hints}/{max} hints"
+  },
+  "feedback": {
+    "wrongShown_one": "❌ Not it — revealed {n} letter. {left}.",
+    "wrongShown_other": "❌ Not it — revealed {n} letters. {left}.",
+    "wrong": "❌ Not it. {left}."
+  },
+  "hint": {
+    "letter": "💡 Letter {n} revealed.",
+    "limit": "No hints left — you get {n} more after a wrong guess.",
+    "none": "No more hints for this word."
+  },
+  "giveup": {
+    "ask": "🏳️ **Give up?** This difficulty locks for today. (The answer is not shown until tomorrow.)"
+  },
+  "solved": {
+    "allRevealed": "🎉 **Congratulations! All letters revealed!**",
+    "line": "✅ **Solved!** {emoji} {name} · +{bits} bits (base {base}, bonus {bonus})",
+    "streak": "🔥 Streak {days}",
+    "milestone": " · 🎉 Streak bonus +{bits} bits!",
+    "bits": "💎 {season} bits this month · {total} all time",
+    "done": "That's it for today — come back after 0:00 JST (in {time})."
+  },
+  "about": {
+    "title": "📖 **About {word}**",
+    "answer": "📖 The answer was **{word}**."
+  },
+  "locked": {
+    "gaveup": "🏳️ You gave up on **{name}**.",
+    "failed": "❌ Out of guesses on **{name}**.",
+    "today": "{why} It is locked for today.",
+    "other": "You can still try another difficulty. The answer shows up in \"Yesterday's answers\" after 0:00 JST."
+  },
+  "today": {
+    "solved": "✅ You solved today's **{name}**"
+  },
+  "modal": {
+    "title": "Your guess ({name})",
+    "label": "Type the whole answer"
+  },
+  "share": {
+    "nothing": "Nothing to share right now.",
+    "gone": "⚠️ The Trivia share channel is gone. Ask an admin to pick a new one on the website.",
+    "already": "Already shared. 🙂",
+    "cantPost": "⚠️ Pingway can't post in <#{channel}>. Ask an admin to check its permissions there.",
+    "done": "📣 Shared in <#{channel}>!",
+    "line": "🧩 **{name}** solved today's **{diff}** Pingway Trivia in {guesses}{hints}!{streak}",
+    "guesses_one": "{n} guess",
+    "guesses_other": "{n} guesses",
+    "hints_one": " with {n} hint",
+    "hints_other": " with {n} hints",
+    "noHints": " with no hints",
+    "streak": " 🔥 Streak {n}",
+    "invite": "-# Think you can beat that? Use {command} to guess today's FFXIV word, earn bits and build your streak!"
+  },
+  "reward": {
+    "dm": "🎉 Congratulations! You earned **{bits} bits** in Pingway Trivia in {month} — here are **{points} points** as a thank-you. Use them for extra retainers or Supporter Perks at {url}",
+    "month": "{month} {year}",
+    "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+    "roleGiven": "Pingway Trivia: top {rank} of {season}",
+    "roleTaken": "Pingway Trivia: top {rank} of {season} went to someone else"
+  },
+  "hints": {
+    "labelValue": "{label}: {v}",
+    "listSep": ", ",
+    "loreSep": " · ",
+    "category": "Category: {v}",
+    "cat": {
+      "job": "Job",
+      "class": "Class",
+      "city": "City",
+      "zone": "Zone",
+      "region": "Region",
+      "dungeon": "Dungeon",
+      "trial": "Trial",
+      "allianceRaid": "Alliance Raid",
+      "raid": "Raid",
+      "mount": "Mount",
+      "minion": "Minion",
+      "action": "Action",
+      "item": "Item"
+    },
+    "roles": { "1": "Tank", "2": "Melee DPS", "3": "Ranged DPS", "4": "Healer" },
+    "stats": { "1": "Strength", "2": "Dexterity", "3": "Vitality", "4": "Intelligence", "5": "Mind" },
+    "rarities": { "1": "Common (white)", "2": "Uncommon (green)", "3": "Rare (blue)", "4": "Relic (purple)", "7": "Aetherial (pink)" },
+    "roulettes": {
+      "LevelingRoulette": "Leveling",
+      "HighLevelRoulette": "High-level Dungeons",
+      "ExpertRoulette": "Expert",
+      "TrialRoulette": "Trials",
+      "AllianceRoulette": "Alliance Raids",
+      "NormalRaidRoulette": "Normal Raids",
+      "MSQRoulette": "Main Scenario"
+    },
+    "role": "Role: {v}",
+    "type": "Type: {v}",
+    "mainStat": "Main stat: {v}",
+    "startingCity": "Starting city: {v}",
+    "startsAtLevel": "Starts at level {n}",
+    "limitedJob": "It is a limited job",
+    "becomes": "It becomes: {v}",
+    "startsAs": "It starts as: {v}",
+    "abbreviation": "Abbreviation: {v}",
+    "region": "Region: {v}",
+    "expansion": "Expansion: {v}",
+    "area": "Area: {v}",
+    "alsoInRegion": "Also in this region: {v}",
+    "fieldZones_one": "{n} field zone",
+    "fieldZones_other": "{n} field zones",
+    "cityThere": "A city there: {v}",
+    "zoneThere": "A zone there: {v}",
+    "anotherZoneThere": "Another zone there: {v}",
+    "level": "Level {n}",
+    "itemLevel": "Item level {n}",
+    "roulette": "Roulette: {v}",
+    "zone": "Zone: {v}",
+    "highEnd": "It is a high-end duty",
+    "levelSync": "Level sync {n}",
+    "itemLevelSync": "Item level sync {n}",
+    "description": "Description",
+    "quote": "Quote",
+    "seats_one": "Seats: {n} rider",
+    "seats_other": "Seats: {n} riders",
+    "minionRace": "Minion race: {v}",
+    "behavior": "Behavior: {v}",
+    "skillType": "Verminion skill type: {v}",
+    "specialAction": "Special action: {v}",
+    "verminionStats": "Verminion stats: ATK {atk} / DEF {def} / SPD {spd}",
+    "job": "Job: {v}",
+    "roleAction": "Role action",
+    "actionType": "Action type: {v}",
+    "castTime": "Cast time: {v}",
+    "instant": "Instant cast",
+    "recast": "Recast: {v}",
+    "seconds": "{n}s",
+    "groundTargeted": "It is ground-targeted",
+    "targets": "Targets: {v}",
+    "targetEnemies": "enemies",
+    "targetParty": "party members",
+    "targetSelf": "self",
+    "range": "Range: {n} yalms",
+    "radius": "Effect radius: {n} yalms",
+    "charges": "{n} charges",
+    "usedBy": "Used by: {v}",
+    "itemType": "Item type: {v}",
+    "equipLevel": "Equip level {n}",
+    "usableBy": "Usable by: {v}",
+    "craftedBy": "Crafted by: {v}",
+    "expertRecipe": " (expert recipe)",
+    "rarity": "Rarity: {v}",
+    "marketBoard": "Market board: {v}",
+    "grandCompany": "Grand Company: {v}",
+    "itemSeries": "Item series: {v}",
+    "materia_one": "{n} materia slot",
+    "materia_other": "{n} materia slots",
+    "dyeable": "It can be dyed",
+    "stacks": "Stacks up to {n}",
+    "hq": "It can be high quality",
+    "unique": "It is unique",
+    "collectable": "It is a collectable",
+    "firstLetter": "First letter: {l}",
+    "lore": {
+      "line": "{name}{abbr} — {what}{startsAs}.",
+      "abbr": " ({v})",
+      "job": "job",
+      "jobRole": "{role} job",
+      "class": "class",
+      "classRole": "{role} class",
+      "startsAs": ", starts as {v}",
+      "city": { "full": "A city in {region} ({exp}).", "region": "A city in {region}.", "exp": "A city ({exp}).", "plain": "A city." },
+      "zone": { "full": "A zone in {region} ({exp}).", "region": "A zone in {region}.", "exp": "A zone ({exp}).", "plain": "A zone." },
+      "region": { "exp": "A region of the world, first seen in {exp}.", "plain": "A region of the world." }
+    }
+  }
+}

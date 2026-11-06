@@ -1,0 +1,22 @@
+{
+  "helpIntro": "Das alles kann Pingway! Du kannst Pingway auch im Browser verwalten 🌐",
+  "recollection": "✨ *Release_Recollection_PROTOCOL gestartet.* — Chat-Gedächtnis gelöscht.",
+  "invite": "Füge Pingway mit diesem Link hinzu:\nhttps://discord.com/oauth2/authorize?client_id=1530586586524418048",
+  "support": "Hier geht es zum Support-Server:\nhttps://discord.gg/DDdV48X4G2",
+  "donate": "💖 Unterstütze künftige Updates und die KI-Kosten hier:\n<https://ko-fi.com/riverzola>",
+  "areYouBot": "Nein, hier antwortet der Entwickler von Hand. Hilfe! (Spaß, ja, ich bin eine KI) <https://ko-fi.com/riverzola>",
+  "noCode": "Der Entwickler hat mir verboten, große Code-Dateien zu erstellen.",
+  "notHere": "👋 Hi! Tippe **/help** (oder erwähne mich mit „help“), um zu sehen, was ich kann. Der KI-Chat funktioniert nur in Kanälen, die ein Admin mit **/ailistenhere** eingeschaltet hat.",
+  "notice": {
+    "cleared": "\n\n🗑️ *[System: Erinnerungs-/Aufgabenliste komplett geleert]*",
+    "edited": "\n\n✏️ *[System: Text der Erinnerung geändert]*",
+    "deleted": "\n\n🗑️ *[System: Erinnerung entfernt]*",
+    "recurring": " (täglich 🔁)",
+    "count": " ({count} gespeichert)",
+    "set": "\n\n⏰ *[System: Erinnerung gesetzt{repeat}{count}]*",
+    "appended": "\n\n📝 *[System: Text zur Notiz hinzugefügt]*",
+    "forgot": "\n\n🧹 *[System: Gespeicherte Info vergessen]*",
+    "saved": "\n\n🧠 *[System: Neue Info gespeichert]*"
+  },
+  "done": "Erledigt!"
+}

@@ -19,20 +19,33 @@
 //   month), streak, last solve day and "hide me" (set on the website). trivia_players: who played in which server
 //   (a server's leaderboard). trivia_guild: the share channel an admin picked on the website.
 // - Old games (trivia_plays) and old words are deleted after 100 days.
+// - Languages (en, fr, de, ja; the player's language from utils/userLanguage.js): the bank has every word's name, clues
+//   and lore in all 4 languages (fetched from XIVAPI with ?language=xx). The word of the day is the SAME game thing
+//   (same id) for everyone, only words that work in all 4 languages are picked (W.isComplete). trivia_words.i18n
+//   keeps the fr/de/ja texts of the day (NULL for old words: those are shown in English to everyone).
+// - Progress per language: letters and clues belong to the name in one language. trivia_plays.revealed/hints_used
+//   are the English progress (as before), trivia_plays.lang_progress = JSON { fr: { revealed, hintsUsed }, ja: …,
+//   en: 1 when English was played too } (NULL = only English played). Wrong guesses, the hint count of this guess
+//   (hint_round), the status, the one-solve-per-day lock, bits and streaks are shared by all languages. When a player
+//   opens the game in a new language, as many letters (the same share) are opened there as in the language where
+//   they had opened the most. Bits use the language with the most letters shown, so switching never gives more bits.
 
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 const { pool } = require('./db');
 const W = require('./triviaWords');
+const { t } = require('./i18n');
 
 const XIV = 'https://v2.xivapi.com/api';
-const BANK_FILE = path.join(__dirname, '..', 'data', 'trivia_bank.json');
+const BANK_FILE = process.env.PINGWAY_TRIVIA_BANK_FILE || path.join(__dirname, '..', 'data', 'trivia_bank.json'); // env: tests only
 const BANK_MAX_AGE = 30 * 24 * 60 * 60 * 1000;
 const NO_REPEAT_DAYS = 90;
 const KEEP_DAYS = 100;
 const MIN_POOL = 15;
-const BANK_FORMAT = 3; // 2 = more hints per word, no word-count hint, First letter as { text, letter }; 3 = no "Nowheresville" starting city
+const BANK_FORMAT = 4; // 2 = more hints per word, no word-count hint, First letter as { text, letter }; 3 = no "Nowheresville" starting city;
+                       // 4 = ids and fr/de/ja names, clues and lore (entry.i18n)
+const OTHER_LANGS = W.LANGS.filter(l => l !== 'en');
 
 let tablesReady = false;
 let bank = null;          // { builtAt, pools }
@@ -48,6 +61,7 @@ async function ensureTables() {
         hints TEXT,
         lore TEXT,
         created_at BIGINT NOT NULL DEFAULT 0,
+        i18n MEDIUMTEXT NULL,
         PRIMARY KEY (day, difficulty)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`);
     await pool.execute(`CREATE TABLE IF NOT EXISTS trivia_plays (
@@ -64,13 +78,16 @@ async function ensureTables() {
         finished_at BIGINT DEFAULT NULL,
         shared TINYINT(1) NOT NULL DEFAULT 0,
         hint_round INT NOT NULL DEFAULT 0,
+        lang_progress TEXT NULL,
         PRIMARY KEY (user_id, day, difficulty),
         KEY idx_day (day)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`);
-    // Older tables: add hint_round (a second bot start doing the same at once only gets "Duplicate column")
-    const [hintCol] = await pool.execute("SHOW COLUMNS FROM trivia_plays LIKE 'hint_round'");
-    if (!hintCol.length) {
-        await pool.execute('ALTER TABLE trivia_plays ADD COLUMN hint_round INT NOT NULL DEFAULT 0').catch(err => {
+    // Older tables: add hint_round, i18n, lang_progress (a second bot start doing the same at once only gets "Duplicate column")
+    for (const [table, col, ddl] of [['trivia_plays', 'hint_round', 'INT NOT NULL DEFAULT 0'], ['trivia_words', 'i18n', 'MEDIUMTEXT NULL'],
+        ['trivia_plays', 'lang_progress', 'TEXT NULL']]) {
+        const [has] = await pool.execute('SHOW COLUMNS FROM ' + table + " LIKE '" + col + "'");
+        if (has.length) continue;
+        await pool.execute('ALTER TABLE ' + table + ' ADD COLUMN ' + col + ' ' + ddl).catch(err => {
             if (err.code !== 'ER_DUP_FIELDNAME' && !/Duplicate column/i.test(err.message)) throw err;
         });
     }
@@ -104,6 +121,11 @@ const parseList = v => {
     if (Array.isArray(v)) return v;
     try { const x = JSON.parse(v || '[]'); return Array.isArray(x) ? x : []; } catch (e) { return []; }
 };
+const parseObj = v => {
+    if (v && typeof v === 'object' && !Array.isArray(v)) return v;
+    if (v === null || v === undefined || v === '') return null;
+    try { const x = JSON.parse(v); return x && typeof x === 'object' && !Array.isArray(x) ? x : null; } catch (e) { return null; }
+};
 
 // ---------- word bank ----------
 function loadBankFile() {
@@ -117,7 +139,8 @@ function getBank() {
     if (!bank) bank = loadBankFile();
     return bank;
 }
-const bankIsOld = b => !b || !Number(b.builtAt) || (Number(b.format) || 1) < BANK_FORMAT || Date.now() - Number(b.builtAt) > BANK_MAX_AGE;
+// incomplete = a language could not be fetched (the bank works in English, it is built again on the next check)
+const bankIsOld = b => !b || !Number(b.builtAt) || (Number(b.format) || 1) < BANK_FORMAT || !!b.incomplete || Date.now() - Number(b.builtAt) > BANK_MAX_AGE;
 
 async function getJson(url) {
     let lastErr;
@@ -127,75 +150,105 @@ async function getJson(url) {
             return r.data;
         } catch (err) {
             lastErr = err;
-            await new Promise(res => setTimeout(res, 1500 * (attempt + 1)));
+            await new Promise(res => setTimeout(res, retryMs * (attempt + 1)));
         }
     }
     throw lastErr;
 }
+let pauseMs = 150;   // between pages
+let retryMs = 1500;  // before a retry (x1, x2, x3)
 const pause = ms => new Promise(res => setTimeout(res, ms));
+// XIVAPI v2 language (English is the default, no parameter)
+const langParam = lang => (lang && lang !== 'en' ? '&language=' + lang : '');
 
 // Every row of a sheet, 500 at a time
-async function sheetRows(sheet, fields, maxPages = 200) {
+async function sheetRows(sheet, fields, maxPages = 200, lang) {
     const out = [];
     let after = null;
     for (let page = 0; page < maxPages; page++) {
-        const url = XIV + '/sheet/' + sheet + '?limit=500&fields=' + encodeURIComponent(fields) + (after !== null ? '&after=' + after : '');
+        const url = XIV + '/sheet/' + sheet + '?limit=500&fields=' + encodeURIComponent(fields) + (after !== null ? '&after=' + after : '') + langParam(lang);
         const data = await getJson(url);
         const rows = (data && Array.isArray(data.rows)) ? data.rows : [];
         if (!rows.length) break;
         out.push(...rows);
         after = rows[rows.length - 1].row_id;
-        await pause(150);
+        await pause(pauseMs);
     }
     return out;
 }
 // Every result of a search
-async function searchRows(sheet, query, fields, maxPages = 40) {
+async function searchRows(sheet, query, fields, maxPages = 40, lang) {
     const out = [];
-    let url = XIV + '/search?sheets=' + sheet + '&query=' + encodeURIComponent(query) + '&fields=' + encodeURIComponent(fields) + '&limit=500';
+    let url = XIV + '/search?sheets=' + sheet + '&query=' + encodeURIComponent(query) + '&fields=' + encodeURIComponent(fields) + '&limit=500' + langParam(lang);
     for (let page = 0; page < maxPages && url; page++) {
         const data = await getJson(url);
         const rows = (data && Array.isArray(data.results)) ? data.results : [];
         out.push(...rows);
         if (!rows.length || !data.next) break;
-        url = XIV + '/search?cursor=' + encodeURIComponent(data.next) + '&limit=500';
-        await pause(150);
+        url = XIV + '/search?cursor=' + encodeURIComponent(data.next) + '&limit=500' + langParam(lang);
+        await pause(pauseMs);
     }
     return out;
 }
 
-async function buildBank() {
+// All the rows the bank needs, in one language (the same sheets and fields in every language; the Recipe sheet
+// only in English: other languages use the English recipes with their own job names)
+async function fetchRaw(lang) {
     const raw = {
-        classJobs: await sheetRows('ClassJob', 'Name,Abbreviation,Role,ClassJobParent.Name,JobIndex,ClassJobCategory.Name,StartingTown.Name,StartingLevel,PrimaryStat,IsLimitedJob'),
-        territories: await sheetRows('TerritoryType', 'PlaceName.Name,PlaceNameRegion.Name,PlaceNameZone.Name,ExVersion.Name,TerritoryIntendedUse'),
+        classJobs: await sheetRows('ClassJob', 'Name,Abbreviation,Role,ClassJobParent.Name,JobIndex,ClassJobCategory.Name,StartingTown.Name,StartingLevel,PrimaryStat,IsLimitedJob', 200, lang),
+        territories: await sheetRows('TerritoryType', 'PlaceName.Name,PlaceNameRegion.Name,PlaceNameZone.Name,ExVersion.Name,TerritoryIntendedUse', 200, lang),
         content: await sheetRows('ContentFinderCondition', 'Name,ContentType.Name,ClassJobLevelRequired,ClassJobLevelSync,ItemLevelRequired,ItemLevelSync,HighEndDuty,' +
             'LevelingRoulette,HighLevelRoulette,ExpertRoulette,TrialRoulette,AllianceRoulette,NormalRaidRoulette,MSQRoulette,' +
-            'TerritoryType.PlaceName.Name,TerritoryType.PlaceNameRegion.Name,TerritoryType.ExVersion.Name'),
-        contentLore: await sheetRows('ContentFinderConditionTransient', 'Description'),
-        mounts: await sheetRows('Mount', 'Singular,ExtraSeats'),
-        mountLore: await sheetRows('MountTransient', 'Description,DescriptionEnhanced,Tooltip'),
-        minions: await sheetRows('Companion', 'Singular,MinionRace.Name,Behavior.Name'),
-        minionLore: await sheetRows('CompanionTransient', 'Description,DescriptionEnhanced,Tooltip,SpecialActionName,MinionSkillType.Name,Attack,Defense,Speed'),
+            'TerritoryType.PlaceName.Name,TerritoryType.PlaceNameRegion.Name,TerritoryType.ExVersion.Name', 200, lang),
+        contentLore: await sheetRows('ContentFinderConditionTransient', 'Description', 200, lang),
+        mounts: await sheetRows('Mount', 'Singular,ExtraSeats', 200, lang),
+        mountLore: await sheetRows('MountTransient', 'Description,DescriptionEnhanced,Tooltip', 200, lang),
+        minions: await sheetRows('Companion', 'Singular,MinionRace.Name,Behavior.Name', 200, lang),
+        minionLore: await sheetRows('CompanionTransient', 'Description,DescriptionEnhanced,Tooltip,SpecialActionName,MinionSkillType.Name,Attack,Defense,Speed', 200, lang),
         actions: await searchRows('Action', '+IsPlayerAction=true +IsPvP=false', 'Name,ClassJob.Name,ClassJobLevel,IsPvP,IsPlayerAction,ActionCategory.Name,ClassJobCategory.Name,' +
-            'Cast100ms,Recast100ms,Range,EffectRange,MaxCharges,IsRoleAction,CanTargetHostile,CanTargetParty,CanTargetSelf,TargetArea'),
+            'Cast100ms,Recast100ms,Range,EffectRange,MaxCharges,IsRoleAction,CanTargetHostile,CanTargetParty,CanTargetSelf,TargetArea', 40, lang),
         items: await sheetRows('Item', 'Name,Description,ItemSearchCategory.Name,LevelItem,ItemUICategory.Name,LevelEquip,ClassJobCategory.Name,Rarity,' +
-            'GrandCompany.Name,ItemSeries.Name,MateriaSlotCount,DyeCount,StackSize,CanBeHq,IsUnique,IsCollectable'),
-        // Who crafts what (joined to the items in memory)
-        recipes: await sheetRows('Recipe', 'ItemResult.Name,CraftType.Name,IsExpert')
+            'GrandCompany.Name,ItemSeries.Name,MateriaSlotCount,DyeCount,StackSize,CanBeHq,IsUnique,IsCollectable', 200, lang)
     };
+    // Who crafts what (joined to the items in memory)
+    if (!lang || lang === 'en') raw.recipes = await sheetRows('Recipe', 'ItemResult.Name,CraftType.Name,IsExpert');
     // Lore of actions: only the rows of the actions found above (ActionTransient has the same row_id)
     const actionIds = new Set(raw.actions.map(r => Number(r.row_id)));
-    raw.actionLore = (await sheetRows('ActionTransient', 'Description', 400)).filter(r => actionIds.has(Number(r.row_id)));
-    const pools = W.buildPools(raw);
+    raw.actionLore = (await sheetRows('ActionTransient', 'Description', 400, lang)).filter(r => actionIds.has(Number(r.row_id)));
+    return raw;
+}
+
+async function buildBank() {
+    const rawEn = await fetchRaw('en');
+    const pools = W.buildPools(rawEn);
     const small = W.DIFFICULTIES.filter(d => pools[d.key].length < MIN_POOL).map(d => d.name);
     if (small.length) throw new Error('too few words for ' + small.join(', '));
-    const b = { builtAt: Date.now(), format: BANK_FORMAT, pools };
+    // fr/de/ja: the same rows in each language (one language at a time, to keep memory low)
+    const byLang = {};
+    const failed = [];
+    for (const lang of OTHER_LANGS) {
+        try {
+            byLang[lang] = W.buildPools(await fetchRaw(lang), { lang, en: rawEn });
+        } catch (err) {
+            failed.push(lang);
+            console.error('⚠️ [TRIVIA] Word bank: could not fetch ' + lang + ' (' + err.message + ').');
+        }
+    }
+    // A language failed: keep the old bank when there is one (it is tried again on the next check)
+    if (failed.length && getBank()) throw new Error('languages missing: ' + failed.join(', '));
+    W.mergeLangPools(pools, byLang);
+    const complete = Object.fromEntries(W.DIFFICULTIES.map(d => [d.key, pools[d.key].filter(W.isComplete).length]));
+    const thin = W.DIFFICULTIES.filter(d => !failed.length && complete[d.key] < MIN_POOL).map(d => d.name + ' ' + complete[d.key]);
+    if (thin.length) console.error('⚠️ [TRIVIA] Word bank: few words that work in all languages (' + thin.join(', ') + ').');
+    const b = { builtAt: Date.now(), format: BANK_FORMAT, langs: ['en', ...Object.keys(byLang)], pools };
+    if (failed.length) b.incomplete = true;
     fs.mkdirSync(path.dirname(BANK_FILE), { recursive: true });
     const tmp = BANK_FILE + '.tmp';
     fs.writeFileSync(tmp, JSON.stringify(b));
     fs.renameSync(tmp, BANK_FILE);
     bank = b;
-    console.log('🧩 [TRIVIA] Word bank ready: ' + W.DIFFICULTIES.map(d => d.name + ' ' + pools[d.key].length).join(', ') + '.');
+    console.log('🧩 [TRIVIA] Word bank ready: ' + W.DIFFICULTIES.map(d => d.name + ' ' + pools[d.key].length + ' (' + complete[d.key] + ' in all languages)').join(', ') + '.' +
+        (failed.length ? ' Missing languages (tried again later): ' + failed.join(', ') + '.' : ''));
     return b;
 }
 // Starts a rebuild when the bank is missing or old (only one at a time). Never throws.
@@ -210,41 +263,75 @@ function refreshBank() {
 }
 
 // ---------- words of the day ----------
-// Makes sure all 6 words of `day` are saved, then returns them by difficulty (null when the bank isn't ready)
+// The words a difficulty can pick from: only words that work in all 4 languages (all of them with an older bank)
+function dayPool(b, key) {
+    const all = (b && b.pools && b.pools[key]) || [];
+    const complete = all.filter(W.isComplete);
+    return complete.length ? complete : all;
+}
+// What trivia_words.i18n keeps for a bank entry (null when it has no other language)
+function i18nJson(e) {
+    const langs = OTHER_LANGS.filter(l => e && e.i18n && e.i18n[l] && e.i18n[l].word);
+    if (!langs.length) return null;
+    const out = { id: e.id || null };
+    for (const l of langs) {
+        const x = e.i18n[l];
+        out[l] = { word: x.word, category: x.category || '', hints: x.hints || [], lore: W.cleanLore(x.lore || '', 600, l) };
+    }
+    return JSON.stringify(out);
+}
+
+// Makes sure all 6 words of `day` are saved, then returns them by difficulty (null when the bank isn't ready).
+// Each word: { word, category, hints, lore } in English and .i18n = { id, fr: {...}, de, ja } (null for old words).
+// Use W.viewOf(word, lang) for a language.
 async function wordsOf(day) {
     await ensureTables();
     const read = async () => {
-        const [rows] = await pool.execute('SELECT difficulty, word, category, hints, lore FROM trivia_words WHERE day = ?', [day]);
+        const [rows] = await pool.execute('SELECT difficulty, word, category, hints, lore, i18n FROM trivia_words WHERE day = ?', [day]);
         const out = {};
-        for (const r of rows) out[r.difficulty] = { word: r.word, category: r.category, hints: parseList(r.hints), lore: r.lore || '' };
+        for (const r of rows) out[r.difficulty] = { word: r.word, category: r.category, hints: parseList(r.hints), lore: r.lore || '', i18n: parseObj(r.i18n) };
         return out;
     };
     let words = await read();
-    if (W.DIFFICULTIES.every(d => words[d.key])) return words;
     const b = getBank();
+    // Words saved before the bank had languages (e.g. the day this was installed): add the other languages when the
+    // new bank has the same word, so everyone gets their language from then on. The English texts stay as they were.
+    if (b) {
+        for (const d of W.DIFFICULTIES) {
+            const w = words[d.key];
+            if (!w || w.i18n) continue;
+            const e = ((b.pools && b.pools[d.key]) || []).find(x => W.isComplete(x) && W.fold(x.word) === W.fold(w.word));
+            const json = e ? i18nJson(e) : null;
+            if (!json) continue;
+            await pool.execute('UPDATE trivia_words SET i18n = ? WHERE day = ? AND difficulty = ? AND i18n IS NULL', [json, day, d.key]);
+            w.i18n = parseObj(json);
+        }
+    }
+    if (W.DIFFICULTIES.every(d => words[d.key])) return words;
     if (!b) return null;
     const [recent] = await pool.execute('SELECT day, difficulty, word FROM trivia_words WHERE day >= ? AND day <> ?', [W.addDays(day, -NO_REPEAT_DAYS), day]);
     const today = new Set(Object.values(words).map(w => W.fold(w.word)));
     for (const d of W.DIFFICULTIES) {
         if (words[d.key]) continue;
+        const list = dayPool(b, d.key);
         // Small pools run out before 90 days: then only the most recent words are skipped (the oldest come back first)
         const used = recent.filter(r => r.difficulty === d.key).sort((a, b) => (a.day < b.day ? 1 : -1)).map(r => W.fold(r.word));
-        const avoid = new Set([...today, ...used.slice(0, Math.max(0, b.pools[d.key].length - 1 - today.size))]);
-        const e = W.pickWord(b.pools[d.key], day, d.key, avoid);
+        const avoid = new Set([...today, ...used.slice(0, Math.max(0, list.length - 1 - today.size))]);
+        const e = W.pickWord(list, day, d.key, avoid);
         if (!e) return null;
         today.add(W.fold(e.word));
-        await pool.execute('INSERT IGNORE INTO trivia_words (day, difficulty, word, category, hints, lore, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)',
-            [day, d.key, e.word, e.category || '', JSON.stringify(e.hints || []), W.cleanLore(e.lore || ''), Date.now()]);
+        await pool.execute('INSERT IGNORE INTO trivia_words (day, difficulty, word, category, hints, lore, i18n, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+            [day, d.key, e.word, e.category || '', JSON.stringify(e.hints || []), W.cleanLore(e.lore || ''), i18nJson(e), Date.now()]);
     }
     words = await read();
     return W.DIFFICULTIES.every(d => words[d.key]) ? words : null;
 }
-// Yesterday's answers (only after the day is over)
-async function yesterdayAnswers(today) {
+// Yesterday's answers (only after the day is over), in a language
+async function yesterdayAnswers(today, lang) {
     await ensureTables();
-    const [rows] = await pool.execute('SELECT difficulty, word FROM trivia_words WHERE day = ?', [W.addDays(today, -1)]);
+    const [rows] = await pool.execute('SELECT difficulty, word, i18n FROM trivia_words WHERE day = ?', [W.addDays(today, -1)]);
     const out = {};
-    for (const r of rows) out[r.difficulty] = r.word;
+    for (const r of rows) out[r.difficulty] = W.viewOf({ word: r.word, i18n: parseObj(r.i18n) }, lang).word;
     return out;
 }
 
@@ -279,120 +366,215 @@ async function shareChannel(guildId) {
 }
 
 // ---------- games ----------
-const playView = r => r ? {
-    difficulty: r.difficulty, status: r.status, wrong: Number(r.wrong) || 0, hintsUsed: parseList(r.hints_used).map(Number),
-    revealed: parseList(r.revealed).map(Number), bits: Number(r.bits) || 0, shared: Number(r.shared) === 1, guildId: r.guild_id || null,
-    hintRound: Number(r.hint_round) || 0, hintsLeft: Math.max(0, W.HINTS_PER_GUESS - (Number(r.hint_round) || 0))
-} : null;
-// True when every letter of the answer is shown
-const allShown = (word, revealed) => W.letterPositions(word.word).every(i => revealed.includes(i));
+// Progress per language (see the top of this file). langMap = the lang_progress JSON (null = only English played).
+function langMap(r) {
+    if (!r || r.lang_progress === null || r.lang_progress === undefined || r.lang_progress === '') return null;
+    return parseObj(r.lang_progress) || {};
+}
+// Languages this game was played in
+function startedLangs(r) {
+    const m = langMap(r);
+    if (!m) return ['en'];
+    return W.LANGS.filter(l => (l === 'en' ? !!m.en : !!(m[l] && typeof m[l] === 'object')));
+}
+function progressOf(r, lang) {
+    if (!lang || lang === 'en') return { revealed: parseList(r.revealed).map(Number), hintsUsed: parseList(r.hints_used).map(Number) };
+    const m = (langMap(r) || {})[lang] || {};
+    return { revealed: parseList(m.revealed).map(Number), hintsUsed: parseList(m.hintsUsed).map(Number) };
+}
+// SQL "SET" part that saves one language's progress (English: the old columns)
+function progressSet(r, lang, prog) {
+    if (!lang || lang === 'en') return { sql: 'hints_used = ?, revealed = ?', args: [JSON.stringify(prog.hintsUsed), JSON.stringify(prog.revealed)] };
+    const m = langMap(r) || { en: 1 }; // null = English was played (keep that)
+    m[lang] = { revealed: prog.revealed, hintsUsed: prog.hintsUsed };
+    return { sql: 'lang_progress = ?', args: [JSON.stringify(m)] };
+}
+
+// A game as seen in one language (lang = the language of the word shown; revealed/hintsUsed belong to it).
+// all = progress of every language played (for bits), hintsAll = clues used in all languages.
+const playView = (r, lang) => {
+    if (!r) return null;
+    const pl = lang || 'en';
+    const cur = progressOf(r, pl);
+    const all = {};
+    for (const l of startedLangs(r)) all[l] = progressOf(r, l);
+    const v = {
+        difficulty: r.difficulty, status: r.status, wrong: Number(r.wrong) || 0, hintsUsed: cur.hintsUsed,
+        revealed: cur.revealed, bits: Number(r.bits) || 0, shared: Number(r.shared) === 1, guildId: r.guild_id || null,
+        hintRound: Number(r.hint_round) || 0, hintsLeft: Math.max(0, W.HINTS_PER_GUESS - (Number(r.hint_round) || 0)),
+        lang: pl, started: Object.keys(all), all, hintsAll: Object.values(all).reduce((n, x) => n + x.hintsUsed.length, 0)
+    };
+    Object.defineProperty(v, 'row', { value: r, enumerable: false });
+    return v;
+};
+// True when every letter of the answer is shown (v = the word in the language of `revealed`)
+const allShown = (v, revealed) => W.letterPositions(v.word, v.lang).every(i => revealed.includes(i));
 
 // Today's games of a person: { easy: play|null, ... }, and whether they solved one
-async function dayStatus(userId, day) {
+async function dayStatus(userId, day, lang) {
     await ensureTables();
     const [rows] = await pool.execute('SELECT * FROM trivia_plays WHERE user_id = ? AND day = ?', [String(userId), day]);
     const plays = {};
     for (const d of W.DIFFICULTIES) plays[d.key] = null;
-    for (const r of rows) if (plays[r.difficulty] !== undefined) plays[r.difficulty] = playView(r);
+    for (const r of rows) if (plays[r.difficulty] !== undefined) plays[r.difficulty] = playView(r, lang);
     const solved = W.DIFFICULTIES.map(d => plays[d.key]).find(p => p && p.status === 'solved') || null;
     return { plays, solved };
 }
 
-async function getPlay(userId, day, diff) {
+async function getPlay(userId, day, diff, lang) {
     const [[r]] = await pool.execute('SELECT * FROM trivia_plays WHERE user_id = ? AND day = ? AND difficulty = ?', [String(userId), day, diff]);
-    return playView(r);
+    return playView(r, lang);
+}
+
+// First time in a language for a game already played in another one: open the same share of letters (at random places)
+// as in the language with the most letters open, never all of them.
+async function seedLanguage(userId, day, diff, p, word, lang) {
+    const v = W.viewOf(word, lang);
+    const lp = W.letterPositions(v.word, lang);
+    let share = 0;
+    for (const [l, prog] of Object.entries(p.all)) {
+        const vl = W.viewOf(word, l);
+        if (vl.lang !== l) continue;
+        const pos = W.letterPositions(vl.word, l);
+        if (pos.length) share = Math.max(share, pos.filter(i => prog.revealed.includes(i)).length / pos.length);
+    }
+    const count = Math.max(0, Math.min(lp.length - 1, Math.round(share * lp.length)));
+    const pick = lp.slice();
+    for (let i = pick.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pick[i], pick[j]] = [pick[j], pick[i]]; }
+    const revealed = pick.slice(0, count).sort((a, b) => a - b);
+    let set;
+    if (lang === 'en') {
+        const m = langMap(p.row) || {};
+        m.en = 1;
+        set = { sql: "revealed = ?, hints_used = '[]', lang_progress = ?", args: [JSON.stringify(revealed), JSON.stringify(m)] };
+    } else {
+        set = progressSet(p.row, lang, { revealed, hintsUsed: [] });
+    }
+    await pool.execute('UPDATE trivia_plays SET ' + set.sql + " WHERE user_id = ? AND day = ? AND difficulty = ? AND status = 'playing'",
+        [...set.args, String(userId), day, diff]);
 }
 
 // Opens (or continues) a difficulty. Returns { ok, play } or { ok: false, reason: 'solved'|'locked' }
-async function startPlay(userId, day, diff, guildId) {
-    const st = await dayStatus(userId, day);
+// lang = the player's language, word = today's word of that difficulty (from wordsOf; needed for other languages)
+async function startPlay(userId, day, diff, guildId, lang, word) {
+    const pl = word ? W.viewOf(word, lang).lang : 'en';
+    const st = await dayStatus(userId, day, pl);
     if (st.solved) return { ok: false, reason: 'solved', solved: st.solved };
     const p = st.plays[diff];
     if (p && p.status !== 'playing') return { ok: false, reason: 'locked', play: p };
     if (!p) {
-        await pool.execute("INSERT IGNORE INTO trivia_plays (user_id, day, difficulty, status, wrong, hints_used, revealed, guild_id, started_at) VALUES (?, ?, ?, 'playing', 0, '[]', '[]', ?, ?)",
-            [String(userId), day, diff, guildId ? String(guildId) : null, Date.now()]);
+        if (pl === 'en') {
+            await pool.execute("INSERT IGNORE INTO trivia_plays (user_id, day, difficulty, status, wrong, hints_used, revealed, guild_id, started_at) VALUES (?, ?, ?, 'playing', 0, '[]', '[]', ?, ?)",
+                [String(userId), day, diff, guildId ? String(guildId) : null, Date.now()]);
+        } else {
+            await pool.execute("INSERT IGNORE INTO trivia_plays (user_id, day, difficulty, status, wrong, hints_used, revealed, guild_id, started_at, lang_progress) VALUES (?, ?, ?, 'playing', 0, '[]', '[]', ?, ?, ?)",
+                [String(userId), day, diff, guildId ? String(guildId) : null, Date.now(), JSON.stringify({ [pl]: { revealed: [], hintsUsed: [] } })]);
+        }
+    } else if (word && !p.started.includes(pl)) {
+        await seedLanguage(userId, day, diff, p, word, pl);
     }
-    return { ok: true, play: await getPlay(userId, day, diff) };
+    return { ok: true, play: await getPlay(userId, day, diff, pl) };
 }
 
 // A hint (up to 3 per guess): a random clue that hasn't been shown yet (clues that show a letter, like "First letter", only
 // when no other clue is left; they also open that letter's box), or when all clues are used, one hidden letter.
 // Returns { ok, play, hint?, letter?, position? } (position = 1-based letter number that was just opened) or
 // { ok: false, play, limit|none } — or a solve result ({ result: 'solved'|'already'|'locked', play, award?, allRevealed: true })
-// when that letter was the last hidden one.
-async function useHint(userId, day, diff, word) {
-    const p = await getPlay(userId, day, diff);
+// when that letter was the last hidden one. word = today's word (all languages), lang = the player's language.
+async function useHint(userId, day, diff, word, lang) {
+    const v = W.viewOf(word, lang);
+    const pl = v.lang;
+    const p = await getPlay(userId, day, diff, pl);
     if (!p || p.status !== 'playing') return { ok: false, play: p };
     if (p.hintsLeft <= 0) return { ok: false, play: p, limit: true };
     const where = " WHERE user_id = ? AND day = ? AND difficulty = ? AND status = 'playing' AND hint_round = ?";
     const key = [String(userId), day, diff, p.hintRound];
-    const left = word.hints.map((h, i) => i).filter(i => !p.hintsUsed.includes(i));
-    const letterNo = at => W.letterPositions(word.word).indexOf(at) + 1;
+    const left = v.hints.map((h, i) => i).filter(i => !p.hintsUsed.includes(i));
+    const letterNo = at => W.letterPositions(v.word, pl).indexOf(at) + 1;
     if (left.length) {
-        const plain = left.filter(i => W.hintLetter(word.word, word.hints[i]) < 0);
+        const plain = left.filter(i => W.hintLetter(v.word, v.hints[i], pl) < 0);
         const from = plain.length ? plain : left;
         const pick = from[Math.floor(Math.random() * from.length)];
         const used = [...p.hintsUsed, pick];
-        const at = W.hintLetter(word.word, word.hints[pick]);
+        const at = W.hintLetter(v.word, v.hints[pick], pl);
         const opens = at >= 0 && !p.revealed.includes(at);
-        const [r] = opens
-            ? await pool.execute('UPDATE trivia_plays SET hints_used = ?, revealed = ?, hint_round = hint_round + 1' + where, [JSON.stringify(used), JSON.stringify([...p.revealed, at]), ...key])
-            : await pool.execute('UPDATE trivia_plays SET hints_used = ?, hint_round = hint_round + 1' + where, [JSON.stringify(used), ...key]);
-        const play = await getPlay(userId, day, diff);
+        const set = progressSet(p.row, pl, { hintsUsed: used, revealed: opens ? [...p.revealed, at] : p.revealed });
+        const [r] = await pool.execute('UPDATE trivia_plays SET ' + set.sql + ', hint_round = hint_round + 1' + where, [...set.args, ...key]);
+        const play = await getPlay(userId, day, diff, pl);
         if (!(Number(r.affectedRows) > 0)) return { ok: false, play };
-        const hint = W.hintText(word.hints[pick]);
-        if (opens && allShown(word, play.revealed)) return { ...(await solve(userId, day, diff, play, word)), ok: true, allRevealed: true, hint };
+        const hint = W.hintText(v.hints[pick]);
+        if (opens && allShown(v, play.revealed)) return { ...(await solve(userId, day, diff, play, word, pl)), ok: true, allRevealed: true, hint };
         return opens ? { ok: true, play, hint, position: letterNo(at) } : { ok: true, play, hint };
     }
-    const hidden = W.letterPositions(word.word).filter(i => !p.revealed.includes(i));
+    const hidden = W.letterPositions(v.word, pl).filter(i => !p.revealed.includes(i));
     if (!hidden.length) return { ok: false, play: p, none: true };
     const at = hidden[Math.floor(Math.random() * hidden.length)];
-    const revealed = [...p.revealed, at];
-    const [r] = await pool.execute('UPDATE trivia_plays SET revealed = ?, hint_round = hint_round + 1' + where, [JSON.stringify(revealed), ...key]);
-    const play = await getPlay(userId, day, diff);
+    const set = progressSet(p.row, pl, { hintsUsed: p.hintsUsed, revealed: [...p.revealed, at] });
+    const [r] = await pool.execute('UPDATE trivia_plays SET ' + set.sql + ', hint_round = hint_round + 1' + where, [...set.args, ...key]);
+    const play = await getPlay(userId, day, diff, pl);
     if (!(Number(r.affectedRows) > 0)) return { ok: false, play };
-    if (allShown(word, play.revealed)) return { ...(await solve(userId, day, diff, play, word)), ok: true, allRevealed: true };
+    if (allShown(v, play.revealed)) return { ...(await solve(userId, day, diff, play, word, pl)), ok: true, allRevealed: true };
     return { ok: true, play, letter: true, position: letterNo(at) };
 }
 
-async function giveUp(userId, day, diff) {
+async function giveUp(userId, day, diff, lang) {
     await pool.execute("UPDATE trivia_plays SET status = 'gaveup', finished_at = ? WHERE user_id = ? AND day = ? AND difficulty = ? AND status = 'playing'",
         [Date.now(), String(userId), day, diff]);
-    return getPlay(userId, day, diff);
+    return getPlay(userId, day, diff, lang);
 }
 
 // A guess. Returns { result: 'solved'|'wrong'|'failed'|'locked'|'already', play, award?, shown?, allRevealed? }
 // A wrong guess first shows the letters in the right place and one random letter; if that shows every letter, it is
 // solved (even on the last allowed wrong guess), otherwise too many wrong guesses = failed.
-async function guess(userId, day, diff, word, answer) {
-    const p = await getPlay(userId, day, diff);
+// The answer is checked against the name in the player's language (see W.sameAnswer).
+async function guess(userId, day, diff, word, answer, lang) {
+    const v = W.viewOf(word, lang);
+    const pl = v.lang;
+    const p = await getPlay(userId, day, diff, pl);
     if (!p || p.status !== 'playing') return { result: 'locked', play: p };
     const d = W.DIFF[diff];
-    if (W.sameAnswer(answer, word.word)) return solve(userId, day, diff, p, word);
+    if (W.sameAnswer(answer, v.word, pl)) return solve(userId, day, diff, p, word, pl);
     const wrong = p.wrong + 1;
-    const matched = W.matchingLetters(word.word, answer).filter(i => !p.revealed.includes(i));
+    const matched = W.matchingLetters(v.word, answer, pl).filter(i => !p.revealed.includes(i));
     const afterMatch = [...p.revealed, ...matched];
-    const hidden = W.letterPositions(word.word).filter(i => !afterMatch.includes(i));
+    const hidden = W.letterPositions(v.word, pl).filter(i => !afterMatch.includes(i));
     const revealed = hidden.length ? [...afterMatch, hidden[Math.floor(Math.random() * hidden.length)]] : afterMatch;
     const shown = revealed.length - p.revealed.length;
-    if (allShown(word, revealed)) {
-        await pool.execute("UPDATE trivia_plays SET wrong = ?, revealed = ?, hint_round = 0 WHERE user_id = ? AND day = ? AND difficulty = ? AND status = 'playing'",
-            [wrong, JSON.stringify(revealed), String(userId), day, diff]);
-        return { ...(await solve(userId, day, diff, await getPlay(userId, day, diff), word)), allRevealed: true, shown };
+    const set = progressSet(p.row, pl, { hintsUsed: p.hintsUsed, revealed });
+    if (allShown(v, revealed)) {
+        await pool.execute('UPDATE trivia_plays SET wrong = ?, ' + set.sql + ", hint_round = 0 WHERE user_id = ? AND day = ? AND difficulty = ? AND status = 'playing'",
+            [wrong, ...set.args, String(userId), day, diff]);
+        return { ...(await solve(userId, day, diff, await getPlay(userId, day, diff, pl), word, pl)), allRevealed: true, shown };
     }
     if (wrong >= d.limit) {
         await pool.execute("UPDATE trivia_plays SET wrong = ?, status = 'failed', finished_at = ? WHERE user_id = ? AND day = ? AND difficulty = ? AND status = 'playing'",
             [wrong, Date.now(), String(userId), day, diff]);
-        return { result: 'failed', play: await getPlay(userId, day, diff) };
+        return { result: 'failed', play: await getPlay(userId, day, diff, pl) };
     }
-    await pool.execute("UPDATE trivia_plays SET wrong = ?, revealed = ?, hint_round = 0 WHERE user_id = ? AND day = ? AND difficulty = ? AND status = 'playing'",
-        [wrong, JSON.stringify(revealed), String(userId), day, diff]);
-    return { result: 'wrong', play: await getPlay(userId, day, diff), newLetter: hidden.length > 0, shown };
+    await pool.execute('UPDATE trivia_plays SET wrong = ?, ' + set.sql + ", hint_round = 0 WHERE user_id = ? AND day = ? AND difficulty = ? AND status = 'playing'",
+        [wrong, ...set.args, String(userId), day, diff]);
+    return { result: 'wrong', play: await getPlay(userId, day, diff, pl), newLetter: hidden.length > 0, shown };
+}
+
+// Letters still hidden / all letters for the bits: the language with the most letters shown (an English-only game:
+// the English name, as before). p.all = progress of every language played.
+function bitsBasis(word, p) {
+    let best = null;
+    for (const [l, prog] of Object.entries((p && p.all) || { en: { revealed: (p && p.revealed) || [] } })) {
+        const v = W.viewOf(word, l);
+        if (v.lang !== l) continue;
+        const lp = W.letterPositions(v.word, l);
+        if (!lp.length) continue;
+        const hidden = lp.filter(i => !prog.revealed.includes(i)).length;
+        if (!best || hidden * best.total < best.hidden * lp.length) best = { hidden, total: lp.length };
+    }
+    if (best) return best;
+    const lp = W.letterPositions(word.word);
+    return { hidden: lp.filter(i => !((p && p.revealed) || []).includes(i)).length, total: lp.length };
 }
 
 // Solve: one transaction for the game and the person's bits/streak/season (and only one solve per day)
-async function solve(userId, day, diff, p, word) {
+async function solve(userId, day, diff, p, word, lang) {
     const conn = await pool.getConnection();
     let award = null;
     try {
@@ -403,10 +585,10 @@ async function solve(userId, day, diff, p, word) {
         const [[cur]] = await conn.execute('SELECT status FROM trivia_plays WHERE user_id = ? AND day = ? AND difficulty = ?', [String(userId), day, diff]);
         if (done || !cur || cur.status !== 'playing') {
             await conn.rollback();
-            return { result: done ? 'already' : 'locked', play: await getPlay(userId, day, diff) };
+            return { result: done ? 'already' : 'locked', play: await getPlay(userId, day, diff, lang) };
         }
-        const letters = W.letterPositions(word.word);
-        const bits = W.bitsFor(diff, letters.filter(i => !p.revealed.includes(i)).length, letters.length);
+        const basis = bitsBasis(word, p);
+        const bits = W.bitsFor(diff, basis.hidden, basis.total);
         const { streak, bonus } = W.nextStreak(u, day);
         const season = W.seasonOf(day);
         const seasonBits = (u.season_key === season ? Number(u.season_bits) || 0 : 0) + bits + bonus;
@@ -423,7 +605,7 @@ async function solve(userId, day, diff, p, word) {
     } finally {
         conn.release();
     }
-    return { result: 'solved', play: await getPlay(userId, day, diff), award };
+    return { result: 'solved', play: await getPlay(userId, day, diff, lang), award };
 }
 
 // Marks a solved game as shared. True only the first time. undo = the post failed, allow sharing again.
@@ -433,14 +615,18 @@ async function markShared(userId, day, diff, undo) {
     return Number(r.affectedRows) > 0;
 }
 
-// The spoiler-free line posted in the share channel (no word, no letters)
-function shareLine(name, diff, play, streak) {
+// The spoiler-free line posted in the share channel (no word, no letters), in the server's language
+function shareLine(name, diff, play, streak, lang) {
+    const L = lang || 'en';
     const safe = cleanName(name).replace(/[\\*_~`|>]/g, '\\$&');
     const guesses = play.wrong + 1;
-    const hints = play.hintsUsed.length;
-    return '🧩 **' + safe + '** solved today\'s **' + W.DIFF[diff].name + '** Pingway Trivia in ' + guesses + ' guess' + (guesses === 1 ? '' : 'es') +
-        (hints ? ' with ' + hints + ' hint' + (hints === 1 ? '' : 's') : ' with no hints') + '!' + (streak > 1 ? ' 🔥 Streak ' + streak : '') +
-        '\n-# Think you can beat that? Use ' + triviaCommand() + ' to guess today\'s FFXIV word, earn bits and build your streak!';
+    const hints = play.hintsAll !== undefined ? play.hintsAll : play.hintsUsed.length;
+    const pl = n => W.pluralOf(L, n);
+    return t(L, 'trivia.share.line', {
+        name: safe, diff: t(L, 'trivia.diff.' + diff), guesses: t(L, 'trivia.share.guesses_' + pl(guesses), { n: guesses }),
+        hints: hints ? t(L, 'trivia.share.hints_' + pl(hints), { n: hints }) : t(L, 'trivia.share.noHints'),
+        streak: streak > 1 ? t(L, 'trivia.share.streak', { n: streak }) : ''
+    }) + '\n' + t(L, 'trivia.share.invite', { command: triviaCommand() });
 }
 
 // Clickable </trivia:id> once the command id is known (fetched in start), plain **/trivia** until then
@@ -658,5 +844,7 @@ function start(client) {
 module.exports = {
     BANK_FILE, BANK_FORMAT, ensureTables, getBank, refreshBank, buildBank, bankIsOld, wordsOf, yesterdayAnswers,
     touchPlayer, getUser, shareChannel, dayStatus, getPlay, startPlay, useHint, giveUp, guess, markShared, shareLine, cleanup, start, adminTrivia,
-    _reset: () => { bank = null; building = null; tablesReady = false; }
+    dayPool, startedLangs, bitsBasis,
+    _reset: () => { bank = null; building = null; tablesReady = false; },
+    _setPause: (ms, retry) => { pauseMs = ms; if (retry !== undefined) retryMs = retry; } // tests only
 };

@@ -1,0 +1,15 @@
+{
+  "cmd": {
+    "description": "Wähle deine bevorzugten Datenzentren für den Befehl /price"
+  },
+  "region": "Region: {region}",
+  "noneConfigured": "❌ **Fehler:** In der Konfigurationsdatei wurden keine Datenzentren gefunden.",
+  "placeholder": "Wähle deine Datenzentren (mehrere möglich)",
+  "done": "Fertig",
+  "clear": "Gespeicherte Daten löschen",
+  "intro": "🌐 **Datenzentren einrichten:** Wähle, welche Datenzentren bei `/price` geprüft werden sollen (wird automatisch gespeichert):",
+  "updated": "✅ **Datenzentren aktualisiert!**\nAusgewählt: `{list}`",
+  "saveFailed": "❌ Deine Datenzentren konnten nicht in der Datenbank gespeichert werden.",
+  "cleared": "🗑️ **Gespeicherte Datenzentren gelöscht!** Du hast jetzt keine Datenzentren ausgewählt.",
+  "clearFailed": "❌ Deine gespeicherten Daten konnten nicht gelöscht werden."
+}

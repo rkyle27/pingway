@@ -15,8 +15,10 @@ const { AttachmentBuilder, ChannelType, PermissionFlagsBits, escapeMarkdown } = 
 const { pool } = require('./db');
 const { ownerHasMembership, sponsorHasPerks, findPerksAdmin } = require('./membership');
 const W = require('./welcomeCards');
+const { t, localeOf } = require('./i18n');
+const userLanguage = require('./userLanguage');
 
-const DEFAULT_MESSAGE = 'Thank you for joining the server! Have fun and feel at home.';
+const DEFAULT_MESSAGE = t('en', 'welcome.defaultMessage');
 const MAX_MESSAGE = 300;
 const SETTINGS_CACHE_MS = 60 * 1000;
 const POLL_MS = 10 * 1000;
@@ -139,9 +141,10 @@ async function resolveDesign(guild, settings) {
 
 // ---------- helpers ----------
 // One pass, so a name like "{server}" is not filled in again
-function fillMessage(template, { user, server, count }) {
-    const text = template && String(template).trim() ? String(template) : DEFAULT_MESSAGE;
-    const values = { user: String(user || ''), server: String(server || ''), count: Number(count || 0).toLocaleString('en-US') };
+// lang: the server's language, for the default message and the number format (a message an admin typed is never translated)
+function fillMessage(template, { user, server, count, lang = 'en' }) {
+    const text = template && String(template).trim() ? String(template) : t(lang, 'welcome.defaultMessage');
+    const values = { user: String(user || ''), server: String(server || ''), count: Number(count || 0).toLocaleString(localeOf(lang)) };
     return text.replace(/\{(user|server|count)\}/g, (_, k) => values[k]);
 }
 
@@ -152,6 +155,12 @@ function missingPerms(guild, channel) {
     const perms = me ? channel.permissionsFor(me) : null;
     if (!perms) return NEEDED.map(([, label]) => label);
     return NEEDED.filter(([flag]) => !perms.has(PermissionFlagsBits[flag])).map(([, label]) => label);
+}
+
+// The English permission name from missingPerms() in the reader's language
+function permLabel(label, lang) {
+    const found = NEEDED.find(([, l]) => l === label);
+    return found ? t(lang, 'welcome.perms.' + found[0]) : label;
 }
 
 // Only Discord's CDN, 5 s max; null on any problem (the card is drawn without the picture)
@@ -175,17 +184,17 @@ async function renderFor(member, guild, settings, override) {
     const name = member.displayName || (member.user && (member.user.globalName || member.user.username)) || 'Member';
     const count = guild.memberCount;
     const avatar = await fetchAvatar(member.displayAvatarURL({ extension: 'png', size: 256 }));
-    const message = fillMessage(template, { user: name, server: guild.name, count });
+    const message = fillMessage(template, { user: name, server: guild.name, count, lang: userLanguage.forGuild(guild) });
     const png = await W.renderWelcomeCard({ design, avatar, name, message, count });
     return { png, design };
 }
 
-function mentionList(ids) {
+function mentionList(ids, lang = 'en') {
     const shown = ids.slice(0, MAX_MENTIONS).map(id => '<@' + id + '>');
     const more = ids.length - shown.length;
-    if (more > 0) return shown.join(', ') + ' and ' + more + ' more';
+    if (more > 0) return t(lang, 'welcome.listMore', { list: shown.join(', '), count: more });
     if (shown.length === 1) return shown[0];
-    return shown.slice(0, -1).join(', ') + ' and ' + shown[shown.length - 1];
+    return t(lang, 'welcome.listAnd', { list: shown.slice(0, -1).join(', '), last: shown[shown.length - 1] });
 }
 
 // ---------- joins ----------
@@ -216,7 +225,8 @@ async function flush(guildId, w) {
     try {
         const missing = missingPerms(w.channel.guild, w.channel);
         if (!missing || missing.includes('View Channel') || missing.includes('Send Messages')) return;
-        await w.channel.send({ content: 'Welcome ' + mentionList(ids) + '! 🎉', allowedMentions: { users: ids.slice(0, MAX_MENTIONS) } });
+        const lang = userLanguage.forGuild(w.channel.guild); // public post: the server's language
+        await w.channel.send({ content: t(lang, 'welcome.combined', { list: mentionList(ids, lang) }), allowedMentions: { users: ids.slice(0, MAX_MENTIONS) } });
         console.log('👋 [WELCOME] ' + w.channel.guild.name + ': ' + ids.length + ' more join(s) welcomed in one message (mass join).');
     } catch (err) {
         logOnce('send:' + guildId, '⚠️ [WELCOME] Could not post the combined welcome in ' + guildId + ': ' + err.message);
@@ -271,8 +281,8 @@ const DESIGN_NAMES = {
     k4: 'Falling Petals', k5: 'Sakura Mochi'
 };
 // pw01..pw20 (random default) -> "default"; custom designs -> their website name
-function designLabel(id) {
-    if (W.DEFAULT_POOL.includes(id)) return 'default';
+function designLabel(id, lang = 'en') {
+    if (W.DEFAULT_POOL.includes(id)) return t(lang, 'welcome.designDefault');
     return DESIGN_NAMES[id] || id;
 }
 
@@ -289,8 +299,9 @@ async function handleRequest(client, row) {
         const member = guild.members.cache.get(String(row.user_id)) || await guild.members.fetch(String(row.user_id)).catch(() => null);
         if (!member) { await setState(row.id, 'failed'); return 'failed'; }
         const { png, design: used } = await renderFor(member, guild, {}, { design: design || W.randomDefault(), message });
+        const lang = await userLanguage.forUser(row.user_id); // DM to the admin who pressed "Send test"
         await member.send({
-            content: 'Here\'s a test of your welcome card for **' + escapeMarkdown(guild.name) + '** (design: ' + designLabel(used) + ').',
+            content: t(lang, 'welcome.testDm', { server: escapeMarkdown(guild.name), design: designLabel(used, lang) }),
             files: [new AttachmentBuilder(png, { name: 'welcome-test.png' })]
         });
     } catch (err) {
@@ -338,6 +349,6 @@ function start(client) {
 
 module.exports = {
     start, poll, handleJoin, handleRequest, getSettings, invalidate, enableHere, disable, resolveDesign,
-    fillMessage, missingPerms, fetchAvatar, previewFor, ensureTables,
+    fillMessage, missingPerms, permLabel, fetchAvatar, previewFor, ensureTables,
     DEFAULT_MESSAGE, MAX_MESSAGE, LIMITS, _windows: windows
 };

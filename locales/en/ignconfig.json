@@ -1,0 +1,69 @@
+{
+  "cmd": {
+    "description": "⚙️ Configure your FFXIV character profile, main job, portraits, Tomestone, and FFLogs settings."
+  },
+  "needPhoto": "⚠️ You cannot turn off the portrait unless a **Full Photo** has been added!",
+  "selectRole": "Select your main job role",
+  "roles": {
+    "tank": "Tank",
+    "healer": "Healer",
+    "melee": "Melee DPS",
+    "ranged": "Physical Ranged DPS",
+    "caster": "Magical Caster DPS"
+  },
+  "backDashboard": "Back to Dashboard",
+  "selectRoleTitle": "⚔️ Select Main Job Role",
+  "selectRoleHelp": "Please choose your character role category from the dropdown below.",
+  "linkTitle": "Link Lodestone Character",
+  "lodestoneLabel": "Lodestone URL or ID",
+  "portraitTitle": "Add Portrait",
+  "portraitLabel": "Portrait Direct URL",
+  "leaveBlank": "leave blank to use default",
+  "photoTitle": "Add Full Photo",
+  "photoLabel": "Full Photo Direct URL",
+  "tomestoneTitle": "Add Tomestone Link",
+  "tomestoneLabel": "Tomestone URL (leave blank to clear)",
+  "fflogsTitle": "Add FFLogs Link",
+  "fflogsLabel": "FFLogs URL (leave blank to clear)",
+  "closed": "Configuration session closed.",
+  "selectJob": "Select your {role} job",
+  "backRoles": "Back to Roles",
+  "selectJobTitle": "⚔️ Select {role} Job",
+  "selectJobHelp": "Choose your specific main job from the dropdown below.",
+  "invalidLodestone": "❌ Invalid Lodestone URL or ID format.",
+  "dashTitle": "⚙️ FFXIV Character Configuration Dashboard",
+  "dashHelp": "Changes save automatically when you click buttons or submit modals.",
+  "fields": {
+    "lodestone": "🔗 Lodestone ID",
+    "mainJob": "⚔️ Main Job",
+    "portrait": "🖼️ Add Portrait",
+    "photo": "🌅 Add Full Photo",
+    "portraitState": "👁️ Portrait State",
+    "tomestone": "🏛️ Tomestone Link",
+    "fflogs": "📊 FFLogs Link"
+  },
+  "notSet": "*Not set*",
+  "usingDefault": "*Using Default*",
+  "noneSet": "*None set*",
+  "on": "🟢 ON",
+  "off": "🔴 OFF",
+  "btn": {
+    "link": "Link Lodestone",
+    "mainJob": "Main Job",
+    "portrait": "Add Portrait",
+    "photo": "Add Full Photo",
+    "on": "ON",
+    "off": "OFF",
+    "portraitToggle": "Portrait: {state}",
+    "tomestone": "Add Tomestone Link",
+    "fflogs": "Add FFLogs Link",
+    "exit": "Exit"
+  },
+  "roleShort": {
+    "Tank": "Tank",
+    "Healer": "Healer",
+    "Melee": "Melee",
+    "Range": "Range",
+    "Caster": "Caster"
+  }
+}

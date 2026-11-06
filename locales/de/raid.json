@@ -1,0 +1,28 @@
+{
+  "notConfigured": "⚠️ **Die Raidplaner-Tabelle ist nicht eingerichtet!** Ein Administrator muss zuerst den Link zur Tabelle festlegen.",
+  "noData": "❌ **In der Raidplaner-Tabelle wurden keine Daten gefunden.**",
+  "noDates": "❌ **In der Google-Tabelle konnte kein gültiges Datum gelesen werden.**",
+  "status": {
+    "raid": "⚔️ **RAID**",
+    "unsure": "❓ **UNSICHER**",
+    "fill": "📝 **BITTE AUSFÜLLEN**",
+    "no": "❌ **KEIN RAID**"
+  },
+  "pending": "> 📝 **Antwort ausstehend ({count}):** {list}\n",
+  "available": "> ✅ **Dabei ({count}):** {list}\n",
+  "late": "> ⏰ **Später ({count}):** {list}\n",
+  "subbed": "> 🟡 **Ersetzt ({count}):** {list}\n",
+  "unsure": "> ❓ **Unsicher ({count}):** {list}\n",
+  "absent": "> ❌ **Abwesend ({count}):** {list}\n",
+  "noDays": "ℹ️ **Keine geplanten Raidtage gefunden.**\nAchte darauf, den Aufbau nicht zu ändern und das richtige Datumsformat zu nutzen.",
+  "upcoming": "📊 **Kommende Raids:**\n\n{list}",
+  "accessError": "❌ **Zugriffsfehler bei der Google-Sheets-API:** Bitte stelle sicher, dass die Tabelle mit der Service-Account-E-Mail des Bots geteilt ist und der Link stimmt.",
+  "failed": "❌ **Der Raidplan konnte nicht abgerufen werden.** Details stehen im Konsolenprotokoll.",
+  "setup": {
+    "invalidUrl": "❌ **Ungültige Google-Sheets-URL oder -ID.** Bitte kopiere den ganzen Link oder die reine ID.",
+    "raidSheet": "Raidplaner-Tabelle",
+    "loggerSheet": "Befehlsprotokoll-Tabelle",
+    "configured": "✅ **{name} eingerichtet!**\n\n⚠️ **Wichtig:** Teile deine Google-Tabelle mit der Service-Account-E-Mail des Bots, damit er Zugriff hat:\n`{email}`",
+    "dbError": "❌ Beim Speichern der Einstellung ist ein Datenbankfehler aufgetreten."
+  }
+}

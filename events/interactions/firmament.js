@@ -1,13 +1,16 @@
 const { ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, MessageFlags } = require('discord.js');
 const { pool } = require('../../utils/db');
 const { isMaintenance } = require('../../maintenance');
+const { t } = require('../../utils/i18n');
+const userLanguage = require('../../utils/userLanguage');
 
 module.exports = {
     async handleInteraction(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         // Maintenance Check: Block interaction when maintenance mode is ON (allows whitelisted servers to bypass)
         if (isMaintenance(interaction.guildId)) {
             return interaction.reply({
-                content: '⚠️ **The bot is currently undergoing maintenance.** Please try again later!',
+                content: t(lang, 'core.maintenance'),
                 flags: [MessageFlags.Ephemeral]
             });
         }
@@ -25,7 +28,7 @@ module.exports = {
 
             if (!rows || rows.length === 0) {
                 return interaction.reply({
-                    content: "❌ You need to set up your personal countdown first by clicking **⚙️ Set Actual Countdown**.",
+                    content: t(lang, 'firmament.setupFirst'),
                     flags: [MessageFlags.Ephemeral]
                 });
             }
@@ -41,8 +44,8 @@ module.exports = {
 
             return interaction.reply({
                 content: newStatus
-                    ? "🔔 **DM Notifications Enabled!** You will receive a direct message when your Skyrise Celebration begins."
-                    : "🔕 **DM Notifications Disabled.** You will no longer receive direct messages for this event.",
+                    ? t(lang, 'firmament.dmEnabled')
+                    : t(lang, 'firmament.dmDisabled'),
                 flags: [MessageFlags.Ephemeral]
             });
         }
@@ -55,7 +58,7 @@ module.exports = {
             );
 
             return interaction.reply({
-                content: "🗑️ **Successfully removed your personal Firmament counter.** Run `/firmament` again anytime to set up a new anchor.",
+                content: t(lang, 'firmament.removed'),
                 flags: [MessageFlags.Ephemeral]
             });
         }
@@ -77,7 +80,7 @@ module.exports = {
 
                 if (currentMacroCycleMs < ACTIVE_PERIOD) {
                     return interaction.reply({
-                        content: "❌ Can only be done while Skyrise Celebration is on cooldown.",
+                        content: t(lang, 'firmament.onlyCooldown'),
                         flags: [MessageFlags.Ephemeral]
                     });
                 }
@@ -85,27 +88,27 @@ module.exports = {
 
             const modal = new ModalBuilder()
                 .setCustomId('firmament_sync_modal')
-                .setTitle('Set Actual Firmament Countdown');
+                .setTitle(t(lang, 'firmament.modalTitle'));
 
             const daysInput = new TextInputBuilder()
                 .setCustomId('sync_days')
-                .setLabel('Days remaining (Enter 0 if < 1 day)')
+                .setLabel(t(lang, 'firmament.days'))
                 .setStyle(TextInputStyle.Short)
                 .setValue('0')
                 .setRequired(true);
 
             const hoursInput = new TextInputBuilder()
                 .setCustomId('sync_hours')
-                .setLabel('Hours remaining (0-23)')
+                .setLabel(t(lang, 'firmament.hours'))
                 .setStyle(TextInputStyle.Short)
-                .setPlaceholder('e.g., 14')
+                .setPlaceholder(t(lang, 'firmament.exampleHours'))
                 .setRequired(true);
 
             const minutesInput = new TextInputBuilder()
                 .setCustomId('sync_minutes')
-                .setLabel('Minutes remaining (0-59)')
+                .setLabel(t(lang, 'firmament.minutes'))
                 .setStyle(TextInputStyle.Short)
-                .setPlaceholder('e.g., 30')
+                .setPlaceholder(t(lang, 'firmament.exampleMinutes'))
                 .setRequired(true);
 
             modal.addComponents(
@@ -125,7 +128,7 @@ module.exports = {
 
             if (isNaN(days) || isNaN(hours) || isNaN(minutes) || days < 0 || hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
                 return interaction.reply({
-                    content: "❌ Invalid input. Ensure days >= 0, hours are 0–23, and minutes are 0–59.",
+                    content: t(lang, 'firmament.invalid'),
                     flags: [MessageFlags.Ephemeral]
                 });
             }
@@ -147,7 +150,7 @@ module.exports = {
             );
 
             return interaction.reply({
-                content: `✅ Successfully calibrated your personal timer! Next celebration is set for **${days}d ${hours}h ${minutes}m** from now.`,
+                content: t(lang, 'firmament.calibrated', { d: days, h: hours, m: minutes }),
                 flags: [MessageFlags.Ephemeral]
             });
         }

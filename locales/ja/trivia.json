@@ -1,0 +1,260 @@
+{
+  "command": {
+    "description": "🧩 今日のFFXIVワードを当てよう！6つの難易度、ビットを集めて連続記録をのばそう。"
+  },
+  "title": "🧩 **Pingway Trivia — ワード当てクイズ**",
+  "diff": {
+    "easy": "イージー",
+    "normal": "ノーマル",
+    "hard": "ハード",
+    "extreme": "極",
+    "savage": "零式",
+    "ultimate": "絶"
+  },
+  "maintenance": "⚠️ **ただいまメンテナンス中です。** しばらくしてからもう一度お試しください！",
+  "notAvailable": "❌ 今は Trivia を利用できません。1分後にもう一度お試しください。",
+  "warming": "⏳ Trivia を準備中です。1分後にもう一度お試しください。",
+  "error": "❌ エラーが発生しました。もう一度 /trivia を実行してください。",
+  "ended": "⌛ セッションが終了しました — もう一度 /trivia を実行してください。",
+  "time": {
+    "hm": "{h}時間{m}分",
+    "m": "{m}分"
+  },
+  "count": {
+    "bits_one": "{n}ビット",
+    "bits_other": "{n}ビット",
+    "guesses_one": "{n}回",
+    "guesses_other": "{n}回",
+    "limit_one": "{n}回",
+    "limit_other": "{n}回",
+    "wrongGuesses_one": "ミス{n}回まで",
+    "wrongGuesses_other": "ミス{n}回まで",
+    "wrongLeft_one": "残りミス{n}回",
+    "wrongLeft_other": "残りミス{n}回",
+    "streakDays_one": "{n}日",
+    "streakDays_other": "{n}日"
+  },
+  "status": {
+    "solved": "正解",
+    "gaveup": "ギブアップ",
+    "failed": "回数切れ",
+    "playing": "プレイ中",
+    "new": "未プレイ"
+  },
+  "buttons": {
+    "play": "プレイ",
+    "continue": "続ける",
+    "results": "今日の結果",
+    "howto": "遊び方",
+    "todayWord": "今日のワード",
+    "share": "結果をシェア",
+    "back": "戻る",
+    "guess": "回答する",
+    "hint": "ヒント",
+    "giveUp": "ギブアップ",
+    "giveUpYes": "はい、ギブアップ",
+    "giveUpNo": "いいえ、続ける"
+  },
+  "home": {
+    "intro": "今日のFFXIVワードを当てよう。難易度は6つ、それぞれに別のワード。正解できるのは1日1回、全サーバー共通です。",
+    "you": "**あなた:** 🔥 連続 {streak} · 💎 今月 {season}ビット · 累計 {total}",
+    "solved": "✅ 今日の **{diff}** に正解しました（+{bits}ビット）。また 0:00 JST 以降に来てね！（あと {time}）",
+    "waiting": "▶ **{diff}** のゲームが途中です。",
+    "newWords": "⏳ 新しいワードまで あと {time}（0:00 JST）。",
+    "yesterday": "**昨日の答え**",
+    "yesterdayNone": "_まだありません — また明日来てね！_"
+  },
+  "howto": {
+    "rules": [
+      "• 1つの枠が1文字です: ⬜ は隠れた文字。開いた文字はそのまま表示されます。スペースと記号（・など）は最初から表示されます。",
+      "• **回答する** を押して答えを全部入力してください。ひらがな・カタカナ、全角・半角、スペースや「・」「ー」は区別しません。漢字はそのまま入力してください。",
+      "• 不正解のときは、正しい位置の文字と、さらに1文字が開きます。全部の文字が開いたら正解。ミスが多すぎると、その難易度は今日はロックされます。",
+      "• **ヒント:** 1回の回答につき最大{hints}個（不正解のたびにリセット）。まず手がかり、次に文字が開きます。**ギブアップ** するとその難易度は今日はロックされますが、別の難易度には挑戦できます。",
+      "• 1回正解したら今日はおしまい（全サーバー共通）。新しいワードは 0:00 JST に出ます。今日のワードはみんな同じで、あなたの言語で表示されます（/pingway で変更できます）。"
+    ],
+    "bits": "**ビット:** 開いた文字が少ないほど多くもらえます（最大2倍、最低でも基本値）。",
+    "diff": "{emoji} {name}: {bits}・{wrong}",
+    "streak": "**連続記録:** 毎日続けて正解しよう。5/10/15/20/30日でボーナス: +10/+20/+30/+40/+60ビット。連続記録と月間ランキングは毎月1日にリセットされます。",
+    "boards": "ランキング: pingway.app → Trivia。My Settings で自分を非表示にできます。"
+  },
+  "menu": {
+    "solved": "✅ 今日の **{diff}** に正解しました。また 0:00 JST 以降に来てね！",
+    "pick": "難易度を選んでください。それぞれに今日のワードがあります。",
+    "line": "{emoji} **{name}** · {bits} · {limit} — {status}"
+  },
+  "game": {
+    "header": "{emoji} **{name}** · {left} · 💡 ヒント {hints}/{max}"
+  },
+  "feedback": {
+    "wrongShown_one": "❌ 不正解 — {n}文字開きました。{left}。",
+    "wrongShown_other": "❌ 不正解 — {n}文字開きました。{left}。",
+    "wrong": "❌ 不正解。{left}。"
+  },
+  "hint": {
+    "letter": "💡 {n}文字目が開きました。",
+    "limit": "ヒントはもうありません — 不正解のあとにまた{n}個使えます。",
+    "none": "このワードのヒントはもうありません。"
+  },
+  "giveup": {
+    "ask": "🏳️ **ギブアップしますか？** この難易度は今日はロックされます。（答えは明日まで表示されません。）"
+  },
+  "solved": {
+    "allRevealed": "🎉 **おめでとう！全部の文字が開きました！**",
+    "line": "✅ **正解！** {emoji} {name} · +{bits}ビット（基本 {base}、ボーナス {bonus}）",
+    "streak": "🔥 連続 {days}",
+    "milestone": " · 🎉 連続ボーナス +{bits}ビット！",
+    "bits": "💎 今月 {season}ビット · 累計 {total}",
+    "done": "今日はここまで — また 0:00 JST 以降に来てね（あと {time}）。"
+  },
+  "about": {
+    "title": "📖 **{word} について**",
+    "answer": "📖 答えは **{word}** でした。"
+  },
+  "locked": {
+    "gaveup": "🏳️ **{name}** をギブアップしました。",
+    "failed": "❌ **{name}** の回答回数がなくなりました。",
+    "today": "{why} 今日はロックされています。",
+    "other": "ほかの難易度にはまだ挑戦できます。答えは 0:00 JST 以降に「昨日の答え」に表示されます。"
+  },
+  "today": {
+    "solved": "✅ 今日の **{name}** に正解しました"
+  },
+  "modal": {
+    "title": "あなたの答え（{name}）",
+    "label": "答えを全部入力してください"
+  },
+  "share": {
+    "nothing": "今シェアできるものはありません。",
+    "gone": "⚠️ Trivia のシェア用チャンネルがなくなっています。管理者にウェブサイトで新しいチャンネルを選んでもらってください。",
+    "already": "シェア済みです。🙂",
+    "cantPost": "⚠️ Pingway は <#{channel}> に投稿できません。管理者に権限を確認してもらってください。",
+    "done": "📣 <#{channel}> にシェアしました！",
+    "line": "🧩 **{name}** さんが今日の Pingway Trivia **{diff}** に{guesses}で正解しました{hints}！{streak}",
+    "guesses_one": "{n}回",
+    "guesses_other": "{n}回",
+    "hints_one": "（ヒント{n}個）",
+    "hints_other": "（ヒント{n}個）",
+    "noHints": "（ヒントなし）",
+    "streak": " 🔥 連続 {n}",
+    "invite": "-# あなたも挑戦してみませんか？ {command} で今日のFFXIVワードを当てて、ビットを集めて連続記録をのばそう！"
+  },
+  "reward": {
+    "dm": "🎉 おめでとうございます！{month}の Pingway Trivia で **{bits}ビット** を獲得しました — お礼に **{points}ポイント** をプレゼントします。リテイナーの追加や Supporter Perks に使えます: {url}",
+    "month": "{year}年{month}",
+    "months": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+    "roleGiven": "Pingway Trivia: {season} のトップ{rank}",
+    "roleTaken": "Pingway Trivia: {season} のトップ{rank} がほかの人に移りました"
+  },
+  "hints": {
+    "labelValue": "{label}: {v}",
+    "listSep": "、",
+    "loreSep": " · ",
+    "category": "カテゴリー: {v}",
+    "cat": {
+      "job": "ジョブ",
+      "class": "クラス",
+      "city": "都市",
+      "zone": "エリア",
+      "region": "地方",
+      "dungeon": "ダンジョン",
+      "trial": "討伐・討滅戦",
+      "allianceRaid": "アライアンスレイド",
+      "raid": "レイド",
+      "mount": "マウント",
+      "minion": "ミニオン",
+      "action": "アクション",
+      "item": "アイテム"
+    },
+    "roles": { "1": "タンク", "2": "近接DPS", "3": "遠隔DPS", "4": "ヒーラー" },
+    "stats": { "1": "STR", "2": "DEX", "3": "VIT", "4": "INT", "5": "MND" },
+    "rarities": { "1": "白（ノーマル）", "2": "緑（マジック）", "3": "青（レア）", "4": "紫（レリック）", "7": "ピンク（エーテリアル）" },
+    "roulettes": {
+      "LevelingRoulette": "レベリング",
+      "HighLevelRoulette": "ハイレベリング",
+      "ExpertRoulette": "エキスパート",
+      "TrialRoulette": "討伐・討滅戦",
+      "AllianceRoulette": "アライアンスレイド",
+      "NormalRaidRoulette": "ノーマルレイド",
+      "MSQRoulette": "メインクエスト"
+    },
+    "role": "ロール: {v}",
+    "type": "タイプ: {v}",
+    "mainStat": "主要能力値: {v}",
+    "startingCity": "開始都市: {v}",
+    "startsAtLevel": "レベル{n}から開始",
+    "limitedJob": "リミテッドジョブです",
+    "becomes": "なれるジョブ: {v}",
+    "startsAs": "元のクラス: {v}",
+    "abbreviation": "略称: {v}",
+    "region": "地方: {v}",
+    "expansion": "拡張: {v}",
+    "area": "地域: {v}",
+    "alsoInRegion": "同じ地方: {v}",
+    "fieldZones_one": "フィールドエリア{n}つ",
+    "fieldZones_other": "フィールドエリア{n}つ",
+    "cityThere": "そこにある都市: {v}",
+    "zoneThere": "そこにあるエリア: {v}",
+    "anotherZoneThere": "ほかのエリア: {v}",
+    "level": "レベル{n}",
+    "itemLevel": "アイテムレベル{n}",
+    "roulette": "ルーレット: {v}",
+    "zone": "エリア: {v}",
+    "highEnd": "高難易度コンテンツです",
+    "levelSync": "レベルシンク{n}",
+    "itemLevelSync": "アイテムレベルシンク{n}",
+    "description": "説明",
+    "quote": "セリフ",
+    "seats_one": "乗車人数: {n}人",
+    "seats_other": "乗車人数: {n}人",
+    "minionRace": "種族: {v}",
+    "behavior": "動き: {v}",
+    "skillType": "ミニオンバトルのスキルタイプ: {v}",
+    "specialAction": "特殊アクション: {v}",
+    "verminionStats": "ミニオンバトル: 攻撃 {atk} / 防御 {def} / 速度 {spd}",
+    "job": "ジョブ: {v}",
+    "roleAction": "ロールアクション",
+    "actionType": "アクションの種類: {v}",
+    "castTime": "詠唱時間: {v}",
+    "instant": "即時発動",
+    "recast": "リキャスト: {v}",
+    "seconds": "{n}秒",
+    "groundTargeted": "地面を指定して使います",
+    "targets": "対象: {v}",
+    "targetEnemies": "敵",
+    "targetParty": "パーティメンバー",
+    "targetSelf": "自分",
+    "range": "射程: {n}m",
+    "radius": "効果範囲: {n}m",
+    "charges": "チャージ{n}回",
+    "usedBy": "使えるジョブ: {v}",
+    "itemType": "アイテムの種類: {v}",
+    "equipLevel": "装備レベル{n}",
+    "usableBy": "装備できるクラス: {v}",
+    "craftedBy": "製作: {v}",
+    "expertRecipe": "（エキスパートレシピ）",
+    "rarity": "レアリティ: {v}",
+    "marketBoard": "マーケットボード: {v}",
+    "grandCompany": "グランドカンパニー: {v}",
+    "itemSeries": "シリーズ: {v}",
+    "materia_one": "マテリア穴{n}つ",
+    "materia_other": "マテリア穴{n}つ",
+    "dyeable": "染色できます",
+    "stacks": "最大{n}個までスタック",
+    "hq": "HQがあります",
+    "unique": "ユニークアイテムです",
+    "collectable": "収集品です",
+    "firstLetter": "最初の文字: {l}",
+    "lore": {
+      "line": "{name}{abbr} — {what}{startsAs}。",
+      "abbr": "（{v}）",
+      "job": "ジョブ",
+      "jobRole": "{role}のジョブ",
+      "class": "クラス",
+      "classRole": "{role}のクラス",
+      "startsAs": "、元のクラスは{v}",
+      "city": { "full": "{region}の都市（{exp}）。", "region": "{region}の都市。", "exp": "都市（{exp}）。", "plain": "都市。" },
+      "zone": { "full": "{region}のエリア（{exp}）。", "region": "{region}のエリア。", "exp": "エリア（{exp}）。", "plain": "エリア。" },
+      "region": { "exp": "世界の地方のひとつ。{exp}で初登場。", "plain": "世界の地方のひとつ。" }
+    }
+  }
+}

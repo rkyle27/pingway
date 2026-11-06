@@ -2,36 +2,39 @@ const { SlashCommandBuilder, EmbedBuilder, MessageFlags } = require('discord.js'
 const { pool } = require('../utils/db');
 const M = require('../utils/marketTools');
 const { SITE, linkRow, checkPerks, gil } = require('../utils/perkCommand');
+const { t, discordLocalizations } = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
 
 // Supporter Perk: top selling items on your world or data center. Settings (world, world/DC) come from the
 // Retainers page -> Market tools on the website.
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('bestsellers')
-        .setDescription('💜 Top selling items on your world or data center (Supporter Perk).')
-        .addStringOption(o => o.setName('where').setDescription('Your world or your whole data center (default: your website setting)')
-            .addChoices({ name: 'My world', value: 'world' }, { name: 'My data center', value: 'dc' })),
+        .setDescription(t('en', 'market.cmd.bestsellers')).setDescriptionLocalizations(discordLocalizations('market.cmd.bestsellers'))
+        .addStringOption(o => o.setName('where').setDescription(t('en', 'market.cmd.bestsellersWhere')).setDescriptionLocalizations(discordLocalizations('market.cmd.bestsellersWhere'))
+            .addChoices({ name: t('en', 'market.cmd.myWorld'), name_localizations: discordLocalizations('market.cmd.myWorld'), value: 'world' }, { name: t('en', 'market.cmd.myDc'), name_localizations: discordLocalizations('market.cmd.myDc'), value: 'dc' })),
 
     async execute(interaction) {
         if (!(await checkPerks(interaction))) return;
         await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
+        const lang = await userLanguage.forInteraction(interaction);
         try {
             const prefs = await M.loadPrefs(pool, interaction.user.id);
             if (!prefs || !prefs.world) {
-                return interaction.editReply({ content: '🌍 Pick your world first on the website: **Retainers → Market tools**.', components: [linkRow('Open Market tools', SITE + '/retainers.html#market')] });
+                return interaction.editReply({ content: t(lang, 'market.pickWorld'), components: [linkRow(t(lang, 'market.openMarketTools'), SITE + '/retainers.html#market')] });
             }
             const scope = interaction.options.getString('where') || prefs.bestScope;
-            const r = await M.bestSellers(pool, { world: prefs.world, scope });
-            if (r.warming) return interaction.editReply({ content: '⏳ Pingway is still collecting market data. Please try again in a few hours.' });
-            const lines = r.items.slice(0, 15).map((it, i) => '`' + String(i + 1).padStart(2) + '` **' + it.name + '** · ' + it.perDay + ' sold/day · avg ' + gil(it.avg));
+            const r = await M.bestSellers(pool, { world: prefs.world, scope, lang });
+            if (r.warming) return interaction.editReply({ content: t(lang, 'market.warming') });
+            const lines = r.items.slice(0, 15).map((it, i) => t(lang, 'market.bestLine', { n: String(i + 1).padStart(2), name: it.name, perDay: it.perDay, avg: gil(it.avg, lang) }));
             const embed = new EmbedBuilder().setColor(0x8b5cf6)
-                .setTitle('🏆 Best sellers on ' + r.place)
-                .setDescription(lines.join('\n') || 'No sales found.')
-                .setFooter({ text: 'Universalis market data · change settings on pingway.app → Retainers → Market tools' });
-            return interaction.editReply({ embeds: [embed], components: [linkRow('Market tools', SITE + '/retainers.html#market')] });
+                .setTitle(t(lang, 'market.bestTitle', { place: r.place }))
+                .setDescription(lines.join('\n') || t(lang, 'market.noSales'))
+                .setFooter({ text: t(lang, 'market.bestFooter') });
+            return interaction.editReply({ embeds: [embed], components: [linkRow(t(lang, 'market.marketTools'), SITE + '/retainers.html#market')] });
         } catch (err) {
             console.error('❌ [BESTSELLERS]', err.message);
-            return interaction.editReply({ content: '❌ Universalis is not answering right now. Please try again in a minute.' });
+            return interaction.editReply({ content: t(lang, 'market.universalisDown') });
         }
     }
 };

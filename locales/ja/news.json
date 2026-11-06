@@ -1,0 +1,14 @@
+{
+  "categories": {
+    "topics": "トピックス",
+    "notices": "お知らせ",
+    "maintenance": "メンテナンス",
+    "updates": "アップデート",
+    "status": "障害情報"
+  },
+  "nothing": "なし（カテゴリーが選ばれていません）",
+  "welcome": "📰 ロードストーン（{edition}）の **FFXIVニュース** をここに投稿します：{categories}。",
+  "fallbackTitle": "ロードストーンのニュース",
+  "footer": "Lodestone · {category} · {edition}",
+  "when": "🕒 <t:{start}:f> → <t:{end}:f>（あなたのタイムゾーン）"
+}

@@ -1,0 +1,15 @@
+{
+  "cmd": {
+    "description": "🌐 Pingwayの返信やDMの言語を選びます。",
+    "en": "English（英語）",
+    "fr": "Français（フランス語）",
+    "de": "Deutsch（ドイツ語）",
+    "jp": "日本語",
+    "auto": "Discordアプリの言語を使います（初期設定）。"
+  },
+  "names": { "en": "English", "fr": "Français", "de": "Deutsch", "ja": "日本語" },
+  "saved": "✅ これからPingwayは **{language}** で話します。",
+  "savedAuto": "✅ これからPingwayはDiscordアプリの言語に合わせます（現在：**{language}**）。",
+  "website": "ウェブサイトの **マイ設定** からも変更できます：https://pingway.app",
+  "saveFailed": "❌ 今は言語を保存できませんでした。少ししてからもう一度お試しください。"
+}

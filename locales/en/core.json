@@ -1,1 +1,21 @@
-{ "test": { "hello": "Hello {name}!" } }
+{
+  "maintenance": "⚠️ **The bot is currently undergoing maintenance.** Please try again later!",
+  "noDms": "⚠️ **Slash commands cannot be used in DMs.**\nPlease run this command inside a server channel.",
+  "busy": "⚠️ **Sorry, I'm busy right now!** ({task})\nPlease try again in a few moments.",
+  "sciondexSelect": "Select a channel for ScionDex...",
+  "sciondexAdminNotSetUp": "⚠️ **ScionDex has not been set up on this server yet!**\nAs an admin, please select the dedicated channel where members can play ScionDex:",
+  "sciondexAdminRestricted": "⚠️ **ScionDex is restricted to <#{channelId}>.**\nAs an admin, you can reassign the dedicated channel below:",
+  "sciondexNotSetUp": "⚠️ **ScionDex is not set up on this server yet.**\nPlease ask a server administrator to set up a channel first before anyone can play ScionDex!",
+  "sciondexOnlyIn": "⚠️ **ScionDex can only be played in <#{channelId}>!**\nPlease ask a server administrator if you need help.",
+  "commandNotFound": "❌ Command `/{commandName}` not found.",
+  "sciondexChannelSet": "✅ **ScionDex channel successfully set up to <#{channelId}>!**\nUsers can now use `/sciondex` inside that channel.",
+  "interactionError": "❌ An error occurred while executing this interaction.",
+  "time": {
+    "dhm": "{d}d {h}h {m}m",
+    "hm": "{h}h {m}m"
+  },
+  "tasks": {
+    "clearDms": "Clearing Bot DM Messages",
+    "cleanChannel": "Cleaning channel messages"
+  }
+}

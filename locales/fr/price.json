@@ -1,0 +1,24 @@
+{
+  "noDcs": "⚠️ **Aucun centre de données choisi !**\nUtilise d'abord la commande `/datacenter` pour choisir tes centres de données.",
+  "notFound": "Aucun objet trouvé pour **{item}**.",
+  "close": "Fermer",
+  "lookingUp": "🔍 **Recherche des prix pour {name}... Patiente un instant !**",
+  "recommendations": "Suggestions d'objets",
+  "didYouMean": "Aucun objet trouvé pour **{item}**. Voulais-tu dire :",
+  "unknownItem": "Objet inconnu",
+  "matching": "Objets correspondants",
+  "error": "Une erreur s'est produite pendant la recherche sur le marché.",
+  "noDcsShort": "⚠️ **Aucun centre de données choisi !**\nUtilise d'abord la commande `/datacenter`.",
+  "title": "Prix du marché : {name}",
+  "legend": "{nq} = qualité normale | {hq} = haute qualité",
+  "top5": "**{icon} Top 5 :**\n",
+  "noListings": "Aucune offre trouvée.",
+  "fetchFailed": "Impossible de récupérer les données.",
+  "footer": "Utilise /datacenter pour choisir les CD affichés dans /price.\nPropulsé par Universalis & XIVAPI",
+  "reminder": "🔒 *Toi seul vois ce message ! Il disparaîtra au bout d'un moment. Copie-le ou fais une capture d'écran si tu veux garder ces offres.*",
+  "cmd": {
+    "description": "Vérifie les prix du tableau des ventes pour un objet FFXIV",
+    "item": "Le nom de l'objet à rechercher"
+  },
+  "fetching": "⏳ **Récupération des prix... Patiente un instant !**"
+}

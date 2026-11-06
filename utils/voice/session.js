@@ -86,8 +86,10 @@ class VoiceSession extends EventEmitter {
         console.log(`🔊 [VC] guild ${this.guildId}: ${msg}`);
     }
 
-    _notice(msg) {
+    // msg: English; i18n: { key, vars } so the panel can show it in the reader's language
+    _notice(msg, i18n) {
         this.lastNotice = msg;
+        this.lastNoticeI18n = i18n || null;
         this.lastNoticeAt = this.clock.now();
         this.emit('update');
     }
@@ -101,7 +103,8 @@ class VoiceSession extends EventEmitter {
             speaking: this.ttsBusy,
             musicQueue: this.musicQueue.length,
             ttsQueue: this.ttsQueue.length,
-            notice: this.lastNotice && this.clock.now() - (this.lastNoticeAt || 0) < 60000 ? this.lastNotice : null
+            notice: this.lastNotice && this.clock.now() - (this.lastNoticeAt || 0) < 60000 ? this.lastNotice : null,
+            noticeI18n: this.lastNotice && this.clock.now() - (this.lastNoticeAt || 0) < 60000 ? (this.lastNoticeI18n || null) : null
         };
     }
 
@@ -270,7 +273,8 @@ class VoiceSession extends EventEmitter {
             if (token !== this.playToken || this.destroyed) return;
             this._log('could not open link: ' + (err && (err.code || err.message)));
             this.current = null;
-            this._notice(`⚠️ Could not play **${item.title || 'that link'}**: ${err && err.message ? err.message : 'error'}`);
+            this._notice(`⚠️ Could not play **${item.title || 'that link'}**: ${err && err.message ? err.message : 'error'}`,
+                { key: 'vc.couldNotPlay', vars: { title: item.title || null, reason: err && err.message ? err.message : 'error', code: err && err.name === 'UrlRefused' ? err.code : null, codeVars: err && err.vars ? err.vars : null } });
             return this._playNext();
         }
         if (token !== this.playToken || this.destroyed) {
@@ -286,7 +290,7 @@ class VoiceSession extends EventEmitter {
         } catch (err) {
             try { src.stream.destroy(); } catch { /* ignore */ }
             this.current = null;
-            this._notice('⚠️ Music is not available on this host (ffmpeg missing).');
+            this._notice('⚠️ Music is not available on this host (ffmpeg missing).', { key: 'vc.noFfmpeg' });
             this.musicQueue = [];
             this._updateIdle();
             return;
@@ -348,7 +352,7 @@ class VoiceSession extends EventEmitter {
                 if (this.current !== cur || this.destroyed) return;
                 return this._startItem(cur.item, 0);
             }
-            this._notice(`⚠️ **${cur.item.title}** stopped and could not reconnect.`);
+            this._notice(`⚠️ **${cur.item.title}** stopped and could not reconnect.`, { key: 'vc.noReconnect', vars: { title: cur.item.title } });
         } else if (cur.exitCode !== 0 && cur.item.retries < 1 && playedS > 5) {
             cur.item.retries++;
             this._log('file stream broke at ' + Math.floor(playedS) + ' s, reopening there');

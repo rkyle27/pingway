@@ -6,6 +6,7 @@ const axios = require('axios');
 const { EmbedBuilder } = require('discord.js');
 const { pool } = require('./db');
 const dmStatus = require('./dmStatus');
+const { t, localeOf } = require('./i18n');
 
 const UNIVERSALIS_API = 'https://universalis.app/api/v2';
 const UNDERCUT_COOLDOWN_MS = 60 * 60 * 1000;      // Same item/quality/retainer alerts at most once per hour
@@ -304,16 +305,16 @@ function pad(text, width, left) {
 }
 
 // One embed listing all undercuts for a user. names: Map(itemId -> name)
-function buildUndercutEmbed(items, names) {
+function buildUndercutEmbed(items, names, lang = 'en') {
     const rows = Array.from(items.values()).sort((a, b) => (a.theirs / a.mine) - (b.theirs / b.mine));
     const fence = String.fromCharCode(96).repeat(3);
     const cells = rows.map(r => [
-        ((names.get(r.itemId) || ('Item #' + r.itemId)) + (r.hq ? ' HQ' : '')).slice(0, 34),
+        ((names.get(r.itemId) || (t(lang, 'alerts.itemFallback', { id: r.itemId }))) + (r.hq ? ' HQ' : '')).slice(0, 34),
         r.retainerName + ' (' + r.worldName + ')',
-        r.mine.toLocaleString('en-US'),
-        r.theirs.toLocaleString('en-US')
+        r.mine.toLocaleString(localeOf(lang)),
+        r.theirs.toLocaleString(localeOf(lang))
     ]);
-    const headers = ['Item', 'Retainer', 'Yours', 'Lowest'];
+    const headers = [t(lang, 'alerts.undercut.item'), t(lang, 'alerts.undercut.retainer'), t(lang, 'alerts.undercut.yours'), t(lang, 'alerts.undercut.lowest')];
     const w = headers.map((h, i) => Math.max(h.length, ...cells.map(c => c[i].length)));
     const lines = [
         headers.map((h, i) => pad(h, w[i], i >= 2)).join('  '),
@@ -328,11 +329,11 @@ function buildUndercutEmbed(items, names) {
         length += line.length + 1;
         shown++;
     }
-    if (shown < cells.length) lines.push('...and ' + (cells.length - shown) + ' more');
+    if (shown < cells.length) lines.push(t(lang, 'alerts.undercut.more', { count: cells.length - shown }));
     return new EmbedBuilder()
-        .setTitle('🏷️ Your retainers were undercut (' + rows.length + ')')
+        .setTitle(t(lang, 'alerts.undercut.title', { count: rows.length }))
         .setColor('#f39c12')
-        .setDescription(fence + '\n' + lines.join('\n') + '\n' + fence + '\nPrices are per unit in Gil. Manage retainers on the Pingway website.');
+        .setDescription(fence + '\n' + lines.join('\n') + '\n' + fence + t(lang, 'alerts.undercut.note'));
 }
 
 // ---------- Console: "retainers <id>" ----------

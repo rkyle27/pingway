@@ -2,13 +2,16 @@ const { ActionRowBuilder, ComponentType, StringSelectMenuBuilder, StringSelectMe
 const { pool } = require('../../utils/db');
 const { toDiscordTimestamp } = require('../../utils/hammertime');
 const { isMaintenance } = require('../../maintenance');
+const { t } = require('../../utils/i18n');
+const userLanguage = require('../../utils/userLanguage');
 
 module.exports = {
     async handleInteraction(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         // Maintenance Check: Block interaction when maintenance mode is ON
         if (isMaintenance(interaction.guildId)) {
             return interaction.reply({
-                content: '⚠️ **The bot is currently undergoing maintenance.** Please try again later!',
+                content: t(lang, 'core.maintenance'),
                 flags: [MessageFlags.Ephemeral]
             });
         }
@@ -46,18 +49,18 @@ module.exports = {
         // 1. Set Date Button Trigger -> Opens Modal
         if (interaction.isButton() && cid === 'set_date') {
             if (!interaction.member.permissions.has('Administrator')) {
-                return interaction.reply({ content: "❌ Only administrators can set the release date.", flags: [MessageFlags.Ephemeral] });
+                return interaction.reply({ content: t(lang, 'release.adminsOnlyDate'), flags: [MessageFlags.Ephemeral] });
             }
 
             try {
                 const now = new Date();
                 const modal = new ModalBuilder()
                     .setCustomId('release_date_modal')
-                    .setTitle('Configure Custom Release Event');
+                    .setTitle(t(lang, 'release.modalTitle'));
 
                 const nameInput = new TextInputBuilder()
                     .setCustomId('event_name_input')
-                    .setLabel('Event Name')
+                    .setLabel(t(lang, 'release.eventName'))
                     .setStyle(TextInputStyle.Short)
                     .setValue('Evercold Early Access')
                     .setRequired(true)
@@ -65,7 +68,7 @@ module.exports = {
 
                 const yearInput = new TextInputBuilder()
                     .setCustomId('year_input')
-                    .setLabel('Year (YYYY)')
+                    .setLabel(t(lang, 'release.year'))
                     .setStyle(TextInputStyle.Short)
                     .setValue(String(now.getFullYear()))
                     .setRequired(true)
@@ -73,7 +76,7 @@ module.exports = {
 
                 const monthInput = new TextInputBuilder()
                     .setCustomId('month_input')
-                    .setLabel('Month (1-12)')
+                    .setLabel(t(lang, 'release.month'))
                     .setStyle(TextInputStyle.Short)
                     .setValue(String(now.getMonth() + 1))
                     .setRequired(true)
@@ -81,7 +84,7 @@ module.exports = {
 
                 const dayInput = new TextInputBuilder()
                     .setCustomId('day_input')
-                    .setLabel('Day (1-31)')
+                    .setLabel(t(lang, 'release.day'))
                     .setStyle(TextInputStyle.Short)
                     .setValue(String(now.getDate()))
                     .setRequired(true)
@@ -98,7 +101,7 @@ module.exports = {
             } catch (err) {
                 console.error("[ERROR] Failed to show release modal:", err);
                 if (!interaction.replied && !interaction.deferred) {
-                    return interaction.reply({ content: "❌ Failed to open the configuration modal.", flags: [MessageFlags.Ephemeral] }).catch(() => { });
+                    return interaction.reply({ content: t(lang, 'release.modalFailed'), flags: [MessageFlags.Ephemeral] }).catch(() => { });
                 }
             }
         }
@@ -111,7 +114,7 @@ module.exports = {
             const day = interaction.fields.getTextInputValue('day_input');
 
             if (isNaN(year) || isNaN(month) || isNaN(day)) {
-                return interaction.reply({ content: "❌ Year, Month, and Day must be valid numbers.", flags: [MessageFlags.Ephemeral] });
+                return interaction.reply({ content: t(lang, 'release.invalidDate'), flags: [MessageFlags.Ephemeral] });
             }
 
             const state = { event_name: eventName, year, month, day, hour: '21', minute: '00', gmt: 9 };
@@ -132,19 +135,19 @@ module.exports = {
                 return { label, value: String(offset), default: offset === 9 };
             });
 
-            const hoursMenu = new StringSelectMenuBuilder().setCustomId('release_sel_hour').setPlaceholder('Select Hour (00-23)').addOptions(hoursOptions);
-            const minutesMenu = new StringSelectMenuBuilder().setCustomId('release_sel_minute').setPlaceholder('Select Minute (5m increments)').addOptions(minutesOptions);
-            const gmtMenu = new StringSelectMenuBuilder().setCustomId('release_sel_gmt').setPlaceholder('Select Timezone (Default: GMT+9)').addOptions(gmtOptions);
+            const hoursMenu = new StringSelectMenuBuilder().setCustomId('release_sel_hour').setPlaceholder(t(lang, 'release.selectHour')).addOptions(hoursOptions);
+            const minutesMenu = new StringSelectMenuBuilder().setCustomId('release_sel_minute').setPlaceholder(t(lang, 'release.selectMinute')).addOptions(minutesOptions);
+            const gmtMenu = new StringSelectMenuBuilder().setCustomId('release_sel_gmt').setPlaceholder(t(lang, 'release.selectTz')).addOptions(gmtOptions);
 
             const row1 = new ActionRowBuilder().addComponents(hoursMenu);
             const row2 = new ActionRowBuilder().addComponents(minutesMenu);
             const row3 = new ActionRowBuilder().addComponents(gmtMenu);
             const row4 = new ActionRowBuilder().addComponents(
-                new ButtonBuilder().setCustomId('release_time_done').setLabel('Confirm Date, Time & Timezone ✅').setStyle(ButtonStyle.Success)
+                new ButtonBuilder().setCustomId('release_time_done').setLabel(t(lang, 'release.confirm')).setStyle(ButtonStyle.Success)
             );
 
             await interaction.reply({
-                content: `⏰ **Time & Timezone Setup** for **${eventName}** (${year}/${month}/${day})\nSelect **Hour**, **Minute**, and your **Timezone Offset**, then click Confirm:`,
+                content: t(lang, 'release.timeSetup', { name: eventName, year, month, day }),
                 components: [row1, row2, row3, row4],
                 flags: [MessageFlags.Ephemeral]
             });
@@ -190,7 +193,7 @@ module.exports = {
 
                     const hammertimeStr = ` (${toDiscordTimestamp(targetDate.getTime(), 'f')})`;
                     await i.update({
-                        content: `✅ **${state.event_name}** successfully scheduled for **${state.year}/${state.month}/${state.day} ${state.hour}:${state.minute} (GMT ${state.gmt >= 0 ? '+' : ''}${state.gmt})**${hammertimeStr}!`,
+                        content: t(lang, 'release.scheduled', { name: state.event_name, year: state.year, month: state.month, day: state.day, hour: state.hour, minute: state.minute, sign: state.gmt >= 0 ? '+' : '', gmt: state.gmt, timestamp: hammertimeStr }),
                         components: []
                     });
                     collector.stop();
@@ -201,7 +204,7 @@ module.exports = {
             collector.on('end', (collected, reason) => {
                 if (reason !== 'user') {
                     interaction.editReply({
-                        content: `⏱️ **Time Selection Expired.** Please click 'Specify Release Date' again if you need to set a date.`,
+                        content: t(lang, 'release.expired'),
                         components: []
                     }).catch(() => {});
                 }
@@ -217,7 +220,7 @@ module.exports = {
             if (!savedRoleId) {
                 if (!isAdmin) {
                     return interaction.reply({
-                        content: "❌ Please ask an admin to click 'Get Notifications' first to assign a role for release notifications.",
+                        content: t(lang, 'release.askAdmin'),
                         flags: [MessageFlags.Ephemeral]
                     });
                 } else {
@@ -229,7 +232,7 @@ module.exports = {
 
                     if (roles.length === 0) {
                         return interaction.reply({
-                            content: "⚠️ There are no usable roles on this server. Please create a role first.",
+                            content: t(lang, 'release.noRoles'),
                             flags: [MessageFlags.Ephemeral]
                         });
                     }
@@ -242,13 +245,13 @@ module.exports = {
 
                     const selectMenu = new StringSelectMenuBuilder()
                         .setCustomId('release_role_setup')
-                        .setPlaceholder('Select the Notification Role')
+                        .setPlaceholder(t(lang, 'release.selectRole'))
                         .addOptions(roleOptions);
 
                     const row = new ActionRowBuilder().addComponents(selectMenu);
 
                     return interaction.reply({
-                        content: "⚙️ **Admin Setup:** No notification role has been assigned yet. Please choose the role from the dropdown menu below:",
+                        content: t(lang, 'release.adminSetup'),
                         components: [row],
                         flags: [MessageFlags.Ephemeral]
                     });
@@ -258,7 +261,7 @@ module.exports = {
             const role = interaction.guild.roles.cache.get(savedRoleId);
             if (!role) {
                 return interaction.reply({
-                    content: "⚠️ The previously assigned role no longer exists on this server. Please ask an admin to click 'Get Notifications' to re-select one.",
+                    content: t(lang, 'release.roleGone'),
                     flags: [MessageFlags.Ephemeral]
                 });
             }
@@ -268,20 +271,20 @@ module.exports = {
                 if (interaction.member.roles.cache.has(savedRoleId)) {
                     await interaction.member.roles.remove(role);
                     return interaction.reply({
-                        content: `🔔 You have been **removed** from the <@&${savedRoleId}> role.`,
+                        content: t(lang, 'release.removed', { roleId: savedRoleId }),
                         flags: [MessageFlags.Ephemeral]
                     });
                 } else {
                     await interaction.member.roles.add(role);
                     return interaction.reply({
-                        content: `✅ You have been **assigned** the <@&${savedRoleId}> role to get notified!`,
+                        content: t(lang, 'release.assigned', { roleId: savedRoleId }),
                         flags: [MessageFlags.Ephemeral]
                     });
                 }
             } catch (err) {
                 console.error('[ERROR] Role toggle failed:', err);
                 return interaction.reply({
-                    content: "❌ **Failed to update roles:** Please ensure my bot role is placed **above** the target notification role in Server Settings.",
+                    content: t(lang, 'release.roleFailed'),
                     flags: [MessageFlags.Ephemeral]
                 });
             }
@@ -290,24 +293,24 @@ module.exports = {
         // 4. Role Setup Select Menu Handler
         if (interaction.isStringSelectMenu() && cid === 'release_role_setup') {
             if (!interaction.member.permissions.has('Administrator')) {
-                return interaction.reply({ content: "❌ Admins only.", flags: [MessageFlags.Ephemeral] });
+                return interaction.reply({ content: t(lang, 'release.adminsOnly'), flags: [MessageFlags.Ephemeral] });
             }
 
             const selectedRoleId = interaction.values[0];
             await saveGuildData({ role_id: selectedRoleId });
 
             return interaction.update({
-                content: `✅ Successfully set <@&${selectedRoleId}> as the official notification role for this server!`,
+                content: t(lang, 'release.roleSet', { roleId: selectedRoleId }),
                 components: []
             });
         }
 
         // 5. Test Notification Button
         if (interaction.isButton() && cid === 'test_notif') {
-            if (!interaction.member.permissions.has('Administrator')) return interaction.reply({ content: "❌ Admins only.", flags: [MessageFlags.Ephemeral] });
+            if (!interaction.member.permissions.has('Administrator')) return interaction.reply({ content: t(lang, 'release.adminsOnly'), flags: [MessageFlags.Ephemeral] });
 
             const guildData = await getGuildData();
-            if (!guildData.release_time) return interaction.reply({ content: "⚠️ No date set.", flags: [MessageFlags.Ephemeral] });
+            if (!guildData.release_time) return interaction.reply({ content: t(lang, 'release.noDate'), flags: [MessageFlags.Ephemeral] });
 
             await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
 
@@ -323,7 +326,7 @@ module.exports = {
             await saveGuildData({ release_time: formattedTestDate, is_notified: false });
 
             const hammertimeTestStr = toDiscordTimestamp(testTarget.getTime(), 'f');
-            return interaction.editReply(`🧪 **Test initiated!** Target set to 1 minute from now (${hammertimeTestStr}).`);
+            return interaction.editReply(t(lang, 'release.testStarted', { timestamp: hammertimeTestStr }));
         }
     }
 };

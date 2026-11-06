@@ -1,0 +1,7 @@
+{
+  "cmd": { "description": "🎙️ Verlegt die KI in diesen Kanal oder schaltet sie aus, wenn sie schon hier ist (nur Admins)." },
+  "off": "🔴 Die KI hört in <#{channelId}> nicht mehr zu.",
+  "moved": " Sie wurde aus {channels} hierher verlegt (ein KI-Kanal pro Server).",
+  "on": "🟢 Die KI hört jetzt in <#{channelId}> zu! Alle normalen Nachrichten in diesem Kanal bekommen eine KI-Antwort.{moved}",
+  "failed": "❌ Der KI-Kanal konnte nicht aktualisiert werden."
+}

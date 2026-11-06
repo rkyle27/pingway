@@ -1,0 +1,23 @@
+{
+  "online": "En ligne",
+  "offline": "Hors ligne / maintenance",
+  "noData": "Aucune donnée",
+  "cmd": {
+    "description": "🔍 Vérifie l'état des serveurs FFXIV et active ou désactive les alertes."
+  },
+  "pickWorldFirst": "⚠️ Choisis d'abord un monde à suivre avant d'activer les notifications !",
+  "title": "### 🌍 État FFXIV : centre de données **{dc}**\n",
+  "fallback": "⚠️ **Attention :** impossible de récupérer les données en direct de l'API xivup. Les états sont affichés sans données (-).\n",
+  "enabled": "Activées",
+  "disabled": "Désactivées",
+  "tracking": "Monde suivi : **{world}** (alertes MP : **{alerts}**)\n",
+  "trackedLine": "{icon} **{world}** ({dc}) — *{status}*\n",
+  "trackingNone": "Monde suivi : **aucun** — choisis un monde ci-dessous pour le suivre.\n",
+  "worldLine": "{icon} **{world}** — *{status}*\n",
+  "switchDc": "Changer de centre de données",
+  "selectWorld": "Choisis le monde à suivre",
+  "disableDm": "🔕 Désactiver les alertes MP",
+  "enableDm": "🔔 Activer les alertes MP",
+  "exit": "Quitter",
+  "alertDm": "🟢 **Alerte serveur FFXIV !**\nLe monde **{world}** ({dc}) a terminé sa maintenance et est de nouveau **EN LIGNE** !"
+}

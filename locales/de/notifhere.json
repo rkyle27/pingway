@@ -1,0 +1,5 @@
+{
+  "cmd": { "description": "⚙️ Legt diesen Kanal für Start-Benachrichtigungen fest." },
+  "saved": "✅ Benachrichtigungen für diesen Server werden ab jetzt in <#{channelId}> gesendet!{joke}",
+  "failed": "❌ Beim Speichern des Benachrichtigungskanals ist ein Fehler aufgetreten."
+}

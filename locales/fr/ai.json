@@ -1,0 +1,22 @@
+{
+  "helpIntro": "Voici tout ce que Pingway sait faire ! Tu peux aussi gérer Pingway dans ton navigateur 🌐",
+  "recollection": "✨ *Release_Recollection_PROTOCOL lancé.* — mémoire de discussion effacée.",
+  "invite": "Ajoute Pingway avec ce lien :\nhttps://discord.com/oauth2/authorize?client_id=1530586586524418048",
+  "support": "Rejoins le serveur d'assistance ici :\nhttps://discord.gg/DDdV48X4G2",
+  "donate": "💖 Soutiens les prochaines mises à jour et les frais d'IA ici :\n<https://ko-fi.com/riverzola>",
+  "areYouBot": "Non, c'est le développeur qui répond à la main. À l'aide. (Je plaisante, oui je suis une IA) <https://ko-fi.com/riverzola>",
+  "noCode": "Le développeur m'interdit de générer de gros fichiers de code.",
+  "notHere": "👋 Salut ! Tape **/help** (ou mentionne-moi avec « help ») pour voir ce que je sais faire. Le chat IA ne fonctionne que dans les salons qu'un admin a activés avec **/ailistenhere**.",
+  "notice": {
+    "cleared": "\n\n🗑️ *[Système : liste de rappels/tâches entièrement vidée]*",
+    "edited": "\n\n✏️ *[Système : texte du rappel modifié]*",
+    "deleted": "\n\n🗑️ *[Système : rappel supprimé]*",
+    "recurring": " (quotidien 🔁)",
+    "count": " ({count} enregistrés)",
+    "set": "\n\n⏰ *[Système : rappel créé{repeat}{count}]*",
+    "appended": "\n\n📝 *[Système : texte ajouté à la note]*",
+    "forgot": "\n\n🧹 *[Système : info enregistrée oubliée]*",
+    "saved": "\n\n🧠 *[Système : nouvelle info enregistrée]*"
+  },
+  "done": "C'est fait !"
+}

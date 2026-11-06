@@ -1,0 +1,21 @@
+{
+  "maintenance": "⚠️ **Der Bot wird gerade gewartet.** Bitte versuche es später noch einmal!",
+  "noDms": "⚠️ **Slash-Befehle funktionieren nicht in DMs.**\nBitte nutze diesen Befehl in einem Kanal auf einem Server.",
+  "busy": "⚠️ **Sorry, ich bin gerade beschäftigt!** ({task})\nBitte versuche es in ein paar Augenblicken noch einmal.",
+  "sciondexSelect": "Wähle einen Kanal für ScionDex...",
+  "sciondexAdminNotSetUp": "⚠️ **ScionDex ist auf diesem Server noch nicht eingerichtet!**\nAls Admin wähle bitte den Kanal, in dem Mitglieder ScionDex spielen können:",
+  "sciondexAdminRestricted": "⚠️ **ScionDex ist auf <#{channelId}> beschränkt.**\nAls Admin kannst du unten einen anderen Kanal festlegen:",
+  "sciondexNotSetUp": "⚠️ **ScionDex ist auf diesem Server noch nicht eingerichtet.**\nBitte frag einen Server-Admin, zuerst einen Kanal einzurichten, bevor jemand ScionDex spielen kann!",
+  "sciondexOnlyIn": "⚠️ **ScionDex kann nur in <#{channelId}> gespielt werden!**\nFrag einen Server-Admin, wenn du Hilfe brauchst.",
+  "commandNotFound": "❌ Befehl `/{commandName}` nicht gefunden.",
+  "sciondexChannelSet": "✅ **ScionDex-Kanal ist jetzt <#{channelId}>!**\nMitglieder können `/sciondex` jetzt in diesem Kanal nutzen.",
+  "interactionError": "❌ Bei dieser Aktion ist ein Fehler aufgetreten.",
+  "time": {
+    "dhm": "{d} T. {h} Std. {m} Min.",
+    "hm": "{h} Std. {m} Min."
+  },
+  "tasks": {
+    "clearDms": "Bot-DMs werden gelöscht",
+    "cleanChannel": "Kanalnachrichten werden gelöscht"
+  }
+}

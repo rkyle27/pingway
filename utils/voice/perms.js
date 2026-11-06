@@ -31,19 +31,20 @@ function hasRole(member, roleId) {
  * @param {{ member, botChannelId: string|null, settings: {djRoleId?: string|null} }} ctx
  * @returns {{ ok: boolean, reason?: string }}
  */
-function canUse(action, { member, botChannelId, settings }) {
+function canUse(action, { member, botChannelId, settings, lang = 'en' }) {
+    const { t } = require('../i18n'); // reasons in the reader's language
     if (OPEN_ACTIONS.has(action)) return { ok: true };
-    if (!DJ_ACTIONS.has(action)) return { ok: false, reason: 'Unknown control.' };
+    if (!DJ_ACTIONS.has(action)) return { ok: false, reason: t(lang, 'vc.perms.unknown') };
     if (hasManageGuild(member)) return { ok: true };
 
     const userChannel = member && member.voice ? member.voice.channelId : null;
     // "play" while Pingway is not connected = it will join the user's channel
     const target = botChannelId || (action === 'play' ? userChannel : null);
-    if (!target) return { ok: false, reason: "I'm not in a voice channel. Press **Join** first." };
-    if (userChannel !== target) return { ok: false, reason: `Join <#${target}> to use the controls.` };
+    if (!target) return { ok: false, reason: t(lang, 'vc.perms.notInVoice') };
+    if (userChannel !== target) return { ok: false, reason: t(lang, 'vc.perms.joinFirst', { channelId: target }) };
 
     const dj = settings && settings.djRoleId;
-    if (dj && !hasRole(member, dj)) return { ok: false, reason: `You need the <@&${dj}> role (or Manage Server) for that.` };
+    if (dj && !hasRole(member, dj)) return { ok: false, reason: t(lang, 'vc.perms.needDj', { roleId: dj }) };
     return { ok: true };
 }
 

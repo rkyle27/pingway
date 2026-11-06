@@ -1,0 +1,15 @@
+{
+  "cmd": {
+    "description": "Select your preferred Data Centers for the /price command"
+  },
+  "region": "Region: {region}",
+  "noneConfigured": "❌ **Error:** No data centers found in configuration file.",
+  "placeholder": "Select your Data Centers (Multiple allowed)",
+  "done": "Done",
+  "clear": "Clear Saved Data",
+  "intro": "🌐 **Data Center Setup:** Choose which Data Centers you want queries to check during `/price` lookups (Changes auto-save):",
+  "updated": "✅ **Data Centers successfully updated!**\nSelected: `{list}`",
+  "saveFailed": "❌ Failed to save your Data Center preferences to database.",
+  "cleared": "🗑️ **Saved data center cache cleared!** You have no data centers selected now.",
+  "clearFailed": "❌ Failed to clear your saved data."
+}

@@ -2,6 +2,8 @@ const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, Butt
 const fs = require('fs');
 const path = require('path');
 const { pool } = require('../utils/db');
+const { t, discordLocalizations } = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
 
 function getWhitelistedGuilds() {
     const filePath = path.join(__dirname, '..', 'data', 'nissi.txt');
@@ -26,30 +28,30 @@ function shuffleArray(array) {
     return arr;
 }
 
-function buildMainInterface() {
+function buildMainInterface(lang = 'en') {
     const embed = new EmbedBuilder()
-        .setTitle('Nissi Quiz (Elemental / Tuffless Strat)')
+        .setTitle(t(lang, 'nissi.title'))
         .setColor('#3498db')
-        .setDescription('Test your knowledge for TEA Nissi mechanics!');
+        .setDescription(t(lang, 'nissi.subtitle'));
 
     const row = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('nissi_take_quiz').setLabel('Take Quiz').setStyle(ButtonStyle.Success),
-        new ButtonBuilder().setCustomId('nissi_show_results').setLabel('Show Results').setStyle(ButtonStyle.Primary),
-        new ButtonBuilder().setCustomId('nissi_exit').setLabel('Exit').setStyle(ButtonStyle.Danger)
+        new ButtonBuilder().setCustomId('nissi_take_quiz').setLabel(t(lang, 'nissi.take')).setStyle(ButtonStyle.Success),
+        new ButtonBuilder().setCustomId('nissi_show_results').setLabel(t(lang, 'nissi.results')).setStyle(ButtonStyle.Primary),
+        new ButtonBuilder().setCustomId('nissi_exit').setLabel(t(lang, 'nissi.exit')).setStyle(ButtonStyle.Danger)
     );
 
     return { embeds: [embed], components: [row] };
 }
 
-async function renderResultsView(guildId) {
+async function renderResultsView(guildId, lang = 'en') {
     const [rows] = await pool.execute(
         'SELECT username, score FROM nissi_quiz_results WHERE server_id = ? ORDER BY score DESC, username ASC',
         [guildId]
     );
 
-    let description = 'Current Scores:\n\n';
+    let description = t(lang, 'nissi.currentScores');
     if (rows.length === 0) {
-        description += 'No scores recorded yet!';
+        description += t(lang, 'nissi.noScores');
     } else {
         rows.forEach(row => {
             description += `${row.username} ${row.score}/10\n`;
@@ -57,22 +59,22 @@ async function renderResultsView(guildId) {
     }
 
     const embed = new EmbedBuilder()
-        .setTitle('Current Scores:')
+        .setTitle(t(lang, 'nissi.currentScoresTitle'))
         .setColor('#2ecc71')
         .setDescription(description);
 
     const row = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('nissi_back_main').setLabel('Back').setStyle(ButtonStyle.Secondary)
+        new ButtonBuilder().setCustomId('nissi_back_main').setLabel(t(lang, 'nissi.back')).setStyle(ButtonStyle.Secondary)
     );
 
     return { embeds: [embed], components: [row] };
 }
 
-async function startQuizSession(interaction) {
+async function startQuizSession(interaction, lang = 'en') {
     const rawQuestions = loadQuestions();
     if (rawQuestions.length < 10) {
         return interaction.editReply({
-            content: '❌ Not enough questions available in the question bank.',
+            content: t(lang, 'nissi.notEnough'),
             embeds: [],
             components: []
         });
@@ -109,12 +111,12 @@ async function startQuizSession(interaction) {
             );
 
             const resultEmbed = new EmbedBuilder()
-                .setTitle('Your Score:')
+                .setTitle(t(lang, 'nissi.yourScore'))
                 .setColor('#f1c40f')
-                .setDescription(`${score} / 10 !`);
+                .setDescription(t(lang, 'nissi.score', { score }));
 
             const resultRow = new ActionRowBuilder().addComponents(
-                new ButtonBuilder().setCustomId('nissi_back_main').setLabel('back').setStyle(ButtonStyle.Primary)
+                new ButtonBuilder().setCustomId('nissi_back_main').setLabel(t(lang, 'nissi.backLower')).setStyle(ButtonStyle.Primary)
             );
 
             const finalMessage = await interaction.editReply({
@@ -131,7 +133,7 @@ async function startQuizSession(interaction) {
                 await i.deferUpdate().catch(() => {});
                 if (i.customId === 'nissi_back_main') {
                     finalCollector.stop();
-                    const mainView = buildMainInterface();
+                    const mainView = buildMainInterface(lang);
                     await interaction.editReply(mainView);
                 }
             });
@@ -145,7 +147,7 @@ async function startQuizSession(interaction) {
 
         const generateQuestionPayload = (seconds) => {
             const embed = new EmbedBuilder()
-                .setTitle(`Question ${currentQuestionIndex + 1} of 10 (Time Remaining: ${seconds}s)`)
+                .setTitle(t(lang, 'nissi.question', { n: currentQuestionIndex + 1, seconds }))
                 .setDescription(qData.question)
                 .setColor('#e67e22');
 
@@ -213,18 +215,19 @@ async function startQuizSession(interaction) {
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('nissi')
-        .setDescription('Practice quiz for TEA Nissi mechanics.'),
+        .setDescription(t('en', 'nissi.cmd.description')).setDescriptionLocalizations(discordLocalizations('nissi.cmd.description')),
 
     async execute(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         const whitelistedGuilds = getWhitelistedGuilds();
         if (!interaction.guildId || !whitelistedGuilds.includes(interaction.guildId)) {
             return interaction.reply({
-                content: "Sorry, this command isn't available for you. Please contact the developer if you want access.\nThis is for practicing TEA's Nissi 3rd & 4th pass/take for DPS using Tuufless Strat.",
+                content: t(lang, 'nissi.notAvailable'),
                 flags: [MessageFlags.Ephemeral]
             });
         }
 
-        const mainView = buildMainInterface();
+        const mainView = buildMainInterface(lang);
         const mainMessage = await interaction.reply({ ...mainView, flags: [MessageFlags.Ephemeral] });
 
         const mainCollector = mainMessage.createMessageComponentCollector({
@@ -236,18 +239,18 @@ module.exports = {
 
             if (cid === 'nissi_take_quiz') {
                 await i.deferUpdate().catch(() => {});
-                await startQuizSession(interaction);
+                await startQuizSession(interaction, lang);
             } else if (cid === 'nissi_show_results') {
                 await i.deferUpdate().catch(() => {});
-                const resultsView = await renderResultsView(interaction.guildId);
+                const resultsView = await renderResultsView(interaction.guildId, lang);
                 await interaction.editReply(resultsView);
             } else if (cid === 'nissi_back_main') {
                 await i.deferUpdate().catch(() => {});
-                await interaction.editReply(buildMainInterface());
+                await interaction.editReply(buildMainInterface(lang));
             } else if (cid === 'nissi_exit') {
                 await i.deferUpdate().catch(() => {});
                 await interaction.editReply({
-                    content: 'Exiting...',
+                    content: t(lang, 'nissi.exiting'),
                     embeds: [],
                     components: []
                 });

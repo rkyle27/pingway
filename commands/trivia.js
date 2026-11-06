@@ -5,18 +5,22 @@
 // servers; giving up or running out of guesses locks that difficulty for the day. New words at 0:00 JST.
 // Buttons use customIds starting with 'tv_' (no other handler picks them up); everything is handled by a collector
 // on this message, filtered to the person who ran the command. Game rules and data: utils/trivia.js, utils/triviaWords.js.
+// Languages: the screens use the player's language (utils/userLanguage.js: their /pingway choice, else their Discord
+// language, else English), chosen once when /trivia starts. Texts: locales/<lang>/trivia.json. The word of the day is
+// the same for everyone and shown with its official name in that language. The public share post uses the server's language.
 
 const {
     SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, MessageFlags, ModalBuilder, TextInputBuilder, TextInputStyle
 } = require('discord.js');
 const T = require('../utils/trivia');
 const W = require('../utils/triviaWords');
+const i18n = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
 const { isMaintenance } = require('../maintenance');
 
-const TITLE = '🧩 **Pingway Trivia — Guess the word**';
 const IDLE_MS = 14 * 60 * 1000;
 const STATUS_ICON = { solved: '✅', gaveup: '🏳️', failed: '❌', playing: '▶' };
-const STATUS_TEXT = { solved: 'solved', gaveup: 'gave up', failed: 'out of guesses', playing: 'in progress' };
+const NUMBER_LOCALE = { en: 'en-US', fr: 'fr-FR', de: 'de-DE', ja: 'ja-JP' };
 
 const btn = (id, label, style, emoji, disabled) => {
     const b = new ButtonBuilder().setCustomId(id).setLabel(label).setStyle(style);
@@ -26,11 +30,28 @@ const btn = (id, label, style, emoji, disabled) => {
 };
 const row = (...b) => new ActionRowBuilder().addComponents(...b);
 
-function untilReset() {
-    const mins = Math.max(1, Math.ceil(W.msToReset() / 60000));
-    return (mins >= 60 ? Math.floor(mins / 60) + ' h ' : '') + (mins % 60) + ' min';
+// Texts in one language: tx(key, vars), tc(key, count, vars) for the _one/_other forms, num(v) a formatted number
+function texts(lang) {
+    const tx = (key, vars) => i18n.t(lang, 'trivia.' + key, vars);
+    const tc = (key, count, vars) => tx(key + '_' + W.pluralOf(lang, count), Object.assign({ n: count }, vars));
+    const num = v => Number(v || 0).toLocaleString(NUMBER_LOCALE[lang] || 'en-US');
+    const untilReset = () => {
+        const mins = Math.max(1, Math.ceil(W.msToReset() / 60000));
+        return mins >= 60 ? tx('time.hm', { h: Math.floor(mins / 60), m: mins % 60 }) : tx('time.m', { m: mins % 60 });
+    };
+    const diffName = key => tx('diff.' + key);
+    return { tx, tc, num, untilReset, diffName, title: tx('title') };
 }
-const n = v => Number(v || 0).toLocaleString('en-US');
+
+// The player's language (never waits more than 1.5 s for the database: then their Discord language)
+async function languageOf(interaction) {
+    const live = i18n.fromDiscordLocale(interaction && interaction.locale) || i18n.DEFAULT_LANG;
+    try {
+        return await Promise.race([userLanguage.forInteraction(interaction), new Promise(res => setTimeout(() => res(live), 1500).unref())]);
+    } catch (err) {
+        return live;
+    }
+}
 
 function displayNameOf(interaction) {
     const m = interaction.member;
@@ -40,11 +61,14 @@ function displayNameOf(interaction) {
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('trivia')
-        .setDescription('🧩 Guess the FFXIV word of the day in 6 difficulties, earn bits and keep your streak.'),
+        .setDescription(i18n.t('en', 'trivia.command.description'))
+        .setDescriptionLocalizations(i18n.discordLocalizations('trivia.command.description')),
 
     async execute(interaction) {
+        const lang = await languageOf(interaction);
+        const { tx, tc, num: n, untilReset, diffName, title: TITLE } = texts(lang);
         if (isMaintenance(interaction.guildId)) {
-            return interaction.reply({ content: '⚠️ **The bot is currently undergoing maintenance.** Please try again later!', flags: [MessageFlags.Ephemeral] });
+            return interaction.reply({ content: tx('maintenance'), flags: [MessageFlags.Ephemeral] });
         }
         const userId = interaction.user.id;
         const guildId = interaction.guildId || null;
@@ -57,13 +81,13 @@ module.exports = {
             await T.touchPlayer({ userId, guildId, displayName: displayNameOf(interaction), avatar: interaction.user.avatar });
         } catch (err) {
             console.error('❌ [TRIVIA] start:', err.message);
-            return interaction.editReply({ content: '❌ Trivia is not available right now. Please try again in a minute.' }).catch(() => {});
+            return interaction.editReply({ content: tx('notAvailable') }).catch(() => {});
         }
 
         // ---------- screens ----------
         const warming = () => {
             T.refreshBank();
-            return { content: TITLE + '\n⏳ Trivia is warming up, try again in a minute.', components: [] };
+            return { content: TITLE + '\n' + tx('warming'), components: [] };
         };
 
         const shareInfo = async st => {
@@ -73,42 +97,38 @@ module.exports = {
 
         async function home() {
             const day = W.dayOf();
-            const [st, u, yest, words] = await Promise.all([T.dayStatus(userId, day), T.getUser(userId), T.yesterdayAnswers(day), T.wordsOf(day)]);
+            const [st, u, yest, words] = await Promise.all([T.dayStatus(userId, day), T.getUser(userId), T.yesterdayAnswers(day, lang), T.wordsOf(day)]);
             if (!words) return warming();
             const streak = W.liveStreak(u, day);
             const season = u && u.season_key === W.seasonOf(day) ? Number(u.season_bits) || 0 : 0;
             const playing = W.DIFFICULTIES.find(d => st.plays[d.key] && st.plays[d.key].status === 'playing');
             const lines = [TITLE,
-                'Guess the FFXIV word of the day. 6 difficulties, each with its own word. One solve a day, in every server.',
+                tx('home.intro'),
                 '',
-                '**You:** 🔥 Streak ' + streak + ' · 💎 ' + n(season) + ' bits this month · ' + n(u && u.bits_total) + ' all time'];
-            if (st.solved) lines.push('✅ You solved today\'s **' + W.DIFF[st.solved.difficulty].name + '** (+' + st.solved.bits + ' bits). Come back after 0:00 JST! (in ' + untilReset() + ')');
-            else if (playing) lines.push('▶ Your **' + playing.name + '** game is waiting for you.');
-            else lines.push('⏳ New words in ' + untilReset() + ' (0:00 JST).');
+                tx('home.you', { streak, season: n(season), total: n(u && u.bits_total) })];
+            if (st.solved) lines.push(tx('home.solved', { diff: diffName(st.solved.difficulty), bits: st.solved.bits, time: untilReset() }));
+            else if (playing) lines.push(tx('home.waiting', { diff: diffName(playing.key) }));
+            else lines.push(tx('home.newWords', { time: untilReset() }));
             const y = W.DIFFICULTIES.filter(d => yest[d.key]);
-            lines.push('', '**Yesterday\'s answers**');
-            lines.push(y.length ? y.map(d => d.emoji + ' ' + d.name + ': ||' + yest[d.key] + '||').join('\n') : '_None yet — come back tomorrow!_');
-            const buttons = [btn('tv_play', st.solved ? 'Today\'s results' : playing ? 'Continue' : 'Play', ButtonStyle.Primary, st.solved ? '📋' : '▶'),
-                btn('tv_howto', 'How to play', ButtonStyle.Secondary, '❓')];
-            if (st.solved) buttons.push(btn('tv_today', 'Today\'s word', ButtonStyle.Secondary, '📖'));
-            if (await shareInfo(st)) buttons.push(btn('tv_share', 'Share result', ButtonStyle.Success, '📣'));
+            lines.push('', tx('home.yesterday'));
+            lines.push(y.length ? y.map(d => d.emoji + ' ' + diffName(d.key) + ': ||' + yest[d.key] + '||').join('\n') : tx('home.yesterdayNone'));
+            const buttons = [btn('tv_play', st.solved ? tx('buttons.results') : playing ? tx('buttons.continue') : tx('buttons.play'), ButtonStyle.Primary, st.solved ? '📋' : '▶'),
+                btn('tv_howto', tx('buttons.howto'), ButtonStyle.Secondary, '❓')];
+            if (st.solved) buttons.push(btn('tv_today', tx('buttons.todayWord'), ButtonStyle.Secondary, '📖'));
+            if (await shareInfo(st)) buttons.push(btn('tv_share', tx('buttons.share'), ButtonStyle.Success, '📣'));
             return { content: lines.join('\n'), components: [row(...buttons)] };
         }
 
         function howTo() {
             return {
                 content: [TITLE,
-                    '• Each box is one letter: ⬜ hidden, 🇦 shown. Spaces and symbols are always shown.',
-                    '• Press **Guess** and type the whole answer. Case, accents, spaces and symbols don\'t matter.',
-                    '• A wrong guess shows the letters you got in the right place, plus one more. All letters shown = solved. Too many wrong guesses and that difficulty locks for the day.',
-                    '• **Hint:** up to ' + W.HINTS_PER_GUESS + ' per guess (resets after each wrong guess). Clues first, then letters. **Give up** locks that difficulty for today; you can still try another.',
-                    '• After one solve you\'re done for the day, in every server. New words at 0:00 JST.',
+                    ...tx('howto.rules', { hints: W.HINTS_PER_GUESS }),
                     '',
-                    '**Bits:** fewer letters revealed = more bits, up to double. Never below base.',
-                    W.DIFFICULTIES.map(d => d.emoji + ' ' + d.name + ': ' + d.base + ' bit' + (d.base === 1 ? '' : 's') + ', ' + d.limit + ' wrong guesses').join(' · '),
-                    '**Streak:** solve on days in a row. Bonus at 5/10/15/20/30 days: +10/+20/+30/+40/+60 bits. Streaks and the monthly leaderboard start again on the 1st.',
-                    'Leaderboards: pingway.app → Trivia. You can hide yourself in My Settings.'].join('\n'),
-                components: [row(btn('tv_home', 'Back', ButtonStyle.Secondary, '↩'))]
+                    tx('howto.bits'),
+                    W.DIFFICULTIES.map(d => tx('howto.diff', { emoji: d.emoji, name: diffName(d.key), bits: tc('count.bits', d.base), wrong: tc('count.wrongGuesses', d.limit) })).join(' · '),
+                    tx('howto.streak'),
+                    tx('howto.boards')].join('\n'),
+                components: [row(btn('tv_home', tx('buttons.back'), ButtonStyle.Secondary, '↩'))]
             };
         }
 
@@ -116,35 +136,38 @@ module.exports = {
             const day = W.dayOf();
             const [st, words] = await Promise.all([T.dayStatus(userId, day), T.wordsOf(day)]);
             if (!words) return warming();
-            const lines = [TITLE, st.solved ? '✅ You solved today\'s **' + W.DIFF[st.solved.difficulty].name + '**. Come back after 0:00 JST!' : 'Pick a difficulty. Each one has its own word of the day.', ''];
+            const lines = [TITLE, st.solved ? tx('menu.solved', { diff: diffName(st.solved.difficulty) }) : tx('menu.pick'), ''];
             const buttons = W.DIFFICULTIES.map(d => {
                 const p = st.plays[d.key];
                 const s = p ? p.status : null;
-                lines.push(d.emoji + ' **' + d.name + '** · ' + d.base + ' bit' + (d.base === 1 ? '' : 's') + ' · ' + d.limit + ' guesses — ' + (s ? STATUS_ICON[s] + ' ' + STATUS_TEXT[s] : 'new'));
+                lines.push(tx('menu.line', { emoji: d.emoji, name: diffName(d.key), bits: tc('count.bits', d.base), limit: tc('count.limit', d.limit),
+                    status: s ? STATUS_ICON[s] + ' ' + tx('status.' + s) : tx('status.new') }));
                 const locked = !!st.solved || (s && s !== 'playing');
-                return btn('tv_d_' + d.key, d.name, s === 'solved' ? ButtonStyle.Success : s === 'playing' ? ButtonStyle.Primary : locked ? ButtonStyle.Danger : ButtonStyle.Secondary,
+                return btn('tv_d_' + d.key, diffName(d.key), s === 'solved' ? ButtonStyle.Success : s === 'playing' ? ButtonStyle.Primary : locked ? ButtonStyle.Danger : ButtonStyle.Secondary,
                     s ? STATUS_ICON[s] : d.emoji, locked);
             });
-            const nav = [btn('tv_home', 'Back', ButtonStyle.Secondary, '↩')];
-            if (st.solved) nav.push(btn('tv_today_menu', 'Today\'s word', ButtonStyle.Secondary, '📖'));
+            const nav = [btn('tv_home', tx('buttons.back'), ButtonStyle.Secondary, '↩')];
+            if (st.solved) nav.push(btn('tv_today_menu', tx('buttons.todayWord'), ButtonStyle.Secondary, '📖'));
             return { content: lines.join('\n'), components: [row(...buttons.slice(0, 3)), row(...buttons.slice(3)), row(...nav)] };
         }
 
+        // word = today's word (all languages); shown in the player's language (W.viewOf)
         function gameScreen(word, play) {
             const d = W.DIFF[diff];
+            const v = W.viewOf(word, lang);
             const left = d.limit - play.wrong;
-            const hints = play.hintsUsed.map(i => W.hintText(word.hints[i])).filter(Boolean);
-            const lines = [TITLE, d.emoji + ' **' + d.name + '** · ' + left + ' wrong guess' + (left === 1 ? '' : 'es') + ' left · 💡 ' + play.hintsLeft + '/' + W.HINTS_PER_GUESS + ' hints', '',
-                W.renderBoxes(word.word, play.revealed), ''];
+            const hints = play.hintsUsed.map(i => W.hintText(v.hints[i])).filter(Boolean);
+            const lines = [TITLE, tx('game.header', { emoji: d.emoji, name: diffName(diff), left: tc('count.wrongLeft', left), hints: play.hintsLeft, max: W.HINTS_PER_GUESS }), '',
+                W.renderBoxes(v.word, play.revealed, false, v.lang), ''];
             if (hints.length) lines.push(hints.map(h => '💡 ' + h).join('\n'));
             if (feedback) lines.push(feedback);
             return {
                 content: lines.join('\n'),
                 components: [row(
-                    btn('tv_guess', 'Guess', ButtonStyle.Primary, '✏️'),
-                    btn('tv_hint', 'Hint', ButtonStyle.Secondary, '💡', play.hintsLeft <= 0),
-                    btn('tv_giveup', 'Give up', ButtonStyle.Danger, '🏳️'),
-                    btn('tv_back', 'Back', ButtonStyle.Secondary, '↩'))]
+                    btn('tv_guess', tx('buttons.guess'), ButtonStyle.Primary, '✏️'),
+                    btn('tv_hint', tx('buttons.hint'), ButtonStyle.Secondary, '💡', play.hintsLeft <= 0),
+                    btn('tv_giveup', tx('buttons.giveUp'), ButtonStyle.Danger, '🏳️'),
+                    btn('tv_back', tx('buttons.back'), ButtonStyle.Secondary, '↩'))]
             };
         }
 
@@ -153,37 +176,38 @@ module.exports = {
             const day = W.dayOf();
             const words = await T.wordsOf(day);
             if (!words) return warming();
-            const r = await T.startPlay(userId, day, diff, guildId);
+            const r = await T.startPlay(userId, day, diff, guildId, lang, words[diff]);
             if (!r.ok) return menu();
             return gameScreen(words[diff], r.play);
         }
 
         // "About" block: only on the result screen after a solve (it would spoil the answer before)
         const aboutBlock = word => {
-            const lore = String((word && word.lore) || '').replace(/[_~`|]/g, '\\$&').replace(/@/g, '@\u200b');
-            return lore ? ['', '📖 **About ' + word.word.replace(/[*_~`|\\]/g, '\\$&') + '**', lore] : ['', '📖 The answer was **' + word.word + '**.'];
+            const v = W.viewOf(word, lang);
+            const lore = String((v && v.lore) || '').replace(/[_~`|]/g, '\\$&').replace(/@/g, '@\u200b');
+            return lore ? ['', tx('about.title', { word: v.word.replace(/[*_~`|\\]/g, '\\$&') }), lore] : ['', tx('about.answer', { word: v.word })];
         };
 
         async function solvedScreen(play, award, word, allRevealed) {
             const d = W.DIFF[play.difficulty];
             const lines = [TITLE];
-            if (allRevealed) lines.push('🎉 **Congratulations! All letters revealed!**');
-            lines.push('✅ **Solved!** ' + d.emoji + ' ' + d.name + ' · +' + award.bits + ' bits (base ' + award.base + ', bonus ' + award.bonus + ')');
-            lines.push('🔥 Streak ' + award.streak + (award.streak === 1 ? ' day' : ' days') + (award.milestone ? ' · 🎉 Streak bonus +' + award.milestone + ' bits!' : ''));
-            lines.push('💎 ' + n(award.seasonBits) + ' bits this month · ' + n(award.total) + ' all time');
+            if (allRevealed) lines.push(tx('solved.allRevealed'));
+            lines.push(tx('solved.line', { emoji: d.emoji, name: diffName(play.difficulty), bits: award.bits, base: award.base, bonus: award.bonus }));
+            lines.push(tx('solved.streak', { days: tc('count.streakDays', award.streak) }) + (award.milestone ? tx('solved.milestone', { bits: award.milestone }) : ''));
+            lines.push(tx('solved.bits', { season: n(award.seasonBits), total: n(award.total) }));
             if (word) lines.push(...aboutBlock(word));
-            lines.push('', 'That\'s it for today — come back after 0:00 JST (in ' + untilReset() + ').');
-            const buttons = [btn('tv_back', 'Back', ButtonStyle.Secondary, '↩')];
-            if (guildId && !play.shared && await T.shareChannel(guildId)) buttons.unshift(btn('tv_share', 'Share result', ButtonStyle.Success, '📣'));
+            lines.push('', tx('solved.done', { time: untilReset() }));
+            const buttons = [btn('tv_back', tx('buttons.back'), ButtonStyle.Secondary, '↩')];
+            if (guildId && !play.shared && await T.shareChannel(guildId)) buttons.unshift(btn('tv_share', tx('buttons.share'), ButtonStyle.Success, '📣'));
             return { content: lines.join('\n'), components: [row(...buttons)] };
         }
 
         function lockedScreen(play) {
-            const d = W.DIFF[play.difficulty];
-            const why = play.status === 'gaveup' ? '🏳️ You gave up on **' + d.name + '**.' : '❌ Out of guesses on **' + d.name + '**.';
+            const name = diffName(play.difficulty);
+            const why = play.status === 'gaveup' ? tx('locked.gaveup', { name }) : tx('locked.failed', { name });
             return {
-                content: [TITLE, why + ' It is locked for today.', 'You can still try another difficulty. The answer shows up in "Yesterday\'s answers" after 0:00 JST.'].join('\n'),
-                components: [row(btn('tv_back', 'Back', ButtonStyle.Secondary, '↩'))]
+                content: [TITLE, tx('locked.today', { why }), tx('locked.other')].join('\n'),
+                components: [row(btn('tv_back', tx('buttons.back'), ButtonStyle.Secondary, '↩'))]
             };
         }
 
@@ -194,10 +218,9 @@ module.exports = {
             const [st, words] = await Promise.all([T.dayStatus(userId, day), T.wordsOf(day)]);
             if (!words) return warming();
             if (!st.solved) return back === 'tv_back' ? menu() : home();
-            const d = W.DIFF[st.solved.difficulty];
             return {
-                content: [TITLE, '✅ You solved today\'s **' + d.name + '**', ...aboutBlock(words[st.solved.difficulty])].join('\n'),
-                components: [row(btn(back, 'Back', ButtonStyle.Secondary, '↩'))],
+                content: [TITLE, tx('today.solved', { name: diffName(st.solved.difficulty) }), ...aboutBlock(words[st.solved.difficulty])].join('\n'),
+                components: [row(btn(back, tx('buttons.back'), ButtonStyle.Secondary, '↩'))],
                 allowedMentions: { parse: [] }
             };
         }
@@ -220,26 +243,27 @@ module.exports = {
             const day = W.dayOf();
             const st = await T.dayStatus(userId, day);
             const chId = await shareInfo(st);
-            if (!chId) return await i.followUp({ content: 'Nothing to share right now.', flags: [MessageFlags.Ephemeral] });
+            if (!chId) return await i.followUp({ content: tx('share.nothing'), flags: [MessageFlags.Ephemeral] });
             const channel = await interaction.guild.channels.fetch(chId).catch(() => null);
-            if (!channel || typeof channel.send !== 'function') return await i.followUp({ content: '⚠️ The Trivia share channel is gone. Ask an admin to pick a new one on the website.', flags: [MessageFlags.Ephemeral] });
-            if (!(await T.markShared(userId, day, st.solved.difficulty))) return await i.followUp({ content: 'Already shared. 🙂', flags: [MessageFlags.Ephemeral] });
+            if (!channel || typeof channel.send !== 'function') return await i.followUp({ content: tx('share.gone'), flags: [MessageFlags.Ephemeral] });
+            if (!(await T.markShared(userId, day, st.solved.difficulty))) return await i.followUp({ content: tx('share.already'), flags: [MessageFlags.Ephemeral] });
             const u = await T.getUser(userId);
             try {
-                await channel.send({ content: T.shareLine(displayNameOf(interaction), st.solved.difficulty, st.solved, W.liveStreak(u, day)), allowedMentions: { parse: [] } });
+                // A public post: the server's language
+                await channel.send({ content: T.shareLine(displayNameOf(interaction), st.solved.difficulty, st.solved, W.liveStreak(u, day), userLanguage.forGuild(interaction.guild)), allowedMentions: { parse: [] } });
             } catch (err) {
                 await T.markShared(userId, day, st.solved.difficulty, true).catch(() => {});
-                return await i.followUp({ content: '⚠️ Pingway can\'t post in <#' + chId + '>. Ask an admin to check its permissions there.', flags: [MessageFlags.Ephemeral], allowedMentions: { parse: [] } });
+                return await i.followUp({ content: tx('share.cantPost', { channel: chId }), flags: [MessageFlags.Ephemeral], allowedMentions: { parse: [] } });
             }
             const p = await home();
-            p.content += '\n\n📣 Shared in <#' + chId + '>!';
+            p.content += '\n\n' + tx('share.done', { channel: chId });
             return await i.editReply({ ...p, allowedMentions: { parse: [] } });
         }
 
         async function doGuess(i, prev) {
             const modalId = 'tv_modal_' + i.id;
-            const modal = new ModalBuilder().setCustomId(modalId).setTitle('Your guess (' + W.DIFF[diff].name + ')')
-                .addComponents(row(new TextInputBuilder().setCustomId('answer').setLabel('Type the whole answer')
+            const modal = new ModalBuilder().setCustomId(modalId).setTitle(tx('modal.title', { name: diffName(diff) }).slice(0, 45))
+                .addComponents(row(new TextInputBuilder().setCustomId('answer').setLabel(tx('modal.label').slice(0, 45))
                     .setStyle(TextInputStyle.Short).setRequired(true).setMaxLength(100)));
             await i.showModal(modal);
             const sub = await i.awaitModalSubmit({ filter: m => m.customId === modalId && m.user.id === userId, time: 10 * 60 * 1000 }).catch(() => null);
@@ -251,23 +275,24 @@ module.exports = {
                 const words = await T.wordsOf(day);
                 if (!words) return await sub.editReply(warming());
                 const answer = String(sub.fields.getTextInputValue('answer') || '').slice(0, 100);
-                const r = await T.guess(userId, day, diff, words[diff], answer);
+                const r = await T.guess(userId, day, diff, words[diff], answer, lang);
                 if (r.result === 'solved') return await sub.editReply({ ...(await solvedScreen(r.play, r.award, words[diff], r.allRevealed)), allowedMentions: { parse: [] } });
                 if (r.result === 'failed') return await sub.editReply(lockedScreen(r.play));
                 if (r.result === 'wrong') {
                     const left = W.DIFF[diff].limit - r.play.wrong;
-                    feedback = '❌ Not it' + (r.shown ? ' — revealed ' + r.shown + ' letter' + (r.shown === 1 ? '' : 's') + '.' : '.') + ' ' + left + ' wrong guess' + (left === 1 ? '' : 'es') + ' left.';
+                    const leftText = tc('count.wrongLeft', left);
+                    feedback = r.shown ? tc('feedback.wrongShown', r.shown, { left: leftText }) : tx('feedback.wrong', { left: leftText });
                     return await sub.editReply(gameScreen(words[diff], r.play));
                 }
                 feedback = '';
                 return await sub.editReply(await menu());
             } catch (err) {
                 console.error('❌ [TRIVIA] guess:', err.message);
-                await sub.editReply({ content: '❌ Something went wrong. Please run /trivia again.', components: [] }).catch(() => {});
+                await sub.editReply({ content: tx('error'), components: [] }).catch(() => {});
             }
         }
 
-        const p0 = await home().catch(err => { console.error('❌ [TRIVIA] home:', err.message); return { content: '❌ Trivia is not available right now. Please try again in a minute.', components: [] }; });
+        const p0 = await home().catch(err => { console.error('❌ [TRIVIA] home:', err.message); return { content: tx('notAvailable'), components: [] }; });
         await interaction.editReply(p0);
         if (!p0.components || !p0.components.length) return;
         const message = await interaction.fetchReply();
@@ -317,17 +342,17 @@ module.exports = {
                     const day = W.dayOf();
                     const words = await T.wordsOf(day);
                     if (!words) return await i.editReply(warming());
-                    const r = await T.useHint(userId, day, diff, words[diff]);
+                    const r = await T.useHint(userId, day, diff, words[diff], lang);
                     if (r.result === 'solved') { feedback = ''; return await i.editReply({ ...(await solvedScreen(r.play, r.award, words[diff], true)), allowedMentions: { parse: [] } }); }
                     if (!r.play || r.play.status !== 'playing' || r.result) return await i.editReply(await menu());
-                    feedback = r.position ? '💡 Letter ' + r.position + ' revealed.' : r.ok ? '' : r.limit ? 'No hints left — you get ' + W.HINTS_PER_GUESS + ' more after a wrong guess.' : 'No more hints for this word.';
+                    feedback = r.position ? tx('hint.letter', { n: r.position }) : r.ok ? '' : r.limit ? tx('hint.limit', { n: W.HINTS_PER_GUESS }) : tx('hint.none');
                     return await i.editReply(gameScreen(words[diff], r.play));
                 }
                 if (id === 'tv_giveup') {
                     if (!(await ack(i))) { last = prev; return; }
                     return await i.editReply({
-                        content: TITLE + '\n🏳️ **Give up?** This difficulty locks for today. (The answer is not shown until tomorrow.)',
-                        components: [row(btn('tv_giveup_yes', 'Yes, give up', ButtonStyle.Danger), btn('tv_giveup_no', 'No, keep playing', ButtonStyle.Secondary))]
+                        content: TITLE + '\n' + tx('giveup.ask'),
+                        components: [row(btn('tv_giveup_yes', tx('buttons.giveUpYes'), ButtonStyle.Danger), btn('tv_giveup_no', tx('buttons.giveUpNo'), ButtonStyle.Secondary))]
                     });
                 }
                 if (id === 'tv_giveup_yes') {
@@ -343,13 +368,13 @@ module.exports = {
                 }
             } catch (err) {
                 console.error('❌ [TRIVIA] button:', err.message);
-                if (!i.replied && !i.deferred) await i.reply({ content: '❌ Something went wrong. Please run /trivia again.', flags: [MessageFlags.Ephemeral] }).catch(() => {});
-                else if (i.deferred) await i.editReply({ content: '❌ Something went wrong. Please run /trivia again.', components: [] }).catch(() => {});
+                if (!i.replied && !i.deferred) await i.reply({ content: tx('error'), flags: [MessageFlags.Ephemeral] }).catch(() => {});
+                else if (i.deferred) await i.editReply({ content: tx('error'), components: [] }).catch(() => {});
             }
         });
         collector.on('end', (c, reason) => {
             if (reason !== 'idle') return;
-            last.editReply({ content: TITLE + '\n⌛ Session ended — run /trivia again.', components: [] }).catch(() => {});
+            last.editReply({ content: TITLE + '\n' + tx('ended'), components: [] }).catch(() => {});
         });
     }
 };

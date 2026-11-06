@@ -15,6 +15,31 @@ const { ID, DEFAULT_VALUE, buildPanel, buildPlayModal } = require('../utils/voic
 const { resolveVoice, isKnownVoice, getVoice, getLanguage, languageCodeOf } = require('../utils/voice/voices');
 const { getSession, joinChannel, destroySession } = require('../utils/voice/session');
 const members = require('../utils/voice/members');
+const i18n = require('../utils/i18n');
+const { t, tOr } = i18n;
+
+// Language of the person using the panel (their choice -> Discord app language -> English). Never fails:
+// without a database (tests) it falls back to the Discord app language.
+async function langOf(interaction) {
+    try {
+        return await require('../utils/userLanguage').forInteraction(interaction);
+    } catch (e) {
+        return i18n.fromDiscordLocale(interaction && interaction.locale) || 'en';
+    }
+}
+// A refused link (urlSafety) in the reader's language
+const urlReason = (lang, err) => (err && err.code ? tOr(lang, 'vc.url.' + err.code, err.message, err.vars || undefined) : (err && err.message) || 'error');
+// A notice the session made by itself (shown in the panel) in the reader's language
+function sessionNotice(lang, status) {
+    if (!status || !status.notice) return null;
+    const n = status.noticeI18n;
+    if (!n || !n.key) return status.notice;
+    const v = n.vars || {};
+    if (n.key === 'vc.couldNotPlay') {
+        return t(lang, n.key, { title: v.title || t(lang, 'vc.thatLink'), reason: v.code ? urlReason(lang, { code: v.code, message: v.reason, vars: v.codeVars }) : v.reason });
+    }
+    return t(lang, n.key, v);
+}
 
 const EPHEMERAL = 64;            // MessageFlags.Ephemeral
 const GUILD_STAGE_VOICE = 13;    // ChannelType.GuildStageVoice
@@ -76,6 +101,9 @@ function setCaller(session, guild, userId) {
             return !!vs && vs.channelId === session.channelId;
         },
         sendNote: text => {
+            // the note is posted in the voice channel's chat: the server's language
+            const glang = i18n.fromDiscordLocale(guild && guild.preferredLocale) || 'en';
+            if (text === members.OUT_OF_CHARS_NOTE) text = t(glang, 'vc.outOfChars');
             const ch = guild.channels.cache.get(session.channelId);
             if (ch && typeof ch.send === 'function') return ch.send({ content: text, allowedMentions: { parse: [] } });
         }
@@ -83,6 +111,7 @@ function setCaller(session, guild, userId) {
 }
 
 async function render(interaction, notice, extra = {}) {
+    const lang = await langOf(interaction);
     const guildId = interaction.guildId;
     const userId = interaction.user.id;
     const st = stateOf(guildId, userId);
@@ -103,7 +132,8 @@ async function render(interaction, notice, extra = {}) {
         radioResults: st.radio,
         moveOffer: extra.moveOffer || null,
         djRoleId: settings.djRoleId,
-        notice: notice || (session && session.status().notice) || null
+        notice: notice || (session && sessionNotice(lang, session.status())) || null,
+        lang
     });
 }
 
@@ -112,31 +142,32 @@ async function render(interaction, notice, extra = {}) {
  * @returns {{ session?, notice?, moveOffer? }}
  */
 async function ensureJoined(interaction, { allowMove = false } = {}) {
+    const lang = await langOf(interaction);
     const voice = lib.loadVoice();
-    if (!voice) return { notice: '⚠️ Voice is not installed on this bot yet.' };
+    if (!voice) return { notice: t(lang, 'vc.notInstalled') };
     const guild = interaction.guild;
     const member = interaction.member;
     const channel = member && member.voice ? member.voice.channel : null;
-    if (!channel) return { notice: '🔇 Join a voice channel first, then press **Join**.' };
-    if (channel.type === GUILD_STAGE_VOICE) return { notice: '⚠️ Stage channels are not supported. Use a normal voice channel.' };
+    if (!channel) return { notice: t(lang, 'vc.joinFirst') };
+    if (channel.type === GUILD_STAGE_VOICE) return { notice: t(lang, 'vc.noStage') };
 
     const session = getSession(guild.id);
     if (session && session.channelId === channel.id) return { session };
     if (session) {
         const other = guild.channels.cache.get(session.channelId);
         const people = other ? humansIn(other) : 0;
-        if (people > 0) return { notice: `⚠️ I'm already in <#${session.channelId}> and people are listening there.` };
+        if (people > 0) return { notice: t(lang, 'vc.alreadyIn', { channelId: session.channelId }) };
         if (!allowMove) {
-            return { notice: `ℹ️ I'm in <#${session.channelId}>, but nobody is there. Press **Move here** to bring me to <#${channel.id}>.`, moveOffer: channel.id };
+            return { notice: t(lang, 'vc.moveOffer', { channelId: session.channelId, here: channel.id }), moveOffer: channel.id };
         }
     }
 
     const me = guild.members.me;
     const perms = me ? channel.permissionsFor(me) : null;
     if (!perms || !perms.has(['ViewChannel', 'Connect', 'Speak'])) {
-        return { notice: `⚠️ I need **View Channel**, **Connect** and **Speak** permissions in <#${channel.id}>.` };
+        return { notice: t(lang, 'vc.needPerms', { channelId: channel.id }) };
     }
-    if (!channel.joinable) return { notice: `⚠️ I can't join <#${channel.id}> (it may be full).` };
+    if (!channel.joinable) return { notice: t(lang, 'vc.cantJoin', { channelId: channel.id }) };
 
     try {
         const s = await joinChannel({ guild, channel, voice, deps: realDeps });
@@ -145,7 +176,7 @@ async function ensureJoined(interaction, { allowMove = false } = {}) {
         return { session: s, joined: true };
     } catch (err) {
         console.error(`❌ [VC] join failed | guild ${guild.id}:`, err.message);
-        return { notice: '❌ I could not connect to the voice channel. Please try again in a moment.' };
+        return { notice: t(lang, 'vc.connectFailed') };
     }
 }
 
@@ -162,32 +193,35 @@ async function waitForStart(session, item, ms = 6000) {
 }
 
 async function queueUrl(interaction, url, title) {
+    const lang = await langOf(interaction);
     const joined = await ensureJoined(interaction);
     if (!joined.session) return joined;
     const session = joined.session;
     const before = session.musicQueue.length;
     const pos = session.enqueueMusic({ url, title: title || null, requestedBy: interaction.user.id });
-    if (pos < 0) return { notice: '⚠️ The music queue is full (25). Skip or clear something first.' };
+    if (pos < 0) return { notice: t(lang, 'vc.queueFull') };
     const item = pos === 0 ? (session.current && session.current.item) : session.musicQueue[session.musicQueue.length - 1];
     if (pos === 0 && item) await waitForStart(session, item);
     if (pos === 0) {
-        if (session.current && session.current.item === item) return { notice: `▶️ Playing **${(item.title || 'your link').slice(0, 80)}**.` };
-        return { notice: session.lastNotice || '⚠️ That link could not be played.' };
+        if (session.current && session.current.item === item) return { notice: t(lang, 'vc.playing', { title: (item.title || t(lang, 'vc.yourLink')).slice(0, 80) }) };
+        return { notice: (session.lastNotice && sessionNotice(lang, { notice: session.lastNotice, noticeI18n: session.lastNoticeI18n })) || t(lang, 'vc.cantPlay') };
     }
-    return { notice: `➕ Queued at position ${before + 1}: **${(title || 'your link').slice(0, 80)}**.` };
+    return { notice: t(lang, 'vc.queued', { pos: before + 1, title: (title || t(lang, 'vc.yourLink')).slice(0, 80) }) };
 }
 
 module.exports = {
     data: {
         name: 'vc',
-        description: '🔊 Voice: read the voice chat aloud (TTS) and play music / internet radio.',
+        description: t('en', 'vc.cmd.description'),
+        description_localizations: i18n.discordLocalizations('vc.cmd.description'),
         contexts: [0],          // servers only
         integration_types: [0]
     },
 
     async execute(interaction) {
+        const lang = await langOf(interaction);
         if (!interaction.inGuild || !interaction.inGuild()) {
-            return interaction.reply({ content: '⚠️ /vc only works in a server.', flags: EPHEMERAL });
+            return interaction.reply({ content: t(lang, 'vc.serverOnly'), flags: EPHEMERAL });
         }
         await interaction.deferReply({ flags: EPHEMERAL });
         try {
@@ -196,7 +230,7 @@ module.exports = {
             return interaction.editReply(payload);
         } catch (err) {
             console.error('❌ [VC] panel:', err.message);
-            return interaction.editReply({ content: '❌ The voice panel is not available right now.', embeds: [], components: [] }).catch(() => {});
+            return interaction.editReply({ content: t(lang, 'vc.panelUnavailable'), embeds: [], components: [] }).catch(() => {});
         }
     },
 
@@ -204,6 +238,7 @@ module.exports = {
         const cid = interaction.customId || '';
         if (!cid.startsWith('vc_')) return;
         if (!interaction.inGuild || !interaction.inGuild()) return;
+        const lang = await langOf(interaction);
         const guildId = interaction.guildId;
         const member = interaction.member;
         const session = getSession(guildId);
@@ -212,8 +247,8 @@ module.exports = {
         // ---- Play button: the modal must be the FIRST answer (no defer before it) ----
         if (cid === ID.play && interaction.isButton()) {
             const settings = store.peekGuildSettings(guildId) || { djRoleId: null }; // re-checked on submit
-            const ok = canUse('play', { member, botChannelId, settings });
-            if (ok.ok) return interaction.showModal(buildPlayModal());
+            const ok = canUse('play', { member, botChannelId, settings, lang });
+            if (ok.ok) return interaction.showModal(buildPlayModal(lang));
             await interaction.deferUpdate();
             return interaction.editReply(await render(interaction, '🚫 ' + ok.reason));
         }
@@ -223,7 +258,7 @@ module.exports = {
         let extra = {};
         try {
             const settings = await store.getGuildSettings(guildId);
-            const check = action => canUse(action, { member, botChannelId, settings });
+            const check = action => canUse(action, { member, botChannelId, settings, lang });
             const st = stateOf(guildId, interaction.user.id);
 
             switch (cid) {
@@ -234,7 +269,7 @@ module.exports = {
                 case ID.move: {
                     const r = await ensureJoined(interaction, { allowMove: cid === ID.move });
                     if (r.session) {
-                        notice = r.joined ? `✅ Joined <#${r.session.channelId}>.` : `✅ I'm in <#${r.session.channelId}>.`;
+                        notice = r.joined ? t(lang, 'vc.joined', { channelId: r.session.channelId }) : t(lang, 'vc.imIn', { channelId: r.session.channelId });
                     } else {
                         notice = r.notice;
                         extra.moveOffer = r.moveOffer;
@@ -246,7 +281,7 @@ module.exports = {
                     const ok = check('leave');
                     if (!ok.ok) { notice = '🚫 ' + ok.reason; break; }
                     destroySession(guildId, 'leave button');
-                    notice = '👋 Left the voice channel.';
+                    notice = t(lang, 'vc.left');
                     break;
                 }
 
@@ -256,16 +291,16 @@ module.exports = {
                     const action = cid === ID.skip ? 'skip' : cid === ID.clear ? 'clear' : 'pause';
                     const ok = check(action);
                     if (!ok.ok) { notice = '🚫 ' + ok.reason; break; }
-                    if (!session) { notice = "I'm not in a voice channel."; break; }
+                    if (!session) { notice = t(lang, 'vc.notInVoice'); break; }
                     if (action === 'skip') {
                         const what = session.skip();
-                        notice = what === 'speech' ? '⏭️ Skipped the message being read.' : what === 'music' ? '⏭️ Skipped.' : 'Nothing to skip.';
+                        notice = what === 'speech' ? t(lang, 'vc.skippedSpeech') : what === 'music' ? t(lang, 'vc.skipped') : t(lang, 'vc.nothingToSkip');
                     } else if (action === 'clear') {
                         const n = session.clear();
-                        notice = `🧹 Cleared ${n.music} track${n.music === 1 ? '' : 's'} and ${n.speech} message${n.speech === 1 ? '' : 's'}.`;
+                        notice = t(lang, 'vc.cleared', { tracks: t(lang, n.music === 1 ? 'vc.panel.track' : 'vc.panel.tracks', { n: n.music }), messages: t(lang, n.speech === 1 ? 'vc.panel.message' : 'vc.panel.messages', { n: n.speech }) });
                     } else {
                         const r = session.togglePause();
-                        notice = r === 'paused' ? '⏸️ Paused.' : r === 'resumed' ? '▶️ Resumed.' : 'Nothing is playing.';
+                        notice = r === 'paused' ? t(lang, 'vc.paused') : r === 'resumed' ? t(lang, 'vc.resumed') : t(lang, 'vc.nothingPlaying');
                     }
                     break;
                 }
@@ -273,7 +308,7 @@ module.exports = {
                 case ID.lang: {
                     const v = interaction.values && interaction.values[0];
                     st.lang = getLanguage(v) ? v : null;
-                    if (st.lang) notice = `Pick a ${getLanguage(st.lang).label} voice in the menu below.`;
+                    if (st.lang) notice = t(lang, 'vc.pickVoice', { language: tOr(lang, 'vc.languages.' + st.lang, getLanguage(st.lang).label) });
                     break;
                 }
 
@@ -281,13 +316,13 @@ module.exports = {
                     const v = interaction.values && interaction.values[0];
                     if (v === DEFAULT_VALUE) {
                         await store.setUserVoice(interaction.user.id, null);
-                        notice = '✅ You now use the server default voice.';
+                        notice = t(lang, 'vc.defaultVoice');
                     } else if (isKnownVoice(v)) {
                         await store.setUserVoice(interaction.user.id, v);
                         st.lang = languageCodeOf(v);
-                        notice = `✅ Your voice is now **${getVoice(v).label}** (in every server).`;
+                        notice = t(lang, 'vc.voiceSet', { voice: getVoice(v).label });
                     } else {
-                        notice = '⚠️ Unknown voice.';
+                        notice = t(lang, 'vc.unknownVoice');
                     }
                     break;
                 }
@@ -297,7 +332,7 @@ module.exports = {
                     if (!ok.ok) { notice = '🚫 ' + ok.reason; break; }
                     const uuid = interaction.values && interaction.values[0];
                     const station = (st.radio || []).find(x => x.uuid === uuid);
-                    if (!station) { notice = '⚠️ That search is too old. Press **Play** and search again.'; break; }
+                    if (!station) { notice = t(lang, 'vc.searchOld'); break; }
                     const url = await radio.clickStation(station.uuid, station.url);
                     st.radio = null;
                     const r = await queueUrl(interaction, url, station.name);
@@ -314,7 +349,7 @@ module.exports = {
                         try {
                             await checkUrl(input); // fast refusal: bad scheme, YouTube/Spotify/SoundCloud, private address
                         } catch (err) {
-                            notice = '🚫 ' + (err instanceof UrlRefused ? err.message : 'That link cannot be played.');
+                            notice = '🚫 ' + (err instanceof UrlRefused ? urlReason(lang, err) : t(lang, 'vc.linkCantPlay'));
                             break;
                         }
                         const r = await queueUrl(interaction, input, null);
@@ -326,13 +361,13 @@ module.exports = {
                             results = await radio.searchStations(input);
                         } catch (err) {
                             console.error('⚠️ [VC] radio search failed:', err.message);
-                            notice = '⚠️ Radio search is not available right now. Try again later or paste a direct link.';
+                            notice = t(lang, 'vc.radioUnavailable');
                             break;
                         }
                         st.radio = results.length ? results : null;
                         notice = results.length
-                            ? `📻 Found ${results.length} station${results.length === 1 ? '' : 's'} for "${input.slice(0, 50)}" - pick one below.`
-                            : `📻 No stations found for "${input.slice(0, 50)}".`;
+                            ? t(lang, results.length === 1 ? 'vc.foundOne' : 'vc.foundMany', { n: results.length, query: input.slice(0, 50) })
+                            : t(lang, 'vc.noStations', { query: input.slice(0, 50) });
                     }
                     break;
                 }
@@ -342,7 +377,7 @@ module.exports = {
             }
         } catch (err) {
             console.error(`❌ [VC] ${cid} | guild ${guildId}:`, err.message);
-            notice = '❌ Something went wrong. Please try again.';
+            notice = t(lang, 'vc.failed');
         }
         return interaction.editReply(await render(interaction, notice, extra));
     },

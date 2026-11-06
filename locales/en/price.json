@@ -1,0 +1,24 @@
+{
+  "noDcs": "⚠️ **No Data Centers Selected!**\nPlease use the `/datacenter` command first to set your preferred Data Centers.",
+  "notFound": "No item name found using **{item}**.",
+  "close": "Close",
+  "lookingUp": "🔍 **Looking up prices for {name}... Please wait!**",
+  "recommendations": "Item Recommendations",
+  "didYouMean": "No item name found using **{item}**. Do you mean:",
+  "unknownItem": "Unknown Item",
+  "matching": "Matching Items",
+  "error": "An error occurred during market lookup.",
+  "noDcsShort": "⚠️ **No Data Centers Selected!**\nPlease use the `/datacenter` command first.",
+  "title": "Market Prices: {name}",
+  "legend": "{nq} = Normal Quality | {hq} = High Quality",
+  "top5": "**{icon} Top 5:**\n",
+  "noListings": "No listings found.",
+  "fetchFailed": "Failed to fetch data.",
+  "footer": "Use /datacenter to toggle DCs you want to show on your /price.\nPowered by Universalis & XIVAPI",
+  "reminder": "🔒 *Only you can see this message! This Message will be gone after sometime had passed. Copy / Take screenshot if you dont wanna loose this listing.*",
+  "cmd": {
+    "description": "Check market board prices for an FFXIV item",
+    "item": "The name of the item to search for"
+  },
+  "fetching": "⏳ **Fetching prices... Please wait!**"
+}

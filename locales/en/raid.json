@@ -1,0 +1,28 @@
+{
+  "notConfigured": "⚠️ **Raid Planner Sheet not configured!** An administrator must configure the sheet link first.",
+  "noData": "❌ **No data found in the Raid Planner Sheet.**",
+  "noDates": "❌ **Could not parse any valid date entries in the Google Sheet.**",
+  "status": {
+    "raid": "⚔️ **RAID**",
+    "unsure": "❓ **UNSURE**",
+    "fill": "📝 **FILL PLEASE**",
+    "no": "❌ **NO RAID**"
+  },
+  "pending": "> 📝 **Pending Response ({count}):** {list}\n",
+  "available": "> ✅ **Available ({count}):** {list}\n",
+  "late": "> ⏰ **Late ({count}):** {list}\n",
+  "subbed": "> 🟡 **Subbed ({count}):** {list}\n",
+  "unsure": "> ❓ **Unsure ({count}):** {list}\n",
+  "absent": "> ❌ **Absent ({count}):** {list}\n",
+  "noDays": "ℹ️ **No raid days scheduled found.**\nMake sure to not change the layout and on correct date format.",
+  "upcoming": "📊 **Upcoming Raid Schedule:**\n\n{list}",
+  "accessError": "❌ **Google Sheets API Access Error:** Please make sure the sheet is shared with the bot service account email and that the link is correct.",
+  "failed": "❌ **Failed to retrieve raid schedule.** Please check the console log for details.",
+  "setup": {
+    "invalidUrl": "❌ **Invalid Google Sheet URL or ID.** Please make sure you copy the full link or the raw ID.",
+    "raidSheet": "Raid Planner Sheet",
+    "loggerSheet": "Command Logger Sheet",
+    "configured": "✅ **{name} successfully configured!**\n\n⚠️ **Important:** Make sure you share your Google Sheet with the bot's service account email so it has access:\n`{email}`",
+    "dbError": "❌ Database error occurred while saving configuration."
+  }
+}

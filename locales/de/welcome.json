@@ -1,0 +1,24 @@
+{
+  "defaultMessage": "Danke, dass du dem Server beigetreten bist! Viel Spaß und fühl dich wie zu Hause.",
+  "listMore": "{list} und {count} weitere",
+  "listAnd": "{list} und {last}",
+  "combined": "Willkommen {list}! 🎉",
+  "testDm": "Hier ist ein Test deiner Willkommenskarte für **{server}** (Design: {design}).",
+  "designDefault": "Standard",
+  "perms": {
+    "ViewChannel": "Kanal ansehen",
+    "SendMessages": "Nachrichten senden",
+    "AttachFiles": "Dateien anhängen"
+  },
+  "cmd": {
+    "description": "👋 Postet Willkommenskarten für neue Mitglieder in diesem Kanal (nur Admins).",
+    "action": "Willkommenskarten hier einschalten (Standard) oder ausschalten."
+  },
+  "serverOnly": "❌ Dieser Befehl funktioniert nur auf einem Server.",
+  "adminsOnly": "❌ Nur Server-Admins (Berechtigung Administrator) können diesen Befehl nutzen.",
+  "turnedOff": "👋 Willkommenskarten sind ausgeschaltet. Nutze `/welcomehere` in einem Kanal, um sie wieder einzuschalten.",
+  "failed": "❌ Etwas ist schiefgelaufen. Bitte versuche es noch einmal.",
+  "wrongChannel": "❌ Nutze `/welcomehere` in einem Text- oder Ankündigungskanal.",
+  "missingPerms": "❌ Pingway kann in <#{channelId}> keine Willkommenskarten posten. Es fehlt: **{perms}**.\nGib Pingways Rolle diese Berechtigungen in diesem Kanal und führe dann `/welcomehere` erneut aus.",
+  "enabled": "👋 Willkommenskarten werden in <#{channelId}> gepostet. Design und Nachricht änderst du auf der Pingway-Website (Server-Einstellungen → Welcome)."
+}

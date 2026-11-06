@@ -4,6 +4,8 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const sharp = require('sharp');
 const QRCode = require('qrcode');
+const { t, discordLocalizations } = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
 
 const jobIconMap = {
     'Paladin': 'https://raw.githubusercontent.com/rkyle27/classjob-icons/766cb47831435a83f04d904146bd3472501564c5/icons/paladin.png',
@@ -658,15 +660,16 @@ function escapeXml(str) {
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('ign')
-        .setDescription('🔍 Display your generated FFXIV character card.'),
+        .setDescription(t('en', 'ign.cmd.description')).setDescriptionLocalizations(discordLocalizations('ign.cmd.description')),
 
     async execute(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         const userId = interaction.user.id;
         const [rows] = await pool.execute('SELECT * FROM user_ign_config WHERE user_id = ?', [userId]);
 
         if (rows.length === 0 || !rows[0].lodestone_id) {
             return interaction.reply({
-                content: '⚠️ You have not configured your FFXIV character data yet! Please use `/ignconfig` to set it up.',
+                content: t(lang, 'ign.notConfigured'),
                 flags: [MessageFlags.Ephemeral]
             });
         }
@@ -677,12 +680,12 @@ module.exports = {
         const data = await fetchLodestoneData(config.lodestone_id);
 
         if (!data.success) {
-            return interaction.editReply({ content: '❌ Failed to fetch your Lodestone character data. Please check your Lodestone ID.' });
+            return interaction.editReply({ content: t(lang, 'ign.fetchFailed') });
         }
 
         const cardBuffer = await generateCard(config, data);
         if (!cardBuffer) {
-            return interaction.editReply({ content: '❌ Failed to generate character card image; cardBuffer is empty.' });
+            return interaction.editReply({ content: t(lang, 'ign.cardFailed') });
         }
 
         const attachment = new AttachmentBuilder(cardBuffer, { name: 'character_card.png' });

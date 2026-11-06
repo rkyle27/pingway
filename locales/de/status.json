@@ -1,0 +1,23 @@
+{
+  "online": "Online",
+  "offline": "Offline / Wartung",
+  "noData": "Keine Daten",
+  "cmd": {
+    "description": "🔍 Prüft den Status der FFXIV-Server und schaltet Alarme ein oder aus."
+  },
+  "pickWorldFirst": "⚠️ Bitte wähle zuerst eine Welt, die du verfolgen willst, bevor du Benachrichtigungen einschaltest!",
+  "title": "### 🌍 FFXIV-Status: Datenzentrum **{dc}**\n",
+  "fallback": "⚠️ **Achtung:** Die Live-Daten der xivup-API konnten nicht abgerufen werden. Status werden ohne Daten (-) angezeigt.\n",
+  "enabled": "Ein",
+  "disabled": "Aus",
+  "tracking": "Verfolgte Welt: **{world}** (DM-Alarme: **{alerts}**)\n",
+  "trackedLine": "{icon} **{world}** ({dc}) — *{status}*\n",
+  "trackingNone": "Verfolgte Welt: **keine** — wähle unten eine Welt, um sie zu verfolgen.\n",
+  "worldLine": "{icon} **{world}** — *{status}*\n",
+  "switchDc": "Datenzentrum wechseln",
+  "selectWorld": "Welt zum Verfolgen wählen",
+  "disableDm": "🔕 DM-Alarme ausschalten",
+  "enableDm": "🔔 DM-Alarme einschalten",
+  "exit": "Schließen",
+  "alertDm": "🟢 **FFXIV-Serveralarm!**\nDie Welt **{world}** ({dc}) ist aus der Wartung zurück und jetzt wieder **ONLINE**!"
+}

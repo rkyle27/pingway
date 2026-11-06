@@ -1,0 +1,5 @@
+{
+  "cmd": { "description": "⚙️ Choisit ce salon pour les notifications de démarrage." },
+  "saved": "✅ Les notifications de ce serveur seront désormais envoyées dans <#{channelId}> !{joke}",
+  "failed": "❌ Une erreur s'est produite lors de l'enregistrement du salon de notifications."
+}

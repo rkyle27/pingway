@@ -1,0 +1,7 @@
+{
+  "cmd": {
+    "description": "⚙️ Set this channel for startup notifications."
+  },
+  "saved": "✅ Notifications for this server will now be sent to <#{channelId}>!{joke}",
+  "failed": "❌ An error occurred while saving the notification channel setting."
+}

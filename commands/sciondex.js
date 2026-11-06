@@ -12,6 +12,8 @@ const { pool } = require('../utils/db');
 
 // Load NPC Dataset
 const npcDex = require(path.join(__dirname, '..', 'data', 'npcdex.json'));
+const { t, discordLocalizations } = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
 
 // In-memory game state store per user across ephemeral transitions
 const activeSessions = new Map();
@@ -19,9 +21,10 @@ const activeSessions = new Map();
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('sciondex')
-        .setDescription('Open your global FFXIV ScionDex game menu.'),
+        .setDescription(t('en', 'sciondex.cmd.description')).setDescriptionLocalizations(discordLocalizations('sciondex.cmd.description')),
 
     async execute(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         try {
             const userId = String(interaction.user.id);
 
@@ -57,23 +60,14 @@ module.exports = {
             // Send tutorial ephemeral message for first-time users
             if (isFirstTimeUser) {
                 const tutorialEmbed = new EmbedBuilder()
-                    .setTitle('📜 Short Tutorial:')
+                    .setTitle(t(lang, 'sciondex.tutorialTitle'))
                     .setDescription(
-                        `On your Game Window there will be 3 items:\n\n` +
-                        `"⭐ **Stars**"\n` +
-                        `- accumulated from boss random drops or by releasing current party (minimum of total 10 stars to use release party).\n` +
-                        `- use to increase recruit chance.\n\n` +
-                        `"💎 **Shards**"\n` +
-                        `- accumulated from boss random drops or collected from defeated boss.\n` +
-                        `- use to summon 8-10★ NPC. Need 20 💎 per summon.\n\n` +
-                        `"🪶 **Phoenix Down**"\n` +
-                        `- accumulated from boss fights random drops. Cap at 10.\n` +
-                        `- use to revive party when wiped by the boss.`
+                        t(lang, 'sciondex.tutorial')
                     )
                     .setColor('#F1C40F');
 
                 const tutorialRow = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setCustomId('btn_tutorial_ok').setLabel('OK').setStyle(ButtonStyle.Success)
+                    new ButtonBuilder().setCustomId('btn_tutorial_ok').setLabel(t(lang, 'sciondex.ok')).setStyle(ButtonStyle.Success)
                 );
 
                 return await interaction.editReply({ embeds: [tutorialEmbed], components: [tutorialRow] });
@@ -82,14 +76,14 @@ module.exports = {
             const initialPayload = await renderGameWindow(interaction, null);
             
             if (!initialPayload) {
-                return await interaction.editReply({ content: '❌ Failed to fetch user data. Please try again later.' });
+                return await interaction.editReply({ content: t(lang, 'sciondex.fetchFailedLater') });
             }
 
             await interaction.editReply(initialPayload);
         } catch (err) {
             console.error('❌ Error executing /sciondex command:', err);
             if (!interaction.replied && !interaction.deferred) {
-                await interaction.reply({ content: '❌ An error occurred while opening ScionDex.', flags: [MessageFlags.Ephemeral] }).catch(() => {});
+                await interaction.reply({ content: t(lang, 'sciondex.openError'), flags: [MessageFlags.Ephemeral] }).catch(() => {});
             }
         }
     }
@@ -286,9 +280,10 @@ function calculateMobLootDrops(rarity) {
     return { starsDropped, shardsDropped };
 }
 
-function renderLoadingWindow(statusText = 'Loading...') {
+function renderLoadingWindow(statusText, lang = 'en') {
+    if (statusText === undefined) statusText = t(lang, 'sciondex.loading');
     const embed = new EmbedBuilder()
-        .setTitle('LOADING...')
+        .setTitle(t(lang, 'sciondex.loadingTitle'))
         .setDescription(statusText)
         .setColor('#E67E22');
 
@@ -296,6 +291,7 @@ function renderLoadingWindow(statusText = 'Loading...') {
 }
 
 async function renderGameWindow(interaction, customText = null, cachedUserData = null, cachedParty = null) {
+    const lang = await userLanguage.forInteraction(interaction);
     const userId = String(interaction.user.id);
     const userData = cachedUserData || await getUserData(userId);
     if (!userData) return null;
@@ -307,12 +303,12 @@ async function renderGameWindow(interaction, customText = null, cachedUserData =
     const shardsCount = userData.shards !== null && userData.shards !== undefined ? Number(userData.shards) : 0;
 
     const embed = new EmbedBuilder()
-        .setTitle(`📜 ScionDex - ${interaction.user.username}'s Command Center`)
+        .setTitle(t(lang, 'sciondex.gameTitle', { name: interaction.user.username }))
         .setColor('#2F3136')
         .addFields(
-            { name: '⭐ Stars', value: `${userStars}`, inline: false },
-            { name: '💎 Shards', value: `${shardsCount}`, inline: true },
-            { name: '🪶 Phoenix Downs', value: `${currentPhoenix}/10`, inline: true },
+            { name: t(lang, 'sciondex.stars'), value: `${userStars}`, inline: false },
+            { name: t(lang, 'sciondex.shards'), value: `${shardsCount}`, inline: true },
+            { name: t(lang, 'sciondex.phoenix'), value: `${currentPhoenix}/10`, inline: true },
             { name: '\u200B', value: '\u200B', inline: true }
         );
 
@@ -320,14 +316,14 @@ async function renderGameWindow(interaction, customText = null, cachedUserData =
     for (let i = 1; i <= 4; i++) {
         const member = party.find(p => p.slot === i);
         if (member) {
-            partyDesc += `**Slot ${i}:** [${member.rarity}★] **${member.name}** (HP: ${member.hp} | ATK: ${member.atk})\n`;
+            partyDesc += t(lang, 'sciondex.slot', { i, rarity: member.rarity, name: member.name, hp: member.hp, atk: member.atk });
         } else {
-            partyDesc += `**Slot ${i}:** *Empty*\n`;
+            partyDesc += t(lang, 'sciondex.slotEmpty', { i });
         }
     }
     embed.addFields(
-        { name: '⚔️ Current Party', value: partyDesc || 'None' },
-        { name: '📊 Your Total Stats', value: `❤️ **Total HP:** ${totalHp} | ⚔️ **Total ATK:** ${totalAtk}`, inline: false }
+        { name: t(lang, 'sciondex.currentParty'), value: partyDesc || t(lang, 'sciondex.noneParty') },
+        { name: t(lang, 'sciondex.totalStatsYour'), value: t(lang, 'sciondex.totalStatsValue', { hp: totalHp, atk: totalAtk }), inline: false }
     );
 
     if (customText) {
@@ -338,20 +334,21 @@ async function renderGameWindow(interaction, customText = null, cachedUserData =
     const summonDisabled = hasNoNpc || shardsCount < 20;
 
     const row1 = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('btn_recruit').setLabel('Recruit').setStyle(ButtonStyle.Primary),
-        new ButtonBuilder().setCustomId('btn_duty').setLabel('Duty Finder').setStyle(ButtonStyle.Success).setDisabled(hasNoNpc),
-        new ButtonBuilder().setCustomId('btn_summon').setLabel('Summon (20 Shards)').setStyle(ButtonStyle.Secondary).setDisabled(summonDisabled)
+        new ButtonBuilder().setCustomId('btn_recruit').setLabel(t(lang, 'sciondex.recruit')).setStyle(ButtonStyle.Primary),
+        new ButtonBuilder().setCustomId('btn_duty').setLabel(t(lang, 'sciondex.dutyFinder')).setStyle(ButtonStyle.Success).setDisabled(hasNoNpc),
+        new ButtonBuilder().setCustomId('btn_summon').setLabel(t(lang, 'sciondex.summon')).setStyle(ButtonStyle.Secondary).setDisabled(summonDisabled)
     );
 
     const row2 = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('btn_manage_party').setLabel('Manage Party').setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder().setCustomId('btn_exit').setLabel('Exit').setStyle(ButtonStyle.Danger)
+        new ButtonBuilder().setCustomId('btn_manage_party').setLabel(t(lang, 'sciondex.manageParty')).setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('btn_exit').setLabel(t(lang, 'sciondex.exit')).setStyle(ButtonStyle.Danger)
     );
 
     return { content: null, embeds: [embed], components: [row1, row2] };
 }
 
 async function renderPartyManagementWindow(interaction, customText = null) {
+    const lang = await userLanguage.forInteraction(interaction);
     const userId = String(interaction.user.id);
     const party = await getUserParty(userId);
     const userData = await getUserData(userId);
@@ -359,23 +356,23 @@ async function renderPartyManagementWindow(interaction, customText = null) {
     const { totalHp, totalAtk, totalReleaseStars } = calculatePartyStats(party);
 
     const embed = new EmbedBuilder()
-        .setTitle('Party Management')
+        .setTitle(t(lang, 'sciondex.partyMgmt'))
         .setColor('#3498DB')
-        .addFields({ name: '⭐ Stars', value: `${userStars}`, inline: false });
+        .addFields({ name: t(lang, 'sciondex.stars'), value: `${userStars}`, inline: false });
 
     let partyDesc = '';
     for (let i = 1; i <= 4; i++) {
         const member = party.find(p => p.slot === i);
         if (member) {
-            partyDesc += `**Slot ${i}:** [${member.rarity}★] **${member.name}** (HP: ${member.hp} | ATK: ${member.atk})\n`;
+            partyDesc += t(lang, 'sciondex.slot', { i, rarity: member.rarity, name: member.name, hp: member.hp, atk: member.atk });
         } else {
-            partyDesc += `**Slot ${i}:** *Empty*\n`;
+            partyDesc += t(lang, 'sciondex.slotEmpty', { i });
         }
     }
 
     embed.addFields(
-        { name: '👥 Current Party', value: partyDesc || 'None' },
-        { name: '📊 Total Stats', value: `❤️ **Total HP:** ${totalHp} | ⚔️ **Total ATK:** ${totalAtk}` }
+        { name: t(lang, 'sciondex.currentPartyMgmt'), value: partyDesc || t(lang, 'sciondex.noneParty') },
+        { name: t(lang, 'sciondex.totalStats'), value: t(lang, 'sciondex.totalStatsValue', { hp: totalHp, atk: totalAtk }) }
     );
 
     if (customText) {
@@ -386,26 +383,26 @@ async function renderPartyManagementWindow(interaction, customText = null) {
     const hasTenStarNpc = party.some(p => p.rarity >= 10);
 
     const row1 = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('btn_show_party_pm').setLabel('Show Party').setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('btn_show_party_pm').setLabel(t(lang, 'sciondex.showParty')).setStyle(ButtonStyle.Secondary),
         new ButtonBuilder()
             .setCustomId('btn_release_prompt')
-            .setLabel(`Release Party (${totalReleaseStars}★)`)
+            .setLabel(t(lang, 'sciondex.releaseParty', { stars: totalReleaseStars }))
             .setStyle(ButtonStyle.Secondary)
             .setDisabled(totalReleaseStars < 10 || hasNoNpc),
         new ButtonBuilder()
             .setCustomId('btn_levelup_prompt')
-            .setLabel('Level UP! ⬆️')
+            .setLabel(t(lang, 'sciondex.levelUp'))
             .setStyle(ButtonStyle.Primary)
             .setDisabled(hasNoNpc),
         new ButtonBuilder()
             .setCustomId('btn_changestat_prompt')
-            .setLabel('Change Stat 🎲 (20⭐)')
+            .setLabel(t(lang, 'sciondex.changeStat'))
             .setStyle(ButtonStyle.Secondary)
             .setDisabled(!hasTenStarNpc)
     );
 
     const row2 = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('btn_back_to_game').setLabel('Back').setStyle(ButtonStyle.Secondary)
+        new ButtonBuilder().setCustomId('btn_back_to_game').setLabel(t(lang, 'sciondex.back')).setStyle(ButtonStyle.Secondary)
     );
 
     return { content: null, embeds: [embed], components: [row1, row2] };
@@ -413,16 +410,18 @@ async function renderPartyManagementWindow(interaction, customText = null) {
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-async function transitionEphemeralFlow(interaction, getNewPayloadFn, statusText = 'Loading...') {
+async function transitionEphemeralFlow(interaction, getNewPayloadFn, statusText) {
+    const lang = await userLanguage.forInteraction(interaction);
+    if (statusText === undefined) statusText = t(lang, 'sciondex.loading');
     try {
         const loadingMessage = await interaction.update({
-            ...renderLoadingWindow(statusText),
+            ...renderLoadingWindow(statusText, lang),
             withResponse: true
         }).then(res => res?.resource?.message ?? null);
 
         const newPayload = await getNewPayloadFn();
         if (!newPayload) {
-            await interaction.followUp({ content: '❌ Failed to fetch user data. Please try again.', flags: [MessageFlags.Ephemeral] });
+            await interaction.followUp({ content: t(lang, 'sciondex.fetchFailed'), flags: [MessageFlags.Ephemeral] });
             await delay(1000);
             if (loadingMessage) await interaction.webhook.deleteMessage(loadingMessage.id).catch(() => {});
             return false;
@@ -467,28 +466,30 @@ module.exports.handleButtonInteraction = async function(interaction) {
     if (!interaction.isButton() && !interaction.isStringSelectMenu()) return;
     if (!interaction.customId.startsWith('btn_') && !interaction.customId.startsWith('select_')) return;
 
+    const lang = await userLanguage.forInteraction(interaction);
+    const glang = userLanguage.forGuild(interaction.guild); // messages everyone in the channel sees: the server's language
     try {
         const userId = String(interaction.user.id);
 
         // --- TUTORIAL OK BUTTON ---
         if (interaction.customId === 'btn_tutorial_ok') {
             return await transitionEphemeralFlow(interaction, async () => {
-                return await renderGameWindow(interaction, 'Welcome to ScionDex!');
-            }, 'Opening Game Window...');
+                return await renderGameWindow(interaction, t(lang, 'sciondex.welcome'));
+            }, t(lang, 'sciondex.openingGame'));
         }
 
         // --- MANAGE PARTY BUTTON ---
         if (interaction.customId === 'btn_manage_party') {
             return await transitionEphemeralFlow(interaction, async () => {
                 return await renderPartyManagementWindow(interaction);
-            }, 'Opening Party Management...');
+            }, t(lang, 'sciondex.openingParty'));
         }
 
         // --- BACK TO GAME WINDOW ---
         if (interaction.customId === 'btn_back_to_game') {
             return await transitionEphemeralFlow(interaction, async () => {
                 return await renderGameWindow(interaction);
-            }, 'Returning to Game Window...');
+            }, t(lang, 'sciondex.returningGame'));
         }
 
         // --- SHOW PARTY BUTTON (FROM PARTY MANAGEMENT) ---
@@ -496,14 +497,14 @@ module.exports.handleButtonInteraction = async function(interaction) {
             const party = await getUserParty(userId);
 
             if (!party || party.length === 0) {
-                await interaction.channel.send(`📜 <@${userId}> currently has **no NPCs** in their ScionDex party!`).catch(() => {});
-                return await interaction.reply({ content: '📢 Shared to the channel that you currently have no NPCs.', flags: [MessageFlags.Ephemeral] });
+                await interaction.channel.send(t(glang, 'sciondex.pub.noNpcs', { userId })).catch(() => {});
+                return await interaction.reply({ content: t(lang, 'sciondex.sharedNoNpcs'), flags: [MessageFlags.Ephemeral] });
             }
 
             const { totalHp, totalAtk } = calculatePartyStats(party);
             
             const embed = new EmbedBuilder()
-                .setTitle(`⚔️ ${interaction.user.username}'s ScionDex Party`)
+                .setTitle(t(glang, 'sciondex.pub.partyTitle', { name: interaction.user.username }))
                 .setColor('#3498DB')
                 .setThumbnail(interaction.user.displayAvatarURL());
 
@@ -511,19 +512,19 @@ module.exports.handleButtonInteraction = async function(interaction) {
             for (let i = 1; i <= 4; i++) {
                 const member = party.find(p => p.slot === i);
                 if (member) {
-                    partyDesc += `**Slot ${i}:** [${member.rarity}★] **${member.name}**\n↳ *HP: ${member.hp} | ATK: ${member.atk}*\n`;
+                    partyDesc += t(glang, 'sciondex.pub.slot', { i, rarity: member.rarity, name: member.name, hp: member.hp, atk: member.atk });
                 } else {
-                    partyDesc += `**Slot ${i}:** *Empty*\n`;
+                    partyDesc += t(glang, 'sciondex.slotEmpty', { i });
                 }
             }
 
             embed.addFields(
-                { name: '👥 Party Members', value: partyDesc },
-                { name: '📊 Your Total Stats', value: `❤️ **Total HP:** ${totalHp} | ⚔️ **Total ATK:** ${totalAtk}`, inline: false }
+                { name: t(glang, 'sciondex.pub.members'), value: partyDesc },
+                { name: t(glang, 'sciondex.totalStatsYour'), value: t(glang, 'sciondex.totalStatsValue', { hp: totalHp, atk: totalAtk }), inline: false }
             );
 
-            await interaction.channel.send({ content: `📜 Here is <@${userId}>'s current ScionDex party:`, embeds: [embed] }).catch(() => {});
-            return await interaction.reply({ content: '📢 Shared your current party to the public channel!', flags: [MessageFlags.Ephemeral] });
+            await interaction.channel.send({ content: t(glang, 'sciondex.pub.hereIsParty', { userId }), embeds: [embed] }).catch(() => {});
+            return await interaction.reply({ content: t(lang, 'sciondex.sharedParty'), flags: [MessageFlags.Ephemeral] });
         }
 
         // --- LEVEL UP PROMPT ---
@@ -533,36 +534,36 @@ module.exports.handleButtonInteraction = async function(interaction) {
                 const eligibleNpcs = party.filter(p => p.rarity < 10);
 
                 if (eligibleNpcs.length === 0) {
-                    return await renderPartyManagementWindow(interaction, '⚠️ All party members are already at maximum 10★ rank!');
+                    return await renderPartyManagementWindow(interaction, t(lang, 'sciondex.allMaxed'));
                 }
 
                 const options = eligibleNpcs.map(p => {
                     const req = levelUpRequirements[p.rarity];
                     return {
-                        label: `Slot ${p.slot}: ${p.name} (${p.rarity}★)`,
-                        description: `Cost: ${req ? req.stars : 0}★ | HP: ${p.hp} | ATK: ${p.atk}`,
+                        label: t(lang, 'sciondex.npcOption', { slot: p.slot, name: p.name, rarity: p.rarity }),
+                        description: t(lang, 'sciondex.levelCost', { cost: req ? req.stars : 0, hp: p.hp, atk: p.atk }),
                         value: String(p.slot)
                     };
                 });
 
                 const selectMenu = new StringSelectMenuBuilder()
                     .setCustomId('select_levelup_slot')
-                    .setPlaceholder('Select an NPC to level up...')
+                    .setPlaceholder(t(lang, 'sciondex.selectLevelUp'))
                     .addOptions(options);
 
                 const row1 = new ActionRowBuilder().addComponents(selectMenu);
                 const row2 = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setCustomId('btn_levelup_cancel').setLabel('Cancel').setStyle(ButtonStyle.Secondary),
-                    new ButtonBuilder().setCustomId('btn_levelup_ok_dummy').setLabel('OK (-⭐)').setStyle(ButtonStyle.Success).setDisabled(true)
+                    new ButtonBuilder().setCustomId('btn_levelup_cancel').setLabel(t(lang, 'sciondex.cancel')).setStyle(ButtonStyle.Secondary),
+                    new ButtonBuilder().setCustomId('btn_levelup_ok_dummy').setLabel(t(lang, 'sciondex.okMinusStar')).setStyle(ButtonStyle.Success).setDisabled(true)
                 );
 
                 const embed = new EmbedBuilder()
-                    .setTitle('⬆️ Level UP! NPC Selection')
-                    .setDescription('Select an NPC from your party to level up to the next star rank:')
+                    .setTitle(t(lang, 'sciondex.levelUpTitle'))
+                    .setDescription(t(lang, 'sciondex.levelUpHelp'))
                     .setColor('#3498DB');
 
                 return { content: null, embeds: [embed], components: [row1, row2] };
-            }, 'Preparing Level Up...');
+            }, t(lang, 'sciondex.preparingLevelUp'));
         }
 
         // --- LEVEL UP SELECT DROPDOWN (CHANGES OK BUTTON DYNAMICALLY) ---
@@ -572,7 +573,7 @@ module.exports.handleButtonInteraction = async function(interaction) {
             const targetNpc = party.find(p => p.slot === chosenSlot);
 
             if (!targetNpc || targetNpc.rarity >= 10) {
-                return await interaction.update({ content: '⚠️ Invalid selection.' });
+                return await interaction.update({ content: t(lang, 'sciondex.invalidSelection') });
             }
 
             const req = levelUpRequirements[targetNpc.rarity];
@@ -583,8 +584,8 @@ module.exports.handleButtonInteraction = async function(interaction) {
             const options = eligibleNpcs.map(p => {
                 const r = levelUpRequirements[p.rarity];
                 return {
-                    label: `Slot ${p.slot}: ${p.name} (${p.rarity}★)`,
-                    description: `Cost: ${r ? r.stars : 0}★ | HP: ${p.hp} | ATK: ${p.atk}`,
+                    label: t(lang, 'sciondex.npcOption', { slot: p.slot, name: p.name, rarity: p.rarity }),
+                    description: t(lang, 'sciondex.levelCost', { cost: r ? r.stars : 0, hp: p.hp, atk: p.atk }),
                     value: String(p.slot),
                     default: Number(p.slot) === chosenSlot
                 };
@@ -592,18 +593,18 @@ module.exports.handleButtonInteraction = async function(interaction) {
 
             const selectMenu = new StringSelectMenuBuilder()
                 .setCustomId('select_levelup_slot')
-                .setPlaceholder(`Selected: Slot ${chosenSlot} (${targetNpc.name})`)
+                .setPlaceholder(t(lang, 'sciondex.selected', { slot: chosenSlot, name: targetNpc.name }))
                 .addOptions(options);
 
             const row1 = new ActionRowBuilder().addComponents(selectMenu);
             const row2 = new ActionRowBuilder().addComponents(
-                new ButtonBuilder().setCustomId('btn_levelup_cancel').setLabel('Cancel').setStyle(ButtonStyle.Secondary),
-                new ButtonBuilder().setCustomId(`btn_levelup_confirm_${chosenSlot}`).setLabel(`OK (${starCost}⭐)`).setStyle(ButtonStyle.Success)
+                new ButtonBuilder().setCustomId('btn_levelup_cancel').setLabel(t(lang, 'sciondex.cancel')).setStyle(ButtonStyle.Secondary),
+                new ButtonBuilder().setCustomId(`btn_levelup_confirm_${chosenSlot}`).setLabel(t(lang, 'sciondex.okStars', { cost: starCost })).setStyle(ButtonStyle.Success)
             );
 
             const embed = new EmbedBuilder()
-                .setTitle('⬆️ Level UP! NPC Selection')
-                .setDescription(`Selected **${targetNpc.name}** [${targetNpc.rarity}★ ➔ ${targetNpc.rarity + 1}★]. Cost: **${starCost} Stars**.\nClick OK to confirm:`)
+                .setTitle(t(lang, 'sciondex.levelUpTitle'))
+                .setDescription(t(lang, 'sciondex.levelUpSelected', { name: targetNpc.name, from: targetNpc.rarity, to: targetNpc.rarity + 1, cost: starCost }))
                 .setColor('#3498DB');
 
             return await interaction.update({ embeds: [embed], components: [row1, row2] });
@@ -612,8 +613,8 @@ module.exports.handleButtonInteraction = async function(interaction) {
         // --- LEVEL UP CANCEL ---
         if (interaction.customId === 'btn_levelup_cancel') {
             return await transitionEphemeralFlow(interaction, async () => {
-                return await renderPartyManagementWindow(interaction, 'Cancelled Level UP.');
-            }, 'Returning to Party Management...');
+                return await renderPartyManagementWindow(interaction, t(lang, 'sciondex.levelUpCancelled'));
+            }, t(lang, 'sciondex.returningParty'));
         }
 
         // --- LEVEL UP CONFIRM BUTTON ---
@@ -624,7 +625,7 @@ module.exports.handleButtonInteraction = async function(interaction) {
                 const targetNpc = party.find(p => p.slot === chosenSlot);
 
                 if (!targetNpc || targetNpc.rarity >= 10) {
-                    return await renderPartyManagementWindow(interaction, '⚠️ Invalid selection or NPC is already maxed out.');
+                    return await renderPartyManagementWindow(interaction, t(lang, 'sciondex.invalidOrMaxed'));
                 }
 
                 const currentRarity = targetNpc.rarity;
@@ -635,7 +636,7 @@ module.exports.handleButtonInteraction = async function(interaction) {
                 const userStars = userData && userData.stars !== null ? Number(userData.stars) : 0;
 
                 if (userStars < req.stars) {
-                    return await renderPartyManagementWindow(interaction, `⚠️ Not enough stars! You need **${req.stars}★** (You have ${userStars}★).`);
+                    return await renderPartyManagementWindow(interaction, t(lang, 'sciondex.notEnoughStars', { need: req.stars, have: userStars }));
                 }
 
                 // Deduct stars
@@ -645,8 +646,8 @@ module.exports.handleButtonInteraction = async function(interaction) {
                 const failed = Math.random() < req.failRate;
 
                 if (failed) {
-                    await interaction.channel.send(`❌ <@${userId}> failed to level up **${targetNpc.name}** to ${nextRarity}★!`).catch(() => {});
-                    return await renderPartyManagementWindow(interaction, `❌ Failed to level up **${targetNpc.name}** to ${nextRarity}★ (Lost ${req.stars}★).`);
+                    await interaction.channel.send(t(glang, 'sciondex.pub.levelFailed', { userId, name: targetNpc.name, rarity: nextRarity })).catch(() => {});
+                    return await renderPartyManagementWindow(interaction, t(lang, 'sciondex.levelFailed', { name: targetNpc.name, rarity: nextRarity, lost: req.stars }));
                 }
 
                 // Success: Calculate new stats (+19% to +21%)
@@ -661,10 +662,10 @@ module.exports.handleButtonInteraction = async function(interaction) {
                     [nextRarity, newHp, newAtk, userId, chosenSlot]
                 );
 
-                await interaction.channel.send(`🎉 <@${userId}> successfully leveled up **${targetNpc.name}** [${currentRarity}★] to [${nextRarity}★]!`).catch(() => {});
+                await interaction.channel.send(t(glang, 'sciondex.pub.levelOk', { userId, name: targetNpc.name, from: currentRarity, to: nextRarity })).catch(() => {});
 
-                return await renderPartyManagementWindow(interaction, `🎉 Successfully leveled up **${targetNpc.name}** to **${nextRarity}★**!\n❤️ New HP: ${newHp} | ⚔️ New ATK: ${newAtk}`);
-            }, 'Processing Level UP...');
+                return await renderPartyManagementWindow(interaction, t(lang, 'sciondex.levelOk', { name: targetNpc.name, rarity: nextRarity, hp: newHp, atk: newAtk }));
+            }, t(lang, 'sciondex.processingLevelUp'));
         }
 
         // --- CHANGE STAT PROMPT ---
@@ -675,40 +676,40 @@ module.exports.handleButtonInteraction = async function(interaction) {
                 const userStars = userData && userData.stars !== null ? Number(userData.stars) : 0;
 
                 if (userStars < 20) {
-                    return await renderPartyManagementWindow(interaction, '⚠️ You need at least **20 Stars** to change stats!');
+                    return await renderPartyManagementWindow(interaction, t(lang, 'sciondex.need20'));
                 }
 
                 // Exclude Godbert from changing stats
                 const eligibleNpcs = party.filter(p => p.rarity >= 10 && p.name.toLowerCase() !== 'godbert manderville');
 
                 if (eligibleNpcs.length === 0) {
-                    return await renderPartyManagementWindow(interaction, '⚠️ You have no eligible 10★ NPCs (Godbert cannot change stats).');
+                    return await renderPartyManagementWindow(interaction, t(lang, 'sciondex.no10Star'));
                 }
 
                 const options = eligibleNpcs.map(p => ({
-                    label: `Slot ${p.slot}: ${p.name} (10★)`,
-                    description: `Current HP: ${p.hp} | ATK: ${p.atk}`,
+                    label: t(lang, 'sciondex.npcOption10', { slot: p.slot, name: p.name }),
+                    description: t(lang, 'sciondex.currentStats', { hp: p.hp, atk: p.atk }),
                     value: String(p.slot)
                 }));
 
                 const selectMenu = new StringSelectMenuBuilder()
                     .setCustomId('select_changestat_slot')
-                    .setPlaceholder('Select a 10★ NPC to change stats...')
+                    .setPlaceholder(t(lang, 'sciondex.select10Star'))
                     .addOptions(options);
 
                 const row1 = new ActionRowBuilder().addComponents(selectMenu);
                 const row2 = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setCustomId('btn_changestat_cancel').setLabel('Cancel').setStyle(ButtonStyle.Secondary),
-                    new ButtonBuilder().setCustomId('btn_changestat_ok_dummy').setLabel('OK (20⭐)').setStyle(ButtonStyle.Success).setDisabled(true)
+                    new ButtonBuilder().setCustomId('btn_changestat_cancel').setLabel(t(lang, 'sciondex.cancel')).setStyle(ButtonStyle.Secondary),
+                    new ButtonBuilder().setCustomId('btn_changestat_ok_dummy').setLabel(t(lang, 'sciondex.ok20')).setStyle(ButtonStyle.Success).setDisabled(true)
                 );
 
                 const embed = new EmbedBuilder()
-                    .setTitle('🎲 Change Stat - 10★ NPC Selection')
-                    .setDescription('Select a 10★ NPC from your party to reroll stats (Cost: **20 Stars**):')
+                    .setTitle(t(lang, 'sciondex.changeStatTitle'))
+                    .setDescription(t(lang, 'sciondex.changeStatHelp'))
                     .setColor('#E67E22');
 
                 return { content: null, embeds: [embed], components: [row1, row2] };
-            }, 'Preparing Stat Reroll...');
+            }, t(lang, 'sciondex.preparingReroll'));
         }
 
         // --- CHANGE STAT SELECT SLOT MENU ---
@@ -718,31 +719,31 @@ module.exports.handleButtonInteraction = async function(interaction) {
             const targetNpc = party.find(p => p.slot === chosenSlot);
 
             if (!targetNpc) {
-                return await interaction.update({ content: '⚠️ Invalid selection.' });
+                return await interaction.update({ content: t(lang, 'sciondex.invalidSelection') });
             }
 
             const eligibleNpcs = party.filter(p => p.rarity >= 10 && p.name.toLowerCase() !== 'godbert manderville');
             const options = eligibleNpcs.map(p => ({
-                label: `Slot ${p.slot}: ${p.name} (10★)`,
-                description: `Current HP: ${p.hp} | ATK: ${p.atk}`,
+                label: t(lang, 'sciondex.npcOption10', { slot: p.slot, name: p.name }),
+                description: t(lang, 'sciondex.currentStats', { hp: p.hp, atk: p.atk }),
                 value: String(p.slot),
                 default: Number(p.slot) === chosenSlot
             }));
 
             const selectMenu = new StringSelectMenuBuilder()
                 .setCustomId('select_changestat_slot')
-                .setPlaceholder(`Selected: Slot ${chosenSlot} (${targetNpc.name})`)
+                .setPlaceholder(t(lang, 'sciondex.selected', { slot: chosenSlot, name: targetNpc.name }))
                 .addOptions(options);
 
             const row1 = new ActionRowBuilder().addComponents(selectMenu);
             const row2 = new ActionRowBuilder().addComponents(
-                new ButtonBuilder().setCustomId('btn_changestat_cancel').setLabel('Cancel').setStyle(ButtonStyle.Secondary),
-                new ButtonBuilder().setCustomId(`btn_changestat_confirm_${chosenSlot}`).setLabel('OK (20⭐)').setStyle(ButtonStyle.Success)
+                new ButtonBuilder().setCustomId('btn_changestat_cancel').setLabel(t(lang, 'sciondex.cancel')).setStyle(ButtonStyle.Secondary),
+                new ButtonBuilder().setCustomId(`btn_changestat_confirm_${chosenSlot}`).setLabel(t(lang, 'sciondex.ok20')).setStyle(ButtonStyle.Success)
             );
 
             const embed = new EmbedBuilder()
-                .setTitle('🎲 Change Stat - 10★ NPC Selection')
-                .setDescription(`Selected **${targetNpc.name}** [10★]. Cost: **20 Stars**. Click OK to reroll:`)
+                .setTitle(t(lang, 'sciondex.changeStatTitle'))
+                .setDescription(t(lang, 'sciondex.changeStatSelected', { name: targetNpc.name }))
                 .setColor('#E67E22');
 
             return await interaction.update({ embeds: [embed], components: [row1, row2] });
@@ -751,8 +752,8 @@ module.exports.handleButtonInteraction = async function(interaction) {
         // --- CHANGE STAT CANCEL ---
         if (interaction.customId === 'btn_changestat_cancel') {
             return await transitionEphemeralFlow(interaction, async () => {
-                return await renderPartyManagementWindow(interaction, 'Cancelled Stat Reroll.');
-            }, 'Returning to Party Management...');
+                return await renderPartyManagementWindow(interaction, t(lang, 'sciondex.rerollCancelled'));
+            }, t(lang, 'sciondex.returningParty'));
         }
 
         // --- CHANGE STAT CONFIRM BUTTON ---
@@ -763,14 +764,14 @@ module.exports.handleButtonInteraction = async function(interaction) {
                 const userStars = userData && userData.stars !== null ? Number(userData.stars) : 0;
 
                 if (userStars < 20) {
-                    return await renderPartyManagementWindow(interaction, '⚠️ Not enough stars! You need **20 Stars**.');
+                    return await renderPartyManagementWindow(interaction, t(lang, 'sciondex.notEnough20'));
                 }
 
                 const party = await getUserParty(userId);
                 const targetNpc = party.find(p => p.slot === chosenSlot);
 
                 if (!targetNpc || targetNpc.rarity < 10 || targetNpc.name.toLowerCase() === 'godbert manderville') {
-                    return await renderPartyManagementWindow(interaction, '⚠️ Invalid selection.');
+                    return await renderPartyManagementWindow(interaction, t(lang, 'sciondex.invalidSelection'));
                 }
 
                 // Deduct 20 stars
@@ -801,28 +802,25 @@ module.exports.handleButtonInteraction = async function(interaction) {
                 const atkArrow = newAtk > oldAtk ? '📈' : (newAtk < oldAtk ? '📉' : '➡️');
 
                 const embed = new EmbedBuilder()
-                    .setTitle(`🎲 Stat Reroll: ${targetNpc.name} [10★]`)
+                    .setTitle(t(lang, 'sciondex.rerollTitle', { name: targetNpc.name }))
                     .setDescription(
-                        `Successfully spent **20 Stars**!\n\n` +
-                        `Here are the new stats for **${targetNpc.name}**:\n\n` +
-                        `❤️ **HP:** ${oldHp} ➔ **${newHp}** ${hpArrow}\n` +
-                        `⚔️ **ATK:** ${oldAtk} ➔ **${newAtk}** ${atkArrow}`
+                        t(lang, 'sciondex.rerollText', { name: targetNpc.name, oldHp, newHp, hpArrow, oldAtk, newAtk, atkArrow })
                     )
                     .setColor('#2ECC71');
 
                 const row = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setCustomId('btn_changestat_ok').setLabel('OK').setStyle(ButtonStyle.Success)
+                    new ButtonBuilder().setCustomId('btn_changestat_ok').setLabel(t(lang, 'sciondex.ok')).setStyle(ButtonStyle.Success)
                 );
 
                 return { content: null, embeds: [embed], components: [row] };
-            }, 'Rerolling stats...');
+            }, t(lang, 'sciondex.rerolling'));
         }
 
         // --- CHANGE STAT OK BUTTON ---
         if (interaction.customId === 'btn_changestat_ok') {
             return await transitionEphemeralFlow(interaction, async () => {
-                return await renderPartyManagementWindow(interaction, 'Successfully updated NPC stats!');
-            }, 'Returning to Party Management...');
+                return await renderPartyManagementWindow(interaction, t(lang, 'sciondex.statsUpdated'));
+            }, t(lang, 'sciondex.returningParty'));
         }
 
         // --- RELEASE PARTY PROMPT ---
@@ -830,27 +828,27 @@ module.exports.handleButtonInteraction = async function(interaction) {
             return await transitionEphemeralFlow(interaction, async () => {
                 const party = await getUserParty(userId);
                 if (!party || party.length === 0) {
-                    return await renderPartyManagementWindow(interaction, '⚠️ You currently have no party members to release.');
+                    return await renderPartyManagementWindow(interaction, t(lang, 'sciondex.noMembersRelease'));
                 }
 
                 const { totalReleaseStars } = calculatePartyStats(party);
 
                 if (totalReleaseStars < 10) {
-                    return await renderPartyManagementWindow(interaction, '⚠️ Your total party release stars must be at least 10★ to release your party.');
+                    return await renderPartyManagementWindow(interaction, t(lang, 'sciondex.releaseMin'));
                 }
 
                 const embed = new EmbedBuilder()
-                    .setTitle('⚠️ Release Party Confirmation')
-                    .setDescription(`Are you sure you want to release your current party?\n\nThis will remove all party members and add **+${totalReleaseStars}★** to your accumulated stars balance.`)
+                    .setTitle(t(lang, 'sciondex.releaseTitle'))
+                    .setDescription(t(lang, 'sciondex.releaseConfirm', { stars: totalReleaseStars }))
                     .setColor('#E67E22');
 
                 const row = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setCustomId('btn_confirm_release').setLabel('Yes, Release Party').setStyle(ButtonStyle.Danger),
-                    new ButtonBuilder().setCustomId('btn_cancel_release').setLabel('No, Cancel').setStyle(ButtonStyle.Secondary)
+                    new ButtonBuilder().setCustomId('btn_confirm_release').setLabel(t(lang, 'sciondex.yesRelease')).setStyle(ButtonStyle.Danger),
+                    new ButtonBuilder().setCustomId('btn_cancel_release').setLabel(t(lang, 'sciondex.noCancel')).setStyle(ButtonStyle.Secondary)
                 );
 
                 return { content: null, embeds: [embed], components: [row] };
-            }, 'Preparing party release prompt...');
+            }, t(lang, 'sciondex.preparingRelease'));
         }
 
         // --- CONFIRM RELEASE PARTY ---
@@ -860,7 +858,7 @@ module.exports.handleButtonInteraction = async function(interaction) {
                 const { totalReleaseStars } = calculatePartyStats(party);
 
                 if (totalReleaseStars < 10) {
-                    return await renderPartyManagementWindow(interaction, '⚠️ Action denied. Total party release stars are under 10★.');
+                    return await renderPartyManagementWindow(interaction, t(lang, 'sciondex.releaseDenied'));
                 }
 
                 let partyListBlock = '```\n';
@@ -872,7 +870,7 @@ module.exports.handleButtonInteraction = async function(interaction) {
                 }
                 partyListBlock += '```';
 
-                const publicMessage = `🕊️ <@${userId}> released their current party:\n${partyListBlock}\nfor a total of ${totalReleaseStars}★.`;
+                const publicMessage = t(glang, 'sciondex.pub.released', { userId, list: partyListBlock, stars: totalReleaseStars });
                 await interaction.channel.send(publicMessage).catch(() => {});
 
                 await pool.execute(
@@ -884,15 +882,15 @@ module.exports.handleButtonInteraction = async function(interaction) {
 
                 await pool.execute('DELETE FROM sciondex_user_party WHERE user_id = ?', [userId]);
 
-                return await renderPartyManagementWindow(interaction, `✅ Released party! Added **${totalReleaseStars}★** to your total balance.`);
-            }, 'Releasing party...');
+                return await renderPartyManagementWindow(interaction, t(lang, 'sciondex.released', { stars: totalReleaseStars }));
+            }, t(lang, 'sciondex.releasing'));
         }
 
         // --- CANCEL RELEASE PARTY ---
         if (interaction.customId === 'btn_cancel_release') {
             return await transitionEphemeralFlow(interaction, async () => {
-                return await renderPartyManagementWindow(interaction, 'Cancelled party release.');
-            }, 'Returning to Party Management...');
+                return await renderPartyManagementWindow(interaction, t(lang, 'sciondex.releaseCancelled'));
+            }, t(lang, 'sciondex.returningParty'));
         }
 
         // --- USE STARS FOR RECRUITMENT ---
@@ -906,22 +904,22 @@ module.exports.handleButtonInteraction = async function(interaction) {
                 const targetNpc = gameState.activeBoss;
 
                 if (!targetNpc) {
-                    return await renderGameWindow(interaction, '⚠️ Encounter expired or no target boss available.');
+                    return await renderGameWindow(interaction, t(lang, 'sciondex.encounterExpired'));
                 }
 
                 // Confirmation window for use star button
                 const embed = new EmbedBuilder()
-                    .setTitle('⭐ Use Stars Confirmation')
-                    .setDescription(`Are you sure you want to use **${starsToUse} Stars** to boost your recruit chance to **${Math.round(targetBoostChance * 100)}%** for **${targetNpc.name}**?`)
+                    .setTitle(t(lang, 'sciondex.useStarsTitle'))
+                    .setDescription(t(lang, 'sciondex.useStarsConfirm', { stars: starsToUse, chance: Math.round(targetBoostChance * 100), name: targetNpc.name }))
                     .setColor('#F1C40F');
 
                 const row = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setCustomId(`btn_confirm_usestars_${starsToUse}_${targetBoostChance}`).setLabel('Confirm').setStyle(ButtonStyle.Success),
-                    new ButtonBuilder().setCustomId('btn_cancel_usestars').setLabel('Cancel').setStyle(ButtonStyle.Secondary)
+                    new ButtonBuilder().setCustomId(`btn_confirm_usestars_${starsToUse}_${targetBoostChance}`).setLabel(t(lang, 'sciondex.confirm')).setStyle(ButtonStyle.Success),
+                    new ButtonBuilder().setCustomId('btn_cancel_usestars').setLabel(t(lang, 'sciondex.cancel')).setStyle(ButtonStyle.Secondary)
                 );
 
                 return { content: null, embeds: [embed], components: [row] };
-            }, 'Preparing star usage confirmation...');
+            }, t(lang, 'sciondex.preparingStars'));
         }
 
         // --- CANCEL USE STARS (FIXES BUG: PRESERVES VICTORY WINDOW & BONUS WITHOUT RESENDING BOSS DEFEATED) ---
@@ -929,10 +927,10 @@ module.exports.handleButtonInteraction = async function(interaction) {
             return await transitionEphemeralFlow(interaction, async () => {
                 const gameState = activeSessions.get(userId) || {};
                 if (!gameState.activeBoss) {
-                    return await renderGameWindow(interaction, 'Cancelled star usage.');
+                    return await renderGameWindow(interaction, t(lang, 'sciondex.starsCancelled'));
                 }
                 return await getBossVictoryPayload(interaction, gameState, userId, false);
-            }, 'Returning to victory window...');
+            }, t(lang, 'sciondex.returningVictory'));
         }
 
         // --- CONFIRM USE STARS ---
@@ -946,7 +944,7 @@ module.exports.handleButtonInteraction = async function(interaction) {
                 const targetNpc = gameState.activeBoss;
 
                 if (!targetNpc) {
-                    return await renderGameWindow(interaction, '⚠️ Encounter expired or no target boss available.');
+                    return await renderGameWindow(interaction, t(lang, 'sciondex.encounterExpired'));
                 }
 
                 await pool.execute(
@@ -969,12 +967,12 @@ module.exports.handleButtonInteraction = async function(interaction) {
 
                     return await renderGameWindow(
                         interaction, 
-                        `❌ **Recruitment Failed!** Even with **${starsToUse} Stars** used (${Math.round(targetBoostChance * 100)}% chance), **${targetNpc.name}** fled!\n` +
-                        `💎 Received **${consolationShards} Shard(s)** as consolation.`
+                        t(lang, 'sciondex.recruitFailedStars', { stars: starsToUse, chance: Math.round(targetBoostChance * 100), name: targetNpc.name }) +
+                        t(lang, 'sciondex.consolation', { shards: consolationShards })
                     );
                 }
 
-                await interaction.channel.send(`🎉 <@${userId}> used **${starsToUse} Stars** and successfully recruited **${targetNpc.name}** [${targetNpc.rarity}★]!`).catch(() => {});
+                await interaction.channel.send(t(glang, 'sciondex.pub.recruitedStars', { userId, stars: starsToUse, name: targetNpc.name, rarity: targetNpc.rarity })).catch(() => {});
 
                 const party = await getUserParty(userId);
                 gameState.pendingNpcToReplace = targetNpc;
@@ -993,42 +991,38 @@ module.exports.handleButtonInteraction = async function(interaction) {
                     gameState.pendingNpcToReplace = null;
                     activeSessions.set(userId, gameState);
 
-                    return await renderGameWindow(interaction, `🎉 Successfully recruited **${targetNpc.name}** into Slot ${nextSlot}! Used **${starsToUse} Stars**.`);
+                    return await renderGameWindow(interaction, t(lang, 'sciondex.recruitedStars', { name: targetNpc.name, slot: nextSlot, stars: starsToUse }));
                 }
 
                 const shardReward = Number(targetNpc.rarity);
                 const options = party.map(p => ({
-                    label: `Slot ${p.slot}: ${p.name} (${p.rarity}★)`,
-                    description: `HP: ${p.hp} | ATK: ${p.atk}`,
+                    label: t(lang, 'sciondex.npcOption', { slot: p.slot, name: p.name, rarity: p.rarity }),
+                    description: t(lang, 'sciondex.npcStats', { hp: p.hp, atk: p.atk }),
                     value: String(p.slot)
                 }));
 
                 const selectMenu = new StringSelectMenuBuilder()
                     .setCustomId('select_replace_slot')
-                    .setPlaceholder('Select a party member to replace...')
+                    .setPlaceholder(t(lang, 'sciondex.selectReplace'))
                     .addOptions(options);
 
                 const row1 = new ActionRowBuilder().addComponents(selectMenu);
                 const row2 = new ActionRowBuilder().addComponents(
                     new ButtonBuilder()
                         .setCustomId(`btn_get_shards_${shardReward}`)
-                        .setLabel(`Get Shard Instead (${shardReward})`)
+                        .setLabel(t(lang, 'sciondex.getShards', { n: shardReward }))
                         .setStyle(ButtonStyle.Secondary)
                 );
 
                 const embed = new EmbedBuilder()
-                    .setTitle(`Replace a Party Member with ${targetNpc.name} [${targetNpc.rarity}★]`)
+                    .setTitle(t(lang, 'sciondex.replaceTitle', { name: targetNpc.name, rarity: targetNpc.rarity }))
                     .setDescription(
-                        `Used **${starsToUse} Stars** to successfully recruit!\n\n` +
-                        `❤️ **HP:** ${targetNpc.hp} | ⚔️ **ATK:** ${targetNpc.atk}\n` +
-                        `🏷️ **Title:** ${targetNpc.title || 'None'}\n` +
-                        `🌍 **Expansion:** ${targetNpc.expansion || 'Unknown'}\n\n` +
-                        `Choose which slot you wish to overwrite or collect shards instead:`
+                        t(lang, 'sciondex.replaceTextStars', { stars: starsToUse, hp: targetNpc.hp, atk: targetNpc.atk, title: targetNpc.title || t(lang, 'sciondex.none'), expansion: targetNpc.expansion || t(lang, 'sciondex.unknown') })
                     )
                     .setColor('#E67E22');
 
                 return { content: null, embeds: [embed], components: [row1, row2] };
-            }, 'Applying stars and recruiting...');
+            }, t(lang, 'sciondex.applyingStars'));
         }
 
         // --- REPLACE MEMBER PROMPT ---
@@ -1037,7 +1031,7 @@ module.exports.handleButtonInteraction = async function(interaction) {
             const targetNpc = gameState.pendingNpcToReplace || gameState.activeBoss;
 
             if (!targetNpc) {
-                return await interaction.reply({ content: '⚠️ Encounter expired or no target NPC available.', flags: [MessageFlags.Ephemeral] });
+                return await interaction.reply({ content: t(lang, 'sciondex.encounterExpiredNpc'), flags: [MessageFlags.Ephemeral] });
             }
 
             if (gameState.activeBoss) {
@@ -1057,13 +1051,13 @@ module.exports.handleButtonInteraction = async function(interaction) {
                     activeSessions.set(userId, gameState);
 
                     const oldFailMsg = await interaction.update({
-                        content: `❌ **Recruitment Failed!** **${targetNpc.name}** fled before joining your party.\n💎 You received **${consolationShards} Shard(s)** as consolation.`,
+                        content: t(lang, 'sciondex.recruitFailed', { name: targetNpc.name, shards: consolationShards }),
                         embeds: [],
                         components: [],
                         withResponse: true
                     }).then(res => res?.resource?.message ?? null);
 
-                    const failGamePayload = await renderGameWindow(interaction, `❌ Failed to recruit **${targetNpc.name}**. Received **${consolationShards} Shard(s)**.`);
+                    const failGamePayload = await renderGameWindow(interaction, t(lang, 'sciondex.recruitFailedShort', { name: targetNpc.name, shards: consolationShards }));
                     await interaction.followUp({ ...failGamePayload, flags: [MessageFlags.Ephemeral] });
 
                     await delay(2000);
@@ -1073,11 +1067,11 @@ module.exports.handleButtonInteraction = async function(interaction) {
                     return;
                 }
 
-                await interaction.channel.send(`🎉 <@${userId}> successfully recruited **${targetNpc.name}** [${targetNpc.rarity}★] after defeating them!`).catch(() => {});
+                await interaction.channel.send(t(glang, 'sciondex.pub.recruitedDefeat', { userId, name: targetNpc.name, rarity: targetNpc.rarity })).catch(() => {});
             }
 
             const oldMsg = await interaction.update({
-                content: '⏳ *Saving...*',
+                content: t(lang, 'sciondex.saving'),
                 embeds: [],
                 components: [],
                 withResponse: true
@@ -1087,31 +1081,28 @@ module.exports.handleButtonInteraction = async function(interaction) {
             const shardReward = Number(targetNpc.rarity);
 
             const options = party.map(p => ({
-                label: `Slot ${p.slot}: ${p.name} (${p.rarity}★)`,
-                description: `HP: ${p.hp} | ATK: ${p.atk}`,
+                label: t(lang, 'sciondex.npcOption', { slot: p.slot, name: p.name, rarity: p.rarity }),
+                description: t(lang, 'sciondex.npcStats', { hp: p.hp, atk: p.atk }),
                 value: String(p.slot)
             }));
 
             const selectMenu = new StringSelectMenuBuilder()
                 .setCustomId('select_replace_slot')
-                .setPlaceholder('Select a party member to replace...')
+                .setPlaceholder(t(lang, 'sciondex.selectReplace'))
                 .addOptions(options);
 
             const row1 = new ActionRowBuilder().addComponents(selectMenu);
             const row2 = new ActionRowBuilder().addComponents(
                 new ButtonBuilder()
                     .setCustomId(`btn_get_shards_${shardReward}`)
-                    .setLabel(`Get Shard Instead (${shardReward})`)
+                    .setLabel(t(lang, 'sciondex.getShards', { n: shardReward }))
                     .setStyle(ButtonStyle.Secondary)
             );
 
             const embed = new EmbedBuilder()
-                .setTitle(`Replace a Party Member with ${targetNpc.name} [${targetNpc.rarity}★]`)
+                .setTitle(t(lang, 'sciondex.replaceTitle', { name: targetNpc.name, rarity: targetNpc.rarity }))
                 .setDescription(
-                    `❤️ **HP:** ${targetNpc.hp} | ⚔️ **ATK:** ${targetNpc.atk}\n` +
-                    `🏷️ **Title:** ${targetNpc.title || 'None'}\n` +
-                    `🌍 **Expansion:** ${targetNpc.expansion || 'Unknown'}\n\n` +
-                    `Choose which slot you wish to overwrite or get shards instead:`
+                    t(lang, 'sciondex.replaceText', { hp: targetNpc.hp, atk: targetNpc.atk, title: targetNpc.title || t(lang, 'sciondex.none'), expansion: targetNpc.expansion || t(lang, 'sciondex.unknown') })
                 )
                 .setColor('#E67E22');
 
@@ -1131,11 +1122,11 @@ module.exports.handleButtonInteraction = async function(interaction) {
             const newNpc = gameState.pendingNpcToReplace || gameState.activeBoss;
 
             if (!newNpc || chosenSlot < 1 || chosenSlot > 4) {
-                return await interaction.update({ content: '⚠️ Session expired or invalid selection.', embeds: [], components: [] });
+                return await interaction.update({ content: t(lang, 'sciondex.sessionExpired'), embeds: [], components: [] });
             }
 
             const dropdownMsg = await interaction.update({
-                content: '⏳ *Saving slot selection...*',
+                content: t(lang, 'sciondex.savingSlot'),
                 embeds: [],
                 components: [],
                 withResponse: true
@@ -1154,7 +1145,7 @@ module.exports.handleButtonInteraction = async function(interaction) {
             gameState.activeBoss = null;
             activeSessions.set(userId, gameState);
 
-            const newGamePayload = await renderGameWindow(interaction, `Successfully placed **${newNpc.name}** into Slot ${chosenSlot}!`);
+            const newGamePayload = await renderGameWindow(interaction, t(lang, 'sciondex.placed', { name: newNpc.name, slot: chosenSlot }));
             await interaction.followUp({ ...newGamePayload, flags: [MessageFlags.Ephemeral] });
 
             await delay(2000);
@@ -1168,7 +1159,7 @@ module.exports.handleButtonInteraction = async function(interaction) {
         if (interaction.customId === 'btn_exit') {
             activeSessions.delete(userId);
             await interaction.update({
-                content: '👋 *Closed ScionDex session.*',
+                content: t(lang, 'sciondex.closed'),
                 embeds: [],
                 components: []
             }).catch(() => {});
@@ -1214,13 +1205,13 @@ module.exports.handleButtonInteraction = async function(interaction) {
                     }
 
                     const recruitNames = newRecruits.map(n => `**${n.name}** [${n.rarity}★]`).join(', ');
-                    await interaction.channel.send(`🎉 <@${userId}> received their starter party: ${recruitNames}!`).catch(() => {});
+                    await interaction.channel.send(t(glang, 'sciondex.pub.starter', { userId, names: recruitNames })).catch(() => {});
 
-                    return await renderGameWindow(interaction, `🎉 Welcome! You received your starter party (100% recruit rate):\n${recruitNames}`);
+                    return await renderGameWindow(interaction, t(lang, 'sciondex.starter', { names: recruitNames }));
                 }
 
                 if (userData.last_recruit_date === today) {
-                    return await renderGameWindow(interaction, '⚠️ You have already recruited today! Come back tomorrow.', userData);
+                    return await renderGameWindow(interaction, t(lang, 'sciondex.alreadyRecruited'), userData);
                 }
 
                 await pool.execute('UPDATE sciondex_users SET last_recruit_date = ? WHERE user_id = ?', [today, userId]);
@@ -1235,19 +1226,19 @@ module.exports.handleButtonInteraction = async function(interaction) {
                 const shardReward = Number(rolledNpc.rarity);
 
                 const embed = new EmbedBuilder()
-                    .setTitle('🎉 Daily Recruit Encounter!')
-                    .setDescription(`You encountered **${rolledNpc.name}** [${rolledNpc.rarity}★]!\nTitle: *${rolledNpc.title || 'None'}*\nHP: ${rolledNpc.hp} | ATK: ${rolledNpc.atk}\nEffect: ${rolledNpc.additional_effect || 'None'}\n\nWhat would you like to do?`)
+                    .setTitle(t(lang, 'sciondex.dailyTitle'))
+                    .setDescription(t(lang, 'sciondex.dailyText', { name: rolledNpc.name, rarity: rolledNpc.rarity, title: rolledNpc.title || t(lang, 'sciondex.none'), hp: rolledNpc.hp, atk: rolledNpc.atk, effect: rolledNpc.additional_effect || t(lang, 'sciondex.none') }))
                     .setColor('#F1C40F');
 
                 const row = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setCustomId('btn_replace_prompt').setLabel('Replace Member').setStyle(ButtonStyle.Primary),
-                    new ButtonBuilder().setCustomId(`btn_get_shards_${shardReward}`).setLabel(`Get Shard Instead (${shardReward})`).setStyle(ButtonStyle.Secondary)
+                    new ButtonBuilder().setCustomId('btn_replace_prompt').setLabel(t(lang, 'sciondex.replaceMember')).setStyle(ButtonStyle.Primary),
+                    new ButtonBuilder().setCustomId(`btn_get_shards_${shardReward}`).setLabel(t(lang, 'sciondex.getShards', { n: shardReward })).setStyle(ButtonStyle.Secondary)
                 );
 
-                await interaction.channel.send(`🔍 <@${userId}> is trying to recruit... and encountered **${rolledNpc.name}** [${rolledNpc.rarity}★]!`).catch(() => {});
+                await interaction.channel.send(t(glang, 'sciondex.pub.tryingRecruit', { userId, name: rolledNpc.name, rarity: rolledNpc.rarity })).catch(() => {});
 
                 return { content: null, embeds: [embed], components: [row] };
-            }, 'Recruiting...');
+            }, t(lang, 'sciondex.recruiting'));
         }
 
         // --- DUTY FINDER ENCOUNTER ---
@@ -1255,7 +1246,7 @@ module.exports.handleButtonInteraction = async function(interaction) {
             return await transitionEphemeralFlow(interaction, async () => {
                 const party = await getUserParty(userId);
                 if (party.length === 0) {
-                    return await renderGameWindow(interaction, "⚠️ You don't have any NPCs! Click Recruit first to receive your starter party.", null, party);
+                    return await renderGameWindow(interaction, t(lang, 'sciondex.noNpcs'), null, party);
                 }
 
                 const gameState = activeSessions.get(userId) || {};
@@ -1280,21 +1271,21 @@ module.exports.handleButtonInteraction = async function(interaction) {
 
                 activeSessions.set(userId, gameState);
 
-                await interaction.channel.send(`⚔️ <@${userId}> queued into Duty Finder and encountered Boss **${boss.name}** [${boss.rarity}★]!`).catch(() => {});
+                await interaction.channel.send(t(glang, 'sciondex.pub.dutyFinder', { userId, name: boss.name, rarity: boss.rarity })).catch(() => {});
 
                 const embed = new EmbedBuilder()
-                    .setTitle('🚩 Duty Finder Boss Encounter!')
-                    .setDescription(`**Boss:** ${boss.name} [${boss.rarity}★]\n**Boss HP:** ${gameState.savedBossHp} (Boss HP multiplier: ${Math.round(hpMult)}x)\n**Boss ATK:** ${boss.atk}\n[Original HP: ${boss.hp}]\n\nDo you want to fight or leave?`)
+                    .setTitle(t(lang, 'sciondex.dfTitle'))
+                    .setDescription(t(lang, 'sciondex.bossText', { name: boss.name, rarity: boss.rarity, hp: gameState.savedBossHp, mult: Math.round(hpMult), atk: boss.atk, original: boss.hp }))
                     .setColor('#E74C3C')
-                    .addFields({ name: '📊 Your Total Stats', value: `❤️ **Total HP:** ${partyStats.totalHp} | ⚔️ **Total ATK:** ${partyStats.totalAtk}`, inline: false });
+                    .addFields({ name: t(lang, 'sciondex.totalStatsYour'), value: t(lang, 'sciondex.totalStatsValue', { hp: partyStats.totalHp, atk: partyStats.totalAtk }), inline: false });
 
                 const row = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setCustomId('btn_start_fight').setLabel('Fight!').setStyle(ButtonStyle.Danger),
-                    new ButtonBuilder().setCustomId('btn_leave_duty').setLabel('Leave').setStyle(ButtonStyle.Secondary)
+                    new ButtonBuilder().setCustomId('btn_start_fight').setLabel(t(lang, 'sciondex.fight')).setStyle(ButtonStyle.Danger),
+                    new ButtonBuilder().setCustomId('btn_leave_duty').setLabel(t(lang, 'sciondex.leave')).setStyle(ButtonStyle.Secondary)
                 );
 
                 return { content: null, embeds: [embed], components: [row] };
-            }, 'Searching Duty Finder...');
+            }, t(lang, 'sciondex.searchingDf'));
         }
 
         // --- HIGH-TIER SUMMON ENCOUNTER ---
@@ -1302,12 +1293,12 @@ module.exports.handleButtonInteraction = async function(interaction) {
             return await transitionEphemeralFlow(interaction, async () => {
                 const party = await getUserParty(userId);
                 if (party.length === 0) {
-                    return await renderGameWindow(interaction, "⚠️ You don't have any NPCs! Click Recruit first to receive your starter party.", null, party);
+                    return await renderGameWindow(interaction, t(lang, 'sciondex.noNpcs'), null, party);
                 }
 
                 const userData = await getUserData(userId);
                 if (!userData || Number(userData.shards) < 20) {
-                    return await renderGameWindow(interaction, `⚠️ Not enough shards! You have ${userData.shards}/20 shards.`, userData, party);
+                    return await renderGameWindow(interaction, t(lang, 'sciondex.notEnoughShards', { have: userData.shards }), userData, party);
                 }
 
                 const gameState = activeSessions.get(userId) || {};
@@ -1334,21 +1325,21 @@ module.exports.handleButtonInteraction = async function(interaction) {
 
                 activeSessions.set(userId, gameState);
 
-                await interaction.channel.send(`🔮 <@${userId}> spent 20 Shards and summoned High-Tier Boss **${boss.name}** [${boss.rarity}★]!`).catch(() => {});
+                await interaction.channel.send(t(glang, 'sciondex.pub.summoned', { userId, name: boss.name, rarity: boss.rarity })).catch(() => {});
 
                 const embed = new EmbedBuilder()
-                    .setTitle('🔮 High-Tier Summon Boss Encounter!')
-                    .setDescription(`**Boss:** ${boss.name} [${boss.rarity}★]\n**Boss HP:** ${gameState.savedBossHp} (Boss HP multiplier: ${Math.round(hpMult)}x)\n**Boss ATK:** ${boss.atk}\n[Original HP: ${boss.hp}]\n\nDo you want to fight or leave?`)
+                    .setTitle(t(lang, 'sciondex.summonTitle'))
+                    .setDescription(t(lang, 'sciondex.bossText', { name: boss.name, rarity: boss.rarity, hp: gameState.savedBossHp, mult: Math.round(hpMult), atk: boss.atk, original: boss.hp }))
                     .setColor('#9B59B6')
-                    .addFields({ name: '📊 Your Total Stats', value: `❤️ **Total HP:** ${partyStats.totalHp} | ⚔️ **Total ATK:** ${partyStats.totalAtk}`, inline: false });
+                    .addFields({ name: t(lang, 'sciondex.totalStatsYour'), value: t(lang, 'sciondex.totalStatsValue', { hp: partyStats.totalHp, atk: partyStats.totalAtk }), inline: false });
 
                 const row = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setCustomId('btn_start_fight').setLabel('Fight!').setStyle(ButtonStyle.Danger),
-                    new ButtonBuilder().setCustomId('btn_leave_duty').setLabel('Leave').setStyle(ButtonStyle.Secondary)
+                    new ButtonBuilder().setCustomId('btn_start_fight').setLabel(t(lang, 'sciondex.fight')).setStyle(ButtonStyle.Danger),
+                    new ButtonBuilder().setCustomId('btn_leave_duty').setLabel(t(lang, 'sciondex.leave')).setStyle(ButtonStyle.Secondary)
                 );
 
                 return { content: null, embeds: [embed], components: [row] };
-            }, 'Summoning Boss...');
+            }, t(lang, 'sciondex.summoning'));
         }
 
         // --- LEAVE FIGHT ---
@@ -1357,15 +1348,15 @@ module.exports.handleButtonInteraction = async function(interaction) {
                 const gameState = activeSessions.get(userId) || {};
                 const boss = gameState.activeBoss;
                 const rarityTag = boss && boss.rarity ? ` [${boss.rarity}★]` : '';
-                const bossName = boss ? boss.name : 'the boss';
+                const bossName = boss ? boss.name : t(lang, 'sciondex.theBoss');
                 
                 gameState.activeBoss = null;
                 activeSessions.set(userId, gameState);
 
-                await interaction.channel.send(`<@${userId}> ran away from **${bossName}**${rarityTag}.`).catch(() => {});
+                await interaction.channel.send(t(glang, 'sciondex.pub.ranAway', { userId, boss: bossName, rarity: rarityTag })).catch(() => {});
 
-                return await renderGameWindow(interaction, `You ran away from **${bossName}**.`);
-            }, 'Leaving battle...');
+                return await renderGameWindow(interaction, t(lang, 'sciondex.ranAway', { boss: bossName }));
+            }, t(lang, 'sciondex.leaving'));
         }
 
         // --- COMBAT HANDLER ---
@@ -1375,7 +1366,7 @@ module.exports.handleButtonInteraction = async function(interaction) {
                 const boss = gameState.activeBoss;
 
                 if (!boss) {
-                    return await renderGameWindow(interaction, '⚠️ No active encounter found.');
+                    return await renderGameWindow(interaction, t(lang, 'sciondex.noEncounter'));
                 }
 
                 const party = await getUserParty(userId);
@@ -1401,7 +1392,7 @@ module.exports.handleButtonInteraction = async function(interaction) {
                     gameState.doubleHpActive = false;    
                     gameState.tankShieldTurns = 0;
                     
-                    await interaction.channel.send(`🪶 <@${userId}> used a Phoenix Down! Party fully revived.`).catch(() => {});
+                    await interaction.channel.send(t(glang, 'sciondex.pub.phoenix', { userId })).catch(() => {});
                 }
 
                 if (interaction.customId === 'btn_execute_lb') {
@@ -1413,7 +1404,7 @@ module.exports.handleButtonInteraction = async function(interaction) {
                                 const hiddenDamage = Math.round(maxBossHp * 0.08);
                                 currentBossHp -= hiddenDamage;
 
-                                await interaction.channel.send(`✨ <@${userId}>' Party Member used an ability! **${member.name}** used *${member.additional_effect}..*`).catch(() => {});
+                                await interaction.channel.send(t(glang, 'sciondex.pub.ability', { userId, name: member.name, effect: member.additional_effect })).catch(() => {});
                             }
                         }
 
@@ -1427,13 +1418,13 @@ module.exports.handleButtonInteraction = async function(interaction) {
                             const meleeNames = ['Final Heaven', 'Dragonsong Dive', 'Chimatsuri', 'Doom of the Living', 'The End', 'World-swallower'];
                             const chosenSkill = getRandomArrayItem(meleeNames);
                             
-                            await interaction.channel.send(`⚔️ <@${userId}> used Melee LB3 ${chosenSkill} to end **${boss.name}**! ⚔️`).catch(() => {});
+                            await interaction.channel.send(t(glang, 'sciondex.pub.meleeLb', { userId, skill: chosenSkill, boss: boss.name })).catch(() => {});
                             return await getBossVictoryPayload(interaction, gameState, userId, true);
                         } else if (lbRoll < 50) { 
                             const lbDamage = partyStats.totalAtk * 50;
                             currentBossHp -= lbDamage;
 
-                            await interaction.channel.send(`💥 <@${userId}> used LB1 Braver to **${boss.name}** and dealt **${lbDamage}** damage! 💥`).catch(() => {});
+                            await interaction.channel.send(t(glang, 'sciondex.pub.lb1', { userId, boss: boss.name, damage: lbDamage })).catch(() => {});
 
                             if (currentBossHp <= 0) {
                                 return await getBossVictoryPayload(interaction, gameState, userId, true);
@@ -1446,11 +1437,11 @@ module.exports.handleButtonInteraction = async function(interaction) {
                             if (isRange) {
                                 const rangeNames = ['Sagittarius Arrow', 'Satellite Beam', 'Crimson Lotus'];
                                 const chosenSkill = getRandomArrayItem(rangeNames);
-                                await interaction.channel.send(`🏹 <@${userId}> used Range LB3 ${chosenSkill} to **${boss.name}** and dealt **${lbDamage}** damage! 🏹`).catch(() => {});
+                                await interaction.channel.send(t(glang, 'sciondex.pub.rangeLb', { userId, skill: chosenSkill, boss: boss.name, damage: lbDamage })).catch(() => {});
                             } else {
                                 const casterNames = ['Meteor', 'Teraflare', 'Vermillion Scourge', 'Chromatic Fantasy'];
                                 const chosenSkill = getRandomArrayItem(casterNames);
-                                await interaction.channel.send(`☄️ <@${userId}> used Caster LB3 ${chosenSkill} to **${boss.name}** and dealt **${lbDamage}** damage! ☄️`).catch(() => {});
+                                await interaction.channel.send(t(glang, 'sciondex.pub.casterLb', { userId, skill: chosenSkill, boss: boss.name, damage: lbDamage })).catch(() => {});
                             }
 
                             if (currentBossHp <= 0) {
@@ -1466,12 +1457,12 @@ module.exports.handleButtonInteraction = async function(interaction) {
                                 currentPartyHp = partyStats.totalHp * 2;
                                 gameState.doubleHpActive = true;
 
-                                await interaction.channel.send(`✨ <@${userId}> used Healer LB3 ${chosenSkill}. Party's HP Fully Recovered! ✨`).catch(() => {});
+                                await interaction.channel.send(t(glang, 'sciondex.pub.healerLb', { userId, skill: chosenSkill })).catch(() => {});
                             } else if (subRoll < (2 / 3)) {
                                 const lbDamage = partyStats.totalAtk * 150;
                                 currentBossHp -= lbDamage;
 
-                                await interaction.channel.send(`⚔️ <@${userId}> used LB2 Blade Dance to **${boss.name}** and dealt **${lbDamage}** damage! ⚔️`).catch(() => {});
+                                await interaction.channel.send(t(glang, 'sciondex.pub.lb2', { userId, boss: boss.name, damage: lbDamage })).catch(() => {});
 
                                 if (currentBossHp <= 0) {
                                     return await getBossVictoryPayload(interaction, gameState, userId, true);
@@ -1481,11 +1472,11 @@ module.exports.handleButtonInteraction = async function(interaction) {
                                 const chosenSkill = getRandomArrayItem(tankNames);
 
                                 gameState.tankShieldTurns = 30;
-                                await interaction.channel.send(`🛡️ <@${userId}> used Tank LB3 ${chosenSkill} to shield the party 🛡️`).catch(() => {});
+                                await interaction.channel.send(t(glang, 'sciondex.pub.tankLb', { userId, skill: chosenSkill })).catch(() => {});
                             }
                         }
                     } else {
-                        await interaction.channel.send(`⚠️ <@${userId}> has reached the maximum of 4 Limit Breaks for this encounter!`).catch(() => {});
+                        await interaction.channel.send(t(glang, 'sciondex.pub.maxLb', { userId })).catch(() => {});
                     }
                 }
 
@@ -1538,12 +1529,12 @@ module.exports.handleButtonInteraction = async function(interaction) {
 
                 if (limitBreakTriggered) {
                     const embed = new EmbedBuilder()
-                        .setTitle('⚠️ DANGER! PARTY HP CRITICAL!')
-                        .setDescription(`Your party is under heavy pressure!\n\n💥 **USE LIMIT BREAK NOW!**`)
+                        .setTitle(t(lang, 'sciondex.dangerTitle'))
+                        .setDescription(t(lang, 'sciondex.dangerText'))
                         .setColor('#F1C40F');
 
                     const row = new ActionRowBuilder().addComponents(
-                        new ButtonBuilder().setCustomId('btn_execute_lb').setLabel('💥 LIMIT BREAK').setStyle(ButtonStyle.Danger)
+                        new ButtonBuilder().setCustomId('btn_execute_lb').setLabel(t(lang, 'sciondex.lbButton')).setStyle(ButtonStyle.Danger)
                     );
 
                     return { content: null, embeds: [embed], components: [row] };
@@ -1559,13 +1550,13 @@ module.exports.handleButtonInteraction = async function(interaction) {
 
                     if (latestUserData && Number(latestUserData.phoenix_downs) > 0) {
                         const embed = new EmbedBuilder()
-                            .setTitle('💀 Party Wiped Out!')
-                            .setDescription(`Your party was defeated by **${boss.name}**${rarityTag}!\nBoss remaining HP: **${gameState.savedBossHp} (${remainingHpPercent}%)**\n\nYou have **${latestUserData.phoenix_downs}/10 Phoenix Down(s)**. Use one to revive?`)
+                            .setTitle(t(lang, 'sciondex.wipedTitle'))
+                            .setDescription(t(lang, 'sciondex.wipedText', { boss: boss.name, rarity: rarityTag, hp: gameState.savedBossHp, percent: remainingHpPercent, phoenix: latestUserData.phoenix_downs }))
                             .setColor('#C0392B');
 
                         const row = new ActionRowBuilder().addComponents(
-                            new ButtonBuilder().setCustomId('btn_use_phoenix').setLabel('Use Phoenix Down').setStyle(ButtonStyle.Danger),
-                            new ButtonBuilder().setCustomId('btn_give_up').setLabel('Give Up').setStyle(ButtonStyle.Secondary)
+                            new ButtonBuilder().setCustomId('btn_use_phoenix').setLabel(t(lang, 'sciondex.usePhoenix')).setStyle(ButtonStyle.Danger),
+                            new ButtonBuilder().setCustomId('btn_give_up').setLabel(t(lang, 'sciondex.giveUp')).setStyle(ButtonStyle.Secondary)
                         );
 
                         return { content: null, embeds: [embed], components: [row] };
@@ -1573,13 +1564,13 @@ module.exports.handleButtonInteraction = async function(interaction) {
                         gameState.activeBoss = null;
                         activeSessions.set(userId, gameState);
 
-                        await interaction.channel.send(`💀 <@${userId}>'s party was wiped out by **${boss.name}**${rarityTag}!`).catch(() => {});
-                        return await renderGameWindow(interaction, `💀 Your party was defeated by **${boss.name}**${rarityTag}.`);
+                        await interaction.channel.send(t(glang, 'sciondex.pub.wiped', { userId, boss: boss.name, rarity: rarityTag })).catch(() => {});
+                        return await renderGameWindow(interaction, t(lang, 'sciondex.wiped', { boss: boss.name, rarity: rarityTag }));
                     }
                 }
 
                 return await getBossVictoryPayload(interaction, gameState, userId, true);
-            }, 'Processing Combat...');
+            }, t(lang, 'sciondex.processingCombat'));
         }
 
         // --- GIVE UP ---
@@ -1587,14 +1578,14 @@ module.exports.handleButtonInteraction = async function(interaction) {
             return await transitionEphemeralFlow(interaction, async () => {
                 const gameState = activeSessions.get(userId) || {};
                 const boss = gameState.activeBoss;
-                const bossName = boss ? boss.name : 'the boss';
+                const bossName = boss ? boss.name : t(lang, 'sciondex.theBoss');
 
                 gameState.hiddenPhoenixLoot = 0;
                 gameState.activeBoss = null;
                 activeSessions.set(userId, gameState);
 
-                return await renderGameWindow(interaction, `You gave up the battle against **${bossName}**.`);
-            }, 'Giving up fight...');
+                return await renderGameWindow(interaction, t(lang, 'sciondex.gaveUp', { boss: bossName }));
+            }, t(lang, 'sciondex.givingUp'));
         }
 
         // --- GET SHARDS ---
@@ -1611,9 +1602,9 @@ module.exports.handleButtonInteraction = async function(interaction) {
                 gameState.activeBoss = null;
                 activeSessions.set(userId, gameState);
 
-                const npcName = targetNpc ? targetNpc.name : 'Encounter';
-                return await renderGameWindow(interaction, `Claimed **${shardsEarned} Shard(s)** from **${npcName}**!`);
-            }, 'Claiming shards...');
+                const npcName = targetNpc ? targetNpc.name : t(lang, 'sciondex.encounter');
+                return await renderGameWindow(interaction, t(lang, 'sciondex.claimed', { shards: shardsEarned, name: npcName }));
+            }, t(lang, 'sciondex.claiming'));
         }
     } catch (err) {
         console.error('❌ Error handling ScionDex button interaction:', err);
@@ -1625,6 +1616,8 @@ module.exports.handleButtonInteraction = async function(interaction) {
 // ==========================================
 
 async function getBossVictoryPayload(interaction, gameState, userId, isFirstVictoryRoll = true) {
+    const lang = await userLanguage.forInteraction(interaction);
+    const glang = userLanguage.forGuild(interaction.guild);
     const boss = gameState.activeBoss;
     let starsDropped = 0;
     let shardsDropped = 0;
@@ -1674,7 +1667,7 @@ async function getBossVictoryPayload(interaction, gameState, userId, isFirstVict
         gameState.lastAcquiredPhoenix = actualAcquiredPhoenix;
         gameState.lastBonusRate = rollRecruitmentBonus();
 
-        await interaction.channel.send(`🏆 <@${userId}> defeated **${boss.name}** [${boss.rarity}★]!`).catch(() => {});
+        await interaction.channel.send(t(glang, 'sciondex.pub.defeated', { userId, name: boss.name, rarity: boss.rarity })).catch(() => {});
     } else {
         starsDropped = gameState.lastDroppedStars || 0;
         shardsDropped = gameState.lastDroppedShards || 0;
@@ -1688,13 +1681,13 @@ async function getBossVictoryPayload(interaction, gameState, userId, isFirstVict
 
     let phoenixMessage = '';
     if (totalRawPhoenixDrops === 0) {
-        phoenixMessage = '🪶 **Phoenix Down:** 0x Phoenix Down(s) dropped. :feather:';
+        phoenixMessage = t(lang, 'sciondex.phoenixNone');
     } else if (currentHeld >= 10 && isFirstVictoryRoll) {
-        phoenixMessage = `🪶 **Phoenix Down:** ${totalRawPhoenixDrops}x Phoenix Down(s) dropped, but your inventory is FULL (10/10)! :feather:`;
+        phoenixMessage = t(lang, 'sciondex.phoenixFull', { n: totalRawPhoenixDrops });
     } else if (actualAcquiredPhoenix < totalRawPhoenixDrops && isFirstVictoryRoll) {
-        phoenixMessage = `🪶 **Phoenix Down:** ${totalRawPhoenixDrops}x Phoenix Down(s) dropped! Acquired **${actualAcquiredPhoenix}x** due to inventory cap (10/10). :feather:`;
+        phoenixMessage = t(lang, 'sciondex.phoenixCapped', { n: totalRawPhoenixDrops, got: actualAcquiredPhoenix });
     } else {
-        phoenixMessage = `🪶 **Phoenix Down:** You obtained **${actualAcquiredPhoenix}x Phoenix Down(s)**! :feather:`;
+        phoenixMessage = t(lang, 'sciondex.phoenixGot', { got: actualAcquiredPhoenix });
     }
 
     const bonusRate = gameState.lastBonusRate || 0;
@@ -1715,26 +1708,16 @@ async function getBossVictoryPayload(interaction, gameState, userId, isFirstVict
     const shardReward = Number(boss.rarity);
 
     const embed = new EmbedBuilder()
-        .setTitle(`🏆 VICTORY! Defeated ${boss.name}!`)
+        .setTitle(t(lang, 'sciondex.victoryTitle', { name: boss.name }))
         .setDescription(
-            `⭐ **Stars Balance:** ${userStars}\n\n` +
-            `You defeated **${boss.name}** [${boss.rarity}★]!\n` +
-            `❤️ **HP:** ${boss.hp} | ⚔️ **ATK:** ${boss.atk}\n` +
-            `🏷️ **Title:** ${boss.title || 'None'}\n` +
-            `🌍 **Expansion:** ${boss.expansion || 'Unknown'}\n\n` +
-            `🎁 Loot drops:\n` +
-            `${phoenixMessage}\n` +
-            `:gem: **Shard:** ${shardsDropped} :gem:\n` +
-            `:star: **Star:** ${starsDropped} :star:\n\n` +
-            `✨ **Current Recruit Chance:** **${baseChancePercent}%** (Base: ${Math.round(baseChance * 100)}% | Bonus: +${Math.round(bonusRate * 100)}%)\n\n` +
-            `Choose your reward:`
+            t(lang, 'sciondex.victoryText', { stars: userStars, name: boss.name, rarity: boss.rarity, hp: boss.hp, atk: boss.atk, title: boss.title || t(lang, 'sciondex.none'), expansion: boss.expansion || t(lang, 'sciondex.unknown'), phoenix: phoenixMessage, shards: shardsDropped, starsDropped, chance: baseChancePercent, base: Math.round(baseChance * 100), bonus: Math.round(bonusRate * 100) })
         )
         .setColor('#2ECC71');
 
     const row = new ActionRowBuilder().addComponents(
         new ButtonBuilder()
             .setCustomId('btn_replace_prompt')
-            .setLabel(`Recruit (${baseChancePercent}%)`)
+            .setLabel(t(lang, 'sciondex.recruitChance', { chance: baseChancePercent }))
             .setStyle(ButtonStyle.Success)
     );
 
@@ -1742,7 +1725,7 @@ async function getBossVictoryPayload(interaction, gameState, userId, isFirstVict
         row.addComponents(
             new ButtonBuilder()
                 .setCustomId(`btn_use_stars_${starsToUse}_${(boostFinalPercent / 100).toFixed(2)}`)
-                .setLabel(`Use Stars (${starsToUse} stars) (${boostFinalPercent}%)`)
+                .setLabel(t(lang, 'sciondex.useStars', { stars: starsToUse, chance: boostFinalPercent }))
                 .setStyle(ButtonStyle.Primary)
         );
     }
@@ -1750,7 +1733,7 @@ async function getBossVictoryPayload(interaction, gameState, userId, isFirstVict
     row.addComponents(
         new ButtonBuilder()
             .setCustomId(`btn_get_shards_${shardReward}`)
-            .setLabel(`Get Shard Instead (${shardReward})`)
+            .setLabel(t(lang, 'sciondex.getShards', { n: shardReward }))
             .setStyle(ButtonStyle.Secondary)
     );
 

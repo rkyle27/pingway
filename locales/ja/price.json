@@ -1,0 +1,24 @@
+{
+  "noDcs": "⚠️ **データセンターが選ばれていません！**\n先に `/datacenter` コマンドでデータセンターを設定してください。",
+  "notFound": "**{item}** に一致するアイテムが見つかりません。",
+  "close": "閉じる",
+  "lookingUp": "🔍 **{name}の価格を調べています... 少々お待ちください！**",
+  "recommendations": "アイテムの候補",
+  "didYouMean": "**{item}** に一致するアイテムが見つかりません。もしかして：",
+  "unknownItem": "不明なアイテム",
+  "matching": "一致するアイテム",
+  "error": "マーケットの検索中にエラーが発生しました。",
+  "noDcsShort": "⚠️ **データセンターが選ばれていません！**\n先に `/datacenter` コマンドを使ってください。",
+  "title": "マーケット価格：{name}",
+  "legend": "{nq} = NQ（通常品） | {hq} = HQ（高品質）",
+  "top5": "**{icon} トップ5：**\n",
+  "noListings": "出品が見つかりません。",
+  "fetchFailed": "データを取得できませんでした。",
+  "footer": "/price に表示するDCは /datacenter で切り替えられます。\nPowered by Universalis & XIVAPI",
+  "reminder": "🔒 *このメッセージはあなたにしか見えません！しばらくすると消えるので、残したい場合はコピーかスクリーンショットを撮ってください。*",
+  "cmd": {
+    "description": "FFXIVアイテムのマーケットボード価格を調べます",
+    "item": "検索するアイテム名"
+  },
+  "fetching": "⏳ **価格を取得中... 少々お待ちください！**"
+}

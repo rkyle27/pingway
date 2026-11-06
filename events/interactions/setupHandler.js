@@ -3,6 +3,8 @@ const db = require('../../utils/db');
 const fs = require('fs');
 const path = require('path');
 const { isMaintenance } = require('../../maintenance');
+const { t } = require('../../utils/i18n');
+const userLanguage = require('../../utils/userLanguage');
 
 // Adjusted path to point directly to the project root directory where package.json and google-credentials.json reside
 const CREDENTIALS_PATH = path.join(__dirname, '..', '..', 'google-credentials.json');
@@ -43,11 +45,12 @@ function getServiceAccountEmail() {
 
 async function handleModal(interaction) {
     if (!interaction.isModalSubmit()) return;
+    const lang = await userLanguage.forInteraction(interaction);
 
     // Maintenance Check: Block interaction when maintenance mode is ON (allows whitelisted servers to bypass)
     if (isMaintenance(interaction.guildId)) {
         return interaction.reply({
-            content: '⚠️ **The bot is currently undergoing maintenance.** Please try again later!',
+            content: t(lang, 'core.maintenance'),
             flags: [MessageFlags.Ephemeral]
         });
     }
@@ -62,13 +65,13 @@ async function handleModal(interaction) {
 
     if (!spreadsheetId) {
         return await interaction.reply({
-            content: '❌ **Invalid Google Sheet URL or ID.** Please make sure you copy the full link or the raw ID.',
+            content: t(lang, 'raid.setup.invalidUrl'),
             flags: [MessageFlags.Ephemeral]
         });
     }
 
     const columnToUpdate = customId === 'raid_setup_modal' ? 'raid_sheet_id' : 'logger_sheet_id';
-    const configName = customId === 'raid_setup_modal' ? 'Raid Planner Sheet' : 'Command Logger Sheet';
+    const configName = customId === 'raid_setup_modal' ? t(lang, 'raid.setup.raidSheet') : t(lang, 'raid.setup.loggerSheet');
 
     try {
         // Safely acquire pool instance dynamically
@@ -84,13 +87,13 @@ async function handleModal(interaction) {
 
         const botEmail = getServiceAccountEmail();
         return await interaction.reply({
-            content: `✅ **${configName} successfully configured!**\n\n⚠️ **Important:** Make sure you share your Google Sheet with the bot's service account email so it has access:\n\`${botEmail}\``,
+            content: t(lang, 'raid.setup.configured', { name: configName, email: botEmail }),
             flags: [MessageFlags.Ephemeral]
         });
     } catch (error) {
         console.error('❌ Failed to save spreadsheet ID to database:', error);
         return await interaction.reply({
-            content: '❌ Database error occurred while saving configuration.',
+            content: t(lang, 'raid.setup.dbError'),
             flags: [MessageFlags.Ephemeral]
         });
     }

@@ -1,0 +1,23 @@
+{
+  "footer": "Données fournies par le flux en direct d'Universalis • Utilise /datacenter pour changer tes centres de données",
+  "worldFallback": "Monde {id}",
+  "headers": {
+    "world": "Monde",
+    "price": "Prix affiché",
+    "median": "Vente médiane CD"
+  },
+  "moreWorlds": "...et {count} autre(s) monde(s)",
+  "itemFallback": "Objet n°{id}",
+  "footerShort": "Données fournies par le flux en direct d'Universalis",
+  "title": "🚨 {name} — {quality} (jusqu'à {percent} %)",
+  "gil": "{n} Gil",
+  "undercut": {
+    "item": "Objet",
+    "retainer": "Servant",
+    "yours": "Ton prix",
+    "lowest": "Plus bas",
+    "more": "...et {count} de plus",
+    "title": "🏷️ Tes servants ont été sous-cotés ({count})",
+    "note": "\nPrix à l'unité en Gil. Gère tes servants sur le site de Pingway."
+  }
+}

@@ -2,6 +2,8 @@
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, MessageFlags } = require('discord.js');
 const { ownerHasMembership } = require('./membership');
 const { isMaintenance } = require('../maintenance');
+const { t, localeOf } = require('./i18n');
+const userLanguage = require('./userLanguage');
 
 const SITE = 'https://pingway.app';
 const VOTE = 'https://top.gg/bot/1530586586524418048/vote';
@@ -13,14 +15,15 @@ const linkRow = (label, url, extra) => new ActionRowBuilder().addComponents(
 
 // Replies and returns false when the command can't run (maintenance or no Supporter Perks)
 async function checkPerks(interaction) {
+    const lang = await userLanguage.forInteraction(interaction);
     if (isMaintenance(interaction.guildId)) {
-        await interaction.reply({ content: '⚠️ **The bot is currently undergoing maintenance.** Please try again later!', flags: [MessageFlags.Ephemeral] });
+        await interaction.reply({ content: t(lang, 'core.maintenance'), flags: [MessageFlags.Ephemeral] });
         return false;
     }
     if (!(await ownerHasMembership(interaction.user.id))) {
         await interaction.reply({
-            content: '💜 This command is a **Supporter Perk** (10 points a month on My Settings).\nGet points by voting for Pingway on top.gg: 1 point per vote, 2 on weekends.',
-            components: [linkRow('My Settings', SITE + '/me.html#perks', ['Vote on top.gg', VOTE])],
+            content: t(lang, 'perks.needPerks'),
+            components: [linkRow(t(lang, 'perks.mySettings'), SITE + '/me.html#perks', [t(lang, 'perks.voteTopgg'), VOTE])],
             flags: [MessageFlags.Ephemeral]
         });
         return false;
@@ -28,6 +31,6 @@ async function checkPerks(interaction) {
     return true;
 }
 
-const gil = n => (n === null || n === undefined) ? '—' : Number(n).toLocaleString('en-US') + ' gil';
+const gil = (n, lang) => (n === null || n === undefined) ? '—' : t(lang, 'perks.gil', { n: Number(n).toLocaleString(localeOf(lang)) });
 
 module.exports = { SITE, linkRow, checkPerks, gil };

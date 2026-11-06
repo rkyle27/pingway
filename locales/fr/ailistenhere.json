@@ -1,0 +1,7 @@
+{
+  "cmd": { "description": "🎙️ Déplace l'IA dans ce salon, ou désactive-la si elle y est déjà (admin uniquement)." },
+  "off": "🔴 L'IA n'écoute plus dans <#{channelId}>.",
+  "moved": " Elle a été déplacée depuis {channels} (un seul salon IA par serveur).",
+  "on": "🟢 L'IA écoute maintenant dans <#{channelId}> ! Tous les messages normaux de ce salon recevront une réponse de l'IA.{moved}",
+  "failed": "❌ Impossible de mettre à jour le salon IA."
+}

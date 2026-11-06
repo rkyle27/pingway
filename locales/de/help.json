@@ -1,0 +1,52 @@
+{
+  "cmd": {
+    "description": "📖 Zeigt alle Befehle von Pingway und wie man sie benutzt."
+  },
+  "title": "📖 Pingway-Befehlsübersicht",
+  "description": "🌐 **Verwalte Pingway im Browser!** Server- und persönliche Einstellungen auf **{url}**\n\nDas alles kann Pingway:",
+  "fields": {
+    "market": {
+      "name": "💰 Marktbrett",
+      "value": "**/price <item>** — Preise über alle Welten deiner Datenzentren.\n**/datacenter** — Wähle deine Datenzentren (gilt überall).\n**/marketalert** — Schickt dir per DM Angebote, die 80 %+ unter dem üblichen Preis liegen (standardmäßig jede Minute; das DM-Intervall änderst du auf der Website)."
+    },
+    "perks": {
+      "name": "💜 Supporter-Vorteile",
+      "value": "**/bestsellers** — Meistverkaufte Gegenstände auf deiner Welt oder deinem Datenzentrum.\n**/buysell** — Beliebte Gegenstände, die auf einer anderen Welt günstiger sind als auf deiner.\n**/retainers** — Deine beobachteten Gehilfen und ihre unterbotenen Gegenstände.\nEinstellungen: Website → Retainers → Market tools. Vorteile: 10 Punkte im Monat (für Punkte auf top.gg voten)."
+    },
+    "status": {
+      "name": "🌍 Status & Timer",
+      "value": "**/status** — Weltenstatus und DM-Alarme für deine Welt.\n**/timer** — Tägliche/wöchentliche Resets, Wohnungslotterie, Release-Countdowns.\n**/todo** — Deine tägliche & wöchentliche Checkliste.\n**/firmament** — Persönlicher Timer für die Feier im Firmament mit DM."
+    },
+    "party": {
+      "name": "🎯 Gruppen & Raids",
+      "value": "**/pf** — Gruppensuche-Einträge mit Plätzen für Rolle & Job.\n**/raid** — 7-Tage-Raidplan aus Google Sheets.\n**/poll** — Umfragen mit rollenbeschränkter Abstimmung und Ergebnissen."
+    },
+    "character": {
+      "name": "🪪 Charakter",
+      "value": "**/ign** — Deine Charakterkarte mit Lodestone-Infos & QR-Code.\n**/ignconfig** — Verknüpfe Lodestone, Hauptjob, Fotos, Tomestone & FFLogs."
+    },
+    "games": {
+      "name": "🃏 Spiele",
+      "value": "**/trivia** — Errate das FFXIV-Wort des Tages (6 Schwierigkeiten), sammle Bits, halte deine Serie.\n**/sciondex** — Rekrutiere NPCs, stelle eine Gruppe zusammen, besiege Bosse.\n**/nissi** — Quiz zu den Nissi-Mechaniken (TEA)."
+    },
+    "ai": {
+      "name": "🤖 KI-Assistent",
+      "value": "Nur im KI-Kanal, den ein Admin mit **/ailistenhere** festgelegt hat (einer pro Server). Schreib ganz normal, z. B.\n*„Erinnere mich in 2 Stunden an die Zufallsinhalte“* · *„Füge Aufgabe Tränke kaufen hinzu“* · *„Zeig meine Aufgabenliste“*\nSag **release recollection**, um das kurze Chat-Gedächtnis zu löschen."
+    },
+    "admin": {
+      "name": "🛠️ Admin",
+      "value": "**/ailistenhere** — Verlegt den KI-Chat in diesen Kanal (dort erneut ausführen zum Ausschalten).\n**/notifhere** — Legt diesen Kanal für Pingway-Benachrichtigungen fest.\n**/welcomehere** — Postet Willkommenskarten für neue Mitglieder in diesem Kanal (`action: off` zum Beenden).\n**/clean** — Löscht viele Nachrichten auf einmal (auch älter als 14 Tage).\n**/honeypot** — „Hier nicht schreiben“-Kanal, der gehackte Spam-Konten entfernt.\n**/logger** — Protokolliert die Befehlsnutzung in einem Google Sheet.\n🌐 Auf der Website: **Reaktionsrollen**, **Tickets** (Support) und **FFXIV-News**-Kanäle."
+    },
+    "other": {
+      "name": "📨 Sonstiges",
+      "value": "**/clearbotdms** — Räumt Pingways Nachrichten in deinen DMs auf.\n**/pingway** — Wähle Pingways Sprache für dich (en, fr, de, jp oder auto).\n**/help** — Diese Übersicht."
+    }
+  },
+  "footer": "Pingway FFXIV-Discord-Bot • Entwickelt von River Zola",
+  "buttons": {
+    "website": "Website",
+    "invite": "Einladen",
+    "support": "Support",
+    "privacy": "Datenschutz"
+  }
+}

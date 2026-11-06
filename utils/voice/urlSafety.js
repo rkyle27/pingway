@@ -20,10 +20,12 @@ const STALL_TIMEOUT_MS = 30000;
 const MAX_PLAYLIST_BYTES = 64 * 1024;
 
 class UrlRefused extends Error {
-    constructor(code, message) {
+    // message: English (logs); code (+ vars): the text shown to people, from locales/<lang>/vc.json -> url.<code>
+    constructor(code, message, vars) {
         super(message);
         this.name = 'UrlRefused';
         this.code = code;
+        this.vars = vars || null;
     }
 }
 
@@ -101,7 +103,7 @@ async function checkUrl(input, { lookup = defaultLookup } = {}) {
     }
     if (url.username || url.password) throw new UrlRefused('credentials', 'Links with a user name or password are not supported.');
     const svc = unsupportedService(url.hostname);
-    if (svc) throw new UrlRefused('unsupported_service', `${svc} links are not supported. Use a direct audio file link or an internet radio stream.`);
+    if (svc) throw new UrlRefused('unsupported_service', `${svc} links are not supported. Use a direct audio file link or an internet radio stream.`, { service: svc });
 
     const host = url.hostname.replace(/^\[|\]$/g, '');
     if (!host || host.toLowerCase() === 'localhost' || host.toLowerCase().endsWith('.localhost')) {
@@ -185,7 +187,7 @@ function requestOnce(checked, { headers = {}, transport, headerTimeoutMs = HEADE
             if (done) return;
             done = true;
             clearTimeout(timer);
-            reject(new UrlRefused('network', 'I could not open that link (' + (err.code || 'network error') + ').'));
+            reject(new UrlRefused('network', 'I could not open that link (' + (err.code || 'network error') + ').', { error: err.code || 'network error' }));
         });
         req.end();
     });
@@ -229,7 +231,7 @@ async function openAudioUrl(input, opts = {}, depth = 0) {
     }
     if (res.statusCode < 200 || res.statusCode >= 300) {
         res.destroy();
-        throw new UrlRefused('http_status', `That link answered with HTTP ${res.statusCode}.`);
+        throw new UrlRefused('http_status', `That link answered with HTTP ${res.statusCode}.`, { status: res.statusCode });
     }
 
     const ct = res.headers['content-type'] || '';
@@ -240,7 +242,7 @@ async function openAudioUrl(input, opts = {}, depth = 0) {
     }
     if (kind === 'refused') {
         res.destroy();
-        throw new UrlRefused('not_audio', `That link is not audio (it sent "${String(ct).split(';')[0].slice(0, 40)}").`);
+        throw new UrlRefused('not_audio', `That link is not audio (it sent "${String(ct).split(';')[0].slice(0, 40)}").`, { type: String(ct).split(';')[0].slice(0, 40) });
     }
     if (kind === 'pls' || kind === 'm3u' || kind === 'm3u_or_hls') {
         const body = await readSmallBody(res);

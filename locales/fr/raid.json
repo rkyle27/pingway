@@ -1,0 +1,28 @@
+{
+  "notConfigured": "⚠️ **La feuille de planning de raid n'est pas configurée !** Un administrateur doit d'abord ajouter le lien de la feuille.",
+  "noData": "❌ **Aucune donnée trouvée dans la feuille de planning de raid.**",
+  "noDates": "❌ **Aucune date valide n'a pu être lue dans la feuille Google.**",
+  "status": {
+    "raid": "⚔️ **RAID**",
+    "unsure": "❓ **INCERTAIN**",
+    "fill": "📝 **À REMPLIR**",
+    "no": "❌ **PAS DE RAID**"
+  },
+  "pending": "> 📝 **Réponse en attente ({count}) :** {list}\n",
+  "available": "> ✅ **Disponibles ({count}) :** {list}\n",
+  "late": "> ⏰ **En retard ({count}) :** {list}\n",
+  "subbed": "> 🟡 **Remplacés ({count}) :** {list}\n",
+  "unsure": "> ❓ **Incertains ({count}) :** {list}\n",
+  "absent": "> ❌ **Absents ({count}) :** {list}\n",
+  "noDays": "ℹ️ **Aucun jour de raid prévu trouvé.**\nVérifie que la mise en page n'a pas été modifiée et que les dates sont au bon format.",
+  "upcoming": "📊 **Prochains raids :**\n\n{list}",
+  "accessError": "❌ **Erreur d'accès à l'API Google Sheets :** vérifie que la feuille est partagée avec l'e-mail du compte de service du bot et que le lien est correct.",
+  "failed": "❌ **Impossible de récupérer le planning de raid.** Consulte le journal de la console pour plus de détails.",
+  "setup": {
+    "invalidUrl": "❌ **URL ou ID de feuille Google invalide.** Copie bien le lien complet ou l'ID brut.",
+    "raidSheet": "Feuille de planning de raid",
+    "loggerSheet": "Feuille de journal des commandes",
+    "configured": "✅ **{name} configurée !**\n\n⚠️ **Important :** partage ta feuille Google avec l'e-mail du compte de service du bot pour qu'il y ait accès :\n`{email}`",
+    "dbError": "❌ Erreur de base de données pendant l'enregistrement de la configuration."
+  }
+}

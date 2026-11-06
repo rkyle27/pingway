@@ -1,0 +1,69 @@
+{
+  "cmd": {
+    "description": "⚙️ Richte dein FFXIV-Charakterprofil ein: Hauptjob, Porträts, Tomestone und FFLogs."
+  },
+  "needPhoto": "⚠️ Du kannst das Porträt erst ausschalten, wenn ein **ganzes Foto** hinzugefügt wurde!",
+  "selectRole": "Wähle die Rolle deines Hauptjobs",
+  "roles": {
+    "tank": "Verteidiger",
+    "healer": "Heiler",
+    "melee": "Nahkampf-Angreifer",
+    "ranged": "Physischer Fernkampf-Angreifer",
+    "caster": "Magischer Fernkampf-Angreifer"
+  },
+  "backDashboard": "Zurück zur Übersicht",
+  "selectRoleTitle": "⚔️ Rolle des Hauptjobs wählen",
+  "selectRoleHelp": "Bitte wähle unten die Rollenkategorie deines Charakters.",
+  "linkTitle": "Lodestone-Charakter verknüpfen",
+  "lodestoneLabel": "Lodestone-URL oder -ID",
+  "portraitTitle": "Porträt hinzufügen",
+  "portraitLabel": "Direkter Link zum Porträt",
+  "leaveBlank": "leer lassen für den Standard",
+  "photoTitle": "Ganzes Foto hinzufügen",
+  "photoLabel": "Direkter Link zum ganzen Foto",
+  "tomestoneTitle": "Tomestone-Link hinzufügen",
+  "tomestoneLabel": "Tomestone-URL (leer lassen zum Löschen)",
+  "fflogsTitle": "FFLogs-Link hinzufügen",
+  "fflogsLabel": "FFLogs-URL (leer lassen zum Löschen)",
+  "closed": "Einrichtung beendet.",
+  "selectJob": "Wähle deinen Job ({role})",
+  "backRoles": "Zurück zu den Rollen",
+  "selectJobTitle": "⚔️ Job wählen ({role})",
+  "selectJobHelp": "Wähle unten deinen Hauptjob.",
+  "invalidLodestone": "❌ Ungültiges Format der Lodestone-URL oder -ID.",
+  "dashTitle": "⚙️ FFXIV-Charaktereinstellungen",
+  "dashHelp": "Änderungen werden automatisch gespeichert, wenn du Knöpfe drückst oder Fenster absendest.",
+  "fields": {
+    "lodestone": "🔗 Lodestone-ID",
+    "mainJob": "⚔️ Hauptjob",
+    "portrait": "🖼️ Porträt",
+    "photo": "🌅 Ganzes Foto",
+    "portraitState": "👁️ Porträt-Anzeige",
+    "tomestone": "🏛️ Tomestone-Link",
+    "fflogs": "📊 FFLogs-Link"
+  },
+  "notSet": "*Nicht festgelegt*",
+  "usingDefault": "*Standard*",
+  "noneSet": "*Keins*",
+  "on": "🟢 AN",
+  "off": "🔴 AUS",
+  "btn": {
+    "link": "Lodestone verknüpfen",
+    "mainJob": "Hauptjob",
+    "portrait": "Porträt hinzufügen",
+    "photo": "Ganzes Foto hinzufügen",
+    "on": "AN",
+    "off": "AUS",
+    "portraitToggle": "Porträt: {state}",
+    "tomestone": "Tomestone-Link",
+    "fflogs": "FFLogs-Link",
+    "exit": "Beenden"
+  },
+  "roleShort": {
+    "Tank": "Verteidiger",
+    "Healer": "Heiler",
+    "Melee": "Nahkampf",
+    "Range": "Physischer Fernkampf",
+    "Caster": "Magischer Fernkampf"
+  }
+}

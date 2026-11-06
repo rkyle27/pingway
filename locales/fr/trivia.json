@@ -1,0 +1,260 @@
+{
+  "command": {
+    "description": "🧩 Devinez le mot FFXIV du jour en 6 difficultés, gagnez des bits et gardez votre série."
+  },
+  "title": "🧩 **Pingway Trivia — Devinez le mot**",
+  "diff": {
+    "easy": "Facile",
+    "normal": "Normal",
+    "hard": "Difficile",
+    "extreme": "Extrême",
+    "savage": "Sadique",
+    "ultimate": "Fatal"
+  },
+  "maintenance": "⚠️ **Le bot est en maintenance.** Réessayez plus tard !",
+  "notAvailable": "❌ Trivia n'est pas disponible pour le moment. Réessayez dans une minute.",
+  "warming": "⏳ Trivia se prépare, réessayez dans une minute.",
+  "error": "❌ Un problème est survenu. Relancez /trivia.",
+  "ended": "⌛ Session terminée — relancez /trivia.",
+  "time": {
+    "hm": "{h} h {m} min",
+    "m": "{m} min"
+  },
+  "count": {
+    "bits_one": "{n} bit",
+    "bits_other": "{n} bits",
+    "guesses_one": "{n} essai",
+    "guesses_other": "{n} essais",
+    "limit_one": "{n} essai",
+    "limit_other": "{n} essais",
+    "wrongGuesses_one": "{n} erreur",
+    "wrongGuesses_other": "{n} erreurs",
+    "wrongLeft_one": "{n} erreur restante",
+    "wrongLeft_other": "{n} erreurs restantes",
+    "streakDays_one": "{n} jour",
+    "streakDays_other": "{n} jours"
+  },
+  "status": {
+    "solved": "trouvé",
+    "gaveup": "abandonné",
+    "failed": "plus d'essais",
+    "playing": "en cours",
+    "new": "nouveau"
+  },
+  "buttons": {
+    "play": "Jouer",
+    "continue": "Continuer",
+    "results": "Résultats du jour",
+    "howto": "Comment jouer",
+    "todayWord": "Mot du jour",
+    "share": "Partager",
+    "back": "Retour",
+    "guess": "Deviner",
+    "hint": "Indice",
+    "giveUp": "Abandonner",
+    "giveUpYes": "Oui, abandonner",
+    "giveUpNo": "Non, continuer"
+  },
+  "home": {
+    "intro": "Devinez le mot FFXIV du jour. 6 difficultés, chacune avec son mot. Un mot trouvé par jour, sur tous les serveurs.",
+    "you": "**Vous :** 🔥 Série {streak} · 💎 {season} bits ce mois-ci · {total} au total",
+    "solved": "✅ Vous avez trouvé le mot **{diff}** du jour (+{bits} bits). Revenez après 0:00 JST ! (dans {time})",
+    "waiting": "▶ Votre partie **{diff}** vous attend.",
+    "newWords": "⏳ Nouveaux mots dans {time} (0:00 JST).",
+    "yesterday": "**Réponses d'hier**",
+    "yesterdayNone": "_Rien pour l'instant — revenez demain !_"
+  },
+  "howto": {
+    "rules": [
+      "• Chaque case est une lettre : ⬜ cachée, 🇦 visible. Les lettres accentuées s'affichent telles quelles (É). Les espaces et symboles sont toujours visibles.",
+      "• Appuyez sur **Deviner** et tapez la réponse entière. Majuscules, accents (é = e), espaces et symboles ne comptent pas.",
+      "• Une mauvaise réponse dévoile les lettres bien placées, plus une autre. Toutes les lettres visibles = trouvé. Trop d'erreurs et cette difficulté est bloquée pour la journée.",
+      "• **Indice :** jusqu'à {hints} par essai (remis à zéro après chaque erreur). D'abord des indices, puis des lettres. **Abandonner** bloque cette difficulté pour aujourd'hui ; vous pouvez en essayer une autre.",
+      "• Après un mot trouvé, c'est fini pour la journée, sur tous les serveurs. Nouveaux mots à 0:00 JST. Le mot du jour est le même pour tout le monde, affiché dans votre langue (changez-la avec /pingway)."
+    ],
+    "bits": "**Bits :** moins de lettres dévoilées = plus de bits, jusqu'au double. Jamais moins que la base.",
+    "diff": "{emoji} {name} : {bits}, {wrong}",
+    "streak": "**Série :** trouvez des mots plusieurs jours de suite. Bonus à 5/10/15/20/30 jours : +10/+20/+30/+40/+60 bits. Les séries et le classement mensuel repartent de zéro le 1er.",
+    "boards": "Classements : pingway.app → Trivia. Vous pouvez vous cacher dans My Settings."
+  },
+  "menu": {
+    "solved": "✅ Vous avez trouvé le mot **{diff}** du jour. Revenez après 0:00 JST !",
+    "pick": "Choisissez une difficulté. Chacune a son propre mot du jour.",
+    "line": "{emoji} **{name}** · {bits} · {limit} — {status}"
+  },
+  "game": {
+    "header": "{emoji} **{name}** · {left} · 💡 {hints}/{max} indices"
+  },
+  "feedback": {
+    "wrongShown_one": "❌ Raté — {n} lettre dévoilée. {left}.",
+    "wrongShown_other": "❌ Raté — {n} lettres dévoilées. {left}.",
+    "wrong": "❌ Raté. {left}."
+  },
+  "hint": {
+    "letter": "💡 Lettre {n} dévoilée.",
+    "limit": "Plus d'indices — vous en aurez {n} de plus après une erreur.",
+    "none": "Plus d'indices pour ce mot."
+  },
+  "giveup": {
+    "ask": "🏳️ **Abandonner ?** Cette difficulté sera bloquée pour aujourd'hui. (La réponse ne sera visible que demain.)"
+  },
+  "solved": {
+    "allRevealed": "🎉 **Bravo ! Toutes les lettres sont dévoilées !**",
+    "line": "✅ **Trouvé !** {emoji} {name} · +{bits} bits (base {base}, bonus {bonus})",
+    "streak": "🔥 Série de {days}",
+    "milestone": " · 🎉 Bonus de série +{bits} bits !",
+    "bits": "💎 {season} bits ce mois-ci · {total} au total",
+    "done": "C'est tout pour aujourd'hui — revenez après 0:00 JST (dans {time})."
+  },
+  "about": {
+    "title": "📖 **À propos : {word}**",
+    "answer": "📖 La réponse était **{word}**."
+  },
+  "locked": {
+    "gaveup": "🏳️ Vous avez abandonné **{name}**.",
+    "failed": "❌ Plus d'essais pour **{name}**.",
+    "today": "{why} Bloqué pour aujourd'hui.",
+    "other": "Vous pouvez encore essayer une autre difficulté. La réponse apparaîtra dans « Réponses d'hier » après 0:00 JST."
+  },
+  "today": {
+    "solved": "✅ Vous avez trouvé le mot **{name}** du jour"
+  },
+  "modal": {
+    "title": "Votre réponse ({name})",
+    "label": "Tapez la réponse entière"
+  },
+  "share": {
+    "nothing": "Rien à partager pour le moment.",
+    "gone": "⚠️ Le salon de partage Trivia n'existe plus. Demandez à un admin d'en choisir un nouveau sur le site.",
+    "already": "Déjà partagé. 🙂",
+    "cantPost": "⚠️ Pingway ne peut pas écrire dans <#{channel}>. Demandez à un admin de vérifier ses permissions.",
+    "done": "📣 Partagé dans <#{channel}> !",
+    "line": "🧩 **{name}** a trouvé le mot **{diff}** du jour de Pingway Trivia en {guesses}{hints} !{streak}",
+    "guesses_one": "{n} essai",
+    "guesses_other": "{n} essais",
+    "hints_one": " avec {n} indice",
+    "hints_other": " avec {n} indices",
+    "noHints": " sans indice",
+    "streak": " 🔥 Série {n}",
+    "invite": "-# Vous pensez faire mieux ? Utilisez {command} pour deviner le mot FFXIV du jour, gagner des bits et construire votre série !"
+  },
+  "reward": {
+    "dm": "🎉 Félicitations ! Vous avez gagné **{bits} bits** dans Pingway Trivia en {month} — voici **{points} points** pour vous remercier. Utilisez-les pour des servants en plus ou les Supporter Perks sur {url}",
+    "month": "{month} {year}",
+    "months": ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+    "roleGiven": "Pingway Trivia : top {rank} de {season}",
+    "roleTaken": "Pingway Trivia : top {rank} de {season} revenu à quelqu'un d'autre"
+  },
+  "hints": {
+    "labelValue": "{label} : {v}",
+    "listSep": ", ",
+    "loreSep": " · ",
+    "category": "Catégorie : {v}",
+    "cat": {
+      "job": "Job",
+      "class": "Classe",
+      "city": "Cité",
+      "zone": "Zone",
+      "region": "Région",
+      "dungeon": "Donjon",
+      "trial": "Défi",
+      "allianceRaid": "Raid en alliance",
+      "raid": "Raid",
+      "mount": "Monture",
+      "minion": "Mascotte",
+      "action": "Action",
+      "item": "Objet"
+    },
+    "roles": { "1": "Tank", "2": "DPS de mêlée", "3": "DPS à distance", "4": "Soigneur" },
+    "stats": { "1": "Force", "2": "Dextérité", "3": "Vitalité", "4": "Intelligence", "5": "Esprit" },
+    "rarities": { "1": "Commun (blanc)", "2": "Inhabituel (vert)", "3": "Rare (bleu)", "4": "Relique (violet)", "7": "Éthéré (rose)" },
+    "roulettes": {
+      "LevelingRoulette": "Gain de niveaux",
+      "HighLevelRoulette": "Donjons de haut niveau",
+      "ExpertRoulette": "Expert",
+      "TrialRoulette": "Défis",
+      "AllianceRoulette": "Raids en alliance",
+      "NormalRaidRoulette": "Raids normaux",
+      "MSQRoulette": "Scénario principal"
+    },
+    "role": "Rôle : {v}",
+    "type": "Type : {v}",
+    "mainStat": "Attribut principal : {v}",
+    "startingCity": "Cité de départ : {v}",
+    "startsAtLevel": "Commence au niveau {n}",
+    "limitedJob": "C'est un job limité",
+    "becomes": "Devient : {v}",
+    "startsAs": "Commence en tant que : {v}",
+    "abbreviation": "Abréviation : {v}",
+    "region": "Région : {v}",
+    "expansion": "Extension : {v}",
+    "area": "Secteur : {v}",
+    "alsoInRegion": "Aussi dans cette région : {v}",
+    "fieldZones_one": "{n} zone",
+    "fieldZones_other": "{n} zones",
+    "cityThere": "Une cité là-bas : {v}",
+    "zoneThere": "Une zone là-bas : {v}",
+    "anotherZoneThere": "Une autre zone là-bas : {v}",
+    "level": "Niveau {n}",
+    "itemLevel": "Niveau d'objet {n}",
+    "roulette": "Mission aléatoire : {v}",
+    "zone": "Zone : {v}",
+    "highEnd": "C'est un défi haut niveau",
+    "levelSync": "Synchro niveau {n}",
+    "itemLevelSync": "Synchro niveau d'objet {n}",
+    "description": "Description",
+    "quote": "Citation",
+    "seats_one": "Places : {n} cavalier",
+    "seats_other": "Places : {n} cavaliers",
+    "minionRace": "Espèce : {v}",
+    "behavior": "Comportement : {v}",
+    "skillType": "Type de compétence (Mascottes de guerre) : {v}",
+    "specialAction": "Action spéciale : {v}",
+    "verminionStats": "Mascottes de guerre : ATQ {atk} / DÉF {def} / VIT {spd}",
+    "job": "Job : {v}",
+    "roleAction": "Action de rôle",
+    "actionType": "Type d'action : {v}",
+    "castTime": "Temps d'incantation : {v}",
+    "instant": "Lancement instantané",
+    "recast": "Temps de recharge : {v}",
+    "seconds": "{n} s",
+    "groundTargeted": "Elle se lance au sol",
+    "targets": "Cibles : {v}",
+    "targetEnemies": "ennemis",
+    "targetParty": "membres de l'équipe",
+    "targetSelf": "soi-même",
+    "range": "Portée : {n} yalms",
+    "radius": "Rayon d'effet : {n} yalms",
+    "charges": "{n} charges",
+    "usedBy": "Utilisée par : {v}",
+    "itemType": "Type d'objet : {v}",
+    "equipLevel": "Niveau requis {n}",
+    "usableBy": "Utilisable par : {v}",
+    "craftedBy": "Fabriqué par : {v}",
+    "expertRecipe": " (recette d'expert)",
+    "rarity": "Rareté : {v}",
+    "marketBoard": "Tableau des ventes : {v}",
+    "grandCompany": "Grande compagnie : {v}",
+    "itemSeries": "Série d'objets : {v}",
+    "materia_one": "{n} emplacement de matéria",
+    "materia_other": "{n} emplacements de matéria",
+    "dyeable": "Il peut être teint",
+    "stacks": "Se cumule jusqu'à {n}",
+    "hq": "Il peut être de haute qualité",
+    "unique": "Il est unique",
+    "collectable": "C'est un objet de collection",
+    "firstLetter": "Première lettre : {l}",
+    "lore": {
+      "line": "{name}{abbr} — {what}{startsAs}.",
+      "abbr": " ({v})",
+      "job": "job",
+      "jobRole": "job de {role}",
+      "class": "classe",
+      "classRole": "classe de {role}",
+      "startsAs": ", commence en tant que {v}",
+      "city": { "full": "Une cité de {region} ({exp}).", "region": "Une cité de {region}.", "exp": "Une cité ({exp}).", "plain": "Une cité." },
+      "zone": { "full": "Une zone de {region} ({exp}).", "region": "Une zone de {region}.", "exp": "Une zone ({exp}).", "plain": "Une zone." },
+      "region": { "exp": "Une région du monde, apparue dans {exp}.", "plain": "Une région du monde." }
+    }
+  }
+}

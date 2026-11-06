@@ -1,0 +1,9 @@
+{
+  "cmd": {
+    "description": "🎙️ Move the AI to this channel, or turn it off if it is already here (Admin only)."
+  },
+  "off": "🔴 AI is no longer listening in <#{channelId}>.",
+  "moved": " It moved here from {channels} (one AI channel per server).",
+  "on": "🟢 AI is now actively listening in <#{channelId}>! All normal messages in this channel will get AI responses.{moved}",
+  "failed": "❌ Failed to update the AI channel."
+}

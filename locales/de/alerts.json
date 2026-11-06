@@ -1,0 +1,23 @@
+{
+  "footer": "Daten vom Universalis-Live-Feed • Mit /datacenter änderst du deine Datenzentren",
+  "worldFallback": "Welt {id}",
+  "headers": {
+    "world": "Welt",
+    "price": "Angebotspreis",
+    "median": "DZ-Medianverkauf"
+  },
+  "moreWorlds": "...und {count} weitere Welt(en)",
+  "itemFallback": "Gegenstand #{id}",
+  "footerShort": "Daten vom Universalis-Live-Feed",
+  "title": "🚨 {name} — {quality} (bis zu {percent} %)",
+  "gil": "{n} Gil",
+  "undercut": {
+    "item": "Gegenstand",
+    "retainer": "Gehilfe",
+    "yours": "Deiner",
+    "lowest": "Niedrigster",
+    "more": "...und {count} weitere",
+    "title": "🏷️ Deine Gehilfen wurden unterboten ({count})",
+    "note": "\nPreise pro Stück in Gil. Verwalte deine Gehilfen auf der Pingway-Website."
+  }
+}

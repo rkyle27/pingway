@@ -1,6 +1,8 @@
 const { pool } = require('./utils/db');
 const { toDiscordTimestamp } = require('./utils/hammertime');
 const { isMaintenance } = require('./maintenance');
+const { t } = require('./utils/i18n');
+const userLanguage = require('./utils/userLanguage');
 
 // The database host sometimes closes idle connections ("Connection lost"). The read below is safe to repeat,
 // so it is tried once more after a short wait. If it still fails, one short warning is logged (at most every
@@ -95,7 +97,7 @@ function startEvercoldScheduler(client) {
                         const relativeTime = toDiscordTimestamp(targetTimestampMs, 'R');
 
                         await channel.send({
-                            content: `🚨 **Event Release Alert!**\n\n**${event_name}** is starting now! (${hammertimeStr} / ${relativeTime}) ${roleMention}`
+                            content: t(userLanguage.forGuild(guild), 'release.alert', { name: event_name, time: hammertimeStr, relative: relativeTime, role: roleMention })
                         });
 
                         // Mark as notified so it doesn't spam repeatedly

@@ -1,0 +1,70 @@
+{
+  "warning": {
+    "title": "🚫 N'ÉCRIS PAS DANS CE SALON",
+    "text": "Ce salon attrape les **comptes piratés** qui spamment des liens dans tous les salons.\n\nToute personne qui écrit ici est **retirée du serveur automatiquement**, et ses messages de la dernière heure sont supprimés.\n\n*Le staff n'est pas concerné. Si cela t'est arrivé par erreur, demande une nouvelle invitation à un membre.*",
+    "footer": "Pingway honeypot"
+  },
+  "dm": {
+    "title": "⚠️ Ton compte Discord est peut-être piraté",
+    "text": "Un message vient d'être envoyé depuis ton compte dans **#{channel}** sur **{server}**, un salon où personne ne devrait écrire. Les comptes qui font ça sont presque toujours piratés, tu as donc été retiré de ce serveur et tes messages de la dernière heure y ont été supprimés.\n\n**Que faire maintenant**\n1. Change ton mot de passe Discord.\n2. Active l'authentification à deux facteurs (Paramètres utilisateur → Mon compte).\n3. Vérifie Paramètres utilisateur → Appareils et déconnecte tout ce que tu ne reconnais pas.\n4. Demande à un membre de **{server}** une nouvelle invitation pour revenir.\n\nSi tu as écrit là-bas par erreur, demande simplement une invitation. Tu n'es pas banni.",
+    "footer": "Envoyé par Pingway"
+  },
+  "report": {
+    "title": "🍯 Le honeypot a attrapé un membre",
+    "dmSent": "\nMP envoyé ✅",
+    "dmNotSent": "\nMP non envoyé",
+    "names": " · {names}"
+  },
+  "fields": {
+    "member": "Membre",
+    "userId": "ID utilisateur",
+    "result": "Résultat",
+    "when": "Quand"
+  },
+  "owner": {
+    "nickname": "Pseudo : {nickname}",
+    "displayName": "Nom affiché : {displayName}",
+    "title": "🍯 Le honeypot a attrapé un membre sur {server}",
+    "text": "Quelqu'un a écrit dans **#{channel}**, ton salon « ne pas écrire ici ». Cela veut généralement dire que son compte a été piraté.",
+    "memberValue": "<@{userId}>\nNom d'utilisateur : @{username}{names}",
+    "dmSent": "\nIl a reçu un MP « ton compte est peut-être piraté ».",
+    "footer": "Pingway honeypot · Liste complète : site Pingway → paramètres du serveur → Honeypot",
+    "summary": "🍯 Le honeypot de **{server}** a attrapé **{count} membre(s) de plus** ces dernières minutes. Retrouve-les tous sur le site Pingway → paramètres du serveur → Honeypot."
+  },
+  "results": {
+    "softbanned": "softban",
+    "needsBan": "non retiré : Pingway a besoin de la permission Bannir des membres",
+    "roleAbove": "non retiré : son rôle est au-dessus de celui de Pingway",
+    "unbanFailed": "banni (échec du débannissement : débannis-le manuellement)",
+    "notRemoved": "non retiré : {error}"
+  },
+  "cmd": {
+    "description": "🍯 Salon « ne pas écrire ici » qui retire les comptes piratés.",
+    "set": "Utilise un salon comme honeypot (Pingway y publie un avertissement).",
+    "channel": "Le salon où il ne faut pas écrire",
+    "off": "Désactive le honeypot.",
+    "dm": "Envoie un MP aux membres attrapés pour dire que leur compte est peut-être piraté.",
+    "dmOn": "Envoyer le MP ?",
+    "warning": "Publie l'avertissement « ne pas écrire ici » de Pingway dans le salon honeypot.",
+    "warningOn": "Afficher l'avertissement ?",
+    "status": "Affiche les réglages du honeypot."
+  },
+  "perms": {
+    "ban": "Bannir des membres",
+    "manage": "Gérer les messages"
+  },
+  "and": " et ",
+  "missingPerms": "\n\n⚠️ Il manque à Pingway **{perms}**. Donne ces permissions à son rôle, sinon les membres attrapés ne pourront pas être retirés.",
+  "posted": " Pingway y a publié un avertissement.",
+  "isNow": "🍯 <#{channelId}> est maintenant le honeypot.{posted} Toute personne hors staff qui y écrit reçoit un softban (retirée, ses messages de la dernière heure supprimés ; elle pourra revenir plus tard).{permNote}",
+  "turnedOff": "🍯 Honeypot désactivé. Tu peux supprimer le message d'avertissement dans l'ancien salon.",
+  "dmOn": "📨 Les membres attrapés recevront un MP disant que leur compte est peut-être piraté.",
+  "dmOff": "📨 Aucun MP ne sera envoyé aux membres attrapés.",
+  "warningOn": "🚫 Pingway publiera son avertissement « ne pas écrire ici » dans le salon honeypot.",
+  "warningOff": "🚫 L'avertissement de Pingway est désactivé (et supprimé s'il avait été publié). Vérifie que ton salon dit aux membres de ne pas y écrire, sinon ils risquent un softban par erreur.",
+  "on": "activé",
+  "off": "désactivé",
+  "status": "🍯 Honeypot : <#{channelId}> · MP : {dm} · Avertissement : {warning}\nLa liste des membres attrapés est sur le site Pingway (paramètres du serveur).{permNote}",
+  "statusOff": "🍯 Le honeypot est désactivé. Utilise `/honeypot set` pour choisir un salon.{permNote}",
+  "failed": "❌ Un problème est survenu. Réessaie."
+}

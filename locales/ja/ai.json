@@ -1,0 +1,22 @@
+{
+  "helpIntro": "Pingwayでできることはこちら！ブラウザからもPingwayを管理できます 🌐",
+  "recollection": "✨ *Release_Recollection_PROTOCOL 起動。* — チャットの記憶を消去しました。",
+  "invite": "このリンクからPingwayを追加できます：\nhttps://discord.com/oauth2/authorize?client_id=1530586586524418048",
+  "support": "サポートサーバーはこちら：\nhttps://discord.gg/DDdV48X4G2",
+  "donate": "💖 今後のアップデートとAIの費用の応援はこちら：\n<https://ko-fi.com/riverzola>",
+  "areYouBot": "いいえ、開発者が手動で返信しています。助けて。（冗談です、はい、AIです） <https://ko-fi.com/riverzola>",
+  "noCode": "大きなコードファイルを作ることは開発者に禁止されています。",
+  "notHere": "👋 こんにちは！**/help** と入力するか、「help」と付けてメンションすると、できることが分かります。AIチャットは、管理者が **/ailistenhere** でオンにしたチャンネルでだけ使えます。",
+  "notice": {
+    "cleared": "\n\n🗑️ *[システム：リマインダー/タスクをすべて消去しました]*",
+    "edited": "\n\n✏️ *[システム：リマインダーの内容を更新しました]*",
+    "deleted": "\n\n🗑️ *[システム：リマインダーを削除しました]*",
+    "recurring": "（毎日繰り返し 🔁）",
+    "count": "（{count}件保存）",
+    "set": "\n\n⏰ *[システム：リマインダーを設定しました{repeat}{count}]*",
+    "appended": "\n\n📝 *[システム：メモに追記しました]*",
+    "forgot": "\n\n🧹 *[システム：保存した情報を忘れました]*",
+    "saved": "\n\n🧠 *[システム：新しい情報を保存しました]*"
+  },
+  "done": "完了しました！"
+}

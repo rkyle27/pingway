@@ -1,1 +1,21 @@
-{ "test": { "hello": "こんにちは、{name}！" } }
+{
+  "maintenance": "⚠️ **現在Botはメンテナンス中です。** しばらくしてからもう一度お試しください！",
+  "noDms": "⚠️ **スラッシュコマンドはDMでは使えません。**\nサーバーのチャンネルで実行してください。",
+  "busy": "⚠️ **ごめんなさい、今ちょっと手が離せません！** （{task}）\n少ししてからもう一度お試しください。",
+  "sciondexSelect": "ScionDex用のチャンネルを選んでください...",
+  "sciondexAdminNotSetUp": "⚠️ **このサーバーではまだScionDexが設定されていません！**\n管理者として、メンバーがScionDexを遊べるチャンネルを選んでください：",
+  "sciondexAdminRestricted": "⚠️ **ScionDexは <#{channelId}> 専用です。**\n管理者は下でチャンネルを変更できます：",
+  "sciondexNotSetUp": "⚠️ **このサーバーではまだScionDexが設定されていません。**\nScionDexを遊ぶには、先にサーバー管理者にチャンネルを設定してもらってください！",
+  "sciondexOnlyIn": "⚠️ **ScionDexは <#{channelId}> でのみ遊べます！**\nお困りの場合はサーバー管理者に聞いてください。",
+  "commandNotFound": "❌ コマンド `/{commandName}` が見つかりません。",
+  "sciondexChannelSet": "✅ **ScionDexのチャンネルを <#{channelId}> に設定しました！**\nこのチャンネルで `/sciondex` が使えます。",
+  "interactionError": "❌ この操作の実行中にエラーが発生しました。",
+  "time": {
+    "dhm": "{d}日{h}時間{m}分",
+    "hm": "{h}時間{m}分"
+  },
+  "tasks": {
+    "clearDms": "BotのDMを削除中",
+    "cleanChannel": "チャンネルのメッセージを削除中"
+  }
+}

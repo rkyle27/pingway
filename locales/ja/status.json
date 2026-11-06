@@ -1,0 +1,23 @@
+{
+  "online": "オンライン",
+  "offline": "オフライン / メンテナンス",
+  "noData": "データなし",
+  "cmd": {
+    "description": "🔍 FFXIVのサーバー状態を確認し、通知のオン/オフを切り替えます。"
+  },
+  "pickWorldFirst": "⚠️ 通知をオンにする前に、見守るワールドを選んでください！",
+  "title": "### 🌍 FFXIVステータス：**{dc}** データセンター\n",
+  "fallback": "⚠️ **注意：** xivup APIからライブデータを取得できませんでした。状態はデータなし（-）で表示しています。\n",
+  "enabled": "オン",
+  "disabled": "オフ",
+  "tracking": "見守り中のワールド：**{world}**（DM通知：**{alerts}**）\n",
+  "trackedLine": "{icon} **{world}**（{dc}） — *{status}*\n",
+  "trackingNone": "見守り中のワールド：**なし** — 下でワールドを選んで見守りましょう。\n",
+  "worldLine": "{icon} **{world}** — *{status}*\n",
+  "switchDc": "データセンターを切り替え",
+  "selectWorld": "見守るワールドを選ぶ",
+  "disableDm": "🔕 DM通知をオフ",
+  "enableDm": "🔔 DM通知をオン",
+  "exit": "閉じる",
+  "alertDm": "🟢 **FFXIVサーバー通知！**\nワールド **{world}**（{dc}）のメンテナンスが終わり、**オンライン** に戻りました！"
+}

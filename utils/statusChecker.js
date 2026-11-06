@@ -1,6 +1,8 @@
 const { pool } = require('./db');
 const { isMaintenance } = require('../maintenance');
 const axios = require('axios');
+const { t } = require('./i18n');
+const userLanguage = require('./userLanguage');
 
 let previousStatuses = {};
 
@@ -74,9 +76,9 @@ function initStatusChecker(client) {
                     try {
                         const user = await client.users.fetch(sub.user_id).catch(() => null);
                         if (user) {
+                            const lang = await userLanguage.forUser(sub.user_id); // DM: the user's language
                             await user.send(
-                                `🟢 **FFXIV Server Alert!**\n` +
-                                `World **${world}** (${sub.datacenter}) has recovered from maintenance and is now **ONLINE**!`
+                                t(lang, 'status.alertDm', { world, dc: sub.datacenter })
                             );
                             console.log(`[SUCCESS] Sent FFXIV status DM notification to user ${sub.user_id}`);
                         }

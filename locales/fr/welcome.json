@@ -1,0 +1,24 @@
+{
+  "defaultMessage": "Merci d'avoir rejoint le serveur ! Amuse-toi bien et fais comme chez toi.",
+  "listMore": "{list} et {count} autres",
+  "listAnd": "{list} et {last}",
+  "combined": "Bienvenue {list} ! 🎉",
+  "testDm": "Voici un test de ta carte de bienvenue pour **{server}** (design : {design}).",
+  "designDefault": "par défaut",
+  "perms": {
+    "ViewChannel": "Voir le salon",
+    "SendMessages": "Envoyer des messages",
+    "AttachFiles": "Joindre des fichiers"
+  },
+  "cmd": {
+    "description": "👋 Publie des cartes de bienvenue pour les nouveaux membres dans ce salon (admins uniquement).",
+    "action": "Active les cartes de bienvenue ici (par défaut) ou désactive-les."
+  },
+  "serverOnly": "❌ Cette commande ne fonctionne que sur un serveur.",
+  "adminsOnly": "❌ Seuls les admins du serveur (permission Administrateur) peuvent utiliser cette commande.",
+  "turnedOff": "👋 Les cartes de bienvenue sont désactivées. Utilise `/welcomehere` dans un salon pour les réactiver.",
+  "failed": "❌ Un problème est survenu. Réessaie.",
+  "wrongChannel": "❌ Utilise `/welcomehere` dans un salon textuel ou d'annonces.",
+  "missingPerms": "❌ Pingway ne peut pas publier de cartes de bienvenue dans <#{channelId}>. Il manque : **{perms}**.\nDonne ces permissions au rôle de Pingway dans ce salon, puis relance `/welcomehere`.",
+  "enabled": "👋 Les cartes de bienvenue seront publiées dans <#{channelId}>. Change le design et le message sur le site de Pingway (paramètres du serveur → Welcome)."
+}

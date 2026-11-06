@@ -1,0 +1,24 @@
+{
+  "defaultMessage": "サーバーへの参加ありがとうございます！ゆっくりくつろいで楽しんでくださいね。",
+  "listMore": "{list} ほか{count}人",
+  "listAnd": "{list} と {last}",
+  "combined": "ようこそ、{list}！🎉",
+  "testDm": "**{server}** のウェルカムカードのテストです（デザイン：{design}）。",
+  "designDefault": "デフォルト",
+  "perms": {
+    "ViewChannel": "チャンネルを見る",
+    "SendMessages": "メッセージを送信",
+    "AttachFiles": "ファイルを添付"
+  },
+  "cmd": {
+    "description": "👋 このチャンネルに新メンバーのウェルカムカードを投稿します（管理者のみ）。",
+    "action": "ここでウェルカムカードをオン（初期設定）またはオフにします。"
+  },
+  "serverOnly": "❌ このコマンドはサーバー内でのみ使えます。",
+  "adminsOnly": "❌ このコマンドはサーバー管理者（管理者権限）のみ使えます。",
+  "turnedOff": "👋 ウェルカムカードをオフにしました。チャンネルで `/welcomehere` を使うと再びオンにできます。",
+  "failed": "❌ 問題が発生しました。もう一度お試しください。",
+  "wrongChannel": "❌ `/welcomehere` はテキストチャンネルかアナウンスチャンネルで使ってください。",
+  "missingPerms": "❌ Pingwayは <#{channelId}> にウェルカムカードを投稿できません。足りない権限：**{perms}**。\nこのチャンネルでPingwayのロールにこれらの権限を付けてから、もう一度 `/welcomehere` を実行してください。",
+  "enabled": "👋 ウェルカムカードは <#{channelId}> に投稿されます。デザインとメッセージはPingwayのウェブサイト（サーバー設定 → Welcome）で変更できます。"
+}

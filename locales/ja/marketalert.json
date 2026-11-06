@@ -1,0 +1,18 @@
+{
+  "noneSet": "*未設定* — `/datacenter` でデータセンターを選んでください。選ぶまで通知は送られません。",
+  "disable": "通知をオフにする",
+  "enable": "通知をオンにする",
+  "done": "完了",
+  "cmd": {
+    "description": "値下がり通知のDMをオン/オフします（DMの間隔はウェブサイトで設定）"
+  },
+  "loadFailed": "❌ マーケット通知の設定を読み込めませんでした。",
+  "enabledNotice": "🔔 マーケット通知のDMを **オン 🟢** にしました。",
+  "disabledNotice": "🔕 マーケット通知のDMを **オフ 🔴** にしました。",
+  "updateFailed": "❌ 通知設定を更新できませんでした。",
+  "settings": "📢 **マーケット通知の設定**\n\n• **DM通知：** {dm}\n• **データセンター（/datacenter より）：** {dcs}\n• **DMの間隔：** {interval}ごと（リテイナーの値下げ通知にも使われます。https://pingway.app/me.html のマイ設定で変更できます）",
+  "on": "🟢 オン",
+  "off": "🔴 オフ",
+  "minute": "{n}分",
+  "minutes": "{n}分"
+}

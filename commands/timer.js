@@ -2,17 +2,20 @@ const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, SlashCommand
 const { pool } = require('../utils/db');
 const { toDiscordTimestamp } = require('../utils/hammertime');
 const { isMaintenance } = require('../maintenance');
+const { t, discordLocalizations } = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('timer')
-        .setDescription('⏳ Check dynamic countdowns for FFXIV daily/weekly resets and housing lotteries.'),
+        .setDescription(t('en', 'timer.cmd.description')).setDescriptionLocalizations(discordLocalizations('timer.cmd.description')),
 
     async execute(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         // Maintenance Check: Block command execution when maintenance mode is ON
         if (isMaintenance(interaction.guildId)) {
             return interaction.reply({
-                content: '⚠️ **The bot is currently undergoing maintenance.** Please try again later!',
+                content: t(lang, 'core.maintenance'),
                 flags: [MessageFlags.Ephemeral]
             });
         }
@@ -25,14 +28,14 @@ module.exports = {
             const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            return `${months}M ${days}d ${hours}h ${minutes}m`;
+            return t(lang, 'timer.mdhm', { mo: months, d: days, h: hours, m: minutes });
         };
 
         const formatFFXIV = (diff) => {
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            return days > 0 ? `${days}d ${hours}h ${minutes}m` : `${hours}h ${minutes}m`;
+            return days > 0 ? t(lang, 'core.time.dhm', { d: days, h: hours, m: minutes }) : t(lang, 'core.time.hm', { h: hours, m: minutes });
         };
 
         // --- Logic: Daily/Weekly/GC Resets ---
@@ -57,17 +60,17 @@ module.exports = {
 
         let housingPhase, housingTime, housingTarget;
         if (timeInCycle < ENTRY_DURATION) {
-            housingPhase = "🏠 Entry Period (Bidding)";
+            housingPhase = t(lang, 'timer.entryPeriod');
             housingTime = ENTRY_DURATION - timeInCycle;
         } else {
-            housingPhase = "⏱️ Results Period";
+            housingPhase = t(lang, 'timer.resultsPeriod');
             housingTime = CYCLE - timeInCycle;
         }
         housingTarget = new Date(now.getTime() + housingTime);
 
         // --- Logic: Database Custom Event / Evercold ---
-        let customFieldName = '❄️ Evercold Early Access';
-        let evercoldField = "Not set. Use 'Specify Release Date' below.";
+        let customFieldName = t(lang, 'timer.evercold');
+        let evercoldField = t(lang, 'timer.notSet');
         let hasReleaseDate = false;
 
         try {
@@ -76,7 +79,7 @@ module.exports = {
 
             if (data) {
                 if (data.event_name) {
-                    customFieldName = `❄️ ${data.event_name}`;
+                    customFieldName = t(lang, 'timer.eventName', { name: data.event_name });
                 }
                 if (data.release_time && typeof data.release_time === 'string') {
                     const parts = data.release_time.split(' ');
@@ -93,7 +96,7 @@ module.exports = {
                             hasReleaseDate = true;
                             const hammertimeStr = toDiscordTimestamp(target.getTime(), 'f');
                             const hammertimeRelative = toDiscordTimestamp(target.getTime(), 'R');
-                            evercoldField = `**${formatEvercold(target - now)}** remaining (${hammertimeRelative})\nTarget: ${hammertimeStr}`;
+                            evercoldField = t(lang, 'timer.releaseValue', { time: formatEvercold(target - now), relative: hammertimeRelative, target: hammertimeStr });
                         }
                     }
                 }
@@ -108,21 +111,21 @@ module.exports = {
         const housingHammertime = toDiscordTimestamp(housingTarget.getTime(), 'f');
 
         const embed = new EmbedBuilder()
-            .setTitle('⏳ FFXIV & Event Timers')
+            .setTitle(t(lang, 'timer.title'))
             .setColor('#00aaff')
             .addFields(
                 { name: customFieldName, value: evercoldField },
-                { name: '🌅 Daily Reset', value: `**${formatFFXIV(dailyReset - now)}** remaining\nTarget: ${dailyHammertime}` },
-                { name: '🎖️ GC Provisioning', value: `**${formatFFXIV(gcReset - now)}** remaining\nTarget: ${gcHammertime}` },
-                { name: '🗓️ Weekly Reset', value: `**${formatFFXIV(weeklyReset - now)}** remaining\nTarget: ${weeklyHammertime}` },
-                { name: '🏘️ Housing Lottery', value: `Phase: **${housingPhase}**\nRemaining: **${formatFFXIV(housingTime)}**\nTarget: ${housingHammertime}` }
+                { name: t(lang, 'timer.daily'), value: t(lang, 'timer.resetValue', { time: formatFFXIV(dailyReset - now), target: dailyHammertime }) },
+                { name: t(lang, 'timer.gc'), value: t(lang, 'timer.resetValue', { time: formatFFXIV(gcReset - now), target: gcHammertime }) },
+                { name: t(lang, 'timer.weekly'), value: t(lang, 'timer.resetValue', { time: formatFFXIV(weeklyReset - now), target: weeklyHammertime }) },
+                { name: t(lang, 'timer.housing'), value: t(lang, 'timer.housingValue', { phase: housingPhase, time: formatFFXIV(housingTime), target: housingHammertime }) }
             );
 
         const row = new ActionRowBuilder().addComponents(
-            new ButtonBuilder().setCustomId('set_date').setLabel('Specify Release Date').setStyle(ButtonStyle.Primary),
-            new ButtonBuilder().setCustomId('toggle_notif').setLabel('Toggle Notification').setStyle(ButtonStyle.Secondary),
-            new ButtonBuilder().setCustomId('set_role').setLabel('Role').setStyle(ButtonStyle.Secondary),
-            new ButtonBuilder().setCustomId('test_notif').setLabel('Test Notification').setStyle(ButtonStyle.Danger)
+            new ButtonBuilder().setCustomId('set_date').setLabel(t(lang, 'timer.specifyDate')).setStyle(ButtonStyle.Primary),
+            new ButtonBuilder().setCustomId('toggle_notif').setLabel(t(lang, 'timer.toggleNotif')).setStyle(ButtonStyle.Secondary),
+            new ButtonBuilder().setCustomId('set_role').setLabel(t(lang, 'timer.role')).setStyle(ButtonStyle.Secondary),
+            new ButtonBuilder().setCustomId('test_notif').setLabel(t(lang, 'timer.testNotif')).setStyle(ButtonStyle.Danger)
         );
 
         const responseMessage = await interaction.reply({ embeds: [embed], components: [row], flags: [MessageFlags.Ephemeral] });
@@ -141,7 +144,7 @@ module.exports = {
                 if (i.customId === 'toggle_notif') {
                     if (!hasReleaseDate) {
                         return await i.reply({
-                            content: '❌ No Release date is set yet.',
+                            content: t(lang, 'timer.noDate'),
                             flags: [MessageFlags.Ephemeral]
                         });
                     }
@@ -158,7 +161,7 @@ module.exports = {
 
                     if (!dbRoleId) {
                         return await i.reply({
-                            content: '⚠️ Ask an Admin to click the **Role** button to configure a notification role first.',
+                            content: t(lang, 'timer.noRole'),
                             flags: [MessageFlags.Ephemeral]
                         });
                     }
@@ -166,7 +169,7 @@ module.exports = {
                     const targetRole = i.guild.roles.cache.get(dbRoleId);
                     if (!targetRole) {
                         return await i.reply({
-                            content: '⚠️ The configured notification role no longer exists in this server. Ask an Admin to set a new role.',
+                            content: t(lang, 'timer.roleGone'),
                             flags: [MessageFlags.Ephemeral]
                         });
                     }
@@ -176,20 +179,20 @@ module.exports = {
                         if (member.roles.cache.has(dbRoleId)) {
                             await member.roles.remove(dbRoleId);
                             return i.reply({
-                                content: `🔔 Notification removed! You will no longer receive pings for release alerts.`,
+                                content: t(lang, 'timer.notifRemoved'),
                                 flags: [MessageFlags.Ephemeral]
                             });
                         } else {
                             await member.roles.add(dbRoleId);
                             return i.reply({
-                                content: `✅ Notification enabled! You've been assigned the <@&${dbRoleId}> role.`,
+                                content: t(lang, 'timer.notifEnabled', { roleId: dbRoleId }),
                                 flags: [MessageFlags.Ephemeral]
                             });
                         }
                     } catch (roleErr) {
                         console.error('[ERROR] Permission error adding/removing role:', roleErr);
                         return await i.reply({
-                            content: '❌ **Failed to update role:** Please ensure my bot role is placed above the notification role in Server Settings.',
+                            content: t(lang, 'timer.roleFailed'),
                             flags: [MessageFlags.Ephemeral]
                         });
                     }
@@ -198,7 +201,7 @@ module.exports = {
                 // --- ROLE BUTTON (ADMIN ONLY) ---
                 if (i.customId === 'set_role') {
                     if (!i.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
-                        return await i.reply({ content: '❌ Only Administrators can change the notification role for this server.', flags: [MessageFlags.Ephemeral] });
+                        return await i.reply({ content: t(lang, 'timer.adminsOnly'), flags: [MessageFlags.Ephemeral] });
                     }
 
                     let selectedRoleId = null;
@@ -219,7 +222,7 @@ module.exports = {
 
                     const roleSelectBuilder = new RoleSelectMenuBuilder()
                         .setCustomId('role_select_menu')
-                        .setPlaceholder('Select notification role...');
+                        .setPlaceholder(t(lang, 'timer.selectRole'));
 
                     if (savedRoleId) {
                         roleSelectBuilder.setDefaultRoles(savedRoleId);
@@ -227,13 +230,13 @@ module.exports = {
 
                     const selectRow = new ActionRowBuilder().addComponents(roleSelectBuilder);
                     const buttonRow = new ActionRowBuilder().addComponents(
-                        new ButtonBuilder().setCustomId('role_confirm').setLabel('Confirm').setStyle(ButtonStyle.Success),
-                        new ButtonBuilder().setCustomId('role_cancel').setLabel('Cancel').setStyle(ButtonStyle.Secondary)
+                        new ButtonBuilder().setCustomId('role_confirm').setLabel(t(lang, 'timer.confirm')).setStyle(ButtonStyle.Success),
+                        new ButtonBuilder().setCustomId('role_cancel').setLabel(t(lang, 'timer.cancel')).setStyle(ButtonStyle.Secondary)
                     );
 
                     // Reply and capture the sub-message reference
                     const roleMessage = await i.reply({
-                        content: '⚙️ Choose the notification role using the dropdown below, then click Confirm:',
+                        content: t(lang, 'timer.chooseRole'),
                         components: [selectRow, buttonRow],
                         flags: [MessageFlags.Ephemeral],
                         withResponse: true
@@ -254,7 +257,7 @@ module.exports = {
                             if (subI.customId === 'role_confirm') {
                                 if (!selectedRoleId) {
                                     return await subI.reply({
-                                        content: '⚠️ Please select a role from the dropdown menu first.',
+                                        content: t(lang, 'timer.pickRoleFirst'),
                                         flags: [MessageFlags.Ephemeral]
                                     });
                                 }
@@ -268,13 +271,13 @@ module.exports = {
 
                                     roleCollector.stop();
                                     return subI.update({
-                                        content: `✅ Notification role successfully updated to <@&${selectedRoleId}>!`,
+                                        content: t(lang, 'timer.roleUpdated', { roleId: selectedRoleId }),
                                         components: []
                                     });
                                 } catch (dbErr) {
                                     console.error('[ERROR] Failed to save notification role to database:', dbErr);
                                     return await subI.update({
-                                        content: '❌ Failed to save the role to the database.',
+                                        content: t(lang, 'timer.roleSaveFailed'),
                                         components: []
                                     });
                                 }
@@ -284,7 +287,7 @@ module.exports = {
                             if (subI.customId === 'role_cancel') {
                                 roleCollector.stop();
                                 return await subI.update({
-                                    content: 'Role selection canceled.',
+                                    content: t(lang, 'timer.roleCanceled'),
                                     components: []
                                 });
                             }

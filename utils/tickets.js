@@ -9,11 +9,13 @@ const {
     ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder
 } = require('discord.js');
 const { pool } = require('./db');
+const { t } = require('./i18n');
+const userLanguage = require('./userLanguage');
 
 const RELOAD_MS = 60 * 1000;
 const P = PermissionFlagsBits;
-const DEFAULT_PANEL = 'Need help? Click **Open Ticket** to talk privately with the staff team.';
-const DEFAULT_WELCOME = 'Thanks for opening a ticket! Tell us what you need, and a staff member will help you soon.';
+const DEFAULT_PANEL = t('en', 'tickets.defaultPanel');
+const DEFAULT_WELCOME = t('en', 'tickets.defaultWelcome');
 const TRANSCRIPT_MAX_MESSAGES = 2000;
 // Retention (owner decision): closed tickets in the tickets table (who opened/closed/claimed, the request text, times)
 // are kept for 180 days after closing, then deleted automatically. Open tickets are never deleted.
@@ -81,11 +83,12 @@ async function setStatus(guildId, s, status) {
     await pool.execute('UPDATE ticket_settings SET status = ? WHERE guild_id = ?', [status, guildId]).catch(() => {});
 }
 
-function panelPayload(s) {
-    const embed = new EmbedBuilder().setColor('#5865f2').setTitle('🎫 Support Tickets')
-        .setDescription(Number(s.enabled) === 1 ? (s.panel_text || DEFAULT_PANEL) : 'Tickets are closed right now. Please check back later.');
+// lang: the server's language (the panel is public). A panel text the admin typed is never translated.
+function panelPayload(s, lang = 'en') {
+    const embed = new EmbedBuilder().setColor('#5865f2').setTitle(t(lang, 'tickets.panelTitle'))
+        .setDescription(Number(s.enabled) === 1 ? (s.panel_text || t(lang, 'tickets.defaultPanel')) : t(lang, 'tickets.closedNow'));
     const row = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('pwtk:open').setLabel('Open Ticket').setEmoji('🎫').setStyle(ButtonStyle.Primary)
+        new ButtonBuilder().setCustomId('pwtk:open').setLabel(t(lang, 'tickets.openButton')).setEmoji('🎫').setStyle(ButtonStyle.Primary)
             .setDisabled(Number(s.enabled) !== 1)
     );
     return { embeds: [embed], components: [row] };
@@ -142,9 +145,9 @@ async function setup(client, guild, s) {
 
         let panelMessage = null;
         if (s.panel_message_id) panelMessage = await panel.messages.fetch(s.panel_message_id).catch(() => null);
-        if (panelMessage) await panelMessage.edit(panelPayload(s));
+        if (panelMessage) await panelMessage.edit(panelPayload(s, userLanguage.forGuild(guild)));
         else {
-            panelMessage = await panel.send(panelPayload(s));
+            panelMessage = await panel.send(panelPayload(s, userLanguage.forGuild(guild)));
             s.panel_message_id = panelMessage.id;
         }
 
@@ -165,7 +168,7 @@ async function setup(client, guild, s) {
 async function disablePanel(guild, s) {
     const panel = s.panel_channel_id && guild.channels.cache.get(s.panel_channel_id);
     const message = panel && s.panel_message_id ? await panel.messages.fetch(s.panel_message_id).catch(() => null) : null;
-    if (message) await message.edit(panelPayload(s)).catch(() => {});
+    if (message) await message.edit(panelPayload(s, userLanguage.forGuild(guild))).catch(() => {});
     await pool.execute('UPDATE ticket_settings SET synced_at = ? WHERE guild_id = ?', [s.updated_at, guild.id]).catch(() => {});
     s.synced_at = s.updated_at;
     await setStatus(guild.id, s, 'off');
@@ -204,36 +207,37 @@ const isSupport = (member, s) => Boolean(member) && (
     member.permissions.has(P.ManageChannels) || supportRoles(s).some(id => member.roles.cache.has(id))
 );
 
-async function openModal(interaction, s) {
+async function openModal(interaction, s, lang = 'en') {
     const [[{ n }]] = await pool.execute("SELECT COUNT(*) AS n FROM tickets WHERE guild_id = ? AND user_id = ? AND status = 'open'",
         [interaction.guildId, interaction.user.id]);
     const max = Math.max(1, Number(s.max_open) || 1);
     if (Number(n) >= max) {
-        return interaction.reply({ content: '⚠️ You already have ' + n + ' open ticket(s). Please use that one, or close it first.', flags: [MessageFlags.Ephemeral] });
+        return interaction.reply({ content: t(lang, 'tickets.alreadyN', { n }), flags: [MessageFlags.Ephemeral] });
     }
-    const modal = new ModalBuilder().setCustomId('pwtk:openmodal').setTitle('Open a ticket').addComponents(
+    const modal = new ModalBuilder().setCustomId('pwtk:openmodal').setTitle(t(lang, 'tickets.modalTitle')).addComponents(
         new ActionRowBuilder().addComponents(
-            new TextInputBuilder().setCustomId('reason').setLabel('What do you need help with?').setStyle(TextInputStyle.Paragraph)
+            new TextInputBuilder().setCustomId('reason').setLabel(t(lang, 'tickets.modalLabel')).setStyle(TextInputStyle.Paragraph)
                 .setRequired(false).setMaxLength(500)
         )
     );
     return interaction.showModal(modal);
 }
 
-async function createTicket(client, interaction, s) {
+async function createTicket(client, interaction, s, lang = 'en') {
     const guild = interaction.guild;
+    const glang = userLanguage.forGuild(guild); // the ticket channel is shared with the staff: the server's language
     const key = guild.id + ':' + interaction.user.id;
-    if (busy.has(key)) return interaction.reply({ content: '⏳ Your ticket is being created…', flags: [MessageFlags.Ephemeral] });
+    if (busy.has(key)) return interaction.reply({ content: t(lang, 'tickets.creating'), flags: [MessageFlags.Ephemeral] });
     busy.add(key);
     try {
         await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
         const category = guild.channels.cache.get(s.category_id);
-        if (!category) return interaction.editReply('❌ The ticket system is not set up correctly. Please tell a server admin.');
+        if (!category) return interaction.editReply(t(lang, 'tickets.notSetUp'));
         if (category.children && category.children.cache.size >= 50) {
-            return interaction.editReply('❌ There are too many open tickets right now. Please try again later.');
+            return interaction.editReply(t(lang, 'tickets.tooMany'));
         }
         const [[{ n }]] = await pool.execute("SELECT COUNT(*) AS n FROM tickets WHERE guild_id = ? AND user_id = ? AND status = 'open'", [guild.id, interaction.user.id]);
-        if (Number(n) >= Math.max(1, Number(s.max_open) || 1)) return interaction.editReply('⚠️ You already have an open ticket.');
+        if (Number(n) >= Math.max(1, Number(s.max_open) || 1)) return interaction.editReply(t(lang, 'tickets.alreadyOne'));
 
         await pool.execute('UPDATE ticket_settings SET counter = counter + 1 WHERE guild_id = ?', [guild.id]);
         const [[{ counter }]] = await pool.execute('SELECT counter FROM ticket_settings WHERE guild_id = ?', [guild.id]);
@@ -255,12 +259,12 @@ async function createTicket(client, interaction, s) {
         await pool.execute('INSERT INTO tickets (guild_id, number, channel_id, user_id, status, reason, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)',
             [guild.id, number, channel.id, interaction.user.id, 'open', reason || null, Date.now()]);
 
-        const embed = new EmbedBuilder().setColor('#5865f2').setTitle('🎫 Ticket #' + number)
-            .setDescription((s.welcome || DEFAULT_WELCOME) + (reason ? '\n\n**Request:**\n' + reason : ''))
-            .setFooter({ text: 'Opened by ' + interaction.user.tag }).setTimestamp();
+        const embed = new EmbedBuilder().setColor('#5865f2').setTitle(t(glang, 'tickets.ticketTitle', { number }))
+            .setDescription((s.welcome || t(glang, 'tickets.defaultWelcome')) + (reason ? t(glang, 'tickets.request', { reason }) : ''))
+            .setFooter({ text: t(glang, 'tickets.openedBy', { tag: interaction.user.tag }) }).setTimestamp();
         const buttons = new ActionRowBuilder().addComponents(
-            new ButtonBuilder().setCustomId('pwtk:claim').setLabel('Claim').setEmoji('🙋').setStyle(ButtonStyle.Secondary),
-            new ButtonBuilder().setCustomId('pwtk:close').setLabel('Close').setEmoji('🔒').setStyle(ButtonStyle.Danger)
+            new ButtonBuilder().setCustomId('pwtk:claim').setLabel(t(glang, 'tickets.claim')).setEmoji('🙋').setStyle(ButtonStyle.Secondary),
+            new ButtonBuilder().setCustomId('pwtk:close').setLabel(t(glang, 'tickets.close')).setEmoji('🔒').setStyle(ButtonStyle.Danger)
         );
         await channel.send({
             content: '<@' + interaction.user.id + '>' + (roles.length ? ' ' + roles.map(id => '<@&' + id + '>').join(' ') : ''),
@@ -268,10 +272,10 @@ async function createTicket(client, interaction, s) {
             allowedMentions: { users: [interaction.user.id], roles }
         });
         console.log('🎫 [TICKETS] Ticket #' + number + ' opened by ' + interaction.user.tag + ' in ' + guild.name + '.');
-        return interaction.editReply('✅ Your ticket is open: <#' + channel.id + '>');
+        return interaction.editReply(t(lang, 'tickets.opened', { channelId: channel.id }));
     } catch (err) {
         console.error('❌ [TICKETS] Could not open a ticket in ' + guild.name + ':', err.message);
-        return interaction.editReply('❌ Could not create your ticket. Pingway may be missing the Manage Channels permission.').catch(() => {});
+        return interaction.editReply(t(lang, 'tickets.createFailed')).catch(() => {});
     } finally {
         busy.delete(key);
     }
@@ -305,27 +309,28 @@ async function buildTranscript(channel) {
     }).join('\n');
 }
 
-async function closeTicket(client, interaction, s, t) {
+async function closeTicket(client, interaction, s, ticket) {
     const guild = interaction.guild;
+    const glang = userLanguage.forGuild(guild);
     const channel = interaction.channel;
-    await interaction.reply({ content: '🔒 Closing this ticket in 5 seconds…' });
-    await pool.execute("UPDATE tickets SET status = 'closed', closed_at = ?, closed_by = ? WHERE id = ?", [Date.now(), interaction.user.id, t.id]);
+    await interaction.reply({ content: t(glang, 'tickets.closing') });
+    await pool.execute("UPDATE tickets SET status = 'closed', closed_at = ?, closed_by = ? WHERE id = ?", [Date.now(), interaction.user.id, ticket.id]);
 
     const log = s.log_channel_id && guild.channels.cache.get(s.log_channel_id);
     if (log) {
         try {
-            const embed = new EmbedBuilder().setColor('#95a5a6').setTitle('🔒 Ticket #' + t.number + ' closed')
+            const embed = new EmbedBuilder().setColor('#95a5a6').setTitle(t(glang, 'tickets.closedTitle', { number: ticket.number }))
                 .addFields(
-                    { name: 'Opened by', value: '<@' + t.user_id + '>', inline: true },
-                    { name: 'Closed by', value: '<@' + interaction.user.id + '>', inline: true },
-                    { name: 'Claimed by', value: t.claimed_by ? '<@' + t.claimed_by + '>' : '-', inline: true },
-                    { name: 'Opened', value: '<t:' + Math.floor(Number(t.created_at) / 1000) + ':f>', inline: true },
-                    { name: 'Request', value: t.reason ? String(t.reason).slice(0, 1000) : '-' }
+                    { name: t(glang, 'tickets.fields.openedBy'), value: '<@' + ticket.user_id + '>', inline: true },
+                    { name: t(glang, 'tickets.fields.closedBy'), value: '<@' + interaction.user.id + '>', inline: true },
+                    { name: t(glang, 'tickets.fields.claimedBy'), value: ticket.claimed_by ? '<@' + ticket.claimed_by + '>' : '-', inline: true },
+                    { name: t(glang, 'tickets.fields.opened'), value: '<t:' + Math.floor(Number(ticket.created_at) / 1000) + ':f>', inline: true },
+                    { name: t(glang, 'tickets.fields.request'), value: ticket.reason ? String(ticket.reason).slice(0, 1000) : '-' }
                 ).setTimestamp();
             const files = [];
             if (Number(s.transcripts) === 1) {
                 const text = await buildTranscript(channel);
-                files.push(new AttachmentBuilder(Buffer.from(text || '(no messages)', 'utf8'), { name: 'ticket-' + String(t.number).padStart(4, '0') + '.txt' }));
+                files.push(new AttachmentBuilder(Buffer.from(text || t(glang, 'tickets.noMessages'), 'utf8'), { name: 'ticket-' + String(ticket.number).padStart(4, '0') + '.txt' }));
             }
             await log.send({ embeds: [embed], files, allowedMentions: { parse: [] } });
         } catch (err) {
@@ -344,43 +349,45 @@ async function onInteraction(client, interaction) {
         if (require('../maintenance').isMaintenance(interaction.guildId)) return; // the main handler already replied
     } catch (e) { /* no maintenance module */ }
 
+    const lang = await userLanguage.forInteraction(interaction);
+    const glang = userLanguage.forGuild(interaction.guild);
     try {
         const [[s]] = await pool.execute('SELECT * FROM ticket_settings WHERE guild_id = ?', [interaction.guildId]);
         if (!s || Number(s.enabled) !== 1) {
-            return interaction.reply({ content: '⚠️ Tickets are turned off in this server.', flags: [MessageFlags.Ephemeral] });
+            return interaction.reply({ content: t(lang, 'tickets.turnedOff'), flags: [MessageFlags.Ephemeral] });
         }
-        if (cid === 'pwtk:open') return openModal(interaction, s);
-        if (cid === 'pwtk:openmodal') return createTicket(client, interaction, s);
+        if (cid === 'pwtk:open') return openModal(interaction, s, lang);
+        if (cid === 'pwtk:openmodal') return createTicket(client, interaction, s, lang);
 
-        const t = await getTicket(interaction.channelId);
-        if (!t) return interaction.reply({ content: '⚠️ This ticket is already closed.', flags: [MessageFlags.Ephemeral] });
+        const ticket = await getTicket(interaction.channelId);
+        if (!ticket) return interaction.reply({ content: t(lang, 'tickets.alreadyClosed'), flags: [MessageFlags.Ephemeral] });
         const member = interaction.member;
 
         if (cid === 'pwtk:claim') {
-            if (!isSupport(member, s)) return interaction.reply({ content: '⚠️ Only the support team can claim tickets.', flags: [MessageFlags.Ephemeral] });
-            if (t.claimed_by) return interaction.reply({ content: 'ℹ️ Already claimed by <@' + t.claimed_by + '>.', flags: [MessageFlags.Ephemeral] });
-            await pool.execute('UPDATE tickets SET claimed_by = ? WHERE id = ?', [interaction.user.id, t.id]);
-            return interaction.reply({ content: '🙋 <@' + interaction.user.id + '> will help you with this ticket.', allowedMentions: { parse: [] } });
+            if (!isSupport(member, s)) return interaction.reply({ content: t(lang, 'tickets.onlySupport'), flags: [MessageFlags.Ephemeral] });
+            if (ticket.claimed_by) return interaction.reply({ content: t(lang, 'tickets.alreadyClaimed', { userId: ticket.claimed_by }), flags: [MessageFlags.Ephemeral] });
+            await pool.execute('UPDATE tickets SET claimed_by = ? WHERE id = ?', [interaction.user.id, ticket.id]);
+            return interaction.reply({ content: t(glang, 'tickets.claimed', { userId: interaction.user.id }), allowedMentions: { parse: [] } });
         }
         if (cid === 'pwtk:close') {
-            if (interaction.user.id !== t.user_id && !isSupport(member, s)) {
-                return interaction.reply({ content: '⚠️ Only the person who opened this ticket or the support team can close it.', flags: [MessageFlags.Ephemeral] });
+            if (interaction.user.id !== ticket.user_id && !isSupport(member, s)) {
+                return interaction.reply({ content: t(lang, 'tickets.onlyOpener'), flags: [MessageFlags.Ephemeral] });
             }
             const confirm = new ActionRowBuilder().addComponents(
-                new ButtonBuilder().setCustomId('pwtk:closeyes').setLabel('Yes, close it').setStyle(ButtonStyle.Danger)
+                new ButtonBuilder().setCustomId('pwtk:closeyes').setLabel(t(lang, 'tickets.yesClose')).setStyle(ButtonStyle.Danger)
             );
-            return interaction.reply({ content: 'Close this ticket? The channel will be deleted.', components: [confirm], flags: [MessageFlags.Ephemeral] });
+            return interaction.reply({ content: t(lang, 'tickets.confirmClose'), components: [confirm], flags: [MessageFlags.Ephemeral] });
         }
         if (cid === 'pwtk:closeyes') {
-            if (interaction.user.id !== t.user_id && !isSupport(member, s)) {
-                return interaction.reply({ content: '⚠️ You can\'t close this ticket.', flags: [MessageFlags.Ephemeral] });
+            if (interaction.user.id !== ticket.user_id && !isSupport(member, s)) {
+                return interaction.reply({ content: t(lang, 'tickets.cantClose'), flags: [MessageFlags.Ephemeral] });
             }
-            return closeTicket(client, interaction, s, t);
+            return closeTicket(client, interaction, s, ticket);
         }
     } catch (err) {
         console.error('❌ [TICKETS] Button failed:', err.message);
         if (!interaction.replied && !interaction.deferred) {
-            await interaction.reply({ content: '❌ Something went wrong. Please try again.', flags: [MessageFlags.Ephemeral] }).catch(() => {});
+            await interaction.reply({ content: t(lang, 'tickets.failed'), flags: [MessageFlags.Ephemeral] }).catch(() => {});
         }
     }
 }

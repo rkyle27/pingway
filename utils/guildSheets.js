@@ -15,6 +15,7 @@ const crypto = require('crypto');
 const axios = require('axios');
 const { pool } = require('./db');
 const { sponsorHasPerks, findPerksAdmin, ownerHasMembership } = require('./membership');
+const { t } = require('./i18n');
 
 const RAID_TEMPLATE_ID = '13DR7gF3Nx_pRDKYZRfhp7SbzAzy8UXzc6tV4bZhpJKg';
 const LOG_HEADER = ['Time (JST)', 'User', 'User ID', 'Server', 'Server ID', 'Channel', 'Command', 'Options'];
@@ -23,7 +24,8 @@ const MAX_SHEETS = 100;
 const COOLDOWN_MS = 12 * 60 * 60 * 1000;
 const WORK_MS = 60 * 1000;
 const HELPER_FILE = path.join(__dirname, '..', 'data', 'sheets_helper.json');
-const LAYOUT_WARNING = '⚠️ Please don\'t change the layout of the raid sheet (columns, rows, headers), or Pingway can\'t read the schedule.';
+const LAYOUT_WARNING = t('en', 'sheets.layoutWarning');
+const layoutWarning = lang => t(lang, 'sheets.layoutWarning');
 
 let tableReady = false;
 let started = false;
@@ -127,15 +129,15 @@ const sheetUrl = id => 'https://docs.google.com/spreadsheets/d/' + id + '/edit';
 
 // ---------- creating (from Discord; the website uses state 'create') ----------
 // Returns { ok, row } or { ok: false, error }
-async function createSheet(guild, { kind, name, roleId, userId }) {
+async function createSheet(guild, { kind, name, roleId, userId, lang = 'en' }) {
     await ensureTable();
     const [all] = await pool.execute("SELECT id, enabled FROM guild_sheets WHERE guild_id = ? AND state <> 'delete'", [guild.id]);
-    if (all.length >= MAX_SHEETS) return { ok: false, error: 'This server already has ' + MAX_SHEETS + ' sheets. Remove one first.' };
+    if (all.length >= MAX_SHEETS) return { ok: false, error: t(lang, 'sheets.tooMany', { max: MAX_SHEETS }) };
     const onCount = all.filter(r => Number(r.enabled) === 1).length;
     let perkOwner = null;
     if (onCount >= FREE_ON) {
         if (!(await ownerHasMembership(userId))) {
-            return { ok: false, error: 'This server already has ' + FREE_ON + ' sheets switched on (the free limit). Switch one off on the website, or turn on Supporter Perks for up to ' + MAX_SHEETS + '.' };
+            return { ok: false, error: t(lang, 'sheets.freeLimit', { free: FREE_ON, max: MAX_SHEETS }) };
         }
         perkOwner = String(userId);
     }
@@ -246,5 +248,5 @@ function start(client) {
 
 module.exports = {
     start, work, ensureTable, listSheets, visibleTo, sheetUrl, createSheet, helperReady,
-    RAID_TEMPLATE_ID, FREE_ON, MAX_SHEETS, COOLDOWN_MS, LAYOUT_WARNING
+    RAID_TEMPLATE_ID, FREE_ON, MAX_SHEETS, COOLDOWN_MS, LAYOUT_WARNING, layoutWarning
 };

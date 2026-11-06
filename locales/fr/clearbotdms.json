@@ -1,0 +1,6 @@
+{
+  "cmd": { "description": "🧹 Supprime tous les messages privés envoyés par le bot dans ce MP." },
+  "onlyDms": "⚠️ Cette commande ne fonctionne que dans les **messages privés (MP)** avec le bot.",
+  "done": "✅ **{deletedCount}** message(s) du bot supprimé(s) dans ce MP.",
+  "failed": "❌ Une erreur s'est produite lors du nettoyage des MP."
+}

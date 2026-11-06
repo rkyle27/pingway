@@ -1,0 +1,18 @@
+{
+  "title": "💜 Thanks for voting for Pingway!",
+  "gotOne": "You got **+{points} point**",
+  "gotMany": "You got **+{points} points**",
+  "forSite": " for voting on **{site}**",
+  "weekend": " (weekend double vote!)",
+  "end": ".",
+  "balanceOne": "Your balance: **{balance} point**",
+  "balanceMany": "Your balance: **{balance} points**",
+  "perks": "• 1 point = 1 extra Retainer Watch retainer for a month\n• 10 points = Supporter Perks for a month",
+  "again": "You can vote again on {site} in {every}.",
+  "every12h": "12 hours",
+  "manage": "Manage your points on the [Pingway website]({url}).",
+  "footer": "Vote points expire 180 days after the vote.",
+  "website": "Pingway website",
+  "perksButton": "Supporter Perks",
+  "voteAgain": "Vote again on {site}"
+}

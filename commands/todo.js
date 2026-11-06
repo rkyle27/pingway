@@ -13,11 +13,13 @@ const {
 } = require('discord.js');
 const { isMaintenance } = require('../maintenance');
 const { pool } = require('../utils/db');
+const { t, discordLocalizations } = require('../utils/i18n');
+const userLanguage = require('../utils/userLanguage');
 
 /**
  * Helper to generate the main todo list embed and component rows.
  */
-async function generateTodoView(userId, warpType = null) {
+async function generateTodoView(userId, warpType = null, lang = 'en') {
     const [rows] = await pool.execute('SELECT * FROM todos WHERE user_id = ?', [userId]);
     const userTasks = rows.map(row => ({
         id: row.id,
@@ -28,10 +30,10 @@ async function generateTodoView(userId, warpType = null) {
     }));
 
     if (userTasks.length === 0) {
-        const embed = new EmbedBuilder().setTitle('📋 FFXIV Task List').setColor('#1abc9c').setDescription('📋 Your checklist is empty!');
+        const embed = new EmbedBuilder().setTitle(t(lang, 'todo.title')).setColor('#1abc9c').setDescription(t(lang, 'todo.empty'));
         const actionRow = new ActionRowBuilder().addComponents(
-            new ButtonBuilder().setCustomId('todo_add_btn').setLabel('➕ Add Task').setStyle(ButtonStyle.Success),
-            new ButtonBuilder().setCustomId('todo_rem_menu').setLabel('🗑️ Remove Task').setStyle(ButtonStyle.Danger).setDisabled(true)
+            new ButtonBuilder().setCustomId('todo_add_btn').setLabel(t(lang, 'todo.add')).setStyle(ButtonStyle.Success),
+            new ButtonBuilder().setCustomId('todo_rem_menu').setLabel(t(lang, 'todo.remove')).setStyle(ButtonStyle.Danger).setDisabled(true)
         );
         return { embeds: [embed], components: [actionRow] };
     }
@@ -92,13 +94,13 @@ async function generateTodoView(userId, warpType = null) {
         }
     };
 
-    const embed = new EmbedBuilder().setTitle('📋 FFXIV Task List').setColor('#1abc9c');
+    const embed = new EmbedBuilder().setTitle(t(lang, 'todo.title')).setColor('#1abc9c');
     const dailies = userTasks.filter(t => t.type === 'daily');
     const weeklies = userTasks.filter(t => t.type === 'weekly');
 
-    let listString = warpType && warpType !== 'reset' ? `⚠️ **Simulated Time:** ${now.toUTCString()}\n\n` : '';
-    listString += `**☀️ Dailies**\n`;
-    listString += '🔴 *Note: GC reset is 5am JST and should not be on this list.*\n';
+    let listString = warpType && warpType !== 'reset' ? t(lang, 'todo.simulated', { time: now.toUTCString() }) : '';
+    listString += t(lang, 'todo.dailies');
+    listString += t(lang, 'todo.gcNote');
     const allButtons = [];
 
     dailies.forEach((task) => {
@@ -107,18 +109,18 @@ async function generateTodoView(userId, warpType = null) {
         allButtons.push(new ButtonBuilder().setCustomId(`${done ? 'undone' : 'done'}_${task.id}`).setLabel(task.name.substring(0, 20)).setStyle(done ? ButtonStyle.Secondary : ButtonStyle.Primary));
     });
 
-    listString += `\n**📅 Weeklies**\n`;
+    listString += t(lang, 'todo.weeklies');
     weeklies.forEach((task) => {
         const done = isTaskDone(task);
         listString += `${done ? '✅' : '🟥'} ${task.name}\n`;
         allButtons.push(new ButtonBuilder().setCustomId(`${done ? 'undone' : 'done'}_${task.id}`).setLabel(task.name.substring(0, 20)).setStyle(done ? ButtonStyle.Secondary : ButtonStyle.Primary));
     });
 
-    listString += '\n\n💡 *Click the task buttons to check/uncheck items, or use Add/Remove below.*';
+    listString += t(lang, 'todo.hint');
 
     const activeButtons = allButtons.slice(0, 25);
     if (allButtons.length > 25) {
-        listString += `\n⚠️ *Showing first 25 of ${allButtons.length} tasks due to Discord component limits.*`;
+        listString += t(lang, 'todo.first25', { count: allButtons.length });
     }
 
     const componentRows = [];
@@ -129,13 +131,13 @@ async function generateTodoView(userId, warpType = null) {
     if (!warpType || warpType === 'reset') {
         embed.setDescription(listString);
     } else {
-        embed.setDescription(`⚠️ **TIME WARP ACTIVE:** Simulating ${warpType === 'daily' ? '+1 Day' : '+1 Week'} into the future!\n\n` + listString);
+        embed.setDescription(t(lang, 'todo.warp', { amount: warpType === 'daily' ? t(lang, 'todo.plusDay') : t(lang, 'todo.plusWeek') }) + listString);
     }
 
     // Add/Remove Action Row
     const managementRow = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId('todo_add_btn').setLabel('➕ Add Task').setStyle(ButtonStyle.Success),
-        new ButtonBuilder().setCustomId('todo_rem_menu').setLabel('🗑️ Remove Task').setStyle(ButtonStyle.Danger)
+        new ButtonBuilder().setCustomId('todo_add_btn').setLabel(t(lang, 'todo.add')).setStyle(ButtonStyle.Success),
+        new ButtonBuilder().setCustomId('todo_rem_menu').setLabel(t(lang, 'todo.remove')).setStyle(ButtonStyle.Danger)
     );
     componentRows.push(managementRow);
 
@@ -154,12 +156,13 @@ async function generateTodoView(userId, warpType = null) {
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('todo')
-        .setDescription('📋 Manage and view your FFXIV task list.'),
+        .setDescription(t('en', 'todo.cmd.description')).setDescriptionLocalizations(discordLocalizations('todo.cmd.description')),
 
     async execute(interaction) {
+        const lang = await userLanguage.forInteraction(interaction);
         if (isMaintenance(interaction.guildId)) {
             const replyPayload = {
-                content: '⚠️ **The bot is currently undergoing maintenance.** Please try again later!',
+                content: t(lang, 'core.maintenance'),
                 flags: [MessageFlags.Ephemeral]
             };
             if (interaction.deferred || interaction.replied) {
@@ -194,11 +197,11 @@ module.exports = {
                 try {
                     const timestamp = (action === 'done') ? Date.now() : null;
                     await pool.execute('UPDATE todos SET last_completed_timestamp = ? WHERE id = ? AND user_id = ?', [timestamp, taskId, interaction.user.id]);
-                    const viewData = await generateTodoView(interaction.user.id);
+                    const viewData = await generateTodoView(interaction.user.id, null, lang);
                     return interaction.editReply(viewData);
                 } catch (error) {
                     console.error('Error updating task status:', error);
-                    return interaction.followUp({ content: '❌ Error updating task status.', flags: [MessageFlags.Ephemeral] });
+                    return interaction.followUp({ content: t(lang, 'todo.updateError'), flags: [MessageFlags.Ephemeral] });
                 }
             }
 
@@ -206,13 +209,13 @@ module.exports = {
             if (cid === 'todo_add_btn') {
                 const modal = new ModalBuilder()
                     .setCustomId('todo_add_modal')
-                    .setTitle('➕ Add New To-Do Item');
+                    .setTitle(t(lang, 'todo.modalTitle'));
 
                 const nameInput = new TextInputBuilder()
                     .setCustomId('todo_name_input')
-                    .setLabel('Task Name')
+                    .setLabel(t(lang, 'todo.taskName'))
                     .setStyle(TextInputStyle.Short)
-                    .setPlaceholder('e.g., Expert Roulette')
+                    .setPlaceholder(t(lang, 'todo.example'))
                     .setRequired(true)
                     .setMaxLength(100);
 
@@ -226,12 +229,12 @@ module.exports = {
                 try {
                     const [rows] = await pool.execute('SELECT * FROM todos WHERE user_id = ?', [interaction.user.id]);
                     if (rows.length === 0) {
-                        return interaction.followUp({ content: '❌ You have no tasks to remove.', flags: [MessageFlags.Ephemeral] });
+                        return interaction.followUp({ content: t(lang, 'todo.noTasks'), flags: [MessageFlags.Ephemeral] });
                     }
 
                     const removeEmbed = new EmbedBuilder()
-                        .setTitle('🗑️ Task Management: Removal Interface')
-                        .setDescription('Select a task below to remove it, or use the controls underneath.')
+                        .setTitle(t(lang, 'todo.removeTitle'))
+                        .setDescription(t(lang, 'todo.removeHelp'))
                         .setColor('#e74c3c');
 
                     const buttons = rows.map(task =>
@@ -247,8 +250,8 @@ module.exports = {
                     }
 
                     const controlRow = new ActionRowBuilder().addComponents(
-                        new ButtonBuilder().setCustomId('rem_done_btn').setLabel('✅ Done').setStyle(ButtonStyle.Success),
-                        new ButtonBuilder().setCustomId('rem_back_btn').setLabel('⬅️ Back to Todo List').setStyle(ButtonStyle.Primary)
+                        new ButtonBuilder().setCustomId('rem_done_btn').setLabel(t(lang, 'todo.done')).setStyle(ButtonStyle.Success),
+                        new ButtonBuilder().setCustomId('rem_back_btn').setLabel(t(lang, 'todo.back')).setStyle(ButtonStyle.Primary)
                     );
                     componentRows.push(controlRow);
 
@@ -261,7 +264,7 @@ module.exports = {
             // Return to main list
             if (cid === 'rem_back_btn' || cid === 'rem_done_btn') {
                 await interaction.deferUpdate().catch(() => {});
-                const viewData = await generateTodoView(interaction.user.id);
+                const viewData = await generateTodoView(interaction.user.id, null, lang);
                 return interaction.editReply({ content: null, ...viewData });
             }
 
@@ -271,17 +274,17 @@ module.exports = {
                 const taskId = cid.replace('rem_select_', '');
                 const [rows] = await pool.execute('SELECT * FROM todos WHERE id = ? AND user_id = ?', [taskId, interaction.user.id]);
                 if (rows.length === 0) {
-                    return interaction.followUp({ content: '❌ Task not found.', flags: [MessageFlags.Ephemeral] });
+                    return interaction.followUp({ content: t(lang, 'todo.notFound'), flags: [MessageFlags.Ephemeral] });
                 }
                 const task = rows[0];
 
                 const confirmRow = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setCustomId(`rem_yes_${task.id}`).setLabel('Yes, Delete').setStyle(ButtonStyle.Danger),
-                    new ButtonBuilder().setCustomId(`rem_cancel_${task.id}`).setLabel('Cancel').setStyle(ButtonStyle.Secondary)
+                    new ButtonBuilder().setCustomId(`rem_yes_${task.id}`).setLabel(t(lang, 'todo.yesDelete')).setStyle(ButtonStyle.Danger),
+                    new ButtonBuilder().setCustomId(`rem_cancel_${task.id}`).setLabel(t(lang, 'todo.cancel')).setStyle(ButtonStyle.Secondary)
                 );
 
                 return interaction.editReply({
-                    content: `⚠️ Are you sure you want to remove the task **"${task.name}"**?`,
+                    content: t(lang, 'todo.confirmRemove', { name: task.name }),
                     embeds: [],
                     components: [confirmRow]
                 });
@@ -293,8 +296,8 @@ module.exports = {
                 const [rows] = await pool.execute('SELECT * FROM todos WHERE user_id = ?', [interaction.user.id]);
                 
                 const removeEmbed = new EmbedBuilder()
-                    .setTitle('🗑️ Task Management: Removal Interface')
-                    .setDescription('Select a task below to remove it, or use the controls underneath.')
+                    .setTitle(t(lang, 'todo.removeTitle'))
+                    .setDescription(t(lang, 'todo.removeHelp'))
                     .setColor('#e74c3c');
 
                 const buttons = rows.map(task =>
@@ -310,8 +313,8 @@ module.exports = {
                 }
 
                 const controlRow = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setCustomId('rem_done_btn').setLabel('✅ Done').setStyle(ButtonStyle.Success),
-                    new ButtonBuilder().setCustomId('rem_back_btn').setLabel('⬅️ Back to Todo List').setStyle(ButtonStyle.Primary)
+                    new ButtonBuilder().setCustomId('rem_done_btn').setLabel(t(lang, 'todo.done')).setStyle(ButtonStyle.Success),
+                    new ButtonBuilder().setCustomId('rem_back_btn').setLabel(t(lang, 'todo.back')).setStyle(ButtonStyle.Primary)
                 );
                 componentRows.push(controlRow);
 
@@ -325,30 +328,30 @@ module.exports = {
                 try {
                     const [rows] = await pool.execute('SELECT * FROM todos WHERE id = ? AND user_id = ?', [taskId, interaction.user.id]);
                     if (rows.length === 0) {
-                        return interaction.followUp({ content: '❌ Task not found.', flags: [MessageFlags.Ephemeral] });
+                        return interaction.followUp({ content: t(lang, 'todo.notFound'), flags: [MessageFlags.Ephemeral] });
                     }
                     const task = rows[0];
 
                     await pool.execute('DELETE FROM todos WHERE id = ? AND user_id = ?', [taskId, interaction.user.id]);
 
-                    const formattedFreq = task.type ? (task.type.charAt(0).toUpperCase() + task.type.slice(1)) : 'Task';
+                    const formattedFreq = task.type ? (task.type === 'daily' || task.type === 'weekly' ? t(lang, 'todo.freq.' + task.type) : task.type.charAt(0).toUpperCase() + task.type.slice(1)) : t(lang, 'todo.freq.task');
 
                     // Update interaction message directly to state deletion success
                     await interaction.editReply({
-                        content: `"${task.name}" ["${formattedFreq}"] has been successfully removed from task list.`,
+                        content: t(lang, 'todo.removed', { name: task.name, freq: formattedFreq }),
                         components: [],
                         embeds: []
                     });
 
                     // Automatically return to updated main To-Do list after 3 seconds
                     setTimeout(async () => {
-                        const viewData = await generateTodoView(interaction.user.id);
+                        const viewData = await generateTodoView(interaction.user.id, null, lang);
                         await interaction.editReply({ content: null, ...viewData }).catch(() => {});
                     }, 3000);
 
                 } catch (error) {
                     console.error('Error deleting task:', error);
-                    return interaction.followUp({ content: '❌ An error occurred while deleting the task.', flags: [MessageFlags.Ephemeral] });
+                    return interaction.followUp({ content: t(lang, 'todo.deleteError'), flags: [MessageFlags.Ephemeral] });
                 }
             }
 
@@ -372,12 +375,12 @@ module.exports = {
                     );
 
                     // Update menu directly back to the freshly generated To-Do view
-                    const viewData = await generateTodoView(interaction.user.id);
+                    const viewData = await generateTodoView(interaction.user.id, null, lang);
                     return interaction.editReply({ content: null, ...viewData });
 
                 } catch (error) {
                     console.error('Error saving confirmed todo task:', error);
-                    return interaction.followUp({ content: '❌ Database error occurred while saving task.', flags: [MessageFlags.Ephemeral] });
+                    return interaction.followUp({ content: t(lang, 'todo.saveError'), flags: [MessageFlags.Ephemeral] });
                 }
             }
         }
@@ -389,24 +392,24 @@ module.exports = {
             const [existingRows] = await pool.execute('SELECT COUNT(*) as count FROM todos WHERE user_id = ?', [interaction.user.id]);
             if (existingRows[0].count >= 25) {
                 return interaction.reply({
-                    content: '❌ You have reached the maximum limit of **25 tasks**.',
+                    content: t(lang, 'todo.limit'),
                     flags: [MessageFlags.Ephemeral]
                 });
             }
 
             const freqSelect = new StringSelectMenuBuilder()
                 .setCustomId('todo_freq_select')
-                .setPlaceholder('Select task frequency...')
+                .setPlaceholder(t(lang, 'todo.selectFreq'))
                 .addOptions(
-                    new StringSelectMenuOptionBuilder().setLabel('Daily').setValue('daily').setDescription('Resets daily'),
-                    new StringSelectMenuOptionBuilder().setLabel('Weekly').setValue('weekly').setDescription('Resets weekly')
+                    new StringSelectMenuOptionBuilder().setLabel(t(lang, 'todo.freq.daily')).setValue('daily').setDescription(t(lang, 'todo.resetsDaily')),
+                    new StringSelectMenuOptionBuilder().setLabel(t(lang, 'todo.freq.weekly')).setValue('weekly').setDescription(t(lang, 'todo.resetsWeekly'))
                 );
 
             const row = new ActionRowBuilder().addComponents(freqSelect);
 
             // Replaces parent message in-place instead of creating a second message
             return interaction.update({
-                content: `📝 Adding task: **"${taskName}"**\nPlease select its frequency using the dropdown menu below:`,
+                content: t(lang, 'todo.adding', { name: taskName }),
                 embeds: [],
                 components: [row]
             });
@@ -416,7 +419,8 @@ module.exports = {
         if (interaction.isStringSelectMenu() && interaction.customId === 'todo_freq_select') {
             const frequency = interaction.values[0];
 
-            const contentMatch = interaction.message.content.match(/Adding task: \*\*"(.+?)"\*\*/);
+            // The task name is the first **"..."** in the message (same in every language)
+            const contentMatch = interaction.message.content.match(/\*\*"(.+?)"\*\*/);
             const taskName = contentMatch ? contentMatch[1] : 'Custom Task';
 
             const confirmRow = new ActionRowBuilder().addComponents(
@@ -425,7 +429,7 @@ module.exports = {
 
             // Replaces parent message in-place
             return interaction.update({
-                content: `📋 **Confirm New Task Details:**\n- **Name:** ${taskName}\n- **Frequency:** ${frequency.charAt(0).toUpperCase() + frequency.slice(1)}\n\nClick **OK** to save:`,
+                content: t(lang, 'todo.confirmNew', { name: taskName, freq: frequency === 'daily' || frequency === 'weekly' ? t(lang, 'todo.freq.' + frequency) : frequency.charAt(0).toUpperCase() + frequency.slice(1) }),
                 embeds: [],
                 components: [confirmRow]
             });
@@ -434,11 +438,11 @@ module.exports = {
         // 4. Initial slash command execution (/todo)
         if (interaction.isChatInputCommand() && interaction.commandName === 'todo') {
             try {
-                const viewData = await generateTodoView(interaction.user.id);
+                const viewData = await generateTodoView(interaction.user.id, null, lang);
                 return interaction.reply({ ...viewData, flags: [MessageFlags.Ephemeral] });
             } catch (error) {
                 console.error('Error executing todo command:', error);
-                return interaction.reply({ content: '❌ An error occurred while loading your tasks.', flags: [MessageFlags.Ephemeral] });
+                return interaction.reply({ content: t(lang, 'todo.loadError'), flags: [MessageFlags.Ephemeral] });
             }
         }
     }

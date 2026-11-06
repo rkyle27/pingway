@@ -1,0 +1,24 @@
+{
+  "defaultMessage": "Thank you for joining the server! Have fun and feel at home.",
+  "listMore": "{list} and {count} more",
+  "listAnd": "{list} and {last}",
+  "combined": "Welcome {list}! 🎉",
+  "testDm": "Here's a test of your welcome card for **{server}** (design: {design}).",
+  "designDefault": "default",
+  "perms": {
+    "ViewChannel": "View Channel",
+    "SendMessages": "Send Messages",
+    "AttachFiles": "Attach Files"
+  },
+  "cmd": {
+    "description": "👋 Post welcome cards for new members in this channel (admins only).",
+    "action": "Turn welcome cards on here (default) or off."
+  },
+  "serverOnly": "❌ This command only works in a server.",
+  "adminsOnly": "❌ Only server admins (Administrator permission) can use this command.",
+  "turnedOff": "👋 Welcome cards are turned off. Use `/welcomehere` in a channel to turn them on again.",
+  "failed": "❌ Something went wrong. Please try again.",
+  "wrongChannel": "❌ Use `/welcomehere` in a text or announcement channel.",
+  "missingPerms": "❌ Pingway can't post welcome cards in <#{channelId}>. It is missing: **{perms}**.\nGive Pingway's role these permissions in this channel, then run `/welcomehere` again.",
+  "enabled": "👋 Welcome cards will be posted in <#{channelId}>. Change the design and message on the Pingway website (server settings → Welcome)."
+}
