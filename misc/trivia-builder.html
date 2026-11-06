@@ -1,0 +1,1226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trivia Data Builder</title>
+<!-- Made by tools/build-trivia-builder.js — do not edit by hand, run: node tools/build-trivia-builder.js -->
+<style>
+:root { --bg: #f6f7fb; --card: #fff; --text: #1d2130; --muted: #5d6478; --accent: #5865f2; --ok: #1f8b4c; --warn: #b26a00; --err: #c0392b; --line: #e3e6ef; }
+@media (prefers-color-scheme: dark) { :root { --bg: #15171e; --card: #1f222b; --text: #e8eaf1; --muted: #a0a6b8; --line: #343846; --warn: #f0a640; --err: #ff6b5b; --ok: #4cc77f; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 32px 16px 60px; }
+h1 { font-size: 26px; margin: 0 0 4px; }
+.sub { color: var(--muted); margin: 0 0 24px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+ol { margin: 0; padding-left: 20px; } li { margin: 4px 0; }
+button { background: var(--accent); color: #fff; border: 0; border-radius: 8px; padding: 12px 28px; font-size: 16px; font-weight: 600; cursor: pointer; }
+button:disabled { opacity: .6; cursor: default; }
+label { color: var(--muted); font-size: 14px; margin-left: 12px; }
+.track { height: 10px; background: var(--line); border-radius: 5px; overflow: hidden; margin: 18px 0 6px; }
+#bar { height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+#barText { color: var(--muted); font-size: 14px; min-height: 21px; }
+#log { font: 12.5px/1.45 ui-monospace, Consolas, monospace; max-height: 240px; overflow: auto; margin-top: 10px; color: var(--muted); }
+#log .warn { color: var(--warn); } #log .ok { color: var(--ok); font-weight: 600; }
+#error { border-color: var(--err); } #error h2 { color: var(--err); font-size: 18px; margin: 0 0 6px; } #errText { white-space: pre-wrap; margin: 0; }
+#result h2 { color: var(--ok); font-size: 18px; margin: 0 0 10px; }
+table { border-collapse: collapse; width: 100%; margin: 6px 0 10px; } th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+th { color: var(--muted); font-weight: 600; font-size: 13px; } td:nth-child(n+2), th:nth-child(n+2) { text-align: right; }
+#meta { color: var(--muted); font-size: 14px; }
+code, #sha { font-family: ui-monospace, Consolas, monospace; } #sha { word-break: break-all; display: block; background: var(--bg); padding: 8px 10px; border-radius: 6px; margin-top: 4px; user-select: all; }
+a.dl { display: inline-block; margin: 12px 0 4px; font-weight: 600; color: var(--accent); }
+.note { color: var(--warn); }
+</style>
+</head>
+<body>
+<main>
+<h1>🧩 Trivia Data Builder</h1>
+<p class="sub">Makes the Pingway Trivia word bank (<code>trivia_bank.json</code>) from XIVAPI in English, French, German and Japanese — right here in your browser.</p>
+<div class="card">
+<ol>
+<li>Press <b>Build</b> and keep this tab open (it takes a few minutes).</li>
+<li>When it's done, <b>trivia_bank.json</b> downloads.</li>
+<li>Upload it to the bot server as <code>data/trivia_bank.json</code> (replace the old one) and restart the bot.</li>
+<li>Optional: check the file's SHA-256 on the server (<code>sha256sum data/trivia_bank.json</code>) — it must match the one shown below.</li>
+</ol>
+<p class="sub" style="margin:12px 0 0">Build a new one when FFXIV adds new content (a patch with new jobs, duties, mounts, minions or items).</p>
+</div>
+<div class="card">
+<button id="build">Build</button><label><input type="checkbox" id="allowMissing"> Allow a bank with missing languages</label>
+<div class="track"><div id="bar"></div></div>
+<div id="barText">Ready.</div>
+<div id="log"></div>
+</div>
+<div class="card" id="error" hidden><h2 id="errTitle"></h2><p id="errText"></p></div>
+<div class="card" id="result" hidden>
+<h2>✅ Word bank ready</h2>
+<div id="summary"></div>
+<div id="meta"></div>
+<p class="note" id="incompleteNote" hidden>Some languages are missing: players of those languages will see the English words. Build again later for a full bank.</p>
+<a class="dl" id="download">⬇ Download trivia_bank.json again</a>
+<div>SHA-256:<span id="sha"></span></div>
+</div>
+</main>
+<script id="trivia-core">
+var TriviaBuilder = (function () {
+var LOCALES = {"en/trivia":{"command":{"description":"🧩 Guess the FFXIV word of the day in 6 difficulties, earn bits and keep your streak."},"title":"🧩 **Pingway Trivia — Guess the word**","diff":{"easy":"Easy","normal":"Normal","hard":"Hard","extreme":"Extreme","savage":"Savage","ultimate":"Ultimate"},"maintenance":"⚠️ **The bot is currently undergoing maintenance.** Please try again later!","notAvailable":"❌ Trivia is not available right now. Please try again in a minute.","warming":"⏳ Trivia is warming up, try again in a minute.","error":"❌ Something went wrong. Please run /trivia again.","ended":"⌛ Session ended — run /trivia again.","time":{"hm":"{h} h {m} min","m":"{m} min"},"count":{"bits_one":"{n} bit","bits_other":"{n} bits","guesses_one":"{n} guess","guesses_other":"{n} guesses","limit_one":"{n} guesses","limit_other":"{n} guesses","wrongGuesses_one":"{n} wrong guesses","wrongGuesses_other":"{n} wrong guesses","wrongLeft_one":"{n} wrong guess left","wrongLeft_other":"{n} wrong guesses left","streakDays_one":"{n} day","streakDays_other":"{n} days"},"status":{"solved":"solved","gaveup":"gave up","failed":"out of guesses","playing":"in progress","new":"new"},"buttons":{"play":"Play","continue":"Continue","results":"Today's results","howto":"How to play","todayWord":"Today's word","share":"Share result","back":"Back","guess":"Guess","hint":"Hint","giveUp":"Give up","giveUpYes":"Yes, give up","giveUpNo":"No, keep playing"},"home":{"intro":"Guess the FFXIV word of the day. 6 difficulties, each with its own word. One solve a day, in every server.","you":"**You:** 🔥 Streak {streak} · 💎 {season} bits this month · {total} all time","solved":"✅ You solved today's **{diff}** (+{bits} bits). Come back after 0:00 JST! (in {time})","waiting":"▶ Your **{diff}** game is waiting for you.","newWords":"⏳ New words in {time} (0:00 JST).","yesterday":"**Yesterday's answers**","yesterdayNone":"_None yet — come back tomorrow!_"},"howto":{"rules":["• Each box is one letter: ⬜ hidden, 🇦 shown. Spaces and symbols are always shown.","• Press **Guess** and type the whole answer. Case, accents, spaces and symbols don't matter.","• A wrong guess shows the letters you got in the right place, plus one more. All letters shown = solved. Too many wrong guesses and that difficulty locks for the day.","• **Hint:** up to {hints} per guess (resets after each wrong guess). Clues first, then letters. **Give up** locks that difficulty for today; you can still try another.","• After one solve you're done for the day, in every server. New words at 0:00 JST."],"bits":"**Bits:** fewer letters revealed = more bits, up to double. Never below base.","diff":"{emoji} {name}: {bits}, {wrong}","streak":"**Streak:** solve on days in a row. Bonus at 5/10/15/20/30 days: +10/+20/+30/+40/+60 bits. Streaks and the monthly leaderboard start again on the 1st.","boards":"Leaderboards: pingway.app → Trivia. You can hide yourself in My Settings."},"menu":{"solved":"✅ You solved today's **{diff}**. Come back after 0:00 JST!","pick":"Pick a difficulty. Each one has its own word of the day.","line":"{emoji} **{name}** · {bits} · {limit} — {status}"},"game":{"header":"{emoji} **{name}** · {left} · 💡 {hints}/{max} hints"},"feedback":{"wrongShown_one":"❌ Not it — revealed {n} letter. {left}.","wrongShown_other":"❌ Not it — revealed {n} letters. {left}.","wrong":"❌ Not it. {left}."},"hint":{"letter":"💡 Letter {n} revealed.","limit":"No hints left — you get {n} more after a wrong guess.","none":"No more hints for this word."},"giveup":{"ask":"🏳️ **Give up?** This difficulty locks for today. (The answer is not shown until tomorrow.)"},"solved":{"allRevealed":"🎉 **Congratulations! All letters revealed!**","line":"✅ **Solved!** {emoji} {name} · +{bits} bits (base {base}, bonus {bonus})","streak":"🔥 Streak {days}","milestone":" · 🎉 Streak bonus +{bits} bits!","bits":"💎 {season} bits this month · {total} all time","done":"That's it for today — come back after 0:00 JST (in {time})."},"about":{"title":"📖 **About {word}**","answer":"📖 The answer was **{word}**."},"locked":{"gaveup":"🏳️ You gave up on **{name}**.","failed":"❌ Out of guesses on **{name}**.","today":"{why} It is locked for today.","other":"You can still try another difficulty. The answer shows up in \"Yesterday's answers\" after 0:00 JST."},"today":{"solved":"✅ You solved today's **{name}**"},"modal":{"title":"Your guess ({name})","label":"Type the whole answer"},"share":{"nothing":"Nothing to share right now.","gone":"⚠️ The Trivia share channel is gone. Ask an admin to pick a new one on the website.","already":"Already shared. 🙂","cantPost":"⚠️ Pingway can't post in <#{channel}>. Ask an admin to check its permissions there.","done":"📣 Shared in <#{channel}>!","line":"🧩 **{name}** solved today's **{diff}** Pingway Trivia in {guesses}{hints}!{streak}","guesses_one":"{n} guess","guesses_other":"{n} guesses","hints_one":" with {n} hint","hints_other":" with {n} hints","noHints":" with no hints","streak":" 🔥 Streak {n}","invite":"-# Think you can beat that? Use {command} to guess today's FFXIV word, earn bits and build your streak!"},"reward":{"dm":"🎉 Congratulations! You earned **{bits} bits** in Pingway Trivia in {month} — here are **{points} points** as a thank-you. Use them for extra retainers or Supporter Perks at {url}","month":"{month} {year}","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"roleGiven":"Pingway Trivia: top {rank} of {season}","roleTaken":"Pingway Trivia: top {rank} of {season} went to someone else"},"hints":{"labelValue":"{label}: {v}","listSep":", ","loreSep":" · ","category":"Category: {v}","cat":{"job":"Job","class":"Class","city":"City","zone":"Zone","region":"Region","dungeon":"Dungeon","trial":"Trial","allianceRaid":"Alliance Raid","raid":"Raid","mount":"Mount","minion":"Minion","action":"Action","item":"Item"},"roles":{"1":"Tank","2":"Melee DPS","3":"Ranged DPS","4":"Healer"},"stats":{"1":"Strength","2":"Dexterity","3":"Vitality","4":"Intelligence","5":"Mind"},"rarities":{"1":"Common (white)","2":"Uncommon (green)","3":"Rare (blue)","4":"Relic (purple)","7":"Aetherial (pink)"},"roulettes":{"LevelingRoulette":"Leveling","HighLevelRoulette":"High-level Dungeons","ExpertRoulette":"Expert","TrialRoulette":"Trials","AllianceRoulette":"Alliance Raids","NormalRaidRoulette":"Normal Raids","MSQRoulette":"Main Scenario"},"role":"Role: {v}","type":"Type: {v}","mainStat":"Main stat: {v}","startingCity":"Starting city: {v}","startsAtLevel":"Starts at level {n}","limitedJob":"It is a limited job","becomes":"It becomes: {v}","startsAs":"It starts as: {v}","abbreviation":"Abbreviation: {v}","region":"Region: {v}","expansion":"Expansion: {v}","area":"Area: {v}","alsoInRegion":"Also in this region: {v}","fieldZones_one":"{n} field zone","fieldZones_other":"{n} field zones","cityThere":"A city there: {v}","zoneThere":"A zone there: {v}","anotherZoneThere":"Another zone there: {v}","level":"Level {n}","itemLevel":"Item level {n}","roulette":"Roulette: {v}","zone":"Zone: {v}","highEnd":"It is a high-end duty","levelSync":"Level sync {n}","itemLevelSync":"Item level sync {n}","description":"Description","quote":"Quote","seats_one":"Seats: {n} rider","seats_other":"Seats: {n} riders","minionRace":"Minion race: {v}","behavior":"Behavior: {v}","skillType":"Verminion skill type: {v}","specialAction":"Special action: {v}","verminionStats":"Verminion stats: ATK {atk} / DEF {def} / SPD {spd}","job":"Job: {v}","roleAction":"Role action","actionType":"Action type: {v}","castTime":"Cast time: {v}","instant":"Instant cast","recast":"Recast: {v}","seconds":"{n}s","groundTargeted":"It is ground-targeted","targets":"Targets: {v}","targetEnemies":"enemies","targetParty":"party members","targetSelf":"self","range":"Range: {n} yalms","radius":"Effect radius: {n} yalms","charges":"{n} charges","usedBy":"Used by: {v}","itemType":"Item type: {v}","equipLevel":"Equip level {n}","usableBy":"Usable by: {v}","craftedBy":"Crafted by: {v}","expertRecipe":" (expert recipe)","rarity":"Rarity: {v}","marketBoard":"Market board: {v}","grandCompany":"Grand Company: {v}","itemSeries":"Item series: {v}","materia_one":"{n} materia slot","materia_other":"{n} materia slots","dyeable":"It can be dyed","stacks":"Stacks up to {n}","hq":"It can be high quality","unique":"It is unique","collectable":"It is a collectable","firstLetter":"First letter: {l}","lore":{"line":"{name}{abbr} — {what}{startsAs}.","abbr":" ({v})","job":"job","jobRole":"{role} job","class":"class","classRole":"{role} class","startsAs":", starts as {v}","city":{"full":"A city in {region} ({exp}).","region":"A city in {region}.","exp":"A city ({exp}).","plain":"A city."},"zone":{"full":"A zone in {region} ({exp}).","region":"A zone in {region}.","exp":"A zone ({exp}).","plain":"A zone."},"region":{"exp":"A region of the world, first seen in {exp}.","plain":"A region of the world."}}}},"fr/trivia":{"command":{"description":"🧩 Devinez le mot FFXIV du jour en 6 difficultés, gagnez des bits et gardez votre série."},"title":"🧩 **Pingway Trivia — Devinez le mot**","diff":{"easy":"Facile","normal":"Normal","hard":"Difficile","extreme":"Extrême","savage":"Sadique","ultimate":"Fatal"},"maintenance":"⚠️ **Le bot est en maintenance.** Réessayez plus tard !","notAvailable":"❌ Trivia n'est pas disponible pour le moment. Réessayez dans une minute.","warming":"⏳ Trivia se prépare, réessayez dans une minute.","error":"❌ Un problème est survenu. Relancez /trivia.","ended":"⌛ Session terminée — relancez /trivia.","time":{"hm":"{h} h {m} min","m":"{m} min"},"count":{"bits_one":"{n} bit","bits_other":"{n} bits","guesses_one":"{n} essai","guesses_other":"{n} essais","limit_one":"{n} essai","limit_other":"{n} essais","wrongGuesses_one":"{n} erreur","wrongGuesses_other":"{n} erreurs","wrongLeft_one":"{n} erreur restante","wrongLeft_other":"{n} erreurs restantes","streakDays_one":"{n} jour","streakDays_other":"{n} jours"},"status":{"solved":"trouvé","gaveup":"abandonné","failed":"plus d'essais","playing":"en cours","new":"nouveau"},"buttons":{"play":"Jouer","continue":"Continuer","results":"Résultats du jour","howto":"Comment jouer","todayWord":"Mot du jour","share":"Partager","back":"Retour","guess":"Deviner","hint":"Indice","giveUp":"Abandonner","giveUpYes":"Oui, abandonner","giveUpNo":"Non, continuer"},"home":{"intro":"Devinez le mot FFXIV du jour. 6 difficultés, chacune avec son mot. Un mot trouvé par jour, sur tous les serveurs.","you":"**Vous :** 🔥 Série {streak} · 💎 {season} bits ce mois-ci · {total} au total","solved":"✅ Vous avez trouvé le mot **{diff}** du jour (+{bits} bits). Revenez après 0:00 JST ! (dans {time})","waiting":"▶ Votre partie **{diff}** vous attend.","newWords":"⏳ Nouveaux mots dans {time} (0:00 JST).","yesterday":"**Réponses d'hier**","yesterdayNone":"_Rien pour l'instant — revenez demain !_"},"howto":{"rules":["• Chaque case est une lettre : ⬜ cachée, 🇦 visible. Les lettres accentuées s'affichent telles quelles (É). Les espaces et symboles sont toujours visibles.","• Appuyez sur **Deviner** et tapez la réponse entière. Majuscules, accents (é = e), espaces et symboles ne comptent pas.","• Une mauvaise réponse dévoile les lettres bien placées, plus une autre. Toutes les lettres visibles = trouvé. Trop d'erreurs et cette difficulté est bloquée pour la journée.","• **Indice :** jusqu'à {hints} par essai (remis à zéro après chaque erreur). D'abord des indices, puis des lettres. **Abandonner** bloque cette difficulté pour aujourd'hui ; vous pouvez en essayer une autre.","• Après un mot trouvé, c'est fini pour la journée, sur tous les serveurs. Nouveaux mots à 0:00 JST. Le mot du jour est le même pour tout le monde, affiché dans votre langue (changez-la avec /pingway)."],"bits":"**Bits :** moins de lettres dévoilées = plus de bits, jusqu'au double. Jamais moins que la base.","diff":"{emoji} {name} : {bits}, {wrong}","streak":"**Série :** trouvez des mots plusieurs jours de suite. Bonus à 5/10/15/20/30 jours : +10/+20/+30/+40/+60 bits. Les séries et le classement mensuel repartent de zéro le 1er.","boards":"Classements : pingway.app → Trivia. Vous pouvez vous cacher dans My Settings."},"menu":{"solved":"✅ Vous avez trouvé le mot **{diff}** du jour. Revenez après 0:00 JST !","pick":"Choisissez une difficulté. Chacune a son propre mot du jour.","line":"{emoji} **{name}** · {bits} · {limit} — {status}"},"game":{"header":"{emoji} **{name}** · {left} · 💡 {hints}/{max} indices"},"feedback":{"wrongShown_one":"❌ Raté — {n} lettre dévoilée. {left}.","wrongShown_other":"❌ Raté — {n} lettres dévoilées. {left}.","wrong":"❌ Raté. {left}."},"hint":{"letter":"💡 Lettre {n} dévoilée.","limit":"Plus d'indices — vous en aurez {n} de plus après une erreur.","none":"Plus d'indices pour ce mot."},"giveup":{"ask":"🏳️ **Abandonner ?** Cette difficulté sera bloquée pour aujourd'hui. (La réponse ne sera visible que demain.)"},"solved":{"allRevealed":"🎉 **Bravo ! Toutes les lettres sont dévoilées !**","line":"✅ **Trouvé !** {emoji} {name} · +{bits} bits (base {base}, bonus {bonus})","streak":"🔥 Série de {days}","milestone":" · 🎉 Bonus de série +{bits} bits !","bits":"💎 {season} bits ce mois-ci · {total} au total","done":"C'est tout pour aujourd'hui — revenez après 0:00 JST (dans {time})."},"about":{"title":"📖 **À propos : {word}**","answer":"📖 La réponse était **{word}**."},"locked":{"gaveup":"🏳️ Vous avez abandonné **{name}**.","failed":"❌ Plus d'essais pour **{name}**.","today":"{why} Bloqué pour aujourd'hui.","other":"Vous pouvez encore essayer une autre difficulté. La réponse apparaîtra dans « Réponses d'hier » après 0:00 JST."},"today":{"solved":"✅ Vous avez trouvé le mot **{name}** du jour"},"modal":{"title":"Votre réponse ({name})","label":"Tapez la réponse entière"},"share":{"nothing":"Rien à partager pour le moment.","gone":"⚠️ Le salon de partage Trivia n'existe plus. Demandez à un admin d'en choisir un nouveau sur le site.","already":"Déjà partagé. 🙂","cantPost":"⚠️ Pingway ne peut pas écrire dans <#{channel}>. Demandez à un admin de vérifier ses permissions.","done":"📣 Partagé dans <#{channel}> !","line":"🧩 **{name}** a trouvé le mot **{diff}** du jour de Pingway Trivia en {guesses}{hints} !{streak}","guesses_one":"{n} essai","guesses_other":"{n} essais","hints_one":" avec {n} indice","hints_other":" avec {n} indices","noHints":" sans indice","streak":" 🔥 Série {n}","invite":"-# Vous pensez faire mieux ? Utilisez {command} pour deviner le mot FFXIV du jour, gagner des bits et construire votre série !"},"reward":{"dm":"🎉 Félicitations ! Vous avez gagné **{bits} bits** dans Pingway Trivia en {month} — voici **{points} points** pour vous remercier. Utilisez-les pour des servants en plus ou les Supporter Perks sur {url}","month":"{month} {year}","months":["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"],"roleGiven":"Pingway Trivia : top {rank} de {season}","roleTaken":"Pingway Trivia : top {rank} de {season} revenu à quelqu'un d'autre"},"hints":{"labelValue":"{label} : {v}","listSep":", ","loreSep":" · ","category":"Catégorie : {v}","cat":{"job":"Job","class":"Classe","city":"Cité","zone":"Zone","region":"Région","dungeon":"Donjon","trial":"Défi","allianceRaid":"Raid en alliance","raid":"Raid","mount":"Monture","minion":"Mascotte","action":"Action","item":"Objet"},"roles":{"1":"Tank","2":"DPS de mêlée","3":"DPS à distance","4":"Soigneur"},"stats":{"1":"Force","2":"Dextérité","3":"Vitalité","4":"Intelligence","5":"Esprit"},"rarities":{"1":"Commun (blanc)","2":"Inhabituel (vert)","3":"Rare (bleu)","4":"Relique (violet)","7":"Éthéré (rose)"},"roulettes":{"LevelingRoulette":"Gain de niveaux","HighLevelRoulette":"Donjons de haut niveau","ExpertRoulette":"Expert","TrialRoulette":"Défis","AllianceRoulette":"Raids en alliance","NormalRaidRoulette":"Raids normaux","MSQRoulette":"Scénario principal"},"role":"Rôle : {v}","type":"Type : {v}","mainStat":"Attribut principal : {v}","startingCity":"Cité de départ : {v}","startsAtLevel":"Commence au niveau {n}","limitedJob":"C'est un job limité","becomes":"Devient : {v}","startsAs":"Commence en tant que : {v}","abbreviation":"Abréviation : {v}","region":"Région : {v}","expansion":"Extension : {v}","area":"Secteur : {v}","alsoInRegion":"Aussi dans cette région : {v}","fieldZones_one":"{n} zone","fieldZones_other":"{n} zones","cityThere":"Une cité là-bas : {v}","zoneThere":"Une zone là-bas : {v}","anotherZoneThere":"Une autre zone là-bas : {v}","level":"Niveau {n}","itemLevel":"Niveau d'objet {n}","roulette":"Mission aléatoire : {v}","zone":"Zone : {v}","highEnd":"C'est un défi haut niveau","levelSync":"Synchro niveau {n}","itemLevelSync":"Synchro niveau d'objet {n}","description":"Description","quote":"Citation","seats_one":"Places : {n} cavalier","seats_other":"Places : {n} cavaliers","minionRace":"Espèce : {v}","behavior":"Comportement : {v}","skillType":"Type de compétence (Mascottes de guerre) : {v}","specialAction":"Action spéciale : {v}","verminionStats":"Mascottes de guerre : ATQ {atk} / DÉF {def} / VIT {spd}","job":"Job : {v}","roleAction":"Action de rôle","actionType":"Type d'action : {v}","castTime":"Temps d'incantation : {v}","instant":"Lancement instantané","recast":"Temps de recharge : {v}","seconds":"{n} s","groundTargeted":"Elle se lance au sol","targets":"Cibles : {v}","targetEnemies":"ennemis","targetParty":"membres de l'équipe","targetSelf":"soi-même","range":"Portée : {n} yalms","radius":"Rayon d'effet : {n} yalms","charges":"{n} charges","usedBy":"Utilisée par : {v}","itemType":"Type d'objet : {v}","equipLevel":"Niveau requis {n}","usableBy":"Utilisable par : {v}","craftedBy":"Fabriqué par : {v}","expertRecipe":" (recette d'expert)","rarity":"Rareté : {v}","marketBoard":"Tableau des ventes : {v}","grandCompany":"Grande compagnie : {v}","itemSeries":"Série d'objets : {v}","materia_one":"{n} emplacement de matéria","materia_other":"{n} emplacements de matéria","dyeable":"Il peut être teint","stacks":"Se cumule jusqu'à {n}","hq":"Il peut être de haute qualité","unique":"Il est unique","collectable":"C'est un objet de collection","firstLetter":"Première lettre : {l}","lore":{"line":"{name}{abbr} — {what}{startsAs}.","abbr":" ({v})","job":"job","jobRole":"job de {role}","class":"classe","classRole":"classe de {role}","startsAs":", commence en tant que {v}","city":{"full":"Une cité de {region} ({exp}).","region":"Une cité de {region}.","exp":"Une cité ({exp}).","plain":"Une cité."},"zone":{"full":"Une zone de {region} ({exp}).","region":"Une zone de {region}.","exp":"Une zone ({exp}).","plain":"Une zone."},"region":{"exp":"Une région du monde, apparue dans {exp}.","plain":"Une région du monde."}}}},"de/trivia":{"command":{"description":"🧩 Errate das FFXIV-Wort des Tages in 6 Schwierigkeitsgraden, sammle Bits und halte deine Serie."},"title":"🧩 **Pingway Trivia — Errate das Wort**","diff":{"easy":"Leicht","normal":"Normal","hard":"Schwer","extreme":"Extrem","savage":"Episch","ultimate":"Fatal"},"maintenance":"⚠️ **Der Bot wird gerade gewartet.** Bitte versuche es später noch einmal!","notAvailable":"❌ Trivia ist gerade nicht verfügbar. Bitte versuche es in einer Minute noch einmal.","warming":"⏳ Trivia wird vorbereitet, versuche es in einer Minute noch einmal.","error":"❌ Etwas ist schiefgelaufen. Bitte starte /trivia neu.","ended":"⌛ Sitzung beendet — starte /trivia neu.","time":{"hm":"{h} Std. {m} Min.","m":"{m} Min."},"count":{"bits_one":"{n} Bit","bits_other":"{n} Bits","guesses_one":"{n} Versuch","guesses_other":"{n} Versuchen","limit_one":"{n} Versuch","limit_other":"{n} Versuche","wrongGuesses_one":"{n} Fehlversuch","wrongGuesses_other":"{n} Fehlversuche","wrongLeft_one":"Noch {n} Fehlversuch übrig","wrongLeft_other":"Noch {n} Fehlversuche übrig","streakDays_one":"{n} Tag","streakDays_other":"{n} Tage"},"status":{"solved":"gelöst","gaveup":"aufgegeben","failed":"keine Versuche mehr","playing":"läuft","new":"neu"},"buttons":{"play":"Spielen","continue":"Weiter","results":"Heutiges Ergebnis","howto":"Spielregeln","todayWord":"Heutiges Wort","share":"Ergebnis teilen","back":"Zurück","guess":"Raten","hint":"Tipp","giveUp":"Aufgeben","giveUpYes":"Ja, aufgeben","giveUpNo":"Nein, weiterspielen"},"home":{"intro":"Errate das FFXIV-Wort des Tages. 6 Schwierigkeitsgrade, jeder mit eigenem Wort. Eine Lösung pro Tag, auf allen Servern.","you":"**Du:** 🔥 Serie {streak} · 💎 {season} Bits diesen Monat · {total} insgesamt","solved":"✅ Du hast das heutige Wort in **{diff}** gelöst (+{bits} Bits). Komm nach 0:00 Uhr JST wieder! (in {time})","waiting":"▶ Dein Spiel in **{diff}** wartet auf dich.","newWords":"⏳ Neue Wörter in {time} (0:00 Uhr JST).","yesterday":"**Lösungen von gestern**","yesterdayNone":"_Noch keine — komm morgen wieder!_"},"howto":{"rules":["• Jedes Kästchen ist ein Buchstabe: ⬜ verdeckt, 🇦 aufgedeckt. Umlaute und ß werden als echter Buchstabe gezeigt (Ü). Leerzeichen und Symbole sind immer sichtbar.","• Drücke **Raten** und gib die ganze Antwort ein. Groß/klein, Akzente, Leerzeichen und Symbole sind egal (ü = u = ue, ß = ss).","• Ein falscher Versuch deckt die Buchstaben an der richtigen Stelle auf, plus einen weiteren. Alle Buchstaben aufgedeckt = gelöst. Zu viele Fehlversuche, und dieser Schwierigkeitsgrad ist für heute gesperrt.","• **Tipp:** bis zu {hints} pro Versuch (nach jedem Fehlversuch wieder voll). Erst Hinweise, dann Buchstaben. **Aufgeben** sperrt diesen Schwierigkeitsgrad für heute; du kannst noch einen anderen versuchen.","• Nach einer Lösung bist du für heute fertig, auf allen Servern. Neue Wörter um 0:00 Uhr JST. Das Wort des Tages ist für alle gleich und wird in deiner Sprache gezeigt (ändern mit /pingway)."],"bits":"**Bits:** weniger aufgedeckte Buchstaben = mehr Bits, bis zum Doppelten. Nie weniger als die Basis.","diff":"{emoji} {name}: {bits}, {wrong}","streak":"**Serie:** löse an mehreren Tagen hintereinander. Bonus nach 5/10/15/20/30 Tagen: +10/+20/+30/+40/+60 Bits. Serien und die Monatsrangliste beginnen am 1. neu.","boards":"Ranglisten: pingway.app → Trivia. In My Settings kannst du dich verbergen."},"menu":{"solved":"✅ Du hast das heutige Wort in **{diff}** gelöst. Komm nach 0:00 Uhr JST wieder!","pick":"Wähle einen Schwierigkeitsgrad. Jeder hat sein eigenes Wort des Tages.","line":"{emoji} **{name}** · {bits} · {limit} — {status}"},"game":{"header":"{emoji} **{name}** · {left} · 💡 {hints}/{max} Tipps"},"feedback":{"wrongShown_one":"❌ Leider falsch — {n} Buchstabe aufgedeckt. {left}.","wrongShown_other":"❌ Leider falsch — {n} Buchstaben aufgedeckt. {left}.","wrong":"❌ Leider falsch. {left}."},"hint":{"letter":"💡 Buchstabe {n} aufgedeckt.","limit":"Keine Tipps mehr — nach einem Fehlversuch bekommst du {n} neue.","none":"Keine weiteren Tipps für dieses Wort."},"giveup":{"ask":"🏳️ **Aufgeben?** Dieser Schwierigkeitsgrad wird für heute gesperrt. (Die Lösung siehst du erst morgen.)"},"solved":{"allRevealed":"🎉 **Glückwunsch! Alle Buchstaben aufgedeckt!**","line":"✅ **Gelöst!** {emoji} {name} · +{bits} Bits (Basis {base}, Bonus {bonus})","streak":"🔥 Serie: {days}","milestone":" · 🎉 Serienbonus +{bits} Bits!","bits":"💎 {season} Bits diesen Monat · {total} insgesamt","done":"Das war's für heute — komm nach 0:00 Uhr JST wieder (in {time})."},"about":{"title":"📖 **Über {word}**","answer":"📖 Die Lösung war **{word}**."},"locked":{"gaveup":"🏳️ Du hast **{name}** aufgegeben.","failed":"❌ Keine Versuche mehr in **{name}**.","today":"{why} Für heute gesperrt.","other":"Du kannst noch einen anderen Schwierigkeitsgrad versuchen. Die Lösung erscheint nach 0:00 Uhr JST bei „Lösungen von gestern“."},"today":{"solved":"✅ Du hast das heutige Wort in **{name}** gelöst"},"modal":{"title":"Dein Tipp ({name})","label":"Gib die ganze Antwort ein"},"share":{"nothing":"Gerade gibt es nichts zu teilen.","gone":"⚠️ Der Trivia-Kanal zum Teilen existiert nicht mehr. Bitte einen Admin, auf der Website einen neuen zu wählen.","already":"Schon geteilt. 🙂","cantPost":"⚠️ Pingway kann in <#{channel}> nicht schreiben. Bitte einen Admin, die Berechtigungen dort zu prüfen.","done":"📣 In <#{channel}> geteilt!","line":"🧩 **{name}** hat das heutige Pingway-Trivia-Wort in **{diff}** in {guesses}{hints} gelöst!{streak}","guesses_one":"{n} Versuch","guesses_other":"{n} Versuchen","hints_one":" mit {n} Tipp","hints_other":" mit {n} Tipps","noHints":" ohne Tipps","streak":" 🔥 Serie {n}","invite":"-# Kannst du das schlagen? Nutze {command}, um das FFXIV-Wort des Tages zu erraten, Bits zu sammeln und deine Serie aufzubauen!"},"reward":{"dm":"🎉 Glückwunsch! Du hast im {month} **{bits} Bits** in Pingway Trivia gesammelt — als Dankeschön bekommst du **{points} Punkte**. Nutze sie für zusätzliche Gehilfen oder Supporter Perks auf {url}","month":"{month} {year}","months":["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],"roleGiven":"Pingway Trivia: Top {rank} im {season}","roleTaken":"Pingway Trivia: Top {rank} im {season} ging an jemand anderen"},"hints":{"labelValue":"{label}: {v}","listSep":", ","loreSep":" · ","category":"Kategorie: {v}","cat":{"job":"Job","class":"Klasse","city":"Stadt","zone":"Gebiet","region":"Region","dungeon":"Dungeon","trial":"Prüfung","allianceRaid":"Allianz-Raid","raid":"Raid","mount":"Reittier","minion":"Begleiter","action":"Aktion","item":"Gegenstand"},"roles":{"1":"Verteidiger","2":"Nahkampf-Angreifer","3":"Fernkampf-Angreifer","4":"Heiler"},"stats":{"1":"Stärke","2":"Geschick","3":"Konstitution","4":"Intelligenz","5":"Willenskraft"},"rarities":{"1":"Gewöhnlich (weiß)","2":"Ungewöhnlich (grün)","3":"Selten (blau)","4":"Relikt (lila)","7":"Ätherisch (rosa)"},"roulettes":{"LevelingRoulette":"Stufensteigerung","HighLevelRoulette":"Hochstufige Dungeons","ExpertRoulette":"Experte","TrialRoulette":"Prüfungen","AllianceRoulette":"Allianz-Raids","NormalRaidRoulette":"Normale Raids","MSQRoulette":"Hauptszenario"},"role":"Rolle: {v}","type":"Typ: {v}","mainStat":"Hauptattribut: {v}","startingCity":"Startstadt: {v}","startsAtLevel":"Beginnt auf Stufe {n}","limitedJob":"Es ist ein limitierter Job","becomes":"Wird zu: {v}","startsAs":"Beginnt als: {v}","abbreviation":"Abkürzung: {v}","region":"Region: {v}","expansion":"Erweiterung: {v}","area":"Bereich: {v}","alsoInRegion":"Auch in dieser Region: {v}","fieldZones_one":"{n} Gebiet","fieldZones_other":"{n} Gebiete","cityThere":"Eine Stadt dort: {v}","zoneThere":"Ein Gebiet dort: {v}","anotherZoneThere":"Noch ein Gebiet dort: {v}","level":"Stufe {n}","itemLevel":"Gegenstandsstufe {n}","roulette":"Zufallsinhalt: {v}","zone":"Gebiet: {v}","highEnd":"Es ist ein High-End-Inhalt","levelSync":"Stufensynchronisierung {n}","itemLevelSync":"Gegenstandsstufen-Synchronisierung {n}","description":"Beschreibung","quote":"Zitat","seats_one":"Plätze: {n} Reiter","seats_other":"Plätze: {n} Reiter","minionRace":"Begleiter-Art: {v}","behavior":"Verhalten: {v}","skillType":"Begleiterspiel-Fähigkeitstyp: {v}","specialAction":"Spezialaktion: {v}","verminionStats":"Begleiterspiel-Werte: ANG {atk} / VER {def} / TEM {spd}","job":"Job: {v}","roleAction":"Rollenaktion","actionType":"Aktionstyp: {v}","castTime":"Zauberzeit: {v}","instant":"Sofort","recast":"Wiederaufladezeit: {v}","seconds":"{n} s","groundTargeted":"Sie wird auf den Boden gewirkt","targets":"Ziele: {v}","targetEnemies":"Gegner","targetParty":"Gruppenmitglieder","targetSelf":"selbst","range":"Reichweite: {n} Yalm","radius":"Wirkungsradius: {n} Yalm","charges":"{n} Aufladungen","usedBy":"Benutzt von: {v}","itemType":"Gegenstandstyp: {v}","equipLevel":"Anlegbar ab Stufe {n}","usableBy":"Nutzbar für: {v}","craftedBy":"Hergestellt von: {v}","expertRecipe":" (Expertenrezept)","rarity":"Seltenheit: {v}","marketBoard":"Marktbrett: {v}","grandCompany":"Staatliche Gesellschaft: {v}","itemSeries":"Gegenstandsreihe: {v}","materia_one":"{n} Materia-Platz","materia_other":"{n} Materia-Plätze","dyeable":"Es kann gefärbt werden","stacks":"Stapelbar bis {n}","hq":"Es gibt es in hoher Qualität","unique":"Es ist einzigartig","collectable":"Es ist ein Sammlerstück","firstLetter":"Erster Buchstabe: {l}","lore":{"line":"{name}{abbr} — {what}{startsAs}.","abbr":" ({v})","job":"Job","jobRole":"Job ({role})","class":"Klasse","classRole":"Klasse ({role})","startsAs":", beginnt als {v}","city":{"full":"Eine Stadt in {region} ({exp}).","region":"Eine Stadt in {region}.","exp":"Eine Stadt ({exp}).","plain":"Eine Stadt."},"zone":{"full":"Ein Gebiet in {region} ({exp}).","region":"Ein Gebiet in {region}.","exp":"Ein Gebiet ({exp}).","plain":"Ein Gebiet."},"region":{"exp":"Eine Region der Welt, zuerst in {exp}.","plain":"Eine Region der Welt."}}}},"ja/trivia":{"command":{"description":"🧩 今日のFFXIVワードを当てよう！6つの難易度、ビットを集めて連続記録をのばそう。"},"title":"🧩 **Pingway Trivia — ワード当てクイズ**","diff":{"easy":"イージー","normal":"ノーマル","hard":"ハード","extreme":"極","savage":"零式","ultimate":"絶"},"maintenance":"⚠️ **ただいまメンテナンス中です。** しばらくしてからもう一度お試しください！","notAvailable":"❌ 今は Trivia を利用できません。1分後にもう一度お試しください。","warming":"⏳ Trivia を準備中です。1分後にもう一度お試しください。","error":"❌ エラーが発生しました。もう一度 /trivia を実行してください。","ended":"⌛ セッションが終了しました — もう一度 /trivia を実行してください。","time":{"hm":"{h}時間{m}分","m":"{m}分"},"count":{"bits_one":"{n}ビット","bits_other":"{n}ビット","guesses_one":"{n}回","guesses_other":"{n}回","limit_one":"{n}回","limit_other":"{n}回","wrongGuesses_one":"ミス{n}回まで","wrongGuesses_other":"ミス{n}回まで","wrongLeft_one":"残りミス{n}回","wrongLeft_other":"残りミス{n}回","streakDays_one":"{n}日","streakDays_other":"{n}日"},"status":{"solved":"正解","gaveup":"ギブアップ","failed":"回数切れ","playing":"プレイ中","new":"未プレイ"},"buttons":{"play":"プレイ","continue":"続ける","results":"今日の結果","howto":"遊び方","todayWord":"今日のワード","share":"結果をシェア","back":"戻る","guess":"回答する","hint":"ヒント","giveUp":"ギブアップ","giveUpYes":"はい、ギブアップ","giveUpNo":"いいえ、続ける"},"home":{"intro":"今日のFFXIVワードを当てよう。難易度は6つ、それぞれに別のワード。正解できるのは1日1回、全サーバー共通です。","you":"**あなた:** 🔥 連続 {streak} · 💎 今月 {season}ビット · 累計 {total}","solved":"✅ 今日の **{diff}** に正解しました（+{bits}ビット）。また 0:00 JST 以降に来てね！（あと {time}）","waiting":"▶ **{diff}** のゲームが途中です。","newWords":"⏳ 新しいワードまで あと {time}（0:00 JST）。","yesterday":"**昨日の答え**","yesterdayNone":"_まだありません — また明日来てね！_"},"howto":{"rules":["• 1つの枠が1文字です: ⬜ は隠れた文字。開いた文字はそのまま表示されます。スペースと記号（・など）は最初から表示されます。","• **回答する** を押して答えを全部入力してください。ひらがな・カタカナ、全角・半角、スペースや「・」「ー」は区別しません。漢字はそのまま入力してください。","• 不正解のときは、正しい位置の文字と、さらに1文字が開きます。全部の文字が開いたら正解。ミスが多すぎると、その難易度は今日はロックされます。","• **ヒント:** 1回の回答につき最大{hints}個（不正解のたびにリセット）。まず手がかり、次に文字が開きます。**ギブアップ** するとその難易度は今日はロックされますが、別の難易度には挑戦できます。","• 1回正解したら今日はおしまい（全サーバー共通）。新しいワードは 0:00 JST に出ます。今日のワードはみんな同じで、あなたの言語で表示されます（/pingway で変更できます）。"],"bits":"**ビット:** 開いた文字が少ないほど多くもらえます（最大2倍、最低でも基本値）。","diff":"{emoji} {name}: {bits}・{wrong}","streak":"**連続記録:** 毎日続けて正解しよう。5/10/15/20/30日でボーナス: +10/+20/+30/+40/+60ビット。連続記録と月間ランキングは毎月1日にリセットされます。","boards":"ランキング: pingway.app → Trivia。My Settings で自分を非表示にできます。"},"menu":{"solved":"✅ 今日の **{diff}** に正解しました。また 0:00 JST 以降に来てね！","pick":"難易度を選んでください。それぞれに今日のワードがあります。","line":"{emoji} **{name}** · {bits} · {limit} — {status}"},"game":{"header":"{emoji} **{name}** · {left} · 💡 ヒント {hints}/{max}"},"feedback":{"wrongShown_one":"❌ 不正解 — {n}文字開きました。{left}。","wrongShown_other":"❌ 不正解 — {n}文字開きました。{left}。","wrong":"❌ 不正解。{left}。"},"hint":{"letter":"💡 {n}文字目が開きました。","limit":"ヒントはもうありません — 不正解のあとにまた{n}個使えます。","none":"このワードのヒントはもうありません。"},"giveup":{"ask":"🏳️ **ギブアップしますか？** この難易度は今日はロックされます。（答えは明日まで表示されません。）"},"solved":{"allRevealed":"🎉 **おめでとう！全部の文字が開きました！**","line":"✅ **正解！** {emoji} {name} · +{bits}ビット（基本 {base}、ボーナス {bonus}）","streak":"🔥 連続 {days}","milestone":" · 🎉 連続ボーナス +{bits}ビット！","bits":"💎 今月 {season}ビット · 累計 {total}","done":"今日はここまで — また 0:00 JST 以降に来てね（あと {time}）。"},"about":{"title":"📖 **{word} について**","answer":"📖 答えは **{word}** でした。"},"locked":{"gaveup":"🏳️ **{name}** をギブアップしました。","failed":"❌ **{name}** の回答回数がなくなりました。","today":"{why} 今日はロックされています。","other":"ほかの難易度にはまだ挑戦できます。答えは 0:00 JST 以降に「昨日の答え」に表示されます。"},"today":{"solved":"✅ 今日の **{name}** に正解しました"},"modal":{"title":"あなたの答え（{name}）","label":"答えを全部入力してください"},"share":{"nothing":"今シェアできるものはありません。","gone":"⚠️ Trivia のシェア用チャンネルがなくなっています。管理者にウェブサイトで新しいチャンネルを選んでもらってください。","already":"シェア済みです。🙂","cantPost":"⚠️ Pingway は <#{channel}> に投稿できません。管理者に権限を確認してもらってください。","done":"📣 <#{channel}> にシェアしました！","line":"🧩 **{name}** さんが今日の Pingway Trivia **{diff}** に{guesses}で正解しました{hints}！{streak}","guesses_one":"{n}回","guesses_other":"{n}回","hints_one":"（ヒント{n}個）","hints_other":"（ヒント{n}個）","noHints":"（ヒントなし）","streak":" 🔥 連続 {n}","invite":"-# あなたも挑戦してみませんか？ {command} で今日のFFXIVワードを当てて、ビットを集めて連続記録をのばそう！"},"reward":{"dm":"🎉 おめでとうございます！{month}の Pingway Trivia で **{bits}ビット** を獲得しました — お礼に **{points}ポイント** をプレゼントします。リテイナーの追加や Supporter Perks に使えます: {url}","month":"{year}年{month}","months":["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"roleGiven":"Pingway Trivia: {season} のトップ{rank}","roleTaken":"Pingway Trivia: {season} のトップ{rank} がほかの人に移りました"},"hints":{"labelValue":"{label}: {v}","listSep":"、","loreSep":" · ","category":"カテゴリー: {v}","cat":{"job":"ジョブ","class":"クラス","city":"都市","zone":"エリア","region":"地方","dungeon":"ダンジョン","trial":"討伐・討滅戦","allianceRaid":"アライアンスレイド","raid":"レイド","mount":"マウント","minion":"ミニオン","action":"アクション","item":"アイテム"},"roles":{"1":"タンク","2":"近接DPS","3":"遠隔DPS","4":"ヒーラー"},"stats":{"1":"STR","2":"DEX","3":"VIT","4":"INT","5":"MND"},"rarities":{"1":"白（ノーマル）","2":"緑（マジック）","3":"青（レア）","4":"紫（レリック）","7":"ピンク（エーテリアル）"},"roulettes":{"LevelingRoulette":"レベリング","HighLevelRoulette":"ハイレベリング","ExpertRoulette":"エキスパート","TrialRoulette":"討伐・討滅戦","AllianceRoulette":"アライアンスレイド","NormalRaidRoulette":"ノーマルレイド","MSQRoulette":"メインクエスト"},"role":"ロール: {v}","type":"タイプ: {v}","mainStat":"主要能力値: {v}","startingCity":"開始都市: {v}","startsAtLevel":"レベル{n}から開始","limitedJob":"リミテッドジョブです","becomes":"なれるジョブ: {v}","startsAs":"元のクラス: {v}","abbreviation":"略称: {v}","region":"地方: {v}","expansion":"拡張: {v}","area":"地域: {v}","alsoInRegion":"同じ地方: {v}","fieldZones_one":"フィールドエリア{n}つ","fieldZones_other":"フィールドエリア{n}つ","cityThere":"そこにある都市: {v}","zoneThere":"そこにあるエリア: {v}","anotherZoneThere":"ほかのエリア: {v}","level":"レベル{n}","itemLevel":"アイテムレベル{n}","roulette":"ルーレット: {v}","zone":"エリア: {v}","highEnd":"高難易度コンテンツです","levelSync":"レベルシンク{n}","itemLevelSync":"アイテムレベルシンク{n}","description":"説明","quote":"セリフ","seats_one":"乗車人数: {n}人","seats_other":"乗車人数: {n}人","minionRace":"種族: {v}","behavior":"動き: {v}","skillType":"ミニオンバトルのスキルタイプ: {v}","specialAction":"特殊アクション: {v}","verminionStats":"ミニオンバトル: 攻撃 {atk} / 防御 {def} / 速度 {spd}","job":"ジョブ: {v}","roleAction":"ロールアクション","actionType":"アクションの種類: {v}","castTime":"詠唱時間: {v}","instant":"即時発動","recast":"リキャスト: {v}","seconds":"{n}秒","groundTargeted":"地面を指定して使います","targets":"対象: {v}","targetEnemies":"敵","targetParty":"パーティメンバー","targetSelf":"自分","range":"射程: {n}m","radius":"効果範囲: {n}m","charges":"チャージ{n}回","usedBy":"使えるジョブ: {v}","itemType":"アイテムの種類: {v}","equipLevel":"装備レベル{n}","usableBy":"装備できるクラス: {v}","craftedBy":"製作: {v}","expertRecipe":"（エキスパートレシピ）","rarity":"レアリティ: {v}","marketBoard":"マーケットボード: {v}","grandCompany":"グランドカンパニー: {v}","itemSeries":"シリーズ: {v}","materia_one":"マテリア穴{n}つ","materia_other":"マテリア穴{n}つ","dyeable":"染色できます","stacks":"最大{n}個までスタック","hq":"HQがあります","unique":"ユニークアイテムです","collectable":"収集品です","firstLetter":"最初の文字: {l}","lore":{"line":"{name}{abbr} — {what}{startsAs}。","abbr":"（{v}）","job":"ジョブ","jobRole":"{role}のジョブ","class":"クラス","classRole":"{role}のクラス","startsAs":"、元のクラスは{v}","city":{"full":"{region}の都市（{exp}）。","region":"{region}の都市。","exp":"都市（{exp}）。","plain":"都市。"},"zone":{"full":"{region}のエリア（{exp}）。","region":"{region}のエリア。","exp":"エリア（{exp}）。","plain":"エリア。"},"region":{"exp":"世界の地方のひとつ。{exp}で初登場。","plain":"世界の地方のひとつ。"}}}}};
+var SHIMS = {
+    fs: { readFileSync: function (file) {
+        var m = /([a-z]{2})[\\/]([A-Za-z0-9_-]+)\.json$/.exec(String(file));
+        var key = m ? m[1] + '/' + m[2] : '';
+        if (Object.prototype.hasOwnProperty.call(LOCALES, key)) return JSON.stringify(LOCALES[key]);
+        var e = new Error('ENOENT: ' + file); e.code = 'ENOENT'; throw e;
+    }, writeFileSync: function () { throw new Error('no files in the browser'); }, mkdirSync: function () {} },
+    path: { join: function () { return Array.prototype.slice.call(arguments).join('/'); }, dirname: function (p) { return String(p).replace(/[\\/][^\\/]*$/, ''); } },
+    crypto: {}
+};
+var DEFS = {}, CACHE = {};
+function req(name) {
+    var key = String(name).replace(/^\.\.?\//, '').replace(/\.js$/, '');
+    if (SHIMS[key]) return SHIMS[key];
+    if (CACHE[key]) return CACHE[key].exports;
+    if (!DEFS[key]) throw new Error('module not in the page: ' + name);
+    var module = { exports: {} };
+    CACHE[key] = module;
+    DEFS[key](module, module.exports, req, 'utils');
+    return module.exports;
+}
+// ---- utils/triviaBank.js ----
+DEFS["triviaBank"] = function (module, exports, require, __dirname) {
+// Pingway Trivia word bank builder: fetches the XIVAPI v2 rows in en/fr/de/ja and makes the bank object that is saved
+// as data/trivia_bank.json. Pure code (no fs, no axios, no Discord): the same file runs on the server (utils/trivia.js)
+// and in the browser (misc/trivia-builder.html, made by tools/build-trivia-builder.js). The caller gives getJson(url)
+// (with its own retries) and pause() (wait between pages).
+// Bank: { builtAt, format, langs, pools, incomplete? } — pools = { easy: [{ id, word, category, hints, lore, i18n }], ... }
+
+const W = require('./triviaWords');
+
+const XIV = 'https://v2.xivapi.com/api';
+const BANK_FORMAT = 4; // 2 = more hints per word, no word-count hint, First letter as { text, letter }; 3 = no "Nowheresville" starting city;
+                       // 4 = ids and fr/de/ja names, clues and lore (entry.i18n)
+const MIN_POOL = 15;
+const OTHER_LANGS = W.LANGS.filter(l => l !== 'en');
+// XIVAPI v2 language (English is the default, no parameter)
+const langParam = lang => (lang && lang !== 'en' ? '&language=' + lang : '');
+
+// The sheets fetched for one language, in order (label = shown in the progress)
+const SHEETS = [
+    ['classJobs', 'sheet', 'ClassJob', 'Name,Abbreviation,Role,ClassJobParent.Name,JobIndex,ClassJobCategory.Name,StartingTown.Name,StartingLevel,PrimaryStat,IsLimitedJob', 200, 'jobs'],
+    ['territories', 'sheet', 'TerritoryType', 'PlaceName.Name,PlaceNameRegion.Name,PlaceNameZone.Name,ExVersion.Name,TerritoryIntendedUse', 200, 'zones'],
+    ['content', 'sheet', 'ContentFinderCondition', 'Name,ContentType.Name,ClassJobLevelRequired,ClassJobLevelSync,ItemLevelRequired,ItemLevelSync,HighEndDuty,' +
+        'LevelingRoulette,HighLevelRoulette,ExpertRoulette,TrialRoulette,AllianceRoulette,NormalRaidRoulette,MSQRoulette,' +
+        'TerritoryType.PlaceName.Name,TerritoryType.PlaceNameRegion.Name,TerritoryType.ExVersion.Name', 200, 'duties'],
+    ['contentLore', 'sheet', 'ContentFinderConditionTransient', 'Description', 200, 'duty texts'],
+    ['mounts', 'sheet', 'Mount', 'Singular,ExtraSeats', 200, 'mounts'],
+    ['mountLore', 'sheet', 'MountTransient', 'Description,DescriptionEnhanced,Tooltip', 200, 'mount texts'],
+    ['minions', 'sheet', 'Companion', 'Singular,MinionRace.Name,Behavior.Name', 200, 'minions'],
+    ['minionLore', 'sheet', 'CompanionTransient', 'Description,DescriptionEnhanced,Tooltip,SpecialActionName,MinionSkillType.Name,Attack,Defense,Speed', 200, 'minion texts'],
+    ['actions', 'search', 'Action', 'Name,ClassJob.Name,ClassJobLevel,IsPvP,IsPlayerAction,ActionCategory.Name,ClassJobCategory.Name,' +
+        'Cast100ms,Recast100ms,Range,EffectRange,MaxCharges,IsRoleAction,CanTargetHostile,CanTargetParty,CanTargetSelf,TargetArea', 40, 'actions'],
+    ['items', 'sheet', 'Item', 'Name,Description,ItemSearchCategory.Name,LevelItem,ItemUICategory.Name,LevelEquip,ClassJobCategory.Name,Rarity,' +
+        'GrandCompany.Name,ItemSeries.Name,MateriaSlotCount,DyeCount,StackSize,CanBeHq,IsUnique,IsCollectable', 200, 'items'],
+    // Who crafts what (joined to the items in memory): English only, other languages use the English recipes with their own job names
+    ['recipes', 'sheet', 'Recipe', 'ItemResult.Name,CraftType.Name,IsExpert', 200, 'recipes', 'en'],
+    // Lore of actions: only the rows of the actions found above (ActionTransient has the same row_id)
+    ['actionLore', 'sheet', 'ActionTransient', 'Description', 400, 'action texts']
+];
+const sheetsFor = lang => SHEETS.filter(s => !s[6] || s[6] === (lang || 'en'));
+const TOTAL_STEPS = W.LANGS.reduce((n, l) => n + sheetsFor(l).length, 0);
+
+// opts: { getJson(url) -> data, pause() -> Promise, onProgress?({ lang, label, step, steps, page, rows }) }
+function fetcher(opts) {
+    const pause = opts.pause || (() => Promise.resolve());
+    const progress = opts.onProgress || (() => {});
+    let step = 0;
+    // Every row of a sheet, 500 at a time
+    async function sheetRows(sheet, fields, maxPages, lang, info) {
+        const out = [];
+        let after = null;
+        for (let page = 0; page < maxPages; page++) {
+            const url = XIV + '/sheet/' + sheet + '?limit=500&fields=' + encodeURIComponent(fields) + (after !== null ? '&after=' + after : '') + langParam(lang);
+            const data = await opts.getJson(url);
+            const rows = (data && Array.isArray(data.rows)) ? data.rows : [];
+            if (!rows.length) break;
+            out.push(...rows);
+            if (info) progress(Object.assign({}, info, { page: page + 1, rows: out.length }));
+            after = rows[rows.length - 1].row_id;
+            await pause();
+        }
+        return out;
+    }
+    // Every result of a search
+    async function searchRows(sheet, query, fields, maxPages, lang, info) {
+        const out = [];
+        let url = XIV + '/search?sheets=' + sheet + '&query=' + encodeURIComponent(query) + '&fields=' + encodeURIComponent(fields) + '&limit=500' + langParam(lang);
+        for (let page = 0; page < maxPages && url; page++) {
+            const data = await opts.getJson(url);
+            const rows = (data && Array.isArray(data.results)) ? data.results : [];
+            out.push(...rows);
+            if (info) progress(Object.assign({}, info, { page: page + 1, rows: out.length }));
+            if (!rows.length || !data.next) break;
+            url = XIV + '/search?cursor=' + encodeURIComponent(data.next) + '&limit=500' + langParam(lang);
+            await pause();
+        }
+        return out;
+    }
+    // All the rows the bank needs, in one language
+    async function fetchRaw(lang) {
+        const raw = {};
+        for (const [key, kind, sheet, fields, maxPages, label] of sheetsFor(lang)) {
+            const info = { lang: lang || 'en', label, sheet, step: ++step, steps: TOTAL_STEPS, page: 0, rows: 0 };
+            progress(info);
+            if (kind === 'search') raw[key] = await searchRows(sheet, '+IsPlayerAction=true +IsPvP=false', fields, maxPages, lang, info);
+            else raw[key] = await sheetRows(sheet, fields, maxPages, lang, info);
+            if (key === 'actionLore') {
+                const actionIds = new Set(raw.actions.map(r => Number(r.row_id)));
+                raw.actionLore = raw.actionLore.filter(r => actionIds.has(Number(r.row_id)));
+            }
+        }
+        return raw;
+    }
+    return { sheetRows, searchRows, fetchRaw };
+}
+
+// Builds the bank. opts as fetcher() plus: strict (a language that can't be fetched = error, else the bank is made
+// without it and marked incomplete), warn(text) for problems, now() for builtAt.
+// Returns { bank, complete: { easy: n, ... } (words that work in all languages), failed: [langs] }.
+async function buildBankData(opts) {
+    const warn = opts.warn || (() => {});
+    const now = opts.now || Date.now;
+    const f = fetcher(opts);
+    const rawEn = await f.fetchRaw('en');
+    const pools = W.buildPools(rawEn);
+    const small = W.DIFFICULTIES.filter(d => pools[d.key].length < MIN_POOL).map(d => d.name);
+    if (small.length) throw new Error('too few words for ' + small.join(', '));
+    // fr/de/ja: the same rows in each language (one language at a time, to keep memory low)
+    const byLang = {};
+    const failed = [];
+    for (const lang of OTHER_LANGS) {
+        try {
+            byLang[lang] = W.buildPools(await f.fetchRaw(lang), { lang, en: rawEn });
+        } catch (err) {
+            failed.push(lang);
+            warn('⚠️ [TRIVIA] Word bank: could not fetch ' + lang + ' (' + err.message + ').');
+        }
+    }
+    if (failed.length && opts.strict) throw new Error('languages missing: ' + failed.join(', '));
+    W.mergeLangPools(pools, byLang);
+    const complete = Object.fromEntries(W.DIFFICULTIES.map(d => [d.key, pools[d.key].filter(W.isComplete).length]));
+    const thin = W.DIFFICULTIES.filter(d => !failed.length && complete[d.key] < MIN_POOL).map(d => d.name + ' ' + complete[d.key]);
+    if (thin.length) warn('⚠️ [TRIVIA] Word bank: few words that work in all languages (' + thin.join(', ') + ').');
+    const bank = { builtAt: now(), format: BANK_FORMAT, langs: ['en', ...Object.keys(byLang)], pools };
+    if (failed.length) bank.incomplete = true;
+    return { bank, complete, failed };
+}
+
+module.exports = { XIV, BANK_FORMAT, MIN_POOL, SHEETS, TOTAL_STEPS, fetcher, buildBankData };
+
+};
+// ---- utils/triviaWords.js ----
+DEFS["triviaWords"] = function (module, exports, require, __dirname) {
+// Pingway Trivia: the plain rules, with no database and no Discord in here (easy to test).
+// - Days are JST calendar days (Asia/Tokyo, UTC+9, no summer time). A new day starts at 0:00 JST.
+// - Letters: accents are folded (ä -> a, œ -> oe, æ -> ae, ß -> ss). Answers are compared on the letters a-z only,
+//   so case, accents, spaces, symbols and digits never matter.
+// - The word is shown as one box per letter: ⬜ hidden, 🇦..🇿 shown. Spaces are a gap, symbols and digits are shown as they are.
+// - Bits on a solve: base + base x (letters still hidden / all letters), rounded. Never below base, never above double.
+//   Nothing shown = double; every letter shown = base. Hints cost nothing by themselves (a letter hint shows a letter).
+// - Hints: up to 3 per guess (the count starts again after each wrong guess). Clues first, then one letter each.
+// - A wrong guess shows every letter that is the same letter in the same place as the answer (k-th letter vs
+//   k-th letter, spaces/symbols/digits skipped, accents folded), plus one more random letter.
+// - Streak: days in a row with a solve. It starts again at 1 on the 1st of every month (new season).
+// - The word bank (built from XIVAPI data by utils/trivia.js) is sorted into the 6 difficulties here.
+// - Languages (en, fr, de, ja): every word has an id (e.g. 'job:19') and its official name, clues and lore in each
+//   language (bank entry .i18n.fr/.de/.ja). The difficulty rules (which pool, which rows count) always use the English
+//   data, so a word is in the same difficulty in every language. Only words whose name works in all 4 languages
+//   are picked as the word of the day (see isComplete).
+//   * fr/de: same rules as English (accents folded: é = e, ß = ss; de also takes ae/oe/ue for ä/ö/ü). An accented
+//     letter is shown as the real letter (É, Ü) instead of a 🇦-style box.
+//   * ja: each character is one "letter" (kana, kanji, ー). Answers are compared after NFKC (full/half width),
+//     katakana -> hiragana, and without spaces, ・ and ー. Kanji must be the same. Shown letters are the real characters.
+
+const crypto = require('crypto');
+const i18n = require('./i18n');
+const LANGS = i18n.LANGS;
+
+const DIFFICULTIES = [
+    { key: 'easy', name: 'Easy', base: 1, limit: 20, emoji: '🟢' },
+    { key: 'normal', name: 'Normal', base: 2, limit: 15, emoji: '🔵' },
+    { key: 'hard', name: 'Hard', base: 4, limit: 12, emoji: '🟡' },
+    { key: 'extreme', name: 'Extreme', base: 6, limit: 9, emoji: '🟠' },
+    { key: 'savage', name: 'Savage', base: 10, limit: 7, emoji: '🔴' },
+    { key: 'ultimate', name: 'Ultimate', base: 20, limit: 5, emoji: '🟣' }
+];
+const DIFF = Object.fromEntries(DIFFICULTIES.map(d => [d.key, d]));
+const MILESTONES = { 5: 10, 10: 20, 15: 30, 20: 40, 30: 60 };
+const HINTS_PER_GUESS = 3;
+
+// ---------- JST days ----------
+const JST_MS = 9 * 60 * 60 * 1000;
+const dayOf = ms => new Date((ms === undefined ? Date.now() : ms) + JST_MS).toISOString().slice(0, 10);
+const addDays = (day, n) => new Date(Date.parse(day + 'T00:00:00Z') + n * 86400000).toISOString().slice(0, 10);
+const seasonOf = day => String(day).slice(0, 7);
+// Milliseconds until the next 0:00 JST
+const msToReset = (ms = Date.now()) => {
+    const d = dayOf(ms);
+    return Date.parse(addDays(d, 1) + 'T00:00:00Z') - JST_MS - ms;
+};
+
+// ---------- letters ----------
+const SPECIAL = { 'œ': 'oe', 'Œ': 'oe', 'æ': 'ae', 'Æ': 'ae', 'ß': 'ss', 'ẞ': 'ss', 'ø': 'o', 'Ø': 'o', 'đ': 'd', 'Đ': 'd', 'ł': 'l', 'Ł': 'l', 'ı': 'i', 'þ': 'th', 'Þ': 'th', 'ð': 'd', 'Ð': 'd' };
+function foldChar(ch) {
+    if (SPECIAL[ch]) return SPECIAL[ch];
+    return ch.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^a-z]/g, '');
+}
+// Only the letters a-z, used to compare answers
+function fold(text) {
+    let out = '';
+    for (const ch of Array.from(String(text || '').normalize('NFC'))) out += foldChar(ch);
+    return out;
+}
+// Japanese: one character as it is compared (NFKC full/half width, lower case, katakana -> hiragana, Latin accents folded)
+function jaKey(ch) {
+    let s = String(ch || '').normalize('NFKC').toLowerCase();
+    s = s.replace(/[\u30a1-\u30f6]/g, c => String.fromCharCode(c.charCodeAt(0) - 0x60));
+    if (/\p{Script=Latin}/u.test(s)) s = Array.from(s).map(c => (/\p{Script=Latin}/u.test(c) ? foldChar(c) : c)).join('');
+    return s;
+}
+// German: ä/ö/ü also as ae/oe/ue
+const DE_UMLAUT = { 'ä': 'ae', 'ö': 'oe', 'ü': 'ue', 'Ä': 'ae', 'Ö': 'oe', 'Ü': 'ue' };
+const foldDe = text => fold(String(text || '').normalize('NFC').replace(/[äöüÄÖÜ]/g, c => DE_UMLAUT[c]));
+// The text as it is compared, in a language (en/fr/de: letters a-z only; ja: see jaKey, no spaces/symbols/ー)
+function foldFor(text, lang) {
+    if (lang !== 'ja') return fold(text);
+    let out = '';
+    for (const ch of Array.from(String(text || '').normalize('NFKC'))) {
+        if (ch === 'ー' || !/\p{L}/u.test(ch)) continue;
+        out += jaKey(ch);
+    }
+    return out;
+}
+// Same answer? (lang: the language of both texts; default English)
+function sameAnswer(a, b, lang) {
+    if (!lang || lang === 'en' || lang === 'fr') return fold(a) !== '' && fold(a) === fold(b);
+    if (lang === 'de') {
+        const A = [fold(a), foldDe(a)], B = [fold(b), foldDe(b)];
+        return A.some(x => x !== '' && B.includes(x));
+    }
+    const fa = foldFor(a, lang);
+    return fa !== '' && fa === foldFor(b, lang);
+}
+
+// One cell per character: letter (a box), space (a gap) or sym (always shown). l = the letter as compared,
+// ch = the real character (shown for accented letters and in Japanese)
+function cells(word, lang) {
+    if (lang === 'ja') {
+        return Array.from(String(word).normalize('NFC')).map(ch => {
+            if (/\s/.test(ch)) return { t: 'space' };
+            if (/\p{L}/u.test(ch)) {
+                const l = jaKey(ch);
+                if (l) return { t: 'letter', l, ch };
+            }
+            return { t: 'sym', ch };
+        });
+    }
+    return Array.from(String(word).normalize('NFC')).map(ch => {
+        if (/\s/.test(ch)) return { t: 'space' };
+        if (/\p{L}/u.test(ch)) {
+            const f = foldChar(ch);
+            if (f) return { t: 'letter', l: f[0], ch };
+        }
+        return { t: 'sym', ch };
+    });
+}
+const letterPositions = (word, lang) => cells(word, lang).map((c, i) => (c.t === 'letter' ? i : -1)).filter(i => i >= 0);
+// Letter positions of the answer where the guess has the same letter in the same place:
+// the k-th letter of the guess vs the k-th letter of the answer (spaces, symbols and digits skipped, accents folded)
+function matchingLetters(word, guessText, lang) {
+    const ans = cells(word, lang).map((c, i) => ({ c, i })).filter(x => x.c.t === 'letter');
+    const typed = lang === 'ja' ? String(guessText || '').normalize('NFKC') : guessText;
+    const g = cells(typed, lang).filter(c => c.t === 'letter' && c.l !== 'ー').map(c => c.l);
+    if (lang === 'ja') {
+        // ー is often left out when typing: compare without it
+        const a2 = ans.filter(x => x.c.l !== 'ー');
+        const out = [];
+        for (let k = 0; k < a2.length && k < g.length; k++) if (a2[k].c.l === g[k]) out.push(a2[k].i);
+        return out;
+    }
+    const out = [];
+    for (let k = 0; k < ans.length && k < g.length; k++) if (ans[k].c.l === g[k]) out.push(ans[k].i);
+    return out;
+}
+
+const ZWSP = '​';
+const HIDDEN = '⬜';
+const indicator = l => String.fromCodePoint(0x1F1E6 + (l.charCodeAt(0) - 97));
+const escMd = ch => (/[\\*_~`|>#\[\]()]/.test(ch) ? '\\' + ch : ch);
+
+// An accented letter as shown (upper case when that stays one character, e.g. é -> É, ß stays ß)
+const upperOne = ch => { const u = String(ch).toUpperCase(); return Array.from(u).length === 1 ? u : ch; };
+// How a shown letter looks: 🇦..🇿 (English, and plain a-z in fr/de), the real letter (accented fr/de), the character (ja)
+function shownLetter(c, lang) {
+    if (lang === 'ja') return escMd(c.ch);
+    if ((lang === 'fr' || lang === 'de') && c.ch && c.ch.toLowerCase() !== c.l) return escMd(upperOne(c.ch));
+    return indicator(c.l);
+}
+// The boxes line. revealed = cell positions that are shown. showAll = every letter shown.
+function renderBoxes(word, revealed, showAll, lang) {
+    const open = new Set((revealed || []).map(Number));
+    let out = '';
+    let prevBox = false;
+    const ja = lang === 'ja';
+    for (const [i, c] of cells(word, lang).entries()) {
+        if (c.t === 'space') { out += ja ? '\u3000' : '   '; prevBox = false; continue; }
+        if (c.t === 'sym') { out += escMd(c.ch); prevBox = false; continue; }
+        if (prevBox && !ja) out += ZWSP; // keeps 🇺🇸-style flags from forming
+        out += (showAll || open.has(i)) ? (lang && lang !== 'en' ? shownLetter(c, lang) : indicator(c.l)) : HIDDEN;
+        prevBox = true;
+    }
+    return out;
+}
+
+// ---------- bits & streak ----------
+// hidden = letters not shown at the moment of the solve, total = all letters of the answer
+function bitsFor(diffKey, hidden, total) {
+    const d = DIFF[diffKey];
+    const t = Number(total) || 0;
+    const raw = t > 0 ? d.base + Math.round(d.base * (Number(hidden) || 0) / t) : d.base;
+    return Math.min(d.base * 2, Math.max(d.base, raw));
+}
+
+// Streak shown on a given day (0 when the last solve was before yesterday, or in an earlier month)
+function liveStreak(user, today) {
+    if (!user || !user.last_solve_day) return 0;
+    const last = String(user.last_solve_day);
+    if (last === today) return Number(user.streak) || 0;
+    if (last === addDays(today, -1) && seasonOf(last) === seasonOf(today)) return Number(user.streak) || 0;
+    return 0;
+}
+// Streak after solving on `day`, and its milestone bonus
+function nextStreak(user, day) {
+    const last = user && user.last_solve_day ? String(user.last_solve_day) : '';
+    const streak = (last === addDays(day, -1) && seasonOf(last) === seasonOf(day)) ? (Number(user.streak) || 0) + 1 : 1;
+    return { streak, bonus: MILESTONES[streak] || 0 };
+}
+
+// ---------- daily pick ----------
+// A private random salt (data/trivia_salt.txt, made on first use, never shared) keeps the daily answers
+// unpredictable even though this code and the word data are public.
+let salt = null;
+function getSalt() {
+    if (salt !== null) return salt;
+    const fs = require('fs'), path = require('path');
+    const file = process.env.PINGWAY_TRIVIA_SALT_FILE || path.join(__dirname, '..', 'data', 'trivia_salt.txt'); // env: tests only
+    try { salt = fs.readFileSync(file, 'utf8').trim(); } catch (e) { salt = ''; }
+    if (!salt) {
+        salt = crypto.randomBytes(32).toString('hex');
+        try { fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, salt); } catch (e) { /* still works for this run */ }
+    }
+    return salt;
+}
+function seedOf(day, diffKey) {
+    return crypto.createHash('sha256').update('pingway-trivia:' + getSalt() + ':' + day + ':' + diffKey).digest().readUInt32BE(0);
+}
+// Same answer for the same (day, difficulty, pool, used words). avoid = folded words not to use.
+function pickWord(pool, day, diffKey, avoid) {
+    const list = (pool || []).filter(e => !(avoid && avoid.has(fold(e.word))));
+    const from = list.length ? list : (pool || []);
+    if (!from.length) return null;
+    const sorted = from.slice().sort((a, b) => (a.word < b.word ? -1 : a.word > b.word ? 1 : 0));
+    return sorted[seedOf(day, diffKey) % sorted.length];
+}
+
+
+// ---------- names & hints ----------
+const SMALL = new Set(['of', 'the', 'a', 'an', 'and', 'in', 'on', 'to', 'at', 'for', 'de', 'du', 'la', 'le']);
+function titleCase(text) {
+    return String(text || '').trim().split(/\s+/).map((w, i) => {
+        if (i > 0 && SMALL.has(w.toLowerCase())) return w.toLowerCase();
+        return w.charAt(0).toUpperCase() + w.slice(1);
+    }).join(' ');
+}
+const capFirst = s => { s = String(s || '').trim(); return s.charAt(0).toUpperCase() + s.slice(1); };
+// fr/de/ja game names: no markup (<SoftHyphen/>, soft hyphens, German [a]/[p] grammar marks)
+const cleanGameName = s => String(s || '').replace(/<[^>]*>/g, '').replace(/­/g, '').replace(/\[[a-zA-Z]{1,2}\]/g, '').replace(/\s+/g, ' ').trim();
+
+// Characters a Japanese answer may have: kana, kanji, Latin letters, digits, spaces, ・ ー 々 and a few joiners
+const JA_OK = /^[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}\p{Script=Latin}0-9０-９ー・･々〆　 '’\-－]+$/u;
+// Names Pingway can use as answers: 4+ letters, up to 32 characters, not mostly digits, no odd characters
+// (ja: 2+ characters, up to 20, only the characters above)
+function goodName(name, lang) {
+    const n = String(name || '').trim();
+    if (lang === 'ja') {
+        if (!n || n.length > 20 || !JA_OK.test(n)) return false;
+        const letters = cells(n, 'ja').filter(c => c.t === 'letter').length;
+        if (letters < 2) return false;
+        const digits = (n.normalize('NFKC').match(/\d/g) || []).length;
+        return digits < letters;
+    }
+    if (!n || n.length > 32) return false;
+    if (/[<>{}\[\]@#\/\\|_=+*^%$]/.test(n) || /[　-鿿]/.test(n)) return false;
+    const letters = fold(n).length;
+    if (letters < 4) return false;
+    const digits = (n.match(/\d/g) || []).length;
+    if (digits >= letters) return false;
+    return true;
+}
+
+// Words of the answer that would give it away when found in a hint
+function giveaway(word, lang) {
+    if (!lang || lang === 'en') return String(word).split(/[\s\-']+/).map(fold).filter(w => w.length >= 4);
+    if (lang === 'ja') return String(word).split(/[\s・･　]+/).map(w => foldFor(w, 'ja')).filter(w => w.length >= 2);
+    return String(word).split(/[\s\-'’]+/).map(fold).filter(w => w.length >= 4);
+}
+// True when a text contains the answer or a big part of it
+function leaks(word, value, lang) {
+    const f = foldFor(value, lang);
+    const whole = foldFor(word, lang);
+    return f.includes(whole) || giveaway(word, lang).some(w => f.includes(w));
+}
+// A hint is a plain string, or { text, letter } when it shows a letter of the answer (letter = 0-based letter index,
+// spaces/symbols/digits not counted). Old saved words have plain strings only.
+const hintText = h => (h && typeof h === 'object') ? String(h.text || '') : String(h === undefined || h === null ? '' : h);
+// The letter key of one typed/shown character (to check the letter a clue names)
+const keyOf = (ch, lang) => (lang === 'ja' ? jaKey(ch) : foldChar(ch).charAt(0));
+// Cell position of the letter a clue shows (for the boxes / revealed), or -1. Plain strings: the "First letter: X" format.
+function hintLetter(word, h, lang) {
+    const lp = letterPositions(word, lang);
+    let k = -1;
+    if (h && typeof h === 'object') {
+        if (Number.isInteger(h.letter)) k = h.letter;
+    } else if (/^First letter: \S$/u.test(String(h || '').trim())) {
+        k = 0;
+    }
+    if (k < 0 || k >= lp.length) return -1;
+    // The letter named in the text must be that letter of the answer
+    const m = /:\s*(\S)$/u.exec(hintText(h).trim());
+    if (m && keyOf(m[1], lang) !== cells(word, lang)[lp[k]].l) return -1;
+    return lp[k];
+}
+const MAX_HINTS = 10;
+// Clean list of up to 10 hints (Category first, First letter last): no empty ones, no repeats, none that contain
+// (a big part of) the answer
+function makeHints(word, specific, lang) {
+    const out = [];
+    const seenText = new Set();
+    const add = (h, room) => {
+        const t = hintText(h).trim();
+        if (!t || out.length >= room) return;
+        const value = t.split(': ').slice(1).join(': ') || t;
+        if (!foldFor(value, lang) || leaks(word, value, lang)) return;
+        if (seenText.has(t)) return;
+        seenText.add(t);
+        out.push(h);
+    };
+    const first = cells(word, lang).find(c => c.t === 'letter');
+    for (const h of specific) add(h, first ? MAX_HINTS - 1 : MAX_HINTS);
+    if (first) {
+        const shown = !lang || lang === 'en' ? first.l.toUpperCase() : lang === 'ja' ? first.ch : upperOne(first.ch);
+        add({ text: i18n.t(lang || 'en', 'trivia.hints.firstLetter', { l: shown }), letter: 0 }, MAX_HINTS);
+    }
+    return out;
+}
+
+// Helpers to read XIVAPI v2 fields: links are { value, row_id, fields }, plain values are numbers/strings
+function field(fields, dotted) {
+    let cur = fields;
+    for (const part of String(dotted).split('.')) {
+        if (cur === null || cur === undefined) return undefined;
+        if (typeof cur === 'object' && !Array.isArray(cur) && cur.fields && !(part in cur)) cur = cur.fields;
+        cur = cur[part];
+    }
+    return cur;
+}
+const num = v => (v && typeof v === 'object') ? Number(v.value !== undefined ? v.value : v.row_id) || 0 : Number(v) || 0;
+const text = v => (v && typeof v === 'object') ? '' : String(v === undefined || v === null ? '' : v).trim();
+
+// Lore / more info shown after a solve: no game markup (<...>), no odd control characters, at most ~600 characters
+// (cut at the end of a sentence when possible; ja sentences end with 。！？). Line breaks stay.
+function cleanLore(raw, max = 600, lang) {
+    if (typeof raw !== 'string') return '';
+    let t = raw.replace(/\r\n?/g, '\n').replace(/<[^>]*>/g, '').replace(/[\u0000-\u0009\u000b-\u001f\u007f​-‏‪-‮￼�]/g, '');
+    if (lang && lang !== 'en') t = t.replace(/­/g, '');
+    t = t.split('\n').map(l => l.replace(/[ \t]+/g, ' ').trim()).join('\n').replace(/\n{3,}/g, '\n\n').trim();
+    if (t.length <= max) return t;
+    const cut = t.slice(0, max);
+    let end = -1;
+    const re = lang === 'ja' ? /[。！？]|[.!?…](?=\s|$)/g : /[.!?…](?=\s|$)/g;
+    let m;
+    while ((m = re.exec(cut))) end = m.index + 1;
+    if (end >= max * 0.4) return cut.slice(0, end).trim();
+    const sp = cut.lastIndexOf(' ');
+    return cut.slice(0, sp > max * 0.5 ? sp : max).trim() + '…';
+}
+// A short quote (Tooltip of mounts/minions) as italic lines
+function quoteLines(raw, lang) {
+    const q = cleanLore(raw, 300, lang);
+    return q ? q.split('\n').filter(Boolean).map(l => '*' + l.replace(/\*/g, '') + '*').join('\n') : '';
+}
+const byRow = rows => new Map((rows || []).map(r => [Number(r.row_id), r.fields || {}]));
+
+// A short one-line clue from a game text (Description / Tooltip): no markup, the answer's words masked as ???,
+// first sentence (or first ~150 characters, ja ~90). '' when too short. makeHints still drops it if a part of the answer is left.
+const escRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+function textHint(label, raw, word, max, lang) {
+    const ja = lang === 'ja';
+    if (max === undefined) max = ja ? 90 : 150;
+    let t = cleanLore(typeof raw === 'string' ? raw : '', 600, lang).replace(/\s*\n\s*/g, ' ').trim();
+    if (!t) return '';
+    if (ja) {
+        // No spaces between Japanese words: mask the name (and its parts) exactly
+        const parts = [String(word)].concat(String(word).split(/[\s・･]+/).filter(w => foldFor(w, 'ja').length >= 2));
+        for (const w of parts) t = t.split(w).join('???');
+    } else {
+        const split = !lang || lang === 'en' ? /[\s\-']+/ : /[\s\-'’]+/;
+        const parts = [String(word)].concat(String(word).split(split).filter(w => fold(w).length >= 4));
+        for (const w of parts) t = t.replace(new RegExp('\\p{L}*' + escRe(w) + '\\p{L}*', 'giu'), '???');
+    }
+    const m = ja ? /^.*?[。！？!?]/u.exec(t) : /^.*?[.!?…](?=\s|$)/u.exec(t);
+    if (m && m[0].length >= (ja ? 10 : 20)) t = m[0];
+    if (t.length > max) {
+        const cut = t.slice(0, max);
+        const sp = cut.lastIndexOf(' ');
+        t = cut.slice(0, sp > max * 0.5 ? sp : max).trim() + '…';
+    }
+    t = t.replace(/[*_~`|\\]/g, '').replace(/@/g, '@​').trim();
+    if (t.replace(/\?\?\?/g, '').replace(/[^\p{L}]/gu, '').length < (ja ? 6 : 10)) return '';
+    return !lang || lang === 'en' ? label + ': ' + t : i18n.t(lang, 'trivia.hints.labelValue', { label, v: t });
+}
+const yes = v => v === true || v === 1;
+const listOf = (items, max = 3, sep = ', ') => items.filter(Boolean).slice(0, max).join(sep);
+
+const ROLE_IDS = [1, 2, 3, 4];
+const STAT_IDS = [1, 2, 3, 4, 5];
+const RARITY_IDS = [1, 2, 3, 4, 7];
+const CRAFTERS = { woodworking: 'Carpenter', smithing: 'Blacksmith', armorcraft: 'Armorer', goldsmithing: 'Goldsmith', leatherworking: 'Leatherworker', clothcraft: 'Weaver', alchemy: 'Alchemist', cooking: 'Culinarian' };
+const ROULETTES = ['LevelingRoulette', 'HighLevelRoulette', 'ExpertRoulette', 'TrialRoulette', 'AllianceRoulette', 'NormalRaidRoulette', 'MSQRoulette'];
+
+// Plural form of a count in a language ('one' | 'other', the suffix of the _one/_other keys in the locale files)
+function pluralOf(lang, n) {
+    try { return new Intl.PluralRules(lang || 'en').select(Number(n)) === 'one' ? 'one' : 'other'; } catch (e) { return Number(n) === 1 ? 'one' : 'other'; }
+}
+
+// Sorts the raw XIVAPI rows into the 6 pools. raw = { classJobs, territories, content, mounts, minions, actions, items,
+// recipes, and the *Transient sheets mountLore, minionLore, actionLore, contentLore (same row_id as the base sheet) }
+// (arrays of { row_id, fields }). Returns { easy: [{ id, word, category, hints, lore }], ... }.
+// Fields that are missing in the data just give no hint.
+// opts.lang: the language of raw (default 'en'); opts.en: the English rows (needed for other languages: the rules that
+// decide the difficulty and which rows count always read the English data, so the pools are the same in every language).
+function buildPools(raw, opts) {
+    const lang = (opts && opts.lang) || 'en';
+    const en = lang === 'en';
+    const E = (opts && opts.en) || raw;
+    const L = (key, vars) => i18n.t(lang, 'trivia.hints.' + key, vars);
+    const LP = (key, n, vars) => i18n.t(lang, 'trivia.hints.' + key + '_' + pluralOf(lang, n), Object.assign({ n }, vars));
+    const labeled = (key, v) => (v ? L(key, { v }) : '');
+    const F = s => foldFor(s, lang);
+    const sep = L('listSep');
+    const loreSep = L('loreSep');
+    const nm = s => (en ? s : cleanGameName(s));
+    const nameCase = s => (en ? titleCase(s) : capFirst(cleanGameName(s)));
+    const loreOf = (...parts) => cleanLore(parts.filter(p => p && String(p).trim()).join('\n'), 600, lang);
+    const twin = (key, r) => (en ? (r.fields || {}) : (enRows[key].get(Number(r.row_id)) || {})); // the English row of r
+    const enRows = {};
+    for (const key of ['classJobs', 'territories', 'content', 'mounts', 'minions', 'actions', 'items', 'recipes']) enRows[key] = en ? null : byRow(E[key]);
+    const seconds = v => { const s = num(v) / 10; const x = Math.round(s * 10) / 10; return L('seconds', { n: en || lang === 'ja' ? String(x) : String(x).replace('.', ',') }); };
+    const safeOther = (word, names) => names.find(n => n && F(n) !== F(word) && !leaks(word, n, lang)) || '';
+
+    const pools = { easy: [], normal: [], hard: [], extreme: [], savage: [], ultimate: [] };
+    const seen = { easy: new Set(), normal: new Set(), hard: new Set(), extreme: new Set(), savage: new Set(), ultimate: new Set() };
+    const mountLore = byRow(raw.mountLore), minionLore = byRow(raw.minionLore), actionLore = byRow(raw.actionLore), contentLore = byRow(raw.contentLore);
+    const transient = (map, id) => {
+        const f = map.get(Number(id)) || {};
+        const body = text(f.DescriptionEnhanced) || text(f.Description);
+        return loreOf(body, quoteLines(text(f.Tooltip), lang));
+    };
+    // Quote (Tooltip) and description clues of a mount/minion
+    const transientHints = (map, id, word) => {
+        const f = map.get(Number(id)) || {};
+        return [textHint(L('quote'), text(f.Tooltip), word, undefined, lang), textHint(L('description'), text(f.DescriptionEnhanced) || text(f.Description), word, undefined, lang)];
+    };
+    const put = (diff, id, word, catKey, hints, lore) => {
+        word = String(word || '').trim().replace(/\s+/g, ' ');
+        if (!goodName(word, lang)) return;
+        const key = F(word);
+        if (seen[diff].has(key)) return;
+        seen[diff].add(key);
+        const category = L('cat.' + catKey);
+        // Text clues are made for the name before cleaning; make them again if the name changed
+        pools[diff].push({ id, word, category, hints: makeHints(word, [L('category', { v: category }), ...hints.map(h => (typeof h === 'function' ? h(word) : h))], lang), lore: lore || '' });
+    };
+    const longName = w => String(w).trim().split(/\s+/).length >= 3 || String(w).trim().length >= 20;
+
+    // Easy: jobs and classes
+    const jobRows = (raw.classJobs || []).map(r => {
+        const f = r.fields || {};
+        const fe = twin('classJobs', r);
+        return { id: Number(r.row_id), f, fe, name: nameCase(text(field(f, 'Name'))), enName: titleCase(text(field(fe, 'Name'))),
+            isJob: num(field(f, 'JobIndex')) > 0, parent: nameCase(text(field(f, 'ClassJobParent.Name'))) };
+    });
+    const jobByEnName = new Map(jobRows.map(j => [j.enName, j.name]));
+    for (const { id, f, fe, name, enName, isJob, parent } of jobRows) {
+        if (!name || enName.toLowerCase() === 'adventurer') continue;
+        const roleNo = num(field(f, 'Role'));
+        const role = ROLE_IDS.includes(roleNo) ? L('roles.' + roleNo) : '';
+        const abbr = text(field(f, 'Abbreviation'));
+        const disciple = /^disciples? of /i.test(text(field(fe, 'ClassJobCategory.Name'))) ? text(field(f, 'ClassJobCategory.Name')) : '';
+        // "Nowheresville" = the game's placeholder (no real starting city)
+        const town = /^nowheresville$/i.test(text(field(fe, 'StartingTown.Name'))) ? '' : nm(text(field(f, 'StartingTown.Name')));
+        const startLevel = num(field(f, 'StartingLevel'));
+        const statNo = num(field(f, 'PrimaryStat'));
+        const stat = STAT_IDS.includes(statNo) ? L('stats.' + statNo) : '';
+        const becomes = isJob ? '' : safeOther(name, jobRows.filter(j => j.isJob && j.parent === name).map(j => j.name));
+        const startsAs = isJob && parent && parent !== name;
+        put('easy', 'job:' + id, name, isJob ? 'job' : 'class', [
+            labeled('role', role),
+            labeled('type', disciple),
+            labeled('mainStat', stat),
+            labeled('startingCity', town),
+            startLevel > 1 ? L('startsAtLevel', { n: startLevel }) : '',
+            yes(field(f, 'IsLimitedJob')) ? L('limitedJob') : '',
+            labeled('becomes', becomes),
+            startsAs ? L('startsAs', { v: parent }) : '',
+            labeled('abbreviation', abbr)
+        ], loreOf(L('lore.line', {
+            name, abbr: abbr ? L('lore.abbr', { v: abbr }) : '',
+            what: L('lore.' + (isJob ? 'job' : 'class') + (role ? 'Role' : ''), { role }),
+            startsAs: startsAs ? L('lore.startsAs', { v: parent }) : ''
+        })));
+    }
+    // Easy: cities and regions. Normal: field zones.
+    const places = (raw.territories || []).map(r => {
+        const f = r.fields || {};
+        return { place: nm(text(field(f, 'PlaceName.Name'))), placeId: num(field(f, 'PlaceName')) || 't' + r.row_id,
+            region: nm(text(field(f, 'PlaceNameRegion.Name'))), regionId: num(field(f, 'PlaceNameRegion')), area: nm(text(field(f, 'PlaceNameZone.Name'))),
+            exp: nm(text(field(f, 'ExVersion.Name'))), use: num(field(f, 'TerritoryIntendedUse')) };
+    }).filter(t => t.use === 0 || t.use === 1);
+    const inRegion = (region, use) => places.filter(t => t.place && t.region === region && (use === undefined || t.use === use)).map(t => capFirst(t.place))
+        .filter((n, i, a) => a.indexOf(n) === i);
+    const variant = (key, region, exp) => L(key + '.' + (region && exp ? 'full' : region ? 'region' : exp ? 'exp' : 'plain'), { region, exp });
+    const regionSeen = new Set();
+    for (const t of places) {
+        const { place, region, area, exp, use } = t;
+        const name = capFirst(place);
+        const hints = [labeled('region', region), labeled('expansion', exp),
+            area && F(area) !== F(place) && F(area) !== F(region) ? L('area', { v: area }) : '',
+            region ? labeled('alsoInRegion', safeOther(name, inRegion(region))) : ''].filter(h => !/: $/.test(h));
+        if (use === 0 && place) put('easy', 'place:' + t.placeId, name, 'city', hints, variant('lore.city', region, exp));
+        if (use === 1 && place) put('normal', 'place:' + t.placeId, name, 'zone', hints, variant('lore.zone', region, exp));
+        if (region && !regionSeen.has(region)) {
+            regionSeen.add(region);
+            const R = capFirst(region);
+            const zones = inRegion(region, 1), cities = inRegion(region, 0);
+            const zone2 = safeOther(R, zones);
+            put('easy', 'region:' + (t.regionId || F(region)), R, 'region', [labeled('expansion', exp),
+                zones.length ? LP('fieldZones', zones.length) : '',
+                cities.length ? labeled('cityThere', safeOther(R, cities)) : '',
+                labeled('zoneThere', zone2),
+                zone2 ? labeled('anotherZoneThere', safeOther(R, zones.filter(z => z !== zone2))) : ''
+            ].filter(h => !/: $/.test(h)), L('lore.region.' + (exp ? 'exp' : 'plain'), { exp }));
+        }
+    }
+    // Hard: dungeons. Extreme: trials and raids.
+    for (const r of raw.content || []) {
+        const f = r.fields || {};
+        const fe = twin('content', r);
+        const name = capFirst(nm(text(field(f, 'Name'))));
+        const type = text(field(fe, 'ContentType.Name'));
+        const level = num(field(f, 'ClassJobLevelRequired'));
+        const sync = num(field(f, 'ClassJobLevelSync'));
+        const ilvl = num(field(f, 'ItemLevelRequired'));
+        const ilvlSync = num(field(f, 'ItemLevelSync'));
+        const zone = nm(text(field(f, 'TerritoryType.PlaceName.Name')));
+        const region = nm(text(field(f, 'TerritoryType.PlaceNameRegion.Name')));
+        const exp = nm(text(field(f, 'TerritoryType.ExVersion.Name')));
+        const roulettes = ROULETTES.filter(k => yes(field(f, k))).map(k => L('roulettes.' + k));
+        const desc = text(field(contentLore.get(Number(r.row_id)) || {}, 'Description'));
+        const hints = [level ? L('level', { n: level }) : '', labeled('expansion', exp), ilvl ? L('itemLevel', { n: ilvl }) : '',
+            roulettes.length ? L('roulette', { v: listOf(roulettes, 3, sep) }) : '', labeled('region', region),
+            zone && F(zone) !== F(name) ? L('zone', { v: zone }) : '', yes(field(f, 'HighEndDuty')) ? L('highEnd') : '',
+            sync && sync !== level ? L('levelSync', { n: sync }) : '', ilvlSync ? L('itemLevelSync', { n: ilvlSync }) : '',
+            w => textHint(L('description'), desc, w, undefined, lang)];
+        const cat = /^dungeons?$/i.test(type) ? 'dungeon' : /trial/i.test(type) ? 'trial' : (/raid/i.test(type) && !/ultimate/i.test(type)) ? (/alliance/i.test(type) ? 'allianceRaid' : 'raid') : null;
+        if (!cat) continue;
+        const lore = loreOf([L('cat.' + cat), level ? L('level', { n: level }) : '', exp].filter(Boolean).join(loreSep), desc);
+        put(cat === 'dungeon' ? 'hard' : 'extreme', 'duty:' + r.row_id, name, cat, hints, lore);
+    }
+    // Mounts: Normal (short names) or Ultimate (long names; the English name decides)
+    for (const r of raw.mounts || []) {
+        const f = r.fields || {};
+        const name = nameCase(text(field(f, 'Singular')));
+        const enName = en ? name : titleCase(text(field(twin('mounts', r), 'Singular')));
+        if (!name || !enName) continue;
+        const seats = field(f, 'ExtraSeats');
+        const riders = seats === undefined || seats === null ? 0 : num(seats) + 1;
+        put(longName(enName) ? 'ultimate' : 'normal', 'mount:' + r.row_id, name, 'mount', [
+            riders ? LP('seats', riders) : '',
+            w => transientHints(mountLore, r.row_id, w)[0], w => transientHints(mountLore, r.row_id, w)[1]
+        ], transient(mountLore, r.row_id));
+    }
+    // Minions: Extreme (short names) or Ultimate (long names; the English name decides)
+    for (const r of raw.minions || []) {
+        const f = r.fields || {};
+        const name = nameCase(text(field(f, 'Singular')));
+        const enName = en ? name : titleCase(text(field(twin('minions', r), 'Singular')));
+        if (!name || !enName) continue;
+        const t = minionLore.get(Number(r.row_id)) || {};
+        const race = nm(text(field(f, 'MinionRace.Name')));
+        const move = nm(text(field(f, 'Behavior.Name')));
+        const skill = nm(text(field(t, 'MinionSkillType.Name')));
+        const special = nm(text(field(t, 'SpecialActionName')));
+        const atk = num(field(t, 'Attack')), def = num(field(t, 'Defense')), spd = num(field(t, 'Speed'));
+        put(longName(enName) ? 'ultimate' : 'extreme', 'minion:' + r.row_id, name, 'minion', [
+            labeled('minionRace', race),
+            labeled('behavior', move),
+            labeled('skillType', skill),
+            labeled('specialAction', special),
+            atk || def || spd ? L('verminionStats', { atk, def, spd }) : '',
+            w => transientHints(minionLore, r.row_id, w)[0], w => transientHints(minionLore, r.row_id, w)[1]
+        ], transient(minionLore, r.row_id));
+    }
+    // Actions: Hard (level 50 or lower), Savage (all of them)
+    for (const r of raw.actions || []) {
+        const f = r.fields || {};
+        if (field(f, 'IsPvP') === true || field(f, 'IsPlayerAction') === false) continue;
+        const name = nm(text(field(f, 'Name')));
+        const jobEn = titleCase(text(field(twin('actions', r), 'ClassJob.Name')));
+        const level = num(field(f, 'ClassJobLevel'));
+        if (!name || !level) continue;
+        const isRole = !(jobEn && jobEn.toLowerCase() !== 'adventurer');
+        const job = en ? jobEn : nameCase(text(field(f, 'ClassJob.Name')));
+        const who = isRole ? L('roleAction') : job;
+        const kind = nm(text(field(f, 'ActionCategory.Name')));
+        const users = nm(text(field(f, 'ClassJobCategory.Name')));
+        const cast = field(f, 'Cast100ms'), recast = field(f, 'Recast100ms');
+        const range = num(field(f, 'Range')), radius = num(field(f, 'EffectRange')), charges = num(field(f, 'MaxCharges'));
+        const targets = [yes(field(f, 'CanTargetHostile')) ? L('targetEnemies') : '', yes(field(f, 'CanTargetParty')) ? L('targetParty') : '',
+            yes(field(f, 'CanTargetSelf')) ? L('targetSelf') : ''].filter(Boolean);
+        const desc = text(field(actionLore.get(Number(r.row_id)) || {}, 'Description'));
+        const hints = [isRole ? L('roleAction') : L('job', { v: job }), L('level', { n: level }),
+            labeled('actionType', kind),
+            w => textHint(L('description'), desc, w, undefined, lang),
+            cast === undefined || cast === null ? '' : num(cast) > 0 ? L('castTime', { v: seconds(cast) }) : L('instant'),
+            recast === undefined || recast === null || num(recast) <= 0 ? '' : L('recast', { v: seconds(recast) }),
+            !isRole && yes(field(f, 'IsRoleAction')) ? L('roleAction') : '',
+            yes(field(f, 'TargetArea')) ? L('groundTargeted') : targets.length ? L('targets', { v: targets.join(sep) }) : '',
+            range > 0 ? L('range', { n: range }) : '',
+            radius > 0 ? L('radius', { n: radius }) : '',
+            charges > 1 ? L('charges', { n: charges }) : '',
+            users && users.length <= 60 ? L('usedBy', { v: users }) : ''];
+        const lore = loreOf(who + loreSep + L('level', { n: level }), desc);
+        if (level <= 50) put('hard', 'action:' + r.row_id, name, 'action', hints, lore);
+        put('savage', 'action:' + r.row_id, name, 'action', hints, lore);
+    }
+    // Who crafts each item (Recipe sheet, joined in memory; other languages use the English recipes and their own job names)
+    const crafted = new Map();
+    for (const r of (en ? raw.recipes : (raw.recipes || E.recipes)) || []) {
+        const f = r.fields || {};
+        const fe = en ? f : (enRows.recipes.get(Number(r.row_id)) || f);
+        const id = num(field(f, 'ItemResult'));
+        const craft = text(field(fe, 'CraftType.Name'));
+        if (!id || !craft) continue;
+        const jobEn = CRAFTERS[craft.toLowerCase()] || craft;
+        const job = en ? jobEn : (jobByEnName.get(jobEn) || jobEn);
+        const c = crafted.get(id) || { jobs: [], expert: false };
+        if (!c.jobs.includes(job)) c.jobs.push(job);
+        if (yes(field(f, 'IsExpert'))) c.expert = true;
+        crafted.set(id, c);
+    }
+    // Ultimate: marketable items with 2+ words (in English)
+    for (const r of raw.items || []) {
+        const f = r.fields || {};
+        const name = nm(text(field(f, 'Name')));
+        const enName = en ? name : text(field(twin('items', r), 'Name'));
+        if (!name || !enName || enName.split(/\s+/).length < 2 || num(field(f, 'ItemSearchCategory')) <= 0) continue;
+        const ilvl = num(field(f, 'LevelItem'));
+        const kind = nm(text(field(f, 'ItemUICategory.Name')));
+        const market = nm(text(field(f, 'ItemSearchCategory.Name')));
+        const equip = num(field(f, 'LevelEquip'));
+        const users = nm(text(field(f, 'ClassJobCategory.Name')));
+        const rarityNo = num(field(f, 'Rarity'));
+        const rarity = RARITY_IDS.includes(rarityNo) ? L('rarities.' + rarityNo) : '';
+        const craft = crafted.get(Number(r.row_id));
+        const gc = nm(text(field(f, 'GrandCompany.Name')));
+        const series = nm(text(field(f, 'ItemSeries.Name')));
+        const melds = num(field(f, 'MateriaSlotCount')), dyes = num(field(f, 'DyeCount')), stack = num(field(f, 'StackSize'));
+        const desc = text(field(f, 'Description'));
+        put('ultimate', 'item:' + r.row_id, name, 'item', [labeled('itemType', kind), ilvl ? L('itemLevel', { n: ilvl }) : '',
+            equip > 1 ? L('equipLevel', { n: equip }) : '',
+            users && users.length <= 60 ? L('usableBy', { v: users }) : '',
+            craft ? L('craftedBy', { v: listOf(craft.jobs, 3, sep) + (craft.expert ? L('expertRecipe') : '') }) : '',
+            labeled('rarity', rarity),
+            market && F(market) !== F(kind) ? L('marketBoard', { v: market }) : '',
+            w => textHint(L('description'), desc, w, undefined, lang),
+            labeled('grandCompany', gc),
+            labeled('itemSeries', series),
+            melds ? LP('materia', melds) : '',
+            dyes ? L('dyeable') : '',
+            stack > 1 ? L('stacks', { n: stack }) : '',
+            yes(field(f, 'CanBeHq')) ? L('hq') : '',
+            yes(field(f, 'IsUnique')) ? L('unique') : '',
+            yes(field(f, 'IsCollectable')) ? L('collectable') : ''],
+            loreOf([kind, ilvl ? L('itemLevel', { n: ilvl }) : ''].filter(Boolean).join(loreSep), desc));
+    }
+    return pools;
+}
+
+// ---------- languages in the bank ----------
+const OTHER_LANGS = LANGS.filter(l => l !== 'en');
+// Adds .i18n = { fr: { word, category, hints, lore }, de, ja } to each English entry, from the pools built in the
+// other languages (same id in the same difficulty). A language is left out when the name didn't work there.
+function mergeLangPools(enPools, byLang) {
+    for (const [key, list] of Object.entries(enPools)) {
+        const idx = {};
+        for (const [lang, pools] of Object.entries(byLang || {})) {
+            idx[lang] = new Map();
+            for (const e of (pools && pools[key]) || []) if (!idx[lang].has(e.id)) idx[lang].set(e.id, e);
+        }
+        for (const e of list) {
+            const out = {};
+            for (const lang of Object.keys(idx)) {
+                const m = idx[lang].get(e.id);
+                if (m) out[lang] = { word: m.word, category: m.category, hints: m.hints, lore: m.lore };
+            }
+            e.i18n = out;
+        }
+    }
+    return enPools;
+}
+// True when the word has a usable name in every language (only these are picked as words of the day)
+const isComplete = e => !!e && OTHER_LANGS.every(l => e.i18n && e.i18n[l] && e.i18n[l].word);
+// The word in one language: { word, category, hints, lore, lang } (lang = the language really used: 'en' when the
+// word has no name in that language, e.g. words saved before the bank had languages)
+function viewOf(e, lang) {
+    if (!e) return null;
+    const x = lang && lang !== 'en' && e.i18n && e.i18n[lang];
+    if (x && x.word) return { word: x.word, category: x.category || e.category, hints: Array.isArray(x.hints) ? x.hints : [], lore: x.lore || '', lang };
+    return { word: e.word, category: e.category, hints: e.hints || [], lore: e.lore || '', lang: 'en' };
+}
+
+module.exports = {
+    LANGS, DIFFICULTIES, DIFF, MILESTONES, HINTS_PER_GUESS, ZWSP, HIDDEN,
+    dayOf, addDays, seasonOf, msToReset,
+    fold, foldChar, foldFor, jaKey, sameAnswer, cells, letterPositions, matchingLetters, renderBoxes, indicator,
+    bitsFor, liveStreak, nextStreak, seedOf, pickWord, pluralOf,
+    titleCase, capFirst, cleanGameName, goodName, makeHints, hintText, hintLetter, leaks, field, num, text, buildPools, cleanLore, textHint,
+    mergeLangPools, isComplete, viewOf
+};
+
+};
+// ---- utils/i18n.js ----
+DEFS["i18n"] = function (module, exports, require, __dirname) {
+// Pingway translations (bot side).
+// Languages: en (English), fr (Français), de (Deutsch), ja (日本語). The /pingway command shows Japanese as "jp".
+// Texts live in locales/<lang>/<namespace>.json (one file per feature, e.g. locales/fr/vc.json).
+// Use: const { t } = require('./i18n');  t(lang, 'vc.joined', { channel: '#general' })
+//   - key = '<namespace>.<path.inside.the.file>'
+//   - {name} placeholders are filled from vars
+//   - missing text in a language falls back to English, then to the key itself (never throws)
+const fs = require('fs');
+const path = require('path');
+
+const LANGS = ['en', 'fr', 'de', 'ja'];
+const DEFAULT_LANG = 'en';
+const LOCALES_DIR = path.join(__dirname, '..', 'locales');
+const cache = new Map(); // 'lang/ns' -> object | null
+
+function isLang(v) { return LANGS.includes(v); }
+
+// Discord locale (interaction.locale / guild.preferredLocale) -> one of our languages
+function fromDiscordLocale(locale) {
+    const l = String(locale || '').toLowerCase();
+    if (l.startsWith('en')) return 'en';
+    if (l.startsWith('fr')) return 'fr';
+    if (l.startsWith('de')) return 'de';
+    if (l.startsWith('ja')) return 'ja';
+    return null; // not one of ours
+}
+
+function load(lang, ns) {
+    const key = lang + '/' + ns;
+    if (cache.has(key)) return cache.get(key);
+    let data = null;
+    try {
+        data = JSON.parse(fs.readFileSync(path.join(LOCALES_DIR, lang, ns + '.json'), 'utf8'));
+    } catch (e) {
+        if (e.code !== 'ENOENT') console.error('⚠️ [I18N] Could not read locales/' + key + '.json: ' + e.message);
+    }
+    cache.set(key, data);
+    return data;
+}
+
+function lookup(lang, key) {
+    const dot = key.indexOf('.');
+    if (dot < 1) return undefined;
+    const ns = key.slice(0, dot);
+    let cur = load(lang, ns);
+    for (const part of key.slice(dot + 1).split('.')) {
+        if (cur == null || typeof cur !== 'object') return undefined;
+        cur = cur[part];
+    }
+    return cur;
+}
+
+function fill(text, vars) {
+    if (!vars) return text;
+    return text.replace(/\{(\w+)\}/g, (m, name) => (Object.prototype.hasOwnProperty.call(vars, name) && vars[name] != null ? String(vars[name]) : m));
+}
+
+// Translate. Arrays/objects are returned as they are (e.g. a list of lines); strings get {vars} filled.
+function t(lang, key, vars) {
+    const l = isLang(lang) ? lang : DEFAULT_LANG;
+    let v = lookup(l, key);
+    if (v === undefined && l !== DEFAULT_LANG) v = lookup(DEFAULT_LANG, key);
+    if (v === undefined) return key;
+    if (typeof v === 'string') return fill(v, vars);
+    if (Array.isArray(v)) return v.map(x => (typeof x === 'string' ? fill(x, vars) : x));
+    return v;
+}
+
+// Like t(), but returns fallback when the text does not exist (e.g. a job or item name that has no translation)
+function tOr(lang, key, fallback, vars) {
+    const v = t(lang, key, vars);
+    return v === key ? fallback : v;
+}
+
+// Same key in all 4 languages, for Discord command localizations ({ fr: '...', de: '...', ja: '...' }).
+// Only languages that really have the text are included (Discord rejects empty strings).
+const DISCORD_CODES = { fr: 'fr', de: 'de', ja: 'ja' };
+function discordLocalizations(key) {
+    const out = {};
+    for (const [lang, code] of Object.entries(DISCORD_CODES)) {
+        const v = lookup(lang, key);
+        if (typeof v === 'string' && v.trim()) out[code] = v;
+    }
+    return out;
+}
+
+function clearCache() { cache.clear(); }
+
+// Locale for numbers and dates written as text (toLocaleString / toLocaleDateString)
+const LOCALES = { en: 'en-US', fr: 'fr-FR', de: 'de-DE', ja: 'ja-JP' };
+function localeOf(lang) { return LOCALES[isLang(lang) ? lang : DEFAULT_LANG]; }
+
+module.exports = { LANGS, DEFAULT_LANG, isLang, fromDiscordLocale, t, tOr, discordLocalizations, clearCache, localeOf };
+
+};
+// ---- tools/trivia-builder-runtime.js ----
+DEFS["runtime"] = function (module, exports, require, __dirname) {
+// Browser side of the Trivia data builder (inlined into misc/trivia-builder.html by tools/build-trivia-builder.js).
+// Fetches with the browser's fetch() (polite pacing and retries like the server), builds the bank with the shared code
+// in utils/triviaBank.js and gives back the exact text of data/trivia_bank.json and its SHA-256.
+
+const TB = require('./triviaBank');
+const W = require('./triviaWords');
+
+const wait = ms => new Promise(res => setTimeout(res, ms));
+
+// A fetch() that the browser blocked (CORS, offline, blocked by an extension) only gives a TypeError, no status
+class BlockedError extends Error {}
+
+function makeGetJson(o) {
+    const retryMs = o.retryMs === undefined ? 1500 : o.retryMs;
+    return async function getJson(url) {
+        let lastErr;
+        for (let attempt = 0; attempt < 3; attempt++) {
+            let timer = null;
+            try {
+                const ctrl = typeof AbortController === 'function' ? new AbortController() : null;
+                if (ctrl) timer = setTimeout(() => ctrl.abort(), 30000);
+                let r;
+                try {
+                    r = await fetch(url, ctrl ? { signal: ctrl.signal } : undefined);
+                } catch (err) {
+                    if (err && err.name === 'AbortError') throw new Error('XIVAPI did not answer within 30 s');
+                    throw new BlockedError('the browser could not reach XIVAPI (' + (err && err.message ? err.message : err) + ')');
+                }
+                if (!r.ok) {
+                    const e = new Error('XIVAPI answered HTTP ' + r.status);
+                    e.status = r.status;
+                    throw e;
+                }
+                return await r.json();
+            } catch (err) {
+                lastErr = err;
+                if (o.onRetry && attempt < 2) o.onRetry(err, attempt + 1, url);
+                // Too many requests: wait longer
+                await wait((err && err.status === 429 ? 4 : 1) * retryMs * (attempt + 1));
+            } finally {
+                if (timer) clearTimeout(timer);
+            }
+        }
+        throw lastErr;
+    };
+}
+
+// One small request first, so a blocked browser (CORS) is found before the long download
+async function probe(o) {
+    const getJson = makeGetJson(Object.assign({}, o, { onRetry: null }));
+    try {
+        await getJson(TB.XIV + '/sheet/ClassJob?limit=1&fields=Name');
+        return { ok: true };
+    } catch (err) {
+        return { ok: false, blocked: err instanceof BlockedError, message: err.message };
+    }
+}
+
+// opts: { onProgress, onRetry, warn, strict (default true), pauseMs (150), retryMs (1500), now }
+// Returns { text (the file), bytes (Uint8Array), sha256 (hex), summary }
+async function build(opts) {
+    const o = opts || {};
+    const pauseMs = o.pauseMs === undefined ? 150 : o.pauseMs;
+    const { bank, complete, failed } = await TB.buildBankData({
+        getJson: makeGetJson(o), pause: () => wait(pauseMs), onProgress: o.onProgress, warn: o.warn,
+        strict: o.strict !== false, now: o.now
+    });
+    const text = JSON.stringify(bank);
+    const bytes = new TextEncoder().encode(text);
+    const summary = {
+        format: bank.format, langs: bank.langs, incomplete: !!bank.incomplete, failed, builtAt: bank.builtAt, size: bytes.length,
+        difficulties: W.DIFFICULTIES.map(d => ({ key: d.key, name: d.name, emoji: d.emoji, words: bank.pools[d.key].length, complete: complete[d.key] }))
+    };
+    return { text, bytes, sha256: await sha256Hex(bytes), summary };
+}
+
+// SHA-256 (hex) of bytes: the browser's crypto.subtle when it is there, else the small version below
+async function sha256Hex(bytes) {
+    const subtle = typeof crypto !== 'undefined' && crypto && crypto.subtle;
+    if (subtle) {
+        const h = new Uint8Array(await subtle.digest('SHA-256', bytes));
+        return Array.from(h, b => b.toString(16).padStart(2, '0')).join('');
+    }
+    return sha256Plain(bytes);
+}
+function sha256Plain(bytes) {
+    const K = [0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5, 0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3,
+        0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174, 0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+        0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967, 0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13,
+        0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85, 0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+        0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3, 0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
+        0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2];
+    const H = [0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19];
+    const len = bytes.length;
+    const total = Math.ceil((len + 9) / 64) * 64;
+    const m = new Uint8Array(total);
+    m.set(bytes);
+    m[len] = 0x80;
+    const bits = len * 8;
+    const dv = new DataView(m.buffer);
+    dv.setUint32(total - 8, Math.floor(bits / 0x100000000));
+    dv.setUint32(total - 4, bits >>> 0);
+    const w = new Uint32Array(64);
+    const rot = (x, n) => (x >>> n) | (x << (32 - n));
+    for (let off = 0; off < total; off += 64) {
+        for (let i = 0; i < 16; i++) w[i] = dv.getUint32(off + i * 4);
+        for (let i = 16; i < 64; i++) {
+            const s0 = rot(w[i - 15], 7) ^ rot(w[i - 15], 18) ^ (w[i - 15] >>> 3);
+            const s1 = rot(w[i - 2], 17) ^ rot(w[i - 2], 19) ^ (w[i - 2] >>> 10);
+            w[i] = (w[i - 16] + s0 + w[i - 7] + s1) >>> 0;
+        }
+        let [a, b, c, d, e, f, g, h] = H;
+        for (let i = 0; i < 64; i++) {
+            const t1 = (h + (rot(e, 6) ^ rot(e, 11) ^ rot(e, 25)) + ((e & f) ^ (~e & g)) + K[i] + w[i]) >>> 0;
+            const t2 = ((rot(a, 2) ^ rot(a, 13) ^ rot(a, 22)) + ((a & b) ^ (a & c) ^ (b & c))) >>> 0;
+            h = g; g = f; f = e; e = (d + t1) >>> 0; d = c; c = b; b = a; a = (t1 + t2) >>> 0;
+        }
+        H[0] = (H[0] + a) >>> 0; H[1] = (H[1] + b) >>> 0; H[2] = (H[2] + c) >>> 0; H[3] = (H[3] + d) >>> 0;
+        H[4] = (H[4] + e) >>> 0; H[5] = (H[5] + f) >>> 0; H[6] = (H[6] + g) >>> 0; H[7] = (H[7] + h) >>> 0;
+    }
+    return H.map(x => x.toString(16).padStart(8, '0')).join('');
+}
+
+module.exports = { build, probe, sha256Hex, sha256Plain, BANK_FORMAT: TB.BANK_FORMAT, TOTAL_STEPS: TB.TOTAL_STEPS, LANGS: W.LANGS };
+
+};
+return req("runtime");
+})();
+</script>
+<script id="trivia-ui">
+(function () {
+    var $ = function (id) { return document.getElementById(id); };
+    var btn = $('build'), bar = $('bar'), barText = $('barText'), log = $('log');
+    var started = 0;
+    function line(text, cls) {
+        var d = document.createElement('div');
+        d.textContent = text;
+        if (cls) d.className = cls;
+        log.appendChild(d);
+        log.scrollTop = log.scrollHeight;
+    }
+    function show(id, on) { $(id).hidden = !on; }
+    function setBar(step, steps, text) {
+        bar.style.width = Math.round(step / steps * 100) + '%';
+        barText.textContent = text;
+    }
+    var LANG_NAMES = { en: 'English', fr: 'French', de: 'German', ja: 'Japanese' };
+    function fail(title, text) {
+        $('errTitle').textContent = title;
+        $('errText').textContent = text;
+        show('error', true);
+        btn.disabled = false;
+        btn.textContent = 'Try again';
+    }
+    btn.addEventListener('click', async function () {
+        btn.disabled = true;
+        btn.textContent = 'Building…';
+        show('error', false); show('result', false);
+        log.textContent = '';
+        setBar(0, 1, 'Checking that the browser can reach XIVAPI…');
+        started = Date.now();
+        var p = await TriviaBuilder.probe({});
+        if (!p.ok) {
+            if (p.blocked) {
+                fail('The browser could not reach XIVAPI', 'Chrome blocked the request or there is no connection (' + p.message + ').\n\n' +
+                    'Most likely cause: XIVAPI does not allow pages opened from a file on your PC (file://, "Origin: null") — this is CORS, ' +
+                    'and a page opened from a file cannot get around it. Check your internet connection and turn off ad blockers for this page, then try again. ' +
+                    'If it still fails, open DevTools (F12) → Console: a message with "CORS" or "Access-Control-Allow-Origin" confirms it.');
+            } else {
+                fail('XIVAPI did not answer properly', p.message + '. XIVAPI may be down or busy: try again in a few minutes.');
+            }
+            setBar(0, 1, 'Stopped.');
+            return;
+        }
+        line('XIVAPI can be reached. Fetching everything (this takes several minutes, keep this tab open)…');
+        try {
+            var res = await TriviaBuilder.build({
+                strict: !$('allowMissing').checked,
+                onProgress: function (x) {
+                    var text = 'Fetching ' + x.label + ' (' + x.lang + ') ' + x.step + '/' + x.steps + (x.page ? ' — page ' + x.page + ', ' + x.rows.toLocaleString('en-US') + ' rows' : '') + '…';
+                    setBar(x.step - 1 + (x.page ? 0.5 : 0), x.steps, text);
+                    if (!x.page) line(text);
+                },
+                onRetry: function (err, n) { line('  ↻ ' + err.message + ' — retrying (' + n + '/2)…', 'warn'); },
+                warn: function (text) { line(text, 'warn'); }
+            });
+            setBar(1, 1, 'Done in ' + Math.round((Date.now() - started) / 1000) + ' s.');
+            var s = res.summary;
+            var rows = s.difficulties.map(function (d) {
+                return '<tr><td>' + d.emoji + ' ' + d.name + '</td><td>' + d.words.toLocaleString('en-US') + '</td><td>' + d.complete.toLocaleString('en-US') + '</td></tr>';
+            }).join('');
+            $('summary').innerHTML = '<table><tr><th>Difficulty</th><th>Words</th><th>Usable in all 4 languages</th></tr>' + rows + '</table>';
+            $('meta').textContent = 'Format ' + s.format + ' · languages: ' + s.langs.map(function (l) { return LANG_NAMES[l] || l; }).join(', ') +
+                ' · ' + (s.size / 1048576).toFixed(1) + ' MB' + (s.incomplete ? ' · INCOMPLETE (missing: ' + s.failed.join(', ') + ')' : '');
+            $('sha').textContent = res.sha256;
+            var url = URL.createObjectURL(new Blob([res.bytes], { type: 'application/json' }));
+            var a = $('download');
+            a.href = url;
+            a.download = 'trivia_bank.json';
+            show('incompleteNote', s.incomplete);
+            show('result', true);
+            a.click();
+            line('Finished. trivia_bank.json is downloading.', 'ok');
+        } catch (err) {
+            setBar(0, 1, 'Stopped.');
+            var blocked = /could not reach XIVAPI/.test(err.message);
+            fail('The build stopped', err.message + (blocked ? '\n\nThe connection was lost or blocked in the middle. Try again.' :
+                /languages missing/.test(err.message) ? '\n\nOne language could not be downloaded. Try again later, or tick "Allow a bank with missing languages".' : ''));
+            return;
+        }
+        btn.disabled = false;
+        btn.textContent = 'Build again';
+    });
+})();
+</script>
+</body>
+</html>

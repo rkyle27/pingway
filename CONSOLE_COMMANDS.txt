@@ -113,6 +113,17 @@ trivia reset confirm
     Does the reset shown in the preview (one at a time).
     Must be typed within 60 seconds of "trivia reset <id> today" / "trivia reset <id> purge".
 
+Trivia word bank (data/trivia_bank.json)
+    The bot does NOT download the word bank by itself (the 4-language download needs more memory
+    than the server has). Make it on your PC instead:
+    1. Open misc/trivia-builder.html in Chrome (double-click the file, no server needed).
+    2. Press "Build" and keep the tab open (a few minutes). trivia_bank.json downloads at the end.
+    3. Upload it to the bot server as data/trivia_bank.json (replace the old one), then restart the bot.
+       Optional: "sha256sum data/trivia_bank.json" on the server must match the SHA-256 the page shows.
+    Build a new one when FFXIV adds content (new jobs, duties, mounts, minions, items).
+    After changing the Trivia bank code or locales/*/trivia.json, make the page again:
+    node tools/build-trivia-builder.js
+
 tts
     Read only. /vc voices: Google on/off (kill switch), whether the free period is active,
     today's free Google characters vs the daily cap, and how many calls are active / using Google.
