@@ -252,8 +252,17 @@ async function buildBank() {
     return b;
 }
 // Starts a rebuild when the bank is missing or old (only one at a time). Never throws.
+// Pingway does NOT download the word bank by itself any more (the 4-language download ran the bot out of memory):
+// the owner builds data/trivia_bank.json once with the Trivia data builder page and uploads it.
+// Set TRIVIA_AUTO_BUILD=1 in .env only if a rebuild on the server is really wanted.
+let warnedNoBank = false;
 function refreshBank() {
     if (building) return building;
+    if (process.env.TRIVIA_AUTO_BUILD !== '1') {
+        const b = getBank();
+        if (!b && !warnedNoBank) { warnedNoBank = true; console.error('⚠️ [TRIVIA] No word bank found: upload data/trivia_bank.json (made with the Trivia data builder).'); }
+        return Promise.resolve(b);
+    }
     if (!bankIsOld(getBank())) return Promise.resolve(bank);
     building = buildBank().catch(err => {
         console.error('⚠️ [TRIVIA] Word bank rebuild failed' + (getBank() ? ' (keeping the old one)' : '') + ':', err.message);
