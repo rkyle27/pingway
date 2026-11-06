@@ -35,16 +35,14 @@ const path = require('path');
 const axios = require('axios');
 const { pool } = require('./db');
 const W = require('./triviaWords');
+const TB = require('./triviaBank');
 const { t } = require('./i18n');
 
-const XIV = 'https://v2.xivapi.com/api';
 const BANK_FILE = process.env.PINGWAY_TRIVIA_BANK_FILE || path.join(__dirname, '..', 'data', 'trivia_bank.json'); // env: tests only
 const BANK_MAX_AGE = 30 * 24 * 60 * 60 * 1000;
 const NO_REPEAT_DAYS = 90;
 const KEEP_DAYS = 100;
-const MIN_POOL = 15;
-const BANK_FORMAT = 4; // 2 = more hints per word, no word-count hint, First letter as { text, letter }; 3 = no "Nowheresville" starting city;
-                       // 4 = ids and fr/de/ja names, clues and lore (entry.i18n)
+const BANK_FORMAT = TB.BANK_FORMAT; // see utils/triviaBank.js
 const OTHER_LANGS = W.LANGS.filter(l => l !== 'en');
 
 let tablesReady = false;
@@ -158,96 +156,19 @@ async function getJson(url) {
 let pauseMs = 150;   // between pages
 let retryMs = 1500;  // before a retry (x1, x2, x3)
 const pause = ms => new Promise(res => setTimeout(res, ms));
-// XIVAPI v2 language (English is the default, no parameter)
-const langParam = lang => (lang && lang !== 'en' ? '&language=' + lang : '');
 
-// Every row of a sheet, 500 at a time
-async function sheetRows(sheet, fields, maxPages = 200, lang) {
-    const out = [];
-    let after = null;
-    for (let page = 0; page < maxPages; page++) {
-        const url = XIV + '/sheet/' + sheet + '?limit=500&fields=' + encodeURIComponent(fields) + (after !== null ? '&after=' + after : '') + langParam(lang);
-        const data = await getJson(url);
-        const rows = (data && Array.isArray(data.rows)) ? data.rows : [];
-        if (!rows.length) break;
-        out.push(...rows);
-        after = rows[rows.length - 1].row_id;
-        await pause(pauseMs);
-    }
-    return out;
-}
-// Every result of a search
-async function searchRows(sheet, query, fields, maxPages = 40, lang) {
-    const out = [];
-    let url = XIV + '/search?sheets=' + sheet + '&query=' + encodeURIComponent(query) + '&fields=' + encodeURIComponent(fields) + '&limit=500' + langParam(lang);
-    for (let page = 0; page < maxPages && url; page++) {
-        const data = await getJson(url);
-        const rows = (data && Array.isArray(data.results)) ? data.results : [];
-        out.push(...rows);
-        if (!rows.length || !data.next) break;
-        url = XIV + '/search?cursor=' + encodeURIComponent(data.next) + '&limit=500' + langParam(lang);
-        await pause(pauseMs);
-    }
-    return out;
-}
-
-// All the rows the bank needs, in one language (the same sheets and fields in every language; the Recipe sheet
-// only in English: other languages use the English recipes with their own job names)
-async function fetchRaw(lang) {
-    const raw = {
-        classJobs: await sheetRows('ClassJob', 'Name,Abbreviation,Role,ClassJobParent.Name,JobIndex,ClassJobCategory.Name,StartingTown.Name,StartingLevel,PrimaryStat,IsLimitedJob', 200, lang),
-        territories: await sheetRows('TerritoryType', 'PlaceName.Name,PlaceNameRegion.Name,PlaceNameZone.Name,ExVersion.Name,TerritoryIntendedUse', 200, lang),
-        content: await sheetRows('ContentFinderCondition', 'Name,ContentType.Name,ClassJobLevelRequired,ClassJobLevelSync,ItemLevelRequired,ItemLevelSync,HighEndDuty,' +
-            'LevelingRoulette,HighLevelRoulette,ExpertRoulette,TrialRoulette,AllianceRoulette,NormalRaidRoulette,MSQRoulette,' +
-            'TerritoryType.PlaceName.Name,TerritoryType.PlaceNameRegion.Name,TerritoryType.ExVersion.Name', 200, lang),
-        contentLore: await sheetRows('ContentFinderConditionTransient', 'Description', 200, lang),
-        mounts: await sheetRows('Mount', 'Singular,ExtraSeats', 200, lang),
-        mountLore: await sheetRows('MountTransient', 'Description,DescriptionEnhanced,Tooltip', 200, lang),
-        minions: await sheetRows('Companion', 'Singular,MinionRace.Name,Behavior.Name', 200, lang),
-        minionLore: await sheetRows('CompanionTransient', 'Description,DescriptionEnhanced,Tooltip,SpecialActionName,MinionSkillType.Name,Attack,Defense,Speed', 200, lang),
-        actions: await searchRows('Action', '+IsPlayerAction=true +IsPvP=false', 'Name,ClassJob.Name,ClassJobLevel,IsPvP,IsPlayerAction,ActionCategory.Name,ClassJobCategory.Name,' +
-            'Cast100ms,Recast100ms,Range,EffectRange,MaxCharges,IsRoleAction,CanTargetHostile,CanTargetParty,CanTargetSelf,TargetArea', 40, lang),
-        items: await sheetRows('Item', 'Name,Description,ItemSearchCategory.Name,LevelItem,ItemUICategory.Name,LevelEquip,ClassJobCategory.Name,Rarity,' +
-            'GrandCompany.Name,ItemSeries.Name,MateriaSlotCount,DyeCount,StackSize,CanBeHq,IsUnique,IsCollectable', 200, lang)
-    };
-    // Who crafts what (joined to the items in memory)
-    if (!lang || lang === 'en') raw.recipes = await sheetRows('Recipe', 'ItemResult.Name,CraftType.Name,IsExpert');
-    // Lore of actions: only the rows of the actions found above (ActionTransient has the same row_id)
-    const actionIds = new Set(raw.actions.map(r => Number(r.row_id)));
-    raw.actionLore = (await sheetRows('ActionTransient', 'Description', 400, lang)).filter(r => actionIds.has(Number(r.row_id)));
-    return raw;
-}
-
+// The fetching and the bank itself are made in utils/triviaBank.js (the same code runs in misc/trivia-builder.html)
 async function buildBank() {
-    const rawEn = await fetchRaw('en');
-    const pools = W.buildPools(rawEn);
-    const small = W.DIFFICULTIES.filter(d => pools[d.key].length < MIN_POOL).map(d => d.name);
-    if (small.length) throw new Error('too few words for ' + small.join(', '));
-    // fr/de/ja: the same rows in each language (one language at a time, to keep memory low)
-    const byLang = {};
-    const failed = [];
-    for (const lang of OTHER_LANGS) {
-        try {
-            byLang[lang] = W.buildPools(await fetchRaw(lang), { lang, en: rawEn });
-        } catch (err) {
-            failed.push(lang);
-            console.error('⚠️ [TRIVIA] Word bank: could not fetch ' + lang + ' (' + err.message + ').');
-        }
-    }
-    // A language failed: keep the old bank when there is one (it is tried again on the next check)
-    if (failed.length && getBank()) throw new Error('languages missing: ' + failed.join(', '));
-    W.mergeLangPools(pools, byLang);
-    const complete = Object.fromEntries(W.DIFFICULTIES.map(d => [d.key, pools[d.key].filter(W.isComplete).length]));
-    const thin = W.DIFFICULTIES.filter(d => !failed.length && complete[d.key] < MIN_POOL).map(d => d.name + ' ' + complete[d.key]);
-    if (thin.length) console.error('⚠️ [TRIVIA] Word bank: few words that work in all languages (' + thin.join(', ') + ').');
-    const b = { builtAt: Date.now(), format: BANK_FORMAT, langs: ['en', ...Object.keys(byLang)], pools };
-    if (failed.length) b.incomplete = true;
+    const { bank: b, complete, failed } = await TB.buildBankData({
+        getJson, pause: () => pause(pauseMs), warn: text => console.error(text),
+        strict: !!getBank() // a language failed: keep the old bank when there is one (it is tried again on the next check)
+    });
     fs.mkdirSync(path.dirname(BANK_FILE), { recursive: true });
     const tmp = BANK_FILE + '.tmp';
     fs.writeFileSync(tmp, JSON.stringify(b));
     fs.renameSync(tmp, BANK_FILE);
     bank = b;
-    console.log('🧩 [TRIVIA] Word bank ready: ' + W.DIFFICULTIES.map(d => d.name + ' ' + pools[d.key].length + ' (' + complete[d.key] + ' in all languages)').join(', ') + '.' +
+    console.log('🧩 [TRIVIA] Word bank ready: ' + W.DIFFICULTIES.map(d => d.name + ' ' + b.pools[d.key].length + ' (' + complete[d.key] + ' in all languages)').join(', ') + '.' +
         (failed.length ? ' Missing languages (tried again later): ' + failed.join(', ') + '.' : ''));
     return b;
 }
