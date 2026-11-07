@@ -20,16 +20,6 @@ SERVERS
 server list   (or: servers)
     Lists every server Pingway is in: name, server ID, member count, owner ID.
 
-announce
-    PREVIEW only - nothing is sent.
-    Reads announcement.txt and shows where each server would get it
-    (Community updates channel -> moderator channel -> /notifhere channel,
-    otherwise one DM to the server owner).
-
-announce confirm
-    Sends the announcement shown in the preview.
-    Must be typed within 2 minutes of "announce". Never pings anyone.
-
 purge
     PREVIEW only - nothing is deleted.
     Lists leftover data from servers Pingway is no longer in.
