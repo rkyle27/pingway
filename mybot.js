@@ -131,7 +131,7 @@ client.once(Events.ClientReady, () => {
             console.error('⚠️ [PURGE CHECK] Failed:', err.message);
         }
     }, 15000);
-    console.log(`\n💡 [CONSOLE CONTROL] Available commands: "maintenance" (or "maint"), "status", "announce" (preview) / "announce confirm", "whois <id>", "server list", "purge", "points <id>" / "points add <id> <amount>" / "points remove <id> <amount>", "retainers <id>", "reviews" / "reviews all", "trivia <id>" / "trivia reset <id> today|purge" / "trivia reset confirm", "tts" / "tts google on|off", "kofi <id>" / "kofi give|remove <id> <credits>" / "kofi member <id> <days|off>"\n`);
+    console.log(`\n💡 [CONSOLE CONTROL] Available commands: "maintenance" (or "maint"), "status", "whois <id>", "server list", "purge", "points <id>" / "points add <id> <amount>" / "points remove <id> <amount>", "retainers <id>", "reviews" / "reviews all", "trivia <id>" / "trivia reset <id> today|purge" / "trivia reset confirm", "tts" / "tts google on|off", "kofi <id>" / "kofi give|remove <id> <credits>" / "kofi member <id> <days|off>"\n`);
 });
 
 // --- Leftover Server Data (servers Pingway is no longer in) ---
@@ -215,145 +215,6 @@ async function purgeConfirm() {
         }
     }
     console.log('✅ [PURGE] Done. ' + total + ' row(s) deleted.\n');
-}
-
-// --- Announcements (console: "announce" to preview, "announce confirm" to send) ---
-// Per server: Community "updates for moderators" channel -> a moderators/mods/staff channel -> /notifhere channel.
-// Servers with none of these: the owner gets ONE DM, and only if none of their servers got it in a channel.
-const MOD_CHANNEL_RE = /^(moderators?|mods?|mod-chat|mod-only|staff)$/i;
-let pendingAnnounce = null; // { expires, text }
-
-function readAnnouncement() {
-    try {
-        const annPath = path.join(process.cwd(), 'announcement.txt');
-        if (fs.existsSync(annPath)) return fs.readFileSync(annPath, 'utf8').trim();
-    } catch (e) {
-        console.error('Failed to read announcement.txt:', e.message);
-    }
-    return '';
-}
-
-function canPost(channel, guild) {
-    try {
-        if (!channel || !channel.isTextBased() || channel.isThread()) return false;
-        const me = guild.members.me;
-        const perms = me ? channel.permissionsFor(me) : null;
-        return Boolean(perms && perms.has(['ViewChannel', 'SendMessages']));
-    } catch (e) {
-        return false;
-    }
-}
-
-async function findAnnounceTarget(guild) {
-    if (!guild.members.me) await guild.members.fetchMe().catch(() => null);
-    const channels = await guild.channels.fetch().catch(() => null);
-    if (!channels) return null;
-
-    // 1. Community "updates for moderators" channel
-    const community = guild.publicUpdatesChannelId ? channels.get(guild.publicUpdatesChannelId) : null;
-    if (canPost(community, guild)) return { channel: community, how: 'community updates channel' };
-
-    // 2. A channel named like moderators / mods / staff
-    const modChannel = channels.find(c => c && MOD_CHANNEL_RE.test(c.name || '') && canPost(c, guild));
-    if (modChannel) return { channel: modChannel, how: 'moderator channel' };
-
-    // 3. The /notifhere channel
-    try {
-        const { pool } = require('./utils/db');
-        const [rows] = await pool.execute('SELECT startup_channel_id FROM server_settings WHERE guild_id = ?', [guild.id]);
-        const notif = rows.length && rows[0].startup_channel_id ? channels.get(String(rows[0].startup_channel_id)) : null;
-        if (canPost(notif, guild)) return { channel: notif, how: '/notifhere channel' };
-    } catch (e) {
-        console.error('[Announce] Could not read /notifhere for ' + guild.id + ':', e.message);
-    }
-    return null;
-}
-
-async function announcePreview() {
-    if (!client.isReady()) { console.log('[ANNOUNCE] Bot is not ready yet.'); return; }
-    const text = readAnnouncement();
-    if (!text) { console.log('[ANNOUNCE] announcement.txt is empty or missing. Nothing to send.'); return; }
-
-    console.log('\n📢 [ANNOUNCE PREVIEW] Text (first 200 characters):\n' + text.slice(0, 200) + (text.length > 200 ? '…' : ''));
-    const deliveredOwners = new Set();
-    const fallback = new Map(); // ownerId -> [guild names]
-    for (const [, guild] of client.guilds.cache) {
-        const target = await findAnnounceTarget(guild);
-        if (target) {
-            deliveredOwners.add(guild.ownerId);
-            console.log('  ✅ ' + guild.name + ' → #' + target.channel.name + ' (' + target.how + ')');
-        } else {
-            if (!fallback.has(guild.ownerId)) fallback.set(guild.ownerId, []);
-            fallback.get(guild.ownerId).push(guild.name);
-            console.log('  ⚠️ ' + guild.name + ' → no channel found');
-        }
-    }
-    for (const [ownerId, names] of fallback) {
-        console.log(deliveredOwners.has(ownerId)
-            ? '  ⏭️ Owner ' + ownerId + ' gets NO DM (already sees it in another server) for: ' + names.join(', ')
-            : '  ✉️ Owner ' + ownerId + ' gets ONE DM for: ' + names.join(', '));
-    }
-    console.log('  Type "announce confirm" within 2 minutes to send.\n');
-    pendingAnnounce = { expires: Date.now() + 120000, text };
-}
-
-async function announceConfirm() {
-    if (!pendingAnnounce || Date.now() > pendingAnnounce.expires) {
-        pendingAnnounce = null;
-        console.log('[ANNOUNCE] Nothing to confirm. Type "announce" first to preview.');
-        return;
-    }
-    const text = pendingAnnounce.text;
-    pendingAnnounce = null;
-    const noPings = { parse: [] }; // never ping @everyone, roles or users
-
-    console.log('\n📢 [ANNOUNCE] Sending...');
-    const deliveredOwners = new Set();
-    const fallback = new Map();
-    let sentChannels = 0;
-    for (const [, guild] of client.guilds.cache) {
-        let delivered = false;
-        try {
-            const target = await findAnnounceTarget(guild);
-            if (target) {
-                await target.channel.send({ content: '📢 **Announcement:**\n\n' + text, allowedMentions: noPings });
-                delivered = true;
-                sentChannels++;
-                console.log('  ✅ ' + guild.name + ' → #' + target.channel.name);
-            }
-        } catch (err) {
-            console.error('  ❌ ' + guild.name + ': ' + err.message);
-        }
-        if (delivered) {
-            deliveredOwners.add(guild.ownerId);
-        } else {
-            if (!fallback.has(guild.ownerId)) fallback.set(guild.ownerId, []);
-            fallback.get(guild.ownerId).push(guild.name);
-        }
-        await new Promise(r => setTimeout(r, 1000)); // gentle on Discord rate limits
-    }
-
-    let dms = 0;
-    for (const [ownerId, names] of fallback) {
-        if (deliveredOwners.has(ownerId)) {
-            console.log('  ⏭️ Skipped DM to owner ' + ownerId + ' (already got it in another server)');
-            continue;
-        }
-        try {
-            const owner = await client.users.fetch(ownerId);
-            await owner.send({
-                content: '📢 **Announcement for your server' + (names.length > 1 ? 's' : '') + ' (' + names.join(', ') + '):**\n\n' + text +
-                    '\n\n*Tip: create a moderators channel or use /notifhere so future announcements go there instead of your DMs.*',
-                allowedMentions: noPings
-            });
-            dms++;
-            console.log('  ✉️ DM sent to owner ' + ownerId + ' (' + names.join(', ') + ')');
-        } catch (err) {
-            console.error('  ❌ Could not DM owner ' + ownerId + ': ' + err.message);
-        }
-        await new Promise(r => setTimeout(r, 1000));
-    }
-    console.log('📢 Done. ' + sentChannels + ' server channel(s), ' + dms + ' owner DM(s).\n');
 }
 
 // --- Points (console only; called "credits" in the database) ---
@@ -534,10 +395,6 @@ rl.on('line', async (line) => {
         }
     } else if (input === 'status') {
         console.log(`\n[CONSOLE] Maintenance mode status: ${isMaintenance() ? 'ON 🔴' : 'OFF 🟢'}\n`);
-    } else if (input === 'announce') {
-        await announcePreview();
-    } else if (input === 'announce confirm') {
-        await announceConfirm();
     } else if (input === 'server list' || input === 'servers') {
         console.log('\n🗂️ [SERVER LIST] Pingway is in ' + client.guilds.cache.size + ' server(s):');
         for (const [, guild] of client.guilds.cache) {
