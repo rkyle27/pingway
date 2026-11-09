@@ -34,7 +34,9 @@
   "noStations": "📻 Keine Sender für „{query}“ gefunden.",
   "failed": "❌ Etwas ist schiefgelaufen. Bitte versuche es noch einmal.",
   "cmd": {
-    "description": "🔊 Sprache: liest den Sprachchat vor (TTS) und spielt Musik / Internetradio."
+    "description": "🔊 Sprache: liest den Sprachchat vor (TTS) und spielt Musik / Internetradio.",
+    "stayName": "bleiben",
+    "stayDescription": "Im Sprachkanal bleiben: nach 15 Min. Stille nicht gehen, solange jemand da ist."
   },
   "thatLink": "diesen Link",
   "couldNotPlay": "⚠️ **{title}** konnte nicht abgespielt werden: {reason}",
@@ -44,6 +46,8 @@
   "foundOne": "📻 {n} Sender für „{query}“ gefunden - wähle ihn unten.",
   "foundMany": "📻 {n} Sender für „{query}“ gefunden - wähle unten einen aus.",
   "outOfChars": "🔊 Die Google-Stimme ist für diesen Anruf beendet, jetzt läuft die Ersatzstimme.",
+  "stayOn": "🔒 Im Sprachkanal bleiben ist **an**: Ich gehe nicht nach 15 Minuten Stille, solange jemand da ist (1 Minute nachdem alle gegangen sind, gehe ich trotzdem).",
+  "stayOff": "🔓 Im Sprachkanal bleiben ist **aus**: Ich gehe nach 15 Minuten ohne etwas zum Abspielen oder Vorlesen.",
   "station": "Sender",
   "internetRadio": "Internetradio",
   "panel": {
@@ -68,7 +72,7 @@
     "backupToday": "*🤖 Heute läuft die Ersatzstimme (Google-Stimmen gibt es nach Mitternacht pazifischer Zeit wieder)*",
     "yourVoice": "**Deine Stimme:** {voice}{isDefault}",
     "default": " (Standard)",
-    "djRole": "**DJ-Rolle:** <@&{roleId}> (nötig für Abspielen, Pause, Überspringen, Leeren und Verlassen)",
+    "djRole": "**DJ-Rolle:** <@&{roleId}> (nötig für Abspielen, Pause, Überspringen, Leeren, Bleiben und Verlassen)",
     "title": "🔊 Pingway Voice",
     "footer": "Abspielen: füge einen Audio-/Radiolink ein oder tippe Wörter, um Internetradio zu suchen.",
     "join": "Beitreten",
@@ -80,6 +84,8 @@
     "pause": "Pause",
     "skip": "Überspringen",
     "clear": "Warteschlange leeren",
+    "stayOn": "Bleiben: an",
+    "stayOff": "Bleiben: aus",
     "chooseLanguage": "Wähle deine TTS-Stimme: Sprache…",
     "chooseVoice": "Wähle eine Stimme ({language})…",
     "serverDefault": "Standardstimme des Servers nutzen",

@@ -1,10 +1,10 @@
 // Who may press which /vc control.
 // - Join / Move here / Voice choice: anyone (Move only happens when Pingway's channel has no humans).
-// - Leave / Skip / Clear / Pause / Play: people in the same voice channel as Pingway; if the server set a
+// - Leave / Skip / Clear / Pause / Play / Stay: people in the same voice channel as Pingway; if the server set a
 //   DJ role (voice_settings.dj_role_id) they also need that role. Manage Server can always use them.
 
 const OPEN_ACTIONS = new Set(['join', 'move', 'voice', 'refresh', 'lang']);
-const DJ_ACTIONS = new Set(['leave', 'skip', 'clear', 'pause', 'play']);
+const DJ_ACTIONS = new Set(['leave', 'skip', 'clear', 'pause', 'play', 'stay']);
 
 function hasManageGuild(member) {
     try {

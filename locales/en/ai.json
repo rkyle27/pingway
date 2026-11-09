@@ -18,5 +18,16 @@
     "forgot": "\n\n🧹 *[System: Forgot saved fact]*",
     "saved": "\n\n🧠 *[System: Saved new fact]*"
   },
-  "done": "Done!"
+  "done": "Done!",
+  "tz": {
+    "ask": "🕒 Before I set that: what's your time zone? e.g. Japan, London",
+    "askAgain": "🤔 I couldn't read that time zone. Please send a country, city or zone name, e.g. Japan, London, Philippines, New York, Asia/Tokyo",
+    "saved": "🕒 Saved your time zone: **{tz}**",
+    "usingUtc": "🕒 I still couldn't read a time zone, so I'm using **UTC** for this reminder.",
+    "badTime": {
+      "past": "⚠️ That time is already in the past, so I didn't save the reminder. When should I remind you?",
+      "far": "⚠️ That time is more than 2 years away, so I didn't save the reminder. When should I remind you?",
+      "year": "⚠️ That reminder came out in the wrong year, so I didn't save it. Please tell me the time again (e.g. \"tomorrow at 9pm\")."
+    }
+  }
 }

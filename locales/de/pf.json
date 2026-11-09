@@ -164,5 +164,12 @@
   "confirmTime": "Uhrzeit bestätigen ✅",
   "timeSetupEdit": "⏰ **Uhrzeit einstellen (Bearbeiten)**\nGewähltes Datum: **{date}** (GMT{gmt})\nWähle **Stunde** und **Minute** und klicke dann auf Bestätigen:",
   "timeSetup": "⏰ **Uhrzeit einstellen**\nGewähltes Datum: **{date}** (GMT{gmt})\nWähle **Stunde** und **Minute** und klicke dann auf Bestätigen:",
-  "updated": "✅ Eintrag aktualisiert!"
+  "updated": "✅ Eintrag aktualisiert!",
+  "repost": {
+    "dm": "🎉 Dein Party Finder **{name}** startet jetzt! Willst du ihn wiederholen? Tippe unten, um ihn mit einem neuen Datum erneut zu posten.",
+    "button": "Erneut posten",
+    "onlyHost": "🚫 Nur der Host dieses Party Finders kann ihn erneut posten.",
+    "tooOld": "⌛ Sorry, dieser Button ist zu alt (7 Tage). Nutze /pf, um einen neuen Eintrag zu erstellen.",
+    "noChannel": "⚠️ Ich erreiche den Kanal deines alten Eintrags nicht mehr. Nutze /pf im Server, um einen neuen zu erstellen."
+  }
 }

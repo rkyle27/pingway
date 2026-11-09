@@ -180,6 +180,22 @@ async function ensureJoined(interaction, { allowMove = false } = {}) {
     }
 }
 
+/**
+ * "Stay in voice" from the panel button (want = 'toggle') or /vc stay:<true|false>.
+ * Same permission rules as the other panel controls (same channel as Pingway, DJ role if set).
+ * @returns {Promise<string>} short notice for the (ephemeral) panel
+ */
+async function applyStay(interaction, lang, want) {
+    const guildId = interaction.guildId;
+    const session = getSession(guildId);
+    const settings = await store.getGuildSettings(guildId);
+    const ok = canUse('stay', { member: interaction.member, botChannelId: session ? session.channelId : null, settings, lang });
+    if (!ok.ok) return '🚫 ' + ok.reason;
+    if (!session) return t(lang, 'vc.notInVoice');
+    const on = session.setStay(want === 'toggle' ? !session.stay : !!want);
+    return t(lang, on ? 'vc.stayOn' : 'vc.stayOff');
+}
+
 /** Waits (max `ms`) until the queued link starts or fails, so the panel shows the real result. */
 async function waitForStart(session, item, ms = 6000) {
     const until = Date.now() + ms;
@@ -215,7 +231,16 @@ module.exports = {
         description: t('en', 'vc.cmd.description'),
         description_localizations: i18n.discordLocalizations('vc.cmd.description'),
         contexts: [0],          // servers only
-        integration_types: [0]
+        integration_types: [0],
+        // optional: plain /vc still just opens the panel
+        options: [{
+            type: 5,            // BOOLEAN
+            name: 'stay',     // read back with getBoolean('stay')
+            name_localizations: i18n.discordLocalizations('vc.cmd.stayName'),
+            description: t('en', 'vc.cmd.stayDescription'),
+            description_localizations: i18n.discordLocalizations('vc.cmd.stayDescription'),
+            required: false
+        }]
     },
 
     async execute(interaction) {
@@ -226,6 +251,8 @@ module.exports = {
         await interaction.deferReply({ flags: EPHEMERAL });
         try {
             await store.ensureTables().catch(err => console.error('⚠️ [VC] tables:', err.code || err.message));
+            const stayOpt = interaction.options && typeof interaction.options.getBoolean === 'function' ? interaction.options.getBoolean('stay') : null;
+            if (stayOpt !== null && stayOpt !== undefined) return interaction.editReply(await render(interaction, await applyStay(interaction, lang, stayOpt)));
             const payload = await render(interaction);
             return interaction.editReply(payload);
         } catch (err) {
@@ -284,6 +311,10 @@ module.exports = {
                     notice = t(lang, 'vc.left');
                     break;
                 }
+
+                case ID.stay:
+                    notice = await applyStay(interaction, lang, 'toggle');
+                    break;
 
                 case ID.skip:
                 case ID.clear:
@@ -383,5 +414,5 @@ module.exports = {
     },
 
     // exported for tests
-    _internal: { ensureJoined, render, stateOf, realDeps, callEngine, setCaller }
+    _internal: { ensureJoined, render, stateOf, realDeps, callEngine, setCaller, applyStay }
 };

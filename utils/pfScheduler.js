@@ -6,6 +6,48 @@ const { pool: db } = require('./db');
 const { t } = require('./i18n');
 const userLanguage = require('./userLanguage');
 
+// "Post again?" DM to the host when a listing reaches its start time (status 'started').
+// The button opens the /pf date/time step with the old details (commands/pf.js, customId pf_repost_*).
+const REPOST_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+const REPOST_PREFIX = 'pf_repost_';
+
+/** Button id: pf_repost_<listingId>_<hostId>_<sentAtMs> (well under Discord's 100 characters). */
+function repostCustomId(listingId, hostId, sentAt) {
+    return `${REPOST_PREFIX}${listingId}_${hostId}_${sentAt}`;
+}
+
+/** @returns {{ listingId, hostId, sentAt }|null} */
+function parseRepostCustomId(cid) {
+    if (typeof cid !== 'string' || !cid.startsWith(REPOST_PREFIX)) return null;
+    const [listingId, hostId, sentAt] = cid.slice(REPOST_PREFIX.length).split('_');
+    if (!listingId || !hostId || !/^\d+$/.test(sentAt || '')) return null;
+    return { listingId, hostId, sentAt: Number(sentAt) };
+}
+
+/** DM payload (raw API JSON, no builders). */
+function buildRepostDm(listing, lang, now = Date.now()) {
+    return {
+        content: t(lang, 'pf.repost.dm', { name: listing.name || t(lang, 'pf.alert.event') }),
+        components: [{
+            type: 1,
+            components: [{ type: 2, style: 1, custom_id: repostCustomId(listing.id, listing.userId, now), label: t(lang, 'pf.repost.button'), emoji: { name: '📅' } }]
+        }]
+    };
+}
+
+/** DMs the host; if the DM fails (DMs closed, user gone), nothing else happens. Never throws. */
+async function sendRepostDm(client, listing, now = Date.now()) {
+    try {
+        if (!listing || !listing.userId) return false;
+        const user = await client.users.fetch(String(listing.userId));
+        const lang = await userLanguage.forUser(listing.userId).catch(() => 'en');
+        await user.send(buildRepostDm(listing, lang, now));
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
+
 function startPfScheduler(client) {
     setInterval(async () => {
         // Skip execution if global maintenance mode is active
@@ -155,6 +197,9 @@ function startPfScheduler(client) {
                         );
                     }
                 }
+
+                // the listing starts now (saved first, so it is never DMed twice): ask the host to post it again
+                if (needsExact) await sendRepostDm(client, listing);
             }
 
         } catch (error) {
@@ -163,4 +208,4 @@ function startPfScheduler(client) {
     }, 5000);
 }
 
-module.exports = { startPfScheduler };
+module.exports = { startPfScheduler, REPOST_TTL_MS, repostCustomId, parseRepostCustomId, buildRepostDm, sendRepostDm };

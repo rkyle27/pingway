@@ -164,5 +164,12 @@
   "confirmTime": "Confirmer l'heure ✅",
   "timeSetupEdit": "⏰ **Réglage de l'heure (modification)**\nDate choisie : **{date}** (GMT{gmt})\nChoisis l'**heure** et les **minutes**, puis clique sur Confirmer :",
   "timeSetup": "⏰ **Réglage de l'heure**\nDate choisie : **{date}** (GMT{gmt})\nChoisis l'**heure** et les **minutes**, puis clique sur Confirmer :",
-  "updated": "✅ Annonce mise à jour !"
+  "updated": "✅ Annonce mise à jour !",
+  "repost": {
+    "dm": "🎉 Ton Party Finder **{name}** commence maintenant ! Tu veux le refaire ? Appuie ci-dessous pour le republier avec une nouvelle date.",
+    "button": "Republier",
+    "onlyHost": "🚫 Seul l'organisateur de ce Party Finder peut le republier.",
+    "tooOld": "⌛ Désolé, ce bouton est trop ancien (7 jours). Utilise /pf pour créer une nouvelle annonce.",
+    "noChannel": "⚠️ Je n'ai plus accès au salon de ton ancienne annonce. Utilise /pf sur le serveur pour en créer une nouvelle."
+  }
 }

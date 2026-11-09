@@ -164,5 +164,12 @@
   "confirmTime": "Confirm Time ✅",
   "timeSetupEdit": "⏰ **Time Setup (Direct Edit)**\nSelected Date: **{date}** (GMT{gmt})\nSelect **Hour** and **Minute**, then click Confirm:",
   "timeSetup": "⏰ **Time Setup**\nSelected Date: **{date}** (GMT{gmt})\nSelect **Hour** and **Minute**, then click Confirm:",
-  "updated": "✅ Successfully updated listing details!"
+  "updated": "✅ Successfully updated listing details!",
+  "repost": {
+    "dm": "🎉 Your Party Finder **{name}** is starting now! Want to run it again? Tap below to post it with a new date.",
+    "button": "Post again",
+    "onlyHost": "🚫 Only the host of this Party Finder can post it again.",
+    "tooOld": "⌛ Sorry, this button is too old (7 days). Use /pf to create a new listing.",
+    "noChannel": "⚠️ I can't reach the channel of your old listing anymore. Use /pf in the server to create a new one."
+  }
 }

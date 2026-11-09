@@ -7,6 +7,7 @@ const { isMaintenance } = require('../maintenance');
 const honeypot = require('../utils/honeypot');
 const { t } = require('../utils/i18n');
 const userLanguage = require('../utils/userLanguage');
+const userTimezone = require('../utils/userTimezone');
 
 const openrouter = new OpenAI({
     baseURL: 'https://openrouter.ai/api/v1',
@@ -153,6 +154,50 @@ async function clearAllUserReminders(userId) {
     }
 }
 
+// --- TIME ZONE QUESTION (asked once per user, then saved in user_timezone) ---
+// userId -> { prompt, tries, at }: the request waiting for the user's time zone answer
+const pendingTz = new Map();
+const PENDING_TZ_MS = 15 * 60 * 1000;
+
+function getPendingTz(userId) {
+    const p = pendingTz.get(userId);
+    if (p && Date.now() - p.at > PENDING_TZ_MS) { pendingTz.delete(userId); return null; }
+    return p || null;
+}
+
+// Does the message ask for a reminder or something that needs the user's clock?
+// (Looking at / editing / removing reminders does not need a time zone.)
+function looksTimeBased(text) {
+    const s = String(text || '').toLowerCase();
+    const wantsReminder = /\b(remind|reminder|reminders|alarm|wake me|set a timer|schedule)\b/.test(s) ||
+        /\b(rappelle|rappeler|rappel|réveille)/.test(s) ||
+        /\b(erinner|wecker|weck mich)/.test(s) ||
+        /(リマインド|リマインダー|思い出させ|アラーム|起こして|知らせて)/.test(s);
+    if (wantsReminder) {
+        const managing = /\b(see|show|list|view|what are|check|delete|remove|cancel|clear|edit|rename)\b/.test(s) ||
+            /\b(voir|montre|liste|supprime|annule|efface)\b/.test(s) ||
+            /\b(zeig|liste|lösch|entfern)/.test(s) ||
+            /(見せ|一覧|確認|削除|消して|キャンセル)/.test(s);
+        const hasTime = /\d|tomorrow|tonight|today|demain|ce soir|morgen|heute|明日|今日|今夜/.test(s);
+        return !managing || hasTime;
+    }
+    return /\bwhat time is it\b|quelle heure est-il|wie spät ist es|今何時/.test(s);
+}
+
+// Pingway's own managed role (the role Discord made for the bot) counts as mentioning Pingway
+function findBotRoleId(message, botId) {
+    try {
+        const own = message.guild && message.guild.members && message.guild.members.me && message.guild.members.me.roles && message.guild.members.me.roles.botRole;
+        if (own && own.id) return own.id;
+    } catch (e) { /* not cached */ }
+    try {
+        const roles = message.mentions && message.mentions.roles;
+        const hit = roles && roles.find(role => role && role.tags && role.tags.botId === botId);
+        if (hit && hit.id) return hit.id;
+    } catch (e) { /* no role mentions */ }
+    return null;
+}
+
 // Shared help list (same as /help)
 const { buildHelpPayload } = require('../utils/helpContent');
 
@@ -207,8 +252,9 @@ module.exports = {
         const guildId = message.guildId;
         const botId = message.client.user.id;
 
-        // Pingway only answers in AI channels (/ailistenhere) or when someone @mentions it
-        const mentionRe = new RegExp('<@!?' + botId + '>', 'g');
+        // Pingway only answers in AI channels (/ailistenhere) or when someone @mentions it (or its own bot role)
+        const botRoleId = findBotRoleId(message, botId);
+        const mentionRe = new RegExp('<@!?' + botId + '>' + (botRoleId ? '|<@&' + botRoleId + '>' : ''), 'g');
         const mentioned = mentionRe.test(message.content);
         let isAiChannel = false;
         try {
@@ -257,6 +303,39 @@ module.exports = {
             return message.reply({ content: t(lang, 'ai.notHere') });
         }
 
+        // --- USER TIME ZONE (for reminders): ask once, save, continue the original request ---
+        let promptForAi = userPrompt;
+        let tz = await userTimezone.get(userId);
+        let tzNotice = '';
+        const pending = tz ? null : getPendingTz(userId);
+        if (pending) {
+            const answer = userTimezone.resolve(userPrompt);
+            if (answer) {
+                pendingTz.delete(userId);
+                try {
+                    tz = await userTimezone.set(userId, answer);
+                } catch (e) {
+                    tz = answer;
+                    console.error('❌ Failed to save time zone:', e.message);
+                }
+                tzNotice = t(lang, 'ai.tz.saved', { tz });
+                promptForAi = pending.prompt;
+            } else if (pending.tries < 1) {
+                pending.tries++;
+                pending.at = Date.now();
+                return message.reply({ content: t(lang, 'ai.tz.askAgain') });
+            } else {
+                // 2 answers we could not read: use UTC for this request (not saved)
+                pendingTz.delete(userId);
+                tz = 'UTC';
+                tzNotice = t(lang, 'ai.tz.usingUtc');
+                promptForAi = pending.prompt;
+            }
+        } else if (!tz && looksTimeBased(userPrompt)) {
+            pendingTz.set(userId, { prompt: userPrompt, tries: 0, at: Date.now() });
+            return message.reply({ content: t(lang, 'ai.tz.ask') });
+        }
+
         try {
 
             await message.channel.sendTyping();
@@ -266,13 +345,20 @@ module.exports = {
             const activeRemindersAndTasksList = await getActiveRemindersAndTasks(userId);
             const userRAMHistory = getUserHistory(userId);
             const currentIsoDate = new Date().toISOString();
+            const nowInfo = tz ? userTimezone.describeNow(tz) : null;
+            const timeLine = nowInfo
+                ? `Time: the user's local time is ${nowInfo.localText}, time zone ${tz} (UTC${nowInfo.offset}). UTC now: ${currentIsoDate} (User: ${username}).`
+                : `Time: ${currentIsoDate} UTC; the user's time zone is unknown (User: ${username}).`;
+            const targetHint = nowInfo
+                ? `ISO 8601 in the user's local time WITH their offset, e.g. ${nowInfo.localIso}; year ${nowInfo.year} or later, never in the past`
+                : 'ISO';
 
             // Sanitize user prompt to prevent action tag injection via echoing
-            const safeUserPrompt = userPrompt.replace(/\[/g, '［').replace(/\]/g, '］');
+            const safeUserPrompt = promptForAi.replace(/\[/g, '［').replace(/\]/g, '］');
 
             const systemMessage = `You are Pingway, an FFXIV utility bot. 
-Time: ${currentIsoDate} (User: ${username}).
-- Reminders: Output [REMINDER_JSON]{ "target_time": "ISO", "task": "...", "is_recurring": true/false, "recurrence_rule": "..." }[REMINDER_JSON]
+${timeLine}
+- Reminders: Output [REMINDER_JSON]{ "target_time": "${targetHint}", "task": "...", "is_recurring": true/false, "recurrence_rule": "..." }[REMINDER_JSON]
 - Edit Reminder: [EDIT_REMINDER_JSON]{ "id": 123, "new_text": "..." }[EDIT_REMINDER_JSON]
 - Delete Reminder: [DELETE_REMINDER_JSON]{ "id": 123 }[DELETE_REMINDER_JSON]
 - Clear Reminders: [CLEAR_ALL_REMINDERS]
@@ -314,12 +400,27 @@ ${userFactsList}`;
 
             // 1. Process Reminders
             const reminderJsonMatches = [...aiReply.matchAll(/\[REMINDER_JSON\]([\s\S]*?)\[REMINDER_JSON\]/gi)];
+
+            // A reminder but no time zone yet: ask first, nothing is saved; the request continues after the answer
+            if (!tz && reminderJsonMatches.length > 0) {
+                pendingTz.set(userId, { prompt: promptForAi, tries: 0, at: Date.now() });
+                return await message.reply({ content: t(lang, 'ai.tz.ask') });
+            }
+
+            let badTime = null;
             for (const match of reminderJsonMatches) {
                 try {
                     const data = JSON.parse(match[1].trim());
                     if (data.target_time && data.task) {
-                        const ts = new Date(data.target_time).getTime();
-                        if (!isNaN(ts)) {
+                        // target_time comes with the user's offset; without one it is read as local time in their zone
+                        const zone = data.timezone && userTimezone.isValid(String(data.timezone)) ? String(data.timezone) : tz;
+                        const ts = userTimezone.targetToUtc(String(data.target_time), zone);
+                        const check = userTimezone.checkTarget(ts, tz);
+                        if (check !== 'ok' && check !== 'invalid') {
+                            badTime = badTime || check; // past / too far / wrong year: never saved
+                            console.warn(`⚠️ Refused AI reminder time "${data.target_time}" (${check}) for user ${userId}`);
+                        }
+                        if (check === 'ok') {
                             isRecurringSaved = !!data.is_recurring;
                             await pool.execute(
                                 `INSERT INTO reminders (guild_id, channel_id, user_id, reminder_text, target_timestamp, is_recurring, recurrence_rule, is_sent) VALUES (?, ?, ?, ?, ?, ?, ?, FALSE)`,
@@ -391,9 +492,13 @@ ${userFactsList}`;
                 .replace(/\[DELETE_FACT\].*$/gim, '')
                 .trim();
 
+            // Wrong reminder time: say so instead of the AI's "reminder set" text
+            const badTimeText = badTime ? t(lang, 'ai.tz.badTime.' + badTime) : '';
+            const replyText = badTime && reminderSavedCount === 0 ? badTimeText : cleanReply;
+
             // Append context history clean of system tags
-            appendToHistory(userId, 'user', userPrompt);
-            appendToHistory(userId, 'assistant', cleanReply || "Done!");
+            appendToHistory(userId, 'user', promptForAi);
+            appendToHistory(userId, 'assistant', replyText || "Done!");
 
             // Generate System Notification
             let staticNotice = "";
@@ -415,7 +520,8 @@ ${userFactsList}`;
                 staticNotice = t(lang, 'ai.notice.saved');
             }
 
-            const finalReply = (cleanReply || t(lang, 'ai.done')) + staticNotice;
+            const extraBad = badTime && reminderSavedCount > 0 ? '\n\n' + badTimeText : '';
+            const finalReply = (tzNotice ? tzNotice + '\n\n' : '') + (replyText || t(lang, 'ai.done')) + staticNotice + extraBad;
             await sendChunkedReply(message, finalReply);
 
         } catch (error) {

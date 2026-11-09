@@ -18,5 +18,16 @@
     "forgot": "\n\n🧹 *[Système : info enregistrée oubliée]*",
     "saved": "\n\n🧠 *[Système : nouvelle info enregistrée]*"
   },
-  "done": "C'est fait !"
+  "done": "C'est fait !",
+  "tz": {
+    "ask": "🕒 Avant de le régler : quel est ton fuseau horaire ? ex. Japon, Londres",
+    "askAgain": "🤔 Je n'ai pas compris ce fuseau horaire. Envoie un pays, une ville ou un nom de fuseau, ex. Japon, Londres, Philippines, New York, Asia/Tokyo",
+    "saved": "🕒 Fuseau horaire enregistré : **{tz}**",
+    "usingUtc": "🕒 Je n'ai toujours pas compris le fuseau horaire, j'utilise donc **UTC** pour ce rappel.",
+    "badTime": {
+      "past": "⚠️ Cette heure est déjà passée, je n'ai donc pas enregistré le rappel. Quand dois-je te le rappeler ?",
+      "far": "⚠️ Cette heure est dans plus de 2 ans, je n'ai donc pas enregistré le rappel. Quand dois-je te le rappeler ?",
+      "year": "⚠️ Ce rappel est tombé sur la mauvaise année, je ne l'ai donc pas enregistré. Redis-moi l'heure (ex. « demain à 21h »)."
+    }
+  }
 }

@@ -34,7 +34,9 @@
   "noStations": "📻 No stations found for \"{query}\".",
   "failed": "❌ Something went wrong. Please try again.",
   "cmd": {
-    "description": "🔊 Voice: read the voice chat aloud (TTS) and play music / internet radio."
+    "description": "🔊 Voice: read the voice chat aloud (TTS) and play music / internet radio.",
+    "stayName": "stay",
+    "stayDescription": "Stay in voice: don't leave after 15 min of silence while people are here."
   },
   "thatLink": "that link",
   "couldNotPlay": "⚠️ Could not play **{title}**: {reason}",
@@ -44,6 +46,8 @@
   "foundOne": "📻 Found {n} station for \"{query}\" - pick one below.",
   "foundMany": "📻 Found {n} stations for \"{query}\" - pick one below.",
   "outOfChars": "🔊 Google voice ended for this call, using the backup voice.",
+  "stayOn": "🔒 Stay in voice is **on**: I won't leave after 15 minutes of silence while someone is here (I still leave 1 minute after everyone has left).",
+  "stayOff": "🔓 Stay in voice is **off**: I leave after 15 minutes with nothing to play or read.",
   "station": "Station",
   "internetRadio": "Internet radio",
   "panel": {
@@ -68,7 +72,7 @@
     "backupToday": "*🤖 Using the backup voice today (Google voices come back after midnight Pacific time)*",
     "yourVoice": "**Your voice:** {voice}{isDefault}",
     "default": " (default)",
-    "djRole": "**DJ role:** <@&{roleId}> (needed for Play, Pause, Skip, Clear and Leave)",
+    "djRole": "**DJ role:** <@&{roleId}> (needed for Play, Pause, Skip, Clear, Stay and Leave)",
     "title": "🔊 Pingway Voice",
     "footer": "Play: paste an audio / radio link, or type words to search internet radio.",
     "join": "Join",
@@ -80,6 +84,8 @@
     "pause": "Pause",
     "skip": "Skip",
     "clear": "Clear queue",
+    "stayOn": "Stay: on",
+    "stayOff": "Stay: off",
     "chooseLanguage": "Choose your TTS voice: language…",
     "chooseVoice": "Choose a {language} voice…",
     "serverDefault": "Use the server default voice",

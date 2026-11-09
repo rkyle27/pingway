@@ -60,6 +60,9 @@ class VoiceSession extends EventEmitter {
         this.aloneTimer = null;
         this.idleTimer = null;
         this.lastNotice = null;
+        this.stay = false;           // "Stay in voice": no 15-min idle leave while humans are here (resets on leave)
+        this.humanCount = null;      // last count from setHumanCount (null = not known yet)
+        this._reconnecting = false;
 
         // the person whose /vc brought Pingway into this call (Google voice rules, see members.js)
         this.callerId = null;
@@ -103,6 +106,7 @@ class VoiceSession extends EventEmitter {
             speaking: this.ttsBusy,
             musicQueue: this.musicQueue.length,
             ttsQueue: this.ttsQueue.length,
+            stay: this.stay,
             notice: this.lastNotice && this.clock.now() - (this.lastNoticeAt || 0) < 60000 ? this.lastNotice : null,
             noticeI18n: this.lastNotice && this.clock.now() - (this.lastNoticeAt || 0) < 60000 ? (this.lastNoticeI18n || null) : null
         };
@@ -409,7 +413,7 @@ class VoiceSession extends EventEmitter {
 
     _updateIdle() {
         if (this.destroyed) return;
-        if (this.isActive()) {
+        if (this.isActive() || (this.stay && this.humanCount > 0)) {
             if (this.idleTimer) this.clock.clearTimeout(this.idleTimer);
             this.idleTimer = null;
         } else if (!this.idleTimer) {
@@ -420,17 +424,38 @@ class VoiceSession extends EventEmitter {
     /** Called from voiceStateUpdate with the number of non-bot members in Pingway's channel. */
     setHumanCount(n) {
         if (this.destroyed) return;
+        this.humanCount = n;
         if (n > 0) {
             if (this.aloneTimer) this.clock.clearTimeout(this.aloneTimer);
             this.aloneTimer = null;
         } else if (!this.aloneTimer) {
             this.aloneTimer = this.clock.setTimeout(() => this.destroy('alone'), ALONE_MS);
         }
+        this._updateIdle(); // stay mode depends on humans being here
+    }
+
+    /**
+     * "Stay in voice": while ON and at least 1 human is in the channel, the 15-min idle leave never fires.
+     * The 1-min "alone" leave is unchanged. Resets when Pingway leaves (a new session starts with stay off).
+     * @returns {boolean} the new state
+     */
+    setStay(on) {
+        if (this.destroyed) return false;
+        this.stay = !!on;
+        this._log('stay in voice ' + (this.stay ? 'on' : 'off'));
+        this._updateIdle();
+        this.emit('update');
+        return this.stay;
+    }
+
+    toggleStay() {
+        return this.setStay(!this.stay);
     }
 
     destroy(reason = 'leave') {
         if (this.destroyed) return;
         this.destroyed = true;
+        this.stay = false;
         this.playToken++;
         this._log('leaving (' + reason + ')');
         if (this.aloneTimer) this.clock.clearTimeout(this.aloneTimer);
@@ -500,6 +525,8 @@ async function joinChannel({ guild, channel, voice, deps, timeoutMs = 20000 }) {
         const C = voice.VoiceConnectionStatus;
         if (n.status === C.Destroyed) return session.destroy('connection destroyed');
         if (n.status === C.Disconnected) {
+            if (session._reconnecting) return; // already handling this drop
+            session._reconnecting = true;
             try {
                 // moved by a moderator / short network blip: it reconnects by itself
                 await Promise.race([
@@ -507,7 +534,18 @@ async function joinChannel({ guild, channel, voice, deps, timeoutMs = 20000 }) {
                     voice.entersState(connection, C.Connecting, 5000)
                 ]);
             } catch {
-                session.destroy('disconnected');
+                // did not recover by itself: rejoin once, else leave as before
+                try {
+                    if (session.destroyed) return; // e.g. disconnected by someone (voiceStateUpdate)
+                    session._log('voice connection lost, rejoining once');
+                    if (typeof connection.rejoin !== 'function' || connection.rejoin() === false) throw new Error('rejoin refused');
+                    await voice.entersState(connection, C.Ready, 20000);
+                    session._log('voice connection back');
+                } catch {
+                    session.destroy('disconnected');
+                }
+            } finally {
+                session._reconnecting = false;
             }
         }
     });

@@ -18,5 +18,16 @@
     "forgot": "\n\n🧹 *[System: Gespeicherte Info vergessen]*",
     "saved": "\n\n🧠 *[System: Neue Info gespeichert]*"
   },
-  "done": "Erledigt!"
+  "done": "Erledigt!",
+  "tz": {
+    "ask": "🕒 Bevor ich das einstelle: In welcher Zeitzone bist du? z. B. Japan, London",
+    "askAgain": "🤔 Diese Zeitzone habe ich nicht erkannt. Schick mir bitte ein Land, eine Stadt oder einen Zonennamen, z. B. Japan, London, Philippinen, New York, Asia/Tokyo",
+    "saved": "🕒 Deine Zeitzone wurde gespeichert: **{tz}**",
+    "usingUtc": "🕒 Ich konnte immer noch keine Zeitzone erkennen, deshalb nutze ich für diese Erinnerung **UTC**.",
+    "badTime": {
+      "past": "⚠️ Diese Zeit liegt schon in der Vergangenheit, deshalb habe ich die Erinnerung nicht gespeichert. Wann soll ich dich erinnern?",
+      "far": "⚠️ Diese Zeit ist mehr als 2 Jahre entfernt, deshalb habe ich die Erinnerung nicht gespeichert. Wann soll ich dich erinnern?",
+      "year": "⚠️ Diese Erinnerung hatte das falsche Jahr, deshalb habe ich sie nicht gespeichert. Sag mir die Zeit bitte noch einmal (z. B. „morgen um 21 Uhr“)."
+    }
+  }
 }

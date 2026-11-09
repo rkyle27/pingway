@@ -13,6 +13,8 @@ const { t, tOr, discordLocalizations } = require('../utils/i18n');
 // Job names from data/jobs.json are English; shown in the reader's language when there is a translation (locales/*/jobs.json)
 const jobName = (name, lang) => tOr(lang, 'jobs.' + name, name);
 const userLanguage = require('../utils/userLanguage');
+// "Post again?" DM button (sent by utils/pfScheduler.js when a listing starts)
+const { REPOST_TTL_MS, parseRepostCustomId } = require('../utils/pfScheduler');
 
 // --- JOBS.JSON LOADER ---
 function loadJobsJSON() {
@@ -623,6 +625,32 @@ module.exports = {
                 return await sendTimezoneSelectEphemeral(interaction, global.pfSessions.get(userId), true);
             }
 
+            // "📅 Post again" from the host's DM: same date/time step as the wizard, old details prefilled, NEW listing
+            if (cid.startsWith('pf_repost_')) {
+                const rp = parseRepostCustomId(cid);
+                if (!rp) return interaction.reply({ content: t(lang, 'pf.gone'), flags: [MessageFlags.Ephemeral] });
+                if (rp.hostId !== userId) return interaction.reply({ content: t(lang, 'pf.repost.onlyHost'), flags: [MessageFlags.Ephemeral] });
+                if (Date.now() - rp.sentAt > REPOST_TTL_MS) return interaction.reply({ content: t(lang, 'pf.repost.tooOld'), flags: [MessageFlags.Ephemeral] });
+
+                const dbData = await loadDB();
+                const old = dbData.pfDatabase.find(l => l.id === rp.listingId);
+                if (!old) return interaction.reply({ content: t(lang, 'pf.gone'), flags: [MessageFlags.Ephemeral] });
+                if (old.userId !== userId) return interaction.reply({ content: t(lang, 'pf.repost.onlyHost'), flags: [MessageFlags.Ephemeral] });
+
+                const gmtMatch = String(old.date || '').match(/GMT([+-]\d+)/);
+                global.pfSessions.set(userId, {
+                    step: 'sel_timezone',
+                    data: {
+                        name: old.name, size: old.size,
+                        tanks: old.tanks, healers: old.healers, dps: old.dps, meleedps: old.meleedps, range: old.range, caster: old.caster,
+                        imageUrl: old.imageUrl || null,
+                        gmt: gmtMatch ? parseInt(gmtMatch[1], 10) : 9,
+                        repostFrom: { listingId: old.id, guildId: old.guildId, channelId: old.channelId }
+                    }
+                });
+                return await sendTimezoneSelectEphemeral(interaction, global.pfSessions.get(userId), false);
+            }
+
             if (cid.startsWith('pf_pub_delete_')) {
                 const listingId = cid.replace('pf_pub_delete_', '');
                 const dbData = await loadDB();
@@ -905,11 +933,25 @@ module.exports = {
                     }
                 }
 
+                // "Post again" (started from a DM): post in the old listing's server channel, not here
+                const repost = session.data.repostFrom || null;
+                let postChannel = interaction.channel;
+                let postGuild = interaction.guild;
+                let postLang = glang;
+                if (repost) {
+                    postChannel = await interaction.client.channels.fetch(repost.channelId).catch(() => null);
+                    if (!postChannel || !postChannel.isTextBased()) {
+                        return await interaction.update({ content: t(lang, 'pf.repost.noChannel'), components: [], embeds: [] });
+                    }
+                    postGuild = postChannel.guild || null;
+                    postLang = userLanguage.forGuild(postGuild);
+                }
+
                 const listing = {
                     id: Date.now().toString(),
                     userId,
-                    guildId,
-                    channelId: interaction.channelId,
+                    guildId: repost ? String(repost.guildId) : guildId,
+                    channelId: repost ? postChannel.id : interaction.channelId,
                     name: session.data.name,
                     size: session.data.size,
                     tanks: session.data.tanks,
@@ -929,9 +971,9 @@ module.exports = {
                 migrateOldJobCodes(listing);
                 ensureListingClaims(listing);
 
-                const { embed, components } = await buildPFEmbedAndRows(listing, interaction.guild, `<@${userId}>`);
-                const sentMessage = await interaction.channel.send({
-                    content: t(glang, 'pf.published'),
+                const { embed, components } = await buildPFEmbedAndRows(listing, postGuild, `<@${userId}>`);
+                const sentMessage = await postChannel.send({
+                    content: t(postLang, 'pf.published'),
                     embeds: [embed],
                     components
                 });

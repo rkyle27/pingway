@@ -9,7 +9,7 @@ const { t, tOr } = require('../i18n');
 const ID = {
     join: 'vc_join', move: 'vc_move', leave: 'vc_leave', refresh: 'vc_refresh',
     play: 'vc_play', pause: 'vc_pause', skip: 'vc_skip', clear: 'vc_clear',
-    lang: 'vc_lang', voice: 'vc_voice', radio: 'vc_radio',
+    lang: 'vc_lang', voice: 'vc_voice', radio: 'vc_radio', stay: 'vc_stay',
     modal: 'vc_playmodal', modalInput: 'vc_play_input'
 };
 const DEFAULT_VALUE = 'server_default';
@@ -108,7 +108,8 @@ function buildPanel(p) {
         button(ID.play, t(lang, 'vc.panel.play'), 'primary', { emoji: '▶️', disabled: disabledAll }),
         button(ID.pause, np && np.paused ? t(lang, 'vc.panel.resume') : t(lang, 'vc.panel.pause'), 'secondary', { emoji: np && np.paused ? '▶️' : '⏸️', disabled: disabledAll || !np }),
         button(ID.skip, t(lang, 'vc.panel.skip'), 'secondary', { emoji: '⏭️', disabled: disabledAll || !(np || (connected && st.speaking)) }),
-        button(ID.clear, t(lang, 'vc.panel.clear'), 'secondary', { emoji: '🧹', disabled: disabledAll || !(connected && (st.musicQueue || st.ttsQueue)) })
+        button(ID.clear, t(lang, 'vc.panel.clear'), 'secondary', { emoji: '🧹', disabled: disabledAll || !(connected && (st.musicQueue || st.ttsQueue)) }),
+        button(ID.stay, t(lang, connected && st.stay ? 'vc.panel.stayOn' : 'vc.panel.stayOff'), connected && st.stay ? 'success' : 'secondary', { emoji: connected && st.stay ? '🔒' : '🔓', disabled: disabledAll || !connected })
     ));
 
     components.push(row({

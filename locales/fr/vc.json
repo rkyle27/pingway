@@ -34,7 +34,9 @@
   "noStations": "📻 Aucune station trouvée pour « {query} ».",
   "failed": "❌ Un problème est survenu. Réessaie.",
   "cmd": {
-    "description": "🔊 Vocal : lit le chat vocal à voix haute (TTS) et joue de la musique / la radio en ligne."
+    "description": "🔊 Vocal : lit le chat vocal à voix haute (TTS) et joue de la musique / la radio en ligne.",
+    "stayName": "rester",
+    "stayDescription": "Rester en vocal : ne pas partir après 15 min de silence tant que des gens sont là."
   },
   "thatLink": "ce lien",
   "couldNotPlay": "⚠️ Impossible de lire **{title}** : {reason}",
@@ -44,6 +46,8 @@
   "foundOne": "📻 {n} station trouvée pour « {query} » - choisis-la ci-dessous.",
   "foundMany": "📻 {n} stations trouvées pour « {query} » - choisis-en une ci-dessous.",
   "outOfChars": "🔊 La voix Google est terminée pour cet appel, passage à la voix de secours.",
+  "stayOn": "🔒 Rester en vocal est **activé** : je ne pars pas après 15 minutes de silence tant que quelqu'un est là (je pars toujours 1 minute après que tout le monde est parti).",
+  "stayOff": "🔓 Rester en vocal est **désactivé** : je pars après 15 minutes sans rien à jouer ni à lire.",
   "station": "Station",
   "internetRadio": "Radio en ligne",
   "panel": {
@@ -68,7 +72,7 @@
     "backupToday": "*🤖 Voix de secours utilisée aujourd'hui (les voix Google reviennent après minuit, heure du Pacifique)*",
     "yourVoice": "**Ta voix :** {voice}{isDefault}",
     "default": " (par défaut)",
-    "djRole": "**Rôle DJ :** <@&{roleId}> (nécessaire pour Lire, Pause, Passer, Vider et Quitter)",
+    "djRole": "**Rôle DJ :** <@&{roleId}> (nécessaire pour Lire, Pause, Passer, Vider, Rester et Quitter)",
     "title": "🔊 Pingway Voice",
     "footer": "Lire : colle un lien audio / radio, ou tape des mots pour chercher une radio en ligne.",
     "join": "Rejoindre",
@@ -80,6 +84,8 @@
     "pause": "Pause",
     "skip": "Passer",
     "clear": "Vider la file",
+    "stayOn": "Rester : oui",
+    "stayOff": "Rester : non",
     "chooseLanguage": "Choisis ta voix TTS : langue…",
     "chooseVoice": "Choisis une voix ({language})…",
     "serverDefault": "Utiliser la voix par défaut du serveur",
