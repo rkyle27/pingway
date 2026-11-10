@@ -7,6 +7,8 @@ const QRCode = require('qrcode');
 const { t, discordLocalizations } = require('../utils/i18n');
 const userLanguage = require('../utils/userLanguage');
 const ignClaims = require('../utils/ignClaims');
+const ffxivCollect = require('../utils/ffxivCollect');
+const cardStats = require('../utils/ignCardStats');
 
 const jobIconMap = {
     'Paladin': 'https://raw.githubusercontent.com/rkyle27/classjob-icons/766cb47831435a83f04d904146bd3472501564c5/icons/paladin.png',
@@ -561,6 +563,12 @@ async function generateCard(config, data) {
         }
     }
 
+    // FFXIV Collect stats row (verified Main only, switches on the website): right of the gatherer icons, left of the QR codes
+    if (Array.isArray(config.collectStats) && config.collectStats.length) {
+        const statsLayout = cardStats.layout(config.collectStats, { hasTomestone, hasFFLogs });
+        if (statsLayout.boxes.length) foregroundAssets.push({ input: Buffer.from(cardStats.svg(statsLayout, width, height)), left: 0, top: 0 });
+    }
+
     if (bannerIconBuffer) {
         foregroundAssets.push({ input: bannerIconBuffer, left: 460, top: 25 });
     }
@@ -645,6 +653,20 @@ async function generateCard(config, data) {
         .toBuffer();
 }
 
+// FFXIV Collect stats for the card (the stats switched on for this character); none when the character is not on
+// FFXIV Collect, private, or the site is down with nothing saved
+async function collectStatsFor(userId, lodestoneId) {
+    try {
+        const toggles = await ffxivCollect.readStatToggles(pool, userId, lodestoneId);
+        if (!Object.values(toggles).some(Boolean)) return null;
+        const r = await ffxivCollect.getCharacter(pool, lodestoneId);
+        return r && r.data ? cardStats.itemsFor(r.data, toggles) : null;
+    } catch (e) {
+        console.error('FFXIV Collect stats for the IGN card failed:', e.message);
+        return null;
+    }
+}
+
 function escapeXml(str) {
     if (!str) return '';
     return String(str).replace(/[<>&'"]/g, (c) => {
@@ -659,6 +681,7 @@ function escapeXml(str) {
 }
 
 module.exports = {
+    generateCard, collectStatsFor,
     data: new SlashCommandBuilder()
         .setName('ign')
         .setDescription(t('en', 'ign.cmd.description')).setDescriptionLocalizations(discordLocalizations('ign.cmd.description')),
@@ -675,10 +698,17 @@ module.exports = {
             });
         }
 
+        // Only a verified (claimed) Main is shown; older not verified cards need ✅ Verify first
+        const main = await ffxivCollect.verifiedMain(pool, userId);
+        if (!main || String(main.lodestone_id) !== String(rows[0].lodestone_id)) {
+            return interaction.reply({ content: t(lang, 'ign.needVerified'), flags: [MessageFlags.Ephemeral] });
+        }
+
         await interaction.deferReply();
 
         // v2.2: user_ign_config is the Main character; Tomestone / FFLogs / custom image can be switched off on the website
         const config = ignClaims.cardConfig(rows[0]);
+        config.collectStats = await collectStatsFor(userId, main.lodestone_id);
         const data = await fetchLodestoneData(config.lodestone_id);
 
         if (!data.success) {

@@ -205,5 +205,21 @@
       "sat": "Samedi",
       "sun": "Dimanche"
     }
+  },
+  "mount": {
+    "optionDesc": "🐎 Farm de monture : la monture que tu farmes (facultatif)",
+    "picked": "🐎 Farm de monture : **{name}**",
+    "notFound": "⚠️ Aucune monture trouvée pour **{query}** — l'annonce sera créée sans farm de monture.",
+    "field": "🐎 Farm de monture",
+    "line": "🐎 **Farm de monture :** {name}",
+    "check": "🐎 Vérifier si tu l'as",
+    "have": "✅ Tu as déjà **{name}** !",
+    "need": "❌ Il te manque encore **{name}**.",
+    "unknown": "❔ Pingway ne peut pas savoir si tu as **{name}** (tes montures sont privées sur FFXIV Collect ou pas encore synchronisées).",
+    "notOnCollect": "⚠️ Ton personnage n'est pas encore sur FFXIV Collect. Cherche-le une fois sur [ffxivcollect.com](https://ffxivcollect.com), puis réessaie.",
+    "rarity": "📊 {pct} % des joueurs de FFXIV Collect l'ont",
+    "source": "📍 {text}",
+    "credit": "Données par FFXIV Collect",
+    "noMount": "⚠️ Cette annonce n'a pas de farm de monture."
   }
 }

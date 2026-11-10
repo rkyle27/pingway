@@ -205,5 +205,21 @@
       "sat": "Samstag",
       "sun": "Sonntag"
     }
+  },
+  "mount": {
+    "optionDesc": "🐎 Reittier-Farm: das Reittier, das du farmst (optional)",
+    "picked": "🐎 Reittier-Farm: **{name}**",
+    "notFound": "⚠️ Kein Reittier gefunden für **{query}** — der Eintrag wird ohne Reittier-Farm erstellt.",
+    "field": "🐎 Reittier-Farm",
+    "line": "🐎 **Reittier-Farm:** {name}",
+    "check": "🐎 Prüfen, ob du es hast",
+    "have": "✅ Du hast **{name}** schon!",
+    "need": "❌ Dir fehlt **{name}** noch.",
+    "unknown": "❔ Pingway kann nicht sehen, ob du **{name}** hast (deine Reittiere sind auf FFXIV Collect privat oder noch nicht abgeglichen).",
+    "notOnCollect": "⚠️ Dein Charakter ist noch nicht auf FFXIV Collect. Suche ihn einmal auf [ffxivcollect.com](https://ffxivcollect.com) und versuche es dann noch einmal.",
+    "rarity": "📊 {pct} % der FFXIV-Collect-Spieler haben es",
+    "source": "📍 {text}",
+    "credit": "Daten von FFXIV Collect",
+    "noMount": "⚠️ Dieser Eintrag hat keine Reittier-Farm."
   }
 }

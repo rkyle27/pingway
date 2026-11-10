@@ -205,5 +205,21 @@
       "sat": "土曜日",
       "sun": "日曜日"
     }
+  },
+  "mount": {
+    "optionDesc": "🐎 マウント周回：周回するマウント（任意）",
+    "picked": "🐎 マウント周回：**{name}**",
+    "notFound": "⚠️ **{query}** に一致するマウントが見つかりません — マウント周回なしで募集を作成します。",
+    "field": "🐎 マウント周回",
+    "line": "🐎 **マウント周回：** {name}",
+    "check": "🐎 持っているか確認",
+    "have": "✅ **{name}** はすでに持っています！",
+    "need": "❌ **{name}** はまだ持っていません。",
+    "unknown": "❔ **{name}** を持っているか確認できません（FFXIV Collectでマウントが非公開か、まだ同期されていません）。",
+    "notOnCollect": "⚠️ あなたのキャラクターはまだFFXIV Collectに登録されていません。[ffxivcollect.com](https://ffxivcollect.com) で一度検索してから、もう一度お試しください。",
+    "rarity": "📊 FFXIV Collectプレイヤーの{pct}%が所持",
+    "source": "📍 {text}",
+    "credit": "データ提供：FFXIV Collect",
+    "noMount": "⚠️ この募集にはマウント周回がありません。"
   }
 }

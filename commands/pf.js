@@ -109,7 +109,8 @@ async function loadDB() {
                 notified30Min: rawData.notified30Min ?? row.notified30Min ?? false,
                 notifiedExact: rawData.notifiedExact ?? row.notifiedExact ?? false,
                 recurring: rawData.recurring || null,
-                recurPosted: rawData.recurPosted || false
+                recurPosted: rawData.recurPosted || false,
+                mount: rawData.mount || null
             };
             ensureListingClaims(listing);
             migrateOldJobCodes(listing);
@@ -271,6 +272,71 @@ function getDynamicCounts(listing) {
     };
 }
 
+// ---------- Mount farm (FFXIV Collect master list of mounts, utils/ffxivCollect.js) ----------
+const ffxivCollect = () => require('../utils/ffxivCollect');
+const { fromDiscordLocale } = require('../utils/i18n');
+
+// saved { id, name, icon } -> the same mount with its name in lang (list cached a day; the saved name when the list is not there)
+async function mountFor(saved, lang) {
+    try {
+        const items = await ffxivCollect().getList(db, 'mounts', lang);
+        const m = items.find(x => x.id === Number(saved.id));
+        if (m) return { id: m.id, name: m.name, icon: m.icon || saved.icon || null, owned: m.owned, sources: m.sources };
+    } catch (e) { /* the saved name is fine */ }
+    return { id: Number(saved.id), name: saved.name || '#' + saved.id, icon: saved.icon || null, owned: null, sources: [] };
+}
+
+// /pf mount option: the picked autocomplete value (mount id) or typed text -> { id, name, icon } or null
+async function resolveMount(value, lang) {
+    const v = String(value || '').trim();
+    if (!v) return null;
+    const fc = ffxivCollect();
+    const items = await fc.getList(db, 'mounts', lang);
+    if (/^\d+$/.test(v)) {
+        const m = items.find(x => x.id === Number(v));
+        if (m) return { id: m.id, name: m.name, icon: m.icon || null };
+    }
+    const en = lang === 'en' ? items : await fc.getList(db, 'mounts', 'en');
+    const found = fc.search(v, [{ collection: 'mounts', items, en }], 5);
+    if (!found.length || found[0].score < 0.75) return null;
+    const m = found[0].item;
+    return { id: m.id, name: m.name, icon: m.icon || null };
+}
+
+// Autocomplete: up to 25 mounts matching what was typed (typos ok), in the user's Discord language; rare mounts first when empty
+async function mountChoices(query, lang) {
+    const fc = ffxivCollect();
+    const items = await fc.getList(db, 'mounts', lang);
+    const q = String(query || '').trim();
+    if (!q) return items.slice().sort((a, b) => a.owned - b.owned).slice(0, 25).map(m => ({ name: m.name.slice(0, 100), value: String(m.id) }));
+    const en = lang === 'en' ? items : await fc.getList(db, 'mounts', 'en');
+    return fc.search(q, [{ collection: 'mounts', items, en }], 25).map(r => ({ name: r.item.name.slice(0, 100), value: String(r.item.id) }));
+}
+
+// "🐎 Check if you have it" on a posted listing -> ephemeral answer for the clicking user
+async function mountCheckReply(interaction, lang, listingId) {
+    const fc = ffxivCollect();
+    const dbData = await loadDB();
+    const listing = dbData.pfDatabase.find(l => l.id === listingId);
+    if (!listing) return interaction.reply({ content: t(lang, 'pf.gone'), flags: [MessageFlags.Ephemeral] });
+    if (!listing.mount || !listing.mount.id) return interaction.reply({ content: t(lang, 'pf.mount.noMount'), flags: [MessageFlags.Ephemeral] });
+    const main = await fc.verifiedMain(db, interaction.user.id);
+    if (!main) return interaction.reply({ content: t(lang, 'ign.needVerified'), flags: [MessageFlags.Ephemeral] });
+    await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
+    const mount = await mountFor(listing.mount, lang);
+    const r = await fc.getCharacter(db, main.lodestone_id);
+    const has = r.data ? fc.owns(r.data, 'mounts', mount.id) : null;
+    const lines = [r.state === 'notfound' ? t(lang, 'pf.mount.notOnCollect')
+        : has === true ? t(lang, 'pf.mount.have', { name: mount.name }) : has === false ? t(lang, 'pf.mount.need', { name: mount.name }) : t(lang, 'pf.mount.unknown', { name: mount.name })];
+    if (mount.owned !== null && mount.owned !== undefined) lines.push(t(lang, 'pf.mount.rarity', { pct: Number(mount.owned).toLocaleString(require('../utils/i18n').localeOf(lang), { maximumFractionDigits: 1 }) }));
+    const src = (mount.sources || []).map(s => s.text || s.type).filter(Boolean).slice(0, 2).join(' · ');
+    if (src) lines.push(t(lang, 'pf.mount.source', { text: src }));
+    const embed = new EmbedBuilder().setTitle(mount.name).setDescription(lines.join('\n'))
+        .setColor(has === true ? '#2ecc71' : has === false ? '#e74c3c' : '#f1c40f').setFooter({ text: t(lang, 'pf.mount.credit') });
+    if (mount.icon) embed.setThumbnail(mount.icon);
+    return interaction.editReply({ embeds: [embed] });
+}
+
 async function buildPFEmbedAndRows(listing, guild, authorTag) {
     const lang = userLanguage.forGuild(guild); // the listing is public: the server's language
     ensureListingClaims(listing);
@@ -318,9 +384,12 @@ async function buildPFEmbedAndRows(listing, guild, authorTag) {
     const hammertimeDisplay = targetMs ? ` (${toDiscordTimestamp(targetMs, 'f')} / ${toDiscordTimestamp(targetMs, 'R')})` : '';
 
     const repeatLine = recur.isActive(listing) ? '\n' + t(lang, 'pf.recur.embedLine', { days: recur.daysText(listing.recurring.days, t, lang) }) : '';
+    // Mount farm (FFXIV Collect): the mount's name in the server's language when the list is there, else the saved name
+    const mount = listing.mount && listing.mount.id ? await mountFor(listing.mount, lang) : null;
+    const mountLine = mount ? '\n' + t(lang, 'pf.mount.line', { name: mount.name }) : '';
     const embed = new EmbedBuilder()
         .setTitle(t(lang, 'pf.title', { name: listing.name }))
-        .setDescription(t(lang, 'pf.description', { host: listing.userId, date: listing.date, timestamps: hammertimeDisplay, size: listing.size }) + repeatLine)
+        .setDescription(t(lang, 'pf.description', { host: listing.userId, date: listing.date, timestamps: hammertimeDisplay, size: listing.size }) + repeatLine + mountLine)
         .setColor('#f1c40f')
         .addFields(fieldsArr)
         .setFooter({ text: t(lang, 'pf.footerId', { id: listing.id }) });
@@ -328,11 +397,13 @@ async function buildPFEmbedAndRows(listing, guild, authorTag) {
     if (listing.imageUrl) {
         embed.setImage(listing.imageUrl);
     }
+    if (mount && mount.icon) embed.setThumbnail(mount.icon);
 
     const actionRowComps = [
         new ButtonBuilder().setCustomId(`pf_join_modal_${listing.id}`).setLabel(t(lang, 'pf.join')).setStyle(ButtonStyle.Success),
         new ButtonBuilder().setCustomId(`pf_leave_${listing.id}`).setLabel(t(lang, 'pf.leave')).setStyle(ButtonStyle.Secondary)
     ];
+    if (mount) actionRowComps.push(new ButtonBuilder().setCustomId(`pf_mcheck_${listing.id}`).setLabel(t(lang, 'pf.mount.check')).setStyle(ButtonStyle.Primary));
 
     const actionRowAdminComps = [
         new ButtonBuilder().setCustomId(`pf_pub_edit_${listing.id}`).setLabel(t(lang, 'pf.editDate')).setStyle(ButtonStyle.Secondary),
@@ -554,6 +625,7 @@ async function sendConfirmationDashboard(interaction, session, isUpdate = false)
                 ? t(lang, 'pf.recur.every', { days: recur.daysText(session.data.recurDays, t, lang), time: session.data.time, gmt: gmtOffsetVal >= 0 ? '+' + gmtOffsetVal : gmtOffsetVal })
                 : t(lang, 'pf.recur.none'), inline: false }
         );
+    if (session.data.mount && session.data.mount.id) embed.addFields({ name: t(lang, 'pf.mount.field'), value: session.data.mount.name || '#' + session.data.mount.id, inline: false });
 
     let contentMsg = t(lang, 'pf.preview.generated');
     if (isPast) {
@@ -609,18 +681,46 @@ async function sendRepeatEphemeral(interaction, session) {
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('pf')
-        .setDescription(t('en', 'pf.cmd.description')).setDescriptionLocalizations(discordLocalizations('pf.cmd.description')),
+        .setDescription(t('en', 'pf.cmd.description')).setDescriptionLocalizations(discordLocalizations('pf.cmd.description'))
+        .addStringOption(option =>
+            option.setName('mount')
+                .setDescription(t('en', 'pf.mount.optionDesc')).setDescriptionLocalizations(discordLocalizations('pf.mount.optionDesc'))
+                .setRequired(false)
+                .setAutocomplete(true)
+        ),
+
+    async autocomplete(interaction) {
+        try {
+            const focused = interaction.options.getFocused();
+            const lang = fromDiscordLocale(interaction.locale) || 'en';
+            // Discord waits 3 seconds at most: no answer in time = an empty list (the list is fetched once a day)
+            const choices = await Promise.race([mountChoices(focused, lang), new Promise(r => setTimeout(() => r([]), 2500))]);
+            return await interaction.respond(choices);
+        } catch (e) {
+            return interaction.respond([]).catch(() => {});
+        }
+    },
 
     async execute(interaction) {
         const lang = await userLanguage.forInteraction(interaction);
         if (!global.pfSessions) global.pfSessions = new Map();
-        global.pfSessions.set(interaction.user.id, { step: 'idle', data: {} });
+        // Mount farm (optional): kept in the session until the listing is posted
+        const mountQuery = interaction.options && typeof interaction.options.getString === 'function' ? interaction.options.getString('mount') : null;
+        let mount = null;
+        let mountNote = '';
+        if (mountQuery) {
+            await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
+            mount = await resolveMount(mountQuery, lang).catch(() => null);
+            mountNote = '\n\n' + (mount ? t(lang, 'pf.mount.picked', { name: mount.name }) : t(lang, 'pf.mount.notFound', { query: String(mountQuery).slice(0, 100) }));
+        }
+        global.pfSessions.set(interaction.user.id, { step: 'idle', data: mount ? { mount } : {} });
 
         const row = new ActionRowBuilder().addComponents(
             new ButtonBuilder().setCustomId('pf_create').setLabel(t(lang, 'pf.createNew')).setStyle(ButtonStyle.Primary),
             new ButtonBuilder().setCustomId('pf_check').setLabel(t(lang, 'pf.checkMine')).setStyle(ButtonStyle.Secondary)
         );
 
+        if (mountQuery) return await interaction.editReply({ content: t(lang, 'pf.welcome') + mountNote, components: [row] });
         return await interaction.reply({
             content: t(lang, 'pf.welcome'),
             components: [row],
@@ -644,6 +744,11 @@ module.exports = {
 
         if (interaction.isButton() || interaction.isStringSelectMenu()) {
             const cid = interaction.customId;
+
+            // Mount farm: "🐎 Check if you have it" (anyone, ephemeral)
+            if (cid.startsWith('pf_mcheck_')) {
+                return await mountCheckReply(interaction, lang, cid.replace('pf_mcheck_', ''));
+            }
 
             if (cid.startsWith('pf_pub_edit_')) {
                 const listingId = cid.replace('pf_pub_edit_', '');
@@ -680,6 +785,7 @@ module.exports = {
                         name: old.name, size: old.size,
                         tanks: old.tanks, healers: old.healers, dps: old.dps, meleedps: old.meleedps, range: old.range, caster: old.caster,
                         imageUrl: old.imageUrl || null,
+                        mount: old.mount || null,
                         gmt: gmtMatch ? parseInt(gmtMatch[1], 10) : 9,
                         repostFrom: { listingId: old.id, guildId: old.guildId, channelId: old.channelId }
                     }
@@ -828,7 +934,8 @@ module.exports = {
             }
 
             if (cid === 'pf_create') {
-                global.pfSessions.set(userId, { step: 'modal_duty', data: {} });
+                const before = global.pfSessions.get(userId);
+                global.pfSessions.set(userId, { step: 'modal_duty', data: before && before.data && before.data.mount ? { mount: before.data.mount } : {} });
 
                 const modal = new ModalBuilder()
                     .setCustomId('pf_modal_duty')
@@ -1028,6 +1135,7 @@ module.exports = {
                     notified30Min: false,
                     notifiedExact: false
                 };
+                if (session.data.mount && session.data.mount.id) listing.mount = session.data.mount;
                 // Weekly repeat: this listing starts the series (the scheduler posts the next one when it starts)
                 const recurDays = recur.cleanDays(session.data.recurDays);
                 if (recurDays.length) listing.recurring = { days: recurDays, active: true, series: listing.id };
@@ -1545,4 +1653,5 @@ module.exports = {
 
 // Used by the weekly repeat (utils/pfRecurring.js) to post the next listing exactly like /pf does
 module.exports.buildPFEmbedAndRows = buildPFEmbedAndRows;
+module.exports._mount = { resolveMount, mountChoices, mountFor };
 module.exports.saveListingToDB = saveListingToDB;

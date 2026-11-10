@@ -38,6 +38,13 @@ module.exports = {
                 });
             }
 
+            // Autocomplete (e.g. /pf mount): the command's autocomplete() answers; never throws back to Discord
+            if (typeof interaction.isAutocomplete === 'function' && interaction.isAutocomplete()) {
+                const acCommand = client.commands.get(interaction.commandName);
+                if (acCommand && typeof acCommand.autocomplete === 'function') return await acCommand.autocomplete(interaction);
+                return await interaction.respond([]).catch(() => { });
+            }
+
             // 1. Handle Slash Commands
             if (interaction.isChatInputCommand()) {
                 const commandName = interaction.commandName;
@@ -202,6 +209,14 @@ module.exports = {
                     const vcCommand = client.commands.get('vc');
                     if (vcCommand && typeof vcCommand.handleInteraction === 'function') {
                         return await vcCommand.handleInteraction(interaction);
+                    }
+                }
+
+                // /collect panel (FFXIV Collect)
+                if (cid.startsWith('collect_')) {
+                    const collectCommand = client.commands.get('collect');
+                    if (collectCommand && typeof collectCommand.handleInteraction === 'function') {
+                        return await collectCommand.handleInteraction(interaction);
                     }
                 }
 

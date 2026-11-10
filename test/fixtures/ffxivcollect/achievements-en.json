@@ -1,0 +1,63 @@
+{
+  "query": {},
+  "count": 3,
+  "results": [
+    {
+      "id": 1,
+      "name": "To Crush Your Enemies I",
+      "description": "Defeat 100 enemies.",
+      "points": 10,
+      "order": 1,
+      "patch": "2.0",
+      "owned": "88.0%",
+      "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0901_hr1.tex&format=webp",
+      "category": {
+        "id": 1,
+        "name": "Battle"
+      },
+      "type": {
+        "id": 1,
+        "name": "Battle"
+      },
+      "reward": {}
+    },
+    {
+      "id": 2,
+      "name": "Wood You Believe It IV",
+      "description": "Complete 100 Gold Saucer events.",
+      "points": 20,
+      "order": 2,
+      "patch": "2.0",
+      "owned": "5.5%",
+      "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0902_hr1.tex&format=webp",
+      "category": {
+        "id": 1,
+        "name": "Battle"
+      },
+      "type": {
+        "id": 1,
+        "name": "Battle"
+      },
+      "reward": {}
+    },
+    {
+      "id": 3,
+      "name": "Heavensward Hunt Mastery",
+      "description": "Complete hunt bills.",
+      "points": 10,
+      "order": 3,
+      "patch": "2.0",
+      "owned": "25.0%",
+      "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0903_hr1.tex&format=webp",
+      "category": {
+        "id": 1,
+        "name": "Battle"
+      },
+      "type": {
+        "id": 1,
+        "name": "Battle"
+      },
+      "reward": {}
+    }
+  ]
+}

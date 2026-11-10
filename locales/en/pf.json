@@ -205,5 +205,21 @@
       "sat": "Saturday",
       "sun": "Sunday"
     }
+  },
+  "mount": {
+    "optionDesc": "🐎 Mount farm: the mount you farm (optional)",
+    "picked": "🐎 Mount farm: **{name}**",
+    "notFound": "⚠️ No mount found for **{query}** — the listing is made without a mount farm.",
+    "field": "🐎 Mount farm",
+    "line": "🐎 **Mount farm:** {name}",
+    "check": "🐎 Check if you have it",
+    "have": "✅ You already have **{name}**!",
+    "need": "❌ You still need **{name}**.",
+    "unknown": "❔ Pingway can't tell if you have **{name}** (your mounts are private on FFXIV Collect or not synced yet).",
+    "notOnCollect": "⚠️ Your character isn't on FFXIV Collect yet. Search for it once on [ffxivcollect.com](https://ffxivcollect.com), then try again.",
+    "rarity": "📊 {pct}% of FFXIV Collect players have it",
+    "source": "📍 {text}",
+    "credit": "Data by FFXIV Collect",
+    "noMount": "⚠️ This listing has no mount farm."
   }
 }

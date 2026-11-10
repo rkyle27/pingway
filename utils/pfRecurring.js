@@ -152,7 +152,8 @@ async function handleStarted(client, row, listing, now = Date.now()) {
         status: 'active',
         notified30Min: false,
         notifiedExact: false,
-        recurring: { days: cleanDays(listing.recurring.days), active: true, series }
+        recurring: { days: cleanDays(listing.recurring.days), active: true, series },
+        mount: listing.mount || null // Mount farm: the next week farms the same mount
     };
 
     // 3) save the row first (no message yet), then post, then save the message id

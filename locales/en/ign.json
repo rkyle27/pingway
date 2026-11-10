@@ -4,5 +4,6 @@
   },
   "notConfigured": "⚠️ You have not configured your FFXIV character data yet! Please use `/ignconfig` to set it up.",
   "fetchFailed": "❌ Failed to fetch your Lodestone character data. Please check your Lodestone ID.",
-  "cardFailed": "❌ Failed to generate character card image; cardBuffer is empty."
+  "cardFailed": "❌ Failed to generate character card image; cardBuffer is empty.",
+  "needVerified": "⚠️ You need a verified character first. Use `/ignconfig` → **Link Lodestone**, paste the `pingway-` code into your Lodestone bio, then press **✅ Verify**. You can also do it in **My Settings → IGN** on pingway.app."
 }

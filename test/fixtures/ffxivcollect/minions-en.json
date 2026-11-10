@@ -1,0 +1,115 @@
+{
+  "query": {},
+  "count": 4,
+  "results": [
+    {
+      "id": 1,
+      "name": "Cait Sith Doll",
+      "description": "",
+      "enhanced_description": "",
+      "tooltip": "",
+      "patch": "2.0",
+      "item_id": 1001,
+      "tradeable": true,
+      "behavior": {
+        "id": 1,
+        "name": "Normal"
+      },
+      "race": {
+        "id": 1,
+        "name": "Critter"
+      },
+      "image": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0501_hr1.tex&format=webp",
+      "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0501_hr1.tex&format=webp",
+      "owned": "70.0%",
+      "sources": [
+        {
+          "type": "Purchase",
+          "text": "2,000 gil",
+          "related_type": null,
+          "related_id": null
+        }
+      ],
+      "verminion": {}
+    },
+    {
+      "id": 2,
+      "name": "Wind-up Cursor",
+      "description": "",
+      "enhanced_description": "",
+      "tooltip": "",
+      "patch": "2.0",
+      "item_id": 1002,
+      "tradeable": true,
+      "behavior": {
+        "id": 1,
+        "name": "Normal"
+      },
+      "race": {
+        "id": 1,
+        "name": "Critter"
+      },
+      "image": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0502_hr1.tex&format=webp",
+      "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0502_hr1.tex&format=webp",
+      "owned": "50.5%",
+      "sources": [
+        {
+          "type": "Purchase",
+          "text": "2,000 gil",
+          "related_type": null,
+          "related_id": null
+        }
+      ],
+      "verminion": {}
+    },
+    {
+      "id": 3,
+      "name": "Black Coeurl",
+      "description": "",
+      "enhanced_description": "",
+      "tooltip": "",
+      "patch": "2.0",
+      "item_id": 1003,
+      "tradeable": true,
+      "behavior": {
+        "id": 1,
+        "name": "Normal"
+      },
+      "race": {
+        "id": 1,
+        "name": "Critter"
+      },
+      "image": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0503_hr1.tex&format=webp",
+      "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0503_hr1.tex&format=webp",
+      "owned": "20.0%",
+      "sources": [
+        {
+          "type": "Purchase",
+          "text": "2,000 gil",
+          "related_type": null,
+          "related_id": null
+        }
+      ],
+      "verminion": {}
+    },
+    {
+      "id": 4,
+      "name": "Wind-up Cursor (variant)",
+      "description": "",
+      "patch": "2.0",
+      "item_id": null,
+      "tradeable": false,
+      "behavior": {
+        "id": 1,
+        "name": "Normal"
+      },
+      "race": {
+        "id": 1,
+        "name": "Critter"
+      },
+      "image": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0504_hr1.tex&format=webp",
+      "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0504_hr1.tex&format=webp",
+      "verminion": {}
+    }
+  ]
+}

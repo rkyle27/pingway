@@ -1,10 +1,11 @@
-// In-memory stand-in for the MySQL tables of the IGN Card claims (lib/ign.js / the bot's utils/ignClaims.js) and the
-// Firmament timer, for the tests. It understands exactly the SQL those files send (anything else on these tables throws).
+// In-memory stand-in for the MySQL tables of the IGN Card claims (lib/ign.js / the bot's utils/ignClaims.js), the
+// Firmament timer and the FFXIV Collect cache + IGN card stat switches (utils/ffxivCollect.js / lib/collectStats.js), for the tests. It understands exactly the SQL those files send (anything else on these tables throws).
 // Other tables: SELECT -> no rows, writes -> ok (the tests only look at these tables).
 'use strict';
 
 function makeDb() {
-    const db = { chars: [], codes: [], config: new Map(), firm: new Map(), cols: new Set(), nextId: 1, log: [] };
+    const db = { chars: [], codes: [], config: new Map(), firm: new Map(), cols: new Set(), nextId: 1, log: [], fcChars: new Map(), fcLists: new Map() };
+    const CS = ['cs_mounts', 'cs_minions', 'cs_achievements', 'cs_orchestrions', 'cs_cards']; // IGN card stat switches (FFXIV Collect)
     const dup = msg => Object.assign(new Error('Duplicate entry ' + msg), { code: 'ER_DUP_ENTRY', errno: 1062 });
 
     function parseInsert(s, params) {
@@ -56,6 +57,42 @@ function makeDb() {
             const [main_job, portrait_url, full_photo_url, portrait_toggle, tomestone_url, fflogs_url, id] = params;
             db.chars.filter(r => r.id === id).forEach(r => Object.assign(r, { main_job, portrait_url, full_photo_url, portrait_toggle, tomestone_url, fflogs_url }));
             return [{}];
+        }
+
+        // ---- FFXIV Collect: card stat switches on ign_characters, saved character data, master lists ----
+        if (s === 'SELECT ' + CS.join(', ') + ' FROM ign_characters WHERE user_id = ? AND lodestone_id = ?') {
+            const r = db.chars.find(x => x.user_id === params[0] && x.lodestone_id === params[1]);
+            return [r ? [Object.fromEntries(CS.map(c => [c, r[c] === undefined ? null : r[c]]))] : []];
+        }
+        if (s === 'SELECT lodestone_id, ' + CS.join(', ') + ' FROM ign_characters WHERE user_id = ?') {
+            return [db.chars.filter(r => r.user_id === params[0]).map(r => Object.assign({ lodestone_id: r.lodestone_id }, Object.fromEntries(CS.map(c => [c, r[c] === undefined ? null : r[c]]))))];
+        }
+        if (s === 'UPDATE ign_characters SET ' + CS.map(c => c + ' = ?').join(', ') + ' WHERE user_id = ? AND lodestone_id = ?') {
+            const r = db.chars.find(x => x.user_id === params[5] && x.lodestone_id === params[6]);
+            if (r) CS.forEach((c, i) => { r[c] = params[i]; });
+            return [{ affectedRows: r ? 1 : 0 }];
+        }
+        if (s === 'SELECT user_id, lodestone_id, character_name, world FROM ign_characters WHERE is_main = 1 AND claim_key IS NOT NULL') {
+            return [db.chars.filter(r => Number(r.is_main) === 1 && r.claim_key).map(r => ({ user_id: r.user_id, lodestone_id: r.lodestone_id, character_name: r.character_name, world: r.world }))];
+        }
+        if (s === 'SELECT lodestone_id, status, data, fetched_at, checked_at, manual_at FROM ffxiv_collect_chars WHERE lodestone_id = ?') {
+            const r = db.fcChars.get(params[0]); return [r ? [{ ...r }] : []];
+        }
+        if ((m = s.match(/^SELECT lodestone_id, status, data, fetched_at FROM ffxiv_collect_chars WHERE lodestone_id IN \(([?, ]+)\)$/))) {
+            return [params.map(id => db.fcChars.get(id)).filter(Boolean).map(r => ({ lodestone_id: r.lodestone_id, status: r.status, data: r.data, fetched_at: r.fetched_at }))];
+        }
+        if (/^INSERT INTO ffxiv_collect_chars \(lodestone_id, status, data, fetched_at, checked_at, manual_at\) VALUES/.test(s)) {
+            const [lodestone_id, status, data, fetched_at, checked_at, manual_at] = params;
+            db.fcChars.set(lodestone_id, { lodestone_id, status, data, fetched_at, checked_at, manual_at });
+            return [{ affectedRows: 1 }];
+        }
+        if (s === 'UPDATE ffxiv_collect_chars SET manual_at = ? WHERE lodestone_id = ?') { const r = db.fcChars.get(params[1]); if (r) r.manual_at = params[0]; return [{}]; }
+        if (s === 'SELECT data, fetched_at FROM ffxiv_collect_lists WHERE collection = ? AND lang = ?') {
+            const r = db.fcLists.get(params[0] + ':' + params[1]); return [r ? [{ ...r }] : []];
+        }
+        if (/^INSERT INTO ffxiv_collect_lists \(collection, lang, data, fetched_at\) VALUES/.test(s)) {
+            db.fcLists.set(params[0] + ':' + params[1], { data: params[2], fetched_at: params[3] });
+            return [{ affectedRows: 1 }];
         }
 
         // ---- user_ign_config ----
@@ -120,7 +157,7 @@ function makeDb() {
             db.firm.set(ins.row.user_id, old ? Object.assign(old, { next_celebration_timestamp: ins.row.next_celebration_timestamp, cycle_length: ins.row.cycle_length }) : ins.row);
             return [{ affectedRows: 1 }];
         }
-        if (/\b(ign_characters|ign_claim_codes|user_ign_config|firmament_personal_data)\b/.test(s)) throw new Error('Unexpected SQL in test: ' + s);
+        if (/\b(ign_characters|ign_claim_codes|user_ign_config|firmament_personal_data|ffxiv_collect_chars|ffxiv_collect_lists)\b/.test(s) && !/^CREATE TABLE/.test(s)) throw new Error('Unexpected SQL in test: ' + s);
         if (/^SELECT/.test(s)) return [[]];
         return [{ affectedRows: 0 }];
     }

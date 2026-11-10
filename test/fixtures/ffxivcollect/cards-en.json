@@ -1,0 +1,132 @@
+{
+  "query": {},
+  "count": 3,
+  "results": [
+    {
+      "id": 1,
+      "name": "Dodo",
+      "description": "",
+      "stars": 1,
+      "patch": "2.0",
+      "sell_price": 100,
+      "order_group": 1,
+      "order": 1,
+      "deck_order": 1,
+      "number": "No. 1",
+      "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0701_hr1.tex&format=webp",
+      "image": "https://ffxivcollect.com/images/cards/large/1.png",
+      "link": "https://ffxivcollect.com/triad/cards/1",
+      "stats": {
+        "numeric": {
+          "top": 1,
+          "right": 2,
+          "bottom": 3,
+          "left": 4
+        },
+        "formatted": {
+          "top": "1",
+          "right": "2",
+          "bottom": "3",
+          "left": "4"
+        }
+      },
+      "type": {
+        "id": 0,
+        "name": "Normal"
+      },
+      "owned": "99.0%",
+      "sources": [
+        {
+          "type": "NPC",
+          "text": "Triple Triad Master",
+          "related_type": null,
+          "related_id": null
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Tonberry",
+      "description": "",
+      "stars": 1,
+      "patch": "2.0",
+      "sell_price": 100,
+      "order_group": 1,
+      "order": 2,
+      "deck_order": 2,
+      "number": "No. 2",
+      "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0702_hr1.tex&format=webp",
+      "image": "https://ffxivcollect.com/images/cards/large/2.png",
+      "link": "https://ffxivcollect.com/triad/cards/2",
+      "stats": {
+        "numeric": {
+          "top": 1,
+          "right": 2,
+          "bottom": 3,
+          "left": 4
+        },
+        "formatted": {
+          "top": "1",
+          "right": "2",
+          "bottom": "3",
+          "left": "4"
+        }
+      },
+      "type": {
+        "id": 0,
+        "name": "Normal"
+      },
+      "owned": "80.0%",
+      "sources": [
+        {
+          "type": "NPC",
+          "text": "Triple Triad Master",
+          "related_type": null,
+          "related_id": null
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Bahamut",
+      "description": "",
+      "stars": 1,
+      "patch": "2.0",
+      "sell_price": 100,
+      "order_group": 1,
+      "order": 3,
+      "deck_order": 3,
+      "number": "No. 3",
+      "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0703_hr1.tex&format=webp",
+      "image": "https://ffxivcollect.com/images/cards/large/3.png",
+      "link": "https://ffxivcollect.com/triad/cards/3",
+      "stats": {
+        "numeric": {
+          "top": 1,
+          "right": 2,
+          "bottom": 3,
+          "left": 4
+        },
+        "formatted": {
+          "top": "1",
+          "right": "2",
+          "bottom": "3",
+          "left": "4"
+        }
+      },
+      "type": {
+        "id": 0,
+        "name": "Normal"
+      },
+      "owned": "2.0%",
+      "sources": [
+        {
+          "type": "NPC",
+          "text": "Triple Triad Master",
+          "related_type": null,
+          "related_id": null
+        }
+      ]
+    }
+  ]
+}
