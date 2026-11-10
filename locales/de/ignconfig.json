@@ -65,5 +65,29 @@
     "Melee": "Nahkampf",
     "Range": "Physischer Fernkampf",
     "Caster": "Magischer Fernkampf"
+  },
+  "claim": {
+    "title": "🔐 Beanspruche deinen Charakter",
+    "steps": "1. Kopier diesen Code:\n```{code}```\n2. Öffne deine [Lodestone-Charakterseite]({link}), bearbeite den Text deines **Charakterprofils**, füg den Code irgendwo ein und speichere.\n3. Klick unten auf **✅ Prüfen**.\n\nDer Code funktioniert einmal und läuft {expires} ab. Der Lodestone kann ein paar Minuten brauchen, bis Änderungen sichtbar sind. Danach kannst du den Code wieder aus deinem Profil entfernen.",
+    "btnVerify": "✅ Prüfen",
+    "verified": "✅ **{name}** ist jetzt beansprucht und dein Hauptcharakter!",
+    "verifiedMoved": "✅ **{name}** ist jetzt beansprucht und dein Hauptcharakter! Er wurde von einem anderen Discord-Konto übernommen.",
+    "madeMain": "⭐ Dieser Charakter ist jetzt dein Hauptcharakter.",
+    "limitFree": "❌ Mehr als {free} Charaktere brauchen Unterstützer-Vorteile (bis zu {max} damit). Schalte sie in Meine Einstellungen auf pingway.app ein, oder gib dort zuerst einen Charakter frei.",
+    "limitMax": "❌ Du kannst bis zu {max} Charaktere beanspruchen. Gib zuerst einen in Meine Einstellungen auf pingway.app frei.",
+    "reason": {
+      "badId": "❌ Ungültiges Format für Lodestone-URL oder -ID.",
+      "tooManyCodes": "❌ Heute zu viele Codes. Versuch es bitte morgen wieder.",
+      "noCode": "❌ Kein offener Code. Klick auf **Lodestone verknüpfen**, um einen zu bekommen.",
+      "used": "❌ Dieser Code wurde schon benutzt. Klick auf **Lodestone verknüpfen**, um einen neuen zu bekommen.",
+      "expired": "❌ Dieser Code ist abgelaufen. Klick auf **Lodestone verknüpfen**, um einen neuen zu bekommen.",
+      "wait": "⏳ Warte bitte {n} Sekunden, bevor du noch einmal prüfst.",
+      "tooManyChecks": "❌ Zu viele Prüfungen für diesen Code. Klick auf **Lodestone verknüpfen**, um einen neuen zu bekommen.",
+      "notfound": "❌ Dieser Charakter wurde im Lodestone nicht gefunden. Prüf den Link.",
+      "private": "🔒 Dein Lodestone-Profil ist privat. Mach es öffentlich und klick dann noch einmal auf **✅ Prüfen**.",
+      "missing": "🔍 Der Code ist noch nicht in deinem Lodestone-Profil. Speicher ihn dort, warte eine Minute und klick noch einmal auf **✅ Prüfen**.",
+      "wrong": "🔍 Dein Lodestone-Profil hat einen anderen Pingway-Code. Füg den neuesten Code ein und klick noch einmal auf **✅ Prüfen**.",
+      "error": "⚠️ Der Lodestone ist gerade nicht erreichbar. Versuch es bitte in ein paar Minuten noch einmal."
+    }
   }
 }

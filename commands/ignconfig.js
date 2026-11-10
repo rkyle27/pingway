@@ -14,6 +14,8 @@ const {
 const { pool } = require('../utils/db');
 const { t, tOr, discordLocalizations } = require('../utils/i18n');
 const userLanguage = require('../utils/userLanguage');
+const ignClaims = require('../utils/ignClaims'); // v2.2: Link Lodestone = claim with a code in the Lodestone profile
+const { ownerHasMembership } = require('../utils/membership');
 
 function extractLodestoneId(input) {
     if (!input) return null;
@@ -207,6 +209,16 @@ module.exports = {
             return interaction.showModal(modal);
         }
 
+        if (interaction.customId === 'ign_btn_verify') {
+            await interaction.deferUpdate().catch(() => { });
+            const perks = await ownerHasMembership(userId);
+            const r = await ignClaims.checkClaim(pool, userId, null, { perks, makeMain: true });
+            if (!r.ok) return interaction.followUp({ content: claimReason(r, lang), flags: [MessageFlags.Ephemeral] }).catch(() => { });
+            global.ignSessions[userId] = await loadSession(userId);
+            await sendConfigDashboard(interaction, false, lang);
+            return interaction.followUp({ content: t(lang, r.moved ? 'ignconfig.claim.verifiedMoved' : 'ignconfig.claim.verified', { name: r.name || r.lodestoneId }), flags: [MessageFlags.Ephemeral] }).catch(() => { });
+        }
+
         if (interaction.customId === 'ign_btn_back_dashboard') {
             return sendConfigDashboard(interaction, false, lang);
         }
@@ -276,9 +288,17 @@ module.exports = {
             if (!extractedId) {
                 return interaction.followUp({ content: t(lang, 'ignconfig.invalidLodestone'), flags: [MessageFlags.Ephemeral] }).catch(() => { });
             }
-            session.lodestone_id = extractedId;
-            await saveSessionToDb(userId, session);
-            return sendConfigDashboard(interaction, false, lang);
+            // v2.2: a character is only linked after the claim code is found in its Lodestone profile (ign_btn_verify)
+            const perks = await ownerHasMembership(userId);
+            const claim = await ignClaims.startClaim(pool, userId, extractedId, { perks });
+            if (!claim.ok && claim.reason === 'alreadyYours') {
+                await ignClaims.setMain(pool, userId, extractedId);
+                global.ignSessions[userId] = await loadSession(userId);
+                await sendConfigDashboard(interaction, false, lang);
+                return interaction.followUp({ content: t(lang, 'ignconfig.claim.madeMain'), flags: [MessageFlags.Ephemeral] }).catch(() => { });
+            }
+            if (!claim.ok) return interaction.followUp({ content: claimReason(claim, lang), flags: [MessageFlags.Ephemeral] }).catch(() => { });
+            return sendClaimPrompt(interaction, claim, lang);
         }
 
         if (interaction.customId === 'ign_modal_portrait') {
@@ -328,6 +348,8 @@ async function saveSessionToDb(userId, session) {
             session.lodestone_id, mainJob, portrait, fullPhoto, session.portrait_toggle, tomestoneUrl, fflogsUrl
         ]
     );
+    // v2.2: the same fields on the claimed character (website IGN Card)
+    await ignClaims.syncFromConfig(pool, userId).catch(err => console.error('❌ [IGN] Sync failed:', err.message));
 }
 
 async function sendConfigDashboard(interaction, isInitial = false, lang = 'en') {
@@ -370,4 +392,42 @@ async function sendConfigDashboard(interaction, isInitial = false, lang = 'en') 
         }
         return interaction.update({ embeds: [embed], components: [row1, row2] }).catch(() => { });
     }
+}
+
+// ---------- v2.2 claim (Link Lodestone) ----------
+async function loadSession(userId) {
+    const [rows] = await pool.execute('SELECT * FROM user_ign_config WHERE user_id = ?', [userId]);
+    const existing = rows.length > 0 ? rows[0] : null;
+    return {
+        lodestone_id: existing ? existing.lodestone_id : '',
+        main_job: existing && existing.main_job ? existing.main_job : '',
+        portrait_url: existing && existing.portrait_url ? existing.portrait_url : '',
+        full_photo_url: existing && existing.full_photo_url ? existing.full_photo_url : '',
+        portrait_toggle: existing ? Boolean(existing.portrait_toggle) : true,
+        tomestone_url: existing && existing.tomestone_url ? existing.tomestone_url : '',
+        fflogs_url: existing && existing.fflogs_url ? existing.fflogs_url : ''
+    };
+}
+
+function claimReason(r, lang) {
+    if (r.reason === 'limit') return r.perks ? t(lang, 'ignconfig.claim.limitMax', { max: r.max }) : t(lang, 'ignconfig.claim.limitFree', { free: r.free, max: r.max });
+    if (r.reason === 'wait') return t(lang, 'ignconfig.claim.reason.wait', { n: r.seconds || 15 });
+    return tOr(lang, 'ignconfig.claim.reason.' + r.reason, t(lang, 'ignconfig.claim.reason.error'));
+}
+
+async function sendClaimPrompt(interaction, claim, lang) {
+    const embed = new EmbedBuilder()
+        .setColor(0x9b6bff)
+        .setTitle(t(lang, 'ignconfig.claim.title'))
+        .setDescription(t(lang, 'ignconfig.claim.steps', {
+            code: claim.code,
+            link: 'https://na.finalfantasyxiv.com/lodestone/character/' + claim.lodestoneId + '/',
+            expires: '<t:' + Math.floor(claim.expiresAt / 1000) + ':R>'
+        }));
+    const row = new ActionRowBuilder().addComponents(
+        new ButtonBuilder().setCustomId('ign_btn_verify').setLabel(t(lang, 'ignconfig.claim.btnVerify')).setStyle(ButtonStyle.Success),
+        new ButtonBuilder().setCustomId('ign_btn_back_dashboard').setLabel(t(lang, 'ignconfig.backDashboard')).setStyle(ButtonStyle.Secondary)
+    );
+    if (interaction.deferred || interaction.replied) return interaction.editReply({ embeds: [embed], components: [row] }).catch(() => { });
+    return interaction.update({ embeds: [embed], components: [row] }).catch(() => { });
 }

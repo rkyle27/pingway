@@ -6,6 +6,7 @@ const sharp = require('sharp');
 const QRCode = require('qrcode');
 const { t, discordLocalizations } = require('../utils/i18n');
 const userLanguage = require('../utils/userLanguage');
+const ignClaims = require('../utils/ignClaims');
 
 const jobIconMap = {
     'Paladin': 'https://raw.githubusercontent.com/rkyle27/classjob-icons/766cb47831435a83f04d904146bd3472501564c5/icons/paladin.png',
@@ -676,7 +677,8 @@ module.exports = {
 
         await interaction.deferReply();
 
-        const config = rows[0];
+        // v2.2: user_ign_config is the Main character; Tomestone / FFLogs / custom image can be switched off on the website
+        const config = ignClaims.cardConfig(rows[0]);
         const data = await fetchLodestoneData(config.lodestone_id);
 
         if (!data.success) {

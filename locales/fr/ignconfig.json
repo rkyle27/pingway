@@ -65,5 +65,29 @@
     "Melee": "mêlée",
     "Range": "distance physique",
     "Caster": "distance magique"
+  },
+  "claim": {
+    "title": "🔐 Revendique ton personnage",
+    "steps": "1. Copie ce code :\n```{code}```\n2. Ouvre ta [page de personnage sur le Lodestone]({link}), modifie le texte de ton **profil de personnage**, colle le code n'importe où et enregistre.\n3. Clique sur **✅ Vérifier** ci-dessous.\n\nLe code ne marche qu'une fois et expire {expires}. Le Lodestone peut mettre quelques minutes à afficher les changements. Tu pourras retirer le code de ton profil ensuite.",
+    "btnVerify": "✅ Vérifier",
+    "verified": "✅ **{name}** est revendiqué et devient ton personnage principal !",
+    "verifiedMoved": "✅ **{name}** est revendiqué et devient ton personnage principal ! Il a été retiré d'un autre compte Discord.",
+    "madeMain": "⭐ Ce personnage est maintenant ton personnage principal.",
+    "limitFree": "❌ Plus de {free} personnages demandent les avantages de soutien (jusqu'à {max} avec eux). Active-les dans Mes paramètres sur pingway.app, ou retire d'abord un personnage là-bas.",
+    "limitMax": "❌ Tu peux revendiquer jusqu'à {max} personnages. Retire d'abord un personnage dans Mes paramètres sur pingway.app.",
+    "reason": {
+      "badId": "❌ Format d'URL ou d'ID Lodestone invalide.",
+      "tooManyCodes": "❌ Trop de codes aujourd'hui. Réessaie demain.",
+      "noCode": "❌ Aucun code en cours. Clique sur **Lier le Lodestone** pour en obtenir un.",
+      "used": "❌ Ce code a déjà été utilisé. Clique sur **Lier le Lodestone** pour en obtenir un nouveau.",
+      "expired": "❌ Ce code a expiré. Clique sur **Lier le Lodestone** pour en obtenir un nouveau.",
+      "wait": "⏳ Attends {n} secondes avant de vérifier à nouveau.",
+      "tooManyChecks": "❌ Trop de vérifications pour ce code. Clique sur **Lier le Lodestone** pour en obtenir un nouveau.",
+      "notfound": "❌ Ce personnage est introuvable sur le Lodestone. Vérifie le lien.",
+      "private": "🔒 Ton profil Lodestone est privé. Rends-le public, puis clique à nouveau sur **✅ Vérifier**.",
+      "missing": "🔍 Le code n'est pas encore dans ton profil Lodestone. Enregistre-le, attends une minute et clique à nouveau sur **✅ Vérifier**.",
+      "wrong": "🔍 Ton profil Lodestone contient un autre code Pingway. Colle le code le plus récent et clique à nouveau sur **✅ Vérifier**.",
+      "error": "⚠️ Impossible de joindre le Lodestone pour le moment. Réessaie dans quelques minutes."
+    }
   }
 }

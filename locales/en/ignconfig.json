@@ -65,5 +65,29 @@
     "Melee": "Melee",
     "Range": "Range",
     "Caster": "Caster"
+  },
+  "claim": {
+    "title": "🔐 Claim your character",
+    "steps": "1. Copy this code:\n```{code}```\n2. Open your [Lodestone character page]({link}), edit your **character profile** text, paste the code anywhere in it and save.\n3. Click **✅ Verify** below.\n\nThe code works once and expires {expires}. The Lodestone can take a few minutes to show changes. You can remove the code from your profile afterwards.",
+    "btnVerify": "✅ Verify",
+    "verified": "✅ **{name}** is now claimed and set as your Main!",
+    "verifiedMoved": "✅ **{name}** is now claimed and set as your Main! It was moved from another Discord account.",
+    "madeMain": "⭐ This character is now your Main.",
+    "limitFree": "❌ More than {free} characters need Supporter Perks (up to {max} with them). Turn them on in My Settings on pingway.app, or unclaim a character there first.",
+    "limitMax": "❌ You can claim up to {max} characters. Unclaim one in My Settings on pingway.app first.",
+    "reason": {
+      "badId": "❌ Invalid Lodestone URL or ID format.",
+      "tooManyCodes": "❌ Too many claim codes today. Please try again tomorrow.",
+      "noCode": "❌ No open claim code. Click **Link Lodestone** to get one.",
+      "used": "❌ This claim code was already used. Click **Link Lodestone** to get a new one.",
+      "expired": "❌ This claim code has expired. Click **Link Lodestone** to get a new one.",
+      "wait": "⏳ Please wait {n} seconds before checking again.",
+      "tooManyChecks": "❌ Too many checks for this code. Click **Link Lodestone** to get a new one.",
+      "notfound": "❌ That Lodestone character was not found. Check the link.",
+      "private": "🔒 Your Lodestone profile is private. Make it public, then click **✅ Verify** again.",
+      "missing": "🔍 The code isn't in your Lodestone profile yet. Save it there, wait a minute and click **✅ Verify** again.",
+      "wrong": "🔍 Your Lodestone profile has a different Pingway code. Paste the newest code and click **✅ Verify** again.",
+      "error": "⚠️ Couldn't reach the Lodestone right now. Please try again in a few minutes."
+    }
   }
 }
