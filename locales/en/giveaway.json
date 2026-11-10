@@ -1,0 +1,20 @@
+{
+  "title": "🎉 You won a Pingway giveaway!",
+  "body": "Congratulations! Pingway picked you at random from the members of **{server}**.",
+  "reward": "**Your reward:** {reward}",
+  "points": "{n} Pingway points",
+  "kofiMember": "Ko-fi membership for {n} days",
+  "claimBy": "Press **Claim** before {time} to get it.",
+  "autoNote": "It is added to your account as soon as you claim it.",
+  "manualNote": "After you claim it, the Pingway team sends it to you.",
+  "footer": "Pingway giveaway #{id}",
+  "claim": "Claim",
+  "claimed": "Claimed",
+  "claimedAuto": "✅ Claimed! Your reward is added to your account in a few seconds.",
+  "claimedManual": "✅ Claimed! The Pingway team will send you your reward soon.",
+  "already": "You already claimed this reward. 💜",
+  "expired": "Sorry, this giveaway has ended: it was not claimed within {days} days.",
+  "gone": "This giveaway is no longer available.",
+  "notYours": "This reward belongs to someone else.",
+  "failed": "Something went wrong. Please try again in a moment."
+}

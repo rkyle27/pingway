@@ -1,4 +1,4 @@
-// Dev page tables (Dev / Staff logins, audit log, command queue, homepage countdown + poll). This file is IDENTICAL in both repos:
+// Dev page tables (Dev / Staff logins, audit log, command queue, homepage countdown + poll, giveaways). This file is IDENTICAL in both repos:
 //   website: lib/devDdl.js      bot: utils/devDdl.js
 // Change both together, so whichever side starts first creates exactly the same tables.
 //
@@ -10,6 +10,7 @@
 // site_countdown   the homepage countdown layer (one row, id = 1), uploaded image kept in the row
 // site_polls       homepage polls; code = the poll's generated key, votes are stored with it
 // site_poll_votes  one row per Discord account and poll (answers = JSON list of answer numbers)
+// giveaways        Dev page giveaways: the reward, the server + member the bot picked, DM / claim state (v2.2 Part 8)
 
 const DEV_USERS_DDL = `CREATE TABLE IF NOT EXISTS dev_users (
         user_id VARCHAR(32) PRIMARY KEY,
@@ -100,11 +101,33 @@ const SITE_POLL_VOTES_DDL = `CREATE TABLE IF NOT EXISTS site_poll_votes (
         PRIMARY KEY (poll_code, user_id)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`;
 
-const ALL_DDL = [DEV_USERS_DDL, DEV_AUDIT_DDL, COMMAND_QUEUE_DDL, DEV_SETTINGS_DDL, SITE_COUNTDOWN_DDL, SITE_POLLS_DDL, SITE_POLL_VOTES_DDL];
+const GIVEAWAYS_DDL = `CREATE TABLE IF NOT EXISTS giveaways (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        reward_text VARCHAR(200) NOT NULL DEFAULT '',
+        reward_kind VARCHAR(16) NOT NULL DEFAULT 'manual',
+        reward_amount INT NOT NULL DEFAULT 0,
+        state VARCHAR(12) NOT NULL DEFAULT 'picking',
+        guild_id VARCHAR(32) DEFAULT NULL,
+        guild_name VARCHAR(100) DEFAULT NULL,
+        winner_id VARCHAR(32) DEFAULT NULL,
+        winner_name VARCHAR(100) DEFAULT NULL,
+        note VARCHAR(300) DEFAULT NULL,
+        reroll_of INT DEFAULT NULL,
+        queue_id INT DEFAULT NULL,
+        grant_queue_id INT DEFAULT NULL,
+        created_by VARCHAR(32) NOT NULL,
+        created_at BIGINT NOT NULL,
+        picked_at BIGINT NOT NULL DEFAULT 0,
+        expires_at BIGINT NOT NULL DEFAULT 0,
+        claimed_at BIGINT NOT NULL DEFAULT 0,
+        KEY idx_state (state, id)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`;
+
+const ALL_DDL = [DEV_USERS_DDL, DEV_AUDIT_DDL, COMMAND_QUEUE_DDL, DEV_SETTINGS_DDL, SITE_COUNTDOWN_DDL, SITE_POLLS_DDL, SITE_POLL_VOTES_DDL, GIVEAWAYS_DDL];
 
 /** Creates every Dev page table that is missing. db = pool or connection (execute). */
 async function createDevTables(db) {
     for (const ddl of ALL_DDL) await db.execute(ddl);
 }
 
-module.exports = { DEV_USERS_DDL, DEV_AUDIT_DDL, COMMAND_QUEUE_DDL, DEV_SETTINGS_DDL, SITE_COUNTDOWN_DDL, SITE_POLLS_DDL, SITE_POLL_VOTES_DDL, ALL_DDL, createDevTables };
+module.exports = { DEV_USERS_DDL, DEV_AUDIT_DDL, COMMAND_QUEUE_DDL, DEV_SETTINGS_DDL, SITE_COUNTDOWN_DDL, SITE_POLLS_DDL, SITE_POLL_VOTES_DDL, GIVEAWAYS_DDL, ALL_DDL, createDevTables };

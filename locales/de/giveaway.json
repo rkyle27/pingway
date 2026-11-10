@@ -1,0 +1,20 @@
+{
+  "title": "🎉 Du hast ein Pingway-Giveaway gewonnen!",
+  "body": "Glückwunsch! Pingway hat dich zufällig unter den Mitgliedern von **{server}** ausgewählt.",
+  "reward": "**Dein Gewinn:** {reward}",
+  "points": "{n} Pingway-Punkte",
+  "kofiMember": "Ko-fi-Mitgliedschaft für {n} Tage",
+  "claimBy": "Drück vor {time} auf **Abholen**, um ihn zu bekommen.",
+  "autoNote": "Er wird deinem Konto gutgeschrieben, sobald du ihn abholst.",
+  "manualNote": "Nach dem Abholen schickt ihn dir das Pingway-Team.",
+  "footer": "Pingway-Giveaway #{id}",
+  "claim": "Abholen",
+  "claimed": "Abgeholt",
+  "claimedAuto": "✅ Abgeholt! Dein Gewinn ist in ein paar Sekunden auf deinem Konto.",
+  "claimedManual": "✅ Abgeholt! Das Pingway-Team schickt dir deinen Gewinn bald.",
+  "already": "Du hast diesen Gewinn schon abgeholt. 💜",
+  "expired": "Sorry, dieses Giveaway ist vorbei: Es wurde nicht innerhalb von {days} Tagen abgeholt.",
+  "gone": "Dieses Giveaway gibt es nicht mehr.",
+  "notYours": "Dieser Gewinn gehört jemand anderem.",
+  "failed": "Etwas ist schiefgelaufen. Versuch es gleich noch mal."
+}

@@ -5,7 +5,8 @@
 // audit row (dev_audit) the website wrote when the command was asked for.
 //
 // Only the commands in COMMANDS can run (the website checks them too; here they are checked again).
-// Plus two special jobs: 'audit_sheet' (Dev page) and 'trivia_share' (website Trivia Share box, any logged-in player: utils/triviaShare.js).
+// Plus special jobs: 'audit_sheet' (Dev page), 'trivia_share' (website Trivia Share box, any logged-in player: utils/triviaShare.js)
+// and 'giveaway_pick' (Dev page Giveaway: utils/giveaway.js draws a random server + member; it checks again that the asker is a dev).
 // "dev add / remove" and "staff add / remove" are NOT possible from here: they stay console-only.
 // Rows the bot did not pick up within 10 minutes (e.g. the bot was offline) are marked "expired" and never run later.
 
@@ -83,7 +84,7 @@ const parseArgs = s => { try { const a = JSON.parse(s || '{}'); return a && type
 const clip = s => (s.length > RESULT_MAX ? s.slice(0, RESULT_MAX - 20) + '\n… (cut)' : s);
 
 /**
- * Runs one claimed row. deps: { runLine(line), isMaintenanceOn(), exportAuditSheet(pool, sheetId), triviaShare(userId, args) }
+ * Runs one claimed row. deps: { runLine(line), isMaintenanceOn(), exportAuditSheet(pool, sheetId), triviaShare(userId, args), giveawayPick(userId, args) }
  * -> { state: 'done'|'error', result, before?, after? }
  */
 async function runOne(row, deps, pool) {
@@ -94,6 +95,13 @@ async function runOne(row, deps, pool) {
         if (!deps.triviaShare) return { state: 'error', result: 'Trivia sharing is not available.' };
         const [[who]] = await pool.execute('SELECT requested_by FROM command_queue WHERE id = ?', [row.id]);
         return deps.triviaShare(who ? String(who.requested_by) : '', args);
+    }
+    // Dev page Giveaway: the asker is always the row's requested_by (written by the website from the login); utils/giveaway.js
+    // checks again that this person is a dev before it draws anything.
+    if (row.action === 'giveaway_pick') {
+        if (!deps.giveawayPick) return { state: 'error', result: 'Giveaways are not available.' };
+        const [[who]] = await pool.execute('SELECT requested_by FROM command_queue WHERE id = ?', [row.id]);
+        return deps.giveawayPick(who ? String(who.requested_by) : '', args);
     }
     if (row.action === 'audit_sheet') {
         if (!/^[a-zA-Z0-9-_]{20,100}$/.test(String(args.sheetId || ''))) return { state: 'error', result: 'Invalid Google Sheet id.' };

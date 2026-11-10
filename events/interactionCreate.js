@@ -174,6 +174,11 @@ module.exports = {
                     }
                 }
 
+                // Dev page Giveaway: the winner's Claim button (in their DM)
+                if (cid.startsWith('giveaway_claim_')) {
+                    return await require('../utils/giveaway').handleClaim(interaction, { pool, langOf: () => langOf() });
+                }
+
                 // Market Alert
                 if (cid.startsWith('marketalert_') || cid.startsWith('market_')) {
                     const marketCommand = client.commands.get('marketalert');
