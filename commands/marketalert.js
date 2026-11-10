@@ -22,9 +22,51 @@ async function getUserDCs(userId) {
     return [];
 }
 
+// v2.2: DM on/off and server channels are separate (website Retainers tab -> Market alerts).
+// market_alerts.market_dm = the DM switch (NULL = older row: DMs were on unless alerts went to server channels).
+// dm_enabled stays "alerts on at all" (DM or channels) and alert_target 'server' = channels in use, so older code
+// keeps working. Shared with the website (api/settings.js), which adds the same column the same way.
+let dmColumnReady = false;
+async function ensureDmColumn() {
+    if (dmColumnReady) return;
+    // alert_target is normally added by the website (same DDL); added here too if the website never ran yet
+    const [tcols] = await pool.execute("SHOW COLUMNS FROM market_alerts LIKE 'alert_target'");
+    if (!tcols.length) {
+        try {
+            await pool.execute("ALTER TABLE market_alerts ADD COLUMN alert_target VARCHAR(8) NOT NULL DEFAULT 'dm'");
+        } catch (e) {
+            if (!(e && (e.code === 'ER_DUP_FIELDNAME' || e.errno === 1060))) throw e;
+        }
+    }
+    const [cols] = await pool.execute("SHOW COLUMNS FROM market_alerts LIKE 'market_dm'");
+    if (!cols.length) {
+        try {
+            await pool.execute('ALTER TABLE market_alerts ADD COLUMN market_dm TINYINT NULL DEFAULT NULL');
+        } catch (e) {
+            if (!(e && (e.code === 'ER_DUP_FIELDNAME' || e.errno === 1060))) throw e;
+        }
+    }
+    dmColumnReady = true;
+}
+
+// { dm, channels } from a market_alerts row (missing row = all off)
+function stateOf(row) {
+    if (!row) return { dm: false, channels: false };
+    const on = Number(row.dm_enabled) === 1;
+    const server = row.alert_target === 'server';
+    const channels = on && server;
+    const dm = row.market_dm === null || row.market_dm === undefined ? on && !server : Number(row.market_dm) === 1;
+    return { dm, channels };
+}
+
+async function getRow(userId) {
+    await ensureDmColumn();
+    const [rows] = await pool.execute('SELECT dm_enabled, alert_target, market_dm FROM market_alerts WHERE user_id = ?', [userId]);
+    return rows[0] || null;
+}
+
 async function getDmEnabled(userId) {
-    const [rows] = await pool.execute('SELECT dm_enabled FROM market_alerts WHERE user_id = ?', [userId]);
-    return rows.length > 0 ? Number(rows[0].dm_enabled) === 1 : false;
+    return stateOf(await getRow(userId)).dm;
 }
 
 // DM interval chosen on the website (minutes). Missing column or row = 1 minute.
@@ -68,6 +110,7 @@ async function buildPayload(userId, notice, lang = 'en') {
 }
 
 module.exports = {
+    stateOf,
     data: new SlashCommandBuilder()
         .setName('marketalert')
         .setDescription(t('en', 'marketalert.cmd.description')).setDescriptionLocalizations(discordLocalizations('marketalert.cmd.description')),
@@ -93,10 +136,13 @@ module.exports = {
 
         if (interaction.customId === 'marketalert_toggle_dm') {
             try {
-                const newStatus = (await getDmEnabled(userId)) ? 0 : 1;
+                // Only the DM switch changes; server channels (website) keep posting as they are
+                const st = stateOf(await getRow(userId));
+                const newStatus = st.dm ? 0 : 1;
                 await pool.execute(
-                    'INSERT INTO market_alerts (user_id, dm_enabled) VALUES (?, ?) ON DUPLICATE KEY UPDATE dm_enabled = VALUES(dm_enabled)',
-                    [userId, newStatus]
+                    'INSERT INTO market_alerts (user_id, dm_enabled, alert_target, market_dm) VALUES (?, ?, ?, ?) ' +
+                    'ON DUPLICATE KEY UPDATE dm_enabled = VALUES(dm_enabled), alert_target = VALUES(alert_target), market_dm = VALUES(market_dm)',
+                    [userId, newStatus || st.channels ? 1 : 0, st.channels ? 'server' : 'dm', newStatus]
                 );
                 const notice = newStatus === 1
                     ? t(lang, 'marketalert.enabledNotice')

@@ -15,6 +15,8 @@ const jobName = (name, lang) => tOr(lang, 'jobs.' + name, name);
 const userLanguage = require('../utils/userLanguage');
 // "Post again?" DM button (sent by utils/pfScheduler.js when a listing starts)
 const { REPOST_TTL_MS, parseRepostCustomId } = require('../utils/pfScheduler');
+// Weekly repeat ("🔁 Repeat weekly" in the preview; the scheduler posts the next listing)
+const recur = require('../utils/pfRecurring');
 
 // --- JOBS.JSON LOADER ---
 function loadJobsJSON() {
@@ -105,7 +107,9 @@ async function loadDB() {
                 status: rawData.status || row.status || 'active',
                 claims: rawData.claims || { tanks: [], healers: [], dps: [], meleedps: [], range: [], caster: [], other: [], reserves: [] },
                 notified30Min: rawData.notified30Min ?? row.notified30Min ?? false,
-                notifiedExact: rawData.notifiedExact ?? row.notifiedExact ?? false
+                notifiedExact: rawData.notifiedExact ?? row.notifiedExact ?? false,
+                recurring: rawData.recurring || null,
+                recurPosted: rawData.recurPosted || false
             };
             ensureListingClaims(listing);
             migrateOldJobCodes(listing);
@@ -313,9 +317,10 @@ async function buildPFEmbedAndRows(listing, guild, authorTag) {
     const targetMs = parseListingTimestamp(listing.date);
     const hammertimeDisplay = targetMs ? ` (${toDiscordTimestamp(targetMs, 'f')} / ${toDiscordTimestamp(targetMs, 'R')})` : '';
 
+    const repeatLine = recur.isActive(listing) ? '\n' + t(lang, 'pf.recur.embedLine', { days: recur.daysText(listing.recurring.days, t, lang) }) : '';
     const embed = new EmbedBuilder()
         .setTitle(t(lang, 'pf.title', { name: listing.name }))
-        .setDescription(t(lang, 'pf.description', { host: listing.userId, date: listing.date, timestamps: hammertimeDisplay, size: listing.size }))
+        .setDescription(t(lang, 'pf.description', { host: listing.userId, date: listing.date, timestamps: hammertimeDisplay, size: listing.size }) + repeatLine)
         .setColor('#f1c40f')
         .addFields(fieldsArr)
         .setFooter({ text: t(lang, 'pf.footerId', { id: listing.id }) });
@@ -544,7 +549,10 @@ async function sendConfirmationDashboard(interaction, session, isUpdate = false)
             { name: t(lang, 'pf.preview.duty'), value: t(lang, 'pf.preview.dutyValue', { name: session.data.name, size: session.data.size }), inline: false },
             { name: t(lang, 'pf.preview.roles'), value: t(lang, 'pf.preview.rolesValue', { tanks: session.data.tanks, healers: session.data.healers, melee: session.data.meleedps, range: session.data.range, caster: session.data.caster }), inline: false },
             { name: t(lang, 'pf.preview.date'), value: t(lang, 'pf.preview.dateValue', { date: session.data.dateStr, time: session.data.time, gmt: gmtOffsetVal >= 0 ? '+' + gmtOffsetVal : gmtOffsetVal, timestamps: previewHammertime }), inline: false },
-            { name: t(lang, 'pf.preview.photo'), value: session.data.imageUrl ? t(lang, 'pf.preview.viewImage', { url: session.data.imageUrl }) : t(lang, 'pf.preview.randomImage'), inline: false }
+            { name: t(lang, 'pf.preview.photo'), value: session.data.imageUrl ? t(lang, 'pf.preview.viewImage', { url: session.data.imageUrl }) : t(lang, 'pf.preview.randomImage'), inline: false },
+            { name: t(lang, 'pf.recur.field'), value: recur.cleanDays(session.data.recurDays).length
+                ? t(lang, 'pf.recur.every', { days: recur.daysText(session.data.recurDays, t, lang), time: session.data.time, gmt: gmtOffsetVal >= 0 ? '+' + gmtOffsetVal : gmtOffsetVal })
+                : t(lang, 'pf.recur.none'), inline: false }
         );
 
     let contentMsg = t(lang, 'pf.preview.generated');
@@ -560,6 +568,7 @@ async function sendConfirmationDashboard(interaction, session, isUpdate = false)
 
     const row2 = new ActionRowBuilder().addComponents(
         new ButtonBuilder().setCustomId('pf_edit_image').setLabel(t(lang, 'pf.preview.changePhoto')).setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('pf_edit_repeat').setLabel(t(lang, 'pf.recur.button')).setStyle(ButtonStyle.Secondary),
         new ButtonBuilder().setCustomId('pf_finish').setLabel(t(lang, 'pf.preview.finish')).setStyle(ButtonStyle.Success).setDisabled(isPast)
     );
 
@@ -568,6 +577,33 @@ async function sendConfirmationDashboard(interaction, session, isUpdate = false)
     } else {
         return await interaction.reply({ content: contentMsg, embeds: [embed], components: [row1, row2], flags: [MessageFlags.Ephemeral] });
     }
+}
+
+// "🔁 Repeat weekly": pick the weekdays (in the listing's time zone). Same time every week.
+async function sendRepeatEphemeral(interaction, session) {
+    const lang = await userLanguage.forInteraction(interaction);
+    session.step = 'repeat';
+    const gmt = session.data.gmt ?? 9;
+    let chosen = recur.cleanDays(session.data.recurDays);
+    // nothing picked yet: suggest the weekday of the chosen date
+    if (!chosen.length && session.data.dateStr && session.data.time) {
+        const p = recur.parseDate(`${session.data.dateStr} ${session.data.time} GMT${gmt >= 0 ? '+' + gmt : gmt}`);
+        if (p) chosen = [recur.weekdayAt(p.ms, p.offset)];
+    }
+    const menu = new StringSelectMenuBuilder()
+        .setCustomId('pf_sel_repeat_menu')
+        .setPlaceholder(t(lang, 'pf.recur.placeholder'))
+        .setMinValues(1)
+        .setMaxValues(7)
+        .addOptions([1, 2, 3, 4, 5, 6, 0].map(d => ({ label: t(lang, 'pf.recur.dayLong.' + recur.DAY_KEYS[d]), value: String(d), default: chosen.includes(d) })));
+    const buttons = new ActionRowBuilder().addComponents(
+        new ButtonBuilder().setCustomId('pf_repeat_none').setLabel(t(lang, 'pf.recur.noRepeat')).setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder().setCustomId('pf_repeat_back').setLabel(t(lang, 'pf.recur.back')).setStyle(ButtonStyle.Secondary)
+    );
+    return await interaction.update({
+        content: t(lang, 'pf.recur.pick', { time: session.data.time || '--:--', gmt: gmt >= 0 ? '+' + gmt : gmt }),
+        embeds: [], components: [new ActionRowBuilder().addComponents(menu), buttons]
+    });
 }
 
 module.exports = {
@@ -649,6 +685,26 @@ module.exports = {
                     }
                 });
                 return await sendTimezoneSelectEphemeral(interaction, global.pfSessions.get(userId), false);
+            }
+
+            // Weekly repeat picker (from the preview)
+            if (cid === 'pf_sel_repeat_menu' || cid === 'pf_repeat_none' || cid === 'pf_repeat_back') {
+                const session = global.pfSessions.get(userId);
+                if (!session) return interaction.reply({ content: t(lang, 'pf.expired'), flags: [MessageFlags.Ephemeral] });
+                if (cid === 'pf_sel_repeat_menu') session.data.recurDays = recur.cleanDays(interaction.values);
+                if (cid === 'pf_repeat_none') session.data.recurDays = [];
+                return await sendConfirmationDashboard(interaction, session, true);
+            }
+
+            // "Stop repeating" (Check My PF(s), or the start DM): only the host
+            if (cid.startsWith('pf_recur_stop_')) {
+                const listingId = cid.replace('pf_recur_stop_', '');
+                const dbData = await loadDB();
+                const listing = dbData.pfDatabase.find(l => l.id === listingId);
+                if (!listing || !listing.recurring) return interaction.reply({ content: t(lang, 'pf.gone'), flags: [MessageFlags.Ephemeral] });
+                if (listing.userId !== userId) return interaction.reply({ content: t(lang, 'pf.recur.onlyHost'), flags: [MessageFlags.Ephemeral] });
+                const n = await recur.stopSeries(dbData.pfDatabase, listing.recurring.series || listing.id, userId);
+                return interaction.reply({ content: t(lang, n ? 'pf.recur.stopped' : 'pf.recur.alreadyStopped', { name: listing.name }), flags: [MessageFlags.Ephemeral] });
             }
 
             if (cid.startsWith('pf_pub_delete_')) {
@@ -912,6 +968,10 @@ module.exports = {
                 if (field === 'image') {
                     return await sendImageModal(interaction, session);
                 }
+
+                if (field === 'repeat') {
+                    return await sendRepeatEphemeral(interaction, session);
+                }
             }
 
             if (cid === 'pf_finish') {
@@ -968,6 +1028,9 @@ module.exports = {
                     notified30Min: false,
                     notifiedExact: false
                 };
+                // Weekly repeat: this listing starts the series (the scheduler posts the next one when it starts)
+                const recurDays = recur.cleanDays(session.data.recurDays);
+                if (recurDays.length) listing.recurring = { days: recurDays, active: true, series: listing.id };
                 migrateOldJobCodes(listing);
                 ensureListingClaims(listing);
 
@@ -1295,7 +1358,8 @@ module.exports = {
 
                 const rows = userListings.map(l => new ActionRowBuilder().addComponents(
                     new ButtonBuilder().setCustomId(`pf_show_${l.id}`).setLabel(t(lang, 'pf.showAgain', { name: l.name.substring(0, 60) })).setStyle(ButtonStyle.Primary),
-                    new ButtonBuilder().setCustomId(`pf_delete_listing_${l.id}`).setLabel(t(lang, 'pf.delete')).setStyle(ButtonStyle.Danger)
+                    new ButtonBuilder().setCustomId(`pf_delete_listing_${l.id}`).setLabel(t(lang, 'pf.delete')).setStyle(ButtonStyle.Danger),
+                    ...(recur.isActive(l) ? [new ButtonBuilder().setCustomId(`pf_recur_stop_${l.id}`).setLabel(t(lang, 'pf.recur.stop')).setStyle(ButtonStyle.Secondary)] : [])
                 ));
 
                 return interaction.reply({ content: t(lang, 'pf.yourListings'), components: rows, flags: [MessageFlags.Ephemeral] });
@@ -1478,3 +1542,7 @@ module.exports = {
         }
     }
 };
+
+// Used by the weekly repeat (utils/pfRecurring.js) to post the next listing exactly like /pf does
+module.exports.buildPFEmbedAndRows = buildPFEmbedAndRows;
+module.exports.saveListingToDB = saveListingToDB;

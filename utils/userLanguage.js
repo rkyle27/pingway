@@ -2,10 +2,12 @@
 // Order: 1) the user's own choice (/pingway en|fr|de|jp, or "Bot language" in website My Settings)
 //        2) the language of their Discord app (interaction.locale, remembered for DMs and background messages)
 //        3) English
-// Public messages in a server channel use the server's Discord language (guild.preferredLocale), else English.
+// Public messages in a server channel use the server's language: the admins' choice on the website (server settings ->
+// Server language card, table guild_language) if set, else the server's Discord language (guild.preferredLocale), else English.
 // Table user_language is shared with the website (same DDL there): lang NULL = automatic (Discord language).
 const { pool } = require('./db');
 const i18n = require('./i18n');
+const guildLanguage = require('./guildLanguage');
 
 const CACHE_MS = 60 * 1000;
 const cache = new Map(); // userId -> { time, lang, discordLocale }
@@ -94,6 +96,8 @@ async function forUser(userId) {
 
 // Language for public messages in a server channel
 function forGuild(guild) {
+    const o = guildLanguage.get(guild && guild.id); // Server language card (website)
+    if (o) return o;
     return i18n.fromDiscordLocale(guild && guild.preferredLocale) || i18n.DEFAULT_LANG;
 }
 

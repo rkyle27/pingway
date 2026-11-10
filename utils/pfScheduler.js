@@ -5,6 +5,7 @@ const { isMaintenance } = require('../maintenance');
 const { pool: db } = require('./db');
 const { t } = require('./i18n');
 const userLanguage = require('./userLanguage');
+const recur = require('./pfRecurring');
 
 // "Post again?" DM to the host when a listing reaches its start time (status 'started').
 // The button opens the /pf date/time step with the old details (commands/pf.js, customId pf_repost_*).
@@ -24,14 +25,13 @@ function parseRepostCustomId(cid) {
     return { listingId, hostId, sentAt: Number(sentAt) };
 }
 
-/** DM payload (raw API JSON, no builders). */
+/** DM payload (raw API JSON, no builders). A weekly listing also gets a "Stop repeating" button. */
 function buildRepostDm(listing, lang, now = Date.now()) {
+    const buttons = [{ type: 2, style: 1, custom_id: repostCustomId(listing.id, listing.userId, now), label: t(lang, 'pf.repost.button'), emoji: { name: '📅' } }];
+    if (recur.isActive(listing)) buttons.push({ type: 2, style: 2, custom_id: 'pf_recur_stop_' + listing.id, label: t(lang, 'pf.recur.stop'), emoji: { name: '⏹️' } });
     return {
         content: t(lang, 'pf.repost.dm', { name: listing.name || t(lang, 'pf.alert.event') }),
-        components: [{
-            type: 1,
-            components: [{ type: 2, style: 1, custom_id: repostCustomId(listing.id, listing.userId, now), label: t(lang, 'pf.repost.button'), emoji: { name: '📅' } }]
-        }]
+        components: [{ type: 1, components: buttons }]
     };
 }
 
@@ -115,6 +115,12 @@ function startPfScheduler(client) {
                 // Skip processing early if notification window isn't hit
                 const needs30Min = diffMins >= 29 && diffMins <= 30 && !listing.notified30Min;
                 const needsExact = diffMs <= 0 && diffMs > -30000 && !listing.notifiedExact;
+
+                // Weekly repeat: once it has started, post the next listing of the series (once, also after a restart).
+                // Right at the start time it runs after the "starting now" alert (end of this loop).
+                const repeatDue = () => diffMs <= 0 && !!row.data && recur.isActive(listing) && !listing.recurPosted;
+                const postNext = () => recur.handleStarted(client, row, listing, nowUTC).catch(e => console.error('❌ [PF REPEAT]', e.message));
+                if (!needsExact && repeatDue()) await postNext();
 
                 if (!needs30Min && !needsExact) continue;
 
@@ -200,6 +206,7 @@ function startPfScheduler(client) {
 
                 // the listing starts now (saved first, so it is never DMed twice): ask the host to post it again
                 if (needsExact) await sendRepostDm(client, listing);
+                if (needsExact && repeatDue()) await postNext();
             }
 
         } catch (error) {

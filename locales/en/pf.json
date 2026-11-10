@@ -171,5 +171,39 @@
     "onlyHost": "🚫 Only the host of this Party Finder can post it again.",
     "tooOld": "⌛ Sorry, this button is too old (7 days). Use /pf to create a new listing.",
     "noChannel": "⚠️ I can't reach the channel of your old listing anymore. Use /pf in the server to create a new one."
+  },
+  "recur": {
+    "button": "🔁 Repeat weekly",
+    "field": "🔁 Repeat",
+    "none": "Does not repeat",
+    "every": "Every **{days}** at **{time} (GMT{gmt})**",
+    "embedLine": "🔁 Repeats every **{days}**",
+    "placeholder": "Pick the days to repeat on",
+    "pick": "🔁 **Repeat weekly:** pick the days. Pingway posts the next listing at the same time (**{time}, GMT{gmt}**) when the current one starts. The days are in this time zone.",
+    "noRepeat": "Don't repeat",
+    "back": "Back",
+    "stop": "Stop repeating",
+    "onlyHost": "❌ Only the **host** can stop the weekly repeat.",
+    "stopped": "⏹️ **{name}** won't repeat any more. Listings that are already posted stay (delete them if you don't need them).",
+    "alreadyStopped": "ℹ️ **{name}** is not repeating any more.",
+    "posted": "🔁 **Weekly Party Finder:** the next one is up!",
+    "day": {
+      "mon": "Mon",
+      "tue": "Tue",
+      "wed": "Wed",
+      "thu": "Thu",
+      "fri": "Fri",
+      "sat": "Sat",
+      "sun": "Sun"
+    },
+    "dayLong": {
+      "mon": "Monday",
+      "tue": "Tuesday",
+      "wed": "Wednesday",
+      "thu": "Thursday",
+      "fri": "Friday",
+      "sat": "Saturday",
+      "sun": "Sunday"
+    }
   }
 }

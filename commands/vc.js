@@ -102,7 +102,7 @@ function setCaller(session, guild, userId) {
         },
         sendNote: text => {
             // the note is posted in the voice channel's chat: the server's language
-            const glang = i18n.fromDiscordLocale(guild && guild.preferredLocale) || 'en';
+            const glang = require('../utils/guildLanguage').get(guild && guild.id) || i18n.fromDiscordLocale(guild && guild.preferredLocale) || 'en'; // Server language card first
             if (text === members.OUT_OF_CHARS_NOTE) text = t(glang, 'vc.outOfChars');
             const ch = guild.channels.cache.get(session.channelId);
             if (ch && typeof ch.send === 'function') return ch.send({ content: text, allowedMentions: { parse: [] } });

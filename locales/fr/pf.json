@@ -171,5 +171,39 @@
     "onlyHost": "🚫 Seul l'organisateur de ce Party Finder peut le republier.",
     "tooOld": "⌛ Désolé, ce bouton est trop ancien (7 jours). Utilise /pf pour créer une nouvelle annonce.",
     "noChannel": "⚠️ Je n'ai plus accès au salon de ton ancienne annonce. Utilise /pf sur le serveur pour en créer une nouvelle."
+  },
+  "recur": {
+    "button": "🔁 Répéter chaque semaine",
+    "field": "🔁 Répétition",
+    "none": "Ne se répète pas",
+    "every": "Chaque **{days}** à **{time} (GMT{gmt})**",
+    "embedLine": "🔁 Se répète chaque **{days}**",
+    "placeholder": "Choisis les jours de répétition",
+    "pick": "🔁 **Répéter chaque semaine :** choisis les jours. Pingway publie l'annonce suivante à la même heure (**{time}, GMT{gmt}**) quand celle-ci commence. Les jours suivent ce fuseau horaire.",
+    "noRepeat": "Ne pas répéter",
+    "back": "Retour",
+    "stop": "Arrêter la répétition",
+    "onlyHost": "❌ Seul l'**organisateur** peut arrêter la répétition hebdomadaire.",
+    "stopped": "⏹️ **{name}** ne se répétera plus. Les annonces déjà publiées restent (supprime-les si tu n'en as pas besoin).",
+    "alreadyStopped": "ℹ️ **{name}** ne se répète déjà plus.",
+    "posted": "🔁 **Party Finder hebdomadaire :** la prochaine est en ligne !",
+    "day": {
+      "mon": "lun.",
+      "tue": "mar.",
+      "wed": "mer.",
+      "thu": "jeu.",
+      "fri": "ven.",
+      "sat": "sam.",
+      "sun": "dim."
+    },
+    "dayLong": {
+      "mon": "Lundi",
+      "tue": "Mardi",
+      "wed": "Mercredi",
+      "thu": "Jeudi",
+      "fri": "Vendredi",
+      "sat": "Samedi",
+      "sun": "Dimanche"
+    }
   }
 }

@@ -529,6 +529,83 @@ test('/welcomehere: voice channel is refused', async () => {
     assert.ok(/text or announcement channel/.test(it.calls[0][1].content));
 });
 
+// ---------- v2.2: several designs ticked (Default + custom), random pick from the ticked ones ----------
+test('designs: older rows keep exactly what they had (custom design -> just that one, else Default)', async () => {
+    assert.deepStrictEqual(W.selectedDesigns({ mode: 'custom', design: 'k1' }), ['k1']);
+    assert.deepStrictEqual(W.selectedDesigns({ mode: 'default', design: null }), ['default']);
+    assert.deepStrictEqual(W.selectedDesigns({ mode: 'custom', design: 'k1', designs: null }), ['k1']);
+    assert.deepStrictEqual(W.selectedDesigns({}), ['default']);
+    // new rows: the JSON list wins; unknown ids and pw ids are dropped; never empty
+    assert.deepStrictEqual(W.selectedDesigns({ mode: 'custom', design: 'k1', designs: '["default","c20","zz","pw03","c20"]' }), ['default', 'c20']);
+    assert.deepStrictEqual(W.selectedDesigns({ designs: '[]' }), ['default']);
+    assert.deepStrictEqual(W.selectedDesigns({ designs: 'not json', mode: 'custom', design: 'w3' }), ['w3']);
+});
+
+test('designs: the pick is random but only from the ticked ones (Default = a random bunny card)', async () => {
+    resetPerks();
+    const g = makeGuild('g-multi', { ownerId: 'own' });
+    perks.owners.add('own');
+    setRow(g.id, { mode: 'custom', design: 'k1', designs: JSON.stringify(['default', 'k1', 'c20']) });
+    const settings = await W.getSettings(g.id);
+    const seen = new Set();
+    for (const r of [0, 0.34, 0.5, 0.7, 0.99]) {
+        const out = await W.resolveDesign(g, settings, () => r);
+        seen.add(out.custom ? out.design : 'default');
+        if (!out.custom) assert.ok(DEFAULT_POOL.includes(out.design), out.design);
+    }
+    assert.deepStrictEqual([...seen].sort(), ['c20', 'default', 'k1']);
+    // many real random picks never leave the ticked set
+    for (let i = 0; i < 200; i++) {
+        const out = await W.resolveDesign(g, settings);
+        assert.ok(out.custom ? ['k1', 'c20'].includes(out.design) : DEFAULT_POOL.includes(out.design), out.design);
+    }
+});
+
+test('designs: Supporter Perks ended -> customs are skipped, Default (if ticked) is used; only customs -> random default', async () => {
+    resetPerks();
+    const g = makeGuild('g-multi2');
+    setRow(g.id, { mode: 'custom', design: 'k1', designs: JSON.stringify(['default', 'k1']), perk_owner: 'gone' });
+    const log = captureLogs();
+    try {
+        for (const r of [0, 0.99]) {
+            const out = await W.resolveDesign(g, await W.getSettings(g.id), () => r);
+            assert.strictEqual(out.custom, false);
+            assert.ok(DEFAULT_POOL.includes(out.design));
+        }
+        setRow(g.id, { mode: 'custom', design: 'k1', designs: JSON.stringify(['k1', 'c20']), perk_owner: 'gone' });
+        const out = await W.resolveDesign(g, await W.getSettings(g.id), () => 0.99);
+        assert.deepStrictEqual(out.custom, false);
+        assert.ok(DEFAULT_POOL.includes(out.design));
+    } finally { log.restore(); }
+    // only Default ticked: perks are never looked up
+    perks.adminCalls.length = 0;
+    setRow(g.id, { designs: JSON.stringify(['default']) });
+    await W.resolveDesign(g, await W.getSettings(g.id));
+    assert.strictEqual(perks.adminCalls.length, 0);
+});
+
+test('Server language card: the welcome text follows the server language picked on the website', async () => {
+    resetPerks();
+    const guildLanguage = require('../utils/guildLanguage');
+    const g = makeGuild('g-lang');
+    g.preferredLocale = 'en-US';
+    const ch = makeChannel(g, 'cl1');
+    setRow(g.id, { channel_id: 'cl1', message: null });
+    renders.length = 0;
+    const realGet = guildLanguage.get;
+    guildLanguage.get = id => (id === 'g-lang' ? 'de' : null);
+    try {
+        await W.handleJoin(makeMember(g, 'newL'));
+    } finally { guildLanguage.get = realGet; }
+    assert.strictEqual(ch.sent.length, 1);
+    const { t } = require('../utils/i18n');
+    assert.strictEqual(renders[renders.length - 1].message, t('de', 'welcome.defaultMessage'));
+    // without the override: the server's Discord language
+    renders.length = 0;
+    await W.handleJoin(makeMember(g, 'newL2'));
+    assert.strictEqual(renders[renders.length - 1].message, t('en', 'welcome.defaultMessage'));
+});
+
 (async () => {
     let failed = 0;
     for (const t of tests) {

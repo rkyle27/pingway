@@ -7,6 +7,7 @@ const retainerWatch = require('./retainerWatch');
 const dmStatus = require('./dmStatus');
 const { t, localeOf } = require('./i18n');
 const userLanguage = require('./userLanguage');
+const { ownerHasMembership } = require('./membership');
 
 const UNIVERSALIS_WS_URL = 'wss://universalis.app/api/ws';
 const UNIVERSALIS_API = 'https://universalis.app/api/v2';
@@ -68,7 +69,10 @@ let flushTimer = null;
 let flushing = false;
 const alertIntervals = new Map(); // userId -> minutes (only users who chose something other than 1)
 const lastSentAt = new Map();     // userId -> time of their last alert DM
-let alertTargets = new Map();     // userId -> [{ guildId, channelId }] for users who chose "Server channel" (set on the website)
+let alertTargets = new Map();     // userId -> [{ guildId, channelId, roleId }] server channels (set on the website)
+let dmOff = new Set();            // users with server channels whose market alert DMs are off (DM switch on the website)
+// Server channels per user: 3 free, 10 with Supporter Perks (same limits as the website; extra saved rows wait unused)
+const CHANNEL_LIMITS = { free: 3, perks: 10 };
 const targetWarned = new Map();   // 'userId:guildId' -> time (keeps the console quiet)
 let pendingLookups = 0;
 let nextLookupAt = 0;
@@ -145,27 +149,51 @@ async function loadSubscribers() {
     return { list, enabledCount: byUser.size };
 }
 
-// Users who send market alerts to server channels instead of DMs (up to 3 servers they own or are admin in).
+// Users who post market alerts in server channels (servers they own or are admin in, Pingway in them):
+// 3 channels free, 10 with Supporter Perks, each with an optional role ping (website Retainers tab -> Market alerts).
+// alert_target 'server' = channels in use. The DM switch is market_dm (NULL = older row: channels replaced the DM).
 // Missing column/table (website not opened yet) = everyone gets DMs.
 async function loadTargets() {
     const next = new Map();
+    const off = new Set();
     try {
         // Two simple queries instead of a JOIN: the two tables were created with different collations
         const [users] = await pool.execute("SELECT user_id FROM market_alerts WHERE alert_target = 'server'");
         const serverUsers = new Set(users.map(u => String(u.user_id)));
-        const [rows] = serverUsers.size
-            ? await pool.execute('SELECT user_id, guild_id, channel_id FROM market_alert_channels ORDER BY user_id, position')
-            : [[]];
-        for (const r of rows) {
+        let dmRows = [];
+        try {
+            [dmRows] = await pool.execute("SELECT user_id, market_dm FROM market_alerts WHERE alert_target = 'server' AND market_dm IS NOT NULL");
+        } catch (err) {
+            if (!/Unknown column/i.test(err.message)) throw err; // column not added yet: older rows only
+        }
+        const dmChoice = new Map(dmRows.map(r => [String(r.user_id), Number(r.market_dm) === 1]));
+        for (const id of serverUsers) if (!(dmChoice.get(id) === true)) off.add(id); // NULL (older row) = channels only
+        let rows = [[]];
+        if (serverUsers.size) {
+            try {
+                rows = await pool.execute('SELECT user_id, guild_id, channel_id, role_id FROM market_alert_channels ORDER BY user_id, position');
+            } catch (err) {
+                if (!/Unknown column/i.test(err.message)) throw err;
+                rows = await pool.execute('SELECT user_id, guild_id, channel_id FROM market_alert_channels ORDER BY user_id, position');
+            }
+        }
+        for (const r of rows[0]) {
             const id = String(r.user_id);
             if (!serverUsers.has(id)) continue;
             if (!next.has(id)) next.set(id, []);
-            next.get(id).push({ guildId: String(r.guild_id), channelId: String(r.channel_id) });
+            next.get(id).push({ guildId: String(r.guild_id), channelId: String(r.channel_id), roleId: r.role_id ? String(r.role_id) : '' });
+        }
+        // More than the free channels saved: the rest only run while the user has Supporter Perks
+        for (const [id, list] of next) {
+            if (list.length <= CHANNEL_LIMITS.free) continue;
+            const max = (await ownerHasMembership(id)) ? CHANNEL_LIMITS.perks : CHANNEL_LIMITS.free;
+            if (list.length > max) next.set(id, list.slice(0, max));
         }
     } catch (err) {
         if (!/Unknown column|doesn't exist/i.test(err.message)) console.error('❌ [MARKET] Could not load alert channels:', err.message);
     }
     alertTargets = next;
+    dmOff = off;
 }
 
 // DM interval per user (market alerts + retainer undercuts). Missing column or error = everyone 1 minute.
@@ -594,8 +622,8 @@ function chunkEmbeds(embeds) {
     return messages;
 }
 
-// "Server channel" mode: post the market alerts in each chosen channel (no pings). The user must still be the
-// server's owner or an admin; otherwise that server is skipped.
+// Server channels: post the market alerts in each chosen channel (pings only the role picked for that channel, if any).
+// The user must still be the server's owner or an admin; otherwise that server is skipped.
 // embedsFor(lang): the alert embeds in that language (each server channel gets its server's language)
 async function postToChannels(client, userId, targets, embedsFor) {
     let sent = 0;
@@ -615,10 +643,16 @@ async function postToChannels(client, userId, targets, embedsFor) {
             continue;
         }
         const lang = userLanguage.forGuild(guild); // public post: the server's language
+        let first = true;
         for (const group of chunkEmbeds(await embedsFor(lang))) {
             group[group.length - 1].setFooter({ text: t(lang, 'alerts.footer') }).setTimestamp();
+            // the role ping goes on the first message only
+            const ping = first && target.roleId && /^\d{15,22}$/.test(target.roleId) ? target.roleId : '';
+            first = false;
             try {
-                await channel.send({ embeds: group, allowedMentions: { parse: [] } });
+                await channel.send(ping
+                    ? { content: '<@&' + ping + '>', embeds: group, allowedMentions: { parse: [], roles: [ping] } }
+                    : { embeds: group, allowedMentions: { parse: [] } });
                 sent++;
             } catch (err) {
                 warn('Could not post market alerts in #' + channel.name + ' (' + guild.name + '): ' + err.message);
@@ -657,7 +691,8 @@ async function flushAlerts(client) {
             // Biggest discount first
             let entries = Array.from(items.values()).sort((a, b) => bestPercent(a) - bestPercent(b));
 
-            // "Server channel" mode: market alerts go to the channels; retainer undercuts still go to the DM below
+            // Server channels: market alerts go to the channels; also to the DM below only when the DM switch is on.
+            // Retainer undercuts always go to the DM.
             const targets = alertTargets.get(userId);
             if (targets && targets.length && entries.length) {
                 const channelEntries = entries;
@@ -668,8 +703,8 @@ async function flushAlerts(client) {
                 };
                 await postToChannels(client, userId, targets, embedsFor);
                 lastSentAt.set(userId, now);
-                entries = [];
             }
+            if (dmOff.has(userId)) entries = []; // DM switch off: market alerts only in the channels
             const hasUndercuts = undercuts.get(userId) && undercuts.get(userId).size;
             if (!entries.length && !hasUndercuts) continue;
 
@@ -802,4 +837,5 @@ async function initMarketMonitor(client) {
     }, FLUSH_INTERVAL_MS);
 }
 
-module.exports = { initMarketMonitor };
+module.exports = { initMarketMonitor, CHANNEL_LIMITS,
+    _test: { loadTargets, postToChannels, targets: () => alertTargets, dmOff: () => dmOff } };

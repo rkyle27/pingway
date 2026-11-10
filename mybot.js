@@ -118,6 +118,7 @@ client.once(Events.ClientReady, () => {
     require('./utils/guildSheets').start(client); // Raid & Logger sheets: website requests, sharing, Supporter Perks limits
     require('./utils/trivia').start(client); // Pingway Trivia: word bank from XIVAPI (data/trivia_bank.json), tables, cleanup
     require('./utils/welcome').start(client); // Welcome cards for new members (/welcomehere + website)
+    require('./utils/guildLanguage').start(); // Server language card (website): overrides the server's Discord language for posts
     // Website Dev page commands (command_queue): runs the allowed console commands every ~5 s and writes the output back
     require('./utils/commandQueue').start(require('./utils/db').pool, {
         runLine: line => handleConsoleLine(line),

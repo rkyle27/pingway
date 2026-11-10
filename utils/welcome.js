@@ -1,10 +1,13 @@
 // Welcome cards: when a member joins, Pingway posts a welcome card image in the server's chosen channel.
 // - Turned on with /welcomehere (in the channel to use) or on the website (server settings -> Welcome).
-// - Default: a random design (pw01..pw20) for every join.
-// - Custom (Supporter Perks): one fixed design picked on the website. Same rule as reaction roles / sheets: it's on
-//   when the server OWNER has Supporter Perks; otherwise it runs on the perks of the admin who picked it (perk_owner).
-//   When those perks end (48-hour grace included), it moves to another admin of the server with perks, or Pingway
-//   uses the random default until perks are back (the saved design is never erased).
+// - Designs (website, v2.2): admins tick any mix of "Default" (a random pw01..pw20 bunny card) and custom designs; every
+//   join gets a random pick from the ticked ones (column welcome_settings.designs, a JSON list like ["default","c20"]).
+//   Older rows without that list: mode 'custom' + design = that one design, else "Default" (nothing to migrate).
+// - Custom designs (Supporter Perks). Same rule as reaction roles / sheets: they're on when the server OWNER has
+//   Supporter Perks; otherwise they run on the perks of the admin who picked them (perk_owner).
+//   When those perks end (48-hour grace included), they move to another admin of the server with perks, or Pingway
+//   picks only from the ticked non-custom choice ("Default", or the random default if only customs are ticked) until
+//   perks are back (the saved designs are never erased).
 // - Raids / mass joins: at most 3 cards per server per 30 seconds; the rest of that window get one combined text
 //   message at the end of it ("Welcome @a, @b and N more! 🎉"), no images.
 // - Website "Send test": the website writes welcome_requests rows; this module DMs the preview card to that admin.
@@ -121,22 +124,50 @@ async function disable(guildId, userId) {
 }
 
 // ---------- design (Supporter Perks) ----------
-// -> { design, custom } . Custom only while covered by perks; otherwise a random default (saved design kept).
-async function resolveDesign(guild, settings) {
-    const saved = settings && settings.mode === 'custom' && settings.design ? String(settings.design) : null;
-    if (!saved || !W.ALL_DESIGNS.includes(saved)) return { design: W.randomDefault(), custom: false };
-    if (await ownerHasMembership(guild.ownerId)) return { design: saved, custom: true };
-    if (settings.perk_owner && await sponsorHasPerks(settings.perk_owner)) return { design: saved, custom: true };
+// The ticked choices: ['default', 'c20', ...] (always at least one). Unknown ids are dropped.
+function selectedDesigns(settings) {
+    let list = null;
+    if (settings && settings.designs !== undefined && settings.designs !== null && settings.designs !== '') {
+        try {
+            const parsed = typeof settings.designs === 'string' ? JSON.parse(settings.designs) : settings.designs;
+            if (Array.isArray(parsed)) list = parsed.map(String);
+        } catch (e) { list = null; }
+    }
+    // Older rows (before the multi-select): one custom design, or Default
+    if (!list) list = settings && settings.mode === 'custom' && settings.design ? [String(settings.design)] : ['default'];
+    const out = [];
+    for (const id of list) {
+        if ((id === 'default' || (W.ALL_DESIGNS.includes(id) && !W.DEFAULT_POOL.includes(id))) && !out.includes(id)) out.push(id);
+    }
+    return out.length ? out : ['default'];
+}
+
+// Are the custom designs covered by Supporter Perks? (owner, perk_owner, or hand-over to another admin with perks)
+async function customsCovered(guild, settings) {
+    if (await ownerHasMembership(guild.ownerId)) return true;
+    if (settings.perk_owner && await sponsorHasPerks(settings.perk_owner)) return true;
     // perk_owner's perks ended (48 h grace over) or there was none: move it to another admin with perks
     const next = await findPerksAdmin(guild, settings.perk_owner);
     if (next) {
         await pool.execute('UPDATE welcome_settings SET perk_owner = ? WHERE guild_id = ?', [String(next), String(guild.id)]).catch(() => {});
         settings.perk_owner = String(next); // the cached row follows too
         console.log('💜 [WELCOME] Custom welcome card in ' + guild.name + ' moved to another admin\'s Supporter Perks.');
-        return { design: saved, custom: true };
+        return true;
     }
     logOnce('noperks:' + guild.id, '💜 [WELCOME] ' + guild.name + ': custom welcome card not covered by Supporter Perks, using the random default.');
-    return { design: W.randomDefault(), custom: false };
+    return false;
+}
+
+// -> { design, custom } . A random pick from the ticked designs; customs only while covered by perks.
+async function resolveDesign(guild, settings, rand = Math.random) {
+    const list = selectedDesigns(settings);
+    let usable = list;
+    if (list.some(id => id !== 'default')) {
+        if (!(await customsCovered(guild, settings))) usable = list.filter(id => id === 'default');
+    }
+    if (!usable.length) return { design: W.randomDefault(), custom: false };
+    const pick = usable[Math.min(usable.length - 1, Math.floor(rand() * usable.length))];
+    return pick === 'default' ? { design: W.randomDefault(), custom: false } : { design: pick, custom: true };
 }
 
 // ---------- helpers ----------
@@ -348,7 +379,7 @@ function start(client) {
 }
 
 module.exports = {
-    start, poll, handleJoin, handleRequest, getSettings, invalidate, enableHere, disable, resolveDesign,
+    start, poll, handleJoin, handleRequest, getSettings, invalidate, enableHere, disable, resolveDesign, selectedDesigns,
     fillMessage, missingPerms, permLabel, fetchAvatar, previewFor, ensureTables,
     DEFAULT_MESSAGE, MAX_MESSAGE, LIMITS, _windows: windows
 };

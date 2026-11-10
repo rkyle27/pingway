@@ -171,5 +171,39 @@
     "onlyHost": "🚫 Nur der Host dieses Party Finders kann ihn erneut posten.",
     "tooOld": "⌛ Sorry, dieser Button ist zu alt (7 Tage). Nutze /pf, um einen neuen Eintrag zu erstellen.",
     "noChannel": "⚠️ Ich erreiche den Kanal deines alten Eintrags nicht mehr. Nutze /pf im Server, um einen neuen zu erstellen."
+  },
+  "recur": {
+    "button": "🔁 Wöchentlich wiederholen",
+    "field": "🔁 Wiederholung",
+    "none": "Wird nicht wiederholt",
+    "every": "Jeden **{days}** um **{time} (GMT{gmt})**",
+    "embedLine": "🔁 Wiederholt sich jeden **{days}**",
+    "placeholder": "Wähle die Tage für die Wiederholung",
+    "pick": "🔁 **Wöchentlich wiederholen:** Wähle die Tage. Pingway postet das nächste Angebot zur gleichen Uhrzeit (**{time}, GMT{gmt}**), sobald das aktuelle beginnt. Die Tage gelten in dieser Zeitzone.",
+    "noRepeat": "Nicht wiederholen",
+    "back": "Zurück",
+    "stop": "Wiederholung stoppen",
+    "onlyHost": "❌ Nur der **Host** kann die wöchentliche Wiederholung stoppen.",
+    "stopped": "⏹️ **{name}** wird nicht mehr wiederholt. Bereits gepostete Angebote bleiben (lösch sie, wenn du sie nicht brauchst).",
+    "alreadyStopped": "ℹ️ **{name}** wird schon nicht mehr wiederholt.",
+    "posted": "🔁 **Wöchentlicher Party Finder:** das nächste ist da!",
+    "day": {
+      "mon": "Mo",
+      "tue": "Di",
+      "wed": "Mi",
+      "thu": "Do",
+      "fri": "Fr",
+      "sat": "Sa",
+      "sun": "So"
+    },
+    "dayLong": {
+      "mon": "Montag",
+      "tue": "Dienstag",
+      "wed": "Mittwoch",
+      "thu": "Donnerstag",
+      "fri": "Freitag",
+      "sat": "Samstag",
+      "sun": "Sonntag"
+    }
   }
 }
