@@ -73,4 +73,4 @@ function selfTestIfAsked() {
     selfTest();
 }
 
-module.exports = { RAID_TEMPLATE_ID, copyTemplate, createBlank, deleteSheet, shareAnyoneCanEdit, selfTest, selfTestIfAsked };
+module.exports = { RAID_TEMPLATE_ID, copyTemplate, createBlank, deleteSheet, shareAnyoneCanEdit, selfTest, selfTestIfAsked, getApis };

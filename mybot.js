@@ -118,6 +118,12 @@ client.once(Events.ClientReady, () => {
     require('./utils/guildSheets').start(client); // Raid & Logger sheets: website requests, sharing, Supporter Perks limits
     require('./utils/trivia').start(client); // Pingway Trivia: word bank from XIVAPI (data/trivia_bank.json), tables, cleanup
     require('./utils/welcome').start(client); // Welcome cards for new members (/welcomehere + website)
+    // Website Dev page commands (command_queue): runs the allowed console commands every ~5 s and writes the output back
+    require('./utils/commandQueue').start(require('./utils/db').pool, {
+        runLine: line => handleConsoleLine(line),
+        isMaintenanceOn: () => isMaintenance(),
+        exportAuditSheet: (pool, sheetId) => require('./utils/auditSheet').exportAuditSheet(pool, sheetId)
+    });
 
     // Startup check for leftover data from servers Pingway is no longer in (read-only)
     setTimeout(async () => {
@@ -132,6 +138,7 @@ client.once(Events.ClientReady, () => {
         }
     }, 15000);
     console.log(`\n💡 [CONSOLE CONTROL] Available commands: "maintenance" (or "maint"), "status", "whois <id>", "server list", "purge", "points <id>" / "points add <id> <amount>" / "points remove <id> <amount>", "retainers <id>", "reviews" / "reviews all", "trivia <id>" / "trivia reset <id> today|purge" / "trivia reset confirm", "tts" / "tts google on|off", "kofi <id>" / "kofi give|remove <id> <credits>" / "kofi member <id> <days|off>"\n`);
+    console.log('💡 [CONSOLE CONTROL] Website Dev page: "dev add|remove <id>" / "staff add|remove <id>" (prints a one-time setup link, never a password)\n');
 });
 
 // --- Leftover Server Data (servers Pingway is no longer in) ---
@@ -383,7 +390,8 @@ const rl = readline.createInterface({
     terminal: false
 });
 
-rl.on('line', async (line) => {
+// One console line. Also used by the website's Dev page (utils/commandQueue.js runs the allowed commands through here).
+async function handleConsoleLine(line) {
     const input = line.trim().toLowerCase();
 
     if (input === 'maintenance' || input === 'maint') {
@@ -497,10 +505,15 @@ rl.on('line', async (line) => {
         } catch (err) {
             console.error('❌ [REVIEWS] Console command failed:', err.message);
         }
+    } else if (input === 'dev' || input.startsWith('dev ') || input === 'staff' || input.startsWith('staff ')) {
+        // Website Dev page access: "dev add|remove <id>" / "staff add|remove <id>" (prints a one-time setup link; never a password)
+        const words = input.split(/\s+/);
+        await require('./utils/devConsole').devConsole(words[0], words.slice(1), { pool: require('./utils/db').pool });
     } else if (input.length > 0) {
         console.log(`[CONSOLE] Unknown console command: "${input}".`);
     }
-});
+}
+rl.on('line', handleConsoleLine);
 
 // --- Crash Safety Net (log errors instead of crashing the bot) ---
 process.on('unhandledRejection', (reason) => {
