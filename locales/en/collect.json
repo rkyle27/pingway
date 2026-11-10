@@ -72,5 +72,6 @@
   "showWait": "⏳ The leaderboard was just posted here. Try again in {sec} s.",
   "showNoPerm": "❌ Pingway can't post in this channel (it needs View Channel, Send Messages and Embed Links).",
   "showBy": "📢 Shared by {user}",
+  "listsMissing": "📚 The item list isn't loaded yet, so this can't be checked right now. Please try again later.",
   "error": "❌ Something went wrong with FFXIV Collect. Please try again."
 }

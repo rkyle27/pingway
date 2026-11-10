@@ -72,5 +72,6 @@
   "showWait": "⏳ Le classement vient d'être publié ici. Réessaie dans {sec} s.",
   "showNoPerm": "❌ Pingway ne peut pas publier dans ce salon (il lui faut Voir le salon, Envoyer des messages et Intégrer des liens).",
   "showBy": "📢 Partagé par {user}",
+  "listsMissing": "📚 La liste des objets n'est pas encore chargée, donc ça ne peut pas être vérifié pour le moment. Réessaie plus tard.",
   "error": "❌ Un problème est survenu avec FFXIV Collect. Réessaie."
 }

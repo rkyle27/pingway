@@ -1,0 +1,411 @@
+{
+ "format": "pingway-collect-1",
+ "builtAt": "2026-11-11T00:00:00.000Z",
+ "langs": {
+  "en": {
+   "mounts": [
+    {
+     "id": 1,
+     "name": "Company Chocobo",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F01_hr1.tex&format=webp",
+     "owned": 96.2,
+     "sources": [
+      {
+       "type": "Quest",
+       "text": "My Little Chocobo"
+      }
+     ]
+    },
+    {
+     "id": 9,
+     "name": "Magitek Armor",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F09_hr1.tex&format=webp",
+     "owned": 91.5,
+     "sources": [
+      {
+       "type": "Quest",
+       "text": "The Ultimate Weapon"
+      }
+     ]
+    },
+    {
+     "id": 42,
+     "name": "Midgardsormr",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F042_hr1.tex&format=webp",
+     "owned": 40.1,
+     "sources": [
+      {
+       "type": "Achievement",
+       "text": "Heavensward Hunt Mastery"
+      }
+     ]
+    },
+    {
+     "id": 71,
+     "name": "Fat Chocobo",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F071_hr1.tex&format=webp",
+     "owned": 35.7,
+     "sources": [
+      {
+       "type": "Premium",
+       "text": "Collector's Edition"
+      }
+     ]
+    },
+    {
+     "id": 90,
+     "name": "Sabotender Emperador",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F090_hr1.tex&format=webp",
+     "owned": 28.3,
+     "sources": [
+      {
+       "type": "Achievement",
+       "text": "Wood You Believe It IV"
+      }
+     ]
+    },
+    {
+     "id": 104,
+     "name": "Fenrir",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0104_hr1.tex&format=webp",
+     "owned": 3.4,
+     "sources": [
+      {
+       "type": "Deep Dungeon",
+       "text": "Palace of the Dead floor 200 solo"
+      }
+     ]
+    },
+    {
+     "id": 133,
+     "name": "Ixion",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0133_hr1.tex&format=webp",
+     "owned": 12.9,
+     "sources": [
+      {
+       "type": "Hunt",
+       "text": "Ixion (Yanxia, The Fringes)"
+      }
+     ]
+    },
+    {
+     "id": 150,
+     "name": "Lunar Whale",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0150_hr1.tex&format=webp",
+     "owned": 22,
+     "sources": [
+      {
+       "type": "Premium",
+       "text": "Online Store"
+      }
+     ]
+    },
+    {
+     "id": 180,
+     "name": "Alte Roite",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0180_hr1.tex&format=webp",
+     "owned": 18.6,
+     "sources": [
+      {
+       "type": "Trial",
+       "text": "Eden's Gate: Descent (Savage)"
+      }
+     ]
+    },
+    {
+     "id": 200,
+     "name": "Fat Black Chocobo",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0200_hr1.tex&format=webp",
+     "owned": 15,
+     "sources": [
+      {
+       "type": "Event",
+       "text": "Moonfire Faire"
+      }
+     ]
+    },
+    {
+     "id": 221,
+     "name": "Pod 316",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0221_hr1.tex&format=webp",
+     "owned": 9.1,
+     "sources": [
+      {
+       "type": "Achievement",
+       "text": "Pod Person"
+      }
+     ]
+    },
+    {
+     "id": 240,
+     "name": "Wivre",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0240_hr1.tex&format=webp",
+     "owned": 30.2,
+     "sources": [
+      {
+       "type": "Trial",
+       "text": "The Dancing Plague (Extreme)"
+      }
+     ]
+    }
+   ],
+   "minions": [
+    {
+     "id": 1,
+     "name": "Cait Sith Doll",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0501_hr1.tex&format=webp",
+     "owned": 70,
+     "sources": [
+      {
+       "type": "Purchase",
+       "text": "2,000 gil"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Wind-up Cursor",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0502_hr1.tex&format=webp",
+     "owned": 50.5,
+     "sources": [
+      {
+       "type": "Purchase",
+       "text": "2,000 gil"
+      }
+     ]
+    },
+    {
+     "id": 3,
+     "name": "Black Coeurl",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0503_hr1.tex&format=webp",
+     "owned": 20,
+     "sources": [
+      {
+       "type": "Purchase",
+       "text": "2,000 gil"
+      }
+     ]
+    }
+   ],
+   "achievements": [
+    {
+     "id": 1,
+     "name": "To Crush Your Enemies I",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0901_hr1.tex&format=webp",
+     "owned": 88,
+     "sources": [],
+     "desc": "Defeat 100 enemies.",
+     "points": 10
+    },
+    {
+     "id": 2,
+     "name": "Wood You Believe It IV",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0902_hr1.tex&format=webp",
+     "owned": 5.5,
+     "sources": [],
+     "desc": "Complete 100 Gold Saucer events.",
+     "points": 20
+    },
+    {
+     "id": 3,
+     "name": "Heavensward Hunt Mastery",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0903_hr1.tex&format=webp",
+     "owned": 25,
+     "sources": [],
+     "desc": "Complete hunt bills.",
+     "points": 10
+    }
+   ],
+   "cards": [
+    {
+     "id": 1,
+     "name": "Dodo",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0701_hr1.tex&format=webp",
+     "owned": 99,
+     "sources": [
+      {
+       "type": "NPC",
+       "text": "Triple Triad Master"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "Tonberry",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0702_hr1.tex&format=webp",
+     "owned": 80,
+     "sources": [
+      {
+       "type": "NPC",
+       "text": "Triple Triad Master"
+      }
+     ]
+    },
+    {
+     "id": 3,
+     "name": "Bahamut",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0703_hr1.tex&format=webp",
+     "owned": 2,
+     "sources": [
+      {
+       "type": "NPC",
+       "text": "Triple Triad Master"
+      }
+     ]
+    }
+   ],
+   "orchestrions": [],
+   "emotes": [],
+   "hairstyles": [],
+   "bardings": []
+  },
+  "ja": {
+   "mounts": [
+    {
+     "id": 1,
+     "name": "カンパニーチョコボ",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F01_hr1.tex&format=webp",
+     "owned": 96.2,
+     "sources": [
+      {
+       "type": "Quest",
+       "text": "My Little Chocobo"
+      }
+     ]
+    },
+    {
+     "id": 9,
+     "name": "魔導アーマー",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F09_hr1.tex&format=webp",
+     "owned": 91.5,
+     "sources": [
+      {
+       "type": "Quest",
+       "text": "The Ultimate Weapon"
+      }
+     ]
+    },
+    {
+     "id": 42,
+     "name": "ミドガルズオルム",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F042_hr1.tex&format=webp",
+     "owned": 40.1,
+     "sources": [
+      {
+       "type": "Achievement",
+       "text": "Heavensward Hunt Mastery"
+      }
+     ]
+    },
+    {
+     "id": 71,
+     "name": "デブチョコボ",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F071_hr1.tex&format=webp",
+     "owned": 35.7,
+     "sources": [
+      {
+       "type": "Premium",
+       "text": "Collector's Edition"
+      }
+     ]
+    },
+    {
+     "id": 90,
+     "name": "サボテンダー・エンペラドール",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F090_hr1.tex&format=webp",
+     "owned": 28.3,
+     "sources": [
+      {
+       "type": "Achievement",
+       "text": "Wood You Believe It IV"
+      }
+     ]
+    },
+    {
+     "id": 104,
+     "name": "フェンリル",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0104_hr1.tex&format=webp",
+     "owned": 3.4,
+     "sources": [
+      {
+       "type": "Deep Dungeon",
+       "text": "Palace of the Dead floor 200 solo"
+      }
+     ]
+    },
+    {
+     "id": 133,
+     "name": "イクシオン",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0133_hr1.tex&format=webp",
+     "owned": 12.9,
+     "sources": [
+      {
+       "type": "Hunt",
+       "text": "Ixion (Yanxia, The Fringes)"
+      }
+     ]
+    },
+    {
+     "id": 150,
+     "name": "ルナホエール",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0150_hr1.tex&format=webp",
+     "owned": 22,
+     "sources": [
+      {
+       "type": "Premium",
+       "text": "Online Store"
+      }
+     ]
+    },
+    {
+     "id": 180,
+     "name": "アルテロイテ",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0180_hr1.tex&format=webp",
+     "owned": 18.6,
+     "sources": [
+      {
+       "type": "Trial",
+       "text": "Eden's Gate: Descent (Savage)"
+      }
+     ]
+    },
+    {
+     "id": 200,
+     "name": "デブブラックチョコボ",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0200_hr1.tex&format=webp",
+     "owned": 15,
+     "sources": [
+      {
+       "type": "Event",
+       "text": "Moonfire Faire"
+      }
+     ]
+    },
+    {
+     "id": 221,
+     "name": "ポッド316",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0221_hr1.tex&format=webp",
+     "owned": 9.1,
+     "sources": [
+      {
+       "type": "Achievement",
+       "text": "Pod Person"
+      }
+     ]
+    },
+    {
+     "id": 240,
+     "name": "ワイバーン",
+     "icon": "https://v2.xivapi.com/api/asset?path=ui%2Ficon%2F004000%2F0240_hr1.tex&format=webp",
+     "owned": 30.2,
+     "sources": [
+      {
+       "type": "Trial",
+       "text": "The Dancing Plague (Extreme)"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

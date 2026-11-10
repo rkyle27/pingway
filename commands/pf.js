@@ -276,7 +276,7 @@ function getDynamicCounts(listing) {
 const ffxivCollect = () => require('../utils/ffxivCollect');
 const { fromDiscordLocale } = require('../utils/i18n');
 
-// saved { id, name, icon } -> the same mount with its name in lang (list cached a day; the saved name when the list is not there)
+// saved { id, name, icon } -> the same mount with its name in lang (local lists file; the saved name when the list is not there)
 async function mountFor(saved, lang) {
     try {
         const items = await ffxivCollect().getList(db, 'mounts', lang);
@@ -693,7 +693,7 @@ module.exports = {
         try {
             const focused = interaction.options.getFocused();
             const lang = fromDiscordLocale(interaction.locale) || 'en';
-            // Discord waits 3 seconds at most: no answer in time = an empty list (the list is fetched once a day)
+            // Discord waits 3 seconds at most: no answer in time = an empty list (no lists file = an empty list too)
             const choices = await Promise.race([mountChoices(focused, lang), new Promise(r => setTimeout(() => r([]), 2500))]);
             return await interaction.respond(choices);
         } catch (e) {
@@ -711,7 +711,9 @@ module.exports = {
         if (mountQuery) {
             await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
             mount = await resolveMount(mountQuery, lang).catch(() => null);
-            mountNote = '\n\n' + (mount ? t(lang, 'pf.mount.picked', { name: mount.name }) : t(lang, 'pf.mount.notFound', { query: String(mountQuery).slice(0, 100) }));
+            const listsOk = mount || await ffxivCollect().listsReady().catch(() => false);
+            mountNote = '\n\n' + (mount ? t(lang, 'pf.mount.picked', { name: mount.name })
+                : !listsOk ? t(lang, 'collect.listsMissing') : t(lang, 'pf.mount.notFound', { query: String(mountQuery).slice(0, 100) }));
         }
         global.pfSessions.set(interaction.user.id, { step: 'idle', data: mount ? { mount } : {} });
 

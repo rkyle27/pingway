@@ -72,5 +72,6 @@
   "showWait": "⏳ Die Bestenliste wurde hier gerade gepostet. Versuche es in {sec} s noch einmal.",
   "showNoPerm": "❌ Pingway kann in diesem Kanal nicht posten (es braucht Kanal ansehen, Nachrichten senden und Links einbetten).",
   "showBy": "📢 Geteilt von {user}",
+  "listsMissing": "📚 Die Item-Liste ist noch nicht geladen, deshalb kann das gerade nicht geprüft werden. Bitte versuche es später noch einmal.",
   "error": "❌ Bei FFXIV Collect ist etwas schiefgelaufen. Bitte versuche es noch einmal."
 }

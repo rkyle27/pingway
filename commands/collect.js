@@ -134,9 +134,16 @@ function didYouMean(lang, owner, query, results) {
     return { content: '', embeds: [embed], components: [new ActionRowBuilder().addComponents(menu), backRow(lang, owner)] };
 }
 
+// The item lists file (data/ffxivcollect-lists.json) isn't there yet -> friendly note in the panel
+function listsMissingView(lang, owner) {
+    const embed = new EmbedBuilder().setDescription(t(lang, 'collect.listsMissing')).setColor(COLOR.warn).setFooter({ text: t(lang, 'collect.credit') });
+    return { content: '', embeds: [embed], components: [backRow(lang, owner)] };
+}
+
 /** Answer for a typed item name -> message payload */
 async function checkAnswer(lang, owner, query, data) {
     const sources = await searchSources(lang);
+    if (sources.some(src => src.items.notLoaded)) return listsMissingView(lang, owner);
     const results = fc.search(query, sources, 10);
     if (!results.length) {
         const embed = new EmbedBuilder().setDescription(t(lang, 'collect.noResult', { query: clip(query, 100) })).setColor(COLOR.warn).setFooter({ text: t(lang, 'collect.credit') });
@@ -156,6 +163,7 @@ function categoryMenu(lang, owner, action, cats, current) {
 
 async function missingPage(lang, owner, data, collection, page) {
     const items = await fc.getList(pool, collection, lang);
+    if (items.notLoaded) return listsMissingView(lang, owner);
     const list = fc.missing(data, collection, items);
     const embed = new EmbedBuilder().setColor(COLOR.info);
     const comps = [categoryMenu(lang, owner, 'misscat', MISSING_CATS, collection)];
@@ -335,6 +343,7 @@ module.exports = {
                 const [collection, itemId] = String((interaction.values || [])[0] || '').split(':');
                 if (!fc.COLLECTIONS[collection]) return;
                 const items = await fc.getList(pool, collection, lang);
+                if (items.notLoaded) return await interaction.editReply(listsMissingView(lang, id.owner));
                 const item = items.find(x => String(x.id) === itemId);
                 const r = await fc.getCharacter(pool, main.lodestone_id);
                 if (!item) return await interaction.editReply(await openPanel(interaction, lang, main));
@@ -366,5 +375,5 @@ module.exports = {
     },
 
     // for the tests
-    _: { parseId, panel, itemAnswer, didYouMean, checkAnswer, missingPage, leaderboard, leaderboardEmbed, showCheck, lastShow, PAGE_SIZE, SHOW_GAP_MS, MISSING_CATS, LB_CATS }
+    _: { parseId, panel, listsMissingView, itemAnswer, didYouMean, checkAnswer, missingPage, leaderboard, leaderboardEmbed, showCheck, lastShow, PAGE_SIZE, SHOW_GAP_MS, MISSING_CATS, LB_CATS }
 };

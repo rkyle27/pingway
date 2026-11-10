@@ -3,6 +3,8 @@
 // the IGN card stats row (utils/ignCardStats.js: never on top of job icons or QR codes), /collect (check item + fuzzy
 // "Did you mean", missing list order + pages, leaderboard of verified Mains in this server + 📢 Show limits) and the
 // PF Mount farm (autocomplete, posted listing, check button, weekly repeat keeps the mount).
+// Item lists come ONLY from the owner's local file (data/ffxivcollect-lists.json, here a copy of
+// test/fixtures/ffxivcollect/ffxivcollect-lists.json in a temp folder): no list is ever requested from the internet.
 // Plain node, no Discord / network / MySQL:  node --test test/ffxiv-collect.test.js
 'use strict';
 
@@ -11,10 +13,34 @@ const assert = require('node:assert/strict');
 const fs = require('fs');
 const path = require('path');
 const Module = require('module');
+const os = require('os');
 
 const ROOT = path.join(__dirname, '..');
 const FX = path.join(__dirname, 'fixtures');
 const fx = name => JSON.parse(fs.readFileSync(path.join(FX, 'ffxivcollect', name + '.json'), 'utf8'));
+
+// the item lists file: a temp copy of the fixture (never data/ffxivcollect-lists.json of the bot)
+const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'pingway-collect-'));
+const LISTS = path.join(TMP, 'ffxivcollect-lists.json');
+const LISTS_FIXTURE = fx('ffxivcollect-lists');
+const writeLists = (file, obj) => fs.writeFileSync(file, typeof obj === 'string' ? obj : JSON.stringify(obj));
+writeLists(LISTS, LISTS_FIXTURE);
+process.env.PINGWAY_COLLECT_LISTS_FILE = LISTS;
+test.after(() => { try { fs.rmSync(TMP, { recursive: true, force: true }); } catch (e) { /* temp */ } });
+
+// a list download is never allowed (FFXIV Collect master list paths, or any ?language= list)
+const LIST_URL = /\/api\/(mounts|minions|achievements|orchestrions|emotes|hairstyles|bardings|triad\/cards)\b|[?&]language=/;
+const listRequests = [];
+const origFetch = global.fetch;
+global.fetch = async (url, ...rest) => {
+    listRequests.push(String(url));
+    throw new Error('network is not allowed in this test: ' + url);
+};
+test.after(() => {
+    global.fetch = origFetch;
+    assert.deepEqual(listRequests, [], 'no fetch() at all');
+    assert.deepEqual(listRequestsSeen(), [], 'no item list was ever requested');
+});
 
 // ---------- module stand-ins ----------
 function inject(file, exports) {
@@ -52,7 +78,7 @@ const shims = {
         ButtonStyle: { Primary: 1, Secondary: 2, Success: 3, Danger: 4, Link: 5 }, TextInputStyle: { Short: 1, Paragraph: 2 },
         MessageFlags: { Ephemeral: 64 }, PermissionFlagsBits: PERM
     },
-    axios: { get: async (url, cfg) => { axiosCalls.push({ url, cfg }); return { status: 404, data: { status: 404, error: 'Not found' } }; } },
+    axios: { get: async (url, cfg) => { axiosCalls.push({ url, cfg }); if (LIST_URL.test(String(url))) listRequests.push(String(url)); return { status: 404, data: { status: 404, error: 'Not found' } }; } },
     cheerio: {}, qrcode: {}
 };
 try { require.resolve('sharp'); } catch (e) { shims.sharp = function () {}; }
@@ -98,10 +124,12 @@ const pfCmd = require('../commands/pf');
 const recur = require('../utils/pfRecurring');
 
 // ---------- fake FFXIV Collect ----------
-const api = { routes: {}, calls: [], delay: 0, active: 0, maxActive: 0, starts: [] };
+const api = { routes: {}, calls: [], delay: 0, active: 0, maxActive: 0, starts: [], listCalls: [] };
+function listRequestsSeen() { return api.listCalls.concat(listRequests); }
 function route(p, status, data) { api.routes[p] = { status, data }; }
 fc._setHttp(async url => {
     api.calls.push(url);
+    if (LIST_URL.test(String(url))) { api.listCalls.push(String(url)); return { status: 0, data: null }; }
     api.starts.push(Date.now());
     api.active++; api.maxActive = Math.max(api.maxActive, api.active);
     try {
@@ -113,24 +141,16 @@ fc._setHttp(async url => {
     } finally { api.active--; }
 });
 const L = { mounts: fx('mounts-en'), mountsJa: fx('mounts-ja'), minions: fx('minions-en'), ach: fx('achievements-en'), cards: fx('cards-en') };
-const empty = { query: {}, count: 0, results: [] };
 function standardRoutes() {
     api.routes = {};
     route('/characters/31313131?ids=1&latest=1', 200, fx('character'));
-    for (const lang of ['en', 'fr', 'de', 'ja']) {
-        route('/mounts?language=' + lang, 200, lang === 'ja' ? L.mountsJa : L.mounts);
-        route('/minions?language=' + lang, 200, L.minions);
-        route('/achievements?language=' + lang, 200, L.ach);
-        route('/triad/cards?language=' + lang, 200, L.cards);
-        for (const c of ['orchestrions', 'emotes', 'hairstyles', 'bardings']) route('/' + c + '?language=' + lang, 200, empty);
-    }
 }
 
 const U = '200000000000000001', U2 = '200000000000000002', U3 = '200000000000000003', STRANGER = '200000000000000099';
 const LID = '31313131';
 function reset() {
     ({ db, pool } = makeDb());
-    C._reset(); fc._reset(); api.calls = []; api.starts = []; api.maxActive = 0; api.delay = 0;
+    C._reset(); fc._reset(); fc._setListsFile(LISTS); writeLists(LISTS, LISTS_FIXTURE); api.calls = []; api.starts = []; api.maxActive = 0; api.delay = 0;
     collect._.lastShow.clear(); pf.rows = []; global.pfSessions = new Map(); langs.user = 'en'; langs.guild = 'en';
     standardRoutes();
 }
@@ -185,7 +205,7 @@ test('the real HTTP call: User-Agent "Pingway (FFXIV Discord bot)", timeout, JSO
     assert.equal(axiosCalls[0].url, 'https://ffxivcollect.com/api/characters/42?ids=1&latest=1');
     assert.equal(axiosCalls[0].cfg.headers['User-Agent'], 'Pingway (FFXIV Discord bot)');
     assert.equal(axiosCalls[0].cfg.timeout, 10000);
-    fc._setHttp(async url => { api.calls.push(url); const p = url.replace(fc.BASE, ''); const x = api.routes[p] || api.routes[p.split('?')[0]]; return x || { status: 0, data: null }; });
+    fc._setHttp(async url => { api.calls.push(url); if (LIST_URL.test(String(url))) { api.listCalls.push(String(url)); return { status: 0, data: null }; } const p = url.replace(fc.BASE, ''); const x = api.routes[p] || api.routes[p.split('?')[0]]; return x || { status: 0, data: null }; });
 });
 
 test('cache: kept 6 hours (no new request), then asked again; manual refresh at most every 30 minutes', async () => {
@@ -232,36 +252,152 @@ test('404 = not on FFXIV Collect yet, 403 = private (asked again after 30 min), 
     assert.equal((await fc.getCharacter(pool, LID, { now: 0 })).state, 'down');
 });
 
-test('master lists: ?language=, slim items (rarity, sources; minion variants left out), cached a day in memory + database', async () => {
+test('item lists: read from the local file only (never downloaded), slim items, a language not in the file -> English', async () => {
     reset();
     const ja = await fc.getList(pool, 'mounts', 'ja', { now: 0 });
-    assert.equal(api.calls[0], fc.BASE + '/mounts?language=ja');
     assert.equal(ja.find(m => m.id === 71).name, 'デブチョコボ');
     assert.deepEqual(Object.keys(ja[0]).sort(), ['icon', 'id', 'name', 'owned', 'sources']);
     assert.equal(ja.find(m => m.id === 104).owned, 3.4);
+    assert.equal(ja.notLoaded, undefined);
     const minions = await fc.getList(pool, 'minions', 'en', { now: 0 });
-    assert.deepEqual(minions.map(m => m.id), [1, 2, 3], 'the variant without "owned" is not a separate minion');
+    assert.deepEqual(minions.map(m => m.id), [1, 2, 3]);
     const ach = await fc.getList(pool, 'achievements', 'en', { now: 0 });
     assert.deepEqual([ach[1].desc, ach[1].points], ['Complete 100 Gold Saucer events.', 20]);
     const cards = await fc.getList(pool, 'cards', 'en', { now: 0 });
-    assert.equal(api.calls[api.calls.length - 1], fc.BASE + '/triad/cards?language=en');
     assert.equal(cards[2].name, 'Bahamut');
-    const n = api.calls.length;
-    await fc.getList(pool, 'mounts', 'ja', { now: 23 * 3600000 });
-    assert.equal(api.calls.length, n, 'memory');
-    fc._reset();
-    delete api.routes['/mounts?language=ja']; // site down: the saved list is used
-    const again = await fc.getList(pool, 'mounts', 'ja', { now: 23 * 3600000 });
-    assert.equal(again.length, 12);
-    assert.equal(api.calls.length, n, 'database, still fresh');
-    const old = await fc.getList(pool, 'mounts', 'ja', { now: 30 * 3600000 });
-    assert.equal(old.length, 12, 'site down after a day: yesterday\'s list');
+    // fr / de are not in the file, ja has only mounts: English for the rest
+    assert.equal((await fc.getList(pool, 'mounts', 'fr', { now: 0 })).find(m => m.id === 71).name, 'Fat Chocobo');
+    assert.equal((await fc.getList(pool, 'cards', 'ja', { now: 0 }))[2].name, 'Bahamut');
+    assert.equal((await fc.getList(pool, 'mounts', 'xx', { now: 0 })).find(m => m.id === 71).name, 'Fat Chocobo', 'unknown language -> en');
+    assert.deepEqual(await fc.getList(pool, 'nope', 'en', { now: 0 }), []);
+    assert.equal(await fc.listsReady({ now: 0 }), true);
+    assert.equal(api.calls.length, 0, 'no request at all for lists');
+    assert.deepEqual(listRequestsSeen(), []);
+    assert.equal(fc.LISTS_FILE, LISTS, 'path from the env (tests only)');
+    assert.equal(path.basename(fc.LISTS_FILE), 'ffxivcollect-lists.json');
+    // the real default path is <bot root>/data/ffxivcollect-lists.json (like data/trivia_bank.json)
+    assert.match(fs.readFileSync(path.join(ROOT, 'utils', 'ffxivCollect.js'), 'utf8'), /path\.join\(__dirname, '\.\.', 'data', 'ffxivcollect-lists\.json'\)/);
+    await fc.ensureTables(pool);
+    assert.ok(!db.log.some(x => /ffxiv_collect_lists/.test(x.sql)), 'the old lists table is not used (not even CREATE)');
+});
+
+test('item lists: no file / a broken file -> [] with notLoaded; checked again at most once a minute; replaced file read again (mtime)', async () => {
+    reset();
+    fs.rmSync(LISTS);
+    const none = await fc.getList(pool, 'mounts', 'en', { now: 0 });
+    assert.deepEqual([none.length, none.notLoaded], [0, true]);
+    assert.equal(await fc.listsReady({ now: 1 }), false);
+    // the owner puts the file in: seen after the next check (60 s)
+    writeLists(LISTS, LISTS_FIXTURE);
+    assert.equal((await fc.getList(pool, 'mounts', 'en', { now: 30000 })).notLoaded, true, 'not looked at again yet');
+    const ok = await fc.getList(pool, 'mounts', 'en', { now: fc.LISTS_CHECK_MS + 1 });
+    assert.equal(ok.length, 12);
+    assert.equal(ok.notLoaded, undefined);
+    // the owner replaces the file (new mtime): read again without a restart
+    const next = JSON.parse(JSON.stringify(LISTS_FIXTURE));
+    next.langs.en.mounts.push({ id: 5000, name: 'Brand New Mount', icon: 'https://x.test/5000.png', owned: 0.1, sources: [] });
+    writeLists(LISTS, next);
+    const later = new Date(Date.now() + 5000);
+    fs.utimesSync(LISTS, later, later);
+    assert.equal((await fc.getList(pool, 'mounts', 'en', { now: fc.LISTS_CHECK_MS + 2 })).length, 12, 'still the copy in memory');
+    assert.equal((await fc.getList(pool, 'mounts', 'en', { now: 2 * fc.LISTS_CHECK_MS + 2 })).length, 13);
+    // the same file (same mtime): not read again (the copy in memory is kept)
+    const before = await fc.getList(pool, 'mounts', 'en', { now: 2 * fc.LISTS_CHECK_MS + 3 });
+    assert.equal(await fc.getList(pool, 'mounts', 'en', { now: 4 * fc.LISTS_CHECK_MS }), before);
+    // broken file / wrong format -> notLoaded
+    for (const bad of ['{ not json', JSON.stringify({ format: 'other', langs: { en: { mounts: [] } } }), JSON.stringify({ format: 'pingway-collect-1', langs: [] }), JSON.stringify({ format: 'pingway-collect-1', langs: { en: { mounts: 'x' } } })]) {
+        fc._setListsFile(LISTS);
+        writeLists(LISTS, bad);
+        const r = await fc.getList(pool, 'mounts', 'en', { now: 0 });
+        assert.deepEqual([r.length, r.notLoaded], [0, true], bad);
+    }
+    assert.equal(api.calls.length, 0);
+});
+
+test('item lists: validation drops bad items (ids, names, owned, sources, http icons -> null, duplicates), keeps the good ones', () => {
+    const good = { id: 7, name: 'Good', icon: 'https://x.test/7.png', owned: 12.3, sources: [{ type: 'Quest', text: 'Do it' }] };
+    const parsed = fc.parseListsFile({ format: 'pingway-collect-1', builtAt: '2026-11-11T00:00:00Z', langs: {
+        en: {
+            mounts: [good, { ...good }, { ...good, id: '8' }, { ...good, id: 0 }, { ...good, id: 1.5 }, { ...good, id: 9, name: '' }, { ...good, id: 10, name: 5 },
+                { ...good, id: 11, owned: '12%' }, { ...good, id: 12, owned: 101 }, { ...good, id: 13, sources: 'x' }, null, 'x', [1],
+                { id: 14, name: 'Http icon', icon: 'http://x.test/14.png', owned: 1, extra: 'dropped field',
+                    sources: [{ type: 'A', text: 'a' }, null, { type: 1, text: 'b' }, { type: 'C' }, { type: 'D', text: 'd' }, { type: 'E', text: 'e' }] }],
+            achievements: [{ id: 1, name: 'Ach', icon: 'javascript:alert(1)', owned: 50, desc: 'x'.repeat(400), points: '10' }],
+            minions: 'not a list'
+        },
+        de: 'nope'
+    } });
+    assert.deepEqual(parsed.langs.en.mounts.map(m => m.id), [7, 14]);
+    const m14 = parsed.langs.en.mounts[1];
+    assert.equal(m14.icon, null, 'https icons only');
+    assert.deepEqual(Object.keys(m14).sort(), ['icon', 'id', 'name', 'owned', 'sources']);
+    assert.deepEqual(m14.sources, [{ type: 'A', text: 'a' }, { type: '', text: 'b' }, { type: 'C', text: '' }, { type: 'D', text: 'd' }], 'max 4, strings only');
+    const a = parsed.langs.en.achievements[0];
+    assert.deepEqual([a.icon, a.desc.length, a.points], [null, 300, 0]);
+    assert.equal(parsed.langs.en.minions, undefined);
+    assert.equal(parsed.langs.de, undefined);
+    assert.equal(parsed.dropped, 12);
+    assert.equal(fc.parseListsFile({ format: 'pingway-collect-1', langs: {} }), null, 'nothing usable');
+    assert.equal(fc.parseListsFile(null), null);
+});
+
+test('no lists file: /collect Check + Missing + pick say so (ephemeral panel), Leaderboard and IGN stats still work, PF autocomplete empty, PF check answers by id', async () => {
+    reset();
+    await verify(U, LID);
+    fs.rmSync(LISTS);
+    fc._setListsFile(LISTS);
+    const msg = t('en', 'collect.listsMissing');
+    assert.equal(msg, "📚 The item list isn't loaded yet, so this can't be checked right now. Please try again later.");
+    for (const l of ['fr', 'de', 'ja']) assert.ok(t(l, 'collect.listsMissing') && t(l, 'collect.listsMissing') !== msg, l);
+    // Check item
+    const m = interaction({ customId: 'collect_checkm_' + U, isButton: () => false, isModalSubmit: () => true, fields: { getTextInputValue: () => 'Fat Chocobo' } });
+    await collect.handleInteraction(m);
+    assert.equal(embedOf(last(m.out.edits)).description, msg);
+    assert.equal(m.out.deferred, 'update', 'inside the ephemeral panel');
+    // Missing
+    const sel = interaction({ customId: 'collect_misscat_' + U, isButton: () => false, isStringSelectMenu: () => true, values: ['mounts'] });
+    await collect.handleInteraction(sel);
+    assert.equal(embedOf(last(sel.out.edits)).description, msg);
+    // pick from an old "Did you mean" menu
+    const pick = interaction({ customId: 'collect_pick_' + U, isButton: () => false, isStringSelectMenu: () => true, values: ['mounts:71'] });
+    await collect.handleInteraction(pick);
+    assert.equal(embedOf(last(pick.out.edits)).description, msg);
+    // Leaderboard: character counts only
+    const g = fakeGuild([U], []);
+    const lb = await collect._.leaderboard(pool, g.guild, 'mounts', { refresh: false });
+    assert.deepEqual(lb.rows.map(r => [r.userId, r.value]), [[U, 5]]);
+    // IGN card stats: counts only
+    assert.deepEqual((await ign.collectStatsFor(U, LID)).map(x => x.key + ':' + x.text), ['mounts:5/380', 'minions:2/520', 'achievements:30 pts']);
+    // PF autocomplete: empty list
+    const ac = interaction({ locale: 'en-US', options: { getFocused: () => 'Fat' } });
+    await pfCmd.autocomplete(ac);
+    assert.deepEqual(ac.out.choices, []);
+    // /pf mount:<typed> -> the friendly note instead of "No mount found"
+    const ex = interaction({ isChatInputCommand: () => true, options: { getString: n => (n === 'mount' ? 'Fat Chocobo' : null) } });
+    await pfCmd.execute(ex);
+    assert.ok(last(ex.out.edits).content.includes(msg));
+    // PF "Check if you have it": answered by id, the saved name, no rarity / source
+    pf.rows.push({ id: '999', guild_id: 'g1', user_id: U2, status: 'active', data: JSON.stringify({ id: '999', userId: U2, guildId: 'g1', name: 'Farm', size: 8, date: '2030-01-01 20:00 GMT+9', claims: {}, mount: { id: 42, name: 'Midgardsormr' } }) });
+    let c = interaction({ customId: 'pf_mcheck_999' });
+    await pfCmd.handleInteraction(c);
+    let e = last(c.out.edits).embeds[0].data;
+    assert.match(e.description, /✅ You already have \*\*Midgardsormr\*\*!/);
+    assert.ok(!/players have it|📍/.test(e.description), 'no rarity / source');
+    pf.rows[0].data = JSON.stringify(Object.assign(JSON.parse(pf.rows[0].data), { mount: { id: 104 } }));
+    c = interaction({ customId: 'pf_mcheck_999' });
+    await pfCmd.handleInteraction(c);
+    e = last(c.out.edits).embeds[0].data;
+    assert.match(e.description, /❌ You still need \*\*#104\*\*/, 'no saved name: still answered by id');
+    assert.deepEqual(listRequestsSeen(), []);
 });
 
 test('gentle: at most 2 requests at the same time, starts spaced out', async () => {
     reset();
     api.delay = 60;
-    await Promise.all(['mounts', 'minions', 'achievements', 'cards', 'emotes'].map(c => fc.getList(pool, c, 'en')));
+    const ids = ['101', '102', '103', '104', '105'];
+    for (const id of ids) route('/characters/' + id + '?ids=1&latest=1', 200, Object.assign(fx('character'), { id: Number(id) }));
+    await Promise.all(ids.map(id => fc.getCharacter(pool, id)));
+    assert.equal(api.calls.length, 5);
     assert.ok(api.maxActive <= fc.MAX_PARALLEL, 'max ' + api.maxActive);
     const s = api.starts.slice().sort((a, b) => a - b);
     for (let i = 1; i < s.length; i++) assert.ok(s[i] - s[i - 1] >= fc.SPACING_MS - 20, 'spacing ' + (s[i] - s[i - 1]));
@@ -465,9 +601,11 @@ test('/collect 🔎 Check item: modal -> ✅ / ❌ with rarity, how to get it an
 test('/collect 📋 Missing: category menu, easiest first (most players have it), 10 per page with ◀ ▶', async () => {
     reset();
     await verify(U, LID);
-    const big = JSON.parse(JSON.stringify(L.mounts));
-    for (let i = 0; i < 25; i++) big.results.push(Object.assign({}, big.results[0], { id: 1000 + i, name: 'Extra Mount ' + i, owned: (50 - i) + '.0%' }));
-    route('/mounts?language=en', 200, big);
+    const big = JSON.parse(JSON.stringify(LISTS_FIXTURE));
+    for (let i = 0; i < 25; i++) big.langs.en.mounts.push(Object.assign({}, big.langs.en.mounts[0], { id: 1000 + i, name: 'Extra Mount ' + i, owned: 50 - i }));
+    const bigFile = path.join(TMP, 'big-lists.json');
+    writeLists(bigFile, big);
+    fc._setListsFile(bigFile);
     const m = interaction({ customId: 'collect_missing_' + U });
     await collect.handleInteraction(m);
     assert.equal(last(m.out.edits).components[0].data.components[0].data.customId, 'collect_misscat_' + U);
