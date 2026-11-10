@@ -17,7 +17,10 @@
 //   is solved the same way as a right guess (bits = base then, see bitsFor in utils/triviaWords.js).
 // - Stored per person (trivia_users): display name and avatar for the leaderboards, bits (all time and this
 //   month), streak, last solve day and "hide me" (set on the website). trivia_players: who played in which server
-//   (a server's leaderboard). trivia_guild: the share channel an admin picked on the website.
+//   (a server's leaderboard). trivia_guild: the share channel an admin picked on the website. trivia_shares: the servers a
+//   day's solve was shared to (Discord's Share button and the website's Share box, see utils/triviaShare.js).
+// - The website (pingway.app → Trivia) plays the same game: its lib/triviaPlay.js has exact copies of the game functions
+//   below (a test there checks they stay the same). Change them in both places.
 // - Old games (trivia_plays) and old words are deleted after 100 days.
 // - Languages (en, fr, de, ja; the player's language from utils/userLanguage.js): the bank has every word's name, clues
 //   and lore in all 4 languages (fetched from XIVAPI with ?language=xx). The word of the day is the SAME game thing
@@ -111,6 +114,16 @@ async function ensureTables() {
         guild_id VARCHAR(32) PRIMARY KEY,
         share_channel_id VARCHAR(32) DEFAULT NULL,
         updated_at BIGINT NOT NULL DEFAULT 0
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`);
+    // Which servers a solve was shared to (one post per person, day and server; the website's Share box uses it too)
+    await pool.execute(`CREATE TABLE IF NOT EXISTS trivia_shares (
+        user_id VARCHAR(32) NOT NULL,
+        day CHAR(10) NOT NULL,
+        guild_id VARCHAR(32) NOT NULL,
+        channel_id VARCHAR(32) DEFAULT NULL,
+        shared_at BIGINT NOT NULL DEFAULT 0,
+        PRIMARY KEY (user_id, day, guild_id),
+        KEY idx_day (day)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`);
     tablesReady = true;
 }
@@ -545,6 +558,18 @@ async function markShared(userId, day, diff, undo) {
     return Number(r.affectedRows) > 0;
 }
 
+// Saves that today's solve was shared to a server. True only the first time for that server. undo = the post failed.
+async function recordShare(userId, day, guildId, channelId, undo) {
+    await ensureTables();
+    if (undo) {
+        await pool.execute('DELETE FROM trivia_shares WHERE user_id = ? AND day = ? AND guild_id = ?', [String(userId), day, String(guildId)]);
+        return true;
+    }
+    const [r] = await pool.execute('INSERT IGNORE INTO trivia_shares (user_id, day, guild_id, channel_id, shared_at) VALUES (?, ?, ?, ?, ?)',
+        [String(userId), day, String(guildId), channelId ? String(channelId) : null, Date.now()]);
+    return Number(r.affectedRows) > 0;
+}
+
 // The spoiler-free line posted in the share channel (no word, no letters), in the server's language
 function shareLine(name, diff, play, streak, lang) {
     const L = lang || 'en';
@@ -570,6 +595,7 @@ async function cleanup() {
     const cut = W.addDays(W.dayOf(), -KEEP_DAYS);
     await pool.execute('DELETE FROM trivia_plays WHERE day < ?', [cut]);
     await pool.execute('DELETE FROM trivia_words WHERE day < ?', [cut]);
+    await pool.execute('DELETE FROM trivia_shares WHERE day < ?', [cut]);
 }
 
 // ---------- console (mybot.js: "trivia <id>", "trivia reset <id> today|purge", "trivia reset confirm") ----------
@@ -762,6 +788,7 @@ function start(client) {
         try {
             await ensureTables();
             await refreshBank();
+            await wordsOf(W.dayOf()); // today's words are ready for the website too (it can't pick them itself)
             await cleanup();
         } catch (err) {
             console.error('⚠️ [TRIVIA] Background check failed:', err.message);
@@ -769,11 +796,17 @@ function start(client) {
     };
     setTimeout(run, 15000);
     setInterval(run, 6 * 60 * 60 * 1000);
+    // Just after every 0:00 JST: save the new day's words (website players don't have to wait for a /trivia in Discord)
+    const atMidnight = () => {
+        const t = setTimeout(() => { wordsOf(W.dayOf()).catch(err => console.error('⚠️ [TRIVIA] New day words failed:', err.message)); atMidnight(); }, W.msToReset() + 5000);
+        if (t.unref) t.unref();
+    };
+    atMidnight();
 }
 
 module.exports = {
     BANK_FILE, BANK_FORMAT, ensureTables, getBank, refreshBank, buildBank, bankIsOld, wordsOf, yesterdayAnswers,
-    touchPlayer, getUser, shareChannel, dayStatus, getPlay, startPlay, useHint, giveUp, guess, markShared, shareLine, cleanup, start, adminTrivia,
+    touchPlayer, getUser, shareChannel, dayStatus, getPlay, startPlay, useHint, giveUp, guess, markShared, recordShare, shareLine, cleanup, start, adminTrivia,
     dayPool, startedLangs, bitsBasis,
     _reset: () => { bank = null; building = null; tablesReady = false; },
     _setPause: (ms, retry) => { pauseMs = ms; if (retry !== undefined) retryMs = retry; } // tests only

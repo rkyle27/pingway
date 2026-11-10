@@ -122,7 +122,8 @@ client.once(Events.ClientReady, () => {
     require('./utils/commandQueue').start(require('./utils/db').pool, {
         runLine: line => handleConsoleLine(line),
         isMaintenanceOn: () => isMaintenance(),
-        exportAuditSheet: (pool, sheetId) => require('./utils/auditSheet').exportAuditSheet(pool, sheetId)
+        exportAuditSheet: (pool, sheetId) => require('./utils/auditSheet').exportAuditSheet(pool, sheetId),
+        triviaShare: (userId, args) => require('./utils/triviaShare').run(client, userId, args) // website Trivia Share box
     });
 
     // Startup check for leftover data from servers Pingway is no longer in (read-only)

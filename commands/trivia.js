@@ -255,6 +255,7 @@ module.exports = {
                 await T.markShared(userId, day, st.solved.difficulty, true).catch(() => {});
                 return await i.followUp({ content: tx('share.cantPost', { channel: chId }), flags: [MessageFlags.Ephemeral], allowedMentions: { parse: [] } });
             }
+            await T.recordShare(userId, day, guildId, chId).catch(() => {}); // the website's Share box shows this server as shared
             const p = await home();
             p.content += '\n\n' + tx('share.done', { channel: chId });
             return await i.editReply({ ...p, allowedMentions: { parse: [] } });

@@ -14,13 +14,15 @@ const ROOT = path.join(__dirname, '..', '..');
 // ---------- in-memory database ----------
 const KEYS = {
     trivia_words: ['day', 'difficulty'], trivia_plays: ['user_id', 'day', 'difficulty'], trivia_users: ['user_id'],
-    trivia_players: ['guild_id', 'user_id'], trivia_guild: ['guild_id'], user_language: ['user_id']
+    trivia_players: ['guild_id', 'user_id'], trivia_guild: ['guild_id'], user_language: ['user_id'],
+    trivia_shares: ['user_id', 'day', 'guild_id']
 };
 const DEFAULTS = {
     trivia_plays: { status: 'playing', wrong: 0, hints_used: null, revealed: null, bits: 0, guild_id: null, started_at: 0, finished_at: null, shared: 0, hint_round: 0, lang_progress: null },
     trivia_users: { display_name: null, avatar: null, bits_total: 0, season_key: null, season_bits: 0, streak: 0, last_solve_day: null, hidden: 0, updated_at: 0 },
     trivia_words: { category: '', hints: null, lore: null, created_at: 0, i18n: null },
     trivia_guild: { share_channel_id: null, updated_at: 0 },
+    trivia_shares: { channel_id: null, shared_at: 0 },
     user_language: { lang: null, discord_locale: null, updated_at: 0 }
 };
 
@@ -131,6 +133,14 @@ function fakeDb() {
                 return o;
             });
             return [rows];
+        }
+        if ((m = /^DELETE FROM (\w+) WHERE (.+)$/.exec(q))) {
+            const test = where(m[2], a, { i: 0 });
+            const list = tbl(m[1]);
+            const keep = list.filter(r => !test(r));
+            const n = list.length - keep.length;
+            list.length = 0; list.push(...keep);
+            return [{ affectedRows: n }];
         }
         if (/^DELETE FROM/.test(q)) return [{ affectedRows: 0 }];
         throw new Error('fake db: unknown SQL ' + q);

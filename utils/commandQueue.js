@@ -5,6 +5,7 @@
 // audit row (dev_audit) the website wrote when the command was asked for.
 //
 // Only the commands in COMMANDS can run (the website checks them too; here they are checked again).
+// Plus two special jobs: 'audit_sheet' (Dev page) and 'trivia_share' (website Trivia Share box, any logged-in player: utils/triviaShare.js).
 // "dev add / remove" and "staff add / remove" are NOT possible from here: they stay console-only.
 // Rows the bot did not pick up within 10 minutes (e.g. the bot was offline) are marked "expired" and never run later.
 
@@ -82,11 +83,18 @@ const parseArgs = s => { try { const a = JSON.parse(s || '{}'); return a && type
 const clip = s => (s.length > RESULT_MAX ? s.slice(0, RESULT_MAX - 20) + '\n… (cut)' : s);
 
 /**
- * Runs one claimed row. deps: { runLine(line), isMaintenanceOn(), exportAuditSheet(pool, sheetId) }
+ * Runs one claimed row. deps: { runLine(line), isMaintenanceOn(), exportAuditSheet(pool, sheetId), triviaShare(userId, args) }
  * -> { state: 'done'|'error', result, before?, after? }
  */
 async function runOne(row, deps, pool) {
     const args = parseArgs(row.args);
+    // Website Trivia "Share" box (a normal user, not a Dev page command): posts the asker's own solve (utils/triviaShare.js).
+    // The person is always the row's requested_by (written by the website from the login), never a value from args.
+    if (row.action === 'trivia_share') {
+        if (!deps.triviaShare) return { state: 'error', result: 'Trivia sharing is not available.' };
+        const [[who]] = await pool.execute('SELECT requested_by FROM command_queue WHERE id = ?', [row.id]);
+        return deps.triviaShare(who ? String(who.requested_by) : '', args);
+    }
     if (row.action === 'audit_sheet') {
         if (!/^[a-zA-Z0-9-_]{20,100}$/.test(String(args.sheetId || ''))) return { state: 'error', result: 'Invalid Google Sheet id.' };
         try {
