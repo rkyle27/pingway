@@ -31,3 +31,6 @@ data/trivia_salt.txt
 sheets-selftest.flag
 voice-settings.json
 voice-settings.json.tmp
+
+# Console commands - NEVER public (owner rule)
+CONSOLE_COMMANDS.txt
