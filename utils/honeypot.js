@@ -301,7 +301,7 @@ async function handle(message) {
     await dmOwner(guild, entry, message.channel.name || 'channel');
 }
 
-// /honeypot set|off|dm: save and apply right away
+// /honeypot action: Set channel | Turn off | DM alerts: save and apply right away
 async function setChannel(client, guildId, channelId) {
     await ensureTables();
     await pool.execute(
@@ -323,7 +323,7 @@ async function setDm(guildId, on) {
     if (trap) trap.dm = on;
 }
 
-// /honeypot warning on|off
+// /honeypot action: Warning message (on: True/False)
 async function setWarning(client, guildId, on) {
     await ensureTables();
     await pool.execute(

@@ -1,5 +1,5 @@
 // Which language Pingway uses for a user's bot replies.
-// Order: 1) the user's own choice (/pingway en|fr|de|jp, or "Bot language" in website My Settings)
+// Order: 1) the user's own choice (/pingway language: …, or "Bot language" in website My Settings)
 //        2) the language of their Discord app (interaction.locale, remembered for DMs and background messages)
 //        3) English
 // Public messages in a server channel use the server's language: the admins' choice on the website (server settings ->

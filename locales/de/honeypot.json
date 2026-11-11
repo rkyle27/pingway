@@ -40,14 +40,19 @@
   },
   "cmd": {
     "description": "🍯 „Hier nicht schreiben“-Kanal, der gehackte Konten entfernt.",
-    "set": "Einen Kanal als Honeypot nutzen (Pingway postet dort eine Warnung).",
-    "channel": "Der Kanal, in dem niemand schreiben soll",
-    "off": "Den Honeypot ausschalten.",
-    "dm": "Gefangenen Mitgliedern per DM sagen, dass ihr Konto vielleicht gehackt ist.",
-    "dmOn": "Die DM senden?",
-    "warning": "Pingways „Hier nicht posten“-Warnung im Honeypot-Kanal zeigen.",
-    "warningOn": "Die Warnung zeigen?",
-    "status": "Die Honeypot-Einstellungen anzeigen."
+    "action": "Was tun: Kanal festlegen, ausschalten, DM-Hinweise, Warnnachricht oder Status.",
+    "actionName": "aktion",
+    "actions": {
+      "set": "Kanal festlegen",
+      "off": "Ausschalten",
+      "dm": "DM-Hinweise",
+      "warning": "Warnnachricht",
+      "status": "Status"
+    },
+    "channel": "Der Kanal, in dem niemand schreiben soll (für Kanal festlegen)",
+    "channelName": "kanal",
+    "on": "An (True) oder aus (False), für DM-Hinweise und Warnnachricht",
+    "onName": "an"
   },
   "perms": {
     "ban": "Mitglieder bannen",
@@ -65,6 +70,10 @@
   "on": "an",
   "off": "aus",
   "status": "🍯 Honeypot: <#{channelId}> · DM: {dm} · Warnung: {warning}\nDie Liste der gefangenen Mitglieder steht auf der Pingway-Website (Server-Einstellungen).{permNote}",
-  "statusOff": "🍯 Der Honeypot ist aus. Nutze `/honeypot set`, um einen Kanal zu wählen.{permNote}",
+  "statusOff": "🍯 Der Honeypot ist aus. Nutze `/honeypot aktion: Kanal festlegen`, um einen Kanal zu wählen.{permNote}",
+  "needChannel": "⚠️ Fülle bitte auch die Option `kanal:` aus, um **Kanal festlegen** zu nutzen.",
+  "needOn": "⚠️ Fülle bitte auch die Option `an:` aus (True = an, False = aus), um **{action}** zu nutzen.",
+  "onlyChannel": "⚠️ Die Option `kanal:` wird nur bei **Kanal festlegen** genutzt. Führe den Befehl ohne sie noch einmal aus.",
+  "onlyOn": "⚠️ Die Option `an:` wird nur bei **DM-Hinweise** und **Warnnachricht** genutzt. Führe den Befehl ohne sie noch einmal aus.",
   "failed": "❌ Etwas ist schiefgelaufen. Bitte versuche es noch einmal."
 }

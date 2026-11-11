@@ -39,7 +39,7 @@
     },
     "other": {
       "name": "📨 その他",
-      "value": "**/clearbotdms** — DMにあるPingwayのメッセージを片付けます。\n**/pingway** — あなた用のPingwayの言語を選びます（en、fr、de、jp、auto）。\n**/help** — このガイド。"
+      "value": "**/clearbotdms** — DMにあるPingwayのメッセージを片付けます。\n**/pingway** — あなた用のPingwayの言語を選びます（例：`/pingway 言語: 日本語`。自動ならDiscordアプリの言語）。\n**/help** — このガイド。"
     }
   },
   "footer": "Pingway FFXIV Discord Bot • 開発：River Zola",

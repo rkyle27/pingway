@@ -1,7 +1,6 @@
 {
   "maintenance": "⚠️ **Le bot est en maintenance.** Merci de réessayer plus tard !",
   "noDms": "⚠️ **Les commandes slash ne peuvent pas être utilisées en MP.**\nLance cette commande dans un salon d'un serveur.",
-  "busy": "⚠️ **Désolé, je suis occupé pour le moment !** ({task})\nRéessaie dans quelques instants.",
   "sciondexSelect": "Choisis un salon pour ScionDex...",
   "sciondexAdminNotSetUp": "⚠️ **ScionDex n'a pas encore été configuré sur ce serveur !**\nEn tant qu'admin, choisis le salon où les membres pourront jouer à ScionDex :",
   "sciondexAdminRestricted": "⚠️ **ScionDex est limité à <#{channelId}>.**\nEn tant qu'admin, tu peux choisir un autre salon ci-dessous :",
@@ -13,9 +12,5 @@
   "time": {
     "dhm": "{d} j {h} h {m} min",
     "hm": "{h} h {m} min"
-  },
-  "tasks": {
-    "clearDms": "Nettoyage des MP du bot",
-    "cleanChannel": "Nettoyage des messages du salon"
   }
 }

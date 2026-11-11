@@ -4,8 +4,9 @@
     "target": "Nombre de messages à supprimer (ex. 5, 67) ou \"all\""
   },
   "alreadyRunning": "⚠️ Un nettoyage est déjà en cours en arrière-plan ! Attends qu'il se termine.",
-  "invalid": "❌ Saisie invalide. Entre un nombre positif (ex. `/clean 5`) ou `\"all\"`.",
+  "invalid": "❌ Saisie invalide. Entre un nombre positif (ex. `/clean target: 5`) ou `\"all\"`.",
   "progress": "🧹 Nettoyage en cours... **{deletedTotal}** message(s) supprimé(s) pour l'instant.",
   "complete": "🧹 **Nettoyage terminé !** **{deletedTotal}** message(s) supprimé(s).",
+  "timeLimit": "⏱️ Pingway a arrêté le nettoyage après 30 minutes : ce salon contient trop d'anciens messages à effacer. Supprimés jusqu'ici : {deletedTotal}.",
   "failed": "❌ Une erreur s'est produite pendant le nettoyage du salon."
 }

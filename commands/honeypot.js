@@ -3,27 +3,39 @@ const honeypot = require('../utils/honeypot');
 const { t, discordLocalizations } = require('../utils/i18n');
 const userLanguage = require('../utils/userLanguage');
 
+// One command, options only (no sub-commands): /honeypot action: <Set channel | Turn off | DM alerts | Warning message | Status>
+// channel: (needed for Set channel) · on: True/False (needed for DM alerts and Warning message)
+const ACTIONS = ['set', 'off', 'dm', 'warning', 'status'];
+
 module.exports = {
+    ACTIONS,
     data: new SlashCommandBuilder()
         .setName('honeypot')
         .setDescription(t('en', 'honeypot.cmd.description')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.description'))
         .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
         .setDMPermission(false)
-        .addSubcommand(s => s.setName('set').setDescription(t('en', 'honeypot.cmd.set')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.set'))
-            .addChannelOption(o => o.setName('channel').setDescription(t('en', 'honeypot.cmd.channel')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.channel')).setRequired(true)
-                .addChannelTypes(ChannelType.GuildText)))
-        .addSubcommand(s => s.setName('off').setDescription(t('en', 'honeypot.cmd.off')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.off')))
-        .addSubcommand(s => s.setName('dm').setDescription(t('en', 'honeypot.cmd.dm')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.dm'))
-            .addBooleanOption(o => o.setName('on').setDescription(t('en', 'honeypot.cmd.dmOn')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.dmOn')).setRequired(true)))
-        .addSubcommand(s => s.setName('warning').setDescription(t('en', 'honeypot.cmd.warning')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.warning'))
-            .addBooleanOption(o => o.setName('on').setDescription(t('en', 'honeypot.cmd.warningOn')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.warningOn')).setRequired(true)))
-        .addSubcommand(s => s.setName('status').setDescription(t('en', 'honeypot.cmd.status')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.status'))),
+        .addStringOption(o => o.setName('action').setNameLocalizations(discordLocalizations('honeypot.cmd.actionName'))
+            .setDescription(t('en', 'honeypot.cmd.action')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.action')).setRequired(true)
+            .addChoices(...ACTIONS.map(value => ({ name: t('en', 'honeypot.cmd.actions.' + value), name_localizations: discordLocalizations('honeypot.cmd.actions.' + value), value }))))
+        .addChannelOption(o => o.setName('channel').setNameLocalizations(discordLocalizations('honeypot.cmd.channelName'))
+            .setDescription(t('en', 'honeypot.cmd.channel')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.channel')).setRequired(false)
+            .addChannelTypes(ChannelType.GuildText))
+        .addBooleanOption(o => o.setName('on').setNameLocalizations(discordLocalizations('honeypot.cmd.onName'))
+            .setDescription(t('en', 'honeypot.cmd.on')).setDescriptionLocalizations(discordLocalizations('honeypot.cmd.on')).setRequired(false)),
 
     async execute(interaction) {
-        const sub = interaction.options.getSubcommand();
+        const sub = interaction.options.getString('action', true);
         const guild = interaction.guild;
         const lang = await userLanguage.forInteraction(interaction);
         const reply = content => interaction.reply({ content, flags: [MessageFlags.Ephemeral] });
+        // Which options go with which action (friendly message instead of guessing)
+        const channelOpt = interaction.options.getChannel('channel', false);
+        const onOpt = interaction.options.getBoolean('on', false);
+        const hasOn = onOpt !== null && onOpt !== undefined;
+        if (sub === 'set' && !channelOpt) return reply(t(lang, 'honeypot.needChannel'));
+        if (sub !== 'set' && channelOpt) return reply(t(lang, 'honeypot.onlyChannel'));
+        if ((sub === 'dm' || sub === 'warning') && !hasOn) return reply(t(lang, 'honeypot.needOn', { action: t(lang, 'honeypot.cmd.actions.' + sub) }));
+        if (sub !== 'dm' && sub !== 'warning' && hasOn) return reply(t(lang, 'honeypot.onlyOn'));
         try {
             const me = guild.members.me;
             const canBan = me && me.permissions.has(PermissionFlagsBits.BanMembers);
@@ -33,7 +45,7 @@ module.exports = {
                 : '';
 
             if (sub === 'set') {
-                const channel = interaction.options.getChannel('channel', true);
+                const channel = channelOpt;
                 await honeypot.setChannel(interaction.client, guild.id, channel.id);
                 const trapNow = honeypot.getTrap(guild.id);
                 return reply(t(lang, 'honeypot.isNow', { channelId: channel.id, posted: trapNow && !trapNow.warning ? '' : t(lang, 'honeypot.posted'), permNote }));
@@ -43,12 +55,12 @@ module.exports = {
                 return reply(t(lang, 'honeypot.turnedOff'));
             }
             if (sub === 'dm') {
-                const on = interaction.options.getBoolean('on', true);
+                const on = onOpt;
                 await honeypot.setDm(guild.id, on);
                 return reply(on ? t(lang, 'honeypot.dmOn') : t(lang, 'honeypot.dmOff'));
             }
             if (sub === 'warning') {
-                const on = interaction.options.getBoolean('on', true);
+                const on = onOpt;
                 await honeypot.setWarning(interaction.client, guild.id, on);
                 return reply(on
                     ? t(lang, 'honeypot.warningOn')

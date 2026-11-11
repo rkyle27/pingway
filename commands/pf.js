@@ -110,7 +110,8 @@ async function loadDB() {
                 notifiedExact: rawData.notifiedExact ?? row.notifiedExact ?? false,
                 recurring: rawData.recurring || null,
                 recurPosted: rawData.recurPosted || false,
-                mount: rawData.mount || null
+                mount: rawData.mount || null,
+                mounts: Array.isArray(rawData.mounts) ? rawData.mounts : null
             };
             ensureListingClaims(listing);
             migrateOldJobCodes(listing);
@@ -274,7 +275,6 @@ function getDynamicCounts(listing) {
 
 // ---------- Mount farm (FFXIV Collect master list of mounts, utils/ffxivCollect.js) ----------
 const ffxivCollect = () => require('../utils/ffxivCollect');
-const { fromDiscordLocale } = require('../utils/i18n');
 
 // saved { id, name, icon } -> the same mount with its name in lang (local lists file; the saved name when the list is not there)
 async function mountFor(saved, lang) {
@@ -286,54 +286,103 @@ async function mountFor(saved, lang) {
     return { id: Number(saved.id), name: saved.name || '#' + saved.id, icon: saved.icon || null, owned: null, sources: [] };
 }
 
-// /pf mount option: the picked autocomplete value (mount id) or typed text -> { id, name, icon } or null
-async function resolveMount(value, lang) {
-    const v = String(value || '').trim();
-    if (!v) return null;
-    const fc = ffxivCollect();
-    const items = await fc.getList(db, 'mounts', lang);
-    if (/^\d+$/.test(v)) {
-        const m = items.find(x => x.id === Number(v));
-        if (m) return { id: m.id, name: m.name, icon: m.icon || null };
-    }
-    const en = lang === 'en' ? items : await fc.getList(db, 'mounts', 'en');
-    const found = fc.search(v, [{ collection: 'mounts', items, en }], 5);
-    if (!found.length || found[0].score < 0.75) return null;
-    const m = found[0].item;
-    return { id: m.id, name: m.name, icon: m.icon || null };
-}
+// Mount Farm Mode (the "🐎 Toggle Mount Farm" button on the preview dashboard): up to 10 farmable mounts
+// (Extreme / Minstrel's Ballad trials and Savage raid floor 4 drops, see ffxivCollect.farmableMounts).
+const MAX_FARM_MOUNTS = 10;
 
-// Autocomplete: up to 25 mounts matching what was typed (typos ok), in the user's Discord language; rare mounts first when empty
-async function mountChoices(query, lang) {
+// The mounts of a listing: the new list, or an old listing's single mount (a list of one)
+function listingMounts(listing) {
+    if (listing && Array.isArray(listing.mounts) && listing.mounts.length) return listing.mounts.filter(m => m && m.id).slice(0, MAX_FARM_MOUNTS);
+    return listing && listing.mount && listing.mount.id ? [listing.mount] : [];
+}
+const shortName = (name, max) => { const v = String(name || ''); return v.length > max ? v.slice(0, max - 1) + '…' : v; };
+const slimMount = m => ({ id: m.id, name: m.name, icon: m.icon || null });
+
+// Typed text -> { notLoaded } | { found: item } (sure) | { suggestions: [items], none } (farmable mounts only, user language + English)
+async function farmSearch(query, lang) {
     const fc = ffxivCollect();
-    const items = await fc.getList(db, 'mounts', lang);
+    const { items, en } = await fc.farmableMounts(db, lang);
+    if (items.notLoaded) return { notLoaded: true };
     const q = String(query || '').trim();
-    if (!q) return items.slice().sort((a, b) => a.owned - b.owned).slice(0, 25).map(m => ({ name: m.name.slice(0, 100), value: String(m.id) }));
-    const en = lang === 'en' ? items : await fc.getList(db, 'mounts', 'en');
-    return fc.search(q, [{ collection: 'mounts', items, en }], 25).map(r => ({ name: r.item.name.slice(0, 100), value: String(r.item.id) }));
+    const results = q ? fc.search(q, [{ collection: 'mounts', items, en }], MAX_FARM_MOUNTS) : [];
+    if (fc.isConfident(results)) return { found: results[0].item };
+    if (results.length) return { suggestions: results.map(r => r.item) };
+    // nothing close: the rarest farmable mounts to pick from
+    return { suggestions: items.slice().sort((a, b) => a.owned - b.owned || b.id - a.id).slice(0, MAX_FARM_MOUNTS), none: true };
 }
 
-// "🐎 Check if you have it" on a posted listing -> ephemeral answer for the clicking user
+// One farmable mount by id in lang (null when it isn't farmable / the list isn't there)
+async function farmMountById(id, lang) {
+    const { items } = await ffxivCollect().farmableMounts(db, lang);
+    return items.find(m => m.id === Number(id)) || null;
+}
+
+// The picked mount (icon + name + source) with "+ Add" and "⬅ Back"
+async function sendMountPick(interaction, session, lang, mount) {
+    const mounts = session.data.mounts || [];
+    const added = mounts.some(m => m.id === mount.id);
+    const full = mounts.length >= MAX_FARM_MOUNTS;
+    const lines = [];
+    const src = (mount.sources || []).map(x => x.text || x.type).filter(Boolean).slice(0, 2).join(' · ');
+    if (src) lines.push(t(lang, 'pf.mount.source', { text: src }));
+    if (mount.owned !== null && mount.owned !== undefined) lines.push(t(lang, 'pf.mount.rarity', { pct: Number(mount.owned).toLocaleString(require('../utils/i18n').localeOf(lang), { maximumFractionDigits: 1 }) }));
+    if (added) lines.push(t(lang, 'pf.farm.already', { name: mount.name }));
+    else if (full) lines.push(t(lang, 'pf.farm.full', { max: MAX_FARM_MOUNTS }));
+    const embed = new EmbedBuilder().setTitle(mount.name).setDescription(lines.join('\n') || mount.name)
+        .setColor('#3498db').setFooter({ text: t(lang, 'pf.mount.credit') });
+    if (mount.icon) embed.setThumbnail(mount.icon);
+    const row = new ActionRowBuilder().addComponents(
+        new ButtonBuilder().setCustomId('pf_mf_confirm_' + mount.id).setLabel(t(lang, 'pf.farm.addBtn')).setStyle(ButtonStyle.Success).setDisabled(added || full),
+        new ButtonBuilder().setCustomId('pf_mf_back').setLabel(t(lang, 'pf.farm.back')).setStyle(ButtonStyle.Secondary)
+    );
+    return interaction.update({ content: t(lang, 'pf.farm.isThis'), embeds: [embed], components: [row] });
+}
+
+// "Did you mean…": up to 10 farmable mounts as buttons (2 rows of 5) + "⬅ Back"
+async function sendMountSuggestions(interaction, session, lang, query, suggestions, none) {
+    const addedIds = new Set((session.data.mounts || []).map(m => m.id));
+    const list = suggestions.slice(0, MAX_FARM_MOUNTS);
+    const rows = [];
+    for (let i = 0; i < list.length; i += 5) {
+        rows.push(new ActionRowBuilder().addComponents(list.slice(i, i + 5).map(m =>
+            new ButtonBuilder().setCustomId('pf_mf_pick_' + m.id).setLabel(shortName((addedIds.has(m.id) ? '✅ ' : '') + m.name, 40)).setStyle(ButtonStyle.Secondary).setDisabled(addedIds.has(m.id)))));
+    }
+    rows.push(new ActionRowBuilder().addComponents(new ButtonBuilder().setCustomId('pf_mf_back').setLabel(t(lang, 'pf.farm.back')).setStyle(ButtonStyle.Secondary)));
+    const q = String(query || '').slice(0, 100);
+    return interaction.update({ content: t(lang, none ? 'pf.farm.noMatch' : 'pf.farm.didYouMean', { query: q }), embeds: [], components: rows });
+}
+
+// "🐎 Check if you have it" on a posted listing -> ephemeral answer for the clicking user: every listed mount ✅ / ❌
 async function mountCheckReply(interaction, lang, listingId) {
     const fc = ffxivCollect();
     const dbData = await loadDB();
     const listing = dbData.pfDatabase.find(l => l.id === listingId);
     if (!listing) return interaction.reply({ content: t(lang, 'pf.gone'), flags: [MessageFlags.Ephemeral] });
-    if (!listing.mount || !listing.mount.id) return interaction.reply({ content: t(lang, 'pf.mount.noMount'), flags: [MessageFlags.Ephemeral] });
+    const saved = listingMounts(listing);
+    if (!saved.length) return interaction.reply({ content: t(lang, 'pf.mount.noMount'), flags: [MessageFlags.Ephemeral] });
     const main = await fc.verifiedMain(db, interaction.user.id);
     if (!main) return interaction.reply({ content: t(lang, 'ign.needVerified'), flags: [MessageFlags.Ephemeral] });
     await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
-    const mount = await mountFor(listing.mount, lang);
+    const mounts = [];
+    for (const m of saved) mounts.push(await mountFor(m, lang));
     const r = await fc.getCharacter(db, main.lodestone_id);
-    const has = r.data ? fc.owns(r.data, 'mounts', mount.id) : null;
-    const lines = [r.state === 'notfound' ? t(lang, 'pf.mount.notOnCollect')
-        : has === true ? t(lang, 'pf.mount.have', { name: mount.name }) : has === false ? t(lang, 'pf.mount.need', { name: mount.name }) : t(lang, 'pf.mount.unknown', { name: mount.name })];
-    if (mount.owned !== null && mount.owned !== undefined) lines.push(t(lang, 'pf.mount.rarity', { pct: Number(mount.owned).toLocaleString(require('../utils/i18n').localeOf(lang), { maximumFractionDigits: 1 }) }));
-    const src = (mount.sources || []).map(s => s.text || s.type).filter(Boolean).slice(0, 2).join(' · ');
-    if (src) lines.push(t(lang, 'pf.mount.source', { text: src }));
-    const embed = new EmbedBuilder().setTitle(mount.name).setDescription(lines.join('\n'))
-        .setColor(has === true ? '#2ecc71' : has === false ? '#e74c3c' : '#f1c40f').setFooter({ text: t(lang, 'pf.mount.credit') });
-    if (mount.icon) embed.setThumbnail(mount.icon);
+    const embed = new EmbedBuilder().setTitle(t(lang, 'pf.farm.checkTitle')).setFooter({ text: t(lang, 'pf.mount.credit') });
+    if (r.state === 'notfound') {
+        embed.setDescription(t(lang, 'pf.mount.notOnCollect')).setColor('#f1c40f');
+    } else {
+        const fmt = n => Number(n).toLocaleString(require('../utils/i18n').localeOf(lang), { maximumFractionDigits: 1 });
+        let need = 0, unknown = 0;
+        const lines = mounts.map(m => {
+            const has = r.data ? fc.owns(r.data, 'mounts', m.id) : null;
+            const rarity = m.owned !== null && m.owned !== undefined ? t(lang, 'pf.farm.rarity', { pct: fmt(m.owned) }) : '';
+            if (has === false) need++;
+            if (has === null) unknown++;
+            return t(lang, has === true ? 'pf.farm.have' : has === false ? 'pf.farm.need' : 'pf.farm.unknown', { name: m.name, rarity });
+        });
+        if (unknown) lines.push('', t(lang, 'pf.farm.unknownNote'));
+        embed.setDescription(lines.join('\n')).setColor(unknown ? '#f1c40f' : need ? '#e74c3c' : '#2ecc71');
+    }
+    if (mounts.length === 1 && mounts[0].icon) embed.setThumbnail(mounts[0].icon);
     return interaction.editReply({ embeds: [embed] });
 }
 
@@ -384,9 +433,12 @@ async function buildPFEmbedAndRows(listing, guild, authorTag) {
     const hammertimeDisplay = targetMs ? ` (${toDiscordTimestamp(targetMs, 'f')} / ${toDiscordTimestamp(targetMs, 'R')})` : '';
 
     const repeatLine = recur.isActive(listing) ? '\n' + t(lang, 'pf.recur.embedLine', { days: recur.daysText(listing.recurring.days, t, lang) }) : '';
-    // Mount farm (FFXIV Collect): the mount's name in the server's language when the list is there, else the saved name
-    const mount = listing.mount && listing.mount.id ? await mountFor(listing.mount, lang) : null;
-    const mountLine = mount ? '\n' + t(lang, 'pf.mount.line', { name: mount.name }) : '';
+    // Mount farm (FFXIV Collect): the mounts' names in the server's language when the list is there, else the saved names
+    const mounts = [];
+    for (const m of listingMounts(listing)) mounts.push(await mountFor(m, lang));
+    const mountLine = !mounts.length ? ''
+        : mounts.length === 1 ? '\n' + t(lang, 'pf.mount.line', { name: mounts[0].name })
+            : '\n' + t(lang, 'pf.farm.postList', { n: mounts.length }) + mounts.map(m => '\n• ' + m.name).join('');
     const embed = new EmbedBuilder()
         .setTitle(t(lang, 'pf.title', { name: listing.name }))
         .setDescription(t(lang, 'pf.description', { host: listing.userId, date: listing.date, timestamps: hammertimeDisplay, size: listing.size }) + repeatLine + mountLine)
@@ -397,13 +449,13 @@ async function buildPFEmbedAndRows(listing, guild, authorTag) {
     if (listing.imageUrl) {
         embed.setImage(listing.imageUrl);
     }
-    if (mount && mount.icon) embed.setThumbnail(mount.icon);
+    if (mounts.length && mounts[0].icon) embed.setThumbnail(mounts[0].icon);
 
     const actionRowComps = [
         new ButtonBuilder().setCustomId(`pf_join_modal_${listing.id}`).setLabel(t(lang, 'pf.join')).setStyle(ButtonStyle.Success),
         new ButtonBuilder().setCustomId(`pf_leave_${listing.id}`).setLabel(t(lang, 'pf.leave')).setStyle(ButtonStyle.Secondary)
     ];
-    if (mount) actionRowComps.push(new ButtonBuilder().setCustomId(`pf_mcheck_${listing.id}`).setLabel(t(lang, 'pf.mount.check')).setStyle(ButtonStyle.Primary));
+    if (mounts.length) actionRowComps.push(new ButtonBuilder().setCustomId(`pf_mcheck_${listing.id}`).setLabel(t(lang, 'pf.mount.check')).setStyle(ButtonStyle.Primary));
 
     const actionRowAdminComps = [
         new ButtonBuilder().setCustomId(`pf_pub_edit_${listing.id}`).setLabel(t(lang, 'pf.editDate')).setStyle(ButtonStyle.Secondary),
@@ -612,9 +664,21 @@ async function sendConfirmationDashboard(interaction, session, isUpdate = false)
     const parsedTargetMs = parseListingTimestamp(fullDateStr);
     const previewHammertime = parsedTargetMs ? ` (${toDiscordTimestamp(parsedTargetMs, 'f')} / ${toDiscordTimestamp(parsedTargetMs, 'R')})` : '';
 
+    // Mount Farm Mode: a big heading at the very top + the added mounts (only while it is on)
+    const farmOn = !!session.data.mountFarm;
+    const farmMounts = farmOn ? (session.data.mounts || []) : [];
+    let description = t(lang, 'pf.preview.help');
+    if (farmOn) {
+        const list = farmMounts.length
+            ? t(lang, 'pf.farm.count', { n: farmMounts.length, max: MAX_FARM_MOUNTS }) + farmMounts.map(m => '\n• ' + m.name).join('')
+            : t(lang, 'pf.farm.empty', { max: MAX_FARM_MOUNTS });
+        const full = farmMounts.length >= MAX_FARM_MOUNTS ? '\n' + t(lang, 'pf.farm.fullNote', { max: MAX_FARM_MOUNTS }) : '';
+        description = t(lang, 'pf.farm.heading') + '\n' + list + full + '\n\n' + description;
+    }
+
     const embed = new EmbedBuilder()
         .setTitle(t(lang, 'pf.preview.title'))
-        .setDescription(t(lang, 'pf.preview.help'))
+        .setDescription(description)
         .setColor(isPast ? '#e74c3c' : '#3498db')
         .addFields(
             { name: t(lang, 'pf.preview.duty'), value: t(lang, 'pf.preview.dutyValue', { name: session.data.name, size: session.data.size }), inline: false },
@@ -625,7 +689,6 @@ async function sendConfirmationDashboard(interaction, session, isUpdate = false)
                 ? t(lang, 'pf.recur.every', { days: recur.daysText(session.data.recurDays, t, lang), time: session.data.time, gmt: gmtOffsetVal >= 0 ? '+' + gmtOffsetVal : gmtOffsetVal })
                 : t(lang, 'pf.recur.none'), inline: false }
         );
-    if (session.data.mount && session.data.mount.id) embed.addFields({ name: t(lang, 'pf.mount.field'), value: session.data.mount.name || '#' + session.data.mount.id, inline: false });
 
     let contentMsg = t(lang, 'pf.preview.generated');
     if (isPast) {
@@ -644,10 +707,25 @@ async function sendConfirmationDashboard(interaction, session, isUpdate = false)
         new ButtonBuilder().setCustomId('pf_finish').setLabel(t(lang, 'pf.preview.finish')).setStyle(ButtonStyle.Success).setDisabled(isPast)
     );
 
+    // Row 3: 🐎 Toggle Mount Farm (blue = off, red = on) + ➕ Add Mount (while on; disabled at 10)
+    const farmRow = new ActionRowBuilder().addComponents(
+        new ButtonBuilder().setCustomId('pf_mf_toggle').setLabel(t(lang, 'pf.farm.toggle')).setStyle(farmOn ? ButtonStyle.Danger : ButtonStyle.Primary)
+    );
+    if (farmOn) farmRow.addComponents(
+        new ButtonBuilder().setCustomId('pf_mf_add').setLabel(t(lang, 'pf.farm.add')).setStyle(ButtonStyle.Success).setDisabled(farmMounts.length >= MAX_FARM_MOUNTS)
+    );
+    // Rows 4-5: one small "✖ <name>" remove button per added mount (5 per row, 10 at most)
+    const removeRows = [];
+    for (let i = 0; i < farmMounts.length; i += 5) {
+        removeRows.push(new ActionRowBuilder().addComponents(farmMounts.slice(i, i + 5).map(m =>
+            new ButtonBuilder().setCustomId('pf_mf_rm_' + m.id).setLabel('✖ ' + shortName(m.name, 20)).setStyle(ButtonStyle.Secondary))));
+    }
+    const components = [row1, row2, farmRow, ...removeRows];
+
     if (isUpdate) {
-        return await interaction.update({ content: contentMsg, embeds: [embed], components: [row1, row2] });
+        return await interaction.update({ content: contentMsg, embeds: [embed], components });
     } else {
-        return await interaction.reply({ content: contentMsg, embeds: [embed], components: [row1, row2], flags: [MessageFlags.Ephemeral] });
+        return await interaction.reply({ content: contentMsg, embeds: [embed], components, flags: [MessageFlags.Ephemeral] });
     }
 }
 
@@ -681,48 +759,18 @@ async function sendRepeatEphemeral(interaction, session) {
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('pf')
-        .setDescription(t('en', 'pf.cmd.description')).setDescriptionLocalizations(discordLocalizations('pf.cmd.description'))
-        .addStringOption(option =>
-            option.setName('mount')
-                .setDescription(t('en', 'pf.mount.optionDesc')).setDescriptionLocalizations(discordLocalizations('pf.mount.optionDesc'))
-                .setRequired(false)
-                .setAutocomplete(true)
-        ),
-
-    async autocomplete(interaction) {
-        try {
-            const focused = interaction.options.getFocused();
-            const lang = fromDiscordLocale(interaction.locale) || 'en';
-            // Discord waits 3 seconds at most: no answer in time = an empty list (no lists file = an empty list too)
-            const choices = await Promise.race([mountChoices(focused, lang), new Promise(r => setTimeout(() => r([]), 2500))]);
-            return await interaction.respond(choices);
-        } catch (e) {
-            return interaction.respond([]).catch(() => {});
-        }
-    },
+        .setDescription(t('en', 'pf.cmd.description')).setDescriptionLocalizations(discordLocalizations('pf.cmd.description')),
 
     async execute(interaction) {
         const lang = await userLanguage.forInteraction(interaction);
         if (!global.pfSessions) global.pfSessions = new Map();
-        // Mount farm (optional): kept in the session until the listing is posted
-        const mountQuery = interaction.options && typeof interaction.options.getString === 'function' ? interaction.options.getString('mount') : null;
-        let mount = null;
-        let mountNote = '';
-        if (mountQuery) {
-            await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
-            mount = await resolveMount(mountQuery, lang).catch(() => null);
-            const listsOk = mount || await ffxivCollect().listsReady().catch(() => false);
-            mountNote = '\n\n' + (mount ? t(lang, 'pf.mount.picked', { name: mount.name })
-                : !listsOk ? t(lang, 'collect.listsMissing') : t(lang, 'pf.mount.notFound', { query: String(mountQuery).slice(0, 100) }));
-        }
-        global.pfSessions.set(interaction.user.id, { step: 'idle', data: mount ? { mount } : {} });
+        global.pfSessions.set(interaction.user.id, { step: 'idle', data: {} });
 
         const row = new ActionRowBuilder().addComponents(
             new ButtonBuilder().setCustomId('pf_create').setLabel(t(lang, 'pf.createNew')).setStyle(ButtonStyle.Primary),
             new ButtonBuilder().setCustomId('pf_check').setLabel(t(lang, 'pf.checkMine')).setStyle(ButtonStyle.Secondary)
         );
 
-        if (mountQuery) return await interaction.editReply({ content: t(lang, 'pf.welcome') + mountNote, components: [row] });
         return await interaction.reply({
             content: t(lang, 'pf.welcome'),
             components: [row],
@@ -750,6 +798,63 @@ module.exports = {
             // Mount farm: "🐎 Check if you have it" (anyone, ephemeral)
             if (cid.startsWith('pf_mcheck_')) {
                 return await mountCheckReply(interaction, lang, cid.replace('pf_mcheck_', ''));
+            }
+
+            // Mount Farm Mode on the preview dashboard (toggle, add, pick, + Add, ✖ remove, back)
+            if (cid.startsWith('pf_mf_')) {
+                const session = global.pfSessions.get(userId);
+                if (!session) return interaction.reply({ content: t(lang, 'pf.expired'), flags: [MessageFlags.Ephemeral] });
+                const d = session.data;
+                if (!Array.isArray(d.mounts)) d.mounts = [];
+
+                if (cid === 'pf_mf_toggle') {
+                    d.mountFarm = !d.mountFarm;
+                    if (!d.mountFarm) d.mounts = []; // off: heading + list removed
+                    return await sendConfirmationDashboard(interaction, session, true);
+                }
+                if (cid === 'pf_mf_back' || !d.mountFarm) return await sendConfirmationDashboard(interaction, session, true);
+
+                if (cid === 'pf_mf_add') {
+                    if (d.mounts.length >= MAX_FARM_MOUNTS) return await sendConfirmationDashboard(interaction, session, true);
+                    if (!(await ffxivCollect().listsReady().catch(() => false))) {
+                        return interaction.reply({ content: t(lang, 'collect.listsMissing'), flags: [MessageFlags.Ephemeral] });
+                    }
+                    const modal = new ModalBuilder()
+                        .setCustomId('pf_modal_mount')
+                        .setTitle(t(lang, 'pf.farm.modalTitle'))
+                        .addComponents(
+                            new ActionRowBuilder().addComponents(
+                                new TextInputBuilder()
+                                    .setCustomId('mount_query')
+                                    .setLabel(t(lang, 'pf.farm.modalLabel'))
+                                    .setStyle(TextInputStyle.Short)
+                                    .setPlaceholder(t(lang, 'pf.farm.modalPlaceholder'))
+                                    .setMaxLength(100)
+                                    .setRequired(true)
+                            )
+                        );
+                    return await interaction.showModal(modal);
+                }
+
+                if (cid.startsWith('pf_mf_pick_')) {
+                    const mount = await farmMountById(cid.replace('pf_mf_pick_', ''), lang).catch(() => null);
+                    if (!mount) return interaction.reply({ content: t(lang, 'collect.listsMissing'), flags: [MessageFlags.Ephemeral] });
+                    return await sendMountPick(interaction, session, lang, mount);
+                }
+
+                if (cid.startsWith('pf_mf_confirm_')) {
+                    const mount = await farmMountById(cid.replace('pf_mf_confirm_', ''), lang).catch(() => null);
+                    if (!mount) return interaction.reply({ content: t(lang, 'collect.listsMissing'), flags: [MessageFlags.Ephemeral] });
+                    if (d.mounts.length < MAX_FARM_MOUNTS && !d.mounts.some(m => m.id === mount.id)) d.mounts.push(slimMount(mount));
+                    return await sendConfirmationDashboard(interaction, session, true);
+                }
+
+                if (cid.startsWith('pf_mf_rm_')) {
+                    const id = Number(cid.replace('pf_mf_rm_', ''));
+                    d.mounts = d.mounts.filter(m => m.id !== id);
+                    return await sendConfirmationDashboard(interaction, session, true);
+                }
+                return await sendConfirmationDashboard(interaction, session, true);
             }
 
             if (cid.startsWith('pf_pub_edit_')) {
@@ -787,7 +892,8 @@ module.exports = {
                         name: old.name, size: old.size,
                         tanks: old.tanks, healers: old.healers, dps: old.dps, meleedps: old.meleedps, range: old.range, caster: old.caster,
                         imageUrl: old.imageUrl || null,
-                        mount: old.mount || null,
+                        mounts: listingMounts(old).map(m => ({ id: Number(m.id), name: m.name || '#' + m.id, icon: m.icon || null })),
+                        mountFarm: listingMounts(old).length > 0,
                         gmt: gmtMatch ? parseInt(gmtMatch[1], 10) : 9,
                         repostFrom: { listingId: old.id, guildId: old.guildId, channelId: old.channelId }
                     }
@@ -936,8 +1042,7 @@ module.exports = {
             }
 
             if (cid === 'pf_create') {
-                const before = global.pfSessions.get(userId);
-                global.pfSessions.set(userId, { step: 'modal_duty', data: before && before.data && before.data.mount ? { mount: before.data.mount } : {} });
+                global.pfSessions.set(userId, { step: 'modal_duty', data: {} });
 
                 const modal = new ModalBuilder()
                     .setCustomId('pf_modal_duty')
@@ -1137,7 +1242,8 @@ module.exports = {
                     notified30Min: false,
                     notifiedExact: false
                 };
-                if (session.data.mount && session.data.mount.id) listing.mount = session.data.mount;
+                // Mount farm: the mounts added on the dashboard (Mount Farm Mode on)
+                if (session.data.mountFarm && Array.isArray(session.data.mounts) && session.data.mounts.length) listing.mounts = session.data.mounts.slice(0, MAX_FARM_MOUNTS);
                 // Weekly repeat: this listing starts the series (the scheduler posts the next one when it starts)
                 const recurDays = recur.cleanDays(session.data.recurDays);
                 if (recurDays.length) listing.recurring = { days: recurDays, active: true, series: listing.id };
@@ -1517,6 +1623,16 @@ module.exports = {
             const session = global.pfSessions.get(userId);
             if (!session) return interaction.reply({ content: t(lang, 'pf.expiredStart'), flags: [MessageFlags.Ephemeral] });
 
+            // Mount Farm Mode: the typed mount name -> the mount (+ Add) or suggestions
+            if (mId === 'pf_modal_mount') {
+                if (!session.data.mountFarm) return await sendConfirmationDashboard(interaction, session, true);
+                const query = interaction.fields.getTextInputValue('mount_query');
+                const r = await farmSearch(query, lang).catch(() => ({ notLoaded: true }));
+                if (r.notLoaded) return interaction.reply({ content: t(lang, 'collect.listsMissing'), flags: [MessageFlags.Ephemeral] });
+                if (r.found) return await sendMountPick(interaction, session, lang, r.found);
+                return await sendMountSuggestions(interaction, session, lang, query, r.suggestions, r.none);
+            }
+
             if (mId === 'pf_modal_duty') {
                 session.data.name = interaction.fields.getTextInputValue('duty_name');
                 session.step = 'sel_size';
@@ -1655,5 +1771,5 @@ module.exports = {
 
 // Used by the weekly repeat (utils/pfRecurring.js) to post the next listing exactly like /pf does
 module.exports.buildPFEmbedAndRows = buildPFEmbedAndRows;
-module.exports._mount = { resolveMount, mountChoices, mountFor };
+module.exports._mount = { mountFor, listingMounts, farmSearch, MAX_FARM_MOUNTS };
 module.exports.saveListingToDB = saveListingToDB;

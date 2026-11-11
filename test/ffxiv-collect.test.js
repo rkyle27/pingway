@@ -2,7 +2,8 @@
 // cache 6 h / manual refresh 30 min, 404 / 403 / site down, gentle queue), the verified-Main gates (/ign, /collect, PF button),
 // the IGN card stats row (utils/ignCardStats.js: never on top of job icons or QR codes), /collect (check item + fuzzy
 // "Did you mean", missing list order + pages, leaderboard of verified Mains in this server + 📢 Show limits) and the
-// PF Mount farm (autocomplete, posted listing, check button, weekly repeat keeps the mount).
+// PF Mount farm (Toggle Mount Farm on the preview dashboard, Add Mount search of farmable mounts only, up to 10, ✖ remove,
+// posted listing, "Check if you have it" checks all mounts, weekly repeat / Post again keep the list, old single-mount listings).
 // Item lists come ONLY from the owner's local file (data/ffxivcollect-lists.json, here a copy of
 // test/fixtures/ffxivcollect/ffxivcollect-lists.json in a temp folder): no list is ever requested from the internet.
 // Plain node, no Discord / network / MySQL:  node --test test/ffxiv-collect.test.js
@@ -341,7 +342,7 @@ test('item lists: validation drops bad items (ids, names, owned, sources, http i
     assert.equal(fc.parseListsFile(null), null);
 });
 
-test('no lists file: /collect Check + Missing + pick say so (ephemeral panel), Leaderboard and IGN stats still work, PF autocomplete empty, PF check answers by id', async () => {
+test('no lists file: /collect Check + Missing + pick say so (ephemeral panel), Leaderboard and IGN stats still work, PF Add Mount says so, PF check answers by id', async () => {
     reset();
     await verify(U, LID);
     fs.rmSync(LISTS);
@@ -368,26 +369,32 @@ test('no lists file: /collect Check + Missing + pick say so (ephemeral panel), L
     assert.deepEqual(lb.rows.map(r => [r.userId, r.value]), [[U, 5]]);
     // IGN card stats: counts only
     assert.deepEqual((await ign.collectStatsFor(U, LID)).map(x => x.key + ':' + x.text), ['mounts:5/380', 'minions:2/520', 'achievements:30 pts']);
-    // PF autocomplete: empty list
-    const ac = interaction({ locale: 'en-US', options: { getFocused: () => 'Fat' } });
-    await pfCmd.autocomplete(ac);
-    assert.deepEqual(ac.out.choices, []);
-    // /pf mount:<typed> -> the friendly note instead of "No mount found"
-    const ex = interaction({ isChatInputCommand: () => true, options: { getString: n => (n === 'mount' ? 'Fat Chocobo' : null) } });
-    await pfCmd.execute(ex);
-    assert.ok(last(ex.out.edits).content.includes(msg));
+    // PF dashboard "➕ Add Mount" (Mount Farm Mode on): the friendly note, no modal; a typed name can't be added either
+    global.pfSessions.set(U, { step: 'confirmation', data: Object.assign(pfData(), { mountFarm: true, mounts: [] }) });
+    const add = interaction({ customId: 'pf_mf_add' });
+    await pfCmd.handleInteraction(add);
+    assert.equal(add.out.replies[0].content, msg);
+    assert.deepEqual(add.out.replies[0].flags, [64]);
+    assert.equal(add.out.modals.length, 0);
+    const typed = interaction({ customId: 'pf_modal_mount', isButton: () => false, isModalSubmit: () => true, fields: { getTextInputValue: () => 'Wivre' } });
+    await pfCmd.handleInteraction(typed);
+    assert.equal(typed.out.replies[0].content, msg);
+    const conf = interaction({ customId: 'pf_mf_confirm_240' });
+    await pfCmd.handleInteraction(conf);
+    assert.equal(conf.out.replies[0].content, msg);
+    assert.deepEqual(global.pfSessions.get(U).data.mounts, [], 'nothing added');
     // PF "Check if you have it": answered by id, the saved name, no rarity / source
     pf.rows.push({ id: '999', guild_id: 'g1', user_id: U2, status: 'active', data: JSON.stringify({ id: '999', userId: U2, guildId: 'g1', name: 'Farm', size: 8, date: '2030-01-01 20:00 GMT+9', claims: {}, mount: { id: 42, name: 'Midgardsormr' } }) });
     let c = interaction({ customId: 'pf_mcheck_999' });
     await pfCmd.handleInteraction(c);
     let e = last(c.out.edits).embeds[0].data;
-    assert.match(e.description, /✅ You already have \*\*Midgardsormr\*\*!/);
-    assert.ok(!/players have it|📍/.test(e.description), 'no rarity / source');
+    assert.match(e.description, /✅ \*\*Midgardsormr\*\*: you have it/);
+    assert.ok(!/players|📍/.test(e.description), 'no rarity / source');
     pf.rows[0].data = JSON.stringify(Object.assign(JSON.parse(pf.rows[0].data), { mount: { id: 104 } }));
     c = interaction({ customId: 'pf_mcheck_999' });
     await pfCmd.handleInteraction(c);
     e = last(c.out.edits).embeds[0].data;
-    assert.match(e.description, /❌ You still need \*\*#104\*\*/, 'no saved name: still answered by id');
+    assert.match(e.description, /❌ \*\*#104\*\*: still needed/, 'no saved name: still answered by id');
     assert.deepEqual(listRequestsSeen(), []);
 });
 
@@ -731,100 +738,319 @@ test('/collect 🔄 Refresh: syncs; again within 30 min says when', async () => 
 });
 
 // ================= PF Mount farm =================
-test('PF Mount farm: /pf mount option with autocomplete (user language, typos), the posted listing shows the mount + check button', async () => {
+// A lists file with more farmable mounts (the fixture + these). Japanese sources are in Japanese: the ENGLISH sources decide.
+const FARM = [
+    [301, 'Wings of Ruin', 'ウィング・オブ・ディザスター', 'Trial', 'Worqor Lar Dor (Extreme)', 2.1],
+    [302, 'Wings of Resolve', 'ウィング・オブ・リゾルヴ', 'Trial', 'Everkeep (Extreme)', 3.2],
+    [303, 'Wings of Eternity', 'ウィング・オブ・エタニティ', 'Trial', "The Minstrel's Ballad: Sphene's Burden", 1.1],
+    [304, 'Monowheel S1', 'モノホイールS1', 'Raid', 'AAC Light-heavyweight M4 (Savage)', 4.4],
+    [305, 'Air-wheeler C9', 'エアホイーラーC9', 'Raid', 'AAC Cruiserweight M4 (Savage)', 2.5],
+    [306, 'Lowrider T1RANT', 'ローライダーT1RANT', 'Raid', 'AAC Heavyweight M4 (Savage)', 0.9],
+    [307, 'Lynx of Abyssal Grief', 'アビサルグリーフ・リンクス', 'Trial', 'The Abyssal Fracture (Extreme)', 6.1],
+    [308, 'Lynx of Fallen Shadow', 'フォールンシャドウ・リンクス', 'Trial', 'The Voidcast Dais (Extreme)', 7.3],
+    [309, 'Megaloambystoma', 'メガロアンビストマ', 'Raid', 'Anabaseios: The Twelfth Circle (Savage)', 5.5],
+    [310, 'Sunforged', 'サンフォージド', 'Raid', 'Abyssos: The Eighth Circle (Savage)', 8.8],
+    [311, 'Demi-Phoinix', 'デミフェニックス', 'Raid', 'Asphodelos: The Fourth Circle (Savage)', 9.9],
+    [312, 'Gwiber of Light', 'ライト・グウィバー', 'Trial', 'The Seat of Sacrifice (Extreme)', 10.5],
+    // not farmable
+    [320, 'Dais of Darkness', '暗闇の玉座', 'Chaotic Raid', 'The Cloud of Darkness (Chaotic)', 1.5],
+    [321, 'Wings of Windward', 'ウィング・オブ・ウィンドワード', 'Trial', 'The Windward Wilds', 20],
+    [322, 'Wings of Normal', 'ウィング・オブ・ノーマル', 'Raid', 'AAC Heavyweight M4', 30]
+];
+function farmLists() {
+    const lists = JSON.parse(JSON.stringify(LISTS_FIXTURE));
+    for (const [id, en, ja, type, text, owned] of FARM) {
+        const icon = 'https://x.test/' + id + '.webp';
+        lists.langs.en.mounts.push({ id, name: en, icon, owned, sources: [{ type, text }] });
+        lists.langs.ja.mounts.push({ id, name: ja, icon, owned, sources: [{ type: type === 'Raid' ? 'レイド' : 'Trial', text: '日本語の入手方法' }] });
+    }
+    return lists;
+}
+function useFarmLists() { writeLists(LISTS, farmLists()); fc._setListsFile(LISTS); }
+function pfData() {
+    return { name: 'Farm night', size: 8, tanks: 2, healers: 2, meleedps: 2, range: 1, caster: 1, dps: 0, dateStr: '2031-1-1', time: '20:00', gmt: 9, imageUrl: 'https://x.test/c.png', imageStatus: 'success_custom' };
+}
+// the preview dashboard parts
+const dash = payload => {
+    const e = payload.embeds[0].data;
+    const rows = payload.components.map(r => r.data.components.map(b => b.data));
+    return { e, rows, all: rows.flat(), btn: id => rows.flat().find(b => b.customId === id) };
+};
+async function click(customId, o) {
+    const i = interaction(Object.assign({ customId }, o));
+    await pfCmd.handleInteraction(i);
+    return i;
+}
+async function typeMount(text, o) {
+    return click('pf_modal_mount', Object.assign({ isButton: () => false, isModalSubmit: () => true, fields: { getTextInputValue: id => (id === 'mount_query' ? text : '') } }, o));
+}
+
+test('PF Mount farm: farmable mounts only (Extreme / Minstrel\'s Ballad trials, Savage raids), decided on the English sources', async () => {
     reset();
-    const data = pfCmd.data.data;
-    const opt = (data.stringoption || data.options || [])[0];
-    assert.ok(opt, 'mount option registered');
-    const ac = interaction({ locale: 'ja', options: { getFocused: () => 'デブ' } });
-    await pfCmd.autocomplete(ac);
-    assert.deepEqual(ac.out.choices.slice(0, 2).map(c => c.value).sort(), ['200', '71']);
-    const ac2 = interaction({ locale: 'en-US', options: { getFocused: () => 'Ixoin' } });
-    await pfCmd.autocomplete(ac2);
-    assert.equal(ac2.out.choices[0].name, 'Ixion');
-    const ac3 = interaction({ locale: 'en-US', options: { getFocused: () => '' } });
-    await pfCmd.autocomplete(ac3);
-    assert.equal(ac3.out.choices[0].value, '104', 'empty: rarest first');
-    assert.ok(ac3.out.choices.length <= 25);
-    // /pf mount:71 -> the wizard keeps the mount
-    const ex = interaction({ isChatInputCommand: () => true, options: { getString: n => (n === 'mount' ? '71' : null) } });
-    await pfCmd.execute(ex);
-    assert.match(last(ex.out.edits).content, /🐎 Mount farm: \*\*Fat Chocobo\*\*/);
-    assert.deepEqual(global.pfSessions.get(U).data.mount, { id: 71, name: 'Fat Chocobo', icon: L.mounts.results.find(x => x.id === 71).icon });
-    const typo = interaction({ isChatInputCommand: () => true, options: { getString: n => (n === 'mount' ? 'Sabotender Emperdor' : null) } });
-    await pfCmd.execute(typo);
-    assert.equal(global.pfSessions.get(U).data.mount.id, 90);
-    const none = interaction({ isChatInputCommand: () => true, options: { getString: n => (n === 'mount' ? 'qqqqzzzz' : null) } });
-    await pfCmd.execute(none);
-    assert.match(last(none.out.edits).content, /No mount found for \*\*qqqqzzzz\*\*/);
-    assert.equal(global.pfSessions.get(U).data.mount, undefined);
-    // without the option: the old flow, untouched
-    const plainPf = interaction({ isChatInputCommand: () => true });
-    await pfCmd.execute(plainPf);
-    assert.equal(plainPf.out.replies[0].content, t('en', 'pf.welcome'));
-    // Create keeps the mount; Finish posts it
-    global.pfSessions.set(U, { step: 'idle', data: { mount: { id: 71, name: 'Fat Chocobo', icon: 'https://x.test/71.webp' } } });
-    const create = interaction({ customId: 'pf_create' });
-    await pfCmd.handleInteraction(create);
-    assert.equal(global.pfSessions.get(U).data.mount.id, 71);
-    const g = fakeGuild([U], []);
-    Object.assign(global.pfSessions.get(U).data, { name: 'Fat farm', size: 8, tanks: 2, healers: 2, meleedps: 2, range: 1, caster: 1, dps: 0, dateStr: '2031-1-1', time: '20:00', gmt: 9, imageUrl: 'https://x.test/c.png', imageStatus: 'success_custom' });
-    const fin = interaction({ customId: 'pf_finish', guildId: 'g1', guild: g.guild, channel: g.channel, channelId: 'c1' });
-    await pfCmd.handleInteraction(fin);
-    const post = g.channel.sent[0];
-    const e = post.embeds[0].data;
-    assert.match(e.description, /🐎 \*\*Mount farm:\*\* Fat Chocobo/);
-    assert.equal(e.thumbnail, L.mounts.results.find(x => x.id === 71).icon);
-    const btns = post.components[0].data.components.map(b => b.data);
-    assert.equal(btns[2].customId, 'pf_mcheck_' + JSON.parse(pf.rows[0].data).id);
-    assert.equal(btns[2].label, '🐎 Check if you have it');
-    assert.equal(JSON.parse(pf.rows[0].data).mount.id, 71, 'saved with the listing');
+    useFarmLists();
+    const en = await fc.farmableMounts(pool, 'en');
+    assert.deepEqual(en.items.map(m => m.id).sort((a, b) => a - b), [240, ...FARM.slice(0, 12).map(x => x[0])]);
+    for (const id of [320, 321, 322, 180, 71, 42]) assert.ok(!en.items.some(m => m.id === id), id + ' is not farmable');
+    const ja = await fc.farmableMounts(pool, 'ja');
+    assert.equal(ja.items.length, 13, 'Japanese sources are not used to decide');
+    assert.equal(ja.items.find(m => m.id === 301).name, 'ウィング・オブ・ディザスター');
+    assert.equal(fc.isFarmableMount({ sources: [{ type: 'Raid', text: 'Eden (Savage)' }] }), true);
+    assert.equal(fc.isFarmableMount({ sources: [{ type: 'Trial', text: "Eden's Gate: Descent (Savage)" }] }), false, 'a "Trial" with (Savage) is not a raid drop');
+    assert.equal(fc.isFarmableMount({ sources: [{ type: 'Chaotic Raid', text: 'The Cloud of Darkness (Chaotic)' }] }), false);
+    // no file: nothing (notLoaded)
+    fs.rmSync(LISTS); fc._setListsFile(LISTS);
+    assert.equal((await fc.farmableMounts(pool, 'en')).items.notLoaded, true);
 });
 
-test('PF Mount farm: the check button answers each member (✅ / ❌ + rarity + source), the server language on the post, weekly repeat keeps the mount', async () => {
+test('PF Mount farm: /pf has no mount option; the dashboard "Toggle Mount Farm" button turns Mount Farm Mode on (big heading, red) and off', async () => {
     reset();
+    useFarmLists();
+    assert.equal(typeof pfCmd.autocomplete, 'undefined');
+    const plain = interaction({ isChatInputCommand: () => true });
+    await pfCmd.execute(plain);
+    assert.equal(plain.out.replies[0].content, t('en', 'pf.welcome'));
+    assert.deepEqual(global.pfSessions.get(U).data, {});
+    global.pfSessions.set(U, { step: 'confirmation', data: pfData() });
+    // off (the dashboard as before + a blue Toggle button)
+    let d = dash(last((await click('pf_repeat_back')).out.updates));
+    assert.equal(d.e.title, t('en', 'pf.preview.title'));
+    assert.equal(d.e.description, t('en', 'pf.preview.help'));
+    assert.equal(d.rows.length, 3);
+    assert.deepEqual(d.rows[2].map(b => [b.customId, b.label, b.style]), [['pf_mf_toggle', '🐎 Toggle Mount Farm', 1]]);
+    assert.equal(d.e.fields[0].name, 'Duty & Size');
+    // on: heading at the very top (before the Duty & Size field), red toggle, Add Mount
+    d = dash(last((await click('pf_mf_toggle')).out.updates));
+    assert.equal(global.pfSessions.get(U).data.mountFarm, true);
+    assert.ok(d.e.description.startsWith('# ✅ Mount Farm Mode\n'), d.e.description);
+    assert.match(d.e.description, /No mounts yet/);
+    assert.equal(d.btn('pf_mf_toggle').style, 4, 'Danger (red) when on');
+    assert.equal(d.btn('pf_mf_add').label, '➕ Add Mount');
+    assert.equal(d.btn('pf_mf_add').disabled, false);
+    assert.equal(d.e.fields[0].name, 'Duty & Size', 'the heading is above the Duty & Size line');
+    // off again: heading + list removed
+    global.pfSessions.get(U).data.mounts = [{ id: 301, name: 'Wings of Ruin', icon: null }];
+    d = dash(last((await click('pf_mf_toggle')).out.updates));
+    assert.equal(d.e.description, t('en', 'pf.preview.help'));
+    assert.equal(d.btn('pf_mf_toggle').style, 1);
+    assert.equal(d.btn('pf_mf_add'), undefined);
+    assert.equal(d.rows.length, 3);
+    assert.deepEqual(global.pfSessions.get(U).data.mounts, []);
+    // translated heading
+    for (const l of ['fr', 'de', 'ja']) assert.ok(t(l, 'pf.farm.heading').startsWith('# ✅ ') && t(l, 'pf.farm.heading') !== t('en', 'pf.farm.heading'), l);
+});
+
+test('PF Mount farm: Add Mount -> modal -> sure match (icon + name + source, "+ Add"); unsure -> suggestion buttons (farmable only); + Add / ✖ remove', async () => {
+    reset();
+    useFarmLists();
+    global.pfSessions.set(U, { step: 'confirmation', data: Object.assign(pfData(), { mountFarm: true, mounts: [] }) });
+    const add = await click('pf_mf_add');
+    assert.equal(add.out.modals[0].data.customId, 'pf_modal_mount');
+    // sure match (a typo is fine)
+    let p = last((await typeMount('wings of ruin')).out.updates);
+    assert.equal(p.embeds[0].data.title, 'Wings of Ruin');
+    assert.equal(p.embeds[0].data.thumbnail, 'https://x.test/301.webp');
+    assert.match(p.embeds[0].data.description, /📍 Worqor Lar Dor \(Extreme\)/);
+    let btns = p.components[0].data.components.map(b => b.data);
+    assert.deepEqual(btns.map(b => [b.customId, b.label]), [['pf_mf_confirm_301', '+ Add'], ['pf_mf_back', '⬅ Back']]);
+    p = last((await typeMount('Megaloambystoma')).out.updates);
+    assert.equal(p.embeds[0].data.title, 'Megaloambystoma', 'exact name');
+    // a typo that isn't sure enough -> "Did you mean" with the right mount first
+    p = last((await typeMount('Megaloambystma')).out.updates);
+    assert.equal(p.components[0].data.components[0].data.customId, 'pf_mf_pick_309', 'typo');
+    // + Add -> the dashboard lists it with a ✖ button
+    let d = dash(last((await click('pf_mf_confirm_301')).out.updates));
+    assert.match(d.e.description, /^# ✅ Mount Farm Mode\n\*\*Mounts \(1\/10\):\*\*\n• Wings of Ruin\n\n/);
+    assert.deepEqual(d.rows[3].map(b => [b.customId, b.label, b.style]), [['pf_mf_rm_301', '✖ Wings of Ruin', 2]]);
+    assert.deepEqual(global.pfSessions.get(U).data.mounts, [{ id: 301, name: 'Wings of Ruin', icon: 'https://x.test/301.webp' }]);
+    // unsure -> up to 10 suggestion buttons, farmable mounts only (not "Wings of Windward" / "Wings of Normal")
+    p = last((await typeMount('wings')).out.updates);
+    assert.match(p.content, /Did you mean one of these\?/);
+    const sug = p.components.slice(0, -1).flatMap(r => r.data.components.map(b => b.data));
+    assert.ok(sug.length >= 3 && sug.length <= 10);
+    assert.ok(sug.every(b => /^pf_mf_pick_\d+$/.test(b.customId)));
+    const ids = sug.map(b => Number(b.customId.replace('pf_mf_pick_', '')));
+    assert.ok(!ids.includes(321) && !ids.includes(322) && !ids.includes(320));
+    assert.ok(ids.includes(302) && ids.includes(303));
+    assert.equal(sug.find(b => b.customId === 'pf_mf_pick_301').disabled, true, 'already added');
+    assert.equal(last(p.components).data.components[0].data.customId, 'pf_mf_back');
+    // pick one -> the mount with "+ Add"
+    p = last((await click('pf_mf_pick_303')).out.updates);
+    assert.equal(p.embeds[0].data.title, 'Wings of Eternity');
+    assert.equal(p.components[0].data.components[0].data.customId, 'pf_mf_confirm_303');
+    // a non-farmable mount by name -> never offered
+    p = last((await typeMount('Dais of Darkness')).out.updates);
+    assert.ok(!JSON.stringify(p.components.map(r => r.data.components.map(b => b.data))).includes('pf_mf_confirm_320'));
+    assert.ok(!JSON.stringify(p.components.map(r => r.data.components.map(b => b.data))).includes('pf_mf_pick_320'));
+    // a non-farmable id cannot be added (an old/forged button)
+    await click('pf_mf_confirm_320');
+    assert.deepEqual(global.pfSessions.get(U).data.mounts.map(m => m.id), [301]);
+    // nothing close -> "no farmable mount matches" + rarest farmable mounts
+    p = last((await typeMount('qqqzzzxx')).out.updates);
+    assert.match(p.content, /No farmable mount matches \*\*qqqzzzxx\*\*/);
+    assert.equal(p.components[0].data.components[0].data.customId, 'pf_mf_pick_306', 'rarest first');
+    // ⬅ Back -> dashboard
+    d = dash(last((await click('pf_mf_back')).out.updates));
+    assert.equal(d.e.title, t('en', 'pf.preview.title'));
+    // ✖ remove
+    d = dash(last((await click('pf_mf_rm_301')).out.updates));
+    assert.deepEqual(global.pfSessions.get(U).data.mounts, []);
+    assert.match(d.e.description, /No mounts yet/);
+    assert.equal(d.rows.length, 3);
+    // Japanese user: Japanese names, found by the Japanese or the English name
+    langs.user = 'ja';
+    p = last((await typeMount('ウィング・オブ・ディザスター')).out.updates);
+    assert.equal(p.embeds[0].data.title, 'ウィング・オブ・ディザスター');
+    p = last((await typeMount('Wings of Ruin')).out.updates);
+    assert.equal(p.embeds[0].data.title, 'ウィング・オブ・ディザスター', 'English fallback');
+    assert.equal(p.components[0].data.components[0].data.label, t('ja', 'pf.farm.addBtn'));
+});
+
+test('PF Mount farm: at most 10 mounts (Add Mount disabled + note), no duplicates, ✖ buttons in 2 rows of 5 (5 rows in total)', async () => {
+    reset();
+    useFarmLists();
+    global.pfSessions.set(U, { step: 'confirmation', data: Object.assign(pfData(), { mountFarm: true, mounts: [] }) });
+    const ids = [301, 302, 303, 304, 305, 306, 307, 308, 309, 310];
+    for (const id of ids) await click('pf_mf_confirm_' + id);
+    await click('pf_mf_confirm_301'); // duplicate
+    let d = dash(last((await click('pf_mf_confirm_311')).out.updates)); // 11th
+    assert.deepEqual(global.pfSessions.get(U).data.mounts.map(m => m.id), ids);
+    assert.equal(d.rows.length, 5, 'Discord allows 5 rows');
+    assert.ok(d.rows.every(r => r.length <= 5));
+    assert.deepEqual(d.rows[3].concat(d.rows[4]).map(b => b.customId), ids.map(id => 'pf_mf_rm_' + id));
+    assert.equal(d.btn('pf_mf_add').disabled, true);
+    assert.match(d.e.description, /\*\*Mounts \(10\/10\):\*\*/);
+    assert.match(d.e.description, /10\/10 mounts: remove one with ✖ to add another/);
+    assert.ok(d.btn('pf_mf_rm_307').label.length <= 22, 'short names on the ✖ buttons');
+    assert.equal(d.btn('pf_mf_rm_307').label, '✖ Lynx of Abyssal Gri…');
+    // the picked view: "+ Add" disabled with a note (full / already there)
+    let p = last((await click('pf_mf_pick_311')).out.updates);
+    assert.equal(p.components[0].data.components[0].data.disabled, true);
+    assert.match(p.embeds[0].data.description, /already has 10 mounts/);
+    await click('pf_mf_rm_310');
+    p = last((await click('pf_mf_pick_301')).out.updates);
+    assert.equal(p.components[0].data.components[0].data.disabled, true);
+    assert.match(p.embeds[0].data.description, /already in your list/);
+    // Add Mount at 10 never opens the modal
+    await click('pf_mf_confirm_312');
+    const a = await click('pf_mf_add');
+    assert.equal(a.out.modals.length, 0);
+});
+
+test('PF Mount farm: Finish posts the mount list + "Check if you have it"; the check answers every mount (✅ / ❌ + rarity); old single-mount listings still work', async () => {
+    reset();
+    useFarmLists();
     await verify(U, LID);
-    const listing = { id: '888', userId: U2, guildId: 'g1', channelId: 'c1', name: 'Farm', size: 8, tanks: 2, healers: 2, dps: 0, meleedps: 2, range: 1, caster: 1,
-        date: '2030-01-01 20:00 GMT+9', claims: {}, mount: { id: 42, name: 'Midgardsormr', icon: null }, recurring: { days: [1], active: true, series: '888' } };
-    pf.rows.push({ id: '888', guild_id: 'g1', user_id: U2, status: 'active', data: JSON.stringify(listing) });
-    let c = interaction({ customId: 'pf_mcheck_888' });
-    await pfCmd.handleInteraction(c);
-    let e = last(c.out.edits).embeds[0].data;
+    global.pfSessions.set(U, { step: 'confirmation', data: Object.assign(pfData(), { mountFarm: true, mounts: [] }) });
+    for (const id of [240, 301, 304]) await click('pf_mf_confirm_' + id);
+    const g = fakeGuild([U], []);
+    await click('pf_finish', { guildId: 'g1', guild: g.guild, channel: g.channel, channelId: 'c1' });
+    const post = g.channel.sent[0];
+    const e = post.embeds[0].data;
+    assert.match(e.description, /🐎 \*\*Mount farm \(3\):\*\*\n• Wivre\n• Wings of Ruin\n• Monowheel S1/);
+    assert.equal(e.thumbnail, LISTS_FIXTURE.langs.en.mounts.find(x => x.id === 240).icon, 'the first mount\'s icon');
+    const saved = JSON.parse(pf.rows[0].data);
+    assert.deepEqual(saved.mounts.map(m => m.id), [240, 301, 304]);
+    assert.equal(saved.mount, undefined);
+    const btn = post.components[0].data.components[2].data;
+    assert.equal(btn.customId, 'pf_mcheck_' + saved.id);
+    assert.equal(btn.label, '🐎 Check if you have it');
+    // the check: all mounts for the clicking player (character owns 240)
+    const c = await click('pf_mcheck_' + saved.id);
     assert.deepEqual(c.out.deferred.flags, [64]);
-    assert.match(e.description, /✅ You already have \*\*Midgardsormr\*\*!/);
-    assert.match(e.description, /40\.1% of FFXIV Collect players have it/);
-    assert.match(e.description, /📍 Heavensward Hunt Mastery/);
-    assert.equal(e.footer.text, 'Data by FFXIV Collect');
-    listing.mount = { id: 104, name: 'Fenrir' };
-    pf.rows[0].data = JSON.stringify(listing);
-    c = interaction({ customId: 'pf_mcheck_888' });
-    await pfCmd.handleInteraction(c);
-    assert.match(last(c.out.edits).embeds[0].data.description, /❌ You still need \*\*Fenrir\*\*/);
-    // the public listing in Japanese (server language): mount name from the Japanese list
+    const ce = last(c.out.edits).embeds[0].data;
+    assert.equal(ce.title, '🐎 Mount farm: your mounts');
+    assert.deepEqual(ce.description.split('\n'), [
+        '✅ **Wivre**: you have it · 📊 30.2% of players',
+        '❌ **Wings of Ruin**: still needed · 📊 2.1% of players',
+        '❌ **Monowheel S1**: still needed · 📊 4.4% of players'
+    ]);
+    assert.equal(ce.color, '#e74c3c');
+    assert.equal(ce.footer.text, 'Data by FFXIV Collect');
+    // not verified -> the verified-Main gate; not on FFXIV Collect -> the note
+    const stranger = await click('pf_mcheck_' + saved.id, { user: { id: STRANGER, tag: 's#1' } });
+    assert.equal(stranger.out.replies[0].content, t('en', 'ign.needVerified'));
+    route('/characters/31313131?ids=1&latest=1', 404, { status: 404 });
+    fc._reset(); fc._setListsFile(LISTS);
+    db.fcChars && db.fcChars.clear();
+    const nf = await click('pf_mcheck_' + saved.id);
+    assert.equal(last(nf.out.edits).embeds[0].data.description, t('en', 'pf.mount.notOnCollect'));
+    // private mounts -> ❔ + note
+    standardRoutes();
+    route('/characters/31313131?ids=1&latest=1', 200, Object.assign(fx('character'), { mounts: Object.assign({}, fx('character').mounts, { public: false }) }));
+    db.fcChars && db.fcChars.clear();
+    fc._reset(); fc._setListsFile(LISTS);
+    const pv = await click('pf_mcheck_' + saved.id);
+    const pe = last(pv.out.edits).embeds[0].data;
+    assert.match(pe.description, /^❔ \*\*Wivre\*\*/);
+    assert.match(pe.description, /Pingway can't tell for these/);
+    // an OLD listing with the single "mount" field: a list of one
+    standardRoutes();
+    db.fcChars && db.fcChars.clear();
+    fc._reset(); fc._setListsFile(LISTS);
+    pf.rows.push({ id: '777', guild_id: 'g1', user_id: U2, status: 'active', data: JSON.stringify({ id: '777', userId: U2, guildId: 'g1', name: 'Old', size: 8, date: '2030-01-01 20:00 GMT+9', claims: {}, mount: { id: 42, name: 'Midgardsormr' } }) });
+    const old = await click('pf_mcheck_777');
+    assert.equal(last(old.out.edits).embeds[0].data.description, '✅ **Midgardsormr**: you have it · 📊 40.1% of players');
+    assert.equal(last(old.out.edits).embeds[0].data.thumbnail, L.mounts.results.find(x => x.id === 42).icon, 'one mount: its icon');
+    const oldPost = await pfCmd.buildPFEmbedAndRows(JSON.parse(pf.rows.find(r => r.id === '777').data), { id: 'g1' }, '');
+    assert.match(oldPost.embed.data.description, /🐎 \*\*Mount farm:\*\* Midgardsormr/);
+    assert.equal(oldPost.components[0].data.components[2].data.customId, 'pf_mcheck_777');
+    // the public listing in Japanese (server language): names from the Japanese list
     langs.guild = 'ja';
-    const built = await pfCmd.buildPFEmbedAndRows(JSON.parse(JSON.stringify(listing)), { id: 'g1' }, '<@1>');
-    assert.match(built.embed.data.description, /フェンリル/);
-    // weekly repeat: the next listing farms the same mount
+    const ja = await pfCmd.buildPFEmbedAndRows(JSON.parse(JSON.stringify(saved)), { id: 'g1' }, '');
+    assert.match(ja.embed.data.description, /ウィング・オブ・ディザスター/);
+    assert.match(ja.embed.data.description, /ワイバーン/);
+    // a listing without mounts: no button, no thumbnail (unchanged)
     langs.guild = 'en';
-    const ch = fakeGuild([U], []).channel;
-    ch.isTextBased = () => true; ch.guild = { id: 'g1' }; ch.name = 'pf';
-    const client = { channels: { fetch: async () => ch } };
-    const row = pf.rows[0];
-    const outcome = await recur.handleStarted(client, row, JSON.parse(row.data), Date.parse('2030-01-01T11:05:00Z'));
-    assert.equal(outcome, 'posted');
-    const fresh = JSON.parse(pf.rows.find(r => r.id !== '888').data);
-    assert.equal(fresh.mount.id, 104);
-    assert.equal(ch.sent[0].components[0].data.components[2].data.customId, 'pf_mcheck_' + fresh.id);
-    // a listing without a mount: no button, no thumbnail (unchanged)
     const plain = await pfCmd.buildPFEmbedAndRows({ id: '1', userId: U, name: 'x', size: 8, date: '2030-01-01 20:00 GMT+9', claims: {} }, { id: 'g1' }, '');
     assert.equal(plain.components[0].data.components.length, 2);
     assert.equal(plain.embed.data.thumbnail, undefined);
+    // no check without mounts
+    pf.rows.push({ id: '666', guild_id: 'g1', user_id: U2, status: 'active', data: JSON.stringify({ id: '666', userId: U2, guildId: 'g1', name: 'None', size: 8, date: '2030-01-01 20:00 GMT+9', claims: {} }) });
+    assert.equal((await click('pf_mcheck_666')).out.replies[0].content, t('en', 'pf.mount.noMount'));
+});
+
+test('PF Mount farm: weekly repeat and "Post again" keep the mount list (old single-mount listings too); a saved listing keeps it', async () => {
+    reset();
+    useFarmLists();
+    const listing = { id: '888', userId: U, guildId: 'g1', channelId: 'c1', name: 'Farm', size: 8, tanks: 2, healers: 2, dps: 0, meleedps: 2, range: 1, caster: 1,
+        date: '2030-01-01 20:00 GMT+9', claims: {}, mounts: [{ id: 301, name: 'Wings of Ruin', icon: null }, { id: 304, name: 'Monowheel S1', icon: null }], recurring: { days: [1], active: true, series: '888' } };
+    pf.rows.push({ id: '888', guild_id: 'g1', user_id: U, status: 'active', data: JSON.stringify(listing) });
+    const ch = fakeGuild([U], []).channel;
+    ch.isTextBased = () => true; ch.guild = { id: 'g1' }; ch.name = 'pf';
+    const client = { channels: { fetch: async () => ch } };
+    const outcome = await recur.handleStarted(client, pf.rows[0], JSON.parse(pf.rows[0].data), Date.parse('2030-01-01T11:05:00Z'));
+    assert.equal(outcome, 'posted');
+    const fresh = JSON.parse(pf.rows.find(r => r.id !== '888').data);
+    assert.deepEqual(fresh.mounts.map(m => m.id), [301, 304]);
+    assert.match(ch.sent[0].embeds[0].data.description, /Mount farm \(2\)/);
+    assert.equal(ch.sent[0].components[0].data.components[2].data.customId, 'pf_mcheck_' + fresh.id);
+    // old single mount repeats too
+    const oldL = Object.assign({}, listing, { id: '889', mounts: undefined, mount: { id: 42, name: 'Midgardsormr' }, recurring: { days: [1], active: true, series: '889' } });
+    pf.rows.push({ id: '889', guild_id: 'g1', user_id: U, status: 'active', data: JSON.stringify(oldL) });
+    ch.sent = [];
+    await recur.handleStarted(client, pf.rows.find(r => r.id === '889'), oldL, Date.parse('2030-01-01T11:05:00Z') + 1);
+    assert.match(ch.sent[0].embeds[0].data.description, /🐎 \*\*Mount farm:\*\* Midgardsormr/);
+    // "📅 Post again" from the host's DM: Mount Farm Mode on with the same list on the dashboard
+    const { repostCustomId } = require('../utils/pfScheduler');
+    await click(repostCustomId('888', U, Date.now()));
+    const data = global.pfSessions.get(U).data;
+    assert.equal(data.mountFarm, true);
+    assert.deepEqual(data.mounts.map(m => m.id), [301, 304]);
+    await click(repostCustomId('889', U, Date.now()));
+    assert.deepEqual(global.pfSessions.get(U).data.mounts, [{ id: 42, name: 'Midgardsormr', icon: null }]);
+    // a listing loaded from the database keeps its list when it is saved again (here: Stop repeating)
+    const stop = await click('pf_recur_stop_888');
+    assert.match(stop.out.replies[0].content, /Farm/);
+    const again = JSON.parse(pf.rows.find(x => x.id === '888').data);
+    assert.equal(again.recurring.active, false);
+    assert.deepEqual(again.mounts.map(m => m.id), [301, 304]);
 });
 
 test('/collect texts: same keys in 4 languages, command description <= 100 characters, attribution everywhere', () => {
     for (const l of ['en', 'fr', 'de', 'ja']) {
         assert.ok(t(l, 'collect.cmd.description').length <= 100, l);
-        assert.ok(t(l, 'pf.mount.optionDesc').length <= 100, l);
+        for (const k of ['toggle', 'add', 'addBtn', 'back', 'modalTitle', 'modalLabel']) assert.ok(t(l, 'pf.farm.' + k).length <= 45, l + ' ' + k + ' fits a button / modal');
+        assert.match(t(l, 'pf.farm.heading'), /^# ✅ /, l + ' big heading');
         assert.match(t(l, 'collect.credit'), /FFXIV Collect/);
         assert.match(t(l, 'pf.mount.credit'), /FFXIV Collect/);
     }

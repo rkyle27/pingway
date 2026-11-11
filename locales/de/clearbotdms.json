@@ -1,6 +1,7 @@
 {
   "cmd": { "description": "🧹 Löscht alle Direktnachrichten des Bots in diesem DM-Kanal." },
   "onlyDms": "⚠️ Dieser Befehl funktioniert nur in **Direktnachrichten (DMs)** mit dem Bot.",
+  "alreadyRunning": "⚠️ Pingway räumt deine DMs schon auf. Bitte warte, bis es fertig ist.",
   "done": "✅ **{deletedCount}** Nachricht(en) des Bots in dieser DM gelöscht.",
   "failed": "❌ Beim Aufräumen der DMs ist ein Fehler aufgetreten."
 }

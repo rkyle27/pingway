@@ -40,14 +40,19 @@
   },
   "cmd": {
     "description": "🍯 \"Do not chat here\" channel that removes hacked accounts.",
-    "set": "Use a channel as the honeypot (Pingway posts a warning there).",
-    "channel": "The do-not-chat channel",
-    "off": "Turn the honeypot off.",
-    "dm": "DM caught members that their account may be hacked.",
-    "dmOn": "Send the DM?",
-    "warning": "Post Pingway's \"do not post here\" warning in the honeypot channel.",
-    "warningOn": "Show the warning?",
-    "status": "Show the honeypot settings."
+    "action": "What to do: set the channel, turn off, DM alerts, warning message or status.",
+    "actionName": "action",
+    "actions": {
+      "set": "Set channel",
+      "off": "Turn off",
+      "dm": "DM alerts",
+      "warning": "Warning message",
+      "status": "Status"
+    },
+    "channel": "The do-not-chat channel (for Set channel)",
+    "channelName": "channel",
+    "on": "On (True) or off (False), for DM alerts and Warning message",
+    "onName": "on"
   },
   "perms": {
     "ban": "Ban Members",
@@ -65,6 +70,10 @@
   "on": "on",
   "off": "off",
   "status": "🍯 Honeypot: <#{channelId}> · DM: {dm} · Warning: {warning}\nSee the list of caught members on the Pingway website (server settings).{permNote}",
-  "statusOff": "🍯 The honeypot is off. Use `/honeypot set` to choose a channel.{permNote}",
+  "statusOff": "🍯 The honeypot is off. Use `/honeypot action: Set channel` to choose a channel.{permNote}",
+  "needChannel": "⚠️ Please also fill in the `channel:` option to use **Set channel**.",
+  "needOn": "⚠️ Please also fill in the `on:` option (True = on, False = off) to use **{action}**.",
+  "onlyChannel": "⚠️ The `channel:` option is only used with **Set channel**. Run the command again without it.",
+  "onlyOn": "⚠️ The `on:` option is only used with **DM alerts** and **Warning message**. Run the command again without it.",
   "failed": "❌ Something went wrong. Please try again."
 }

@@ -40,14 +40,19 @@
   },
   "cmd": {
     "description": "🍯 Salon « ne pas écrire ici » qui retire les comptes piratés.",
-    "set": "Utilise un salon comme honeypot (Pingway y publie un avertissement).",
-    "channel": "Le salon où il ne faut pas écrire",
-    "off": "Désactive le honeypot.",
-    "dm": "Envoie un MP aux membres attrapés pour dire que leur compte est peut-être piraté.",
-    "dmOn": "Envoyer le MP ?",
-    "warning": "Publie l'avertissement « ne pas écrire ici » de Pingway dans le salon honeypot.",
-    "warningOn": "Afficher l'avertissement ?",
-    "status": "Affiche les réglages du honeypot."
+    "action": "Que faire : choisir le salon, désactiver, alertes en MP, message d'avertissement ou statut.",
+    "actionName": "action",
+    "actions": {
+      "set": "Choisir le salon",
+      "off": "Désactiver",
+      "dm": "Alertes en MP",
+      "warning": "Message d'avertissement",
+      "status": "Statut"
+    },
+    "channel": "Le salon où il ne faut pas écrire (pour Choisir le salon)",
+    "channelName": "salon",
+    "on": "Activé (True) ou désactivé (False), pour Alertes en MP et Message d'avertissement",
+    "onName": "activer"
   },
   "perms": {
     "ban": "Bannir des membres",
@@ -65,6 +70,10 @@
   "on": "activé",
   "off": "désactivé",
   "status": "🍯 Honeypot : <#{channelId}> · MP : {dm} · Avertissement : {warning}\nLa liste des membres attrapés est sur le site Pingway (paramètres du serveur).{permNote}",
-  "statusOff": "🍯 Le honeypot est désactivé. Utilise `/honeypot set` pour choisir un salon.{permNote}",
+  "statusOff": "🍯 Le honeypot est désactivé. Utilise `/honeypot action: Choisir le salon` pour choisir un salon.{permNote}",
+  "needChannel": "⚠️ Remplis aussi l'option `salon:` pour utiliser **Choisir le salon**.",
+  "needOn": "⚠️ Remplis aussi l'option `activer:` (True = activé, False = désactivé) pour utiliser **{action}**.",
+  "onlyChannel": "⚠️ L'option `salon:` ne sert qu'avec **Choisir le salon**. Relance la commande sans elle.",
+  "onlyOn": "⚠️ L'option `activer:` ne sert qu'avec **Alertes en MP** et **Message d'avertissement**. Relance la commande sans elle.",
   "failed": "❌ Un problème est survenu. Réessaie."
 }

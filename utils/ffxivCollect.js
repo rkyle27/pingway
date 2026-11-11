@@ -323,6 +323,26 @@ async function listsReady(opts) {
     return !!(await loadLists(opts && typeof opts.now === 'number' ? opts.now : Date.now()));
 }
 
+// ---------- PF Mount farm: farmable mounts ----------
+// Only mounts that drop from Extreme trials / The Minstrel's Ballad trials, or from Savage raids (floor 4):
+// a source of type "Trial" whose English text has "(Extreme)" or "The Minstrel's Ballad", or of type "Raid" with "(Savage)".
+// Not farmable: mounts bought with certificates (e.g. Felyne Support Team Cart, owner's choice 2026-11-12).
+// Decided on the ENGLISH list's sources (by mount id), then the names are shown in the user's language.
+function isFarmableMount(enItem) {
+    if (enItem && Array.isArray(enItem.sources) && enItem.sources.some(s => s && /Certificates/i.test(String(s.text)))) return false;
+    return !!(enItem && Array.isArray(enItem.sources) && enItem.sources.some(s => s && (
+        (s.type === 'Trial' && (String(s.text).includes('(Extreme)') || String(s.text).includes("The Minstrel's Ballad"))) ||
+        (s.type === 'Raid' && String(s.text).includes('(Savage)')))));
+}
+/** Farmable mounts in lang (+ the English items for search) -> { items, en } (items.notLoaded when the file isn't there) */
+async function farmableMounts(db, lang, opts) {
+    const en = await getList(db, 'mounts', 'en', opts);
+    if (en.notLoaded) return { items: en, en };
+    const ids = new Set(en.filter(isFarmableMount).map(m => m.id));
+    const mine = lang === 'en' ? en : await getList(db, 'mounts', lang, opts);
+    return { items: mine.filter(m => ids.has(m.id)), en: en.filter(m => ids.has(m.id)) };
+}
+
 // ---------- ownership ----------
 const idSets = new WeakMap();
 function ownedSet(data, collection) {
@@ -440,7 +460,7 @@ module.exports = {
     BASE, UA, TIMEOUT_MS, CHAR_TTL_MS, MANUAL_GAP_MS, MAX_PARALLEL, SPACING_MS, COLLECTIONS, COLLECTION_KEYS,
     LISTS_FILE, LISTS_FORMAT, LISTS_CHECK_MS, listsReady, parseListsFile,
     CARD_STATS, STAT_COLUMNS, STAT_DEFAULTS,
-    ensureTables, getCharacter, cachedMany, refreshLater, getList, slimCharacter, slimItem,
+    ensureTables, getCharacter, cachedMany, refreshLater, getList, slimCharacter, slimItem, isFarmableMount, farmableMounts,
     owns, missing, statValue, norm, score, search, isConfident, verifiedMain, statToggles, readStatToggles, ffxivCollectUrl, pct,
     _setHttp(fn) { httpGet = fn || axiosGet; },
     _setListsFile(p) { listsFile = p || LISTS_FILE; listState.data = null; listState.sig = null; listState.checkedAt = null; },

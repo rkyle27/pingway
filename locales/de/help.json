@@ -39,7 +39,7 @@
     },
     "other": {
       "name": "📨 Sonstiges",
-      "value": "**/clearbotdms** — Räumt Pingways Nachrichten in deinen DMs auf.\n**/pingway** — Wähle Pingways Sprache für dich (en, fr, de, jp oder auto).\n**/help** — Diese Übersicht."
+      "value": "**/clearbotdms** — Räumt Pingways Nachrichten in deinen DMs auf.\n**/pingway** — Wähle Pingways Sprache für dich (z. B. `/pingway sprache: Deutsch`, oder Auto für die Sprache deiner Discord-App).\n**/help** — Diese Übersicht."
     }
   },
   "footer": "Pingway FFXIV-Discord-Bot • Entwickelt von River Zola",

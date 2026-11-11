@@ -79,7 +79,7 @@ Everything you change on the website works right away in Discord — and you can
 - **FFXIV News** (website) — Post Lodestone news (topics, notices, maintenance, updates) to your channels, in your language.
 - **`/notifhere`** — Choose the channel Pingway uses for notifications.
 - **`/clearbotdms`** — Clean up Pingway's messages in your DMs.
-- **`/pingway`** — Choose Pingway's language for you: `/pingway en`, `fr`, `de`, `jp` (Japanese) or `auto` (your Discord app language). Also in **My Settings** on the website.
+- **`/pingway`** — Choose Pingway's language for you with the `language` option: English, Français, Deutsch, 日本語 or Auto (your Discord app language), e.g. `/pingway language: English`. Also in **My Settings** on the website.
 - **`/help`** — The full command list.
 
 ---

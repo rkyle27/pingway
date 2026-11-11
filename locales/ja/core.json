@@ -1,7 +1,6 @@
 {
   "maintenance": "⚠️ **現在Botはメンテナンス中です。** しばらくしてからもう一度お試しください！",
   "noDms": "⚠️ **スラッシュコマンドはDMでは使えません。**\nサーバーのチャンネルで実行してください。",
-  "busy": "⚠️ **ごめんなさい、今ちょっと手が離せません！** （{task}）\n少ししてからもう一度お試しください。",
   "sciondexSelect": "ScionDex用のチャンネルを選んでください...",
   "sciondexAdminNotSetUp": "⚠️ **このサーバーではまだScionDexが設定されていません！**\n管理者として、メンバーがScionDexを遊べるチャンネルを選んでください：",
   "sciondexAdminRestricted": "⚠️ **ScionDexは <#{channelId}> 専用です。**\n管理者は下でチャンネルを変更できます：",
@@ -13,9 +12,5 @@
   "time": {
     "dhm": "{d}日{h}時間{m}分",
     "hm": "{h}時間{m}分"
-  },
-  "tasks": {
-    "clearDms": "BotのDMを削除中",
-    "cleanChannel": "チャンネルのメッセージを削除中"
   }
 }

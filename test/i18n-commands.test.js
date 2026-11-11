@@ -122,7 +122,7 @@ function fakeInteraction({ sub, locale = 'en-US', userId = 'u1' }) {
     return {
         out,
         user: { id: userId }, locale, guildId: 'g1',
-        options: { getSubcommand: () => sub },
+        options: { getString: (name, req) => (name === 'language' ? sub : null), getSubcommand: () => { throw new Error('/pingway has no sub-commands'); } },
         deferReply: async o => { out.deferred = o; },
         editReply: async o => { out.edits.push(o); return o; },
         reply: async o => { out.edits.push(o); return o; }
@@ -136,6 +136,13 @@ test('/pingway has en, fr, de, jp and auto, with localized descriptions', () => 
     assert.equal(cmd.CHOICES.auto, null);
     const loc = i18n.discordLocalizations('pingway.cmd.description');
     assert.deepEqual(Object.keys(loc).sort(), ['de', 'fr', 'ja']);
+    // one option "language" (required), localized name + choice names, no sub-commands
+    for (const v of Object.keys(cmd.CHOICES)) {
+        assert.ok(t('en', 'pingway.cmd.choices.' + v) !== 'pingway.cmd.choices.' + v, v);
+        assert.deepEqual(Object.keys(i18n.discordLocalizations('pingway.cmd.choices.' + v)).sort(), ['de', 'fr', 'ja'], v);
+    }
+    assert.deepEqual(Object.keys(i18n.discordLocalizations('pingway.cmd.languageName')).sort(), ['de', 'fr', 'ja']);
+    for (const l of ['en', 'fr', 'de', 'ja']) assert.match(t(l, 'pingway.cmd.languageName'), /^[-_\p{L}\p{N}]{1,32}$/u, l + ' option name is a valid Discord option name');
 });
 
 for (const [sub, saved, replyLang] of [['en', 'en', 'en'], ['fr', 'fr', 'fr'], ['de', 'de', 'de'], ['jp', 'ja', 'ja']]) {

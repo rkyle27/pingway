@@ -1,33 +1,37 @@
-// /pingway en | fr | de | jp | auto - choose the language of Pingway's replies and DMs for yourself.
-// Saved in user_language (shared with the website: My Settings -> Bot language). "auto" = your Discord app language.
+// /pingway language: English | Français | Deutsch | 日本語 | Auto - choose the language of Pingway's replies and DMs for yourself.
+// One command, one required option (no sub-commands). Saved in user_language (shared with the website:
+// My Settings -> Bot language). "auto" = your Discord app language.
 const { SlashCommandBuilder, MessageFlags } = require('discord.js');
 const { t, fromDiscordLocale, discordLocalizations, DEFAULT_LANG } = require('../utils/i18n');
 const userLanguage = require('../utils/userLanguage');
 
-// subcommand -> saved value ('jp' is shown to users, the code inside Pingway is 'ja')
+// option value -> saved value ('jp' is shown to users, the code inside Pingway is 'ja')
 const CHOICES = { en: 'en', fr: 'fr', de: 'de', jp: 'ja', auto: null };
 
-function addSub(builder, name) {
-    return builder.addSubcommand(sub => sub
-        .setName(name)
-        .setDescription(t('en', 'pingway.cmd.' + name))
-        .setDescriptionLocalizations(discordLocalizations('pingway.cmd.' + name)));
-}
-
-let data = new SlashCommandBuilder()
+const data = new SlashCommandBuilder()
     .setName('pingway')
     .setDescription(t('en', 'pingway.cmd.description'))
-    .setDescriptionLocalizations(discordLocalizations('pingway.cmd.description'));
-for (const name of Object.keys(CHOICES)) data = addSub(data, name);
+    .setDescriptionLocalizations(discordLocalizations('pingway.cmd.description'))
+    .addStringOption(o => o
+        .setName('language')
+        .setNameLocalizations(discordLocalizations('pingway.cmd.languageName'))
+        .setDescription(t('en', 'pingway.cmd.language'))
+        .setDescriptionLocalizations(discordLocalizations('pingway.cmd.language'))
+        .setRequired(true)
+        .addChoices(...Object.keys(CHOICES).map(value => ({
+            name: t('en', 'pingway.cmd.choices.' + value),
+            name_localizations: discordLocalizations('pingway.cmd.choices.' + value),
+            value
+        }))));
 
 module.exports = {
     data,
     CHOICES,
 
     async execute(interaction) {
-        const sub = interaction.options.getSubcommand();
-        if (!Object.prototype.hasOwnProperty.call(CHOICES, sub)) return;
-        const choice = CHOICES[sub];
+        const value = interaction.options.getString('language', true);
+        if (!Object.prototype.hasOwnProperty.call(CHOICES, value)) return;
+        const choice = CHOICES[value];
         await interaction.deferReply({ flags: [MessageFlags.Ephemeral] }); // saving can take a moment
         try {
             await userLanguage.setChoice(interaction.user.id, choice);

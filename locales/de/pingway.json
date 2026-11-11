@@ -1,11 +1,15 @@
 {
   "cmd": {
     "description": "🌐 Wähle die Sprache, in der Pingway dir antwortet und DMs schickt.",
-    "en": "English (Englisch)",
-    "fr": "Français (Französisch)",
-    "de": "Deutsch",
-    "jp": "日本語 (Japanisch)",
-    "auto": "Die Sprache deiner Discord-App verwenden (Standard)."
+    "language": "Deine Sprache für Pingways Antworten und DMs. Auto = die Sprache deiner Discord-App.",
+    "languageName": "sprache",
+    "choices": {
+      "en": "English (Englisch)",
+      "fr": "Français (Französisch)",
+      "de": "Deutsch",
+      "jp": "日本語 (Japanisch)",
+      "auto": "Auto (Sprache deiner Discord-App, Standard)"
+    }
   },
   "names": { "en": "English", "fr": "Français", "de": "Deutsch", "ja": "日本語" },
   "saved": "✅ Pingway spricht ab jetzt **{language}** mit dir.",

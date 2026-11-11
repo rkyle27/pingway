@@ -7,20 +7,11 @@ const {
     ActionRowBuilder 
 } = require('discord.js');
 const path = require('path');
-const { isBotBusy, getBusyTask } = require('../utils/lock');
 const { isMaintenance } = require('../maintenance');
 const { pool } = require('../utils/db');
 const { isSlowError, isDiscordApiError, redactApiError, describeInteraction } = require('../utils/discordErrors');
 const { t } = require('../utils/i18n');
 const userLanguage = require('../utils/userLanguage');
-
-// "I'm busy" reply: the running task's name in the reader's language when it is a known one
-const BUSY_TASKS = { 'Clearing Bot DM Messages': 'clearDms', 'Cleaning channel messages': 'cleanChannel' };
-async function busyText(langOf) {
-    const lang = await langOf();
-    const task = getBusyTask();
-    return t(lang, 'core.busy', { task: BUSY_TASKS[task] ? t(lang, 'core.tasks.' + BUSY_TASKS[task]) : task });
-}
 
 module.exports = {
     name: Events.InteractionCreate,
@@ -36,13 +27,6 @@ module.exports = {
                     content: t(await langOf(), 'core.maintenance'),
                     flags: [MessageFlags.Ephemeral]
                 });
-            }
-
-            // Autocomplete (e.g. /pf mount): the command's autocomplete() answers; never throws back to Discord
-            if (typeof interaction.isAutocomplete === 'function' && interaction.isAutocomplete()) {
-                const acCommand = client.commands.get(interaction.commandName);
-                if (acCommand && typeof acCommand.autocomplete === 'function') return await acCommand.autocomplete(interaction);
-                return await interaction.respond([]).catch(() => { });
             }
 
             // 1. Handle Slash Commands
@@ -61,13 +45,6 @@ module.exports = {
                 if (isDM && commandName !== 'clearbotdms' && commandName !== 'pingway') {
                     return await interaction.reply({
                         content: t(await langOf(), 'core.noDms'),
-                        flags: [MessageFlags.Ephemeral]
-                    });
-                }
-
-                if (isBotBusy() && commandName !== 'clean' && commandName !== 'clearbotdms') {
-                    return await interaction.reply({
-                        content: await busyText(langOf),
                         flags: [MessageFlags.Ephemeral]
                     });
                 }

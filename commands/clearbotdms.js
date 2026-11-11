@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, MessageFlags } = require('discord.js');
-const { setBotBusy } = require('../utils/lock');
+const { tryLock, unlock, userKey } = require('../utils/lock');
 const { t, discordLocalizations } = require('../utils/i18n');
 const userLanguage = require('../utils/userLanguage');
 
@@ -18,12 +18,18 @@ module.exports = {
             });
         }
 
-        await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
-
-        // Set global lock so other heavy commands wait
-        setBotBusy(true, 'Clearing Bot DM Messages');
+        // One DM cleanup at a time per user (nobody else is blocked)
+        const lockKey = userKey(interaction.user.id);
+        if (!tryLock(lockKey, 'Clearing Bot DM Messages')) {
+            return interaction.reply({
+                content: t(lang, 'clearbotdms.alreadyRunning'),
+                flags: [MessageFlags.Ephemeral]
+            });
+        }
 
         try {
+            await interaction.deferReply({ flags: [MessageFlags.Ephemeral] });
+
             // Safely fetch or fall back to creating the DM channel if cached channel is null
             const channel = interaction.channel || await interaction.user.createDM();
 
@@ -67,8 +73,8 @@ module.exports = {
                 content: t(lang, 'clearbotdms.failed')
             });
         } finally {
-            // Always release the lock when finished
-            setBotBusy(false);
+            // Always release this user's lock when finished (also on errors)
+            unlock(lockKey);
         }
     }
 };
