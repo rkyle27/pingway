@@ -1,6 +1,5 @@
-// Website Dev page -> Giveaway (dev only). The website saves the giveaway (table giveaways, utils/devDdl.js) and puts a
-// 'giveaway_pick' row in command_queue; utils/commandQueue.js hands it to pick() below, which runs here because only the bot
-// knows the servers and members:
+// Website Dev page -> Giveaway (dev only). The website saves the giveaway (table giveaways, utils/devDdl.js) and asks the bot
+// (through command_queue) to draw it; pick() below runs here because only the bot knows the servers and members:
 //   1. checks again that the asker (command_queue.requested_by) is a dev in dev_users (staff / anyone else: refused)
 //   2. picks a random server Pingway is in, then a random REAL member there (no bots, no apps / system users; the owner
 //      can win too). Members: ONE Discord request per tried server (guild.members.list, up to 1,000 members), never a full
@@ -8,11 +7,11 @@
 //   3. DMs the winner (in their language) with a Claim button (customId 'giveaway_claim_<id>'), valid CLAIM_DAYS days
 //   4. writes every step to the audit log (dev_audit): winner, DM sent / DM failed (DMs closed -> the owner can reroll)
 // handleClaim(): the winner's Claim button. One conditional UPDATE, so it can only be claimed once and only before it expires.
-// Preset rewards are added with the SAME Dev page command code: a 'points_add' / 'kofi_member' row in command_queue (the
-// console command runs within ~5 s and its before / after view is saved in the 'giveaway.claimed' audit row).
-// A "manual" reward is sent by the owner by hand (the Dev page history shows it as claimed).
+// Preset rewards are queued in command_queue as the job grantCommand() returns (its before / after view is saved in the
+// 'giveaway.claimed' audit row). A "manual" reward is sent by the owner by hand (the Dev page history shows it as claimed).
 
 const { t } = require('./i18n');
+const { loadPrivate } = require('./privateHook');
 
 const CLAIM_DAYS = 7;
 const CLAIM_MS = CLAIM_DAYS * 24 * 60 * 60 * 1000;
@@ -147,12 +146,10 @@ async function draw(deps, id, now, random, out) {
     return out('done', { state: 'dm_sent', guildName: row.guild_name, winnerId: String(user.id), winnerName, expiresAt });
 }
 
-/** The console command that adds a preset reward (the same Dev page commands), or null for a manual reward. */
+/** The queued job that adds a preset reward ({ action, args }), or null for a manual reward. */
 function grantCommand(row) {
-    const n = Number(row.reward_amount) || 0;
-    if (row.reward_kind === 'points' && Number.isInteger(n) && n >= 1 && n <= 100000) return { action: 'points_add', args: { id: String(row.winner_id), amount: n } };
-    if (row.reward_kind === 'kofi_member' && Number.isInteger(n) && n >= 1 && n <= 3650) return { action: 'kofi_member', args: { id: String(row.winner_id), days: n } };
-    return null;
+    const p = loadPrivate('giveawayGrant');
+    return p ? p.grantCommand(row) : null;
 }
 
 /** Claim button in the winner's DM. deps: { pool, langOf(interaction), now() } */
@@ -184,7 +181,7 @@ async function handleClaim(interaction, deps) {
     const auditId = await audit(pool, 'giveaway.claimed', 'giveaway #' + id, JSON.stringify({ winnerId: userId, reward: row.reward_kind, amount: Number(row.reward_amount) || 0, text: row.reward_text || '' }),
         grant ? 'added automatically: ' + grant.action + ' ' + JSON.stringify(grant.args) : 'manual reward: send it to the winner yourself', now);
     if (grant) {
-        // the same Dev page command code adds it (utils/commandQueue.js runs it within ~5 s)
+        // the bot runs it from command_queue within ~5 s
         const [q] = await pool.execute(
             "INSERT INTO command_queue (action, args, state, audit_id, requested_by, created_at) VALUES (?, ?, 'pending', ?, ?, ?)",
             [grant.action, JSON.stringify(grant.args), auditId, String(row.created_by), now]

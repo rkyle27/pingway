@@ -1,4 +1,4 @@
-// Bot languages (en, fr, de, ja): /pingway, the "reviews" console command, and sample texts in every language.
+// Bot languages (en, fr, de, ja): /pingway and sample texts in every language.
 // Plain node, no Discord connection and no database:  node --test test/i18n-commands.test.js
 // discord.js / the database are replaced with small stand-ins when they are not installed.
 const test = require('node:test');
@@ -181,87 +181,6 @@ test('/pingway with a broken database says so instead of crashing', async () => 
     } finally {
         pool.execute = saved;
     }
-});
-
-// ---------- console: reviews ----------
-function reviewsPool(rows, { missing = false } = {}) {
-    const calls = [];
-    return {
-        calls,
-        async execute(sql) {
-            calls.push(sql);
-            if (missing) { const e = new Error("Table 'reviews' doesn't exist"); e.code = 'ER_NO_SUCH_TABLE'; throw e; }
-            if (/COUNT\(\*\)/.test(sql)) {
-                const avg = rows.length ? rows.reduce((a, r) => a + r.stars, 0) / rows.length : null;
-                return [[{ n: rows.length, avg }]];
-            }
-            const limit = Number((sql.match(/LIMIT (\d+)/) || [])[1]);
-            const offset = Number((sql.match(/OFFSET (\d+)/) || [])[1] || 0);
-            const sorted = rows.slice().sort((a, b) => b.created_at - a.created_at || b.id - a.id);
-            // the console must never ask for user_id
-            assert.ok(!/user_id/.test(sql), 'user_id is never read');
-            return [sorted.slice(offset, offset + limit).map(r => { const { user_id, ...rest } = r; return rest; })];
-        }
-    };
-}
-const sampleReviews = n => Array.from({ length: n }, (_, k) => ({
-    id: k + 1, user_id: '99999999999999999' + k, stars: (k % 5) + 1, text: 'Great bot number ' + (k + 1) + '\nnew line',
-    name: k % 3 === 0 ? 'Riv' : '', name_random: k % 3 === 1 ? 1 : 0, lang: ['en', 'fr', 'de', 'ja'][k % 4], approved: k % 7 === 0 ? 0 : 1,
-    created_at: Date.UTC(2026, 10, 1) + k * 3600 * 1000
-}));
-
-test('reviews: count, average stars and the latest 10; never prints user_id', async () => {
-    const { reviewsConsole } = require('../utils/reviewsConsole');
-    const rows = sampleReviews(12);
-    const p = reviewsPool(rows);
-    const lines = [];
-    await reviewsConsole([], { pool: p, log: s => lines.push(s) });
-    const out = lines.join('\n');
-    const avg = rows.reduce((a, r) => a + r.stars, 0) / rows.length;
-    assert.match(out, new RegExp('12 review\\(s\\) \\| average ' + avg.toFixed(2).replace('.', '\\.') + ' / 5'));
-    assert.equal((out.match(/^ {2}#\d+ \|/gm) || []).length, 10, 'latest 10');
-    assert.match(out, /#12 \| 2026-11-01 11:00 UTC \| ★★☆☆☆ \|/);
-    assert.match(out, /Type "reviews all" to see all 12/);
-    assert.match(out, /\[not approved\]/);
-    assert.match(out, /\(random name\)/);
-    assert.match(out, /Great bot number 12 new line/, 'text on one line');
-    for (const r of rows) assert.ok(!out.includes(r.user_id), 'no user id in the output');
-});
-
-test('reviews all: every review, read 20 at a time', async () => {
-    const { reviewsConsole } = require('../utils/reviewsConsole');
-    const rows = sampleReviews(45);
-    const p = reviewsPool(rows);
-    const lines = [];
-    await reviewsConsole(['all'], { pool: p, log: s => lines.push(s) });
-    const out = lines.join('\n');
-    assert.equal((out.match(/^ {2}#\d+ \|/gm) || []).length, 45);
-    assert.match(out, /-- 1-20 of 45 --/);
-    assert.match(out, /-- 21-40 of 45 --/);
-    assert.match(out, /-- 41-45 of 45 --/);
-    assert.equal(p.calls.filter(s => /LIMIT 20 OFFSET/.test(s)).length, 3);
-    for (const r of rows) assert.ok(!out.includes(r.user_id));
-});
-
-test('reviews: no table yet / no reviews / stars drawing', async () => {
-    const { reviewsConsole, stars } = require('../utils/reviewsConsole');
-    let lines = [];
-    await reviewsConsole([], { pool: reviewsPool([], { missing: true }), log: s => lines.push(s) });
-    assert.match(lines.join('\n'), /reviews table does not exist yet/);
-    lines = [];
-    await reviewsConsole([], { pool: reviewsPool([]), log: s => lines.push(s) });
-    assert.match(lines.join('\n'), /0 review\(s\)/);
-    assert.equal(stars(4), '★★★★☆');
-    assert.equal(stars(0), '☆☆☆☆☆');
-    assert.equal(stars(9), '★★★★★');
-});
-
-test('mybot.js: one reviews console branch, listed in the startup help line and CONSOLE_COMMANDS.txt', () => {
-    const src = fs.readFileSync(path.join(ROOT, 'mybot.js'), 'utf8');
-    assert.equal((src.match(/input === 'reviews' \|\| input\.startsWith\('reviews '\)/g) || []).length, 1);
-    assert.match(src, /"reviews" \/ "reviews all"/);
-    const doc = fs.readFileSync(path.join(ROOT, 'CONSOLE_COMMANDS.txt'), 'utf8');
-    assert.ok(doc.includes('reviews all'));
 });
 
 // ---------- texts in every language ----------

@@ -92,13 +92,12 @@ test('command queue: trivia_share always shares the row\'s requested_by (never a
     const client = fakeClient(posts);
     env.db.tbl('command_queue').push({ id: 7, action: 'trivia_share', requested_by: OTHER, state: 'running' });
     const seen = [];
-    const deps = { triviaShare: (uid, args) => { seen.push(uid); return S.run(client, uid, args); }, runLine: () => assert.fail('no console line') };
+    const deps = { triviaShare: (uid, args) => { seen.push(uid); return S.run(client, uid, args); }, runPrivate: () => assert.fail('never handed on') };
     const out = await Q.runOne({ id: 7, action: 'trivia_share', args: JSON.stringify({ userId: USER, day: W.dayOf(), guildIds: [G1] }) }, deps, env.db.pool);
     assert.deepEqual(seen, [OTHER]);
     assert.deepEqual(parse(out).results, [{ guildId: G1, ok: false, reason: 'notSolved' }], 'OTHER did not solve: nothing posted for USER');
     assert.equal(posts.length, 0);
-    assert.equal(Q.toConsoleLine('trivia_share', {}), null, 'not a console command');
-    assert.equal((await Q.runOne({ id: 8, action: 'trivia_share', args: '{}' }, { runLine: () => {} }, env.db.pool)).state, 'error', 'no handler = error');
+    assert.equal((await Q.runOne({ id: 8, action: 'trivia_share', args: '{}' }, {}, env.db.pool)).state, 'error', 'no handler = error');
 });
 
 test('Discord Share button records the server too (so the website shows it as shared)', () => {

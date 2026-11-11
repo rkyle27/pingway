@@ -1,4 +1,4 @@
-// Dev page Giveaway (v2.2 Part 8): command_queue 'giveaway_pick' -> utils/giveaway.js pick() + the winner's Claim button.
+// Dev page Giveaway (v2.2 Part 8): utils/giveaway.js pick() + the winner's Claim button.
 // Plain node, no Discord / database:  node --test test/giveaway.test.js
 'use strict';
 
@@ -43,7 +43,6 @@ if (!canLoad('discord.js')) {
 const plain = c => (c && typeof c.toJSON === 'function' ? c.toJSON() : c);
 
 const GW = require(path.join(ROOT, 'utils', 'giveaway.js'));
-const Q = require(path.join(ROOT, 'utils', 'commandQueue.js'));
 const { t } = require(path.join(ROOT, 'utils', 'i18n.js'));
 
 const OWNER = '100000000000000001';
@@ -210,40 +209,13 @@ function click(id, userId) {
 }
 const deps = (pool, now = NOW) => ({ pool, now: () => now, langOf: async () => 'en' });
 
-test('claim: once only; preset points are added with the same Dev page command (points_add in command_queue)', async () => {
+test('claim: manual reward -> nothing queued', async () => {
     const { db, pool, add } = fakeDb();
-    add({ state: 'dm_sent', winner_id: HUMAN, reward_kind: 'points', reward_amount: 25, expires_at: NOW + 7 * DAY });
-    const c = click(1, HUMAN);
-    await GW.handleClaim(c, deps(pool, NOW + DAY));
-    assert.equal(db.gw[0].state, 'claimed');
-    assert.equal(c.updates[0].content, t('en', 'giveaway.claimedAuto'));
-    assert.equal(db.queue.length, 1);
-    assert.equal(db.queue[0].action, 'points_add');
-    assert.deepEqual(JSON.parse(db.queue[0].args), { id: HUMAN, amount: 25 });
-    assert.equal(db.queue[0].requested_by, OWNER);
-    const claimedAudit = db.audit.find(a => a.action === 'giveaway.claimed');
-    assert.equal(db.queue[0].audit_id, claimedAudit.id, 'the command\'s before / after goes into the claim audit row');
-    assert.equal(db.gw[0].grant_queue_id, 1);
-    assert.equal(Q.toConsoleLine('points_add', JSON.parse(db.queue[0].args)), 'points add ' + HUMAN + ' 25', 'the normal console command');
-    // second click
-    const c2 = click(1, HUMAN);
-    await GW.handleClaim(c2, deps(pool, NOW + DAY));
-    assert.equal(c2.replies[0].content, t('en', 'giveaway.already'));
-    assert.equal(db.queue.length, 1, 'never granted twice');
-    assert.equal(db.audit.filter(a => a.action === 'giveaway.claimed').length, 1);
-});
-
-test('claim: Ko-fi member days -> kofi_member; manual reward -> nothing queued', async () => {
-    const { db, pool, add } = fakeDb();
-    add({ state: 'dm_sent', winner_id: HUMAN, reward_kind: 'kofi_member', reward_amount: 30, expires_at: NOW + 7 * DAY });
     add({ state: 'dm_sent', winner_id: HUMAN, reward_kind: 'manual', reward_amount: 0, expires_at: NOW + 7 * DAY });
-    await GW.handleClaim(click(1, HUMAN), deps(pool));
-    assert.equal(db.queue[0].action, 'kofi_member');
-    assert.deepEqual(JSON.parse(db.queue[0].args), { id: HUMAN, days: 30 });
-    const c = click(2, HUMAN);
+    const c = click(1, HUMAN);
     await GW.handleClaim(c, deps(pool));
-    assert.equal(db.gw[1].state, 'claimed');
-    assert.equal(db.queue.length, 1);
+    assert.equal(db.gw[0].state, 'claimed');
+    assert.equal(db.queue.length, 0);
     assert.equal(c.updates[0].content, t('en', 'giveaway.claimedManual'));
 });
 
@@ -269,24 +241,12 @@ test('claim: someone else, after 7 days, rerolled / unknown', async () => {
     assert.equal(db.queue.length, 0);
 });
 
-test('command queue: giveaway_pick runs with the row\'s requested_by (never a user id from args)', async () => {
-    const { db, pool } = fakeDb();
-    db.queue.push({ id: 1, action: 'giveaway_pick', args: JSON.stringify({ giveawayId: 5, userId: HUMAN }), state: 'running', requested_by: OWNER });
-    let seen = null;
-    const out = await Q.runOne(db.queue[0], { giveawayPick: async (uid, args) => { seen = { uid, args }; return { state: 'done', result: '{}' }; } }, pool);
-    assert.equal(out.state, 'done');
-    assert.deepEqual(seen, { uid: OWNER, args: { giveawayId: 5, userId: HUMAN } });
-    assert.equal(Q.toConsoleLine('giveaway_pick', {}), null, 'not a console command');
-    assert.equal((await Q.runOne(db.queue[0], {}, pool)).state, 'error');
-});
-
-test('giveaway texts exist in all 4 languages; mybot + interactionCreate are wired', () => {
+test('giveaway texts exist in all 4 languages; interactionCreate is wired', () => {
     const keys = Object.keys(JSON.parse(fs.readFileSync(path.join(ROOT, 'locales', 'en', 'giveaway.json'), 'utf8')));
     for (const l of ['fr', 'de', 'ja']) {
         const d = JSON.parse(fs.readFileSync(path.join(ROOT, 'locales', l, 'giveaway.json'), 'utf8'));
         assert.deepEqual(Object.keys(d).sort(), keys.slice().sort(), l);
     }
-    assert.match(fs.readFileSync(path.join(ROOT, 'mybot.js'), 'utf8'), /giveawayPick: \(userId, args\) => require\('\.\/utils\/giveaway'\)\.pick/);
     assert.match(fs.readFileSync(path.join(ROOT, 'events', 'interactionCreate.js'), 'utf8'), /cid\.startsWith\('giveaway_claim_'\)/);
     const fr = JSON.parse(fs.readFileSync(path.join(ROOT, 'locales', 'fr', 'giveaway.json'), 'utf8'));
     const de = JSON.parse(fs.readFileSync(path.join(ROOT, 'locales', 'de', 'giveaway.json'), 'utf8'));

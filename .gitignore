@@ -34,3 +34,5 @@ voice-settings.json.tmp
 
 # Console commands - NEVER public (owner rule)
 CONSOLE_COMMANDS.txt
+# Private code (console + Dev page commands) - NEVER public (owner rule)
+private/

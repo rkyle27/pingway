@@ -229,32 +229,6 @@ test('voice-settings.json: missing / corrupt = on, saved value survives a "resta
     settings._setPath(path.join(TMP, 'voice-settings.json'));
 });
 
-test('console: "tts", "tts google off|on"', async () => {
-    settings._setPath(path.join(TMP, 'console.json'));
-    const off = await settings.ttsConsole(['google', 'off']);
-    assert.match(off[0], /OFF/);
-    assert.equal(settings.isGoogleOn(), false);
-    const mem = fakeMembers({ left: 5000 });
-    const a = fakeSession({ now: AFTER });
-    const b = fakeSession({ now: AFTER, present: false });
-    const sessions = new Map([['g1', a], ['g2', b], ['g3', { destroyed: true }]]);
-    const fakeTts = on => ({ apiKey: () => 'k', engineStatus: () => (on ? { mode: 'google', reason: null } : { mode: 'backup', reason: 'switch' }) });
-    const membersApi = { ...members, planGoogle: (s, c, o) => members.planGoogle(s, c, { ...o, members: mem }) };
-    let lines = await settings.ttsConsole([], { sessions, usage: fakeUsage({ chars: 1234 }), members: membersApi, tts: fakeTts(false), now: AFTER });
-    assert.match(lines[0], /Google voices: OFF \(kill switch\)/);
-    assert.match(lines[1], /Free period: over/);
-    assert.match(lines[2], /1,234 \/ /);
-    assert.match(lines[3], /Active calls: 2, using Google: 0/);
-    await settings.ttsConsole(['google', 'on']);
-    lines = await settings.ttsConsole([], { sessions, usage: fakeUsage(), members: membersApi, tts: fakeTts(true), now: AFTER });
-    assert.match(lines[0], /Google voices: ON/);
-    assert.match(lines[3], /Active calls: 2, using Google: 1/);
-    lines = await settings.ttsConsole([], { sessions: new Map(), usage: fakeUsage(), members: membersApi, tts: fakeTts(true), now: DURING });
-    assert.match(lines[1], /Free period: active until 2027-02-01 00:00 JST/);
-    assert.match((await settings.ttsConsole(['google', 'maybe']))[0], /Usage/);
-    settings._setPath(path.join(TMP, 'voice-settings.json'));
-});
-
 // ------------------------------------------------------------------ DB: lots, expiry, oldest first, cache
 function fakeDb(lots, settingsRows = {}) {
     const db = { lots, settingsRows, queries: [], fail: null };
