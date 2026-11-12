@@ -1,5 +1,9 @@
 const mysql = require('mysql2/promise');
 
+// Encrypts traffic between the bot and the database (TLS 1.2+). Set DB_SSL=off only if the database doesn't support it.
+// If the host gives you its CA certificate, put it in DB_CA to also verify the server (stops impersonation).
+const DB_SSL = String(process.env.DB_SSL || 'on').toLowerCase();
+
 const pool = mysql.createPool({
     host: process.env.DB_HOST || 'localhost',
     user: process.env.DB_USER || 'root',
@@ -15,7 +19,11 @@ const pool = mysql.createPool({
     keepAliveInitialDelay: 0,     // Start sending keepalive packets immediately
     connectTimeout: 10000,        // 10s max wait for initial connection before timing out
     maxIdle: 10,                  // Automatically purge idle connections
-    idleTimeout: 60000            // Drop connections that have been idle over 60s
+    idleTimeout: 60000,           // Drop connections that have been idle over 60s
+
+    ssl: DB_SSL === 'off' ? undefined
+        : process.env.DB_CA ? { ca: process.env.DB_CA, rejectUnauthorized: true, minVersion: 'TLSv1.2' }
+        : { rejectUnauthorized: false, minVersion: 'TLSv1.2' }
 });
 
 async function initDatabase() {
