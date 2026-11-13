@@ -16,6 +16,7 @@ const { t, tOr, discordLocalizations } = require('../utils/i18n');
 const userLanguage = require('../utils/userLanguage');
 const ignClaims = require('../utils/ignClaims'); // v2.2: Link Lodestone = claim with a code in the Lodestone profile
 const { ownerHasMembership } = require('../utils/membership');
+const { isHttpsUrl } = require('../utils/safeImage');
 
 function extractLodestoneId(input) {
     if (!input) return null;
@@ -303,14 +304,22 @@ module.exports = {
 
         if (interaction.customId === 'ign_modal_portrait') {
             await interaction.deferUpdate().catch(() => { });
-            session.portrait_url = interaction.fields.getTextInputValue('portrait_url_input').trim();
+            const portraitInput = interaction.fields.getTextInputValue('portrait_url_input').trim();
+            if (portraitInput && !isHttpsUrl(portraitInput)) {
+                return interaction.followUp({ content: t(lang, 'ignconfig.invalidImageUrl'), flags: [MessageFlags.Ephemeral] }).catch(() => { });
+            }
+            session.portrait_url = portraitInput;
             await saveSessionToDb(userId, session);
             return sendConfigDashboard(interaction, false, lang);
         }
 
         if (interaction.customId === 'ign_modal_full_photo') {
             await interaction.deferUpdate().catch(() => { });
-            session.full_photo_url = interaction.fields.getTextInputValue('full_photo_url_input').trim();
+            const photoInput = interaction.fields.getTextInputValue('full_photo_url_input').trim();
+            if (photoInput && !isHttpsUrl(photoInput)) {
+                return interaction.followUp({ content: t(lang, 'ignconfig.invalidImageUrl'), flags: [MessageFlags.Ephemeral] }).catch(() => { });
+            }
+            session.full_photo_url = photoInput;
             await saveSessionToDb(userId, session);
             return sendConfigDashboard(interaction, false, lang);
         }

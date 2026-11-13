@@ -31,6 +31,7 @@
   "selectJobTitle": "⚔️ {role}のジョブを選ぶ",
   "selectJobHelp": "下のメニューからメインジョブを選んでください。",
   "invalidLodestone": "❌ ロードストーンのURLかIDの形式が正しくありません。",
+  "invalidImageUrl": "❌ 画像リンクが正しくありません。https:// で始まるリンクを入力してください。",
   "dashTitle": "⚙️ FFXIVキャラクター設定",
   "dashHelp": "ボタンを押したり入力を送信したりすると、変更は自動で保存されます。",
   "fields": {

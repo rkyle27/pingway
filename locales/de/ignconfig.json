@@ -31,6 +31,7 @@
   "selectJobTitle": "⚔️ Job wählen ({role})",
   "selectJobHelp": "Wähle unten deinen Hauptjob.",
   "invalidLodestone": "❌ Ungültiges Format der Lodestone-URL oder -ID.",
+  "invalidImageUrl": "❌ Das ist kein gültiger Bildlink. Bitte nutze einen Link, der mit https:// beginnt.",
   "dashTitle": "⚙️ FFXIV-Charaktereinstellungen",
   "dashHelp": "Änderungen werden automatisch gespeichert, wenn du Knöpfe drückst oder Fenster absendest.",
   "fields": {

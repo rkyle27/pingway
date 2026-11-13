@@ -17,6 +17,7 @@ try {
   sharp = require('sharp');
   sharp.cache(false); // no libvips operation cache: keeps RSS low on a 512 MB host
   sharp.concurrency(1);
+  require('./safeImage').blockUnsafeDecoders(sharp);
 } catch (e) { /* optional: used to decode webp/gif avatars */ }
 
 const ASSET_DIR = path.join(__dirname, '..', 'assets', 'welcome');

@@ -9,6 +9,8 @@ const userLanguage = require('../utils/userLanguage');
 const ignClaims = require('../utils/ignClaims');
 const ffxivCollect = require('../utils/ffxivCollect');
 const cardStats = require('../utils/ignCardStats');
+const safeImage = require('../utils/safeImage');
+safeImage.blockUnsafeDecoders(sharp);
 
 const jobIconMap = {
     'Paladin': 'https://raw.githubusercontent.com/rkyle27/classjob-icons/766cb47831435a83f04d904146bd3472501564c5/icons/paladin.png',
@@ -194,8 +196,8 @@ async function generateCard(config, data) {
     // Full photo if present in database (covers background)
     if (config.full_photo_url) {
         try {
-            const imgRes = await axios.get(config.full_photo_url, { responseType: 'arraybuffer', timeout: 8000 });
-            const customBuffer = await sharp(Buffer.from(imgRes.data))
+            const photoBuf = await safeImage.fetchUserImage(config.full_photo_url);
+            const customBuffer = await sharp(photoBuf, safeImage.SHARP_INPUT_OPTIONS)
                 .resize(width, height, { fit: 'cover', position: 'top' })
                 .toBuffer();
             finalLayers.push({ input: customBuffer, left: 0, top: 0 });
@@ -209,10 +211,19 @@ async function generateCard(config, data) {
         let portraitSourceUrl = config.portrait_url ? config.portrait_url : data.portrait;
         if (portraitSourceUrl) {
             try {
+                let resizedPortrait;
+                if (config.portrait_url) {
+                    // user-given link: safe download + pixel limit
+                    const portraitBuf = await safeImage.fetchUserImage(portraitSourceUrl);
+                    resizedPortrait = await sharp(portraitBuf, safeImage.SHARP_INPUT_OPTIONS)
+                        .resize(420, 700, { fit: 'cover', position: 'top' })
+                        .toBuffer();
+                } else {
                 const imgRes = await axios.get(portraitSourceUrl, { responseType: 'arraybuffer', timeout: 8000 });
-                const resizedPortrait = await sharp(Buffer.from(imgRes.data))
+                resizedPortrait = await sharp(Buffer.from(imgRes.data))
                     .resize(420, 700, { fit: 'cover', position: 'top' })
                     .toBuffer();
+                }
                 finalLayers.push({ input: resizedPortrait, left: 0, top: 0 });
             } catch (e) {
                 console.error('Failed to load portrait:', e.message);

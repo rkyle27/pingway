@@ -31,6 +31,7 @@
   "selectJobTitle": "⚔️ Select {role} Job",
   "selectJobHelp": "Choose your specific main job from the dropdown below.",
   "invalidLodestone": "❌ Invalid Lodestone URL or ID format.",
+  "invalidImageUrl": "❌ That is not a valid image link. Please use a link starting with https://",
   "dashTitle": "⚙️ FFXIV Character Configuration Dashboard",
   "dashHelp": "Changes save automatically when you click buttons or submit modals.",
   "fields": {
