@@ -68,6 +68,7 @@ const pendingAlerts = new Map();  // userId -> Map('itemId:quality' -> { itemId,
 let flushTimer = null;
 let flushing = false;
 const alertIntervals = new Map(); // userId -> minutes (only users who chose something other than 1)
+const minMedians = new Map();     // userId -> Gil: only alert when the DC median is higher (set on the website; none = no extra limit)
 const lastSentAt = new Map();     // userId -> time of their last alert DM
 let alertTargets = new Map();     // userId -> [{ guildId, channelId, roleId }] server channels (set on the website)
 let dmOff = new Set();            // users with server channels whose market alert DMs are off (DM switch on the website)
@@ -207,6 +208,20 @@ async function loadIntervals() {
         }
     } catch (err) {
         if (!/Unknown column/i.test(err.message)) console.error('❌ [MARKET] Could not load DM intervals:', err.message);
+    }
+}
+
+// Minimum DC median per user (website Retainers tab -> Market alerts). Missing column = nobody has one.
+async function loadMinMedians() {
+    try {
+        const [rows] = await pool.execute('SELECT user_id, min_median FROM market_alerts WHERE min_median IS NOT NULL');
+        minMedians.clear();
+        for (const r of rows) {
+            const n = Number(r.min_median);
+            if (n > 0) minMedians.set(String(r.user_id), n);
+        }
+    } catch (err) {
+        if (!/Unknown column/i.test(err.message)) console.error('❌ [MARKET] Could not load minimum medians:', err.message);
     }
 }
 
@@ -511,6 +526,9 @@ function notifySubscribedUsers(client, alertData) {
     const quality = alertData.hq ? 'hq' : 'nq';
     for (const sub of subscribers) {
         if (!sub.dcs.includes(alertData.dc)) continue;
+        // The user's minimum DC median (checked before the cooldown, so a skipped item doesn't use it up)
+        const minMedian = minMedians.get(sub.userId);
+        if (minMedian && !(alertData.baselinePrice > minMedian)) continue;
         const key = sub.userId + ':' + alertData.itemId + ':' + alertData.worldId + ':' + quality;
         const last = alertCooldowns.get(key);
         if (last && now - last < ALERT_COOLDOWN_MS) continue;
@@ -778,6 +796,7 @@ async function refresh(client) {
         const { list, enabledCount } = await loadSubscribers();
         subscribers = list;
         await loadIntervals();
+        await loadMinMedians();
         await retainerWatch.load();
 
         // Prune old cache entries
@@ -838,4 +857,6 @@ async function initMarketMonitor(client) {
 }
 
 module.exports = { initMarketMonitor, CHANNEL_LIMITS,
-    _test: { loadTargets, postToChannels, targets: () => alertTargets, dmOff: () => dmOff } };
+    _test: { loadTargets, postToChannels, targets: () => alertTargets, dmOff: () => dmOff,
+        loadMinMedians, notifySubscribedUsers, minMedians: () => minMedians, pending: () => pendingAlerts, cooldowns: () => alertCooldowns,
+        setSubscribers: list => { subscribers = list; } } };

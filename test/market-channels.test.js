@@ -80,6 +80,10 @@ const pool = {
         }
         if (q === 'SELECT datacenters FROM user_datacenters WHERE user_id = ? ORDER BY (guild_id = ?) DESC LIMIT 1') return [[]];
         if (q === 'SELECT alert_interval FROM market_alerts WHERE user_id = ?') return [[]];
+        if (q === 'SELECT user_id, min_median FROM market_alerts WHERE min_median IS NOT NULL') {
+            if (db.noMinMedian) throw new Error("Unknown column 'min_median' in 'where clause'");
+            return [[...db.alerts.values()].filter(r => r.min_median !== null && r.min_median !== undefined).map(r => ({ user_id: r.user_id, min_median: r.min_median }))];
+        }
         throw new Error('Fake pool: unexpected SQL: ' + q);
     }
 };
@@ -103,7 +107,7 @@ const cid = n => '9100000000000000' + String(n).padStart(2, '0');
 function chans(user, n, role) {
     for (let i = 0; i < n; i++) db.channels.push({ user_id: user, guild_id: gid(i + 1), channel_id: cid(i + 1), role_id: role || null, position: i });
 }
-test.beforeEach(() => { db.alerts.clear(); db.channels = []; db.guildLang = []; db.noMarketDm = false; db.noRoleId = false; perkUsers.clear(); });
+test.beforeEach(() => { db.alerts.clear(); db.channels = []; db.guildLang = []; db.noMarketDm = false; db.noRoleId = false; db.noMinMedian = false; perkUsers.clear(); });
 
 // ---------- DM / channels state (website and /marketalert share the rule) ----------
 test('state of a row: older rows keep what they had; new rows use the DM switch', () => {
@@ -225,4 +229,35 @@ test('Server language card: posts use the override, else the server\'s Discord l
     db.guildLang = [];
     await guildLanguage.load();
     assert.equal(userLanguage.forGuild({ id: gid(1), preferredLocale: 'en-US' }), 'en', 'override removed on the website');
+});
+
+// ---------- minimum DC median (set on the website) ----------
+test('minimum DC median: items at or under the user\'s minimum are skipped (DM and channels alike) without using the cooldown', async () => {
+    const T = MM._test;
+    db.alerts.set(U1, { user_id: U1, dm_enabled: 1, alert_target: 'dm', market_dm: 1, min_median: 50000 });
+    db.alerts.set(U2, { user_id: U2, dm_enabled: 1, alert_target: 'server', market_dm: 0, min_median: null }); // no limit
+    await T.loadMinMedians();
+    assert.deepEqual([...T.minMedians()], [[U1, 50000]]);
+    T.pending().clear(); T.cooldowns().clear();
+    T.setSubscribers([{ userId: U1, dcs: ['Mana'] }, { userId: U2, dcs: ['Mana'] }]);
+    const alert = (itemId, baselinePrice) => ({ itemId, hq: false, worldId: 1, dc: 'Mana', listingPrice: 100, baselinePrice, percentDiff: 90 });
+    T.notifySubscribedUsers(null, alert(1, 50000));   // equal to the minimum: skipped
+    T.notifySubscribedUsers(null, alert(2, 20000));   // under: skipped
+    assert.equal(T.pending().has(U1), false);
+    assert.equal(T.cooldowns().has(U1 + ':1:1:nq'), false, 'skipped item keeps its cooldown free');
+    assert.equal(T.pending().get(U2).size, 2, 'user without a minimum gets both');
+    T.notifySubscribedUsers(null, alert(3, 50001));   // higher: alerted
+    assert.deepEqual([...T.pending().get(U1).keys()], ['3:nq']);
+    assert.ok(T.cooldowns().has(U1 + ':3:1:nq'));
+    // removed on the website -> no limit again; a missing column (website not opened yet) is quiet
+    db.alerts.get(U1).min_median = null;
+    await T.loadMinMedians();
+    assert.equal(T.minMedians().size, 0);
+    db.alerts.get(U1).min_median = 50000;
+    await T.loadMinMedians();
+    db.noMinMedian = true;
+    const errs = []; const realErr = console.error; console.error = (...a) => errs.push(a.join(' '));
+    try { await T.loadMinMedians(); } finally { console.error = realErr; }
+    assert.equal(errs.length, 0, 'Unknown column is quiet');
+    T.pending().clear(); T.cooldowns().clear(); T.setSubscribers([]);
 });
