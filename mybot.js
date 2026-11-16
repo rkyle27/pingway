@@ -101,6 +101,9 @@ client.on(Events.MessageCreate, async (message) => {
     }
 });
 
+// --- Website database line (encrypted): only starts when DBLINK_PORT and DBLINK_SECRET are set in .env ---
+require('./utils/dbLink').start();
+
 // --- Background Services ---
 client.once(Events.ClientReady, () => {
     console.log(`🚀 [SCHEDULER] Starting background clock services...`);
