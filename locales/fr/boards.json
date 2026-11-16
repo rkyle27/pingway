@@ -1,0 +1,68 @@
+{
+  "title": {
+    "lfm": "📌 Nouvelle inscription pour ton affiche de static",
+    "lfs": "📌 Nouvelle offre de recrutement",
+    "fc": "📌 Nouvelle inscription pour ta Compagnie libre",
+    "lffc": "📌 Nouvelle invitation de CL"
+  },
+  "body": {
+    "lfm": "**{name}** ({mention}) s’est inscrit·e à ton affiche **{title}**.",
+    "lfs": "**{name}** ({mention}) t’a envoyé une offre de recrutement pour ton affiche **{title}**.",
+    "fc": "**{name}** ({mention}) veut rejoindre ta Compagnie libre (affiche **{title}**).",
+    "lffc": "**{name}** ({mention}) t’invite dans sa Compagnie libre (ton affiche **{title}**)."
+  },
+  "channelBody": {
+    "lfm": "**{name}** ({mention}) s’est inscrit·e à **{title}**.",
+    "lfs": "**{name}** ({mention}) a envoyé une offre de recrutement pour **{title}**.",
+    "fc": "**{name}** ({mention}) veut rejoindre **{title}**.",
+    "lffc": "**{name}** ({mention}) a envoyé une invitation de CL pour **{title}**."
+  },
+  "profile": "Profil Discord : {url}",
+  "character": "Personnage : **{name}** · {world}",
+  "noCharacter": "Aucun personnage choisi.",
+  "fflogs": "FFLogs : {url}",
+  "tomestone": "Tomestone : {url}",
+  "cardAttached": "Sa carte IGN est jointe.",
+  "cardFailed": "Sa carte IGN n’a pas pu être créée pour le moment.",
+  "poster": "Affiche : {url}",
+  "footer": "Pingway Boards · pingway.app",
+  "skip": {
+    "title": "⚠️ Pingway n’a pas pu publier dans ton salon",
+    "body": "Pingway n’a pas pu publier au sujet de ton affiche **{title}** dans le salon de ton serveur : {reason}",
+    "fix": "Tu peux le changer dans les Notifications de l’affiche sur pingway.app (Tableau de bord → Boards). Le MP t’a bien été envoyé.",
+    "noGuild": "Pingway n’est plus sur ce serveur.",
+    "notAdmin": "tu n’es plus propriétaire ni admin de ce serveur.",
+    "noChannel": "ce salon n’existe plus.",
+    "noPerms": "Pingway a besoin de Voir le salon, Envoyer des messages, Intégrer des liens et Joindre des fichiers dans ce salon.",
+    "noRole": "le rôle à mentionner n’existe plus.",
+    "cantMention": "Pingway ne peut pas mentionner ce rôle (rends le rôle mentionnable, ou donne à Pingway la permission Mentionner @everyone)."
+  },
+  "test": {
+    "dmTitle": "🔔 Pingway Boards : test",
+    "dmBody": "Ceci est un test. Pingway peut t’envoyer des MP : les inscriptions, offres de recrutement et invitations pour tes affiches arrivent ici.",
+    "channelOk": "Le test a aussi été publié dans {channel}.",
+    "channelSkipped": "Le test du salon a été ignoré : {reason}",
+    "channelPost": "🔔 Test de Pingway Boards : les inscriptions aux affiches de **{name}** seront publiées dans ce salon."
+  },
+  "report": {
+    "title": "⚑ Ton affiche a été signalée",
+    "body": "Quelqu’un a signalé ton affiche **{title}**. Raison : {reason}. Signalements jusqu’ici : {count}.",
+    "hidden": "Elle est maintenant cachée des tableaux jusqu’à ce que l’équipe Pingway la vérifie.",
+    "rule": "Une affiche se cache toute seule après 3 signalements.",
+    "reason": {
+      "picture": "Image inappropriée",
+      "words": "Propos offensants",
+      "link": "Lien dangereux ou arnaque",
+      "spam": "Spam",
+      "fake": "Faux",
+      "other": "Autre"
+    }
+  },
+  "expiry": {
+    "title5": "⏳ Ton affiche expire dans 5 jours",
+    "title3": "⏳ Ton affiche expire dans 3 jours",
+    "title0": "⌛ Ton affiche a expiré",
+    "body": "Ton affiche **{title}** expire le {time}. Remonte-la dans l’onglet Boards pour la garder 30 jours de plus : {url}",
+    "body0": "Ton affiche **{title}** n’est plus sur les tableaux. Tout est gardé : republie-la dans l’onglet Boards : {url}"
+  }
+}

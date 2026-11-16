@@ -118,9 +118,11 @@ client.once(Events.ClientReady, () => {
     require('./utils/trivia').start(client); // Pingway Trivia: word bank from XIVAPI (data/trivia_bank.json), tables, cleanup
     require('./utils/welcome').start(client); // Welcome cards for new members (/welcomehere + website)
     require('./utils/guildLanguage').start(); // Server language card (website): overrides the server's Discord language for posts
+    require('./utils/boards').start(client); // website Boards: expiry reminder DMs (5, 3 and 0 days) for Static / FC posters
     // Website jobs (command_queue): checked every ~5 s, the result is written back
     require('./utils/commandQueue').start(require('./utils/db').pool, {
         triviaShare: (userId, args) => require('./utils/triviaShare').run(client, userId, args), // website Trivia Share box
+        boards: (action, userId, args) => require('./utils/boards').run({ client }, action, userId, args), // website Boards: sign-up / report DMs, channel posts, Send test
         runPrivate: privateHooks ? privateHooks.runQueueRow : null
     });
 

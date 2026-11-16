@@ -1,13 +1,15 @@
 // Website jobs that must run inside the bot (table command_queue, written by the website).
 // Every ~5 seconds the bot takes the waiting rows, runs them and writes the result back.
 //
-// Public job here: 'trivia_share' (website Trivia Share box, any logged-in player: utils/triviaShare.js).
+// Public jobs here: 'trivia_share' (website Trivia Share box, any logged-in player: utils/triviaShare.js) and the Boards jobs
+// 'boards_signup_dm', 'boards_channel_post', 'boards_test', 'boards_report_dm' (website Boards: utils/boards.js).
 // Every other job is handed to deps.runPrivate(row, args, pool) when the bot has one; without it the row is marked as an
 // error ("not available"), so nothing ever runs that the bot does not know.
 // Rows the bot did not pick up within 10 minutes (e.g. the bot was offline) are marked "expired" and never run later.
 
 const { createDevTables } = require('./devDdl');
 
+const BOARDS_ACTIONS = ['boards_signup_dm', 'boards_channel_post', 'boards_test', 'boards_report_dm'];
 const POLL_MS = 5000;
 const EXPIRE_MS = 10 * 60 * 1000;
 const RESULT_MAX = 60000;
@@ -16,7 +18,7 @@ const parseArgs = s => { try { const a = JSON.parse(s || '{}'); return a && type
 const clip = s => (s.length > RESULT_MAX ? s.slice(0, RESULT_MAX - 20) + '\n… (cut)' : s);
 
 /**
- * Runs one claimed row. deps: { triviaShare(userId, args), runPrivate(row, args, pool) }
+ * Runs one claimed row. deps: { triviaShare(userId, args), boards(action, userId, args), runPrivate(row, args, pool) }
  * -> { state: 'done'|'error', result, before?, after? }
  */
 async function runOne(row, deps, pool) {
@@ -27,6 +29,12 @@ async function runOne(row, deps, pool) {
         if (!deps.triviaShare) return { state: 'error', result: 'Trivia sharing is not available.' };
         const [[who]] = await pool.execute('SELECT requested_by FROM command_queue WHERE id = ?', [row.id]);
         return deps.triviaShare(who ? String(who.requested_by) : '', args);
+    }
+    // Website Boards (any logged-in user): DMs / channel posts for posters. The person is the row's requested_by, never args.
+    if (BOARDS_ACTIONS.includes(row.action)) {
+        if (!deps.boards) return { state: 'error', result: 'Boards are not available.' };
+        const [[who]] = await pool.execute('SELECT requested_by FROM command_queue WHERE id = ?', [row.id]);
+        return deps.boards(row.action, who ? String(who.requested_by) : '', args);
     }
     if (typeof deps.runPrivate === 'function') {
         const out = await deps.runPrivate(row, args, pool);
@@ -81,4 +89,4 @@ function start(pool, deps) {
 }
 function stop() { if (timer) clearInterval(timer); timer = null; }
 
-module.exports = { POLL_MS, EXPIRE_MS, RESULT_MAX, parseArgs, clip, runOne, tick, start, stop };
+module.exports = { BOARDS_ACTIONS, POLL_MS, EXPIRE_MS, RESULT_MAX, parseArgs, clip, runOne, tick, start, stop };

@@ -1,0 +1,68 @@
+{
+  "title": {
+    "lfm": "📌 Neue Anmeldung für deinen Stammgruppen-Aushang",
+    "lfs": "📌 Neues Anwerbe-Angebot",
+    "fc": "📌 Neue Anmeldung für deine Freie Gesellschaft",
+    "lffc": "📌 Neue FG-Einladung"
+  },
+  "body": {
+    "lfm": "**{name}** ({mention}) hat sich für deinen Aushang **{title}** angemeldet.",
+    "lfs": "**{name}** ({mention}) hat dir ein Anwerbe-Angebot für deinen Aushang **{title}** geschickt.",
+    "fc": "**{name}** ({mention}) möchte deiner Freien Gesellschaft beitreten (Aushang **{title}**).",
+    "lffc": "**{name}** ({mention}) lädt dich in die eigene Freie Gesellschaft ein (dein Aushang **{title}**)."
+  },
+  "channelBody": {
+    "lfm": "**{name}** ({mention}) hat sich für **{title}** angemeldet.",
+    "lfs": "**{name}** ({mention}) hat ein Anwerbe-Angebot für **{title}** geschickt.",
+    "fc": "**{name}** ({mention}) möchte **{title}** beitreten.",
+    "lffc": "**{name}** ({mention}) hat eine FG-Einladung für **{title}** geschickt."
+  },
+  "profile": "Discord-Profil: {url}",
+  "character": "Charakter: **{name}** · {world}",
+  "noCharacter": "Kein Charakter gewählt.",
+  "fflogs": "FFLogs: {url}",
+  "tomestone": "Tomestone: {url}",
+  "cardAttached": "Die IGN-Karte ist angehängt.",
+  "cardFailed": "Die IGN-Karte konnte gerade nicht erstellt werden.",
+  "poster": "Aushang: {url}",
+  "footer": "Pingway Boards · pingway.app",
+  "skip": {
+    "title": "⚠️ Pingway hat einen Boards-Beitrag im Kanal übersprungen",
+    "body": "Pingway konnte zu deinem Aushang **{title}** nicht in deinem Server-Kanal posten: {reason}",
+    "fix": "Du kannst es in den Benachrichtigungen des Aushangs auf pingway.app ändern (Dashboard → Boards). Die DM an dich wurde wie immer geschickt.",
+    "noGuild": "Pingway ist nicht mehr auf diesem Server.",
+    "notAdmin": "du bist nicht mehr Besitzer oder Admin dieses Servers.",
+    "noChannel": "dieser Kanal existiert nicht mehr.",
+    "noPerms": "Pingway braucht in diesem Kanal Kanal ansehen, Nachrichten senden, Links einbetten und Dateien anhängen.",
+    "noRole": "die Rolle zum Erwähnen existiert nicht mehr.",
+    "cantMention": "Pingway darf diese Rolle nicht erwähnen (mach die Rolle erwähnbar oder gib Pingway die Berechtigung @everyone erwähnen)."
+  },
+  "test": {
+    "dmTitle": "🔔 Pingway Boards: Test",
+    "dmBody": "Das ist ein Test. Pingway kann dir DMs schicken: Anmeldungen, Anwerbe-Angebote und Einladungen für deine Aushänge kommen hier an.",
+    "channelOk": "Der Test wurde auch in {channel} gepostet.",
+    "channelSkipped": "Der Kanal-Test wurde übersprungen: {reason}",
+    "channelPost": "🔔 Pingway-Boards-Test: Anmeldungen für die Aushänge von **{name}** werden in diesem Kanal gepostet."
+  },
+  "report": {
+    "title": "⚑ Dein Aushang wurde gemeldet",
+    "body": "Jemand hat deinen Aushang **{title}** gemeldet. Grund: {reason}. Meldungen bisher: {count}.",
+    "hidden": "Er ist jetzt auf den Pinnwänden ausgeblendet, bis das Pingway-Team ihn prüft.",
+    "rule": "Ein Aushang blendet sich nach 3 Meldungen selbst aus.",
+    "reason": {
+      "picture": "Unangemessenes Bild",
+      "words": "Beleidigende Worte",
+      "link": "Schädlicher Link oder Betrug",
+      "spam": "Spam",
+      "fake": "Fake",
+      "other": "Anderes"
+    }
+  },
+  "expiry": {
+    "title5": "⏳ Dein Aushang läuft in 5 Tagen ab",
+    "title3": "⏳ Dein Aushang läuft in 3 Tagen ab",
+    "title0": "⌛ Dein Aushang ist abgelaufen",
+    "body": "Dein Aushang **{title}** läuft am {time} ab. Schieb ihn im Boards-Tab nach oben, damit er 30 weitere Tage bleibt: {url}",
+    "body0": "Dein Aushang **{title}** ist jetzt nicht mehr auf den Pinnwänden. Alles bleibt gespeichert: Stell ihn im Boards-Tab erneut ein: {url}"
+  }
+}

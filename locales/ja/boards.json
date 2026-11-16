@@ -1,0 +1,68 @@
+{
+  "title": {
+    "lfm": "📌 固定募集に新しい応募があります",
+    "lfs": "📌 新しいスカウトが届きました",
+    "fc": "📌 FCに新しい応募があります",
+    "lffc": "📌 新しいFCの招待が届きました"
+  },
+  "body": {
+    "lfm": "**{name}**（{mention}）さんが募集「**{title}**」に応募しました。",
+    "lfs": "**{name}**（{mention}）さんから募集「**{title}**」へのスカウトが届きました。",
+    "fc": "**{name}**（{mention}）さんがあなたのFC（募集「**{title}**」）に加入したいそうです。",
+    "lffc": "**{name}**（{mention}）さんが自分のFCにあなたを招待しています（あなたの募集「**{title}**」）。"
+  },
+  "channelBody": {
+    "lfm": "**{name}**（{mention}）さんが「**{title}**」に応募しました。",
+    "lfs": "**{name}**（{mention}）さんが「**{title}**」にスカウトを送りました。",
+    "fc": "**{name}**（{mention}）さんが「**{title}**」に加入したいそうです。",
+    "lffc": "**{name}**（{mention}）さんが「**{title}**」にFCの招待を送りました。"
+  },
+  "profile": "Discordプロフィール：{url}",
+  "character": "キャラクター：**{name}** · {world}",
+  "noCharacter": "キャラクターは選ばれていません。",
+  "fflogs": "FFLogs：{url}",
+  "tomestone": "Tomestone：{url}",
+  "cardAttached": "IGNカードを添付しています。",
+  "cardFailed": "IGNカードを今は作成できませんでした。",
+  "poster": "募集：{url}",
+  "footer": "Pingway Boards · pingway.app",
+  "skip": {
+    "title": "⚠️ Boardsのチャンネル投稿をスキップしました",
+    "body": "募集「**{title}**」について、サーバーのチャンネルに投稿できませんでした：{reason}",
+    "fix": "pingway.app の募集の通知設定（ダッシュボード → Boards）で変更できます。あなたへのDMはいつも通り送りました。",
+    "noGuild": "Pingwayはもうそのサーバーにいません。",
+    "notAdmin": "あなたはもうそのサーバーのオーナーまたは管理者ではありません。",
+    "noChannel": "そのチャンネルはもうありません。",
+    "noPerms": "そのチャンネルで、Pingwayには「チャンネルを見る」「メッセージを送信」「埋め込みリンク」「ファイルを添付」の権限が必要です。",
+    "noRole": "メンションするロールはもうありません。",
+    "cantMention": "Pingwayはそのロールをメンションできません（ロールをメンション可能にするか、Pingwayに「@everyone へのメンション」権限を付けてください）。"
+  },
+  "test": {
+    "dmTitle": "🔔 Pingway Boards：テスト",
+    "dmBody": "これはテストです。PingwayはあなたにDMを送れます。募集への応募・スカウト・招待はここに届きます。",
+    "channelOk": "テストは {channel} にも投稿しました。",
+    "channelSkipped": "チャンネルのテストはスキップしました：{reason}",
+    "channelPost": "🔔 Pingway Boards テスト：**{name}** さんの募集への応募はこのチャンネルに投稿されます。"
+  },
+  "report": {
+    "title": "⚑ あなたの募集が通報されました",
+    "body": "あなたの募集「**{title}**」が通報されました。理由：{reason}。これまでの通報：{count}件。",
+    "hidden": "Pingwayチームが確認するまで、掲示板では非表示になりました。",
+    "rule": "通報が3件になると募集は自動で非表示になります。",
+    "reason": {
+      "picture": "不適切な画像",
+      "words": "不快な言葉",
+      "link": "危険なリンク・詐欺",
+      "spam": "スパム",
+      "fake": "偽物",
+      "other": "その他"
+    }
+  },
+  "expiry": {
+    "title5": "⏳ あなたの募集はあと5日で期限切れになります",
+    "title3": "⏳ あなたの募集はあと3日で期限切れになります",
+    "title0": "⌛ あなたの募集は期限切れになりました",
+    "body": "募集「**{title}**」は {time} に期限切れになります。Boardsタブで上げると、さらに30日掲載されます：{url}",
+    "body0": "募集「**{title}**」は掲示板から外れました。内容はすべて残っています。Boardsタブで再掲載できます：{url}"
+  }
+}

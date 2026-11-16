@@ -692,7 +692,7 @@ function escapeXml(str) {
 }
 
 module.exports = {
-    generateCard, collectStatsFor,
+    generateCard, collectStatsFor, fetchLodestoneData, // also used by utils/boards.js (the IGN card in Boards sign-up DMs)
     data: new SlashCommandBuilder()
         .setName('ign')
         .setDescription(t('en', 'ign.cmd.description')).setDescriptionLocalizations(discordLocalizations('ign.cmd.description')),

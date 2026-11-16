@@ -1,0 +1,68 @@
+{
+  "title": {
+    "lfm": "📌 New sign-up for your Static poster",
+    "lfs": "📌 New recruitment offer",
+    "fc": "📌 New sign-up for your Free Company",
+    "lffc": "📌 New FC invite"
+  },
+  "body": {
+    "lfm": "**{name}** ({mention}) signed up for your poster **{title}**.",
+    "lfs": "**{name}** ({mention}) sent you a recruitment offer for your poster **{title}**.",
+    "fc": "**{name}** ({mention}) wants to join your Free Company (poster **{title}**).",
+    "lffc": "**{name}** ({mention}) invited you to their Free Company (your poster **{title}**)."
+  },
+  "channelBody": {
+    "lfm": "**{name}** ({mention}) signed up for **{title}**.",
+    "lfs": "**{name}** ({mention}) sent a recruitment offer for **{title}**.",
+    "fc": "**{name}** ({mention}) wants to join **{title}**.",
+    "lffc": "**{name}** ({mention}) sent an FC invite for **{title}**."
+  },
+  "profile": "Discord profile: {url}",
+  "character": "Character: **{name}** · {world}",
+  "noCharacter": "No character picked.",
+  "fflogs": "FFLogs: {url}",
+  "tomestone": "Tomestone: {url}",
+  "cardAttached": "Their IGN card is attached.",
+  "cardFailed": "Their IGN card could not be made right now.",
+  "poster": "Poster: {url}",
+  "footer": "Pingway Boards · pingway.app",
+  "skip": {
+    "title": "⚠️ Pingway skipped a Boards channel post",
+    "body": "Pingway could not post about your poster **{title}** in your server channel: {reason}",
+    "fix": "You can change it in the poster’s Notifications on pingway.app (Dashboard → Boards). The DM to you was sent as usual.",
+    "noGuild": "Pingway is not in that server any more.",
+    "notAdmin": "you are no longer the owner or an admin of that server.",
+    "noChannel": "that channel is gone.",
+    "noPerms": "Pingway needs View Channel, Send Messages, Embed Links and Attach Files in that channel.",
+    "noRole": "the role to ping is gone.",
+    "cantMention": "Pingway may not ping that role (make the role mentionable, or give Pingway the Mention @everyone permission)."
+  },
+  "test": {
+    "dmTitle": "🔔 Pingway Boards: test",
+    "dmBody": "This is a test. Pingway can DM you: sign-ups, recruitment offers and invites for your posters arrive here.",
+    "channelOk": "The test was also posted in {channel}.",
+    "channelSkipped": "The channel test was skipped: {reason}",
+    "channelPost": "🔔 Pingway Boards test: sign-ups for **{name}**’s posters will be posted in this channel."
+  },
+  "report": {
+    "title": "⚑ Your poster was reported",
+    "body": "Someone reported your poster **{title}**. Reason: {reason}. Reports so far: {count}.",
+    "hidden": "It is now hidden from the boards until the Pingway team checks it.",
+    "rule": "A poster hides itself after 3 reports.",
+    "reason": {
+      "picture": "Inappropriate picture",
+      "words": "Offensive words",
+      "link": "Bad or scam link",
+      "spam": "Spam",
+      "fake": "Fake",
+      "other": "Other"
+    }
+  },
+  "expiry": {
+    "title5": "⏳ Your poster expires in 5 days",
+    "title3": "⏳ Your poster expires in 3 days",
+    "title0": "⌛ Your poster has expired",
+    "body": "Your poster **{title}** expires on {time}. Bump it in the Boards tab to keep it up for 30 more days: {url}",
+    "body0": "Your poster **{title}** is off the boards now. Everything is kept: repost it in the Boards tab: {url}"
+  }
+}
