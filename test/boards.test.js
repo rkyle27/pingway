@@ -70,7 +70,7 @@ function deps(pool, discord, extra) {
 const poster = o => Object.assign({ id: 1, kind: 'lfm', owner_id: OWNER, title: 'Prog **static**', expires_at: NOW + 20 * DAY, event_at: 0, hidden: 0, report_count: 0,
     notify_channel: 0, notify_guild_id: null, notify_channel_id: null, notify_role_id: null, expiry_dm_stage: null }, o);
 const signup = o => Object.assign({ id: 7, poster_id: 1, user_id: SIGNER, user_name: 'Juno @everyone', lodestone_id: '111', char_name: 'Juno Star', char_world: 'Titan',
-    send_card: 1, fflogs_url: 'https://www.fflogs.com/character/id/111', tomestone_url: null }, o);
+    send_card: 1, fflogs_url: 'https://www.fflogs.com/character/lodestone-id/111', tomestone_url: null }, o);
 const parse = r => JSON.parse(r.result);
 
 // ---------- sign-up DM ----------
@@ -90,7 +90,7 @@ test('signup DM: to the owner in the OWNER\'s language, mention + name + profile
     assert.match(e.description, new RegExp('<@' + SIGNER + '>'));
     assert.ok(e.description.includes('https://discord.com/users/' + SIGNER), 'profile link');
     assert.ok(e.description.includes('Juno Star') && e.description.includes('Titan'));
-    assert.ok(e.description.includes('https://www.fflogs.com/character/id/111'));
+    assert.ok(e.description.includes('https://www.fflogs.com/character/lodestone-id/111'));
     assert.ok(!/tomestone/i.test(e.description.replace(t('fr', 'boards.footer'), '')), 'Tomestone was not ticked');
     assert.ok(e.description.includes('@​everyone'), 'names cannot ping');
     assert.ok(e.description.includes('Prog \\*\\*static\\*\\*'), 'markdown shown as text');

@@ -90,5 +90,26 @@
       "wrong": "🔍 Lodestoneのプロフィールに別のPingwayコードがあります。最新のコードを貼り付けて、もう一度 **✅ 確認** をクリックしてください。",
       "error": "⚠️ 現在Lodestoneに接続できません。数分後にもう一度お試しください。"
     }
+  },
+  "links": {
+    "notHttps": "❌ リンクは https:// で始めてください。",
+    "wrongSite": {
+      "tomestone": "❌ Tomestoneのリンクではありません。https://tomestone.gg/character/... のキャラクターページを使ってください。",
+      "fflogs": "❌ FFLogsのリンクではありません。https://www.fflogs.com/character/... のキャラクターページを使ってください。"
+    },
+    "badFormat": {
+      "tomestone": "❌ キャラクターページのリンクを使ってください：https://tomestone.gg/character/...",
+      "fflogs": "❌ キャラクターページのリンクを使ってください：https://www.fflogs.com/character/..."
+    },
+    "wrongCharacter": {
+      "tomestone": "❌ このTomestoneのリンクは別のキャラクターのものです。",
+      "fflogs": "❌ このFFLogsのリンクは別のキャラクターのものです。"
+    },
+    "wrongWorld": "❌ このFFLogsのリンクは別のワールドまたは名前のものです。",
+    "unverifiableId": "❌ 内部IDのFFLogsリンクは確認できません。代わりに {link} を使ってください。",
+    "mismatch": {
+      "tomestone": "⚠ Tomestoneのリンクがこのキャラクターと一致しません。もう一度表示するには修正してください。",
+      "fflogs": "⚠ FFLogsのリンクがこのキャラクターと一致しません。もう一度表示するには修正してください。"
+    }
   }
 }

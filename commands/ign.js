@@ -10,6 +10,7 @@ const ignClaims = require('../utils/ignClaims');
 const ffxivCollect = require('../utils/ffxivCollect');
 const cardStats = require('../utils/ignCardStats');
 const safeImage = require('../utils/safeImage');
+const ignLinks = require('../utils/ignLinks'); // Tomestone / FFLogs on the card only when they belong to the character
 safeImage.blockUnsafeDecoders(sharp);
 
 const jobIconMap = {
@@ -163,6 +164,12 @@ async function fetchLodestoneData(lodestoneId) {
 }
 
 async function generateCard(config, data) {
+    // Tomestone / FFLogs only when they belong to this character (utils/ignLinks.js); a link that doesn't match is left off
+    const linkChar = { lodestoneId: config.lodestone_id ? String(config.lodestone_id) : '', name: data.name || '', world: data.world || '' };
+    config = Object.assign({}, config, {
+        tomestone_url: ignLinks.usable(config.tomestone_url, 'tomestone', linkChar) || null,
+        fflogs_url: ignLinks.usable(config.fflogs_url, 'fflogs', linkChar) || null
+    });
     const width = 1100;
     const height = 700;
 

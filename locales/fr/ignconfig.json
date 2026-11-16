@@ -90,5 +90,26 @@
       "wrong": "🔍 Ton profil Lodestone contient un autre code Pingway. Colle le code le plus récent et clique à nouveau sur **✅ Vérifier**.",
       "error": "⚠️ Impossible de joindre le Lodestone pour le moment. Réessaie dans quelques minutes."
     }
+  },
+  "links": {
+    "notHttps": "❌ Le lien doit commencer par https://",
+    "wrongSite": {
+      "tomestone": "❌ Ce n'est pas un lien Tomestone. Utilise la page de ton personnage sur https://tomestone.gg/character/...",
+      "fflogs": "❌ Ce n'est pas un lien FFLogs. Utilise la page de ton personnage sur https://www.fflogs.com/character/..."
+    },
+    "badFormat": {
+      "tomestone": "❌ Utilise le lien de la page de ton personnage : https://tomestone.gg/character/...",
+      "fflogs": "❌ Utilise le lien de la page de ton personnage : https://www.fflogs.com/character/..."
+    },
+    "wrongCharacter": {
+      "tomestone": "❌ Ce lien Tomestone est celui d'un autre personnage.",
+      "fflogs": "❌ Ce lien FFLogs est celui d'un autre personnage."
+    },
+    "wrongWorld": "❌ Ce lien FFLogs est pour un autre monde ou un autre nom.",
+    "unverifiableId": "❌ Les liens FFLogs avec un identifiant interne ne peuvent pas être vérifiés. Utilise plutôt {link}.",
+    "mismatch": {
+      "tomestone": "⚠ Ton lien Tomestone ne correspond pas à ce personnage ; corrige-le pour qu'il s'affiche à nouveau.",
+      "fflogs": "⚠ Ton lien FFLogs ne correspond pas à ce personnage ; corrige-le pour qu'il s'affiche à nouveau."
+    }
   }
 }

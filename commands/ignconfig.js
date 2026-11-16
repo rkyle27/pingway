@@ -17,6 +17,7 @@ const userLanguage = require('../utils/userLanguage');
 const ignClaims = require('../utils/ignClaims'); // v2.2: Link Lodestone = claim with a code in the Lodestone profile
 const { ownerHasMembership } = require('../utils/membership');
 const { isHttpsUrl } = require('../utils/safeImage');
+const ignLinks = require('../utils/ignLinks'); // Tomestone / FFLogs links must belong to the linked character
 
 function extractLodestoneId(input) {
     if (!input) return null;
@@ -324,16 +325,18 @@ module.exports = {
             return sendConfigDashboard(interaction, false, lang);
         }
 
-        if (interaction.customId === 'ign_modal_tomestone') {
+        if (interaction.customId === 'ign_modal_tomestone' || interaction.customId === 'ign_modal_fflogs') {
             await interaction.deferUpdate().catch(() => { });
-            session.tomestone_url = interaction.fields.getTextInputValue('tomestone_url_input').trim();
-            await saveSessionToDb(userId, session);
-            return sendConfigDashboard(interaction, false, lang);
-        }
-
-        if (interaction.customId === 'ign_modal_fflogs') {
-            await interaction.deferUpdate().catch(() => { });
-            session.fflogs_url = interaction.fields.getTextInputValue('fflogs_url_input').trim();
+            const kind = interaction.customId === 'ign_modal_tomestone' ? 'tomestone' : 'fflogs';
+            const input = interaction.fields.getTextInputValue(kind + '_url_input').trim();
+            let url = '';
+            if (input) {
+                // must be the link of the linked character (utils/ignLinks.js); otherwise the old link stays
+                const r = ignLinks.check(input, kind, await linkCharacter(userId, session.lodestone_id));
+                if (!r.ok) return interaction.followUp({ content: linkError(r, kind, lang), flags: [MessageFlags.Ephemeral] }).catch(() => { });
+                url = r.normalizedUrl;
+            }
+            session[kind + '_url'] = url;
             await saveSessionToDb(userId, session);
             return sendConfigDashboard(interaction, false, lang);
         }
@@ -364,6 +367,13 @@ async function saveSessionToDb(userId, session) {
 async function sendConfigDashboard(interaction, isInitial = false, lang = 'en') {
     const userId = interaction.user.id;
     const session = global.ignSessions[userId];
+    // a saved link that isn't this character's is not shown on the card: a short note says so
+    const character = (session.tomestone_url || session.fflogs_url) ? await linkCharacter(userId, session.lodestone_id) : null;
+    const linkValue = kind => {
+        const url = session[kind + '_url'];
+        if (!url) return t(lang, 'ignconfig.noneSet');
+        return ignLinks.usable(url, kind, character) ? url : url + '\n' + t(lang, 'ignconfig.links.mismatch.' + kind);
+    };
 
     const embed = new EmbedBuilder()
         .setColor(0x3498db)
@@ -375,8 +385,8 @@ async function sendConfigDashboard(interaction, isInitial = false, lang = 'en') 
             { name: t(lang, 'ignconfig.fields.portrait'), value: session.portrait_url ? session.portrait_url : t(lang, 'ignconfig.usingDefault'), inline: false },
             { name: t(lang, 'ignconfig.fields.photo'), value: session.full_photo_url ? session.full_photo_url : t(lang, 'ignconfig.noneSet'), inline: false },
             { name: t(lang, 'ignconfig.fields.portraitState'), value: session.portrait_toggle ? t(lang, 'ignconfig.on') : t(lang, 'ignconfig.off'), inline: true },
-            { name: t(lang, 'ignconfig.fields.tomestone'), value: session.tomestone_url ? session.tomestone_url : t(lang, 'ignconfig.noneSet'), inline: false },
-            { name: t(lang, 'ignconfig.fields.fflogs'), value: session.fflogs_url ? session.fflogs_url : t(lang, 'ignconfig.noneSet'), inline: false }
+            { name: t(lang, 'ignconfig.fields.tomestone'), value: linkValue('tomestone'), inline: false },
+            { name: t(lang, 'ignconfig.fields.fflogs'), value: linkValue('fflogs'), inline: false }
         );
 
     const row1 = new ActionRowBuilder().addComponents(
@@ -401,6 +411,27 @@ async function sendConfigDashboard(interaction, isInitial = false, lang = 'en') 
         }
         return interaction.update({ embeds: [embed], components: [row1, row2] }).catch(() => { });
     }
+}
+
+// ---------- Tomestone / FFLogs links (utils/ignLinks.js) ----------
+// The character the links must belong to: the linked Lodestone id + the name / world read from the Lodestone when it was
+// claimed (ign_characters). An older, not verified card has no name / world yet: only Lodestone-id links can be checked.
+async function linkCharacter(userId, lodestoneId) {
+    const id = lodestoneId ? String(lodestoneId) : '';
+    let row = null;
+    if (id) {
+        try { row = (await ignClaims.listCharacters(pool, userId)).find(r => String(r.lodestone_id) === id) || null; } catch (e) { row = null; }
+    }
+    return { lodestoneId: id, name: (row && row.character_name) || '', world: (row && row.world) || '' };
+}
+
+function linkError(r, kind, lang) {
+    if (r.code === 'not_https') return t(lang, 'ignconfig.links.notHttps');
+    if (r.code === 'wrong_site') return t(lang, 'ignconfig.links.wrongSite.' + kind);
+    if (r.code === 'wrong_character') return t(lang, 'ignconfig.links.wrongCharacter.' + kind);
+    if (r.code === 'wrong_world') return t(lang, 'ignconfig.links.wrongWorld');
+    if (r.code === 'unverifiable_id') return t(lang, 'ignconfig.links.unverifiableId', { link: r.suggest || 'https://www.fflogs.com/character/lodestone-id/…' });
+    return t(lang, 'ignconfig.links.badFormat.' + kind);
 }
 
 // ---------- v2.2 claim (Link Lodestone) ----------

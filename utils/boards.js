@@ -16,6 +16,7 @@
 // Nothing private is posted anywhere public: channel posts only show what the person chose to send to that poster.
 
 const { t } = require('./i18n');
+const ignLinks = require('./ignLinks');
 
 const SITE = 'https://pingway.app';
 const ID_RE = /^\d{15,22}$/;
@@ -106,7 +107,9 @@ function signupLines(lang, p, s, channel) {
     const name = plain(s.user_name || 'Player', 80), mention = '<@' + s.user_id + '>';
     const lines = [t(lang, 'boards.' + (channel ? 'channelBody' : 'body') + '.' + p.kind, { name, mention, title: plain(p.title, 100) }), '', t(lang, 'boards.profile', { url: profileUrl(s.user_id) })];
     lines.push(s.char_name ? t(lang, 'boards.character', { name: plain(s.char_name, 64), world: plain(s.char_world || '', 64) }) : t(lang, 'boards.noCharacter'));
-    const ff = httpsUrl(s.fflogs_url), ts = httpsUrl(s.tomestone_url);
+    // FFLogs / Tomestone only when they belong to the sign-up's character (utils/ignLinks.js)
+    const ch = { lodestoneId: s.lodestone_id ? String(s.lodestone_id) : '', name: s.char_name || '', world: s.char_world || '' };
+    const ff = httpsUrl(ignLinks.usable(s.fflogs_url, 'fflogs', ch)), ts = httpsUrl(ignLinks.usable(s.tomestone_url, 'tomestone', ch));
     if (ff) lines.push(t(lang, 'boards.fflogs', { url: ff }));
     if (ts) lines.push(t(lang, 'boards.tomestone', { url: ts }));
     return lines;
