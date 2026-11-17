@@ -1,5 +1,5 @@
 {
-  "footer": "データ提供：Universalis ライブフィード • データセンターの変更は /datacenter",
+  "footer": "データ提供：Universalis ライブフィード • マーケット通知のデータセンターはPingwayのウェブサイトで変更できます",
   "worldFallback": "ワールド {id}",
   "headers": {
     "world": "ワールド",
@@ -20,5 +20,9 @@
     "more": "...ほか{count}件",
     "title": "🏷️ リテイナーの出品が値下げされました（{count}）",
     "note": "\n価格は1個あたりのギルです。リテイナーの管理はPingwayウェブサイトで。"
+  },
+  "item": {
+    "title": "🔔 {name} — {quality}",
+    "median": "中央値"
   }
 }

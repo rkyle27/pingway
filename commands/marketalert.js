@@ -5,19 +5,17 @@ const userLanguage = require('../utils/userLanguage');
 
 const BT = String.fromCharCode(96); // backtick for inline code formatting
 
-// Market alerts use the user's personal /datacenter setting (same data as /price)
+// Market alerts use their own Data Centers, set on the website (Retainers tab -> Market alerts; table market_alert_dcs).
+// /price and /datacenter keep their own list (user_datacenters).
 async function getUserDCs(userId) {
     try {
-        const [rows] = await pool.execute(
-            'SELECT datacenters FROM user_datacenters WHERE user_id = ? ORDER BY (guild_id = ?) DESC LIMIT 1',
-            [userId, 'personal']
-        );
+        const [rows] = await pool.execute('SELECT datacenters FROM market_alert_dcs WHERE user_id = ?', [userId]);
         if (rows.length > 0 && rows[0].datacenters) {
             const parsed = typeof rows[0].datacenters === 'string' ? JSON.parse(rows[0].datacenters) : rows[0].datacenters;
             return Array.isArray(parsed) ? parsed : [];
         }
     } catch (e) {
-        console.error('Error fetching /datacenter data for market alerts:', e);
+        if (!/doesn't exist/i.test(String(e && e.message))) console.error('Error fetching market alert Data Centers:', e);
     }
     return [];
 }

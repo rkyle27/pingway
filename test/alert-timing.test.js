@@ -1,5 +1,6 @@
 // Alert timing "Immediate" (market_alerts.alert_interval = 0): market alerts and retainer undercut DMs are sent
 // as soon as they are found instead of at the 60-second flush; users with 1..30 minutes keep their interval.
+// Since the alert settings split, retainer undercuts use their own timing (alert_settings kind 'retainer').
 // Also: /marketalert shows "Alert timing: Immediate". Plain node, no Discord / database / network (fakes):
 //   node --test test/alert-timing.test.js
 'use strict';
@@ -55,8 +56,8 @@ Module._resolveFilename = function (request, ...rest) {
 };
 for (const [name, exp] of Object.entries(shims)) inject('shim:' + name, exp);
 
-// Fake database: market_alerts.alert_interval, retainer_watch + retainer_items
-const db = { intervals: new Map(), watches: [], items: new Map() };
+// Fake database: market_alerts.alert_interval, retainer_watch + retainer_items, alert_settings (retainer timing)
+const db = { intervals: new Map(), retainerIntervals: new Map(), watches: [], items: new Map() };
 const ik = (w, i, h) => Number(w) + ':' + Number(i) + ':' + Number(h);
 const pool = {
     async execute(sql, a = []) {
@@ -68,6 +69,11 @@ const pool = {
             return [db.intervals.has(a[0]) ? [{ alert_interval: db.intervals.get(a[0]) }] : []];
         }
         if (/^SHOW COLUMNS FROM market_alerts LIKE/.test(q)) return [[{ Field: 'x' }]];
+        if (q === 'SELECT user_id, dm, alert_interval FROM alert_settings WHERE kind = ?') {
+            return [a[0] === 'retainer' ? [...db.retainerIntervals].map(([user_id, alert_interval]) => ({ user_id, dm: 1, alert_interval })) : []];
+        }
+        if (q === 'SELECT user_id, guild_id, channel_id, role_id FROM alert_channels WHERE kind = ? ORDER BY user_id, position') return [[]];
+        if (q === 'SELECT datacenters FROM market_alert_dcs WHERE user_id = ?') return [[{ datacenters: '["Mana"]' }]];
         if (q === 'SELECT dm_enabled, alert_target, market_dm FROM market_alerts WHERE user_id = ?') return [[{ dm_enabled: 1, alert_target: 'dm', market_dm: 1 }]];
         if (q === 'SELECT datacenters FROM user_datacenters WHERE user_id = ? ORDER BY (guild_id = ?) DESC LIMIT 1') return [[{ datacenters: '["Mana"]' }]];
         if (q === "SELECT id, user_id, world_id, world_name, retainer_name FROM retainer_watch WHERE status = 'found' AND active = 1") {
@@ -228,6 +234,8 @@ test('the 60-second timer during a quick flush runs right after it, so interval 
 // ---------- retainer undercuts ----------
 test('retainer undercuts: sent right away (after the fresh re-check) for Immediate users; 5-minute users wait', async () => {
     await setup();
+    db.retainerIntervals = new Map([[NOW_USER, 0], [FIVE_USER, 5]]); // the retainer alert timing (its own setting)
+    await T.loadKindSettings('retainer');
     RW._test.reset();
     const WORLD = 44, ITEM = 7000;
     db.watches = [
@@ -245,7 +253,7 @@ test('retainer undercuts: sent right away (after the fresh re-check) for Immedia
             { retainerName: 'Slowseller', pricePerUnit: 2000, hq: false },
             { retainerName: 'Undercutter', pricePerUnit: 1500, hq: false }
         ]);
-        T.lastSentAt().set(FIVE_USER, Date.now());
+        T.kinds().retainer.lastSent.set(FIVE_USER, Date.now());
         const client = fakeClient();
         T.watchRetainerUndercuts(client);
         await RW.onListingsAdd({ event: 'listings/add', world: WORLD, item: ITEM, listings: [{ retainerName: 'Undercutter', pricePerUnit: 1500, hq: false }] });

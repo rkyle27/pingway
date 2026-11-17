@@ -1,5 +1,5 @@
 {
-  "noneSet": "*未設定* — `/datacenter` でデータセンターを選んでください。選ぶまで通知は送られません。",
+  "noneSet": "*未設定* — ウェブサイト（https://pingway.app/dashboard.html?tab=retainers#market-alerts）でマーケット通知のデータセンターを選んでください。選ぶまで通知は送られません。",
   "disable": "通知をオフにする",
   "enable": "通知をオンにする",
   "done": "完了",
@@ -10,7 +10,7 @@
   "enabledNotice": "🔔 マーケット通知のDMを **オン 🟢** にしました。",
   "disabledNotice": "🔕 マーケット通知のDMを **オフ 🔴** にしました。",
   "updateFailed": "❌ 通知設定を更新できませんでした。",
-  "settings": "📢 **マーケット通知の設定**\n\n• **DM通知：** {dm}\n• **データセンター（/datacenter より）：** {dcs}\n• **通知のタイミング：** {timing}（マーケット通知とリテイナーの値下げDMの両方に使われます。https://pingway.app/me.html のマイ設定で変更できます）",
+  "settings": "📢 **マーケット通知の設定**\n\n• **DM通知：** {dm}\n• **データセンター（マーケット通知用、ウェブサイトで設定）：** {dcs}\n• **通知のタイミング：** {timing}（マーケット通知用。リテイナーの値下げ通知には別の設定があります）\n\n変更はこちら：https://pingway.app/dashboard.html?tab=retainers#market-alerts",
   "immediate": "すぐに送信",
   "every": "{interval}ごと",
   "on": "🟢 オン",

@@ -1,5 +1,5 @@
 {
-  "noneSet": "*None set* — use `/datacenter` to choose your Data Centers. No alerts are sent until you do.",
+  "noneSet": "*None set* — choose your market alert Data Centers on the website (https://pingway.app/dashboard.html?tab=retainers#market-alerts). No alerts are sent until you do.",
   "disable": "Disable Notifications",
   "enable": "Enable Notifications",
   "done": "Done",
@@ -10,7 +10,7 @@
   "enabledNotice": "🔔 Market alert DM notifications are now **enabled 🟢**.",
   "disabledNotice": "🔕 Market alert DM notifications are now **disabled 🔴**.",
   "updateFailed": "❌ Failed to update notification settings.",
-  "settings": "📢 **Market Alert Settings**\n\n• **DM Notifications:** {dm}\n• **Data Centers (from /datacenter):** {dcs}\n• **Alert timing:** {timing} (for market alerts and retainer undercut DMs; change it in My Settings on https://pingway.app/me.html)",
+  "settings": "📢 **Market Alert Settings**\n\n• **DM Notifications:** {dm}\n• **Data Centers (market alerts, set on the website):** {dcs}\n• **Alert timing:** {timing} (for market alerts; retainer undercuts have their own settings)\n\nChange these on https://pingway.app/dashboard.html?tab=retainers#market-alerts",
   "immediate": "Immediate",
   "every": "every {interval}",
   "on": "🟢 Enabled",

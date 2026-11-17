@@ -1,5 +1,5 @@
 {
-  "footer": "Data provided by Universalis Live Feed • Use /datacenter to change your Data Centers",
+  "footer": "Data provided by Universalis Live Feed • Change your market alert Data Centers on the Pingway website",
   "worldFallback": "World {id}",
   "headers": {
     "world": "World",
@@ -20,5 +20,9 @@
     "more": "...and {count} more",
     "title": "🏷️ Your retainers were undercut ({count})",
     "note": "\nPrices are per unit in Gil. Manage retainers on the Pingway website."
+  },
+  "item": {
+    "title": "🔔 {name} — {quality}",
+    "median": "Median"
   }
 }

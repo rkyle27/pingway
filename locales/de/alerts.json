@@ -1,5 +1,5 @@
 {
-  "footer": "Daten vom Universalis-Live-Feed • Mit /datacenter änderst du deine Datenzentren",
+  "footer": "Daten vom Universalis-Live-Feed • Die Datenzentren deiner Marktalarme änderst du auf der Pingway-Website",
   "worldFallback": "Welt {id}",
   "headers": {
     "world": "Welt",
@@ -20,5 +20,9 @@
     "more": "...und {count} weitere",
     "title": "🏷️ Deine Gehilfen wurden unterboten ({count})",
     "note": "\nPreise pro Stück in Gil. Verwalte deine Gehilfen auf der Pingway-Website."
+  },
+  "item": {
+    "title": "🔔 {name} — {quality}",
+    "median": "Median"
   }
 }

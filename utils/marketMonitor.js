@@ -4,6 +4,8 @@ const axios = require('axios');
 const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const { pool } = require('./db');
 const retainerWatch = require('./retainerWatch');
+const itemAlerts = require('./itemAlerts');
+const { ensureAlertSplit } = require('./alertSplitDdl');
 const dmStatus = require('./dmStatus');
 const { t, localeOf } = require('./i18n');
 const userLanguage = require('./userLanguage');
@@ -29,6 +31,12 @@ let DC_WORLD_MAP = {
 };
 let WORLD_TO_DC = {};
 const WORLD_NAMES = {};
+// Data Center -> Universalis region (Item alerts can watch a whole region); replaced by the live list on startup
+let DC_REGION = {
+    Aether: 'North-America', Primal: 'North-America', Crystal: 'North-America', Dynamis: 'North-America',
+    Chaos: 'Europe', Light: 'Europe', Materia: 'Oceania',
+    Elemental: 'Japan', Gaia: 'Japan', Mana: 'Japan', Meteor: 'Japan'
+};
 
 // --- Alert Tuning ---
 const DISCOUNT_THRESHOLD = -80;               // New listing must be at least 80% below the DC's average sale price (e.g. avg 100,000 -> alert at 20,000 or less)
@@ -58,7 +66,7 @@ let messageCount = 0;
 let started = false;
 let subscribedWorlds = new Set();
 let subscribedRemoveWorlds = new Set(); // Retainer Watch: listings/remove channels
-let subscribers = []; // [{ userId, dcs: ['Mana', ...] }]
+let subscribers = []; // [{ userId, dcs: ['Mana', ...] }] (the market alert Data Centers set on the website)
 
 const baselineCache = new Map();  // 'itemId:dc' -> { time, data }
 const itemNameCache = new Map();  // itemId -> { name, time } (cleared after 24h, max 5,000 names)
@@ -82,6 +90,13 @@ const CHANNEL_LIMITS = { free: 3, perks: 10 };
 const targetWarned = new Map();   // 'userId:guildId' -> time (keeps the console quiet)
 let pendingLookups = 0;
 let nextLookupAt = 0;
+// Retainer undercut alerts and Item alerts have their own settings (website; tables alert_settings / alert_channels):
+// DM switch, Alert timing and server channels (3 free / 10 with Supporter Perks, counted per kind)
+const KIND_KEYS = ['retainer', 'item'];
+const kinds = {};
+for (const k of KIND_KEYS) kinds[k] = { intervals: new Map(), dmOff: new Set(), targets: new Map(), lastSent: new Map() };
+const pendingItems = new Map();   // userId -> Map('alertId:quality' -> { itemId, name, hq, rows: Map(placeKey:worldId -> row) })
+let splitReady = false;           // tables + one-time copy done (alertSplitDdl.js)
 
 function rebuildWorldIndex() {
     WORLD_TO_DC = {};
@@ -99,10 +114,13 @@ async function loadWorldData() {
         ]);
         if (Array.isArray(dcRes.data) && dcRes.data.length > 0) {
             const map = {};
+            const regions = {};
             for (const dc of dcRes.data) {
                 if (dc && dc.name && Array.isArray(dc.worlds)) map[dc.name] = dc.worlds;
+                if (dc && dc.name && dc.region) regions[dc.name] = dc.region;
             }
             DC_WORLD_MAP = map;
+            if (Object.keys(regions).length) DC_REGION = regions;
             rebuildWorldIndex();
         }
         if (Array.isArray(worldRes.data)) {
@@ -124,26 +142,21 @@ function parseDCList(value) {
     }
 }
 
-// Subscribers = users with market alert DMs enabled, using the Data Centers
-// they saved with /datacenter (the same data /price uses).
-// Users with no saved Data Centers are skipped (nothing is scanned for them).
+// Subscribers = users with market alerts on, using the market alert Data Centers they set on the website
+// (market_alert_dcs; /price and /datacenter keep their own list). The first start copied everyone's /datacenter
+// list there once (alertSplitDdl.js). Users with no market alert Data Centers are skipped (nothing is scanned for them).
 async function loadSubscribers() {
-    const [rows] = await pool.execute(
-        'SELECT ma.user_id, ud.guild_id, ud.datacenters FROM market_alerts ma ' +
-        'LEFT JOIN user_datacenters ud ON ud.user_id = ma.user_id ' +
-        'WHERE ma.dm_enabled = 1'
-    );
-    // Personal /datacenter setting first; otherwise any one older per-server setting
-    const chosen = new Map(); // userId -> { personal, datacenters }
-    for (const row of rows) {
-        const current = chosen.get(row.user_id);
-        const isPersonal = row.guild_id === 'personal';
-        if (!current || (isPersonal && !current.personal)) {
-            chosen.set(row.user_id, { personal: isPersonal, datacenters: row.datacenters });
-        }
+    // Two simple queries instead of a JOIN (tables made at different times can have different collations)
+    const [users] = await pool.execute('SELECT user_id FROM market_alerts WHERE dm_enabled = 1');
+    let dcRows = [];
+    try {
+        [dcRows] = await pool.execute('SELECT user_id, datacenters FROM market_alert_dcs');
+    } catch (err) {
+        if (!/doesn't exist/i.test(err.message)) throw err; // table not created yet: nobody has market Data Centers
     }
+    const dcsOf = new Map(dcRows.map(r => [String(r.user_id), r.datacenters]));
     const byUser = new Map();
-    for (const [userId, c] of chosen) byUser.set(userId, new Set(parseDCList(c.datacenters)));
+    for (const u of users) byUser.set(String(u.user_id), new Set(parseDCList(dcsOf.get(String(u.user_id)))));
     await loadTargets();
     const list = [];
     for (const [userId, dcSet] of byUser) {
@@ -202,7 +215,8 @@ async function loadTargets() {
     dmOff = off;
 }
 
-// DM interval per user (market alerts + retainer undercuts). 0 = Immediate. Missing column or error = everyone 1 minute.
+// DM interval per user (market alerts; retainer undercuts and Item alerts have their own, see loadKindSettings).
+// 0 = Immediate. Missing column or error = everyone 1 minute.
 async function loadIntervals() {
     try {
         const [rows] = await pool.execute('SELECT user_id, alert_interval FROM market_alerts WHERE alert_interval <> 1');
@@ -230,7 +244,57 @@ async function loadMinMedians() {
     }
 }
 
+// Retainer undercut / Item alert settings of every user (no row = DM on, every 1 minute, no channels).
+// Channels over the free 3 only run while the user has Supporter Perks (like market alert channels).
+async function loadKindSettings(kind) {
+    const k = kinds[kind];
+    const intervals = new Map();
+    const dmOffNext = new Set();
+    const targets = new Map();
+    try {
+        const [rows] = await pool.execute('SELECT user_id, dm, alert_interval FROM alert_settings WHERE kind = ?', [kind]);
+        for (const r of rows) {
+            const id = String(r.user_id);
+            const m = Number(r.alert_interval);
+            if (m !== 1 && (m === IMMEDIATE || ALERT_INTERVALS.includes(m))) intervals.set(id, m);
+            if (Number(r.dm) === 0) dmOffNext.add(id);
+        }
+        const [chans] = await pool.execute('SELECT user_id, guild_id, channel_id, role_id FROM alert_channels WHERE kind = ? ORDER BY user_id, position', [kind]);
+        for (const r of chans) {
+            const id = String(r.user_id);
+            if (!targets.has(id)) targets.set(id, []);
+            targets.get(id).push({ guildId: String(r.guild_id), channelId: String(r.channel_id), roleId: r.role_id ? String(r.role_id) : '' });
+        }
+        for (const [id, list] of targets) {
+            if (list.length <= CHANNEL_LIMITS.free) continue;
+            const max = (await ownerHasMembership(id)) ? CHANNEL_LIMITS.perks : CHANNEL_LIMITS.free;
+            if (list.length > max) targets.set(id, list.slice(0, max));
+        }
+    } catch (err) {
+        if (!/doesn't exist|Unknown column/i.test(err.message)) console.error('❌ [MARKET] Could not load ' + kind + ' alert settings:', err.message);
+        return; // keep what was loaded before
+    }
+    k.intervals = intervals;
+    k.dmOff = dmOffNext;
+    k.targets = targets;
+}
+
 const isImmediate = userId => alertIntervals.get(String(userId)) === IMMEDIATE;
+const kindImmediate = (kind, userId) => kinds[kind].intervals.get(String(userId)) === IMMEDIATE;
+// Due for this kind (retainer / item): its own interval since its own last alert (5 seconds of slack)
+function kindDue(kind, userId, now) {
+    const k = kinds[kind];
+    if (kindImmediate(kind, userId)) return true;
+    const last = k.lastSent.get(String(userId));
+    if (!last) return true;
+    return now - last >= (k.intervals.get(String(userId)) || 1) * 60 * 1000 - 5000;
+}
+// Where this kind's alerts can go: DM (switch on and DMs work) or a server channel
+const kindCanSend = (kind, userId) => {
+    const id = String(userId);
+    const channels = kinds[kind].targets.get(id);
+    return Boolean(channels && channels.length) || (!kinds[kind].dmOff.has(id) && !dmStatus.isBlocked(id));
+};
 
 // Due when the user's last alert DM was at least their interval ago (5 seconds of slack for timer drift).
 // Immediate users are always due.
@@ -247,6 +311,7 @@ function getNeededWorlds() {
         for (const dc of sub.dcs) DC_WORLD_MAP[dc].forEach(id => worlds.add(id));
     }
     for (const id of retainerWatch.getWorlds()) worlds.add(id); // worlds of watched retainers
+    for (const id of itemAlerts.getWorlds()) worlds.add(id);    // worlds of Item alerts
     return worlds;
 }
 
@@ -343,11 +408,12 @@ function connect(client) {
         }
         retainerWatch.onListingsAdd(message).catch(err => console.error('❌ [RETAINER ERROR]:', err.message));
         handleListingsAdd(client, message).catch(err => console.error('❌ [EVAL ERROR]:', err.message));
+        handleItemAlerts(client, message).catch(err => console.error('❌ [ITEM ALERT ERROR]:', err.message));
     });
 
     ws.on('close', (code, reason) => {
         cleanupSocket();
-        if (subscribers.length === 0 && !retainerWatch.hasWatches()) return; // nothing to watch; the refresh loop reconnects when needed
+        if (subscribers.length === 0 && !retainerWatch.hasWatches() && !itemAlerts.hasAlerts()) return; // nothing to watch; the refresh loop reconnects when needed
         const reasonText = reason && reason.length ? reason.toString() : 'None';
         console.log('⚠️ [WS CLOSED] Code: ' + code + ', Reason: ' + reasonText + '. Reconnecting in ' + Math.round(reconnectDelay / 1000) + 's...');
         reconnectTimer = setTimeout(() => connect(client), reconnectDelay);
@@ -550,9 +616,33 @@ function scheduleImmediateFlush(client) {
     });
 }
 
-// Retainer undercuts of Immediate users: send them as soon as they are found (flushAlerts still re-checks them with fresh data first)
+// Retainer undercuts of users whose retainer Alert timing is Immediate: send them as soon as they are found
+// (flushAlerts still re-checks them with fresh data first)
 function watchRetainerUndercuts(client) {
-    retainerWatch.onPending(userId => { if (isImmediate(userId)) requestImmediateFlush(client, userId); });
+    retainerWatch.onPending(userId => { if (kindImmediate('retainer', userId)) requestImmediateFlush(client, userId); });
+}
+
+// Item alerts: check a new listing against the members' items (median lookups use the shared cache and spacing)
+async function handleItemAlerts(client, message) {
+    if (!message || message.event !== 'listings/add' || !itemAlerts.watchesItem(message.item)) return;
+    await itemAlerts.onListingsAdd(message, { getBaseline, onMatch: m => notifyItemMatch(client, m) });
+}
+
+// Collect one Item alert match; sent by flushAlerts at the member's Item alert timing (Immediate: right away)
+function notifyItemMatch(client, m) {
+    if (!kindCanSend('item', m.userId)) return;
+    const userId = String(m.userId);
+    if (!pendingItems.has(userId)) pendingItems.set(userId, new Map());
+    const userItems = pendingItems.get(userId);
+    const key = m.alertId + ':' + (m.hq ? 'hq' : 'nq');
+    if (!userItems.has(key)) userItems.set(key, { itemId: m.itemId, name: m.name, hq: m.hq, rows: new Map() });
+    const entry = userItems.get(key);
+    const rowKey = m.place.key + ':' + m.worldId;
+    const existing = entry.rows.get(rowKey);
+    if (!existing || m.price < existing.price) {
+        entry.rows.set(rowKey, { worldId: m.worldId, place: m.place, price: m.price, median: m.median });
+    }
+    if (kindImmediate('item', userId)) requestImmediateFlush(client, userId);
 }
 
 // Collect matches per user; they are sent together by flushAlerts() at each user's DM interval
@@ -658,6 +748,41 @@ function buildItemEmbed(entry, itemName, lang = 'en') {
         .setDescription(nameBox + CODE_FENCE + '\n' + lines.join('\n') + '\n' + CODE_FENCE);
 }
 
+// One Item alert: the item (NQ/HQ), then World | Price | Median (the median column only when "below median" is used)
+function buildItemAlertEmbed(entry, itemName, lang = 'en') {
+    const rows = Array.from(entry.rows.values()).sort((a, b) => a.price - b.price);
+    const withMedian = rows.some(r => typeof r.median === 'number');
+    const worldCell = r => {
+        const world = WORLD_NAMES[r.worldId] || t(lang, 'alerts.worldFallback', { id: r.worldId });
+        return r.place.type === 'world' ? world : world + ' (' + r.place.name + ')';
+    };
+    const cells = rows.map(r => [worldCell(r), t(lang, 'alerts.gil', { n: r.price.toLocaleString(localeOf(lang)) }),
+        typeof r.median === 'number' ? t(lang, 'alerts.gil', { n: Math.round(r.median).toLocaleString(localeOf(lang)) }) : '-']);
+    const headers = [t(lang, 'alerts.headers.world'), t(lang, 'alerts.headers.price'), t(lang, 'alerts.item.median')];
+    const cols = withMedian ? 3 : 2;
+    const w = headers.slice(0, cols).map((h, i) => Math.max(h.length, ...cells.map(c => c[i].length)));
+    const line = c => c.slice(0, cols).map((v, i) => (i === 0 ? padRight(v, w[i]) : padLeft(v, w[i]))).join('  ');
+    const lines = [line(headers), '-'.repeat(w.reduce((a, b) => a + b, 0) + 2 * (cols - 1))];
+    let length = lines.join('\n').length;
+    let shown = 0;
+    for (const c of cells) {
+        const l = line(c);
+        if (length + l.length + 60 > 3900) break;
+        lines.push(l);
+        length += l.length + 1;
+        shown++;
+    }
+    if (shown < cells.length) lines.push(t(lang, 'alerts.moreWorlds', { count: cells.length - shown }));
+    const shownName = itemName || entry.name;
+    const name = shownName ? shownName + ' (#' + entry.itemId + ')' : t(lang, 'alerts.itemFallback', { id: entry.itemId });
+    const nameBox = shownName ? CODE_FENCE + '\n' + String(shownName).replace(/`/g, '') + '\n' + CODE_FENCE + '\n' : '';
+    return new EmbedBuilder()
+        .setTitle(t(lang, 'alerts.item.title', { name, quality: entry.hq ? 'HQ' : 'NQ' }).slice(0, 256))
+        .setURL('https://universalis.app/market/' + entry.itemId)
+        .setColor('#3498db')
+        .setDescription(nameBox + CODE_FENCE + '\n' + lines.join('\n') + '\n' + CODE_FENCE);
+}
+
 // Split embeds into messages: max 10 items each, and under Discord's character limit
 function chunkEmbeds(embeds) {
     const messages = [];
@@ -680,7 +805,8 @@ function chunkEmbeds(embeds) {
 // Server channels: post the market alerts in each chosen channel (pings only the role picked for that channel, if any).
 // The user must still be the server's owner or an admin; otherwise that server is skipped.
 // embedsFor(lang): the alert embeds in that language (each server channel gets its server's language)
-async function postToChannels(client, userId, targets, embedsFor) {
+// footerKey: the footer text (market alerts by default; retainer undercuts and Item alerts use the short one)
+async function postToChannels(client, userId, targets, embedsFor, footerKey = 'alerts.footer') {
     let sent = 0;
     for (const target of targets) {
         const guild = client.guilds.cache.get(target.guildId);
@@ -700,7 +826,7 @@ async function postToChannels(client, userId, targets, embedsFor) {
         const lang = userLanguage.forGuild(guild); // public post: the server's language
         let first = true;
         for (const group of chunkEmbeds(await embedsFor(lang))) {
-            group[group.length - 1].setFooter({ text: t(lang, 'alerts.footer') }).setTimestamp();
+            group[group.length - 1].setFooter({ text: t(lang, footerKey) }).setTimestamp();
             // the role ping goes on the first message only
             const ping = first && target.roleId && /^\d{15,22}$/.test(target.roleId) ? target.roleId : '';
             first = false;
@@ -719,14 +845,17 @@ async function postToChannels(client, userId, targets, embedsFor) {
     return sent;
 }
 
-// onlyUsers (optional): a Set of user IDs to send for (the Immediate quick flush); otherwise every due user
+// onlyUsers (optional): a Set of user IDs to send for (the Immediate quick flush); otherwise every due user.
+// Market alerts, retainer undercuts and Item alerts each follow their own settings (DM switch, Alert timing, channels);
+// what is due at the same moment goes out in one DM.
 async function flushAlerts(client, onlyUsers) {
     if (flushing && !onlyUsers && quickFlushRunning) timerFlushWaiting = true;
-    if (flushing || (pendingAlerts.size === 0 && !retainerWatch.hasPending())) return;
+    if (flushing || (pendingAlerts.size === 0 && !retainerWatch.hasPending() && pendingItems.size === 0)) return;
     flushing = true;
     quickFlushRunning = Boolean(onlyUsers);
     const now = Date.now();
-    const due = userId => (!onlyUsers || onlyUsers.has(String(userId))) && isDue(userId, now);
+    const asked = userId => !onlyUsers || onlyUsers.has(String(userId));
+    const due = userId => asked(userId) && isDue(userId, now);
     // Only users whose DM interval has passed; everyone else keeps collecting until their next DM
     const batch = new Map();
     for (const [userId, items] of Array.from(pendingAlerts)) {
@@ -734,23 +863,34 @@ async function flushAlerts(client, onlyUsers) {
         batch.set(userId, items);
         pendingAlerts.delete(userId);
     }
-    // Retainer Watch: same DM, sent first. Each undercut is checked again with fresh data (false alerts are dropped).
+    // Retainer Watch (its own timing), sent first. Each undercut is checked again with fresh data (false alerts are dropped).
     let undercuts;
     try {
-        undercuts = await retainerWatch.takeChecked(due);
+        undercuts = await retainerWatch.takeChecked(userId => asked(userId) && kindDue('retainer', userId, now));
     } catch (err) {
         console.error('❌ [RETAINERS] Could not re-check undercuts:', err.message);
         undercuts = new Map();
     }
     for (const userId of undercuts.keys()) if (!batch.has(userId)) batch.set(userId, new Map());
+    // Item alerts (their own timing)
+    const itemBatch = new Map();
+    for (const [userId, items] of Array.from(pendingItems)) {
+        if (!(asked(userId) && kindDue('item', userId, now))) continue;
+        itemBatch.set(userId, items);
+        pendingItems.delete(userId);
+        if (!batch.has(userId)) batch.set(userId, new Map());
+    }
 
     try {
         for (const [userId, items] of batch) {
             // Biggest discount first
             let entries = Array.from(items.values()).sort((a, b) => bestPercent(a) - bestPercent(b));
+            const userUndercuts0 = undercuts.get(userId);
+            const hasUndercuts0 = Boolean(userUndercuts0 && userUndercuts0.size);
+            const itemEntries0 = itemBatch.has(userId) ? Array.from(itemBatch.get(userId).values()) : [];
+            let undercutsPosted = false;
 
-            // Server channels: market alerts go to the channels; also to the DM below only when the DM switch is on.
-            // Retainer undercuts always go to the DM.
+            // Server channels: each kind goes to its own channels; also to the DM below only when that kind's DM switch is on.
             const targets = alertTargets.get(userId);
             if (targets && targets.length && entries.length) {
                 const channelEntries = entries;
@@ -762,14 +902,37 @@ async function flushAlerts(client, onlyUsers) {
                 await postToChannels(client, userId, targets, embedsFor);
                 lastSentAt.set(userId, now);
             }
+            const retTargets = kinds.retainer.targets.get(userId);
+            if (retTargets && retTargets.length && hasUndercuts0) {
+                const embedsFor = async lang => {
+                    const names = new Map();
+                    for (const u of userUndercuts0.values()) if (!names.has(u.itemId)) names.set(u.itemId, await getItemName(u.itemId, lang));
+                    return [retainerWatch.buildUndercutEmbed(userUndercuts0, names, lang)];
+                };
+                if (await postToChannels(client, userId, retTargets, embedsFor, 'alerts.footerShort')) undercutsPosted = true;
+                kinds.retainer.lastSent.set(userId, now);
+            }
+            const itemTargets = kinds.item.targets.get(userId);
+            if (itemTargets && itemTargets.length && itemEntries0.length) {
+                const embedsFor = async lang => {
+                    const list = [];
+                    for (const entry of itemEntries0) list.push(buildItemAlertEmbed(entry, await getItemName(entry.itemId, lang), lang));
+                    return list;
+                };
+                await postToChannels(client, userId, itemTargets, embedsFor, 'alerts.footerShort');
+                kinds.item.lastSent.set(userId, now);
+            }
             if (dmOff.has(userId)) entries = []; // DM switch off: market alerts only in the channels
-            const hasUndercuts = undercuts.get(userId) && undercuts.get(userId).size;
-            if (!entries.length && !hasUndercuts) continue;
+            const userUndercuts = hasUndercuts0 && !kinds.retainer.dmOff.has(userId) ? userUndercuts0 : null;
+            const itemEntries = kinds.item.dmOff.has(userId) ? [] : itemEntries0;
+            // Undercuts that reach no one (DM off, no channel post): forget them, so they alert again later
+            if (hasUndercuts0 && !userUndercuts && !undercutsPosted) await retainerWatch.forgetAlerts(userUndercuts0);
+            const hasUndercuts = Boolean(userUndercuts);
+            if (!entries.length && !hasUndercuts && !itemEntries.length) continue;
 
             const lang = await userLanguage.forUser(userId); // DM: the user's language
             const embeds = [];
-            const userUndercuts = undercuts.get(userId);
-            if (userUndercuts && userUndercuts.size) {
+            if (hasUndercuts) {
                 const names = new Map();
                 for (const u of userUndercuts.values()) if (!names.has(u.itemId)) names.set(u.itemId, await getItemName(u.itemId, lang));
                 embeds.push(retainerWatch.buildUndercutEmbed(userUndercuts, names, lang));
@@ -777,26 +940,16 @@ async function flushAlerts(client, onlyUsers) {
             for (const entry of entries) {
                 embeds.push(buildItemEmbed(entry, await getItemName(entry.itemId, lang), lang));
             }
+            for (const entry of itemEntries) {
+                embeds.push(buildItemAlertEmbed(entry, await getItemName(entry.itemId, lang), lang));
+            }
 
             // Split into messages: max 10 items each, and under Discord's character limit
-            const messages = [];
-            let current = [];
-            let chars = 0;
-            for (const embed of embeds) {
-                const size = (embed.data.title || '').length + (embed.data.description || '').length;
-                if (current.length >= MAX_ITEMS_PER_MESSAGE || (current.length > 0 && chars + size > MAX_MESSAGE_CHARS)) {
-                    messages.push(current);
-                    current = [];
-                    chars = 0;
-                }
-                current.push(embed);
-                chars += size;
-            }
-            if (current.length) messages.push(current);
+            const messages = chunkEmbeds(embeds);
 
-            const userUndercuts0 = undercuts.get(userId);
+            const forgetUndercuts = async () => { if (hasUndercuts && !undercutsPosted) await retainerWatch.forgetAlerts(userUndercuts); };
             if (dmStatus.isBlocked(userId)) {
-                if (userUndercuts0 && userUndercuts0.size) await retainerWatch.forgetAlerts(userUndercuts0);
+                await forgetUndercuts();
                 continue;
             }
             let user;
@@ -805,7 +958,7 @@ async function flushAlerts(client, onlyUsers) {
             } catch (err) {
                 console.error('❌ [DM FAILED] Could not find user ' + userId + ': ' + err.message);
                 if (err && err.code === 10013) await dmStatus.markFailed(userId, 'unknown_user');
-                if (userUndercuts0 && userUndercuts0.size) await retainerWatch.forgetAlerts(userUndercuts0);
+                await forgetUndercuts();
                 continue;
             }
 
@@ -813,14 +966,16 @@ async function flushAlerts(client, onlyUsers) {
                 group[group.length - 1].setFooter({ text: entries.length ? t(lang, 'alerts.footer') : t(lang, 'alerts.footerShort') }).setTimestamp();
                 try {
                     await user.send({ embeds: group });
-                    lastSentAt.set(userId, now);
+                    if (entries.length) lastSentAt.set(userId, now);
+                    if (hasUndercuts) kinds.retainer.lastSent.set(userId, now);
+                    if (itemEntries.length) kinds.item.lastSent.set(userId, now);
                     console.log('✅ [DM SENT] Alert message (' + group.length + ' embed(s)) sent to user ' + userId);
                     await dmStatus.markOk(userId);
                 } catch (err) {
                     console.error('❌ [DM FAILED] Could not send DM to user ' + userId + '. Reason: ' + err.message + ' (Check direct message privacy settings)');
                     // 50007 = DMs closed or no server shared with Pingway: pause this user's alerts for a while
                     if (err && err.code === 50007) await dmStatus.markFailed(userId, 'dm_closed');
-                    if (userUndercuts0 && userUndercuts0.size) await retainerWatch.forgetAlerts(userUndercuts0); // alert again later
+                    await forgetUndercuts(); // alert again later
                     break;
                 }
             }
@@ -837,14 +992,32 @@ async function flushAlerts(client, onlyUsers) {
     }
 }
 
+// Separate alert settings / Item alerts tables + the one-time copy of the old settings (alertSplitDdl.js).
+// Tried again at the next refresh if the database was not reachable.
+async function ensureSplit() {
+    if (splitReady) return;
+    try {
+        const copied = await ensureAlertSplit(pool, Date.now());
+        if (copied) console.log('🔀 [MARKET] Alert settings split: copied ' + copied.dcs + ' market alert Data Center list(s) and ' + copied.retainers + ' retainer alert setting(s).');
+        splitReady = true;
+    } catch (err) {
+        console.error('❌ [MARKET] Could not prepare the alert settings tables:', err.message);
+    }
+}
+
 async function refresh(client) {
     try {
         await dmStatus.load();
+        await ensureSplit();
+        await loadKindSettings('retainer');
+        await loadKindSettings('item');
         const { list, enabledCount } = await loadSubscribers();
         subscribers = list;
         await loadIntervals();
         await loadMinMedians();
-        await retainerWatch.load();
+        // Retainers of users whose undercut alerts can't go anywhere (DM off or DMs blocked, and no channel) are not watched
+        await retainerWatch.load({ canSend: userId => kindCanSend('retainer', userId) });
+        await itemAlerts.load({ dcWorlds: DC_WORLD_MAP, dcRegion: DC_REGION, worldNames: WORLD_NAMES });
 
         // Prune old cache entries
         const now = Date.now();
@@ -860,10 +1033,13 @@ async function refresh(client) {
         for (const [k, t] of lastSentAt) {
             if (now - t > 60 * 60 * 1000) lastSentAt.delete(k);
         }
+        for (const k of KIND_KEYS) {
+            for (const [id, t] of kinds[k].lastSent) if (now - t > 60 * 60 * 1000) kinds[k].lastSent.delete(id);
+        }
 
-        if (subscribers.length === 0 && !retainerWatch.hasWatches()) {
+        if (subscribers.length === 0 && !retainerWatch.hasWatches() && !itemAlerts.hasAlerts()) {
             if (ws || reconnectTimer) {
-                console.log('ℹ️ [MARKET] No subscribers with saved Data Centers. Closing feed and standing by...');
+                console.log('ℹ️ [MARKET] No subscribers with saved Data Centers, watched retainers or Item alerts. Closing feed and standing by...');
                 cleanupSocket();
             }
             return { enabledCount, ready: 0 };
@@ -874,7 +1050,7 @@ async function refresh(client) {
         } else {
             syncSubscriptions();
         }
-        return { enabledCount, ready: subscribers.length, retainers: retainerWatch.getWorlds().size };
+        return { enabledCount, ready: subscribers.length, retainers: retainerWatch.getWorlds().size, items: itemAlerts.getWorlds().size };
     } catch (err) {
         console.error('❌ [MARKET] Failed to refresh subscribers:', err.message);
         return null;
@@ -891,11 +1067,12 @@ async function initMarketMonitor(client) {
     const result = await refresh(client);
     if (result) {
         if (result.retainers) console.log('🏷️ [INIT] Retainer Watch active on ' + result.retainers + ' world(s).');
+        if (result.items) console.log('🔔 [INIT] Item alerts active on ' + result.items + ' world(s).');
         if (result.ready === 0) {
-            console.log('⚠️ [INIT] ' + result.enabledCount + ' user(s) have market alerts on, but none have Data Centers saved with /datacenter. Monitor standing by...');
+            console.log('⚠️ [INIT] ' + result.enabledCount + ' user(s) have market alerts on, but none have market alert Data Centers saved. Monitor standing by...');
         } else {
             const skipped = result.enabledCount - result.ready;
-            console.log('✅ [INIT] ' + result.ready + ' subscriber(s) with saved Data Centers.' + (skipped > 0 ? ' (' + skipped + ' skipped: no /datacenter saved)' : ''));
+            console.log('✅ [INIT] ' + result.ready + ' subscriber(s) with saved Data Centers.' + (skipped > 0 ? ' (' + skipped + ' skipped: no market alert Data Centers saved)' : ''));
         }
     }
     refreshTimer = setInterval(() => refresh(client), SUBSCRIBER_REFRESH_MS);
@@ -909,4 +1086,9 @@ module.exports = { initMarketMonitor, CHANNEL_LIMITS,
         loadMinMedians, notifySubscribedUsers, minMedians: () => minMedians, pending: () => pendingAlerts, cooldowns: () => alertCooldowns,
         setSubscribers: list => { subscribers = list; },
         loadIntervals, isDue, intervals: () => alertIntervals, flushAlerts, requestImmediateFlush, watchRetainerUndercuts, lastSentAt: () => lastSentAt,
-        isFlushing: () => flushing } };
+        isFlushing: () => flushing,
+        // separate retainer / item alert settings, market alert Data Centers, Item alerts
+        loadKindSettings, kinds: () => kinds, kindDue, kindCanSend, loadSubscribers, ensureSplit, resetSplit: () => { splitReady = false; },
+        notifyItemMatch, pendingItems: () => pendingItems, handleItemAlerts, buildItemAlertEmbed, refresh,
+        setGeo: (dcWorlds, dcRegion, names) => { DC_WORLD_MAP = dcWorlds; DC_REGION = dcRegion; Object.assign(WORLD_NAMES, names || {}); rebuildWorldIndex(); },
+        baselineCache: () => baselineCache } };

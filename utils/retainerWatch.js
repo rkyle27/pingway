@@ -1,6 +1,7 @@
 // Retainer Watch: DMs a user when someone undercuts one of their retainers' market listings.
 // Retainers are set up on the Pingway website (table retainer_watch). The bot only reads them.
-// Undercuts are sent in the same 5-minute DM as market alerts (see marketMonitor.js flushAlerts).
+// Undercuts follow their own retainer alert settings from the website (DM switch, Alert timing, server channels;
+// see marketMonitor.js flushAlerts). Each one is checked again with fresh data before it is sent.
 
 const axios = require('axios');
 const { EmbedBuilder } = require('discord.js');
@@ -39,14 +40,17 @@ let checking = false;
 const checkQueue = [];           // [{ watchId, worldId }] waiting for a full check
 let pendingListener = null;      // called with the userId when a new undercut is collected (marketMonitor: Immediate users)
 
-async function load() {
+// opts.canSend(userId): false = this user's undercut alerts can't go anywhere right now (DM off or blocked, no channel):
+// their retainers are not watched. Without it: users whose DMs are blocked are skipped.
+async function load(opts) {
+    const canSend = opts && typeof opts.canSend === 'function' ? opts.canSend : userId => !dmStatus.isBlocked(userId);
     try {
         const [rows] = await pool.execute(
             "SELECT id, user_id, world_id, world_name, retainer_name FROM retainer_watch WHERE status = 'found' AND active = 1"
         );
         const map = new Map();
         for (const r of rows) {
-            if (dmStatus.isBlocked(r.user_id)) continue; // can't DM them right now: don't watch for nothing
+            if (!canSend(String(r.user_id))) continue; // can't send them alerts right now: don't watch for nothing
             const worldId = Number(r.world_id);
             if (!map.has(worldId)) map.set(worldId, new Map());
             map.get(worldId).set(normName(r.retainer_name), {

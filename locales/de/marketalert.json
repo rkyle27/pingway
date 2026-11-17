@@ -1,5 +1,5 @@
 {
-  "noneSet": "*Keine festgelegt* — nutze `/datacenter`, um deine Datenzentren zu wählen. Bis dahin werden keine Alarme gesendet.",
+  "noneSet": "*Keine festgelegt* — wähle die Datenzentren deiner Marktalarme auf der Website (https://pingway.app/dashboard.html?tab=retainers#market-alerts). Bis dahin werden keine Alarme gesendet.",
   "disable": "Benachrichtigungen ausschalten",
   "enable": "Benachrichtigungen einschalten",
   "done": "Fertig",
@@ -10,7 +10,7 @@
   "enabledNotice": "🔔 Marktalarm-DMs sind jetzt **eingeschaltet 🟢**.",
   "disabledNotice": "🔕 Marktalarm-DMs sind jetzt **ausgeschaltet 🔴**.",
   "updateFailed": "❌ Die Benachrichtigungseinstellungen konnten nicht aktualisiert werden.",
-  "settings": "📢 **Marktalarm-Einstellungen**\n\n• **DM-Benachrichtigungen:** {dm}\n• **Datenzentren (aus /datacenter):** {dcs}\n• **Alarm-Timing:** {timing} (für Marktalarme und DMs zu unterbotenen Gehilfen-Angeboten; ändere es unter Meine Einstellungen auf https://pingway.app/me.html)",
+  "settings": "📢 **Marktalarm-Einstellungen**\n\n• **DM-Benachrichtigungen:** {dm}\n• **Datenzentren (Marktalarme, auf der Website gewählt):** {dcs}\n• **Alarm-Timing:** {timing} (für Marktalarme; unterbotene Gehilfen-Angebote haben eigene Einstellungen)\n\nÄndere sie auf https://pingway.app/dashboard.html?tab=retainers#market-alerts",
   "immediate": "Sofort",
   "every": "alle {interval}",
   "on": "🟢 Ein",
