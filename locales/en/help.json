@@ -7,7 +7,7 @@
   "fields": {
     "market": {
       "name": "💰 Market Board",
-      "value": "**/price <item>** — Cross-world prices across your Data Centers.\n**/datacenter** — Choose your Data Centers (used everywhere).\n**/marketalert** — DMs listings 80%+ below the usual price (every minute by default; change the DM interval on the website)."
+      "value": "**/price <item>** — Cross-world prices across your Data Centers.\n**/datacenter** — Choose your Data Centers (used everywhere).\n**/marketalert** — DMs listings 80%+ below the usual price (every minute by default; on the website you can switch to Immediate or change the interval)."
     },
     "perks": {
       "name": "💜 Supporter Perks",

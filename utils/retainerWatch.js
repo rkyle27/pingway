@@ -37,6 +37,7 @@ let knownWatchIds = new Set();   // watches already given their first check
 let sweepTimer = null;
 let checking = false;
 const checkQueue = [];           // [{ watchId, worldId }] waiting for a full check
+let pendingListener = null;      // called with the userId when a new undercut is collected (marketMonitor: Immediate users)
 
 async function load() {
     try {
@@ -243,7 +244,13 @@ async function checkItem(watch, worldId, itemId, hq, worldWatches) {
         watchId: watch.watchId, userId: watch.userId
     });
     console.log('🏷️ [UNDERCUT] ' + watch.retainerName + ' (' + watch.worldName + ') item #' + itemId + (hq ? ' HQ' : '') + ': ' + mine + ' -> ' + theirs + ' Gil' + (theirsName ? ' by ' + theirsName : '') + '.');
+    if (pendingListener) {
+        try { pendingListener(watch.userId); } catch (err) { console.error('❌ [RETAINERS] Undercut listener failed:', err.message); }
+    }
 }
+
+// marketMonitor registers this to send undercuts of Immediate users right away
+function onPending(fn) { pendingListener = typeof fn === 'function' ? fn : null; }
 
 // Every 30 minutes: queue every active watch for a full check
 function queueAllWatches() {
@@ -550,7 +557,7 @@ async function describeUser(userId) {
 }
 
 module.exports = {
-    forgetAlerts, describeUser, load, getWorlds, hasWatches, hasPending, pendingUsers, onListingsAdd, onListingsRemove, takePending, takeChecked,
+    forgetAlerts, describeUser, load, getWorlds, hasWatches, hasPending, pendingUsers, onListingsAdd, onListingsRemove, takePending, takeChecked, onPending,
     buildUndercutEmbed, REPRICE_GRACE_MS, _compare: compare,
     // Tests only: clock and state reset
     _test: {
@@ -560,7 +567,7 @@ module.exports = {
             if (sweepTimer) { clearInterval(sweepTimer); sweepTimer = null; }
             watchesByWorld = new Map(); ownByWorld = new Map(); tablesMissing = false;
             cooldowns.clear(); pending.clear(); lastOwnChange.clear(); knownWatchIds = new Set();
-            checkQueue.length = 0; nextCheckAt = 0; lastSummary = '';
+            checkQueue.length = 0; nextCheckAt = 0; lastSummary = ''; pendingListener = null;
         },
         idle() { return !checking && checkQueue.length === 0; }
     }

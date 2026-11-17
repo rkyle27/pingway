@@ -69,12 +69,12 @@ async function getDmEnabled(userId) {
     return stateOf(await getRow(userId)).dm;
 }
 
-// DM interval chosen on the website (minutes). Missing column or row = 1 minute.
+// DM interval chosen on the website (minutes; 0 = Alert timing "Immediate"). Missing column or row = 1 minute.
 async function getInterval(userId) {
     try {
         const [rows] = await pool.execute('SELECT alert_interval FROM market_alerts WHERE user_id = ?', [userId]);
         const m = rows.length > 0 ? Number(rows[0].alert_interval) : 1;
-        return [1, 2, 5, 10, 15, 30].includes(m) ? m : 1;
+        return [0, 1, 2, 5, 10, 15, 30].includes(m) ? m : 1;
     } catch (e) {
         return 1;
     }
@@ -92,7 +92,9 @@ async function buildPayload(userId, notice, lang = 'en') {
         t(lang, 'marketalert.settings', {
             dm: dmEnabled ? t(lang, 'marketalert.on') : t(lang, 'marketalert.off'),
             dcs: dcText,
-            interval: t(lang, interval === 1 ? 'marketalert.minute' : 'marketalert.minutes', { n: interval })
+            timing: interval === 0
+                ? t(lang, 'marketalert.immediate')
+                : t(lang, 'marketalert.every', { interval: t(lang, interval === 1 ? 'marketalert.minute' : 'marketalert.minutes', { n: interval }) })
         });
 
     const row = new ActionRowBuilder().addComponents(

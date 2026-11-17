@@ -7,7 +7,7 @@
   "fields": {
     "market": {
       "name": "💰 Marktbrett",
-      "value": "**/price <item>** — Preise über alle Welten deiner Datenzentren.\n**/datacenter** — Wähle deine Datenzentren (gilt überall).\n**/marketalert** — Schickt dir per DM Angebote, die 80 %+ unter dem üblichen Preis liegen (standardmäßig jede Minute; das DM-Intervall änderst du auf der Website)."
+      "value": "**/price <item>** — Preise über alle Welten deiner Datenzentren.\n**/datacenter** — Wähle deine Datenzentren (gilt überall).\n**/marketalert** — Schickt dir per DM Angebote, die 80 %+ unter dem üblichen Preis liegen (standardmäßig jede Minute; auf der Website kannst du auf Sofort umstellen oder das Intervall ändern)."
     },
     "perks": {
       "name": "💜 Supporter-Vorteile",

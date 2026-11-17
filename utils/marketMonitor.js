@@ -40,6 +40,7 @@ const RECENT_WINDOW_MS = 7 * 24 * 60 * 60 * 1000; // Median window like the Univ
 const LISTING_CHECK_COUNT = 3;                // Check 2: compare against the average of the next 3 cheapest other listings
 const FLUSH_INTERVAL_MS = 60 * 1000;          // Check every minute whether collected alerts are due
 const ALERT_INTERVALS = [1, 2, 5, 10, 15, 30]; // DM interval choices in minutes (set on the website, default 1)
+const IMMEDIATE = 0;                          // alert_interval 0 = Alert timing "Immediate": sent as soon as found
 const MAX_ITEMS_PER_MESSAGE = 10;             // Up to 10 items per DM message (no limit on messages)
 const MAX_MESSAGE_CHARS = 5800;               // Stay under Discord's 6,000 character limit per message
 const BASELINE_CACHE_MS = 15 * 60 * 1000;     // Cache Universalis price baselines for 15 minutes
@@ -67,7 +68,11 @@ const alertCooldowns = new Map(); // 'user:item:world:quality' -> time
 const pendingAlerts = new Map();  // userId -> Map('itemId:quality' -> { itemId, hq, rows: Map(worldId -> row) })
 let flushTimer = null;
 let flushing = false;
-const alertIntervals = new Map(); // userId -> minutes (only users who chose something other than 1)
+const alertIntervals = new Map(); // userId -> minutes (only users who chose something other than 1; 0 = Immediate)
+const immediateQueue = new Set(); // Immediate users waiting for their quick flush
+let immediateScheduled = false;
+let quickFlushRunning = false;    // the running flush is an Immediate quick flush
+let timerFlushWaiting = false;    // the 60-second timer came during a quick flush: run it right after (interval users keep their timing)
 const minMedians = new Map();     // userId -> Gil: only alert when the DC median is higher (set on the website; none = no extra limit)
 const lastSentAt = new Map();     // userId -> time of their last alert DM
 let alertTargets = new Map();     // userId -> [{ guildId, channelId, roleId }] server channels (set on the website)
@@ -197,14 +202,14 @@ async function loadTargets() {
     dmOff = off;
 }
 
-// DM interval per user (market alerts + retainer undercuts). Missing column or error = everyone 1 minute.
+// DM interval per user (market alerts + retainer undercuts). 0 = Immediate. Missing column or error = everyone 1 minute.
 async function loadIntervals() {
     try {
         const [rows] = await pool.execute('SELECT user_id, alert_interval FROM market_alerts WHERE alert_interval <> 1');
         alertIntervals.clear();
         for (const r of rows) {
             const m = Number(r.alert_interval);
-            if (ALERT_INTERVALS.includes(m)) alertIntervals.set(String(r.user_id), m);
+            if (m === IMMEDIATE || ALERT_INTERVALS.includes(m)) alertIntervals.set(String(r.user_id), m);
         }
     } catch (err) {
         if (!/Unknown column/i.test(err.message)) console.error('❌ [MARKET] Could not load DM intervals:', err.message);
@@ -225,8 +230,12 @@ async function loadMinMedians() {
     }
 }
 
-// Due when the user's last alert DM was at least their interval ago (5 seconds of slack for timer drift)
+const isImmediate = userId => alertIntervals.get(String(userId)) === IMMEDIATE;
+
+// Due when the user's last alert DM was at least their interval ago (5 seconds of slack for timer drift).
+// Immediate users are always due.
 function isDue(userId, now) {
+    if (isImmediate(userId)) return true;
     const last = lastSentAt.get(userId);
     if (!last) return true;
     return now - last >= (alertIntervals.get(userId) || 1) * 60 * 1000 - 5000;
@@ -520,7 +529,34 @@ async function handleListingsAdd(client, message) {
     }
 }
 
+// Immediate users: send their collected alerts right away instead of waiting for the 60-second timer.
+// Several matches found at the same moment go out together. If a flush is running, the next one starts
+// as soon as it ends (flushAlerts calls this again), so nothing is lost or held back a full minute.
+function requestImmediateFlush(client, userId) {
+    if (!client) return;
+    immediateQueue.add(String(userId));
+    scheduleImmediateFlush(client);
+}
+
+function scheduleImmediateFlush(client) {
+    if (immediateScheduled) return;
+    immediateScheduled = true;
+    setImmediate(() => {
+        immediateScheduled = false;
+        if (flushing || immediateQueue.size === 0) return; // the running flush starts the next one when it ends
+        const users = new Set(immediateQueue);
+        immediateQueue.clear();
+        flushAlerts(client, users).catch(err => console.error('❌ [DM ERROR] Failed to send immediate alerts:', err.message));
+    });
+}
+
+// Retainer undercuts of Immediate users: send them as soon as they are found (flushAlerts still re-checks them with fresh data first)
+function watchRetainerUndercuts(client) {
+    retainerWatch.onPending(userId => { if (isImmediate(userId)) requestImmediateFlush(client, userId); });
+}
+
 // Collect matches per user; they are sent together by flushAlerts() at each user's DM interval
+// (Immediate users: right away, see requestImmediateFlush)
 function notifySubscribedUsers(client, alertData) {
     const now = Date.now();
     const quality = alertData.hq ? 'hq' : 'nq';
@@ -551,6 +587,7 @@ function notifySubscribedUsers(client, alertData) {
                 percent: alertData.percentDiff
             });
         }
+        if (isImmediate(sub.userId)) requestImmediateFlush(client, sub.userId);
     }
 }
 
@@ -682,11 +719,14 @@ async function postToChannels(client, userId, targets, embedsFor) {
     return sent;
 }
 
-async function flushAlerts(client) {
+// onlyUsers (optional): a Set of user IDs to send for (the Immediate quick flush); otherwise every due user
+async function flushAlerts(client, onlyUsers) {
+    if (flushing && !onlyUsers && quickFlushRunning) timerFlushWaiting = true;
     if (flushing || (pendingAlerts.size === 0 && !retainerWatch.hasPending())) return;
     flushing = true;
+    quickFlushRunning = Boolean(onlyUsers);
     const now = Date.now();
-    const due = userId => isDue(userId, now);
+    const due = userId => (!onlyUsers || onlyUsers.has(String(userId))) && isDue(userId, now);
     // Only users whose DM interval has passed; everyone else keeps collecting until their next DM
     const batch = new Map();
     for (const [userId, items] of Array.from(pendingAlerts)) {
@@ -787,6 +827,13 @@ async function flushAlerts(client) {
         }
     } finally {
         flushing = false;
+        quickFlushRunning = false;
+        if (timerFlushWaiting) {
+            timerFlushWaiting = false;
+            setImmediate(() => flushAlerts(client).catch(err => console.error('❌ [DM ERROR] Failed to send collected alerts:', err.message)));
+        }
+        // Immediate users whose alerts came in during this flush: send them now
+        if (immediateQueue.size) scheduleImmediateFlush(client);
     }
 }
 
@@ -838,6 +885,7 @@ async function initMarketMonitor(client) {
     if (started) return;
     started = true;
 
+    watchRetainerUndercuts(client);
     console.log('🔍 [INIT] Loading market alert subscribers...');
     await loadWorldData();
     const result = await refresh(client);
@@ -859,4 +907,6 @@ async function initMarketMonitor(client) {
 module.exports = { initMarketMonitor, CHANNEL_LIMITS,
     _test: { loadTargets, postToChannels, targets: () => alertTargets, dmOff: () => dmOff,
         loadMinMedians, notifySubscribedUsers, minMedians: () => minMedians, pending: () => pendingAlerts, cooldowns: () => alertCooldowns,
-        setSubscribers: list => { subscribers = list; } } };
+        setSubscribers: list => { subscribers = list; },
+        loadIntervals, isDue, intervals: () => alertIntervals, flushAlerts, requestImmediateFlush, watchRetainerUndercuts, lastSentAt: () => lastSentAt,
+        isFlushing: () => flushing } };

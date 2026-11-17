@@ -4,13 +4,15 @@
   "enable": "Enable Notifications",
   "done": "Done",
   "cmd": {
-    "description": "Turn market price drop alert DMs on or off (DM interval is set on the website)"
+    "description": "Turn market price drop alert DMs on or off (alert timing is set on the website)"
   },
   "loadFailed": "❌ Failed to load your market alert settings.",
   "enabledNotice": "🔔 Market alert DM notifications are now **enabled 🟢**.",
   "disabledNotice": "🔕 Market alert DM notifications are now **disabled 🔴**.",
   "updateFailed": "❌ Failed to update notification settings.",
-  "settings": "📢 **Market Alert Settings**\n\n• **DM Notifications:** {dm}\n• **Data Centers (from /datacenter):** {dcs}\n• **DM interval:** every {interval} (also used for retainer undercuts; change it in My Settings on https://pingway.app/me.html)",
+  "settings": "📢 **Market Alert Settings**\n\n• **DM Notifications:** {dm}\n• **Data Centers (from /datacenter):** {dcs}\n• **Alert timing:** {timing} (for market alerts and retainer undercut DMs; change it in My Settings on https://pingway.app/me.html)",
+  "immediate": "Immediate",
+  "every": "every {interval}",
   "on": "🟢 Enabled",
   "off": "🔴 Disabled",
   "minute": "{n} minute",

@@ -4,13 +4,15 @@
   "enable": "Activer les notifications",
   "done": "Terminé",
   "cmd": {
-    "description": "Active ou désactive les MP d'alerte de baisse de prix (l'intervalle se règle sur le site)"
+    "description": "Active ou désactive les MP d'alerte de baisse de prix (l'envoi des alertes se règle sur le site)"
   },
   "loadFailed": "❌ Impossible de charger tes réglages d'alertes du marché.",
   "enabledNotice": "🔔 Les MP d'alerte du marché sont maintenant **activés 🟢**.",
   "disabledNotice": "🔕 Les MP d'alerte du marché sont maintenant **désactivés 🔴**.",
   "updateFailed": "❌ Impossible de mettre à jour les réglages de notification.",
-  "settings": "📢 **Réglages des alertes du marché**\n\n• **Notifications par MP :** {dm}\n• **Centres de données (de /datacenter) :** {dcs}\n• **Intervalle des MP :** toutes les {interval} (utilisé aussi pour les sous-cotages des servants ; change-le dans Mes paramètres sur https://pingway.app/me.html)",
+  "settings": "📢 **Réglages des alertes du marché**\n\n• **Notifications par MP :** {dm}\n• **Centres de données (de /datacenter) :** {dcs}\n• **Envoi des alertes :** {timing} (pour les alertes du marché et les MP de sous-cotage des servants ; change-le dans Mes paramètres sur https://pingway.app/me.html)",
+  "immediate": "immédiat",
+  "every": "toutes les {interval}",
   "on": "🟢 Activées",
   "off": "🔴 Désactivées",
   "minute": "{n} minute",

@@ -30,7 +30,7 @@ Everything you change on the website works right away in Discord — and you can
 ### 💰 Market Board
 - **`/price <item>`** — Cross-world market prices for any FFXIV item across your chosen Data Centers (top 5 NQ and HQ listings per Data Center, with world names).
 - **`/datacenter`** — Choose your Data Centers once; used by `/price` and market alerts in every server.
-- **`/marketalert`** — Turn on price drop DMs. Pingway watches the Universalis live feed and sends you a grouped DM (every minute by default — change the DM interval on the website) with listings that are **at least 80% below the usual price**:
+- **`/marketalert`** — Turn on price drop DMs. Pingway watches the Universalis live feed and sends you a grouped DM (every minute by default — on the website you can switch to Immediate or change the interval) with listings that are **at least 80% below the usual price**:
   - Compared against the **median of the last 7 days of real sales** on that Data Center (troll sales can't fake the price).
   - Double-checked against the **next 3 cheapest listings from other sellers**, so it only alerts on real mistakes (a missing zero, a pasted wrong price) — not on items whose market just dropped.
   - NQ and HQ are checked separately. Results are sorted lowest price first and grouped by Data Center in an aligned table.
