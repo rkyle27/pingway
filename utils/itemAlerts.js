@@ -160,12 +160,17 @@ function passesRule(price, alert, median) {
 }
 
 // The same listing alerts once; within an hour only a cheaper listing alerts again (afterwards any new one)
+function canRepeat(key, listing) {
+    const st = repeats.get(key);
+    if (st && st.seen.has(listingKey(listing))) return false;
+    if (st && now() - st.time < REPEAT_COOLDOWN_MS && !(listing.pricePerUnit < st.price)) return false;
+    return true;
+}
 function takeRepeat(key, listing) {
+    if (!canRepeat(key, listing)) return false;
     const time = now();
     const lk = listingKey(listing);
     const st = repeats.get(key);
-    if (st && st.seen.has(lk)) return false;
-    if (st && time - st.time < REPEAT_COOLDOWN_MS && !(listing.pricePerUnit < st.price)) return false;
     const seen = st ? st.seen : new Set();
     seen.add(lk);
     while (seen.size > SEEN_MAX) seen.delete(seen.values().next().value);
@@ -175,6 +180,8 @@ function takeRepeat(key, listing) {
 
 // listings/add from Universalis. deps.getBaseline(itemId, scope) -> { nq: { median, count }, hq: {...} } | null (cached
 // in marketMonitor, spaced like every lookup); deps.onMatch(match) collects the alert for sending.
+// deps.deferCommit: the repeat state is only set when the caller calls match.commit() (marketMonitor: after the
+// "already bought" check), so a dropped alert never uses it up.
 async function onListingsAdd(message, deps) {
     if (!message || message.event !== 'listings/add') return 0;
     const itemId = Number(message.item);
@@ -204,9 +211,12 @@ async function onListingsAdd(message, deps) {
                     median = q && q.count > 0 && typeof q.median === 'number' ? q.median : null;
                 }
                 if (!passesRule(listing.pricePerUnit, alert, median)) continue;
-                if (!takeRepeat(alert.id + ':' + place.key + ':' + quality, listing)) continue;
+                const repeatKey = alert.id + ':' + place.key + ':' + quality;
+                if (deps && deps.deferCommit ? !canRepeat(repeatKey, listing) : !takeRepeat(repeatKey, listing)) continue;
                 found++;
                 if (deps && deps.onMatch) deps.onMatch({
+                    listing: { listingID: listing.listingID, pricePerUnit: listing.pricePerUnit, quantity: listing.quantity || 0, hq: Boolean(listing.hq) },
+                    commit: () => takeRepeat(repeatKey, listing),
                     userId: alert.userId, alertId: alert.id, itemId, name: alert.name, hq: quality === 'hq', worldId,
                     place: { key: place.key, type: place.type, name: place.name }, price: listing.pricePerUnit,
                     median: alert.belowMedian ? median : null, quantity: listing.quantity || 0

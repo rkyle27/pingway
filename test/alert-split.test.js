@@ -405,6 +405,21 @@ async function itemSetup(rows, member = 'kofi') {
     IA._test.setNow();
     await IA.load(GEO);
 }
+// Fake clock for the 45-second "already bought" hold (timers run when advance() passes them)
+let fakeNow = Date.now();
+const timers = [];
+function useFakeClock() {
+    timers.length = 0;
+    fakeNow = Date.now();
+    T.setClock(() => fakeNow, (fn, ms) => timers.push({ fn, at: fakeNow + ms }));
+}
+async function advance(ms) {
+    fakeNow += ms;
+    for (const tm of timers.splice(0)) {
+        if (tm.at <= fakeNow) await tm.fn(); else timers.push(tm);
+    }
+    await ticks(20);
+}
 const listing = (price, extra = {}) => ({ listingID: 'L' + price + (extra.id || ''), pricePerUnit: price, quantity: 1, hq: false, retainerName: 'R', ...extra });
 const add = (world, listings) => ({ event: 'listings/add', item: 5057, world, listings });
 
@@ -531,7 +546,12 @@ test('bot: matches from the live feed are sent with the Item alert settings (Imm
     T.baselineCache().clear();
     baselines.set('Mana/5057', { recentHistory: Array.from({ length: 6 }, () => ({ hq: true, pricePerUnit: 2000, timestamp: Date.now() / 1000 })), hqSaleVelocity: 2, nqSaleVelocity: 1 });
     const client = fakeClient();
+    useFakeClock();
+    market.set('49/5057', [listing(900, { hq: true })]); // still listed at the re-check
     await T.handleItemAlerts(client, add(49, [listing(900, { hq: true })]));
+    await ticks(20);
+    assert.equal(client.dms.length, 0, 'held for the "already bought" check');
+    await advance(T.BOUGHT_CHECK_MS);
     await waitFor(() => client.dms.length > 0, 3000);
     assert.equal(client.dms.length, 1);
     const e = client.dms[0].embeds[0].data;
@@ -543,8 +563,9 @@ test('bot: matches from the live feed are sent with the Item alert settings (Imm
     assert.ok(http.some(u => /universalis\.app\/api\/v2\/Mana\/5057$/.test(u)), 'median from Universalis (cached like market baselines)');
     // the same listing again: nothing new
     await T.handleItemAlerts(client, add(49, [listing(900, { hq: true })]));
-    await ticks(20);
+    await advance(T.BOUGHT_CHECK_MS);
     assert.equal(client.dms.length, 1);
+    T.setClock();
 });
 
 test('bot: Item alert DM off + channels -> channel post only; interval timing waits; market timing does not matter', async () => {
@@ -555,7 +576,10 @@ test('bot: Item alert DM off + channels -> channel post only; interval timing wa
     T.pendingItems().clear();
     T.kinds().item.lastSent.clear();
     const client = fakeClient([{ id: G1, channelId: C1, ownerId: U1 }]);
+    useFakeClock();
+    market.set('44/5057', [listing(100), listing(50)]);
     await T.handleItemAlerts(client, add(44, [listing(100)]));
+    await advance(T.BOUGHT_CHECK_MS);
     assert.equal(client.posts.length, 0, 'collected, not Immediate');
     await T.flushAlerts(client);
     assert.equal(client.dms.length, 0, 'DM switch off');
@@ -564,12 +588,152 @@ test('bot: Item alert DM off + channels -> channel post only; interval timing wa
     assert.match(client.posts[0].embeds[0].data.title, /Iron Ingot|#5057/);
     // a new cheaper listing within 5 minutes waits for the interval
     await T.handleItemAlerts(client, add(44, [listing(50)]));
+    await advance(T.BOUGHT_CHECK_MS);
     await T.flushAlerts(client);
     assert.equal(client.posts.length, 1, 'waits its 5 minutes');
     assert.equal(T.pendingItems().has(U1), true);
     T.kinds().item.lastSent.set(U1, Date.now() - 5 * 60 * 1000);
     await T.flushAlerts(client);
     assert.equal(client.posts.length, 2);
+    T.setClock();
+});
+
+// ================= "already bought" check =================
+async function itemImmediate() {
+    await itemSetup([itemRow()]);
+    db.alert_settings.set(U1 + ':item', { user_id: U1, kind: 'item', dm: 1, alert_interval: 0 });
+    await T.loadKindSettings('item');
+    T.pendingItems().clear();
+    T.held().clear();
+    useFakeClock();
+    return fakeClient();
+}
+const LID = 'L500';
+const sale = (extra = {}) => ({ event: 'sales/add', item: 5057, world: 44, sales: [{ hq: false, pricePerUnit: 500, quantity: 1, timestamp: Math.floor(fakeNow / 1000), buyerName: 'Some Buyer', worldID: 44, ...extra }] });
+
+test('bought check: an Immediate Item alert waits 45 s, then one live re-check, then it is sent', async () => {
+    const client = await itemImmediate();
+    market.set('44/5057', [listing(500)]);
+    const before = http.length;
+    await T.handleItemAlerts(client, add(44, [listing(500)]));
+    await advance(T.BOUGHT_CHECK_MS - 1000);
+    assert.equal(client.dms.length, 0, 'not before 45 s');
+    assert.equal(T.held().size, 1);
+    await advance(1000);
+    await waitFor(() => client.dms.length > 0, 3000);
+    assert.equal(client.dms.length, 1, 'sent right after the check');
+    assert.equal(http.slice(before).filter(u => /\/44\/5057$/.test(u)).length, 1, 'one live check of that world');
+    assert.equal(T.held().size, 0, 'cleared');
+    T.setClock();
+});
+
+test('bought check: a listings/remove of that listing drops it, and the cooldown is not used up', async () => {
+    const client = await itemImmediate();
+    market.set('44/5057', [listing(500)]);
+    const logs = [];
+    console.log = m => logs.push(String(m));
+    await T.handleItemAlerts(client, add(44, [listing(500)]));
+    T.boughtOnRemove({ event: 'listings/remove', item: 5057, world: 44, listings: [{ listingID: 'other' }] });
+    assert.equal(T.held().size, 1, 'another listing removed: still held');
+    T.boughtOnRemove({ event: 'listings/remove', item: 5057, world: 44, listings: [{ listingID: LID }] });
+    assert.equal(T.held().size, 0);
+    await advance(T.BOUGHT_CHECK_MS);
+    console.log = () => {};
+    assert.equal(client.dms.length, 0, 'dropped');
+    assert.ok(logs.some(l => /🛒 \[BOUGHT\] Item #5057 on Anima: dropped \(listing removed\)/.test(l)), logs.join('\n'));
+    assert.equal(IA._test.repeats().size, 0, 'no repeat / cooldown state set');
+    // a new listing at the same price right after still alerts (nothing was used up)
+    await T.handleItemAlerts(client, add(44, [listing(500, { listingID: 'L500b' })]));
+    market.set('44/5057', [listing(500, { listingID: 'L500b' })]);
+    await advance(T.BOUGHT_CHECK_MS);
+    await waitFor(() => client.dms.length > 0, 3000);
+    assert.equal(client.dms.length, 1);
+    T.setClock();
+});
+
+test('bought check: a fresh matching sale drops it; an old history sale, another price or quantity or HQ does not', async () => {
+    const client = await itemImmediate();
+    market.set('44/5057', [listing(500)]);
+    const logs = [];
+    console.log = m => logs.push(String(m));
+    await T.handleItemAlerts(client, add(44, [listing(500)]));
+    T.boughtOnSale(sale({ timestamp: Math.floor((fakeNow - 2 * 3600e3) / 1000) })); // history from 2 hours ago
+    T.boughtOnSale(sale({ pricePerUnit: 499 }));
+    T.boughtOnSale(sale({ quantity: 2 }));
+    T.boughtOnSale(sale({ hq: true }));
+    T.boughtOnSale({ ...sale(), world: 49 });
+    assert.equal(T.held().size, 1, 'none of these count');
+    await advance(20000);
+    T.boughtOnSale(sale({ timestamp: Math.floor((fakeNow - 50000) / 1000) })); // 30 s before first seen: within the 60 s slack
+    assert.equal(T.held().size, 0, 'bought');
+    await advance(T.BOUGHT_CHECK_MS);
+    console.log = () => {};
+    assert.equal(client.dms.length, 0);
+    assert.ok(logs.some(l => /dropped \(sold to a buyer\)/.test(l)));
+    assert.ok(!logs.some(l => /Some Buyer/.test(l)), 'no buyer names in the log');
+    T.setClock();
+});
+
+test('bought check: gone at the re-check = dropped; re-check failing (network) = sent anyway', async () => {
+    let client = await itemImmediate();
+    market.set('44/5057', [listing(700, { listingID: 'someone-else' })]); // our listing is not there anymore
+    await T.handleItemAlerts(client, add(44, [listing(500)]));
+    await advance(T.BOUGHT_CHECK_MS);
+    await ticks(40);
+    assert.equal(client.dms.length, 0, 'gone at re-check');
+    assert.equal(IA._test.repeats().size, 0);
+    client = await itemImmediate();
+    const realGet = shims.axios.get;
+    shims.axios.get = async (url, opts) => { if (/\/44\/5057$/.test(url)) throw new Error('ECONNRESET'); return realGet(url, opts); };
+    try {
+        await T.handleItemAlerts(client, add(44, [listing(500)]));
+        await advance(T.BOUGHT_CHECK_MS);
+        await waitFor(() => client.dms.length > 0, 3000);
+    } finally { shims.axios.get = realGet; }
+    assert.equal(client.dms.length, 1, 'sent anyway');
+    T.setClock();
+});
+
+test('bought check: market alerts are held too, and a dropped one does not set the 1-hour cooldown', async () => {
+    db = freshDb();
+    await DDL.createTables(pool);
+    T.setGeo({ Mana: [44, 49], Aether: [73] }, GEO.dcRegion, GEO.worldNames);
+    T.setSubscribers([{ userId: U2, dcs: ['Mana'] }]);
+    db.market_alerts = [{ user_id: U2, dm_enabled: 1, alert_interval: 0 }];
+    await T.loadIntervals();
+    T.pending().clear(); T.cooldowns().clear(); T.held().clear(); T.baselineCache().clear();
+    useFakeClock();
+    const ITEM = 6000;
+    baselines.set('Mana/' + ITEM, { recentHistory: Array.from({ length: 6 }, () => ({ hq: false, pricePerUnit: 100000, timestamp: Date.now() / 1000 })), nqSaleVelocity: 3, hqSaleVelocity: 0 });
+    const cheap = { listingID: 'M1', pricePerUnit: 1000, quantity: 1, hq: false, retainerName: 'R' };
+    const client = fakeClient();
+    await T.handleListingsAdd(client, { event: 'listings/add', item: ITEM, world: 44, listings: [cheap] });
+    assert.equal(T.held().size, 1, 'held');
+    assert.equal(T.cooldowns().size, 0, 'no cooldown while held');
+    T.boughtOnRemove({ event: 'listings/remove', item: ITEM, world: 44, listings: [{ listingID: 'M1' }] });
+    await advance(T.BOUGHT_CHECK_MS);
+    assert.equal(client.dms.length, 0, 'dropped');
+    assert.equal(T.cooldowns().size, 0, 'dropped: cooldown not used');
+    // the next cheap listing (still listed at the re-check) goes through and sets the cooldown
+    const next = { ...cheap, listingID: 'M2' };
+    market.set('44/' + ITEM, [next]);
+    await T.handleListingsAdd(client, { event: 'listings/add', item: ITEM, world: 44, listings: [next] });
+    await advance(T.BOUGHT_CHECK_MS - 1);
+    assert.equal(client.dms.length, 0, 'Immediate: not before 45 s');
+    await advance(1);
+    await waitFor(() => client.dms.length > 0, 3000);
+    assert.equal(client.dms.length, 1);
+    assert.equal(T.cooldowns().size, 1, 'cooldown set when it went into the send queue');
+    T.setClock();
+});
+
+test('bought check: listings/remove and sales/add are subscribed for market and Item alert worlds (with the retainer worlds)', async () => {
+    await itemSetup([itemRow({ places: JSON.stringify([{ type: 'world', name: 'Adamantoise' }]) })]);
+    T.setSubscribers([{ userId: U2, dcs: ['Mana'] }]);
+    const src = require('fs').readFileSync(path.join(ROOT, 'utils', 'marketMonitor.js'), 'utf8');
+    assert.match(src, /syncChannel\('listings\/remove', subscribedRemoveWorlds, removeNeeded\)/);
+    assert.match(src, /syncChannel\('sales\/add', subscribedSalesWorlds, alertWorlds\)/);
+    T.setSubscribers([]);
 });
 
 test('bot: Item alert worlds are added to the Universalis subscriptions (with market and retainer worlds)', async () => {

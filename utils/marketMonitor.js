@@ -56,6 +56,8 @@ const ALERT_COOLDOWN_MS = 60 * 60 * 1000;     // Same item/world/quality alerts 
 const SUBSCRIBER_REFRESH_MS = 5 * 60 * 1000;  // Re-check subscribers and their Data Centers every 5 minutes
 const MAX_PENDING_LOOKUPS = 50;               // Skip evaluations while this many price lookups are queued
 const LOOKUP_GAP_MS = 150;                    // Space Universalis REST calls (about 6 per second max)
+const BOUGHT_CHECK_MS = 45000;                // "Already bought" check: hold each match 45 s before it can be sent (Immediate too)
+const BOUGHT_SALE_SLACK_MS = 60 * 1000;       // a sale counts when its timestamp is at most 60 s before the listing was first seen
 
 let ws = null;
 let reconnectTimer = null;
@@ -65,7 +67,8 @@ let reconnectDelay = 10000;
 let messageCount = 0;
 let started = false;
 let subscribedWorlds = new Set();
-let subscribedRemoveWorlds = new Set(); // Retainer Watch: listings/remove channels
+let subscribedRemoveWorlds = new Set(); // listings/remove channels (Retainer Watch + the "already bought" check)
+let subscribedSalesWorlds = new Set();  // sales/add channels ("already bought" check of market alerts / Item alerts)
 let subscribers = []; // [{ userId, dcs: ['Mana', ...] }] (the market alert Data Centers set on the website)
 
 const baselineCache = new Map();  // 'itemId:dc' -> { time, data }
@@ -305,14 +308,36 @@ function isDue(userId, now) {
     return now - last >= (alertIntervals.get(userId) || 1) * 60 * 1000 - 5000;
 }
 
-function getNeededWorlds() {
+// Worlds of market alerts and Item alerts (these also get the "already bought" channels)
+function getAlertWorlds() {
     const worlds = new Set();
     for (const sub of subscribers) {
         for (const dc of sub.dcs) DC_WORLD_MAP[dc].forEach(id => worlds.add(id));
     }
-    for (const id of retainerWatch.getWorlds()) worlds.add(id); // worlds of watched retainers
     for (const id of itemAlerts.getWorlds()) worlds.add(id);    // worlds of Item alerts
     return worlds;
+}
+
+function getNeededWorlds() {
+    const worlds = getAlertWorlds();
+    for (const id of retainerWatch.getWorlds()) worlds.add(id); // worlds of watched retainers
+    return worlds;
+}
+
+// Subscribe / unsubscribe one channel kind so exactly the `needed` worlds are subscribed
+function syncChannel(name, current, needed) {
+    for (const id of Array.from(current)) {
+        if (!needed.has(id)) {
+            sendBson({ event: 'unsubscribe', channel: name + '{world=' + id + '}' });
+            current.delete(id);
+        }
+    }
+    for (const id of needed) {
+        if (!current.has(id)) {
+            sendBson({ event: 'subscribe', channel: name + '{world=' + id + '}' });
+            current.add(id);
+        }
+    }
 }
 
 // Universalis only accepts BSON-encoded messages
@@ -339,20 +364,13 @@ function syncSubscriptions() {
             added++;
         }
     }
-    // Retainer Watch: also hear when listings are sold or pulled on watched worlds
+    // Retainer Watch + the "already bought" check: hear when listings are sold or pulled (retainer worlds and alert worlds),
+    // and the sales uploaded by buyers (alert worlds)
+    const alertWorlds = getAlertWorlds();
     const removeNeeded = retainerWatch.getWorlds();
-    for (const id of Array.from(subscribedRemoveWorlds)) {
-        if (!removeNeeded.has(id)) {
-            sendBson({ event: 'unsubscribe', channel: 'listings/remove{world=' + id + '}' });
-            subscribedRemoveWorlds.delete(id);
-        }
-    }
-    for (const id of removeNeeded) {
-        if (!subscribedRemoveWorlds.has(id)) {
-            sendBson({ event: 'subscribe', channel: 'listings/remove{world=' + id + '}' });
-            subscribedRemoveWorlds.add(id);
-        }
-    }
+    for (const id of alertWorlds) removeNeeded.add(id);
+    syncChannel('listings/remove', subscribedRemoveWorlds, removeNeeded);
+    syncChannel('sales/add', subscribedSalesWorlds, alertWorlds);
     if (added || removed) {
         console.log('📡 [WS] Subscriptions updated: +' + added + ' / -' + removed + ' (watching ' + subscribedWorlds.size + ' worlds).');
     }
@@ -375,6 +393,7 @@ function cleanupSocket() {
     }
     subscribedWorlds = new Set();
     subscribedRemoveWorlds = new Set();
+    subscribedSalesWorlds = new Set();
 }
 
 function connect(client) {
@@ -403,7 +422,12 @@ function connect(client) {
             return;
         }
         if (message && message.event === 'listings/remove') {
+            boughtOnRemove(message);
             retainerWatch.onListingsRemove(message).catch(err => console.error('❌ [RETAINER ERROR]:', err.message));
+            return;
+        }
+        if (message && message.event === 'sales/add') {
+            boughtOnSale(message);
             return;
         }
         retainerWatch.onListingsAdd(message).catch(err => console.error('❌ [RETAINER ERROR]:', err.message));
@@ -581,7 +605,7 @@ async function handleListingsAdd(client, message) {
         if (percentDiff <= DISCOUNT_THRESHOLD && await passesListingCheck(itemId, dc, quality, listing)) {
             console.log('🚨 [MATCH] Item #' + itemId + ' ' + quality.toUpperCase() + ' on ' + (WORLD_NAMES[worldId] || worldId) + ' (' + dc + '): ' +
                 listing.pricePerUnit + ' Gil vs median ' + Math.round(avg) + ' Gil (' + percentDiff.toFixed(1) + '%).');
-            await notifySubscribedUsers(client, {
+            const alertData = {
                 itemId,
                 worldId,
                 dc,
@@ -590,7 +614,9 @@ async function handleListingsAdd(client, message) {
                 percentDiff,
                 hq: quality === 'hq',
                 quantity: listing.quantity
-            });
+            };
+            // "Already bought" check first; the cooldown is only used when it goes into the send queue
+            holdForBoughtCheck('m:' + itemId + ':' + worldId + ':' + quality, itemId, worldId, listing, () => notifySubscribedUsers(client, alertData));
         }
     }
 }
@@ -625,7 +651,95 @@ function watchRetainerUndercuts(client) {
 // Item alerts: check a new listing against the members' items (median lookups use the shared cache and spacing)
 async function handleItemAlerts(client, message) {
     if (!message || message.event !== 'listings/add' || !itemAlerts.watchesItem(message.item)) return;
-    await itemAlerts.onListingsAdd(message, { getBaseline, onMatch: m => notifyItemMatch(client, m) });
+    await itemAlerts.onListingsAdd(message, {
+        getBaseline,
+        deferCommit: true, // the repeat / cooldown state is only set when the alert goes into the send queue
+        onMatch: m => holdForBoughtCheck('i:' + m.alertId + ':' + m.place.key + ':' + (m.hq ? 'hq' : 'nq'), m.itemId, m.worldId, m.listing, () => {
+            if (m.commit()) notifyItemMatch(client, m);
+        })
+    });
+}
+
+// ---------- "Already bought" check (market alerts + Item alerts) ----------
+// A cheap listing is often bought by the person who uploaded it: their game re-uploads within seconds to a minute
+// (listings/remove of that listing + a sales/add with the same price and quantity). So every match waits
+// BOUGHT_CHECK_MS first and is dropped when that happens; then ONE live check of the world's listings (spaced like
+// every lookup): gone = dropped, check failed = sent anyway. Entries are removed as soon as they resolve.
+let clock = () => Date.now();
+let schedule = (fn, ms) => setTimeout(fn, ms);
+const held = new Map();          // holdKey -> { itemId, worldId, listingID, hq, price, quantity, firstSeen, release, dropped }
+const recheckShared = new Map(); // 'worldId/itemId' -> { time, promise } (holds released together share one live check)
+
+function holdForBoughtCheck(key, itemId, worldId, listing, release) {
+    const lid = listing && listing.listingID ? String(listing.listingID) : '';
+    const holdKey = key + ':' + (lid || (listing ? listing.pricePerUnit + 'x' + (listing.quantity || 0) : ''));
+    if (held.has(holdKey)) return; // the same listing is already waiting
+    const h = { itemId: Number(itemId), worldId: Number(worldId), listingID: lid, hq: Boolean(listing && listing.hq),
+        price: listing ? listing.pricePerUnit : 0, quantity: listing ? listing.quantity || 0 : 0, firstSeen: clock(), release, dropped: null };
+    held.set(holdKey, h);
+    schedule(() => finishHold(holdKey).catch(err => console.error('❌ [BOUGHT] Check failed:', err.message)), BOUGHT_CHECK_MS);
+}
+
+function dropHold(holdKey, h, reason) {
+    if (h.dropped) return;
+    h.dropped = reason;
+    held.delete(holdKey);
+    console.log('🛒 [BOUGHT] Item #' + h.itemId + ' on ' + (WORLD_NAMES[h.worldId] || h.worldId) + ': dropped (' + reason + ').');
+}
+
+function boughtOnRemove(message) {
+    if (!held.size || !message || !Array.isArray(message.listings)) return;
+    const ids = new Set(message.listings.map(l => l && l.listingID ? String(l.listingID) : '').filter(Boolean));
+    if (!ids.size) return;
+    for (const [k, h] of Array.from(held)) {
+        if (h.listingID && ids.has(h.listingID)) dropHold(k, h, 'listing removed');
+    }
+}
+
+function boughtOnSale(message) {
+    if (!held.size || !message || !Array.isArray(message.sales)) return;
+    const itemId = Number(message.item);
+    const worldId = Number(message.world);
+    for (const [k, h] of Array.from(held)) {
+        if (h.itemId !== itemId || h.worldId !== worldId) continue;
+        const sold = message.sales.some(s => s && Boolean(s.hq) === h.hq && s.pricePerUnit === h.price && (s.quantity || 0) === h.quantity &&
+            typeof s.timestamp === 'number' && s.timestamp * 1000 >= h.firstSeen - BOUGHT_SALE_SLACK_MS); // old history sales don't count
+        if (sold) dropHold(k, h, 'sold to a buyer');
+    }
+}
+
+// Current listings of the item on that world (null = the check failed)
+function liveListings(worldId, itemId) {
+    const key = worldId + '/' + itemId;
+    const hit = recheckShared.get(key);
+    if (hit && clock() - hit.time < 5000) return hit.promise;
+    const promise = (async () => {
+        try {
+            await waitForLookupSlot();
+            const res = await axios.get(UNIVERSALIS_API + '/' + worldId + '/' + itemId, { params: { listings: 100, entries: 0 }, timeout: 8000 });
+            return res.data && Array.isArray(res.data.listings) ? res.data.listings : null;
+        } catch (err) {
+            return null;
+        }
+    })();
+    recheckShared.set(key, { time: clock(), promise });
+    for (const [k, v] of recheckShared) if (clock() - v.time > 60000) recheckShared.delete(k);
+    return promise;
+}
+
+async function finishHold(holdKey) {
+    const h = held.get(holdKey);
+    if (!h || h.dropped) return;
+    if (h.listingID) {
+        const listings = await liveListings(h.worldId, h.itemId);
+        if (h.dropped) return; // dropped by a remove / sale while checking
+        if (listings && !listings.some(l => l && String(l.listingID) === h.listingID)) {
+            dropHold(holdKey, h, 'gone at re-check');
+            return;
+        }
+    }
+    held.delete(holdKey);
+    h.release();
 }
 
 // Collect one Item alert match; sent by flushAlerts at the member's Item alert timing (Immediate: right away)
@@ -1090,5 +1204,9 @@ module.exports = { initMarketMonitor, CHANNEL_LIMITS,
         // separate retainer / item alert settings, market alert Data Centers, Item alerts
         loadKindSettings, kinds: () => kinds, kindDue, kindCanSend, loadSubscribers, ensureSplit, resetSplit: () => { splitReady = false; },
         notifyItemMatch, pendingItems: () => pendingItems, handleItemAlerts, buildItemAlertEmbed, refresh,
+        // "already bought" check
+        BOUGHT_CHECK_MS, held: () => held, holdForBoughtCheck, boughtOnRemove, boughtOnSale, finishHold, handleListingsAdd,
+        setClock: (nowFn, scheduleFn) => { clock = nowFn || (() => Date.now()); schedule = scheduleFn || ((fn, ms) => setTimeout(fn, ms)); recheckShared.clear(); },
+        syncSubscriptions, subscriptions: () => ({ add: subscribedWorlds, remove: subscribedRemoveWorlds, sales: subscribedSalesWorlds }),
         setGeo: (dcWorlds, dcRegion, names) => { DC_WORLD_MAP = dcWorlds; DC_REGION = dcRegion; Object.assign(WORLD_NAMES, names || {}); rebuildWorldIndex(); },
         baselineCache: () => baselineCache } };
