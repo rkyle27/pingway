@@ -405,7 +405,7 @@ async function itemSetup(rows, member = 'kofi') {
     IA._test.setNow();
     await IA.load(GEO);
 }
-// Fake clock for the 45-second "already bought" hold (timers run when advance() passes them)
+// Fake clock for the 10-second "already bought" hold (timers run when advance() passes them)
 let fakeNow = Date.now();
 const timers = [];
 function useFakeClock() {
@@ -611,13 +611,13 @@ async function itemImmediate() {
 const LID = 'L500';
 const sale = (extra = {}) => ({ event: 'sales/add', item: 5057, world: 44, sales: [{ hq: false, pricePerUnit: 500, quantity: 1, timestamp: Math.floor(fakeNow / 1000), buyerName: 'Some Buyer', worldID: 44, ...extra }] });
 
-test('bought check: an Immediate Item alert waits 45 s, then one live re-check, then it is sent', async () => {
+test('bought check: an Immediate Item alert waits 10 s, then one live re-check, then it is sent', async () => {
     const client = await itemImmediate();
     market.set('44/5057', [listing(500)]);
     const before = http.length;
     await T.handleItemAlerts(client, add(44, [listing(500)]));
     await advance(T.BOUGHT_CHECK_MS - 1000);
-    assert.equal(client.dms.length, 0, 'not before 45 s');
+    assert.equal(client.dms.length, 0, 'not before 10 s');
     assert.equal(T.held().size, 1);
     await advance(1000);
     await waitFor(() => client.dms.length > 0, 3000);
@@ -663,8 +663,8 @@ test('bought check: a fresh matching sale drops it; an old history sale, another
     T.boughtOnSale(sale({ hq: true }));
     T.boughtOnSale({ ...sale(), world: 49 });
     assert.equal(T.held().size, 1, 'none of these count');
-    await advance(20000);
-    T.boughtOnSale(sale({ timestamp: Math.floor((fakeNow - 50000) / 1000) })); // 30 s before first seen: within the 60 s slack
+    await advance(5000); // still inside the 10 s hold
+    T.boughtOnSale(sale({ timestamp: Math.floor((fakeNow - 50000) / 1000) })); // 45 s before first seen: within the 60 s slack
     assert.equal(T.held().size, 0, 'bought');
     await advance(T.BOUGHT_CHECK_MS);
     console.log = () => {};
@@ -719,7 +719,7 @@ test('bought check: market alerts are held too, and a dropped one does not set t
     market.set('44/' + ITEM, [next]);
     await T.handleListingsAdd(client, { event: 'listings/add', item: ITEM, world: 44, listings: [next] });
     await advance(T.BOUGHT_CHECK_MS - 1);
-    assert.equal(client.dms.length, 0, 'Immediate: not before 45 s');
+    assert.equal(client.dms.length, 0, 'Immediate: not before 10 s');
     await advance(1);
     await waitFor(() => client.dms.length > 0, 3000);
     assert.equal(client.dms.length, 1);

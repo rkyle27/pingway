@@ -56,7 +56,7 @@ const ALERT_COOLDOWN_MS = 60 * 60 * 1000;     // Same item/world/quality alerts 
 const SUBSCRIBER_REFRESH_MS = 5 * 60 * 1000;  // Re-check subscribers and their Data Centers every 5 minutes
 const MAX_PENDING_LOOKUPS = 50;               // Skip evaluations while this many price lookups are queued
 const LOOKUP_GAP_MS = 150;                    // Space Universalis REST calls (about 6 per second max)
-const BOUGHT_CHECK_MS = 45000;                // "Already bought" check: hold each match 45 s before it can be sent (Immediate too)
+const BOUGHT_CHECK_MS = 10000;                // "Already bought" check: hold each match 10 s before it can be sent (Immediate too)
 const BOUGHT_SALE_SLACK_MS = 60 * 1000;       // a sale counts when its timestamp is at most 60 s before the listing was first seen
 
 let ws = null;
