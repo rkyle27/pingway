@@ -1,0 +1,95 @@
+{
+    "updates": [
+        {
+            "id": "2026-11-17-database-security",
+            "date": "2026-11-17",
+            "time": "22:20",
+            "version": "",
+            "newsId": "pingway-v2-2-boards",
+            "title": "Database security update",
+            "i18n": {
+                "fr": { "title": "Mise à jour de sécurité de la base de données" },
+                "de": { "title": "Datenbank-Sicherheitsupdate" },
+                "ja": { "title": "データベースのセキュリティ更新" }
+            }
+        },
+        {
+            "id": "2026-11-16-v2-2",
+            "date": "2026-11-16",
+            "time": "19:15",
+            "version": "v2.2",
+            "newsId": "pingway-v2-2-boards",
+            "title": "Boards update",
+            "i18n": {
+                "fr": { "title": "Mise à jour des Tableaux" },
+                "de": { "title": "Pinnwände-Update" },
+                "ja": { "title": "掲示板アップデート" }
+            }
+        },
+        {
+            "id": "2026-11-11-v2-1-6",
+            "date": "2026-11-11",
+            "time": "04:15",
+            "version": "v2.1.6",
+            "newsId": "pingway-update-2026-11-11",
+            "title": "Feel the Seasons Update",
+            "i18n": {
+                "fr": { "title": "La mise à jour Vis les saisons" },
+                "de": { "title": "Das Spür-die-Jahreszeiten-Update" },
+                "ja": { "title": "季節を感じるアップデート" }
+            }
+        },
+        {
+            "id": "2026-11-07-v2-1-5",
+            "date": "2026-11-07",
+            "time": "04:00",
+            "version": "v2.1.5",
+            "newsId": "pingway-update-2026-11-07",
+            "title": "Pingway speaks your language, Dashboard, Welcome cards, Voice",
+            "i18n": {
+                "fr": { "title": "Pingway parle ta langue, tableau de bord, cartes de bienvenue, vocal" },
+                "de": { "title": "Pingway spricht deine Sprache, Dashboard, Willkommenskarten, Voice" },
+                "ja": { "title": "多言語対応、ダッシュボード、ウェルカムカード、ボイス" }
+            }
+        },
+        {
+            "id": "2026-11-04-v2-1-0",
+            "date": "2026-11-04",
+            "time": "18:55",
+            "version": "v2.1.0",
+            "newsId": "pingway-update-2026-11-06",
+            "title": "Trivia, Market tools, Raid sheets, Reaction Roles",
+            "i18n": {
+                "fr": { "title": "Trivia, outils de marché, feuilles de raid, rôles par réaction" },
+                "de": { "title": "Trivia, Marktwerkzeuge, Raid-Tabellen, Reaktionsrollen" },
+                "ja": { "title": "トリビア、マーケットツール、レイドシート、リアクションロール" }
+            }
+        },
+        {
+            "id": "2026-11-02-logo-honeypot",
+            "date": "2026-11-02",
+            "time": "22:40",
+            "version": "",
+            "newsId": "pingway-update-2026-11-02",
+            "title": "New logo, Honeypot, Retainer Watch, DM interval",
+            "i18n": {
+                "fr": { "title": "Nouveau logo, pot de miel, veille des servants, intervalle des MP" },
+                "de": { "title": "Neues Logo, Honigtopf, Gehilfen-Wache, DM-Intervall" },
+                "ja": { "title": "新ロゴ、ハニーポット、リテイナーウォッチ、DMの間隔" }
+            }
+        },
+        {
+            "id": "2026-11-01-v2-0",
+            "date": "2026-11-01",
+            "time": "15:15",
+            "version": "v2.0",
+            "newsId": "pingway-v2-0",
+            "title": "Manage Pingway in your browser",
+            "i18n": {
+                "fr": { "title": "Gère Pingway dans ton navigateur" },
+                "de": { "title": "Verwalte Pingway im Browser" },
+                "ja": { "title": "ブラウザでPingwayを管理" }
+            }
+        }
+    ]
+}
