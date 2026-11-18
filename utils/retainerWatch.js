@@ -377,7 +377,7 @@ async function forgetAlerts(items) {
         try {
             await pool.execute('UPDATE retainer_items SET last_alert_price = NULL WHERE watch_id = ? AND item_id = ? AND hq = ?', [watchId, u.itemId, u.hq ? 1 : 0]);
         } catch (err) {
-            console.error('❌ [RETAINERS] Could not reset alert:', err.message);
+            console.error('❌ [RETAINERS] Could not reset ping:', err.message);
         }
     }
 }
@@ -429,7 +429,7 @@ async function recheck(u) {
     try {
         await pool.execute('UPDATE retainer_items SET last_alert_price = ? WHERE watch_id = ? AND item_id = ? AND hq = ?', [Math.round(c.theirs), u.watchId, u.itemId, u.hq ? 1 : 0]);
     } catch (err) {
-        console.error('❌ [RETAINERS] Could not save alert price:', err.message);
+        console.error('❌ [RETAINERS] Could not save ping price:', err.message);
     }
     return 'keep';
 }
@@ -554,7 +554,7 @@ async function describeUser(userId) {
                 }
             }
             console.log('    • ' + (await itemName(it.item_id)) + (hq ? ' HQ' : '') + ': tracked price ' + gil(it.price) + ' | seen ' + fmtTime(it.last_seen) +
-                (it.last_alert_price !== null && it.last_alert_price !== undefined ? ' | last alert at ' + gil(it.last_alert_price) : '') + live);
+                (it.last_alert_price !== null && it.last_alert_price !== undefined ? ' | last ping at ' + gil(it.last_alert_price) : '') + live);
         }
     }
     console.log('');

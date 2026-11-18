@@ -57,7 +57,7 @@ async function isMember(userId) {
             if (p) active = true;
         }
     } catch (err) {
-        console.error('❌ [ITEM ALERTS] Membership check failed:', err.message);
+        console.error('❌ [ITEM PINGS] Membership check failed:', err.message);
         if (hit) return hit.active; // keep the last known answer on a database hiccup
     }
     memberCache.set(id, { time, active });
@@ -99,7 +99,7 @@ async function load(geo) {
     try {
         [rows] = await pool.execute('SELECT id, user_id, item_id, item_name, quality, places, max_price, below_median FROM item_alerts ORDER BY user_id, id');
     } catch (err) {
-        if (!missing(err)) console.error('❌ [ITEM ALERTS] Could not load item alerts:', err.message);
+        if (!missing(err)) console.error('❌ [ITEM PINGS] Could not load item pings:', err.message);
         byItem = new Map();
         worlds = new Set();
         return;
@@ -139,7 +139,7 @@ async function load(geo) {
     for (const [k, v] of memberCache) if (now() - v.time > MEMBER_CACHE_MS * 4) memberCache.delete(k);
     const summary = count + ' item alert(s) on ' + nextWorlds.size + ' world(s)' + (paused ? ', ' + paused + ' paused' : '');
     if (summary !== lastSummary) {
-        console.log('🔔 [ITEM ALERTS] Watching ' + summary + '.');
+        console.log('🔔 [ITEM PINGS] Watching ' + summary + '.');
         lastSummary = summary;
     }
 }

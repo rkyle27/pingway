@@ -26,5 +26,5 @@
   "roleSet": "✅ Successfully set <@&{roleId}> as the official notification role for this server!",
   "noDate": "⚠️ No date set.",
   "testStarted": "🧪 **Test initiated!** Target set to 1 minute from now ({timestamp}).",
-  "alert": "🚨 **Event Release Alert!**\n\n**{name}** is starting now! ({time} / {relative}) {role}"
+  "alert": "🚨 **Event Release Ping!**\n\n**{name}** is starting now! ({time} / {relative}) {role}"
 }

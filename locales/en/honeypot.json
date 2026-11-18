@@ -40,18 +40,18 @@
   },
   "cmd": {
     "description": "🍯 \"Do not chat here\" channel that removes hacked accounts.",
-    "action": "What to do: set the channel, turn off, DM alerts, warning message or status.",
+    "action": "What to do: set the channel, turn off, DM pings, warning message or status.",
     "actionName": "action",
     "actions": {
       "set": "Set channel",
       "off": "Turn off",
-      "dm": "DM alerts",
+      "dm": "DM pings",
       "warning": "Warning message",
       "status": "Status"
     },
     "channel": "The do-not-chat channel (for Set channel)",
     "channelName": "channel",
-    "on": "On (True) or off (False), for DM alerts and Warning message",
+    "on": "On (True) or off (False), for DM pings and Warning message",
     "onName": "on"
   },
   "perms": {
@@ -74,6 +74,6 @@
   "needChannel": "⚠️ Please also fill in the `channel:` option to use **Set channel**.",
   "needOn": "⚠️ Please also fill in the `on:` option (True = on, False = off) to use **{action}**.",
   "onlyChannel": "⚠️ The `channel:` option is only used with **Set channel**. Run the command again without it.",
-  "onlyOn": "⚠️ The `on:` option is only used with **DM alerts** and **Warning message**. Run the command again without it.",
+  "onlyOn": "⚠️ The `on:` option is only used with **DM pings** and **Warning message**. Run the command again without it.",
   "failed": "❌ Something went wrong. Please try again."
 }

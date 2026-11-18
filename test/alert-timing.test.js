@@ -290,5 +290,5 @@ test('/marketalert shows "Alert timing: Immediate" for 0, and "every X minutes" 
         assert.ok(one.includes(t(l, 'marketalert.every', { interval: t(l, 'marketalert.minute', { n: 1 }) })), l + ': every 1 minute');
     }
     lang = 'en';
-    assert.match(await show(NOW_USER, 'en'), /\*\*Alert timing:\*\* Immediate/);
+    assert.match(await show(NOW_USER, 'en'), /\*\*Ping timing:\*\* Immediate/);
 });

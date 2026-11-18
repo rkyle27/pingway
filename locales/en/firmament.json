@@ -13,7 +13,7 @@
   "nextCelebration": "**Next 24-hour celebration begins in:** {time}",
   "trackerTitle": "🏰 Ishgard Restoration Tracker",
   "status": "**Status:** {title}\n{description}\n\n{countdown}",
-  "disableDm": "🔕 Disable DM Alerts",
+  "disableDm": "🔕 Disable DM Pings",
   "getDm": "🔔 Get Notification DM",
   "remove": "🗑️ Remove Current Counter",
   "setupFirst": "❌ You need to set up your personal countdown first by clicking **⚙️ Set Actual Countdown**.",

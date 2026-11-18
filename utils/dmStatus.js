@@ -52,7 +52,7 @@ async function markFailed(userId, reason) {
             [id, reason, fails, now, retryAfter]
         );
         blocked.set(id, retryAfter);
-        console.log('📵 [DM STATUS] Can\'t DM user ' + id + ' (' + reason + '). Their alerts pause until ' + new Date(retryAfter).toISOString() + '.');
+        console.log('📵 [DM STATUS] Can\'t DM user ' + id + ' (' + reason + '). Their pings pause until ' + new Date(retryAfter).toISOString() + '.');
     } catch (err) {
         console.error('❌ [DM STATUS] Could not save paused user:', err.message);
     }
@@ -65,7 +65,7 @@ async function markOk(userId) {
     blocked.delete(id);
     try {
         await pool.execute('DELETE FROM dm_blocked WHERE user_id = ?', [id]);
-        console.log('📬 [DM STATUS] DMs to user ' + id + ' work again. Alerts resumed.');
+        console.log('📬 [DM STATUS] DMs to user ' + id + ' work again. Pings resumed.');
     } catch (err) {
         console.error('❌ [DM STATUS] Could not clear paused user:', err.message);
     }

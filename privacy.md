@@ -11,7 +11,7 @@ This policy explains what the Pingway Discord bot and the Pingway website (https
 **Settings and data you create with Pingway**, only when you use the feature:
 | Feature | What is stored |
 |---|---|
-| `/datacenter`, `/marketalert` | Your chosen Data Centers; whether price alert DMs are on |
+| `/datacenter`, `/marketping` | Your chosen Data Centers; whether price ping DMs are on |
 | `/status` | The world you track; whether status DMs are on |
 | `/ignconfig`, `/ign` | Your Lodestone character ID, main job, image links, Tomestone and FFLogs links |
 | `/firmament` | Your Skyrise Celebration timer and DM setting |
@@ -28,7 +28,7 @@ Newer features (Retainer Watch, Supporter Perks, Pingway Trivia, Honeypot, Ticke
 ## 1a. Features in detail
 
 ### Retainer Watch (website → Retainers)
-- **What is stored:** your Discord user ID, the retainers you add (world, retainer name, and one item it sells), the listing prices Pingway tracks for them, and the alert state (what you were already told about).
+- **What is stored:** your Discord user ID, the retainers you add (world, retainer name, and one item it sells), the listing prices Pingway tracks for them, and the ping state (what you were already told about).
 - **Why:** to DM you when someone undercuts your retainer's listing.
 - **Your choice:** remove a retainer at any time on the Retainers page; its data goes with it.
 
@@ -46,11 +46,11 @@ Newer features (Retainer Watch, Supporter Perks, Pingway Trivia, Honeypot, Ticke
 - Market data comes from **Universalis**; item data comes from **XIVAPI**.
 - Pingway also keeps a **shared table of popular items per region**. It contains no personal data.
 
-### Market alerts in a server channel
-- **What is stored:** which servers and channels you picked to receive your market alerts.
+### Market pings in a server channel
+- **What is stored:** which servers and channels you picked to receive your market pings.
 
 ### DM status
-- If Pingway can't DM you (DMs closed, or no shared server), it remembers your user ID, the reason and when to try again, so your alerts pause instead of failing over and over. The website shows a warning and an "I fixed it" button that clears it.
+- If Pingway can't DM you (DMs closed, or no shared server), it remembers your user ID, the reason and when to try again, so your pings pause instead of failing over and over. The website shows a warning and an "I fixed it" button that clears it.
 
 ### Honeypot (server admins)
 - A "do not chat here" channel that removes hacked accounts posting spam.
@@ -91,7 +91,7 @@ Newer features (Retainer Watch, Supporter Perks, Pingway Trivia, Honeypot, Ticke
 - Word data comes from **XIVAPI**.
 
 ## 2. Why we use it
-Only to run Pingway's features (reminders, alerts, settings, games), to keep it working, and to prevent abuse. We do not sell, rent or trade your data, we do not show ads, and we do not build profiles of you.
+Only to run Pingway's features (reminders, pings, settings, games), to keep it working, and to prevent abuse. We do not sell, rent or trade your data, we do not show ads, and we do not build profiles of you.
 
 ## 3. Who we share it with (service providers)
 Pingway needs these services to work. They only receive what the feature needs:
@@ -108,7 +108,7 @@ We may also disclose data if required by law.
 
 ## 3a. When AI is used (and when it is not)
 - AI is used **only** for normal chat messages in a channel where a server admin turned on the AI assistant with **`/ailistenhere`**.
-- AI is **never** used for slash commands (`/price`, `/status`, `/todo`, `/pf`, `/ign` and all others), buttons, menus, DMs, the website, market alerts, or messages in any other channel.
+- AI is **never** used for slash commands (`/price`, `/status`, `/todo`, `/pf`, `/ign` and all others), buttons, menus, DMs, the website, market pings, or messages in any other channel.
 - In an AI channel, only what is needed for **your own** reply is sent to OpenRouter, which passes it to Google's Gemini model: your message, your display name, and **your own** AI notes and active reminders (so the AI can answer questions like "what are my reminders?").
 - **Pingway's database is never shared with any AI company.** No other users' data, server settings or anything else from the database is ever sent to the AI.
 - The short conversation memory (your last 15 messages) is kept **only in memory**, never in the database, and is cleared when the bot restarts or when you say "release recollection".

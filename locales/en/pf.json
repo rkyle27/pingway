@@ -2,7 +2,7 @@
   "alert": {
     "event": "Event",
     "in30": "⏰ **Party Finder Reminder:** Reminder for **{name}** starts in **30 minutes** ({time})! {pings}",
-    "now": "🚨 **Party Finder Alert:** **{name}** is starting **NOW**! Get in position! {pings}"
+    "now": "🚨 **Party Finder Ping:** **{name}** is starting **NOW**! Get in position! {pings}"
   },
   "none": "*None*",
   "unknown": "Unknown",

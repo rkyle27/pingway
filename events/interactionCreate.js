@@ -165,7 +165,7 @@ module.exports = {
 
                 // Market Alert
                 if (cid.startsWith('marketalert_') || cid.startsWith('market_')) {
-                    const marketCommand = client.commands.get('marketalert');
+                    const marketCommand = client.commands.get('marketping');
                     if (marketCommand && typeof marketCommand.handleInteraction === 'function') {
                         return await marketCommand.handleInteraction(interaction);
                     } else if (marketCommand && typeof marketCommand.execute === 'function') {

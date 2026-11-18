@@ -28,13 +28,13 @@ If you manage a server, you are responsible for how Pingway is set up there (cha
 AI replies are generated automatically by a third-party model and **can be wrong**. Do not rely on them for anything important and do not share sensitive personal information with the AI.
 
 ## 6. Game and market data
-Prices, market alerts, server status and game information come from third-party community services (Universalis, XIVAPI, xivup, The Lodestone) and may be late, incomplete or wrong. Market alerts are informational only. Always check in game before buying or selling.
+Prices, market pings, server status and game information come from third-party community services (Universalis, XIVAPI, xivup, The Lodestone) and may be late, incomplete or wrong. Market pings are informational only. Always check in game before buying or selling.
 
 ## 7. Availability and changes
 We do not guarantee uptime. Pingway may be down for maintenance, updates or hosting problems. We may change, pause or remove features at any time.
 
 ## 8. Limitation of liability
-To the maximum extent allowed by law, the developer is not liable for any damages, including lost data, missed reminders or alerts, in-game losses, or server disruption, arising from using or not being able to use Pingway.
+To the maximum extent allowed by law, the developer is not liable for any damages, including lost data, missed reminders or pings, in-game losses, or server disruption, arising from using or not being able to use Pingway.
 
 ## 9. Trademarks
 FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd. FINAL FANTASY XIV © SQUARE ENIX. Pingway is not affiliated with or endorsed by Square Enix or Discord.

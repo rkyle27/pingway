@@ -432,7 +432,7 @@ function connect(client) {
         }
         retainerWatch.onListingsAdd(message).catch(err => console.error('❌ [RETAINER ERROR]:', err.message));
         handleListingsAdd(client, message).catch(err => console.error('❌ [EVAL ERROR]:', err.message));
-        handleItemAlerts(client, message).catch(err => console.error('❌ [ITEM ALERT ERROR]:', err.message));
+        handleItemAlerts(client, message).catch(err => console.error('❌ [ITEM PING ERROR]:', err.message));
     });
 
     ws.on('close', (code, reason) => {
@@ -638,7 +638,7 @@ function scheduleImmediateFlush(client) {
         if (flushing || immediateQueue.size === 0) return; // the running flush starts the next one when it ends
         const users = new Set(immediateQueue);
         immediateQueue.clear();
-        flushAlerts(client, users).catch(err => console.error('❌ [DM ERROR] Failed to send immediate alerts:', err.message));
+        flushAlerts(client, users).catch(err => console.error('❌ [DM ERROR] Failed to send immediate pings:', err.message));
     });
 }
 
@@ -931,10 +931,10 @@ async function postToChannels(client, userId, targets, embedsFor, footerKey = 'a
             targetWarned.set(warnKey, Date.now());
             console.error('❌ [MARKET] ' + text);
         };
-        if (!guild || !channel || !channel.isTextBased()) { warn('Alert channel for user ' + userId + ' not found (server ' + target.guildId + ').'); continue; }
+        if (!guild || !channel || !channel.isTextBased()) { warn('Ping channel for user ' + userId + ' not found (server ' + target.guildId + ').'); continue; }
         const member = guild.ownerId === userId ? null : await guild.members.fetch(userId).catch(() => null);
         if (guild.ownerId !== userId && !(member && member.permissions.has(PermissionFlagsBits.Administrator))) {
-            warn('User ' + userId + ' is no longer owner/admin of ' + guild.name + ': market alerts not posted there.');
+            warn('User ' + userId + ' is no longer owner/admin of ' + guild.name + ': market pings not posted there.');
             continue;
         }
         const lang = userLanguage.forGuild(guild); // public post: the server's language
@@ -950,12 +950,12 @@ async function postToChannels(client, userId, targets, embedsFor, footerKey = 'a
                     : { embeds: group, allowedMentions: { parse: [] } });
                 sent++;
             } catch (err) {
-                warn('Could not post market alerts in #' + channel.name + ' (' + guild.name + '): ' + err.message);
+                warn('Could not post market pings in #' + channel.name + ' (' + guild.name + '): ' + err.message);
                 break;
             }
         }
     }
-    if (sent) console.log('✅ [ALERTS POSTED] Market alerts for user ' + userId + ' posted in ' + sent + ' message(s) to server channel(s).');
+    if (sent) console.log('✅ [PINGS POSTED] Market pings for user ' + userId + ' posted in ' + sent + ' message(s) to server channel(s).');
     return sent;
 }
 
@@ -1083,7 +1083,7 @@ async function flushAlerts(client, onlyUsers) {
                     if (entries.length) lastSentAt.set(userId, now);
                     if (hasUndercuts) kinds.retainer.lastSent.set(userId, now);
                     if (itemEntries.length) kinds.item.lastSent.set(userId, now);
-                    console.log('✅ [DM SENT] Alert message (' + group.length + ' embed(s)) sent to user ' + userId);
+                    console.log('✅ [DM SENT] Ping message (' + group.length + ' embed(s)) sent to user ' + userId);
                     await dmStatus.markOk(userId);
                 } catch (err) {
                     console.error('❌ [DM FAILED] Could not send DM to user ' + userId + '. Reason: ' + err.message + ' (Check direct message privacy settings)');
@@ -1099,7 +1099,7 @@ async function flushAlerts(client, onlyUsers) {
         quickFlushRunning = false;
         if (timerFlushWaiting) {
             timerFlushWaiting = false;
-            setImmediate(() => flushAlerts(client).catch(err => console.error('❌ [DM ERROR] Failed to send collected alerts:', err.message)));
+            setImmediate(() => flushAlerts(client).catch(err => console.error('❌ [DM ERROR] Failed to send collected pings:', err.message)));
         }
         // Immediate users whose alerts came in during this flush: send them now
         if (immediateQueue.size) scheduleImmediateFlush(client);
@@ -1112,10 +1112,10 @@ async function ensureSplit() {
     if (splitReady) return;
     try {
         const copied = await ensureAlertSplit(pool, Date.now());
-        if (copied) console.log('🔀 [MARKET] Alert settings split: copied ' + copied.dcs + ' market alert Data Center list(s) and ' + copied.retainers + ' retainer alert setting(s).');
+        if (copied) console.log('🔀 [MARKET] Ping settings split: copied ' + copied.dcs + ' market ping Data Center list(s) and ' + copied.retainers + ' retainer ping setting(s).');
         splitReady = true;
     } catch (err) {
-        console.error('❌ [MARKET] Could not prepare the alert settings tables:', err.message);
+        console.error('❌ [MARKET] Could not prepare the ping settings tables:', err.message);
     }
 }
 
@@ -1153,7 +1153,7 @@ async function refresh(client) {
 
         if (subscribers.length === 0 && !retainerWatch.hasWatches() && !itemAlerts.hasAlerts()) {
             if (ws || reconnectTimer) {
-                console.log('ℹ️ [MARKET] No subscribers with saved Data Centers, watched retainers or Item alerts. Closing feed and standing by...');
+                console.log('ℹ️ [MARKET] No subscribers with saved Data Centers, watched retainers or Item pings. Closing feed and standing by...');
                 cleanupSocket();
             }
             return { enabledCount, ready: 0 };
@@ -1176,22 +1176,22 @@ async function initMarketMonitor(client) {
     started = true;
 
     watchRetainerUndercuts(client);
-    console.log('🔍 [INIT] Loading market alert subscribers...');
+    console.log('🔍 [INIT] Loading market ping subscribers...');
     await loadWorldData();
     const result = await refresh(client);
     if (result) {
         if (result.retainers) console.log('🏷️ [INIT] Retainer Watch active on ' + result.retainers + ' world(s).');
-        if (result.items) console.log('🔔 [INIT] Item alerts active on ' + result.items + ' world(s).');
+        if (result.items) console.log('🔔 [INIT] Item pings active on ' + result.items + ' world(s).');
         if (result.ready === 0) {
-            console.log('⚠️ [INIT] ' + result.enabledCount + ' user(s) have market alerts on, but none have market alert Data Centers saved. Monitor standing by...');
+            console.log('⚠️ [INIT] ' + result.enabledCount + ' user(s) have market pings on, but none have market ping Data Centers saved. Monitor standing by...');
         } else {
             const skipped = result.enabledCount - result.ready;
-            console.log('✅ [INIT] ' + result.ready + ' subscriber(s) with saved Data Centers.' + (skipped > 0 ? ' (' + skipped + ' skipped: no market alert Data Centers saved)' : ''));
+            console.log('✅ [INIT] ' + result.ready + ' subscriber(s) with saved Data Centers.' + (skipped > 0 ? ' (' + skipped + ' skipped: no market ping Data Centers saved)' : ''));
         }
     }
     refreshTimer = setInterval(() => refresh(client), SUBSCRIBER_REFRESH_MS);
     flushTimer = setInterval(() => {
-        flushAlerts(client).catch(err => console.error('❌ [DM ERROR] Failed to send collected alerts:', err.message));
+        flushAlerts(client).catch(err => console.error('❌ [DM ERROR] Failed to send collected pings:', err.message));
     }, FLUSH_INTERVAL_MS);
 }
 

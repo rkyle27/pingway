@@ -279,7 +279,7 @@ async function initDatabase() {
             const [result] = await connection.execute(
                 "UPDATE user_server_subscriptions SET notifications_enabled = 0 WHERE datacenter = 'Aether' AND world = 'Adamantoise' AND notifications_enabled = 1"
             );
-            console.log('   /status: DM alerts turned off for ' + result.affectedRows + ' auto-created subscription(s).');
+            console.log('   /status: DM pings turned off for ' + result.affectedRows + ' auto-created subscription(s).');
         });
 
         // /marketalert no longer has its own Data Center picker (alerts use /datacenter). Remove the old data.

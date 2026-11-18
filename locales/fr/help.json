@@ -7,7 +7,7 @@
   "fields": {
     "market": {
       "name": "💰 Tableau des ventes",
-      "value": "**/price <item>** — Prix multi-mondes sur tes centres de données.\n**/datacenter** — Choisis tes centres de données pour /price.\n**/marketalert** — Envoie en MP les offres à 80 % ou plus sous le prix habituel, sur les centres de données que tu choisis pour les alertes du marché sur le site (chaque minute par défaut ; là-bas, tu peux aussi passer en immédiat ou changer l'intervalle)."
+      "value": "**/price <item>** — Prix multi-mondes sur tes centres de données.\n**/datacenter** — Choisis tes centres de données pour /price.\n**/marketping** — Envoie en MP les offres à 80 % ou plus sous le prix habituel, sur les centres de données que tu choisis pour les alertes du marché sur le site (chaque minute par défaut ; là-bas, tu peux aussi passer en immédiat ou changer l'intervalle)."
     },
     "perks": {
       "name": "💜 Avantages Supporter",

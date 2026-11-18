@@ -23,7 +23,7 @@
   "noDate": "❌ No Release date is set yet.",
   "noRole": "⚠️ Ask an Admin to click the **Role** button to configure a notification role first.",
   "roleGone": "⚠️ The configured notification role no longer exists in this server. Ask an Admin to set a new role.",
-  "notifRemoved": "🔔 Notification removed! You will no longer receive pings for release alerts.",
+  "notifRemoved": "🔔 Notification removed! You will no longer be pinged for releases.",
   "notifEnabled": "✅ Notification enabled! You've been assigned the <@&{roleId}> role.",
   "roleFailed": "❌ **Failed to update role:** Please ensure my bot role is placed above the notification role in Server Settings.",
   "adminsOnly": "❌ Only Administrators can change the notification role for this server.",

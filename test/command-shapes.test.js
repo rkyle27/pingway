@@ -142,7 +142,7 @@ test('/honeypot: required "action" (5 choices), optional "channel" (text channel
     const data = json(require('../commands/honeypot'));
     assert.deepEqual(data.options.map(o => [o.name, o.type, !!o.required]), [['action', 3, true], ['channel', 7, false], ['on', 5, false]]);
     assert.deepEqual(data.options[0].choices.map(c => c.value), ['set', 'off', 'dm', 'warning', 'status']);
-    assert.deepEqual(data.options[0].choices.map(c => c.name), ['Set channel', 'Turn off', 'DM alerts', 'Warning message', 'Status']);
+    assert.deepEqual(data.options[0].choices.map(c => c.name), ['Set channel', 'Turn off', 'DM pings', 'Warning message', 'Status']);
     for (const o of data.options) assert.deepEqual(Object.keys(o.name_localizations).sort(), ['de', 'fr', 'ja'], o.name);
 });
 
@@ -152,6 +152,15 @@ test('/pf: no options any more (the mount option moved to the "Toggle Mount Farm
     assert.equal(data.name, 'pf');
     assert.deepEqual(data.options || [], []);
     assert.equal(typeof cmd.autocomplete, 'undefined');
+});
+
+test('/marketping (file commands/marketalert.js): the buttons find it by its new name, button ids stay marketalert_*', () => {
+    const data = json(require('../commands/marketalert'));
+    assert.equal(data.name, 'marketping');
+    const ic = fs.readFileSync(path.join(ROOT, 'events', 'interactionCreate.js'), 'utf8');
+    assert.ok(ic.includes("client.commands.get('marketping')"));
+    assert.ok(!ic.includes("client.commands.get('marketalert')"));
+    assert.ok(ic.includes("cid.startsWith('marketalert_')"));
 });
 
 test('/clean keeps its single "target" option', () => {

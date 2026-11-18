@@ -12,7 +12,7 @@ Pingway tracks reset timers, server status, market board deals, Party Finder lis
 Go to **[pingway.app](https://pingway.app)** and log in with Discord.
 
 - **Server settings** (for anyone with *Manage Server*): notification channel, release event countdown, AI assistant channel, ScionDex channel, Raid & Logger sheets, Reaction Roles, Tickets, FFXIV News channels and the Honeypot.
-- **Personal settings** (used in every server): your Data Centers, market price alerts, Retainer Watch, server status alerts, IGN character card, Firmament reminders and Pingway Trivia.
+- **Personal settings** (used in every server): your Data Centers, market price pings, Retainer Watch, server status pings, IGN character card, Firmament reminders and Pingway Trivia.
 - **Supporter Perks & points:** see your points, vote rewards and perks.
 - Invite Pingway to your servers in one click.
 - Light and dark mode, works on phones too.
@@ -29,10 +29,10 @@ Everything you change on the website works right away in Discord — and you can
 
 ### 💰 Market Board
 - **`/price <item>`** — Cross-world market prices for any FFXIV item across your chosen Data Centers (top 5 NQ and HQ listings per Data Center, with world names).
-- **`/datacenter`** — Choose your Data Centers once; used by `/price` and market alerts in every server.
-- **`/marketalert`** — Turn on price drop DMs. Pingway watches the Universalis live feed and sends you a grouped DM (every minute by default — on the website you can switch to Immediate or change the interval) with listings that are **at least 80% below the usual price**:
+- **`/datacenter`** — Choose your Data Centers once; used by `/price` and market pings in every server.
+- **`/marketping`** — Turn on price drop DMs. Pingway watches the Universalis live feed and sends you a grouped DM (every minute by default — on the website you can switch to Immediate or change the interval) with listings that are **at least 80% below the usual price**:
   - Compared against the **median of the last 7 days of real sales** on that Data Center (troll sales can't fake the price).
-  - Double-checked against the **next 3 cheapest listings from other sellers**, so it only alerts on real mistakes (a missing zero, a pasted wrong price) — not on items whose market just dropped.
+  - Double-checked against the **next 3 cheapest listings from other sellers**, so it only pings on real mistakes (a missing zero, a pasted wrong price) — not on items whose market just dropped.
   - NQ and HQ are checked separately. Results are sorted lowest price first and grouped by Data Center in an aligned table.
 
 ### 💜 Supporter Perks & Points
@@ -42,7 +42,7 @@ Everything you change on the website works right away in Discord — and you can
 - **`/retainers`** — Your watched retainers and their undercut items. Add retainers on the website (**Retainer Watch**) and Pingway DMs you when someone undercuts them.
 
 ### 🌍 Server Status
-- **`/status`** — Live status of every world in a Data Center. Pick a world to track and get a **DM when it goes down for maintenance or comes back up**. New users start with alerts off.
+- **`/status`** — Live status of every world in a Data Center. Pick a world to track and get a **DM when it goes down for maintenance or comes back up**. New users start with pings off.
 
 ### ⏰ Timers, Reminders & To-Do
 - **`/timer`** — Countdowns for daily and weekly resets and the housing lottery, plus a **release event countdown** (patches/expansions) that pings a role when the time comes.
@@ -66,7 +66,7 @@ Everything you change on the website works right away in Discord — and you can
 - **`/nissi`** — A quiz to practise TEA Nissi mechanics.
 
 ### 🤖 AI Assistant
-- **Opt-in per channel:** AI only runs in channels where an admin turned it on with **`/ailistenhere`**. Slash commands, buttons, DMs, alerts and the website never use AI, and Pingway's database is never shared with any AI company.
+- **Opt-in per channel:** AI only runs in channels where an admin turned it on with **`/ailistenhere`**. Slash commands, buttons, DMs, pings and the website never use AI, and Pingway's database is never shared with any AI company.
 - Chat naturally, ask FFXIV questions, set/edit/delete reminders, save notes and to-do tasks.
 - Say **"release recollection"** to wipe the short chat memory instantly.
 

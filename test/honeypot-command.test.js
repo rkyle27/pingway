@@ -89,7 +89,7 @@ test('missing permissions note is still shown', async () => {
 test('wrong option combinations: friendly messages, nothing saved', async () => {
     calls.length = 0; lang.v = 'en';
     assert.equal(await run({ action: 'set' }), t('en', 'honeypot.needChannel'));
-    assert.equal(await run({ action: 'dm' }), t('en', 'honeypot.needOn', { action: 'DM alerts' }));
+    assert.equal(await run({ action: 'dm' }), t('en', 'honeypot.needOn', { action: 'DM pings' }));
     assert.equal(await run({ action: 'warning' }), t('en', 'honeypot.needOn', { action: 'Warning message' }));
     assert.equal(await run({ action: 'off', channel: { id: 'c2' } }), t('en', 'honeypot.onlyChannel'));
     assert.equal(await run({ action: 'status', on: true }), t('en', 'honeypot.onlyOn'));
@@ -102,7 +102,7 @@ test('the messages are translated (fr / de / ja), French and German use tu/du', 
         lang.v = l;
         const c = await run({ action: 'dm' });
         assert.equal(c, t(l, 'honeypot.needOn', { action: t(l, 'honeypot.cmd.actions.dm') }));
-        assert.notEqual(c, t('en', 'honeypot.needOn', { action: 'DM alerts' }));
+        assert.notEqual(c, t('en', 'honeypot.needOn', { action: 'DM pings' }));
         assert.ok(!/\{\w+\}/.test(c), l + ': no {placeholder} left');
     }
     assert.match(t('fr', 'honeypot.needChannel'), /Remplis/);

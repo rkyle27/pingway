@@ -112,7 +112,7 @@ async function buildPayload(userId, notice, lang = 'en') {
 module.exports = {
     stateOf,
     data: new SlashCommandBuilder()
-        .setName('marketalert')
+        .setName('marketping')
         .setDescription(t('en', 'marketalert.cmd.description')).setDescriptionLocalizations(discordLocalizations('marketalert.cmd.description')),
 
     async execute(interaction) {
@@ -121,7 +121,7 @@ module.exports = {
             const payload = await buildPayload(interaction.user.id, undefined, lang);
             return interaction.reply(Object.assign(payload, { flags: [MessageFlags.Ephemeral] }));
         } catch (error) {
-            console.error('Error opening /marketalert:', error);
+            console.error('Error opening /marketping:', error);
             return interaction.reply({
                 content: t(lang, 'marketalert.loadFailed'),
                 flags: [MessageFlags.Ephemeral]
@@ -149,7 +149,7 @@ module.exports = {
                     : t(lang, 'marketalert.disabledNotice');
                 return interaction.update(await buildPayload(userId, notice, lang));
             } catch (error) {
-                console.error('Error toggling marketalert DM status in MySQL:', error);
+                console.error('Error toggling marketping DM status in MySQL:', error);
                 return interaction.reply({
                     content: t(lang, 'marketalert.updateFailed'),
                     flags: [MessageFlags.Ephemeral]
