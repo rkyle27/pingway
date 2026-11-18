@@ -1,6 +1,19 @@
 {
     "updates": [
         {
+            "id": "2026-11-18-ping-rename",
+            "date": "2026-11-18",
+            "time": "12:00",
+            "version": "",
+            "newsId": "",
+            "title": "Alerts are now Pings: /marketalert is now /marketping",
+            "i18n": {
+                "fr": { "title": "La commande /marketalert devient /marketping" },
+                "de": { "title": "Der Befehl /marketalert heißt jetzt /marketping" },
+                "ja": { "title": "/marketalert コマンドが /marketping になりました" }
+            }
+        },
+        {
             "id": "2026-11-17-database-security",
             "date": "2026-11-17",
             "time": "22:20",
