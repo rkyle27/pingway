@@ -1,5 +1,5 @@
 {
-  "noneSet": "*Aucun* — choisis les centres de données de tes alertes du marché sur le site (https://pingway.app/dashboard.html?tab=retainers#market-alerts). Aucune alerte n'est envoyée tant que ce n'est pas fait.",
+  "noneSet": "*Aucun* — choisis les centres de données de tes alertes du marché sur le site (https://pingway.app/dashboard?tab=retainers#market-alerts). Aucune alerte n'est envoyée tant que ce n'est pas fait.",
   "disable": "Désactiver les notifications",
   "enable": "Activer les notifications",
   "done": "Terminé",
@@ -10,7 +10,7 @@
   "enabledNotice": "🔔 Les MP d'alerte du marché sont maintenant **activés 🟢**.",
   "disabledNotice": "🔕 Les MP d'alerte du marché sont maintenant **désactivés 🔴**.",
   "updateFailed": "❌ Impossible de mettre à jour les réglages de notification.",
-  "settings": "📢 **Réglages des alertes du marché**\n\n• **Notifications par MP :** {dm}\n• **Centres de données (alertes du marché, choisis sur le site) :** {dcs}\n• **Envoi des alertes :** {timing} (pour les alertes du marché ; le sous-cotage des servants a ses propres réglages)\n\nChange-les sur https://pingway.app/dashboard.html?tab=retainers#market-alerts",
+  "settings": "📢 **Réglages des alertes du marché**\n\n• **Notifications par MP :** {dm}\n• **Centres de données (alertes du marché, choisis sur le site) :** {dcs}\n• **Envoi des alertes :** {timing} (pour les alertes du marché ; le sous-cotage des servants a ses propres réglages)\n\nChange-les sur https://pingway.app/dashboard?tab=retainers#market-alerts",
   "immediate": "immédiat",
   "every": "toutes les {interval}",
   "on": "🟢 Activées",

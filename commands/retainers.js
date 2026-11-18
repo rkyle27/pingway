@@ -21,7 +21,7 @@ module.exports = {
                 "SELECT id, world_name, retainer_name, enabled, active FROM retainer_watch WHERE user_id = ? AND status = 'found' ORDER BY id", [interaction.user.id]
             );
             if (!watches.length) {
-                return interaction.editReply({ content: t(lang, 'market.noRetainers'), components: [linkRow(t(lang, 'market.openRetainers'), SITE + '/retainers.html')] });
+                return interaction.editReply({ content: t(lang, 'market.noRetainers'), components: [linkRow(t(lang, 'market.openRetainers'), SITE + '/retainers')] });
             }
             const blocks = [];
             const allIds = [];
@@ -43,7 +43,7 @@ module.exports = {
             if (text.length > 4000) text = text.slice(0, 3990) + '\n…';
             const embed = new EmbedBuilder().setColor(0x8b5cf6).setTitle(t(lang, 'market.yourRetainers')).setDescription(text)
                 .setFooter({ text: t(lang, 'market.retainersFooter') });
-            return interaction.editReply({ embeds: [embed], components: [linkRow(t(lang, 'market.openRetainers'), SITE + '/retainers.html')] });
+            return interaction.editReply({ embeds: [embed], components: [linkRow(t(lang, 'market.openRetainers'), SITE + '/retainers')] });
         } catch (err) {
             console.error('❌ [RETAINERS CMD]', err.message);
             return interaction.editReply({ content: t(lang, 'market.retainersFailed') });

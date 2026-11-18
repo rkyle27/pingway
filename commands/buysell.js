@@ -19,7 +19,7 @@ module.exports = {
         try {
             const prefs = await M.loadPrefs(pool, interaction.user.id);
             if (!prefs || !prefs.world) {
-                return interaction.editReply({ content: t(lang, 'market.pickWorld'), components: [linkRow(t(lang, 'market.openMarketTools'), SITE + '/retainers.html#market')] });
+                return interaction.editReply({ content: t(lang, 'market.pickWorld'), components: [linkRow(t(lang, 'market.openMarketTools'), SITE + '/retainers#market')] });
             }
             const r = await M.buySell(pool, { world: prefs.world, mode: prefs.dealMode, materia: prefs.materia, minDiff: prefs.minDiff, minSales: prefs.minSales, sorts: prefs.sorts.split(','), lang });
             if (r.warming) return interaction.editReply({ content: t(lang, 'market.warming') });
@@ -29,7 +29,7 @@ module.exports = {
                 .setTitle(t(lang, 'market.buysellTitle', { world: prefs.world }))
                 .setDescription((lines.join('\n') || t(lang, 'market.noDeals')) + t(lang, 'market.buysellNote', { where, world: prefs.world }))
                 .setFooter({ text: t(lang, 'market.footerSettings') });
-            return interaction.editReply({ embeds: [embed], components: [linkRow(t(lang, 'market.marketTools'), SITE + '/retainers.html#market')] });
+            return interaction.editReply({ embeds: [embed], components: [linkRow(t(lang, 'market.marketTools'), SITE + '/retainers#market')] });
         } catch (err) {
             console.error('❌ [BUYSELL]', err.message);
             return interaction.editReply({ content: t(lang, 'market.universalisDown') });

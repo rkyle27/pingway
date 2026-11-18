@@ -21,7 +21,7 @@ module.exports = {
         try {
             const prefs = await M.loadPrefs(pool, interaction.user.id);
             if (!prefs || !prefs.world) {
-                return interaction.editReply({ content: t(lang, 'market.pickWorld'), components: [linkRow(t(lang, 'market.openMarketTools'), SITE + '/retainers.html#market')] });
+                return interaction.editReply({ content: t(lang, 'market.pickWorld'), components: [linkRow(t(lang, 'market.openMarketTools'), SITE + '/retainers#market')] });
             }
             const scope = interaction.options.getString('where') || prefs.bestScope;
             const r = await M.bestSellers(pool, { world: prefs.world, scope, lang });
@@ -31,7 +31,7 @@ module.exports = {
                 .setTitle(t(lang, 'market.bestTitle', { place: r.place }))
                 .setDescription(lines.join('\n') || t(lang, 'market.noSales'))
                 .setFooter({ text: t(lang, 'market.bestFooter') });
-            return interaction.editReply({ embeds: [embed], components: [linkRow(t(lang, 'market.marketTools'), SITE + '/retainers.html#market')] });
+            return interaction.editReply({ embeds: [embed], components: [linkRow(t(lang, 'market.marketTools'), SITE + '/retainers#market')] });
         } catch (err) {
             console.error('❌ [BESTSELLERS]', err.message);
             return interaction.editReply({ content: t(lang, 'market.universalisDown') });

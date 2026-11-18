@@ -23,7 +23,7 @@ async function checkPerks(interaction) {
     if (!(await ownerHasMembership(interaction.user.id))) {
         await interaction.reply({
             content: t(lang, 'perks.needPerks'),
-            components: [linkRow(t(lang, 'perks.mySettings'), SITE + '/me.html#perks', [t(lang, 'perks.voteTopgg'), VOTE])],
+            components: [linkRow(t(lang, 'perks.mySettings'), SITE + '/me#perks', [t(lang, 'perks.voteTopgg'), VOTE])],
             flags: [MessageFlags.Ephemeral]
         });
         return false;

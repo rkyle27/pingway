@@ -33,8 +33,8 @@ const NEED = ['ViewChannel', 'SendMessages', 'EmbedLinks', 'AttachFiles'];
 const clip = (s, n) => { const x = String(s == null ? '' : s); return x.length > n ? x.slice(0, n - 1) + '…' : x; };
 // Discord markdown / mentions in names and titles are shown as plain text
 const plain = (s, n) => clip(String(s == null ? '' : s).replace(/[\u0000-\u001f\u007f]/g, ' ').replace(/([\\*_~`|>#\[\]()])/g, '\\$1').replace(/@/g, '@\u200b'), n);
-const posterUrl = id => SITE + '/poster.html?id=' + Number(id);
-const tabUrl = SITE + '/dashboard.html?tab=boards';
+const posterUrl = id => SITE + '/poster?id=' + Number(id);
+const tabUrl = SITE + '/dashboard?tab=boards';
 const profileUrl = id => 'https://discord.com/users/' + id;
 function httpsUrl(u) {
     const s = String(u || '').trim();

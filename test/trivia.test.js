@@ -507,7 +507,7 @@ test('English screens are unchanged (start, menu, how to play)', async () => {
 
 test('reward DM: player language; English text unchanged', () => {
     assert.equal(R.rewardMessage(1234, 10, '2026-11'), '🎉 Congratulations! You earned **1,234 bits** in Pingway Trivia in November 2026 — here are **10 points** as a thank-you. ' +
-        'Use them for extra retainers or Supporter Perks at https://pingway.app/me.html');
+        'Use them for extra retainers or Supporter Perks at https://pingway.app/me');
     assert.equal(R.rewardMessage(1234, 10, '2026-11', 'en'), R.rewardMessage(1234, 10, '2026-11'));
     assert.match(R.rewardMessage(1234, 5, '2026-11', 'fr'), /^🎉 Félicitations ! Vous avez gagné \*\*1 234 bits\*\* dans Pingway Trivia en novembre 2026 — voici \*\*5 points\*\*/);
     assert.match(R.rewardMessage(1234, 5, '2026-12', 'de'), /im Dezember 2026 \*\*1\.234 Bits\*\*/);

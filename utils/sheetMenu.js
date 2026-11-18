@@ -32,7 +32,7 @@ async function run(interaction, kind) {
     const visible = S.visibleTo(all, interaction.member, isAdmin);
     const title = kind === 'raid' ? t(lang, 'sheets.raidTitle') : t(lang, 'sheets.logTitle');
     const intro = title + ' · ' + (visible.length ? t(lang, 'sheets.forYou', { count: visible.length }) : t(lang, 'sheets.noneForYou', { ask: isAdmin ? '' : t(lang, 'sheets.askAdmin') })) +
-        t(lang, 'sheets.manage') + SITE + '/servers.html';
+        t(lang, 'sheets.manage') + SITE + '/servers';
 
     const buttons = [new ButtonBuilder().setCustomId('gs_open').setLabel(t(lang, 'sheets.open')).setEmoji('🔗').setStyle(ButtonStyle.Primary).setDisabled(!visible.length)];
     if (kind === 'raid') buttons.push(new ButtonBuilder().setCustomId('gs_sched').setLabel(t(lang, 'sheets.checkSchedule')).setEmoji('📅').setStyle(ButtonStyle.Secondary).setDisabled(!visible.length));

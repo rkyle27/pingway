@@ -107,7 +107,7 @@ const pointsFor = bits => { for (const [min, pts] of REWARD_TIERS) if (bits >= m
 const NUMBER_LOCALE = { en: 'en-US', fr: 'fr-FR', de: 'de-DE', ja: 'ja-JP' };
 function rewardMessage(bits, points, season, lang) {
     const l = i18n.isLang(lang) ? lang : 'en';
-    return i18n.t(l, 'trivia.reward.dm', { bits: bits.toLocaleString(NUMBER_LOCALE[l]), month: seasonName(season, l), points, url: SITE + '/me.html' });
+    return i18n.t(l, 'trivia.reward.dm', { bits: bits.toLocaleString(NUMBER_LOCALE[l]), month: seasonName(season, l), points, url: SITE + '/me' });
 }
 
 // ---------- points (copied from the website's lib/credits.js, same rules as vote/Ko-fi points) ----------

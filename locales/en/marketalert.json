@@ -1,5 +1,5 @@
 {
-  "noneSet": "*None set* — choose your market ping Data Centers on the website (https://pingway.app/dashboard.html?tab=retainers#market-alerts). No pings are sent until you do.",
+  "noneSet": "*None set* — choose your market ping Data Centers on the website (https://pingway.app/dashboard?tab=retainers#market-alerts). No pings are sent until you do.",
   "disable": "Disable Notifications",
   "enable": "Enable Notifications",
   "done": "Done",
@@ -10,7 +10,7 @@
   "enabledNotice": "🔔 Market ping DM notifications are now **enabled 🟢**.",
   "disabledNotice": "🔕 Market ping DM notifications are now **disabled 🔴**.",
   "updateFailed": "❌ Failed to update notification settings.",
-  "settings": "📢 **Market Ping Settings**\n\n• **DM Notifications:** {dm}\n• **Data Centers (market pings, set on the website):** {dcs}\n• **Ping timing:** {timing} (for market pings; retainer undercuts have their own settings)\n\nChange these on https://pingway.app/dashboard.html?tab=retainers#market-alerts",
+  "settings": "📢 **Market Ping Settings**\n\n• **DM Notifications:** {dm}\n• **Data Centers (market pings, set on the website):** {dcs}\n• **Ping timing:** {timing} (for market pings; retainer undercuts have their own settings)\n\nChange these on https://pingway.app/dashboard?tab=retainers#market-alerts",
   "immediate": "Immediate",
   "every": "every {interval}",
   "on": "🟢 Enabled",

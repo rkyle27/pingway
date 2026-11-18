@@ -55,8 +55,8 @@ function buildMessage(points, bal, voteId, lang = 'en') {
         )
         .setFooter({ text: t(lang, 'votes.footer') });
     const row = new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel(t(lang, 'votes.website')).setEmoji('🌐').setURL(SITE + '/retainers.html'),
-        new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel(t(lang, 'votes.perksButton')).setEmoji('✨').setURL(SITE + '/me.html#perks')
+        new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel(t(lang, 'votes.website')).setEmoji('🌐').setURL(SITE + '/retainers'),
+        new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel(t(lang, 'votes.perksButton')).setEmoji('✨').setURL(SITE + '/me#perks')
     );
     if (site) row.addComponents(new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel(t(lang, 'votes.voteAgain', { site: site.name })).setEmoji('🗳️').setURL(site.url));
     return { embeds: [embed], components: [row] };

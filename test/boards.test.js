@@ -94,7 +94,7 @@ test('signup DM: to the owner in the OWNER\'s language, mention + name + profile
     assert.ok(!/tomestone/i.test(e.description.replace(t('fr', 'boards.footer'), '')), 'Tomestone was not ticked');
     assert.ok(e.description.includes('@​everyone'), 'names cannot ping');
     assert.ok(e.description.includes('Prog \\*\\*static\\*\\*'), 'markdown shown as text');
-    assert.ok(e.description.includes('https://pingway.app/poster.html?id=1'));
+    assert.ok(e.description.includes('https://pingway.app/poster?id=1'));
     assert.deepEqual(payload.allowedMentions, { parse: [] });
     assert.equal(payload.files[0].name, 'ign_card.png'); assert.equal(e.image.url, 'attachment://ign_card.png');
     assert.deepEqual(cardFor, [SIGNER, '111', { fflogs: true, tomestone: false }], 'the card leaves out links that were not ticked');
@@ -239,7 +239,7 @@ test('expiry reminders: 5, 3 and 0 days, once each, Static / FC only (not hidden
     assert.equal(await BD.checkExpiry(d), 3);
     assert.deepEqual(dc.sent.map(s => s.payload.embeds[0].title), [t('en', 'boards.expiry.title5'), t('en', 'boards.expiry.title3'), t('en', 'boards.expiry.title0')]);
     assert.deepEqual(db.posters.map(p => p.expiry_dm_stage), [5, 3, 0, null, null, null, null, 3]);
-    assert.ok(dc.sent[0].payload.embeds[0].description.includes('https://pingway.app/dashboard.html?tab=boards'));
+    assert.ok(dc.sent[0].payload.embeds[0].description.includes('https://pingway.app/dashboard?tab=boards'));
     assert.equal(await BD.checkExpiry(d), 0, 'once each');
     // two days later the 5-day poster gets its 3-day reminder; a bumped poster (stage NULL, new date) starts over
     db.posters[1].expiry_dm_stage = null; db.posters[1].expires_at = NOW + 30 * DAY;
