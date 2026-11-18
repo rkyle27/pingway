@@ -1,6 +1,23 @@
 {
     "updates": [
         {
+            "id": "2026-11-18-kofi-patreon",
+            "date": "2026-11-18",
+            "time": "21:00",
+            "version": "",
+            "newsId": "",
+            "title": "You can now support Pingway via Ko-fi and Patreon",
+            "links": {
+                "Ko-fi": "https://ko-fi.com/riverzola/tiers#",
+                "Patreon": "https://www.patreon.com/c/pingwaybot/membership"
+            },
+            "i18n": {
+                "fr": { "title": "Tu peux maintenant soutenir Pingway via Ko-fi et Patreon" },
+                "de": { "title": "Du kannst Pingway jetzt über Ko-fi und Patreon unterstützen" },
+                "ja": { "title": "Ko-fi と Patreon で Pingway を応援できるようになりました" }
+            }
+        },
+        {
             "id": "2026-11-18-webpage-restructure",
             "date": "2026-11-18",
             "time": "19:05",
