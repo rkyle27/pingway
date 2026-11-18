@@ -1,6 +1,19 @@
 {
     "updates": [
         {
+            "id": "2026-11-18-webpage-restructure",
+            "date": "2026-11-18",
+            "time": "19:05",
+            "version": "",
+            "newsId": "",
+            "title": "Webpage Restructure",
+            "i18n": {
+                "fr": { "title": "Restructuration du site web" },
+                "de": { "title": "Umstrukturierung der Webseite" },
+                "ja": { "title": "ウェブページの再構築" }
+            }
+        },
+        {
             "id": "2026-11-18-ping-rename",
             "date": "2026-11-18",
             "time": "12:00",
