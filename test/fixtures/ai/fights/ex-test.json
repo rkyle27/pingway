@@ -1,0 +1,10 @@
+{
+ "id": "ex-test", "type": "extreme", "expansion": "DT", "patch": "7.0",
+ "names": { "en": "Test Extreme", "fr": "Test Extrême", "de": "Test Extrem", "ja": "テスト極" },
+ "aliases": { "en": ["test ex"], "fr": [], "de": [], "ja": [] },
+ "summary": { "en": "EX summary." },
+ "strats_overview": [],
+ "phases": [ { "id": "p1", "names": { "en": "Phase 1" }, "mechanics": [
+   { "id": "tankbuster", "names": { "en": "Shared Buster" }, "aliases": { "en": ["shared buster"] }, "how": { "en": "EX-BUSTER" }, "strats": [] } ] } ],
+ "sources": [], "updated": "2026-11-26"
+}

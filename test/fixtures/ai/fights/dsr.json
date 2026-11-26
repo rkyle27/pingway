@@ -1,0 +1,20 @@
+{
+ "id": "dsr", "type": "ultimate", "expansion": "EW", "patch": "6.11",
+ "names": { "en": "Dragonsong's Reprise (Ultimate)", "fr": "La Reprise du Chant du dragon (fatal)", "de": "Drachenkrieg (fatal)", "ja": "絶竜詩戦争" },
+ "aliases": { "en": ["dsr", "dragonsong"], "fr": ["dsr"], "de": ["dsr"], "ja": ["絶竜詩"] },
+ "summary": { "en": "DSR summary EN.", "fr": "Résumé DSR FR.", "de": "DSR Zusammenfassung DE.", "ja": "絶竜詩の概要。" },
+ "strats_overview": [ { "id": "elemental", "name": { "en": "Elemental", "fr": "Elemental", "de": "Elemental", "ja": "エレメンタル" }, "region": "NA" } ],
+ "phases": [
+  { "id": "p2", "names": { "en": "Phase 2: Thordan", "fr": "Phase 2 : Thordan", "de": "Phase 2: Thordan", "ja": "P2 トールダン" },
+    "mechanics": [
+     { "id": "sanctity", "names": { "en": "Sanctity of the Ward", "fr": "Sainteté du gardien", "de": "Heiligkeit der Wacht", "ja": "蒼天の陣：聖杖" },
+       "aliases": { "en": ["sanctity"], "fr": ["saintete"], "de": ["heiligkeit"], "ja": ["聖杖"] },
+       "how": { "en": "SANCT-HOW-EN", "fr": "SANCT-HOW-FR", "de": "SANCT-HOW-DE", "ja": "SANCT-HOW-JA" },
+       "strats": [ { "strat": "elemental", "how": { "en": "SANCT-EL-EN", "fr": "SANCT-EL-FR", "de": "SANCT-EL-DE", "ja": "SANCT-EL-JA" } } ] },
+     { "id": "tankbuster", "names": { "en": "Shared Buster", "fr": "Tankbuster partagé", "de": "Geteilter Tankbuster", "ja": "頭割りタンクバスター" },
+       "aliases": { "en": ["shared buster"], "fr": [], "de": [], "ja": [] },
+       "how": { "en": "DSR-BUSTER", "fr": "DSR-BUSTER", "de": "DSR-BUSTER", "ja": "DSR-BUSTER" }, "strats": [] }
+    ] }
+ ],
+ "sources": [], "updated": "2026-11-26"
+}

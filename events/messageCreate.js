@@ -8,6 +8,8 @@ const honeypot = require('../utils/honeypot');
 const { t } = require('../utils/i18n');
 const userLanguage = require('../utils/userLanguage');
 const userTimezone = require('../utils/userTimezone');
+const { normalize } = require('../utils/normalizeText');
+const aiKnowledge = require('../utils/aiKnowledge');
 
 const openrouter = new OpenAI({
     baseURL: 'https://openrouter.ai/api/v1',
@@ -37,7 +39,7 @@ const referenceLinksText = getReferenceLinks();
 
 // --- IN-MEMORY CHAT HISTORY (RAM ONLY) ---
 const chatHistoryMap = new Map();
-const MAX_RAM_HISTORY = 15;
+const MAX_RAM_HISTORY = 6;
 
 function getUserHistory(userId) {
     if (!chatHistoryMap.has(userId)) {
@@ -68,6 +70,20 @@ async function getAllUserFacts(userId) {
         console.error('❌ Failed to load facts from MySQL:', e);
     }
     return "No specific facts saved.";
+}
+
+// All saved facts as rows (the prompt only gets the ones that matter for this message)
+async function getUserFactRows(userId) {
+    try {
+        const [rows] = await pool.execute(
+            `SELECT fact_key, fact_value FROM user_facts WHERE user_id = ?`,
+            [userId]
+        );
+        return Array.isArray(rows) ? rows : [];
+    } catch (e) {
+        console.error('❌ Failed to load facts from MySQL:', e);
+        return [];
+    }
 }
 
 async function getActiveRemindersAndTasks(userId) {
@@ -184,6 +200,55 @@ function looksTimeBased(text) {
     return /\bwhat time is it\b|quelle heure est-il|wie spät ist es|今何時/.test(s);
 }
 
+// --- SLIM PROMPT: only send what this message needs ---
+// Is the message about reminders / tasks / time? (then the reminder + task list is sent)
+function aboutReminders(text) {
+    if (looksTimeBased(text)) return true;
+    const s = normalize(text);
+    return /\b(remind\w*|alarm\w*|timer\w*|schedule\w*|task\w*|todo|to do|wake|ping me)\b/.test(s) ||
+        /\b(rappel\w*|tâche\w*|tache\w*|réveil\w*)/.test(s) ||
+        /\b(erinner\w*|wecker|aufgabe\w*|termin\w*)/.test(s) ||
+        /(リマインド|リマインダー|思い出させ|アラーム|起こして|知らせて|タスク|予定|やること)/.test(s);
+}
+
+// Does the message ask for links / guides / resources? (then data/references.txt is sent)
+function wantsLinks(text) {
+    const s = normalize(text);
+    return /\b(link|links|guide|guides|resource\w*|website\w*|site|sites|url|urls|video\w*|youtube|wiki)\b/.test(s) ||
+        /\b(lien|liens|ressource\w*|vidéo\w*|tuto\w*)\b/.test(s) ||
+        /\b(anleitung\w*|leitfaden|quelle\w*|webseite\w*|seite)\b/.test(s) ||
+        /(リンク|ガイド|攻略|サイト|動画|資料|まとめ)/.test(s);
+}
+
+// Does the message ask about what Pingway remembers? (then all saved facts are sent)
+function wantsAllFacts(text) {
+    const s = normalize(text);
+    return /\b(remember|forget|know about me|my facts|saved facts|what do you know)\b/.test(s) ||
+        /\b(souviens|oublie|sais sur moi)/.test(s) ||
+        /\b(erinnerst|vergiss|weißt du über mich|weisst du über mich)/.test(s) ||
+        /(覚えて|忘れて|知ってる|記憶)/.test(s);
+}
+
+// Saved facts that share a word with the message (Japanese: a part of the message)
+function relevantFacts(rows, text, alwaysKeys) {
+    const all = wantsAllFacts(text);
+    const s = normalize(text);
+    const msgWords = new Set(s.split(' ').filter(w => w.length >= 3));
+    return rows.filter(r => {
+        const key = String(r.fact_key || '');
+        if (key.startsWith('task_')) return false; // tasks come with the reminder list
+        if (all || alwaysKeys.includes(key)) return true;
+        const factWords = normalize(key.replace(/[_:]/g, ' ') + ' ' + String(r.fact_value || '')).split(' ');
+        return factWords.some(w => (w.length >= 3 && msgWords.has(w)) || (w.length >= 2 && /[\u3040-\u30ff\u3400-\u9fff]/.test(w) && s.includes(w)));
+    });
+}
+
+// "we use X now" / "on utilise X" / "wir spielen X" / "Xを使ってる": the user tells us their group's strat
+const STRAT_CHANGE_RE = /\b(use|uses|using|run|running|switch\w*|chang\w*|now|our|we|we re|my group|my static)\b|\b(utilise\w*|notre|nous|maintenant|mon groupe|ma statique)\b|\b(wir|nutzen|benutzen|spielen|jetzt|unsere|meine gruppe)\b|(使って|使う|使います|にする|にした|変え|うち|私たち|固定)/;
+
+// The fight a user is talking about (RAM only, like the chat history): the strat answer after a question goes to this fight
+const fightContextMap = new Map(); // userId -> { fightId, mechId, askedStrat }
+
 // Pingway's own managed role (the role Discord made for the bot) counts as mentioning Pingway
 function findBotRoleId(message, botId) {
     try {
@@ -271,30 +336,33 @@ module.exports = {
         const lang = await userLanguage.forUser(userId); // Pingway's fixed texts; the AI itself answers in the language people write
 
         const userPrompt = message.content.replace(mentionRe, '').trim();
-        const lowerPrompt = userPrompt.toLowerCase().trim();
+        // Every keyword check uses the same clean-up (case, punctuation incl. Japanese, emoji, mentions, full-width, spaces)
+        const normPrompt = normalize(userPrompt);
+        const hasWords = (keys) => keys.some(k => normPrompt.includes(normalize(k))); // "contains", like before
 
         // --- QUICK REPLIES (no AI used) ---
         const helpWords = ['help', 'commands', 'command list', 'bot commands', 'pingway help', 'show commands', 'info', 'features', 'what can you do', 'website', 'dashboard'];
-        if (helpWords.includes(lowerPrompt.replace(/[?!.]+$/, '')) || (mentioned && lowerPrompt === '')) {
+        if (helpWords.includes(normPrompt) || (mentioned && normPrompt === '')) {
             return message.reply({ content: t(lang, 'ai.helpIntro'), ...buildHelpPayload(lang) });
         }
-        if (lowerPrompt === 'release recollection') {
+        if (normPrompt === 'release recollection') {
             chatHistoryMap.delete(userId);
+            fightContextMap.delete(userId);
             return message.reply({ content: t(lang, 'ai.recollection') });
         }
-        if (lowerPrompt.includes('invite link') || lowerPrompt.includes('add the bot')) {
+        if (hasWords(['invite link', 'add the bot'])) {
             return message.reply({ content: t(lang, 'ai.invite') });
         }
-        if (lowerPrompt.includes('support link') || lowerPrompt.includes('help server')) {
+        if (hasWords(['support link', 'help server'])) {
             return message.reply({ content: t(lang, 'ai.support') });
         }
-        if (['support dev', 'support developer', 'help dev', 'donate dev'].some(k => lowerPrompt.includes(k))) {
+        if (hasWords(['support dev', 'support developer', 'help dev', 'donate dev'])) {
             return message.reply({ content: t(lang, 'ai.donate') });
         }
-        if (['are you a bot', 'are you ai'].some(k => lowerPrompt.includes(k))) {
+        if (hasWords(['are you a bot', 'are you ai'])) {
             return message.reply({ content: t(lang, 'ai.areYouBot') });
         }
-        if (['full code', 'write a script', 'generate code'].some(k => lowerPrompt.includes(k))) {
+        if (hasWords(['full code', 'write a script', 'generate code'])) {
             return message.reply({ content: t(lang, 'ai.noCode') });
         }
 
@@ -341,9 +409,62 @@ module.exports = {
             await message.channel.sendTyping();
 
             const username = message.author.displayName;
-            const userFactsList = await getAllUserFacts(userId);
-            const activeRemindersAndTasksList = await getActiveRemindersAndTasks(userId);
+            const factRows = await getUserFactRows(userId);
             const userRAMHistory = getUserHistory(userId);
+            // Pingway's fixed texts use the user's language; the AI answers in the language of the message
+            const replyLang = aiKnowledge.detectLang(promptForAi) || lang;
+
+            // --- KNOWLEDGE (local search, no AI cost): only the matching FAQ / fight entries are sent ---
+            let knowledgeText = '';
+            let attachedFightId = null;
+            let stratSavedNow = false;
+            if (aiKnowledge.enabled()) {
+                const ctx = fightContextMap.get(userId) || null;
+                const found = aiKnowledge.search(promptForAi, { userLang: lang, contextFightId: ctx ? ctx.fightId : null });
+                let fightMatch = found.fight;
+
+                // The user names their group's strat: the answer to our strat question, or "we use X now"
+                const stratFightId = (fightMatch && fightMatch.id) || (ctx ? ctx.fightId : null);
+                if (stratFightId) {
+                    const named = aiKnowledge.matchStrat(promptForAi, stratFightId);
+                    const answersQuestion = ctx && ctx.askedStrat && ctx.fightId === stratFightId;
+                    if (named && (answersQuestion || STRAT_CHANGE_RE.test(normalize(promptForAi)))) {
+                        const key = 'strat:' + stratFightId;
+                        const old = factRows.find(r => r.fact_key === key);
+                        if (!old || old.fact_value !== named) {
+                            await setUserFact(userId, key, named);
+                            stratSavedNow = true;
+                            if (old) old.fact_value = named; else factRows.push({ fact_key: key, fact_value: named });
+                        }
+                        const sameFight = fightMatch && fightMatch.id === stratFightId;
+                        const mechId = (sameFight && fightMatch.mechId) || (ctx && ctx.fightId === stratFightId ? ctx.mechId : null);
+                        fightMatch = { id: stratFightId, mechId };
+                    }
+                }
+
+                const parts = [];
+                if (found.faq.length) parts.push('PINGWAY FAQ:\n' + aiKnowledge.faqText(found.faq, replyLang));
+                if (fightMatch) {
+                    const saved = fightMatch.id ? factRows.find(r => r.fact_key === 'strat:' + fightMatch.id) : null;
+                    const ft = aiKnowledge.fightText(fightMatch, replyLang, saved ? saved.fact_value : null);
+                    if (ft.text) {
+                        parts.push('FIGHT GUIDE:\n' + ft.text);
+                        if (fightMatch.id) {
+                            attachedFightId = fightMatch.id;
+                            const prev = ctx && ctx.fightId === fightMatch.id ? ctx : null;
+                            fightContextMap.set(userId, { fightId: fightMatch.id, mechId: fightMatch.mechId || (prev ? prev.mechId : null), askedStrat: ft.askStrat });
+                        }
+                    }
+                }
+                knowledgeText = parts.join('\n\n');
+            }
+
+            const factsForPrompt = relevantFacts(factRows, promptForAi, attachedFightId ? ['strat:' + attachedFightId] : []);
+            const userFactsList = factsForPrompt.map(row => `- ${row.fact_key}: ${row.fact_value}`).join('\n');
+            // reminder list: when this message, or the user's previous one, is about reminders ("delete the second one")
+            const prevUserMsg = [...userRAMHistory].reverse().find(h => h.role === 'user');
+            const needReminders = aboutReminders(promptForAi) || (prevUserMsg && aboutReminders(prevUserMsg.content));
+            const activeRemindersAndTasksList = needReminders ? await getActiveRemindersAndTasks(userId) : '';
             const currentIsoDate = new Date().toISOString();
             const nowInfo = tz ? userTimezone.describeNow(tz) : null;
             const timeLine = nowInfo
@@ -356,23 +477,28 @@ module.exports = {
             // Sanitize user prompt to prevent action tag injection via echoing
             const safeUserPrompt = promptForAi.replace(/\[/g, '［').replace(/\]/g, '］');
 
-            const systemMessage = `You are Pingway, an FFXIV utility bot. 
+            // Slim prompt: persona + language + tool rules, then only the parts this message needs
+            const sections = [];
+            if (knowledgeText) sections.push(`Use the KNOWLEDGE below for Pingway and fight questions. Don't invent Pingway features or fight mechanics; if it isn't covered, say you're not sure.
+--- KNOWLEDGE ---
+${knowledgeText}`);
+            if (wantsLinks(promptForAi)) sections.push(`When users ask for resources, links, or guides, refer to the reference links below when relevant:
+--- REFERENCE LINKS & RESOURCES ---
+${referenceLinksText}`);
+            if (activeRemindersAndTasksList) sections.push(`--- DATABASE RECORDS ---
+${activeRemindersAndTasksList}`);
+            if (userFactsList) sections.push(`--- SAVED FACTS ---
+${userFactsList}`);
+            const stratTagLine = attachedFightId ? `\n- When the user says which strat their group uses: [SET_FACT] strat:${attachedFightId} = <strat id>` : '';
+
+            const systemMessage = `You are Pingway, a friendly FFXIV Discord bot. Talk naturally like a real assistant; keep replies clear and short for Discord.
+Language: reply in the language of the user's latest message; if unclear, reply in ${aiKnowledge.LANG_NAMES[replyLang] || 'English'}.
 ${timeLine}
 - Reminders: Output [REMINDER_JSON]{ "target_time": "${targetHint}", "task": "...", "is_recurring": true/false, "recurrence_rule": "..." }[REMINDER_JSON]
 - Edit Reminder: [EDIT_REMINDER_JSON]{ "id": 123, "new_text": "..." }[EDIT_REMINDER_JSON]
 - Delete Reminder: [DELETE_REMINDER_JSON]{ "id": 123 }[DELETE_REMINDER_JSON]
 - Clear Reminders: [CLEAR_ALL_REMINDERS]
-- Facts: [SET_FACT] key = val | [APPEND_FACT] key = val | [DELETE_FACT] key
-Keep replies natural and conversational.
-
-When users ask for resources, links, or guides, refer to the reference links below when relevant:
---- REFERENCE LINKS & RESOURCES ---
-${referenceLinksText}
-
---- DATABASE RECORDS ---
-${activeRemindersAndTasksList}
---- SAVED FACTS ---
-${userFactsList}`;
+- Facts: [SET_FACT] key = val | [APPEND_FACT] key = val | [DELETE_FACT] key${stratTagLine}` + (sections.length ? '\n\n' + sections.join('\n\n') : '');
 
             const messagesPayload = [
                 { role: 'system', content: systemMessage },
@@ -394,7 +520,7 @@ ${userFactsList}`;
             let reminderDeleted = false;
             let remindersCleared = false;
             let isRecurringSaved = false;
-            let factsSaved = 0;
+            let factsSaved = stratSavedNow ? 1 : 0;
             let factsAppended = 0;
             let factsDeleted = 0;
 
@@ -465,7 +591,18 @@ ${userFactsList}`;
             // 5. Process Fact Commands Safely
             const setFactMatches = [...aiReply.matchAll(/\[SET_FACT\]\s*([^=]+?)\s*=\s*(.+)/gi)];
             for (const match of setFactMatches) {
-                await setUserFact(userId, match[1].trim().toLowerCase().replace(/\s+/g, '_'), match[2].trim());
+                const factKey = match[1].trim().toLowerCase().replace(/\s+/g, '_');
+                let factValue = match[2].trim();
+                // Strat facts (backup for the code check above): only a real strat of a known fight is saved
+                if (factKey.startsWith('strat:') && aiKnowledge.fightIndex(factKey.slice(6))) {
+                    const fid = factKey.slice(6);
+                    const known = aiKnowledge.fightIndex(fid).strats.some(st => st.id === factValue);
+                    factValue = known ? factValue : aiKnowledge.matchStrat(factValue, fid);
+                    if (!factValue) continue;
+                    const already = factRows.find(r => r.fact_key === factKey);
+                    if (already && already.fact_value === factValue) continue;
+                }
+                await setUserFact(userId, factKey, factValue);
                 factsSaved++;
             }
 

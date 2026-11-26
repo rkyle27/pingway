@@ -1,0 +1,26 @@
+{
+ "source": "test fixture",
+ "generated": "2026-11-26",
+ "entries": [
+  {
+   "id": "f15",
+   "q": { "en": "How do I add a retainer?", "fr": "Comment ajouter un servant ?", "de": "Wie füge ich einen Gehilfen hinzu?", "ja": "リテイナーを追加するには？" },
+   "a": { "en": "Open the Retainers tab and add it there.", "fr": "Ouvre l'onglet Servants et ajoute-le.", "de": "Öffne den Tab Gehilfen und füge ihn hinzu.", "ja": "リテイナータブから追加してください。" },
+   "k": { "en": "add retainer new setup", "fr": "ajouter servant nouveau", "de": "hinzufugen gehilfe neu", "ja": "リテイナー 追加 新しい" },
+   "link": "https://pingway.app/dashboard?tab=retainers"
+  },
+  {
+   "id": "f25",
+   "q": { "en": "Can I get a refund?", "fr": "Puis-je être remboursé ?", "de": "Kann ich eine Rückerstattung bekommen?", "ja": "返金できますか？" },
+   "a": { "en": "See the support terms.", "fr": "Regarde les conditions de soutien.", "de": "Sieh dir die Unterstützungsbedingungen an.", "ja": "サポート規約をご覧ください。" },
+   "k": { "en": "refund refunds money back cancel", "fr": "remboursement rembourser argent annuler", "de": "ruckerstattung geld zuruck kundigen", "ja": "返金 払い戻し キャンセル" },
+   "link": "https://pingway.app/support-terms"
+  },
+  {
+   "id": "f62",
+   "q": { "en": "How do reminders work?", "fr": "Comment marchent les rappels ?", "de": "Wie funktionieren Erinnerungen?", "ja": "リマインダーの使い方は？" },
+   "a": { "en": "Ask the AI to remind you.", "fr": "Demande à l'IA de te le rappeler.", "de": "Bitte die KI, dich zu erinnern.", "ja": "AIにリマインドを頼んでください。" },
+   "k": { "en": "remind reminder reminders later alarm", "fr": "rappel rappels rappeler alarme", "de": "erinnerung erinnern wecker", "ja": "リマインド リマインダー アラーム" }
+  }
+ ]
+}
