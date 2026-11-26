@@ -500,3 +500,33 @@ test('fight question: the fight words do not pull in FAQ entries', () => {
     assert.equal(r.fight.id, 'top');
     assert.deepEqual(r.faq, [], 'one FAQ keyword is not enough on a fight question');
 });
+
+test('strat aliases: a guide name picks its strat', () => {
+    assert.equal(aiKnowledge.matchStrat('Tuufless, who takes it?', 'top'), 'na-pf');
+    assert.equal(aiKnowledge.matchStrat('we do hector', 'top'), 'na-pf');
+});
+
+test('kind of mechanic: "tank buster" finds the tagged mechanics in fight order, also from the fight being talked about', () => {
+    const a = aiKnowledge.search('TOP who takes the 1st tank buster? ST or MT?', { userLang: 'en' });
+    assert.equal(a.fight.id, 'top');
+    assert.deepEqual(a.fight.tagMechIds, ['pantokrator']);
+    const b = aiKnowledge.search('who takes the first tankbuster', { userLang: 'en', contextFightId: 'top' });
+    assert.equal(b.fight.id, 'top');
+    assert.deepEqual(b.fight.tagMechIds, ['pantokrator']);
+    const c = aiKnowledge.search('TOP towers', { userLang: 'en' });
+    assert.deepEqual(c.fight.tagMechIds, ['program-loop']);
+    const t = aiKnowledge.fightText(a.fight, 'en', 'na-pf').text;
+    assert.match(t, /in fight order/);
+    assert.match(t, /1\. .*This strat:/);
+    assert.match(t, /never guess/);
+    const ask = aiKnowledge.fightText(a.fight, 'en', null);
+    assert.equal(ask.askStrat, true);
+});
+
+test('a strat named in the question is used for that answer, and the prompt forbids general-knowledge answers', async () => {
+    await say('Tuufless, who takes the 1st tank buster in TOP?');
+    const sys = ai.calls.at(-1).messages[0].content;
+    assert.match(sys, /The user's group uses the strat/);
+    assert.match(sys, /Answer ONLY from it/);
+    assert.doesNotMatch(sys, /jp-pf\]/);
+});

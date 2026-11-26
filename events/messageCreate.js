@@ -425,8 +425,10 @@ module.exports = {
 
                 // The user names their group's strat: the answer to our strat question, or "we use X now"
                 const stratFightId = (fightMatch && fightMatch.id) || (ctx ? ctx.fightId : null);
+                let namedForThisAnswer = null; // a strat named in a question ("Tuufless, who takes...?") is used for this answer even when not saved
                 if (stratFightId) {
                     const named = aiKnowledge.matchStrat(promptForAi, stratFightId);
+                    if (named && fightMatch && fightMatch.id === stratFightId) namedForThisAnswer = named;
                     const answersQuestion = ctx && ctx.askedStrat && ctx.fightId === stratFightId;
                     if (named && (answersQuestion || STRAT_CHANGE_RE.test(normalize(promptForAi)))) {
                         const key = 'strat:' + stratFightId;
@@ -448,7 +450,8 @@ module.exports = {
                 if (found.faq.length) parts.push('PINGWAY FAQ:\n' + aiKnowledge.faqText(found.faq, replyLang));
                 if (fightMatch) {
                     const saved = fightMatch.id ? factRows.find(r => r.fact_key === 'strat:' + fightMatch.id) : null;
-                    const ft = aiKnowledge.fightText(fightMatch, replyLang, saved ? saved.fact_value : null);
+                    const useStrat = (fightMatch.id && namedForThisAnswer) || (saved ? saved.fact_value : null);
+                    const ft = aiKnowledge.fightText(fightMatch, replyLang, useStrat);
                     if (ft.text) {
                         parts.push('FIGHT GUIDE:\n' + ft.text);
                         if (fightMatch.id) {
@@ -481,7 +484,7 @@ module.exports = {
 
             // Slim prompt: persona + language + tool rules, then only the parts this message needs
             const sections = [];
-            if (knowledgeText) sections.push(`Use the KNOWLEDGE below for Pingway and fight questions. Don't invent Pingway features or fight mechanics; if it isn't covered, say you're not sure.
+            if (knowledgeText) sections.push(`Use the KNOWLEDGE below for Pingway and fight questions. Answer ONLY from it: never add facts from your own general knowledge (no "usually", "often", "in general"). If the KNOWLEDGE does not have the answer, say plainly that you don't have that detail, then ask a short question (which fight, mechanic or strat) or suggest checking with their group.
 --- KNOWLEDGE ---
 ${knowledgeText}`);
             if (wantsLinks(promptForAi)) sections.push(`When users ask for resources, links, or guides, refer to the reference links below when relevant:

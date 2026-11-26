@@ -1,189 +1,206 @@
 {
- "id": "top",
- "type": "ultimate",
- "expansion": "EW",
- "patch": "6.11",
- "names": {
-  "en": "The Omega Protocol (Ultimate)",
-  "fr": "Le Protocole Oméga (fatal)",
-  "de": "Das Omega-Protokoll (fatal)",
-  "ja": "絶オメガ検証戦"
- },
- "aliases": {
-  "en": [
-   "top",
-   "omega ultimate"
-  ],
-  "fr": [
-   "top",
-   "omega fatal"
-  ],
-  "de": [
-   "top",
-   "omega fatal"
-  ],
-  "ja": [
-   "絶オメガ",
-   "絶オメ"
-  ]
- },
- "summary": {
-  "en": "TOP summary EN.",
-  "fr": "Résumé TOP FR.",
-  "de": "TOP Zusammenfassung DE.",
-  "ja": "絶オメガの概要。"
- },
- "strats_overview": [
-  {
-   "id": "na-pf",
-   "name": {
-    "en": "NA PF standard",
-    "fr": "Standard PF NA",
-    "de": "NA PF Standard",
-    "ja": "NA PF標準"
-   },
-   "region": "NA"
+  "id": "top",
+  "type": "ultimate",
+  "expansion": "EW",
+  "patch": "6.11",
+  "names": {
+    "en": "The Omega Protocol (Ultimate)",
+    "fr": "Le Protocole Oméga (fatal)",
+    "de": "Das Omega-Protokoll (fatal)",
+    "ja": "絶オメガ検証戦"
   },
-  {
-   "id": "jp-pf",
-   "name": {
-    "en": "JP standard",
-    "fr": "Standard JP",
-    "de": "JP Standard",
-    "ja": "リリドッ"
-   },
-   "region": "JP"
+  "aliases": {
+    "en": [
+      "top",
+      "omega ultimate"
+    ],
+    "fr": [
+      "top",
+      "omega fatal"
+    ],
+    "de": [
+      "top",
+      "omega fatal"
+    ],
+    "ja": [
+      "絶オメガ",
+      "絶オメ"
+    ]
   },
-  {
-   "id": "oce-test",
-   "name": {
-    "en": "OCE Test",
-    "fr": "OCE Test",
-    "de": "OCE Test",
-    "ja": "OCEテスト"
-   },
-   "region": "NA/EU",
-   "note": {
-    "en": "OCE-NOTE-EN",
-    "fr": "OCE-NOTE-FR",
-    "de": "OCE-NOTE-DE",
-    "ja": "OCE-NOTE-JA"
-   }
-  }
- ],
- "phases": [
-  {
-   "id": "p1",
-   "names": {
-    "en": "Phase 1: Omega",
-    "fr": "Phase 1 : Oméga",
-    "de": "Phase 1: Omega",
-    "ja": "P1 オメガ"
-   },
-   "mechanics": [
+  "summary": {
+    "en": "TOP summary EN.",
+    "fr": "Résumé TOP FR.",
+    "de": "TOP Zusammenfassung DE.",
+    "ja": "絶オメガの概要。"
+  },
+  "strats_overview": [
     {
-     "id": "program-loop",
-     "names": {
-      "en": "Program Loop",
-      "fr": "Boucle de programme",
-      "de": "Programmschleife",
-      "ja": "サークルプログラム"
-     },
-     "aliases": {
-      "en": [
-       "loop"
-      ],
-      "fr": [
-       "boucle"
-      ],
-      "de": [
-       "schleife"
-      ],
-      "ja": [
-       "ループ"
-      ]
-     },
-     "how": {
-      "en": "LOOP-HOW-EN",
-      "fr": "LOOP-HOW-FR",
-      "de": "LOOP-HOW-DE",
-      "ja": "LOOP-HOW-JA"
-     },
-     "strats": [
-      {
-       "strat": "na-pf",
-       "how": {
-        "en": "LOOP-NA-EN",
-        "fr": "LOOP-NA-FR",
-        "de": "LOOP-NA-DE",
-        "ja": "LOOP-NA-JA"
-       },
-       "uncertain": true,
-       "note": {
-        "en": "NA-SINGLE-SOURCE",
-        "fr": "x",
-        "de": "x",
-        "ja": "x"
-       }
+      "id": "na-pf",
+      "name": {
+        "en": "NA PF standard",
+        "fr": "Standard PF NA",
+        "de": "NA PF Standard",
+        "ja": "NA PF標準"
       },
-      {
-       "strat": "jp-pf",
-       "how": {
-        "en": "LOOP-JP-EN",
-        "fr": "LOOP-JP-FR",
-        "de": "LOOP-JP-DE",
-        "ja": "LOOP-JP-JA"
-       }
+      "region": "NA",
+      "aliases": {
+        "en": [
+          "hector",
+          "tuufless"
+        ],
+        "fr": [],
+        "de": [],
+        "ja": []
       }
-     ]
     },
     {
-     "id": "pantokrator",
-     "names": {
-      "en": "Pantokrator",
-      "fr": "Pantokrator",
-      "de": "Pantokrator",
-      "ja": "パントクラトル"
-     },
-     "aliases": {
-      "en": [
-       "panto"
-      ],
-      "fr": [
-       "panto"
-      ],
-      "de": [
-       "panto"
-      ],
-      "ja": [
-       "パント"
-      ]
-     },
-     "how": {
-      "en": "PANTO-HOW-EN",
-      "fr": "PANTO-HOW-FR",
-      "de": "PANTO-HOW-DE",
-      "ja": "PANTO-HOW-JA"
-     },
-     "strats": [
-      {
-       "strat": "na-pf",
-       "how": {
-        "en": "PANTO-NA-EN",
-        "fr": "PANTO-NA-FR",
-        "de": "PANTO-NA-DE",
-        "ja": "PANTO-NA-JA"
-       }
+      "id": "jp-pf",
+      "name": {
+        "en": "JP standard",
+        "fr": "Standard JP",
+        "de": "JP Standard",
+        "ja": "リリドッ"
       },
-      {
-       "strat": "jp-pf",
-       "same_as": "na-pf"
+      "region": "JP"
+    },
+    {
+      "id": "oce-test",
+      "name": {
+        "en": "OCE Test",
+        "fr": "OCE Test",
+        "de": "OCE Test",
+        "ja": "OCEテスト"
+      },
+      "region": "NA/EU",
+      "note": {
+        "en": "OCE-NOTE-EN",
+        "fr": "OCE-NOTE-FR",
+        "de": "OCE-NOTE-DE",
+        "ja": "OCE-NOTE-JA"
       }
-     ]
     }
-   ]
-  }
- ],
- "sources": [],
- "updated": "2026-11-26"
+  ],
+  "phases": [
+    {
+      "id": "p1",
+      "names": {
+        "en": "Phase 1: Omega",
+        "fr": "Phase 1 : Oméga",
+        "de": "Phase 1: Omega",
+        "ja": "P1 オメガ"
+      },
+      "mechanics": [
+        {
+          "id": "program-loop",
+          "names": {
+            "en": "Program Loop",
+            "fr": "Boucle de programme",
+            "de": "Programmschleife",
+            "ja": "サークルプログラム"
+          },
+          "aliases": {
+            "en": [
+              "loop"
+            ],
+            "fr": [
+              "boucle"
+            ],
+            "de": [
+              "schleife"
+            ],
+            "ja": [
+              "ループ"
+            ]
+          },
+          "how": {
+            "en": "LOOP-HOW-EN",
+            "fr": "LOOP-HOW-FR",
+            "de": "LOOP-HOW-DE",
+            "ja": "LOOP-HOW-JA"
+          },
+          "strats": [
+            {
+              "strat": "na-pf",
+              "how": {
+                "en": "LOOP-NA-EN",
+                "fr": "LOOP-NA-FR",
+                "de": "LOOP-NA-DE",
+                "ja": "LOOP-NA-JA"
+              },
+              "uncertain": true,
+              "note": {
+                "en": "NA-SINGLE-SOURCE",
+                "fr": "x",
+                "de": "x",
+                "ja": "x"
+              }
+            },
+            {
+              "strat": "jp-pf",
+              "how": {
+                "en": "LOOP-JP-EN",
+                "fr": "LOOP-JP-FR",
+                "de": "LOOP-JP-DE",
+                "ja": "LOOP-JP-JA"
+              }
+            }
+          ],
+          "tags": [
+            "tower",
+            "tether"
+          ]
+        },
+        {
+          "id": "pantokrator",
+          "names": {
+            "en": "Pantokrator",
+            "fr": "Pantokrator",
+            "de": "Pantokrator",
+            "ja": "パントクラトル"
+          },
+          "aliases": {
+            "en": [
+              "panto"
+            ],
+            "fr": [
+              "panto"
+            ],
+            "de": [
+              "panto"
+            ],
+            "ja": [
+              "パント"
+            ]
+          },
+          "how": {
+            "en": "PANTO-HOW-EN",
+            "fr": "PANTO-HOW-FR",
+            "de": "PANTO-HOW-DE",
+            "ja": "PANTO-HOW-JA"
+          },
+          "strats": [
+            {
+              "strat": "na-pf",
+              "how": {
+                "en": "PANTO-NA-EN",
+                "fr": "PANTO-NA-FR",
+                "de": "PANTO-NA-DE",
+                "ja": "PANTO-NA-JA"
+              }
+            },
+            {
+              "strat": "jp-pf",
+              "same_as": "na-pf"
+            }
+          ],
+          "tags": [
+            "tankbuster",
+            "spread"
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [],
+  "updated": "2026-11-26"
 }

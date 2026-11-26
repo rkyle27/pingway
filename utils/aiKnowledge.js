@@ -40,6 +40,35 @@ const stemPhrase = p => (CJK.test(p) ? p : p.split(' ').map(stem).join(' '));
 // Words that say nothing about WHICH fight or mechanic (never used for partial matches)
 const GENERIC = new Set(('savage ultimate extreme normal door final part phase the and with ex unreal trial raid fight boss mechanic mechanics ' +
     'how work tip tips strat strats guide do does wipe help explain').split(' '));
+// Kinds of mechanics (the "tags" in the fight files) and the words people use for them, in all 4 languages
+const TAG_WORDS = {
+    tankbuster: ['tank buster', 'tankbuster', 'buster', 'tb', 'tank hit', 'tankbusters', 'タンクバスター', 'タンク強攻撃', '強攻撃', 'タンク攻撃', 'バスター'],
+    tankswap: ['tank swap', 'tankswap', 'swap tank', 'tank switch', 'タンクスイッチ', 'タンクスワップ'],
+    raidwide: ['raidwide', 'raid wide', 'raid damage', 'attaque de zone', 'raidschaden', '全体攻撃'],
+    stack: ['stack', 'stack marker', 'partage', 'sammeln', '頭割り'],
+    spread: ['spread', 'dispersion', 'verteilen', '散開'],
+    knockback: ['knockback', 'knock back', 'kb', 'repoussement', 'projection', 'ruckstoss', 'ノックバック'],
+    tower: ['tower', 'tour', 'turm', 'turme', '塔'],
+    tether: ['tether', 'lien', 'verbindung', 'テザー', '線取り'],
+    proximity: ['proximity', 'distance falloff', '距離減衰'],
+    gaze: ['gaze', 'look away', 'regard', 'blick', '視線'],
+    cleave: ['cleave', 'cone', 'クリーヴ', '扇範囲'],
+    enrage: ['enrage', 'hard enrage', 'soft enrage', 'finale', '時間切れ'],
+    adds: ['adds', 'add phase', 'ajouts', 'adds phase', '雑魚'],
+    'dps-check': ['dps check', 'dps-check', 'dpsチェック'],
+    'limit-cut': ['limit cut', 'リミットカット'],
+    debuff: ['debuff', 'デバフ'],
+    dodge: ['dodge', 'esquive', 'ausweichen', '回避'],
+    transition: ['transition', 'phase change', 'フェーズ移行']
+};
+let TAG_KEYS = null; // [tag, phrase] built once (phrases cleaned like the message text)
+function tagsIn(normText) {
+    if (!TAG_KEYS) TAG_KEYS = Object.entries(TAG_WORDS).flatMap(([t, list]) => list.map(w => [t, stemPhrase(clean(w))]));
+    const out = new Set();
+    for (const [t, k] of TAG_KEYS) if (k && hasPhrase(normText, k)) out.add(t);
+    return [...out];
+}
+
 const words = text => clean(text).split(' ').filter(Boolean).map(stem);
 const pick = (obj, lang) => (obj && typeof obj === 'object' ? (obj[lang] || obj.en || '') : (typeof obj === 'string' ? obj : ''));
 
@@ -87,7 +116,8 @@ function indexFight(data, file) {
     const strats = (Array.isArray(data.strats_overview) ? data.strats_overview : []).filter(s => s && s.id).map(s => ({
         id: String(s.id),
         names: s.name || {},
-        keys: cleanList([...LANGS.map(l => s.name && s.name[l]), String(s.id), String(s.id).replace(/[-_]/g, ' ')].filter(Boolean))
+        keys: cleanList([...LANGS.map(l => s.name && s.name[l]), ...LANGS.flatMap(l => (s.aliases && Array.isArray(s.aliases[l]) ? s.aliases[l] : [])),
+            String(s.id), String(s.id).replace(/[-_]/g, ' ')].filter(Boolean))
     }));
     const mechs = [];
     for (const ph of Array.isArray(data.phases) ? data.phases : []) {
@@ -105,7 +135,8 @@ function indexFight(data, file) {
                 if (partKeys.length) (keys.parts = keys.parts || {})[l] = partKeys;
                 words[l] = [...new Set([...keys[l], ...partKeys].filter(k => !CJK.test(k)).flatMap(k => k.split(' ')).filter(w => w.length >= 3 && !GENERIC.has(w) && !STOP.has(w)))];
             }
-            mechs.push({ id: String(m.id), phase: String(ph.id || ''), keys, words });
+            const tags = (Array.isArray(m.tags) ? m.tags : []).map(t => String(t).toLowerCase()).filter(t => TAG_WORDS[t]);
+            mechs.push({ id: String(m.id), phase: String(ph.id || ''), keys, words, tags });
         }
     }
     const nameWords = {};
@@ -281,7 +312,19 @@ function searchFight(rawText, langs, contextFightId) {
 function search(text, opts = {}) {
     const normText = clean(text);
     const langs = opts.langs || langsFor(opts.userLang || 'en', text);
-    const fight = searchFight(normText, langs, opts.contextFightId || null);
+    let fight = searchFight(normText, langs, opts.contextFightId || null);
+    // A kind of mechanic ("1st tank buster", "the towers") and no mechanic named: every mechanic of that kind, in fight order.
+    // No fight named (or several): the fight the user is already talking about.
+    const tags = tagsIn(stemPhrase(normText));
+    if (tags.length && !(fight && fight.mechId)) {
+        const ctxId = opts.contextFightId && fightById.has(opts.contextFightId) ? opts.contextFightId : null;
+        if ((!fight || !fight.id) && ctxId) fight = { id: ctxId, mechId: null, score: 0, fromContext: true };
+        const f = fight && fight.id ? fightById.get(fight.id) : null;
+        if (f) {
+            const ids = f.mechs.filter(m => m.tags.some(t => tags.includes(t))).map(m => m.id);
+            fight = Object.assign({}, fight, { tags, tagMechIds: ids });
+        }
+    }
     let faqQuery = normText;
     const f = fight && fight.id ? fightById.get(fight.id) : null;
     if (f) {
@@ -354,6 +397,10 @@ function faqText(results, lang) {
 }
 
 const MECH_LIST_MAX = 1500; // fight-only question: the list of mechanic names stays this short (big fights)
+const TAG_TEXT_MAX = 3000; // kind-of-mechanic question: the matching mechanics stay this short
+const TAG_NAMES = { tankbuster: 'tank busters', tankswap: 'tank swaps', raidwide: 'raidwides', stack: 'stacks', spread: 'spreads', knockback: 'knockbacks',
+    tower: 'towers', tether: 'tethers', proximity: 'proximity hits', gaze: 'gazes', cleave: 'cleaves', dodge: 'dodges', debuff: 'debuffs', adds: 'adds',
+    enrage: 'enrages', 'dps-check': 'DPS checks', 'limit-cut': 'limit cuts', transition: 'transitions' };
 const UNSURE = 'Tell the user the sources are not sure / they should check with their group; never state it as a fact.';
 
 // Knowledge block for the AI about one fight: only the matched mechanic (+ the chosen strat), never the whole file.
@@ -379,6 +426,40 @@ function fightText(match, lang, stratId) {
     if (!stratsAll.length && data.note) lines.push(`Fight note: ${pick(data.note, lang)}`);
     const found = match.mechId ? findMechanic(data, match.mechId) : null;
     let askStrat = false;
+
+    if (!found && Array.isArray(match.tagMechIds)) {
+        // "who takes the 1st tank buster?": every mechanic of that kind, numbered in fight order, with the chosen strat's steps
+        const kinds = (match.tags || []).map(t => TAG_NAMES[t] || t).join(', ');
+        const chosen = savedOk || (stratsAll.length === 1 ? stratsAll[0].id : null);
+        if (!match.tagMechIds.length) {
+            lines.push(`The guide marks no ${kinds} for this fight. Say the guide has no info on that; do not answer from general knowledge.`);
+            return { text: lines.join('\n'), askStrat: false };
+        }
+        if (chosen) lines.push(`The user's group uses the strat: ${stratName(match.id, chosen, lang)}. Explain ONLY this strat, never the other strats.`);
+        lines.push(`The ${kinds} of this fight, in fight order (1 = first):`);
+        let n = 0;
+        let cut = false;
+        for (const id of match.tagMechIds) {
+            const hit = findMechanic(data, id);
+            if (!hit) continue;
+            let item = `${++n}. ${pick(hit.phase.names, lang)} - ${pick(hit.mech.names, lang)}: ${pick(hit.mech.how, lang)}`;
+            if (hit.mech.uncertain) item += ` (not fully certain: ${pick(hit.mech.note, lang)})`;
+            if (chosen) {
+                const entry = stratEntry(hit.mech, chosen);
+                item += entry ? ` | This strat: ${pick(entry.how, lang)}${entry.uncertain ? ' (single source, not certain)' : ''}` : ' | This strat: the guide has no steps for this one.';
+            }
+            if (lines.join('\n').length + item.length > TAG_TEXT_MAX) { cut = true; break; }
+            lines.push(item);
+        }
+        if (cut) lines.push('...more of them later in the fight (not listed).');
+        if (!chosen && stratsAll.length > 1) {
+            askStrat = true;
+            lines.push(`Strats for this fight: ${stratList}.`);
+            lines.push('The user has not told you their strat. Answer only what the list above says for every group (if anything), then ask which of these strats their group uses. Do NOT explain any strat now.');
+        }
+        lines.push('Who takes or does it is ONLY what the list above says. If it does not say (e.g. which tank), say the guide does not have that detail; never guess.');
+        return { text: lines.join('\n'), askStrat };
+    }
 
     if (found) {
         const { phase, mech } = found;
@@ -422,7 +503,7 @@ function fightText(match, lang, stratId) {
             });
         }
         if (list) lines.push('Mechanics: ' + list + (cut ? ' | ...and more' : ''));
-        lines.push('If they ask about one mechanic, ask which one if it is not clear.');
+        lines.push('Only the mechanic NAMES are given here, no details: do not explain any mechanic or say who does it. If they ask about one, ask which mechanic they mean.');
     }
     return { text: lines.join('\n'), askStrat };
 }
