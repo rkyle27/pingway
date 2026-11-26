@@ -484,7 +484,7 @@ module.exports = {
 
             // Slim prompt: persona + language + tool rules, then only the parts this message needs
             const sections = [];
-            if (knowledgeText) sections.push(`Use the KNOWLEDGE below for Pingway and fight questions. Answer ONLY from it: never add facts from your own general knowledge (no "usually", "often", "in general"). If the KNOWLEDGE does not have the answer, say plainly that you don't have that detail, then ask a short question (which fight, mechanic or strat) or suggest checking with their group.
+            if (knowledgeText) sections.push(`Use the KNOWLEDGE below for Pingway and fight questions. Answer ONLY from it: never add facts from your own general knowledge (no "usually", "often", "in general"). If the KNOWLEDGE does not have the answer, say plainly that you don't have that detail, then ask a short question (which fight, mechanic or strat) or suggest checking with their group. Never make up links: only give links that appear in the KNOWLEDGE.
 --- KNOWLEDGE ---
 ${knowledgeText}`);
             if (wantsLinks(promptForAi)) sections.push(`When users ask for resources, links, or guides, refer to the reference links below when relevant:

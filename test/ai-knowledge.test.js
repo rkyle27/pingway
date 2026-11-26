@@ -530,3 +530,18 @@ test('a strat named in the question is used for that answer, and the prompt forb
     assert.match(sys, /Answer ONLY from it/);
     assert.doesNotMatch(sys, /jp-pf\]/);
 });
+
+test('guide links: "Link?" gives the guide pages of the fight being talked about, strat language first, no tool files', () => {
+    const a = aiKnowledge.search('Link?', { userLang: 'en', contextFightId: 'top' });
+    assert.equal(a.fight.id, 'top');
+    assert.equal(a.fight.wantLinks, true);
+    const en = aiKnowledge.fightText(a.fight, 'en', 'na-pf').text;
+    assert.match(en, /Guide links for this fight/);
+    assert.ok(en.indexOf('example.com/en-top') < en.indexOf('example.jp/top'));
+    assert.doesNotMatch(en, /raw\.githubusercontent/);
+    const jp = aiKnowledge.fightText(a.fight, 'en', 'jp-pf').text;
+    assert.ok(jp.indexOf('example.jp/top') < jp.indexOf('example.com/en-top'));
+    const ja = aiKnowledge.search('絶オメガ リンクある？', { userLang: 'ja' });
+    assert.equal(ja.fight.wantLinks, true);
+    assert.equal(aiKnowledge.search('TOP pantokrator', { userLang: 'en' }).fight.wantLinks, undefined);
+});

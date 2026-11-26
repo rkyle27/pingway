@@ -61,6 +61,19 @@ const TAG_WORDS = {
     dodge: ['dodge', 'esquive', 'ausweichen', '回避'],
     transition: ['transition', 'phase change', 'フェーズ移行']
 };
+// Asking for a link / guide page, in all 4 languages
+const LINK_WORDS = ['link', 'links', 'url', 'guide', 'guides', 'source', 'sources', 'website', 'site', 'page',
+    'lien', 'liens', 'quelle', 'quellen', 'seite', 'webseite', 'リンク', 'url', 'ソース', 'サイト', '攻略サイト', '攻略ページ', 'ページ'];
+let LINK_KEYS = null;
+function wantsLinks(normText) {
+    if (!LINK_KEYS) LINK_KEYS = LINK_WORDS.map(w => stemPhrase(clean(w))).filter(Boolean);
+    const t = stemPhrase(normText);
+    return LINK_KEYS.some(k => hasPhrase(t, k));
+}
+// Tool / data files listed as sources are not guides for players
+const NOT_A_GUIDE = /raw\.githubusercontent\.com|xivapi\.com|github\.com|cactbot/i;
+const LINKS_MAX = 4;
+
 let TAG_KEYS = null; // [tag, phrase] built once (phrases cleaned like the message text)
 function tagsIn(normText) {
     if (!TAG_KEYS) TAG_KEYS = Object.entries(TAG_WORDS).flatMap(([t, list]) => list.map(w => [t, stemPhrase(clean(w))]));
@@ -325,6 +338,12 @@ function search(text, opts = {}) {
             fight = Object.assign({}, fight, { tags, tagMechIds: ids });
         }
     }
+    // "Link?" / "guide?": the guide pages of the fight named, or of the fight the user is already talking about
+    if (wantsLinks(normText)) {
+        const ctxId = opts.contextFightId && fightById.has(opts.contextFightId) ? opts.contextFightId : null;
+        if ((!fight || !fight.id) && ctxId) fight = { id: ctxId, mechId: null, score: 0, fromContext: true };
+        if (fight && fight.id) fight = Object.assign({}, fight, { wantLinks: true });
+    }
     let faqQuery = normText;
     const f = fight && fight.id ? fightById.get(fight.id) : null;
     if (f) {
@@ -426,6 +445,26 @@ function fightText(match, lang, stratId) {
     if (!stratsAll.length && data.note) lines.push(`Fight note: ${pick(data.note, lang)}`);
     const found = match.mechId ? findMechanic(data, match.mechId) : null;
     let askStrat = false;
+
+    if (match.wantLinks) {
+        // Guide pages from the fight file only. The strat's own language first (JP strat -> Japanese guides), else the reply language.
+        const st = overview.find(s => s && s.id === (savedOk || stratId));
+        const first = st && /JP/i.test(String(st.region || '')) ? 'ja' : (lang === 'ja' ? 'ja' : 'en');
+        const guides = (Array.isArray(data.sources) ? data.sources : [])
+            .filter(x => x && typeof x.url === 'string' && /^https:\/\//.test(x.url) && !NOT_A_GUIDE.test(x.url));
+        guides.sort((a, b) => (a.lang === first ? 0 : 1) - (b.lang === first ? 0 : 1));
+        const list = guides.slice(0, LINKS_MAX).map(x => `${x.title || x.url} (${x.lang || '?'}): ${x.url}`);
+        if (list.length) {
+            lines.push(`Guide links for this fight (when they ask for a link, give ONLY links from this list, the ones that fit their strat/language; these come before any general reference links; never make up a link): ${list.join(' | ')}`);
+        } else {
+            lines.push('There are no guide links for this fight. Say you have no link for it; never make up a link.');
+        }
+        if (!found && !Array.isArray(match.tagMechIds)) {
+            if (stratList) lines.push(`Strats for this fight: ${stratList}.`);
+            if (savedOk) lines.push(`The user's group uses the strat: ${stratName(match.id, savedOk, lang)}.`);
+            return { text: lines.join('\n'), askStrat: false };
+        }
+    }
 
     if (!found && Array.isArray(match.tagMechIds)) {
         // "who takes the 1st tank buster?": every mechanic of that kind, numbered in fight order, with the chosen strat's steps

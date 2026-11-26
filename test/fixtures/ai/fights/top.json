@@ -201,6 +201,22 @@
       ]
     }
   ],
-  "sources": [],
+  "sources": [
+    {
+      "title": "EN guide",
+      "url": "https://example.com/en-top",
+      "lang": "en"
+    },
+    {
+      "title": "JP guide",
+      "url": "https://example.jp/top",
+      "lang": "ja"
+    },
+    {
+      "title": "timeline",
+      "url": "https://raw.githubusercontent.com/x/y/top.ts",
+      "lang": "en"
+    }
+  ],
   "updated": "2026-11-26"
 }
