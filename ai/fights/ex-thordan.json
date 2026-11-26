@@ -1,0 +1,569 @@
+{
+ "id": "ex-thordan",
+ "type": "extreme",
+ "expansion": "HW",
+ "patch": "3.1",
+ "names": {
+  "en": "The Minstrel's Ballad: Thordan's Reign",
+  "fr": "Le règne de Thordan",
+  "de": "Heldenlied von Thordans Fall",
+  "ja": "蒼天幻想 ナイツ・オブ・ラウンド討滅戦"
+ },
+ "aliases": {
+  "en": [
+   "ex-thordan",
+   "thordan ex",
+   "thordan extreme",
+   "thordan's reign",
+   "knights of the round ex",
+   "kotr"
+  ],
+  "fr": [
+   "thordan extrême",
+   "règne de thordan"
+  ],
+  "de": [
+   "thordan extrem",
+   "heldenlied von thordans fall"
+  ],
+  "ja": [
+   "極トールダン",
+   "ナイツ・オブ・ラウンド",
+   "蒼天幻想",
+   "極ナイツ"
+  ]
+ },
+ "summary": {
+  "en": "King Thordan and his Knights of the Round. Phase 1 is Thordan alone, phase 2 is the knights in pairs and groups (towers, chains, charges, comets) ending in Ultimate End, and phase 3 is Thordan with the Eye of Nidhogg summoning knights in mixed sets. Enrage is a final Ancient Quaga.",
+  "fr": "Le roi Thordan et ses Chevaliers de la Table ronde. Phase 1 : Thordan seul ; phase 2 : les chevaliers en paires et groupes (tours, chaînes, charges, comètes) jusqu'à Ultimate End ; phase 3 : Thordan avec l'Œil de Nidhogg qui invoque des chevaliers mélangés. L'enrage est un dernier Ancient Quaga.",
+  "de": "König Thordan und seine Ritter der Runde. Phase 1 ist Thordan allein, Phase 2 die Ritter in Paaren und Gruppen (Türme, Ketten, Anstürme, Kometen) bis Ultimate End, Phase 3 Thordan mit dem Auge Nidhoggs, der gemischte Rittergruppen ruft. Der Enrage ist ein letztes Ancient Quaga.",
+  "ja": "騎神トールダンと蒼天騎士団。前半はトールダン単体、次に騎士の組ごとの戦闘（塔・炎の鎖・突進・魔紋）とアルティメットエンド、後半は竜の眼と騎士の複合（ナイツ・オブ・ラウンド）。最後のエンシェントクエイガで時間切れ。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "This fight is mostly cleared unsynced or at minimum item level today, so strats rarely matter. The entries below explain how each mechanic works. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Aujourd'hui ce combat se fait surtout en mode sans restriction ou en ilvl minimum, donc la strat compte rarement. Les entrées ci-dessous expliquent comment marche chaque mécanique. Les noms des mécaniques sont en anglais (noms FR officiels non vérifiés).",
+  "de": "Heute wird dieser Kampf meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel gemacht, die Strat spielt also selten eine Rolle. Die Einträge unten erklären, wie jede Mechanik funktioniert. Die Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "現在このコンテンツは主に制限解除やIL最低限で攻略されるため、攻略法の違いはほとんど問題になりません。以下では各ギミックの仕組みを説明します。英語名のままのギミック名は日本語の公式名を確認できなかったものです。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Thordan",
+    "fr": "Thordan",
+    "de": "Thordan",
+    "ja": "トールダン"
+   },
+   "mechanics": [
+    {
+     "id": "ascalons-might",
+     "names": {
+      "en": "Ascalon's Might / Heavenly Heel",
+      "fr": "Puissance d'Ascalon / Estoc céleste",
+      "de": "Macht von Askalon / Himmelsschritt",
+      "ja": "アスカロンマイト／ヘヴンリーヒール"
+     },
+     "aliases": {
+      "en": [
+       "ascalon's might / heavenly heel"
+      ],
+      "fr": [
+       "ascalon's might / heavenly heel"
+      ],
+      "de": [
+       "ascalon's might / heavenly heel"
+      ],
+      "ja": [
+       "アスカロンマイト／ヘヴンリーヒール"
+      ]
+     },
+     "how": {
+      "en": "Frontal tank cleave and a casted tankbuster; face Thordan away and mitigate. The MT holding Thordan takes both.",
+      "fr": "Cleave frontal et tankbuster incanté ; tourne Thordan et réduis. Le MT qui tient Thordan prend les deux.",
+      "de": "Frontaler Tankcleave und ein gecasteter Tankbuster; Thordan wegdrehen und mitigieren. Der MT, der Thordan hält, nimmt beides.",
+      "ja": "前方範囲とタンク強攻撃。向きを外して軽減。トールダンを持つMTが両方受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "cleave"
+     ]
+    },
+    {
+     "id": "meteorain-lightning",
+     "names": {
+      "en": "Meteorain / Lightning Storm / Dragon's Rage",
+      "fr": "Pluie de météorites / Pluie d'éclairs / Colère du dragon",
+      "de": "Meteorregen / Blitzsturm / Zorn des Drachen",
+      "ja": "メテオレイン／百雷／邪竜の魔炎"
+     },
+     "aliases": {
+      "en": [
+       "meteorain / lightning storm / dragon's rage"
+      ],
+      "fr": [
+       "meteorain / lightning storm / dragon's rage"
+      ],
+      "de": [
+       "meteorain / lightning storm / dragon's rage"
+      ],
+      "ja": [
+       "メテオレイン／百雷／邪竜の魔炎"
+      ]
+     },
+     "how": {
+      "en": "Circles under everyone (move), spread circles on all (spread), and a stack marker (stack).",
+      "fr": "Cercles sous tous (bouge), dispersion sur tous, et un partage.",
+      "de": "Kreise unter allen (bewegen), Verteil-Kreise auf allen (verteilen) und ein Sammelmarker (sammeln).",
+      "ja": "全員の足元範囲（移動）、全員に散開円、頭割り。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "ascalons-mercy",
+     "names": {
+      "en": "Ascalon's Mercy",
+      "fr": "Grâce d'Ascalon",
+      "de": "Gnade von Askalon",
+      "ja": "アスカロンメルシー"
+     },
+     "aliases": {
+      "en": [
+       "ascalon's mercy"
+      ],
+      "fr": [
+       "ascalon's mercy"
+      ],
+      "de": [
+       "ascalon's mercy"
+      ],
+      "ja": [
+       "アスカロンメルシー"
+      ]
+     },
+     "how": {
+      "en": "Seven narrow cones over 180 degrees with knockback; stand in the gaps.",
+      "fr": "Sept cônes étroits sur 180° avec recul ; place-toi dans les trous.",
+      "de": "Sieben schmale Kegel über 180° mit Rückstoß; in die Lücken stellen.",
+      "ja": "前方180度に細い扇範囲。隙間に立つ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "knockback"
+     ]
+    },
+    {
+     "id": "dragons-gaze",
+     "names": {
+      "en": "Dragon's Eye / Dragon's Gaze",
+      "fr": "Œil du dragon / Regard du dragon",
+      "de": "Auge des Drachen / Blick des Drachen",
+      "ja": "竜の眼／竜の邪眼"
+     },
+     "aliases": {
+      "en": [
+       "dragon's eye / dragon's gaze"
+      ],
+      "fr": [
+       "dragon's eye / dragon's gaze"
+      ],
+      "de": [
+       "dragon's eye / dragon's gaze"
+      ],
+      "ja": [
+       "竜の眼／竜の邪眼"
+      ]
+     },
+     "how": {
+      "en": "The Eye buffs Thordan; the Gaze is a gaze attack (look away). In phase 3 the Eye of Nidhogg also gazes from outside the arena: look away from both.",
+      "fr": "L'Œil buffe Thordan ; le Regard est une attaque de regard (détourne-toi). En phase 3, l'Œil de Nidhogg regarde aussi depuis l'extérieur : détourne-toi des deux.",
+      "de": "Das Auge stärkt Thordan; der Blick ist ein Blickangriff (wegschauen). In Phase 3 blickt auch das Auge Nidhoggs von außen: von beiden wegschauen.",
+      "ja": "竜の眼でボス強化、竜の邪眼は視線攻撃（背を向ける）。後半は場外の巨大な眼も視線を使うので両方から背を向ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "gaze"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Knights of the Round",
+    "fr": "Chevaliers de la Table ronde",
+    "de": "Ritter der Runde",
+    "ja": "蒼天騎士"
+   },
+   "mechanics": [
+    {
+     "id": "heavensflame-conviction",
+     "names": {
+      "en": "Heavensflame / Conviction",
+      "fr": "Flamme céleste / Conviction",
+      "de": "Himmlische Flamme / Konviktion",
+      "ja": "ヘヴンフレイム／コンヴィクション"
+     },
+     "aliases": {
+      "en": [
+       "heavensflame / conviction"
+      ],
+      "fr": [
+       "heavensflame / conviction"
+      ],
+      "de": [
+       "heavensflame / conviction"
+      ],
+      "ja": [
+       "ヘヴンフレイム／コンヴィクション"
+      ]
+     },
+     "how": {
+      "en": "Burning Chains tie players: move to clock spots to break them while dodging the circles. Conviction makes four towers that each need at least one player (empty = raid damage and paralysis).",
+      "fr": "Des chaînes de feu lient des joueurs : va à tes positions horaires pour les casser en esquivant les cercles. Conviction crée quatre tours qui demandent chacune au moins un joueur (vide = dégâts et paralysie).",
+      "de": "Brennende Ketten verbinden Spieler: zu den Uhrpositionen gehen, um sie zu brechen, und den Kreisen ausweichen. Conviction erzeugt vier Türme, die je mindestens einen Spieler brauchen (leer = Raumschaden und Paralyse).",
+      "ja": "炎の鎖は離れて解除（時計配置で散開）。コンヴィクションの塔4つには必ず1人以上入る。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "tower",
+      "dodge"
+     ]
+    },
+    {
+     "id": "sacred-cross-spiral-thrust",
+     "names": {
+      "en": "Sacred Cross / Spiral Thrust",
+      "fr": "Croix sacrée / Transpercement tournoyant",
+      "de": "Heiliges Kreuz / Spiralstoß",
+      "ja": "セイクリッドクロス／スパイラルスラスト"
+     },
+     "aliases": {
+      "en": [
+       "sacred cross / spiral thrust"
+      ],
+      "fr": [
+       "sacred cross / spiral thrust"
+      ],
+      "de": [
+       "sacred cross / spiral thrust"
+      ],
+      "ja": [
+       "セイクリッドクロス／スパイラルスラスト"
+      ]
+     },
+     "how": {
+      "en": "Sacred Cross is a long cast that hurts more the more HP Zephirin has: bring him low. Spiral Thrust: three knights charge across from the edge; stand in the gaps.",
+      "fr": "Sacred Cross : long sort qui fait plus mal si Zephirin a beaucoup de PV : descends-le. Spiral Thrust : trois chevaliers chargent depuis le bord ; place-toi dans les trous.",
+      "de": "Sacred Cross ist ein langer Cast, der stärker ist, je mehr LP Zephirin hat: ihn runterbringen. Spiral Thrust: drei Ritter stürmen vom Rand; in die Lücken stellen.",
+      "ja": "セイクリッドクロスはゼフィランのHPが多いほど痛い長詠唱、削る。スパイラルスラストは外周の騎士3体の突進、間に立つ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "dps-check",
+      "dodge"
+     ]
+    },
+    {
+     "id": "divine-right",
+     "names": {
+      "en": "Divine Right / Holy Bladedance / Skyward Leap",
+      "fr": "Droit divin / Danse de la lame céleste / Bond céleste",
+      "de": "Göttliches Recht / Geweihter Schwerttanz / Luftsprung",
+      "ja": "蒼天の構え／ホーリーブレードダンス／スカイワードリープ"
+     },
+     "aliases": {
+      "en": [
+       "divine right / holy bladedance / skyward leap"
+      ],
+      "fr": [
+       "divine right / holy bladedance / skyward leap"
+      ],
+      "de": [
+       "divine right / holy bladedance / skyward leap"
+      ],
+      "ja": [
+       "蒼天の構え／ホーリーブレードダンス／スカイワードリープ"
+      ]
+     },
+     "how": {
+      "en": "Adelphel and Janlenoux get Sword (damage up) or Shield (damage down); tanks keep them apart and DPS hit the Sword one. Holy Bladedance is a big multi-hit tankbuster (Sword tank needs big cooldowns). Skyward Leap marks players in turn: marked players go away from the group. Each tank holds one knight, kept apart, and takes its Holy Bladedance.",
+      "fr": "Adelphel et Janlenoux reçoivent Épée (dégâts +) ou Bouclier (dégâts -) ; les tanks les séparent et les DPS tapent celui à l'Épée. Holy Bladedance : gros tankbuster multiple (le tank Épée a besoin de gros CD). Skyward Leap marque des joueurs à tour de rôle : les marqués s'éloignent. Chaque tank tient un chevalier, séparés, et prend son Holy Bladedance.",
+      "de": "Adelphel und Janlenoux bekommen Schwert (Schaden hoch) oder Schild (Schaden runter); Tanks halten sie auseinander, DPS schlagen den Schwert-Ritter. Holy Bladedance ist ein starker Mehrfach-Tankbuster (Schwert-Tank braucht große Cooldowns). Skyward Leap markiert Spieler nacheinander: Markierte gehen weg vom Team. Jeder Tank hält einen Ritter, getrennt voneinander, und nimmt dessen Holy Bladedance.",
+      "ja": "アデルフェルとジャンルヌに剣（与ダメ増）と盾（被ダメ減）。タンクは離し、DPSは剣側を攻撃。ホーリーブレードダンスは連続強攻撃、スカイワードリープは青丸の人が離れる。MTとSTが騎士を1体ずつ離して持ち、それぞれのホーリーブレードダンスを受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "adds",
+      "spread"
+     ]
+    },
+    {
+     "id": "dimensional-collapse",
+     "names": {
+      "en": "Dimensional Collapse / Hiemal Storm / Spiral Pierce / Faith Unmoving",
+      "fr": "Effondrement dimensionnel / Tempête hiémale / Empalement tournoyant / Foi immuable",
+      "de": "Dimensionskollaps / Hiemaler Sturm / Spiralstich / Fester Glaube",
+      "ja": "ディメンションクラッシュ／ハイマルストーム／スパイラルピアス／フェイスアンムーブ"
+     },
+     "aliases": {
+      "en": [
+       "dimensional collapse / hiemal storm / spiral pierce / faith unmoving"
+      ],
+      "fr": [
+       "dimensional collapse / hiemal storm / spiral pierce / faith unmoving"
+      ],
+      "de": [
+       "dimensional collapse / hiemal storm / spiral pierce / faith unmoving"
+      ],
+      "ja": [
+       "ディメンションクラッシュ／ハイマルストーム／スパイラルピアス／フェイスアンムーブ"
+      ]
+     },
+     "how": {
+      "en": "Growing black circles under everyone: stack in the center then spread. Ice spread circles leave Frostbite puddles; Spiral Pierce tethers three players (stay away from them); Faith Unmoving knocks back from Grinnaux: don't land in puddles.",
+      "fr": "Cercles noirs qui grandissent sous tous : groupe-toi au centre puis disperse-toi. Cercles de glace qui laissent des flaques Gelure ; Spiral Pierce lie trois joueurs (éloigne-toi) ; Faith Unmoving repousse depuis Grinnaux : n'atterris pas dans les flaques.",
+      "de": "Wachsende schwarze Kreise unter allen: in der Mitte sammeln, dann verteilen. Eis-Kreise hinterlassen Frostpfützen; Spiral Pierce verbindet drei Spieler (Abstand); Faith Unmoving stößt von Grinnaux weg: nicht in Pfützen landen.",
+      "ja": "黒い範囲は中央に集まってから散開。氷の円は凍傷床、スパイラルピアスは線の3人から離れる、フェイスアンムーブで床に飛ばされない向きに。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread",
+      "tether",
+      "knockback"
+     ]
+    },
+    {
+     "id": "holy-meteor-comets",
+     "names": {
+      "en": "Holy Meteor / Comets and Meteor Circle",
+      "fr": "Météore sacré / Comets and Meteor Circle",
+      "de": "Heiliger Meteor / Comets and Meteor Circle",
+      "ja": "ホーリーメテオ／魔紋"
+     },
+     "aliases": {
+      "en": [
+       "holy meteor / comets and meteor circle"
+      ],
+      "fr": [
+       "holy meteor / comets and meteor circle"
+      ],
+      "de": [
+       "holy meteor / comets and meteor circle"
+      ],
+      "ja": [
+       "ホーリーメテオ／魔紋"
+      ]
+     },
+     "how": {
+      "en": "Four marked players take repeated small hits (don't stand together). Then destroy the small Comet circles before they land (one landing is survivable, two are not), then kill the big Meteor Circle in the center or the party wipes. Heavy Impact rings: dodge the expanding rings.",
+      "fr": "Quatre marqués prennent plusieurs petits coups (pas ensemble). Puis détruis les petites Comet avant leur chute (une passe, deux non), puis le gros Meteor Circle au centre sinon wipe. Heavy Impact : esquive les anneaux.",
+      "de": "Vier Markierte bekommen mehrere kleine Treffer (nicht zusammenstehen). Dann die kleinen Komet-Kreise vor dem Einschlag zerstören (einer ist überlebbar, zwei nicht), dann den großen Meteor-Kreis in der Mitte töten, sonst Wipe. Heavy Impact: den Ringen ausweichen.",
+      "ja": "赤マーカー4人は離れる。外周の小さい魔紋から壊し（1つ落ちるのは耐えられるが2つは不可）、最後に中央の大きい魔紋を壊さないと全滅。ヘヴィインパクトは広がる範囲を避ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "dps-check",
+      "dodge"
+     ]
+    },
+    {
+     "id": "ultimate-end",
+     "names": {
+      "en": "Ultimate End",
+      "fr": "Fin ultime",
+      "de": "Ultimatives Ende",
+      "ja": "アルティメットエンド"
+     },
+     "aliases": {
+      "en": [
+       "ultimate end"
+      ],
+      "fr": [
+       "ultimate end"
+      ],
+      "de": [
+       "ultimate end"
+      ],
+      "ja": [
+       "アルティメットエンド"
+      ]
+     },
+     "how": {
+      "en": "Heavy raid damage that grows with deaths/LB gauge during phase 2; shield and mitigate.",
+      "fr": "Gros dégâts de zone, plus forts selon les morts/jauge en phase 2 ; boucliers et réduction.",
+      "de": "Starker Raumschaden, der mit Toden/LB-Leiste in Phase 2 steigt; Schilde und Mitigation.",
+      "ja": "前半の戦闘不能数などで威力が上がる全体攻撃。バリアと軽減。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Thordan + Knights (Eye of Nidhogg)",
+    "fr": "Thordan + chevaliers (Œil de Nidhogg)",
+    "de": "Thordan + Ritter (Auge Nidhoggs)",
+    "ja": "後半（ナイツ・オブ・ラウンド）"
+   },
+   "mechanics": [
+    {
+     "id": "spear-of-the-fury",
+     "names": {
+      "en": "Holy Shield Bash / Spear of the Fury",
+      "fr": "Coup de bouclier saint / Lance de la Conquérante",
+      "de": "Heiliger Schildschlag / Speer der Furie",
+      "ja": "ホーリーシールドバッシュ／スピア・オブ・ハルオーネ"
+     },
+     "aliases": {
+      "en": [
+       "holy shield bash / spear of the fury"
+      ],
+      "fr": [
+       "holy shield bash / spear of the fury"
+      ],
+      "de": [
+       "holy shield bash / spear of the fury"
+      ],
+      "ja": [
+       "ホーリーシールドバッシュ／スピア・オブ・ハルオーネ"
+      ]
+     },
+     "how": {
+      "en": "A healer is marked and knocked down (Down for the Count), then speared in a line. The off-tank with mitigation and the rest stand between Zephirin and the healer; if anyone dies, the party wipes. The MT stays out.",
+      "fr": "Un soigneur est marqué et mis à terre, puis transpercé en ligne. L'off-tank avec réduction et les autres se placent entre Zephirin et le soigneur ; si quelqu'un meurt, wipe. Le MT reste hors de la ligne.",
+      "de": "Ein Heiler wird markiert und niedergeworfen, dann in einer Linie aufgespießt. Der Off-Tank mit Mitigation und die anderen stellen sich zwischen Zephirin und den Heiler; stirbt jemand, Wipe. Der MT bleibt draußen.",
+      "ja": "緑マーカーのヒーラーが倒され、槍の直線攻撃。STが先頭で軽減し、他も間に入って分担。誰か1人でも死ぬと全滅。MTは入らない。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack"
+     ]
+    },
+    {
+     "id": "knights-sets",
+     "names": {
+      "en": "Knights of the Round sets",
+      "fr": "Chevaliers de la Table ronde (séries)",
+      "de": "Ritter der Runde (Sets)",
+      "ja": "ナイツ・オブ・ラウンド"
+     },
+     "aliases": {
+      "en": [
+       "knights of the round sets"
+      ],
+      "fr": [
+       "knights of the round sets"
+      ],
+      "de": [
+       "knights of the round sets"
+      ],
+      "ja": [
+       "ナイツ・オブ・ラウンド"
+      ]
+     },
+     "how": {
+      "en": "Thordan summons knights in mixed groups, combining phase 2 mechanics with gazes from Thordan and the Eye: towers with Heavy Impact (gaze first), Skyward Leap + Spiral Pierce + Spiral Thrust + stack, chains + Hiemal Storm + Holy Meteor + Ascalon's Mercy, and finally Zephirin with Sacred Cross again.",
+      "fr": "Thordan invoque des chevaliers en groupes mélangés, mêlant les mécaniques de la phase 2 et les regards de Thordan et de l'Œil : tours avec Heavy Impact (regard d'abord), Skyward Leap + Spiral Pierce + Spiral Thrust + partage, chaînes + Hiemal Storm + Holy Meteor + Ascalon's Mercy, et enfin Zephirin avec Sacred Cross.",
+      "de": "Thordan ruft Ritter in gemischten Gruppen und kombiniert Phase-2-Mechaniken mit Blicken von Thordan und dem Auge: Türme mit Heavy Impact (zuerst Blick), Skyward Leap + Spiral Pierce + Spiral Thrust + Sammeln, Ketten + Hiemal Storm + Holy Meteor + Ascalon's Mercy und zuletzt Zephirin mit Sacred Cross.",
+      "ja": "騎士を組み合わせて召喚し、前半のギミックと視線を同時に処理：塔＋ヘヴィインパクト（視線優先）、スカイワードリープ＋スパイラルピアス＋突進＋頭割り、炎の鎖＋ハイマルストーム＋ホーリーメテオ、最後にゼフィランのセイクリッドクロス。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "gaze",
+      "tower",
+      "tether",
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "ancient-quaga-enrage",
+     "names": {
+      "en": "Ancient Quaga (enrage)",
+      "fr": "Méga Séisme ancien (enrage)",
+      "de": "Seisga Antiqua (Enrage)",
+      "ja": "エンシェントクエイガ（時間切れ）"
+     },
+     "aliases": {
+      "en": [
+       "ancient quaga (enrage)"
+      ],
+      "fr": [
+       "ancient quaga (enrage)"
+      ],
+      "de": [
+       "ancient quaga (enrage)"
+      ],
+      "ja": [
+       "エンシェントクエイガ"
+      ]
+     },
+     "how": {
+      "en": "Raid damage during the fight; the last slow cast kills everyone if Thordan is alive.",
+      "fr": "Dégâts de zone pendant le combat ; le dernier sort lent tue tout le monde si Thordan vit.",
+      "de": "Raumschaden im Kampf; der letzte langsame Cast tötet alle, wenn Thordan lebt.",
+      "ja": "全体攻撃。最後の長詠唱で時間切れ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "The Minstrel's Ballad: Thordan's Reign",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/The_Minstrel%27s_Ballad:_Thordan%27s_Reign",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/a8a4860068c/",
+   "lang": "en"
+  },
+  {
+   "title": "ゲーム乱舞 極ナイツ・オブ・ラウンド",
+   "url": "https://gameranbu.jp/ff14/ef44aa7ba85776e49e96",
+   "lang": "ja"
+  },
+  {
+   "title": "FF14予習室 蒼天幻想 ナイツ・オブ・ラウンド討滅戦",
+   "url": "https://ru-eka.com/archives/9235",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

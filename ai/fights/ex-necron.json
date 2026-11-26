@@ -1,0 +1,679 @@
+{
+ "id": "ex-necron",
+ "type": "extreme",
+ "expansion": "DT",
+ "patch": "7.3",
+ "names": {
+  "en": "The Minstrel's Ballad: Necron's Embrace - Necron",
+  "fr": "La Nécropole intemporelle (extrême) - Darkness",
+  "de": "Gok Tajaal - Das Ewige Dunkel",
+  "ja": "極永遠の闇討滅戦"
+ },
+ "aliases": {
+  "en": [
+   "necron ex",
+   "necron extreme",
+   "necron's embrace",
+   "ageless necropolis"
+  ],
+  "fr": [
+   "nécropole intemporelle",
+   "necron extrême"
+  ],
+  "de": [
+   "ewiges dunkel extrem",
+   "necron extrem"
+  ],
+  "ja": [
+   "極永遠の闇",
+   "永遠の闇"
+  ]
+ },
+ "summary": {
+  "en": "Necron (Eternal Darkness) Extreme. Recurring mechanics are Blue Shockwave tank cones, Fear of Death hands baited out of puddles, Cold Grip side lines, Memento Mori with big circles on everyone, and Soul Reaping stored shapes with Twofold/Fourfold Blight stacks. Midway there's Grand Cross towers, an adds phase, Darkness of Eternity where everyone is sent to a solo arena, Relentless Reaping with Crop Rotation order swaps, and the Mass Macabre tower sequence.",
+  "fr": "Necron (Ténèbres éternelles) Extrême. Mécaniques récurrentes : cônes de tank Onde bleue, mains de Thanatophobie à baiter hors des flaques, lignes latérales de Fouet létal, Memento mori avec gros cercles sur tous, et Âme bleue qui stocke des formes avec packages Voie bleue doublée/quadruplée. Au milieu : tours de Croix suprême, phase d'adds, Obscurité éternelle où chacun part sur une arène solo, Âmes bleues enchaînées avec Rotation des âmes, et la séquence de tours Panique collective.",
+  "de": "Necron (Ewiges Dunkel) Extrem. Wiederkehrend sind Blaue-Schockwelle-Tankkegel, Todesfurcht-Hände, die aus Flächen geködert werden, Dunkelhieb-Seitenlinien, Memento Mori mit großen Kreisen auf allen und Seelenlabung mit gespeicherten Formen samt Doppeltem/Vierfachem Verderben. In der Mitte kommen Supernova-Türme, eine Add-Phase, Ewige Dunkelheit mit Solo-Arena, Andauernde Labung mit Fruchtfolge-Tausch und die Turmfolge Massenfurcht.",
+  "ja": "極永遠の闇。青の衝撃（タンク扇）、死の恐怖の手の誘導、暗き死の腕、メメント・モリ、青き魂で準備する範囲と二重/四重波が繰り返し。グランドクロスの塔、雑魚、エターナルダークネスの個別空間、連なる青き魂と魂の輪転、集団恐慌の塔。"
+ },
+ "strats_overview": [
+  {
+   "id": "na-pf",
+   "name": {
+    "en": "NA PF (Szechuan Sauce raidplans, HC4/OW1, Uptime MM2)",
+    "fr": "PF NA (raidplans Szechuan Sauce, HC4/OW1, Uptime MM2)",
+    "de": "NA-PF (Szechuan-Sauce-Raidplans, HC4/OW1, Uptime MM2)",
+    "ja": "NA野良（Szechuan Sauceレイドプラン、HC4/OW1、Uptime MM2）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "NAUR: phase 1 and 2 raidplans by Szechuan Sauce (often written HC4/OW1), Uptime MM2 for the second Memento Mori with melee on the right, and 'inside spots with cards' waymarks. Mechanic-by-mechanic positions were not verified here.",
+    "fr": "NAUR : raidplans phases 1 et 2 de Szechuan Sauce (souvent notés HC4/OW1), Uptime MM2 pour le second Memento mori avec mêlées à droite, et marqueurs « inside spots with cards ». Positions par mécanique non vérifiées ici.",
+    "de": "NAUR: Raidplans für Phase 1 und 2 von Szechuan Sauce (oft HC4/OW1 genannt), Uptime MM2 für das zweite Memento Mori mit Nahkampf rechts, und Marker „inside spots with cards“. Positionen pro Mechanik hier nicht geprüft.",
+    "ja": "NAUR：前後半ともSzechuan Sauceのレイドプラン（HC4/OW1と表記）、2回目のメメント・モリはUptime MM2（近接右）、マーカーはinside spots w/cards。ギミック別の位置は未確認。"
+   },
+   "aliases": {
+    "en": [
+     "hector/sauce",
+     "hector",
+     "sauce",
+     "szechuan sauce",
+     "hc4/ow1",
+     "uptime mm2"
+    ],
+    "fr": [
+     "hector/sauce",
+     "hector",
+     "sauce",
+     "szechuan sauce",
+     "hc4/ow1",
+     "uptime mm2"
+    ],
+    "de": [
+     "hector/sauce",
+     "hector",
+     "sauce",
+     "szechuan sauce",
+     "hc4/ow1",
+     "uptime mm2"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-game8",
+   "name": {
+    "en": "JP Game8 (Lucrezia method)",
+    "fr": "JP Game8 (méthode Lucrezia)",
+    "de": "JP Game8 (Lucrezia-Methode)",
+    "ja": "JP game8（ルクレ式）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "Based on Lucrezia's video, with separate macros for basic spread/pairs, Memento Mori and Mass Macabre.",
+    "fr": "D'après la vidéo de Lucrezia, avec des macros séparées pour dispersion/paires, Memento mori et Panique collective.",
+    "de": "Nach Lucrezias Video, mit eigenen Makros für Verteilen/Paare, Memento Mori und Massenfurcht.",
+    "ja": "Lucrezia氏の動画準拠。基本散開/ペア、メメント・モリ、集団恐慌など用途別マクロ。"
+   },
+   "aliases": {
+    "en": [
+     "lucrezia",
+     "lucre",
+     "game8"
+    ],
+    "fr": [
+     "lucrezia",
+     "lucre",
+     "game8"
+    ],
+    "de": [
+     "lucrezia",
+     "lucre",
+     "game8"
+    ],
+    "ja": [
+     "ルクレ式",
+     "ルクレ",
+     "lucrezia"
+    ]
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "前半"
+   },
+   "mechanics": [
+    {
+     "id": "blue-shockwave",
+     "names": {
+      "en": "Blue Shockwave",
+      "fr": "Onde bleue",
+      "de": "Blaue Schockwelle",
+      "ja": "青の衝撃"
+     },
+     "aliases": {
+      "en": [
+       "tank cones",
+       "tankbuster"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Two cone busters on the top enmity; tanks go to the northwest/northeast edges and aim outward, swapping with buffs, while everyone else stays in the middle.",
+      "fr": "Deux busters en cône sur le premier en inimitié ; les tanks vont aux bords NO/NE et visent l'extérieur, en swappant, les autres restent au centre.",
+      "de": "Zwei Kegel-Buster auf den Feindseligkeits-Ersten; Tanks gehen an die Ränder NW/NO und zielen nach außen, mit Wechsel, alle anderen bleiben in der Mitte.",
+      "ja": "ヘイト1位への扇強攻撃2回。タンクは北西/北東端で外向き、STはバフでスイッチ。他は中央。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "MT holds the boss facing the top-left corner; on a swap the OT provokes during the cast and stands in the top-right corner; everyone else stays in the middle.",
+        "fr": "Le MT tient le boss vers le coin haut-gauche ; en cas de swap, l'OT provoque pendant l'incantation et se met dans le coin haut-droit ; les autres restent au milieu.",
+        "de": "MT hält den Boss Richtung Ecke oben links; beim Tausch provoziert der OT während des Zaubers und steht oben rechts; alle anderen bleiben in der Mitte.",
+        "ja": "MTは左上の角、スイッチ時はOTが詠唱中に挑発して右上の角。他は中央。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "MT takes the first hit at the northwest edge; the OT (ST) uses mitigation and swaps for the second at the northeast edge, both aiming the cone outward.",
+        "fr": "Le MT prend le premier coup au bord nord-ouest ; l'OT utilise ses réductions et swap pour le second au bord nord-est, les deux orientant le cône vers l'extérieur.",
+        "de": "Der MT nimmt den ersten Treffer am Nordwestrand; der OT nutzt Mitigation und wechselt für den zweiten am Nordostrand, beide richten den Kegel nach außen.",
+        "ja": "MTが北西端で1発目を受け、STはバフを使ってスイッチし北東端で2発目を受ける。扇は外側へ向ける。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "cleave",
+      "debuff"
+     ]
+    },
+    {
+     "id": "fear-of-death",
+     "names": {
+      "en": "Fear of Death",
+      "fr": "Thanatophobie",
+      "de": "Todesfurcht",
+      "ja": "死の恐怖"
+     },
+     "aliases": {
+      "en": [
+       "hands",
+       "puddles"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Raidwide, then puddles with hands appear; spread loosely near your spot and bait your hand's line so it doesn't hit others (puddles can be vertical or horizontal).",
+      "fr": "Raidwide, puis des flaques avec des mains ; disperse-toi près de ton spot et baite la ligne de ta main loin des autres (flaques verticales ou horizontales).",
+      "de": "Raidwide, dann Flächen mit Händen; locker nahe deinem Platz verteilen und die Linie deiner Hand so ködern, dass sie niemanden trifft (Flächen senkrecht oder waagerecht).",
+      "ja": "全体攻撃後に沼と手。担当位置付近に散開し、手の直線を他人に当てない（沼は縦/横）。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Tanks and melee take the north four hands (T, M, M, T from west to east), ranged and healers the south four (R, H, H, R); stand just outside your puddle and bait the line outward.",
+        "fr": "Tanks et mêlées prennent les quatre mains au nord (T, M, M, T d'ouest en est), distances et heals les quatre au sud (R, H, H, R) ; reste juste à côté de ta flaque et oriente la ligne vers l'extérieur.",
+        "de": "Tanks und Nahkampf nehmen die vier Hände im Norden (T, M, M, T von West nach Ost), Fernkampf und Heiler die vier im Süden (R, H, H, R); knapp neben deiner Pfütze stehen und die Linie nach außen ködern.",
+        "ja": "北4つの手はタンク近接（西からT・M・M・T）、南4つは遠隔ヒラ（R・H・H・R）。自分の床のすぐ外で外向きに誘導。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Positions from Icy Veins' guide (common PF); the Szechuan Sauce raidplans could not be read to confirm they match exactly.",
+        "fr": "Positions du guide Icy Veins (PF courante) ; les raidplans Szechuan Sauce n'ont pas pu être lus pour confirmer.",
+        "de": "Positionen aus dem Icy-Veins-Guide (übliche PF); die Szechuan-Sauce-Raidplans waren nicht lesbar, um es zu bestätigen.",
+        "ja": "Icy Veins（一般的な野良）の位置。Szechuan Sauceのレイドプランは読めず、完全一致かは未確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "cold-grip",
+     "names": {
+      "en": "Cold Grip",
+      "fr": "Fouet létal",
+      "de": "Dunkelhieb",
+      "ja": "暗き死の腕"
+     },
+     "aliases": {
+      "en": [
+       "side lines"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Lines on both sides with the middle safe; the side with the black glowing hand expands, so after dodging step to the white-hand side.",
+      "fr": "Lignes des deux côtés, centre sûr ; le côté de la main noire s'élargit, donc après l'esquive va du côté de la main blanche.",
+      "de": "Linien auf beiden Seiten, die Mitte ist sicher; die Seite mit der schwarz leuchtenden Hand weitet sich aus, also danach zur Seite der weißen Hand.",
+      "ja": "両サイドの直線、中央が安地。黒く光る手側が拡大するので白い手側へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "memento-mori",
+     "names": {
+      "en": "Memento Mori + Smite of Gloom",
+      "fr": "Memento mori + Coup des ténèbres",
+      "de": "Memento Mori + Schlag der Schwermut",
+      "ja": "メメント・モリ＋闇の一撃"
+     },
+     "aliases": {
+      "en": [
+       "mm",
+       "big circles"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A middle line, then lines from the hands and a big circle on every player; tanks go to the black-glow side and the other six spread on the white side.",
+      "fr": "Une ligne au centre, puis des lignes depuis les mains et un gros cercle sur chacun ; les tanks côté lueur noire, les six autres dispersés côté blanc.",
+      "de": "Eine Linie in der Mitte, dann Linien aus den Händen und ein großer Kreis auf jedem; Tanks auf die schwarze Seite, die anderen sechs verteilt auf der weißen.",
+      "ja": "中央直線の後、手から直線と全員に巨大円。黒く光る側にタンク2人、白い側に6人がマクロ配置で散開（左右はスライド）。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Tanks go to the dark side; on the light side melee stand in front, healers in the middle, ranged at the back. For the second Memento Mori, Uptime MM2 puts melee on the right.",
+        "fr": "Les tanks vont du côté sombre ; côté clair, mêlées devant, heals au milieu, distances derrière. Pour le second, Uptime MM2 met les mêlées à droite.",
+        "de": "Tanks auf die dunkle Seite; auf der hellen Seite Nahkampf vorne, Heiler in der Mitte, Fernkampf hinten. Beim zweiten Memento Mori stellt Uptime MM2 Nahkämpfer nach rechts.",
+        "ja": "タンクは闇側、光側は前から近接・ヒーラー・遠隔。2回目はUptime MM2で近接が右。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread"
+     ]
+    },
+    {
+     "id": "soul-reaping-blight",
+     "names": {
+      "en": "Soul Reaping + Twofold / Fourfold Blight",
+      "fr": "Âme bleue + Voie bleue doublée / quadruplée",
+      "de": "Seelenlabung + Doppeltes / Vierfaches Verderben",
+      "ja": "青き魂＋青の二重波 / 四重波"
+     },
+     "aliases": {
+      "en": [
+       "stored aoe",
+       "4 stack",
+       "pairs"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "二重",
+       "四重"
+      ]
+     },
+     "how": {
+      "en": "Soul Reaping stores a middle line or side lines for later; Twofold is two groups of four, Fourfold is pairs, done inside the stored safe area.",
+      "fr": "Âme bleue stocke une ligne centrale ou des lignes latérales pour plus tard ; doublée = deux groupes de quatre, quadruplée = paires, dans la zone sûre stockée.",
+      "de": "Seelenlabung speichert eine Mittellinie oder Seitenlinien für später; Doppelt sind zwei Vierergruppen, Vierfach Paare, im gespeicherten sicheren Bereich.",
+      "ja": "青き魂で中央か両脇の直線を準備。二重は4人頭割り、四重はペア、準備された安地内で。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack"
+     ]
+    },
+    {
+     "id": "end-embrace",
+     "names": {
+      "en": "Fear of Death + The End's Embrace",
+      "fr": "Thanatophobie + Aile guide",
+      "de": "Todesfurcht + Letzte Umarmung",
+      "ja": "死の恐怖＋導きの翼"
+     },
+     "aliases": {
+      "en": [
+       "wings",
+       "drop on puddle"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Hands again, then everyone drops an AoE on their own puddle and baits the new hand's line; heal in the middle first. Blue Shockwave comes again right after: the top-enmity tank takes it, then swap or invuln as before.",
+      "fr": "Mains à nouveau, puis chacun pose une AoE sur sa propre flaque et baite la nouvelle ligne ; soins au centre d'abord. Onde bleue revient juste après : le tank en tête d'inimitié le prend, puis swap ou invulnérabilité comme avant.",
+      "de": "Wieder Hände, dann legt jeder einen AoE auf seine eigene Fläche und ködert die neue Linie; zuerst in der Mitte heilen. Direkt danach kommt wieder Blaue Schockwelle: Der Tank mit der höchsten Feindseligkeit nimmt ihn, dann wie zuvor wechseln oder Unverwundbarkeit.",
+      "ja": "手の誘導で全員にAOE、自分の沼に捨て、生まれた手を誘導。中央で回復してから。直後にもう一度「青の衝撃」が来る。ヘイト1位のタンクが受け、前回同様スイッチか無敵で処理する。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "tankbuster",
+      "tankswap"
+     ]
+    },
+    {
+     "id": "grand-cross",
+     "names": {
+      "en": "Grand Cross + Neutron Ring",
+      "fr": "Croix suprême + Anneau de neutrons",
+      "de": "Supernova + Neutronenring",
+      "ja": "グランドクロス＋ニュートンリング"
+     },
+     "aliases": {
+      "en": [
+       "towers",
+       "lasers",
+       "neutron star"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Arena changes; drop circles in the middle then on the cross, then towers and markers in quadrants while lasers sweep (cross or X pattern). Neutron Ring returns the arena.",
+      "fr": "L'arène change ; pose des cercles au centre puis sur la croix, puis tours et marqueurs par quart pendant que des lasers balayent (en croix ou en X). Anneau de neutrons remet l'arène.",
+      "de": "Die Arena ändert sich; Kreise in der Mitte und dann auf dem Kreuz ablegen, danach Türme und Marker pro Viertel, während Laser fegen (Kreuz oder X). Neutronenring setzt die Arena zurück.",
+      "ja": "中央で1つ目の円、十字方向で2つ目。塔とマーカーはMT/D1、ST/D2、H2/D4、H1/D3のエリア。十字とX字の2パターン。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Use colour buddies: stack in the middle to bait, fan out to your intercardinal and wait out both laser sets; the player without the AoE marker takes the tower and the marked one steps out, reversed in the second round. Then stack in the middle again so the intercardinal edges stay safe for the proximity hits.",
+        "fr": "Utilise les partenaires de couleur : package au milieu pour baiter, déploie-toi sur ton intercardinal et attends les deux séries de lasers ; celui sans marqueur prend la tour et le marqué sort, à l'inverse au second tour. Puis repackage au milieu pour garder les bords intercardinaux sûrs pour les coups de proximité.",
+        "de": "Farbpartner nutzen: in der Mitte sammeln zum Ködern, zur eigenen Interkardinale auffächern und beide Lasersätze abwarten; wer keinen AoE-Marker hat, nimmt den Turm, der Markierte geht raus, in der zweiten Runde umgekehrt. Danach wieder in der Mitte sammeln, damit die Interkardinal-Ränder für die Entfernungstreffer sicher bleiben.",
+        "ja": "色ペアで処理：中央で誘導、自分の斜めへ扇状に出てレーザー2回を待つ。マーカーなしが塔、マーカー持ちは外、2回目は逆。その後また中央で誘導し、斜めの外周を距離減衰の安置にする。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Positions from Icy Veins' guide (common PF); the Szechuan Sauce raidplans could not be read to confirm they match exactly.",
+        "fr": "Positions du guide Icy Veins (PF courante) ; les raidplans Szechuan Sauce n'ont pas pu être lus pour confirmer.",
+        "de": "Positionen aus dem Icy-Veins-Guide (übliche PF); die Szechuan-Sauce-Raidplans waren nicht lesbar, um es zu bestätigen.",
+        "ja": "Icy Veins（一般的な野良）の位置。Szechuan Sauceのレイドプランは読めず、完全一致かは未確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "tower"
+     ]
+    },
+    {
+     "id": "adds",
+     "names": {
+      "en": "Adds (Icy Hands / Beckoning Hands)",
+      "fr": "Adds (attrape-morts)",
+      "de": "Adds (Eiskalte / Lockende Hände)",
+      "ja": "雑魚（死を招く手・死に誘う手）"
+     },
+     "aliases": {
+      "en": [
+       "adds"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Kill the hands before the gauge reaches 100; tanks hold the big Beckoning Hands and aim their busters outward.",
+      "fr": "Tue les mains avant que la jauge atteigne 100 ; les tanks tiennent les grandes mains et visent l'extérieur.",
+      "de": "Töte die Hände, bevor die Leiste 100 erreicht; Tanks halten die großen Lockenden Hände und richten Buster nach außen.",
+      "ja": "ゲージ100前に倒す。タンクは巨大な死に誘う手、強攻撃は外周へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "dps-check",
+      "tankbuster"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2",
+    "fr": "Phase 2",
+    "de": "Phase 2",
+    "ja": "後半"
+   },
+   "mechanics": [
+    {
+     "id": "darkness-of-eternity",
+     "names": {
+      "en": "Darkness of Eternity",
+      "fr": "Obscurité éternelle",
+      "de": "Ewige Dunkelheit",
+      "ja": "エターナルダークネス"
+     },
+     "aliases": {
+      "en": [
+       "solo arena"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "After a raidwide, each player is sent to a separate arena to kill adds by role: tanks silence and mitigate, healers cleanse slow, DPS dodge AoEs. In each tank's arena the Icy Hands add keeps using a tank buster (Choking Grasp) on that tank until it dies.",
+      "fr": "Après un raidwide, chaque joueur va sur une arène séparée tuer des adds selon son rôle : tanks silence et mitigation, heals purgent la lenteur, DPS esquivent. Dans l'arène de chaque tank, l'add Icy Hands enchaîne un tankbuster (Choking Grasp) sur ce tank jusqu'à sa mort.",
+      "de": "Nach einem Raidwide geht jeder in eine eigene Arena und tötet Adds je nach Rolle: Tanks unterbrechen und mitigieren, Heiler reinigen Gemach, DPS weichen aus. In der Arena jedes Tanks setzt das Icy-Hands-Add immer wieder einen Tankbuster (Choking Grasp) auf diesen Tank ein, bis es stirbt.",
+      "ja": "全体攻撃後、各自別空間で雑魚。タンクは撒き散らすに沈黙・強攻撃にバフ、ヒーラーはスロウにエスナ、DPSは範囲回避。各タンクの空間では、雑魚（Icy Hands）がそのタンクに倒れるまで強攻撃（Choking Grasp）を繰り返す。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "adds",
+      "tankbuster",
+      "transition"
+     ]
+    },
+    {
+     "id": "specter-of-death",
+     "names": {
+      "en": "Specter of Death + The End's Embrace + Cold Grip",
+      "fr": "Agrippe-morts + Aile guide + Fouet létal",
+      "de": "Gesandte des Todes + Letzte Umarmung + Dunkelhieb",
+      "ja": "闇の巨腕＋導きの翼＋暗き死の腕"
+     },
+     "aliases": {
+      "en": [
+       "giant arm"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Giant arms come from tethered spots with lines; drop the wing AoEs in the safe spots, then dodge the expanding Cold Grip side (Sprint helps).",
+      "fr": "De grands bras sortent des points liés avec des lignes ; pose les AoE d'aile dans les safe spots, puis esquive le côté de Fouet létal qui s'élargit (Sprint aide).",
+      "de": "Riesenarme kommen von den verbundenen Punkten mit Linien; die Flügel-AoEs in sicheren Stellen ablegen, dann der wachsenden Dunkelhieb-Seite ausweichen (Sprint hilft).",
+      "ja": "線の先から巨腕の直線。安地に導きの翼を捨て、暗き死の腕の拡大側を避ける（スプリント）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "tether"
+     ]
+    },
+    {
+     "id": "relentless-reaping",
+     "names": {
+      "en": "Relentless Reaping + Crop Rotation + The Second / Fourth Season",
+      "fr": "Âmes bleues enchaînées + Rotation des âmes + Motifs bleus doublés / quadruplés",
+      "de": "Andauernde Labung + Fruchtfolge + Zweite / Vierte Saison",
+      "ja": "連なる青き魂＋魂の輪転＋青の式波・二重/四重"
+     },
+     "aliases": {
+      "en": [
+       "in out memory",
+       "order swap"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "内外",
+       "輪転"
+      ]
+     },
+     "how": {
+      "en": "Four shapes are stored in order, and Crop Rotation swaps the order; each is either an inside-safe (donut, side lines) or outside-safe (middle line, circle) AoE. Finish with the two- or four-split stack.",
+      "fr": "Quatre formes sont stockées dans l'ordre et Rotation des âmes change l'ordre ; chacune est sûre dedans (donut, lignes latérales) ou dehors (ligne centrale, cercle). Termine par le package à deux ou quatre.",
+      "de": "Vier Formen werden der Reihe nach gespeichert und Fruchtfolge vertauscht die Reihenfolge; jede ist innen sicher (Donut, Seitenlinien) oder außen (Mittellinie, Kreis). Am Ende das Zweier- oder Vierer-Sammeln.",
+      "ja": "4種類の範囲を準備し魂の輪転で順番が入れ替わる。内側（ドーナツ・両サイド）か外側（中央直線・円）で回避、最後に二重/四重。/echoで内外を入力する方法も。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack"
+     ]
+    },
+    {
+     "id": "circle-of-lives",
+     "names": {
+      "en": "Circle of Lives + Specter of Death",
+      "fr": "Sphères d'énergie bleues + Agrippe-morts",
+      "de": "Lebenszirkel + Gesandte des Todes",
+      "ja": "青の輪波＋闇の巨腕"
+     },
+     "aliases": {
+      "en": [
+       "donut orbs"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Donut orbs go off one after another while giant arm lines and a stored shape come; stay in the donut safe spots and finish with the stack.",
+      "fr": "Des orbes donut explosent l'un après l'autre pendant les lignes des bras et une forme stockée ; reste dans les safe spots des donuts et termine par le package.",
+      "de": "Donut-Kugeln lösen nacheinander aus, dazu Riesenarm-Linien und eine gespeicherte Form; bleib in den sicheren Donut-Stellen und beende mit dem Sammeln.",
+      "ja": "ドーナツの球を順に避けつつ巨腕と青き魂、最後に頭割り。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack"
+     ]
+    },
+    {
+     "id": "mass-macabre",
+     "names": {
+      "en": "Mass Macabre",
+      "fr": "Panique collective",
+      "de": "Massenfurcht",
+      "ja": "集団恐慌"
+     },
+     "aliases": {
+      "en": [
+       "towers",
+       "10 towers"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Ten towers for four, three and two players are soaked in order; each soak gives a short debuff, so wait for it to expire before the next, while dodging lines from the middle. Blue Shockwave also comes during it on the tank with enmity, so the tanks stop taking towers after their second; MT takes one hit and the other tank swaps in for the next.",
+      "fr": "Dix tours pour quatre, trois et deux joueurs se prennent dans l'ordre ; chaque prise donne une courte debuff, attends qu'elle parte avant la suivante, en esquivant les lignes du centre. Onde bleue tombe aussi pendant ce mécanisme sur le tank qui a l'inimitié, donc les tanks arrêtent de prendre des tours après leur deuxième ; le MT prend un coup et l'autre tank swap pour le suivant.",
+      "de": "Zehn Türme für vier, drei und zwei Spieler werden der Reihe nach genommen; jeder gibt einen kurzen Debuff, also warte, bis er abläuft, und weiche den Linien aus der Mitte aus. Währenddessen kommt auch Blaue Schockwelle auf den Tank mit der Feindseligkeit, daher nehmen die Tanks nach ihrem zweiten Turm keine Türme mehr; der MT nimmt einen Treffer, der andere Tank wechselt für den nächsten.",
+      "ja": "4人・3人・2人用の塔計10個を順番に。デバフが消えてから次の塔。最初は近接と遠隔で4人塔、タンク強攻撃中はタンク以外が3人塔。この間に「青の衝撃」もヘイト1位のタンクに来るので、タンクは2回目以降の塔に入らない。MTが1発受け、次はSTがスイッチして受ける。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Tanks and melee take the north middle portal, healers and ranged the south one; spread to light-party sides for Memento Mori; pairs then take the two-player portals (T/M north, H/R south). After Blue Shockwave the non-tanks fill the three-player portals on each side, the west side starting at the back and the east side at the front, then swap. Always wait for the vulnerability to fade. PF uptime variant: both melee east and both ranged west.",
+        "fr": "Tanks et mêlées prennent le portail nord du milieu, heals et distances celui du sud ; dispersion par light party pour Memento Mori ; puis les paires prennent les portails à deux (T/M au nord, H/R au sud). Après Onde de choc bleue, les non-tanks remplissent les portails à trois de chaque côté, l'ouest commence au fond et l'est devant, puis on inverse. Attends toujours la fin de la vulnérabilité. Variante uptime en PF : les deux mêlées à l'est, les deux distances à l'ouest.",
+        "de": "Tanks und Nahkampf nehmen das mittlere Nordportal, Heiler und Fernkampf das südliche; für Memento Mori auf die Leichtgruppen-Seiten verteilen; danach nehmen Paare die Zwei-Personen-Portale (T/M Nord, H/R Süd). Nach Blauer Schockwelle füllen die Nicht-Tanks die Drei-Personen-Portale auf jeder Seite, der Westen beginnt hinten, der Osten vorne, dann tauschen. Immer warten, bis die Verwundbarkeit weg ist. PF-Uptime-Variante: beide Nahkämpfer Ost, beide Fernkämpfer West.",
+        "ja": "北中央の床はタンク近接、南はヒラ遠隔。メメントはLPの左右へ散開。次に2人床をペアで（T/M北、H/R南）。ブルーショックウェーブ後はタンク以外が左右の3人床へ、西は奥から・東は手前から、その後入れ替え。被ダメ上昇が切れるまで待つ。野良のアップタイム版は近接2人東・遠隔2人西。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Positions from Icy Veins' guide (common PF); the Szechuan Sauce raidplans could not be read to confirm they match exactly.",
+        "fr": "Positions du guide Icy Veins (PF courante) ; les raidplans Szechuan Sauce n'ont pas pu être lus pour confirmer.",
+        "de": "Positionen aus dem Icy-Veins-Guide (übliche PF); die Szechuan-Sauce-Raidplans waren nicht lesbar, um es zu bestätigen.",
+        "ja": "Icy Veins（一般的な野良）の位置。Szechuan Sauceのレイドプランは読めず、完全一致かは未確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "debuff",
+      "dodge",
+      "tankbuster",
+      "tankswap"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Final Circle of Lives / enrage",
+      "fr": "Dernières sphères / enrage",
+      "de": "Letzter Lebenszirkel / Finalangriff",
+      "ja": "最後の青の輪波〜時間切れ"
+     },
+     "aliases": {
+      "en": [
+       "enrage"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Donut orbs with two giant arms, then the enrage.",
+      "fr": "Orbes donut avec deux grands bras, puis l'enrage.",
+      "de": "Donut-Kugeln mit zwei Riesenarmen, dann der Finalangriff.",
+      "ja": "ドーナツと闇の巨腕×2の後に時間切れ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "NAUR FFXIV - Ageless Necropolis",
+   "url": "https://naurffxiv.com/extreme/ageless-necropolis",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - 極永遠の闇",
+   "url": "https://game8.jp/ff14/709448",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot necron-ex",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/trial/necron-ex.ts",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins - Necron's Embrace (Extreme)",
+   "url": "https://www.icy-veins.com/ffxiv/necrons-embrace-extreme-trial-guide",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

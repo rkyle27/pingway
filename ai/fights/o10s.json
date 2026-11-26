@@ -1,0 +1,410 @@
+{
+ "id": "o10s",
+ "type": "savage",
+ "expansion": "SB",
+ "patch": "4.4",
+ "names": {
+  "en": "Alphascape V2.0 (Savage)",
+  "fr": "Alphastice v2.0 (sadique)",
+  "de": "Alphametrie 2.0 (episch)",
+  "ja": "次元の狭間オメガ零式：アルファ編2"
+ },
+ "aliases": {
+  "en": [
+   "o10s",
+   "midgardsormr",
+   "alphascape 2 savage"
+  ],
+  "fr": [
+   "o10s",
+   "midgardsormr",
+   "alphastice 2"
+  ],
+  "de": [
+   "o10s",
+   "midgardsormr",
+   "alphametrie 2"
+  ],
+  "ja": [
+   "アルファ零式2層",
+   "ミドガルズオルム",
+   "o10s"
+  ]
+ },
+ "summary": {
+  "en": "Second floor of Alphascape Savage against Midgardsormr. You read his spins (horizontal or vertical, twice) to know the next attack; then an add phase with Immortal Keys and an Ancient Dragon, and a final phase built around passing the Arcane Bulwark shield.",
+  "fr": "Deuxième étage d'Alphastice sadique contre Midgardsormr. Tu lis ses rotations (horizontale ou verticale, deux fois) pour savoir l'attaque suivante ; puis une phase d'adds avec des Clés immortelles et un dragon ancien, et une phase finale autour du bouclier Arcane Bulwark à se passer.",
+  "de": "Zweite Ebene von Alphametrie episch gegen Midgardsormr. Du liest seine Drehungen (horizontal oder vertikal, zweimal), um den nächsten Angriff zu kennen; dann eine Add-Phase mit Immortal Keys und einem Ancient Dragon und eine Endphase rund um das Weitergeben des Arcane-Bulwark-Schilds.",
+  "ja": "アルファ編2層、ミドガルズオルム戦。2回の回転（横か縦）を見て次の攻撃を判断します。その後Immortal KeyとAncient Dragonの雑魚フェーズ、最後はArcane Bulwarkのバリアを受け渡すフェーズ。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1 (flying)",
+    "fr": "Phase 1 (en vol)",
+    "de": "Phase 1 (fliegend)",
+    "ja": "フェーズ1（飛行）"
+   },
+   "mechanics": [
+    {
+     "id": "spins",
+     "names": {
+      "en": "Spin combos (Azure Wings / Stygian Maw / Bloodied Maw / Crimson Wings)",
+      "fr": "Combos de rotation (Ailes azur / Gueule ténébreuse / Gueule ensanglantée / Ailes pourpres)",
+      "de": "Dreh-Kombos (Azurschwingen / Stygischer Schlund / Blutiger Schlund / Purpurschwingen)",
+      "ja": "回転コンボ（蒼翼の焔／黒牙の焔／紅牙の焔／紅翼の焔）"
+     },
+     "aliases": {
+      "en": [
+       "spins",
+       "flip",
+       "horizontal vertical"
+      ],
+      "fr": [
+       "rotation"
+      ],
+      "de": [
+       "drehung"
+      ],
+      "ja": [
+       "回転",
+       "縦横"
+      ]
+     },
+     "how": {
+      "en": "Horizontal+horizontal = circle under him (get away); horizontal+vertical = donut (get under him); vertical+vertical = cross on the cardinals (stand on a cardinal); vertical+horizontal = cross on the intercardinals (stand on an intercardinal). Facing is taken at cast start; groups face him north first.",
+      "fr": "Horizontal+horizontal = cercle sous lui (éloigne-toi) ; horizontal+vertical = anneau (va sous lui) ; vertical+vertical = croix sur les cardinaux (place-toi sur un cardinal) ; vertical+horizontal = croix sur les intercardinaux (place-toi en intercardinal). L'orientation compte au début de l'incantation ; on le tourne d'abord vers le nord.",
+      "de": "Horizontal+horizontal = Kreis unter ihm (weg); horizontal+vertikal = Ring (unter ihn); vertikal+vertikal = Kreuz auf den Himmelsrichtungen (auf eine Himmelsrichtung); vertikal+horizontal = Kreuz auf den Zwischenrichtungen (dorthin stellen). Die Ausrichtung zählt beim Zauberbeginn; zuerst nach Norden drehen.",
+      "ja": "横＋横＝足元の円（離れる）、横＋縦＝ドーナツ（足元へ）、縦＋縦＝十字（東西南北に立つ）、縦＋横＝斜め十字（斜めに立つ）。向きは詠唱開始時で決まるので、まず北向きにします。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "tail-end-akh-morn",
+     "names": {
+      "en": "Tail End / Akh Morn",
+      "fr": "Pointe de queue / Akh Morn",
+      "de": "Schweifspitze / Akh Morn",
+      "ja": "テイルエンド／アク・モーン"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Tail End is a frequent tankbuster; Akh Morn is a multi-hit stack on a healer, stack and mitigate. A tank swap for Tail End is optional, only to spread out cooldowns.",
+      "fr": "Tail End est un tankbuster fréquent ; Akh Morn est un package multi-coups sur un healer, regroupe-toi et mitige. Échanger les tanks pour Tail End est facultatif, juste pour répartir les mitigations.",
+      "de": "Tail End ist ein häufiger Tankbuster; Akh Morn ist ein mehrfacher Sammelpunkt auf einem Heiler, sammeln und reduzieren. Ein Tankwechsel für Tail End ist optional, nur um Reduktionen aufzuteilen.",
+      "ja": "Tail Endは頻繁なタンク強攻撃。アク・モーンはヒーラーへの多段頭割りで、集まって軽減。テイルエンドでのタンクスイッチは任意で、軽減を分けたいときだけ行います。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "stack"
+     ]
+    },
+    {
+     "id": "spreads",
+     "names": {
+      "en": "Earth Shaker / Thunderstorm / Horrid Roar",
+      "fr": "Secousse / Tempête de foudre / Rugissement horrible",
+      "de": "Erdstoß / Gewitter / Entsetzliches Brüllen",
+      "ja": "アースシェイカー／サンダーストーム／ホリッドロア"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Earth Shaker: line spreads on everyone (clock spots). Thunderstorm: spreads on four non-tanks. Horrid Roar: circles under every player, move.",
+      "fr": "Secousse : lignes de dispersion sur tous (horloge). Thunderstorm : dispersions sur quatre non-tanks. Horrid Roar : cercles sous chaque joueur, bouge.",
+      "de": "Erdstoß: Linien-Verteiler auf allen (Uhrpositionen). Thunderstorm: Verteiler auf vier Nicht-Tanks. Horrid Roar: Kreise unter jedem Spieler, bewegen.",
+      "ja": "アースシェイカー：全員に直線散開（クロック位置）。Thunderstorm：タンク以外4人に散開。Horrid Roar：全員の足元に円、移動。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "time-immemorial",
+     "names": {
+      "en": "Time Immemorial",
+      "fr": "Big bang",
+      "de": "Urknall",
+      "ja": "天地開闢"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The two top-enmity players get chains: blue gives Death from Above, yellow Death from Below. The Death from Below tank provokes while he flies; the Death from Above tank must hold him while he is grounded (and the Ancient Dragon).",
+      "fr": "Les deux premiers en inimitié reçoivent des chaînes : bleue donne Death from Above, jaune Death from Below. Le tank Death from Below provoque quand il vole ; le tank Death from Above le garde quand il est au sol (et le dragon ancien).",
+      "de": "Die zwei mit der höchsten Feindseligkeit bekommen Ketten: blau gibt Death from Above, gelb Death from Below. Der Death-from-Below-Tank provoziert, wenn er fliegt; der Death-from-Above-Tank hält ihn am Boden (und den Ancient Dragon).",
+      "ja": "敵視上位2人に鎖。青＝Death from Above、黄＝Death from Below。飛行中はDeath from Belowのタンクが挑発、地上（とAncient Dragon）はDeath from Aboveのタンクが受け持ちます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "tankswap",
+      "debuff"
+     ]
+    },
+    {
+     "id": "northern-cross-dry-ice",
+     "names": {
+      "en": "Northern Cross / Dry Ice / Akh Rhai",
+      "fr": "Croix du nord / Poussière glaçante / Akh Rhai",
+      "de": "Kreuz des Nordens / Trockeneis / Akh Rhai",
+      "ja": "ノーザンクロス／フリージングダスト／アク・ラーイ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Northern Cross turns the floor to ice. Dry Ice puts spreads on both healers that leave growing freezing puddles; drop them in the corners. Akh Rhai: repeating fire pillars under two DPS, keep moving away.",
+      "fr": "Croix du nord transforme le sol en glace. Poussière glaçante met des dispersions sur les deux healers qui laissent des flaques gelantes qui grossissent ; posez-les dans les coins. Akh Rhai : piliers de feu répétés sous deux DPS, continue de bouger.",
+      "de": "Kreuz des Nordens macht den Boden zu Eis. Trockeneis gibt beiden Heilern Verteiler, die wachsende Frostpfützen hinterlassen; in den Ecken ablegen. Akh Rhai: wiederholte Feuersäulen unter zwei DDs, in Bewegung bleiben.",
+      "ja": "ノーザンクロスで床が氷に。フリージングダストはヒーラー2人に散開、広がる凍結の床が残るので角に置く。Akh Rhai：DPS2人の足元に連続の火柱、動き続けます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "dodge",
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2 (keys and dragon)",
+    "fr": "Phase 2 (clés et dragon)",
+    "de": "Phase 2 (Schlüssel und Drache)",
+    "ja": "フェーズ2（鍵とドラゴン）"
+   },
+   "mechanics": [
+    {
+     "id": "immortal-keys",
+     "names": {
+      "en": "Immortal Keys / Ancient Dragon",
+      "fr": "Immortal Keys / Ancient Dragon",
+      "de": "Immortal Keys / Ancient Dragon",
+      "ja": "Immortal Key／Ancient Dragon"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Seven keys are tethered to each other; a key tethered to two or more things is invincible, so kill them from the ends of the chain. The Ancient Dragon cleaves and does raid damage; kill it before the Aether gauge reaches 100.",
+      "fr": "Sept clés sont liées entre elles ; une clé liée à deux choses ou plus est invincible, donc tue-les depuis les bouts de la chaîne. Le dragon ancien cleave et fait des dégâts de groupe ; tue-le avant que la jauge d'éther atteigne 100.",
+      "de": "Sieben Schlüssel sind miteinander verbunden; ein Schlüssel mit zwei oder mehr Verbindungen ist unverwundbar, also von den Kettenenden her töten. Der Ancient Dragon cleavt und macht Gruppenschaden; töte ihn, bevor die Äther-Leiste 100 erreicht.",
+      "ja": "鍵7つが互いに線でつながり、2本以上つながっている鍵は無敵なので端から倒します。Ancient Dragonは範囲攻撃と全体攻撃。エーテルゲージが100になる前に倒します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "tether",
+      "cleave",
+      "dps-check",
+      "raidwide"
+     ]
+    },
+    {
+     "id": "arcane-bulwark",
+     "names": {
+      "en": "Arcane Bulwark",
+      "fr": "Barrière magique",
+      "de": "Magische Barriere",
+      "ja": "魔法障壁"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The dragon drops a bulwark: touching it gives a big barrier, touching another player passes it and leaves the old holder Defenseless. The Death from Below tank takes it and avoids passing it by accident.",
+      "fr": "Le dragon laisse un bouclier : le toucher donne une grosse barrière, toucher un autre joueur la lui passe et laisse l'ancien porteur sans défense (Defenseless). Le tank Death from Below le prend et évite de le passer par erreur.",
+      "de": "Der Drache hinterlässt ein Bollwerk: Berühren gibt eine große Barriere, einen anderen Spieler berühren gibt sie weiter und lässt den alten Träger wehrlos (Defenseless). Der Death-from-Below-Tank nimmt es und gibt es nicht versehentlich weiter.",
+      "ja": "ドラゴン撃破で防壁が出現。触れると大きなバリア、他人に触れると移り、元の保持者はDefenseless（無防備）に。Death from Belowのタンクが取り、うっかり渡さないようにします。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Phase 3",
+    "fr": "Phase 3",
+    "de": "Phase 3",
+    "ja": "フェーズ3"
+   },
+   "mechanics": [
+    {
+     "id": "crimson-breath",
+     "names": {
+      "en": "Crimson Breath",
+      "fr": "Souffle écarlate",
+      "de": "Purpurschwingen",
+      "ja": "クリムゾンブレス"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Four 90-degree cones in a row on a marked DPS or healer; the bulwark is passed so each marked player absorbs it (stand just left of the boss to take the bulwark), and the Defenseless player moves behind out of the cone. If the marked player is dead it still resolves and often wipes.",
+      "fr": "Quatre cônes à 90° d'affilée sur un DPS ou healer marqué ; on passe le bouclier pour que chaque marqué l'encaisse (place-toi juste à gauche du boss pour le prendre), et le joueur sans défense va derrière hors du cône. Si le marqué est mort, l'attaque part quand même et wipe souvent.",
+      "de": "Vier 90-Grad-Kegel hintereinander auf einen markierten DD oder Heiler; das Bollwerk wird weitergegeben, damit jeder Markierte es abfängt (direkt links vom Boss stellen, um es zu nehmen), und der wehrlose Spieler geht nach hinten aus dem Kegel. Ist der Markierte tot, löst es trotzdem aus und wipt oft.",
+      "ja": "マーカー対象（DPSかヒーラー）に90度扇が4連続。防壁を受け渡して各対象が受けます（ボスのすぐ左で受け取る）。無防備になった人は後方の扇外へ。対象が死んでいても発動し、全滅しやすい。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "note": {
+      "en": "The German game text really names this attack Purpurschwingen (the same as Crimson Wings).",
+      "fr": "Le texte allemand du jeu appelle vraiment cette attaque Purpurschwingen (comme Ailes pourpres).",
+      "de": "Der deutsche Spieltext nennt diesen Angriff wirklich Purpurschwingen (wie Crimson Wings).",
+      "ja": "ドイツ語のゲーム内テキストでは、この技も紅翼の焔と同じPurpurschwingenという名前。"
+     },
+     "tags": [
+      "cleave",
+      "debuff"
+     ]
+    },
+    {
+     "id": "hot-tail",
+     "names": {
+      "en": "Hot Tail",
+      "fr": "Queue calorifique",
+      "de": "Schwelender Schweif",
+      "ja": "ヒートテイル"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A passable tether; about 20 seconds later a line fires from the boss's front and back at the target. The bulwark holder takes it and aims the boss away from the group.",
+      "fr": "Un lien transférable ; environ 20 secondes après, une ligne part de l'avant et de l'arrière du boss vers la cible. Le porteur du bouclier le prend et oriente le boss loin du groupe.",
+      "de": "Eine übertragbare Verbindung; etwa 20 Sekunden später feuert eine Linie von vorne und hinten am Boss auf das Ziel. Der Bollwerk-Träger nimmt sie und richtet den Boss vom Team weg aus.",
+      "ja": "受け渡し可能な線。約20秒後、ボスの前後から対象へ直線攻撃。防壁の保持者が受け、ボスの向きをPTから外します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "cleave"
+     ]
+    },
+    {
+     "id": "cauterize-flame-blast",
+     "names": {
+      "en": "Cauterize / Flame Blast / Exaflare",
+      "fr": "Cautérisation / Fournaise / ExaBrasier",
+      "de": "Kauterisieren / Flammenhölle / Exaflare",
+      "ja": "カータライズ／フレイムブラスト／エクサフレア"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Cauterize: he dashes across the arena from an edge, dodge the line. Flame Blast: three fire orbs explode in cardinal lines, go center after the explosion then to the safe zone. Exaflare: moving circles from the edges.",
+      "fr": "Cautérisation : il fonce à travers l'arène depuis un bord, esquive la ligne. Flame Blast : trois orbes de feu explosent en lignes cardinales, va au centre après l'explosion puis dans la zone sûre. Exaflare : cercles mobiles depuis les bords.",
+      "de": "Kauterisieren: er stürmt von einem Rand über die Arena, der Linie ausweichen. Flame Blast: drei Feuerkugeln explodieren in Linien auf den Himmelsrichtungen, nach der Explosion in die Mitte, dann in die sichere Zone. Exaflare: wandernde Kreise von den Rändern.",
+      "ja": "カータライズ：外周から横断する突進、直線を避ける。Flame Blast：火の玉3つが十字に爆発、爆発後に中央へ、それから安置へ。Exaflare：外周から進む円範囲。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Enrage",
+      "fr": "Enrage",
+      "de": "Enrage",
+      "ja": "時間切れ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "After about 10 minutes an endless Akh Morn ends the fight.",
+      "fr": "Après environ 10 minutes, un Akh Morn sans fin termine le combat.",
+      "de": "Nach etwa 10 Minuten beendet ein endloses Akh Morn den Kampf.",
+      "ja": "約10分後、終わらないアク・モーンで時間切れ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - Alphascape V2.0 (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Alphascape_V2.0_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

@@ -1,0 +1,739 @@
+{
+ "id": "ex-queen-eternal",
+ "type": "extreme",
+ "expansion": "DT",
+ "patch": "7.1",
+ "names": {
+  "en": "The Minstrel's Ballad: Sphene's Burden - Queen Eternal",
+  "fr": "Interphos (extrême) - Reine Éternité",
+  "de": "Gok Tajaal - Ewige Königin",
+  "ja": "極エターナルクイーン討滅戦"
+ },
+ "aliases": {
+  "en": [
+   "queen eternal ex",
+   "sphene ex",
+   "sphene's burden",
+   "queen ex"
+  ],
+  "fr": [
+   "reine éternité extrême",
+   "interphos"
+  ],
+  "de": [
+   "ewige königin extrem"
+  ],
+  "ja": [
+   "極エターナルクイーン",
+   "極スフェーン"
+  ]
+ },
+ "summary": {
+  "en": "Queen Eternal (Sphene) Extreme. Virtual Shift changes the laws of the arena three times: wind (knockbacks off the edge), earth (gravity levitation pads, towers, meteors to hide behind) and ice (bridges between islands, icicle tethers). Between them come Coronation tethered devices, Absolute Authority flares and stacks, and finally Radical Shift island swaps with Dimensional Distortion, plus a soft enrage check (Authority Eternal).",
+  "fr": "Reine Éternité (Sphène) Extrême. Transfert virtuel change les lois de l'arène trois fois : vent (poussées hors du bord), terre (lévitation par gravité, tours, météores derrière lesquels se cacher) et glace (ponts entre îles, liens de stalactites). Entre elles : appareils liés du Déploiement, flares et packages d'Autorité absolue, et enfin les échanges d'îles de Transfert radical avec Distorsion dimensionnelle, plus un check DPS (Autorité éternelle).",
+  "de": "Ewige Königin (Sphene) Extrem. Virtueller Umschwung ändert dreimal die Gesetze der Arena: Wind (Rückstöße über den Rand), Erde (Schwerkraft-Schweben, Türme, Meteore zum Verstecken) und Eis (Brücken zwischen Inseln, Eissäulen-Verbindungen). Dazwischen Krönung mit verbundenen Geräten, Absolute Autorität mit Flares und Sammeln, und am Ende Radikaler Umschwung mit Inseltausch und Dimensionaler Störung, dazu ein DPS-Check (Ewige Autorität).",
+  "ja": "極エターナルクイーン。ヴァーチャルシフトで風（ノックバック）、土（重力で浮く・塔・隕石の陰）、氷（橋と氷柱の線）の3回フィールドの法則が変わる。間に端末射出、アブソリュート・オーソリティ（フレアと頭割り）、最後はラディカルシフトの島入れ替えとディメンショナル・ディストーション、エターナル・オーソリティの火力チェック。"
+ },
+ "strats_overview": [
+  {
+   "id": "na-pf",
+   "name": {
+    "en": "NA PF (L Meteors, CW Coronation, Supports S / DPS N, Mit Authority, Fixed Ice, MTTT)",
+    "fr": "PF NA (L Meteors, Coronation horaire, Supports S / DPS N, Mit Authority, Fixed Ice, MTTT)",
+    "de": "NA-PF (L Meteors, CW Coronation, Supporter S / DPS N, Mit Authority, Fixed Ice, MTTT)",
+    "ja": "NA野良（L隕石・時計回り端末・サポ南DPS北・軽減オーソリティ・固定氷・MTTT）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "NAUR PF terms: L-shaped meteor placement, clockwise Coronation tethers from the triangle spawn, supports south / DPS north on the chain platform, heavy mitigation for Authority instead of splitting, fixed ice paths by icicle, and MTTT tether order in the ice phase.",
+    "fr": "Termes PF NAUR : météores en L, liens du Déploiement en horaire depuis le triangle, supports au sud / DPS au nord sur la plateforme des chaînes, grosse mitigation pour l'Autorité au lieu de se séparer, chemins de glace fixes selon la stalactite, et ordre MTTT en phase glace.",
+    "de": "NAUR-PF-Begriffe: L-förmige Meteor-Platzierung, Krönungs-Verbindungen im Uhrzeigersinn ab dem Dreieck, Supporter Süd / DPS Nord auf der Ketten-Plattform, starke Mitigation für Autorität statt Aufteilen, feste Eiswege je nach Eissäule, und MTTT-Reihenfolge in der Eisphase.",
+    "ja": "NAUR：隕石はL字、端末は三角の出現位置から時計回り、鎖の足場はサポ南・DPS北、オーソリティは分けずに厚い軽減、氷柱ごとに固定ルート、氷の線はMTTT。"
+   },
+   "aliases": {
+    "en": [
+     "naur",
+     "l meteors",
+     "cw coronation",
+     "mit authority",
+     "fixed ice",
+     "mttt"
+    ],
+    "fr": [
+     "naur",
+     "l meteors",
+     "cw coronation",
+     "mit authority",
+     "fixed ice",
+     "mttt"
+    ],
+    "de": [
+     "naur",
+     "l meteors",
+     "cw coronation",
+     "mit authority",
+     "fixed ice",
+     "mttt"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-game8",
+   "name": {
+    "en": "JP Game8 (Hamukatsu)",
+    "fr": "JP Game8 (Hamukatsu)",
+    "de": "JP Game8 (Hamukatsu)",
+    "ja": "JP game8（ハムカツ式）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "Based on Hamukatsu-Tonkatsu's video; tower priority for the second Virtual Shift has two variants (as in the video, or TH then DD from north).",
+    "fr": "D'après la vidéo de Hamukatsu-Tonkatsu ; priorité des tours au 2e Transfert virtuel en deux variantes (comme la vidéo, ou TH puis DD depuis le nord).",
+    "de": "Nach Hamukatsu-Tonkatsus Video; Turmpriorität beim zweiten Umschwung in zwei Varianten (wie im Video oder TH dann DD ab Norden).",
+    "ja": "ハムカツトンカツ氏の動画準拠。ヴァーチャルシフト2回目の塔は動画通りか北からTH→DDの2通り。"
+   },
+   "aliases": {
+    "en": [
+     "hamukatsu",
+     "hamukatsu-tonkatsu",
+     "game8"
+    ],
+    "fr": [
+     "hamukatsu",
+     "hamukatsu-tonkatsu",
+     "game8"
+    ],
+    "de": [
+     "hamukatsu",
+     "hamukatsu-tonkatsu",
+     "game8"
+    ],
+    "ja": [
+     "ハムカツ式",
+     "ハムカツ",
+     "ハムカツトンカツ",
+     "hamukatsu"
+    ]
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Opener and Laws of Wind",
+    "fr": "Ouverture et Loi du vent",
+    "de": "Eröffnung und Gesetz des Windes",
+    "ja": "序盤・ロウ・オブ・ウィンド"
+   },
+   "mechanics": [
+    {
+     "id": "aethertithe",
+     "names": {
+      "en": "Aethertithe + Retribute",
+      "fr": "Dîme d'éther + Tribut",
+      "de": "Ätherzehnt + Retribution",
+      "ja": "エーテルレヴィー＋トリビュート"
+     },
+     "aliases": {
+      "en": [
+       "cones",
+       "line stacks"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Raidwide, then cones from distortions in three waves (east, middle, west), and line stacks taken in two groups.",
+      "fr": "Raidwide, puis cônes depuis des distorsions en trois vagues (est, milieu, ouest), et packages en ligne en deux groupes.",
+      "de": "Raidwide, dann Kegel aus Verzerrungen in drei Wellen (Ost, Mitte, West) und Linien-Sammeln in zwei Gruppen.",
+      "ja": "全体攻撃後、歪みから東・中央・西の3回扇。直線頭割りはMT組とST組。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Each light party stays together with its tank closest to the boss, and the two light parties stay apart so the line stacks don't overlap.",
+        "fr": "Chaque light party reste groupée avec son tank le plus près du boss, et les deux light parties restent séparées pour que les packages en ligne ne se chevauchent pas.",
+        "de": "Jede Leichtgruppe bleibt zusammen, ihr Tank am nächsten zum Boss, und die zwei Leichtgruppen halten Abstand, damit die Linien-Sammelangriffe sich nicht überlappen.",
+        "ja": "LPごとにまとまり、タンクが一番ボス寄り。2つのLPは離れて直線頭割りを重ねない。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "cleave",
+      "stack"
+     ]
+    },
+    {
+     "id": "laws-of-wind",
+     "names": {
+      "en": "Virtual Shift 1: Laws of Wind",
+      "fr": "Transfert virtuel 1 : Loi du vent",
+      "de": "Virtueller Umschwung 1: Gesetz des Windes",
+      "ja": "ヴァーチャルシフト1回目：ロウ・オブ・ウィンド"
+     },
+     "aliases": {
+      "en": [
+       "wind",
+       "knockback"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Healer stacks in two groups, then a half-room cleave (the side of the raised hand goes first) and wind knockbacks that can push you off, so position to one side.",
+      "fr": "Packages sur heals en deux groupes, puis une demi-salle (le côté de la main levée d'abord) et des poussées de vent qui peuvent te faire tomber, donc place-toi d'un côté.",
+      "de": "Heiler-Sammeln in zwei Gruppen, dann ein Halbraum-Angriff (die Seite der erhobenen Hand zuerst) und Wind-Rückstöße, die dich runterstoßen können, also stell dich auf eine Seite.",
+      "ja": "ヒーラー頭割りを北西MT組・南東ST組、中央に集合、半面（手を上げた側が先）、風のノックバックで落ちないよう左右に寄る。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Light party 1 drops its puddle halfway between the northwest corner and the center, light party 2 halfway between the southeast corner and the center. To break the tethers DPS run northeast and supports southwest, then go to the corner your push debuff sends you to (orb on your left = pushed right).",
+        "fr": "La LP1 pose sa flaque à mi-chemin entre le coin nord-ouest et le centre, la LP2 entre le coin sud-est et le centre. Pour casser les liens, les DPS courent au nord-est et les supports au sud-ouest, puis va au coin où ton debuff te pousse (orbe à gauche = poussé à droite).",
+        "de": "LG1 legt ihre Pfütze auf halbem Weg zwischen Nordwestecke und Mitte, LG2 zwischen Südostecke und Mitte. Zum Brechen der Verbindungen laufen DPS nach Nordost und Supporter nach Südwest, dann in die Ecke, in die dich dein Debuff stößt (Kugel links = nach rechts gestoßen).",
+        "ja": "LP1は北西角と中央の中間、LP2は南東角と中央の中間に床を捨てる。線切りはDPS北東・サポ南西、その後デバフで飛ばされる側の角へ（玉が左なら右へ飛ぶ）。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "cleave",
+      "knockback"
+     ]
+    },
+    {
+     "id": "prosecution-divide",
+     "names": {
+      "en": "World Shatter / Prosecution of War / Divide and Conquer",
+      "fr": "Monde brisé / Réquisitoire guerrier / Diviser pour mieux régner",
+      "de": "Welterschütterung / Kriegsklagen / Teile und Herrsche",
+      "ja": "ワールドシャッター / プロセキューション・ウォー / ディバイド・アンド・コンカー"
+     },
+     "aliases": {
+      "en": [
+       "tankbuster",
+       "beams"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Raidwide, a double tankbuster (swap after the first hit), then beams baited at set positions east and west before returning to the middle. Prosecution of War targets the top-enmity tank: the other tank provokes during the cast to take the second hit, or the first tank invulns both.",
+      "fr": "Raidwide, double tankbuster (swap après le premier coup), puis rayons baités à des positions fixes est et ouest avant de revenir au centre. Réquisitoire guerrier vise le tank en tête d'inimitié : l'autre tank provoque pendant l'incantation pour prendre le second coup, ou le premier tank prend les deux sous invulnérabilité.",
+      "de": "Raidwide, doppelter Tankbuster (nach dem ersten Treffer wechseln), dann Strahlen an festen Positionen Ost und West ködern und zurück in die Mitte. Kriegsklagen trifft den Tank mit der höchsten Feindseligkeit: Der andere Tank provoziert während des Zaubers und nimmt den zweiten Treffer, oder der erste Tank nimmt beide mit Unverwundbarkeit.",
+      "ja": "全体攻撃、連続強攻撃（STが挑発で交代）、ビームを東西で受けて中央へ。プロセキューション・ウォーはヘイト1位のタンクが対象。もう1人のタンクが詠唱中に挑発して2発目を受けるか、1人目が無敵で2発とも受ける。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "For Divide and Conquer fan out around the hitbox, light party 1 west and light party 2 east, from the wall inward: tanks, melee, healers, ranged; then dodge between the cleaves.",
+        "fr": "Pour Divide and Conquer, déploie-toi autour de la hitbox, LP1 à l'ouest et LP2 à l'est, du mur vers l'intérieur : tanks, mêlées, heals, distances ; puis esquive entre les lignes.",
+        "de": "Bei Divide and Conquer um die Hitbox auffächern, LG1 West und LG2 Ost, von der Wand nach innen: Tanks, Nahkampf, Heiler, Fernkampf; dann zwischen den Linien ausweichen.",
+        "ja": "ディバイドはLP1西・LP2東でヒットボックス周りに扇状、壁側からタンク・近接・ヒーラー・遠隔。その後ライン間に避ける。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "MT takes the first hit and the OT (ST) provokes during the cast to take the second.",
+        "fr": "Le MT prend le premier coup et l'OT provoque pendant l'incantation pour prendre le second.",
+        "de": "Der MT nimmt den ersten Treffer, der OT provoziert während des Zaubers und nimmt den zweiten.",
+        "ja": "1発目はMT、STは詠唱中に挑発して2発目を受ける。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "tankbuster",
+      "tankswap",
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "earth",
+   "names": {
+    "en": "Laws of Earth",
+    "fr": "Loi de la terre",
+    "de": "Gesetz der Erde",
+    "ja": "ロウ・オブ・アース"
+   },
+   "mechanics": [
+    {
+     "id": "laws-of-earth",
+     "names": {
+      "en": "Virtual Shift 2: Laws of Earth + Gravitational Empire",
+      "fr": "Transfert virtuel 2 : Loi de la terre + Empire gravitationnel",
+      "de": "Virtueller Umschwung 2: Gesetz der Erde + Massenanziehungsreich",
+      "ja": "ヴァーチャルシフト2回目：ロウ・オブ・アース＋グラビティ・エンパイア"
+     },
+     "aliases": {
+      "en": [
+       "levitate",
+       "gravity",
+       "towers"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "浮く",
+       "塔"
+      ]
+     },
+     "how": {
+      "en": "Gravity pads make you float: dodge two cleaves in the air, then land and soak towers. Gravitational Empire: tethered players float on the boss side, big-circle targets float away from others, unmarked players soak towers on the ground.",
+      "fr": "Les plaques de gravité te font flotter : esquive deux demi-salles en l'air, puis atterris et prends les tours. Empire gravitationnel : les liés flottent côté boss, les grands cercles flottent loin des autres, les non marqués prennent les tours au sol.",
+      "de": "Schwerkraft-Felder lassen dich schweben: zwei Halbraum-Angriffe in der Luft ausweichen, dann landen und Türme nehmen. Massenanziehungsreich: Verbundene schweben auf der Bossseite, große Kreise schweben weg von anderen, Unmarkierte nehmen Türme am Boden.",
+      "ja": "東西の重力装置で浮き半面2回を空中で避け、降りて塔。グラビティ・エンパイアは線の人がボス側で浮く、大円は離れて浮く、何もない人は地上で塔。"
+     },
+     "strats": [
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Towers: west MT, east ST, north melee and tanks, south ranged and healers (or TH then DD from north).",
+        "fr": "Tours : ouest MT, est OT, nord mêlées et tanks, sud distances et heals (ou TH puis DD depuis le nord).",
+        "de": "Türme: West MT, Ost ST, Nord Nahkampf und Tanks, Süd Fernkampf und Heiler (oder TH dann DD ab Norden).",
+        "ja": "塔は西MT、東ST、北が近接タンク、南が遠隔ヒラ（または北からTH→DD）。"
+       }
+      },
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Towers: on each platform supports take the inner towers and DPS the outer ones, tanks and melee north, healers and ranged south. Gravitational Empire: big-circle players float to the wall nearest their side, tethered players float to the north wall (northeast / northwest corners), the two unmarked players soak the new towers.",
+        "fr": "Tours : sur chaque plateforme, supports sur les tours intérieures et DPS sur les extérieures, tanks et mêlées au nord, heals et distances au sud. Empire gravitationnel : les gros cercles flottent vers le mur le plus proche, les liés vers le mur nord (coins nord-est / nord-ouest), les deux sans marque prennent les nouvelles tours.",
+        "de": "Türme: auf jeder Plattform nehmen Supporter die inneren und DPS die äußeren Türme, Tanks und Nahkampf Nord, Heiler und Fernkampf Süd. Gravitationsimperium: Großkreis-Spieler schweben zur nächsten Wand, Verbundene zur Nordwand (Ecken Nordost / Nordwest), die zwei Unmarkierten nehmen die neuen Türme.",
+        "ja": "塔：各足場でサポ内側・DPS外側、タンク近接が北・ヒラ遠隔が南。グラビテーショナル：大円は近い壁へ、線持ちは北壁（北東・北西の角）へ浮いて移動、無職2人が新しい塔。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Positions from Icy Veins' guide (the common PF approach); NAUR does not spell out the tower roles, so they are not confirmed as the exact NAUR version.",
+        "fr": "Positions du guide Icy Veins (approche PF courante) ; NAUR ne détaille pas les rôles des tours, donc pas confirmé comme version NAUR exacte.",
+        "de": "Positionen aus dem Icy-Veins-Guide (übliche PF-Lösung); NAUR nennt die Turmrollen nicht, also nicht als genaue NAUR-Version bestätigt.",
+        "ja": "Icy Veins（一般的な野良）の位置。NAURは塔の担当を書いていないため、NAUR版と同一かは未確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "tower",
+      "tether"
+     ]
+    },
+    {
+     "id": "meteor-impact",
+     "names": {
+      "en": "Meteor Impact + Weighty Blow",
+      "fr": "Impact de météore + Coup gravitationnel",
+      "de": "Meteoreinschlag + Schwerkräftiger Schlag",
+      "ja": "メテオインパクト＋グラビティブロウ"
+     },
+     "aliases": {
+      "en": [
+       "meteors",
+       "hide"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Meteors are dropped twice, then four Weighty Blows; hide behind the meteor rocks as the boss's blows move around.",
+      "fr": "Les météores tombent deux fois, puis quatre Coups gravitationnels ; cache-toi derrière les rochers pendant que les coups se déplacent.",
+      "de": "Meteore fallen zweimal, dann vier Schwerkräftige Schläge; versteck dich hinter den Meteorfelsen, während die Schläge wandern.",
+      "ja": "隕石が2回、その後グラビティブロウ4回。隕石の陰に隠れる。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "L Meteors: place them in an L shape. Icy Veins describes the first set in the corners (back-corner meteors a little in front of the corner to leave room to hide), the second set dropped off the platform, and for Weighty Blow each light party starts at the front-left meteor and rotates clockwise.",
+        "fr": "L Meteors : place-les en L. Icy Veins place la première série dans les coins (ceux du fond un peu devant pour pouvoir se cacher), la deuxième hors de la plateforme, et pour Coup pesant chaque LP part du météore avant-gauche et tourne en sens horaire.",
+        "de": "L Meteors: in L-Form legen. Icy Veins legt den ersten Satz in die Ecken (hintere etwas vor die Ecke, damit man sich verstecken kann), den zweiten neben die Plattform, und bei Schwerer Schlag startet jede LG am Meteor vorne links und dreht im Uhrzeigersinn.",
+        "ja": "隕石をL字に置く。Icy Veinsでは1回目は角（奥の角は隠れる余地のため少し手前）、2回目は足場の外。ウェイティブロウは各LPが左前の隕石から時計回り。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "NAUR calls it L Meteors while Icy Veins describes corner placement; the exact L layout was not found in writing.",
+        "fr": "NAUR parle de L Meteors, Icy Veins de placement dans les coins ; la forme en L exacte n'a pas été trouvée par écrit.",
+        "de": "NAUR nennt es L Meteors, Icy Veins beschreibt Eckplatzierung; die genaue L-Form wurde nicht schriftlich gefunden.",
+        "ja": "NAURはL字、Icy Veinsは角置きと記載。L字の正確な形は文章で見つからない。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Melee and tanks place the meteors, others float out of the way; dodge the blows by moving from the top-left rock in a U shape.",
+        "fr": "Mêlées et tanks posent les météores, les autres flottent à l'écart ; esquive en partant du rocher en haut à gauche en U.",
+        "de": "Nahkampf und Tanks legen die Meteore, andere schweben aus dem Weg; den Schlägen vom Felsen oben links in U-Form ausweichen.",
+        "ja": "近接タンクが隕石設置、他は浮いて待機。ブロウは左上の岩からコの字。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "authority",
+   "names": {
+    "en": "Coronation and Absolute Authority",
+    "fr": "Déploiement et Autorité absolue",
+    "de": "Krönung und Absolute Autorität",
+    "ja": "端末射出・アブソリュート・オーソリティ"
+   },
+   "mechanics": [
+    {
+     "id": "coronation",
+     "names": {
+      "en": "Coronation",
+      "fr": "Déploiement",
+      "de": "Krönung",
+      "ja": "端末射出"
+     },
+     "aliases": {
+      "en": [
+       "devices",
+       "tethers"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Devices follow tethered players; drag your device to its assigned spot so its attack lines up safely.",
+      "fr": "Des appareils suivent les joueurs liés ; amène ton appareil à son spot pour que son attaque soit sûre.",
+      "de": "Geräte folgen verbundenen Spielern; zieh dein Gerät an seinen Platz, damit sein Angriff sicher liegt.",
+      "ja": "線の付いた人に端末が追従。自分の端末を指定位置へ誘導（時計回りが分かりやすい）。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "CW Coronation: take your tether clockwise from the triangle spawn. Tethered players take their corner and mid-wall spot: north laser to the northwest corner and north wall, east to northeast and east wall, south to southeast and south wall, west to southwest and west wall; tethers must not cross and the big circles must not overlap.",
+        "fr": "Déploiement horaire : prends ton lien en horaire depuis le triangle. Les liés prennent leur coin et le milieu du mur : laser nord au coin nord-ouest et mur nord, est au nord-est et mur est, sud au sud-est et mur sud, ouest au sud-ouest et mur ouest ; les liens ne se croisent pas et les gros cercles ne se chevauchent pas.",
+        "de": "CW Coronation: Verbindung im Uhrzeigersinn vom Dreieck aus nehmen. Verbundene nehmen ihre Ecke und Wandmitte: Nordlaser zur Nordwestecke und Nordwand, Ost zu Nordost und Ostwand, Süd zu Südost und Südwand, West zu Südwest und Westwand; Verbindungen dürfen sich nicht kreuzen, die großen Kreise nicht überlappen.",
+        "ja": "三角の出現位置から時計回りで線を取る。線持ちは角と壁中央へ：北レーザーは北西角と北壁、東は北東と東壁、南は南東と南壁、西は南西と西壁。線を交差させず、大円を重ねない。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "dodge"
+     ]
+    },
+    {
+     "id": "absolute-authority",
+     "names": {
+      "en": "Absolute Authority",
+      "fr": "Autorité absolue",
+      "de": "Absolute Autorität",
+      "ja": "アブソリュート・オーソリティ"
+     },
+     "aliases": {
+      "en": [
+       "flares",
+       "stack",
+       "knockback"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Baited AoEs, flares on some players and a stack on others, then a check where you must stand alone, and a knockback from the north (Arm's Length works).",
+      "fr": "AoE à baiter, flares sur certains joueurs et package sur d'autres, puis un check où il faut être seul, et une poussée depuis le nord (Distanciation marche).",
+      "de": "Geköderte AoEs, Flares auf manchen und ein Sammeln auf anderen, dann ein Check, bei dem du allein stehen musst, und ein Rückstoß von Norden (Armlänge hilft).",
+      "ja": "北東端に集まり範囲を中央へ捨てる。フレアは四隅、頭割りは中央。孤独処理後、北からのノックバックはアムレンで無効化。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Mit Authority: don't split the party, cover the stack and flares with heavy shields and mitigation. Drop the four baits while moving along the north wall, ending in the northwest corner, then stay stacked; Arm's Length or Surecast for the knockback.",
+        "fr": "Mit Authority : ne te sépare pas, couvre package et flares avec boucliers et mitigation. Pose les quatre baits en longeant le mur nord jusqu'au coin nord-ouest, puis reste groupé ; Distance d'allonge ou Sang-froid pour la poussée.",
+        "de": "Mit Authority: nicht aufteilen, Sammeln und Flares mit Schilden und Mitigation abdecken. Die vier Köder entlang der Nordwand ablegen bis in die Nordwestecke, dann zusammen bleiben; Armlänge oder Unbeirrbarkeit für den Rückstoß.",
+        "ja": "分けずにバリアと軽減で頭割りとフレアを受ける。北壁沿いに4回捨てて北西角へ、その後はまとまる。ノックバックはアームズレングスかストイシズムで。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Flares go to the four corners, stack in the middle.",
+        "fr": "Flares aux quatre coins, package au milieu.",
+        "de": "Flares in die vier Ecken, Sammeln in der Mitte.",
+        "ja": "フレアは四隅、頭割りは中央。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread",
+      "stack",
+      "knockback"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ice",
+   "names": {
+    "en": "Laws of Ice",
+    "fr": "Loi de la glace",
+    "de": "Gesetz des Eises",
+    "ja": "ロウ・オブ・アイス"
+   },
+   "mechanics": [
+    {
+     "id": "laws-of-ice",
+     "names": {
+      "en": "Virtual Shift 3: Laws of Ice",
+      "fr": "Transfert virtuel 3 : Loi de la glace",
+      "de": "Virtueller Umschwung 3: Gesetz des Eises",
+      "ja": "ヴァーチャルシフト3回目：ロウ・オブ・アイス"
+     },
+     "aliases": {
+      "en": [
+       "bridges",
+       "icicles",
+       "tethers"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "橋",
+       "氷柱"
+      ]
+     },
+     "how": {
+      "en": "The arena becomes islands joined by bridges. Players tethered to icicles (south, east, west) are charged and must use the right bridges out and back; later tethers, ice darts and stacks are passed around while bridges collapse.",
+      "fr": "L'arène devient des îles reliées par des ponts. Les joueurs liés aux stalactites (sud, est, ouest) sont chargés et doivent prendre les bons ponts aller-retour ; ensuite liens, amas de glace et packages tournent pendant que les ponts s'effondrent.",
+      "de": "Die Arena wird zu Inseln mit Brücken. Mit Eissäulen verbundene Spieler (Süd, Ost, West) werden angestürmt und müssen die richtigen Brücken hin und zurück nehmen; danach werden Verbindungen, Eisbrocken und Sammeln weitergegeben, während Brücken einstürzen.",
+      "ja": "島と橋。南・東西の氷柱と線で繋がれ突進。決まった橋で往復し、その後の線取り・氷塊・頭割り。橋の崩壊に注意。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Fixed Ice: move in a fixed pattern based on your icicle; tethers taken MTTT; chain platform supports south, DPS north. Bridges by icicle: the outer south icicles use the north bridges; for the east and west icicles, the northern ones use the north bridges and the southern ones the south bridges. Return on the same bridge, the role that went out second comes back first. Tethers: melee take the first set, tanks the second, and both tanks use invulns around the fifth hit of the third line stack to take the third and fourth.",
+        "fr": "Fixed Ice : chemin fixe selon ta stalactite ; liens en MTTT ; plateforme des chaînes supports au sud, DPS au nord. Ponts selon la stalactite : les stalactites sud extérieures prennent les ponts nord ; pour celles de l'est et de l'ouest, celles du nord prennent les ponts nord et celles du sud les ponts sud. Retour par le même pont, le rôle sorti en second revient d'abord. Liens : mêlées la première série, tanks la deuxième, et les deux tanks utilisent leurs invus vers le cinquième coup du troisième package en ligne pour prendre la troisième et la quatrième.",
+        "de": "Fixed Ice: fester Weg je nach Eissäule; Verbindungen MTTT; Ketten-Plattform Supporter Süd, DPS Nord. Brücken je Eissäule: die äußeren Süd-Eissäulen nehmen die Nordbrücken; bei Ost und West nehmen die nördlichen die Nord- und die südlichen die Südbrücken. Zurück über dieselbe Brücke, die Rolle, die als zweite raus ist, kommt zuerst zurück. Verbindungen: Nahkampf den ersten Satz, Tanks den zweiten, und beide Tanks nutzen um den fünften Treffer des dritten Linien-Sammelns ihre Unverwundbarkeit, um den dritten und vierten zu nehmen.",
+        "ja": "固定氷：氷柱ごとに決まったルート、線はMTTT、鎖の足場はサポ南・DPS北。橋は氷柱で決める：南の外側2本は北の橋、東西は北寄りが北の橋・南寄りが南の橋。同じ橋で戻り、後に出たロールが先に戻る。線は1組目近接、2組目タンク、3本目の直線頭割り5発目あたりで両タンクが無敵を使い3・4組目も取る。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "South-tethered: outer two use the north bridge, inner two the south bridge; east/west-tethered: upper two south, lower two north; return the same way, closest first. Melee take tethers in front, tanks handle ice blocks at the north edge with invulns, others stack on the middle island.",
+        "fr": "Liés au sud : les deux extérieurs prennent le pont nord, les deux intérieurs le sud ; liés est/ouest : les deux du haut le sud, du bas le nord ; retour par le même pont, le plus proche d'abord. Mêlées prennent les liens devant, tanks gèrent les blocs au nord sous invincibilité, les autres packent sur l'île centrale.",
+        "de": "Süd-Verbundene: die äußeren zwei nehmen die Nordbrücke, die inneren die Südbrücke; Ost/West-Verbundene: obere zwei Süd, untere zwei Nord; zurück über dieselbe Brücke, Nächste zuerst. Nahkampf nimmt vorne die Verbindungen, Tanks die Eisblöcke am Nordrand mit Unverwundbarkeit, andere sammeln auf der Mittelinsel.",
+        "ja": "南の線は両端2本が北、内側2本が南の橋。東西は上2本が南、下2本が北。戻りも同じ橋で近い人から。近接が先頭で線、タンクは無敵で北端の氷塊、他は中央の島で頭割り。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "authority-eternal",
+     "names": {
+      "en": "Authority Eternal (DPS check)",
+      "fr": "Autorité éternelle (check DPS)",
+      "de": "Ewige Autorität (DPS-Check)",
+      "ja": "エターナル・オーソリティ（火力チェック）"
+     },
+     "aliases": {
+      "en": [
+       "dps check"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "If damage is high enough it comes right after; the boss must be at 0.1% by the end of the cast or the party wipes.",
+      "fr": "Si les dégâts sont suffisants, ça vient juste après ; le boss doit être à 0,1 % à la fin sinon wipe.",
+      "de": "Bei genug Schaden kommt es direkt danach; der Boss muss am Ende des Zaubers bei 0,1 % sein, sonst Wipe.",
+      "ja": "削れていれば直後に。詠唱完了までに0.1%まで削れないと全滅。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dps-check"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "final",
+   "names": {
+    "en": "Radical Shift and enrage",
+    "fr": "Transfert radical et enrage",
+    "de": "Radikaler Umschwung und Finalangriff",
+    "ja": "ラディカルシフト〜時間切れ"
+   },
+   "mechanics": [
+    {
+     "id": "radical-shift",
+     "names": {
+      "en": "Radical Shift",
+      "fr": "Transfert radical",
+      "de": "Radikaler Umschwung",
+      "ja": "ラディカルシフト"
+     },
+     "aliases": {
+      "en": [
+       "island swap",
+       "patterns"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The floor patterns (green, blue, yellow) and the background's rotation tell which side island swaps into the middle; go to that colour and spread before the AoEs.",
+      "fr": "Les motifs du sol (vert, bleu, jaune) et la rotation du fond indiquent quelle île latérale vient au centre ; va sur cette couleur et écarte-toi avant les AoE.",
+      "de": "Bodenmuster (grün, blau, gelb) und Hintergrund-Drehung zeigen, welche Seiteninsel in die Mitte wechselt; geh zu dieser Farbe und verteil dich vor den AoEs.",
+      "ja": "床の文様（緑・青・黄）と背景の回転で東西どちらの島が中央に入るか判断し、その色の枠へ。範囲前に散開。完全安置を使う方法もある。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Split into east and west light parties for the spreads: tanks farthest north, then melee, healers, ranged at the south.",
+        "fr": "Sépare-toi en light parties est et ouest pour les dispersions : tanks tout au nord, puis mêlées, heals, distances au sud.",
+        "de": "Für das Verteilen in Leichtgruppen Ost und West aufteilen: Tanks ganz im Norden, dann Nahkampf, Heiler, Fernkampf im Süden.",
+        "ja": "散開はLPで東西に分かれ、北からタンク・近接・ヒーラー・遠隔。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "dimensional-distortion",
+     "names": {
+      "en": "Dimensional Distortion + Tyranny's Grasp + Dying Memory / Royal Banishment",
+      "fr": "Distorsion dimensionnelle + Main réginale + Mémoire mourante / Bannissement royal",
+      "de": "Dimensionale Störung + Griff der Tyrannei + Sterbende Erinnerung / Königliche Verbannung",
+      "ja": "ディメンショナル・ディストーション＋クイーンズハンド＋ダイイングメモリー/バニッシュレイ"
+     },
+     "aliases": {
+      "en": [
+       "towers",
+       "8 hit stacks"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Circles move from north to south; the north half collapses so move south. Tanks take the east and west towers, then eight physical stacks and eight magic stacks (Feint first, Addle second).",
+      "fr": "Des cercles vont du nord au sud ; la moitié nord s'effondre donc va au sud. Les tanks prennent les tours est et ouest, puis huit packages physiques et huit magiques (Feinte d'abord, Embrouillement ensuite).",
+      "de": "Kreise wandern von Nord nach Süd; die Nordhälfte bricht ein, also nach Süden. Tanks nehmen die Türme Ost und West, dann acht physische und acht magische Sammeln (erst Zermürben, dann Stumpfsinn).",
+      "ja": "北から南へ円、北半面が崩れたら南へ。塔は西MT・東ST。物理頭割り8回（牽制）と魔法頭割り8回（アドル）。"
+     },
+     "strats": [
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Tank towers: MT takes the west one and ST the east one.",
+        "fr": "Tours de tank : le MT prend celle de l'ouest et l'OT celle de l'est.",
+        "de": "Tank-Türme: Der MT nimmt den westlichen, der OT den östlichen.",
+        "ja": "タンク塔はMTが西、STが東。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "tower",
+      "tankbuster",
+      "stack"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Radical Shift 2 / enrage",
+      "fr": "Transfert radical 2 / enrage",
+      "de": "Radikaler Umschwung 2 / Finalangriff",
+      "ja": "ラディカルシフト2回目〜時間切れ"
+     },
+     "aliases": {
+      "en": [
+       "enrage"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Same as the first Radical Shift with three patterns, then the enrage.",
+      "fr": "Comme le premier, avec trois motifs, puis l'enrage.",
+      "de": "Wie der erste, mit drei Mustern, dann der Finalangriff.",
+      "ja": "1回目と同じ（模様は3種）、その後時間切れ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "NAUR FFXIV - Sphene's Burden",
+   "url": "https://naurffxiv.com/extreme/sphenes-burden",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - 極エターナルクイーン",
+   "url": "https://game8.jp/ff14/641571",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot queen-eternal-ex",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/trial/queen-eternal-ex.ts",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins - Sphene's Burden (Extreme)",
+   "url": "https://icy-veins.com/ffxiv/sphenes-burden-extreme-trial-guide",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

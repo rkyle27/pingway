@@ -1,0 +1,864 @@
+{
+ "id": "m10s",
+ "type": "savage",
+ "expansion": "DT",
+ "patch": "7.4",
+ "names": {
+  "en": "AAC Heavyweight M2 (Savage) - Red Hot & Deep Blue",
+  "fr": "Poids lourds CCA - match 2 (sadique) - Red Hot & Deep Blue",
+  "de": "Arkadion - Superschwergewicht R2 (episch) - Scharlachflamme & Indigowelle",
+  "ja": "至天の座アルカディア零式：ヘビー級2 - レッドホット＆ディープブルー"
+ },
+ "aliases": {
+  "en": [
+   "m10s",
+   "m10 savage",
+   "red hot",
+   "deep blue",
+   "surfers",
+   "hw2",
+   "heavyweight 2"
+  ],
+  "fr": [
+   "m10s",
+   "red hot",
+   "deep blue"
+  ],
+  "de": [
+   "m10s",
+   "red hot",
+   "deep blue",
+   "scharlachflamme",
+   "indigowelle"
+  ],
+  "ja": [
+   "m10s",
+   "ヘビー級2層",
+   "零式2層",
+   "レッドホット",
+   "ディープブルー",
+   "サーファー"
+  ]
+ },
+ "summary": {
+  "en": "Second Heavyweight fight against two surfer brothers: Red Hot (fire, leaves burning puddles) and Deep Blue (water, waves and knockbacks). Phase 1 fights each brother in turn, phase 2 has both together with Insane Air surfboard reads and Fire/Watersnaking debuffs, phase 3 is the Watery Grave bubble with fire tethers and the split arena, and phase 4 repeats Insane Air with Xtreme snaking cleanses.",
+  "fr": "Deuxième combat Poids lourds contre deux frères surfeurs : Red Hot (feu, laisse des flaques brûlantes) et Deep Blue (eau, vagues et poussées). La phase 1 les affronte l'un après l'autre, la phase 2 ensemble avec la lecture des planches de Figure démentielle et les debuffs d'Ondulation, la phase 3 est la bulle aquatique avec les liens de feu et l'arène coupée, et la phase 4 répète Figure démentielle avec les purges Xtrême.",
+  "de": "Zweiter Superschwergewicht-Kampf gegen zwei Surfer-Brüder: Red Hot (Feuer, hinterlässt brennende Flächen) und Deep Blue (Wasser, Wellen und Rückstöße). Phase 1 kämpft nacheinander gegen beide, Phase 2 gegen beide zusammen mit Wahnsinnsritt-Brett-Lesen und Schlängeln-Debuffs, Phase 3 ist die Wasserblase mit Feuer-Verbindungen und geteilter Arena, Phase 4 wiederholt Wahnsinnsritt mit Extrem-Reinigungen.",
+  "ja": "ヘビー級2層、サーファー兄弟のレッドホット（炎、炎床を残す）とディープブルー（水、波とノックバック）戦。前半は1体ずつ、中盤は2体同時でインセインエアーのボード判断とハイドロ/フレイムスネーキング、水牢（ハイドロエアリアル）と炎の線、分断フィールド、最後はエクストリームスネーキングとインセインエアー2回目。"
+ },
+ "strats_overview": [
+  {
+   "id": "hector-toxic",
+   "name": {
+    "en": "Hector (Toxic / Nomnom snaking / Parallel) - NA/EU PF",
+    "fr": "Hector (Toxic / Nomnom / Parallel) - PF NA/EU",
+    "de": "Hector (Toxic / Nomnom / Parallel) - NA/EU-PF",
+    "ja": "Hector（Toxic / Nomnomスネーキング / Parallel）- NA/EU野良"
+   },
+   "region": "NA",
+   "note": {
+    "en": "NA/EU PF summary is 'Hector | Toxic/Nomnom/Parallel': Toxic Friends raidplan for most of the fight, NomNom raidplan for Fire/Watersnaking, and Parallel for the Watery Grave tether phase (both tethers kept parallel).",
+    "fr": "Résumé PF NA/EU « Hector | Toxic/Nomnom/Parallel » : raidplan Toxic Friends pour l'essentiel, NomNom pour les Ondulations, et Parallel pour la phase de bulle (liens parallèles).",
+    "de": "NA/EU-PF-Kurzform „Hector | Toxic/Nomnom/Parallel“: Toxic-Friends-Raidplan für das meiste, NomNom für das Schlängeln und Parallel für die Wasserblasen-Phase (Verbindungen parallel).",
+    "ja": "NA/EU野良は「Hector | Toxic/Nomnom/Parallel」。大部分はToxic Friends、スネーキングはNomNom、水牢の線はParallel（2本を平行）。"
+   },
+   "aliases": {
+    "en": [
+     "hector",
+     "toxic friends",
+     "toxic",
+     "nomnom",
+     "parallel"
+    ],
+    "fr": [
+     "hector",
+     "toxic friends",
+     "toxic",
+     "nomnom",
+     "parallel"
+    ],
+    "de": [
+     "hector",
+     "toxic friends",
+     "toxic",
+     "nomnom",
+     "parallel"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-game8",
+   "name": {
+    "en": "JP Game8 (Inumaru basic, healers in bubble, fire AC)",
+    "fr": "JP Game8 (Inumaru de base, heals dans la bulle, feu AC)",
+    "de": "JP Game8 (Inumaru-Basis, Heiler in der Blase, Feuer AC)",
+    "ja": "JP game8（基本犬丸水牢ヒラ/炎AC）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "Macro based on Inumaru's solution, adapted to PF (reference video by Ienashi Lala). In the macro, the blue side is the MT group and red the ST group (Inumaru's video has it reversed). Healers go into the bubble and fire tethers use the AC fixed method.",
+    "fr": "Macro basée sur Inumaru, adaptée à la PF (vidéo de référence de Ienashi Lala). Dans la macro, côté bleu = groupe MT, rouge = groupe ST (inversé dans la vidéo d'Inumaru). Les heals vont dans la bulle et les liens de feu suivent la méthode fixe AC.",
+    "de": "Makro nach Inumaru, für PF angepasst (Referenzvideo von Ienashi Lala). Im Makro ist Blau die MT-Gruppe und Rot die ST-Gruppe (in Inumarus Video umgekehrt). Heiler gehen in die Blase, Feuer-Verbindungen nach der festen AC-Methode.",
+    "ja": "犬丸氏の解法をベースに野良向けに加筆（家無しララ氏の動画が野良準拠）。マクロは青側MT組・赤側ST組（犬丸氏の動画は逆）。水牢はヒーラー、炎線はAC固定式。"
+   },
+   "aliases": {
+    "en": [
+     "inumaru",
+     "game8"
+    ],
+    "fr": [
+     "inumaru",
+     "game8"
+    ],
+    "de": [
+     "inumaru",
+     "game8"
+    ],
+    "ja": [
+     "犬丸",
+     "いぬまる",
+     "基本犬丸水牢ヒラ/炎AC",
+     "家無しララ",
+     "AC固定式",
+     "inumaru"
+    ]
+   }
+  },
+  {
+   "id": "oce",
+   "name": {
+    "en": "OCE (MR)",
+    "fr": "OCE (MR)",
+    "de": "OCE (MR)",
+    "ja": "OCE（MR）"
+   },
+   "region": "OCE",
+   "note": {
+    "en": "Listed by WTFDIG for OCE. No per-mechanic details stored: WTFDIG loads its strat text only in the browser, and Materia Raiding has no readable M10S page. Ask your PF.",
+    "fr": "Indiqué par WTFDIG pour l'OCE. Pas de détails par mécanique : WTFDIG ne charge son texte que dans le navigateur et Materia Raiding n'a pas de page M10S lisible. Demande à ta PF.",
+    "de": "Von WTFDIG für OCE gelistet. Keine Details pro Mechanik: WTFDIG lädt den Strat-Text nur im Browser, und Materia Raiding hat keine lesbare M10S-Seite. Frag deine PF.",
+    "ja": "WTFDIGでOCE向けに掲載。WTFDIGの本文はブラウザでしか読み込まれず、Materia RaidingにM10Sの読めるページがないため、ギミック別の詳細なし。PFに確認。"
+   },
+   "aliases": {
+    "en": [
+     "mr",
+     "materia raiding"
+    ],
+    "fr": [
+     "mr",
+     "materia raiding"
+    ],
+    "de": [
+     "mr",
+     "materia raiding"
+    ],
+    "ja": []
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1 (one brother at a time)",
+    "fr": "Phase 1 (un frère à la fois)",
+    "de": "Phase 1 (je ein Bruder)",
+    "ja": "前半（1体ずつ）"
+   },
+   "mechanics": [
+    {
+     "id": "hot-impact",
+     "names": {
+      "en": "Hot Impact",
+      "fr": "Impact brûlant",
+      "de": "Flammenklopper",
+      "ja": "ホットインパクト"
+     },
+     "aliases": {
+      "en": [
+       "tankbuster",
+       "shared buster"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Shared physical tankbuster; both tanks with mitigation, Feint helps. It targets the main tank and both tanks stack to share it.",
+      "fr": "Tankbuster physique partagé ; les deux tanks avec mitigation, Feinte aide. Il vise le main tank et les deux tanks se packent pour le partager.",
+      "de": "Geteilter physischer Tankbuster; beide Tanks mit Mitigation, Zermürben hilft. Er zielt auf den Main-Tank, und beide Tanks stacken, um ihn zu teilen.",
+      "ja": "タンク2人の頭割り強攻撃。物理なので牽制も有効。MTが対象で、タンク2人が頭割りで受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "stack"
+     ]
+    },
+    {
+     "id": "flame-floater",
+     "names": {
+      "en": "Flame Floater + Alley-oop Inferno",
+      "fr": "Surfeur enflammé + Alley-oop enflammé",
+      "de": "Flammenschweber + Flammen-Alley-Oop",
+      "ja": "フレイムフローター＋フレイムアリウープ"
+     },
+     "aliases": {
+      "en": [
+       "floater",
+       "fire lines",
+       "puddles"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "フローター",
+       "炎床"
+      ]
+     },
+     "how": {
+      "en": "Four players are tethered in order and Red Hot dashes to each, leaving lines of fire; then everyone drops a fire AoE puddle. Place lines and puddles so the arena stays usable.",
+      "fr": "Quatre joueurs sont liés dans l'ordre et Red Hot fonce sur chacun en laissant des lignes de feu ; ensuite tout le monde pose une flaque de feu. Place lignes et flaques pour garder l'arène jouable.",
+      "de": "Vier Spieler werden nacheinander verbunden und Red Hot stürmt zu jedem, Feuerlinien bleiben; danach legt jeder eine Feuerfläche ab. Linien und Flächen so legen, dass die Arena nutzbar bleibt.",
+      "ja": "4人に線と順番、ボスが順に突進して直線の炎床。その後全員に円範囲（炎床）。床の置き場を工夫する。"
+     },
+     "strats": [
+      {
+       "strat": "hector-toxic",
+       "how": {
+        "en": "Reverse L: 1 to the counterclockwise corner, 2 about halfway counterclockwise, 3 into the nook, 4 to where the boss started; puddles along the walls or next to existing fire.",
+        "fr": "L inversé : 1 au coin antihoraire, 2 à mi-chemin antihoraire, 3 dans le recoin, 4 là où le boss a commencé ; flaques le long des murs ou près du feu existant.",
+        "de": "Umgekehrtes L: 1 in die Ecke gegen den Uhrzeigersinn, 2 etwa halbwegs, 3 in die Nische, 4 dorthin, wo der Boss startete; Flächen an die Wände oder neben vorhandenes Feuer.",
+        "ja": "逆L字：1は反時計回りの角、2は反時計回り半ば、3は角のくぼみ、4はボス開始位置。床は壁沿いか既存の炎の隣。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Take the direction the boss moved as north and lay the fire in a reverse Z; drop the Alley-oop circles on the outer edge.",
+        "fr": "Prends la direction du boss comme nord et pose le feu en Z inversé ; pose les cercles au bord extérieur.",
+        "de": "Nimm die Richtung, in die der Boss ging, als Norden und leg das Feuer als umgekehrtes Z; die Kreise an den Außenrand.",
+        "ja": "ボスが移動した方向を北として逆Z字に配置、アリウープの円は外周へ。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "dodge"
+     ]
+    },
+    {
+     "id": "cutback-blaze-pyrotation",
+     "names": {
+      "en": "Cutback Blaze + Pyrotation",
+      "fr": "Riposte enflammée + Rotation incandescente",
+      "de": "Flammen-Rückschnitt + Pyrodreher",
+      "ja": "フレイムカットバック＋パイロローテーション"
+     },
+     "aliases": {
+      "en": [
+       "cutback",
+       "safe cone",
+       "3 hit stack"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Raidwide fire covering the arena except a cone behind the player farthest from Red Hot; then a three-hit healer stack that leaves a puddle each hit, so stutter-step inside the safe cone.",
+      "fr": "Feu sur toute l'arène sauf un cône derrière le joueur le plus loin de Red Hot ; puis package en trois coups sur un heal qui laisse une flaque à chaque coup, donc avance par petits pas dans le cône sûr.",
+      "de": "Feuer über die ganze Arena außer einem Kegel hinter dem Spieler, der am weitesten von Red Hot ist; dann ein dreifaches Heiler-Sammeln, das bei jedem Treffer eine Fläche lässt, also in kleinen Schritten im sicheren Kegel bewegen.",
+      "ja": "最も遠い人を対象に約330度の扇。安全な扇の中でヒーラーへの3連頭割り（毎回炎床）、少しずつ移動。"
+     },
+     "strats": [
+      {
+       "strat": "hector-toxic",
+       "how": {
+        "en": "Face the corner; LP1 tank and melee left, LP2 tank and melee right, ranged drop puddles off the middle, everyone stacks between the corner and the boss to bait the safe cone into the opposite corner.",
+        "fr": "Face au coin ; tank et mêlées LP1 à gauche, LP2 à droite, les distances posent hors du milieu, tout le monde se regroupe entre le coin et le boss pour envoyer le cône sûr dans le coin opposé.",
+        "de": "Mit Blick zur Ecke; LG1 Tank und Nahkampf links, LG2 rechts, Fernkampf legt Flächen weg von der Mitte, alle sammeln zwischen Ecke und Boss, damit der sichere Kegel in die Gegenecke zeigt.",
+        "ja": "角を向き、LP1のタンク近接は左、LP2は右、遠隔は中央を避けて床を捨て、角とボスの間に集まって安全な扇を対角へ。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "MT drags the boss so there's space between the fire, then the party stacks and moves through spots without fire.",
+        "fr": "Le MT place le boss pour laisser de l'espace entre les feux, puis le groupe packe et avance sur les zones sans feu.",
+        "de": "MT zieht den Boss so, dass zwischen dem Feuer Platz ist, dann sammelt die Gruppe und bewegt sich über feuerfreie Stellen.",
+        "ja": "MTは炎床の間にスペースができるよう誘導し、炎床のない所で頭割りしながら移動。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "divers-dare",
+     "names": {
+      "en": "Divers' Dare",
+      "fr": "Esprit combatif",
+      "de": "Brodelnder Kampfgeist",
+      "ja": "ファイティングスピリット"
+     },
+     "aliases": {
+      "en": [
+       "raidwide",
+       "clears fire"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Magic raidwide that clears all fire puddles.",
+      "fr": "Raidwide magique qui efface toutes les flaques de feu.",
+      "de": "Magischer Raidwide, der alle Feuerflächen entfernt.",
+      "ja": "魔法全体攻撃。炎床が全部消える。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "sick-swell-takeoff",
+     "names": {
+      "en": "Sick Swell + Sickest Take-off",
+      "fr": "Vague déchaînée + Ascension déchaînée",
+      "de": "Fette Welle + Fetter Absprung",
+      "ja": "シック・スウェル＋シック・テイクオフ"
+     },
+     "aliases": {
+      "en": [
+       "wave",
+       "orbs",
+       "knockback"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Deep Blue tethers a wall: a wave knocks you away from it and a line in his lane knocks into the wall, then orbs decide the follow-up: eight = spread, two = two healer stacks, one = everyone stacks.",
+      "fr": "Deep Blue se lie à un mur : une vague te pousse loin et une ligne sur son couloir pousse contre le mur, puis les orbes décident la suite : huit = dispersion, deux = deux packages sur heals, un = tout le monde ensemble.",
+      "de": "Deep Blue verbindet sich mit einer Wand: eine Welle stößt dich weg und eine Linie in seiner Bahn stößt an die Wand, dann entscheiden Kugeln: acht = verteilen, zwei = zwei Heiler-Sammeln, eine = alle zusammen.",
+      "ja": "線の方向が北、外周からのノックバックと直線。球2個なら頭割り、8個なら散開（1個なら全員頭割り）。"
+     },
+     "strats": [
+      {
+       "strat": "hector-toxic",
+       "how": {
+        "en": "LP1 in the leftmost safe lane, LP2 rightmost; for spreads line up tank, healer, melee, ranged.",
+        "fr": "LP1 dans le couloir sûr le plus à gauche, LP2 le plus à droite ; pour la dispersion, aligne tank, heal, mêlée, distance.",
+        "de": "LG1 in der linken sicheren Bahn, LG2 rechts; beim Verteilen Tank, Heiler, Nahkampf, Fernkampf aufreihen.",
+        "ja": "LP1は左端、LP2は右端の安全レーン。散開はT・H・近・遠の順。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "MT group left, ST group right, resolved on the north side.",
+        "fr": "Groupe MT à gauche, ST à droite, côté nord.",
+        "de": "MT-Gruppe links, ST-Gruppe rechts, auf der Nordseite.",
+        "ja": "左にMT組、右にST組、北側で処理。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "tether",
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "alley-oop-double-dip-reverse",
+     "names": {
+      "en": "Alley-oop Double-dip / Reverse Alley-oop",
+      "fr": "Double alley-oop / Alley-oop inversé",
+      "de": "Doppel-Alley-Oop / Umgekehrter Alley-Oop",
+      "ja": "ダブルアリウープ / リバースアリウープ"
+     },
+     "aliases": {
+      "en": [
+       "double dip",
+       "reverse",
+       "proteans"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ダブル",
+       "リバース"
+      ]
+     },
+     "how": {
+      "en": "Cones on everyone, then a second set: Double-dip repeats on the spots you stood (so move between), Reverse hits the spots you didn't stand in (so stay).",
+      "fr": "Cônes sur tout le monde, puis une seconde série : Double répète sur les endroits où tu étais (donc bouge entre), Inversé frappe là où tu n'étais pas (donc reste).",
+      "de": "Kegel auf alle, dann ein zweiter Satz: Doppel wiederholt an deinen Stellen (also dazwischen bewegen), Umgekehrt trifft, wo du nicht standst (also stehen bleiben).",
+      "ja": "全員に扇、2回目はダブルなら同じ場所（間へ移動）、リバースなら立っていなかった場所（その場）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "deep-impact-xtreme-spectacular",
+     "names": {
+      "en": "Deep Impact / Xtreme Spectacular",
+      "fr": "Impact puissant / Spectacle Xtrême",
+      "de": "Deep Impact / Ultimatives Extremmanöver",
+      "ja": "ディープインパクト / エクストリーム・スペクタクル"
+     },
+     "aliases": {
+      "en": [
+       "far buster",
+       "transition"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Deep Impact is a buster on the farthest player with a knockback (the tank baits far, Arm's Length helps). Xtreme Spectacular is proximity damage from the middle plus multi-hit raidwides; stand at the edge.",
+      "fr": "Impact puissant = buster sur le plus éloigné avec poussée (le tank bait loin, Distanciation aide). Spectacle Xtrême = dégâts de proximité depuis le centre plus raidwides multiples ; reste au bord.",
+      "de": "Deep Impact ist ein Buster auf den Fernsten mit Rückstoß (der Tank ködert weit, Armlänge hilft). Ultimatives Extremmanöver ist Entfernungsschaden aus der Mitte plus mehrfache Raidwides; an den Rand stellen.",
+      "ja": "ディープインパクトは最も遠い人へのノックバック付き強攻撃（タンクが離れる、アムレン推奨）。スペクタクルは中央から距離減衰と多段全体攻撃、端で受ける（JPはC側）。"
+     },
+     "strats": [
+      {
+       "strat": "hector-toxic",
+       "how": {
+        "en": "MT baits at max melee range for Deep Impact, the party stacks behind the boss; stack on the north edge for Spectacular.",
+        "fr": "Le MT bait au max mêlée pour Impact puissant, le groupe derrière le boss ; package au bord nord pour Spectacle.",
+        "de": "MT ködert Deep Impact auf Max-Nahkampf, die Gruppe hinter dem Boss; für das Manöver am Nordrand sammeln.",
+        "ja": "ディープインパクトはMTが最大近接、他はボス背後。スペクタクルは北端に集合。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Stand on the marker C side edge for Xtreme Spectacular.",
+        "fr": "Mets-toi au bord côté marqueur C pour Spectacle Xtrême.",
+        "de": "Für das Manöver an den Rand auf der Seite von Marker C.",
+        "ja": "スペクタクルはマーカーC側の端で受ける。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "knockback",
+      "proximity",
+      "raidwide"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2 (both brothers)",
+    "fr": "Phase 2 (les deux frères)",
+    "de": "Phase 2 (beide Brüder)",
+    "ja": "中盤（2体）"
+   },
+   "mechanics": [
+    {
+     "id": "insane-air",
+     "names": {
+      "en": "Insane Air",
+      "fr": "Figure démentielle",
+      "de": "Wahnsinnsritt",
+      "ja": "インセインエアー"
+     },
+     "aliases": {
+      "en": [
+       "surfboard",
+       "board"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ボード"
+      ]
+     },
+     "how": {
+      "en": "Each brother dashes to a surfboard and attacks based on its direction: up = buster on the closest, sideways = shared cone on the closest, down = cones on the four closest. Red Hot's hits leave fire; Deep Blue's hits explode on fire. It repeats four times.",
+      "fr": "Chaque frère fonce sur une planche et attaque selon son orientation : haut = buster sur le plus proche, côté = cône partagé sur le plus proche, bas = cônes sur les quatre plus proches. Red Hot laisse du feu ; les coups de Deep Blue explosent sur le feu. Quatre fois.",
+      "de": "Jeder Bruder springt auf ein Surfbrett und greift je nach Richtung an: oben = Buster auf den Nächsten, seitlich = geteilter Kegel auf den Nächsten, unten = Kegel auf die vier Nächsten. Red Hot hinterlässt Feuer, Deep Blues Treffer explodieren auf Feuer. Viermal.",
+      "ja": "ボードの向きで攻撃が変わる。上向きはタンク1人、横向きは最寄りへの扇頭割り、下向きは近い4人に扇。赤は炎床、青は炎に当たると爆発。4回。"
+     },
+     "strats": [
+      {
+       "strat": "hector-toxic",
+       "how": {
+        "en": "Up: tank sits inside the hitbox near the wall. Sideways: spread ranged, healer, tank, melee left to right facing the boss from outside, or stack with the cone aimed outside.",
+        "fr": "Haut : le tank dans la hitbox près du mur. Côté : dispersion distance, heal, tank, mêlée de gauche à droite face au boss depuis l'extérieur, ou package avec le cône vers l'extérieur.",
+        "de": "Oben: Tank in der Hitbox nahe der Wand. Seitlich: Verteilen Fern, Heiler, Tank, Nah von links nach rechts mit Blick zum Boss von außen, oder Sammeln mit Kegel nach außen.",
+        "ja": "上向きはタンクが壁際のタゲサ内。横向きはボスを外から見て左から遠・H・T・近で散開か、扇を外に向けて頭割り。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Up: one tank takes it. Sideways: four players stack. Down: spread ranged, healer, tank, melee. Always aim the AoEs outward.",
+        "fr": "Haut : un tank le prend. Côté : quatre joueurs packent. Bas : dispersion distance, heal, tank, mêlée. Toujours viser vers l'extérieur.",
+        "de": "Oben: ein Tank nimmt es. Seitlich: vier Spieler sammeln. Unten: Verteilen Fern, Heiler, Tank, Nah. AoEs immer nach außen.",
+        "ja": "上向きはタンク1人、横向きは4人で頭割り、下向きは遠隔・ヒーラー・タンク・近接の順に散開。範囲は必ず外周側へ。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "cleave",
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "snaking",
+     "names": {
+      "en": "Watersnaking / Firesnaking",
+      "fr": "Ondulation hydrique / enflammée",
+      "de": "Hydro- / Flammen-Schlängeln",
+      "ja": "ハイドロ / フレイムスネーキング"
+     },
+     "aliases": {
+      "en": [
+       "snaking",
+       "fire water debuff"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "スネーキング"
+      ]
+     },
+     "how": {
+      "en": "The four closest or four farthest players get a fire or water debuff, and each brother only targets players with his colour. Light parties go under their brother and resolve that brother's attacks (fire puddles, buster, cones, wave) while cleaving both. Here Red Hot's Hot Impact goes on the fire tank (both tanks stack for it) and Deep Blue's Deep Impact on the farthest water player, the water tank.",
+      "fr": "Les quatre plus proches ou plus éloignés reçoivent une debuff feu ou eau, et chaque frère ne vise que sa couleur. Les light parties vont sous leur frère et gèrent ses attaques (flaques, buster, cônes, vague) en tapant les deux. Ici, le Impact brûlant de Red Hot vise le tank feu (les deux tanks se packent) et le Impact puissant de Deep Blue le joueur eau le plus éloigné, le tank eau.",
+      "de": "Die vier Nächsten oder Fernsten bekommen einen Feuer- oder Wasser-Debuff, und jeder Bruder zielt nur auf seine Farbe. Die Leichtgruppen gehen unter ihren Bruder und lösen dessen Angriffe (Feuerflächen, Buster, Kegel, Welle), während sie beide treffen. Hier geht Red Hots Flammenklopper auf den Feuer-Tank (beide Tanks stacken) und Deep Blues Deep Impact auf den entferntesten Wasser-Spieler, den Wasser-Tank.",
+      "ja": "近い4人か遠い4人に炎/水のデバフ、各ボスは同じ色の人を優先して狙う。各組が担当のボスの足元で処理しつつ両方を殴る。ここではレッドホットのホットインパクトは炎のタンク（タンク2人で頭割り）、ディープブルーのディープインパクトは一番遠い水の人＝水のタンクに来る。"
+     },
+     "strats": [
+      {
+       "strat": "hector-toxic",
+       "how": {
+        "en": "NomNom snaking: LP1 under Deep Blue, LP2 under Red Hot. Fire team drops puddles in a box on the east wall, water team baits cones north and south. Hot Aerial: fire team baits in tank, healer, melee, ranged order at the NE and SE markers.",
+        "fr": "Ondulation NomNom : LP1 sous Deep Blue, LP2 sous Red Hot. L'équipe feu pose ses flaques en carré au mur est, l'équipe eau baite les cônes au nord et au sud. Flamme aérienne : l'équipe feu bait dans l'ordre tank, heal, mêlée, distance aux marqueurs NE et SE.",
+        "de": "NomNom-Schlängeln: LG1 unter Deep Blue, LG2 unter Red Hot. Feuer-Team legt Flächen als Kasten an die Ostwand, Wasser-Team ködert Kegel nach Norden und Süden. Flammensprung: Feuer-Team ködert Tank, Heiler, Nah, Fern an den Markern NO und SO.",
+        "ja": "NomNom式：LP1が青、LP2が赤の足元。炎組は東壁に四角く床、水組は南北で扇誘導。フレイムエアリアルは炎組がT・H・近・遠の順に北東・南東で誘導。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "MT group goes to blue, ST group to red; learn both flows because either colour can land on you.",
+        "fr": "Groupe MT au bleu, groupe ST au rouge ; apprends les deux déroulements car tu peux avoir l'une ou l'autre couleur.",
+        "de": "MT-Gruppe zu Blau, ST-Gruppe zu Rot; lern beide Abläufe, weil du jede Farbe bekommen kannst.",
+        "ja": "MT組が青、ST組が赤の足元。どちらの色が付いても対応できるよう両方の流れを確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "tankbuster",
+      "cleave",
+      "proximity"
+     ]
+    },
+    {
+     "id": "deep-varial",
+     "names": {
+      "en": "Deep Varial",
+      "fr": "Barrière hydrique",
+      "de": "Hydro-Halbdreher",
+      "ja": "ハイドロバリエル"
+     },
+     "aliases": {
+      "en": [
+       "wall cone"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Deep Blue jumps to a wall and fires a wide cone, followed by orbs (spread or stack depending on the count).",
+      "fr": "Deep Blue saute sur un mur et tire un large cône, suivi d'orbes (dispersion ou package selon le nombre).",
+      "de": "Deep Blue springt an eine Wand und feuert einen breiten Kegel, danach Kugeln (Verteilen oder Sammeln je nach Anzahl).",
+      "ja": "壁へ跳んで広い扇、その後球の数で散開か頭割り。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Icy Veins' own text contradicts itself on whether one orb means spread or stack.",
+      "fr": "Le texte d'Icy Veins se contredit sur un orbe = dispersion ou package.",
+      "de": "Icy Veins widerspricht sich, ob eine Kugel Verteilen oder Sammeln bedeutet.",
+      "ja": "Icy Veinsの記述で球1個が散開か頭割りか矛盾あり。"
+     },
+     "tags": [
+      "cleave",
+      "spread",
+      "stack"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Phase 3 (Watery Grave and split arena)",
+    "fr": "Phase 3 (bulle et arène coupée)",
+    "de": "Phase 3 (Wasserblase und geteilte Arena)",
+    "ja": "水牢〜分断"
+   },
+   "mechanics": [
+    {
+     "id": "watery-grave",
+     "names": {
+      "en": "Deep Aerial (Watery Grave) + Xtreme Wave",
+      "fr": "Flot aérien (bulle) + Vague Xtrême",
+      "de": "Wasserblase + Extremwelle",
+      "ja": "ハイドロエアリアル（水牢）＋エクストリームウェーブ"
+     },
+     "aliases": {
+      "en": [
+       "bubble",
+       "watery grave",
+       "tethers"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "水牢"
+      ]
+     },
+     "how": {
+      "en": "A two-player tower in the middle traps its soakers in a bubble that must be broken. The bosses mark players with fire and water tethers and fire lines toward them; fire hitting the bubble damages it (and the raid a bit), water hitting it gives it a damage-down, so aim fire at the bubble and keep water away.",
+      "fr": "Une tour à deux au centre enferme ses soakers dans une bulle à casser. Les boss marquent des joueurs avec des liens feu et eau et tirent des lignes vers eux ; le feu sur la bulle l'abîme (et le groupe un peu), l'eau lui donne un malus, donc vise la bulle avec le feu et garde l'eau loin.",
+      "de": "Ein Zwei-Personen-Turm in der Mitte sperrt die Nehmer in eine Blase, die zerstört werden muss. Die Bosse markieren Spieler mit Feuer- und Wasser-Verbindungen und feuern Linien zu ihnen; Feuer auf die Blase schadet ihr (und etwas der Gruppe), Wasser schwächt sie, also Feuer auf die Blase, Wasser weg.",
+      "ja": "中央の2人塔で水牢に閉じ込められ、壊さないと死亡。炎と水の線でボスが直線攻撃、炎を水牢に当てて削り、水は当てない。"
+     },
+     "strats": [
+      {
+       "strat": "hector-toxic",
+       "how": {
+        "en": "Parallel: healers usually soak (avoid jobs with movement tied to damage). Keep both tethers parallel on the side where the water tether spawned, the rest sit opposite. Six fire hits do about 90%, DPS finish the rest.",
+        "fr": "Parallel : les heals prennent souvent la tour. Garde les deux liens parallèles du côté où le lien d'eau est apparu, les autres en face. Six coups de feu font environ 90 %, les DPS finissent.",
+        "de": "Parallel: meist nehmen Heiler den Turm. Beide Verbindungen parallel auf der Seite halten, wo die Wasser-Verbindung erschien, der Rest gegenüber. Sechs Feuertreffer machen etwa 90 %, DPS den Rest.",
+        "ja": "Parallel式：塔は基本ヒーラー。2本の線を水の線が出た側で平行に、他は反対側。炎6回で約90%、残りはDPS。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Healers go into the bubble; fire tethers use the AC fixed method, going back and forth and not crossing the lines the first time; never hit the bubble with water.",
+        "fr": "Les heals vont dans la bulle ; les liens de feu suivent la méthode AC fixe en aller-retour sans croiser la première fois ; jamais d'eau sur la bulle.",
+        "de": "Heiler gehen in die Blase; Feuer-Verbindungen nach fester AC-Methode hin und her, beim ersten Mal nicht kreuzen; nie Wasser auf die Blase.",
+        "ja": "ヒーラーが水牢へ。炎線はAC固定式で往復、1回目は線をクロスさせない。水は当てない。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "tether",
+      "adds",
+      "dodge"
+     ]
+    },
+    {
+     "id": "split-arena",
+     "names": {
+      "en": "Flame Floater (split) + Freaky Pyrotation + Sickest Take-off",
+      "fr": "Surfeur enflammé (coupe) + Rotation incandescente chaotique + Ascension déchaînée",
+      "de": "Flammenschweber (Teilung) + Abgefahrener Pyro-Dreher + Fetter Absprung",
+      "ja": "フレイムフローター（分断）＋フリーキー・パイロローテーション＋シック・テイクオフ"
+     },
+     "aliases": {
+      "en": [
+       "split",
+       "west east"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Red Hot cuts the arena in half with fire; each light party takes a side, drops fire AoEs at walls, does Double-dip or Reverse, stacks on four players of one role, then a final light-party stack for Sickest Take-off before Divers' Dare clears the fire.",
+      "fr": "Red Hot coupe l'arène en deux avec du feu ; chaque light party prend un côté, pose ses AoE aux murs, fait Double ou Inversé, packe sur quatre joueurs d'un rôle, puis un dernier package par light party pour l'Ascension avant qu'Esprit combatif efface le feu.",
+      "de": "Red Hot teilt die Arena mit Feuer; jede Leichtgruppe nimmt eine Seite, legt Feuer-AoEs an die Wände, macht Doppel oder Umgekehrt, sammelt auf vier Spieler einer Rolle, dann ein letztes Leichtgruppen-Sammeln für den Absprung, bevor Kampfgeist das Feuer löscht.",
+      "ja": "赤で分断、MT組が西、ST組が東。円範囲を壁際に捨て、ダブル/リバース、4:4頭割り、最後にシック・テイクオフ、ファイティングスピリットで炎が消える。"
+     },
+     "strats": [
+      {
+       "strat": "hector-toxic",
+       "how": {
+        "en": "LP1 west, LP2 east; role pairs drop together (tanks with ranged, healers with melee); stack with your role partner at the wall for Freaky Pyrotation with knockback immunity.",
+        "fr": "LP1 ouest, LP2 est ; les paires posent ensemble (tanks avec distances, heals avec mêlées) ; package avec ton partenaire au mur pour la Rotation chaotique avec anti-poussée.",
+        "de": "LG1 West, LG2 Ost; Rollenpaare legen zusammen (Tanks mit Fern, Heiler mit Nah); für den Pyro-Dreher mit dem Rollenpartner an der Wand sammeln, mit Rückstoß-Immunität.",
+        "ja": "LP1西、LP2東。ペア（タンク＋遠隔、ヒーラー＋近接）で床を捨て、パイロは壁際でペア頭割り、ノックバック無効。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "MT group west, ST group east of Red Hot; do Double/Reverse based on where Deep Blue goes, then 4:4 stacks.",
+        "fr": "Groupe MT à l'ouest, ST à l'est de Red Hot ; Double/Inversé selon où va Deep Blue, puis packages 4:4.",
+        "de": "MT-Gruppe westlich, ST-Gruppe östlich von Red Hot; Doppel/Umgekehrt je nach Ziel von Deep Blue, dann 4:4 sammeln.",
+        "ja": "レッドホット基点でMT組西・ST組東。ディープブルーの行き先でダブル/リバース、その後4:4頭割り。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack",
+      "cleave"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p4",
+   "names": {
+    "en": "Phase 4 (Insane Air 2)",
+    "fr": "Phase 4 (Figure démentielle 2)",
+    "de": "Phase 4 (Wahnsinnsritt 2)",
+    "ja": "インセインエアー2回目〜時間切れ"
+   },
+   "mechanics": [
+    {
+     "id": "xtreme-snaking",
+     "names": {
+      "en": "Xtreme Firesnaking / Xtreme Watersnaking + Insane Air",
+      "fr": "Ondulation enflammée / hydrique Xtrême + Figure démentielle",
+      "de": "Extremes Flammen- / Hydro-Schlängeln + Wahnsinnsritt",
+      "ja": "エクストリームスネーキング＋インセインエアー2回目"
+     },
+     "aliases": {
+      "en": [
+       "xtreme snaking",
+       "cleanse"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "エクストリーム"
+      ]
+     },
+     "how": {
+      "en": "The four closest or farthest get an Xtreme debuff that is cleansed by getting hit by the other brother's attack, which creates a big AoE; it repeats with Insane Air, so players swap brothers to cleanse in order. Both bosses' tank busters go off at the same time, and the tanks swap to the other boss to cleanse their debuffs; no one else should be hit by them.",
+      "fr": "Les quatre plus proches ou loin ont une debuff Xtrême purgée en prenant un coup de l'autre frère, ce qui fait une grosse AoE ; ça se répète avec Figure démentielle, donc on change de frère pour purger dans l'ordre. Les tankbusters des deux boss partent en même temps, et les tanks échangent de boss pour purifier leurs altérations ; personne d'autre ne doit être touché.",
+      "de": "Die vier Nächsten oder Fernsten bekommen einen Extrem-Debuff, der durch einen Treffer des anderen Bruders gereinigt wird, was einen großen AoE erzeugt; das wiederholt sich mit Wahnsinnsritt, also wechselt man in Reihenfolge den Bruder. Die Tankbuster beider Bosse kommen gleichzeitig, und die Tanks wechseln zum anderen Boss, um ihre Debuffs zu entfernen; sonst darf niemand getroffen werden.",
+      "ja": "近い/遠い4人にエクストリームのデバフ。逆のボスの攻撃に当たると解除（大きな範囲）。インセインエアーと組み合わせて順番に交代。両ボスのタンク強攻撃は同時に来る。タンクは反対のボスへ入れ替わってデバフを解除し、他の人は当たらないようにする。"
+     },
+     "strats": [
+      {
+       "strat": "hector-toxic",
+       "how": {
+        "en": "Cleanse order: healers, melee, ranged; go to your debuff's brother then swap to the other to cleanse; both busters come together and the tanks swap.",
+        "fr": "Ordre de purge : heals, mêlées, distances ; va au frère de ta debuff puis passe à l'autre pour purger ; les deux busters tombent ensemble et les tanks échangent.",
+        "de": "Reinigungsreihenfolge: Heiler, Nah, Fern; geh zum Bruder deines Debuffs, dann zum anderen zum Reinigen; beide Buster kommen gleichzeitig und die Tanks tauschen.",
+        "ja": "解除順はヒーラー→近接→遠隔。自分のデバフの色のボスへ行き、もう一方へ交代して解除。タンク強攻撃は同時、タンクも交代。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Handle your own colour but swap jobs depending on the AoE: tanks swap for the circle, healers for the stack; the four-player spread is melee the first time and ranged the second.",
+        "fr": "Gère ta couleur mais échange selon l'AoE : les tanks pour le cercle, les heals pour le package ; la dispersion à quatre = mêlées la 1re fois, distances la 2e.",
+        "de": "Löse deine Farbe, aber tausche je nach AoE: Tanks beim Kreis, Heiler beim Sammeln; das Vier-Spieler-Verteilen machen beim ersten Mal Nahkämpfer, beim zweiten Fernkämpfer.",
+        "ja": "担当の色で処理しつつ範囲に応じて入れ替え。円はタンク、頭割りはヒーラーが交代。4人散開は1回目近接、2回目遠隔。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "tankbuster",
+      "tankswap"
+     ]
+    },
+    {
+     "id": "final-sequence",
+     "names": {
+      "en": "Final Alley-oop + Pyrotation + Deep Impact / enrage",
+      "fr": "Alley-oop final + Rotation + Impact puissant / enrage",
+      "de": "Letzter Alley-Oop + Pyrodreher + Deep Impact / Finalangriff",
+      "ja": "ダブル/リバース＋パイロ＋ディープインパクト〜時間切れ"
+     },
+     "aliases": {
+      "en": [
+       "enrage"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Both brothers in the middle: fire AoEs near the wall, Double-dip (rotate) or Reverse (stay), a three-hit stack and Deep Impact on the far tank, then Divers' Dare raidwides until the enrage.",
+      "fr": "Les deux frères au centre : AoE de feu près du mur, Double (tourne) ou Inversé (reste), package en trois coups et Impact puissant sur le tank éloigné, puis raidwides Esprit combatif jusqu'à l'enrage.",
+      "de": "Beide Brüder in der Mitte: Feuer-AoEs an der Wand, Doppel (drehen) oder Umgekehrt (bleiben), ein dreifaches Sammeln und Deep Impact auf den fernen Tank, dann Kampfgeist-Raidwides bis zum Finalangriff.",
+      "ja": "2体が中央。壁際で炎の円、ダブルは時計回り・リバースはその場、3連頭割りとディープインパクト（青のタゲ持ちタンクが離れる）、ファイティングスピリット2回で時間切れ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "tankbuster",
+      "knockback",
+      "raidwide",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Icy Veins - M10S guide",
+   "url": "https://www.icy-veins.com/ffxiv/aac-heavyweight-m2-savage-raid-guide",
+   "lang": "en"
+  },
+  {
+   "title": "NAUR FFXIV - M10S",
+   "url": "https://naurffxiv.com/savage/m10s",
+   "lang": "en"
+  },
+  {
+   "title": "WTFDIG - M10S strat selector",
+   "url": "https://wtfdig.info/74/m10s",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - ヘビー級零式2層",
+   "url": "https://game8.jp/ff14/755672",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot r10s timeline translations",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/raid/r10s.ts",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

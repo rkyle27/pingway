@@ -1,0 +1,686 @@
+{
+ "id": "ex-valigarmanda",
+ "type": "extreme",
+ "expansion": "DT",
+ "patch": "7.0",
+ "names": {
+  "en": "Worqor Lar Dor (Extreme) - Valigarmanda",
+  "fr": "Worqor Lar Dor (extrême) - Valigarmanda",
+  "de": "Gok Tajaal - Valigarmanda",
+  "ja": "極ヴァリガルマンダ討滅戦"
+ },
+ "aliases": {
+  "en": [
+   "valigarmanda ex",
+   "vali ex",
+   "valigarmanda extreme",
+   "worqor lar dor"
+  ],
+  "fr": [
+   "valigarmanda extrême",
+   "vali ex"
+  ],
+  "de": [
+   "valigarmanda extrem",
+   "vali ex"
+  ],
+  "ja": [
+   "極ヴァリガルマンダ",
+   "極ヴァリ",
+   "ヴァリガルマンダ"
+  ]
+ },
+ "summary": {
+  "en": "Dawntrail's first Extreme: Valigarmanda, an elemental dragon. Each element phase (fire, then thunder and ice in either order) starts with Triscourge, which gives everyone timed fire/ice/thunder debuffs, mixed with the boss's three base attacks and their Cataclysm follow-ups. There's an adds phase with Beacons, the Mountain Fire tank towers, levitation panels in the thunder phase and freezing ice in the ice phase, ending with Tulidisaster.",
+  "fr": "Premier Extrême de Dawntrail : Valigarmanda, un dragon élémentaire. Chaque phase d'élément (feu, puis foudre et glace dans un ordre variable) commence par Tri-fléau, qui donne à tous des debuffs feu/glace/foudre à minuteur, mêlés aux trois attaques de base et leurs Désastres. Il y a une phase d'adds avec des pylônes, les tours de tank Feu de montagne, des dalles de lévitation en phase foudre et le gel en phase glace, puis Désastre du Tural.",
+  "de": "Dawntrails erster Extremkampf: Valigarmanda, ein Elementdrache. Jede Elementphase (Feuer, dann Donner und Eis in beliebiger Reihenfolge) beginnt mit Dreifache Geißel, die allen zeitgesteuerte Feuer-/Eis-/Donner-Debuffs gibt, gemischt mit den drei Grundangriffen und ihren Desaster-Folgen. Es gibt eine Add-Phase mit Omen, die Bergfeuer-Tanktürme, Schwebe-Felder in der Donnerphase und Einfrieren in der Eisphase, am Ende Turalisaster.",
+  "ja": "黄金最初の極、属性竜ヴァリガルマンダ。炎→雷/氷の各フェーズはトライスカージ（時限デバフ）で始まり、3種の基本攻撃（スリザーコイル/ブレス/ストライク）とディザスターの組み合わせ。徴の雑魚、マウンテンファイアのタンク塔、雷のレビテト床、氷の凍結、最後はトラルディザスター。"
+ },
+ "strats_overview": [
+  {
+   "id": "na-pf",
+   "name": {
+    "en": "NA PF (RMMR / South to North / First Feather)",
+    "fr": "PF NA (RMMR / Sud vers Nord / Première plume)",
+    "de": "NA-PF (RMMR / Süd nach Nord / Erste Feder)",
+    "ja": "NA野良（RMMR / 南→北 / 最初の羽根）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "NAUR PF summary: RMMR spread order, after Mountain Fire max-melee stack south and move edge to edge north, kill the first feather in the lightning phase.",
+    "fr": "Résumé PF NAUR : ordre RMMR, après Feu de montagne package au sud au max mêlée puis bord à bord vers le nord, tuer la première plume en phase foudre.",
+    "de": "NAUR-PF-Kurzform: Reihenfolge RMMR, nach Bergfeuer auf Max-Nahkampf im Süden sammeln und von Rand zu Rand nach Norden, in der Blitzphase die erste Feder töten.",
+    "ja": "NAUR：散開はRMMR、マウンテンファイア後は南の最大近接から北へ、雷フェーズは最初の羽根を壊す。"
+   },
+   "aliases": {
+    "en": [
+     "naur",
+     "rmmr",
+     "south to north",
+     "first feather"
+    ],
+    "fr": [
+     "naur",
+     "rmmr",
+     "south to north",
+     "first feather"
+    ],
+    "de": [
+     "naur",
+     "rmmr",
+     "south to north",
+     "first feather"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-game8",
+   "name": {
+    "en": "JP Game8 (Hamukatsu macro)",
+    "fr": "JP Game8 (macro Hamukatsu)",
+    "de": "JP Game8 (Hamukatsu-Makro)",
+    "ja": "JP game8（ハムカツ式）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "Macro based on Hamukatsu's video.",
+    "fr": "Macro d'après la vidéo de Hamukatsu.",
+    "de": "Makro nach Hamukatsus Video.",
+    "ja": "ハムカツ氏の動画準拠マクロ。"
+   },
+   "aliases": {
+    "en": [
+     "hamukatsu",
+     "game8"
+    ],
+    "fr": [
+     "hamukatsu",
+     "game8"
+    ],
+    "de": [
+     "hamukatsu",
+     "game8"
+    ],
+    "ja": [
+     "ハムカツ式",
+     "ハムカツ",
+     "hamukatsu"
+    ]
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "base",
+   "names": {
+    "en": "Base attacks (all phases)",
+    "fr": "Attaques de base (toutes phases)",
+    "de": "Grundangriffe (alle Phasen)",
+    "ja": "基本攻撃（全フェーズ）"
+   },
+   "mechanics": [
+    {
+     "id": "base-attacks",
+     "names": {
+      "en": "Strangling Coil / Susurrant Breath / Slithering Strike",
+      "fr": "Enroulement sinueux / Souffle sinueux / Frappe sinueuse",
+      "de": "Würgewickel / Zischender Atem / Schlängelnder Hieb",
+      "ja": "スリザーコイル / スリザーブレス / スリザーストライク"
+     },
+     "aliases": {
+      "en": [
+       "coil",
+       "breath",
+       "strike",
+       "middle away front corners"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ボスの動き"
+      ]
+     },
+     "how": {
+      "en": "Coil is a donut (go middle), Breath is a wide frontal cone (go to the front corners), Strike is a point-blank circle (go away). In fire phase a text warns you; in later phases you read the boss's movement. Each is followed by a Cataclysm (pair stacks, spreads or hidden ground AoEs).",
+      "fr": "Enroulement = donut (va au milieu), Souffle = large cône devant (va aux coins avant), Frappe = cercle autour (éloigne-toi). En phase feu un texte prévient ; ensuite il faut lire le mouvement du boss. Chacun est suivi d'un Désastre (paires, dispersion ou AoE au sol cachées).",
+      "de": "Würgewickel ist ein Donut (in die Mitte), Zischender Atem ein breiter Frontalkegel (in die vorderen Ecken), Schlängelnder Hieb ein Kreis um den Boss (weg). In der Feuerphase warnt ein Text; später liest du die Bewegung des Bosses. Danach folgt jeweils ein Desaster (Paare, Verteilen oder versteckte Boden-AoEs).",
+      "ja": "コイルはドーナツ（中央）、ブレスは前方扇（前の角）、ストライクは円（離れる）。炎フェーズはメッセージ、以降はボスの動きで判断。その後ディザスター（ペア・散開・時間差の円）。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Coil: pair on the numbered waymarks; Breath: pairs in the corners; Strike: pairs in a line outside the hitbox, RMMR order.",
+        "fr": "Enroulement : paires sur les marqueurs numérotés ; Souffle : paires dans les coins ; Frappe : paires en ligne hors de la hitbox, ordre RMMR.",
+        "de": "Würgewickel: Paare auf den Nummernmarkern; Atem: Paare in den Ecken; Hieb: Paare in einer Linie außerhalb der Hitbox, Reihenfolge RMMR.",
+        "ja": "コイルは数字マーカーでペア、ブレスは角でペア、ストライクはタゲサ外に一列でペア（RMMR）。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Spread or pair on the macro spots.",
+        "fr": "Dispersion ou paires aux spots de la macro.",
+        "de": "Verteilen oder Paare auf den Makro-Plätzen.",
+        "ja": "マクロの位置に散開/ペア。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fire",
+   "names": {
+    "en": "Fire phase (Skyruin)",
+    "fr": "Phase feu",
+    "de": "Feuerphase",
+    "ja": "前半（炎）"
+   },
+   "mechanics": [
+    {
+     "id": "spikesicle",
+     "names": {
+      "en": "Spikesicle",
+      "fr": "Stalactopointe",
+      "de": "Eislanze",
+      "ja": "アイシクルスパイク"
+     },
+     "aliases": {
+      "en": [
+       "icicles",
+       "curved lines"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Curved lines in sequence leave ice blocks that explode in circles; start at the edge where the lines begin and step in and out to dodge.",
+      "fr": "Des lignes courbes successives laissent des blocs de glace qui explosent ; commence au bord où les lignes démarrent et entre/sors pour esquiver.",
+      "de": "Gebogene Linien nacheinander lassen Eisblöcke zurück, die explodieren; starte am Rand, wo die Linien beginnen, und geh rein und raus.",
+      "ja": "曲線の直線と氷の爆発。左→右ならA前、右→左ならB前から開始、円の安地はボスのサークル内側。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "triscourge-fire",
+     "names": {
+      "en": "Triscourge (fire) debuffs",
+      "fr": "Tri-fléau (feu)",
+      "de": "Dreifache Geißel (Feuer)",
+      "ja": "トライスカージ（炎）"
+     },
+     "aliases": {
+      "en": [
+       "debuffs",
+       "chill",
+       "keep moving"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Raidwide plus timed debuffs: a spread AoE (bolt), a freeze that requires you to keep moving when it expires (chill), and a three-hit healer stack that leaves fire. Know whether yours expires first or second.",
+      "fr": "Raidwide plus debuffs à minuteur : AoE à écarter (foudre), gel qui t'oblige à bouger quand il expire, et package en trois coups sur les heals qui laisse du feu. Sache si la tienne expire en premier ou second.",
+      "de": "Raidwide plus Debuffs mit Timer: Verteil-AoE (Blitz), Frost, bei dem du beim Ablauf in Bewegung sein musst, und ein dreifaches Heiler-Sammeln mit Feuer. Wisse, ob deiner zuerst oder als zweiter abläuft.",
+      "ja": "全体攻撃と時限デバフ（散開の雷、動き続ける必要のある氷、ヒーラーへの3連頭割りの炎）。自分が先か後か確認。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "debuff",
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "volcanic-drop",
+     "names": {
+      "en": "Volcanic Drop",
+      "fr": "Obus volcanique",
+      "de": "Feuerbergbombe",
+      "ja": "火山弾"
+     },
+     "aliases": {
+      "en": [
+       "volcano"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "One volcano (east or west) erupts in a big circle, plus small AoEs under random players; go to the other side.",
+      "fr": "Un volcan (est ou ouest) fait un gros cercle, plus de petites AoE sous des joueurs ; va de l'autre côté.",
+      "de": "Ein Vulkan (Ost oder West) bricht mit großem Kreis aus, dazu kleine AoEs unter Zufallsspielern; geh auf die andere Seite.",
+      "ja": "東か西の火山から巨大円、その後足元に小円。逆側へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "mountain-fire",
+     "names": {
+      "en": "Mountain Fire",
+      "fr": "Feu de montagne",
+      "de": "Bergfeuer",
+      "ja": "マウンテンファイア"
+     },
+     "aliases": {
+      "en": [
+       "tank towers",
+       "6 towers"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Six heavy tower hits in front; tanks soak (alternating with mitigation, or three each with invulns that cover the DoT) and the party hides behind the tower on the side opposite the boss's movement.",
+      "fr": "Six coups de tour lourds devant ; les tanks prennent (en alternance avec mitigation, ou trois chacun sous invincibilité qui couvre le DoT) et le groupe se cache derrière la tour, du côté opposé au mouvement du boss.",
+      "de": "Sechs schwere Turmtreffer vorne; Tanks nehmen sie (abwechselnd mit Mitigation oder je drei mit Unverwundbarkeit, die den DoT abdeckt), die Gruppe versteckt sich hinter dem Turm auf der Seite gegenüber der Bossbewegung.",
+      "ja": "前方の塔に6回。奇数回MT・偶数回ST（防御バフを分散し着弾直前に）。他は塔の後ろに隠れる。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "After Mountain Fire, stack south at max melee and move edge to edge toward the north for the fire stacks.",
+        "fr": "Après Feu de montagne, package au sud au max mêlée et avance bord à bord vers le nord pour les packages de feu.",
+        "de": "Nach Bergfeuer im Süden auf Max-Nahkampf sammeln und von Rand zu Rand nach Norden für die Feuer-Sammeln.",
+        "ja": "マウンテンファイア後は南の最大近接で集まり、端から端へ北へ進む（炎の頭割り）。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Odd hits MT, even hits ST; then the three healer stacks while moving forward out of the fire.",
+        "fr": "Coups impairs MT, pairs OT ; puis les trois packages des heals en avançant hors du feu.",
+        "de": "Ungerade Treffer MT, gerade ST; dann die drei Heiler-Sammeln, vorwärts aus dem Feuer.",
+        "ja": "奇数MT・偶数ST。その後ヒーラー3連頭割りを床を避けて前進しながら。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "tankbuster",
+      "tankswap"
+     ]
+    },
+    {
+     "id": "ruin-foretold-adds",
+     "names": {
+      "en": "Ruin Foretold (Beacon adds) + Calamitous Cry + Tulidisaster",
+      "fr": "Signe de désastre (pylônes) + Cri calamiteux + Désastre du Tural",
+      "de": "Katastrophenwarnung (Omen) + Unheilvoller Schrei + Turalisaster",
+      "ja": "ディザスターサイン（徴）＋カラミティクライ＋トラルディザスター"
+     },
+     "aliases": {
+      "en": [
+       "adds",
+       "beacons",
+       "line stacks"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "楔",
+       "徴"
+      ]
+     },
+     "how": {
+      "en": "The boss becomes untargetable and three Beacon adds must die before the gauge fills, while line stacks (Calamitous Cry) alternate and get stronger. Tulidisaster then hits three times and leaves a permanent DoT.",
+      "fr": "Le boss devient inciblable et trois pylônes doivent mourir avant que la jauge soit pleine, pendant que des packages en ligne (Cri calamiteux) alternent et se renforcent. Désastre du Tural frappe ensuite trois fois et laisse un DoT permanent.",
+      "de": "Der Boss wird unangreifbar und drei Omen-Adds müssen sterben, bevor die Leiste voll ist, während Linien-Sammeln (Unheilvoller Schrei) abwechseln und stärker werden. Turalisaster trifft dann dreimal und hinterlässt einen dauerhaften DoT.",
+      "ja": "ボス無敵、徴3つをゲージが溜まる前に壊す。カラミティクライの直線頭割りが交互に。その後トラルディザスターで3連全体攻撃と永続DoT。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Two light parties kill the side adds first; tanks stand in front of the line stacks.",
+        "fr": "Deux light parties tuent d'abord les adds latéraux ; les tanks devant les packages en ligne.",
+        "de": "Zwei Leichtgruppen töten zuerst die seitlichen Adds; Tanks stehen vor den Linien-Sammeln.",
+        "ja": "2組に分かれ左右の徴から、タンクは直線頭割りの先頭。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Split 4:4; ranged hit the middle thunder beacon, tanks and melee the fire/ice beacons on the sides, tanks in front.",
+        "fr": "Split 4:4 ; distances sur le pylône de foudre au centre, tanks et mêlées sur ceux de feu/glace sur les côtés, tanks devant.",
+        "de": "4:4 aufteilen; Fernkampf auf das mittlere Donner-Omen, Tanks und Nahkampf auf Feuer/Eis an den Seiten, Tanks vorne.",
+        "ja": "4:4、遠隔は中央の雷の楔、タンク近接は左右の火・氷の楔、タンク先頭。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "dps-check",
+      "stack",
+      "raidwide",
+      "transition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "thunder",
+   "names": {
+    "en": "Thunder phase (levitation)",
+    "fr": "Phase foudre (lévitation)",
+    "de": "Donnerphase (Schweben)",
+    "ja": "雷フェーズ（レビテト）"
+   },
+   "mechanics": [
+    {
+     "id": "triscourge-thunder",
+     "names": {
+      "en": "Triscourge (thunder) + levitation panels",
+      "fr": "Tri-fléau (foudre) + dalles de lévitation",
+      "de": "Dreifache Geißel (Donner) + Schwebe-Felder",
+      "ja": "トライスカージ（雷）＋レビテト床"
+     },
+     "aliases": {
+      "en": [
+       "levitate",
+       "panels"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Panels make you levitate: some debuffs need you levitating (frost), others kill or hurt you if you are levitating (bolt AoE, healer stack). Spread on the right tile type when your debuff expires.",
+      "fr": "Des dalles te font léviter : certaines debuffs demandent la lévitation (givre), d'autres te tuent si tu lévites (AoE foudre, package des heals). Écarte-toi sur le bon type de dalle quand ta debuff expire.",
+      "de": "Felder lassen dich schweben: manche Debuffs brauchen Schweben (Frost), andere schaden dir, wenn du schwebst (Blitz-AoE, Heiler-Sammeln). Verteil dich beim Ablauf auf die richtige Feldart.",
+      "ja": "床でレビテト。氷はレビテト必要、雷の円とヒーラー頭割りはレビテト中だと危険。デバフに合わせた床で散開（2回目はペアと交代）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "hail-of-feathers",
+     "names": {
+      "en": "Hail of Feathers + Blighted Bolt",
+      "fr": "Déluge de plumes + Éclairs de foudre catastrophiques",
+      "de": "Federhagel + Unheilvoller Blitzschlag",
+      "ja": "フェザーヘイル＋災厄の落雷"
+     },
+     "aliases": {
+      "en": [
+       "feathers",
+       "first feather"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Six proximity hits leave feathers that will explode; destroy at least one feather and stand where it was so the lightning on feathers misses you.",
+      "fr": "Six coups de proximité laissent des plumes qui exploseront ; détruis au moins une plume et reste à sa place pour éviter la foudre.",
+      "de": "Sechs Entfernungstreffer lassen Federn zurück, die explodieren; zerstöre mindestens eine Feder und stell dich dorthin, damit dich der Blitz verfehlt.",
+      "ja": "距離減衰6回で羽根が設置。羽根を壊してその位置で待機（落雷回避）。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Kill the first feather and stay there.",
+        "fr": "Tue la première plume et reste là.",
+        "de": "Töte die erste Feder und bleib dort.",
+        "ja": "最初の羽根を壊してそこで待つ。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "East start = marker D, west start = marker C; break the feather from the second hit.",
+        "fr": "Départ est = marqueur D, ouest = C ; casse la plume du second coup.",
+        "de": "Start Ost = Marker D, West = C; zerstör die Feder vom zweiten Treffer.",
+        "ja": "東スタートはD、西スタートはCから。2番目の羽根を壊す。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "proximity",
+      "dodge"
+     ]
+    },
+    {
+     "id": "thunderous-breath",
+     "names": {
+      "en": "Thunderous Breath",
+      "fr": "Souffle du dragon",
+      "de": "Gewitteratem",
+      "ja": "サンダーブレス"
+     },
+     "aliases": {
+      "en": [
+       "breath",
+       "levitate dodge"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Arena-wide cone that you dodge by levitating on a panel, while arcane spheres fire lines across rows; pick a panel in a row without a sphere line.",
+      "fr": "Cône sur toute l'arène qu'on esquive en lévitant sur une dalle, pendant que des sphères tirent des lignes ; choisis une dalle dans une rangée sans ligne.",
+      "de": "Arenaweiter Kegel, dem du schwebend auf einem Feld ausweichst, während Sphären Linien über Reihen feuern; nimm ein Feld in einer Reihe ohne Linie.",
+      "ja": "左右の雷球の直線を避けつつ、ボスの扇はレビテト床の上で回避。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "ruinfall",
+     "names": {
+      "en": "Ruinfall",
+      "fr": "Plongeon calamiteux",
+      "de": "Ruinsturz",
+      "ja": "カラミティダイヴ"
+     },
+     "aliases": {
+      "en": [
+       "tank tower",
+       "knockback"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Shared tank tower in the middle, then a knockback from the front into AoEs behind; use knockback prevention or aim into a safe spot. Both tanks soak this tower together with mitigation.",
+      "fr": "Tour partagée des tanks au centre, puis poussée depuis l'avant vers des AoE derrière ; anti-poussée ou vise un safe spot. Les deux tanks prennent cette tour ensemble avec leurs réductions.",
+      "de": "Geteilter Tankturm in der Mitte, dann Rückstoß von vorne in AoEs dahinter; Rückstoß-Schutz oder gezielt in eine sichere Stelle. Beide Tanks nehmen diesen Turm gemeinsam mit Mitigation.",
+      "ja": "中央にタンク2人の頭割り塔、その後前方からノックバック（アムレン・堅実推奨）。この塔はタンク2人が軽減を使って一緒に受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "tankbuster",
+      "knockback"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ice",
+   "names": {
+    "en": "Ice phase",
+    "fr": "Phase glace",
+    "de": "Eisphase",
+    "ja": "氷フェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "triscourge-ice",
+     "names": {
+      "en": "Triscourge (ice) + Northern Cross + Freezing Dust",
+      "fr": "Tri-fléau (glace) + Croix du nord + Poussière glaçante",
+      "de": "Dreifache Geißel (Eis) + Kreuz des Nordens + Froststaub",
+      "ja": "トライスカージ（氷）＋ノーザンクロス＋フリジングダスト"
+     },
+     "aliases": {
+      "en": [
+       "avalanche",
+       "freeze"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Debuffs: tank AoE busters (tanks to the front corners), healer stacks (light parties), bolt spreads. Northern Cross is a big avalanche line from a shown direction; Freezing Dust freezes anyone not moving right after the cast, and frozen players must break an ice block.",
+      "fr": "Debuffs : busters de zone sur les tanks (coins avant), packages des heals (light parties), dispersions foudre. Croix du nord = grande avalanche venant d'une direction montrée ; Poussière glaçante gèle ceux qui ne bougent pas juste après, et les gelés doivent casser un bloc.",
+      "de": "Debuffs: AoE-Buster auf die Tanks (vordere Ecken), Heiler-Sammeln (Leichtgruppen), Blitz-Verteilen. Kreuz des Nordens ist eine große Lawinenlinie aus einer gezeigten Richtung; Froststaub friert jeden ein, der direkt danach nicht läuft, Eingefrorene müssen einen Eisblock zerschlagen.",
+      "ja": "タンクは前方の端で巨大円、ヒーラー頭割りは後方で3:3、雷は散開。雪崩は表示方向から、フリジングダストは動き続ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "tankbuster",
+      "stack",
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "chilling-cataclysm-ice-talon",
+     "names": {
+      "en": "Chilling Cataclysm / Ice Talon",
+      "fr": "Désastre glaçant / Serres de glace",
+      "de": "Gefrorenes Desaster / Eiskralle",
+      "ja": "コールドディザスター / アイスタロン"
+     },
+     "aliases": {
+      "en": [
+       "spheres",
+       "tankbuster"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Arcane spheres fire lines; the waymark a sphere points at is unsafe. Ice Talon is a buster with a DoT on the top two enmity (keep the off-tank second).",
+      "fr": "Des sphères tirent des lignes ; le marqueur visé est dangereux. Serres de glace = buster avec DoT sur les deux premiers en inimitié (OT en second).",
+      "de": "Sphären feuern Linien; der Marker, auf den eine Sphäre zeigt, ist unsicher. Eiskralle ist ein Buster mit DoT auf die zwei Ersten (OT als Zweiter).",
+      "ja": "球の直線、球が向いたマーカーは危険。アイスタロンはヘイト1・2位への強攻撃（STは2位に）。"
+     },
+     "strats": [
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Ice Talon: MT and OT (ST) take it as the top two in enmity; ST must be second before the cast.",
+        "fr": "Serres de glace : le MT et l'OT le prennent en tant que deux premiers en inimitié ; l'OT doit être deuxième avant l'incantation.",
+        "de": "Eiskralle: MT und OT nehmen ihn als die beiden Ersten in der Feindseligkeit; der OT muss vor dem Zauber Zweiter sein.",
+        "ja": "アイスタロン：ヘイト1位・2位のMTとSTが受ける。詠唱前にSTをヘイト2位にしておく。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "tankbuster"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "final",
+   "names": {
+    "en": "Final phase",
+    "fr": "Phase finale",
+    "de": "Finale Phase",
+    "ja": "最終フェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "final-enrage",
+     "names": {
+      "en": "Wrath Unfurled / Mountain Fire / Tulidisaster (enrage)",
+      "fr": "Rage déployée / Feu de montagne / Désastre du Tural (enrage)",
+      "de": "Entfalteter Zorn / Bergfeuer / Turalisaster (Finalangriff)",
+      "ja": "ラース・アンファールド / マウンテンファイア / トラルディザスター（時間切れ）"
+     },
+     "aliases": {
+      "en": [
+       "enrage"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Raidwide and damage-up, Mountain Fire again (tanks have fewer cooldowns, healers watch them), then Tulidisaster twice and the enrage. The tanks split this Mountain Fire the same way as the first one.",
+      "fr": "Raidwide et bonus de dégâts, Feu de montagne à nouveau (les tanks ont moins de CD, les heals surveillent), puis deux Désastres et l'enrage. Les tanks se partagent ce Feu de montagne de la même façon que le premier.",
+      "de": "Raidwide und Schadensbonus, wieder Bergfeuer (Tanks haben weniger Cooldowns, Heiler aufpassen), dann zweimal Turalisaster und der Finalangriff. Die Tanks teilen sich dieses Bergfeuer genauso wie das erste.",
+      "ja": "全体攻撃、マウンテンファイア（タンクの軽減が少ないので注意）、トラルディザスター2回の後に時間切れ。このマウンテンファイアも1回目と同じ分担でタンクが受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "tower",
+      "tankbuster",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Icy Veins - Worqor Lar Dor (Extreme)",
+   "url": "https://www.icy-veins.com/ffxiv/worqor-lar-dor-extreme-trial-guide",
+   "lang": "en"
+  },
+  {
+   "title": "NAUR FFXIV - Worqor Lar Dor",
+   "url": "https://naurffxiv.com/extreme/worqor-lar-dor",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - 極ヴァリガルマンダ",
+   "url": "https://game8.jp/ff14/622480",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot valigarmanda-ex",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/trial/valigarmanda-ex.ts",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

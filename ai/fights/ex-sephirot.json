@@ -1,0 +1,595 @@
+{
+ "id": "ex-sephirot",
+ "type": "extreme",
+ "expansion": "HW",
+ "patch": "3.2",
+ "names": {
+  "en": "Containment Bay S1T7 (Extreme)",
+  "fr": "Unité de contention S1P7 (extrême)",
+  "de": "Zenit der Götter - Sephirot",
+  "ja": "極魔神セフィロト討滅戦"
+ },
+ "aliases": {
+  "en": [
+   "ex-sephirot",
+   "sephirot ex",
+   "sephirot extreme",
+   "s1t7 extreme",
+   "containment bay s1t7"
+  ],
+  "fr": [
+   "sephirot extrême",
+   "unité de contention s1p7"
+  ],
+  "de": [
+   "sephirot extrem",
+   "zenit der götter sephirot"
+  ],
+  "ja": [
+   "極セフィロト",
+   "極魔神セフィロト",
+   "セフィロト極"
+  ]
+ },
+ "summary": {
+  "en": "Sephirot the Fiend. Phase 1 on a walled platform with Ein Sof puddles and Fiendish Rage stacks, an add phase (Cochma and Binah) before Ein Sof Ohr, then phase 3 where the walls are gone and he is giant: Force Field buffs decide who stands in which orb and tower, with many knockbacks that can throw you off.",
+  "fr": "Sephirot le Démon. Phase 1 sur une plateforme avec murs, flaques Ein Sof et partages Fiendish Rage, une phase d'adds (Cochma et Binah) avant Ein Sof Ohr, puis phase 3 sans murs avec un Sephirot géant : les buffs Force Field décident qui va dans quel orbe et quelle tour, avec beaucoup de reculs qui peuvent te faire tomber.",
+  "de": "Sephirot der Dämon. Phase 1 auf einer Plattform mit Wänden, Ein-Sof-Pfützen und Fiendish-Rage-Sammeln, eine Add-Phase (Cochma und Binah) vor Ein Sof Ohr, dann Phase 3 ohne Wände mit riesigem Sephirot: Force-Field-Buffs bestimmen, wer in welche Kugel und welchen Turm geht, mit vielen Rückstößen, die dich herunterwerfen können.",
+  "ja": "魔神セフィロト戦。前半は壁のある足場でアイン・ソフと魔神の怒り、雑魚（コクマー・ビナー）後にアイン・ソフ・オウル、後半は壁がなく巨大化。フォースフィールドで入る玉や塔が決まり、落下させるノックバックが多い。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "This fight is mostly cleared unsynced or at minimum item level today, so strats rarely matter. The entries below explain how each mechanic works. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Aujourd'hui ce combat se fait surtout en mode sans restriction ou en ilvl minimum, donc la strat compte rarement. Les entrées ci-dessous expliquent comment marche chaque mécanique. Les noms des mécaniques sont en anglais (noms FR officiels non vérifiés).",
+  "de": "Heute wird dieser Kampf meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel gemacht, die Strat spielt also selten eine Rolle. Die Einträge unten erklären, wie jede Mechanik funktioniert. Die Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "現在このコンテンツは主に制限解除やIL最低限で攻略されるため、攻略法の違いはほとんど問題になりません。以下では各ギミックの仕組みを説明します。英語名のままのギミック名は日本語の公式名を確認できなかったものです。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "前半"
+   },
+   "mechanics": [
+    {
+     "id": "triple-trial-chesed",
+     "names": {
+      "en": "Triple Trial / Chesed",
+      "fr": "Triple coup / Chesed",
+      "de": "Tripel-Triade / Chesed",
+      "ja": "トリプルブロー／ケセド"
+     },
+     "aliases": {
+      "en": [
+       "triple trial / chesed"
+      ],
+      "fr": [
+       "triple trial / chesed"
+      ],
+      "de": [
+       "triple trial / chesed"
+      ],
+      "ja": [
+       "トリプルブロー／ケセド"
+      ]
+     },
+     "how": {
+      "en": "Triple Trial is a frontal tank cleave; Chesed is an uncast tankbuster (watch him slowly raise his arm), always followed by Triple Trial. The MT, who holds Sephirot in the center, takes it.",
+      "fr": "Triple Trial : cleave frontal sur le tank ; Chesed : tankbuster sans incantation (il lève lentement le bras), toujours suivi de Triple Trial. Le MT, qui tient Sephirot au centre, le prend.",
+      "de": "Triple Trial ist ein Frontalcleave auf den Tank; Chesed ein Tankbuster ohne Cast (er hebt langsam den Arm), immer gefolgt von Triple Trial. Der MT, der Sephirot in der Mitte hält, nimmt ihn.",
+      "ja": "トリプルブローは前方攻撃。ケセドは詠唱なしのタンク強攻撃（腕をゆっくり上げる）。中央でセフィロトを持つMTが受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "cleave"
+     ]
+    },
+    {
+     "id": "tiferet",
+     "names": {
+      "en": "Tiferet",
+      "fr": "Tiferet",
+      "de": "Tiferet",
+      "ja": "ティファレト"
+     },
+     "aliases": {
+      "en": [
+       "tiferet"
+      ],
+      "fr": [
+       "tiferet"
+      ],
+      "de": [
+       "tiferet"
+      ],
+      "ja": [
+       "ティファレト"
+      ]
+     },
+     "how": {
+      "en": "Raid-wide damage, often several in a row.",
+      "fr": "Dégâts de zone, souvent plusieurs d'affilée.",
+      "de": "Raumschaden, oft mehrmals hintereinander.",
+      "ja": "全体攻撃、連続することが多い。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "ein-sof",
+     "names": {
+      "en": "Ein Sof",
+      "fr": "Ein Sof Ohr",
+      "de": "En Sof Or",
+      "ja": "アイン・ソフ・オウル"
+     },
+     "aliases": {
+      "en": [
+       "ein sof",
+       "ein sof ohr"
+      ],
+      "fr": [
+       "ein sof"
+      ],
+      "de": [
+       "ein sof"
+      ],
+      "ja": [
+       "アイン・ソフ"
+      ]
+     },
+     "how": {
+      "en": "Green puddles that grow and stack Vulnerability Up; move to the free half of the arena.",
+      "fr": "Flaques vertes qui grandissent et cumulent Vulnérabilité ; va dans la moitié libre.",
+      "de": "Grüne Pfützen, die wachsen und Verwundbarkeit stapeln; in die freie Hälfte gehen.",
+      "ja": "緑の玉が広がる床。被ダメ上昇、空いている半分へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "debuff"
+     ]
+    },
+    {
+     "id": "fiendish-rage",
+     "names": {
+      "en": "Fiendish Rage",
+      "fr": "Colère de Sephirot",
+      "de": "Dämonischer Zorn",
+      "ja": "魔神の怒り"
+     },
+     "aliases": {
+      "en": [
+       "fiendish rage"
+      ],
+      "fr": [
+       "fiendish rage"
+      ],
+      "de": [
+       "fiendish rage"
+      ],
+      "ja": [
+       "魔神の怒り"
+      ]
+     },
+     "how": {
+      "en": "Stack markers on a healer and a DPS; he leaps to each one. Make two separate stacks on opposite sides; the MT stays out; being hit by both is lethal.",
+      "fr": "Partages sur un soigneur et un DPS ; il saute sur chacun. Fais deux groupes séparés de part et d'autre ; le MT n'y va pas ; prendre les deux est mortel.",
+      "de": "Sammelmarker auf einem Heiler und einem DPS; er springt auf jeden. Zwei getrennte Gruppen auf gegenüberliegenden Seiten; der MT bleibt draußen; beide abzubekommen ist tödlich.",
+      "ja": "ヒーラーとDPSに頭割り。2組に分かれて反対側で受け、MTは入らない。両方受けると死亡。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack"
+     ]
+    },
+    {
+     "id": "ain-ratzon",
+     "names": {
+      "en": "Ain + Ratzon",
+      "fr": "Ain + Ratzon",
+      "de": "Ain + Ratzon",
+      "ja": "アイン＋ラツォン"
+     },
+     "aliases": {
+      "en": [
+       "ain + ratzon"
+      ],
+      "fr": [
+       "ain + ratzon"
+      ],
+      "de": [
+       "ain + ratzon"
+      ],
+      "ja": [
+       "アイン＋ラツォン"
+      ]
+     },
+     "how": {
+      "en": "Ain is a 180-degree cone toward a random player; Ratzon puts one big purple circle and green circles on others. Stand between Sephirot and the Ein Sof bubble so the cone faces the safe half, then the purple player and the group split (one stays on his back, the others go to the edge, or the reverse).",
+      "fr": "Ain : cône de 180° vers un joueur au hasard ; Ratzon met un grand cercle violet et des cercles verts sur les autres. Place-toi entre Sephirot et la bulle Ein Sof pour orienter le cône, puis le violet et le groupe se séparent (l'un sur son dos, les autres au bord, ou l'inverse).",
+      "de": "Ain ist ein 180°-Kegel auf einen zufälligen Spieler; Ratzon gibt einen großen lila Kreis und grüne Kreise auf andere. Zwischen Sephirot und die Ein-Sof-Blase stellen, damit der Kegel richtig zeigt, dann trennen sich Lila-Spieler und Gruppe (einer auf seinem Rücken, die anderen zum Rand, oder umgekehrt).",
+      "ja": "アインは前方範囲＋ノックバック、ラツォンは紫の大円1人と緑の円。アイン・ソフの玉の側に立って向きを決め、紫の人と他は分かれる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "spread",
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Adds (Cochma and Binah)",
+    "fr": "Adds (Cochma et Binah)",
+    "de": "Adds (Cochma und Binah)",
+    "ja": "コクマーとビナー"
+   },
+   "mechanics": [
+    {
+     "id": "cochma-binah",
+     "names": {
+      "en": "Cochma / Binah / Genesis",
+      "fr": "Cochma / Binah / Génèse",
+      "de": "Cochma / Binah / Schöpfung",
+      "ja": "コクマー／ビナー／ジェネシス"
+     },
+     "aliases": {
+      "en": [
+       "cochma / binah / genesis"
+      ],
+      "fr": [
+       "cochma / binah / genesis"
+      ],
+      "de": [
+       "cochma / binah / genesis"
+      ],
+      "ja": [
+       "コクマー／ビナー／ジェネシス"
+      ]
+     },
+     "how": {
+      "en": "Kill two Cochma and four sets of three Binah before Sephirot's gauge fills. One tank per add type; Cochma stacks Magic Vulnerability with Empty Hand, Binah casts a heavy magic attack. Each death casts Genesis raid damage (Cochma bigger). Then Ein Sof Ohr hits everyone hard. The tank on Cochma must never take Binah's hits: Cochma's Magic Vulnerability Up makes them lethal.",
+      "fr": "Tue deux Cochma et quatre groupes de trois Binah avant que la jauge de Sephirot ne se remplisse. Un tank par type ; Cochma cumule Vulnérabilité magique (Empty Hand), Binah lance une grosse attaque magique. Chaque mort lance Genesis (Cochma plus fort). Puis Ein Sof Ohr frappe fort tout le monde. Le tank sur Cochma ne doit jamais prendre les coups de Binah : la vulnérabilité magique de Cochma les rend mortels.",
+      "de": "Töte zwei Cochma und vier Dreiergruppen Binah, bevor Sephirots Leiste voll ist. Ein Tank pro Add-Typ; Cochma stapelt Magische Verwundbarkeit (Empty Hand), Binah wirkt einen starken Magieangriff. Jeder Tod löst Genesis-Raumschaden aus (Cochma stärker). Danach trifft Ein Sof Ohr alle hart. Der Tank an Cochma darf nie Binahs Treffer nehmen: Cochmas Magieverwundbarkeit macht sie tödlich.",
+      "ja": "時間内にコクマー2体とビナー3体×4組を倒す。タンクは種類ごとに分担。コクマーはエンプティハンドで被魔法ダメ増加、倒すとジェネシス（全体）。その後アイン・ソフ・オウル。コクマーを持つタンクはビナーの攻撃を受けてはいけない（魔法被ダメージ増加で即死級）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "tankbuster",
+      "raidwide",
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Phase 3 (giant Sephirot)",
+    "fr": "Phase 3 (Sephirot géant)",
+    "de": "Phase 3 (riesiger Sephirot)",
+    "ja": "後半（巨大化）"
+   },
+   "mechanics": [
+    {
+     "id": "yesod",
+     "names": {
+      "en": "Yesod",
+      "fr": "Yesod",
+      "de": "Yesod",
+      "ja": "イェソドクラッシュ"
+     },
+     "aliases": {
+      "en": [
+       "yesod"
+      ],
+      "fr": [
+       "yesod"
+      ],
+      "de": [
+       "yesod"
+      ],
+      "ja": [
+       "イェソドクラッシュ"
+      ]
+     },
+     "how": {
+      "en": "The ground flashes yellow, then stalagmites hit where players stood: stack before, move together after the flash.",
+      "fr": "Le sol clignote en jaune, puis des stalagmites frappent où étaient les joueurs : groupe-toi avant, bouge ensemble après le flash.",
+      "de": "Der Boden blitzt gelb, dann treffen Stalagmiten, wo die Spieler standen: vorher sammeln, nach dem Blitz gemeinsam weg.",
+      "ja": "床が黄色く光った位置に攻撃。集まって光ったら一緒に移動。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "force-field",
+     "names": {
+      "en": "Force Field + Gevurah / Chesed orbs",
+      "fr": "Champ de force + Gevurah / Chesed orbs",
+      "de": "Kraftfeld + Gevurah / Chesed orbs",
+      "ja": "フォースフィールド／ゲブラー・ケセド"
+     },
+     "aliases": {
+      "en": [
+       "force field + gevurah / chesed orbs"
+      ],
+      "fr": [
+       "force field + gevurah / chesed orbs"
+      ],
+      "de": [
+       "force field + gevurah / chesed orbs"
+      ],
+      "ja": [
+       "フォースフィールド／ゲブラー・ケセド"
+      ]
+     },
+     "how": {
+      "en": "Four players get Force Against Magic, four Force Against Might. Then half the arena is a green (magic) sphere and half an orange (physical) one: Magic players stand in green, Might players in orange.",
+      "fr": "Quatre joueurs reçoivent Force Against Magic, quatre Force Against Might. Puis la moitié de l'arène est une sphère verte (magique) et l'autre orange (physique) : joueurs Magic dans le vert, Might dans l'orange.",
+      "de": "Vier Spieler bekommen Force Against Magic, vier Force Against Might. Dann ist eine Hälfte der Arena eine grüne (Magie-) und die andere eine orange (physische) Kugel: Magic-Spieler ins Grüne, Might-Spieler ins Orange.",
+      "ja": "4人ずつ魔法耐性／物理耐性のバフ。緑（魔法）と橙（物理）の玉：魔法耐性は緑、物理耐性は橙へ。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "gameranbu says 'move to the side opposite your debuff', CGW says Magic in green / Might in orange; these describe the same thing only if the buff is read as resistance. Check in game.",
+      "fr": "Formulation différente entre CGW et gameranbu ; vérifie en jeu.",
+      "de": "CGW und gameranbu formulieren es unterschiedlich; im Spiel prüfen.",
+      "ja": "資料間で表現が異なるため要確認。"
+     },
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "fiendish-wail",
+     "names": {
+      "en": "Fiendish Wail",
+      "fr": "Plainte de Sephirot",
+      "de": "Dämonische Klage",
+      "ja": "魔神の嘆き"
+     },
+     "aliases": {
+      "en": [
+       "fiendish wail"
+      ],
+      "fr": [
+       "fiendish wail"
+      ],
+      "de": [
+       "fiendish wail"
+      ],
+      "ja": [
+       "魔神の嘆き"
+      ]
+     },
+     "how": {
+      "en": "Two towers east and west; they must be filled (empty = big raid damage and Vulnerability Up). While buffs are up, Might players take them; without buffs, tanks take them.",
+      "fr": "Deux tours est et ouest à remplir (vide = gros dégâts et Vulnérabilité). Avec les buffs, les joueurs Might les prennent ; sans buff, les tanks.",
+      "de": "Zwei Türme Ost und West, müssen besetzt sein (leer = starker Raumschaden und Verwundbarkeit). Mit Buffs nehmen Might-Spieler sie, ohne Buffs die Tanks.",
+      "ja": "東西の塔に必ず入る。バフ中は物理耐性の人、バフなしではタンク。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tower"
+     ]
+    },
+    {
+     "id": "daat",
+     "names": {
+      "en": "Da'at",
+      "fr": "Da'at",
+      "de": "Da'at",
+      "ja": "ダアト"
+     },
+     "aliases": {
+      "en": [
+       "da'at"
+      ],
+      "fr": [
+       "da'at"
+      ],
+      "de": [
+       "da'at"
+      ],
+      "ja": [
+       "ダアト"
+      ]
+     },
+     "how": {
+      "en": "With tethers: four tethers go to the Might players and end in magic AoEs, so the Magic players take them. Without buffs it is random heavy AoEs starting on the main tank: spread.",
+      "fr": "Avec liens : quatre liens vont aux joueurs Might et finissent en AoE magiques, donc les joueurs Magic les prennent. Sans buff, ce sont de gros AoE aléatoires qui commencent sur le MT : disperse-toi.",
+      "de": "Mit Verbindungen: vier Verbindungen gehen an die Might-Spieler und enden in Magie-AoEs, also nehmen die Magic-Spieler sie. Ohne Buffs sind es zufällige starke AoEs, beginnend beim MT: verteilen.",
+      "ja": "線付き：物理耐性の人に付く魔法攻撃の線を魔法耐性の人が取る。線なし：MTから始まるランダム範囲、散開。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tether",
+      "spread"
+     ]
+    },
+    {
+     "id": "earth-shaker",
+     "names": {
+      "en": "Earth Shaker",
+      "fr": "Secousse",
+      "de": "Erdstoß",
+      "ja": "アースシェイカー"
+     },
+     "aliases": {
+      "en": [
+       "earth shaker"
+      ],
+      "fr": [
+       "earth shaker"
+      ],
+      "de": [
+       "earth shaker"
+      ],
+      "ja": [
+       "アースシェイカー"
+      ]
+     },
+     "how": {
+      "en": "A healer and a DPS get tethers that act as lines; they move away from the boss and others until the tether turns safe.",
+      "fr": "Un soigneur et un DPS reçoivent des liens qui agissent comme des lignes ; ils s'éloignent du boss et des autres.",
+      "de": "Ein Heiler und ein DPS bekommen Verbindungen, die wie Linien wirken; sie gehen weg vom Boss und den anderen.",
+      "ja": "2人に線（直線範囲）。ボスと味方から離れる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether"
+     ]
+    },
+    {
+     "id": "pillar-of-mercy",
+     "names": {
+      "en": "Pillar of Mercy",
+      "fr": "Pilier de la miséricorde",
+      "de": "Pfeiler der Gnade",
+      "ja": "ピラー・オブ・メルシー"
+     },
+     "aliases": {
+      "en": [
+       "pillar of mercy"
+      ],
+      "fr": [
+       "pillar of mercy"
+      ],
+      "de": [
+       "pillar of mercy"
+      ],
+      "ja": [
+       "ピラー・オブ・メルシー"
+      ]
+     },
+     "how": {
+      "en": "Knockbacks from impact points (north, west, east): aim each so you stay on the platform and away from Ein Sof.",
+      "fr": "Reculs depuis des points d'impact (nord, ouest, est) : vise pour rester sur la plateforme et loin d'Ein Sof.",
+      "de": "Rückstöße von Einschlagpunkten (Nord, West, Ost): so stehen, dass du auf der Plattform und weg von Ein Sof bleibst.",
+      "ja": "北・西・東からのノックバック。落ちない、アイン・ソフに入らない位置で受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback"
+     ]
+    },
+    {
+     "id": "malkuth-storm",
+     "names": {
+      "en": "Malkuth / Storm of Words",
+      "fr": "Malkuth / Storm of Words",
+      "de": "Malkuth / Storm of Words",
+      "ja": "マルクト／ストーム・オブ・ワード"
+     },
+     "aliases": {
+      "en": [
+       "malkuth / storm of words"
+      ],
+      "fr": [
+       "malkuth / storm of words"
+      ],
+      "de": [
+       "malkuth / storm of words"
+      ],
+      "ja": [
+       "マルクト／ストーム・オブ・ワード"
+      ]
+     },
+     "how": {
+      "en": "Malkuth is a huge knockback (stand close to Sephirot) and spawns the Storm of Words plus Binah. Kill the Storm of Words before Revelation knocks everyone off.",
+      "fr": "Malkuth : énorme recul (colle-toi à Sephirot) qui fait apparaître Storm of Words et des Binah. Tue Storm of Words avant que Revelation n'éjecte tout le monde.",
+      "de": "Malkuth ist ein riesiger Rückstoß (nah an Sephirot stehen) und ruft Storm of Words und Binah. Storm of Words töten, bevor Revelation alle herunterwirft.",
+      "ja": "マルクトは強いノックバック（ボスの近くで受ける）、ストーム・オブ・ワードとビナーが出現。詠唱完了前に倒す。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "adds",
+      "dps-check"
+     ]
+    },
+    {
+     "id": "pillar-of-severity",
+     "names": {
+      "en": "Pillar of Severity / Ascension",
+      "fr": "Pilier de la rigueur / Ascension",
+      "de": "Pfeiler der Strenge / Himmelfahrt",
+      "ja": "ピラー・オブ・セベリティ／アセンション"
+     },
+     "aliases": {
+      "en": [
+       "pillar of severity / ascension"
+      ],
+      "fr": [
+       "pillar of severity / ascension"
+      ],
+      "de": [
+       "pillar of severity / ascension"
+      ],
+      "ja": [
+       "ピラー・オブ・セベリティ／アセンション"
+      ]
+     },
+     "how": {
+      "en": "Sweep that throws everyone off; everyone stands on the Storm of Words corpse marker to be launched up (Ascension) and dodge it. At the end of the loop it is the enrage.",
+      "fr": "Balayage qui éjecte tout le monde ; tout le monde se met sur le marqueur du cadavre de Storm of Words pour être projeté (Ascension) et l'esquiver. En fin de boucle c'est l'enrage.",
+      "de": "Ein Schwung, der alle herunterwirft; alle stellen sich auf den Marker auf Storm of Words' Überresten, um hochgeschleudert zu werden (Ascension) und auszuweichen. Am Ende der Schleife ist es der Enrage.",
+      "ja": "全員を落とす攻撃。ストーム・オブ・ワードの残骸の印に全員で乗り、アセンションで打ち上げられて回避。ループ終わりは時間切れ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Containment Bay S1T7 (Extreme)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Containment_Bay_S1T7_(Extreme)",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/e05c982993d/",
+   "lang": "en"
+  },
+  {
+   "title": "ゲーム乱舞 極魔神セフィロト討滅戦",
+   "url": "https://gameranbu.jp/ff14/5fa5a005380044b1d5c7",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

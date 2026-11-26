@@ -1,0 +1,397 @@
+{
+ "id": "o11s",
+ "type": "savage",
+ "expansion": "SB",
+ "patch": "4.4",
+ "names": {
+  "en": "Alphascape V3.0 (Savage)",
+  "fr": "Alphastice v3.0 (sadique)",
+  "de": "Alphametrie 3.0 (episch)",
+  "ja": "次元の狭間オメガ零式：アルファ編3"
+ },
+ "aliases": {
+  "en": [
+   "o11s",
+   "omega",
+   "alphascape 3 savage"
+  ],
+  "fr": [
+   "o11s",
+   "oméga",
+   "alphastice 3"
+  ],
+  "de": [
+   "o11s",
+   "omega",
+   "alphametrie 3"
+  ],
+  "ja": [
+   "アルファ零式3層",
+   "オメガ",
+   "o11s"
+  ]
+ },
+ "summary": {
+  "en": "Third floor of Alphascape Savage against Omega. Key mechanics are the coloured fists of Peripheral Synthesis, Program Loop towers with tethers and debuffs, a tank Limit Break check on Delta Attack, and two Pantokrator phases.",
+  "fr": "Troisième étage d'Alphastice sadique contre Oméga. Les mécaniques clés : les poings colorés d'Impression, les tours de Boucle de programme avec liens et debuffs, un check de Transcendance tank sur Attaque Delta, et deux phases Pantokrator.",
+  "de": "Dritte Ebene von Alphametrie episch gegen Omega. Wichtig sind die farbigen Fäuste von Replikator, die Türme der Programmschleife mit Verbindungen und Debuffs, ein Tank-Limitrausch-Check bei Delta-Attacke und zwei Pantokrator-Phasen.",
+  "ja": "アルファ編3層、オメガ戦。プリントアウトの色付きの拳、サークルプログラムの塔と線・デバフ、デルタアタックでのタンクLB3チェック、2回のパントクラトルが主なギミックです。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Opening",
+    "fr": "Ouverture",
+    "de": "Eröffnung",
+    "ja": "序盤"
+   },
+   "mechanics": [
+    {
+     "id": "basics",
+     "names": {
+      "en": "Atomic Ray / Mustard Bomb",
+      "fr": "Rayon atomique / Obus d'ypérite",
+      "de": "Atomstrahlung / Senfbombe",
+      "ja": "アトミックレイ／マスタードボム"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Atomic Ray is raid-wide damage; Mustard Bomb is a circle tankbuster with Bleeding.",
+      "fr": "Rayon atomique : dégâts de groupe ; Obus d'ypérite : tankbuster en cercle avec Saignement.",
+      "de": "Atomstrahlung ist Gruppenschaden; Senfbombe ein Kreis-Tankbuster mit Blutung.",
+      "ja": "アトミックレイは全体攻撃、マスタードボムは出血付きの円範囲タンク強攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "tankbuster",
+      "debuff"
+     ]
+    },
+    {
+     "id": "wave-cannon-sides",
+     "names": {
+      "en": "Larboard / Starboard Wave Cannon",
+      "fr": "Canon plasma bâbord / Canon plasma tribord",
+      "de": "Backbord-Wellenkanone / Steuerbord-Wellenkanone",
+      "ja": "左舷斉射・波動砲／右舷斉射・波動砲"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [
+       "salve de bâbord",
+       "salve de tribord"
+      ],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A 210-degree cone to Omega's left or right, cast twice: dodge to the safe side, then run to the other side for the second. In Pantokrator the second fires immediately on the side that was safe.",
+      "fr": "Cône à 210° à gauche ou à droite d'Oméga, deux fois : va du côté sûr, puis passe de l'autre côté pour le second. Pendant Pantokrator, le second part tout de suite sur le côté qui était sûr.",
+      "de": "Ein 210-Grad-Kegel links oder rechts von Omega, zweimal: auf die sichere Seite, dann für den zweiten auf die andere. In Pantokrator feuert der zweite sofort auf die vorher sichere Seite.",
+      "ja": "オメガの左か右に210度扇を2回。安置へ避け、2回目は反対側へ。パントクラトル中は2回目がすぐ、先ほどの安置側に来ます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "flame-thrower",
+     "names": {
+      "en": "Flame Thrower",
+      "fr": "Crache-flammes",
+      "de": "Flammensturm",
+      "ja": "火炎放射"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Spread cones, then knockback cones in the same spots: spread on clock spots, then rotate into the gaps.",
+      "fr": "Cônes de dispersion, puis cônes de projection aux mêmes endroits : disperse-toi en horloge puis tourne dans les trous.",
+      "de": "Verteilkegel, dann Rückstoßkegel an denselben Stellen: auf Uhrpositionen verteilen, dann in die Lücken drehen.",
+      "ja": "扇の散開、続いて同じ位置にノックバック扇。クロック位置で散開し、隙間へ回ります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "knockback"
+     ]
+    },
+    {
+     "id": "peripheral-synthesis",
+     "names": {
+      "en": "Peripheral Synthesis",
+      "fr": "Impression",
+      "de": "Replikator",
+      "ja": "プリントアウト"
+     },
+     "aliases": {
+      "en": [
+       "fists",
+       "rocket punch"
+      ],
+      "fr": [
+       "poings"
+      ],
+      "de": [
+       "fäuste"
+      ],
+      "ja": [
+       "ロケットパンチ",
+       "拳"
+      ]
+     },
+     "how": {
+      "en": "Fists of two colours: opposite colours colliding make a Live Wire orb, matching colours deal huge raid damage. Early on, pre-assigned pairs with a swapper for mismatches; later four fists tether one tank, one healer and two DPS who run to their fist's spot while others stack center; in Pantokrator red fists collide one pair at a time (healers, tanks, then DPS) or the party uses a tank LB3.",
+      "fr": "Des poings de deux couleurs : des couleurs opposées qui se percutent créent un orbe Live Wire, des couleurs identiques font d'énormes dégâts de groupe. Au début, paires prévues avec un échangeur en cas de mauvaise paire ; plus tard quatre poings se lient à un tank, un healer et deux DPS qui vont à l'emplacement de leur poing pendant que les autres se regroupent au centre ; pendant Pantokrator, les poings rouges se percutent paire par paire (healers, tanks, puis DPS) ou le groupe utilise une Transcendance 3 tank.",
+      "de": "Fäuste in zwei Farben: Entgegengesetzte Farben erzeugen beim Zusammenstoß eine Live-Wire-Kugel, gleiche Farben machen riesigen Gruppenschaden. Am Anfang feste Paare mit einem Tauschspieler bei Fehlpaarung; später verbinden sich vier Fäuste mit einem Tank, einem Heiler und zwei DDs, die zum Platz ihrer Faust laufen, die anderen sammeln sich in der Mitte; in Pantokrator stoßen rote Fäuste paarweise zusammen (Heiler, Tanks, dann DDs) oder die Gruppe nutzt einen Tank-Limitrausch 3.",
+      "ja": "2色の拳。違う色同士がぶつかるとLive Wireの玉、同じ色だと大ダメージの全体攻撃。序盤は事前のペアで、合わない時は交代役。後半は拳4つがタンク1・ヒーラー1・DPS2に線を付け、その拳の位置へ走り、他は中央。パントクラトル中は赤い拳を1ペアずつ（ヒーラー→タンク→DPS）当てるか、タンクLB3で受けます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "knockback",
+      "raidwide",
+      "tankswap"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "program-loop",
+   "names": {
+    "en": "Program Loop",
+    "fr": "Boucle de programme",
+    "de": "Programmschleife",
+    "ja": "サークルプログラム"
+   },
+   "mechanics": [
+    {
+     "id": "program-loop",
+     "names": {
+      "en": "Program Loop / Storage Violation",
+      "fr": "Boucle de programme / Corruption de données S",
+      "de": "Programmschleife / Speicherverletzung S",
+      "ja": "サークルプログラム／記憶汚染除去S"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "First: magnetic tethers, opposite polarities take the center towers and matching ones the outer towers. Second: two players get Chains of Memory and go to the east and west edges, the others have Looper; towers resolve clockwise and the lowest Looper timers take the center towers first. Only Looper/Chains holders can fill the towers; towers cleanse Looper but not Chains.",
+      "fr": "D'abord : liens magnétiques, les polarités opposées prennent les tours du centre et les identiques celles de l'extérieur. Ensuite : deux joueurs ont Chains of Memory et vont aux bords est et ouest, les autres ont Looper ; les tours se résolvent dans le sens horaire et les plus petits timers Looper prennent d'abord celles du centre. Seuls les porteurs de Looper/Chains comptent dans les tours ; les tours retirent Looper mais pas Chains.",
+      "de": "Zuerst: Magnetverbindungen, entgegengesetzte Polarität nimmt die Türme in der Mitte, gleiche die äußeren. Danach: zwei Spieler haben Chains of Memory und gehen an den Ost- und Westrand, die anderen haben Looper; die Türme lösen im Uhrzeigersinn aus und die kürzesten Looper-Timer nehmen zuerst die mittleren. Nur Looper/Chains-Träger zählen in den Türmen; Türme entfernen Looper, aber nicht Chains.",
+      "ja": "1回目：磁力の線。極性が逆なら中央の塔、同じなら外側の塔。2回目：2人がChains of Memoryで東西の端へ、他はLooper。塔は時計回りに解決し、Looperの残り時間が短い人から中央の塔へ。塔に入れるのはLooper/Chains保持者のみで、塔でLooperは消えるがChainsは消えません。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Looper and Chains of Memory are debuff names from the English guide; FR/DE/JA not verified.",
+      "fr": "Looper et Chains of Memory sont des noms de debuffs du guide anglais ; FR non vérifié.",
+      "de": "Looper und Chains of Memory sind Debuff-Namen aus dem englischen Guide; DE nicht geprüft.",
+      "ja": "LooperとChains of Memoryは英語攻略のデバフ名で日本語名は未確認。"
+     },
+     "tags": [
+      "tower",
+      "tether",
+      "debuff"
+     ]
+    },
+    {
+     "id": "level-checker-delta",
+     "names": {
+      "en": "Reset / Reformat / Delta Attack",
+      "fr": "Réinitialisation / Optimisation / Attaque Delta",
+      "de": "Zurücksetzen / Optimierung / Delta-Attacke",
+      "ja": "初期化／最適化／デルタアタック"
+     },
+     "aliases": {
+      "en": [
+       "lb3 check",
+       "delta attack"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "LB3"
+      ]
+     },
+     "how": {
+      "en": "Level Checker uses a big circle then a donut; kill it before Force Quit. Delta Attack is lethal unless a tank uses Limit Break 3 (around halfway through the cast); healers then refill everyone to clear Gradual Petrification.",
+      "fr": "Le Level Checker fait un grand cercle puis un anneau ; tue-le avant Force Quit. Attaque Delta est mortelle sauf si un tank utilise une Transcendance 3 (vers la moitié de l'incantation) ; les healers remettent ensuite tout le monde à fond pour retirer la pétrification progressive.",
+      "de": "Der Level Checker macht einen großen Kreis, dann einen Ring; töte ihn vor Force Quit. Delta-Attacke ist tödlich, außer ein Tank nutzt Limitrausch 3 (etwa zur Hälfte des Zaubers); danach heilen die Heiler alle voll, um die Versteinerung zu entfernen.",
+      "ja": "Level Checkerが大きな円→ドーナツ。Force Quit前に倒します。デルタアタックはタンクLB3（詠唱の半分あたり）がないと即死。その後ヒーラーが全員を全快にして石化を解除。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "dodge",
+      "raidwide",
+      "debuff"
+     ]
+    },
+    {
+     "id": "blaster",
+     "names": {
+      "en": "Blaster / Electric Slide / Ballistic Missile",
+      "fr": "Électrochoc / Glissement Oméga / Tir de missile",
+      "de": "Blaster / Elektrosturz / Ballistische Rakete",
+      "ja": "ブラスター／オメガスライド／ミサイル発射"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Blaster: a passable tether on a healer; the off-tank at full HP takes it and moves it to a corner. Electric Slide: healer stack in the center. Ballistic Missile: spreads that drop fire puddles, drop them far from the center.",
+      "fr": "Électrochoc : lien transférable sur un healer ; le off-tank à fond de PV le prend et l'emmène dans un coin. Glissement Oméga : package healer au centre. Ballistic Missile : dispersions qui laissent des flaques de feu, pose-les loin du centre.",
+      "de": "Blaster: übertragbare Verbindung auf einem Heiler; der Off-Tank mit vollen HP nimmt sie und bringt sie in eine Ecke. Elektrosturz: Heiler-Sammelpunkt in der Mitte. Ballistic Missile: Verteiler, die Feuerpfützen legen, weit weg von der Mitte ablegen.",
+      "ja": "ブラスター：ヒーラーに受け渡し可能な線、HP満タンのSTが取って角へ。オメガスライド：中央でヒーラー頭割り。Ballistic Missile：火の床を残す散開、中央から遠くに置きます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "stack",
+      "spread"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pantokrator",
+   "names": {
+    "en": "Pantokrator",
+    "fr": "Pantokrator",
+    "de": "Pantokrator",
+    "ja": "パントクラトル"
+   },
+   "mechanics": [
+    {
+     "id": "pantokrator-1",
+     "names": {
+      "en": "Pantokrator (first)",
+      "fr": "Pantokrator (premier)",
+      "de": "Pantokrator (erster)",
+      "ja": "パントクラトル（1回目）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Constant damage and circles under three players: stack and rotate around Omega together. Wave Cannon Kyrios hits the four closest players twice, supports first (close to Omega) then DPS; Long Needle Kyrios ends it, stack in the agreed corner.",
+      "fr": "Dégâts continus et cercles sous trois joueurs : regroupe-toi et tourne autour d'Oméga ensemble. Canon plasma P frappe deux fois les quatre plus proches, d'abord les soutiens (près d'Oméga) puis les DPS ; Gros missile P termine la phase, regroupe-toi dans le coin prévu.",
+      "de": "Dauerschaden und Kreise unter drei Spielern: sammeln und gemeinsam um Omega drehen. Wellenkanone P trifft zweimal die vier nächsten Spieler, zuerst Tanks/Heiler (nah an Omega), dann DDs; Großes Kaliber P beendet sie, im abgesprochenen Eck sammeln.",
+      "ja": "継続ダメージと3人の足元の円。集まってオメガの周りを一緒に回ります。波動砲Pは近い4人に2回（先にタンク・ヒーラーが近づき、次にDPS）。大型ミサイルPで終了、決めた角に集合。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "pantokrator-2",
+     "names": {
+      "en": "Pantokrator (second)",
+      "fr": "Pantokrator (second)",
+      "de": "Pantokrator (zweiter)",
+      "ja": "パントクラトル（2回目）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Guided Missile Kyrios chases the farthest player (one runner on the edge with Sprint, or a tank invuln); rotating cones from east and west; Diffuse Wave Cannon Kyrios fires cones at the two top-enmity players nine times, tanks stand apart; then Charybdis sets HP to 1 and must be healed at once.",
+      "fr": "Missile guidé P poursuit le joueur le plus loin (un coureur au bord avec Sprint, ou un invu de tank) ; cônes rotatifs depuis l'est et l'ouest ; Canon plasma diffuseur P tire neuf fois des cônes sur les deux premiers en inimitié, les tanks s'écartent ; puis Charybde met les PV à 1, soigne tout de suite.",
+      "de": "Lenkrakete P verfolgt den entferntesten Spieler (ein Läufer am Rand mit Sprint oder Tank-Unverwundbarkeit); rotierende Kegel von Ost und West; Streuende Wellenkanone P feuert neunmal Kegel auf die zwei mit höchster Feindseligkeit, Tanks stehen getrennt; dann setzt Charybdis die HP auf 1, sofort heilen.",
+      "ja": "誘導ミサイルPは最も遠い人を追尾（外周をスプリントで走る担当か、タンクの無敵）。東西からの回転する扇。拡散波動砲Pは敵視上位2人に扇を9回、タンクは離れる。その後ミールストームでHP1、すぐ回復。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "dodge",
+      "raidwide"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Enrage",
+      "fr": "Enrage",
+      "de": "Enrage",
+      "ja": "時間切れ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Ends with three Atomic Rays and a 17-second Loop cast.",
+      "fr": "Se termine par trois Rayons atomiques et une incantation Loop de 17 secondes.",
+      "de": "Endet mit drei Atomstrahlungen und einem 17-Sekunden-Loop-Zauber.",
+      "ja": "アトミックレイ3回の後、17秒詠唱のLoopで時間切れ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage",
+      "raidwide"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - Alphascape V3.0 (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Alphascape_V3.0_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

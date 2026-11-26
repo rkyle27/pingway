@@ -1,0 +1,615 @@
+{
+ "id": "m9s",
+ "type": "savage",
+ "expansion": "DT",
+ "patch": "7.4",
+ "names": {
+  "en": "AAC Heavyweight M1 (Savage) - Vamp Fatale",
+  "fr": "Poids lourds CCA - match 1 (sadique) - Vamp Fatale",
+  "de": "Arkadion - Superschwergewicht R1 (episch) - Vamp Fatale",
+  "ja": "至天の座アルカディア零式：ヘビー級1 - ヴァンプ・ファタール"
+ },
+ "aliases": {
+  "en": [
+   "m9s",
+   "m9 savage",
+   "vamp fatale",
+   "vampire",
+   "hw1",
+   "heavyweight 1"
+  ],
+  "fr": [
+   "m9s",
+   "vamp fatale",
+   "vampire"
+  ],
+  "de": [
+   "m9s",
+   "vamp fatale",
+   "vampir"
+  ],
+  "ja": [
+   "m9s",
+   "ヘビー級1層",
+   "零式1層",
+   "ヴァンプファタール",
+   "ヴァンプ"
+  ]
+ },
+ "summary": {
+  "en": "First Heavyweight fight: Vamp Fatale, a vampire diva with a torture-device helper (Coffinmaker). Satisfied stacks build up during the fight and make some attacks bigger at 8 stacks. Main mechanics: Vamp Stomp bat shockwaves, the shrinking Sadistic Screech arena with Coffinfiller lines and Half Moon, Aetherletting proteans and markers, an adds/tower phase with saws, then Hell in a Cell towers and Undead Deathmatch bat tethers.",
+  "fr": "Premier combat Poids lourds : Vamp Fatale, une diva vampire avec un instrument de torture (Torture fatale). Des cumuls « Satisfied » montent pendant le combat et agrandissent certaines attaques à 8 cumuls. Mécaniques principales : ondes des chauves-souris de Piétinement fatal, arène qui rétrécit avec Crissement sadique, lignes et Demi-lunes, cônes et marqueurs de Libération d'éther, une phase d'adds et de tours avec des scies, puis tours d'Enfer carcéral et liens de Chiroptère mortel.",
+  "de": "Erster Superschwergewicht-Kampf: Vamp Fatale, eine Vampir-Diva mit einem Folterinstrument (Säge). Während des Kampfes bauen sich „Satisfied“-Stapel auf, die manche Angriffe bei 8 Stapeln vergrößern. Hauptmechaniken: Fledermaus-Schockwellen bei Vampirstampfer, die schrumpfende Henkersmahl-Arena mit Sägenstich-Linien und Blutigem Halbmond, Ätherquell-Kegel und Marker, eine Add-/Turm-Phase mit Sägen, dann Höllenkäfig-Türme und Fledermaus-Todeskampf-Verbindungen.",
+  "ja": "ヘビー級1層「ヴァンプ・ファタール」戦。戦闘中に溜まるバフが8以上になると一部の技が大きくなる。ヴァンプストンプのコウモリと衝撃波、サディスティック・スクリーチで狭くなる床と突き出る直線・ハーフムーン、エーテルレッティングの扇とマーカー、ノコギリと塔の雑魚フェーズ、ヘル・イン・ア・セルの茨塔、バット・デスマッチの鎖が中心。"
+ },
+ "strats_overview": [
+  {
+   "id": "toxic-hector",
+   "name": {
+    "en": "Toxic Friends / Hector (NA, EU, OCE PF)",
+    "fr": "Toxic Friends / Hector (PF NA, EU, OCE)",
+    "de": "Toxic Friends / Hector (NA-, EU-, OCE-PF)",
+    "ja": "Toxic Friends / Hector（NA・EU・OCE野良）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "WTFDIG lists Toxic/Hector for NA, EU and OCE; NAUR calls the Toxic Friends raidplan the common one, with static Aetherletting puddle spots. Clock spots: tanks and melee on cardinals, healers and ranged on intercardinals.",
+    "fr": "WTFDIG indique Toxic/Hector pour NA, EU et OCE ; NAUR dit que le raidplan Toxic Friends est le plus courant, avec spots fixes pour Libération d'éther. Horloge : tanks et mêlées aux cardinaux, heals et distances aux intercardinaux.",
+    "de": "WTFDIG listet Toxic/Hector für NA, EU und OCE; NAUR nennt den Toxic-Friends-Raidplan den üblichen, mit festen Ätherquell-Plätzen. Uhr: Tanks und Nahkampf auf Himmelsrichtungen, Heiler und Fernkampf auf Zwischenrichtungen.",
+    "ja": "WTFDIGではNA・EU・OCEがToxic/Hector。NAURはToxic Friendsレイドプランが一般的、エーテルレッティングは固定位置。時計位置：タンク近接が方角、ヒーラー遠隔が斜め。"
+   },
+   "aliases": {
+    "en": [
+     "toxic friends",
+     "toxic",
+     "hector",
+     "static aetherletting"
+    ],
+    "fr": [
+     "toxic friends",
+     "toxic",
+     "hector",
+     "static aetherletting"
+    ],
+    "de": [
+     "toxic friends",
+     "toxic",
+     "hector",
+     "static aetherletting"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-nukemaru",
+   "name": {
+    "en": "JP Game8 / Nukemaru",
+    "fr": "JP Game8 / Nukemaru",
+    "de": "JP Game8 / Nukemaru",
+    "ja": "JP game8 / ぬけまる式"
+   },
+   "region": "JP",
+   "note": {
+    "en": "Towers clockwise from north in T > melee > ranged > H order, based on Nukemaru's video.",
+    "fr": "Tours en horaire depuis le nord dans l'ordre T > mêlée > distance > H, d'après la vidéo de Nukemaru.",
+    "de": "Türme im Uhrzeigersinn ab Norden in der Reihenfolge T > Nahkampf > Fernkampf > H, nach Nukemarus Video.",
+    "ja": "塔は北から時計回りにT＞近＞遠＞H。ぬけまる氏の動画準拠。"
+   },
+   "aliases": {
+    "en": [
+     "nukemaru",
+     "game8"
+    ],
+    "fr": [
+     "nukemaru",
+     "game8"
+    ],
+    "de": [
+     "nukemaru",
+     "game8"
+    ],
+    "ja": [
+     "ぬけまる式",
+     "ぬけまる",
+     "nukemaru"
+    ]
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "前半"
+   },
+   "mechanics": [
+    {
+     "id": "hardcore",
+     "names": {
+      "en": "Hardcore",
+      "fr": "Attaque extrême",
+      "de": "Dominanz",
+      "ja": "ハードコア"
+     },
+     "aliases": {
+      "en": [
+       "tankbuster"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Buster on the top two enmity; the AoE is small at low stacks and big at 8+ stacks, so the tanks must not overlap. MT takes the first hit and the OT (ST) must hold second enmity for the other.",
+      "fr": "Buster sur les deux premiers en inimitié ; petite AoE à peu de cumuls, grande à 8+, donc les tanks ne doivent pas se chevaucher. Le MT prend le premier coup et l'OT doit rester deuxième en inimitié pour l'autre.",
+      "de": "Buster auf die zwei Ersten der Feindseligkeit; kleiner AoE bei wenigen Stapeln, großer ab 8, also dürfen die Tanks nicht überlappen. Der MT nimmt den ersten Treffer, und der OT muss für den anderen Zweiter in der Feindseligkeit bleiben.",
+      "ja": "ヘイト1・2位への強攻撃。バフ0〜4は小範囲、8以上で大範囲。STは2位維持、範囲を重ねない。MTがヘイト1位で受け、STはヘイト2位を維持してもう1つを受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "cleave"
+     ]
+    },
+    {
+     "id": "killer-voice",
+     "names": {
+      "en": "Killer Voice / Crowd Kill",
+      "fr": "Voix mortelle / Fauchage du public",
+      "de": "Todesecho / Massenmeuchelei",
+      "ja": "キラーボイス / クラウドキリング"
+     },
+     "aliases": {
+      "en": [
+       "raidwide"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Magic raidwides; Crowd Kill also adds Satisfied stacks.",
+      "fr": "Raidwides magiques ; Fauchage du public ajoute aussi des cumuls.",
+      "de": "Magische Raidwides; Massenmeuchelei gibt außerdem Stapel.",
+      "ja": "魔法全体攻撃。クラウドキリングはバフも増える。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "vamp-stomp",
+     "names": {
+      "en": "Vamp Stomp",
+      "fr": "Piétinement fatal",
+      "de": "Vampirstampfer",
+      "ja": "ヴァンプストンプ"
+     },
+     "aliases": {
+      "en": [
+       "bats",
+       "shockwave",
+       "stomp"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "コウモリ",
+       "ストンプ"
+      ]
+     },
+     "how": {
+      "en": "The boss slams the middle, bats spawn and rotate, and an expanding ring shockwave hits everyone (magic vulnerability on touch). You trigger your hit at the right moment without overlapping others or the bat explosions; it ends with Brutal Rain, a multi-hit healer stack.",
+      "fr": "Le boss frappe le centre, des chauves-souris tournent et une onde en anneau s'étend (vulnérabilité magique au contact). Déclenche ton coup au bon moment sans chevaucher les autres ni les explosions ; ça finit par Pluie brutale, package multi-coups sur un heal.",
+      "de": "Der Boss schlägt in die Mitte, Fledermäuse kreisen und eine wachsende Ring-Schockwelle trifft alle (Magie-Verwundbarkeit bei Kontakt). Löse deinen Treffer zur richtigen Zeit aus, ohne andere oder Fledermaus-Explosionen zu überlappen; am Ende Schreckensherrschaft, ein mehrfaches Heiler-Sammeln.",
+      "ja": "中央に着地しコウモリが回転、広がる白い輪に当たって範囲発動（被魔法増加）。他人やコウモリの爆発と重ならないように処理し、最後はヒーラーへのブルータルレイン（多段頭割り）。"
+     },
+     "strats": [
+      {
+       "strat": "toxic-hector",
+       "how": {
+        "en": "Spread to clock spots; MT pops first in the middle and leaves. Melee stand on the bat on their side and wait, OT goes south; ranged and healers pop when the wave nears the edge while melee move to the center.",
+        "fr": "Disperse aux spots d'horloge ; le MT déclenche en premier au centre puis part. Les mêlées se mettent sur la chauve-souris de leur côté, l'OT va au sud ; distances et heals déclenchent quand l'onde arrive au bord pendant que les mêlées vont au centre.",
+        "de": "Auf Uhrplätze verteilen; MT löst zuerst in der Mitte aus und geht. Nahkämpfer stellen sich auf die Fledermaus ihrer Seite, OT geht nach Süden; Fern und Heiler lösen aus, wenn die Welle den Rand erreicht, während Nahkampf zur Mitte geht.",
+        "ja": "時計位置に散開。MTが中央で最初に発動して離れる。近接は自分側のコウモリの上で待ち、STは南。遠隔ヒーラーは輪が外周近くで発動、近接は中央へ。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Split by the first bat's position: melee spread in a cross on the inner four tiles, ranged wait in the corners; touch the white ring to trigger, then gather for the healer stack.",
+        "fr": "Selon la position de la première chauve-souris : mêlées en croix sur les quatre cases intérieures, distances dans les coins ; touche l'anneau blanc pour déclencher, puis regroupe pour le package du heal.",
+        "de": "Nach Position der ersten Fledermaus: Nahkampf im Kreuz auf den inneren vier Feldern, Fernkampf in den Ecken; den weißen Ring berühren zum Auslösen, dann zum Heiler-Sammeln.",
+        "ja": "最初のコウモリの位置で処理が分かれる。近接は内側4マスで十字散開、遠隔は四隅。白い輪に当たって発動、最後はヒーラーの頭割り。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "debuff"
+     ]
+    },
+    {
+     "id": "sadistic-screech-1",
+     "names": {
+      "en": "Sadistic Screech: Coffinfiller / Half Moon / Dead Wake",
+      "fr": "Crissement sadique : Entaille funèbre / Demi-lunes / Avancée",
+      "de": "Henkersmahl: Sägenstich / Blutiger Halbmond / Sägenmarsch",
+      "ja": "サディスティック・スクリーチ：突き出る / ハーフムーン / 前進"
+     },
+     "aliases": {
+      "en": [
+       "coffinmaker",
+       "screech",
+       "shrinking arena"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "スクリーチ",
+       "車輪",
+       "前進"
+      ]
+     },
+     "how": {
+      "en": "The outer columns are removed and the Coffinmaker advances one row at a time (Dead Wake kills anyone in its path, and finally pushes everyone off). Coffinfiller columns fire lines in order while Half Moon cleaves the front or back half; the torture device must be destroyed before its last advance.",
+      "fr": "Les colonnes extérieures disparaissent et la Torture fatale avance d'une rangée à la fois (Avancée tue ceux sur son chemin, et à la fin pousse tout le monde dehors). Les colonnes d'Entaille funèbre tirent des lignes dans l'ordre pendant que Demi-lunes frappe l'avant ou l'arrière ; il faut détruire l'engin avant sa dernière avancée.",
+      "de": "Die äußeren Spalten verschwinden und die Säge rückt Reihe für Reihe vor (Sägenmarsch tötet jeden im Weg und schiebt am Ende alle runter). Sägenstich-Spalten feuern Linien nacheinander, während Blutiger Halbmond die vordere oder hintere Hälfte trifft; das Gerät muss vor dem letzten Vorrücken zerstört werden.",
+      "ja": "東西の列が消え、トーチャーファタールが1列ずつ前進（前進で轢かれると即死、最後は押し出し）。突き出る直線とハーフムーンの前後を避け、3セット目の前進までに破壊する。近接は粘りすぎない。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "knockback"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2 (Aetherletting and adds)",
+    "fr": "Phase 2 (Libération d'éther et adds)",
+    "de": "Phase 2 (Ätherquell und Adds)",
+    "ja": "中盤（エーテルレッティング・雑魚）"
+   },
+   "mechanics": [
+    {
+     "id": "aetherletting",
+     "names": {
+      "en": "Finale Fatale / Aetherletting",
+      "fr": "Final fatal / Libération d'éther",
+      "de": "Finale Fatale / Ätherquell",
+      "ja": "フィナーレ・ファターレ / エーテルレッティング"
+     },
+     "aliases": {
+      "en": [
+       "aetherletting",
+       "star puddles",
+       "proteans"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "エーテルレッティング",
+       "扇"
+      ]
+     },
+     "how": {
+      "en": "The arena becomes round; four cones go off in rotation, then two players per role are marked one after another and drop plus or X shaped AoEs. If everyone drops them correctly, the exact center stays safe for the final hit. Hardcore follows it, again on both tanks (top two in enmity).",
+      "fr": "L'arène devient ronde ; quatre cônes tournent, puis deux joueurs par rôle sont marqués l'un après l'autre et posent des AoE en plus ou en X. Si tout est bien posé, le centre exact reste sûr pour le dernier coup. Attaque extrême suit, à nouveau sur les deux tanks (les deux premiers en inimitié).",
+      "de": "Die Arena wird rund; vier Kegel rotieren, dann werden je zwei Spieler pro Rolle nacheinander markiert und legen Plus- oder X-förmige AoEs ab. Wenn alle richtig ablegen, bleibt die genaue Mitte für den letzten Treffer sicher. Danach folgt Dominanz, wieder auf beide Tanks (die beiden Ersten in der Feindseligkeit).",
+      "ja": "フィールドが円形に。4つの扇が回転、ロールごとに2人ずつ順にマーカー（十字かX字の範囲）。正しく捨てれば中央が8方向攻撃の安地。その後ハードコアが再びタンク2人（ヘイト1位・2位）に来る。"
+     },
+     "strats": [
+      {
+       "strat": "toxic-hector",
+       "how": {
+        "en": "Static Aetherletting: dodge the cones, drop your marker at your clock spot slightly offset counterclockwise between the cones, then everyone goes to the exact center.",
+        "fr": "Libération fixe : esquive les cônes, pose ton marqueur à ton spot d'horloge légèrement décalé en antihoraire entre les cônes, puis tout le monde au centre exact.",
+        "de": "Feste Ätherquell-Lösung: Kegeln ausweichen, Marker auf deinem Uhrplatz leicht gegen den Uhrzeigersinn versetzt zwischen den Kegeln ablegen, dann alle in die genaue Mitte.",
+        "ja": "固定式：扇を避け、時計位置から少し反時計回りにずらした所にマーカーを捨て、全員中央へ。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Go to your assigned waymark while dodging the cones, drop the AoE there, then gather in the center.",
+        "fr": "Va à ton marqueur assigné en esquivant les cônes, pose l'AoE, puis regroupe au centre.",
+        "de": "Geh zu deinem zugewiesenen Marker und weich den Kegeln aus, leg den AoE ab, dann in der Mitte sammeln.",
+        "ja": "扇を避けつつ指定マーカーへ、範囲を捨ててから中央に集まる。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "dodge",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "adds-towers",
+     "names": {
+      "en": "Sadistic Screech 2: Fatal Flail / Deadly Doornail / saws",
+      "fr": "Crissement sadique 2 : Fléau / Clou / scies",
+      "de": "Henkersmahl 2: Stachelbombe / Blitzableiter / Sägen",
+      "ja": "サディスティック・スクリーチ2回目：鉄球・鉄塔・ノコギリ"
+     },
+     "aliases": {
+      "en": [
+       "adds",
+       "towers",
+       "buzzsaws",
+       "flail",
+       "doornail"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "雑魚",
+       "鉄球",
+       "ロッド",
+       "塔",
+       "ノコギリ"
+      ]
+     },
+     "how": {
+      "en": "Saws move around the arena while three sets of tank towers spawn flail adds (kill before their cast) and a puddle spawns a growing doornail add. Raidwides come after each set.",
+      "fr": "Des scies se déplacent pendant que trois séries de tours de tank font apparaître des fléaux (à tuer avant leur incantation) et une flaque fait apparaître un clou qui grandit. Raidwides après chaque série.",
+      "de": "Sägen bewegen sich durch die Arena, während drei Sätze Tank-Türme Stachelbomben-Adds erzeugen (vor ihrem Zauber töten) und eine Fläche einen wachsenden Blitzableiter. Nach jedem Satz Raidwides.",
+      "ja": "ノコギリが動く中、タンクの塔から鉄球（詠唱完了前に倒す）、床から大きくなる鉄塔が3セット。各セット後に全体攻撃。"
+     },
+     "strats": [
+      {
+       "strat": "toxic-hector",
+       "how": {
+        "en": "MT soaks north towers, OT south, each with a short mitigation and hitting its own flail; melee hit the doornail until it's too big then the close flail; ranged take the doornail and the far flail.",
+        "fr": "Le MT prend les tours nord, l'OT sud, chacun avec une courte mitigation et tape son fléau ; mêlées sur le clou jusqu'à ce qu'il soit trop grand puis le fléau proche ; distances sur le clou et le fléau loin.",
+        "de": "MT nimmt Nordtürme, OT Süd, jeweils mit kurzer Mitigation, und schlägt seine Stachelbombe; Nahkampf auf den Blitzableiter, bis er zu groß ist, dann die nahe Bombe; Fernkampf auf Blitzableiter und ferne Bombe.",
+        "ja": "MTが北、STが南の塔（短い軽減）、自分の鉄球を攻撃。近接は鉄塔が大きくなるまで殴り近い鉄球へ、遠隔は鉄塔と遠い鉄球。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Assume MT group north, ST group south: melee break their flail, tanks soak towers, ranged break the rod (doornail), healers dodge saws and mitigate.",
+        "fr": "MT au nord, OT au sud : les mêlées cassent leur fléau, les tanks prennent les tours, les distances cassent le clou, les heals esquivent les scies et mitigent.",
+        "de": "MT-Gruppe Nord, ST-Gruppe Süd: Nahkampf zerstört seine Stachelbombe, Tanks nehmen Türme, Fernkampf den Blitzableiter, Heiler weichen Sägen aus und mitigieren.",
+        "ja": "北をMT組、南をST組。近接は担当の鉄球、タンクは塔、遠隔は鉄塔（ロッド）、ヒーラーはノコギリを避けて軽減。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "adds",
+      "dodge",
+      "raidwide"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Phase 3",
+    "fr": "Phase 3",
+    "de": "Phase 3",
+    "ja": "後半"
+   },
+   "mechanics": [
+    {
+     "id": "hell-in-a-cell",
+     "names": {
+      "en": "Hell in a Cell + Ultrasonic Spread / Ultrasonic Amp",
+      "fr": "Enfer carcéral + Ultrasonic Spread / Amp",
+      "de": "Höllenkäfig + Streuschall / Fokusschall",
+      "ja": "ヘル・イン・ア・セル＋スプレッド/アグリゲート"
+     },
+     "aliases": {
+      "en": [
+       "cells",
+       "thorn towers",
+       "spread amp"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "茨塔",
+       "ヘルインアセル"
+      ]
+     },
+     "how": {
+      "en": "Four towers trap whoever soaks them in a cell until they kill the Charnel Cell add, and caged players can't soak again. Players outside take Ultrasonic Spread (cones on a tank, healer and DPS, the tank one is a buster) or Ultrasonic Amp (wide cone stack) without hitting the towers.",
+      "fr": "Quatre tours enferment ceux qui les prennent dans une cellule jusqu'à ce qu'ils tuent l'add Cellule, et ils ne peuvent pas reprendre de tour. Ceux dehors prennent Spread (cônes sur un tank, un heal et un DPS, celui du tank est un buster) ou Amp (cône partagé large) sans toucher les tours.",
+      "de": "Vier Türme sperren die Nehmer in eine Zelle, bis sie das Zellen-Add töten; Gefangene können keinen Turm mehr nehmen. Draußen nimmt man Streuschall (Kegel auf Tank, Heiler und DPS, der Tank-Kegel ist ein Buster) oder Fokusschall (breites Kegel-Sammeln), ohne die Türme zu treffen.",
+      "ja": "塔を踏むと茨に閉じ込められ、雑魚を倒すまで出られない（2回目は不可）。外の人はスプレッド（T・H・D各1への扇、タンクは強攻撃）かアグリゲート（扇の頭割り）を塔の人に当てないように処理。"
+     },
+     "strats": [
+      {
+       "strat": "toxic-hector",
+       "how": {
+        "en": "Light party 1 soaks first: tank and healer take the first and second towers clockwise from north, ranged and melee the first and second counterclockwise from northwest. Outside: tank cone and stack in the large gap, DPS one gap counterclockwise, healers one gap clockwise; then LP2 soaks.",
+        "fr": "LP1 prend d'abord : tank et heal les 1re et 2e tours en horaire depuis le nord, distance et mêlée les 1re et 2e en antihoraire depuis le NO. Dehors : cône du tank et package dans le grand trou, DPS un trou en antihoraire, heals un trou en horaire ; puis LP2.",
+        "de": "LG1 nimmt zuerst: Tank und Heiler den ersten und zweiten Turm im Uhrzeigersinn ab Norden, Fern und Nah den ersten und zweiten gegen den Uhrzeigersinn ab NW. Draußen: Tank-Kegel und Sammeln in der großen Lücke, DPS eine Lücke gegen den Uhrzeigersinn, Heiler eine im Uhrzeigersinn; dann LG2.",
+        "ja": "LP1が先：TとHが北から時計回りに1・2本目、遠隔と近接が北西から反時計回りに1・2本目。外：タンクの扇と頭割りは広い隙間、DPSは1つ反時計回り、ヒーラーは1つ時計回り。次にLP2。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Towers from 12 o'clock clockwise in T > melee > ranged > H order, MT group first then ST group. Outside: Spread = role spread, Amp = stack; from the widest safe gap go clockwise T > D > H.",
+        "fr": "Tours depuis 12 h en horaire dans l'ordre T > mêlée > distance > H, groupe MT d'abord puis groupe ST. Dehors : Spread = dispersion par rôle, Amp = package ; depuis le plus grand trou en horaire T > D > H.",
+        "de": "Türme ab 12 Uhr im Uhrzeigersinn in der Reihenfolge T > Nah > Fern > H, erst MT-Gruppe, dann ST-Gruppe. Draußen: Spread = nach Rolle verteilen, Amp = sammeln; ab der breitesten Lücke im Uhrzeigersinn T > D > H.",
+        "ja": "塔は12時から時計回りにT＞近＞遠＞H、MT組が先・ST組が後。外はスプレッドならロール散開、アグリゲートなら頭割り。広い安地から時計回りにT＞D＞H。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "adds",
+      "cleave",
+      "stack",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "sanguine-scratch",
+     "names": {
+      "en": "Sanguine Scratch",
+      "fr": "Griffure sanguine",
+      "de": "Blutrote Kralle",
+      "ja": "サングインスクラッチ"
+     },
+     "aliases": {
+      "en": [
+       "cones",
+       "bat cones"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Ground cones that repeat on the previous safe spots; dodge the first, then follow the bat's direction (or step left and right alternately).",
+      "fr": "Des cônes au sol qui se répètent sur les anciens safe spots ; esquive le premier, puis suis la direction de la chauve-souris (ou alterne gauche/droite).",
+      "de": "Boden-Kegel, die die vorherigen sicheren Stellen treffen; dem ersten ausweichen, dann der Fledermaus-Richtung folgen (oder abwechselnd links/rechts).",
+      "ja": "前の安地を襲う扇の連続。1発目を避けてコウモリの進む方向へ（左右交互に避ける）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave"
+     ]
+    },
+    {
+     "id": "undead-deathmatch",
+     "names": {
+      "en": "Undead Deathmatch",
+      "fr": "Chiroptère mortel",
+      "de": "Fledermaus-Todeskampf",
+      "ja": "バット・デスマッチ"
+     },
+     "aliases": {
+      "en": [
+       "bat tethers",
+       "chains"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "鎖",
+       "デスマッチ"
+      ]
+     },
+     "how": {
+      "en": "Two big towers (north and south) tether their soakers to a rotating bat; overstretching the tether hurts and gives damage down. After rotating, the bat does a donut (stand under the bat) or a point-blank circle (stand at the boss), then rotates again with cones.",
+      "fr": "Deux grandes tours (nord et sud) lient leurs soakers à une chauve-souris qui tourne ; trop étirer le lien blesse et baisse les dégâts. Après rotation, elle fait un donut (sous la chauve-souris) ou un cercle (va au boss), puis tourne encore avec des cônes.",
+      "de": "Zwei große Türme (Nord und Süd) verbinden ihre Nehmer mit einer kreisenden Fledermaus; zu weites Dehnen schadet und senkt den Schaden. Nach der Drehung macht sie einen Donut (unter die Fledermaus) oder einen Kreis (zum Boss), dann dreht sie erneut mit Kegeln.",
+      "ja": "南北の大きな塔を踏むと回転するコウモリと鎖。伸ばしすぎると与ダメ低下とダメージ。回転後に円ならボス寄り、ドーナツならコウモリの足元。その後扇。"
+     },
+     "strats": [
+      {
+       "strat": "toxic-hector",
+       "how": {
+        "en": "Light party 1 soaks north, light party 2 south. Donut: stand on the bat at max melee; point-blank: stand on the boss's hitbox.",
+        "fr": "LP1 prend le nord, LP2 le sud. Donut : sur la chauve-souris au max mêlée ; cercle : sur la hitbox du boss.",
+        "de": "LG1 nimmt Nord, LG2 Süd. Donut: auf der Fledermaus auf Max-Nahkampf; Kreis: an der Hitbox des Bosses.",
+        "ja": "LP1が北、LP2が南の塔。ドーナツはコウモリの上（最大近接）、円はボスのタゲサ。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "MT group northwest tower, ST group southeast tower; the middle of the cone becomes the next safe spot, moving two safe spots ahead is easier.",
+        "fr": "Groupe MT tour NO, groupe ST tour SE ; le milieu du cône devient le prochain safe spot, aller deux safe spots plus loin est plus simple.",
+        "de": "MT-Gruppe NW-Turm, ST-Gruppe SO-Turm; die Kegelmitte wird die nächste sichere Stelle, zwei sichere Stellen weiterzugehen ist einfacher.",
+        "ja": "MT組は北西、ST組は南東の塔。扇の真ん中が次の安地、隣から2つ先へ移動すると楽。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Sources disagree on the tower directions (north/south vs northwest/southeast); this may be a strat difference.",
+      "fr": "Les sources divergent sur la direction des tours (nord/sud ou NO/SE) ; peut-être une différence de strat.",
+      "de": "Quellen widersprechen sich bei den Turmrichtungen (Nord/Süd oder NW/SO); evtl. ein Strat-Unterschied.",
+      "ja": "塔の方角がソースで南北と北西/南東に分かれる。方式の違いの可能性。"
+     },
+     "tags": [
+      "tower",
+      "tether"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Finale Fatale (enrage)",
+      "fr": "Final fatal (enrage)",
+      "de": "Finale Fatale (Finalangriff)",
+      "ja": "フィナーレ・ファターレ（時間切れ）"
+     },
+     "aliases": {
+      "en": [
+       "enrage"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "After a last round of Brutal Rain, Vamp Stomp, Hardcore and Sanguine Scratch plus raidwides, the enrage hits; the DPS check is mild, so avoiding deaths and damage-down matters more.",
+      "fr": "Après un dernier tour de Pluie brutale, Piétinement, Attaque extrême, Griffure et des raidwides, l'enrage tombe ; le check DPS est léger, éviter les morts et malus compte plus.",
+      "de": "Nach einer letzten Runde Schreckensherrschaft, Vampirstampfer, Dominanz, Blutrote Kralle und Raidwides kommt der Finalangriff; der DPS-Check ist mild, Tode und Schaden-runter vermeiden ist wichtiger.",
+      "ja": "最後のブルータルレイン・ストンプ・ハードコア・サングインスクラッチと全体攻撃の後に時間切れ。火力要求は緩いので戦闘不能やダメージ低下を避けることを優先。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "tankbuster",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Icy Veins - M9S guide",
+   "url": "https://www.icy-veins.com/ffxiv/aac-heavyweight-m1-savage-raid-guide",
+   "lang": "en"
+  },
+  {
+   "title": "NAUR FFXIV - M9S",
+   "url": "https://naurffxiv.com/savage/m9s",
+   "lang": "en"
+  },
+  {
+   "title": "WTFDIG - M9S strat selector",
+   "url": "https://wtfdig.info/74/m9s",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - ヘビー級零式1層",
+   "url": "https://game8.jp/ff14/754895",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot r9s timeline translations",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/raid/r9s.ts",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

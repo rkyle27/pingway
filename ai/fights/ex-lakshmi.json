@@ -1,0 +1,303 @@
+{
+ "id": "ex-lakshmi",
+ "type": "extreme",
+ "expansion": "SB",
+ "patch": "4.0",
+ "names": {
+  "en": "Emanation (Extreme)",
+  "fr": "Émanation (extrême)",
+  "de": "Zenit der Götter - Lakshmi",
+  "ja": "極ラクシュミ討滅戦"
+ },
+ "aliases": {
+  "en": [
+   "lakshmi ex",
+   "lakshmi extreme",
+   "emanation"
+  ],
+  "fr": [
+   "lakshmi extrême",
+   "émanation"
+  ],
+  "de": [
+   "lakshmi extrem"
+  ],
+  "ja": [
+   "極ラクシュミ",
+   "ラクシュミ"
+  ]
+ },
+ "summary": {
+  "en": "Extreme trial against Lakshmi. The whole fight revolves around Vril (duty action, 3 charges): it turns her hits into healing and is needed for her Chanchala-empowered attacks; there is an add phase where Vril has to be won back from the Dreamers.",
+  "fr": "Défi extrême contre Lakshmi. Tout tourne autour de Vril (action de mission, 3 charges) : il transforme ses coups en soins et est nécessaire contre ses attaques renforcées par Chanchala ; une phase d'adds oblige à récupérer Vril sur les Dreamers.",
+  "de": "Extrem-Prüfung gegen Lakshmi. Alles dreht sich um Vril (Inhaltsaktion, 3 Ladungen): es wandelt ihre Treffer in Heilung und wird gegen ihre durch Chanchala verstärkten Angriffe gebraucht; in einer Add-Phase muss Vril von den Dreamers zurückgewonnen werden.",
+  "ja": "ラクシュミ討滅戦（極）。コンテンツアクションのラクシュミエーテル（3回）が軸で、攻撃を回復に変え、チャンチャラー中の強化攻撃に必須です。雑魚フェーズではDreamerからエーテルを取り戻します。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "フェーズ1"
+   },
+   "mechanics": [
+    {
+     "id": "vril-chanchala",
+     "names": {
+      "en": "Vril / Chanchala",
+      "fr": "Vril / Chanchala",
+      "de": "Vril / Chanchala",
+      "ja": "ラクシュミエーテル／チャンチャラー"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Vril lasts 50 seconds and is used up by one of her attacks, turning it into healing. Chanchala makes her attacks much stronger against anyone without Vril, so use Vril before the empowered hit.",
+      "fr": "Vril dure 50 secondes et est consommé par une de ses attaques, qui devient un soin. Chanchala rend ses attaques bien plus fortes contre ceux sans Vril, donc active Vril avant le coup renforcé.",
+      "de": "Vril hält 50 Sekunden und wird von einem ihrer Angriffe verbraucht, der dann heilt. Chanchala macht ihre Angriffe gegen Spieler ohne Vril viel stärker, also Vril vor dem verstärkten Treffer nutzen.",
+      "ja": "ラクシュミエーテルは50秒持続し、攻撃を1回受けると消費されて回復に変わります。チャンチャラー中はエーテルなしだと被ダメージが大きいので、強化攻撃の前に使います。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    },
+    {
+     "id": "hands",
+     "names": {
+      "en": "Hand of Grace / Hand of Beauty / Alluring Arm",
+      "fr": "Main de la grâce / Main de la beauté / Bras séduisants",
+      "de": "Hand der Anmut / Hand der Schönheit / Anziehender Arm",
+      "ja": "優雅なる右手／優美なる左手／魅惑の腕"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Grace: three DPS get spreads with cross lines, go to the edges. Beauty: both healers get spreads that leave growing bleed puddles and Heavy unless they used Vril; drop them away from the party. Alluring Arm mixes both on three players, aim them away from others.",
+      "fr": "Grâce : trois DPS ont des dispersions avec lignes en croix, va au bord. Beauté : les deux healers ont des dispersions qui laissent des flaques de saignement qui grossissent et Pesanteur sauf s'ils ont Vril ; posez-les loin du groupe. Bras séduisants mélange les deux sur trois joueurs, oriente-les loin des autres.",
+      "de": "Anmut: drei DDs bekommen Verteiler mit Kreuzlinien, an den Rand. Schönheit: beide Heiler bekommen Verteiler mit wachsenden Blutungspfützen und Gewicht, außer mit Vril; weg von der Gruppe ablegen. Anziehender Arm mischt beides auf drei Spielern, von anderen weg ausrichten.",
+      "ja": "優雅なる右手：DPS3人に十字の直線付き散開、外周へ。優美なる左手：ヒーラー2人に散開、広がる出血の床とヘヴィ（エーテルで防げる）。PTから離れて置きます。魅惑の腕：両方が3人に混在、他人に当てないように。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "debuff"
+     ]
+    },
+    {
+     "id": "of-light",
+     "names": {
+      "en": "Pull / Path / Pall of Light",
+      "fr": "Flot / Voie / Voile de lumière",
+      "de": "Strom / Pfad / Flut des Lichts",
+      "ja": "光の奔流／光の波動／光の瀑布"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Pull of Light is a tankbuster, Path of Light a 90-degree cone on the second-enmity player (off-tank faces it away), Pall of Light a stack behind the boss. Under Chanchala all are stronger: use Vril. Pull of Light is the MT's hit, so under Chanchala the MT uses Vril or heavy mitigation.",
+      "fr": "Flot de lumière est un tankbuster, Voie de Lumière un cône à 90° sur le deuxième en inimitié (le off-tank l'oriente loin), Voile de lumière un package derrière le boss. Sous Chanchala tout est plus fort : utilise Vril. Pull of Light frappe le MT : sous Chanchala, le MT utilise Vril ou une grosse mitigation.",
+      "de": "Strom des Lichts ist ein Tankbuster, Pfad des Lichts ein 90-Grad-Kegel auf den Zweiten in der Feindseligkeit (Off-Tank richtet ihn weg), Flut des Lichts ein Sammelpunkt hinter dem Boss. Unter Chanchala ist alles stärker: Vril nutzen. Pull of Light trifft den MT: unter Chanchala nutzt der MT Vril oder starke Reduktion.",
+      "ja": "光の奔流はタンク強攻撃、光の波動は敵視2位への90度扇（STが外に向ける）、光の瀑布はボス背後での頭割り。チャンチャラー中は全部強化されるのでエーテルを使います。Pull of LightはMTが受けるので、チャンチャラ中はMTがヴリルか強い軽減を使います。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "cleave",
+      "stack"
+     ]
+    },
+    {
+     "id": "divine",
+     "names": {
+      "en": "Divine Denial / Divine Desire / Stotram",
+      "fr": "Refus divin / Désir divin / Stotram",
+      "de": "Göttliche Leugnung / Göttliche Lockung / Stotram",
+      "ja": "完全なる拒絶／完全なる誘引／ストトラム"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Denial (only under Chanchala) is a knockback that throws players without Vril off the platform: Vril and stand close. Desire pulls everyone into a bleed puddle: Vril and go to the edge. Stotram is heavy raid damage, much stronger under Chanchala.",
+      "fr": "Refus divin (seulement sous Chanchala) est une projection qui jette hors de la plateforme ceux sans Vril : Vril et colle-toi au boss. Désir divin attire tout le monde dans une flaque de saignement : Vril et va au bord. Stotram : gros dégâts de groupe, bien plus forts sous Chanchala.",
+      "de": "Göttliche Leugnung (nur unter Chanchala) ist ein Rückstoß, der Spieler ohne Vril von der Plattform wirft: Vril und nah ran. Göttliche Lockung zieht alle in eine Blutungspfütze: Vril und an den Rand. Stotram ist starker Gruppenschaden, unter Chanchala viel stärker.",
+      "ja": "完全なる拒絶（チャンチャラー中のみ）はノックバックでエーテルなしだと場外へ：エーテル＋ボスに密着。完全なる誘引は出血の床への引き寄せ：エーテル＋外周へ。ストトラムは強い全体攻撃で、チャンチャラー中はさらに強力。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "raidwide"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Add phase (Alluring Embrace)",
+    "fr": "Phase d'adds (Étreinte séduisante)",
+    "de": "Add-Phase (Lockende Umarmung)",
+    "ja": "雑魚フェーズ（魅惑の抱擁）"
+   },
+   "mechanics": [
+    {
+     "id": "dreamers",
+     "names": {
+      "en": "Dreamers / Alluring Embrace",
+      "fr": "Dreamers / Étreinte séduisante",
+      "de": "Dreamers / Lockende Umarmung",
+      "ja": "Dreamer／魅惑の抱擁"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Players lose their Vril charges; the Vril buff jumps between four Dreamers every 10 seconds. Bring all Dreamers low together and kill the one holding Vril: each kill gives charges back (two, then four, then the last two players). Alluring Embrace after 90 seconds or three kills kills anyone without Vril.",
+      "fr": "Les joueurs perdent leurs charges de Vril ; le buff Vril saute entre quatre Dreamers toutes les 10 secondes. Descends tous les Dreamers ensemble et tue celui qui porte Vril : chaque kill rend des charges (deux, puis quatre, puis les deux derniers). Étreinte séduisante, après 90 secondes ou trois kills, tue ceux sans Vril.",
+      "de": "Die Spieler verlieren ihre Vril-Ladungen; der Vril-Buff springt alle 10 Sekunden zwischen vier Dreamers. Bring alle Dreamers gemeinsam runter und töte den mit Vril: jeder Kill gibt Ladungen zurück (zwei, dann vier, dann die letzten zwei Spieler). Lockende Umarmung nach 90 Sekunden oder drei Kills tötet alle ohne Vril.",
+      "ja": "エーテルのチャージがなくなり、エーテルのバフが10秒ごとにDreamer4体の間を移動。全員を一緒に削り、バフを持つ個体を倒すとチャージが戻ります（2人→4人→残り2人）。90秒か3体撃破で魅惑の抱擁、エーテルがないと死亡。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "transition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Phase 3",
+    "fr": "Phase 3",
+    "de": "Phase 3",
+    "ja": "フェーズ3"
+   },
+   "mechanics": [
+    {
+     "id": "divine-doubt",
+     "names": {
+      "en": "Divine Doubt",
+      "fr": "Doute divin",
+      "de": "Göttliche Bestürzung",
+      "ja": "完全なる惑乱"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Confuses everyone (Vril halves it); pair up with exactly one other player so confused players only hit one person.",
+      "fr": "Rend tout le monde confus (Vril divise la durée par deux) ; mets-toi en paire avec exactement un autre joueur pour ne frapper qu'une personne.",
+      "de": "Verwirrt alle (Vril halbiert es); bildet Paare mit genau einem anderen Spieler, damit Verwirrte nur eine Person treffen.",
+      "ja": "全員を混乱（エーテルで時間半減）。ちょうど2人ずつペアになり、1人にしか当たらないようにします。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "blissful-spear",
+     "names": {
+      "en": "Blissful Spear",
+      "fr": "Épieu béatifiant",
+      "de": "Speer der Gnade",
+      "ja": "聖なる槍"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Big AoEs in a Z, line or donut shape with bubbles that refill Vril: grab a bubble, then leave the AoE. With Divine Desire, use Vril, grab a bubble and stand just outside the donut.",
+      "fr": "Grandes zones en Z, en ligne ou en anneau avec des bulles qui rechargent Vril : prends une bulle, puis sors de la zone. Avec Désir divin, utilise Vril, prends une bulle et reste juste hors de l'anneau.",
+      "de": "Große AoEs in Z-, Linien- oder Ringform mit Blasen, die Vril auffüllen: Blase nehmen, dann raus aus der AoE. Mit Göttlicher Lockung: Vril nutzen, Blase nehmen und knapp außerhalb des Rings stehen.",
+      "ja": "Z字・直線・ドーナツ型の大範囲と、エーテルを補充する泡。泡を取ってから範囲外へ。完全なる誘引と一緒の時はエーテル使用、泡を取りドーナツのすぐ外へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Enrage",
+      "fr": "Enrage",
+      "de": "Enrage",
+      "ja": "時間切れ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The rotation ends with Chanchala and a Divine Denial that can't be resisted and throws everyone off.",
+      "fr": "La rotation finit par Chanchala et un Refus divin impossible à contrer qui éjecte tout le monde.",
+      "de": "Die Rotation endet mit Chanchala und einer nicht abwehrbaren Göttlichen Leugnung, die alle hinunterwirft.",
+      "ja": "最後はチャンチャラーと防げない完全なる拒絶で全員場外へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage",
+      "knockback"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - Emanation (Extreme)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Emanation_(Extreme)",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

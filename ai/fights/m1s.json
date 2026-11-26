@@ -1,0 +1,1118 @@
+{
+  "id": "m1s",
+  "type": "savage",
+  "expansion": "DT",
+  "patch": "7.05",
+  "names": {
+    "en": "AAC Light-heavyweight M1 (Savage) - Black Cat",
+    "fr": "Poids mi-lourds CCA - match 1 (sadique) - Black Cat",
+    "de": "Arkadion - Halbschwergewicht R1 (episch) - Schwarze Katze",
+    "ja": "至天の座アルカディア零式：ライトヘビー級1 - ブラックキャット"
+  },
+  "aliases": {
+    "en": [
+      "m1s",
+      "m1 savage",
+      "black cat",
+      "black cat savage",
+      "lh1",
+      "light heavyweight 1",
+      "aac lh m1s"
+    ],
+    "fr": [
+      "m1s",
+      "black cat",
+      "poids mi-lourds 1",
+      "cca 1 sadique"
+    ],
+    "de": [
+      "m1s",
+      "black cat",
+      "halbschwergewicht 1",
+      "arkadion r1 episch",
+      "schwarze katze"
+    ],
+    "ja": [
+      "m1s",
+      "ライトヘビー級1層",
+      "零式1層",
+      "ブラックキャット",
+      "猫",
+      "LH1"
+    ]
+  },
+  "summary": {
+    "en": "First fight of the Light-heavyweight tier: Black Cat, a cat-themed brawler. The fight mixes stored attacks (Nine Lives and Soulshade clones that replay moves later) with Mouser, which breaks floor tiles so the safe area shrinks, and ends with the Raining Cats tether-and-stack check. Hard parts are reading the clone replays and the Copycat knock-ups on damaged tiles.",
+    "fr": "Premier combat du palier Poids mi-lourds : Black Cat, une bagarreuse sur le thème du chat. Le combat mélange des attaques mémorisées (Neuf-Vies et les clones d'Ombre d'âme qui rejouent des coups plus tard) et Carnage dératiseur, qui casse les dalles du sol, puis finit sur Chataclysme avec liens et packages. Le plus dur : lire les clones et gérer les projections du Double félin sur des dalles abîmées.",
+    "de": "Erster Kampf der Halbschwergewicht-Stufe: Black Cat, eine Katzen-Kämpferin. Der Kampf mischt gespeicherte Angriffe (Sieben Leben und Seelenschatten-Klone, die Attacken später wiederholen) mit Mäusejagd, die Bodenplatten zerstört, und endet mit Katzenterror (Verbindungen und Sammeln). Schwer sind vor allem das Lesen der Klone und die Hochwürfe der Felinen Nachahmung auf beschädigten Platten.",
+    "ja": "ライトヘビー級1層、猫モチーフのファイター「ブラックキャット」戦。ナインライヴスやソウルシェードの分身が後で技を再現する記憶ギミックと、床を壊していくマウサーラッシュが軸で、最後はレイニングキャッツ（線と頭割り）。分身の再現技の読み取りと、壊れかけの床でのコピーキャット打ち上げ処理が難所。"
+  },
+  "strats_overview": [
+    {
+      "id": "na-pf",
+      "name": {
+        "en": "NA PF standard (Aether PF raidplan / Hector)",
+        "fr": "Standard PF NA (raidplan PF Aether / Hector)",
+        "de": "NA-PF-Standard (Aether-PF-Raidplan / Hector)",
+        "ja": "NA野良標準（Aether PFレイドプラン / Hector）"
+      },
+      "region": "NA",
+      "note": {
+        "en": "Waymarks: letters on cardinals, 1-4 in the middle of the clone boxes. Quadruple Crossing is DPS first with same baits; Mouser 2 roles line up Tank-Healer-DPS; Raining Cats is MTTT (melee first, then tanks). EU PF often uses a similar raidplan but this was not verified separately.",
+        "fr": "Marqueurs : lettres aux cardinaux, 1-4 au milieu des cases des clones. Quadruple griffade : DPS en premier, mêmes baits ; Carnage dératiseur 2 en ligne Tank-Heal-DPS ; Chataclysme en MTTT (mêlées d'abord, puis tanks). La PF EU utilise souvent un raidplan proche, mais ce n'est pas vérifié à part.",
+        "de": "Marker: Buchstaben auf den Himmelsrichtungen, 1-4 in der Mitte der Klon-Felder. Vierfachklaue: DPS zuerst, gleiche Baits; Mäusejagd 2 in der Reihe Tank-Heiler-DPS; Katzenterror als MTTT (zuerst Nahkämpfer, dann Tanks). EU-PF nutzt oft einen ähnlichen Raidplan, das wurde aber nicht separat geprüft.",
+        "ja": "マーカー：方角にA〜D、分身が出るマスの中央に1〜4。クアドラプルネイルはDPS先・同じ位置で誘導、2回目のマウサーはタンク→ヒーラー→DPSの並び、レイニングキャッツはMTTT（近接が先、その後タンク）。EU野良も似たレイドプランが多いが個別には未確認。"
+      },
+      "aliases": {
+        "en": [
+          "aether pf",
+          "thepfstrat",
+          "the pf strat"
+        ],
+        "fr": [
+          "aether pf",
+          "thepfstrat",
+          "the pf strat"
+        ],
+        "de": [
+          "aether pf",
+          "thepfstrat",
+          "the pf strat"
+        ],
+        "ja": []
+      }
+    },
+    {
+      "id": "jp-pf",
+      "name": {
+        "en": "JP PF (Inumaru macro, game8)",
+        "fr": "PF JP (macro Inumaru, game8)",
+        "de": "JP-PF (Inumaru-Makro, game8)",
+        "ja": "日本野良（犬丸マクロ / game8準拠）"
+      },
+      "region": "JP",
+      "note": {
+        "en": "Cone baits are based on the boss (boss-relative), not on the clone. Quadruple Crossing uses a fixed cross: TH bait first, then DPS. Raining Cats uses the tank-invuln method (Golden Takeshi style).",
+        "fr": "Les cônes sont placés par rapport au boss, pas au clone. Quadruple griffade en croix fixe : TH d'abord, puis DPS. Chataclysme avec la méthode des invincibilités de tank (style Golden Takeshi).",
+        "de": "Kegel werden relativ zum Boss geködert, nicht zum Klon. Vierfachklaue mit festem Kreuz: zuerst TH, dann DPS. Katzenterror mit der Tank-Unverwundbarkeits-Methode (Golden-Takeshi-Stil).",
+        "ja": "扇の誘導はボス基準（分身基準ではない）。クアドラプルネイルは十字固定でTH先→DPS。レイニングキャッツはタンク無敵処理（ゴールデンたけし式）。"
+      },
+      "aliases": {
+        "en": [
+          "inumaru",
+          "game8"
+        ],
+        "fr": [
+          "inumaru",
+          "game8"
+        ],
+        "de": [
+          "inumaru",
+          "game8"
+        ],
+        "ja": [
+          "犬丸",
+          "いぬまる",
+          "ゴールデンたけし",
+          "inumaru"
+        ]
+      }
+    }
+  ],
+  "phases": [
+    {
+      "id": "opener",
+      "names": {
+        "en": "Opener and Nine Lives",
+        "fr": "Ouverture et Neuf-Vies",
+        "de": "Eröffnung und Sieben Leben",
+        "ja": "序盤・ナインライヴス"
+      },
+      "mechanics": [
+        {
+          "id": "quadruple-crossing",
+          "names": {
+            "en": "Quadruple Crossing",
+            "fr": "Quadruple griffade",
+            "de": "Vierfachklaue",
+            "ja": "クアドラプルネイル"
+          },
+          "aliases": {
+            "en": [
+              "cones",
+              "proteans",
+              "qc"
+            ],
+            "fr": [
+              "cônes"
+            ],
+            "de": [
+              "kegel"
+            ],
+            "ja": [
+              "扇",
+              "扇誘導"
+            ]
+          },
+          "how": {
+            "en": "The four players closest to the boss get hit by cones (with a slashing vulnerability), then the other four bait the next set. The same cones then fire again at the first spots and then the second spots, so after baiting everyone dodges into the gaps.",
+            "fr": "Les quatre joueurs les plus proches du boss prennent un cône (avec vulnérabilité tranchant), puis les quatre autres baitent la série suivante. Les mêmes cônes repartent ensuite aux premiers puis aux seconds endroits, donc après les baits tout le monde esquive dans les trous.",
+            "de": "Die vier Spieler, die am nächsten am Boss stehen, bekommen einen Kegel (mit Hieb-Verwundbarkeit), danach ködern die anderen vier die nächste Runde. Dieselben Kegel feuern danach noch einmal an den ersten und dann an den zweiten Stellen, also weichst du nach dem Ködern in die Lücken aus.",
+            "ja": "ボスに近い4人に扇範囲（斬耐性ダウン付き）、続いて残り4人が次の扇を誘導。その後、同じ扇が1回目の位置→2回目の位置でもう一度出るので、誘導後は扇の間（X字の安地）へ避ける。"
+          },
+          "strats": [
+            {
+              "strat": "na-pf",
+              "how": {
+                "en": "DPS bait first inside the hitbox on the intercardinals while supports wait outside on cardinals; then supports go in and bait. Everyone keeps the same bait spot each time (same baits).",
+                "fr": "Les DPS baitent d'abord dans la hitbox aux intercardinaux, les supports attendent dehors aux cardinaux ; ensuite les supports rentrent et baitent. Chacun garde toujours le même spot (same baits).",
+                "de": "DPS ködern zuerst in der Hitbox auf den Zwischenrichtungen, Supporter warten außen auf den Himmelsrichtungen; danach gehen die Supporter rein. Jeder nimmt immer denselben Köderplatz (same baits).",
+                "ja": "DPSが先に斜め（インター）のボス足元で誘導、TH（サポート）は方角の外で待機、その後THが入って誘導。毎回同じ位置で誘導する（same baits）。"
+              }
+            },
+            {
+              "strat": "jp-pf",
+              "how": {
+                "en": "Fixed cross based on the boss: tanks and healers bait first in a cross, then DPS bait in a cross (pairs rotate counterclockwise from the macro spot). For the replays, everyone waits in the X-shaped safe spots.",
+                "fr": "Croix fixe par rapport au boss : tanks et heals baitent d'abord en croix, puis les DPS en croix (les paires tournent dans le sens antihoraire depuis le spot de la macro). Pour les répétitions, tout le monde attend dans les safe spots en X.",
+                "de": "Festes Kreuz relativ zum Boss: Tanks und Heiler ködern zuerst im Kreuz, dann die DPS im Kreuz (Paare drehen sich gegen den Uhrzeigersinn vom Makro-Platz). Bei den Wiederholungen wartest du in den X-förmigen sicheren Stellen.",
+                "ja": "ボス基準の十字固定。TH4人が先に十字散開して誘導、次にDPSが十字散開（ペアはマクロの位置から反時計回り）。3〜4発目は全員X字の安地で待つ。"
+              }
+            }
+          ],
+          "uncertain": false,
+          "tags": [
+            "proximity",
+            "cleave",
+            "debuff"
+          ]
+        },
+        {
+          "id": "biscuit-maker",
+          "names": {
+            "en": "Biscuit Maker",
+            "fr": "Coup de tatane",
+            "de": "Milchtritt",
+            "ja": "ビスケットメーカー"
+          },
+          "aliases": {
+            "en": [
+              "tankbuster",
+              "tb"
+            ],
+            "fr": [
+              "tankbuster"
+            ],
+            "de": [
+              "tankbuster"
+            ],
+            "ja": [
+              "タンク強攻撃"
+            ]
+          },
+          "how": {
+            "en": "Double tankbuster: the first hit gives a slashing vulnerability, so tanks swap during the cast or the main tank uses an invulnerability. It targets the main tank; the OT (ST) provokes during the cast to take the second hit, then the MT takes the boss back.",
+            "fr": "Tankbuster double : le premier coup donne une vulnérabilité tranchant, donc les tanks swap pendant l'incantation ou le MT utilise une invincibilité. Il vise le main tank ; l'OT provoque pendant l'incantation pour prendre le second coup, puis le MT reprend le boss.",
+            "de": "Doppelter Tankbuster: Der erste Treffer gibt Hieb-Verwundbarkeit, also wechseln die Tanks während des Zaubers oder der MT nutzt eine Unverwundbarkeit. Er zielt auf den Main-Tank; der OT provoziert während des Zaubers und nimmt den zweiten Treffer, danach holt sich der MT den Boss zurück.",
+            "ja": "2連続のタンク強攻撃。1発目で斬耐性ダウンが付くので、詠唱中にタンクスイッチするか無敵で受ける。MTが対象。STが詠唱中に挑発して2発目を受け、その後MTが挑発で取り返す。"
+          },
+          "strats": [],
+          "uncertain": false,
+          "tags": [
+            "tankbuster",
+            "tankswap"
+          ]
+        },
+        {
+          "id": "nine-lives-soulshade",
+          "names": {
+            "en": "Nine Lives / One-two Paw / Soulshade",
+            "fr": "Neuf-Vies / Griffade un-deux / Ombre d'âme",
+            "de": "Sieben Leben / Doppelklaue / Seelenschatten",
+            "ja": "ナインライヴス / デュアルネイル / ソウルシェード"
+          },
+          "aliases": {
+            "en": [
+              "clones",
+              "one two paw",
+              "half room cleave"
+            ],
+            "fr": [
+              "clones"
+            ],
+            "de": [
+              "klone"
+            ],
+            "ja": [
+              "分身",
+              "半面"
+            ]
+          },
+          "how": {
+            "en": "One-two Paw is two half-room cleaves in a row (left then right, or right then left). With Nine Lives the boss stores its next attack in a clone (Soulshade) that replays it later, so remember the cleave order and which swipe was stored.",
+            "fr": "Griffade un-deux, ce sont deux demi-salles l'une après l'autre (gauche puis droite, ou l'inverse). Avec Neuf-Vies, le boss stocke sa prochaine attaque dans un clone (Ombre d'âme) qui la rejoue plus tard, donc retiens l'ordre et le fauchage stocké.",
+            "de": "Doppelklaue sind zwei Halbraum-Angriffe hintereinander (links dann rechts oder umgekehrt). Mit Sieben Leben speichert der Boss seinen nächsten Angriff in einem Klon (Seelenschatten), der ihn später wiederholt, also merk dir die Reihenfolge und welche Kralle gespeichert wurde.",
+            "ja": "デュアルネイルは半面攻撃の2連続（左→右か右→左）。ナインライヴスで次の技を分身（ソウルシェード）に記憶させ、後で分身が再現するので、半面の順番と記憶された技を覚えておく。"
+          },
+          "strats": [],
+          "uncertain": false,
+          "tags": [
+            "cleave",
+            "dodge"
+          ]
+        },
+        {
+          "id": "double-quadruple-swipe",
+          "names": {
+            "en": "Double Swipe / Quadruple Swipe",
+            "fr": "Double fauchage / Quadruple fauchage",
+            "de": "Doppelte Kralle / Vierfache Kralle",
+            "ja": "ダブルクロウ / クァッドクロウ"
+          },
+          "aliases": {
+            "en": [
+              "light party stacks",
+              "pair stacks",
+              "swipe"
+            ],
+            "fr": [
+              "packages"
+            ],
+            "de": [
+              "sammeln"
+            ],
+            "ja": [
+              "頭割り",
+              "ペア"
+            ]
+          },
+          "how": {
+            "en": "Double Swipe is a shared hit on both healers (split into light parties); Quadruple Swipe is shared hits on four players of one role (split into pairs). It can be stored and replayed by a clone later, so check which one was stored.",
+            "fr": "Double fauchage = partage sur les deux heals (en light parties) ; Quadruple fauchage = partages sur quatre joueurs d'un même rôle (en paires). Il peut être stocké et rejoué par un clone, alors regarde lequel a été stocké.",
+            "de": "Doppelte Kralle trifft geteilt beide Heiler (in Leichtgruppen), Vierfache Kralle trifft geteilt vier Spieler einer Rolle (in Paaren). Sie kann gespeichert und von einem Klon wiederholt werden, achte also darauf, welche gespeichert wurde.",
+            "ja": "ダブルクロウはヒーラー2人への頭割り（MT組・ST組の2組）、クァッドクロウは同じロール4人への頭割り（ペア）。分身に記憶されて後で再現されるので、どちらが記憶されたか確認。"
+          },
+          "strats": [
+            {
+              "strat": "na-pf",
+              "how": {
+                "en": "Light parties for Double Swipe, support-DPS pairs for Quadruple Swipe, taken where the raidplan places them.",
+                "fr": "Light parties pour Double fauchage, paires support-DPS pour Quadruple fauchage, aux places du raidplan.",
+                "de": "Leichtgruppen für Doppelte Kralle, Support-DPS-Paare für Vierfache Kralle, an den Plätzen aus dem Raidplan.",
+                "ja": "ダブルは2組、クァッドはサポートとDPSのペアで、レイドプランの位置で受ける。"
+              }
+            },
+            {
+              "strat": "jp-pf",
+              "how": {
+                "en": "Double Swipe: MT group and ST group stack. Quadruple Swipe: spread in cross pairs as in the macro.",
+                "fr": "Double fauchage : groupe MT et groupe ST se packent. Quadruple fauchage : paires en croix selon la macro.",
+                "de": "Doppelte Kralle: MT-Gruppe und ST-Gruppe sammeln. Vierfache Kralle: Paare im Kreuz laut Makro.",
+                "ja": "ダブルクロウはMT組・ST組で頭割り、クァッドクロウはマクロ通り十字ペアで散開。"
+              }
+            }
+          ],
+          "uncertain": false,
+          "tags": [
+            "stack"
+          ]
+        },
+        {
+          "id": "leaping-quadruple-crossing",
+          "names": {
+            "en": "Leaping Quadruple Crossing",
+            "fr": "Quadruple griffade bondissante",
+            "de": "Vierfachklauensprung",
+            "ja": "リーピング・クアドラプルネイル"
+          },
+          "aliases": {
+            "en": [
+              "leaping cones",
+              "jump cones"
+            ],
+            "fr": [
+              "cônes bondissants"
+            ],
+            "de": [
+              "sprung kegel"
+            ],
+            "ja": [
+              "リーピング扇"
+            ]
+          },
+          "how": {
+            "en": "The boss jumps to a tethered spot east or west (keeping its facing) and does Quadruple Crossing there, while the stored swipe from the clone goes off during the follow-up cones.",
+            "fr": "Le boss saute sur un point lié à l'est ou à l'ouest (en gardant son orientation) et fait Quadruple griffade là-bas, pendant que le fauchage stocké du clone part pendant les cônes suivants.",
+            "de": "Der Boss springt zu einem verbundenen Punkt im Osten oder Westen (Blickrichtung bleibt) und macht dort Vierfachklaue, während die gespeicherte Kralle des Klons bei den Folgekegeln auslöst.",
+            "ja": "ボスは向きを保ったまま東か西の線の位置へ跳び、そこでクアドラプルネイル。続く扇のタイミングで分身が記憶したダブル/クァッドを発動。"
+          },
+          "strats": [
+            {
+              "strat": "na-pf",
+              "how": {
+                "en": "Same order as normal Quadruple Crossing (DPS first, same baits) around the new boss spot, then take the stored stack in light parties or pairs.",
+                "fr": "Même ordre que la Quadruple griffade normale (DPS d'abord, mêmes baits) autour du nouveau spot du boss, puis prends le partage stocké en light parties ou en paires.",
+                "de": "Gleiche Reihenfolge wie die normale Vierfachklaue (DPS zuerst, gleiche Baits) um den neuen Boss-Platz, danach den gespeicherten Sammel-Angriff in Leichtgruppen oder Paaren.",
+                "ja": "通常のクアドラプルネイルと同じ（DPS先・同じ位置）で、跳んだ先のボスを基準に誘導し、その後記憶された頭割りを2組かペアで受ける。"
+              }
+            },
+            {
+              "strat": "jp-pf",
+              "how": {
+                "en": "TH bait first, then DPS, by the boss facing; then dodge into the X-shaped safe spots and take the stored swipe.",
+                "fr": "TH d'abord, puis DPS, selon l'orientation du boss ; ensuite esquive dans les safe spots en X et prends le fauchage stocké.",
+                "de": "Zuerst TH, dann DPS, nach der Blickrichtung des Bosses; dann in die X-förmigen sicheren Stellen und die gespeicherte Kralle nehmen.",
+                "ja": "ボスの向き基準でTH先→DPS後に散開、3〜4発目はX字安地、分身の記憶技を処理。"
+              }
+            }
+          ],
+          "uncertain": false,
+          "tags": [
+            "cleave",
+            "proximity",
+            "stack"
+          ]
+        },
+        {
+          "id": "bloody-scratch",
+          "names": {
+            "en": "Bloody Scratch",
+            "fr": "Griffure sanglante",
+            "de": "Blutiger Rundumkratzer",
+            "ja": "ブラッディースクラッチ"
+          },
+          "aliases": {
+            "en": [
+              "raidwide"
+            ],
+            "fr": [
+              "dégâts de zone"
+            ],
+            "de": [
+              "raidwide"
+            ],
+            "ja": [
+              "全体攻撃"
+            ]
+          },
+          "how": {
+            "en": "Heavy physical raidwide; use party mitigation (melee use Feint).",
+            "fr": "Gros dégât de zone physique ; utilise la mitigation de groupe (les mêlées mettent Feinte).",
+            "de": "Starker physischer Raidwide; nutzt Gruppen-Mitigation (Nahkämpfer nehmen Zermürben).",
+            "ja": "物理の全体攻撃。軽減を入れる（近接は牽制）。"
+          },
+          "strats": [],
+          "uncertain": false,
+          "tags": [
+            "raidwide"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mouser-1",
+      "names": {
+        "en": "Mouser 1",
+        "fr": "Carnage dératiseur 1",
+        "de": "Mäusejagd 1",
+        "ja": "マウサーラッシュ1回目"
+      },
+      "mechanics": [
+        {
+          "id": "mouser",
+          "names": {
+            "en": "Mouser",
+            "fr": "Carnage dératiseur",
+            "de": "Mäusejagd",
+            "ja": "マウサーラッシュ"
+          },
+          "aliases": {
+            "en": [
+              "tiles",
+              "floor",
+              "mouser tiles"
+            ],
+            "fr": [
+              "dalles"
+            ],
+            "de": [
+              "platten",
+              "boden"
+            ],
+            "ja": [
+              "床",
+              "床割り"
+            ]
+          },
+          "how": {
+            "en": "A series of AoEs hit floor tiles: one hit damages a tile, a second hit breaks it and drops anyone standing there. There are only two patterns, ending in a 4x2 or 2x4 layout, so you move between the inner tiles as they get hit.",
+            "fr": "Une série d'AoE frappe les dalles : un coup abîme une dalle, un deuxième la casse et fait tomber ceux dessus. Il n'y a que deux patterns (disposition 4x2 ou 2x4 à la fin), donc tu bouges entre les dalles intérieures au fil des coups.",
+            "de": "Mehrere AoEs treffen Bodenplatten: ein Treffer beschädigt eine Platte, ein zweiter zerstört sie und wer darauf steht, fällt runter. Es gibt nur zwei Muster (am Ende 4x2 oder 2x4), also wechselst du zwischen den inneren Platten, wenn sie getroffen werden.",
+            "ja": "床マスに連続でAoE。1回当たると損傷、2回目で破壊されて上にいる人は落下。パターンは2種類のみ（最終的に4x2か2x4）なので、内側のマスを当たる順に移動して避ける。"
+          },
+          "strats": [
+            {
+              "strat": "na-pf",
+              "how": {
+                "en": "Common route: start on the southwest inner tile, move southeast after it is hit, then go northeast if that tile is hit again, otherwise stay.",
+                "fr": "Route courante : commence sur la dalle intérieure sud-ouest, va au sud-est après le coup, puis au nord-est si elle est frappée à nouveau, sinon reste.",
+                "de": "Übliche Route: Starte auf der inneren Platte im Südwesten, geh nach dem Treffer nach Südosten, dann nach Nordosten, wenn sie nochmal getroffen wird, sonst bleib.",
+                "ja": "よくある動き：南西の内側マスから開始、当たったら南東へ、そこが再び当たれば北東へ、当たらなければそのまま。"
+              }
+            },
+            {
+              "strat": "jp-pf",
+              "how": {
+                "en": "Watch whether the north two or south two of the four center tiles light up and move to the tiles that will not break; ranged jobs use the two far tiles and melee the two near tiles.",
+                "fr": "Regarde si ce sont les deux dalles nord ou sud du centre qui s'allument et va sur celles qui ne casseront pas ; les distances prennent les deux dalles éloignées, les mêlées les deux proches.",
+                "de": "Schau, ob die nördlichen oder südlichen zwei der vier Mittelplatten aufleuchten, und geh auf die, die nicht brechen; Fernkämpfer nehmen die zwei fernen, Nahkämpfer die zwei nahen Platten.",
+                "ja": "中央4マスの北2マスか南2マスの予兆を見て、壊れない床へ。遠い2マスは遠隔、近い2マスは近接が使う。"
+              }
+            }
+          ],
+          "uncertain": false,
+          "tags": [
+            "dodge"
+          ]
+        },
+        {
+          "id": "elevate-and-eviscerate",
+          "names": {
+            "en": "Copycat: Elevate and Eviscerate",
+            "fr": "Double félin : Élévation éviscérante",
+            "de": "Feline Nachahmung: Präziser Höhenflug",
+            "ja": "コピーキャット：エレベート・エビセレート"
+          },
+          "aliases": {
+            "en": [
+              "copycat",
+              "knockup",
+              "uppercut",
+              "smash"
+            ],
+            "fr": [
+              "projection"
+            ],
+            "de": [
+              "hochwurf"
+            ],
+            "ja": [
+              "打ち上げ",
+              "スタン"
+            ]
+          },
+          "how": {
+            "en": "A clone appears behind a marked player (four players of one role, one by one). If it leans back with the left arm glowing it smashes down (damage and stun, you stay); if it leans forward with the right arm glowing it uppercuts you one tile forward. Its plus-shaped AoE also knocks anyone in that row or column off the floor, which is lethal.",
+            "fr": "Un clone apparaît derrière un joueur marqué (quatre joueurs d'un rôle, l'un après l'autre). S'il se penche en arrière avec le bras gauche lumineux, il frappe vers le bas (dégâts et étourdissement, tu restes) ; s'il se penche en avant avec le bras droit lumineux, il te projette d'une dalle vers l'avant. Son AoE en croix éjecte aussi ceux dans la même ligne ou colonne, ce qui est mortel.",
+            "de": "Ein Klon erscheint hinter einem markierten Spieler (vier Spieler einer Rolle, nacheinander). Lehnt er sich zurück mit leuchtendem linken Arm, schlägt er nach unten (Schaden und Betäubung, du bleibst); lehnt er sich vor mit leuchtendem rechten Arm, schleudert er dich eine Platte nach vorn. Sein kreuzförmiger AoE stößt außerdem jeden in derselben Reihe oder Spalte runter, was tödlich ist.",
+            "ja": "マーカーが付いた人（同じロール4人が順番）の背後に分身。左手が光り後ろに反る（立つ）ならその場スタン、右手が光り前に屈むなら1マス前に打ち上げ。分身の十字範囲は同じ縦横の列にいる人を落とすので即死。"
+          },
+          "strats": [
+            {
+              "strat": "na-pf",
+              "how": {
+                "en": "Stand on a corner of a solid tile facing the opposite corner, so either the smash or the uppercut keeps you on safe floor. Everyone else stays out of the clone's row and column.",
+                "fr": "Mets-toi dans un coin d'une dalle intacte en regardant le coin opposé : que ce soit le coup vers le bas ou la projection, tu restes sur une dalle sûre. Les autres restent hors de la ligne et de la colonne du clone.",
+                "de": "Stell dich in eine Ecke einer heilen Platte und schau zur gegenüberliegenden Ecke, dann bleibst du bei Schlag oder Hochwurf auf sicherem Boden. Alle anderen bleiben aus Reihe und Spalte des Klons raus.",
+                "ja": "無傷のマスの角に立って対角を向けば、スタンでも打ち上げでも安全な床に残れる。他の人は分身の十字の列に入らない。"
+              }
+            },
+            {
+              "strat": "jp-pf",
+              "same_as": "na-pf"
+            }
+          ],
+          "uncertain": false,
+          "tags": [
+            "dodge",
+            "knockback"
+          ]
+        },
+        {
+          "id": "biscuit-maker-2",
+          "names": {
+            "en": "Biscuit Maker (2nd)",
+            "fr": "Coup de tatane (2e)",
+            "de": "Milchtritt (2.)",
+            "ja": "ビスケットメーカー（2回目）"
+          },
+          "aliases": {
+            "en": [
+              "biscuit maker",
+              "2nd tank buster"
+            ],
+            "fr": [
+              "coup de tatane"
+            ],
+            "de": [
+              "milchtritt"
+            ],
+            "ja": [
+              "ビスケットメーカー"
+            ]
+          },
+          "how": {
+            "en": "Second Biscuit Maker, after one role has been knocked up by Copycat: the same double hit on the main tank, so swap during the cast or invuln.",
+            "fr": "Deuxième Coup de tatane, après qu'un rôle a été projeté par Double félin : même double coup sur le main tank, donc swap pendant l'incantation ou invulnérabilité.",
+            "de": "Zweiter Milchtritt, nachdem eine Rolle von Feliner Nachahmung hochgeschleudert wurde: derselbe Doppeltreffer auf den Main-Tank, also während des Zaubers wechseln oder Unverwundbarkeit.",
+            "ja": "コピーキャットで片方のロールが打ち上げられた後の2回目。MTへの2連強攻撃なので、詠唱中にスイッチか無敵。"
+          },
+          "strats": [],
+          "uncertain": false,
+          "tags": [
+            "tankbuster",
+            "tankswap"
+          ]
+        },
+        {
+          "id": "shockwave-grimalkin-gale",
+          "names": {
+            "en": "Shockwave / Grimalkin Gale",
+            "fr": "Onde de choc / Rafale féline",
+            "de": "Schockwelle / Katerstrophaler Wind",
+            "ja": "衝撃波 / キャッタクリスム・ゲイル"
+          },
+          "aliases": {
+            "en": [
+              "knockback",
+              "kb"
+            ],
+            "fr": [
+              "poussée"
+            ],
+            "de": [
+              "rückstoß"
+            ],
+            "ja": [
+              "ノックバック",
+              "KB"
+            ]
+          },
+          "how": {
+            "en": "A big knockback from the center that knockback immunity cannot stop, while the floor regrows (tiles near two opposite corners come back first). A few seconds later everyone gets a spread AoE, so land spread out on solid floor.",
+            "fr": "Une grosse poussée depuis le centre que l'anti-poussée ne bloque pas, pendant que le sol se reforme (les dalles près de deux coins opposés reviennent en premier). Quelques secondes après, tout le monde a une AoE à écarter, donc atterris dispersé sur du sol intact.",
+            "de": "Ein großer Rückstoß aus der Mitte, den Rückstoß-Immunität nicht verhindert, während der Boden nachwächst (Platten an zwei gegenüberliegenden Ecken kommen zuerst). Ein paar Sekunden später bekommt jeder einen Verteilen-AoE, also lande verteilt auf heilem Boden.",
+            "ja": "中央から防げないノックバック。床は復活し、対角2か所付近が早く戻る。数秒後に全員へ散開AoEが来るので、戻った床に散らばって着地。"
+          },
+          "strats": [
+            {
+              "strat": "na-pf",
+              "how": {
+                "en": "Supports take the north side and DPS the south side (light-party split), each landing on the fast-returning tiles.",
+                "fr": "Les supports côté nord, les DPS côté sud (split en light parties), chacun atterrit sur les dalles qui reviennent vite.",
+                "de": "Supporter auf die Nordseite, DPS auf die Südseite (Leichtgruppen-Split), jeder landet auf den schnell zurückkehrenden Platten.",
+                "ja": "サポートが北側、DPSが南側に分かれ、早く戻る床へ飛ぶ。"
+              }
+            },
+            {
+              "strat": "jp-pf",
+              "how": {
+                "en": "Spread so you can be knocked to the two fast-returning areas; the safe spots are diagonal.",
+                "fr": "Écarte-toi de façon à être poussé vers les deux zones qui reviennent vite ; les safe spots sont en diagonale.",
+                "de": "Verteil dich so, dass du zu den zwei schnell zurückkehrenden Bereichen gestoßen wirst; die sicheren Stellen sind diagonal.",
+                "ja": "復活が早い2か所へ飛べるように散開。安地は対角。"
+              }
+            }
+          ],
+          "uncertain": false,
+          "tags": [
+            "knockback",
+            "spread"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "leaping-nine-lives",
+      "names": {
+        "en": "Leaping Nine Lives",
+        "fr": "Neuf-Vies bondissant",
+        "de": "Sieben Leben mit Sprüngen",
+        "ja": "リーピング記憶"
+      },
+      "mechanics": [
+        {
+          "id": "leaping-clones",
+          "names": {
+            "en": "Leaping One-two Paw / Leaping Quadruple Crossing (stored)",
+            "fr": "Griffade un-deux bondissante / Quadruple griffade bondissante (stockées)",
+            "de": "Doppelklauensprung / Vierfachklauensprung (gespeichert)",
+            "ja": "リーピング・デュアルネイル / リーピング・クアドラプルネイル（記憶）"
+          },
+          "aliases": {
+            "en": [
+              "sleeping clones",
+              "north south clones"
+            ],
+            "fr": [
+              "clones endormis"
+            ],
+            "de": [
+              "schlafende klone"
+            ],
+            "ja": [
+              "寝てる分身"
+            ]
+          },
+          "how": {
+            "en": "The boss does a leaping cleave and a leaping cone set and stores each in a sleeping clone (north and south). Later the boss tethers one clone, which wakes up and replays its stored attack from where it lands, then the other clone does the same.",
+            "fr": "Le boss fait une griffade bondissante et une série de cônes bondissante et les stocke dans des clones endormis (nord et sud). Plus tard il lie un clone qui se réveille et rejoue son attaque là où il atterrit, puis l'autre fait pareil.",
+            "de": "Der Boss macht einen Sprung-Halbraumangriff und eine Sprung-Kegelserie und speichert beide in schlafenden Klonen (Nord und Süd). Später verbindet er einen Klon, der aufwacht und den gespeicherten Angriff dort wiederholt, wo er landet, danach der andere.",
+            "ja": "リーピング版の半面と扇を使い、それぞれ北と南の寝ている分身に記憶。後でボスが片方に線を付けると、分身が起きて着地点から記憶技を再現。続いてもう片方も。"
+          },
+          "strats": [
+            {
+              "strat": "na-pf",
+              "how": {
+                "en": "The main tank drags the boss to the clone's landing spot so the replay and the boss's follow-up line up.",
+                "fr": "Le MT déplace le boss sur le point d'atterrissage du clone pour que la répétition et la suite du boss soient alignées.",
+                "de": "Der MT zieht den Boss zum Landepunkt des Klons, damit Wiederholung und Folgeangriff zusammenpassen.",
+                "ja": "MTがボスを分身の着地点へ誘導して、再現技とボスの技を重ねる。"
+              }
+            },
+            {
+              "strat": "jp-pf",
+              "same_as": "na-pf"
+            }
+          ],
+          "uncertain": false,
+          "tags": [
+            "cleave",
+            "dodge"
+          ]
+        },
+        {
+          "id": "tempestuous-tear",
+          "names": {
+            "en": "Tempestuous Tear",
+            "fr": "Déchiquetage diluvien",
+            "de": "Stürmischer Schlitzer",
+            "ja": "テンペストテアー"
+          },
+          "aliases": {
+            "en": [
+              "line stacks"
+            ],
+            "fr": [
+              "packages en ligne"
+            ],
+            "de": [
+              "linien sammeln"
+            ],
+            "ja": [
+              "直線頭割り"
+            ]
+          },
+          "how": {
+            "en": "Comes with the One-two Paw clone: line stacks on both healers, one group north and one south of the boss, while you also dodge the half-room cleaves.",
+            "fr": "Arrive avec le clone Griffade un-deux : packages en ligne sur les deux heals, un groupe au nord et un au sud du boss, en esquivant aussi les demi-salles.",
+            "de": "Kommt mit dem Doppelklauen-Klon: Linien-Sammeln auf beide Heiler, eine Gruppe nördlich und eine südlich vom Boss, während du die Halbraum-Angriffe ausweichst.",
+            "ja": "デュアルネイルの分身とセット。ヒーラー2人への直線頭割りで、ボスの北と南に分かれ、半面も同時に避ける。"
+          },
+          "strats": [
+            {
+              "strat": "na-pf",
+              "how": {
+                "en": "Light parties stand true north and true south of the boss/clone and shift to the safe half as the cleave resolves.",
+                "fr": "Les light parties se placent plein nord et plein sud du boss/clone et glissent vers la moitié sûre au moment de la demi-salle.",
+                "de": "Leichtgruppen stehen genau nördlich und südlich vom Boss/Klon und rutschen zur sicheren Hälfte, wenn der Halbraumangriff auslöst.",
+                "ja": "2組がボス（分身）の真北と真南に立ち、半面に合わせて安地側へずれる。"
+              }
+            },
+            {
+              "strat": "jp-pf",
+              "how": {
+                "en": "MT group in front, ST group behind the boss; shift toward the safe side because it lands with the first cleave.",
+                "fr": "Groupe MT devant, groupe ST derrière le boss ; décale-toi vers le côté sûr car ça tombe avec la première demi-salle.",
+                "de": "MT-Gruppe vorn, ST-Gruppe hinter dem Boss; rutsch zur sicheren Seite, weil es mit dem ersten Halbraumangriff trifft.",
+                "ja": "正面がMT組、背面がST組。デュアルネイル1回目と同時着弾なので安地側へずれる。"
+              }
+            }
+          ],
+          "uncertain": false,
+          "tags": [
+            "stack",
+            "cleave"
+          ]
+        },
+        {
+          "id": "nailchipper",
+          "names": {
+            "en": "Nailchipper",
+            "fr": "Charcutage félin",
+            "de": "Krallenschneider",
+            "ja": "ネイルチッパー"
+          },
+          "aliases": {
+            "en": [
+              "circles",
+              "role circles"
+            ],
+            "fr": [
+              "cercles"
+            ],
+            "de": [
+              "kreise"
+            ],
+            "ja": [
+              "円範囲"
+            ]
+          },
+          "how": {
+            "en": "Comes with the Quadruple Crossing clone: four players of one role get circle AoEs (magic vulnerability), then the other four, mixed with the clone's cones.",
+            "fr": "Arrive avec le clone Quadruple griffade : quatre joueurs d'un rôle ont des cercles (vulnérabilité magique), puis les quatre autres, mélangés aux cônes du clone.",
+            "de": "Kommt mit dem Vierfachklauen-Klon: vier Spieler einer Rolle bekommen Kreis-AoEs (Magie-Verwundbarkeit), danach die anderen vier, gemischt mit den Kegeln des Klons.",
+            "ja": "クアドラプルネイルの分身とセット。同じロール4人に円範囲（魔法被ダメ上昇）、次に残り4人。分身の扇と組み合わさる。"
+          },
+          "strats": [
+            {
+              "strat": "na-pf",
+              "how": {
+                "en": "Marked players drop circles at max melee on the cardinals; the unmarked role baits the first cones on the intercardinals (using the floor lines, true north), then swap.",
+                "fr": "Les marqués posent leurs cercles au max mêlée aux cardinaux ; le rôle non marqué bait les premiers cônes aux intercardinaux (en suivant les lignes du sol, nord vrai), puis on échange.",
+                "de": "Markierte legen ihre Kreise auf Max-Nahkampf an den Himmelsrichtungen ab; die unmarkierte Rolle ködert die ersten Kegel auf den Zwischenrichtungen (nach den Bodenlinien, echter Norden), dann tauschen.",
+                "ja": "マーカー組は方角の最大近接で円を置き、マーカーなし組が斜めで1回目の扇を誘導（床の線基準・真北）、その後交代。"
+              }
+            },
+            {
+              "strat": "jp-pf",
+              "how": {
+                "en": "Same idea; MT drags the boss to the clone's landing spot and TH/DPS alternate between circles and cone baits.",
+                "fr": "Même idée ; le MT amène le boss au point d'atterrissage du clone, TH et DPS alternent entre cercles et baits de cônes.",
+                "de": "Gleiche Idee; der MT zieht den Boss zum Landepunkt des Klons, TH und DPS wechseln zwischen Kreisen und Kegel-Ködern.",
+                "ja": "考え方は同じ。MTが分身の移動先へボスを誘導し、THとDPSが円と扇誘導を交互に担当。"
+              }
+            }
+          ],
+          "uncertain": false,
+          "tags": [
+            "spread",
+            "debuff",
+            "cleave"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mouser-2",
+      "names": {
+        "en": "Mouser 2",
+        "fr": "Carnage dératiseur 2",
+        "de": "Mäusejagd 2",
+        "ja": "マウサーラッシュ2回目"
+      },
+      "mechanics": [
+        {
+          "id": "mouser-2-copycat",
+          "names": {
+            "en": "Mouser 2 with Copycat",
+            "fr": "Carnage dératiseur 2 avec Double félin",
+            "de": "Mäusejagd 2 mit Feliner Nachahmung",
+            "ja": "マウサーラッシュ2回目＋コピーキャット"
+          },
+          "aliases": {
+            "en": [
+              "mouser 2"
+            ],
+            "fr": [
+              "dalles 2"
+            ],
+            "de": [
+              "platten 2"
+            ],
+            "ja": [
+              "床2回目"
+            ]
+          },
+          "how": {
+            "en": "Same tile breaking as before, and this time Copycat targets the role that was not hit in Mouser 1. During the knock-ups the boss also uses Overshadow and Splintering Nails, two of each in random order.",
+            "fr": "Même destruction de dalles, et cette fois Double félin vise le rôle qui n'a pas été visé au premier. Pendant les projections le boss lance aussi Ombragement et Griffade brisante, deux de chaque dans un ordre aléatoire.",
+            "de": "Gleiches Plattenbrechen wie vorher, diesmal zielt die Feline Nachahmung auf die Rolle, die beim ersten Mal nicht dran war. Während der Hochwürfe nutzt der Boss auch Überschattung und Spreizklaue, je zweimal in zufälliger Reihenfolge.",
+            "ja": "床割りは1回目と同じ。今回のコピーキャットは1回目に対象にならなかったロールが対象。打ち上げ中にオーバーシャドウとスプレッドネイルが2回ずつランダム順で来る。"
+          },
+          "strats": [],
+          "uncertain": false,
+          "tags": [
+            "dodge",
+            "knockback"
+          ]
+        },
+        {
+          "id": "overshadow",
+          "names": {
+            "en": "Overshadow",
+            "fr": "Ombragement",
+            "de": "Überschattung",
+            "ja": "オーバーシャドウ"
+          },
+          "aliases": {
+            "en": [
+              "line stack"
+            ],
+            "fr": [
+              "package en ligne"
+            ],
+            "de": [
+              "linien sammeln"
+            ],
+            "ja": [
+              "直線頭割り"
+            ]
+          },
+          "how": {
+            "en": "Line stack shared by the seven players who are not being knocked up; stack on the safe tile with mitigation.",
+            "fr": "Package en ligne partagé par les sept joueurs qui ne sont pas projetés ; regroupe-toi sur la dalle sûre avec de la mitigation.",
+            "de": "Linien-Sammeln für die sieben Spieler, die nicht hochgeworfen werden; sammelt euch mit Mitigation auf der sicheren Platte.",
+            "ja": "打ち上げ対象以外の7人で受ける直線頭割り。安全なマスに集まって軽減して受ける。"
+          },
+          "strats": [],
+          "uncertain": false,
+          "tags": [
+            "stack"
+          ]
+        },
+        {
+          "id": "splintering-nails",
+          "names": {
+            "en": "Splintering Nails",
+            "fr": "Griffade brisante",
+            "de": "Spreizklaue",
+            "ja": "スプレッドネイル"
+          },
+          "aliases": {
+            "en": [
+              "role cones",
+              "thd"
+            ],
+            "fr": [
+              "cônes par rôle"
+            ],
+            "de": [
+              "rollen kegel"
+            ],
+            "ja": [
+              "ロール扇"
+            ]
+          },
+          "how": {
+            "en": "Three cones on one tank, one healer and one DPS who are not being knocked up, so each role stacks together in its own spot.",
+            "fr": "Trois cônes sur un tank, un heal et un DPS non projetés, donc chaque rôle se regroupe à son propre endroit.",
+            "de": "Drei Kegel auf einen Tank, einen Heiler und einen DPS, die nicht hochgeworfen werden, also steht jede Rolle zusammen an ihrem Platz.",
+            "ja": "打ち上げ対象ではないタンク1・ヒーラー1・DPS1への扇。ロールごとに集まって受ける。"
+          },
+          "strats": [
+            {
+              "strat": "na-pf",
+              "how": {
+                "en": "Facing the boss, line up Tank - Healer - DPS from left to right on safe tiles (THD), while avoiding the clone's plus AoE.",
+                "fr": "Face au boss, aligne-toi Tank - Heal - DPS de gauche à droite sur des dalles sûres (THD), en évitant la croix du clone.",
+                "de": "Mit Blick zum Boss von links nach rechts Tank - Heiler - DPS auf sicheren Platten aufstellen (THD) und dem Kreuz-AoE des Klons ausweichen.",
+                "ja": "ボスを向いて左からタンク・ヒーラー・DPSの順（THD）で安全なマスに並び、分身の十字は避ける。"
+              }
+            },
+            {
+              "strat": "jp-pf",
+              "how": {
+                "en": "Gather by role on safe tiles; the exact left-to-right order follows the group's macro.",
+                "fr": "Regroupe-toi par rôle sur des dalles sûres ; l'ordre exact suit la macro du groupe.",
+                "de": "Sammelt euch nach Rolle auf sicheren Platten; die genaue Reihenfolge folgt dem Makro der Gruppe.",
+                "ja": "安全なマスにロールごとに集合。並び順はマクロに従う。"
+              }
+            }
+          ],
+          "uncertain": true,
+          "note": {
+            "en": "The JP left-to-right role order was not confirmed in sources.",
+            "fr": "L'ordre gauche-droite côté JP n'a pas été confirmé.",
+            "de": "Die JP-Reihenfolge von links nach rechts wurde nicht bestätigt.",
+            "ja": "日本野良の左右の並び順はソースで未確認。"
+          },
+          "tags": [
+            "cleave",
+            "stack"
+          ]
+        },
+        {
+          "id": "biscuit-maker-3",
+          "names": {
+            "en": "Biscuit Maker (3rd)",
+            "fr": "Coup de tatane (3e)",
+            "de": "Milchtritt (3.)",
+            "ja": "ビスケットメーカー（3回目）"
+          },
+          "aliases": {
+            "en": [
+              "biscuit maker",
+              "3rd tank buster"
+            ],
+            "fr": [
+              "coup de tatane"
+            ],
+            "de": [
+              "milchtritt"
+            ],
+            "ja": [
+              "ビスケットメーカー"
+            ]
+          },
+          "how": {
+            "en": "Third Biscuit Maker at the end of the second Mouser: same double hit on the main tank; invulns are usually still on cooldown (except Warrior), so swap during the cast.",
+            "fr": "Troisième Coup de tatane à la fin du second Carnage dératiseur : même double coup sur le main tank ; les invulnérabilités sont souvent encore en recharge (sauf Guerrier), donc swap pendant l'incantation.",
+            "de": "Dritter Milchtritt am Ende der zweiten Mäusejagd: derselbe Doppeltreffer auf den Main-Tank; Unverwundbarkeiten sind meist noch nicht bereit (außer beim Krieger), also während des Zaubers wechseln.",
+            "ja": "2回目のマウサーラッシュの最後に来る3回目。同じくMTへの2連強攻撃。戦士以外は無敵が戻っていないことが多いので、詠唱中にスイッチする。"
+          },
+          "strats": [],
+          "uncertain": false,
+          "tags": [
+            "tankbuster",
+            "tankswap"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "final",
+      "names": {
+        "en": "Raining Cats and enrage",
+        "fr": "Chataclysme et enrage",
+        "de": "Katzenterror und Finalangriff",
+        "ja": "レイニングキャッツ〜時間切れ"
+      },
+      "mechanics": [
+        {
+          "id": "raining-cats",
+          "names": {
+            "en": "Raining Cats",
+            "fr": "Chataclysme",
+            "de": "Katzenterror",
+            "ja": "レイニングキャッツ"
+          },
+          "aliases": {
+            "en": [
+              "tethers",
+              "mttt",
+              "rc"
+            ],
+            "fr": [
+              "liens"
+            ],
+            "de": [
+              "verbindungen"
+            ],
+            "ja": [
+              "線取り"
+            ]
+          },
+          "how": {
+            "en": "Four rounds in a row: two tethered players take cone hits (slashing vulnerability, tethers can be swapped), and the closest and farthest players each take a shared stack (magic vulnerability). The groups have to rotate tethers and stacks so nobody gets hit twice while debuffed.",
+            "fr": "Quatre fois de suite : deux joueurs liés prennent un cône (vulnérabilité tranchant, les liens peuvent être échangés), et le plus proche et le plus éloigné prennent chacun un package (vulnérabilité magique). Il faut faire tourner liens et packages pour que personne ne reprenne un coup sous vulnérabilité.",
+            "de": "Viermal hintereinander: zwei verbundene Spieler bekommen Kegel (Hieb-Verwundbarkeit, Verbindungen lassen sich tauschen), und der nächste und der fernste Spieler bekommen je einen geteilten Treffer (Magie-Verwundbarkeit). Verbindungen und Sammeln müssen rotiert werden, damit niemand mit Verwundbarkeit nochmal getroffen wird.",
+            "ja": "4連続。線が付いた2人に扇（斬耐性ダウン、線は取り替え可能）、最も近い人と遠い人に頭割り（魔法被ダメ上昇）。デバフがある人に二度当たらないよう、線と頭割りを交代していく。"
+          },
+          "strats": [
+            {
+              "strat": "na-pf",
+              "how": {
+                "en": "MTTT: group 1 on the left side of the hitbox and group 2 at max melee on the right. Melee take the first tethers, then the tanks take the next one with mitigation and the rest with invulnerabilities.",
+                "fr": "MTTT : groupe 1 sur le flanc gauche de la hitbox, groupe 2 au max mêlée à droite. Les mêlées prennent les premiers liens, puis les tanks prennent le suivant avec mitigation et le reste sous invincibilité.",
+                "de": "MTTT: Gruppe 1 an der linken Seite der Hitbox, Gruppe 2 auf Max-Nahkampf rechts. Nahkämpfer nehmen die ersten Verbindungen, danach nehmen die Tanks die nächste mit Mitigation und den Rest mit Unverwundbarkeiten.",
+                "ja": "MTTT：1組がボス左側の足元、2組が右側の最大近接。最初の線は近接、その後タンクが軽減で次を取り、残りは無敵で処理。"
+              }
+            },
+            {
+              "strat": "jp-pf",
+              "how": {
+                "en": "Tanks each take a tether (MT northwest, ST northeast). H1, D1, D2 stack inside the hitbox to the south and H2, D3, D4 on the outer south. Tanks use invulnerabilities for the middle hits and later hand the tethers to the melee and swap places for the last one.",
+                "fr": "Chaque tank prend un lien (MT nord-ouest, ST nord-est). H1, D1, D2 se packent dans la hitbox au sud, H2, D3, D4 au sud à l'extérieur. Les tanks utilisent leurs invincibilités pour les coups du milieu, puis donnent les liens aux mêlées et échangent de place pour le dernier.",
+                "de": "Jeder Tank nimmt eine Verbindung (MT Nordwesten, ST Nordosten). H1, D1, D2 sammeln in der Hitbox im Süden, H2, D3, D4 außen im Süden. Die Tanks nutzen Unverwundbarkeiten für die mittleren Treffer, geben die Verbindungen später an die Nahkämpfer und tauschen für den letzten die Plätze.",
+                "ja": "タンクが線を1本ずつ（MT北西、ST北東）。H1・D1・D2はボス南のタゲサ内、H2・D3・D4は南の外周で頭割り。タンクは無敵で中盤を受け、後半で線を近接DPSに渡して位置交代し最後を処理。"
+              }
+            }
+          ],
+          "uncertain": true,
+          "note": {
+            "en": "Exact hand-off timing differs between groups (game8 lists it as untested after this point); some PF groups use a TMRH order instead.",
+            "fr": "Le moment exact de l'échange varie selon les groupes ; certaines PF utilisent l'ordre TMRH.",
+            "de": "Der genaue Übergabe-Zeitpunkt unterscheidet sich je nach Gruppe; manche PFs nutzen die Reihenfolge TMRH.",
+            "ja": "線を渡すタイミングはグループで違う。TMRH順で回すPFもある。"
+          },
+          "tags": [
+            "tether",
+            "cleave",
+            "stack",
+            "debuff"
+          ]
+        },
+        {
+          "id": "final-copycat-enrage",
+          "names": {
+            "en": "Predaceous Pounce / final Mouser (enrage)",
+            "fr": "Prédation preste / Carnage dératiseur final (enrage)",
+            "de": "Feliner Beutezug / letzte Mäusejagd (Finalangriff)",
+            "ja": "キャッツレイド / 最後のマウサーラッシュ（時間切れ）"
+          },
+          "aliases": {
+            "en": [
+              "enrage",
+              "pounce"
+            ],
+            "fr": [
+              "enrage"
+            ],
+            "de": [
+              "enrage"
+            ],
+            "ja": [
+              "時間切れ"
+            ]
+          },
+          "how": {
+            "en": "A clone uses Predaceous Pounce (line and circle AoEs) while the boss does One-two Paw in the middle; after that Mouser keeps breaking tiles until the whole floor is gone, so the boss must die first.",
+            "fr": "Un clone utilise Prédation preste (lignes et cercles) pendant que le boss fait Griffade un-deux au centre ; ensuite Carnage dératiseur casse les dalles jusqu'à ce qu'il n'y en ait plus, donc le boss doit mourir avant.",
+            "de": "Ein Klon nutzt Feliner Beutezug (Linien- und Kreis-AoEs), während der Boss in der Mitte Doppelklaue macht; danach zerstört Mäusejagd die Platten, bis kein Boden mehr übrig ist, also muss der Boss vorher sterben.",
+            "ja": "分身がキャッツレイド（直線と円）、ボスは中央でデュアルネイル。その後マウサーラッシュで床が全て壊れるので、それまでに倒す。"
+          },
+          "strats": [],
+          "uncertain": false,
+          "tags": [
+            "dodge",
+            "enrage"
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "ConsoleGamesWiki - AAC Light-heavyweight M1 (Savage)",
+      "url": "https://ffxiv.consolegameswiki.com/wiki/AAC_Light-heavyweight_M1_(Savage)",
+      "lang": "en"
+    },
+    {
+      "title": "The PF Strat - M1S (Aether PF)",
+      "url": "https://www.thepfstrat.com/M1S",
+      "lang": "en"
+    },
+    {
+      "title": "Icy Veins - M1S Savage guide",
+      "url": "https://www.icy-veins.com/ffxiv/aac-light-heavyweight-m1-savage-raid-guide",
+      "lang": "en"
+    },
+    {
+      "title": "game8 JP - アルカディア零式1層",
+      "url": "https://game8.jp/ff14/630292",
+      "lang": "ja"
+    },
+    {
+      "title": "cactbot r1s timeline translations (ability names de/fr/ja)",
+      "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/raid/r1s.ts",
+      "lang": "en"
+    },
+    {
+      "title": "XIVAPI ContentFinderCondition (duty names)",
+      "url": "https://v2.xivapi.com/api/search?sheets=ContentFinderCondition",
+      "lang": "en"
+    }
+  ],
+  "updated": "2026-11-26"
+}

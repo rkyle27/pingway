@@ -1,0 +1,2100 @@
+{
+ "source": "pingway.app FAQ",
+ "generated": "2026-11-26",
+ "count": 84,
+ "entries": [
+  {
+   "id": "f01",
+   "q": {
+    "en": "What is Pingway?",
+    "fr": "Qu'est-ce que Pingway ?",
+    "de": "Was ist Pingway?",
+    "ja": "Pingwayって何？"
+   },
+   "a": {
+    "en": "An FFXIV Discord bot for market prices and pings, world status, timers, Party Finder, raids, character cards and more.",
+    "fr": "Un bot Discord pour FFXIV : prix et alertes du marché, état des mondes, minuteurs, Recherche d'équipe, raids, cartes de personnage et plus encore.",
+    "de": "Ein FFXIV-Discord-Bot für Marktpreise und -alarme, Weltstatus, Timer, Gruppensuche, Raids, Charakterkarten und mehr.",
+    "ja": "FFXIVのDiscordボットです。マーケットの価格とアラート、ワールドの状態、タイマー、パーティ募集、レイド、キャラクターカードなどに対応しています。"
+   },
+   "k": {
+    "en": "what pingway bot about features does do",
+    "fr": "quoi pingway bot fonctions fait",
+    "de": "was pingway bot funktionen kann",
+    "ja": "pingway 何 ボット 機能 できること"
+   },
+   "link": "https://pingway.app/",
+   "linkLabel": {
+    "en": "Home",
+    "fr": "Accueil",
+    "de": "Start",
+    "ja": "ホーム"
+   }
+  },
+  {
+   "id": "f02",
+   "q": {
+    "en": "How do I add Pingway to my server?",
+    "fr": "Comment ajouter Pingway à mon serveur ?",
+    "de": "Wie füge ich Pingway zu meinem Server hinzu?",
+    "ja": "Pingwayをサーバーに追加するには？"
+   },
+   "a": {
+    "en": "Click \"Invite Pingway\" on the home page. You need the Manage Server permission in that server.",
+    "fr": "Clique sur « Inviter Pingway » sur la page d'accueil. Tu as besoin de la permission « Gérer le serveur » sur ce serveur.",
+    "de": "Klicke auf der Startseite auf „Pingway einladen“. Du brauchst auf dem Server die Berechtigung „Server verwalten“.",
+    "ja": "ホームページの「Pingwayを招待」をクリックしてください。そのサーバーで「サーバー管理」権限が必要です。"
+   },
+   "k": {
+    "en": "add invite join server install bot",
+    "fr": "ajouter inviter rejoindre serveur installer bot",
+    "de": "hinzufugen einladen beitreten server installieren bot",
+    "ja": "追加 招待 導入 サーバー インストール"
+   },
+   "link": "https://pingway.app/",
+   "linkLabel": {
+    "en": "Invite Pingway",
+    "fr": "Inviter Pingway",
+    "de": "Pingway einladen",
+    "ja": "Pingwayを招待"
+   }
+  },
+  {
+   "id": "f03",
+   "q": {
+    "en": "How do I see all commands?",
+    "fr": "Comment voir toutes les commandes ?",
+    "de": "Wie sehe ich alle Befehle?",
+    "ja": "コマンドの一覧を見るには？"
+   },
+   "a": {
+    "en": "Type /help in any server that has Pingway.",
+    "fr": "Tape /help sur n'importe quel serveur où se trouve Pingway.",
+    "de": "Tippe /help auf einem Server mit Pingway.",
+    "ja": "Pingwayがいるサーバーで /help と入力してください。"
+   },
+   "k": {
+    "en": "commands command list help guide slash",
+    "fr": "commandes liste aide guide slash",
+    "de": "befehle befehl liste hilfe slash",
+    "ja": "コマンド 一覧 ヘルプ 使い方 スラッシュ"
+   }
+  },
+  {
+   "id": "f04",
+   "q": {
+    "en": "How do I log in to the website?",
+    "fr": "Comment me connecter au site ?",
+    "de": "Wie melde ich mich auf der Website an?",
+    "ja": "ウェブサイトにログインするには？"
+   },
+   "a": {
+    "en": "Click Login and sign in with Discord. Pingway only sees your name, avatar and server list.",
+    "fr": "Clique sur Connexion et identifie-toi avec Discord. Pingway ne voit que ton nom, ton avatar et ta liste de serveurs.",
+    "de": "Klicke auf Anmelden und melde dich mit Discord an. Pingway sieht nur deinen Namen, deinen Avatar und deine Serverliste.",
+    "ja": "ログインをクリックしてDiscordでサインインしてください。Pingwayが見るのは名前、アバター、サーバー一覧だけです。"
+   },
+   "k": {
+    "en": "login log sign website account discord",
+    "fr": "connexion connecter identifier site compte discord",
+    "de": "anmelden login einloggen website konto discord",
+    "ja": "ログイン サインイン ウェブサイト アカウント"
+   }
+  },
+  {
+   "id": "f05",
+   "q": {
+    "en": "Where are my personal settings?",
+    "fr": "Où sont mes paramètres personnels ?",
+    "de": "Wo sind meine persönlichen Einstellungen?",
+    "ja": "個人設定はどこ？"
+   },
+   "a": {
+    "en": "In My Settings, after logging in. They work in every server.",
+    "fr": "Dans Mes paramètres, après connexion. Ils fonctionnent sur tous les serveurs.",
+    "de": "In Meine Einstellungen, nach der Anmeldung. Sie gelten auf allen Servern.",
+    "ja": "ログイン後のマイ設定にあります。すべてのサーバーで使えます。"
+   },
+   "k": {
+    "en": "personal settings my settings preferences",
+    "fr": "parametres personnels preferences",
+    "de": "personliche einstellungen meine",
+    "ja": "個人 設定 マイ設定"
+   },
+   "link": "https://pingway.app/dashboard?tab=settings",
+   "linkLabel": {
+    "en": "My Settings",
+    "fr": "Mes paramètres",
+    "de": "Meine Einstellungen",
+    "ja": "マイ設定"
+   }
+  },
+  {
+   "id": "f06",
+   "q": {
+    "en": "How do I change my server's settings?",
+    "fr": "Comment changer les paramètres de mon serveur ?",
+    "de": "Wie ändere ich die Einstellungen meines Servers?",
+    "ja": "サーバーの設定を変えるには？"
+   },
+   "a": {
+    "en": "Go to My Servers and pick a server. You need the Manage Server permission.",
+    "fr": "Va dans Mes serveurs et choisis un serveur. Tu as besoin de la permission « Gérer le serveur ».",
+    "de": "Geh zu Meine Server und wähle einen Server. Du brauchst die Berechtigung „Server verwalten“.",
+    "ja": "マイサーバーでサーバーを選んでください。「サーバー管理」権限が必要です。"
+   },
+   "k": {
+    "en": "server settings admin manage configure",
+    "fr": "parametres serveur admin gerer configurer",
+    "de": "servereinstellungen admin verwalten einrichten",
+    "ja": "サーバー 設定 管理者 変更"
+   },
+   "link": "https://pingway.app/dashboard?tab=servers",
+   "linkLabel": {
+    "en": "My Servers",
+    "fr": "Mes serveurs",
+    "de": "Meine Server",
+    "ja": "マイサーバー"
+   }
+  },
+  {
+   "id": "f07",
+   "q": {
+    "en": "How do I set the channel for Pingway's posts?",
+    "fr": "Comment choisir le salon des publications de Pingway ?",
+    "de": "Wie lege ich den Kanal für Pingways Beiträge fest?",
+    "ja": "Pingwayの投稿先チャンネルを設定するには？"
+   },
+   "a": {
+    "en": "Use /notifhere in that channel, or choose it on the server settings page.",
+    "fr": "Utilise /notifhere dans ce salon, ou choisis-le sur la page des paramètres du serveur.",
+    "de": "Nutze /notifhere in diesem Kanal oder wähle ihn auf der Seite der Servereinstellungen.",
+    "ja": "そのチャンネルで /notifhere を使うか、サーバー設定ページで選んでください。"
+   },
+   "k": {
+    "en": "channel notification notifhere posts notices",
+    "fr": "salon notification notifhere publications notifications",
+    "de": "kanal benachrichtigung notifhere beitrage hinweise",
+    "ja": "チャンネル 通知 notifhere 投稿 お知らせ"
+   }
+  },
+  {
+   "id": "f08",
+   "q": {
+    "en": "How do I check prices?",
+    "fr": "Comment vérifier les prix ?",
+    "de": "Wie prüfe ich Preise?",
+    "ja": "価格を調べるには？"
+   },
+   "a": {
+    "en": "/price shows prices across your Data Centers.",
+    "fr": "/price affiche les prix sur tes centres de données.",
+    "de": "/price zeigt die Preise in deinen Datenzentren.",
+    "ja": "/price でデータセンターの価格を表示します。"
+   },
+   "k": {
+    "en": "price prices check cost item market board gil",
+    "fr": "prix verifier cout objet marche tableau ventes gils",
+    "de": "preis preise prufen kosten gegenstand marktbrett gil",
+    "ja": "価格 値段 相場 アイテム マーケット ギル"
+   }
+  },
+  {
+   "id": "f09",
+   "q": {
+    "en": "How do I pick my Data Centers?",
+    "fr": "Comment choisir mes centres de données ?",
+    "de": "Wie wähle ich meine Datenzentren?",
+    "ja": "データセンターを選ぶには？"
+   },
+   "a": {
+    "en": "Use /datacenter, or My Settings → Data Centers.",
+    "fr": "Utilise /datacenter, ou Mes paramètres → Centres de données.",
+    "de": "Nutze /datacenter oder Meine Einstellungen → Datenzentren.",
+    "ja": "/datacenter を使うか、マイ設定 → データセンター で選んでください。"
+   },
+   "k": {
+    "en": "data center datacenter dc region pick choose",
+    "fr": "centre donnees datacenter region choisir",
+    "de": "datenzentrum datenzentren region wahlen",
+    "ja": "データセンター dc 地域 選ぶ"
+   },
+   "link": "https://pingway.app/dashboard?tab=settings",
+   "linkLabel": {
+    "en": "My Settings",
+    "fr": "Mes paramètres",
+    "de": "Meine Einstellungen",
+    "ja": "マイ設定"
+   }
+  },
+  {
+   "id": "f10",
+   "q": {
+    "en": "How do market pings work?",
+    "fr": "Comment marchent les alertes marché ?",
+    "de": "Wie funktionieren Marktalarme?",
+    "ja": "マーケットアラートの仕組みは？"
+   },
+   "a": {
+    "en": "Turn them on with /marketping or on the Dashboard's Retainers tab (Market Pings), and pick the Data Centers for market pings in that panel. You get a DM ONLY if there are listings far below the usual price on those Data Centers, right away (Ping timing: Immediate) or at most once per ping interval (every minute by default).",
+    "fr": "Active-les avec /marketping ou dans l'onglet Servants du tableau de bord (Alertes marché), et choisis les centres de données des alertes marché dans ce panneau. Tu reçois un MP UNIQUEMENT s'il y a des offres bien en dessous du prix habituel sur ces centres de données, tout de suite (envoi des alertes : immédiat) ou au plus une fois par intervalle (toutes les minutes par défaut).",
+    "de": "Schalte sie mit /marketping oder im Dashboard-Tab Gehilfen (Marktalarme) ein und wähle dort die Datenzentren für Marktalarme. Du bekommst NUR dann eine DM, wenn es in diesen Datenzentren Angebote weit unter dem üblichen Preis gibt, sofort (Alarm-Timing: Sofort) oder höchstens einmal pro Alarm-Intervall (standardmäßig jede Minute).",
+    "ja": "/marketping か、ダッシュボードのリテイナータブ（マーケットアラート）でオンにし、そのパネルでマーケットアラートのデータセンターを選びます。そのデータセンターでいつもよりずっと安い出品があるときだけ、すぐに（通知のタイミング：すぐに送信）、またはアラートの間隔ごとに最大1回（初期設定は1分ごと）DMが届きます。"
+   },
+   "k": {
+    "en": "market alert alerts deals cheap marketalert dm work works how ping pings marketping",
+    "fr": "alertes alerte marche affaires pas cher marketalert mp fonctionnent",
+    "de": "marktalarm marktalarme alarm deals billig marketalert dm funktioniert",
+    "ja": "マーケットアラート アラート 通知 安い 仕組み marketalert"
+   },
+   "link": "https://pingway.app/dashboard?tab=settings",
+   "linkLabel": {
+    "en": "My Settings",
+    "fr": "Mes paramètres",
+    "de": "Meine Einstellungen",
+    "ja": "マイ設定"
+   }
+  },
+  {
+   "id": "f11",
+   "q": {
+    "en": "How often do I get ping DMs?",
+    "fr": "À quelle fréquence je reçois les MP d'alerte ?",
+    "de": "Wie oft bekomme ich Alarm-DMs?",
+    "ja": "アラートのDMはどのくらいの頻度で届く？"
+   },
+   "a": {
+    "en": "You choose: turn on \"Ping timing: Immediate\" to get each ping as soon as it's found, or pick every 1, 2, 5, 10, 15 or 30 minutes (1 minute by default) under \"Ping interval\" on the Dashboard's Retainers tab → Market Pings. Retainer undercut pings have their own Ping timing in Retainer undercut pings on the same tab. With an interval, pings found in between are collected into one DM. Shorter is better for items that sell fast.",
+    "fr": "C'est toi qui choisis : active « Envoi des alertes : immédiat » pour recevoir chaque alerte dès qu'elle est trouvée, ou choisis toutes les 1, 2, 5, 10, 15 ou 30 minutes (1 minute par défaut) dans « Intervalle des alertes », dans l'onglet Servants du tableau de bord → Alertes marché. Les servants battus ont leur propre envoi des alertes dans Alertes de servants battus, dans le même onglet. Avec un intervalle, les alertes trouvées entre-temps sont regroupées dans un seul MP. Plus court, c'est mieux pour les objets qui se vendent vite.",
+    "de": "Das wählst du: Schalte „Alarm-Timing: Sofort“ ein, um jeden Alarm sofort zu bekommen, oder wähle alle 1, 2, 5, 10, 15 oder 30 Minuten (standardmäßig 1 Minute) unter „Alarm-Intervall“ im Dashboard-Tab Gehilfen → Marktalarme. Unterbotene Gehilfen haben ein eigenes Alarm-Timing unter Alarme zu unterbotenen Gehilfen im selben Tab. Mit Intervall werden zwischendurch gefundene Alarme in einer DM gesammelt. Kürzer ist besser für Gegenstände, die sich schnell verkaufen.",
+    "ja": "ダッシュボードのリテイナータブ → マーケットアラート で「通知のタイミング：すぐに送信」をオンにすると、アラートが見つかるとすぐに届きます。オフのときは「アラートの間隔」で1、2、5、10、15、30分ごとから選べます（初期設定は1分）。リテイナーの値下げには、同じタブの「リテイナーの値下げアラート」に専用のタイミングがあります。間隔ごとの場合、間に見つかったアラートは1通のDMにまとめられます。すぐ売れるアイテムには短い間隔がおすすめです。"
+   },
+   "k": {
+    "en": "interval often how many dm dms minute minutes every frequency slow fast spam change time undercut",
+    "fr": "intervalle frequence souvent minutes mp spam lent rapide",
+    "de": "intervall wie oft minuten dm dms haufigkeit spam schnell langsam",
+    "ja": "間隔 頻度 何分 dm スパム 早い 遅い"
+   },
+   "link": "https://pingway.app/dashboard?tab=retainers#market-alerts",
+   "linkLabel": {
+    "en": "Retainers",
+    "fr": "Servants",
+    "de": "Gehilfen",
+    "ja": "リテイナー"
+   }
+  },
+  {
+   "id": "f12",
+   "q": {
+    "en": "Can market pings go to a server channel instead of my DMs?",
+    "fr": "Les alertes marché peuvent-elles aller dans un salon de serveur plutôt qu'en MP ?",
+    "de": "Können Marktalarme statt in meine DMs in einen Serverkanal gehen?",
+    "ja": "マーケットアラートをDMではなくサーバーのチャンネルに送れる？"
+   },
+   "a": {
+    "en": "Yes. On the Dashboard's Retainers tab → Market Pings, add server channels: 3 free, 10 with Supporter Perks, in servers you own or are an admin in (one channel each). You can pick a role to ping per channel, and keep the DMs on or turn them off. Retainer undercut pings have their own channels and DM switch in Retainer undercut pings.",
+    "fr": "Oui. Dans l'onglet Servants du tableau de bord → Alertes marché, ajoute des salons de serveur : 3 gratuits, 10 avec les avantages de soutien, sur des serveurs dont tu es propriétaire ou admin (un salon chacun). Tu peux choisir un rôle à mentionner par salon, et garder les MP ou les couper. Les alertes de servants battus ont leurs propres salons et leur propre interrupteur de MP dans Alertes de servants battus.",
+    "de": "Ja. Füg im Dashboard-Tab Gehilfen → Marktalarme Serverkanäle hinzu: 3 kostenlos, 10 mit Unterstützer-Vorteilen, auf Servern, die dir gehören oder auf denen du Admin bist (je ein Kanal). Pro Kanal kannst du eine Rolle zum Pingen wählen und die DMs an lassen oder ausschalten. Hinweise zu unterbotenen Gehilfen haben eigene Kanäle und einen eigenen DM-Schalter unter Alarme zu unterbotenen Gehilfen.",
+    "ja": "はい。ダッシュボードのリテイナータブ → マーケットアラート で、サーバーのチャンネルを追加してください：無料で3つ、サポーター特典で10個まで、あなたがオーナーか管理者のサーバーに1チャンネルずつ。チャンネルごとにメンションするロールを選べて、DMはオンのままでもオフにもできます。リテイナーの値下げアラートには「リテイナーの値下げアラート」に専用のチャンネルとDMのスイッチがあります。"
+   },
+   "k": {
+    "en": "market alert server channel post instead dm switch admin owner ping pings marketping",
+    "fr": "alertes marche salon serveur au lieu mp admin proprietaire",
+    "de": "marktalarme serverkanal kanal statt dm admin eigentumer",
+    "ja": "チャンネル サーバー 代わり dm 管理者 オーナー"
+   },
+   "link": "https://pingway.app/dashboard?tab=retainers#market-alerts",
+   "linkLabel": {
+    "en": "Retainers",
+    "fr": "Servants",
+    "de": "Gehilfen",
+    "ja": "リテイナー"
+   }
+  },
+  {
+   "id": "f13",
+   "q": {
+    "en": "Why am I not getting market pings?",
+    "fr": "Pourquoi je ne reçois pas d'alertes marché ?",
+    "de": "Warum bekomme ich keine Marktalarme?",
+    "ja": "マーケットアラートが届かないのはなぜ？"
+   },
+   "a": {
+    "en": "Check that pings are on and the Data Centers for market pings are picked (Dashboard → Retainers → Market Pings), that you share a server with Pingway, and that DMs from that server are allowed. Or there may simply be no listings far below the usual price on those Data Centers right now. If you set a minimum DC median (same panel), items with a median at or below it are skipped.",
+    "fr": "Vérifie que les alertes sont activées et que les centres de données des alertes marché sont choisis (Tableau de bord → Servants → Alertes marché), que tu partages un serveur avec Pingway, et que les MP de ce serveur sont autorisés. Ou il n'y a peut-être simplement aucune offre bien en dessous du prix habituel sur ces centres de données en ce moment. Si tu as choisi une médiane minimale du DC (même panneau), les objets dont la médiane est égale ou inférieure sont ignorés.",
+    "de": "Prüfe, ob die Alarme an und die Datenzentren für Marktalarme gewählt sind (Dashboard → Gehilfen → Marktalarme), ob du einen Server mit Pingway teilst und ob DMs von diesem Server erlaubt sind. Oder es gibt in diesen Datenzentren gerade einfach keine Angebote weit unter dem üblichen Preis. Wenn du einen Mindest-DC-Median festgelegt hast (gleiches Panel), werden Gegenstände mit einem Median auf oder unter diesem Betrag übersprungen.",
+    "ja": "アラートがオンで、マーケットアラートのデータセンターを選んでいるか（ダッシュボード → リテイナー → マーケットアラート）、Pingwayとサーバーを共有しているか、そのサーバーからのDMを許可しているかを確認してください。または、今はそのデータセンターにいつもよりずっと安い出品がないだけかもしれません。DCの中央値の下限（同じパネル）を設定している場合、中央値がその金額以下のアイテムは送られません。"
+   },
+   "k": {
+    "en": "not getting no alerts market missing receive why nothing minimum median limit gil ping pings marketping",
+    "fr": "recois pas alertes marche manquent rien pourquoi minimum mediane limite gils",
+    "de": "keine marktalarme bekomme fehlen warum nichts mindest median grenze gil",
+    "ja": "届かない 来ない アラート なぜ 下限 中央値 最低 ギル"
+   }
+  },
+  {
+   "id": "f14",
+   "q": {
+    "en": "What is Retainer Watch?",
+    "fr": "C'est quoi la veille des servants ?",
+    "de": "Was ist die Gehilfen-Wache?",
+    "ja": "リテイナーウォッチって何？"
+   },
+   "a": {
+    "en": "Pingway DMs you when someone undercuts your retainers on the market board. It relies on Universalis market data that players gather and share, so it updates when someone views that item on the market board.",
+    "fr": "Pingway t'envoie un MP quand quelqu'un vend moins cher que tes servants au tableau des ventes. Elle s'appuie sur les données de marché d'Universalis, collectées et partagées par les joueurs : elle se met à jour quand quelqu'un consulte l'objet au tableau des ventes.",
+    "de": "Pingway schickt dir eine DM, wenn jemand deine Gehilfen am Marktbrett unterbietet. Sie nutzt die Marktdaten von Universalis, die Spieler sammeln und teilen, und aktualisiert sich daher, wenn jemand den Gegenstand am Marktbrett ansieht.",
+    "ja": "マーケットボードであなたのリテイナーより安く出されたら、PingwayがDMでお知らせします。プレイヤーが集めて共有しているUniversalisのマーケットデータを使うため、誰かがそのアイテムをマーケットボードで見たときに更新されます。"
+   },
+   "k": {
+    "en": "retainer retainers watch undercut undercuts selling universalis",
+    "fr": "servant servants veille moins cher universalis vente",
+    "de": "gehilfe gehilfen wache unterbieten unterboten universalis verkauf",
+    "ja": "リテイナー ウォッチ 値下げ 安く universalis"
+   },
+   "link": "https://pingway.app/dashboard?tab=retainers",
+   "linkLabel": {
+    "en": "Retainers",
+    "fr": "Servants",
+    "de": "Gehilfen",
+    "ja": "リテイナー"
+   }
+  },
+  {
+   "id": "f15",
+   "q": {
+    "en": "How do I add a retainer?",
+    "fr": "Comment ajouter un servant ?",
+    "de": "Wie füge ich einen Gehilfen hinzu?",
+    "ja": "リテイナーを追加するには？"
+   },
+   "a": {
+    "en": "On the Retainers page, enter the world, the retainer's name and one item it is selling right now.",
+    "fr": "Sur la page Servants, indique le monde, le nom du servant et un objet qu'il vend en ce moment.",
+    "de": "Gib auf der Gehilfen-Seite die Welt, den Namen des Gehilfen und einen Gegenstand ein, den er gerade verkauft.",
+    "ja": "リテイナーページで、ワールド、リテイナー名、今出品しているアイテムを1つ入力してください。"
+   },
+   "k": {
+    "en": "add retainer new setup",
+    "fr": "ajouter servant nouveau",
+    "de": "gehilfe hinzufugen neu einrichten",
+    "ja": "リテイナー 追加 登録"
+   },
+   "link": "https://pingway.app/dashboard?tab=retainers",
+   "linkLabel": {
+    "en": "Retainers",
+    "fr": "Servants",
+    "de": "Gehilfen",
+    "ja": "リテイナー"
+   }
+  },
+  {
+   "id": "f16",
+   "q": {
+    "en": "It says \"Not found\" when I add a retainer.",
+    "fr": "Il affiche « Introuvable » quand j'ajoute un servant.",
+    "de": "Beim Hinzufügen eines Gehilfen steht „Nicht gefunden“.",
+    "ja": "リテイナーを追加すると「見つかりません」と出る。"
+   },
+   "a": {
+    "en": "Check the spelling, and check that the item is listed on Universalis (use the \"Open on Universalis\" button). Universalis only updates when someone views that item on the market board.",
+    "fr": "Vérifie l'orthographe, et vérifie que l'objet est bien en vente sur Universalis (bouton « Ouvrir sur Universalis »). Universalis ne se met à jour que quand quelqu'un consulte l'objet au tableau des ventes.",
+    "de": "Prüfe die Schreibweise und ob der Gegenstand auf Universalis angeboten wird (Button „Auf Universalis öffnen“). Universalis aktualisiert sich nur, wenn jemand den Gegenstand am Marktbrett ansieht.",
+    "ja": "つづりを確認し、そのアイテムがUniversalisに出品されているか確認してください（「Universalisで開く」ボタン）。Universalisは誰かがマーケットボードでそのアイテムを見たときだけ更新されます。"
+   },
+   "k": {
+    "en": "not found retainer cant find error universalis",
+    "fr": "introuvable servant trouve pas erreur universalis",
+    "de": "nicht gefunden gehilfe fehler universalis",
+    "ja": "見つかりません エラー リテイナー universalis"
+   }
+  },
+  {
+   "id": "f17",
+   "q": {
+    "en": "How many retainers are free?",
+    "fr": "Combien de servants sont gratuits ?",
+    "de": "Wie viele Gehilfen sind kostenlos?",
+    "ja": "無料で使えるリテイナーは何人？"
+   },
+   "a": {
+    "en": "2 retainers switched ON are free. More need points (1 point = 1 extra retainer for a month).",
+    "fr": "2 servants activés sont gratuits. Au-delà, il faut des points (1 point = 1 servant supplémentaire pendant un mois).",
+    "de": "2 eingeschaltete Gehilfen sind kostenlos. Für mehr brauchst du Punkte (1 Punkt = 1 zusätzlicher Gehilfe für einen Monat).",
+    "ja": "ONにしたリテイナー2人までは無料です。それ以上はポイントが必要です（1ポイント＝リテイナー1人を1か月追加）。"
+   },
+   "k": {
+    "en": "free how many retainers limit slots",
+    "fr": "gratuit combien servants limite emplacements",
+    "de": "kostenlos wie viele gehilfen limit platze",
+    "ja": "無料 何人 リテイナー 上限 枠"
+   },
+   "link": "https://pingway.app/dashboard?tab=retainers",
+   "linkLabel": {
+    "en": "Retainers",
+    "fr": "Servants",
+    "de": "Gehilfen",
+    "ja": "リテイナー"
+   }
+  },
+  {
+   "id": "f18",
+   "q": {
+    "en": "What do the retainer switches do?",
+    "fr": "À quoi servent les interrupteurs des servants ?",
+    "de": "Was machen die Schalter bei den Gehilfen?",
+    "ja": "リテイナーのスイッチは何をするの？"
+   },
+   "a": {
+    "en": "ON = watched, OFF = not watched, Paused = needs more points.",
+    "fr": "ON = surveillé, OFF = pas surveillé, En pause = il faut plus de points.",
+    "de": "AN = wird beobachtet, AUS = wird nicht beobachtet, Pausiert = braucht mehr Punkte.",
+    "ja": "ON＝見張る、OFF＝見張らない、一時停止＝ポイント不足。"
+   },
+   "k": {
+    "en": "switch toggle on off paused pause enable disable",
+    "fr": "interrupteur activer desactiver pause on off",
+    "de": "schalter an aus pausiert einschalten ausschalten",
+    "ja": "スイッチ on off 一時停止 オン オフ"
+   }
+  },
+  {
+   "id": "f19",
+   "q": {
+    "en": "How do points work?",
+    "fr": "Comment marchent les points ?",
+    "de": "Wie funktionieren Punkte?",
+    "ja": "ポイントの仕組みは？"
+   },
+   "a": {
+    "en": "Every Ko-fi membership payment or tip gives points: $5 = 50, $10 = 110, $20 = 250, $50 = 700, $100 = 1,500, and 10 points per dollar for the rest (for example $11 = 120). 1 point = 1 extra retainer for a month; Supporter Perks cost 10 points a month. Your oldest points are used first, and points expire 180 days after payment.",
+    "fr": "Chaque paiement d'abonnement ou don Ko-fi donne des points : 5 $ = 50, 10 $ = 110, 20 $ = 250, 50 $ = 700, 100 $ = 1 500, et 10 points par dollar pour le reste (par exemple 11 $ = 120). 1 point = 1 servant supplémentaire pendant un mois ; les avantages de soutien coûtent 10 points par mois. Tes points les plus anciens sont utilisés en premier, et les points expirent 180 jours après le paiement.",
+    "de": "Jede Ko-fi-Mitgliedszahlung und jedes Trinkgeld gibt Punkte: 5 $ = 50, 10 $ = 110, 20 $ = 250, 50 $ = 700, 100 $ = 1.500, und 10 Punkte pro Dollar für den Rest (zum Beispiel 11 $ = 120). 1 Punkt = 1 zusätzlicher Gehilfe für einen Monat; Unterstützer-Vorteile kosten 10 Punkte im Monat. Deine ältesten Punkte werden zuerst verbraucht, und Punkte laufen 180 Tage nach der Zahlung ab.",
+    "ja": "Ko-fiのメンバーシップの支払いやチップでポイントがもらえます：5ドル＝50、10ドル＝110、20ドル＝250、50ドル＝700、100ドル＝1,500、残りは1ドルにつき10ポイント（例：11ドル＝120）。1ポイント＝リテイナー1人を1か月追加、サポーター特典は月10ポイントです。いちばん古いポイントから使われ、ポイントは支払いから180日後に失効します。"
+   },
+   "k": {
+    "en": "points point credits credit supporter kofi tip tips how work price bundle bonus",
+    "fr": "points credits soutien kofi don fonctionnent prix palier bonus",
+    "de": "punkte punkt credits unterstutzer kofi trinkgeld funktionieren preis stufe bonus",
+    "ja": "ポイント クレジット サポーター kofi チップ 仕組み ボーナス"
+   },
+   "link": "https://pingway.app/support-terms",
+   "linkLabel": {
+    "en": "Supporter Terms",
+    "fr": "Conditions de soutien",
+    "de": "Unterstützer-Bedingungen",
+    "ja": "サポーター規約"
+   }
+  },
+  {
+   "id": "f20",
+   "q": {
+    "en": "Can I get points for voting?",
+    "fr": "Est-ce que je gagne des points en votant ?",
+    "de": "Bekomme ich Punkte fürs Abstimmen?",
+    "ja": "投票でポイントはもらえる？"
+   },
+   "a": {
+    "en": "Yes. Every vote for Pingway on top.gg gives you 1 point, or 2 points during top.gg weekend double votes. Every vote on discordbotlist.com gives you 1 point too. You can vote on each site every 12 hours. Both sites use your Discord login, so the points go straight to your account (no claim code needed) and Pingway DMs you a thank-you with your balance. Vote points expire 180 days after the vote.",
+    "fr": "Oui. Chaque vote pour Pingway sur top.gg te donne 1 point, ou 2 points pendant les votes doublés du week-end sur top.gg. Chaque vote sur discordbotlist.com te donne aussi 1 point. Tu peux voter sur chaque site toutes les 12 heures. Les deux sites utilisent ta connexion Discord : les points arrivent directement sur ton compte (pas besoin de code) et Pingway t'envoie un MP de remerciement avec ton solde. Les points de vote expirent 180 jours après le vote.",
+    "de": "Ja. Jede Stimme für Pingway auf top.gg gibt dir 1 Punkt, während der doppelten Wochenend-Stimmen von top.gg 2 Punkte. Jede Stimme auf discordbotlist.com gibt dir ebenfalls 1 Punkt. Du kannst auf jeder Seite alle 12 Stunden abstimmen. Beide Seiten nutzen deine Discord-Anmeldung, die Punkte landen also direkt auf deinem Konto (kein Einlösecode nötig), und Pingway schickt dir eine Dankes-DM mit deinem Stand. Stimmpunkte laufen 180 Tage nach der Stimme ab.",
+    "ja": "はい。top.ggでPingwayに1票投票するごとに1ポイント、top.ggの週末2倍投票の間は2ポイントもらえます。discordbotlist.comでも1票ごとに1ポイントです。どちらのサイトも12時間ごとに投票できます。どちらもDiscordのログインを使うので、ポイントは直接あなたのアカウントに入り（受け取りコード不要）、Pingwayから残高付きのお礼のDMが届きます。投票ポイントは投票から180日後に失効します。"
+   },
+   "k": {
+    "en": "vote voting topgg top.gg discordbotlist discordbotlist.com dbl free points reward earn weekend",
+    "fr": "vote voter topgg discordbotlist gratuit points recompense gagner week-end",
+    "de": "abstimmen stimme voten topgg discordbotlist kostenlos punkte belohnung wochenende",
+    "ja": "投票 vote topgg discordbotlist 無料 ポイント 週末"
+   },
+   "link": "https://top.gg/bot/1530586586524418048/vote",
+   "linkLabel": {
+    "en": "Vote on top.gg",
+    "fr": "Voter sur top.gg",
+    "de": "Auf top.gg abstimmen",
+    "ja": "top.ggで投票"
+   }
+  },
+  {
+   "id": "f21",
+   "q": {
+    "en": "Can I vote on discordbotlist.com?",
+    "fr": "Je peux voter sur discordbotlist.com ?",
+    "de": "Kann ich auf discordbotlist.com abstimmen?",
+    "ja": "discordbotlist.comでも投票できる？"
+   },
+   "a": {
+    "en": "Yes. Every vote for Pingway on discordbotlist.com gives you 1 point, and you can vote there every 12 hours (no weekend double). It is separate from top.gg, so you can vote on both. Vote points expire 180 days after the vote.",
+    "fr": "Oui. Chaque vote pour Pingway sur discordbotlist.com te donne 1 point, et tu peux y voter toutes les 12 heures (pas de double le week-end). C'est séparé de top.gg, tu peux donc voter sur les deux. Les points de vote expirent 180 jours après le vote.",
+    "de": "Ja. Jede Stimme für Pingway auf discordbotlist.com gibt dir 1 Punkt, und du kannst dort alle 12 Stunden abstimmen (kein doppeltes Wochenende). Das ist unabhängig von top.gg, du kannst also auf beiden abstimmen. Stimmpunkte laufen 180 Tage nach der Stimme ab.",
+    "ja": "はい。discordbotlist.comでPingwayに1票投票するごとに1ポイントで、12時間ごとに投票できます（週末の2倍はありません）。top.ggとは別なので、両方で投票できます。投票ポイントは投票から180日後に失効します。"
+   },
+   "k": {
+    "en": "vote voting discordbotlist discordbotlist.com dbl free points reward earn",
+    "fr": "vote voter discordbotlist gratuit points recompense",
+    "de": "abstimmen stimme discordbotlist kostenlos punkte belohnung",
+    "ja": "投票 discordbotlist 無料 ポイント"
+   },
+   "link": "https://discordbotlist.com/bots/pingway/upvote",
+   "linkLabel": {
+    "en": "Vote on discordbotlist.com",
+    "fr": "Voter sur discordbotlist.com",
+    "de": "Auf discordbotlist.com abstimmen",
+    "ja": "discordbotlist.comで投票"
+   }
+  },
+  {
+   "id": "f22",
+   "q": {
+    "en": "What are Supporter Perks?",
+    "fr": "C'est quoi les avantages de soutien ?",
+    "de": "Was sind Unterstützer-Vorteile?",
+    "ja": "サポーター特典って何？"
+   },
+   "a": {
+    "en": "Turn them on in My Settings → Supporter Perks for 10 points a month. They renew every month until you cancel; after cancelling they stay on until the end date. Right now they unlock unlimited reaction role messages (up to 20 emojis each) in servers you own or are an admin of, and the market tools on the Retainers page (best sellers, buy & sell, price history, best time to sell, crafting profit) with the /bestsellers, /buysell and /retainers commands in Discord.",
+    "fr": "Active-les dans Mes paramètres → Avantages de soutien pour 10 points par mois. Ils se renouvellent chaque mois jusqu'à ce que tu annules ; après annulation, ils restent actifs jusqu'à la date de fin. Pour l'instant, ils débloquent des messages de rôles par réaction illimités (jusqu'à 20 emojis chacun) sur les serveurs dont tu es propriétaire ou admin, et les outils de marché de la page Servants (meilleures ventes, achat-revente, historique des prix, meilleur moment pour vendre, rentabilité d'artisanat) avec les commandes /bestsellers, /buysell et /retainers dans Discord.",
+    "de": "Schalte sie in Meine Einstellungen → Unterstützer-Vorteile für 10 Punkte im Monat ein. Sie verlängern sich jeden Monat, bis du kündigst; nach der Kündigung bleiben sie bis zum Enddatum aktiv. Derzeit schalten sie unbegrenzt viele Reaktionsrollen-Nachrichten (bis zu 20 Emojis) auf Servern frei, die dir gehören oder auf denen du Admin bist, sowie die Marktwerkzeuge auf der Gehilfen-Seite (Bestseller, Kauf & Verkauf, Preisverlauf, beste Verkaufszeit, Handwerksgewinn) mit den Befehlen /bestsellers, /buysell und /retainers in Discord.",
+    "ja": "マイ設定 → サポーター特典 で月10ポイントで有効にできます。キャンセルするまで毎月更新され、キャンセル後も終了日までは有効です。今は、オーナーか管理者のサーバーでリアクションロールのメッセージが無制限（各絵文字20個まで）になり、リテイナーページのマーケットツール（売れ筋、転売、価格推移、売り時、製作の利益）とDiscordの /bestsellers、/buysell、/retainers コマンドが使えます。"
+   },
+   "k": {
+    "en": "supporter perks enable cancel renewal membership unlock benefits",
+    "fr": "avantages soutien activer annuler renouvellement abonnement debloquer",
+    "de": "unterstutzer vorteile aktivieren kundigen verlangerung mitgliedschaft freischalten",
+    "ja": "サポーター 特典 有効 キャンセル 更新 メンバーシップ 解放"
+   },
+   "link": "https://pingway.app/dashboard?tab=settings#perks",
+   "linkLabel": {
+    "en": "My Settings",
+    "fr": "Mes paramètres",
+    "de": "Meine Einstellungen",
+    "ja": "マイ設定"
+   }
+  },
+  {
+   "id": "f23",
+   "q": {
+    "en": "How do I get my claim code?",
+    "fr": "Comment obtenir mon code de réclamation ?",
+    "de": "Wie bekomme ich meinen Einlösecode?",
+    "ja": "受け取りコードをもらうには？"
+   },
+   "a": {
+    "en": "On the Retainers page, click \"Get my claim code\", then paste it in your Ko-fi message.",
+    "fr": "Sur la page Servants, clique sur « Obtenir mon code », puis colle-le dans ton message Ko-fi.",
+    "de": "Klicke auf der Gehilfen-Seite auf „Meinen Einlösecode holen“ und füge ihn in deine Ko-fi-Nachricht ein.",
+    "ja": "リテイナーページで「受け取りコードをもらう」をクリックし、Ko-fiのメッセージに貼り付けてください。"
+   },
+   "k": {
+    "en": "claim code kofi ko-fi message pw",
+    "fr": "code reclamation kofi message",
+    "de": "einlosecode code kofi nachricht",
+    "ja": "受け取りコード コード kofi メッセージ"
+   },
+   "link": "https://pingway.app/dashboard?tab=retainers",
+   "linkLabel": {
+    "en": "Retainers",
+    "fr": "Servants",
+    "de": "Gehilfen",
+    "ja": "リテイナー"
+   }
+  },
+  {
+   "id": "f24",
+   "q": {
+    "en": "I forgot to add my claim code.",
+    "fr": "J'ai oublié d'ajouter mon code.",
+    "de": "Ich habe meinen Einlösecode vergessen.",
+    "ja": "受け取りコードを入れ忘れた。"
+   },
+   "a": {
+    "en": "On the Retainers page, open \"Forgot to add the code?\" and enter the email you used on Ko-fi.",
+    "fr": "Sur la page Servants, ouvre « Tu as oublié d'ajouter le code ? » et indique l'e-mail utilisé sur Ko-fi.",
+    "de": "Öffne auf der Gehilfen-Seite „Code vergessen?“ und gib die E-Mail ein, die du bei Ko-fi verwendet hast.",
+    "ja": "リテイナーページで「コードを入れ忘れた？」を開き、Ko-fiで使ったメールアドレスを入力してください。"
+   },
+   "k": {
+    "en": "forgot claim code missing payment email unclaimed",
+    "fr": "oublie code manquant paiement email",
+    "de": "vergessen code fehlt zahlung email",
+    "ja": "忘れた 入れ忘れ コード 支払い メール"
+   },
+   "link": "https://pingway.app/dashboard?tab=retainers",
+   "linkLabel": {
+    "en": "Retainers",
+    "fr": "Servants",
+    "de": "Gehilfen",
+    "ja": "リテイナー"
+   }
+  },
+  {
+   "id": "f25",
+   "q": {
+    "en": "Refunds?",
+    "fr": "Remboursements ?",
+    "de": "Rückerstattungen?",
+    "ja": "返金は？"
+   },
+   "a": {
+    "en": "Email the address on the Supporter Terms page within 14 days of payment. Each request is reviewed manually.",
+    "fr": "Écris à l'adresse indiquée sur la page des conditions de soutien dans les 14 jours suivant le paiement. Chaque demande est examinée à la main.",
+    "de": "Schreib innerhalb von 14 Tagen nach der Zahlung eine E-Mail an die Adresse auf der Seite der Unterstützer-Bedingungen. Jede Anfrage wird von Hand geprüft.",
+    "ja": "支払いから14日以内に、サポーター規約ページのアドレスへメールしてください。ご請求は1件ずつ確認します。"
+   },
+   "k": {
+    "en": "refund refunds money back cancel cancellation",
+    "fr": "remboursement rembourser argent annuler annulation",
+    "de": "ruckerstattung erstattung geld zuruck kundigen",
+    "ja": "返金 払い戻し お金 キャンセル 解約"
+   },
+   "link": "https://pingway.app/support-terms",
+   "linkLabel": {
+    "en": "Supporter Terms",
+    "fr": "Conditions de soutien",
+    "de": "Unterstützer-Bedingungen",
+    "ja": "サポーター規約"
+   }
+  },
+  {
+   "id": "f26",
+   "q": {
+    "en": "Is my world down?",
+    "fr": "Mon monde est-il en panne ?",
+    "de": "Ist meine Welt down?",
+    "ja": "ワールドが落ちてる？"
+   },
+   "a": {
+    "en": "/status shows world status, and can DM you when your world goes down or comes back.",
+    "fr": "/status affiche l'état des mondes et peut t'envoyer un MP quand ton monde tombe ou revient.",
+    "de": "/status zeigt den Weltstatus und kann dir eine DM schicken, wenn deine Welt ausfällt oder wieder da ist.",
+    "ja": "/status でワールドの状態を表示し、ワールドがダウンしたり復旧したりしたらDMでお知らせできます。"
+   },
+   "k": {
+    "en": "status world down server maintenance online offline",
+    "fr": "etat monde panne serveur maintenance en ligne hors ligne",
+    "de": "status welt down server wartung online offline",
+    "ja": "ワールド 状態 落ちてる ダウン メンテ オンライン オフライン"
+   }
+  },
+  {
+   "id": "f27",
+   "q": {
+    "en": "When is reset?",
+    "fr": "C'est quand la réinitialisation ?",
+    "de": "Wann ist der Reset?",
+    "ja": "リセットはいつ？"
+   },
+   "a": {
+    "en": "/timer shows daily and weekly resets, the housing lottery and release countdowns.",
+    "fr": "/timer affiche les réinitialisations quotidiennes et hebdomadaires, la loterie immobilière et les comptes à rebours de sortie.",
+    "de": "/timer zeigt die täglichen und wöchentlichen Resets, die Grundstückslotterie und Release-Countdowns.",
+    "ja": "/timer でデイリーとウィークリーのリセット、ハウジング抽選、リリースのカウントダウンを表示します。"
+   },
+   "k": {
+    "en": "reset daily weekly timer housing lottery countdown",
+    "fr": "reinitialisation reset quotidien hebdomadaire minuteur loterie compte rebours",
+    "de": "reset taglich wochentlich timer lotterie countdown",
+    "ja": "リセット デイリー ウィークリー タイマー ハウジング 抽選 カウントダウン"
+   }
+  },
+  {
+   "id": "f28",
+   "q": {
+    "en": "Daily and weekly checklist?",
+    "fr": "Une liste de tâches quotidiennes et hebdo ?",
+    "de": "Tägliche und wöchentliche Checkliste?",
+    "ja": "デイリーとウィークリーのチェックリストは？"
+   },
+   "a": {
+    "en": "Use /todo.",
+    "fr": "Utilise /todo.",
+    "de": "Nutze /todo.",
+    "ja": "/todo を使ってください。"
+   },
+   "k": {
+    "en": "todo checklist daily weekly tasks list",
+    "fr": "todo liste taches quotidien hebdomadaire",
+    "de": "todo checkliste taglich wochentlich aufgaben liste",
+    "ja": "todo チェックリスト デイリー ウィークリー やること"
+   }
+  },
+  {
+   "id": "f29",
+   "q": {
+    "en": "Skyrise Celebration timer?",
+    "fr": "Minuteur de célébration du Firmament ?",
+    "de": "Feier-Timer im Firmament?",
+    "ja": "蒼天街のお祝いタイマーは？"
+   },
+   "a": {
+    "en": "/firmament, with an optional DM.",
+    "fr": "/firmament, avec un MP en option.",
+    "de": "/firmament, mit optionaler DM.",
+    "ja": "/firmament です。DMでのお知らせも選べます。"
+   },
+   "k": {
+    "en": "firmament skyrise celebration ishgard",
+    "fr": "firmament celebration ishgard",
+    "de": "firmament feier ishgard",
+    "ja": "蒼天街 お祝い firmament イシュガルド"
+   }
+  },
+  {
+   "id": "f30",
+   "q": {
+    "en": "Why can't I pick a role for release pings?",
+    "fr": "Pourquoi je ne peux pas choisir un rôle pour les mentions de sortie ?",
+    "de": "Warum kann ich keine Rolle für Release-Pings wählen?",
+    "ja": "リリース通知用のロールを選べないのはなぜ？"
+   },
+   "a": {
+    "en": "Pingway gives the release role to anyone who clicks the button, so roles above Pingway's role, roles managed by Discord or apps, and roles with moderator permissions (like \"Mention @everyone\") are greyed out. Turn those permissions off in Discord → Server Settings → Roles, wait a minute, then reload.",
+    "fr": "Pingway donne le rôle de sortie à toute personne qui clique sur le bouton : les rôles au-dessus du rôle de Pingway, les rôles gérés par Discord ou des applis, et les rôles avec des permissions de modération (comme « Mentionner @everyone ») sont donc grisés. Retire ces permissions dans Discord → Paramètres du serveur → Rôles, attends une minute, puis recharge.",
+    "de": "Pingway gibt die Release-Rolle allen, die auf den Button klicken. Deshalb sind Rollen über Pingways Rolle, von Discord oder Apps verwaltete Rollen und Rollen mit Moderationsrechten (wie „@everyone erwähnen“) ausgegraut. Schalte diese Berechtigungen in Discord → Servereinstellungen → Rollen aus, warte eine Minute und lade dann neu.",
+    "ja": "Pingwayはボタンを押した人なら誰にでもリリース用のロールを付与します。そのため、Pingwayのロールより上のロール、Discordやアプリが管理するロール、モデレーター権限（「@everyoneにメンション」など）があるロールはグレー表示になります。Discord → サーバー設定 → ロール でその権限をオフにし、1分待ってから再読み込みしてください。"
+   },
+   "k": {
+    "en": "role roles release ping greyed grey gray cant pick missing select choose mention everyone permission",
+    "fr": "role roles sortie mention grise choisir manquant everyone permission",
+    "de": "rolle rollen release ping ausgegraut wahlen fehlt everyone berechtigung",
+    "ja": "ロール リリース 選べない グレー メンション everyone 権限"
+   }
+  },
+  {
+   "id": "f31",
+   "q": {
+    "en": "How do I stop hacked accounts spamming links?",
+    "fr": "Comment empêcher les comptes piratés de spammer des liens ?",
+    "de": "Wie stoppe ich gehackte Konten, die Links spammen?",
+    "ja": "乗っ取られたアカウントのリンクスパムを止めるには？"
+   },
+   "a": {
+    "en": "Set up a honeypot: a \"do not chat here\" channel. Anyone except staff who posts there is softbanned (removed, with their messages from the last hour deleted; they can rejoin later). Use /honeypot action: Set channel or server settings → Honeypot. Pingway needs the Ban Members and Manage Messages permissions.",
+    "fr": "Mets en place un pot de miel : un salon « ne pas écrire ici ». Toute personne hors staff qui y écrit est softbannie (retirée, avec ses messages de la dernière heure supprimés ; elle peut revenir plus tard). Utilise /honeypot action: Choisir le salon ou paramètres du serveur → Pot de miel. Pingway a besoin des permissions « Bannir des membres » et « Gérer les messages ».",
+    "de": "Richte einen Honigtopf ein: einen „Hier nicht schreiben“-Kanal. Wer außer dem Team dort postet, wird gesoftbannt (entfernt, seine Nachrichten der letzten Stunde werden gelöscht; er kann später wieder beitreten). Nutze /honeypot aktion: Kanal festlegen oder Servereinstellungen → Honigtopf. Pingway braucht die Berechtigungen „Mitglieder bannen“ und „Nachrichten verwalten“.",
+    "ja": "ハニーポット（「ここに書き込まないで」チャンネル）を設定してください。スタッフ以外がそこに投稿するとソフトBANされます（外され、直近1時間のメッセージが削除されますが、後から戻れます）。/honeypot 操作: チャンネルを設定 か、サーバー設定 → ハニーポット を使ってください。Pingwayには「メンバーをBAN」と「メッセージの管理」権限が必要です。"
+   },
+   "k": {
+    "en": "honeypot hacked hack spam spammer scam links phishing softban ban kick do not chat",
+    "fr": "pot miel honeypot pirate spam arnaque liens phishing softban bannir",
+    "de": "honigtopf honeypot gehackt spam betrug links phishing softban bannen",
+    "ja": "ハニーポット 乗っ取り スパム 詐欺 リンク フィッシング ソフトban ban"
+   },
+   "link": "https://pingway.app/dashboard?tab=servers",
+   "linkLabel": {
+    "en": "My Servers",
+    "fr": "Mes serveurs",
+    "de": "Meine Server",
+    "ja": "マイサーバー"
+   }
+  },
+  {
+   "id": "f32",
+   "q": {
+    "en": "What happens to someone caught by the honeypot?",
+    "fr": "Que se passe-t-il pour quelqu'un pris dans le pot de miel ?",
+    "de": "Was passiert mit jemandem, der im Honigtopf erwischt wird?",
+    "ja": "ハニーポットに捕まった人はどうなる？"
+   },
+   "a": {
+    "en": "Pingway deletes their message, DMs them that their account may be hacked (if turned on), then softbans them: a ban that deletes their messages in that server from the last hour, followed right away by an unban. The server owner gets a DM, and the catch is listed in server settings → Honeypot for 90 days.",
+    "fr": "Pingway supprime son message, lui envoie un MP pour dire que son compte est peut-être piraté (si activé), puis le softbannit : un bannissement qui supprime ses messages de la dernière heure sur ce serveur, suivi aussitôt d'un débannissement. Le propriétaire du serveur reçoit un MP, et la prise est listée dans paramètres du serveur → Pot de miel pendant 90 jours.",
+    "de": "Pingway löscht die Nachricht, schickt eine DM, dass das Konto vielleicht gehackt wurde (falls eingeschaltet), und softbannt die Person: ein Bann, der ihre Nachrichten der letzten Stunde auf diesem Server löscht, gleich gefolgt von einer Entbannung. Der Server-Eigentümer bekommt eine DM, und der Fang steht 90 Tage lang in Servereinstellungen → Honigtopf.",
+    "ja": "Pingwayはそのメッセージを削除し、アカウントが乗っ取られているかもしれないとDMで伝え（オンの場合）、ソフトBANします：そのサーバーでの直近1時間のメッセージを削除するBANのあと、すぐにBAN解除します。サーバーのオーナーにDMが届き、サーバー設定 → ハニーポット に90日間記録されます。"
+   },
+   "k": {
+    "en": "honeypot caught happens what softban removed kicked trap",
+    "fr": "pot miel pris arrive softban retire expulse piege",
+    "de": "honigtopf erwischt passiert softban entfernt falle",
+    "ja": "ハニーポット 捕まった どうなる ソフトban 外される 罠"
+   }
+  },
+  {
+   "id": "f33",
+   "q": {
+    "en": "Does a honeypot softban delete their account or affect other servers?",
+    "fr": "Un softban du pot de miel supprime-t-il son compte ou touche-t-il d'autres serveurs ?",
+    "de": "Löscht ein Honigtopf-Softban das Konto oder betrifft er andere Server?",
+    "ja": "ハニーポットのソフトBANでアカウントが消えたり、ほかのサーバーに影響したりする？"
+   },
+   "a": {
+    "en": "No. It only removes them from that one server and deletes their messages there from the last hour. Their Discord account is not deleted, other servers are not affected, and they are not left banned, so they can rejoin with a new invite once the account is secure.",
+    "fr": "Non. Il le retire seulement de ce serveur et y supprime ses messages de la dernière heure. Son compte Discord n'est pas supprimé, les autres serveurs ne sont pas touchés, et il ne reste pas banni : il peut revenir avec une nouvelle invitation une fois son compte sécurisé.",
+    "de": "Nein. Er entfernt die Person nur von diesem einen Server und löscht dort ihre Nachrichten der letzten Stunde. Ihr Discord-Konto wird nicht gelöscht, andere Server sind nicht betroffen, und sie bleibt nicht gebannt – sie kann mit einer neuen Einladung wieder beitreten, sobald das Konto sicher ist.",
+    "ja": "いいえ。そのサーバーから外し、そこでの直近1時間のメッセージを削除するだけです。Discordアカウントは削除されず、ほかのサーバーにも影響はなく、BANされたままにもならないので、アカウントが安全になれば新しい招待で戻れます。"
+   },
+   "k": {
+    "en": "softban delete account other servers banned forever permanent affect safe",
+    "fr": "softban supprimer compte autres serveurs banni toujours definitif",
+    "de": "softban konto loschen andere server gebannt dauerhaft",
+    "ja": "ソフトban アカウント 削除 ほかのサーバー 影響 永久"
+   }
+  },
+  {
+   "id": "f34",
+   "q": {
+    "en": "How does a caught member get back into the server?",
+    "fr": "Comment un membre pris revient-il sur le serveur ?",
+    "de": "Wie kommt ein erwischtes Mitglied zurück auf den Server?",
+    "ja": "捕まったメンバーがサーバーに戻るには？"
+   },
+   "a": {
+    "en": "Once they have secured their account (new password, two-factor authentication), they just need a new invite from a member or admin. They are not banned.",
+    "fr": "Une fois son compte sécurisé (nouveau mot de passe, authentification à deux facteurs), il lui faut juste une nouvelle invitation d'un membre ou d'un admin. Il n'est pas banni.",
+    "de": "Sobald das Konto gesichert ist (neues Passwort, Zwei-Faktor-Authentifizierung), braucht es nur eine neue Einladung von einem Mitglied oder Admin. Es ist nicht gebannt.",
+    "ja": "アカウントを安全にしたら（新しいパスワード、二段階認証）、メンバーか管理者から新しい招待をもらうだけです。BANはされていません。"
+   },
+   "k": {
+    "en": "rejoin back invite return unban caught honeypot secured recovered",
+    "fr": "revenir retour invitation debannir pris securise",
+    "de": "zuruck wieder beitreten einladung entbannen erwischt gesichert",
+    "ja": "戻る 再参加 招待 ban解除 捕まった"
+   }
+  },
+  {
+   "id": "f35",
+   "q": {
+    "en": "Why didn't the honeypot remove someone?",
+    "fr": "Pourquoi le pot de miel n'a-t-il pas retiré quelqu'un ?",
+    "de": "Warum hat der Honigtopf jemanden nicht entfernt?",
+    "ja": "ハニーポットが誰かを外さなかったのはなぜ？"
+   },
+   "a": {
+    "en": "Staff (owner, admins, moderators) and bots are ignored on purpose. Otherwise, Pingway may be missing the Ban Members permission, or the member's role is above Pingway's role. The Result column in server settings → Honeypot shows the reason.",
+    "fr": "Le staff (propriétaire, admins, modérateurs) et les bots sont ignorés exprès. Sinon, il manque peut-être à Pingway la permission « Bannir des membres », ou le rôle du membre est au-dessus de celui de Pingway. La colonne Résultat dans paramètres du serveur → Pot de miel donne la raison.",
+    "de": "Das Team (Eigentümer, Admins, Moderatoren) und Bots werden absichtlich ignoriert. Sonst fehlt Pingway vielleicht die Berechtigung „Mitglieder bannen“, oder die Rolle des Mitglieds liegt über Pingways Rolle. Die Spalte Ergebnis in Servereinstellungen → Honigtopf zeigt den Grund.",
+    "ja": "スタッフ（オーナー、管理者、モデレーター）とボットはわざと対象外にしています。それ以外なら、Pingwayに「メンバーをBAN」権限がないか、そのメンバーのロールがPingwayのロールより上にあります。理由は サーバー設定 → ハニーポット の「結果」列に表示されます。"
+   },
+   "k": {
+    "en": "honeypot not removed didnt work failed staff permission role above ban members",
+    "fr": "pot miel retire pas marche echec staff permission role dessus",
+    "de": "honigtopf nicht entfernt funktioniert fehler team berechtigung rolle",
+    "ja": "ハニーポット 外れない 失敗 スタッフ 権限 ロール"
+   }
+  },
+  {
+   "id": "f36",
+   "q": {
+    "en": "Can I turn off Pingway's warning in the honeypot channel?",
+    "fr": "Puis-je désactiver l'avertissement de Pingway dans le salon pot de miel ?",
+    "de": "Kann ich Pingways Warnung im Honigtopf-Kanal ausschalten?",
+    "ja": "ハニーポットのチャンネルのPingwayの警告をオフにできる？"
+   },
+   "a": {
+    "en": "Yes: server settings → Honeypot → \"Post Pingway's warning\", or /honeypot action: Warning message on: False. Pingway deletes its warning, and the honeypot keeps working. Make sure the channel name or your own message tells members not to post there, or they may be softbanned by mistake.",
+    "fr": "Oui : paramètres du serveur → Pot de miel → « Publier l'avertissement de Pingway », ou /honeypot action: Message d'avertissement activer: False. Pingway supprime son avertissement, et le pot de miel continue de fonctionner. Assure-toi que le nom du salon ou ton propre message dit aux membres de ne pas y écrire, sinon ils risquent d'être softbannis par erreur.",
+    "de": "Ja: Servereinstellungen → Honigtopf → „Pingways Warnung posten“ oder /honeypot aktion: Warnnachricht an: False. Pingway löscht seine Warnung, und der Honigtopf funktioniert weiter. Sorge dafür, dass der Kanalname oder deine eigene Nachricht den Mitgliedern sagt, dort nicht zu posten, sonst werden sie vielleicht versehentlich gesoftbannt.",
+    "ja": "はい：サーバー設定 → ハニーポット →「Pingwayの警告を投稿」、または /honeypot 操作: 警告メッセージ オン: False。Pingwayは警告を削除し、ハニーポットはそのまま動きます。チャンネル名や自分のメッセージで、そこに書き込まないようメンバーに伝えてください。そうしないと間違ってソフトBANされるかもしれません。"
+   },
+   "k": {
+    "en": "honeypot warning message hide remove turn off own text pinned embed",
+    "fr": "pot miel avertissement message cacher retirer desactiver epingle",
+    "de": "honigtopf warnung nachricht ausblenden entfernen ausschalten angeheftet",
+    "ja": "ハニーポット 警告 メッセージ 非表示 オフ ピン留め"
+   }
+  },
+  {
+   "id": "f37",
+   "q": {
+    "en": "How do reaction roles work?",
+    "fr": "Comment marchent les rôles par réaction ?",
+    "de": "Wie funktionieren Reaktionsrollen?",
+    "ja": "リアクションロールの仕組みは？"
+   },
+   "a": {
+    "en": "In server settings → Reaction Roles, pick a channel and let Pingway post a message (or paste the link of an existing message), then add emoji → role pairs. Members click an emoji to get the role, and remove the reaction to lose it. Pingway needs Manage Roles, Add Reactions and Read Message History, and its role must be above the roles it gives.",
+    "fr": "Dans paramètres du serveur → Rôles par réaction, choisis un salon et laisse Pingway publier un message (ou colle le lien d'un message existant), puis ajoute des paires emoji → rôle. Les membres cliquent sur un emoji pour obtenir le rôle, et retirent la réaction pour le perdre. Pingway a besoin de « Gérer les rôles », « Ajouter des réactions » et « Voir les anciens messages », et son rôle doit être au-dessus des rôles qu'il donne.",
+    "de": "Wähle in Servereinstellungen → Reaktionsrollen einen Kanal und lass Pingway eine Nachricht posten (oder füge den Link einer vorhandenen Nachricht ein), dann füge Emoji → Rolle-Paare hinzu. Mitglieder klicken auf ein Emoji, um die Rolle zu bekommen, und entfernen die Reaktion, um sie zu verlieren. Pingway braucht „Rollen verwalten“, „Reaktionen hinzufügen“ und „Nachrichtenverlauf anzeigen“, und seine Rolle muss über den Rollen liegen, die es vergibt.",
+    "ja": "サーバー設定 → リアクションロール でチャンネルを選び、Pingwayにメッセージを投稿させる（または既存のメッセージのリンクを貼る）と、絵文字 → ロールの組を追加できます。メンバーは絵文字をクリックするとロールがもらえ、リアクションを外すとロールが外れます。Pingwayには「ロールの管理」「リアクションの追加」「メッセージ履歴を読む」が必要で、Pingwayのロールは付与するロールより上にある必要があります。"
+   },
+   "k": {
+    "en": "reaction role roles emoji react self assign selfrole give get",
+    "fr": "role roles reaction emoji reagir attribuer obtenir",
+    "de": "reaktionsrolle reaktionsrollen emoji reaktion rolle vergeben bekommen",
+    "ja": "リアクションロール リアクション 絵文字 ロール 付与 もらう"
+   },
+   "link": "https://pingway.app/dashboard?tab=servers",
+   "linkLabel": {
+    "en": "My Servers",
+    "fr": "Mes serveurs",
+    "de": "Meine Server",
+    "ja": "マイサーバー"
+   }
+  },
+  {
+   "id": "f38",
+   "q": {
+    "en": "Why is my reaction role message paused?",
+    "fr": "Pourquoi mon message de rôles par réaction est-il en pause ?",
+    "de": "Warum ist meine Reaktionsrollen-Nachricht pausiert?",
+    "ja": "リアクションロールのメッセージが一時停止しているのはなぜ？"
+   },
+   "a": {
+    "en": "Free servers get 10 reaction role messages with up to 10 emojis each. Message 11 and up, and any message with more than 10 emojis, are paused. If the server owner has Supporter Perks, or an admin with Supporter Perks (My Settings, 10 points a month) saves the reaction roles, there is no limit (Discord allows up to 20 emojis per message). Extra messages run on that admin's perks; if they end, the messages keep running for 48 hours, then move to another admin with perks or pause until perks return.",
+    "fr": "Les serveurs gratuits ont 10 messages de rôles par réaction avec jusqu'à 10 emojis chacun. À partir du message 11, et tout message de plus de 10 emojis, sont en pause. Si le propriétaire du serveur a les avantages de soutien, ou si un admin avec les avantages de soutien (Mes paramètres, 10 points par mois) enregistre les rôles par réaction, il n'y a pas de limite (Discord permet jusqu'à 20 emojis par message). Les messages supplémentaires tournent sur les avantages de cet admin ; s'ils prennent fin, les messages continuent 48 heures, puis passent à un autre admin avec avantages ou se mettent en pause jusqu'au retour des avantages.",
+    "de": "Kostenlose Server haben 10 Reaktionsrollen-Nachrichten mit bis zu 10 Emojis. Ab Nachricht 11 und jede Nachricht mit mehr als 10 Emojis sind pausiert. Hat der Server-Eigentümer Unterstützer-Vorteile oder speichert ein Admin mit Unterstützer-Vorteilen (Meine Einstellungen, 10 Punkte im Monat) die Reaktionsrollen, gibt es kein Limit (Discord erlaubt bis zu 20 Emojis pro Nachricht). Zusätzliche Nachrichten laufen über die Vorteile dieses Admins; enden sie, laufen die Nachrichten noch 48 Stunden weiter und gehen dann an einen anderen Admin mit Vorteilen über oder werden pausiert, bis wieder Vorteile da sind.",
+    "ja": "無料サーバーではリアクションロールのメッセージは10件、各絵文字10個までです。11件目以降と、絵文字が10個を超えるメッセージは一時停止します。サーバーのオーナーがサポーター特典を持っているか、サポーター特典（マイ設定、月10ポイント）を持つ管理者がリアクションロールを保存すれば制限はありません（Discordでは1メッセージにつき絵文字20個まで）。追加メッセージはその管理者の特典で動き、特典が終わると48時間動いたあと、特典を持つ別の管理者に移るか、特典が戻るまで一時停止します。"
+   },
+   "k": {
+    "en": "paused reaction role limit perks supporter points 10 emojis messages unlock owner",
+    "fr": "pause role reaction limite avantages soutien points emojis messages debloquer",
+    "de": "pausiert reaktionsrolle limit vorteile unterstutzer punkte emojis nachrichten freischalten",
+    "ja": "一時停止 リアクションロール 上限 特典 サポーター ポイント 絵文字"
+   }
+  },
+  {
+   "id": "f39",
+   "q": {
+    "en": "How do I set up tickets?",
+    "fr": "Comment mettre en place les tickets ?",
+    "de": "Wie richte ich Tickets ein?",
+    "ja": "チケットを設定するには？"
+   },
+   "a": {
+    "en": "Server settings → Tickets: turn it on, pick your support roles and save. Within a minute Pingway creates a 🎫 Tickets category with an open-a-ticket channel (with the Open Ticket button) and a private ticket-logs channel. Pingway needs Manage Channels and Manage Roles. Tickets are free.",
+    "fr": "Paramètres du serveur → Tickets : active-les, choisis tes rôles de support et enregistre. En moins d'une minute, Pingway crée une catégorie 🎫 Tickets avec un salon open-a-ticket (avec le bouton Open Ticket) et un salon privé ticket-logs. Pingway a besoin de « Gérer les salons » et « Gérer les rôles ». Les tickets sont gratuits.",
+    "de": "Servereinstellungen → Tickets: einschalten, Support-Rollen wählen und speichern. Innerhalb einer Minute erstellt Pingway eine Kategorie 🎫 Tickets mit einem Kanal open-a-ticket (mit dem Open-Ticket-Button) und einem privaten Kanal ticket-logs. Pingway braucht „Kanäle verwalten“ und „Rollen verwalten“. Tickets sind kostenlos.",
+    "ja": "サーバー設定 → チケット：オンにしてサポートロールを選び、保存します。1分以内にPingwayが🎫 Ticketsカテゴリーを作り、open-a-ticket チャンネル（Open Ticketボタン付き）と非公開の ticket-logs チャンネルを用意します。Pingwayには「チャンネルの管理」と「ロールの管理」が必要です。チケットは無料です。"
+   },
+   "k": {
+    "en": "ticket tickets help desk support setup open create staff",
+    "fr": "ticket tickets support aide configurer ouvrir creer staff",
+    "de": "ticket tickets helpdesk support einrichten offnen erstellen team",
+    "ja": "チケット ヘルプデスク サポート 設定 作成 スタッフ"
+   },
+   "link": "https://pingway.app/dashboard?tab=servers",
+   "linkLabel": {
+    "en": "My Servers",
+    "fr": "Mes serveurs",
+    "de": "Meine Server",
+    "ja": "マイサーバー"
+   }
+  },
+  {
+   "id": "f40",
+   "q": {
+    "en": "Who can see a ticket?",
+    "fr": "Qui peut voir un ticket ?",
+    "de": "Wer kann ein Ticket sehen?",
+    "ja": "チケットは誰が見られる？"
+   },
+   "a": {
+    "en": "Only the member who opened it, your support roles, admins and Pingway. When it is closed, a text transcript is posted in your server's ticket-logs channel (if turned on) and the ticket channel is deleted. Pingway doesn't keep a copy of transcripts, and its own ticket records are deleted 180 days after closing.",
+    "fr": "Seuls le membre qui l'a ouvert, tes rôles de support, les admins et Pingway. À la fermeture, une transcription texte est publiée dans le salon ticket-logs de ton serveur (si activé) et le salon du ticket est supprimé. Pingway ne garde aucune copie des transcriptions, et ses propres données de ticket sont supprimées 180 jours après la fermeture.",
+    "de": "Nur das Mitglied, das es geöffnet hat, deine Support-Rollen, Admins und Pingway. Beim Schließen wird ein Textprotokoll im Kanal ticket-logs deines Servers gepostet (falls eingeschaltet) und der Ticket-Kanal gelöscht. Pingway behält keine Kopie der Protokolle, und seine eigenen Ticket-Daten werden 180 Tage nach dem Schließen gelöscht.",
+    "ja": "開いたメンバー、サポートロール、管理者、Pingwayだけです。閉じると、テキストの記録がサーバーの ticket-logs チャンネルに投稿され（オンの場合）、チケットのチャンネルは削除されます。Pingwayは記録のコピーを保存せず、チケットの記録も閉じてから180日後に削除します。"
+   },
+   "k": {
+    "en": "ticket see private who transcript log closed delete",
+    "fr": "ticket voir prive qui transcription journal ferme supprimer",
+    "de": "ticket sehen privat wer protokoll log geschlossen loschen",
+    "ja": "チケット 見られる 非公開 記録 ログ 削除"
+   }
+  },
+  {
+   "id": "f41",
+   "q": {
+    "en": "How do I get FFXIV news in my server?",
+    "fr": "Comment recevoir les actus FFXIV sur mon serveur ?",
+    "de": "Wie bekomme ich FFXIV-News auf meinen Server?",
+    "ja": "サーバーでFFXIVのニュースを受け取るには？"
+   },
+   "a": {
+    "en": "Server settings → FFXIV News: pick a channel and a language (English NA/EU, Japanese, French or German) and tick the kinds of news you want. Up to 5 channels, each language once. New Lodestone news is checked every 10 minutes.",
+    "fr": "Paramètres du serveur → Actus FFXIV : choisis un salon et une langue (anglais NA/EU, japonais, français ou allemand) et coche les types d'actus voulus. Jusqu'à 5 salons, chaque langue une fois. Les nouvelles actus du Lodestone sont vérifiées toutes les 10 minutes.",
+    "de": "Servereinstellungen → FFXIV-News: Wähle einen Kanal und eine Sprache (Englisch NA/EU, Japanisch, Französisch oder Deutsch) und hake die gewünschten News-Arten an. Bis zu 5 Kanäle, jede Sprache einmal. Neue Lodestone-News werden alle 10 Minuten geprüft.",
+    "ja": "サーバー設定 → FFXIVニュース：チャンネルと言語（英語NA/EU、日本語、フランス語、ドイツ語）を選び、受け取りたいニュースの種類にチェックを入れてください。最大5チャンネル、各言語は1回までです。Lodestoneの新着ニュースは10分ごとに確認します。"
+   },
+   "k": {
+    "en": "news lodestone ffxiv channel language maintenance topics notices updates",
+    "fr": "actus actualites lodestone ffxiv salon langue maintenance annonces mises jour",
+    "de": "news nachrichten lodestone ffxiv kanal sprache wartung themen hinweise updates",
+    "ja": "ニュース lodestone Lodestone チャンネル 言語 メンテナンス お知らせ"
+   },
+   "link": "https://pingway.app/dashboard?tab=servers",
+   "linkLabel": {
+    "en": "My Servers",
+    "fr": "Mes serveurs",
+    "de": "Meine Server",
+    "ja": "マイサーバー"
+   }
+  },
+  {
+   "id": "f42",
+   "q": {
+    "en": "Party Finder?",
+    "fr": "Recherche d'équipe ?",
+    "de": "Gruppensuche?",
+    "ja": "パーティ募集は？"
+   },
+   "a": {
+    "en": "/pf creates listings with role and job slots. Before posting, 🔁 Repeat weekly lets you pick days: Pingway posts the next listing at the same time when the current one starts. When your PF starts, Pingway DMs you a \"Post again\" button to post it with a new date. 🐎 Mount farm: on the preview, click \"🐎 Toggle Mount Farm\", then \"➕ Add Mount\" to add up to 10 mounts (only Extreme trial and Savage raid floor 4 drops; ✖ removes one). The \"🐎 Check if you have it\" button on the listing tells each player privately which ones they still need.",
+    "fr": "/pf crée des annonces avec des places par rôle et par classe. Avant de publier, 🔁 Répéter chaque semaine te laisse choisir des jours : Pingway publie l'annonce suivante à la même heure quand celle-ci commence. Quand ta recherche d'équipe commence, Pingway t'envoie en MP un bouton « Republier » pour la reposter avec une nouvelle date. 🐎 Farm de montures : dans l'aperçu, clique sur « 🐎 Activer/désactiver le farm de montures », puis sur « ➕ Ajouter une monture » pour en ajouter jusqu'à 10 (uniquement celles des défis Extrême et de l'étage 4 des raids Sadiques ; ✖ en retire une). Le bouton « 🐎 Vérifier si tu l'as » de l'annonce dit en privé à chaque joueur lesquelles il lui manque encore.",
+    "de": "/pf erstellt Einträge mit Rollen- und Job-Plätzen. Vor dem Posten wählst du mit 🔁 Wöchentlich wiederholen Tage aus: Pingway postet das nächste Angebot zur gleichen Uhrzeit, sobald das aktuelle beginnt. Wenn deine Gruppensuche startet, schickt dir Pingway per DM einen Button „Erneut posten“, um sie mit einem neuen Datum zu posten. 🐎 Reittier-Farm: Klicke in der Vorschau auf „🐎 Reittier-Farm an/aus“ und dann auf „➕ Reittier hinzufügen“, um bis zu 10 Reittiere hinzuzufügen (nur aus Extrem-Prüfungen und Ebene 4 der Episch-Raids; ✖ entfernt eins). Der Button „🐎 Prüfen, ob du es hast“ im Eintrag sagt jedem Spieler privat, welche ihm noch fehlen.",
+    "ja": "/pf でロールとジョブの枠付きの募集を作れます。投稿前に 🔁 毎週くり返す で曜日を選ぶと、今の募集が始まったときにPingwayが同じ時刻で次の募集を投稿します。募集が始まると、新しい日付で投稿し直せる「もう一度募集」ボタンがDMで届きます。🐎 マウント周回：プレビューで「🐎 マウント周回 オン/オフ」を押し、「➕ マウントを追加」で最大10個のマウントを追加できます（極蛮神と零式4層のマウントのみ、✖ で外せます）。募集の「🐎 持っているか確認」ボタンで、各プレイヤーはまだ持っていないマウントを自分だけに確認できます。"
+   },
+   "k": {
+    "en": "party finder pf group listing roles repeat weekly recurring again repost mount farm",
+    "fr": "recherche equipe pf groupe annonce roles repeter semaine hebdomadaire republier monture farm",
+    "de": "gruppensuche pf gruppe eintrag rollen wiederholen wochentlich erneut posten reittier farm",
+    "ja": "パーティ募集 pf 募集 ロール 毎週 くり返し 繰り返し もう一度 再投稿 マウント 周回"
+   }
+  },
+  {
+   "id": "f43",
+   "q": {
+    "en": "Raid schedule?",
+    "fr": "Planning de raid ?",
+    "de": "Raid-Plan?",
+    "ja": "レイドのスケジュールは？"
+   },
+   "a": {
+    "en": "/raid opens a menu: open a raid sheet, check the 7-day schedule, or (admins) create a new sheet. A server can have several named raid sheets, each for a role. Please don't change the layout of a raid sheet, or Pingway can't read it.",
+    "fr": "/raid ouvre un menu : ouvrir une feuille de raid, voir le planning sur 7 jours, ou (admins) créer une nouvelle feuille. Un serveur peut avoir plusieurs feuilles de raid nommées, chacune pour un rôle. Ne change pas la mise en page d'une feuille de raid, sinon Pingway ne peut pas la lire.",
+    "de": "/raid öffnet ein Menü: eine Raid-Tabelle öffnen, den 7-Tage-Plan ansehen oder (Admins) eine neue Tabelle erstellen. Ein Server kann mehrere benannte Raid-Tabellen haben, jede für eine Rolle. Bitte ändere das Layout einer Raid-Tabelle nicht, sonst kann Pingway sie nicht lesen.",
+    "ja": "/raid でメニューが開きます：レイドシートを開く、7日間のスケジュールを見る、または（管理者は）新しいシートを作る。1つのサーバーに名前付きのレイドシートを複数置けて、それぞれロールごとに分けられます。レイドシートのレイアウトは変えないでください。変えるとPingwayが読めなくなります。"
+   },
+   "k": {
+    "en": "raid schedule static sheet google",
+    "fr": "raid planning statique feuille google",
+    "de": "raid plan statik tabelle google",
+    "ja": "レイド スケジュール 固定 シート google"
+   }
+  },
+  {
+   "id": "f44",
+   "q": {
+    "en": "How do Raid & Logger sheets work?",
+    "fr": "Comment marchent les feuilles Raid & Logger ?",
+    "de": "Wie funktionieren Raid- & Logger-Tabellen?",
+    "ja": "レイド＆ロガーのシートの仕組みは？"
+   },
+   "a": {
+    "en": "Server settings → Raid & Logger: create sheets (Pingway makes them, anyone with the link can edit), pick which role sees each one, rename, switch on/off or remove them. 5 sheets can be ON for free; an admin with Supporter Perks can switch on up to 100. Without perks, each switch can change once every 12 hours. OFF sheets are hidden and view-only. Removing a sheet Pingway made deletes it; your own sheets are only disconnected.",
+    "fr": "Paramètres du serveur → Raid & Logger : crée des feuilles (Pingway les crée, toute personne ayant le lien peut les modifier), choisis quel rôle voit chacune, renomme, active/désactive ou retire-les. 5 feuilles peuvent être activées gratuitement ; un admin avec les avantages de soutien peut en activer jusqu'à 100. Sans avantages, chaque interrupteur ne peut changer qu'une fois toutes les 12 heures. Les feuilles désactivées sont cachées et en lecture seule. Retirer une feuille créée par Pingway la supprime ; tes propres feuilles sont seulement déconnectées.",
+    "de": "Servereinstellungen → Raid & Logger: Tabellen erstellen (Pingway erstellt sie, alle mit dem Link können sie bearbeiten), festlegen, welche Rolle welche sieht, umbenennen, ein-/ausschalten oder entfernen. 5 Tabellen können kostenlos AN sein; ein Admin mit Unterstützer-Vorteilen kann bis zu 100 einschalten. Ohne Vorteile kann sich jeder Schalter nur alle 12 Stunden ändern. AUS-Tabellen sind ausgeblendet und nur lesbar. Eine von Pingway erstellte Tabelle wird beim Entfernen gelöscht; deine eigenen Tabellen werden nur getrennt.",
+    "ja": "サーバー設定 → レイド＆ロガー：シートを作り（Pingwayが作成し、リンクを知っている人なら誰でも編集できます）、それぞれ見られるロールを選び、名前の変更、ON/OFF、削除ができます。無料で5枚までON、サポーター特典を持つ管理者なら最大100枚までONにできます。特典がない場合、各スイッチは12時間に1回しか切り替えられません。OFFのシートは非表示で閲覧のみです。Pingwayが作ったシートを削除するとシートも削除され、自分のシートは接続が外れるだけです。"
+   },
+   "k": {
+    "en": "raid logger sheet sheets google create role limit perks on off remove delete",
+    "fr": "raid logger feuille feuilles google creer role limite avantages activer retirer supprimer",
+    "de": "raid logger tabelle tabellen google erstellen rolle limit vorteile an aus entfernen loschen",
+    "ja": "レイド ロガー シート google 作成 ロール 上限 特典 on off 削除"
+   },
+   "link": "https://pingway.app/dashboard?tab=servers",
+   "linkLabel": {
+    "en": "My Servers",
+    "fr": "Mes serveurs",
+    "de": "Meine Server",
+    "ja": "マイサーバー"
+   }
+  },
+  {
+   "id": "f45",
+   "q": {
+    "en": "Character card?",
+    "fr": "Carte de personnage ?",
+    "de": "Charakterkarte?",
+    "ja": "キャラクターカードは？"
+   },
+   "a": {
+    "en": "/ign shows the card of your verified Main (only verified characters are shown). Claim a character with /ignconfig → Link Lodestone or My Settings → IGN Card: paste the pingway- code into your Lodestone profile text, then verify. 2 characters are free, up to 20 with Supporter Perks; pick one as ⭐ Main. Under each character, switches turn the collection stats on the card on or off (data by FFXIV Collect).",
+    "fr": "/ign affiche la carte de ton personnage principal vérifié (seuls les personnages vérifiés sont affichés). Revendique un personnage avec /ignconfig → Lier le Lodestone ou Mes paramètres → Carte IGN : colle le code pingway- dans le texte de ton profil Lodestone, puis vérifie-le. 2 personnages sont gratuits, jusqu'à 20 avec les Avantages de soutien ; choisis-en un comme ⭐ Principal. Sous chaque personnage, des interrupteurs activent ou désactivent les stats de collection sur la carte (données par FFXIV Collect).",
+    "de": "/ign zeigt die Karte deines bestätigten Hauptcharakters (nur bestätigte Charaktere werden angezeigt). Beanspruche einen Charakter mit /ignconfig → Lodestone verknüpfen oder Meine Einstellungen → IGN-Karte: Füg den pingway--Code in den Text deines Lodestone-Profils ein und bestätige ihn dann. 2 Charaktere sind gratis, bis zu 20 mit Unterstützer-Vorteilen; wähle einen als ⭐ Haupt. Unter jedem Charakter schaltest du die Sammlungswerte auf der Karte an oder aus (Daten von FFXIV Collect).",
+    "ja": "/ign は確認済みのメインキャラクターのカードを表示します（表示されるのは確認済みのキャラクターだけです）。/ignconfig → ロードストーン連携 か、マイ設定 → IGNカード でキャラクターを登録します：pingway- コードをLodestoneのプロフィール文に貼り付けて確認してください。無料で2人、サポーター特典があれば最大20人まで登録でき、1人を ⭐ メイン に選びます。各キャラクターの下のスイッチで、カードのコレクション統計をオン/オフできます（データ提供：FFXIV Collect）。"
+   },
+   "k": {
+    "en": "character card ign lodestone profile fflogs tomestone verify verified claim main characters collection stats",
+    "fr": "carte personnage ign lodestone profil fflogs tomestone verifier verifie revendiquer principal personnages collection stats",
+    "de": "charakterkarte charakter karte ign lodestone profil fflogs tomestone bestatigen bestatigt beanspruchen haupt hauptcharakter sammlung sammlungswerte",
+    "ja": "キャラクター カード ign lodestone プロフィール fflogs tomestone 認証 登録 メイン コレクション 統計"
+   },
+   "link": "https://pingway.app/dashboard?tab=settings",
+   "linkLabel": {
+    "en": "My Settings",
+    "fr": "Mes paramètres",
+    "de": "Meine Einstellungen",
+    "ja": "マイ設定"
+   }
+  },
+  {
+   "id": "f46",
+   "q": {
+    "en": "Polls?",
+    "fr": "Sondages ?",
+    "de": "Umfragen?",
+    "ja": "投票（アンケート）は？"
+   },
+   "a": {
+    "en": "Use /poll in Discord. When you are logged in, the homepage can also show a poll from Pingway: you vote once, the results show after you vote, and \"Change answer\" lets you pick again while the poll is open.",
+    "fr": "Utilise /poll dans Discord. Quand tu es connecté, la page d'accueil peut aussi afficher un sondage de Pingway : tu votes une fois, les résultats s'affichent après ton vote, et « Changer de réponse » te permet de rechoisir tant que le sondage est ouvert.",
+    "de": "Nutze /poll in Discord. Wenn du angemeldet bist, kann die Startseite auch eine Umfrage von Pingway zeigen: Du stimmst einmal ab, die Ergebnisse siehst du nach deiner Stimme, und mit „Antwort ändern“ wählst du neu, solange die Umfrage offen ist.",
+    "ja": "Discordでは /poll を使ってください。ログイン中は、ホームページにPingwayのアンケートが表示されることもあります：投票は1回で、結果は投票後に表示され、アンケートが開いている間は「回答を変更」で選び直せます。"
+   },
+   "k": {
+    "en": "poll polls vote voting homepage website answer results",
+    "fr": "sondage sondages vote voter accueil site reponse resultats",
+    "de": "umfrage umfragen abstimmung startseite website antwort ergebnis ergebnisse",
+    "ja": "投票 アンケート poll ホームページ 回答を変更 結果"
+   }
+  },
+  {
+   "id": "f47",
+   "q": {
+    "en": "How does Pingway Trivia work?",
+    "fr": "Comment marche Pingway Trivia ?",
+    "de": "Wie funktioniert Pingway Trivia?",
+    "ja": "Pingwayトリビアの遊び方は？"
+   },
+   "a": {
+    "en": "Type /trivia in a server with Pingway. Each of the 6 difficulties (Easy to Ultimate) has its own FFXIV word of the day, the same for everyone. Each box is one letter; press Guess and type the whole answer (case, accents, spaces and symbols don't matter). A wrong guess shows one more letter, Hint gives a clue. You can solve one word a day in all servers together. Giving up or running out of guesses locks that difficulty for the day, but you can still try another. New words at 0:00 JST. You can also play on the website: Dashboard → Trivia → Play today's trivia, with the same streak, bits and leaderboards (one solve a day counts for both). After solving, Share posts your result to your servers.",
+    "fr": "Tape /trivia sur un serveur avec Pingway. Chacune des 6 difficultés (de Facile à Fatal) a son propre mot FFXIV du jour, le même pour tout le monde. Chaque case est une lettre ; appuie sur Deviner et tape la réponse entière (majuscules, accents, espaces et symboles ne comptent pas). Une mauvaise réponse dévoile une lettre de plus, Indice donne un indice. Tu peux trouver un mot par jour, tous serveurs confondus. Abandonner ou épuiser tes essais bloque cette difficulté pour la journée, mais tu peux en essayer une autre. Nouveaux mots à 0:00 JST. Tu peux aussi jouer sur le site : Tableau de bord → Trivia → Joue au Trivia du jour, avec la même série, les mêmes bits et les mêmes classements (une seule réussite par jour compte pour les deux). Après avoir trouvé, Partager publie ton résultat sur tes serveurs.",
+    "de": "Tippe /trivia auf einem Server mit Pingway. Jeder der 6 Schwierigkeitsgrade (von Leicht bis Fatal) hat sein eigenes FFXIV-Wort des Tages, für alle gleich. Jedes Feld ist ein Buchstabe; drücke Raten und tippe die ganze Antwort (Groß-/Kleinschreibung, Akzente, Leerzeichen und Symbole sind egal). Ein falscher Versuch zeigt einen Buchstaben mehr, Tipp gibt einen Hinweis. Du kannst ein Wort pro Tag lösen, über alle Server hinweg. Aufgeben oder keine Versuche mehr sperrt diesen Schwierigkeitsgrad für den Tag, aber du kannst einen anderen probieren. Neue Wörter um 0:00 JST. Du kannst auch auf der Website spielen: Dashboard → Trivia → Spiel das heutige Trivia, mit derselben Serie, denselben Bits und Ranglisten (ein gelöstes Wort pro Tag gilt für beides). Nach dem Lösen postet Teilen dein Ergebnis auf deinen Servern.",
+    "ja": "Pingwayがいるサーバーで /trivia と入力してください。6つの難易度（イージーからアルティメットまで）それぞれに、みんな共通の今日のFFXIVの単語があります。マス1つが1文字です。「回答」を押して答え全体を入力してください（大文字小文字、アクセント、スペース、記号は区別しません）。間違えると1文字多く表示され、「ヒント」で手がかりがもらえます。単語を当てられるのは全サーバー合わせて1日1つです。ギブアップするか回答回数を使い切るとその難易度はその日終わりですが、別の難易度には挑戦できます。新しい単語は0:00 JSTに出ます。ウェブサイトでも遊べます：ダッシュボード → トリビア → 今日のTriviaをプレイ。連続記録、ビット、ランキングは共通です（1日1回の正解は両方で共通）。正解したら「シェア」で結果をサーバーに投稿できます。"
+   },
+   "k": {
+    "en": "trivia guess word game daily puzzle wordle play difficulty hint give up website site dashboard share",
+    "fr": "trivia deviner mot jeu quotidien puzzle wordle jouer difficulte indice abandonner site tableau partager",
+    "de": "trivia raten wort spiel taglich ratsel wordle spielen schwierigkeit tipp aufgeben website dashboard teilen",
+    "ja": "トリビア 当てる 単語 ゲーム 毎日 パズル wordle 遊び方 難易度 ヒント ギブアップ ウェブサイト サイト ダッシュボード シェア"
+   },
+   "link": "https://pingway.app/dashboard?tab=trivia",
+   "linkLabel": {
+    "en": "Trivia",
+    "fr": "Trivia",
+    "de": "Trivia",
+    "ja": "トリビア"
+   }
+  },
+  {
+   "id": "f48",
+   "q": {
+    "en": "How do Trivia bits, streaks and seasons work?",
+    "fr": "Comment marchent les bits, les séries et les saisons du Trivia ?",
+    "de": "Wie funktionieren Trivia-Bits, Serien und Saisons?",
+    "ja": "トリビアのビット、連続記録、シーズンの仕組みは？"
+   },
+   "a": {
+    "en": "Solving gives bits: base × (2 − (hints + wrong guesses) ÷ guess limit), never below the base (Easy 1, Normal 2, Hard 4, Extreme 6, Savage 10, Ultimate 20), so a perfect solve gives double. Solving on days in a row builds a streak, with bonuses at 5, 10, 15, 20 and 30 days (+10 to +60 bits). Streaks and the monthly leaderboard start again on the 1st of each month (JST); all-time bits stay.",
+    "fr": "Trouver un mot donne des bits : base × (2 − (indices + mauvaises réponses) ÷ limite d'essais), jamais moins que la base (Facile 1, Normal 2, Difficile 4, Extrême 6, Sadique 10, Fatal 20) : un sans-faute donne donc le double. Trouver plusieurs jours d'affilée crée une série, avec des bonus à 5, 10, 15, 20 et 30 jours (+10 à +60 bits). Les séries et le classement mensuel repartent de zéro le 1er de chaque mois (JST) ; les bits de tous les temps restent.",
+    "de": "Lösen gibt Bits: Basis × (2 − (Tipps + falsche Versuche) ÷ Versuchslimit), nie weniger als die Basis (Leicht 1, Normal 2, Schwer 4, Extrem 6, Episch 10, Fatal 20) – eine perfekte Lösung gibt also das Doppelte. Wer an aufeinanderfolgenden Tagen löst, baut eine Serie auf, mit Boni bei 5, 10, 15, 20 und 30 Tagen (+10 bis +60 Bits). Serien und die Monatsrangliste beginnen am 1. jedes Monats (JST) neu; die Gesamt-Bits bleiben.",
+    "ja": "正解するとビットがもらえます：基本値 ×（2 −（ヒント＋不正解の数）÷ 回答上限）で、基本値（イージー1、ノーマル2、ハード4、エクストリーム6、零式10、絶20）を下回ることはありません。ノーミスなら2倍です。連続した日に正解すると連続記録になり、5、10、15、20、30日でボーナス（+10〜+60ビット）があります。連続記録と月間ランキングは毎月1日（JST）にリセットされ、全期間のビットは残ります。"
+   },
+   "k": {
+    "en": "trivia bits points streak season month monthly bonus leaderboard score",
+    "fr": "trivia bits points serie saison mois mensuel bonus classement score",
+    "de": "trivia bits punkte serie saison monat monatlich bonus rangliste",
+    "ja": "トリビア ビット ポイント 連続 シーズン 月間 ボーナス ランキング"
+   },
+   "link": "https://pingway.app/dashboard?tab=trivia",
+   "linkLabel": {
+    "en": "Trivia",
+    "fr": "Trivia",
+    "de": "Trivia",
+    "ja": "トリビア"
+   }
+  },
+  {
+   "id": "f49",
+   "q": {
+    "en": "Can I hide myself from the Trivia leaderboards?",
+    "fr": "Puis-je me cacher des classements Trivia ?",
+    "de": "Kann ich mich in den Trivia-Ranglisten verbergen?",
+    "ja": "トリビアのランキングに表示しないようにできる？"
+   },
+   "a": {
+    "en": "Yes: My Settings → Pingway Trivia → \"Hide me from Trivia leaderboards\". You can still play and earn bits. A server's leaderboard only lists people who played /trivia in that server.",
+    "fr": "Oui : Mes paramètres → Pingway Trivia → « Me cacher des classements Trivia ». Tu peux toujours jouer et gagner des bits. Le classement d'un serveur ne liste que les personnes qui ont joué à /trivia sur ce serveur.",
+    "de": "Ja: Meine Einstellungen → Pingway Trivia → „Mich in Trivia-Ranglisten verbergen“. Du kannst weiter spielen und Bits verdienen. Die Rangliste eines Servers zeigt nur Leute, die auf diesem Server /trivia gespielt haben.",
+    "ja": "はい：マイ設定 → Pingwayトリビア →「トリビアのランキングに表示しない」。プレイやビットの獲得は今まで通りできます。サーバーのランキングには、そのサーバーで /trivia を遊んだ人だけが表示されます。"
+   },
+   "k": {
+    "en": "trivia hide leaderboard privacy name remove anonymous",
+    "fr": "trivia cacher classement confidentialite nom retirer anonyme",
+    "de": "trivia verbergen rangliste privatsphare name entfernen anonym",
+    "ja": "トリビア 非表示 ランキング プライバシー 名前 匿名"
+   },
+   "link": "https://pingway.app/dashboard?tab=settings#trivia",
+   "linkLabel": {
+    "en": "My Settings",
+    "fr": "Mes paramètres",
+    "de": "Meine Einstellungen",
+    "ja": "マイ設定"
+   }
+  },
+  {
+   "id": "f50",
+   "q": {
+    "en": "How do I chat with Pingway's AI?",
+    "fr": "Comment discuter avec l'IA de Pingway ?",
+    "de": "Wie chatte ich mit Pingways KI?",
+    "ja": "PingwayのAIと話すには？"
+   },
+   "a": {
+    "en": "Only in the AI channel an admin set with /ailistenhere (one per server). Running it in another channel moves the AI there.",
+    "fr": "Seulement dans le salon IA qu'un admin a choisi avec /ailistenhere (un par serveur). Le lancer dans un autre salon y déplace l'IA.",
+    "de": "Nur im KI-Kanal, den ein Admin mit /ailistenhere festgelegt hat (einer pro Server). Wird der Befehl in einem anderen Kanal ausgeführt, zieht die KI dorthin um.",
+    "ja": "管理者が /ailistenhere で設定したAIチャンネル（1サーバーに1つ）だけで話せます。別のチャンネルで実行すると、AIはそこに移動します。"
+   },
+   "k": {
+    "en": "ai chat talk assistant ailistenhere",
+    "fr": "ia discuter parler assistant ailistenhere",
+    "de": "ki chat reden assistent ailistenhere",
+    "ja": "ai 話す チャット アシスタント ailistenhere"
+   }
+  },
+  {
+   "id": "f51",
+   "q": {
+    "en": "How do I clear Pingway's DMs?",
+    "fr": "Comment effacer les MP de Pingway ?",
+    "de": "Wie lösche ich Pingways DMs?",
+    "ja": "PingwayのDMを消すには？"
+   },
+   "a": {
+    "en": "Use /clearbotdms.",
+    "fr": "Utilise /clearbotdms.",
+    "de": "Nutze /clearbotdms.",
+    "ja": "/clearbotdms を使ってください。"
+   },
+   "k": {
+    "en": "clear dms delete messages clean clearbotdms",
+    "fr": "effacer mp supprimer messages nettoyer clearbotdms",
+    "de": "dms loschen nachrichten aufraumen clearbotdms",
+    "ja": "dm 消す 削除 メッセージ 掃除 clearbotdms"
+   }
+  },
+  {
+   "id": "f52",
+   "q": {
+    "en": "Is Pingway safe? Can I see the code?",
+    "fr": "Pingway est-il sûr ? Puis-je voir le code ?",
+    "de": "Ist Pingway sicher? Kann ich den Code sehen?",
+    "ja": "Pingwayは安全？コードは見られる？"
+   },
+   "a": {
+    "en": "Yes. Pingway's bot code is public on GitHub, so anyone can read exactly what it does and what it stores. The privacy policy explains the data in plain words.",
+    "fr": "Oui. Le code du bot Pingway est public sur GitHub : tout le monde peut lire exactement ce qu'il fait et ce qu'il stocke. La politique de confidentialité explique les données en termes simples.",
+    "de": "Ja. Der Code des Pingway-Bots ist öffentlich auf GitHub, jeder kann also genau nachlesen, was er tut und was er speichert. Die Datenschutzerklärung erklärt die Daten in einfachen Worten.",
+    "ja": "はい。PingwayのボットのコードはGitHubで公開されているので、何をして何を保存しているかを誰でも正確に確認できます。プライバシーポリシーでも、データについてわかりやすく説明しています。"
+   },
+   "k": {
+    "en": "safe safety trust source code open github secure scam virus check",
+    "fr": "sur securite confiance code source ouvert github arnaque virus verifier",
+    "de": "sicher sicherheit vertrauen quellcode code open github betrug virus prufen",
+    "ja": "安全 セキュリティ 信頼 ソースコード コード github 詐欺 ウイルス"
+   },
+   "link": "https://github.com/rkyle27/pingway",
+   "linkLabel": {
+    "en": "Pingway on GitHub",
+    "fr": "Pingway sur GitHub",
+    "de": "Pingway auf GitHub",
+    "ja": "GitHubのPingway"
+   }
+  },
+  {
+   "id": "f53",
+   "q": {
+    "en": "Privacy?",
+    "fr": "Confidentialité ?",
+    "de": "Datenschutz?",
+    "ja": "プライバシーは？"
+   },
+   "a": {
+    "en": "See the privacy policy for what Pingway stores and why.",
+    "fr": "Consulte la politique de confidentialité pour savoir ce que Pingway stocke et pourquoi.",
+    "de": "In der Datenschutzerklärung steht, was Pingway speichert und warum.",
+    "ja": "Pingwayが何をなぜ保存しているかは、プライバシーポリシーをご覧ください。"
+   },
+   "k": {
+    "en": "privacy data delete stored personal policy",
+    "fr": "confidentialite donnees supprimer stockees personnelles politique",
+    "de": "datenschutz daten loschen gespeichert personlich richtlinie",
+    "ja": "プライバシー データ 削除 保存 個人情報 ポリシー"
+   },
+   "link": "https://github.com/rkyle27/pingway/blob/main/privacy.md",
+   "linkLabel": {
+    "en": "Privacy policy",
+    "fr": "Politique de confidentialité",
+    "de": "Datenschutzerklärung",
+    "ja": "プライバシーポリシー"
+   }
+  },
+  {
+   "id": "f54",
+   "q": {
+    "en": "Pingway can't DM me?",
+    "fr": "Pingway ne peut pas m'envoyer de MP ?",
+    "de": "Pingway kann mir keine DMs schicken?",
+    "ja": "PingwayからDMが届かない？"
+   },
+   "a": {
+    "en": "Discord only lets bots DM people who share a server with them. Join a server that has Pingway, and allow DMs from that server (right-click the server → Privacy Settings → Direct Messages).",
+    "fr": "Discord ne permet aux bots d'envoyer des MP qu'aux personnes avec qui ils partagent un serveur. Rejoins un serveur où se trouve Pingway, et autorise les MP de ce serveur (clic droit sur le serveur → Paramètres de confidentialité → Messages privés).",
+    "de": "Discord lässt Bots nur Leuten schreiben, mit denen sie einen Server teilen. Tritt einem Server mit Pingway bei und erlaube DMs von diesem Server (Rechtsklick auf den Server → Privatsphäreeinstellungen → Direktnachrichten).",
+    "ja": "Discordでは、ボットはサーバーを共有している人にしかDMを送れません。Pingwayがいるサーバーに参加し、そのサーバーからのDMを許可してください（サーバーを右クリック → プライバシー設定 → ダイレクトメッセージ）。"
+   },
+   "k": {
+    "en": "dm dms cant cannot doesnt dont wont direct messages blocked receive",
+    "fr": "mp messages prives peut pas recois pas bloques",
+    "de": "dm dms direktnachrichten kann nicht blockiert bekomme keine",
+    "ja": "dm 届かない ダイレクトメッセージ 送れない ブロック"
+   }
+  },
+  {
+   "id": "f55",
+   "q": {
+    "en": "How do welcome cards work?",
+    "fr": "Comment marchent les cartes de bienvenue ?",
+    "de": "Wie funktionieren Willkommenskarten?",
+    "ja": "ウェルカムカードの仕組みは？"
+   },
+   "a": {
+    "en": "An admin runs /welcomehere in a channel and new members get a welcome card there. Design and message are set on the website (Dashboard → My Servers). Under Designs, tick one or more: Default (random bunny cards) and custom designs (with Supporter Perks). Each new member gets a random card from the ticked designs. /welcomehere action: off stops it.",
+    "fr": "Un admin lance /welcomehere dans un salon, et les nouveaux membres y reçoivent une carte de bienvenue. Le design et le message se règlent sur le site (Tableau de bord → Mes serveurs). Sous Designs, coche-en un ou plusieurs : Par défaut (cartes lapin au hasard) et des designs personnalisés (avec les Avantages de soutien). Chaque nouveau membre reçoit une carte au hasard parmi les designs cochés. /welcomehere action: off les arrête.",
+    "de": "Ein Admin führt /welcomehere in einem Kanal aus, und neue Mitglieder bekommen dort eine Willkommenskarte. Design und Nachricht stellst du auf der Website ein (Dashboard → Meine Server). Unter Designs hakst du eins oder mehrere an: Standard (zufällige Hasenkarten) und eigene Designs (mit Unterstützer-Vorteilen). Jedes neue Mitglied bekommt eine zufällige Karte aus den angehakten Designs. /welcomehere action: off schaltet sie ab.",
+    "ja": "管理者がチャンネルで /welcomehere を実行すると、新しいメンバーにそこでウェルカムカードが届きます。デザインとメッセージはウェブサイト（ダッシュボード → マイサーバー）で設定します。「デザイン」で1つ以上にチェックを入れます：デフォルト（ランダムなうさぎカード）と、カスタムデザイン（サポーター特典が必要）。新しいメンバーには、チェックしたデザインからランダムに1枚が届きます。止めるには /welcomehere action: off を使ってください。"
+   },
+   "k": {
+    "en": "welcome card cards welcomehere new member members join greet greeting design random several multiple tick custom designs",
+    "fr": "bienvenue carte cartes welcomehere nouveau nouveaux membre membres arrivee accueil design hasard plusieurs cocher personnalise designs",
+    "de": "willkommen willkommenskarte willkommenskarten karte welcomehere neue mitglieder begrussung design zufallig mehrere anhaken eigene designs",
+    "ja": "ウェルカム ウェルカムカード カード welcomehere 新メンバー 新しいメンバー 歓迎 デザイン ランダム 複数 カスタム"
+   },
+   "link": "https://pingway.app/dashboard?tab=servers",
+   "linkLabel": {
+    "en": "My Servers",
+    "fr": "Mes serveurs",
+    "de": "Meine Server",
+    "ja": "マイサーバー"
+   }
+  },
+  {
+   "id": "f56",
+   "q": {
+    "en": "Can Pingway join voice, read chat aloud or play music?",
+    "fr": "Pingway peut-il rejoindre le vocal, lire le chat à voix haute ou jouer de la musique ?",
+    "de": "Kann Pingway in den Sprachkanal kommen, den Chat vorlesen oder Musik spielen?",
+    "ja": "Pingwayはボイスに参加したり、チャットを読み上げたり、音楽を流せる？"
+   },
+   "a": {
+    "en": "Use /vc to open the voice panel, join a voice channel and press Join. Pingway can read messages aloud and play links (queue of up to 25).",
+    "fr": "Utilise /vc pour ouvrir le panneau vocal, rejoins un salon vocal et appuie sur Rejoindre. Pingway peut lire les messages à voix haute et jouer des liens (file d'attente jusqu'à 25).",
+    "de": "Öffne mit /vc das Sprachpanel, tritt einem Sprachkanal bei und drücke auf Beitreten. Pingway kann Nachrichten vorlesen und Links abspielen (Warteschlange mit bis zu 25).",
+    "ja": "/vc でボイスパネルを開き、ボイスチャンネルに入って「参加」を押してください。Pingwayはメッセージを読み上げたり、リンクを再生したりできます（キューは最大25件）。"
+   },
+   "k": {
+    "en": "voice vc join call read aloud tts text speech music play song songs radio queue link youtube",
+    "fr": "vocal voix vc rejoindre lire haute tts synthese musique jouer chanson radio file lien",
+    "de": "sprachkanal stimme vc beitreten vorlesen tts sprachausgabe musik spielen lied radio warteschlange link",
+    "ja": "ボイス vc 読み上げ 音楽 再生 ラジオ キュー リンク 通話 tts"
+   }
+  },
+  {
+   "id": "f57",
+   "q": {
+    "en": "Can I change how Pingway reads my name or how much it reads?",
+    "fr": "Puis-je changer la façon dont Pingway lit mon nom ou la longueur de ce qu'il lit ?",
+    "de": "Kann ich ändern, wie Pingway meinen Namen vorliest oder wie viel es vorliest?",
+    "ja": "Pingwayが読み上げる名前や読み上げる長さは変えられる？"
+   },
+   "a": {
+    "en": "Yes, on the website: Dashboard → My Settings → Voice (reading nickname and reading length).",
+    "fr": "Oui, sur le site : Tableau de bord → Mes paramètres → Voix (surnom lu et longueur de lecture).",
+    "de": "Ja, auf der Website: Dashboard → Meine Einstellungen → Stimme (vorgelesener Spitzname und Vorleselänge).",
+    "ja": "はい、ウェブサイトのダッシュボード → マイ設定 → ボイスで変えられます（読み上げるニックネームと読み上げの長さ）。"
+   },
+   "k": {
+    "en": "voice read name nickname reads how much length long characters tts vc",
+    "fr": "voix lire nom surnom pseudo longueur caracteres tts vc",
+    "de": "stimme vorlesen name spitzname lange zeichen tts vc",
+    "ja": "読み上げ 名前 ニックネーム 長さ 文字数 ボイス vc"
+   },
+   "link": "https://pingway.app/dashboard?tab=settings#voice",
+   "linkLabel": {
+    "en": "My Settings",
+    "fr": "Mes paramètres",
+    "de": "Meine Einstellungen",
+    "ja": "マイ設定"
+   }
+  },
+  {
+   "id": "f58",
+   "q": {
+    "en": "How do I change Pingway's language?",
+    "fr": "Comment changer la langue de Pingway ?",
+    "de": "Wie ändere ich Pingways Sprache?",
+    "ja": "Pingwayの言語を変えるには？"
+   },
+   "a": {
+    "en": "Bot: /pingway language: English (or Français, Deutsch, 日本語), or Auto to follow your Discord language (also in Dashboard → My Settings → Bot language). Website: the language button next to Login (bottom of the ☰ menu on phones). Server: admins can set the language of Pingway's posts in that server at the top of the server settings (Dashboard → My Servers → Server language).",
+    "fr": "Bot : /pingway langue: Français (ou English, Deutsch, 日本語), ou Auto pour suivre la langue de ton Discord (aussi dans Tableau de bord → Mes paramètres → Langue du bot). Site : le bouton de langue à côté de Connexion (en bas du menu ☰ sur téléphone). Serveur : les admins peuvent choisir la langue des messages de Pingway sur ce serveur, en haut des paramètres du serveur (Tableau de bord → Mes serveurs → Langue du serveur).",
+    "de": "Bot: /pingway sprache: Deutsch (oder English, Français, 日本語), oder Auto, um deiner Discord-Sprache zu folgen (auch unter Dashboard → Meine Einstellungen → Bot-Sprache). Website: der Sprachknopf neben Anmelden (auf dem Handy unten im ☰-Menü). Server: Admins können die Sprache der Posts von Pingway auf diesem Server oben in den Servereinstellungen festlegen (Dashboard → Meine Server → Serversprache).",
+    "ja": "ボット：/pingway 言語: 日本語（または English、Français、Deutsch）、またはDiscordの言語に合わせる「自動」（ダッシュボード → マイ設定 → ボットの言語でも変えられます）。ウェブサイト：ログインの横にある言語ボタン（スマホでは☰メニューのいちばん下）。サーバー：管理者は、サーバー設定のいちばん上（ダッシュボード → マイサーバー → サーバーの言語）で、そのサーバーでのPingwayの投稿の言語を設定できます。"
+   },
+   "k": {
+    "en": "language languages change english french german japanese website bot pingway en fr de jp auto posts server",
+    "fr": "langue langues changer anglais francais allemand japonais site bot messages serveur",
+    "de": "sprache sprachen andern englisch franzosisch deutsch japanisch website bot serversprache posts server",
+    "ja": "言語 言葉 変更 英語 フランス語 ドイツ語 日本語 ウェブサイト ボット サーバーの言語"
+   },
+   "link": "https://pingway.app/dashboard?tab=settings#botlang",
+   "linkLabel": {
+    "en": "My Settings",
+    "fr": "Mes paramètres",
+    "de": "Meine Einstellungen",
+    "ja": "マイ設定"
+   }
+  },
+  {
+   "id": "f59",
+   "q": {
+    "en": "What are Best sellers and Buy & sell?",
+    "fr": "C'est quoi Meilleures ventes et Achat-revente ?",
+    "de": "Was sind Bestseller und Kauf & Verkauf?",
+    "ja": "売れ筋と転売って何？"
+   },
+   "a": {
+    "en": "/bestsellers shows the top selling items on your world or data center. /buysell finds popular items that are cheaper on another world than on yours. Also on the website: Dashboard → Retainers → Market tools.",
+    "fr": "/bestsellers affiche les objets qui se vendent le mieux sur ton monde ou ton centre de données. /buysell trouve des objets populaires moins chers sur un autre monde que sur le tien. Aussi sur le site : Tableau de bord → Servants → Outils de marché.",
+    "de": "/bestsellers zeigt die meistverkauften Gegenstände auf deiner Welt oder deinem Datenzentrum. /buysell findet beliebte Gegenstände, die auf einer anderen Welt billiger sind als auf deiner. Auch auf der Website: Dashboard → Gehilfen → Marktwerkzeuge.",
+    "ja": "/bestsellers はあなたのワールドやデータセンターでよく売れているアイテムを表示します。/buysell は、人気のアイテムのうち自分のワールドより別のワールドのほうが安いものを探します。ウェブサイトのダッシュボード → リテイナー → マーケットツールでも使えます。"
+   },
+   "k": {
+    "en": "best sellers bestsellers buy sell buysell top selling cheaper world deal deals market tools",
+    "fr": "meilleures ventes bestsellers achat revente acheter vendre buysell moins cher monde outils marche",
+    "de": "bestseller bestsellers kauf verkauf kaufen verkaufen buysell billiger welt marktwerkzeuge",
+    "ja": "売れ筋 転売 bestsellers buysell 安い ワールド マーケットツール"
+   },
+   "link": "https://pingway.app/dashboard?tab=retainers#market",
+   "linkLabel": {
+    "en": "Retainers",
+    "fr": "Servants",
+    "de": "Gehilfen",
+    "ja": "リテイナー"
+   }
+  },
+  {
+   "id": "f60",
+   "q": {
+    "en": "What is Sciondex?",
+    "fr": "C'est quoi Sciondex ?",
+    "de": "Was ist Sciondex?",
+    "ja": "Sciondexって何？"
+   },
+   "a": {
+    "en": "/sciondex: recruit NPCs, build a party and fight bosses.",
+    "fr": "/sciondex : recrute des PNJ, forme une équipe et affronte des boss.",
+    "de": "/sciondex: Rekrutiere NPCs, stell eine Gruppe zusammen und kämpfe gegen Bosse.",
+    "ja": "/sciondex：NPCを仲間にしてパーティを組み、ボスと戦います。"
+   },
+   "k": {
+    "en": "sciondex scion dex npc npcs recruit party boss bosses fight battle game",
+    "fr": "sciondex pnj recruter equipe boss combat combattre jeu",
+    "de": "sciondex npc npcs rekrutieren gruppe boss bosse kampf kampfen spiel",
+    "ja": "sciondex npc 仲間 パーティ ボス バトル ゲーム"
+   }
+  },
+  {
+   "id": "f61",
+   "q": {
+    "en": "What is /nissi?",
+    "fr": "C'est quoi /nissi ?",
+    "de": "Was ist /nissi?",
+    "ja": "「/nissi」って何？"
+   },
+   "a": {
+    "en": "A TEA (The Epic of Alexander) Nissi quiz that tests how to do the 3rd and 4th Nisi passes: DPS passing to / taking from supports.",
+    "fr": "Un quiz sur les Nissi de TEA (The Epic of Alexander) qui teste comment faire les 3e et 4e passes de Nisi : les DPS qui passent aux supports ou qui prennent des supports.",
+    "de": "Ein Nissi-Quiz zu TEA (The Epic of Alexander), das prüft, wie die 3. und 4. Nisi-Übergabe läuft: DPS geben an Supporter ab bzw. übernehmen von ihnen.",
+    "ja": "TEA（絶アレキサンダー討滅戦）のニッシのクイズで、3回目と4回目のニッシの受け渡し（DPSがサポートに渡す／サポートから受け取る）のやり方を確認できます。"
+   },
+   "k": {
+    "en": "nissi nisi tea alexander quiz pass passes dps healer tank practice",
+    "fr": "nissi nisi tea alexander quiz passe passes dps entrainement",
+    "de": "nissi nisi tea alexander quiz ubergabe dps ubung",
+    "ja": "nissi ニッシ 絶アレキ アレキサンダー クイズ 受け渡し dps 練習"
+   }
+  },
+  {
+   "id": "f62",
+   "q": {
+    "en": "Can Pingway remind me of things?",
+    "fr": "Pingway peut-il me rappeler des choses ?",
+    "de": "Kann Pingway mich an Dinge erinnern?",
+    "ja": "Pingwayにリマインドしてもらえる？"
+   },
+   "a": {
+    "en": "Yes, in the AI channel (set by an admin with /ailistenhere). Say e.g. \"Remind me to do roulettes in 2 hours\" or \"Add task Buy Pots\".",
+    "fr": "Oui, dans le salon IA (choisi par un admin avec /ailistenhere). Dis par exemple « Rappelle-moi de faire les roulettes dans 2 heures » ou « Ajoute la tâche Acheter des potions ».",
+    "de": "Ja, im KI-Kanal (von einem Admin mit /ailistenhere festgelegt). Sag zum Beispiel „Erinnere mich in 2 Stunden an die Zufallsinhalte“ oder „Füge die Aufgabe Tränke kaufen hinzu“.",
+    "ja": "はい、AIチャンネル（管理者が /ailistenhere で設定）で頼めます。たとえば「2時間後にルーレットをやるようにリマインドして」や「タスクにポーション購入を追加して」と言ってください。"
+   },
+   "k": {
+    "en": "remind reminder reminders remember task tasks later alarm",
+    "fr": "rappel rappels rappeler souvenir tache taches plus tard alarme",
+    "de": "erinnern erinnerung erinnerungen aufgabe aufgaben spater wecker",
+    "ja": "リマインド リマインダー 思い出させ タスク 後で 通知"
+   }
+  },
+  {
+   "id": "f63",
+   "q": {
+    "en": "How do I make the AI forget our chat?",
+    "fr": "Comment faire oublier notre discussion à l'IA ?",
+    "de": "Wie bringe ich die KI dazu, unseren Chat zu vergessen?",
+    "ja": "AIに会話を忘れさせるには？"
+   },
+   "a": {
+    "en": "Say \"release recollection\" in the AI channel. It wipes the short chat memory (a bot restart also clears it).",
+    "fr": "Dis « release recollection » dans le salon IA. Ça efface sa courte mémoire de discussion (un redémarrage du bot l'efface aussi).",
+    "de": "Sag „release recollection“ im KI-Kanal. Das löscht ihr kurzes Chat-Gedächtnis (ein Neustart des Bots löscht es ebenfalls).",
+    "ja": "AIチャンネルで「release recollection」と言ってください。短い会話の記憶が消えます（ボットの再起動でも消えます）。"
+   },
+   "k": {
+    "en": "forget memory wipe release recollection ai history",
+    "fr": "oublier memoire effacer release recollection ia historique",
+    "de": "vergessen gedachtnis loschen release recollection ki verlauf",
+    "ja": "忘れ 記憶 消す release recollection ai 履歴"
+   }
+  },
+  {
+   "id": "f64",
+   "q": {
+    "en": "Where is the full command list or guide?",
+    "fr": "Où trouver la liste complète des commandes ou un guide ?",
+    "de": "Wo finde ich die komplette Befehlsliste oder eine Anleitung?",
+    "ja": "コマンドの一覧やガイドはどこ？"
+   },
+   "a": {
+    "en": "See the Commands page and the Documentation page.",
+    "fr": "Consulte la page Commandes et la page Documentation.",
+    "de": "Schau auf der Seite Befehle und der Seite Dokumentation nach.",
+    "ja": "コマンドのページとドキュメントのページをご覧ください。"
+   },
+   "k": {
+    "en": "full command list guide documentation docs manual all commands",
+    "fr": "liste complete commandes guide documentation manuel",
+    "de": "komplette befehlsliste befehle liste anleitung dokumentation handbuch",
+    "ja": "コマンド 一覧 ガイド ドキュメント 説明書 使い方"
+   },
+   "link": "https://pingway.app/commands",
+   "linkLabel": {
+    "en": "Commands",
+    "fr": "Commandes",
+    "de": "Befehle",
+    "ja": "コマンド"
+   }
+  },
+  {
+   "id": "f65",
+   "q": {
+    "en": "Where are the rules for using Pingway?",
+    "fr": "Où sont les règles d'utilisation de Pingway ?",
+    "de": "Wo stehen die Regeln für die Nutzung von Pingway?",
+    "ja": "Pingwayを使うときのルールはどこ？"
+   },
+   "a": {
+    "en": "In the Terms and Conditions; supporter points and perks are covered by the Supporter Terms.",
+    "fr": "Dans les Conditions générales ; les points et avantages de soutien sont couverts par les Conditions de soutien.",
+    "de": "In den Allgemeinen Geschäftsbedingungen; Unterstützerpunkte und -vorteile regeln die Unterstützer-Bedingungen.",
+    "ja": "利用規約にあります。サポーターポイントと特典についてはサポーター規約をご覧ください。"
+   },
+   "k": {
+    "en": "rules rule terms conditions tos allowed usage",
+    "fr": "regles regle conditions generales utilisation cgu autorise",
+    "de": "regeln regel bedingungen agb nutzung erlaubt",
+    "ja": "ルール 規約 利用規約 条件 決まり"
+   },
+   "link": "https://pingway.app/terms",
+   "linkLabel": {
+    "en": "Terms and Conditions",
+    "fr": "Conditions générales",
+    "de": "Allgemeine Geschäftsbedingungen",
+    "ja": "利用規約"
+   }
+  },
+  {
+   "id": "f66",
+   "q": {
+    "en": "Where are My Settings and My Servers now?",
+    "fr": "Où sont Mes paramètres et Mes serveurs maintenant ?",
+    "de": "Wo sind Meine Einstellungen und Meine Server jetzt?",
+    "ja": "マイ設定とマイサーバーはどこに移った？"
+   },
+   "a": {
+    "en": "Log in and open Dashboard in the top menu. Its tabs: My Servers · My Settings · Retainers · Trivia · Boards. Old links still work.",
+    "fr": "Connecte-toi et ouvre Tableau de bord dans le menu du haut. Ses onglets : Mes serveurs · Mes paramètres · Servants · Trivia · Tableaux. Les anciens liens marchent toujours.",
+    "de": "Melde dich an und öffne Dashboard im oberen Menü. Seine Tabs: Meine Server · Meine Einstellungen · Gehilfen · Trivia · Pinnwände. Alte Links funktionieren weiterhin.",
+    "ja": "ログインして、上のメニューのダッシュボードを開いてください。タブは マイサーバー · マイ設定 · リテイナー · トリビア · 掲示板 です。以前のリンクもそのまま使えます。"
+   },
+   "k": {
+    "en": "dashboard now moved move gone disappeared vanished tab tabs old link links bookmark page pages menu",
+    "fr": "tableau bord maintenant deplace deplaces disparu disparus onglet onglets ancien anciens lien liens favori menu",
+    "de": "dashboard jetzt verschoben umgezogen weg verschwunden tab tabs reiter alte alten link links lesezeichen menu",
+    "ja": "ダッシュボード どこに移 移動 移った 消えた なくなった マイサーバー タブ 以前のリンク ブックマーク"
+   },
+   "link": "https://pingway.app/dashboard",
+   "linkLabel": {
+    "en": "Dashboard",
+    "fr": "Tableau de bord",
+    "de": "Dashboard",
+    "ja": "ダッシュボード"
+   }
+  },
+  {
+   "id": "f67",
+   "q": {
+    "en": "How do I get Pingway news in my server?",
+    "fr": "Comment recevoir les actus Pingway sur mon serveur ?",
+    "de": "Wie bekomme ich Pingway-News auf meinen Server?",
+    "ja": "サーバーでPingwayのお知らせを受け取るには？"
+   },
+   "a": {
+    "en": "Pingway posts its news in your server's Community Updates channel (Community servers only), from our Help Desk's #pingway-news. Give Pingway View Channel and Manage Webhooks in that channel. Or follow #pingway-news yourself from the Help Desk. To stop it: Server Settings → Integrations → Channels Followed.",
+    "fr": "Pingway publie ses actus dans le salon des mises à jour de la communauté de ton serveur (serveurs Communauté seulement), depuis le salon #pingway-news de notre Help Desk. Donne à Pingway les permissions Voir le salon et Gérer les webhooks dans ce salon. Ou suis toi-même #pingway-news depuis le Help Desk. Pour arrêter : Paramètres du serveur → Intégrations → Salons suivis.",
+    "de": "Pingway postet seine News im Community-Updates-Kanal deines Servers (nur Community-Server), aus dem Kanal #pingway-news unseres Help Desks. Gib Pingway dort „Kanal ansehen“ und „Webhooks verwalten“. Oder folge #pingway-news selbst im Help Desk. Zum Beenden: Servereinstellungen → Integrationen → Gefolgte Kanäle.",
+    "ja": "Pingwayは、Help Deskの #pingway-news のお知らせを、あなたのサーバーのコミュニティ更新チャンネルに投稿します（コミュニティサーバーのみ）。そのチャンネルでPingwayに「チャンネルを見る」と「ウェブフックの管理」の権限を付けてください。Help Deskで自分で #pingway-news をフォローすることもできます。止めるには：サーバー設定 → 連携サービス → フォロー中のチャンネル。"
+   },
+   "k": {
+    "en": "news pingway-news announcement announcements community update updates follow followed following unfollow webhook webhooks integrations changelog",
+    "fr": "actus actualites nouveautes pingway-news annonce annonces communaute mises jour suivre suivi suivis webhook webhooks integrations",
+    "de": "news neuigkeiten pingway-news ankundigung ankundigungen community updates folgen gefolgt gefolgte webhook webhooks integrationen",
+    "ja": "pingwayのお知らせ pingwayのニュース お知らせを受け取 お知らせ pingway-news アナウンス コミュニティ更新 フォロー ウェブフック 連携サービス アップデート情報"
+   },
+   "link": "https://discord.gg/DDdV48X4G2",
+   "linkLabel": {
+    "en": "Pingway Help Desk",
+    "fr": "support de Pingway",
+    "de": "Pingway-Hilfe-Server",
+    "ja": "Pingwayヘルプデスク"
+   }
+  },
+  {
+   "id": "f68",
+   "q": {
+    "en": "Where can I see yesterday's Trivia answers?",
+    "fr": "Où voir les réponses Trivia d'hier ?",
+    "de": "Wo sehe ich die Trivia-Antworten von gestern?",
+    "ja": "昨日のトリビアの答えはどこで見られる？"
+   },
+   "a": {
+    "en": "Dashboard → Trivia → Yesterday's words. Click a word to peel its cover off, then hover over it (or tap it) for its info.",
+    "fr": "Tableau de bord → Trivia → Les mots d'hier. Clique sur un mot pour retirer son cache, puis survole-le (ou touche-le) pour voir ses infos.",
+    "de": "Dashboard → Trivia → Die Wörter von gestern. Klicke auf ein Wort, um seine Abdeckung abzuziehen, und fahre dann mit der Maus darüber (oder tippe darauf), um seine Infos zu sehen.",
+    "ja": "ダッシュボード → トリビア → 昨日のワード。ワードをクリックするとカバーがはがれ、マウスを乗せる（またはタップする）とそのワードの情報が見られます。"
+   },
+   "k": {
+    "en": "yesterday yesterdays previous past last answer answers solution solutions solved reveal revealed peel cover trivia",
+    "fr": "hier reponse reponses solution solutions precedent precedents passe reveler cache trivia",
+    "de": "gestern antwort antworten losung losungen vorherige vorherigen letzte aufdecken abdeckung trivia",
+    "ja": "昨日 前日 答え 正解 カバー めくる はがす"
+   },
+   "link": "https://pingway.app/dashboard?tab=trivia",
+   "linkLabel": {
+    "en": "Trivia",
+    "fr": "Trivia",
+    "de": "Trivia",
+    "ja": "トリビア"
+   }
+  },
+  {
+   "id": "f69",
+   "q": {
+    "en": "Why didn't I get an undercut ping right away?",
+    "fr": "Pourquoi je n'ai pas reçu tout de suite l'alerte de sous-cote ?",
+    "de": "Warum kam mein Unterbietungs-Alarm nicht sofort?",
+    "ja": "値下げのアラートがすぐに届かなかったのはなぜ？"
+   },
+   "a": {
+    "en": "While you're repricing your own retainers, Pingway waits about 5 minutes after your last price change, then checks fresh prices before sending a DM, so you don't get false pings.",
+    "fr": "Pendant que tu changes les prix de tes propres servants, Pingway attend environ 5 minutes après ton dernier changement de prix, puis vérifie les prix à jour avant d'envoyer un MP, pour t'éviter les fausses alertes.",
+    "de": "Während du die Preise deiner eigenen Gehilfen änderst, wartet Pingway etwa 5 Minuten nach deiner letzten Preisänderung und prüft dann aktuelle Preise, bevor es eine DM schickt. So bekommst du keine falschen Alarme.",
+    "ja": "自分のリテイナーの価格を変更している間、Pingwayは最後の価格変更から約5分待ち、最新の価格を確認してからDMを送ります。誤ったアラートを防ぐためです。"
+   },
+   "k": {
+    "en": "undercut late delay delayed wait waiting right away immediately instantly instant reprice repricing repriced own retainer false wrong fake ping pings marketping",
+    "fr": "sous-cote souscote battu retard attendre attente suite immediat immediatement directement propres servant fausse fausses",
+    "de": "unterbieten unterboten unterbietung unterbietungs-alarm verzogert verspatet spat warten wartet sofort direkt preisanderung eigene gehilfe falsch falsche",
+    "ja": "すぐに届かな すぐ 遅い 遅れ 待つ 届かなかった 価格変更 値段を変え 誤報 誤った"
+   },
+   "link": "https://pingway.app/dashboard?tab=retainers",
+   "linkLabel": {
+    "en": "Retainers",
+    "fr": "Servants",
+    "de": "Gehilfen",
+    "ja": "リテイナー"
+   }
+  },
+  {
+   "id": "f70",
+   "q": {
+    "en": "How do I change the theme or turn off the moving background?",
+    "fr": "Comment changer le thème ou couper le fond animé ?",
+    "de": "Wie ändere ich das Design oder schalte den bewegten Hintergrund aus?",
+    "ja": "テーマを変えたり、動く背景をオフにするには？"
+   },
+   "a": {
+    "en": "Use the Theme menu next to the language button (in the ☰ menu on phones). Theme: Auto (by date) follows the seasons and holidays by your local date, or pick one yourself (Classic is the default). Day / Night: Day, Night, or Auto (your time) by your local time. Effects: Off stops the moving background. If your device asks for less motion, the effects stay still anyway. Your choice is remembered in this browser.",
+    "fr": "Utilise le menu Thème à côté du bouton de langue (dans le menu ☰ sur téléphone). Thème : Auto (selon la date) suit les saisons et les fêtes selon ta date locale, ou choisis-en un toi-même (Classique par défaut). Jour / Nuit : Jour, Nuit, ou Auto (ton heure) selon ton heure locale. Effets : Désactivés arrête le fond animé. Si ton appareil demande moins d'animations, les effets restent immobiles de toute façon. Ton choix est retenu dans ce navigateur.",
+    "de": "Nutze das Menü Design neben dem Sprachknopf (auf dem Handy im ☰-Menü). Design: Automatisch (nach Datum) folgt den Jahreszeiten und Feiertagen nach deinem Datum, oder du wählst selbst eins (Standard ist Klassisch). Tag / Nacht: Tag, Nacht oder Automatisch (deine Uhrzeit) nach deiner Uhrzeit. Effekte: Aus stoppt den bewegten Hintergrund. Wenn dein Gerät weniger Bewegung möchte, bleiben die Effekte sowieso stehen. Deine Wahl wird in diesem Browser gespeichert.",
+    "ja": "言語ボタンの横にある「テーマ」メニューを使ってください（スマホでは☰メニューの中）。テーマ：「自動（日付で切り替え）」はあなたの日付に合わせて季節や行事のテーマになります。自分で選ぶこともできます（デフォルトは「クラシック」）。昼 / 夜：「昼」「夜」、またはあなたの時刻で切り替わる「自動（あなたの時刻）」。エフェクト：「オフ」で動く背景が止まります。端末で動きを減らす設定がオンなら、エフェクトはもともと静止表示です。選んだ設定はこのブラウザに保存されます。"
+   },
+   "k": {
+    "en": "theme themes look background moving animation animations effects effect motion day night dark light classic season seasonal auto colors",
+    "fr": "theme themes apparence fond anime animation animations effets mouvement jour nuit sombre clair classique saison auto couleurs",
+    "de": "design designs theme aussehen hintergrund bewegt bewegung animation animationen effekte tag nacht dunkel hell klassisch jahreszeit auto farben",
+    "ja": "テーマ 背景 動く アニメーション エフェクト 昼夜 ダーク ライト クラシック 季節 見た目 デザイン"
+   }
+  },
+  {
+   "id": "f71",
+   "q": {
+    "en": "How do I verify (claim) my character?",
+    "fr": "Comment vérifier (revendiquer) mon personnage ?",
+    "de": "Wie bestätige (beanspruche) ich meinen Charakter?",
+    "ja": "キャラクターを確認（登録）するには？"
+   },
+   "a": {
+    "en": "On the website: My Settings → IGN Card, paste your Lodestone character link and click 🔐 Get claim code. Paste the pingway- code anywhere in your Lodestone character profile text, save, then click Check. In Discord: /ignconfig → Link Lodestone, then ✅ Verify. The code works once; the Lodestone can take a few minutes to show changes, and you can remove the code afterwards.",
+    "fr": "Sur le site : Mes paramètres → Carte IGN, colle le lien de ton personnage sur le Lodestone et clique sur 🔐 Obtenir un code. Colle le code pingway- n'importe où dans le texte du profil de ton personnage sur le Lodestone, enregistre, puis clique sur Vérifier. Dans Discord : /ignconfig → Lier le Lodestone, puis ✅ Vérifier. Le code ne marche qu'une fois ; le Lodestone peut mettre quelques minutes à afficher les changements, et tu peux retirer le code ensuite.",
+    "de": "Auf der Website: Meine Einstellungen → IGN-Karte, füg den Link deines Lodestone-Charakters ein und klick auf 🔐 Code holen. Füg den pingway--Code irgendwo in den Text deines Lodestone-Charakterprofils ein, speichere und klick dann auf Prüfen. In Discord: /ignconfig → Lodestone verknüpfen, dann ✅ Prüfen. Der Code funktioniert einmal; der Lodestone kann ein paar Minuten brauchen, bis Änderungen sichtbar sind, und danach kannst du den Code wieder entfernen.",
+    "ja": "ウェブサイト：マイ設定 → IGNカード でLodestoneのキャラクターリンクを貼り付け、「🔐 コードを発行」をクリックします。pingway- コードをLodestoneのキャラクタープロフィールの文章のどこかに貼り付けて保存し、「確認」をクリックします。Discord：/ignconfig → ロードストーン連携 → ✅ 確認。コードは1回だけ使えます。Lodestoneに変更が反映されるまで数分かかることがあり、確認後はコードを消してかまいません。"
+   },
+   "k": {
+    "en": "verify verification verified claim claiming character characters lodestone code bio profile link ownership pingway-",
+    "fr": "verifier verification verifie revendiquer revendication personnage personnages lodestone code profil lien",
+    "de": "bestatigen bestatigung bestatigt verifizieren verifiziert beanspruchen prufen charakter charaktere lodestone code profil link",
+    "ja": "認証 本人確認 キャラクター登録 登録 lodestone ロードストーン コード プロフィール 連携"
+   },
+   "link": "https://pingway.app/dashboard?tab=settings#ign",
+   "linkLabel": {
+    "en": "My Settings",
+    "fr": "Mes paramètres",
+    "de": "Meine Einstellungen",
+    "ja": "マイ設定"
+   }
+  },
+  {
+   "id": "f72",
+   "q": {
+    "en": "Why doesn't /ign show my card?",
+    "fr": "Pourquoi /ign n'affiche pas ma carte ?",
+    "de": "Warum zeigt /ign meine Karte nicht?",
+    "ja": "/ign でカードが表示されないのはなぜ？"
+   },
+   "a": {
+    "en": "/ign only shows verified characters. If yours isn't verified yet (\"Not verified\" in My Settings → IGN Card), click 🔐 Verify, paste the pingway- code into your Lodestone character profile and click Check. Or in Discord: /ignconfig → Link Lodestone → ✅ Verify. Then /ign shows your ⭐ Main.",
+    "fr": "/ign n'affiche que les personnages vérifiés. Si le tien n'est pas encore vérifié (« Non vérifié » dans Mes paramètres → Carte IGN), clique sur 🔐 Vérifier, colle le code pingway- dans le profil de ton personnage sur le Lodestone, puis clique sur Vérifier. Ou dans Discord : /ignconfig → Lier le Lodestone → ✅ Vérifier. Ensuite, /ign affiche ton ⭐ Principal.",
+    "de": "/ign zeigt nur bestätigte Charaktere. Ist deiner noch nicht bestätigt („Nicht bestätigt“ in Meine Einstellungen → IGN-Karte), klick auf 🔐 Bestätigen, füg den pingway--Code in dein Lodestone-Charakterprofil ein und klick auf Prüfen. Oder in Discord: /ignconfig → Lodestone verknüpfen → ✅ Prüfen. Danach zeigt /ign deinen Hauptcharakter (⭐ Haupt).",
+    "ja": "/ign に表示されるのは確認済みのキャラクターだけです。まだ確認していない場合（マイ設定 → IGNカード で「未確認」）、「🔐 確認する」をクリックし、pingway- コードをLodestoneのキャラクタープロフィールに貼り付けて「確認」をクリックしてください。Discordなら /ignconfig → ロードストーン連携 → ✅ 確認。その後、/ign で ⭐ メイン のカードが表示されます。"
+   },
+   "k": {
+    "en": "ign card not showing shown show doesnt missing empty error unverified verified verify",
+    "fr": "ign carte affiche pas affichee manquante vide erreur verifie verifier",
+    "de": "ign karte zeigt nicht angezeigt fehlt leer fehler bestatigt bestatigen",
+    "ja": "ign 表示されない 出ない 未確認 カード"
+   },
+   "link": "https://pingway.app/dashboard?tab=settings#ign",
+   "linkLabel": {
+    "en": "My Settings",
+    "fr": "Mes paramètres",
+    "de": "Meine Einstellungen",
+    "ja": "マイ設定"
+   }
+  },
+  {
+   "id": "f84",
+   "q": {
+    "en": "Why isn't my Tomestone or FFLogs link accepted?",
+    "fr": "Pourquoi mon lien Tomestone ou FFLogs n'est pas accepté ?",
+    "de": "Warum wird mein Tomestone- oder FFLogs-Link nicht angenommen?",
+    "ja": "TomestoneやFFLogsのリンクが受け付けられないのはなぜ？"
+   },
+   "a": {
+    "en": "The link must be for the same character you claimed.\n• Tomestone: use your character's page, e.g. https://tomestone.gg/character//. The number must be your character's Lodestone ID.\n• FFLogs: use https://www.fflogs.com/character/lodestone-id/ (easiest), or https://www.fflogs.com/character/// with your exact world and name.\n• Links with FFLogs' own number (fflogs.com/character/id/…) can't be checked, so use one of the two forms above.\n• Your Lodestone ID is the number in your Lodestone character page address (na.finalfantasyxiv.com/lodestone/character//).",
+    "fr": "Le lien doit être celui du personnage que tu as revendiqué.\n• Tomestone : utilise la page de ton personnage, par ex. https://tomestone.gg/character//. Le nombre doit être l'ID Lodestone de ton personnage.\n• FFLogs : utilise https://www.fflogs.com/character/lodestone-id/ (le plus simple), ou https://www.fflogs.com/character/// avec ton monde et ton nom exacts.\n• Les liens avec le numéro propre à FFLogs (fflogs.com/character/id/…) ne peuvent pas être vérifiés : utilise l'une des deux formes ci-dessus.\n• Ton ID Lodestone est le nombre dans l'adresse de la page de ton personnage sur le Lodestone (na.finalfantasyxiv.com/lodestone/character//).",
+    "de": "Der Link muss zu demselben Charakter gehören, den du beansprucht hast.\n• Tomestone: Nimm die Seite deines Charakters, z. B. https://tomestone.gg/character//. Die Zahl muss die Lodestone-ID deines Charakters sein.\n• FFLogs: Nimm https://www.fflogs.com/character/lodestone-id/ (am einfachsten) oder https://www.fflogs.com/character/// mit deiner genauen Welt und deinem genauen Namen.\n• Links mit der eigenen Nummer von FFLogs (fflogs.com/character/id/…) können nicht geprüft werden, nimm also eine der beiden Formen oben.\n• Deine Lodestone-ID ist die Zahl in der Adresse deiner Charakterseite im Lodestone (na.finalfantasyxiv.com/lodestone/character//).",
+    "ja": "リンクは、申請したのと同じキャラクターのものである必要があります。\n• Tomestone：キャラクターのページを使ってください。例：https://tomestone.gg/character//。数字はキャラクターのLodestone IDである必要があります。\n• FFLogs：https://www.fflogs.com/character/lodestone-id/（いちばん簡単）、または正確なワールド名と名前で https://www.fflogs.com/character/// を使ってください。\n• FFLogs独自の番号のリンク（fflogs.com/character/id/…）は確認できないため、上の2つの形式のどちらかを使ってください。\n• Lodestone IDは、Lodestoneのキャラクターページのアドレスにある数字です（na.finalfantasyxiv.com/lodestone/character//）。"
+   },
+   "k": {
+    "en": "tomestone fflogs link links accepted rejected refused invalid wrong character lodestone id",
+    "fr": "tomestone fflogs lien liens accepte refuse invalide personnage lodestone id",
+    "de": "tomestone fflogs link links angenommen abgelehnt ungultig charakter lodestone id",
+    "ja": "Tomestone FFLogs リンク 受け付けられない 無効 キャラクター Lodestone ID"
+   },
+   "link": "https://pingway.app/dashboard?tab=settings#ign",
+   "linkLabel": {
+    "en": "My Settings",
+    "fr": "Mes paramètres",
+    "de": "Meine Einstellungen",
+    "ja": "マイ設定"
+   }
+  },
+  {
+   "id": "f73",
+   "q": {
+    "en": "What is /collect?",
+    "fr": "C'est quoi /collect ?",
+    "de": "Was ist /collect?",
+    "ja": "/collect とは？"
+   },
+   "a": {
+    "en": "/collect shows the FFXIV collections of your verified Main in a panel only you can see: Check item (do you have that mount, minion, card…?), Missing (what you still need, easiest first), Leaderboard (the top collectors in the server; 📢 Show posts it in the channel) and Refresh (sync again, at most every 30 minutes). Data by FFXIV Collect.",
+    "fr": "/collect affiche les collections FFXIV de ton personnage principal vérifié, dans un panneau que toi seul vois : Vérifier un objet (as-tu cette monture, cette mascotte, cette carte… ?), Manquants (ce qu'il te manque, les plus faciles d'abord), Classement (les meilleurs collectionneurs du serveur ; 📢 Afficher le publie dans le salon) et Actualiser (resynchronise, au plus toutes les 30 minutes). Données par FFXIV Collect.",
+    "de": "/collect zeigt die FFXIV-Sammlungen deines bestätigten Hauptcharakters in einem Fenster nur für dich: Gegenstand prüfen (hast du dieses Reittier, diesen Begleiter, diese Karte…?), Fehlt noch (was dir noch fehlt, das Leichteste zuerst), Bestenliste (die besten Sammler des Servers; 📢 Zeigen postet sie im Kanal) und Aktualisieren (neu abgleichen, höchstens alle 30 Minuten). Daten von FFXIV Collect.",
+    "ja": "/collect は、確認済みのメインキャラクターのFFXIVコレクションを自分だけに見えるパネルで表示します：「アイテムを確認」（そのマウント、ミニオン、カードなどを持っているか）、「未入手」（まだ持っていないものを入手しやすい順に）、「ランキング」（サーバー内のトップコレクター。「📢 公開する」でチャンネルに投稿）、「更新」（再同期、30分に1回まで）。データ提供：FFXIV Collect。"
+   },
+   "k": {
+    "en": "collect collection collections ffxivcollect mount mounts minion minions achievement achievements missing leaderboard check item have own",
+    "fr": "collect collection collections ffxivcollect monture montures mascotte mascottes haut faits manquant manquants classement objet",
+    "de": "collect sammlung sammlungen ffxivcollect reittier reittiere begleiter errungenschaft errungenschaften fehlt bestenliste gegenstand",
+    "ja": "コレクション collect ffxivcollect マウント ミニオン アチーブメント 未入手 ランキング 持っている 所持"
+   }
+  },
+  {
+   "id": "f74",
+   "q": {
+    "en": "/collect says my character isn't found or is private",
+    "fr": "/collect dit que mon personnage est introuvable ou privé",
+    "de": "/collect sagt, mein Charakter wird nicht gefunden oder ist privat",
+    "ja": "/collect でキャラクターが見つからない・非公開と言われる"
+   },
+   "a": {
+    "en": "Not found: your character isn't on FFXIV Collect yet. Search for it once on ffxivcollect.com, then press 🔄 Refresh. Private: your character is set to private on FFXIV Collect; make it public there (and check your Lodestone privacy settings), then press 🔄 Refresh. Achievements count as 0 while they are hidden on the Lodestone (they are hidden by default): make them public in your Lodestone settings.",
+    "fr": "Introuvable : ton personnage n'est pas encore sur FFXIV Collect. Cherche-le une fois sur ffxivcollect.com, puis appuie sur 🔄 Actualiser. Privé : ton personnage est privé sur FFXIV Collect ; rends-le public là-bas (et vérifie tes paramètres de confidentialité du Lodestone), puis appuie sur 🔄 Actualiser. Les hauts faits comptent pour 0 tant qu'ils sont masqués sur le Lodestone (c'est le cas par défaut) : rends-les publics dans tes paramètres du Lodestone.",
+    "de": "Nicht gefunden: Dein Charakter ist noch nicht auf FFXIV Collect. Suche ihn einmal auf ffxivcollect.com und drück dann 🔄 Aktualisieren. Privat: Dein Charakter ist auf FFXIV Collect privat; stell ihn dort auf öffentlich (und prüfe deine Privatsphäre-Einstellungen im Lodestone) und drück dann 🔄 Aktualisieren. Errungenschaften zählen als 0, solange sie im Lodestone verborgen sind (das sind sie standardmäßig): Mach sie in deinen Lodestone-Einstellungen öffentlich.",
+    "ja": "見つからない場合：キャラクターがまだFFXIV Collectに登録されていません。ffxivcollect.com で一度検索してから「🔄 更新」を押してください。非公開の場合：FFXIV Collectでキャラクターが非公開になっています。公開にして（Lodestoneの公開設定も確認して）から「🔄 更新」を押してください。アチーブメントはLodestoneで非公開の間は0として数えられます（最初は非公開です）。Lodestoneの設定で公開にしてください。"
+   },
+   "k": {
+    "en": "collect not found notfound private public hidden privacy ffxivcollect lodestone achievements zero 0 search error",
+    "fr": "collect introuvable trouve prive public masque masques confidentialite ffxivcollect lodestone hauts faits zero 0 chercher erreur",
+    "de": "collect gefunden privat offentlich verborgen privatsphare ffxivcollect lodestone errungenschaften null 0 suchen fehler",
+    "ja": "見つからない 非公開 公開 プライバシー ffxivcollect lodestone ロードストーン アチーブメント"
+   }
+  },
+  {
+   "id": "f75",
+   "q": {
+    "en": "/collect says the item list isn't loaded yet",
+    "fr": "/collect dit que la liste des objets n'est pas encore chargée",
+    "de": "/collect sagt, die Item-Liste ist noch nicht geladen",
+    "ja": "/collect で「アイテムリストがまだ読み込まれていない」と出る"
+   },
+   "a": {
+    "en": "The item list behind Check item and Missing isn't loaded right now, so those can't be used for a moment. Your collection counts and the Leaderboard still work. Please try again later.",
+    "fr": "La liste des objets utilisée par Vérifier un objet et Manquants n'est pas chargée pour le moment, donc ces boutons ne marchent pas tout de suite. Tes comptes de collection et le Classement marchent toujours. Réessaie plus tard.",
+    "de": "Die Item-Liste für Gegenstand prüfen und Fehlt noch ist gerade nicht geladen, deshalb gehen diese Knöpfe kurz nicht. Deine Sammlungszahlen und die Bestenliste funktionieren weiter. Bitte versuche es später noch einmal.",
+    "ja": "「アイテムを確認」と「未入手」に使うアイテムリストが今は読み込まれていないため、しばらく使えません。コレクションの数とランキングは使えます。しばらくしてからもう一度お試しください。"
+   },
+   "k": {
+    "en": "collect item list loaded loading load not yet later",
+    "fr": "collect liste objets chargee charge chargement pas encore plus tard",
+    "de": "collect item liste geladen laden noch nicht spater",
+    "ja": "アイテムリスト 読み込まれていない 読み込み リスト"
+   }
+  },
+  {
+   "id": "f76",
+   "q": {
+    "en": "Can I edit my Firmament timer on the website?",
+    "fr": "Puis-je modifier mon minuteur du Firmament sur le site ?",
+    "de": "Kann ich meinen Firmament-Timer auf der Website bearbeiten?",
+    "ja": "蒼天街のタイマーはウェブサイトで編集できる？"
+   },
+   "a": {
+    "en": "Yes: Dashboard → My Settings → Firmament. You can set the countdown (while Skyrise Celebration is on cooldown), remove it and turn the DM on or off, just like /firmament, and see the exact start and end times and all 12 sessions in your time zone.",
+    "fr": "Oui : Tableau de bord → Mes paramètres → Firmament. Tu peux régler le compte à rebours (pendant la pause entre deux festivités), le supprimer et activer ou couper le MP, comme avec /firmament, et voir les heures exactes de début et de fin et les 12 sessions dans ton fuseau horaire.",
+    "de": "Ja: Dashboard → Meine Einstellungen → Firmament. Du kannst den Countdown setzen (während die Feier Pause hat), ihn entfernen und die DM an- oder ausschalten, genau wie mit /firmament, und siehst die genauen Start- und Endzeiten und alle 12 Runden in deiner Zeitzone.",
+    "ja": "はい：ダッシュボード → マイ設定 → 蒼天街。祭典の休止中にカウントダウンを設定したり、削除したり、DMをオン/オフしたりできます（/firmament と同じ）。正確な開始・終了時刻と12回のセッションも、あなたのタイムゾーンで見られます。"
+   },
+   "k": {
+    "en": "firmament skyrise celebration timer website edit change set countdown remove dm sessions",
+    "fr": "firmament celebration festivite minuteur site modifier changer regler compte rebours supprimer mp sessions",
+    "de": "firmament feier timer website bearbeiten andern setzen countdown entfernen dm runden",
+    "ja": "蒼天街 firmament タイマー ウェブサイト 編集 カウントダウン"
+   },
+   "link": "https://pingway.app/dashboard?tab=settings#firmament",
+   "linkLabel": {
+    "en": "My Settings",
+    "fr": "Mes paramètres",
+    "de": "Meine Einstellungen",
+    "ja": "マイ設定"
+   }
+  },
+  {
+   "id": "f77",
+   "q": {
+    "en": "How do I keep Pingway in voice?",
+    "fr": "Comment garder Pingway dans le vocal ?",
+    "de": "Wie bleibt Pingway im Sprachkanal?",
+    "ja": "Pingwayをボイスに残しておくには？"
+   },
+   "a": {
+    "en": "Turn on Stay: use /vc stay, or press the 🔒 Stay button on the /vc panel. Pingway then won't leave after 15 minutes of silence while someone is in the channel (it still leaves 1 minute after everyone has left).",
+    "fr": "Active Rester : utilise /vc rester, ou appuie sur le bouton 🔒 Rester du panneau /vc. Pingway ne part alors plus après 15 minutes de silence tant que quelqu'un est dans le salon (il part toujours 1 minute après que tout le monde est parti).",
+    "de": "Schalte Bleiben ein: Nutze /vc bleiben oder drück im Panel von /vc auf den 🔒-Button Bleiben. Dann geht Pingway nicht nach 15 Minuten Stille, solange jemand im Kanal ist (1 Minute nachdem alle gegangen sind, geht es trotzdem).",
+    "ja": "常駐をオンにしてください：/vc 常駐 を使うか、/vc パネルの🔒「常駐」ボタンを押します。誰かがチャンネルにいる間は、15分間無音でも退出しません（全員が退出した1分後には退出します）。"
+   },
+   "k": {
+    "en": "stay keep voice vc leave leaves leaving left silence idle disconnect disconnects 15 minutes",
+    "fr": "rester garder vocal vc part quitte silence inactif deconnecte 15 minutes",
+    "de": "bleiben behalten sprachkanal vc geht verlasst stille inaktiv getrennt 15 minuten",
+    "ja": "常駐 ボイス 退出 抜ける 落ちる 無音 放置 vc"
+   }
+  },
+  {
+   "id": "f78",
+   "q": {
+    "en": "Why does the AI ask my time zone?",
+    "fr": "Pourquoi l'IA me demande mon fuseau horaire ?",
+    "de": "Warum fragt die KI nach meiner Zeitzone?",
+    "ja": "AIがタイムゾーンを聞いてくるのはなぜ？"
+   },
+   "a": {
+    "en": "So your reminders come at the right time. Pingway asks once, the first time you set a reminder in the AI channel (e.g. \"Japan\" or \"London\"), saves it and doesn't ask again.",
+    "fr": "Pour que tes rappels arrivent à la bonne heure. Pingway le demande une seule fois, la première fois que tu crées un rappel dans le salon IA (ex. « Japon » ou « Londres »), l'enregistre et ne le redemande plus.",
+    "de": "Damit deine Erinnerungen zur richtigen Zeit kommen. Pingway fragt nur einmal, wenn du zum ersten Mal im KI-Kanal eine Erinnerung setzt (z. B. „Japan“ oder „London“), speichert sie und fragt nicht wieder.",
+    "ja": "リマインダーを正しい時刻に届けるためです。AIチャンネルで初めてリマインダーを設定するときに1回だけ聞き（例：「日本」「ロンドン」）、保存したらもう聞きません。"
+   },
+   "k": {
+    "en": "time zone timezone tz ai ask asks asking reminder reminders",
+    "fr": "fuseau horaire ia demande demander rappel rappels",
+    "de": "zeitzone ki fragt fragen erinnerung erinnerungen",
+    "ja": "タイムゾーン 時差 時間帯 リマインダー 聞かれる 聞いてくる"
+   }
+  },
+  {
+   "id": "f79",
+   "q": {
+    "en": "Where is the Lodestone news?",
+    "fr": "Où sont les actus du Lodestone ?",
+    "de": "Wo finde ich die Lodestone-News?",
+    "ja": "Lodestoneのニュースはどこ？"
+   },
+   "a": {
+    "en": "On the homepage: the 🏰 Lodestone card shows the latest official FFXIV news in your website language (English, French, German or Japanese). \"Go to Lodestone\" opens the official Lodestone.",
+    "fr": "Sur la page d'accueil : la carte 🏰 Lodestone montre les dernières actus officielles de FFXIV dans la langue du site (anglais, français, allemand ou japonais). « Aller sur le Lodestone » ouvre le Lodestone officiel.",
+    "de": "Auf der Startseite: Die Karte 🏰 Lodestone zeigt die neuesten offiziellen FFXIV-News in deiner Website-Sprache (Englisch, Französisch, Deutsch oder Japanisch). „Zum Lodestone“ öffnet den offiziellen Lodestone.",
+    "ja": "ホームページの「🏰 Lodestone」カードに、FFXIVの最新の公式ニュースがサイトの言語（英語、フランス語、ドイツ語、日本語）で表示されます。「Lodestoneへ」で公式のLodestoneが開きます。"
+   },
+   "k": {
+    "en": "lodestone news official ffxiv homepage home website latest topics card",
+    "fr": "lodestone actus actualites news officiel officielles ffxiv accueil site dernieres",
+    "de": "lodestone news neuigkeiten offiziell offiziellen ffxiv startseite website neueste",
+    "ja": "lodestone ロードストーン ニュース 公式 お知らせ トピックス ホームページ"
+   },
+   "link": "https://pingway.app/",
+   "linkLabel": {
+    "en": "Home",
+    "fr": "Accueil",
+    "de": "Start",
+    "ja": "ホーム"
+   }
+  },
+  {
+   "id": "f80",
+   "q": {
+    "en": "Who sees my Discord name when I sign up on a Boards poster?",
+    "fr": "Qui voit mon nom Discord quand je m'inscris sur une affiche des Tableaux ?",
+    "de": "Wer sieht meinen Discord-Namen, wenn ich mich auf einem Pinnwand-Poster anmelde?",
+    "ja": "掲示板のポスターに応募すると、誰に自分のDiscord名が見える？"
+   },
+   "a": {
+    "en": "Only the poster's owner. Pingway DMs them your Discord name, your profile link and what you ticked (IGN card, FFLogs, Tomestone), and you agree to that before you send. If the owner turned on channel posts, it is also posted in a channel of their server.",
+    "fr": "Seulement l'auteur de l'affiche. Pingway lui envoie en MP ton nom Discord, le lien de ton profil et ce que tu as coché (carte IGN, FFLogs, Tomestone), et tu l'acceptes avant d'envoyer. Si l'auteur a activé les publications dans un salon, c'est aussi publié dans un salon de son serveur.",
+    "de": "Nur der Ersteller des Posters. Pingway schickt ihm per DM deinen Discord-Namen, deinen Profil-Link und das, was du angehakt hast (IGN-Karte, FFLogs, Tomestone), und du stimmst dem vor dem Senden zu. Hat der Ersteller Kanal-Posts eingeschaltet, wird es auch in einem Kanal seines Servers gepostet.",
+    "ja": "ポスターの作成者だけです。PingwayがあなたのDiscord名、プロフィールリンク、チェックした内容（IGNカード、FFLogs、Tomestone）を作成者にDMで送ります。送信前に同意が必要です。作成者がチャンネル投稿をオンにしている場合は、作成者のサーバーのチャンネルにも投稿されます。"
+   },
+   "k": {
+    "en": "boards board poster posters signup sign up discord name who sees privacy recruit invite owner",
+    "fr": "tableaux tableau affiche affiches inscription inscrire nom discord qui voit recruter inviter auteur",
+    "de": "pinnwand pinnwände poster anmelden anmeldung discord name wer sieht anwerben einladen ersteller",
+    "ja": "掲示板 ポスター 応募 Discord名 誰 見える スカウト 招待 作成者"
+   }
+  },
+  {
+   "id": "f81",
+   "q": {
+    "en": "Why didn't I get the Boards DM?",
+    "fr": "Pourquoi je n'ai pas reçu le MP des Tableaux ?",
+    "de": "Warum habe ich die Pinnwand-DM nicht bekommen?",
+    "ja": "掲示板のDMが届かないのはなぜ？"
+   },
+   "a": {
+    "en": "Discord only lets Pingway DM you if you share a server with it. Join a server that has Pingway and allow DMs from that server's members (right-click the server → Privacy Settings → Direct Messages). Dashboard → Boards → Notifications shows if Pingway can DM you, and Send test checks it.",
+    "fr": "Discord permet à Pingway de t'envoyer des MP seulement si tu partages un serveur avec lui. Rejoins un serveur où se trouve Pingway, et autorise les MP des membres de ce serveur (clic droit sur le serveur → Paramètres de confidentialité → Messages privés). Tableau de bord → Tableaux → Notifications montre si Pingway peut t'envoyer des MP, et Envoyer un test le vérifie.",
+    "de": "Discord lässt Pingway dir nur DMs schicken, wenn ihr einen Server teilt. Tritt einem Server mit Pingway bei und erlaube DMs von Mitgliedern dieses Servers (Rechtsklick auf den Server → Privatsphäreeinstellungen → Direktnachrichten). Unter Dashboard → Pinnwände → Benachrichtigungen siehst du, ob Pingway dir DMs schicken kann, und Test senden prüft es.",
+    "ja": "Discordでは、Pingwayとサーバーを共有している場合だけDMが届きます。Pingwayがいるサーバーに参加し、そのサーバーのメンバーからのDMを許可してください（サーバーを右クリック → プライバシー設定 → ダイレクトメッセージ）。ダッシュボード → 掲示板 → 通知 で PingwayからDMが届くか確認でき、テスト送信で試せます。"
+   },
+   "k": {
+    "en": "boards board poster dm dms notification notifications signup sign up test not getting",
+    "fr": "tableaux tableau affiche mp messages prives notification notifications inscription test recu",
+    "de": "pinnwand pinnwände poster dm dms benachrichtigung benachrichtigungen anmeldung test bekommen",
+    "ja": "掲示板 ポスター DM 届かない 通知 応募 テスト送信"
+   },
+   "link": "https://pingway.app/dashboard?tab=boards",
+   "linkLabel": {
+    "en": "Dashboard",
+    "fr": "Tableau de bord",
+    "de": "Dashboard",
+    "ja": "ダッシュボード"
+   }
+  },
+  {
+   "id": "f82",
+   "q": {
+    "en": "How long does a Boards poster stay up?",
+    "fr": "Combien de temps une affiche reste-t-elle sur les Tableaux ?",
+    "de": "Wie lange bleibt ein Poster auf den Pinnwänden?",
+    "ja": "掲示板のポスターはいつまで掲載される？"
+   },
+   "a": {
+    "en": "Static and FC posters stay up for 30 days. Bump one in Dashboard → Boards to keep it up 30 more days. Pingway reminds you by DM 5 days and 3 days before it expires, and when it does. Community events stay until they start.",
+    "fr": "Les affiches de static et de CL restent 30 jours. Remonte-en une dans Tableau de bord → Tableaux pour la garder 30 jours de plus. Pingway te prévient par MP 5 jours et 3 jours avant qu'elle expire, puis quand elle expire. Les événements communautaires restent jusqu'à leur début.",
+    "de": "Stammgruppen- und FG-Poster bleiben 30 Tage. Schieb eins unter Dashboard → Pinnwände hoch, damit es weitere 30 Tage bleibt. Pingway erinnert dich per DM 5 Tage und 3 Tage vor dem Ablauf und wenn es abläuft. Community-Events bleiben, bis sie beginnen.",
+    "ja": "固定とFCのポスターは30日間掲載されます。ダッシュボード → 掲示板 で更新すると、さらに30日間掲載されます。期限の5日前と3日前、そして期限切れのときにPingwayがDMでお知らせします。コミュニティイベントは開始時刻まで掲載されます。"
+   },
+   "k": {
+    "en": "boards board poster posters listing listings stay long expire expires expiry bump days repost",
+    "fr": "tableaux tableau affiche affiches annonce annonces combien temps expire expiration remonter jours republier",
+    "de": "pinnwand pinnwände poster eintrag einträge wie lange ablauf abläuft hochschieben tage",
+    "ja": "掲示板 ポスター 掲載 いつまで 期限 更新 30日"
+   },
+   "link": "https://pingway.app/dashboard?tab=boards",
+   "linkLabel": {
+    "en": "Dashboard",
+    "fr": "Tableau de bord",
+    "de": "Dashboard",
+    "ja": "ダッシュボード"
+   }
+  },
+  {
+   "id": "f83",
+   "q": {
+    "en": "How does an event get Featured?",
+    "fr": "Comment un événement passe-t-il à la une ?",
+    "de": "Wie wird ein Event hervorgehoben?",
+    "ja": "イベントが「注目」になるには？"
+   },
+   "a": {
+    "en": "Log in and star the community events you like. The top 3 events with over 100 stars are Featured at the top of the Community events board.",
+    "fr": "Connecte-toi et mets une étoile aux événements communautaires que tu aimes. Les 3 événements avec plus de 100 étoiles sont à la une, tout en haut du tableau Événements communautaires.",
+    "de": "Logg dich ein und gib den Community-Events, die dir gefallen, einen Stern. Die 3 Events mit über 100 Sternen sind oben auf der Pinnwand Community-Events hervorgehoben.",
+    "ja": "ログインして、気に入ったコミュニティイベントにスターを付けましょう。スター100個以上の上位3イベントが、コミュニティイベント掲示板の一番上に「注目」として表示されます。"
+   },
+   "k": {
+    "en": "boards board event events community featured feature star stars top",
+    "fr": "tableaux tableau evenement evenements communautaires une etoile etoiles top",
+    "de": "pinnwand pinnwände event events community hervorgehoben stern sterne top",
+    "ja": "掲示板 イベント 注目 スター 上位"
+   },
+   "link": "https://pingway.app/#boards",
+   "linkLabel": {
+    "en": "Home",
+    "fr": "Accueil",
+    "de": "Start",
+    "ja": "ホーム"
+   }
+  }
+ ]
+}

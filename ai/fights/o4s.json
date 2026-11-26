@@ -1,0 +1,645 @@
+{
+ "id": "o4s",
+ "type": "savage",
+ "expansion": "SB",
+ "patch": "4.05",
+ "names": {
+  "en": "Deltascape V4.0 (Savage)",
+  "fr": "Deltastice v4.0 (sadique)",
+  "de": "Deltametrie 4.0 (episch)",
+  "ja": "次元の狭間オメガ零式：デルタ編4"
+ },
+ "aliases": {
+  "en": [
+   "o4s",
+   "exdeath",
+   "neo exdeath",
+   "deltascape 4 savage"
+  ],
+  "fr": [
+   "o4s",
+   "exdeath",
+   "néo-exdeath",
+   "deltastice 4"
+  ],
+  "de": [
+   "o4s",
+   "exdeath",
+   "neo-exdeath",
+   "deltametrie 4"
+  ],
+  "ja": [
+   "デルタ零式4層",
+   "エクスデス",
+   "ネオエクスデス",
+   "o4s"
+  ]
+ },
+ "summary": {
+  "en": "Last floor of Deltascape Savage: Exdeath (door boss, push him to 60%), then Neo Exdeath with a checkpoint. Exdeath's spells change when he channels the void; Neo Exdeath's Grand Cross sets hand out many debuffs at once.",
+  "fr": "Dernier étage de Deltastice sadique : Exdeath (boss de porte, à pousser à 60 %), puis Néo-Exdeath avec un point de sauvegarde. Les sorts d'Exdeath changent quand il canalise le néant ; les Croix suprêmes de Néo-Exdeath distribuent plein de debuffs d'un coup.",
+  "de": "Letzte Ebene von Deltametrie episch: Exdeath (Türboss, auf 60 % bringen), danach Neo-Exdeath mit Checkpoint. Exdeaths Zauber ändern sich, wenn er die Leere kanalisiert; Neo-Exdeaths Supernova-Sets verteilen viele Debuffs auf einmal.",
+  "ja": "デルタ編4層。前半エクスデス（60%まで削る）、後半ネオエクスデス（チェックポイントあり）。エクスデスは無の力で魔法の性質が変わり、ネオエクスデスのグランドクロスでは多数のデバフが同時に付きます。"
+ },
+ "strats_overview": [
+  {
+   "id": "blu",
+   "name": {
+    "en": "Blue Mage clear",
+    "fr": "Clear en Mage bleu",
+    "de": "Blaumagier-Clear",
+    "ja": "青魔道士攻略"
+   },
+   "region": "all",
+   "note": {
+    "en": "Omega Savage is a popular Blue Mage weekly target; this follows the Blue Mage guides (Mighty Guard, Diamondback, White Wind). Normal synced jobs: no documented standard, see the general how.",
+    "fr": "Oméga sadique est une cible populaire des Mages bleus ; ceci suit les guides Mage bleu (Mighty Guard, Diamondback, White Wind). En job normal synchronisé : pas de standard documenté, vois l'explication générale.",
+    "de": "Omega episch ist ein beliebtes Ziel für Blaumagier; dies folgt den Blaumagier-Guides (Mighty Guard, Diamondback, White Wind). Normale synchronisierte Jobs: kein belegter Standard, siehe allgemeine Erklärung.",
+    "ja": "オメガ零式は青魔道士で人気のコンテンツ。青魔道士の攻略（マイティガード・超硬化・ホワイトウィンド）に基づきます。通常ジョブのシンク攻略は資料で確認できる標準がないため、一般解説を参照。"
+   },
+   "aliases": {
+    "en": [
+     "blu",
+     "blue mage",
+     "blue academy",
+     "icy veins"
+    ],
+    "fr": [
+     "blu",
+     "mage bleu"
+    ],
+    "de": [
+     "blu",
+     "blaumagier"
+    ],
+    "ja": [
+     "青魔",
+     "青魔道士"
+    ]
+   }
+  }
+ ],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "exdeath",
+   "names": {
+    "en": "Exdeath",
+    "fr": "Exdeath",
+    "de": "Exdeath",
+    "ja": "エクスデス"
+   },
+   "mechanics": [
+    {
+     "id": "dualcast-elements",
+     "names": {
+      "en": "Dualcast Fire III / Blizzard III / Thunder III",
+      "fr": "Chaîne de sorts Méga Feu / Méga Glace / Méga Foudre",
+      "de": "Doppelzauber Feuga / Eisga / Blitzga",
+      "ja": "連続魔ファイガ／ブリザガ／サンダガ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Dualcast makes the next spell hit twice: Blizzard III = circles under players (move), Fire III = spreads (clock spots), Thunder III = two tankbusters (tanks swap during the cast). The second Thunder III goes to whoever has top enmity, so swapping during the cast makes each tank take one hit.",
+      "fr": "Chaîne de sorts fait frapper le prochain sort deux fois : Méga Glace = cercles sous les joueurs (bouge), Méga Feu = dispersions (positions horloge), Méga Foudre = deux tankbusters (les tanks swap pendant l'incantation). La deuxième Méga Foudre vise celui qui a le plus d'inimitié : en échangeant pendant l'incantation, chaque tank prend un coup.",
+      "de": "Doppelzauber lässt den nächsten Zauber zweimal treffen: Eisga = Kreise unter Spielern (bewegen), Feuga = Verteilen (Uhrpositionen), Blitzga = zwei Tankbuster (Tanks wechseln während des Zaubers). Das zweite Blitzga trifft den mit der höchsten Feindseligkeit: Tauschen während des Zaubers sorgt dafür, dass jeder Tank einen Treffer nimmt.",
+      "ja": "連続魔で次の魔法が2回。ブリザガ＝足元の円（移動）、ファイガ＝散開（クロック位置）、サンダガ＝タンク強攻撃2回（詠唱中にタンクスイッチ）。2回目のサンダガは敵視1位に来るので、詠唱中にスイッチすれば各タンクが1回ずつ受けます。"
+     },
+     "strats": [
+      {
+       "strat": "blu",
+       "how": {
+        "en": "Tanks use Diamondback for the double Thunder III; everyone spreads to clock spots for Fire III. One tank takes both Thunder III hits with Diamondback, no swap needed.",
+        "fr": "Les tanks utilisent Diamondback pour la double Méga Foudre ; tout le monde se disperse en horloge pour Méga Feu. Un seul tank prend les deux Méga Foudre avec Diamondback, pas besoin d'échanger.",
+        "de": "Tanks nutzen Diamondback für das doppelte Blitzga; alle verteilen sich bei Feuga auf Uhrpositionen. Ein Tank nimmt beide Blitzga mit Diamondback, kein Wechsel nötig.",
+        "ja": "サンダガ2回はタンクが超硬化。ファイガは全員クロック位置へ散開。 サンダガ2回は1人のタンクが超硬化で受け、スイッチは不要です。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "void-spells",
+     "names": {
+      "en": "Void-channelled spells",
+      "fr": "Sorts canalisés par le néant",
+      "de": "Von der Leere kanalisierte Zauber",
+      "ja": "無の力の魔法"
+     },
+     "aliases": {
+      "en": [
+       "empowered spells",
+       "void fire",
+       "void blizzard",
+       "void thunder"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "無の力"
+      ]
+     },
+     "how": {
+      "en": "When Exdeath channels the void (lines from the arena edge / a black hole), the spell changes: Blizzard III freezes anyone standing still (keep moving), Thunder III is a big point-blank AoE with Paralysis (get away), Fire III gives Pyretic (do nothing).",
+      "fr": "Quand Exdeath canalise le néant (lignes depuis le bord / un trou noir), le sort change : Méga Glace gèle ceux qui ne bougent pas (continue de bouger), Méga Foudre devient une grosse zone autour de lui avec Paralysie (éloigne-toi), Méga Feu donne Pyretic (ne fais rien).",
+      "de": "Wenn Exdeath die Leere kanalisiert (Linien vom Arenarand / ein Schwarzes Loch), ändert sich der Zauber: Eisga friert alle ein, die stehen (in Bewegung bleiben), Blitzga ist eine große AoE um ihn mit Paralyse (weg von ihm), Feuga gibt Pyretic (nichts tun).",
+      "ja": "無の力（外周からの線／ブラックホール）を伴うと魔法が変化。ブリザガ＝止まっていると凍結（動き続ける）、サンダガ＝自分中心の大範囲＋麻痺（離れる）、ファイガ＝Pyretic（何もしない）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "debuff"
+     ]
+    },
+    {
+     "id": "white-hole",
+     "names": {
+      "en": "White Hole",
+      "fr": "Trou blanc",
+      "de": "Weißes Loch",
+      "ja": "ホワイトホール"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Players below full HP are petrified, below 50% they die; heal everyone to full first.",
+      "fr": "Les joueurs pas au max de PV sont pétrifiés, sous 50 % ils meurent ; remets tout le monde à fond avant.",
+      "de": "Spieler unter vollen HP werden versteinert, unter 50 % sterben sie; heile vorher alle voll.",
+      "ja": "HPが満タンでないと石化、50%未満だと即死。事前に全員を全快にします。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "decisive-battle",
+     "names": {
+      "en": "The Decisive Battle",
+      "fr": "Combat décisif",
+      "de": "Entscheidungsschlacht",
+      "ja": "決戦"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Vines spawn in a circle, then a knockback from the center and a healer stack: hug the last vine to appear. Then a tree breath plus three Flares (tank, healer, DPS) spread in a triangle at the edges; vines swipe with knockbacks; Exdeath returns on a player's spot and ends with a void spell and Vacuum Wave.",
+      "fr": "Des lianes apparaissent en cercle, puis projection depuis le centre et package sur un healer : colle-toi à la dernière liane apparue. Ensuite un souffle de l'arbre et trois Brasiers (tank, healer, DPS) en triangle au bord ; les lianes balayent avec projection ; Exdeath revient sur la position d'un joueur et finit par un sort du néant et Vacuum.",
+      "de": "Ranken erscheinen im Kreis, dann Rückstoß aus der Mitte und ein Sammelpunkt auf einem Heiler: stell dich an die zuletzt erschienene Ranke. Danach ein Baum-Atem und drei Flares (Tank, Heiler, DD) im Dreieck am Rand; die Ranken fegen mit Rückstoß; Exdeath kehrt auf die Position eines Spielers zurück und endet mit einem Leere-Zauber und Vakuumwelle.",
+      "ja": "ツタが円状に出現し、中央からのノックバックとヒーラー頭割り：最後に出たツタに密着。その後、木のブレスとフレア3人（タンク・ヒーラー・DPS）が外周に三角散開、ツタのなぎ払いノックバック、エクスデスがプレイヤー位置に戻り無の力の魔法と真空波。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "stack",
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "vacuum-wave",
+     "names": {
+      "en": "Vacuum Wave",
+      "fr": "Vacuum",
+      "de": "Vakuumwelle",
+      "ja": "真空波"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Big knockback across the arena; stand next to Exdeath or use Arm's Length / Surecast.",
+      "fr": "Grosse projection sur toute l'arène ; colle-toi à Exdeath ou utilise Distance / Sang-froid.",
+      "de": "Großer Rückstoß über die Arena; steh direkt bei Exdeath oder nutze Armlänge / Unbeirrbarkeit.",
+      "ja": "広範囲ノックバック。エクスデスに密着するか、アームズレングス／堅実魔で防ぎます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback"
+     ]
+    },
+    {
+     "id": "black-hole",
+     "names": {
+      "en": "Black Hole",
+      "fr": "Trou noir",
+      "de": "Schwarzes Loch",
+      "ja": "ブラックホール"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Eight black holes kill on touch and four follow tanks and healers. Tanks/healers circle the edge in the same direction while DPS move through the middle; resolve the Fire III spreads and the Holy stack or Flares in between.",
+      "fr": "Huit trous noirs tuent au contact et quatre suivent les tanks et healers. Tanks/healers tournent au bord dans le même sens et les DPS passent par le milieu ; gère les dispersions de Méga Feu et le package Miracle ou les Brasiers entre-temps.",
+      "de": "Acht Schwarze Löcher töten bei Berührung, vier folgen Tanks und Heilern. Tanks/Heiler laufen am Rand in dieselbe Richtung, DDs bewegen sich durch die Mitte; dazwischen Feuga-Verteilen und Sanctus-Sammeln oder Flares lösen.",
+      "ja": "ブラックホール8つは触れると即死、うち4つはタンク・ヒーラーを追尾。タンク・ヒーラーは外周を同じ方向に回り、DPSは中央を移動。間にファイガ散開とホーリー頭割りやフレアを処理します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "meteor-dps-check",
+     "names": {
+      "en": "Meteor (60% check)",
+      "fr": "Météore (seuil 60 %)",
+      "de": "Meteor (60-%-Check)",
+      "ja": "メテオ（60%チェック）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Raid-wide damage to mitigate; Exdeath must be below 60% before the second Meteor or the next one wipes the party.",
+      "fr": "Dégâts de groupe à mitiger ; Exdeath doit être sous 60 % avant le deuxième Météore, sinon le suivant tue tout le monde.",
+      "de": "Gruppenschaden, reduzieren; Exdeath muss vor dem zweiten Meteor unter 60 % sein, sonst löscht der nächste die Gruppe aus.",
+      "ja": "軽減で受ける全体攻撃。2回目のメテオまでに60%を切らないと、次で全滅します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "dps-check"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "neo-exdeath",
+   "names": {
+    "en": "Neo Exdeath",
+    "fr": "Néo-Exdeath",
+    "de": "Neo-Exdeath",
+    "ja": "ネオエクスデス"
+   },
+   "mechanics": [
+    {
+     "id": "almagest",
+     "names": {
+      "en": "Almagest",
+      "fr": "Almageste",
+      "de": "Almagest",
+      "ja": "アルマゲスト"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Heavy raid-wide damage plus a strong damage-over-time; heal through it.",
+      "fr": "Gros dégâts de groupe plus dégâts sur la durée ; soigne en continu.",
+      "de": "Starker Gruppenschaden plus starker Schaden über Zeit; durchheilen.",
+      "ja": "強い全体攻撃と継続ダメージ。回復し続けます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "flood-of-naught",
+     "names": {
+      "en": "Flood of Naught (Antilights / Edge of Death)",
+      "fr": "Crue du néant (Lumières sombres / Lisière de la mort)",
+      "de": "Flut der Leere (Dunkellichter / Abgrund des Todes)",
+      "ja": "無の氾濫（暗黒光／生死の境界）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Read Neo Exdeath's body: blue orbs in front = Inner Antilight (center line), mouths on his sides = Outer Antilight (side lines), constellation in front = Terminal Antilight (charge). White and black orbs left/right = Edge of Death: each half gives a light or dark wound, and being hit by the colour matching your wound kills, so stand on the opposite side.",
+      "fr": "Lis le corps de Néo-Exdeath : orbes bleus devant = Lumière sombre du noyau (ligne centrale), bouches sur les côtés = Lumière sombre des confins (lignes latérales), constellation devant = Lumière sombre de l'apothéose (charge). Orbes blanc et noir à gauche/droite = Edge of Death : chaque moitié donne une blessure claire ou sombre, et être touché par la couleur de ta blessure tue, donc va du côté opposé.",
+      "de": "Lies Neo-Exdeaths Körper: blaue Kugeln vorne = Inneres Dunkellicht (Mittellinie), Mäuler an den Seiten = Äußeres Dunkellicht (Seitenlinien), Sternbild vorne = Letztes Dunkellicht (Ansturm). Weiße und schwarze Kugeln links/rechts = Edge of Death: jede Hälfte gibt eine helle oder dunkle Wunde, und von der Farbe deiner Wunde getroffen zu werden ist tödlich, also geh auf die Gegenseite.",
+      "ja": "ネオエクスデスの体を見ます。前に青い玉＝中核の暗黒光（中央直線）、側面の口＝外縁の暗黒光（左右直線）、前に星座＝終局の暗黒光（突進）。左右に白黒の玉＝Edge of Death：半面ごとに生/死の傷が付き、自分の傷と同じ色を受けると即死なので反対側へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "debuff"
+     ]
+    },
+    {
+     "id": "grand-cross-alpha",
+     "names": {
+      "en": "Grand Cross Alpha",
+      "fr": "Croix suprême alpha",
+      "de": "Supernova Alpha",
+      "ja": "グランドクロス・アルファ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Raid-wide hit that resets enmity and hands out debuffs (Allagan Field, Acceleration Bomb, Off-balance, wounds). Allagan Field players stay away from Exdeath / in the center, Off-balance players stay near him, Acceleration Bomb players stop all actions until it pops, then everyone moves to the side opposite their wound for the following Edge of Death.",
+      "fr": "Coup de groupe qui réinitialise l'inimitié et donne des debuffs (Allagan Field, Acceleration Bomb, Off-balance, blessures). Les Allagan Field restent loin d'Exdeath / au centre, les Off-balance restent près de lui, les Acceleration Bomb ne font plus rien jusqu'à l'explosion, puis chacun va du côté opposé à sa blessure.",
+      "de": "Gruppentreffer, der die Feindseligkeit zurücksetzt und Debuffs verteilt (Allagan Field, Acceleration Bomb, Off-balance, Wunden). Spieler mit Allagan Field bleiben weg von Exdeath / in der Mitte, Off-balance bleibt nah bei ihm, Acceleration Bomb macht nichts, bis sie platzt, danach geht jeder auf die Seite gegenüber seiner Wunde.",
+      "ja": "敵視リセット付きの全体攻撃と、Allagan Field・Acceleration Bomb・ノックバック系・生死の傷などのデバフ。Allagan Fieldはボスから離れる/中央、ノックバック系はボスの近く、Acceleration Bombは爆発まで何もしない。その後、自分の傷と反対側へ。"
+     },
+     "strats": [
+      {
+       "strat": "blu",
+       "how": {
+        "en": "Start in the center; the tank uses White Wind to regain enmity. The player in front uses Diamondback for Terminal Antilight, Allagan Field players stay center, bomb players freeze until it pops, then go to the side opposite their wound.",
+        "fr": "Commence au centre ; le tank utilise White Wind pour reprendre l'inimitié. Le joueur devant utilise Diamondback pour la charge, les Allagan Field restent au centre, les bombes s'immobilisent jusqu'à l'explosion, puis va du côté opposé à ta blessure.",
+        "de": "Starte in der Mitte; der Tank nutzt White Wind, um die Feindseligkeit zurückzuholen. Der Spieler vorne nutzt Diamondback für den Ansturm, Allagan Field bleibt in der Mitte, Bomben stehen still, bis sie platzen, dann auf die Seite gegenüber deiner Wunde.",
+        "ja": "中央から開始し、タンクはホワイトウィンドで敵視を取り直す。前の人は超硬化で突進を受け、Allagan Fieldは中央、Acceleration Bombは爆発まで静止、その後傷と反対側へ。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Debuff names (Allagan Field etc.) are from English guides; their FR/DE/JA names are not verified.",
+      "fr": "Les noms des debuffs viennent des guides anglais ; FR non vérifié.",
+      "de": "Die Debuff-Namen stammen aus englischen Guides; DE nicht geprüft.",
+      "ja": "デバフ名は英語攻略サイトによるもので、日本語名は未確認。"
+     },
+     "tags": [
+      "raidwide",
+      "debuff"
+     ]
+    },
+    {
+     "id": "grand-cross-delta",
+     "names": {
+      "en": "Grand Cross Delta",
+      "fr": "Croix suprême delta",
+      "de": "Supernova Delta",
+      "ja": "グランドクロス・デルタ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Debuffs include a gaze that petrifies whoever looks at you, Forked Lightning (AoE on expiry), a Death Wave stack and Beyond Death (you die unless you take a lethal hit first). Forked Lightning players move away from others, gaze holders stand behind and everyone looks away, Off-balance players go under the boss, and Beyond Death players deliberately take the center beams to cleanse.",
+      "fr": "Les debuffs : un regard qui pétrifie qui te regarde, Forked Lightning (zone à l'expiration), un package Death Wave et Beyond Death (tu meurs sauf si tu prends d'abord un coup mortel). Les Forked Lightning s'éloignent, les porteurs du regard restent derrière et tout le monde détourne les yeux, les Off-balance vont sous le boss, et les Beyond Death prennent exprès les rayons du centre pour se purifier.",
+      "de": "Debuffs: ein Blick, der jeden versteinert, der dich ansieht, Forked Lightning (AoE beim Ablaufen), ein Death Wave-Sammelpunkt und Beyond Death (du stirbst, außer du nimmst vorher einen tödlichen Treffer). Forked Lightning geht weg von anderen, Blickträger stehen hinten und alle schauen weg, Off-balance geht unter den Boss, Beyond Death nimmt absichtlich die Mittelstrahlen zum Reinigen.",
+      "ja": "見た人を石化させる視線、Forked Lightning（時間切れで範囲）、Death Wave頭割り、Beyond Death（先に致死攻撃を受けないと死ぬ）など。Forked Lightningは他から離れ、視線持ちは後方で全員が目をそらし、ノックバック系はボス下、Beyond Deathはわざと中央の光線を受けて解除。"
+     },
+     "strats": [
+      {
+       "strat": "blu",
+       "how": {
+        "en": "The Death Wave player takes the stack alone with Mighty Guard on the west side; Forked Lightning spreads, gaze holders stay behind the group, Beyond Death players fail the coloured beams.",
+        "fr": "Le joueur Death Wave prend le package seul avec Mighty Guard côté ouest ; les Forked Lightning se dispersent, les porteurs du regard restent derrière le groupe, les Beyond Death ratent exprès les rayons colorés.",
+        "de": "Der Death Wave-Spieler nimmt den Sammelpunkt allein mit Mighty Guard im Westen; Forked Lightning verteilt sich, Blickträger bleiben hinter der Gruppe, Beyond Death lässt sich absichtlich von den farbigen Strahlen treffen.",
+        "ja": "Death Waveの人は西でマイティガードを使い1人で受ける。Forked Lightningは散開、視線持ちはPTの後ろ、Beyond Deathは色付き光線にわざと当たる。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Debuff names are from English guides; FR/DE/JA not verified.",
+      "fr": "Noms des debuffs issus des guides anglais ; FR non vérifié.",
+      "de": "Debuff-Namen aus englischen Guides; DE nicht geprüft.",
+      "ja": "デバフ名は英語攻略サイトによるもので日本語名は未確認。"
+     },
+     "tags": [
+      "debuff",
+      "gaze",
+      "stack"
+     ]
+    },
+    {
+     "id": "grand-cross-omega",
+     "names": {
+      "en": "Grand Cross Omega",
+      "fr": "Croix suprême oméga",
+      "de": "Supernova Omega",
+      "ja": "グランドクロス・オメガ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "About halfway through: like Delta but with three beams in a row, then it ends in Grand Cross Alpha. Beyond Death players cleanse on the third beam (earlier can kill them on a later beam); bomb and gaze players stand still and look away.",
+      "fr": "Vers la moitié du combat : comme Delta mais avec trois rayons d'affilée, puis ça finit en Croix suprême alpha. Les Beyond Death se purifient sur le troisième rayon (plus tôt peut les tuer ensuite) ; bombes et regards restent immobiles et détournent les yeux.",
+      "de": "Etwa zur Hälfte: wie Delta, aber mit drei Strahlen hintereinander, dann endet es in Supernova Alpha. Beyond Death reinigt sich beim dritten Strahl (früher kann bei einem späteren töten); Bomben- und Blickträger stehen still und schauen weg.",
+      "ja": "中盤：デルタと同様だが光線が3連続、最後にアルファへつながります。Beyond Deathは3本目で解除（早いと後の光線で死ぬ）。Acceleration Bombと視線持ちは静止して目をそらします。"
+     },
+     "strats": [
+      {
+       "strat": "blu",
+       "how": {
+        "en": "Neo Exdeath is untargetable through it, so keep Mighty Guard up the whole time.",
+        "fr": "Néo-Exdeath est inciblable pendant tout ce temps, donc garde Mighty Guard active.",
+        "de": "Neo-Exdeath ist die ganze Zeit nicht anvisierbar, also halte Mighty Guard aktiv.",
+        "ja": "この間ネオエクスデスはターゲット不可なので、マイティガードを維持します。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "gaze"
+     ]
+    },
+    {
+     "id": "light-and-darkness",
+     "names": {
+      "en": "Light and Darkness",
+      "fr": "Clair-obscur",
+      "de": "Licht und Dunkelheit",
+      "ja": "ライト・アンド・ダークネス"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "One Holy stack and three Flares: Flares run out and spread to the edges, everyone else stacks under the boss, then dodge the Antilight that follows.",
+      "fr": "Un package Miracle et trois Brasiers : les Brasiers sortent et se dispersent au bord, les autres se regroupent sous le boss, puis esquive la Lumière sombre qui suit.",
+      "de": "Ein Sanctus-Sammelpunkt und drei Flares: Flares laufen raus an den Rand, alle anderen sammeln sich unter dem Boss, dann dem folgenden Dunkellicht ausweichen.",
+      "ja": "ホーリー頭割り1つとフレア3つ。フレアは外周へ散開、他はボス下で頭割り、その後の暗黒光を避けます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "tank-mechanics",
+     "names": {
+      "en": "Earth Shaker / Double Attack / Aero III",
+      "fr": "Secousse / Double attaque / Méga Vent",
+      "de": "Erdstoß / Doppelangriff / Windga",
+      "ja": "アースシェイカー／ダブルアタック／エアロガ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Earth Shaker: cones on the two top-enmity players, tanks stand on opposite sides and aim them away. Double Attack: shared tankbuster with a big hit area, tanks stack (or one uses an invuln) and others stay away. Aero III: tankbuster. Double Attack is aimed at the top-enmity tank: both tanks stack in the center to share it, or one tank uses an invulnerability under Exdeath.",
+      "fr": "Secousse : cônes sur les deux premiers en inimitié, les tanks se placent de chaque côté et les orientent loin du groupe. Double attaque : tankbuster partagé avec grande zone, les tanks se regroupent (ou un invu) et les autres restent loin. Méga Vent : tankbuster. Double Attack vise le tank en tête d'inimitié : les deux tanks se regroupent au centre pour partager, ou un tank utilise son invulnérabilité sous Exdeath.",
+      "de": "Erdstoß: Kegel auf die zwei mit höchster Feindseligkeit, Tanks stehen auf gegenüberliegenden Seiten und zielen weg. Doppelangriff: geteilter Tankbuster mit großer Fläche, Tanks stehen zusammen (oder einer nutzt Unverwundbarkeit), andere halten Abstand. Windga: Tankbuster. Double Attack zielt auf den Tank mit der höchsten Feindseligkeit: Beide Tanks stellen sich in der Mitte zusammen, um zu teilen, oder ein Tank nutzt seine Unverwundbarkeit unter Exdeath.",
+      "ja": "アースシェイカー：敵視上位2人に扇、タンクは左右に分かれて外へ向ける。ダブルアタック：範囲の広い分散タンク強攻撃、タンクが重なる（または無敵）、他は離れる。エアロガ：タンク強攻撃。Double Attackは敵視1位のタンクに来ます。両タンクが中央で重なって分担するか、片方がエクスデスの真下で無敵を使います。"
+     },
+     "strats": [
+      {
+       "strat": "blu",
+       "how": {
+        "en": "Double Attack: the tank uses Diamondback in the center and everyone else moves away. Earth Shaker: the MT takes one cone with Diamondback, the OT keeps second enmity for the other (Diamondback or Avail), cones aimed away from the party.",
+        "fr": "Double Attack : le tank utilise Diamondback au centre et les autres s'éloignent. Earth Shaker : le MT prend un cône avec Diamondback, l'OT garde la 2e place d'inimitié pour l'autre (Diamondback ou Avail), cônes tournés loin du groupe.",
+        "de": "Double Attack: Der Tank nutzt Diamondback in der Mitte, alle anderen gehen weg. Earth Shaker: Der MT nimmt einen Kegel mit Diamondback, der OT hält die zweithöchste Feindseligkeit für den anderen (Diamondback oder Avail), Kegel weg von der Gruppe.",
+        "ja": "Double Attack：タンクは中央で超硬化、他は離れます。Earth Shaker：MTが超硬化で1つ受け、STは敵視2位を保ってもう1つを受け（超硬化かかばう）、扇はPTの外へ向けます。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "cleave",
+      "knockback"
+     ]
+    },
+    {
+     "id": "emptiness",
+     "names": {
+      "en": "Emptiness",
+      "fr": "Désolation du néant",
+      "de": "Tobende Leere",
+      "ja": "無の暴走"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Moving exaflare-style circles; find the gap, then stand where the following Antilight is safe.",
+      "fr": "Cercles mobiles façon exaflare ; trouve le trou, puis place-toi là où la Lumière sombre suivante est sûre.",
+      "de": "Wandernde Kreise wie Exaflare; finde die Lücke und stell dich dann dorthin, wo das folgende Dunkellicht sicher ist.",
+      "ja": "エクサフレアのように進む円範囲。隙間を見つけ、続く暗黒光の安置へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "neverwhere",
+     "names": {
+      "en": "Neverwhere and enrage",
+      "fr": "Anarchie et enrage",
+      "de": "Nirgendwann und Enrage",
+      "ja": "法則崩壊と時間切れ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Neverwhere is the soft enrage near the end (use a Limit Break); the hard enrage is about 12:45 into Neo Exdeath.",
+      "fr": "Anarchie est l'enrage progressif vers la fin (utilise une Transcendance) ; l'enrage final arrive vers 12:45 de Néo-Exdeath.",
+      "de": "Nirgendwann ist der Soft-Enrage gegen Ende (Limitrausch nutzen); der harte Enrage kommt etwa bei 12:45 von Neo-Exdeath.",
+      "ja": "法則崩壊は終盤のソフト時間切れ（リミットブレイク推奨）。ネオエクスデス戦の約12:45で時間切れ。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Enrage timing from one source only.",
+      "fr": "Timing de l'enrage d'une seule source.",
+      "de": "Enrage-Zeit nur aus einer Quelle.",
+      "ja": "時間切れのタイミングは1つの資料のみ。"
+     },
+     "tags": [
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - Deltascape V4.0 (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Deltascape_V4.0_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "Blue Academy - O4S (Exdeath) Blue Mage guide",
+   "url": "https://blue-academy.pages.dev/savage-guides/omega/o4s",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins - Blue Mage Raid Guide for Exdeath (O4S)",
+   "url": "https://www.icy-veins.com/ffxiv/blue-mage-exdeath-raid-guide",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

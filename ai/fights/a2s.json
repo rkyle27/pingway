@@ -1,0 +1,342 @@
+{
+ "id": "a2s",
+ "type": "savage",
+ "expansion": "HW",
+ "patch": "3.05",
+ "names": {
+  "en": "Alexander - The Cuff of the Father (Savage)",
+  "fr": "Alexander - Le Poignet du Père (sadique)",
+  "de": "Alexander - Elle des Vaters (episch)",
+  "ja": "機工城アレキサンダー零式：起動編2"
+ },
+ "aliases": {
+  "en": [
+   "a2s",
+   "a2 savage",
+   "alexander 2 savage",
+   "cuff of the father savage",
+   "goblin waves",
+   "gobwalker"
+  ],
+  "fr": [
+   "a2s",
+   "alexander 2 sadique",
+   "poignet du père sadique"
+  ],
+  "de": [
+   "a2s",
+   "alexander 2 episch",
+   "elle des vaters episch"
+  ],
+  "ja": [
+   "起動編2零式",
+   "起動編零式2層",
+   "アレキ零式2層",
+   "起動2層",
+   "タチコマ"
+  ]
+ },
+ "summary": {
+  "en": "Floor 2 of Alexander: Gordias (Savage). There is no single boss: you clear nine waves of goblin and doll enemies before a hard enrage (about 10:30). Players drive the Magitek Gobwalker vehicles to stun enemies and pull bombs away.",
+  "fr": "Étage 2 d'Alexander : Gordias (sadique). Pas de boss unique : tu nettoies neuf vagues de gobelins et de poupées avant un enrage (~10:30). Des joueurs pilotent les Magitek Gobwalker pour étourdir les ennemis et éloigner les bombes.",
+  "de": "Ebene 2 von Alexander: Gordias (episch). Kein einzelner Boss: Du räumst neun Wellen Goblins und Puppen vor einem harten Enrage (ca. 10:30). Spieler steuern die Magitek-Gobwalker, um Gegner zu betäuben und Bomben wegzuziehen.",
+  "ja": "起動編2層零式。単体ボスはおらず、約10分30秒の時間切れまでにゴブリン族と人形の9ウェーブを倒す。ゴブリウォーカー（タチコマ）に乗って敵をスタンさせ、爆弾を引き離す。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "This fight is mostly cleared unsynced or at minimum item level today, so strats rarely matter. The entries below explain how each mechanic works. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Aujourd'hui ce combat se fait surtout en mode sans restriction ou en ilvl minimum, donc la strat compte rarement. Les entrées ci-dessous expliquent comment marche chaque mécanique. Les noms des mécaniques sont en anglais (noms FR officiels non vérifiés).",
+  "de": "Heute wird dieser Kampf meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel gemacht, die Strat spielt also selten eine Rolle. Die Einträge unten erklären, wie jede Mechanik funktioniert. Die Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "現在このコンテンツは主に制限解除やIL最低限で攻略されるため、攻略法の違いはほとんど問題になりません。以下では各ギミックの仕組みを説明します。英語名のままのギミック名は日本語の公式名を確認できなかったものです。"
+ },
+ "phases": [
+  {
+   "id": "waves",
+   "names": {
+    "en": "Waves 1-9",
+    "fr": "Vagues 1-9",
+    "de": "Wellen 1-9",
+    "ja": "ウェーブ1〜9"
+   },
+   "mechanics": [
+    {
+     "id": "gobwalker",
+     "names": {
+      "en": "Magitek Gobwalker (vehicle)",
+      "fr": "Gobblindé magitek G-VII",
+      "de": "Gob-Stampfer VII",
+      "ja": "ゴブリウォーカー（タチコマ）"
+     },
+     "aliases": {
+      "en": [
+       "magitek gobwalker (vehicle)"
+      ],
+      "fr": [
+       "magitek gobwalker (vehicle)"
+      ],
+      "de": [
+       "magitek gobwalker (vehicle)"
+      ],
+      "ja": [
+       "ゴブリウォーカー（タチコマ）"
+      ]
+     },
+     "how": {
+      "en": "Players can ride the Gobwalkers. Cracklyplume stuns soldiers, snipers, Hardhelms and Hardminds for 30 s; Stickyloom pulls a target (used on bombs); Meltyspume adds Vulnerability Up; energy is limited.",
+      "fr": "Les joueurs peuvent piloter les Gobwalker. Cracklyplume étourdit soldats, snipers, Hardhelm et Hardmind 30 s ; Stickyloom attire une cible (pour les bombes) ; Meltyspume ajoute Vulnérabilité ; l'énergie est limitée.",
+      "de": "Spieler können die Gobwalker steuern. Cracklyplume betäubt Soldaten, Scharfschützen, Hardhelms und Hardminds 30 s; Stickyloom zieht ein Ziel (für Bomben); Meltyspume gibt Verwundbarkeit; die Energie ist begrenzt.",
+      "ja": "プレイヤーが搭乗できる機体。Cracklyplumeでソルジャー等を30秒スタン、Stickyloomで対象（主に爆弾）を引き寄せ、Meltyspumeで被ダメ上昇を付与。エネルギーは有限。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "note": {
+      "en": "Ability names stay English: JP names not found.",
+      "fr": "Noms d'actions en anglais.",
+      "de": "Aktionsnamen bleiben englisch.",
+      "ja": "機体の技名は英語のまま（日本語名未確認）。"
+     },
+     "tags": []
+    },
+    {
+     "id": "hardhelm-hardmind",
+     "names": {
+      "en": "Gordian Hardhelm / Hardmind",
+      "fr": "Casque-dur gordien / Cerveau-dur gordien",
+      "de": "Gordios-Harthelm / Gordios-Sturschale",
+      "ja": "ゴルディオス・ハードヘルム／ハードマインド"
+     },
+     "aliases": {
+      "en": [
+       "gordian hardhelm / hardmind"
+      ],
+      "fr": [
+       "gordian hardhelm / hardmind"
+      ],
+      "de": [
+       "gordian hardhelm / hardmind"
+      ],
+      "ja": [
+       "ゴルディオス・ハードヘルム／ハードマインド"
+      ]
+     },
+     "how": {
+      "en": "They give nearby enemies physical or magic damage reduction and lower the tank's healing received (Brainshaker). Stun them with Cracklyplume and kill them early.",
+      "fr": "Ils donnent aux ennemis proches une réduction de dégâts physiques ou magiques et réduisent les soins reçus par le tank (Brainshaker). Étourdis-les au Cracklyplume et tue-les tôt.",
+      "de": "Sie geben nahen Gegnern physische oder magische Schadensreduktion und senken die Heilung auf den Tank (Brainshaker). Mit Cracklyplume betäuben und früh töten.",
+      "ja": "周囲の敵に被物理／被魔法ダメージ軽減を付与し、タンクの回復効果を下げる。スタンさせて早めに倒す。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "debuff"
+     ]
+    },
+    {
+     "id": "bombs",
+     "names": {
+      "en": "Bombs",
+      "fr": "Bombs",
+      "de": "Bombs",
+      "ja": "爆弾"
+     },
+     "aliases": {
+      "en": [
+       "bombs"
+      ],
+      "fr": [
+       "bombs"
+      ],
+      "de": [
+       "bombs"
+      ],
+      "ja": [
+       "爆弾"
+      ]
+     },
+     "how": {
+      "en": "From wave 4, unkillable bombs drop on players and explode after about 15 s in a large radius (worse with Fire Resistance Down stacks). The Gobwalker pilot pulls them away from the party with Stickyloom.",
+      "fr": "Dès la vague 4, des bombes indestructibles tombent sur les joueurs et explosent après ~15 s sur un grand rayon (pire avec Résistance au feu réduite). Le pilote du Gobwalker les éloigne avec Stickyloom.",
+      "de": "Ab Welle 4 fallen unzerstörbare Bomben auf Spieler und explodieren nach etwa 15 s großflächig (schlimmer mit Feuerresistenz-runter-Stacks). Der Gobwalker-Pilot zieht sie mit Stickyloom vom Team weg.",
+      "ja": "ウェーブ4以降、倒せない爆弾がプレイヤーに落ち約15秒後に広範囲爆発（火耐性低下が重なると威力増）。搭乗者が引き寄せて端へ運ぶ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "boomtype",
+     "names": {
+      "en": "Boomtype Magitek Gobwalker",
+      "fr": "Gobblindé magitek G-VII Boumbardier",
+      "de": "Gobumm-Stampfer VII",
+      "ja": "VII号ゴブリウォーカーB型"
+     },
+     "aliases": {
+      "en": [
+       "boomtype magitek gobwalker"
+      ],
+      "fr": [
+       "boomtype magitek gobwalker"
+      ],
+      "de": [
+       "boomtype magitek gobwalker"
+      ],
+      "ja": [
+       "VII号ゴブリウォーカーB型"
+      ]
+     },
+     "how": {
+      "en": "Enemy walker that stacks Vulnerability Up. Bring it to 15% so the friendly Gobwalker can use Recharge on it, then kill it.",
+      "fr": "Marcheur ennemi qui cumule Vulnérabilité. Descends-le à 15 % pour que ton Gobwalker puisse utiliser Recharge, puis tue-le.",
+      "de": "Gegnerischer Walker, der Verwundbarkeit stapelt. Bring ihn auf 15 %, damit euer Gobwalker Recharge nutzen kann, dann töten.",
+      "ja": "被ダメ上昇を重ねる敵機。15%まで削ると味方機がRechargeでエネルギー回復できる。その後倒す。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "debuff"
+     ]
+    },
+    {
+     "id": "gobwidow",
+     "names": {
+      "en": "Gobwidow G-IX (Prey / Boomcannon)",
+      "fr": "Gobmygale magitek G-IX (Marquage / Double canon)",
+      "de": "Gob-Witwe IX (Markiert / Großeknall)",
+      "ja": "IX号ゴブリウィドー（マーキング／ブームカノン）"
+     },
+     "aliases": {
+      "en": [
+       "gobwidow g-ix (prey / boomcannon)"
+      ],
+      "fr": [
+       "gobwidow g-ix (prey / boomcannon)"
+      ],
+      "de": [
+       "gobwidow g-ix (prey / boomcannon)"
+      ],
+      "ja": [
+       "IX号ゴブリウィドー"
+      ]
+     },
+     "how": {
+      "en": "Puts Prey on tanks; Boomcannon then deals damage equal to missing HP, so a tank below half HP dies. Heal both tanks to full after Prey.",
+      "fr": "Met Proie sur les tanks ; Boomcannon inflige alors des dégâts égaux aux PV manquants, un tank sous la moitié meurt. Remets les deux tanks full après Proie.",
+      "de": "Gibt den Tanks Beute; Boomcannon macht dann Schaden in Höhe der fehlenden LP, ein Tank unter halben LP stirbt. Beide Tanks nach Beute voll heilen.",
+      "ja": "タンクに予兆を付け、減っているHP分のダメージを与える。HPが半分以下のタンクは即死するので、予兆後に両タンクを満タンに。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "tankbuster",
+      "debuff"
+     ]
+    },
+    {
+     "id": "jagd-doll",
+     "names": {
+      "en": "Jagd Doll",
+      "fr": "Poupée jagd",
+      "de": "Jagdpuppe",
+      "ja": "ヤークトドール"
+     },
+     "aliases": {
+      "en": [
+       "jagd doll"
+      ],
+      "fr": [
+       "jagd doll"
+      ],
+      "de": [
+       "jagd doll"
+      ],
+      "ja": [
+       "ヤークトドール"
+      ]
+     },
+     "how": {
+      "en": "Uses an untelegraphed frontal cleave and Blitzstrahl circles; tanks face it away. Kill order in late waves: Hardhelm, Boomtype, Jagd Doll, Gobwidow.",
+      "fr": "Utilise un cleave frontal sans marqueur et des cercles Blitzstrahl ; les tanks le tournent. Ordre de kill tardif : Hardhelm, Boomtype, Jagd Doll, Gobwidow.",
+      "de": "Nutzt einen unmarkierten Frontalcleave und Blitzstrahl-Kreise; Tanks drehen sie weg. Kill-Reihenfolge in späten Wellen: Hardhelm, Boomtype, Jagd Doll, Gobwidow.",
+      "ja": "予兆なし前方範囲と円範囲を使う。タンクが外側へ向ける。後半の撃破順はハードヘルム→B型→ヤークトドール→ウィドー。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "cleave"
+     ]
+    },
+    {
+     "id": "final-wave",
+     "names": {
+      "en": "Wave 9 and enrage",
+      "fr": "Wave 9 and enrage",
+      "de": "Wave 9 and enrage",
+      "ja": "ウェーブ9と時間切れ"
+     },
+     "aliases": {
+      "en": [
+       "wave 9 and enrage"
+      ],
+      "fr": [
+       "wave 9 and enrage"
+      ],
+      "de": [
+       "wave 9 and enrage"
+      ],
+      "ja": [
+       "ウェーブ9と時間切れ"
+      ]
+     },
+     "how": {
+      "en": "Last wave mixes soldiers, snipers, two Gobwidows, a Boomtype and a Jagd Doll. Tanks split them, stun the small goblins with Cracklyplume and use AoE and Limit Break before the ~10:30 enrage.",
+      "fr": "Dernière vague : soldats, snipers, deux Gobwidow, un Boomtype et un Jagd Doll. Les tanks se les répartissent, étourdis les petits gobelins et utilise AoE et Limit Break avant l'enrage (~10:30).",
+      "de": "Letzte Welle: Soldaten, Scharfschützen, zwei Gobwidows, ein Boomtype und ein Jagd Doll. Tanks teilen sie auf, betäube die kleinen Goblins und nutze AoE und Limitrausch vor dem Enrage (~10:30).",
+      "ja": "最終ウェーブは雑魚、ウィドー2体、B型、ヤークトドール。タンクで分担し、雑魚をスタンして範囲攻撃とLBで約10分30秒までに倒す。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Exact wave timings beyond the CGW wave list were not cross-checked with a second source.",
+      "fr": "Les timings exacts des vagues n'ont pas été recoupés avec une 2e source.",
+      "de": "Die genauen Wellen-Timings wurden nicht mit einer zweiten Quelle geprüft.",
+      "ja": "ウェーブ構成の細部は第2の資料で照合できていません。"
+     },
+     "tags": [
+      "adds",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Alexander - The Cuff of the Father (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Alexander_-_The_Cuff_of_the_Father_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/820a11812ab/",
+   "lang": "en"
+  },
+  {
+   "title": "ゲームエイト 起動編2層（ノーマル） enemy names",
+   "url": "https://game8.jp/ff14/307951",
+   "lang": "ja"
+  },
+  {
+   "title": "雨の音が好き 起動編2層",
+   "url": "https://amaotob.hatenablog.com/entry/2015/07/10/011334",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

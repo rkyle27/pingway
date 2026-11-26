@@ -1,0 +1,509 @@
+{
+ "id": "a1s",
+ "type": "savage",
+ "expansion": "HW",
+ "patch": "3.05",
+ "names": {
+  "en": "Alexander - The Fist of the Father (Savage)",
+  "fr": "Alexander - Le Poing du Père (sadique)",
+  "de": "Alexander - Faust des Vaters (episch)",
+  "ja": "機工城アレキサンダー零式：起動編1"
+ },
+ "aliases": {
+  "en": [
+   "a1s",
+   "a1 savage",
+   "alexander 1 savage",
+   "oppressor savage",
+   "fist of the father savage",
+   "gordias 1 savage"
+  ],
+  "fr": [
+   "a1s",
+   "alexander 1 sadique",
+   "poing du père sadique"
+  ],
+  "de": [
+   "a1s",
+   "alexander 1 episch",
+   "faust des vaters episch"
+  ],
+  "ja": [
+   "起動編1零式",
+   "起動編零式1層",
+   "アレキ零式1層",
+   "起動1層",
+   "オプレッサー"
+  ]
+ },
+ "summary": {
+  "en": "Floor 1 of Alexander: Gordias (Savage). First a short DPS check on Faust, then Oppressor, which later gets a copy (Oppressor 0.5) that must die at the same time. The hard part is keeping the two Oppressors apart and close in HP while handling Alarum adds, Resin Bombs and missiles.",
+  "fr": "Étage 1 d'Alexander : Gordias (sadique). D'abord un petit test de DPS sur Faust, puis Oppressor, qui reçoit plus tard une copie (Oppressor 0.5) à tuer en même temps. Le plus dur : garder les deux Oppressor séparés et proches en PV tout en gérant les Alarum, les Resin Bomb et les missiles.",
+  "de": "Ebene 1 von Alexander: Gordias (episch). Zuerst ein kurzer DPS-Check an Faust, dann Oppressor, der später eine Kopie (Oppressor 0.5) bekommt, die gleichzeitig sterben muss. Schwierig ist, beide Oppressor getrennt und mit ähnlichen LP zu halten, während du Alarum-Adds, Resin Bombs und Raketen handhabst.",
+  "ja": "機工城アレキサンダー起動編の1層零式。まずファウストのDPSチェック、その後オプレッサー戦。途中でオプレッサー・ゼロが加わり、2体を同時に倒す必要があります。2体を離してHPをそろえつつ、アラーム、粘着弾、ミサイルを処理するのが難所です。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "This fight is mostly cleared unsynced or at minimum item level today, so strats rarely matter. The entries below explain how each mechanic works. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Aujourd'hui ce combat se fait surtout en mode sans restriction ou en ilvl minimum, donc la strat compte rarement. Les entrées ci-dessous expliquent comment marche chaque mécanique. Les noms des mécaniques sont en anglais (noms FR officiels non vérifiés).",
+  "de": "Heute wird dieser Kampf meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel gemacht, die Strat spielt also selten eine Rolle. Die Einträge unten erklären, wie jede Mechanik funktioniert. Die Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "現在このコンテンツは主に制限解除やIL最低限で攻略されるため、攻略法の違いはほとんど問題になりません。以下では各ギミックの仕組みを説明します。英語名のままのギミック名は日本語の公式名を確認できなかったものです。"
+ },
+ "phases": [
+  {
+   "id": "door",
+   "names": {
+    "en": "Faust (DPS check)",
+    "fr": "Faust (test de DPS)",
+    "de": "Faust (DPS-Check)",
+    "ja": "ファウスト（DPSチェック）"
+   },
+   "mechanics": [
+    {
+     "id": "kaltstrahl",
+     "names": {
+      "en": "Kaltstrahl",
+      "fr": "Kaltstrahl",
+      "de": "Kaltstrahl",
+      "ja": "カルトシュトラール"
+     },
+     "aliases": {
+      "en": [
+       "kaltstrahl"
+      ],
+      "fr": [
+       "kaltstrahl"
+      ],
+      "de": [
+       "kaltstrahl"
+      ],
+      "ja": [
+       "カルトシュトラール"
+      ]
+     },
+     "how": {
+      "en": "Frontal physical cleave from Faust and the Sturm Dolls; tanks keep them facing away from the party.",
+      "fr": "Cleave physique frontal de Faust et des Sturm Doll ; les tanks les tournent dos au groupe.",
+      "de": "Physischer Frontalcleave von Faust und den Sturm Dolls; Tanks drehen sie vom Team weg.",
+      "ja": "ファウストと人形（Sturm Doll）の前方物理範囲。タンクはパーティの反対へ向ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave"
+     ]
+    },
+    {
+     "id": "pressure-increase",
+     "names": {
+      "en": "Pressure Increase",
+      "fr": "Hausse de pression",
+      "de": "Druckanstieg",
+      "ja": "蒸気圧上昇"
+     },
+     "aliases": {
+      "en": [
+       "pressure increase"
+      ],
+      "fr": [
+       "pressure increase"
+      ],
+      "de": [
+       "pressure increase"
+      ],
+      "ja": [
+       "Pressure Increase"
+      ]
+     },
+     "how": {
+      "en": "Faust gains a Damage Up stack about every 20 seconds; the 8th cast is the enrage (about 160 seconds). Ignore the endless Sturm Doll adds (off-tank holds them) and burn Faust.",
+      "fr": "Faust gagne un cumul de Bonus de dégâts toutes les 20 s environ ; le 8e lancement est l'enrage (~160 s). Ignore les Sturm Doll infinis (l'off-tank les garde) et tape Faust.",
+      "de": "Faust bekommt etwa alle 20 Sekunden einen Schaden-erhöht-Stack; der 8. Cast ist der Enrage (ca. 160 s). Ignoriere die endlosen Sturm Dolls (Off-Tank hält sie) und mach Faust tot.",
+      "ja": "約20秒ごとにファウストの与ダメージ上昇が重なり、8回目で時間切れ（約160秒）。無限に出る人形はSTが抱え、DPSはファウストだけを攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "enrage",
+      "dps-check"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "boss",
+   "names": {
+    "en": "Oppressor and Oppressor 0.5",
+    "fr": "Oppressor et Oppressor 0.5",
+    "de": "Oppressor und Oppressor 0.5",
+    "ja": "オプレッサー／オプレッサー・ゼロ"
+   },
+   "mechanics": [
+    {
+     "id": "royal-fount",
+     "names": {
+      "en": "Royal Fount",
+      "fr": "Source royale",
+      "de": "Königsquelle",
+      "ja": "ロイヤルファウント"
+     },
+     "aliases": {
+      "en": [
+       "royal fount"
+      ],
+      "fr": [
+       "royal fount"
+      ],
+      "de": [
+       "royal fount"
+      ],
+      "ja": [
+       "ロイヤルファウント"
+      ]
+     },
+     "how": {
+      "en": "Magic frontal cleave on the tank; point the boss away from the group.",
+      "fr": "Cleave magique frontal sur le tank ; tourne le boss dos au groupe.",
+      "de": "Magischer Frontalcleave auf den Tank; dreh den Boss vom Team weg.",
+      "ja": "タンクへの前方魔法範囲。ボスをパーティと反対へ向ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave"
+     ]
+    },
+    {
+     "id": "gunnery-pod",
+     "names": {
+      "en": "Gunnery Pod",
+      "fr": "Feu d'artillerie",
+      "de": "Waffenbehälter",
+      "ja": "ガンポッドファイア"
+     },
+     "aliases": {
+      "en": [
+       "gunnery pod"
+      ],
+      "fr": [
+       "gunnery pod"
+      ],
+      "de": [
+       "gunnery pod"
+      ],
+      "ja": [
+       "ガンポッドファイア"
+      ]
+     },
+     "how": {
+      "en": "Unavoidable raid-wide magic damage; heal up.",
+      "fr": "Dégâts magiques de zone inévitables ; soigne.",
+      "de": "Unvermeidbarer magischer Raumschaden; heilen.",
+      "ja": "回避不能の全体魔法攻撃。回復で対応。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "hydrothermal-missile",
+     "names": {
+      "en": "Hydrothermal Missile",
+      "fr": "Missile hydrothermique",
+      "de": "Hydrothermales Geschoss",
+      "ja": "蒸気ミサイル"
+     },
+     "aliases": {
+      "en": [
+       "hydrothermal missile"
+      ],
+      "fr": [
+       "hydrothermal missile"
+      ],
+      "de": [
+       "hydrothermal missile"
+      ],
+      "ja": [
+       "蒸気ミサイル"
+      ]
+     },
+     "how": {
+      "en": "A random player gets Prey; when it ends they take several missile hits. Healers keep the target topped.",
+      "fr": "Un joueur au hasard reçoit Proie ; à la fin il prend plusieurs missiles. Les soigneurs le gardent full.",
+      "de": "Ein zufälliger Spieler bekommt Beute; danach treffen ihn mehrere Raketen. Heiler halten ihn voll.",
+      "ja": "ランダム1人に予兆が付き、終了時にミサイルが連続で着弾。ヒーラーは対象のHPを満タンに。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "photon-spaser",
+     "names": {
+      "en": "Photon Spaser",
+      "fr": "Spaser à photons",
+      "de": "Plasmonen-Spaser",
+      "ja": "フォトンスペーサー"
+     },
+     "aliases": {
+      "en": [
+       "photon spaser"
+      ],
+      "fr": [
+       "photon spaser"
+      ],
+      "de": [
+       "photon spaser"
+      ],
+      "ja": [
+       "フォトンスペーサー"
+      ]
+     },
+     "how": {
+      "en": "Line AoE with big knockback toward a random player; get out of the line.",
+      "fr": "AoE en ligne avec gros recul vers un joueur au hasard ; sors de la ligne.",
+      "de": "Linien-AoE mit starkem Rückstoß auf einen zufälligen Spieler; raus aus der Linie.",
+      "ja": "ランダム1人への直線範囲＋大きなノックバック。直線上から離れる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "dodge"
+     ]
+    },
+    {
+     "id": "emergency-deployment",
+     "names": {
+      "en": "Emergency Deployment (Alarum)",
+      "fr": "Déploiement d'urgence (Alarum)",
+      "de": "Noteinsatz (Alarm)",
+      "ja": "緊急出撃（アラーム）"
+     },
+     "aliases": {
+      "en": [
+       "emergency deployment (alarum)"
+      ],
+      "fr": [
+       "emergency deployment (alarum)"
+      ],
+      "de": [
+       "emergency deployment (alarum)"
+      ],
+      "ja": [
+       "緊急出撃（アラーム）"
+      ]
+     },
+     "how": {
+      "en": "Summons Alarum adds that spread Nanoparticles; 6 stacks give Minimum (more damage taken, less dealt). Killing an Alarum leaves a Minimum puddle. In the missile phase, kill Alarums under the 3000-tonze Missile markers so the missiles are shrunk.",
+      "fr": "Invoque des Alarum qui posent des Nanoparticules ; à 6 cumuls tu prends Minimum (plus de dégâts subis, moins infligés). Un Alarum tué laisse une flaque Minimum. Pendant les missiles, tue-les sous les marqueurs de 3000-tonze Missile pour réduire les missiles.",
+      "de": "Ruft Alarum-Adds, die Nanopartikel verteilen; bei 6 Stacks gibt es Minimum (mehr Schaden genommen, weniger verursacht). Ein getötetes Alarum hinterlässt eine Minimum-Pfütze. In der Raketenphase tötest du sie unter den 3000-tonze-Missile-Markern, damit die Raketen schrumpfen.",
+      "ja": "アラームが出現し圧縮粒子を付与。6スタックでミニマム（被ダメ増・与ダメ減）。倒すとミニマムの床が残る。ミサイルの時は超大型ミサイルの予兆の下で倒し、ミサイルを小さくする。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "debuff"
+     ]
+    },
+    {
+     "id": "resin-bomb",
+     "names": {
+      "en": "Resin Bomb",
+      "fr": "Bombe de résine",
+      "de": "Pechbombe",
+      "ja": "粘着弾"
+     },
+     "aliases": {
+      "en": [
+       "resin bomb"
+      ],
+      "fr": [
+       "resin bomb"
+      ],
+      "de": [
+       "resin bomb"
+      ],
+      "ja": [
+       "粘着弾"
+      ]
+     },
+     "how": {
+      "en": "Circles on random players that leave slowing resin puddles; drop them at the edge or a planned spot.",
+      "fr": "Cercles sur des joueurs au hasard qui laissent des flaques de résine ralentissantes ; pose-les au bord ou à un endroit prévu.",
+      "de": "Kreise auf zufälligen Spielern, die verlangsamende Harzpfützen hinterlassen; am Rand oder an einer geplanten Stelle ablegen.",
+      "ja": "ランダム対象に円範囲、移動速度低下の粘着床が残る。外周や決めた場所に捨てる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread"
+     ]
+    },
+    {
+     "id": "3000-tonze-missile",
+     "names": {
+      "en": "3000-tonze Missile",
+      "fr": "Missile de 3000 tonz",
+      "de": "3000-Tonzen-Geschoss",
+      "ja": "超大型ミサイル"
+     },
+     "aliases": {
+      "en": [
+       "3000-tonze missile"
+      ],
+      "fr": [
+       "3000-tonze missile"
+      ],
+      "de": [
+       "3000-tonze missile"
+      ],
+      "ja": [
+       "超大型ミサイル"
+      ]
+     },
+     "how": {
+      "en": "Four missiles marked by lasers hit the whole party with heavy damage and debuffs unless shrunk by Minimum from an Alarum killed under them.",
+      "fr": "Quatre missiles marqués par des lasers frappent tout le groupe très fort avec des malus, sauf s'ils sont réduits par un Alarum tué dessous.",
+      "de": "Vier per Laser markierte Raketen treffen das ganze Team hart mit Debuffs, außer sie werden durch ein darunter getötetes Alarum verkleinert.",
+      "ja": "レーザーで示された4発が全体に大ダメージとデバフ。下でアラームを倒してミニマムで小さくする。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "debuff"
+     ]
+    },
+    {
+     "id": "hypercompressed-plasma",
+     "names": {
+      "en": "Hypercompressed Plasma",
+      "fr": "Plasma hypercomprimé",
+      "de": "Hyperkomprimiertes Plasma",
+      "ja": "ハイパープラズマ"
+     },
+     "aliases": {
+      "en": [
+       "hypercompressed plasma"
+      ],
+      "fr": [
+       "hypercompressed plasma"
+      ],
+      "de": [
+       "hypercompressed plasma"
+      ],
+      "ja": [
+       "ハイパープラズマ"
+      ]
+     },
+     "how": {
+      "en": "Heavy magic tankbuster; mitigate or invuln. It hits both tanks hard, so both use big mitigation (or an invuln).",
+      "fr": "Gros tankbuster magique ; réduction ou invincibilité. Il frappe fort les deux tanks : les deux utilisent de gros cooldowns (ou une invu).",
+      "de": "Starker magischer Tankbuster; Mitigation oder Unverwundbarkeit. Er trifft beide Tanks hart, also nutzen beide starke Mitigation (oder eine Unverwundbarkeit).",
+      "ja": "強力な魔法タンク強攻撃。軽減か無敵で受ける。MTとST両方に大ダメージ。両者とも大きな軽減（または無敵）を使う。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "emergency-liftoff",
+     "names": {
+      "en": "Emergency Liftoff",
+      "fr": "Décollage d'urgence",
+      "de": "Notstart",
+      "ja": "緊急上昇"
+     },
+     "aliases": {
+      "en": [
+       "emergency liftoff"
+      ],
+      "fr": [
+       "emergency liftoff"
+      ],
+      "de": [
+       "emergency liftoff"
+      ],
+      "ja": [
+       "緊急上昇"
+      ]
+     },
+     "how": {
+      "en": "The Oppressor(s) fly up, rain Resin Bombs and land on two marked spots; stack to keep resin together, then move out of the landing AoEs.",
+      "fr": "Les Oppressor s'envolent, lâchent des Resin Bomb puis atterrissent sur deux points marqués ; groupe-toi pour regrouper la résine, puis sors des zones d'atterrissage.",
+      "de": "Die Oppressor fliegen hoch, werfen Resin Bombs und landen auf zwei markierten Stellen; zusammen stehen, damit das Harz gebündelt bleibt, dann raus aus den Landungs-AoEs.",
+      "ja": "上昇して粘着弾を連続投下し、2か所の予兆に着地。集まって粘着をまとめ、着地範囲から離れる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "oppressor-05",
+     "names": {
+      "en": "Distress Beacon (Oppressor 0.5)",
+      "fr": "Fanal de détresse (Oppresseur 0.5)",
+      "de": "Notsignal (Unterdrücker 0,5)",
+      "ja": "救援要請（オプレッサー・ゼロ）"
+     },
+     "aliases": {
+      "en": [
+       "distress beacon (oppressor 0.5)"
+      ],
+      "fr": [
+       "distress beacon (oppressor 0.5)"
+      ],
+      "de": [
+       "distress beacon (oppressor 0.5)"
+      ],
+      "ja": [
+       "救援要請（オプレッサー・ゼロ）"
+      ]
+     },
+     "how": {
+      "en": "A second Oppressor arrives with the same HP the first had. Off-tank holds it far away: if the two stand close they gain Damage Up stacks. Kill both within a few percent of each other, because when one dies the other casts Self-destruct, which wipes if it finishes.",
+      "fr": "Un second Oppressor arrive avec les PV qu'avait le premier. L'off-tank le garde loin : trop proches, ils gagnent des Bonus de dégâts. Tue-les à quelques % d'écart, car quand l'un meurt l'autre lance Self-destruct, qui wipe s'il finit.",
+      "de": "Ein zweiter Oppressor kommt mit den LP, die der erste hatte. Der Off-Tank hält ihn weit weg: stehen sie nah, bekommen sie Schaden-erhöht-Stacks. Töte beide mit wenigen Prozent Abstand, denn stirbt einer, castet der andere Self-destruct, was bei Abschluss ein Wipe ist.",
+      "ja": "初号機と同じHPのオプレッサー・ゼロが出現。STが離して抱える（近いと与ダメ上昇）。片方が倒れるともう片方が自爆を詠唱し、完了で全滅するため数%以内で同時に倒す。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "dps-check"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Alexander - The Fist of the Father (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Alexander_-_The_Fist_of_the_Father_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database (duty names en/fr/de/ja)",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/747c862dc22/",
+   "lang": "en"
+  },
+  {
+   "title": "雨の音が好き - 起動編1層零式 攻略のまとめ",
+   "url": "https://amaotob.hatenablog.com/entry/2015/07/29/140548",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

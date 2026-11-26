@@ -1,0 +1,364 @@
+{
+ "id": "o5s",
+ "type": "savage",
+ "expansion": "SB",
+ "patch": "4.2",
+ "names": {
+  "en": "Sigmascape V1.0 (Savage)",
+  "fr": "Sigmastice v1.0 (sadique)",
+  "de": "Sigmametrie 1.0 (episch)",
+  "ja": "次元の狭間オメガ零式：シグマ編1"
+ },
+ "aliases": {
+  "en": [
+   "o5s",
+   "phantom train",
+   "ghost train",
+   "sigmascape 1 savage"
+  ],
+  "fr": [
+   "o5s",
+   "train fantôme",
+   "sigmastice 1"
+  ],
+  "de": [
+   "o5s",
+   "phantomzug",
+   "sigmametrie 1"
+  ],
+  "ja": [
+   "シグマ零式1層",
+   "魔列車",
+   "o5s"
+  ]
+ },
+ "summary": {
+  "en": "First floor of Sigmascape Savage on top of the Phantom Train, with no railings so knockbacks can throw you off. Ghosts must be avoided or burned with Saintly Beam; in phase 2 players are sent into passenger cars to kill role-specific ghosts.",
+  "fr": "Premier étage de Sigmastice sadique sur le toit du Train fantôme, sans rambarde : les projections peuvent te faire tomber. Il faut éviter les fantômes ou les brûler avec Faisceaux sacrés ; en phase 2, les joueurs sont envoyés dans des wagons pour tuer des fantômes selon leur rôle.",
+  "de": "Erste Ebene von Sigmametrie episch auf dem Dach des Phantomzugs, ohne Geländer, also können Rückstöße dich runterwerfen. Geister musst du meiden oder mit Heiligenstrahl verbrennen; in Phase 2 werden Spieler in Waggons geschickt, um rollenspezifische Geister zu töten.",
+  "ja": "シグマ編1層、魔列車の上での戦闘。柵がなくノックバックで落ちます。ゴーストは避けるかセイントビームで消し、フェーズ2では客車に送られロール別のゴーストを倒します。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "フェーズ1"
+   },
+   "mechanics": [
+    {
+     "id": "doom-strike",
+     "names": {
+      "en": "Doom Strike / Acid Rain",
+      "fr": "Frappe létale / Pluie acide",
+      "de": "Vernichtungsschlag / Säureregen",
+      "ja": "魔霊撃／酸性雨"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Doom Strike is a tankbuster, Acid Rain raid-wide damage. Connectivity: the main tank builds a damage-over-time if they leave melee range of the train, so stay close.",
+      "fr": "Frappe létale est un tankbuster, Acid Rain des dégâts de groupe. Connectivity : le main tank prend des dégâts sur la durée s'il quitte la portée de mêlée du train, donc reste près.",
+      "de": "Vernichtungsschlag ist ein Tankbuster, Acid Rain Gruppenschaden. Connectivity: Der Main-Tank bekommt Schaden über Zeit, wenn er die Nahkampfreichweite des Zugs verlässt, also nah bleiben.",
+      "ja": "魔霊撃はタンク強攻撃、Acid Rainは全体攻撃。MTは列車から離れると継続ダメージが重なるので近くにいます。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "The Connectivity debuff name is not verified in FR/DE/JA; Doom Strike and Acid Rain are verified.",
+      "fr": "Le nom FR du debuff Connectivité n'est pas vérifié ; Frappe létale et Pluie acide sont vérifiés.",
+      "de": "Der DE-Name des Konnektivität-Debuffs ist nicht geprüft; Vernichtungsschlag und Säureregen sind geprüft.",
+      "ja": "接続デバフの日本語名は未確認。魔霊撃と酸性雨は確認済み。"
+     },
+     "tags": [
+      "tankbuster",
+      "raidwide",
+      "tether"
+     ]
+    },
+    {
+     "id": "encumber",
+     "names": {
+      "en": "Encumber",
+      "fr": "Encombrement",
+      "de": "Wegsperrung",
+      "ja": "進路妨害"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Lines down the middle become ghost walls; anyone inside when they appear dies. Leave one or two middle walls up as knockback protection.",
+      "fr": "Des lignes au milieu deviennent des murs de fantômes ; qui est dedans quand ils apparaissent meurt. Garde un ou deux murs du milieu pour te protéger des projections.",
+      "de": "Linien in der Mitte werden zu Geisterwänden; wer drinsteht, wenn sie erscheinen, stirbt. Lass ein oder zwei mittlere Wände als Rückstoßschutz stehen.",
+      "ja": "中央の直線範囲がゴーストの壁になり、出現時に中にいると即死。中央の壁を1〜2個残してノックバック対策にします。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "saintly-beam",
+     "names": {
+      "en": "Saintly Beam",
+      "fr": "Faisceaux sacrés",
+      "de": "Heiligenstrahl",
+      "ja": "セイントビーム"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Spotlights chase two to four players, then stop and burn whatever is inside; dodge them, and use them to destroy ghosts.",
+      "fr": "Des projecteurs suivent deux à quatre joueurs puis s'arrêtent et brûlent ce qui est dedans ; esquive-les, et sers-t'en pour détruire les fantômes.",
+      "de": "Scheinwerfer verfolgen zwei bis vier Spieler, bleiben dann stehen und verbrennen alles darin; weich aus und nutze sie, um Geister zu zerstören.",
+      "ja": "2〜4人を光が追いかけ、止まった位置を焼きます。避けつつ、ゴーストを消すのに使います。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "head-on",
+     "names": {
+      "en": "Head On",
+      "fr": "Plein fouet",
+      "de": "Frontalangriff",
+      "ja": "追突"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Big knockback from the front of the train toward the back; run to the back.",
+      "fr": "Grosse projection de l'avant du train vers l'arrière ; cours à l'arrière.",
+      "de": "Großer Rückstoß von der Zugfront nach hinten; lauf nach hinten.",
+      "ja": "列車の前方から後方へ強いノックバック。後方へ走ります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback"
+     ]
+    },
+    {
+     "id": "diabolic-wind",
+     "names": {
+      "en": "Diabolic Wind",
+      "fr": "Vent diabolique",
+      "de": "Diabolischer Wind",
+      "ja": "魔界の風"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Spread circles on two to four players; marked players go east and west, the rest stay central.",
+      "fr": "Cercles de dispersion sur deux à quatre joueurs ; les marqués vont à l'est et à l'ouest, les autres restent au centre.",
+      "de": "Verteilkreise auf zwei bis vier Spielern; Markierte gehen nach Osten und Westen, der Rest bleibt in der Mitte.",
+      "ja": "2〜4人に散開円。対象は東西へ、他は中央。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread"
+     ]
+    },
+    {
+     "id": "diabolic-headlamp",
+     "names": {
+      "en": "Diabolic Headlamp",
+      "fr": "Phare diabolique",
+      "de": "Diabolische Leuchte",
+      "ja": "魔界の前照灯"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Line stack on a healer with a strong knockback; stack in the middle of the roof so nobody is pushed off the side.",
+      "fr": "Package en ligne sur un healer avec une forte projection ; regroupe-toi au milieu du toit pour que personne ne tombe sur le côté.",
+      "de": "Linien-Sammelpunkt auf einem Heiler mit starkem Rückstoß; sammelt euch in der Mitte des Dachs, damit niemand seitlich runterfällt.",
+      "ja": "ヒーラーへの直線頭割り＋強ノックバック。横に落ちないよう屋根の中央で頭割り。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "knockback"
+     ]
+    },
+    {
+     "id": "diabolic-light",
+     "names": {
+      "en": "Diabolic Light",
+      "fr": "Lueur diabolique",
+      "de": "Diabolisches Licht",
+      "ja": "魔界の光"
+     },
+     "aliases": {
+      "en": [
+       "diabolical headlight"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Proximity AoEs on the main tank and a healer; tanks swap, drop the AoEs at the back of the train, then return to the front.",
+      "fr": "Zones à distance sur le main tank et un healer ; les tanks swap, posez les zones à l'arrière du train, puis revenez devant.",
+      "de": "Distanz-AoEs auf dem Main-Tank und einem Heiler; Tanks wechseln, legt die AoEs hinten am Zug ab und kommt wieder nach vorne.",
+      "ja": "MTとヒーラー1人に距離減衰範囲。タンクスイッチし、列車の後方に置いてから前へ戻ります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "proximity",
+      "tankswap"
+     ]
+    },
+    {
+     "id": "diabolic-whistle",
+     "names": {
+      "en": "Diabolic Whistle (ghosts)",
+      "fr": "Sifflet diabolique (fantômes)",
+      "de": "Diabolische Pfeife (Geister)",
+      "ja": "魔界の汽笛（ゴースト）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Summons ghosts: a Remorse ghost knocks everyone back (stand between it and a wall, or use knockback immunity), crossing ghost lines pull you into a car if touched (dodge), and tethered ghosts chase two players (lead them into Saintly Beams). If a ghost catches you, you are taken to a passenger car.",
+      "fr": "Invoque des fantômes : un fantôme du Remords repousse tout le monde (place-toi entre lui et un mur, ou anti-projection), des lignes de fantômes qui traversent t'emportent dans un wagon si elles te touchent (esquive), et des fantômes liés suivent deux joueurs (amène-les dans les Faisceaux sacrés). Si un fantôme t'attrape, tu pars dans un wagon.",
+      "de": "Beschwört Geister: ein Reue-Geist stößt alle zurück (zwischen ihn und eine Wand stellen oder Rückstoß-Immunität), querende Geisterlinien ziehen dich bei Berührung in einen Waggon (ausweichen), und verbundene Geister verfolgen zwei Spieler (in Heiligenstrahlen führen). Erwischt dich ein Geist, landest du in einem Waggon.",
+      "ja": "ゴーストを召喚。ノックバックするゴースト（壁との間に立つか耐性）、横切るゴースト（触れると客車へ、避ける）、線付きゴーストが2人を追う（セイントビームへ誘導）。捕まると客車に送られます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "knockback",
+      "dodge",
+      "tether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2",
+    "fr": "Phase 2",
+    "de": "Phase 2",
+    "ja": "フェーズ2"
+   },
+   "mechanics": [
+    {
+     "id": "doom-chimney",
+     "names": {
+      "en": "Diabolic Chimney / passenger cars",
+      "fr": "Cheminée diabolique / wagons",
+      "de": "Diabolischer Schlot / Waggons",
+      "ja": "魔界の噴煙／客車"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "After the adds, a chimney must be destroyed and players are teleported into cars by ghosts. In the cars ghosts are role-locked: black for tanks (tankbusters), small purple for healers (high HP, heavy hits), red for DPS (kill before they enrage); killing yours sends you back.",
+      "fr": "Après les adds, il faut détruire une cheminée et les fantômes t'envoient dans les wagons. Dans les wagons, les fantômes sont par rôle : noirs pour les tanks (tankbusters), petits violets pour les healers (beaucoup de PV, gros coups), rouges pour les DPS (à tuer avant leur enrage) ; tuer le tien te ramène.",
+      "de": "Nach den Adds muss ein Schlot zerstört werden und Geister teleportieren Spieler in Waggons. Dort sind die Geister rollengebunden: schwarz für Tanks (Tankbuster), kleine lila für Heiler (viele HP, harte Treffer), rot für DDs (vor dem Enrage töten); wer seinen tötet, kehrt zurück.",
+      "ja": "雑魚の後、噴煙を壊すとゴーストで客車へ送られます。客車のゴーストはロール別：黒＝タンク（強攻撃）、小さい紫＝ヒーラー（HP多め、大ダメージ）、赤＝DPS（暴走前に倒す）。倒すと戻れます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "tankbuster",
+      "transition"
+     ]
+    },
+    {
+     "id": "p2-combos",
+     "names": {
+      "en": "Faster combos and enrage",
+      "fr": "Combos plus rapides et enrage",
+      "de": "Schnellere Kombos und Enrage",
+      "ja": "複合ギミックと時間切れ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Phase 1 attacks return in quicker combinations (for example Headlamp with crossing ghosts: stack center, then dodge). After 10 minutes a long Saintly Beam cast wipes the party.",
+      "fr": "Les attaques de la phase 1 reviennent en combos plus rapides (par ex. Phare avec fantômes qui traversent : package au centre puis esquive). Après 10 minutes, une longue incantation de Faisceaux sacrés tue le groupe.",
+      "de": "Angriffe aus Phase 1 kommen in schnelleren Kombos wieder (z. B. Leuchte mit querenden Geistern: in der Mitte sammeln, dann ausweichen). Nach 10 Minuten löscht ein langer Heiligenstrahl die Gruppe aus.",
+      "ja": "フェーズ1の攻撃が速い組み合わせで再登場（例：前照灯＋横切るゴースト＝中央で頭割り後に回避）。10分経過で長いセイントビーム詠唱により全滅。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "dodge",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - Sigmascape V1.0 (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Sigmascape_V1.0_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

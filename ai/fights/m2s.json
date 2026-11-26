@@ -1,0 +1,820 @@
+{
+ "id": "m2s",
+ "type": "savage",
+ "expansion": "DT",
+ "patch": "7.05",
+ "names": {
+  "en": "AAC Light-heavyweight M2 (Savage) - Honey B. Lovely",
+  "fr": "Poids mi-lourds CCA - match 2 (sadique) - Honey B. Lovely",
+  "de": "Arkadion - Halbschwergewicht R2 (episch) - Suzie Summ Honigsüß",
+  "ja": "至天の座アルカディア零式：ライトヘビー級2 - ハニー・B・ラブリー"
+ },
+ "aliases": {
+  "en": [
+   "m2s",
+   "m2 savage",
+   "honey b lovely",
+   "honey",
+   "bee",
+   "lh2"
+  ],
+  "fr": [
+   "m2s",
+   "honey b. lovely",
+   "abeille"
+  ],
+  "de": [
+   "m2s",
+   "suzie summ",
+   "biene",
+   "suzie summ honigsüß"
+  ],
+  "ja": [
+   "m2s",
+   "零式2層",
+   "ライトヘビー級2層",
+   "ハニー",
+   "蜂"
+  ]
+ },
+ "summary": {
+  "en": "Second Light-heavyweight fight: Honey B. Lovely, an idol bee. The fight revolves around poison/love stored attacks (spread or pair stack) combined with Tempting Twist or Honey Beeline, three Honey B. Live concerts where you manage heart stacks (four hearts = you are charmed and the boss heals), two Alarm Pheromones bee-dodging sections, and the Rotten Heart cleanse puzzle before enrage.",
+  "fr": "Deuxième combat Poids mi-lourds : Honey B. Lovely, une idole abeille. Le combat tourne autour d'attaques stockées (dispersion ou package à deux) mêlées à Tourbillon tentateur ou Rayon mielleux, de trois concerts Honey B. Live où il faut gérer les cœurs (quatre cœurs = charme et le boss se soigne), de deux Phéromones d'alerte où on esquive les abeilles, et du puzzle de purge Cœur cruel avant l'enrage.",
+  "de": "Zweiter Halbschwergewicht-Kampf: Suzie Summ, ein Bienen-Idol. Der Kampf dreht sich um gespeicherte Gift-/Liebesangriffe (verteilen oder Paar-Sammeln) zusammen mit Honigdreher oder Honigschuss, drei Suzie-Summ-Solo-Konzerte mit Herz-Management (vier Herzen = du wirst bezirzt und der Boss heilt sich), zwei Alarmpheromon-Phasen zum Bienen-Ausweichen und das Reinigungs-Puzzle Schwarzes Herz vor dem Finalangriff.",
+  "ja": "ライトヘビー級2層、アイドル蜂「ハニー・B・ラブリー」戦。ベノム/ラブ（散開かペア頭割り）を記憶してハニーツイスター/ハニーブラストと組み合わせるギミック、ハート管理（4つで行動不能になりボスが回復）が肝のハニー・B・ライヴ3回、蜂の直線を避けるアラームフェロモン2回、時間切れ前のブラックハート（α/β中和）で構成。"
+ },
+ "strats_overview": [
+  {
+   "id": "na-pf",
+   "name": {
+    "en": "NA PF standard (Aether PF / thepfstrat)",
+    "fr": "Standard PF NA (Aether PF / thepfstrat)",
+    "de": "NA-PF-Standard (Aether PF / thepfstrat)",
+    "ja": "NA野良標準（Aether PF / thepfstrat）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "DPS on intercardinals, supports on cardinals, supports rotate counterclockwise to find their partner. Beat 2 is the braindead 0-S / 1-N, Alarm Pheromones 1 is the north Mario Kart route, Alarm Pheromones 2 is supports NW / DPS SE, Beat 3 uses clock defamations and colour towers, Rotten Heart pairs at 6 seconds. EU PF not verified separately.",
+    "fr": "DPS aux intercardinaux, supports aux cardinaux, les supports tournent en antihoraire pour trouver leur partenaire. Beat 2 en 0-S / 1-N, Phéromones 1 en « Mario Kart » au nord, Phéromones 2 supports NO / DPS SE, Beat 3 avec défamations en horloge et tours de couleur, Cœur cruel en paire à 6 secondes. PF EU non vérifiée à part.",
+    "de": "DPS auf den Zwischenrichtungen, Supporter auf den Himmelsrichtungen, Supporter drehen gegen den Uhrzeigersinn zum Partner. Beat 2 als 0-S / 1-N, Alarmpheromon 1 als „Mario Kart“ im Norden, Alarmpheromon 2 Supporter NW / DPS SO, Beat 3 mit Uhr-Defamations und Farbtürmen, Schwarzes Herz bei 6 Sekunden paarweise. EU-PF nicht separat geprüft.",
+    "ja": "DPSが斜め、サポートが方角、サポートが反時計回りでペアを探す。2ndは0が南・1が北の脳死法、アラーム1回目は北スタートのマリカー、2回目はサポート北西・DPS南東、3rdは時計位置の散開と色の塔、ブラックハートは残り6秒で中和。EU野良は未確認。"
+   },
+   "aliases": {
+    "en": [
+     "aether pf",
+     "thepfstrat",
+     "the pf strat",
+     "mario kart"
+    ],
+    "fr": [
+     "aether pf",
+     "thepfstrat",
+     "the pf strat",
+     "mario kart"
+    ],
+    "de": [
+     "aether pf",
+     "thepfstrat",
+     "the pf strat",
+     "mario kart"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-pf",
+   "name": {
+    "en": "JP PF (Nukemaru macro, game8)",
+    "fr": "PF JP (macro Nukemaru, game8)",
+    "de": "JP-PF (Nukemaru-Makro, game8)",
+    "ja": "日本野良（ぬけまるマクロ / game8準拠）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "game8 follows Nukemaru's video macro, with added tower spots by role for the 1-heart group in Beat 2.",
+    "fr": "game8 suit la macro de la vidéo de Nukemaru, avec les tours par rôle ajoutées pour le groupe à 1 cœur au Beat 2.",
+    "de": "game8 folgt dem Makro aus Nukemarus Video, mit Turmplätzen nach Rolle für die 1-Herz-Gruppe in Beat 2.",
+    "ja": "game8はぬけまる氏の動画マクロ準拠。ライヴ2ndの♡1組の塔位置をロール別に追記。"
+   },
+   "aliases": {
+    "en": [
+     "nukemaru",
+     "game8"
+    ],
+    "fr": [
+     "nukemaru",
+     "game8"
+    ],
+    "de": [
+     "nukemaru",
+     "game8"
+    ],
+    "ja": [
+     "ぬけまる",
+     "nukemaru"
+    ]
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "opener",
+   "names": {
+    "en": "Opener",
+    "fr": "Ouverture",
+    "de": "Eröffnung",
+    "ja": "序盤"
+   },
+   "mechanics": [
+    {
+     "id": "call-me-honey",
+     "names": {
+      "en": "Call Me Honey",
+      "fr": "Appelez-moi Lovely",
+      "de": "Lieblicher Ruf",
+      "ja": "ラブリーコール"
+     },
+     "aliases": {
+      "en": [
+       "raidwide"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Magic raidwide; mitigate.",
+      "fr": "Dégâts de zone magiques ; mitige.",
+      "de": "Magischer Raidwide; mitigieren.",
+      "ja": "魔法の全体攻撃。軽減する。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "venom-stored",
+     "names": {
+      "en": "Splash of Venom / Drop of Venom",
+      "fr": "Pluie de venin / Chute de venin",
+      "de": "Giftregen / Gifttropfen",
+      "ja": "ベノムレイン / ベノムドロップ"
+     },
+     "aliases": {
+      "en": [
+       "spread or pairs",
+       "venom"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "散開",
+       "ペア"
+      ]
+     },
+     "how": {
+      "en": "The boss stores a poison attack: Splash of Venom = everyone spreads, Drop of Venom = pair stacks (DPS with supports). It goes off with the next Twist or Beeline, so remember which one was cast.",
+      "fr": "Le boss stocke une attaque de poison : Pluie de venin = tout le monde s'écarte, Chute de venin = packages à deux (DPS avec supports). Elle part avec le prochain Tourbillon ou Rayon, donc retiens laquelle.",
+      "de": "Der Boss speichert einen Giftangriff: Giftregen = alle verteilen, Gifttropfen = Paar-Sammeln (DPS mit Supportern). Er löst mit dem nächsten Honigdreher oder Honigschuss aus, also merk dir welcher.",
+      "ja": "毒技を記憶。ベノムレイン＝全員散開、ベノムドロップ＝2人頭割り（DPSとサポートのペア）。次のツイスター/ブラストと同時に発動するので覚えておく。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Spread or pair on your role spot: DPS intercardinals, supports cardinals.",
+        "fr": "Écarte-toi ou mets-toi en paire sur ton spot : DPS intercardinaux, supports cardinaux.",
+        "de": "Verteilen oder Paar auf deinem Platz: DPS Zwischenrichtungen, Supporter Himmelsrichtungen.",
+        "ja": "DPSが斜め、サポートが方角で散開またはペア。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "twist-beeline",
+     "names": {
+      "en": "Tempting Twist / Honey Beeline",
+      "fr": "Tourbillon tentateur / Rayon mielleux",
+      "de": "Honigdreher / Honigschuss",
+      "ja": "ハニーツイスター / ハニーブラスト"
+     },
+     "aliases": {
+      "en": [
+       "donut",
+       "line",
+       "twist",
+       "beeline"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ドーナツ",
+       "直線"
+      ]
+     },
+     "how": {
+      "en": "Twist is a donut (stand inside the boss), followed by poison globs on the intercardinals; Beeline is a wide line through the boss (go to the sides), with globs east and west. The stored venom resolves in the safe spots.",
+      "fr": "Le Tourbillon est un donut (reste dans le boss), suivi de flaques de poison aux intercardinaux ; le Rayon est une large ligne à travers le boss (va sur les côtés), avec flaques à l'est et à l'ouest. Le venin stocké se résout dans les safe spots.",
+      "de": "Honigdreher ist ein Donut (bleib im Boss), danach Giftkleckse auf den Zwischenrichtungen; Honigschuss ist eine breite Linie durch den Boss (geh zur Seite), Kleckse im Osten und Westen. Das gespeicherte Gift löst in den sicheren Stellen aus.",
+      "ja": "ツイスターはドーナツ（ボス足元へ）、その後斜めに毒。ブラストはボスを通る太い直線（横へ）、東西に毒。記憶技は安地で処理。"
+     },
+     "strats": [
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Twist: gather under the boss, then use the four safe spots for the venom. Beeline: melee hit from the very edge of the line.",
+        "fr": "Tourbillon : regroupe-toi sous le boss, puis utilise les quatre safe spots pour le venin. Rayon : les mêlées tapent depuis le bord de la ligne.",
+        "de": "Honigdreher: unter dem Boss sammeln, dann die vier sicheren Stellen für das Gift nutzen. Honigschuss: Nahkämpfer schlagen vom Rand der Linie.",
+        "ja": "ツイスターはボス内側に集まり、出た4か所の安地で処理。ブラストは近接が届くギリギリで殴る。"
+       }
+      },
+      {
+       "strat": "na-pf",
+       "same_as": "jp-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "killer-sting-stinging-slash",
+     "names": {
+      "en": "Killer Sting / Stinging Slash",
+      "fr": "Dard tueur / Taillade tueuse",
+      "de": "Tödlicher Stich / Tödlicher Schnitt",
+      "ja": "キラースティング / キラースラッシュ"
+     },
+     "aliases": {
+      "en": [
+       "tankbuster",
+       "tb"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Tankbusters: Killer Sting is a shared hit on the tanks; Stinging Slash is a cone on the top two enmity players, so the off-tank holds second enmity and the tanks angle the cones away. Killer Sting is aimed at the main tank and both tanks stack to share it; for Stinging Slash the OT (ST) must be second in enmity so each tank takes one cone.",
+      "fr": "Tankbusters : Dard tueur est un coup partagé par les tanks ; Taillade tueuse est un cône sur les deux premiers en inimitié, donc l'OT garde la deuxième place et les tanks orientent les cônes. Dard tueur vise le main tank et les deux tanks se packent pour le partager ; pour Taillade tueuse l'OT doit être deuxième en inimitié pour que chaque tank prenne un cône.",
+      "de": "Tankbuster: Tödlicher Stich ist ein geteilter Treffer auf die Tanks; Tödlicher Schnitt ist ein Kegel auf die zwei Höchsten in der Feindseligkeit, also hält der OT Platz 2 und die Tanks drehen die Kegel weg. Tödlicher Stich zielt auf den Main-Tank, beide Tanks stacken und teilen ihn; bei Tödlicher Schnitt muss der OT Zweiter in der Feindseligkeit sein, damit jeder Tank einen Kegel nimmt.",
+      "ja": "スティングはMT・STの頭割り、スラッシュはヘイト1・2位への扇。STはヘイト2位を維持し北東・北西の斜めに立つ。キラースティングはMT対象でタンク2人が頭割り。キラースラッシュはSTがヘイト2位にいて、タンクが1つずつ扇を受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "cleave",
+      "stack"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beat-1",
+   "names": {
+    "en": "Honey B. Live: 1st Beat",
+    "fr": "Honey B. Live - Ouverture",
+    "de": "Suzie Summ Solo: Auftakt",
+    "ja": "ハニー・B・ライヴ【1st】"
+   },
+   "mechanics": [
+    {
+     "id": "hearts",
+     "names": {
+      "en": "Hearts (Honey B. Live)",
+      "fr": "Cœurs (Honey B. Live)",
+      "de": "Herzen (Suzie Summ Solo)",
+      "ja": "ハート（ハニー・B・ライヴ）"
+     },
+     "aliases": {
+      "en": [
+       "hearts",
+       "heart stacks"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ハート"
+      ]
+     },
+     "how": {
+      "en": "Each Live gives hearts; towers, puddles and stacks add more. At four hearts you are charmed and the boss heals, so every heart source must go to someone who can take it. Honey B. Finale clears all hearts at the end.",
+      "fr": "Chaque Live donne des cœurs ; tours, flaques et packages en ajoutent. À quatre cœurs tu es charmé et le boss se soigne, donc chaque source de cœur doit aller à quelqu'un qui peut l'encaisser. Honey B. Final efface tout à la fin.",
+      "de": "Jedes Solo gibt Herzen; Türme, Flächen und Sammeln geben mehr. Bei vier Herzen wirst du bezirzt und der Boss heilt sich, also muss jede Herz-Quelle zu jemandem, der sie noch verträgt. Honigsüßes Finale löscht am Ende alle Herzen.",
+      "ja": "ライヴでハートが付き、塔・床・頭割りでも増える。4つで行動不能になりボスが回復するので、ハートは受けられる人が受ける。最後のハニー・B・フィナーレで全消去。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "stage-combo",
+     "names": {
+      "en": "Centerstage Combo / Outerstage Combo",
+      "fr": "Combo d'amour central / extérieur",
+      "de": "Innere / Äußere Bühnenkombination",
+      "ja": "リング / ラウンド・ラブコンビネーション"
+     },
+     "aliases": {
+      "en": [
+       "combo",
+       "cross",
+       "donut"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "コンビネーション"
+      ]
+     },
+     "how": {
+      "en": "Three-part AoE sequence (cone/line, then donut or circle, then cross), with the safe spots given by the cast name; the opposite combo comes later.",
+      "fr": "Séquence de trois AoE (cône/ligne, puis donut ou cercle, puis croix), les safe spots dépendent du nom de l'incantation ; le combo inverse vient plus tard.",
+      "de": "Dreiteilige AoE-Folge (Kegel/Linie, dann Donut oder Kreis, dann Kreuz), die sicheren Stellen ergeben sich aus dem Zaubernamen; die andere Kombination folgt später.",
+      "ja": "扇、ドーナツか円、十字の順の3段攻撃。安地は詠唱名で決まり、後で逆のコンビネーションも来る。2回目の十字は数字マーカー上で避ける（JP）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "beat1-towers-stack",
+     "names": {
+      "en": "Fracture towers / Love Me Tender / Loveseeker",
+      "fr": "Tours Fracture / Effusion d'amour / Amour persistant",
+      "de": "Sprengung-Türme / Ein bisschen Liebe / Umwerben",
+      "ja": "炸裂の塔 / ラブ・ミー・テンダー / ラブシーカー"
+     },
+     "aliases": {
+      "en": [
+       "towers",
+       "beat 1"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "塔",
+       "1st"
+      ]
+     },
+     "how": {
+      "en": "Towers spawn; each soak adds a heart and a missed tower gives everyone a heart (usually a wipe). Then a stack goes on the lowest-heart player: players at two hearts join it, players at three hearts avoid it, and Loveseeker is a point-blank AoE.",
+      "fr": "Des tours apparaissent ; chaque tour prise ajoute un cœur et une tour ratée en donne un à tout le monde (souvent un wipe). Ensuite un package vise celui qui a le moins de cœurs : ceux à deux cœurs le rejoignent, ceux à trois l'évitent, et Amour persistant est une AoE autour du boss.",
+      "de": "Türme erscheinen; jeder Turm gibt ein Herz, ein verpasster Turm gibt allen ein Herz (meist Wipe). Danach Sammeln auf den Spieler mit den wenigsten Herzen: Spieler mit zwei Herzen gehen rein, mit drei bleiben raus, und Umwerben ist ein AoE um den Boss.",
+      "ja": "塔を踏むとハート+1、踏み漏れは全員+1（ほぼ全滅）。その後ハートが最少の人に頭割り、♡2は参加、♡3は避ける。ラブシーカーはボス中心の円。"
+     },
+     "strats": [
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Melee take the inner towers (to two hearts), ranged take the outer towers (to three hearts); the two-heart melee group takes the stack around the boss and dodges the moving hearts.",
+        "fr": "Les mêlées prennent les tours intérieures (à deux cœurs), les distances les tours extérieures (à trois) ; le groupe mêlée à deux cœurs prend le package autour du boss et esquive les cœurs mobiles.",
+        "de": "Nahkämpfer nehmen die inneren Türme (auf zwei Herzen), Fernkämpfer die äußeren (auf drei); die Nahkampfgruppe mit zwei Herzen nimmt das Sammeln am Boss und weicht den wandernden Herzen aus.",
+        "ja": "近接は内側の塔（♡2）、遠隔は外側の塔（♡3）。♡2の近接組がボス周辺で頭割りし、移動するハートを避ける。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "NA PF Beat 1 tower assignment not documented in the sources used.",
+      "fr": "Répartition des tours du Beat 1 en PF NA non documentée dans les sources.",
+      "de": "Turm-Verteilung für Beat 1 in NA-PF in den Quellen nicht dokumentiert.",
+      "ja": "NA野良の1stの塔担当はソースに記載なし。"
+     },
+     "tags": [
+      "tower",
+      "stack",
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "alarm-1",
+   "names": {
+    "en": "Alarm Pheromones 1",
+    "fr": "Phéromones d'alerte 1",
+    "de": "Alarmpheromon 1",
+    "ja": "アラームフェロモン1回目"
+   },
+   "mechanics": [
+    {
+     "id": "alarm-pheromones-1",
+     "names": {
+      "en": "Alarm Pheromones / Blinding Love",
+      "fr": "Phéromones d'alerte / Amour aveuglant",
+      "de": "Alarmpheromon / Blinde Liebe",
+      "ja": "アラームフェロモン / ラブ・イズ・ブラインド"
+     },
+     "aliases": {
+      "en": [
+       "bees",
+       "mario kart",
+       "ap1"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "蜂",
+       "アラーム"
+      ]
+     },
+     "how": {
+      "en": "Bees outside the arena fire line AoEs at random players (damage down, vulnerability and a knockback toward the death wall). You have to read the order and move through the gaps.",
+      "fr": "Des abeilles hors de l'arène tirent des lignes sur des joueurs au hasard (malus de dégâts, vulnérabilité et poussée vers le mur mortel). Il faut lire l'ordre et passer dans les trous.",
+      "de": "Bienen außerhalb der Arena feuern Linien auf zufällige Spieler (Schaden runter, Verwundbarkeit und Rückstoß Richtung Todeswand). Lies die Reihenfolge und lauf durch die Lücken.",
+      "ja": "外周の蜂が直線攻撃（与ダメ低下・被ダメ上昇・死の壁方向へのノックバック）。順番を読んで隙間を抜ける。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Mario Kart north: after the tankbuster the tank pulls the boss north; once four lines hit the north stack, the whole group rotates clockwise tightly without drifting to the middle.",
+        "fr": "Mario Kart nord : après le tankbuster le tank amène le boss au nord ; quand quatre lignes ont frappé le groupe au nord, tout le monde tourne en sens horaire, serré, sans dériver vers le centre.",
+        "de": "Mario Kart Nord: nach dem Tankbuster zieht der Tank den Boss nach Norden; nachdem vier Linien die Nordgruppe getroffen haben, dreht sich die Gruppe eng im Uhrzeigersinn, ohne zur Mitte zu driften.",
+        "ja": "北マリカー：タンク強攻撃後にタンクがボスを北へ。北の集団に4本当たったら、中央に寄らず固まって時計回り。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "No fixed solution: memorise the firing order and walk through, sprint if needed.",
+        "fr": "Pas de solution fixe : mémorise l'ordre et passe, sprinte si besoin.",
+        "de": "Keine feste Lösung: Reihenfolge merken und durchlaufen, notfalls sprinten.",
+        "ja": "明確な解法はなく、順番を覚えて抜ける。スプリントも使う。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "knockback",
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beat-2",
+   "names": {
+    "en": "Honey B. Live: 2nd Beat",
+    "fr": "Honey B. Live - Spectacle",
+    "de": "Suzie Summ Solo: Refrain",
+    "ja": "ハニー・B・ライヴ【2nd】"
+   },
+   "mechanics": [
+    {
+     "id": "beat-2",
+     "names": {
+      "en": "2nd Beat (hearts, puddles, towers)",
+      "fr": "2e Beat (cœurs, flaques, tours)",
+      "de": "Refrain (Herzen, Flächen, Türme)",
+      "ja": "2nd（ハート・床・塔）"
+     },
+     "aliases": {
+      "en": [
+       "beat 2",
+       "0 1"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "2nd",
+       "ライヴ2"
+      ]
+     },
+     "how": {
+      "en": "Four players start with one heart, four with zero. A stored Spread Love/Drop of Love, a stack (Heartsick), baited puddles (Heart-struck), an AoE (Heartsore) and towers all add hearts, so the zero-heart and one-heart groups take different jobs.",
+      "fr": "Quatre joueurs commencent à un cœur, quatre à zéro. Pluie/Gouttes d'amour stockée, package (Mal de cœur), flaques à baiter (Choc de cœur), AoE (Peine de cœur) et tours ajoutent tous des cœurs, donc les groupes à zéro et à un cœur ont des rôles différents.",
+      "de": "Vier Spieler starten mit einem Herz, vier mit null. Gespeicherter Liebesregen/Liebestropfen, Sammeln (Herzschmerz), geköderte Flächen (Herzschock), AoE (Herzqual) und Türme geben Herzen, also haben die 0- und 1-Herz-Gruppen verschiedene Aufgaben.",
+      "ja": "4人が♡1、4人が♡0で開始。記憶したラブレイン/ドロップ、頭割り（ハートシック）、捨て床（ハートショック）、AoE（ハートソゥ）、塔がハートを増やすので、♡0組と♡1組で担当を分ける。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Braindead 0-S / 1-N: zero hearts stack south, one heart north. Wait for the puddles under the south group, then rotate clockwise. Halfway through, two one-heart players get an AoE and go out; the other one-heart players soak towers.",
+        "fr": "0-S / 1-N : zéro cœur au sud, un cœur au nord. Attends les flaques sous le groupe sud puis tourne en horaire. À mi-chemin, deux joueurs à un cœur ont une AoE et sortent ; les autres à un cœur prennent les tours.",
+        "de": "0-S / 1-N: Null Herzen sammeln im Süden, ein Herz im Norden. Warte auf die Flächen unter der Südgruppe, dann im Uhrzeigersinn drehen. Zur Hälfte bekommen zwei 1-Herz-Spieler einen AoE und gehen raus; die anderen 1-Herz-Spieler nehmen die Türme.",
+        "ja": "♡0は南、♡1は北に集合。南の組の足元に床が来たら時計回り。途中で♡1の2人にAoEが付いたら外へ、残りの♡1が塔を踏む。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "One-heart group south, zero-heart group under the boss; the zero group drops puddles while moving north, then TH go west and DPS east. One-heart players with no marker take towers: TH north and west towers, DPS south and east.",
+        "fr": "Groupe à un cœur au sud, groupe à zéro sous le boss ; le groupe zéro pose les flaques en allant au nord, puis TH à l'ouest et DPS à l'est. Les joueurs à un cœur sans marqueur prennent les tours : TH nord et ouest, DPS sud et est.",
+        "de": "1-Herz-Gruppe im Süden, 0-Herz-Gruppe unter dem Boss; die 0-Gruppe legt Flächen beim Laufen nach Norden, dann TH nach Westen und DPS nach Osten. 1-Herz-Spieler ohne Marker nehmen Türme: TH Nord und West, DPS Süd und Ost.",
+        "ja": "♡1組は南、♡0組はボス足元。♡0組は床を捨てつつ北へ移動しTHが西・DPSが東へ。♡1組で何も付かない人が塔：THは北と西、DPSは南と東。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "stack",
+      "spread",
+      "debuff"
+     ]
+    },
+    {
+     "id": "love-stored",
+     "names": {
+      "en": "Spread Love / Drop of Love",
+      "fr": "Pluie d'amour / Gouttes d'amour",
+      "de": "Liebesregen / Liebestropfen",
+      "ja": "ラブレイン / ラブドロップ"
+     },
+     "aliases": {
+      "en": [
+       "love spread",
+       "love stack"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Like the venom version but with hearts: Spread Love gives each player a heart (spread), Drop of Love splits hearts in pair stacks. It resolves with the next Twist or Beeline.",
+      "fr": "Comme la version venin mais avec des cœurs : Pluie d'amour donne un cœur à chacun (dispersion), Gouttes d'amour partage les cœurs en paires. Ça part avec le prochain Tourbillon ou Rayon.",
+      "de": "Wie die Gift-Version, aber mit Herzen: Liebesregen gibt jedem ein Herz (verteilen), Liebestropfen teilt Herzen in Paaren. Löst mit dem nächsten Honigdreher oder Honigschuss aus.",
+      "ja": "ベノムと同じ要領でハート版。ラブレインは散開（全員♡+1）、ラブドロップはペア頭割り。次のツイスター/ブラストで発動。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "stack",
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "alarm-2",
+   "names": {
+    "en": "Alarm Pheromones 2",
+    "fr": "Phéromones d'alerte 2",
+    "de": "Alarmpheromon 2",
+    "ja": "アラームフェロモン2回目"
+   },
+   "mechanics": [
+    {
+     "id": "alarm-pheromones-2",
+     "names": {
+      "en": "Alarm Pheromones 2 / Poison Sting / Bee Sting",
+      "fr": "Phéromones d'alerte 2 / Dard empoisonné / Dard d'abeille",
+      "de": "Alarmpheromon 2 / Giftstachel / Bienenstich",
+      "ja": "アラームフェロモン2回目 / ポイズンスティング / ビースティング"
+     },
+     "aliases": {
+      "en": [
+       "ap2",
+       "puddles"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "アラーム2"
+      ]
+     },
+     "how": {
+      "en": "Four bees fire box patterns of lines while marked players drop poison puddles (Poison Sting) in the safe gaps, four times, shrinking the room. Bee Sting is then a stack per role group (supports and DPS).",
+      "fr": "Quatre abeilles tirent des lignes en carré pendant que les marqués posent des flaques de poison (Dard empoisonné) dans les trous sûrs, quatre fois, ce qui réduit la salle. Dard d'abeille est ensuite un package par groupe (supports et DPS).",
+      "de": "Vier Bienen feuern Linien im Kastenmuster, während Markierte Giftflächen (Giftstachel) in sichere Lücken legen, viermal, was den Raum verkleinert. Bienenstich ist danach ein Sammeln pro Gruppe (Supporter und DPS).",
+      "ja": "蜂4匹の直線で安地ができ、マーカー対象がそこにポイズンスティングの毒を捨てる（4回、部屋が狭くなる）。最後にビースティングでTHとDPSの2組頭割り。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Supports use the north and west safe spots, DPS the east and south; same split for the light-party stacks after all puddles are down.",
+        "fr": "Supports dans les safe spots nord et ouest, DPS est et sud ; même split pour les packages en light party après les flaques.",
+        "de": "Supporter nutzen die sicheren Stellen Nord und West, DPS Ost und Süd; gleiche Aufteilung für das Sammeln nach allen Flächen.",
+        "ja": "サポートは北と西、DPSは東と南の安地。床を全部捨てた後の頭割りも同じ分け方。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "TH use the north side safe spots and DPS the south side, then stack TH and DPS separately.",
+        "fr": "TH dans les safe spots côté nord, DPS côté sud, puis packages TH et DPS séparés.",
+        "de": "TH nutzen die sicheren Stellen im Norden, DPS im Süden, dann sammeln TH und DPS getrennt.",
+        "ja": "THは北側、DPSは南側の安地を使い、最後にTHとDPSで頭割り。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beat-3",
+   "names": {
+    "en": "Honey B. Live: 3rd Beat",
+    "fr": "Honey B. Live - Conclusion",
+    "de": "Suzie Summ Solo: Zugabe",
+    "ja": "ハニー・B・ライヴ【3rd】"
+   },
+   "mechanics": [
+    {
+     "id": "beat-3",
+     "names": {
+      "en": "3rd Beat: Poison 'n' Pop and towers",
+      "fr": "3e Beat : bombes empoisonnées et tours",
+      "de": "Zugabe: Gift-Explosion und Türme",
+      "ja": "3rd：時限爆発とタワー"
+     },
+     "aliases": {
+      "en": [
+       "beat 3",
+       "defamations"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "3rd",
+       "ライヴ3"
+      ]
+     },
+     "how": {
+      "en": "Everyone gets a short or long timer; when it ends a big AoE (Big Burst) hits around you and gives hearts to anyone inside, so you go out alone. Combos and towers are timed around the explosions: the short group explodes out while the other group handles towers, then they swap.",
+      "fr": "Chacun reçoit un minuteur court ou long ; à la fin une grosse AoE (Grosse explosion) frappe autour de toi et donne des cœurs à ceux dedans, donc tu sors seul. Combos et tours sont calés sur les explosions : le groupe court explose dehors pendant que l'autre prend les tours, puis on échange.",
+      "de": "Jeder bekommt einen kurzen oder langen Timer; wenn er abläuft, trifft ein großer AoE (Detonation) um dich und gibt jedem darin Herzen, also gehst du allein raus. Kombinationen und Türme liegen zwischen den Explosionen: die kurze Gruppe explodiert außen, die andere nimmt Türme, dann wird getauscht.",
+      "ja": "全員に短い/長い時限デバフ。切れると周囲に大爆発（中の人に♡）なので一人で外へ。コンビネーションと塔は爆発に合わせて、短い組が外で爆発する間にもう一方が塔、その後交代。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Clock defamations and colour towers: after dodging the combo, the short-timer role goes to its clock spot on the wall (supports usually cardinals, DPS intercardinals); after the explosions, the other role takes the tower matching its clock colour. Always check the colour, tower layout can vary.",
+        "fr": "Défamations en horloge et tours de couleur : après le combo, le rôle au minuteur court va à son spot d'horloge au mur (supports souvent cardinaux, DPS intercardinaux) ; après les explosions, l'autre rôle prend la tour de sa couleur. Vérifie toujours la couleur.",
+        "de": "Uhr-Defamations und Farbtürme: nach der Kombination geht die Rolle mit kurzem Timer zu ihrem Uhrplatz an der Wand (Supporter meist Himmelsrichtungen, DPS Zwischenrichtungen); nach den Explosionen nimmt die andere Rolle den Turm in ihrer Uhrfarbe. Immer die Farbe prüfen.",
+        "ja": "コンビネーションを避けた後、短いデバフのロールが壁際の時計位置へ（サポートは方角、DPSは斜めが多い）。爆発後、もう一方のロールが自分の時計の色の塔へ。色を必ず確認。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Hearts start at zero; TH and DPS each get 25 s or 45 s timers. After the fast group explodes, the slow group enters towers from the center.",
+        "fr": "Les cœurs partent de zéro ; TH et DPS ont des minuteurs de 25 s ou 45 s. Après l'explosion du groupe rapide, le groupe lent entre dans les tours depuis le centre.",
+        "de": "Herzen starten bei null; TH und DPS bekommen 25-s- oder 45-s-Timer. Nach der Explosion der schnellen Gruppe geht die langsame vom Zentrum in die Türme.",
+        "ja": "全員♡0。THとDPSに25秒/45秒のデバフ。早い組が爆発した後、遅い組が中央から塔に入る。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Timer lengths differ slightly between sources (26/46 s vs 25/45 s).",
+      "fr": "Les durées varient un peu selon les sources (26/46 s ou 25/45 s).",
+      "de": "Die Timer-Längen unterscheiden sich leicht je nach Quelle (26/46 s oder 25/45 s).",
+      "ja": "デバフ時間はソースで26/46秒と25/45秒の差あり。"
+     },
+     "tags": [
+      "spread",
+      "tower",
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rotten-heart",
+   "names": {
+    "en": "Rotten Heart and enrage",
+    "fr": "Cœur cruel et enrage",
+    "de": "Schwarzes Herz und Finalangriff",
+    "ja": "ブラックハート〜時間切れ"
+   },
+   "mechanics": [
+    {
+     "id": "rotten-heart",
+     "names": {
+      "en": "Rotten Heart (Beeloved Venom α/β)",
+      "fr": "Cœur cruel (venin α/β)",
+      "de": "Schwarzes Herz (Gift α/β)",
+      "ja": "ブラックハート（α/β）"
+     },
+     "aliases": {
+      "en": [
+       "alpha beta",
+       "cleanse",
+       "rotten"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "α",
+       "β",
+       "中和"
+      ]
+     },
+     "how": {
+      "en": "Raidwide, then everyone gets α or β with 16, 25, 44 or 60 s timers. Touch a player with the opposite letter and the same timer to cleanse both (raid damage plus magic vulnerability); failing means paralysis (α) or death (β). Call Me Honey raidwides keep coming, so cleanses must not overlap them.",
+      "fr": "Dégâts de zone puis chacun reçoit α ou β (16, 25, 44 ou 60 s). Touche un joueur avec la lettre opposée et le même minuteur pour purger les deux (dégâts de groupe et vulnérabilité magique) ; sinon paralysie (α) ou mort (β). Les Appelez-moi Lovely continuent, donc les purges ne doivent pas tomber dessus.",
+      "de": "Raidwide, dann bekommt jeder α oder β mit 16, 25, 44 oder 60 s. Berühre einen Spieler mit dem anderen Buchstaben und gleichem Timer, um beide zu reinigen (Raidschaden plus Magie-Verwundbarkeit); sonst Paralyse (α) oder Tod (β). Lieblicher Ruf kommt weiter, also dürfen Reinigungen nicht darauf fallen.",
+      "ja": "全体攻撃後、全員にα/β（16・25・44・60秒）。逆の文字で同じ時間の人と重なって中和（全体ダメージ＋被魔法ダメ上昇）。失敗するとαは麻痺、βは死亡。ラブリーコールと重ならないよう調整。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Spread to your clock spot near the middle so heals reach; when your debuff hits 6 seconds, go under the boss with the other 6-second player.",
+        "fr": "Écarte-toi sur ton spot d'horloge pas trop loin pour les soins ; quand ta debuff arrive à 6 secondes, va sous le boss avec l'autre joueur à 6 s.",
+        "de": "Verteil dich auf deinen Uhrplatz nah genug für Heilung; wenn dein Debuff bei 6 Sekunden ist, geh mit dem anderen 6-s-Spieler unter den Boss.",
+        "ja": "時計位置に散開（回復が届く距離）。デバフ残り6秒で、同じく6秒の人とボス下で中和。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "JP timing of the cleanse (seconds left) not confirmed; game8 only says to pair α and β four times avoiding Call Me Honey.",
+      "fr": "Le moment exact côté JP n'est pas confirmé ; game8 dit seulement d'associer α et β quatre fois en évitant les raidwides.",
+      "de": "Der JP-Zeitpunkt ist nicht bestätigt; game8 sagt nur, α und β viermal zu paaren, nicht auf den Raidwides.",
+      "ja": "日本野良の中和タイミング（残り秒数）は未確認。game8はラブリーコールと重ねずに4回中和とだけ記載。"
+     },
+     "tags": [
+      "raidwide",
+      "debuff"
+     ]
+    },
+    {
+     "id": "sheer-heart-attack",
+     "names": {
+      "en": "Sheer Heart Attack (enrage)",
+      "fr": "Attaque au cœur pur (enrage)",
+      "de": "Herz ist Trumpf (Finalangriff)",
+      "ja": "シアー・ハート・アタック（時間切れ）"
+     },
+     "aliases": {
+      "en": [
+       "enrage"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Enrage cast: the boss must die before it finishes.",
+      "fr": "Incantation d'enrage : le boss doit mourir avant la fin.",
+      "de": "Finalangriff: Der Boss muss vorher sterben.",
+      "ja": "時間切れ技。詠唱完了までに倒す。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage",
+      "dps-check"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "ConsoleGamesWiki - AAC Light-heavyweight M2 (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/AAC_Light-heavyweight_M2_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "The PF Strat - M2S",
+   "url": "https://www.thepfstrat.com/M2S",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - アルカディア零式2層",
+   "url": "https://game8.jp/ff14/630353",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot r2s timeline translations",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/raid/r2s.ts",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

@@ -1,0 +1,466 @@
+{
+ "id": "ex-sophia",
+ "type": "extreme",
+ "expansion": "HW",
+ "patch": "3.4",
+ "names": {
+  "en": "Containment Bay P1T6 (Extreme)",
+  "fr": "Unité de contention P1P6 (extrême)",
+  "de": "Zenit der Götter - Sophia",
+  "ja": "極女神ソフィア討滅戦"
+ },
+ "aliases": {
+  "en": [
+   "ex-sophia",
+   "sophia ex",
+   "sophia extreme",
+   "p1t6 extreme",
+   "containment bay p1t6"
+  ],
+  "fr": [
+   "sophia extrême",
+   "unité de contention p1p6"
+  ],
+  "de": [
+   "sophia extrem",
+   "zenit der götter sophia"
+  ],
+  "ja": [
+   "極ソフィア",
+   "極女神ソフィア",
+   "ソフィア極"
+  ]
+ },
+ "summary": {
+  "en": "Sophia the Goddess on a tilting platform. Phase 1 uses clones that copy her spells (Aion Teleos + Execute), phase 2 is the three Demiurges under Eternal Doom, and phase 3 adds Quasar, where meteors on the scales tilt the arena and slide players; falling off kills.",
+  "fr": "Sophia la Déesse sur une plateforme qui penche. Phase 1 : clones qui copient ses sorts (Aion Teleos + Execute), phase 2 : les trois Démiurges sous Eternal Doom, phase 3 : Quasar, où des météores sur la balance penchent l'arène et font glisser les joueurs ; tomber tue.",
+  "de": "Sophia die Göttin auf einer kippenden Plattform. Phase 1 nutzt Klone, die ihre Zauber kopieren (Aion Teleos + Execute), Phase 2 sind die drei Demiurgen unter Eternal Doom, Phase 3 bringt Quasar, wo Meteore auf der Waage die Arena kippen und Spieler rutschen lassen; Runterfallen tötet.",
+  "ja": "女神ソフィア戦。前半は分身がスキルをコピーするエクセキュート、中盤は3体の従者（死霊の宣告）、後半は天秤（クェーサー）でフィールドが傾き滑る。落下で死亡。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "This fight is mostly cleared unsynced or at minimum item level today, so strats rarely matter. The entries below explain how each mechanic works. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Aujourd'hui ce combat se fait surtout en mode sans restriction ou en ilvl minimum, donc la strat compte rarement. Les entrées ci-dessous expliquent comment marche chaque mécanique. Les noms des mécaniques sont en anglais (noms FR officiels non vérifiés).",
+  "de": "Heute wird dieser Kampf meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel gemacht, die Strat spielt also selten eine Rolle. Die Einträge unten erklären, wie jede Mechanik funktioniert. Die Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "現在このコンテンツは主に制限解除やIL最低限で攻略されるため、攻略法の違いはほとんど問題になりません。以下では各ギミックの仕組みを説明します。英語名のままのギミック名は日本語の公式名を確認できなかったものです。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "前半"
+   },
+   "mechanics": [
+    {
+     "id": "thunder",
+     "names": {
+      "en": "Thunder II / Thunder III / Aero III",
+      "fr": "Extra Foudre / Méga Foudre / Méga Vent",
+      "de": "Blitzra / Blitzga / Windga",
+      "ja": "サンダラ／サンダガ／エアロガ"
+     },
+     "aliases": {
+      "en": [
+       "thunder ii / thunder iii / aero iii"
+      ],
+      "fr": [
+       "thunder ii / thunder iii / aero iii"
+      ],
+      "de": [
+       "thunder ii / thunder iii / aero iii"
+      ],
+      "ja": [
+       "サンダラ／サンダガ／エアロガ"
+      ]
+     },
+     "how": {
+      "en": "Thunder II is an unmarked frontal cone (sidestep); Thunder III is a donut (stand inside her); Aero III is a circle around her (get out).",
+      "fr": "Thunder II : cône frontal sans marqueur (décale-toi) ; Thunder III : donut (colle-toi à elle) ; Aero III : cercle autour d'elle (sors).",
+      "de": "Thunder II ist ein unmarkierter Frontalkegel (zur Seite); Thunder III ein Donut (direkt an sie); Aero III ein Kreis um sie (raus).",
+      "ja": "サンダラは前方扇（横か後ろへ）、サンダガはドーナツ（足元へ）、エアロガは周囲円（離れる）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "gnosis",
+     "names": {
+      "en": "Gnosis",
+      "fr": "Gnose",
+      "de": "Gnosis",
+      "ja": "グノーシス"
+     },
+     "aliases": {
+      "en": [
+       "gnosis"
+      ],
+      "fr": [
+       "gnosis"
+      ],
+      "de": [
+       "gnosis"
+      ],
+      "ja": [
+       "グノーシス"
+      ]
+     },
+     "how": {
+      "en": "A face appears in a corner and knocks players back; run toward it or use knockback immunity so you don't fly off.",
+      "fr": "Un visage apparaît dans un coin et repousse ; cours vers lui ou utilise un anti-recul pour ne pas tomber.",
+      "de": "Ein Gesicht erscheint in einer Ecke und stößt zurück; zu ihm laufen oder Rückstoß-Immunität nutzen, damit du nicht herunterfliegst.",
+      "ja": "四隅の顔から吹き飛ばし。顔の前に立つか堅実魔・アームズレングスで落下を防ぐ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback"
+     ]
+    },
+    {
+     "id": "arms-of-wisdom",
+     "names": {
+      "en": "Arms of Wisdom",
+      "fr": "Bras de la sagesse",
+      "de": "Arme der Weisheit",
+      "ja": "ウィズダムアームズ"
+     },
+     "aliases": {
+      "en": [
+       "arms of wisdom"
+      ],
+      "fr": [
+       "arms of wisdom"
+      ],
+      "de": [
+       "arms of wisdom"
+      ],
+      "ja": [
+       "ウィズダムアームズ"
+      ]
+     },
+     "how": {
+      "en": "Uncast tankbuster with knockback (green wind gathers around her); tank swap with Provoke. It hits the current main target; the other tank provokes when the green wind gathers, so tanks swap on it.",
+      "fr": "Tankbuster sans incantation avec recul (vent vert autour d'elle) ; swap avec Provocation. Il frappe la cible actuelle ; l'autre tank provoque quand le vent vert se forme, donc les tanks swap dessus.",
+      "de": "Tankbuster ohne Cast mit Rückstoß (grüner Wind sammelt sich); Tankwechsel per Provokation. Er trifft das aktuelle Hauptziel; der andere Tank provoziert, wenn sich der grüne Wind sammelt, also wird darauf geswappt.",
+      "ja": "詠唱なしのタンク強攻撃（緑の風が目印）。挑発でスイッチ。敵視1位に当たる。緑の風が集まったらもう一方のタンクが挑発してスイッチ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "knockback",
+      "tankswap",
+      "debuff"
+     ]
+    },
+    {
+     "id": "aion-teleos",
+     "names": {
+      "en": "Aion Teleos + Execute",
+      "fr": "Aion teleos + Exécution",
+      "de": "Aion Teleos + Exekutieren",
+      "ja": "アイオーン・ソフィア→エクセキュート"
+     },
+     "aliases": {
+      "en": [
+       "aion teleos + execute"
+      ],
+      "fr": [
+       "aion teleos + execute"
+      ],
+      "de": [
+       "aion teleos + execute"
+      ],
+      "ja": [
+       "アイオーン・ソフィア→エクセキュート"
+      ]
+     },
+     "how": {
+      "en": "Clones linked to Sophia copy her next spells; on Execute they all fire them together. Go to the safe spot of the copied spells (inside the Thunder III clone, behind the Thunder II clone, or an empty corner).",
+      "fr": "Des clones liés à Sophia copient ses prochains sorts ; sur Execute ils les lancent tous ensemble. Va à la zone sûre des sorts copiés (dans le clone Thunder III, derrière le clone Thunder II, ou un coin vide).",
+      "de": "Mit Sophia verbundene Klone kopieren ihre nächsten Zauber; bei Execute feuern alle zusammen. Zur sicheren Stelle der kopierten Zauber gehen (im Thunder-III-Klon, hinter dem Thunder-II-Klon oder eine leere Ecke).",
+      "ja": "線で繋がった分身がスキルをコピーし、エクセキュートで一斉発動。サンダガをコピーした分身の足元やサンダラ分身の背後へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "The Three Demiurges",
+    "fr": "Les trois Démiurges",
+    "de": "Die drei Demiurgen",
+    "ja": "従者フェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "demiurges",
+     "names": {
+      "en": "Eternal Doom + Demiurges",
+      "fr": "Peine de mort-vivant + démiurges",
+      "de": "Lebender Toter + Demiurgen",
+      "ja": "死霊の宣告＋従者"
+     },
+     "aliases": {
+      "en": [
+       "eternal doom + demiurges"
+      ],
+      "fr": [
+       "eternal doom + demiurges"
+      ],
+      "de": [
+       "eternal doom + demiurges"
+      ],
+      "ja": [
+       "死霊の宣告＋従者"
+      ]
+     },
+     "how": {
+      "en": "Everyone gets an 80-second Doom cured only by killing all three Demiurges (dying makes you a zombie for 20 s). Kill the Second (healer, gaze at low HP: look away) first, then the Third (lancer, cone and Frostbite puddles at the edge), then the First (knight, parries from guarded sides, line charge).",
+      "fr": "Tout le monde a un Doom de 80 s, guéri seulement en tuant les trois Démiurges (mourir te transforme en zombie 20 s). Tue d'abord le Deuxième (soigneur, regard à bas PV : détourne-toi), puis le Troisième (lancier, cône et flaques Gelure au bord), puis le Premier (chevalier, pare de ses côtés protégés, charge en ligne).",
+      "de": "Alle bekommen einen 80-Sekunden-Untergang, der nur durch den Tod aller drei Demiurgen geheilt wird (Sterben macht dich 20 s zum Zombie). Zuerst den Zweiten (Heiler, Blickangriff bei wenig LP: wegschauen), dann den Dritten (Lanze, Kegel und Frostpfützen am Rand), dann den Ersten (Ritter, pariert von geschützten Seiten, Linienansturm).",
+      "ja": "全員に死霊の宣告（従者3体を倒すと解除、死ぬとゾンビ化）。二の従者（低HPで視線）→三の従者（範囲と凍傷床、外周へ）→一の従者（防御方向は殴らない）の順で倒す。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "debuff",
+      "gaze",
+      "dps-check"
+     ]
+    },
+    {
+     "id": "scales-of-revelation",
+     "names": {
+      "en": "Scales of Revelation",
+      "fr": "Scales of Revelation",
+      "de": "Scales of Revelation",
+      "ja": "Scales of Revelation"
+     },
+     "aliases": {
+      "en": [
+       "scales of revelation"
+      ],
+      "fr": [
+       "scales of revelation"
+      ],
+      "de": [
+       "scales of revelation"
+      ],
+      "ja": [
+       "Scales of Revelation"
+      ]
+     },
+     "how": {
+      "en": "When the Demiurges die (or time runs out) everyone runs to the far east edge; the platform tilts both ways, then a heavy raid hit. Any Demiurge alive wipes.",
+      "fr": "Quand les Démiurges meurent (ou le temps finit), tout le monde court au bord est ; la plateforme penche des deux côtés, puis gros dégâts de zone. Un Démiurge vivant = wipe.",
+      "de": "Wenn die Demiurgen tot sind (oder die Zeit abläuft), laufen alle an den Ostrand; die Plattform kippt in beide Richtungen, dann ein starker Raumtreffer. Lebt ein Demiurg, Wipe.",
+      "ja": "従者撃破後（または時間切れ）、全員東端へ。床が左右に傾いた後、全体大ダメージ。従者が残っていると全滅。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "note": {
+      "en": "English name used: official Japanese name not found in the sources.",
+      "fr": "Nom anglais utilisé : nom japonais officiel non trouvé.",
+      "de": "Englischer Name verwendet: offizieller japanischer Name nicht gefunden.",
+      "ja": "英語名のまま：日本語の公式名は資料で確認できませんでした。"
+     },
+     "tags": [
+      "raidwide"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Quasar phase",
+    "fr": "Phase Quasar",
+    "de": "Quasar-Phase",
+    "ja": "後半（天秤）"
+   },
+   "mechanics": [
+    {
+     "id": "quasar",
+     "names": {
+      "en": "Quasar (scales)",
+      "fr": "Quasar (scales)",
+      "de": "Quasar (scales)",
+      "ja": "クェーサー（天秤）"
+     },
+     "aliases": {
+      "en": [
+       "quasar (scales)"
+      ],
+      "fr": [
+       "quasar (scales)"
+      ],
+      "de": [
+       "quasar (scales)"
+      ],
+      "ja": [
+       "クェーサー（天秤）"
+      ]
+     },
+     "how": {
+      "en": "Meteors tether to the east and west scales: orange weighs 1, blue weighs 3. About 10 s later the heavier side drops and everyone slides; the bigger the difference, the stronger the slide (cannot be resisted). Pre-position so the slide doesn't push you off. Some Quasars are proximity flares instead (spread).",
+      "fr": "Des météores se lient aux plateaux est et ouest : orange = 1, bleu = 3. ~10 s plus tard, le côté le plus lourd descend et tout le monde glisse ; plus l'écart est grand, plus ça glisse (impossible à résister). Place-toi avant pour ne pas être poussé dans le vide. Certains Quasar sont à la place des explosions de proximité (disperse-toi).",
+      "de": "Meteore verbinden sich mit der Ost- und Westwaagschale: orange wiegt 1, blau 3. Etwa 10 s später sinkt die schwerere Seite und alle rutschen; je größer der Unterschied, desto stärker (nicht widerstehbar). Vorher so stellen, dass du nicht herunterrutschst. Manche Quasars sind stattdessen Distanz-Flares (verteilen).",
+      "ja": "天秤に隕石の線（橙＝1、青＝3）。約10秒後に重い側へ傾き全員が滑る（差が大きいほど強い、耐性無効）。落ちない位置に事前移動。距離減衰型のクェーサーもある（散開）。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Sources disagree on where to stand (CGW: away from the blue meteor; game8: side with more lines; gameranbu: fewer lines tips). Check the exact rule in a video before relying on it.",
+      "fr": "Les sources se contredisent sur où se placer ; vérifie avec une vidéo.",
+      "de": "Quellen widersprechen sich, wo man stehen soll; mit einem Video prüfen.",
+      "ja": "立ち位置の判断は資料間で食い違い（青の反対／線が多い側／少ない側）。動画で要確認。"
+     },
+     "tags": [
+      "knockback",
+      "proximity"
+     ]
+    },
+    {
+     "id": "discordant-cleansing",
+     "names": {
+      "en": "Discordant Cleansing",
+      "fr": "Purification discordante",
+      "de": "Dissonante Buße",
+      "ja": "不調和の罰"
+     },
+     "aliases": {
+      "en": [
+       "discordant cleansing"
+      ],
+      "fr": [
+       "discordant cleansing"
+      ],
+      "de": [
+       "discordant cleansing"
+      ],
+      "ja": [
+       "罪と罰"
+      ]
+     },
+     "how": {
+      "en": "Players get light or dark rings: pair one light with one dark. Two of the same color together explode for the party; alone you get a debuff.",
+      "fr": "Les joueurs reçoivent des anneaux clairs ou sombres : mets un clair avec un sombre. Deux de la même couleur ensemble explosent sur le groupe ; seul tu prends un malus.",
+      "de": "Spieler bekommen helle oder dunkle Ringe: je einen hellen mit einem dunklen paaren. Zwei gleiche Farben zusammen explodieren aufs Team; allein bekommst du einen Debuff.",
+      "ja": "白と黒のマーク。白と黒でペアになる。同色が重なると全体爆発、1人だと弱体。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "light-dew-onrush",
+     "names": {
+      "en": "Light Dew / Onrush / Cintamani",
+      "fr": "Rosée de lumière / Charge / Chintamani",
+      "de": "Lichttau / Heranstürmen / Chintamani",
+      "ja": "ライトデュー／オンラッシュ／チンターマニ"
+     },
+     "aliases": {
+      "en": [
+       "light dew / onrush / cintamani"
+      ],
+      "fr": [
+       "light dew / onrush / cintamani"
+      ],
+      "de": [
+       "light dew / onrush / cintamani"
+      ],
+      "ja": [
+       "ビーム攻撃／チンターマニ"
+      ]
+     },
+     "how": {
+      "en": "Light Dew: Barbelo's face fires a line from north or south (don't stand in front). Onrush: Sophia charges across half the arena. Cintamani: three raid-wide hits in a row.",
+      "fr": "Light Dew : le visage de Barbelo tire une ligne depuis le nord ou le sud (pas devant). Onrush : Sophia charge sur la moitié de l'arène. Cintamani : trois dégâts de zone d'affilée.",
+      "de": "Light Dew: Barbelos Gesicht feuert eine Linie von Nord oder Süd (nicht davor stehen). Onrush: Sophia stürmt über die halbe Arena. Cintamani: drei Raumtreffer hintereinander.",
+      "ja": "顔からの直線（前に立たない）、ソフィアの半面突進、チンターマニ（3連全体攻撃）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "raidwide"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Enrage",
+      "fr": "Enrage",
+      "de": "Enrage",
+      "ja": "時間切れ"
+     },
+     "aliases": {
+      "en": [
+       "enrage"
+      ],
+      "fr": [
+       "enrage"
+      ],
+      "de": [
+       "enrage"
+      ],
+      "ja": [
+       "時間切れ"
+      ]
+     },
+     "how": {
+      "en": "Everyone gets only light or only dark rings, so pairing is impossible; a Cintamani finishes the party.",
+      "fr": "Tout le monde reçoit la même couleur d'anneau, donc impossible ; un Cintamani achève le groupe.",
+      "de": "Alle bekommen nur helle oder nur dunkle Ringe, also ist Paaren unmöglich; ein Cintamani beendet es.",
+      "ja": "全員が同色のマークになり処理不能、チンターマニで全滅。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Containment Bay P1T6 (Extreme)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Containment_Bay_P1T6_(Extreme)",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/212ceb19a34/",
+   "lang": "en"
+  },
+  {
+   "title": "ゲーム乱舞 極女神ソフィア討滅戦",
+   "url": "https://gameranbu.jp/ff14/5bd0c92a73f70bfdd692",
+   "lang": "ja"
+  },
+  {
+   "title": "ゲームエイト 幻ソフィア（極ソフィア）討滅戦",
+   "url": "https://game8.jp/ff14/506738",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

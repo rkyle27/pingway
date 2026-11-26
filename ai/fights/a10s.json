@@ -1,0 +1,530 @@
+{
+ "id": "a10s",
+ "type": "savage",
+ "expansion": "HW",
+ "patch": "3.4",
+ "names": {
+  "en": "Alexander - The Breath of the Creator (Savage)",
+  "fr": "Alexander - Le Souffle du Créateur (sadique)",
+  "de": "Alexander - Atem des Schöpfers (episch)",
+  "ja": "機工城アレキサンダー零式：天動編2"
+ },
+ "aliases": {
+  "en": [
+   "a10s",
+   "a10 savage",
+   "alexander 10 savage",
+   "lamebrix savage",
+   "breath of the creator savage"
+  ],
+  "fr": [
+   "a10s",
+   "alexander 10 sadique",
+   "souffle du créateur sadique"
+  ],
+  "de": [
+   "a10s",
+   "alexander 10 episch",
+   "atem des schöpfers episch"
+  ],
+  "ja": [
+   "天動編2零式",
+   "天動編零式2層",
+   "アレキ零式10層",
+   "天動2層",
+   "ゴブ流"
+  ]
+ },
+ "summary": {
+  "en": "Floor 2 of Alexander: The Creator (Savage) against Lamebrix Strikebocks, a goblin samurai. He calls charge sequences shown above his head (in/out/spread/stack), uses the arena's traps (spikes, weights, ice arrows), and in the middle phase summons the Gobpress steam roller. Enrage at about 11:20.",
+  "fr": "Étage 2 d'Alexander : Le Créateur (sadique) contre Lamebrix Strikebocks, un samouraï gobelin. Il annonce des séquences de charges au-dessus de sa tête (in/out/dispersion/partage), utilise les pièges de l'arène (pics, poids, flèches de glace), et au milieu il invoque le rouleau Gobpress. Enrage vers 11:20.",
+  "de": "Ebene 2 von Alexander: Der Schöpfer (episch) gegen Lamebrix Strikebocks, einen Goblin-Samurai. Er zeigt Lade-Sequenzen über dem Kopf (rein/raus/verteilen/sammeln), nutzt die Fallen der Arena (Stacheln, Gewichte, Eispfeile) und ruft in der Mitte die Gobpress-Walze. Enrage bei etwa 11:20.",
+  "ja": "天動編2層零式、ゴブ流の侍ゴブリン戦。頭上に表示される充填（内・外・散開・頭割り）、フィールドの罠（トゲ・鉄球・氷矢）、中盤のローラー（ゴブプレス）が特徴。約11分20秒で時間切れ。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "This fight is mostly cleared unsynced or at minimum item level today, so strats rarely matter. The entries below explain how each mechanic works. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Aujourd'hui ce combat se fait surtout en mode sans restriction ou en ilvl minimum, donc la strat compte rarement. Les entrées ci-dessous expliquent comment marche chaque mécanique. Les noms des mécaniques sont en anglais (noms FR officiels non vérifiés).",
+  "de": "Heute wird dieser Kampf meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel gemacht, die Strat spielt also selten eine Rolle. Die Einträge unten erklären, wie jede Mechanik funktioniert. Die Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "現在このコンテンツは主に制限解除やIL最低限で攻略されるため、攻略法の違いはほとんど問題になりません。以下では各ギミックの仕組みを説明します。英語名のままのギミック名は日本語の公式名を確認できなかったものです。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1 (100-60%)",
+    "fr": "Phase 1 (100-60 %)",
+    "de": "Phase 1 (100-60 %)",
+    "ja": "フェーズ1（100〜60%）"
+   },
+   "mechanics": [
+    {
+     "id": "charges",
+     "names": {
+      "en": "Single / Double / Triple Charge",
+      "fr": "Rechargement simple / double / triple",
+      "de": "Einzel- / Doppel- / Dreifachaufladung",
+      "ja": "単発／二連／三連充填"
+     },
+     "aliases": {
+      "en": [
+       "single / double / triple charge"
+      ],
+      "fr": [
+       "single / double / triple charge"
+      ],
+      "de": [
+       "single / double / triple charge"
+      ],
+      "ja": [
+       "単発／二連／三連充填"
+      ]
+     },
+     "how": {
+      "en": "The boss stores 1-3 attacks shown as colored icons and releases them in order: Critical Wrath (blue, spread), Bomb Toss (yellow, stack), Gobspin Whooshdrops (red, get out), Gobswipe Conklops (green, get in close).",
+      "fr": "Le boss stocke 1 à 3 attaques montrées par des icônes colorées et les lâche dans l'ordre : Critical Wrath (bleu, dispersion), Bomb Toss (jaune, partage), Gobspin Whooshdrops (rouge, sors), Gobswipe Conklops (vert, viens près).",
+      "de": "Der Boss speichert 1-3 Angriffe als farbige Symbole und löst sie der Reihe nach aus: Critical Wrath (blau, verteilen), Bomb Toss (gelb, sammeln), Gobspin Whooshdrops (rot, raus), Gobswipe Conklops (grün, nah ran).",
+      "ja": "頭上の色で技が決まり順に発動：必中の決意（青、散開）、爆弾投げ（黄、頭割り）、ゴブ流回転斬り（赤、離れる）、ゴブ流乱れ斬り（緑、近づく）。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "CGW calls the green one a donut ('in') while the JP flow says 'stack near the boss'; both mean go close.",
+      "fr": "CGW dit donut ('in'), le JP dit 'près du boss' : les deux = venir près.",
+      "de": "CGW sagt Donut ('rein'), JP sagt 'nah am Boss': beides heißt nah ran.",
+      "ja": "緑はCGWではドーナツ、日本の資料ではボス近くで頭割りと記載。いずれも近づく。"
+     },
+     "tags": [
+      "spread",
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "traps",
+     "names": {
+      "en": "Traps (spikes, weights, ice arrows)",
+      "fr": "Traps (spikes, weights, ice arrows)",
+      "de": "Traps (spikes, weights, ice arrows)",
+      "ja": "罠起動（トゲ／鉄球／氷矢）"
+     },
+     "aliases": {
+      "en": [
+       "traps (spikes, weights, ice arrows)"
+      ],
+      "fr": [
+       "traps (spikes, weights, ice arrows)"
+      ],
+      "de": [
+       "traps (spikes, weights, ice arrows)"
+      ],
+      "ja": [
+       "罠起動（トゲ／鉄球／氷矢）"
+      ]
+     },
+     "how": {
+      "en": "Floor buttons activate a few seconds after being stepped on: spikes (bind, but stop knockback), weights (damage and Vulnerability Up near the button), ice arrows across the east/west edges. Don't step on them by accident, tanks don't drag the boss over them.",
+      "fr": "Les boutons au sol s'activent quelques secondes après : pics (entrave mais bloquent le recul), poids (dégâts et Vulnérabilité autour), flèches de glace sur les bords est/ouest. Ne marche pas dessus par accident ; les tanks n'y traînent pas le boss.",
+      "de": "Bodenknöpfe lösen einige Sekunden nach dem Betreten aus: Stacheln (Fessel, aber kein Rückstoß), Gewichte (Schaden und Verwundbarkeit nahe dem Knopf), Eispfeile über den Ost-/Westrand. Nicht aus Versehen betreten, Tanks ziehen den Boss nicht darüber.",
+      "ja": "床のスイッチは踏むと数秒後に発動：トゲ（拘束、ノックバック無効）、鉄球（周囲にダメージと被ダメ上昇）、氷矢（東西の端）。誤って踏まない、ボスを乗せない。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "debuff"
+     ]
+    },
+    {
+     "id": "gobslash-slicetops",
+     "names": {
+      "en": "Gobslash Slicetops",
+      "fr": "Gobtranchant du vide",
+      "de": "Indigo-Vakuumhieb",
+      "ja": "ゴブ流真空斬り"
+     },
+     "aliases": {
+      "en": [
+       "gobslash slicetops"
+      ],
+      "fr": [
+       "gobslash slicetops"
+      ],
+      "de": [
+       "gobslash slicetops"
+      ],
+      "ja": [
+       "ゴブ流真空切り"
+      ]
+     },
+     "how": {
+      "en": "Prey on the top-enmity tank, then a line hit with Physical Vulnerability Up; swap tanks. It targets the top-enmity tank (the MT first); the OT (ST) provokes to swap while the Prey tank moves away.",
+      "fr": "Proie sur le tank en aggro, puis coup en ligne avec Vulnérabilité physique ; swap. Il vise le tank qui a l'aggro (d'abord le MT) ; l'OT provoque pour swap pendant que le tank marqué s'éloigne.",
+      "de": "Beute auf dem Aggro-Tank, dann Linientreffer mit Physischer Verwundbarkeit; Tankwechsel. Es trifft den Tank mit der höchsten Feindseligkeit (zuerst den MT); der OT provoziert zum Swap, während der markierte Tank weggeht.",
+      "ja": "MTにマーカー、被物理ダメ上昇付き。タンクスイッチ。敵視1位（最初はMT）が対象。マーカーのタンクが離れる間にSTが挑発してスイッチ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "debuff"
+     ]
+    },
+    {
+     "id": "gobsnick-leghops",
+     "names": {
+      "en": "Gobsnick Leghops",
+      "fr": "Gobfeinte mortelle",
+      "de": "Gob am Berg",
+      "ja": "ゴブ流後の先"
+     },
+     "aliases": {
+      "en": [
+       "gobsnick leghops"
+      ],
+      "fr": [
+       "gobsnick leghops"
+      ],
+      "de": [
+       "gobsnick leghops"
+      ],
+      "ja": [
+       "ゴブ流後の先"
+      ]
+     },
+     "how": {
+      "en": "'Extreme Caution' countdown: if you move or act when it ends you take huge damage. Stop and stand still.",
+      "fr": "Compte à rebours « Extrême prudence » : bouger ou agir à la fin = énormes dégâts. Arrête-toi.",
+      "de": "'Äußerste Vorsicht'-Countdown: bewegst oder handelst du am Ende, nimmst du riesigen Schaden. Stehen bleiben.",
+      "ja": "行動注意のカウント。0の時に動くと大ダメージ。止まる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    },
+    {
+     "id": "lameprix",
+     "names": {
+      "en": "Lameprix Strikedocks (clone)",
+      "fr": "Lamebrix le Diversif (clone)",
+      "de": "Wüterix der Trickser (Klon)",
+      "ja": "偽兵のレイムプリクス（分身）"
+     },
+     "aliases": {
+      "en": [
+       "lameprix strikedocks (clone)"
+      ],
+      "fr": [
+       "lameprix strikedocks (clone)"
+      ],
+      "de": [
+       "lameprix strikedocks (clone)"
+      ],
+      "ja": [
+       "分身（偽）"
+      ]
+     },
+     "how": {
+      "en": "A copy that buffs the boss if they get close and uses a 270-degree cone (Gobswish Spraymops). Off-tank takes it away and DPS kill it.",
+      "fr": "Une copie qui buffe le boss si elle s'approche et lance un cône de 270° (Gobswish Spraymops). L'off-tank l'éloigne, les DPS la tuent.",
+      "de": "Eine Kopie, die den Boss stärkt, wenn sie nah kommt, und einen 270°-Kegel nutzt (Gobswish Spraymops). Off-Tank zieht sie weg, DPS töten sie.",
+      "ja": "分身。ボスに近いと強化。ゴブ流飛水絶ち（240〜270度の範囲）を使う。STが離して倒す。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Cone angle differs between sources (CGW 270, JP flow 240).",
+      "fr": "Angle différent selon les sources (270 / 240).",
+      "de": "Winkel unterschiedlich (270 / 240).",
+      "ja": "範囲角度は資料で270度と240度に分かれる。"
+     },
+     "tags": [
+      "adds",
+      "cleave"
+     ]
+    },
+    {
+     "id": "gobrush",
+     "names": {
+      "en": "Goblin Rush / Gobrush Rushgob",
+      "fr": "Charge gobeline / Gobcharge gobeline",
+      "de": "Goblin-Rausch / Indigoblin-Rausch",
+      "ja": "ゴブリンラッシュ／ゴブ流ゴブリンラッシュ"
+     },
+     "aliases": {
+      "en": [
+       "goblin rush / gobrush rushgob"
+      ],
+      "fr": [
+       "goblin rush / gobrush rushgob"
+      ],
+      "de": [
+       "goblin rush / gobrush rushgob"
+      ],
+      "ja": [
+       "ゴブリンラッシュ／ゴブ流ゴブリンラッシュ"
+      ]
+     },
+     "how": {
+      "en": "Uncast and cast multi-hit tankbusters; mitigate. Both hit the top-enmity tank (usually the MT); if Lameprix is still alive, its copy of Gobrush Rushgob hits both tanks at once.",
+      "fr": "Tankbusters multiples avec et sans incantation ; réduis. Les deux visent le tank qui a l'aggro (souvent le MT) ; si Lameprix est encore en vie, sa copie de Gobrush Rushgob frappe les deux tanks.",
+      "de": "Mehrfach-Tankbuster mit und ohne Cast; mitigieren. Beide treffen den Tank mit der höchsten Feindseligkeit (meist den MT); lebt Lameprix noch, trifft seine Kopie von Gobrush Rushgob beide Tanks.",
+      "ja": "詠唱なし・ありのタンク連続攻撃。軽減。どちらも敵視1位（通常MT）へ。分身が生きていると、分身のゴブ流ゴブリンラッシュでMTとST両方が殴られる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Gobpress R-VI",
+    "fr": "Gobrouleau compresseur G-VI",
+    "de": "Gob-Roller VI",
+    "ja": "ローラーフェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "brighteyes",
+     "names": {
+      "en": "Brighteyes",
+      "fr": "Œil vif",
+      "de": "Zielheften Auge",
+      "ja": "狙い目"
+     },
+     "aliases": {
+      "en": [
+       "brighteyes"
+      ],
+      "fr": [
+       "brighteyes"
+      ],
+      "de": [
+       "brighteyes"
+      ],
+      "ja": [
+       "狙い目"
+      ]
+     },
+     "how": {
+      "en": "Prey on both healers (passable by touch). First hit on the healers, leave fire puddles at the edges; second hit is passed to ranged DPS. Nobody survives two hits in a row.",
+      "fr": "Proie sur les deux soigneurs (passable au contact). 1er coup sur les soigneurs, flaques au bord ; le 2e est passé aux DPS distance. Personne ne survit à deux coups d'affilée.",
+      "de": "Beute auf beiden Heilern (durch Berührung übertragbar). Erster Treffer auf die Heiler, Feuerpfützen an den Rand; der zweite geht an Fernkampf-DPS. Niemand überlebt zwei Treffer hintereinander.",
+      "ja": "ヒーラー2人に狙い目（触れると移せる）。1回目はヒーラーが外周で受けて炎床、2回目は遠隔DPSに渡す。連続で受けると死亡。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "steam-roller",
+     "names": {
+      "en": "Steam Roller",
+      "fr": "Compression",
+      "de": "Dampfwalze",
+      "ja": "ローラープレス"
+     },
+     "aliases": {
+      "en": [
+       "steam roller"
+      ],
+      "fr": [
+       "steam roller"
+      ],
+      "de": [
+       "steam roller"
+      ],
+      "ja": [
+       "ローラープレス"
+      ]
+     },
+     "how": {
+      "en": "The Gobpress slams and moves forward, knocking back and killing those right next to it; back off. Destroy it before its 5th slam.",
+      "fr": "Le Gobpress frappe et avance, repousse et tue ceux collés ; recule. Détruis-le avant son 5e coup.",
+      "de": "Die Gobpress schlägt zu und rückt vor, stößt zurück und tötet direkt Daneben-Stehende; zurückweichen. Vor dem 5. Schlag zerstören.",
+      "ja": "前進しながら叩きつけ、ノックバック。近すぎると即死。5回目までに破壊する。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "knockback"
+     ]
+    },
+    {
+     "id": "hand-cannon",
+     "names": {
+      "en": "Illuminati Hand Cannon",
+      "fr": "Main-canon indigo",
+      "de": "Indigohandkanone",
+      "ja": "イルミナティ・ハンドカノン"
+     },
+     "aliases": {
+      "en": [
+       "illuminati hand cannon"
+      ],
+      "fr": [
+       "illuminati hand cannon"
+      ],
+      "de": [
+       "illuminati hand cannon"
+      ],
+      "ja": [
+       "イルミナティ・ハンドカノン"
+      ]
+     },
+     "how": {
+      "en": "Line AoE on a random player; dodge.",
+      "fr": "AoE en ligne sur un joueur au hasard ; esquive.",
+      "de": "Linien-AoE auf einen zufälligen Spieler; ausweichen.",
+      "ja": "ランダム対象への直線範囲。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Phase 3 (60-0%)",
+    "fr": "Phase 3 (60-0 %)",
+    "de": "Phase 3 (60-0 %)",
+    "ja": "フェーズ3（60〜0%）"
+   },
+   "mechanics": [
+    {
+     "id": "gobspin-zoomdrops",
+     "names": {
+      "en": "Gobspin Zoomdrops",
+      "fr": "Gobtoupie mégatranchante",
+      "de": "Große Gobwirbel",
+      "ja": "ゴブ流大回転斬り"
+     },
+     "aliases": {
+      "en": [
+       "gobspin zoomdrops"
+      ],
+      "fr": [
+       "gobspin zoomdrops",
+       "gobtoupie tranchante"
+      ],
+      "de": [
+       "gobspin zoomdrops"
+      ],
+      "ja": [
+       "ゴブ流大回転斬り"
+      ]
+     },
+     "how": {
+      "en": "The boss spins toward a tethered player with growing pulses; one player presses the ice arrow button and the boss is led into the arrows to stop him.",
+      "fr": "Le boss tourne vers un joueur lié avec des pulsations croissantes ; un joueur appuie sur le bouton des flèches de glace et le boss est mené dedans pour l'arrêter.",
+      "de": "Der Boss dreht sich mit stärker werdenden Pulsen auf einen verbundenen Spieler zu; ein Spieler drückt den Eispfeil-Knopf und der Boss wird hineingeführt, um ihn zu stoppen.",
+      "ja": "線の人へ回転しながら移動。氷矢のスイッチを押し、ボスを矢に当てて止める。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether"
+     ]
+    },
+    {
+     "id": "gobslice-mooncrops",
+     "names": {
+      "en": "Gobslice Mooncrops",
+      "fr": "Gobcroissant lacérant",
+      "de": "Schlitzensichel",
+      "ja": "ゴブ流三日月斬り"
+     },
+     "aliases": {
+      "en": [
+       "gobslice mooncrops"
+      ],
+      "fr": [
+       "gobslice mooncrops"
+      ],
+      "de": [
+       "gobslice mooncrops"
+      ],
+      "ja": [
+       "ゴブ流三日月斬り"
+      ]
+     },
+     "how": {
+      "en": "Huge knockback into the electrified walls: press the spike button after the cast starts so the spikes (Knockback Penalty) hold everyone.",
+      "fr": "Énorme recul vers les murs électrifiés : appuie sur les pics après le début du sort pour que tout le monde soit retenu.",
+      "de": "Riesiger Rückstoß in die elektrischen Wände: nach Cast-Start den Stachelknopf drücken, damit die Stacheln alle halten.",
+      "ja": "電気の壁へ大ノックバック。詠唱開始後にトゲのスイッチを押してノックバックを防ぐ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback"
+     ]
+    },
+    {
+     "id": "goblins",
+     "names": {
+      "en": "Summon Goblins / Buzzsaws",
+      "fr": "Summon Goblins / Scies mécaniques",
+      "de": "Summon Goblins / Rotorsägen",
+      "ja": "雑魚ポップ／回転ノコギリ"
+     },
+     "aliases": {
+      "en": [
+       "summon goblins / buzzsaws"
+      ],
+      "fr": [
+       "summon goblins / buzzsaws"
+      ],
+      "de": [
+       "summon goblins / buzzsaws"
+      ],
+      "ja": [
+       "雑魚ポップ／のこぎり"
+      ]
+     },
+     "how": {
+      "en": "Goblins with Vulnerability Down (removed only by the weight trap) appear; drag them under the weights, kill Goblins of Fortune before Gobbieboom, interrupt the Gobknight. Buzzsaws sweep the east/west sides: stay out of their lines.",
+      "fr": "Des gobelins avec Résistance accrue (retirée seulement par le piège à poids) apparaissent ; amène-les sous les poids, tue les Goblins of Fortune avant Gobbieboom, interromps le Gobknight. Des scies balaient les côtés est/ouest : évite leurs lignes.",
+      "de": "Goblins mit Verwundbarkeit runter (nur durch die Gewichtsfalle entfernt) erscheinen; unter die Gewichte ziehen, Goblins of Fortune vor Gobbieboom töten, den Gobknight unterbrechen. Sägen fegen über Ost/West: aus ihren Linien bleiben.",
+      "ja": "被ダメ軽減付きの雑魚。鉄球の罠の下へ誘導、自爆前に倒し、騎士の詠唱は止める。のこぎりは東西の線上を避ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Alexander - The Breath of the Creator (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Alexander_-_The_Breath_of_the_Creator_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/d5f9f998466/",
+   "lang": "en"
+  },
+  {
+   "title": "FF14私的メモ 天動編2 タイムライン",
+   "url": "https://www.ff14memo.com/battle/raids/heavensward/alex3_breath_creator_savage/flow.php",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

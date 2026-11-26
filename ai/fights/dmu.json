@@ -1,0 +1,2584 @@
+{
+ "id": "dmu",
+ "type": "ultimate",
+ "expansion": "DT",
+ "patch": "7.51",
+ "names": {
+  "en": "Dancing Mad (Ultimate)",
+  "fr": "Dancing Mad (fatal)",
+  "de": "Dancing Mad (fatal)",
+  "ja": "絶妖星乱舞"
+ },
+ "aliases": {
+  "en": [
+   "dmu",
+   "umad",
+   "dancing mad",
+   "kefka ultimate",
+   "omega ultimate 2"
+  ],
+  "fr": [
+   "dmu",
+   "umad",
+   "fatal kefka",
+   "dancing mad"
+  ],
+  "de": [
+   "dmu",
+   "umad",
+   "fatal kefka",
+   "dancing mad"
+  ],
+  "ja": [
+   "絶妖星乱舞",
+   "絶・妖星乱舞",
+   "絶ケフカ",
+   "妖星乱舞"
+  ]
+ },
+ "summary": {
+  "en": "Dancing Mad is the seventh Ultimate (patch 7.51, 2 June 2026), a remix of the Stormblood Kefka fight. Five phases: Kefka (with three hidden puzzles that must be solved to go past Phase 2), God Kefka, Chaos & Exdeath, 'Kefka Says' (every cast is real or fake), and Ultima Kefka. The hardest parts are the P1 puzzles, P2 Forsaken towers, P3 Black Hole tethers and the real/fake memory of P4.",
+  "fr": "Dancing Mad est le septième fatal (patch 7.51, 2 juin 2026), un remix du combat contre Kefka de Stormblood. Cinq phases : Kefka (avec trois énigmes cachées à réussir pour dépasser la phase 2), God Kefka, Chaos et Exdeath, « Kefka Says » (chaque sort est vrai ou faux) et Ultima Kefka. Le plus dur : les énigmes de P1, les tours de Forsaken en P2, les liens Black Hole en P3 et la mémoire vrai/faux de P4.",
+  "de": "Dancing Mad ist der siebte Fatal-Raid (Patch 7.51, 2. Juni 2026), ein Remix des Kefka-Kampfs aus Stormblood. Fünf Phasen: Kefka (mit drei versteckten Rätseln, die man lösen muss, um nach Phase 2 weiterzukommen), God Kefka, Chaos & Exdeath, „Kefka Says“ (jeder Zauber ist echt oder falsch) und Ultima Kefka. Am schwersten: die P1-Rätsel, die Forsaken-Türme in P2, die Black-Hole-Verbindungen in P3 und das Echt/Falsch-Merken in P4.",
+  "ja": "絶妖星乱舞はパッチ7.51（2026年6月2日）の7つ目の絶で、紅蓮のケフカ戦がモチーフ。P1ケフカ（P3へ進むための隠しフラグ3つ）、P2ゴッドケフカ、P3エクスデス＆カオス、P4「ケフカ様の言う通り」（全技に本当/嘘）、P5最終ケフカの5フェーズ。P1のフラグ、P2ミッシング、P3ブラックホール、P4の真偽記憶が山場。"
+ },
+ "strats_overview": [
+  {
+   "id": "na-pf",
+   "name": {
+    "en": "NA PF standard",
+    "fr": "Standard PF NA",
+    "de": "NA-PF-Standard",
+    "ja": "NA野良標準"
+   },
+   "region": "NA/EU",
+   "note": {
+    "en": "Raidplan linked from the NA PF Ultimate strats site, used by most NA PF groups (Icy Veins guides follow it); PF listings call the set 'Kefkabin' (often with 'Ikuya Mitty' and Old/New Black Hole). Roles numbered T1/T2, H1/H2, M1/M2, R1/R2; supports west, DPS east; LP1 = T1 H1 M1 R1. EU (Light/Chaos) PF listings use the same names (Kefkabin, Ikuya, Old/New), so EU follows this set; no separate EU strat was found (EU usage seen only in live listings).",
+    "fr": "Raidplan lié depuis le site des strats PF NA, utilisé par la plupart des groupes PF NA (les guides Icy Veins le suivent) ; les annonces appellent l'ensemble « Kefkabin » (souvent avec « Ikuya Mitty » et Old/New Black Hole). Rôles T1/T2, H1/H2, M1/M2, R1/R2 ; supports à l'ouest, DPS à l'est ; LP1 = T1 H1 M1 R1. Les annonces PF EU (Light/Chaos) utilisent les mêmes noms (Kefkabin, Ikuya, Old/New), donc l'EU suit cet ensemble ; aucune strat EU séparée trouvée (usage EU vu seulement dans les annonces en direct).",
+    "de": "Raidplan, verlinkt von der NA-PF-Ultimate-Seite, genutzt von den meisten NA-PF-Gruppen (die Icy-Veins-Guides folgen ihm); PF-Einträge nennen das Set „Kefkabin“ (oft mit „Ikuya Mitty“ und Old/New Black Hole). Rollen T1/T2, H1/H2, M1/M2, R1/R2; Supporter Westen, DPS Osten; LP1 = T1 H1 M1 R1. EU-PF-Einträge (Light/Chaos) nutzen dieselben Namen (Kefkabin, Ikuya, Old/New), die EU folgt also diesem Set; keine eigene EU-Strat gefunden (EU-Nutzung nur in Live-Einträgen gesehen).",
+    "ja": "NA野良の絶まとめサイトからリンクされたレイドプランで、NA野良の多くが使用（Icy Veinsもこれに準拠）。募集文では「Kefkabin」と呼ばれ、よく「Ikuya Mitty」やOld/Newブラックホールと一緒。ロールはT1/T2、H1/H2、M1/M2、R1/R2、タンクヒーラー西・DPS東、LP1はT1 H1 M1 R1。EU（Light/Chaos）の募集も同じ名前（Kefkabin、Ikuya、Old/New）なので、EUもこの処理。EU独自の処理は見つからず（EUでの使用は募集一覧でのみ確認）。"
+   },
+   "aliases": {
+    "en": [
+     "kefkabin",
+     "naur",
+     "ikuya",
+     "ikuya mitty",
+     "icy veins",
+     "na pf"
+    ],
+    "fr": [
+     "kefkabin",
+     "naur",
+     "ikuya",
+     "ikuya mitty",
+     "icy veins",
+     "na pf"
+    ],
+    "de": [
+     "kefkabin",
+     "naur",
+     "ikuya",
+     "ikuya mitty",
+     "icy veins",
+     "na pf"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "oce-mur",
+   "name": {
+    "en": "Materia (MUR) standard",
+    "fr": "Standard Materia (MUR)",
+    "de": "Materia-Standard (MUR)",
+    "ja": "Materia(MUR)標準"
+   },
+   "region": "OCE",
+   "note": {
+    "en": "Materia Ultimate Raiding toolbox (Materia = Oceanian DC), with raidplans per phase. Uses tank LB3 on Vacuum Wave in P3.",
+    "fr": "Toolbox Materia Ultimate Raiding (Materia = DC d'Océanie), avec raidplans par phase. Utilise la LB3 tank sur Vacuum Wave en P3.",
+    "de": "Materia-Ultimate-Raiding-Toolbox (Materia = ozeanisches DC) mit Raidplans pro Phase. Nutzt Tank-LB3 bei Vacuum Wave in P3.",
+    "ja": "Materia Ultimate Raiding（オセアニアDC）のツールボックス。P3真空波でタンクLB3を使う。"
+   },
+   "aliases": {
+    "en": [
+     "mur",
+     "materia",
+     "materia raiding",
+     "materiaraiding"
+    ],
+    "fr": [
+     "mur",
+     "materia",
+     "materia raiding",
+     "materiaraiding"
+    ],
+    "de": [
+     "mur",
+     "materia",
+     "materia raiding",
+     "materiaraiding"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-pf",
+   "name": {
+    "en": "JP standard (saki slides)",
+    "fr": "Standard JP (slides de saki)",
+    "de": "JP-Standard (saki-Folien)",
+    "ja": "日本主流（sakiスライド系）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "JP guides base their strat on slides made by 'saki'. Named variants seen: ぴれん式 (P2 Forsaken), TLB3式 or 正攻法 (P3 Bowels of Agony), 固定型 (P1 teleports); P4 is learned with echo macros.",
+    "fr": "Les guides JP se basent sur des slides de « saki ». Variantes nommées : ぴれん式 (P2 Forsaken), TLB3式 ou 正攻法 (P3 Bowels of Agony), 固定型 (téléports P1) ; la P4 s'apprend avec des macros echo.",
+    "de": "JP-Guides basieren auf Folien von „saki“. Benannte Varianten: ぴれん式 (P2 Forsaken), TLB3式 oder 正攻法 (P3 Bowels of Agony), 固定型 (P1-Teleports); P4 wird mit Echo-Makros gelernt.",
+    "ja": "攻略記事はsakiさんのスライドがベース。ミッシングのぴれん式、バウルのTLB3式/正攻法、テレポの固定型などの名前あり。P4はechoマクロで覚える。"
+   },
+   "aliases": {
+    "en": [
+     "saki",
+     "saki slides"
+    ],
+    "fr": [
+     "saki",
+     "saki slides"
+    ],
+    "de": [
+     "saki",
+     "saki slides"
+    ],
+    "ja": [
+     "ぴれん式",
+     "TLB3式",
+     "固定型"
+    ]
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1: Kefka",
+    "fr": "Phase 1 : Kefka",
+    "de": "Phase 1: Kefka",
+    "ja": "P1：ケフカ"
+   },
+   "mechanics": [
+    {
+     "id": "revolting-ruin-iii",
+     "names": {
+      "en": "Revolting Ruin III",
+      "fr": "Revolting Ruin III",
+      "de": "Revolting Ruin III",
+      "ja": "ばりばりルインガ"
+     },
+     "aliases": {
+      "en": [
+       "tankbuster",
+       "ruin"
+      ],
+      "fr": [
+       "tankbuster"
+      ],
+      "de": [
+       "tankbuster"
+      ],
+      "ja": [
+       "ルインガ"
+      ]
+     },
+     "how": {
+      "en": "Two conal tankbusters, the first on top enmity, the second on second enmity. No vulnerability, so one tank can take both if the other provokes before the cast ends.",
+      "fr": "Deux tankbusters en cône, le premier sur l'inimitié 1, le second sur l'inimitié 2. Pas de vulnérabilité, donc un seul tank peut tout prendre si l'autre provoque avant la fin du sort.",
+      "de": "Zwei Kegel-Tankbuster, der erste auf Feindschaft 1, der zweite auf Feindschaft 2. Keine Verwundbarkeit, also kann ein Tank beide nehmen, wenn der andere vor Ende des Zaubers provoziert.",
+      "ja": "2連続の扇タンク強攻撃（1発目ヘイト1位、2発目2位）。被ダメ増加はないので、詠唱中に挑発すれば1人で2発受けられる。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Tanks agree beforehand: split the hits or provoke so one tank takes both.",
+        "fr": "Les tanks se mettent d'accord : partager ou provoquer pour qu'un seul prenne tout.",
+        "de": "Tanks sprechen sich ab: Treffer teilen oder provozieren, damit einer beide nimmt.",
+        "ja": "タンク同士で分担か挑発で1人受けかを決める。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "FR/DE: official in-game names not confirmed; English names used.",
+      "fr": "FR : noms officiels en jeu non confirmés, noms anglais utilisés.",
+      "de": "DE: offizielle Namen im Spiel nicht bestätigt, englische Namen verwendet.",
+      "ja": "FR/DE名は未確認のため英語名。"
+     },
+     "tags": [
+      "tankbuster",
+      "cleave"
+     ]
+    },
+    {
+     "id": "graven-image-1",
+     "names": {
+      "en": "Graven Image 1 + Mystery Magic (fire/ice)",
+      "fr": "Graven Image 1 + Mystery Magic (feu/glace)",
+      "de": "Graven Image 1 + Mystery Magic (Feuer/Eis)",
+      "ja": "神々の像1回目＋なぞなぞマジック"
+     },
+     "aliases": {
+      "en": [
+       "statue",
+       "mystery magic",
+       "rings",
+       "real fake"
+      ],
+      "fr": [
+       "statue",
+       "anneaux"
+      ],
+      "de": [
+       "statue",
+       "ringe"
+      ],
+      "ja": [
+       "神々の像",
+       "なぞなぞ"
+      ]
+     },
+     "how": {
+      "en": "The statue tethers the four players of one role and knocks them back. Kefka shows Blizzard cones and a fire stack or spread; the coloured rings around him say whether each telegraph is real, and a '?' ring means that element is inverted. Standing in the real ice or the wrong stack/spread kills you.",
+      "fr": "La statue lie les quatre joueurs d'un rôle et les projette. Kefka montre des cônes de Glace et un pack ou une dispersion de feu ; les anneaux colorés autour de lui disent si chaque indication est vraie, et un anneau « ? » inverse cet élément. Être dans la vraie glace ou faire le mauvais pack/dispersion te tue.",
+      "de": "Die Statue verbindet die vier Spieler einer Rolle und stößt sie zurück. Kefka zeigt Eiskegel und einen Feuer-Stack oder -Verteilung; die farbigen Ringe um ihn zeigen, ob jede Anzeige echt ist, ein „?“-Ring dreht das Element um. Im echten Eis stehen oder falsch stacken/verteilen tötet dich.",
+      "ja": "像から同じロール4人に線が付きノックバック。ブリザガ（扇）とファイガ（頭割りか散開）の予兆、ケフカの赤青の輪の玉で本当/嘘が決まり「?」なら逆。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Supports resolve in the west safe quadrant, DPS in the east; stack or spread inside your role. Tethered players aim the knockback so they land in their safe area.",
+        "fr": "Soutiens dans le quart sûr ouest, DPS à l'est ; pack ou dispersion dans ton rôle. Les liés orientent la projection pour atterrir dans leur zone sûre.",
+        "de": "Supporter im sicheren Westviertel, DDs im Osten; innerhalb deiner Rolle stacken oder verteilen. Verbundene richten den Rückstoß so aus, dass sie in ihrem Safespot landen.",
+        "ja": "THは西、DPSは東の安地でロール内で頭割り/散開。線の人はノックバックで安地に着地。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "tether",
+      "stack",
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "statue-beams-towers",
+     "names": {
+      "en": "Statue beams + towers",
+      "fr": "Rayons de la statue + tours",
+      "de": "Statuenstrahlen + Türme",
+      "ja": "像の波動砲＋塔"
+     },
+     "aliases": {
+      "en": [
+       "beams",
+       "towers"
+      ],
+      "fr": [
+       "rayons",
+       "tours"
+      ],
+      "de": [
+       "strahlen",
+       "türme"
+      ],
+      "ja": [
+       "波動砲",
+       "塔"
+      ]
+     },
+     "how": {
+      "en": "The statue hits two supports and two DPS with lines; each drops a tower. The four players not hit must soak the towers of their own role. Taking a beam without the towers being soaked, or crossing the middle line, kills.",
+      "fr": "La statue frappe deux soutiens et deux DPS avec des lignes ; chacun laisse une tour. Les quatre non touchés prennent les tours de leur propre rôle. Prendre un rayon sans que les tours soient prises, ou traverser la ligne du milieu, tue.",
+      "de": "Die Statue trifft zwei Supporter und zwei DDs mit Linien; jeder hinterlässt einen Turm. Die vier nicht Getroffenen nehmen die Türme ihrer eigenen Rolle. Strahl ohne genommene Türme oder Überqueren der Mittellinie tötet.",
+      "ja": "DPS2人・TH2人に直線、足元に塔。被弾していない4人が同じロールの塔を踏む。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Line up east-west (supports west, DPS east), melee/tanks nearest the boss, healers/ranged at the edge. Unhit players conga-soak: west-most unhit takes the west-most tower. Never cross the north-south line.",
+        "fr": "Ligne est-ouest (soutiens ouest, DPS est), mêlées/tanks près du boss, heals/distances au bord. Les non touchés prennent en conga : le plus à l'ouest prend la tour la plus à l'ouest. Ne traverse jamais la ligne nord-sud.",
+        "de": "Ost-West-Linie (Supporter West, DDs Ost), Nahkampf/Tanks nah am Boss, Heiler/Fernkampf am Rand. Nicht Getroffene nehmen per Conga: der westlichste nimmt den westlichsten Turm. Nie die Nord-Süd-Linie überqueren.",
+        "ja": "東西に一列（TH西、DPS東）、近接・タンクがボス寄り。被弾しなかった人は西から順に塔へ。南北の中央線を越えない。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower"
+     ]
+    },
+    {
+     "id": "double-trouble-trap",
+     "names": {
+      "en": "Double-Trouble Trap",
+      "fr": "Double-Trouble Trap",
+      "de": "Double-Trouble Trap",
+      "ja": "つぎつぎトラップ"
+     },
+     "aliases": {
+      "en": [
+       "trap",
+       "knockback stack",
+       "puzzle 1"
+      ],
+      "fr": [
+       "piège",
+       "énigme 1"
+      ],
+      "de": [
+       "falle",
+       "rätsel 1"
+      ],
+      "ja": [
+       "トラップ",
+       "フラグ1"
+      ]
+     },
+     "how": {
+      "en": "One support and one DPS get a debuff that becomes a heavy shared stack with knockback, and the debuff jumps to someone in the stack (recurs three times). It is the first hidden puzzle: the debuff must survive to the end of P1, and it is lost if the holder dies.",
+      "fr": "Un soutien et un DPS reçoivent un débuff qui devient un gros pack partagé avec projection, puis le débuff saute sur quelqu'un du pack (trois fois). C'est la 1re énigme cachée : le débuff doit tenir jusqu'à la fin de la P1, il est perdu si le porteur meurt.",
+      "de": "Ein Supporter und ein DD bekommen einen Debuff, der zu einem schweren geteilten Stack mit Rückstoß wird, und der Debuff springt auf jemanden im Stack (dreimal). Das ist das erste versteckte Rätsel: Der Debuff muss bis Ende P1 überleben und geht verloren, wenn der Träger stirbt.",
+      "ja": "TH1人・DPS1人に付く、ノックバック付き頭割り。デバフは参加者に受け渡される（計3回）。P1終了まで維持しないとP3へのフラグが消える（持ち主の死亡でも消える）。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Each role stacks on its side of the boss ring with the debuffed player at max melee behind them.",
+        "fr": "Chaque rôle packe de son côté de l'anneau du boss, le porteur à portée max de mêlée derrière.",
+        "de": "Jede Rolle stackt auf ihrer Seite des Bossrings, der Debuff-Träger auf max. Nahkampfreichweite dahinter.",
+        "ja": "ロールごとにボスのサークル上で頭割り、デバフ持ちは後ろの近接最大距離。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "TH stack west, DPS east, debuff holder toward the outside. Avoid any damage down on the holder.",
+        "fr": "TH packent à l'ouest, DPS à l'est, porteur vers l'extérieur. Évite tout malus de dégâts sur le porteur.",
+        "de": "TH stacken West, DDs Ost, Träger nach außen. Vermeide jeden Schadensmalus beim Träger.",
+        "ja": "THは西、DPSは東で頭割り、デバフ持ちは外周寄り。持ち主は与ダメ低下も避ける。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "knockback",
+      "debuff"
+     ]
+    },
+    {
+     "id": "graven-image-2",
+     "names": {
+      "en": "Graven Image 2 (purple/yellow tethers, puddles)",
+      "fr": "Graven Image 2 (liens violets/jaunes, flaques)",
+      "de": "Graven Image 2 (lila/gelbe Verbindungen, Pfützen)",
+      "ja": "神々の像2回目（重力弾・岩石弾）"
+     },
+     "aliases": {
+      "en": [
+       "purple yellow",
+       "gravity puddles",
+       "puzzle 2"
+      ],
+      "fr": [
+       "violet jaune",
+       "énigme 2"
+      ],
+      "de": [
+       "lila gelb",
+       "rätsel 2"
+      ],
+      "ja": [
+       "重力弾",
+       "岩石弾",
+       "黒床",
+       "フラグ2"
+      ]
+     },
+     "how": {
+      "en": "One role gets purple tethers (a stack that leaves a puddle which explodes if touched too early), the other yellow (an AoE that must never touch a puddle). Done twice. Second puzzle: at the end all eight Gravity puddles must be soaked by four players each, after the next trap knockback.",
+      "fr": "Un rôle a des liens violets (pack qui laisse une flaque explosive si on la touche trop tôt), l'autre jaunes (AoE qui ne doit jamais toucher une flaque). Deux fois. 2e énigme : à la fin, les huit flaques de Gravité doivent être prises par quatre joueurs chacune, après la projection du piège suivant.",
+      "de": "Eine Rolle bekommt lila Verbindungen (Stack, der eine Pfütze hinterlässt, die bei zu frühem Berühren explodiert), die andere gelbe (AoE, die nie eine Pfütze berühren darf). Zweimal. Zweites Rätsel: Am Ende müssen alle acht Gravitations-Pfützen von je vier Spielern genommen werden, nach dem nächsten Fallen-Rückstoß.",
+      "ja": "片方のロールは紫線（触れると爆発する黒床を残す頭割り）、もう片方は黄線（黒床に当ててはいけない範囲）。2回。最後に黒床を4人ずつで踏むのがフラグ2。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Light parties stack tightly at the north and south walls so puddles merge. Yellow melee/tanks rotate to the nearest east/west cardinal at max melee, yellow ranged/healers to the nearest intercardinal at the wall. Second set: stack right next to the first puddles. After the half-room cleave and trap 2, debuffed players step back into the puddles so four soak each set.",
+        "fr": "Les groupes légers packent serré aux bords nord et sud pour fusionner les flaques. Jaunes mêlées/tanks vont au cardinal est/ouest le plus proche à portée max, jaunes distances/heals à l'intercardinal le plus proche au bord. 2e série : pack juste à côté des premières flaques. Après le cleave et le piège 2, les porteurs reculent dans les flaques pour qu'il y ait quatre joueurs par flaque.",
+        "de": "Leichtgruppen stacken eng am Nord- und Südrand, damit die Pfützen verschmelzen. Gelbe Nahkampf/Tanks zur nächsten Ost/West-Hauptrichtung auf max. Reichweite, gelbe Fernkampf/Heiler zur nächsten Zwischenrichtung am Rand. Zweiter Satz: direkt neben die ersten Pfützen stacken. Nach Cleave und Falle 2 treten die Träger zurück in die Pfützen, damit je vier drin stehen.",
+        "ja": "LPで南北の外周にぴったり頭割りして床をまとめる。黄線の近接・タンクは近い東西、遠隔・ヒーラーは近い斜めの外周へ。2回目は最初の床の真横で頭割り。半面とトラップ2の後、デバフ持ちが下がって4人ずつ黒床を踏む。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Same layout; the puddle 'bubbles' may only be soaked while they flash gold.",
+        "fr": "Même placement ; les « bulles » ne se prennent que quand elles clignotent en or.",
+        "de": "Gleiche Aufstellung; die „Blasen“ dürfen nur genommen werden, wenn sie golden blinken.",
+        "ja": "配置は同じ。床は金色に光っている間だけ踏む。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Spread spots: MT = D1, ST = D2, H1 = D3, H2 = D4 (D-marker side for the MT team, B-marker side for the ST team). The half-room cleave is safe on the orb side. For the final soak, the two tanks take north and the other six south.",
+        "fr": "Places de dispersion : MT = D1, ST = D2, H1 = D3, H2 = D4 (côté marqueur D pour l'équipe MT, B pour l'équipe ST). Le cleave demi-salle est sûr côté orbe. Pour la prise finale, les deux tanks au nord et les six autres au sud.",
+        "de": "Verteilplätze: MT = D1, ST = D2, H1 = D3, H2 = D4 (D-Marker-Seite für das MT-Team, B-Seite für das ST-Team). Der Halbraum-Cleave ist auf der Orb-Seite sicher. Für die finale Aufnahme gehen die zwei Tanks nach Norden, die anderen sechs nach Süden.",
+        "ja": "散開はMT=D1、ST=D2、H1=D3、H2=D4（MT組はDマーカー側、ST組はB側）。像の半面は玉がある側が安地。最後の黒床はタンク2人が北、残り6人が南。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "stack",
+      "tower"
+     ]
+    },
+    {
+     "id": "hyperdrive",
+     "names": {
+      "en": "Light of Judgment + Hyperdrive",
+      "fr": "Light of Judgment + Hyperdrive",
+      "de": "Light of Judgment + Hyperdrive",
+      "ja": "裁きの光＋ハイパードライブ"
+     },
+     "aliases": {
+      "en": [
+       "raidwide",
+       "triple buster"
+      ],
+      "fr": [
+       "tankbuster triple"
+      ],
+      "de": [
+       "dreifach-buster"
+      ],
+      "ja": [
+       "ハイパードライブ"
+      ]
+     },
+     "how": {
+      "en": "Raidwide followed by an untelegraphed three-hit tankbuster on the main tank.",
+      "fr": "Attaque de zone puis tankbuster en trois coups sans indicateur sur le tank principal.",
+      "de": "Raidwide, danach ein unmarkierter Tankbuster mit drei Treffern auf den Haupttank.",
+      "ja": "全体攻撃の後、予兆なしのタンク3連続強攻撃。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Mitigate the raidwide; main tank uses cooldowns.",
+        "fr": "Réduis l'attaque de zone ; le MT utilise ses CD.",
+        "de": "Raidwide mitigieren; der MT nutzt Cooldowns.",
+        "ja": "全体は軽減、MTはバフ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "tele-trouncing",
+     "names": {
+      "en": "Graven Image 3: Tele-trouncing (arrows)",
+      "fr": "Graven Image 3 : Tele-trouncing (flèches)",
+      "de": "Graven Image 3: Tele-trouncing (Pfeile)",
+      "ja": "神々の像3回目：ずびずばテレポ"
+     },
+     "aliases": {
+      "en": [
+       "arrows",
+       "teleports",
+       "confusion",
+       "sleep",
+       "puzzle 3"
+      ],
+      "fr": [
+       "flèches",
+       "téléporteurs",
+       "énigme 3"
+      ],
+      "de": [
+       "pfeile",
+       "teleporter",
+       "rätsel 3"
+      ],
+      "ja": [
+       "テレポ",
+       "矢印",
+       "混乱",
+       "睡眠",
+       "フラグ3"
+      ]
+     },
+     "how": {
+      "en": "Everyone gets two arrow debuffs (one role two different arrows, the other two identical); when they expire they leave teleport panels. Third puzzle: all 16 arrows must be used. The statue then confuses four players (who attack the nearest person and must walk onto the teleports) and puts four to sleep. Stepping on a panel early or getting knocked onto one fails it.",
+      "fr": "Tout le monde a deux débuffs flèche (un rôle deux flèches différentes, l'autre deux identiques) ; à l'expiration ils laissent des téléporteurs. 3e énigme : les 16 flèches doivent toutes servir. La statue rend ensuite quatre joueurs Confus (ils frappent le plus proche et doivent marcher sur les téléporteurs) et endort les quatre autres. Marcher trop tôt sur un panneau ou y être projeté fait échouer.",
+      "de": "Alle bekommen zwei Pfeil-Debuffs (eine Rolle zwei verschiedene, die andere zwei gleiche); beim Ablaufen entstehen Teleport-Felder. Drittes Rätsel: Alle 16 Pfeile müssen benutzt werden. Danach verwirrt die Statue vier Spieler (sie greifen den Nächsten an und müssen auf die Teleporter laufen) und lässt vier einschlafen. Zu frühes Betreten oder Draufschubsen lässt es scheitern.",
+      "ja": "全員に矢印デバフ2つ（片方のロールは異なる2つ、もう片方は同じ2つ）。終了時に矢印床が設置される。16個すべて使うのがフラグ3。その後像の線で4人が混乱（近い人を殴る、矢印床へ）、4人が睡眠。早く踏む・ノックバックで踏むと失敗。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Drop arrows using the NA PF orientation image so they form a big square around the arena. Trap 3: supports NW and DPS SE on the boss ring, holder out of the hitbox. Sleep (purple/right) on the boss ring at their clock spot (intercardinals rotate clockwise to the cardinal); Confused (yellow/left) outside the arrows at their cardinal and walk into the teleporter.",
+        "fr": "Pose les flèches selon l'image d'orientation du PF NA pour former un grand carré autour de l'arène. Piège 3 : soutiens NO et DPS SE sur l'anneau, porteur hors de la hitbox. Sommeil (violet/droite) sur l'anneau à sa position horloge (intercardinaux tournent vers le cardinal en sens horaire) ; Confus (jaune/gauche) hors des flèches à son cardinal, puis marche dans le téléporteur.",
+        "de": "Pfeile nach dem NA-PF-Orientierungsbild legen, sodass ein großes Quadrat um die Arena entsteht. Falle 3: Supporter NW, DDs SO auf dem Bossring, Träger außerhalb der Hitbox. Schlaf (lila/rechts) auf dem Bossring an der Uhrposition (Zwischenrichtungen im Uhrzeigersinn zur Hauptrichtung); Verwirrte (gelb/links) außerhalb der Pfeile an ihrer Hauptrichtung und in den Teleporter laufen.",
+        "ja": "NA野良の向き画像どおりに矢印を置き、大きな四角を作る。トラップ3はTHが北西、DPSが南東のサークル上。睡眠（紫/右）は担当方角のサークル上（斜めは時計回りで十字へ）、混乱（黄/左）は担当十字の矢印の外からテレポへ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "'固定型': arrow spots are fixed by role (melee inside, ranged outside). Confused players go between the arrows at their direction, sleepers spread between the arrows; if the roles are swapped, the assignments swap. Move to the trap stack early, the knockback comes about 5s after the arrows drop.",
+        "fr": "« 固定型 » : positions des flèches fixées par rôle (mêlées dedans, distances dehors). Les Confus vont entre les flèches de leur direction, les endormis se dispersent entre les flèches ; si les rôles sont inversés, les places aussi. Va tôt au pack du piège, la projection arrive environ 5 s après la pose des flèches.",
+        "de": "„固定型“: Pfeilplätze nach Rolle fest (Nahkampf innen, Fernkampf außen). Verwirrte gehen zwischen die Pfeile ihrer Richtung, Schlafende verteilen sich zwischen den Pfeilen; sind die Rollen vertauscht, tauschen die Plätze. Früh zum Fallen-Stack gehen, der Rückstoß kommt etwa 5 s nach dem Legen.",
+        "ja": "固定型：矢印は近接内・遠隔外で固定。混乱組と睡眠組は担当方角の矢印の間へ。逆なら担当入れ替え。矢印設置の約5秒後にノックバックが来るので早めに頭割り位置へ。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "Hotfix 23 June 2026: Tele-trouncing now warps based on the panel's position, not the player's.",
+      "fr": "Correctif du 23 juin 2026 : Tele-trouncing téléporte selon la position du panneau, pas celle du joueur.",
+      "de": "Hotfix 23. Juni 2026: Tele-trouncing teleportiert nun anhand der Feldposition, nicht der Spielerposition.",
+      "ja": "2026/6/23の修正でテレポ先は床の位置基準になった。"
+     },
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "statue-gaze",
+     "names": {
+      "en": "Statue gaze + lightning/fire",
+      "fr": "Regard de la statue + foudre/feu",
+      "de": "Statuenblick + Blitz/Feuer",
+      "ja": "像の目（視線）＋サンダガ/ファイガ"
+     },
+     "aliases": {
+      "en": [
+       "gaze",
+       "eye"
+      ],
+      "fr": [
+       "regard"
+      ],
+      "de": [
+       "blick"
+      ],
+      "ja": [
+       "視線",
+       "目"
+      ]
+     },
+     "how": {
+      "en": "A giant eye appears on the statue: with a '?' you must look at it, without it you must look away. At the same time Mystery Magic lightning lines and a fire stack/spread resolve.",
+      "fr": "Un œil géant apparaît sur la statue : avec un « ? » tu dois le regarder, sans « ? » détourne le regard. En même temps, lignes de foudre et pack/dispersion de feu de Mystery Magic.",
+      "de": "Ein riesiges Auge erscheint auf der Statue: mit „?“ musst du hinsehen, ohne „?“ wegsehen. Gleichzeitig lösen Mystery-Magic-Blitzlinien und ein Feuer-Stack/Verteilung aus.",
+      "ja": "像に巨大な目。「?」付き（黄）なら見る、無し（紫）なら見ない。同時にサンダガの直線とファイガ。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Face correctly while dodging the lines; resolve fire by role as before.",
+        "fr": "Oriente-toi correctement en esquivant les lignes ; feu par rôle comme avant.",
+        "de": "Richtig ausrichten und Linien ausweichen; Feuer nach Rolle wie vorher.",
+        "ja": "直線を避けつつ向きを合わせ、ファイガはロールで。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "TH north, DPS south; match facing to the eye when it lands.",
+        "fr": "TH au nord, DPS au sud ; oriente-toi selon l'œil au moment de l'impact.",
+        "de": "TH Norden, DDs Süden; beim Einschlag nach dem Auge ausrichten.",
+        "ja": "TH北、DPS南。着弾タイミングで見る/見ないを合わせる。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "gaze",
+      "dodge",
+      "stack",
+      "spread"
+     ]
+    },
+    {
+     "id": "p1-enrage",
+     "names": {
+      "en": "P1 enrage (15% check)",
+      "fr": "Enrage P1 (seuil 15 %)",
+      "de": "P1-Enrage (15 %-Check)",
+      "ja": "P1時間切れ（15%）"
+     },
+     "aliases": {
+      "en": [
+       "p1 enrage",
+       "voice line"
+      ],
+      "fr": [
+       "enrage p1"
+      ],
+      "de": [
+       "enrage p1"
+      ],
+      "ja": [
+       "P1時間切れ",
+       "セリフ"
+      ]
+     },
+     "how": {
+      "en": "Kefka must be under 15% HP at the end of P1 or he wipes the party. His voice line tells you if all three puzzles succeeded; if any failed you can still do P2 but the fight then ends with a fake empty chest.",
+      "fr": "Kefka doit être sous 15 % à la fin de la P1, sinon wipe. Sa réplique indique si les trois énigmes sont réussies ; sinon tu peux faire la P2 mais le combat finit avec un faux coffre vide.",
+      "de": "Kefka muss am Ende von P1 unter 15 % LP sein, sonst Wipe. Seine Sprachzeile zeigt, ob alle drei Rätsel geklappt haben; sonst kannst du P2 noch spielen, aber der Kampf endet mit einer leeren Fake-Truhe.",
+      "ja": "P1終了時にHP15%未満でないと全滅。セリフで3つのフラグ成否がわかる。失敗でもP2は練習できるが、偽の空宝箱で終わる。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "DPS check; listen for the success line.",
+        "fr": "Test de DPS ; écoute la réplique de réussite.",
+        "de": "DPS-Check; auf die Erfolgszeile achten.",
+        "ja": "火力チェック。成功セリフを確認。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dps-check"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2: God Kefka",
+    "fr": "Phase 2 : God Kefka",
+    "de": "Phase 2: God Kefka",
+    "ja": "P2：ゴッドケフカ"
+   },
+   "mechanics": [
+    {
+     "id": "ultimate-embrace",
+     "names": {
+      "en": "Ultimate Embrace",
+      "fr": "Ultimate Embrace",
+      "de": "Ultimate Embrace",
+      "ja": "終末の双腕"
+     },
+     "aliases": {
+      "en": [
+       "shared buster"
+      ],
+      "fr": [
+       "tankbuster partagé"
+      ],
+      "de": [
+       "geteilter buster"
+      ],
+      "ja": [
+       "双腕"
+      ]
+     },
+     "how": {
+      "en": "Heavy tankbuster shared by both tanks.",
+      "fr": "Gros tankbuster partagé entre les deux tanks.",
+      "de": "Schwerer Tankbuster, von beiden Tanks geteilt.",
+      "ja": "タンク2人で頭割りする強攻撃。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Both tanks stack with mitigation.",
+        "fr": "Les deux tanks packent avec réductions.",
+        "de": "Beide Tanks stacken mit Mitigation.",
+        "ja": "タンク2人がバフで受ける。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "FR/DE: official in-game names not confirmed; English names used.",
+      "fr": "FR : noms officiels en jeu non confirmés, noms anglais utilisés.",
+      "de": "DE: offizielle Namen im Spiel nicht bestätigt, englische Namen verwendet.",
+      "ja": "FR/DE名は未確認のため英語名。"
+     },
+     "tags": [
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "forsaken",
+     "names": {
+      "en": "Forsaken (Spell's Trouble towers)",
+      "fr": "Forsaken (tours Spell's Trouble)",
+      "de": "Forsaken (Spell's-Trouble-Türme)",
+      "ja": "ミッシング（スペルハザード塔）"
+     },
+     "aliases": {
+      "en": [
+       "forsaken",
+       "towers",
+       "aaabbbba",
+       "spells trouble"
+      ],
+      "fr": [
+       "forsaken",
+       "tours"
+      ],
+      "de": [
+       "forsaken",
+       "türme"
+      ],
+      "ja": [
+       "ミッシング",
+       "塔",
+       "1238",
+       "4567"
+      ]
+     },
+     "how": {
+      "en": "Everyone gets 4 stacks of Spell's Trouble with an icon: cone (hits nearest player), spread (circle on you) or stack (3-player stack). Eight sets of two duo towers spawn; soaking removes a stack, triggers your icon and gives a new one. An unsoaked tower or a stack left at the end (Light of Judgment) kills.",
+      "fr": "Tout le monde a 4 stacks de Spell's Trouble avec une icône : cône (sur le joueur le plus proche), dispersion (cercle sur toi) ou pack (pack à 3). Huit séries de deux tours à deux apparaissent ; prendre une tour enlève un stack, déclenche ton icône et t'en donne une nouvelle. Une tour non prise ou un stack restant à la fin (Light of Judgment) tue.",
+      "de": "Alle bekommen 4 Stapel Spell's Trouble mit Symbol: Kegel (trifft den Nächsten), Verteilung (Kreis auf dir) oder Stack (3er-Stack). Acht Sätze aus zwei Duo-Türmen erscheinen; Reinstehen entfernt einen Stapel, löst dein Symbol aus und gibt ein neues. Ein leerer Turm oder ein übriger Stapel am Ende (Light of Judgment) tötet.",
+      "ja": "全員に4スタックのデバフと予兆（扇=最寄り1人、円範囲、3人頭割り）。2人塔×2が8回出現し、踏むとスタックが減り予兆が発動・更新。塔を踏み漏らす、最後にスタックが残る（裁きの光）と死亡。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Orient with the current towers as SE/SW. Supports in a box west, DPS east. Group A (the two stack players plus partners) soaks sets 1, 2, 3 and 8, Group B sets 4-7 (AAABBBBA). Conga: DPS R1 M1 M2 R2, supports H1 T1 T2 H2; leftmost takes the left tower. Odd sets: cone left (SW), spread right (SE); even sets: cones on the front edge, spreads at the back.",
+        "fr": "Oriente-toi avec les tours actuelles au SE/SO. Soutiens dans un carré à l'ouest, DPS à l'est. Groupe A (les deux packs + partenaires) prend les séries 1, 2, 3 et 8, groupe B les 4 à 7 (AAABBBBA). Conga : DPS R1 M1 M2 R2, soutiens H1 T1 T2 H2 ; le plus à gauche prend la tour de gauche. Séries impaires : cône à gauche (SO), dispersion à droite (SE) ; paires : cônes au bord avant, dispersions à l'arrière.",
+        "de": "Ausrichten mit den aktuellen Türmen als SO/SW. Supporter in einem Kasten im Westen, DDs im Osten. Gruppe A (die zwei Stack-Spieler plus Partner) nimmt Sätze 1, 2, 3 und 8, Gruppe B 4-7 (AAABBBBA). Conga: DDs R1 M1 M2 R2, Supporter H1 T1 T2 H2; der Linkeste nimmt den linken Turm. Ungerade Sätze: Kegel links (SW), Verteilung rechts (SO); gerade: Kegel vorne am Rand, Verteilungen hinten.",
+        "ja": "今の塔をSE/SWとして向きを合わせる。THは西、DPSは東。A組（頭割り2人とその相方）が1・2・3・8回目、B組が4〜7回目（AAABBBBA）。整列はDPS R1 M1 M2 R2、TH H1 T1 T2 H2で左の人が左の塔。奇数回は扇左・円右、偶数回は扇が塔の前側、円が後ろ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Priority left to right: support, support, DPS, DPS. Cones are baited by ranged players.",
+        "fr": "Priorité de gauche à droite : soutien, soutien, DPS, DPS. Les cônes sont baités par les distances.",
+        "de": "Priorität von links nach rechts: Supporter, Supporter, DD, DD. Kegel werden vom Fernkampf geködert.",
+        "ja": "左から TH、TH、DPS、DPS の優先。扇は遠隔が誘導。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Strength order H1 > MT > ST > H2 and D1 > D2 > D3 > D4. Tower groups '1238' and '4567' (same split as AAABBBBA). Odd sets: left tower = cones, right = circles; even sets use 'south adjust': if your debuff collides in your tower, the south player switches. The two unassigned DPS always bait the End clones, a tank and a healer always take the cones. Variant names: ぴれん式.",
+        "fr": "Ordre de force H1 > MT > ST > H2 et D1 > D2 > D3 > D4. Groupes de tours « 1238 » et « 4567 » (même découpage qu'AAABBBBA). Séries impaires : tour gauche = cônes, droite = cercles ; séries paires avec « ajustement sud » : si ton débuff fait doublon dans ta tour, le joueur au sud change. Les deux DPS libres baitent toujours les clones End, un tank et un heal prennent toujours les cônes. Variante nommée : ぴれん式.",
+        "de": "Stärke-Reihenfolge H1 > MT > ST > H2 und D1 > D2 > D3 > D4. Turmgruppen „1238“ und „4567“ (gleiche Aufteilung wie AAABBBBA). Ungerade Sätze: linker Turm = Kegel, rechter = Kreise; gerade Sätze mit „Süd-Anpassung“: Doppelt sich dein Debuff im Turm, wechselt der südliche Spieler. Die zwei freien DDs ködern immer die End-Klone, ein Tank und ein Heiler nehmen immer die Kegel. Variantenname: ぴれん式.",
+        "ja": "強い順 H1>MT>ST>H2、D1>D2>D3>D4。塔は「1238」と「4567」。奇数回は左が扇、右が円。偶数回は南調整（被ったら南の人が逆の塔へ）。終焉誘導は無職DPS2人固定、扇受けはTとHの固定。ぴれん式などの名前あり。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Position details are very fine (sub-step adjustments); use your raidplan or PoV videos.",
+      "fr": "Les placements sont très précis (ajustements au pas près) ; utilise ton raidplan ou des vidéos PoV.",
+      "de": "Die Positionen sind sehr fein (schrittgenaue Anpassungen); nutze deinen Raidplan oder PoV-Videos.",
+      "ja": "細かい立ち位置調整が多いので図や動画で確認。"
+     },
+     "tags": [
+      "tower",
+      "cleave",
+      "spread",
+      "stack",
+      "debuff"
+     ]
+    },
+    {
+     "id": "pasts-futures-end",
+     "names": {
+      "en": "Past's End / Future's End (clones, All Things Ending)",
+      "fr": "Past's End / Future's End (clones, All Things Ending)",
+      "de": "Past's End / Future's End (Klone, All Things Ending)",
+      "ja": "過去の終焉／未来の終焉（消滅の脚）"
+     },
+     "aliases": {
+      "en": [
+       "clones",
+       "all things ending",
+       "past",
+       "future"
+      ],
+      "fr": [
+       "clones"
+      ],
+      "de": [
+       "klone"
+      ],
+      "ja": [
+       "終焉",
+       "消滅の脚",
+       "分身"
+      ]
+     },
+     "how": {
+      "en": "During the even tower sets Kefka casts Past's or Future's End and spawns clones on the four closest players; when All Things Ending starts they lock in and do half-room cleaves (Future = in front, Past = behind).",
+      "fr": "Pendant les séries paires, Kefka lance Past's ou Future's End et fait apparaître des clones sur les quatre plus proches ; au début d'All Things Ending ils se figent et frappent une demi-salle (Future = devant, Past = derrière).",
+      "de": "Bei den geraden Turmsätzen wirkt Kefka Past's oder Future's End und erzeugt Klone auf den vier Nächsten; mit Beginn von All Things Ending rasten sie ein und treffen eine halbe Arena (Future = vorne, Past = hinten).",
+      "ja": "偶数回の塔でケフカが過去/未来の終焉を使い、近い4人の位置に分身。消滅の脚の詠唱開始で固定され、未来は前方、過去は後方に半面攻撃。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Future's End: everyone goes opposite the towers that spawned. Past's End: everyone goes between the towers. Bait clones after sets 6 and 8 too.",
+        "fr": "Future's End : tout le monde à l'opposé des tours apparues. Past's End : tout le monde entre les tours. Bait aussi les clones après les séries 6 et 8.",
+        "de": "Future's End: alle gegenüber den erschienenen Türmen. Past's End: alle zwischen die Türme. Auch nach Satz 6 und 8 Klone ködern.",
+        "ja": "未来なら塔の反対側、過去なら塔の間へ。6回目と8回目の後も誘導。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Bait between the new towers or on the opposite side, always outside Kefka's target circle; standing too close tilts the legs and hits the cone baiters.",
+        "fr": "Baite entre les nouvelles tours ou du côté opposé, toujours hors du cercle de cible de Kefka ; trop près, les jambes s'inclinent et touchent les baiteurs de cônes.",
+        "de": "Zwischen den neuen Türmen oder auf der Gegenseite ködern, immer außerhalb von Kefkas Zielkreis; zu nah kippen die Beine und treffen die Kegelköder.",
+        "ja": "新しい塔の間かその逆側で誘導、必ずケフカのサークルの外。近いと脚が傾き扇誘導役に当たる。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "trine-wings",
+     "names": {
+      "en": "Trine + Wings of Destruction",
+      "fr": "Trine + Wings of Destruction",
+      "de": "Trine + Wings of Destruction",
+      "ja": "トライン＋破壊の翼"
+     },
+     "aliases": {
+      "en": [
+       "trine",
+       "triangles",
+       "wings"
+      ],
+      "fr": [
+       "triangles",
+       "ailes"
+      ],
+      "de": [
+       "dreiecke",
+       "flügel"
+      ],
+      "ja": [
+       "トライン",
+       "三角",
+       "翼"
+      ]
+     },
+     "how": {
+      "en": "Triangles drop and their points explode in the order they landed. One wing glows for a half-room cleave, then both wings glow: big tankbusters on the closest and farthest players. Ultimate Embrace follows, then Kefka must be at 1 HP. The tanks agree beforehand who takes the near hit and who takes the far one.",
+      "fr": "Des triangles tombent et leurs pointes explosent dans l'ordre d'arrivée. Une aile brille = demi-salle, puis les deux ailes brillent : gros tankbusters sur le plus proche et le plus éloigné. Puis Ultimate Embrace, et Kefka doit être à 1 PV. Les tanks décident à l'avance qui prend le coup proche et qui prend le lointain.",
+      "de": "Dreiecke fallen und ihre Spitzen explodieren in der Landereihenfolge. Ein Flügel leuchtet = halbe Arena, dann beide: schwere Tankbuster auf den Nächsten und den Fernsten. Danach Ultimate Embrace, und Kefka muss auf 1 LP sein. Die Tanks sprechen vorher ab, wer den nahen und wer den fernen Treffer nimmt.",
+      "ja": "三角が落ち、落ちた順に頂点が爆発。片翼が光ると半面、両翼で最も近い人と遠い人に強攻撃。その後双腕、ボスをHP1まで。近い方と遠い方をどちらのタンクが受けるか事前に決めておく。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Find a spot where the first and last triangles are next to each other, dodge the cleave, then walk into the first triangle after it explodes. Tanks take nearest and farthest.",
+        "fr": "Trouve un endroit où le premier et le dernier triangle sont côte à côte, esquive le cleave, puis entre dans le premier triangle après son explosion. Les tanks prennent le plus proche et le plus éloigné.",
+        "de": "Finde einen Platz, wo erstes und letztes Dreieck nebeneinander liegen, weich dem Cleave aus und geh nach der Explosion in das erste Dreieck. Tanks nehmen Nächsten und Fernsten.",
+        "ja": "最初と最後の三角が隣り合う場所で半面を避け、爆発後の1つ目へ入る。タンクが近い人と遠い人を担当。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "The centre triangle is always third, so wait in the middle. Tanks call which first-explosion spot to use (without VC: first spot clockwise from A). ST runs to the far edge, MT hugs the boss, everyone else stays away from the boss.",
+        "fr": "Le triangle central est toujours le troisième, attends donc au milieu. Les tanks annoncent quel emplacement de la 1re explosion utiliser (sans vocal : le premier dans le sens horaire depuis A). Le ST va au bord, le MT colle le boss, les autres restent loin du boss.",
+        "de": "Das Mitteldreieck ist immer das dritte, also in der Mitte warten. Tanks sagen an, welcher Platz der ersten Explosion genutzt wird (ohne VC: der erste im Uhrzeigersinn ab A). ST läuft an den Rand, MT klebt am Boss, alle anderen bleiben weg vom Boss.",
+        "ja": "中央は必ず3回目なので中央で待機。使う場所はタンクが宣言（VC無しならAから時計回りの最初）。STは外周ぎりぎり、MTはボスに密着、他はボスから離れる。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave",
+      "tankbuster",
+      "proximity"
+     ]
+    },
+    {
+     "id": "p2-enrage",
+     "names": {
+      "en": "P2 enrage",
+      "fr": "Enrage P2",
+      "de": "P2-Enrage",
+      "ja": "P2時間切れ"
+     },
+     "aliases": {
+      "en": [
+       "p2 enrage"
+      ],
+      "fr": [
+       "enrage p2"
+      ],
+      "de": [
+       "enrage p2"
+      ],
+      "ja": [
+       "P2時間切れ"
+      ]
+     },
+     "how": {
+      "en": "Kefka must reach 1 HP or he wipes the party. With all P1 puzzles solved a cutscene leads to P3; otherwise a 'Complete!' gag ending with an empty chest.",
+      "fr": "Kefka doit atteindre 1 PV, sinon wipe. Avec toutes les énigmes de P1 réussies, une cinématique mène à la P3 ; sinon une fausse fin « Complete! » avec un coffre vide.",
+      "de": "Kefka muss auf 1 LP, sonst Wipe. Mit allen gelösten P1-Rätseln führt eine Zwischensequenz zu P3; sonst ein Fake-Ende „Complete!“ mit leerer Truhe.",
+      "ja": "HP1にしないと全滅。P1のフラグが全部立っていればムービーでP3へ、失敗なら偽のクリアと空の宝箱。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "DPS check (JP guides note the P2 time limit is about 6:20, so a 0-second burst is recommended in P1).",
+        "fr": "Test de DPS (les guides JP notent une limite d'environ 6:20 en P2, burst à 0 s conseillé en P1).",
+        "de": "DPS-Check (JP-Guides nennen ca. 6:20 Zeitlimit für P2, Burst bei 0 s in P1 empfohlen).",
+        "ja": "火力チェック（P2の時間切れは約6分20秒のため、P1は0秒バースト推奨）。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dps-check",
+      "transition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Phase 3: Chaos & Exdeath",
+    "fr": "Phase 3 : Chaos et Exdeath",
+    "de": "Phase 3: Chaos & Exdeath",
+    "ja": "P3：エクスデス＆カオス"
+   },
+   "mechanics": [
+    {
+     "id": "decisive-battle",
+     "names": {
+      "en": "The Decisive Battle",
+      "fr": "The Decisive Battle",
+      "de": "The Decisive Battle",
+      "ja": "決戦"
+     },
+     "aliases": {
+      "en": [
+       "epic hero",
+       "fated hero",
+       "split"
+      ],
+      "fr": [
+       "séparation"
+      ],
+      "de": [
+       "aufteilung"
+      ],
+      "ja": [
+       "決戦",
+       "α",
+       "β"
+      ]
+     },
+     "how": {
+      "en": "The four players closest to Chaos get Epic Hero and the four closest to Exdeath get Fated Hero; you can only damage your own boss.",
+      "fr": "Les quatre plus proches de Chaos reçoivent Epic Hero, les quatre plus proches d'Exdeath Fated Hero ; tu ne peux frapper que ton boss.",
+      "de": "Die vier Nächsten zu Chaos bekommen Epic Hero, die vier Nächsten zu Exdeath Fated Hero; du kannst nur deinen Boss angreifen.",
+      "ja": "カオスに近い4人に決戦α、エクスデスに近い4人にβ。自分の側のボスしか攻撃できない。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Both melee, T1 and H1 go to Chaos (melee uptime); the rest to Exdeath.",
+        "fr": "Les deux mêlées, T1 et H1 sur Chaos (uptime mêlée) ; les autres sur Exdeath.",
+        "de": "Beide Nahkämpfer, T1 und H1 zu Chaos (Nahkampf-Uptime); der Rest zu Exdeath.",
+        "ja": "近接2人とT1・H1がカオス、残りがエクスデス。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "MT, H2, D1, D2 usually on Chaos; ST, H1, D3, D4 on Exdeath.",
+        "fr": "MT, H2, D1, D2 sur Chaos ; ST, H1, D3, D4 sur Exdeath.",
+        "de": "MT, H2, D1, D2 meist auf Chaos; ST, H1, D3, D4 auf Exdeath.",
+        "ja": "MT・H2・D1・D2がカオス、ST・H1・D3・D4がエクスデス。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Chaos side: ST, H2, D1, D2. Exdeath side: MT, H1, D3, D4.",
+        "fr": "Côté Chaos : ST, H2, D1, D2. Côté Exdeath : MT, H1, D3, D4.",
+        "de": "Chaos-Seite: ST, H2, D1, D2. Exdeath-Seite: MT, H1, D3, D4.",
+        "ja": "カオス側 ST・H2・D1・D2、エクスデス側 MT・H1・D3・D4。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "bowels-of-agony",
+     "names": {
+      "en": "Bowels of Agony (crystals, wind debuffs)",
+      "fr": "Bowels of Agony (cristaux, débuffs de vent)",
+      "de": "Bowels of Agony (Kristalle, Wind-Debuffs)",
+      "ja": "バウル・オブ・アゴニー"
+     },
+     "aliases": {
+      "en": [
+       "bowels",
+       "crystals",
+       "tailwind",
+       "headwind",
+       "vacuum wave"
+      ],
+      "fr": [
+       "cristaux",
+       "vent"
+      ],
+      "de": [
+       "kristalle",
+       "wind"
+      ],
+      "ja": [
+       "バウル",
+       "クリスタル",
+       "混沌の風",
+       "真空波"
+      ]
+     },
+     "how": {
+      "en": "Fire, water and wind crystals spawn. Players get Tailwind/Headwind (must be knocked back facing the right way or you fly off), Entropy (circle on you, then fire crystal donuts two players) or Dynamic Fluid (donut on you, then water crystal knockback circles on two). Cleansing wind makes the wind crystal fire duo stacks. Ends with Exdeath's Vacuum Wave knockback.",
+      "fr": "Des cristaux de feu, d'eau et de vent apparaissent. Les joueurs ont Tailwind/Headwind (il faut être projeté dans le bon sens sinon tu tombes), Entropie (cercle sur toi, puis le cristal de feu fait des donuts sur deux joueurs) ou Fluide dynamique (donut sur toi, puis le cristal d'eau fait des cercles qui projettent sur deux). Dissiper le vent fait tirer des packs à deux au cristal de vent. Fin avec la projection Vacuum Wave d'Exdeath.",
+      "de": "Feuer-, Wasser- und Windkristalle erscheinen. Spieler bekommen Tailwind/Headwind (in der richtigen Blickrichtung zurückgestoßen werden, sonst fliegst du runter), Entropie (Kreis auf dir, dann trifft der Feuerkristall zwei mit Donuts) oder Dynamische Flüssigkeit (Donut auf dir, dann Wasserkristall-Rückstoßkreise auf zwei). Wind reinigen lässt den Windkristall 2er-Stacks feuern. Endet mit Exdeaths Vacuum-Wave-Rückstoß.",
+      "ja": "炎・水・風のクリスタル。混沌の風（向きを合わせたノックバックで解除、失敗で落下）、混沌の炎（自分に円、その後炎クリスタルが2人にドーナツ）、混沌の水（自分にドーナツ、その後水クリスタルが2人にノックバック円）。風解除で風クリスタルから2人頭割り。最後に真空波。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Exdeath's tank drags him to the wall at the crystal of the long debuff; Chaos goes between the short-debuff crystal and the wind crystal. Supports left, DPS right looking at Chaos. Vacuum Wave: pairs T1+H1, T2+H2, M1+R1, M2+R2 fan around Exdeath and the crystal, still-debuffed players face correctly.",
+        "fr": "Le tank d'Exdeath le tire au bord au cristal du débuff long ; Chaos va entre le cristal du débuff court et celui de vent. Soutiens à gauche, DPS à droite en regardant Chaos. Vacuum Wave : paires T1+H1, T2+H2, M1+R1, M2+R2 en éventail autour d'Exdeath et du cristal, ceux encore débuffés s'orientent bien.",
+        "de": "Exdeaths Tank zieht ihn an den Rand beim Kristall des langen Debuffs; Chaos zwischen den Kristall des kurzen Debuffs und den Windkristall. Supporter links, DDs rechts mit Blick auf Chaos. Vacuum Wave: Paare T1+H1, T2+H2, M1+R1, M2+R2 fächern sich um Exdeath und den Kristall, noch Gedebuffte richten sich korrekt aus.",
+        "ja": "エクスデスは長いデバフの属性クリスタル側の外周、カオスは短い方と風の間へ。カオスを見てTH左、DPS右。真空波はT1+H1、T2+H2、M1+R1、M2+R2のペアで扇状、デバフ残りは向きを合わせる。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Tank uses LB3 on the 'W' of Vacuum Wave; everyone stacks in front of Exdeath and does not use anti-knockback.",
+        "fr": "Un tank lance la LB3 sur le « W » de Vacuum Wave ; tout le monde packe devant Exdeath sans anti-projection.",
+        "de": "Ein Tank drückt LB3 beim „W“ von Vacuum Wave; alle stacken vor Exdeath ohne Anti-Rückstoß.",
+        "ja": "真空波の「W」でタンクLB3、全員エクスデス前で集合しアムレンは使わない。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "TLB3式 (recommended): MT takes Chaos to the outer edge on the wind crystal side, ST takes Exdeath to the other side; D3/D4 stand either side of the water crystal; use tank LB3 at about 70% of the Vacuum Wave cast for the wind stacks. 正攻法 variant: resolve with the crystals without LB.",
+        "fr": "TLB3式 (conseillé) : MT amène Chaos au bord côté cristal de vent, ST amène Exdeath de l'autre côté ; D3/D4 de part et d'autre du cristal d'eau ; LB3 tank vers 70 % de l'incantation de Vacuum Wave pour les packs de vent. Variante 正攻法 : sans LB, avec les cristaux.",
+        "de": "TLB3式 (empfohlen): MT bringt Chaos an den Rand auf der Windkristall-Seite, ST Exdeath auf die andere Seite; D3/D4 links und rechts vom Wasserkristall; Tank-LB3 bei ca. 70 % des Vacuum-Wave-Zaubers für die Wind-Stacks. Variante 正攻法: ohne LB über die Kristalle.",
+        "ja": "TLB3式（推奨）：MTはカオスを風クリスタル側外周、STはエクスデスを逆側へ。D3/D4は水クリスタルを挟む。真空波の詠唱7割あたりでタンクLB3。正攻法はLBを使わずクリスタルで解除。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "debuff"
+     ]
+    },
+    {
+     "id": "thunder-iii-implosion",
+     "names": {
+      "en": "Thunder III busters + Implosion",
+      "fr": "Méga Foudre (busters) + Implosion",
+      "de": "Blitzga-Buster + Implosion",
+      "ja": "サンダガ＋インプロージョン"
+     },
+     "aliases": {
+      "en": [
+       "thunder iii",
+       "implosion"
+      ],
+      "fr": [
+       "implosion"
+      ],
+      "de": [
+       "implosion"
+      ],
+      "ja": [
+       "サンダガ",
+       "インプロ"
+      ]
+     },
+     "how": {
+      "en": "Exdeath's Thunder III is a two-hit buster on the closest player (invuln or swap). Chaos's Implosion does two sets of opposite 90° cleaves, sides then front/back or the reverse. Thunder III targets the player closest to Exdeath regardless of enmity, so his tank must be the closest.",
+      "fr": "Méga Foudre d'Exdeath = buster en deux coups sur le plus proche (invu ou swap). Implosion de Chaos fait deux séries de cleaves opposés à 90°, côtés puis avant/arrière ou l'inverse. Méga Foudre vise le joueur le plus proche d'Exdeath quelle que soit l'inimitié, son tank doit donc être le plus proche.",
+      "de": "Exdeaths Blitzga ist ein Zwei-Treffer-Buster auf den Nächsten (Unverwundbarkeit oder Wechsel). Chaos' Implosion macht zwei Sätze gegenüberliegender 90°-Cleaves, Seiten dann vorne/hinten oder umgekehrt. Blitzga zielt unabhängig von der Feindschaft auf den Spieler, der Exdeath am nächsten ist, also muss sein Tank am nächsten stehen.",
+      "ja": "エクスデスのサンダガは最も近い人への2連強攻撃（無敵かスイッチ）。カオスのインプロージョンは90°の対角を2回、左右→前後かその逆。サンダガはヘイトに関係なくエクスデスに一番近い人に来るので、エクスデスのタンクが一番近くにいる。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Dodge along an intercardinal; debuffed players toward their long crystal, others toward wind.",
+        "fr": "Esquive sur un intercardinal ; débuffés vers leur cristal long, les autres vers le vent.",
+        "de": "Entlang einer Zwischenrichtung ausweichen; Gedebuffte zu ihrem langen Kristall, andere zum Wind.",
+        "ja": "斜めで回避、デバフ持ちは長い方の属性へ、他は風へ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "cleave"
+     ]
+    },
+    {
+     "id": "umbra-smash",
+     "names": {
+      "en": "Umbra Smash (Chaos jump)",
+      "fr": "Umbra Smash (saut de Chaos)",
+      "de": "Umbra Smash (Chaos-Sprung)",
+      "ja": "アンブラスマッシュ"
+     },
+     "aliases": {
+      "en": [
+       "jump",
+       "chaos jump"
+      ],
+      "fr": [
+       "saut"
+      ],
+      "de": [
+       "sprung"
+      ],
+      "ja": [
+       "ジャンプ"
+      ]
+     },
+     "how": {
+      "en": "Chaos jumps to the player farthest from him when the cast starts; the bait must be alone there.",
+      "fr": "Chaos saute sur le joueur le plus loin de lui au début du sort ; le bait doit y être seul.",
+      "de": "Chaos springt zu Beginn des Zaubers auf den von ihm entferntesten Spieler; der Köder muss dort allein sein.",
+      "ja": "詠唱開始時にカオスから最も遠い人へ着弾。誘導役が1人で離れる。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Physical ranged runs to the wall opposite the wind crystal, then rejoins once the cast has started.",
+        "fr": "Le distance physique court au bord opposé au cristal de vent, puis revient quand le sort a commencé.",
+        "de": "Physischer Fernkampf läuft an den Rand gegenüber dem Windkristall und kommt nach Zauberbeginn zurück.",
+        "ja": "物理遠隔が風クリスタルの反対の外周へ、詠唱開始後に戻る。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "D3 baits, moving to the far side of Chaos before the cast.",
+        "fr": "D3 baite en allant de l'autre côté de Chaos avant le sort.",
+        "de": "D3 ködert und geht vor dem Zauber auf die andere Seite von Chaos.",
+        "ja": "D3が誘導役、詠唱前にカオスの逆側へ。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "MUR bait not stated in the text read.",
+      "fr": "Bait MUR non indiqué dans le texte lu.",
+      "de": "MUR-Köder im gelesenen Text nicht genannt.",
+      "ja": "MURの誘導役は未確認。"
+     },
+     "tags": []
+    },
+    {
+     "id": "ultima-blaster",
+     "names": {
+      "en": "Ultima Blaster (Kefka dashes, limit cut)",
+      "fr": "Ultima Blaster (charges de Kefka, limit cut)",
+      "de": "Ultima Blaster (Kefka-Sprints, Limit Cut)",
+      "ja": "アルテマブラスター"
+     },
+     "aliases": {
+      "en": [
+       "limit cut",
+       "dashes",
+       "numbers"
+      ],
+      "fr": [
+       "limit cut",
+       "numéros"
+      ],
+      "de": [
+       "limit cut",
+       "zahlen"
+      ],
+      "ja": [
+       "サイコロ",
+       "突進"
+      ]
+     },
+     "how": {
+      "en": "Kefka dashes around the edge, then players get numbers 1-8 and his beams hit them in order. Positions depend on where his first dash went and which way he rotated.",
+      "fr": "Kefka charge autour de l'arène, puis les joueurs reçoivent les numéros 1 à 8 et ses rayons les frappent dans l'ordre. Les places dépendent de sa première charge et du sens de rotation.",
+      "de": "Kefka sprintet um den Rand, dann bekommen die Spieler Zahlen 1-8 und seine Strahlen treffen sie der Reihe nach. Die Plätze hängen vom ersten Sprint und der Drehrichtung ab.",
+      "ja": "ケフカが外周を突進、その後1〜8のサイコロが付き順番にビーム。最初の突進方向と回転方向で位置が決まる。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Player 1 starts opposite Kefka's first dash and numbers go opposite his rotation; stand a couple of steps clockwise of your spot.",
+        "fr": "Le joueur 1 commence à l'opposé de la première charge et les numéros vont dans le sens contraire à sa rotation ; place-toi deux pas en sens horaire de ta place.",
+        "de": "Spieler 1 startet gegenüber dem ersten Sprint, die Zahlen laufen entgegen seiner Drehrichtung; stell dich ein paar Schritte im Uhrzeigersinn neben deinen Platz.",
+        "ja": "1番は最初の突進の反対から、回転と逆方向に並ぶ。担当位置から少し時計回りに立つ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Line 1-8 up in the direction opposite Kefka's rotation; JP guides provide macros.",
+        "fr": "Aligne 1-8 dans le sens opposé à la rotation de Kefka ; les guides JP fournissent des macros.",
+        "de": "1-8 entgegen Kefkas Drehrichtung aufstellen; JP-Guides bieten Makros.",
+        "ja": "ケフカの回転と逆回りに1〜8を並べる。マクロあり。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "JP sources disagree on the reference dash (first vs second dash).",
+      "fr": "Les sources JP ne sont pas d'accord sur la charge de référence (1re ou 2e).",
+      "de": "JP-Quellen sind uneinig über den Referenz-Sprint (erster oder zweiter).",
+      "ja": "基準が最初の突進か2回目かで日本の資料が食い違う。"
+     },
+     "tags": [
+      "limit-cut",
+      "dodge"
+     ]
+    },
+    {
+     "id": "earthquake",
+     "names": {
+      "en": "Earthquake (Primordial Crust, In Line, Accretion)",
+      "fr": "Earthquake (Primordial Crust, In Line, Accretion)",
+      "de": "Erdbeben (Primordial Crust, In Line, Accretion)",
+      "ja": "じしん（混沌の土・泥土）"
+     },
+     "aliases": {
+      "en": [
+       "earthquake",
+       "crust",
+       "accretion",
+       "in line"
+      ],
+      "fr": [
+       "séisme"
+      ],
+      "de": [
+       "erdbeben"
+      ],
+      "ja": [
+       "じしん",
+       "混沌の土",
+       "泥土"
+      ]
+     },
+     "how": {
+      "en": "Everyone drops to 1 HP and gets Primordial Crust (must be removed by taking lethal damage, i.e. a Black Hole tether) plus First/Second/Third in Line timers. Two players get Accretion (healing down, removed by being healed to full). Cleansing triggers an earth pulse; two cleanses at once wipes.",
+      "fr": "Tout le monde tombe à 1 PV et reçoit Primordial Crust (à enlever en prenant des dégâts létaux, donc un lien Black Hole) plus des timers First/Second/Third in Line. Deux joueurs ont Accretion (soins reçus réduits, enlevé en étant soigné à fond). Chaque dissipation déclenche une pulsation de terre ; deux en même temps = wipe.",
+      "de": "Alle fallen auf 1 LP und bekommen Primordial Crust (muss durch tödlichen Schaden entfernt werden, also eine Black-Hole-Verbindung) plus First/Second/Third-in-Line-Timer. Zwei bekommen Accretion (weniger Heilung, entfernt durch Vollheilen). Jedes Reinigen löst einen Erdpuls aus; zwei gleichzeitig = Wipe.",
+      "ja": "全員HP1、混沌の土（致死ダメージで解除＝ブラックホールの線）と順番デバフ1〜3。2人に泥土（被回復低下、HP満タンで解除）。解除ごとに土クリスタルの全体攻撃、同時解除で全滅。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Conga H1 H2 T1 T2 M1 M2 R1 R2, left to right inside each In Line group. Heal the Accretion players to full one at a time, First in Line first, waiting for Earth Resistance Down to drop between them.",
+        "fr": "Conga H1 H2 T1 T2 M1 M2 R1 R2, de gauche à droite dans chaque groupe In Line. Soigne à fond les Accretion un par un, First in Line d'abord, en attendant la fin d'Earth Resistance Down entre les deux.",
+        "de": "Conga H1 H2 T1 T2 M1 M2 R1 R2, links nach rechts in jeder In-Line-Gruppe. Accretion-Spieler einzeln vollheilen, First in Line zuerst, zwischen beiden das Ende von Earth Resistance Down abwarten.",
+        "ja": "整列H1 H2 T1 T2 M1 M2 R1 R2、順番ごとに左から。泥土は1人ずつ満タンに、1番の人を先に、土耐性低下が切れてから2人目。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Cleanse order 1/2/3; healers fill the Accretion players one at a time.",
+        "fr": "Ordre 1/2/3 ; les heals remplissent les Accretion un par un.",
+        "de": "Reinigungsreihenfolge 1/2/3; Heiler füllen die Accretion-Spieler einzeln.",
+        "ja": "1/2/3の順、泥土はヒーラーが1人ずつ回復。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Heal Accretion to full in the order healer then DPS; Crust is removed at 1 HP by the tethers.",
+        "fr": "Soigne Accretion à fond dans l'ordre heal puis DPS ; le Crust part à 1 PV via les liens.",
+        "de": "Accretion in der Reihenfolge Heiler dann DD vollheilen; Crust wird bei 1 LP über die Verbindungen entfernt.",
+        "ja": "泥土はヒーラー→DPSの順に全回復。土はHP1の状態で線を取って解除。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "tether"
+     ]
+    },
+    {
+     "id": "slap-happy",
+     "names": {
+      "en": "Slap Happy (giant Kefka hands)",
+      "fr": "Slap Happy (mains de Kefka géant)",
+      "de": "Slap Happy (Hände des Riesen-Kefka)",
+      "ja": "びんびんビンタ"
+     },
+     "aliases": {
+      "en": [
+       "slap",
+       "hands",
+       "giant kefka"
+      ],
+      "fr": [
+       "gifle",
+       "mains"
+      ],
+      "de": [
+       "ohrfeige",
+       "hände"
+      ],
+      "ja": [
+       "ビンタ",
+       "手"
+      ]
+     },
+     "how": {
+      "en": "Giant Kefka raises one hand, slams three big circles on that half and the centre, then does cone attacks depending on which hand was raised.",
+      "fr": "Kefka géant lève une main, frappe trois gros cercles sur cette moitié et au centre, puis fait des attaques en cône selon la main levée.",
+      "de": "Riesen-Kefka hebt eine Hand, schlägt drei große Kreise auf diese Hälfte und die Mitte und macht dann Kegelangriffe je nach erhobener Hand.",
+      "ja": "巨大ケフカが片手を上げ、その側の半面と中央に攻撃。上げた手に応じて扇攻撃。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Kefka = north. Left hand: three role cone stacks (tanks NW, healers W, DPS SW). Right hand: one full party cone stack. Stay at least max melee from the bosses.",
+        "fr": "Kefka = nord. Main gauche : trois packs en cône par rôle (tanks NO, heals O, DPS SO). Main droite : un seul pack en cône de tout le groupe. Reste au moins à portée max de mêlée des boss.",
+        "de": "Kefka = Norden. Linke Hand: drei Rollen-Kegelstacks (Tanks NW, Heiler W, DDs SW). Rechte Hand: ein Kegelstack der ganzen Gruppe. Mindestens max. Nahkampfreichweite von den Bossen.",
+        "ja": "ケフカを北として、左手ならロール別扇頭割り（タンクNW、ヒーラーW、DPS SW）、右手なら全員頭割り。ボスから近接最大距離以上。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Dodge toward the side Kefka does not raise his hand from.",
+        "fr": "Esquive du côté où Kefka ne lève pas la main.",
+        "de": "Weiche zu der Seite aus, auf der Kefka die Hand nicht hebt.",
+        "ja": "手を上げていない側へ避ける。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Looking at Kefka: left hand raised = stack, right hand raised = role spread.",
+        "fr": "En regardant Kefka : main gauche levée = pack, main droite = dispersion par rôle.",
+        "de": "Mit Blick auf Kefka: linke Hand oben = Stack, rechte Hand = Rollenverteilung.",
+        "ja": "ケフカを見て左手なら頭割り、右手ならロール散開。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Sources disagree on which hand means which (perspective may differ: Kefka's left vs your left). Check in-game.",
+      "fr": "Les sources ne sont pas d'accord sur quelle main veut dire quoi (point de vue : gauche de Kefka ou la tienne). Vérifie en jeu.",
+      "de": "Die Quellen sind sich uneinig, welche Hand was bedeutet (Perspektive: Kefkas links oder deins). Im Spiel prüfen.",
+      "ja": "どちらの手で何が来るか資料で逆（視点の違いの可能性）。要確認。"
+     },
+     "tags": [
+      "dodge",
+      "stack",
+      "cleave"
+     ]
+    },
+    {
+     "id": "black-hole",
+     "names": {
+      "en": "Black Hole tethers",
+      "fr": "Liens Black Hole",
+      "de": "Black-Hole-Verbindungen",
+      "ja": "ブラックホール"
+     },
+     "aliases": {
+      "en": [
+       "black hole",
+       "tethers",
+       "unbecoming"
+      ],
+      "fr": [
+       "trous noirs",
+       "liens"
+      ],
+      "de": [
+       "schwarze löcher",
+       "verbindungen"
+      ],
+      "ja": [
+       "ブラックホール",
+       "線取り"
+      ]
+     },
+     "how": {
+      "en": "Exdeath creates black holes (touching one = damage down). Their tethers fire line AoEs and give Unbecoming; two stacks become Meanest Existence and a third tether kills. Because of Crust everyone needs tethers in their In Line order. Damning Edict (Chaos 180° cleave), Kefka slaps and Thunder III busters happen in between, and White Hole needs everyone at full HP.",
+      "fr": "Exdeath crée des trous noirs (en toucher un = malus de dégâts). Leurs liens tirent des lignes et donnent Unbecoming ; deux stacks deviennent Meanest Existence et un troisième lien tue. À cause du Crust, chacun prend des liens selon son ordre In Line. Entre-temps : Damning Edict (cleave 180° de Chaos), gifles de Kefka, busters Méga Foudre, et White Hole demande tout le monde full PV.",
+      "de": "Exdeath erzeugt Schwarze Löcher (Berühren = Schadensmalus). Ihre Verbindungen feuern Linien und geben Unbecoming; zwei Stapel werden zu Meanest Existence, eine dritte Verbindung tötet. Wegen Crust nimmt jeder Verbindungen in seiner In-Line-Reihenfolge. Dazwischen Damning Edict (180°-Cleave von Chaos), Kefka-Ohrfeigen und Blitzga-Buster; White Hole braucht alle auf vollen LP.",
+      "ja": "エクスデスのブラックホール（触れると与ダメ低下）。線は直線範囲とデバフ付与、2スタックで次の線が即死。土の解除のため順番デバフ通りに線を取る。間にダミングイーディクト（カオスの180°）、ビンタ、サンダガ。ホワイトホールは全員HP満タンが必要（石化）。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Kefka = north; take tethers clockwise-first by In Line order and point them away from the party. Sets: 1 tether (first First), 2 (first First + first Second), then all three Firsts, Seconds rotate in, Thirds replace Seconds, last Thirds at the end. Dodge behind Chaos for Damning Edict.",
+        "fr": "Kefka = nord ; prends les liens en commençant par le premier dans le sens horaire selon ton ordre In Line et oriente-les loin du groupe. Séries : 1 lien (premier First), 2 (premier First + premier Second), puis les trois First, les Second entrent, les Third remplacent les Second, derniers Third à la fin. Esquive derrière Chaos pour Damning Edict.",
+        "de": "Kefka = Norden; Verbindungen im Uhrzeigersinn zuerst nach In-Line-Reihenfolge nehmen und von der Gruppe weg zeigen. Sätze: 1 Verbindung (erster First), 2 (erster First + erster Second), dann alle drei First, Seconds rotieren rein, Thirds ersetzen Seconds, letzte Thirds am Ende. Für Damning Edict hinter Chaos ausweichen.",
+        "ja": "ケフカ北、順番通りに時計回り優先で線を取り、パーティの外へ向ける。1本（1番の先頭）→2本→1番3人→2番が交代→3番が交代→最後に3番。イーディクトはカオスの背後へ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Tether pattern 1, 2, 3 (x3), 3 (x3), 2, 1, handled with Attack, Bind and Ignore markers.",
+        "fr": "Motif de liens 1, 2, 3 (x3), 3 (x3), 2, 1, géré avec les marqueurs Attaque, Entrave et Ignorer.",
+        "de": "Verbindungsmuster 1, 2, 3 (x3), 3 (x3), 2, 1, mit Angriff-, Fessel- und Ignorieren-Markern.",
+        "ja": "線の本数1,2,3(×3),3(×3),2,1。攻撃・足止め・禁止マーカーで管理。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Four sets by marker: attack 1-3 take set 1 (with a slap and Damning Edict), bind 1-3 set 2, bind 1-3 and ignore 1 swap in set 3 (then White Hole, Implosion, slap), ignore 1/2 in set 4. Mostly clockwise; non-takers wait in the middle. Notice macros exist for PF.",
+        "fr": "Quatre séries par marqueur : attaque 1-3 prennent la série 1 (avec gifle et Damning Edict), entrave 1-3 la série 2, entrave 1-3 et ignorer 1 échangent en série 3 (puis White Hole, Implosion, gifle), ignorer 1/2 en série 4. Surtout en sens horaire ; ceux sans lien attendent au milieu. Il existe des macros d'annonce pour le PF.",
+        "de": "Vier Sätze nach Marker: Angriff 1-3 nehmen Satz 1 (mit Ohrfeige und Damning Edict), Fessel 1-3 Satz 2, Fessel 1-3 und Ignorieren 1 tauschen in Satz 3 (dann White Hole, Implosion, Ohrfeige), Ignorieren 1/2 in Satz 4. Meist im Uhrzeigersinn; wer nichts nimmt, wartet in der Mitte. Es gibt Ansage-Makros für PF.",
+        "ja": "マーカーで4セット：攻撃1〜3が1セット目（ビンタとイーディクト）、足止め1〜3が2セット目、足止め1〜3と禁止1が3セット目で交代（ホワイトホール、インプロ、ビンタ）、禁止1/2が4セット目。基本時計回り、線を取らない人は中央。野良用お知らせマクロあり。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Set counting differs between guides (NA counts single tethers, JP counts four groups); the logic is the same.",
+      "fr": "Le comptage des séries diffère selon les guides (NA compte chaque lien, JP quatre groupes) ; la logique est la même.",
+      "de": "Die Satz-Zählung unterscheidet sich (NA zählt einzelne Verbindungen, JP vier Gruppen); die Logik ist gleich.",
+      "ja": "セットの数え方は資料で違う（NAは細かく、日本は4セット）が考え方は同じ。"
+     },
+     "tags": [
+      "tether",
+      "debuff",
+      "tankbuster",
+      "cleave"
+     ]
+    },
+    {
+     "id": "stomp-a-mole",
+     "names": {
+      "en": "Blizzard III, Knock Down, Stomp-a-Mole, Big Bang",
+      "fr": "Méga Glace, Knock Down, Stomp-a-Mole, Big Bang",
+      "de": "Eisga, Knock Down, Stomp-a-Mole, Big Bang",
+      "ja": "ブリザガ・どんどこ地団駄・突出せよ"
+     },
+     "aliases": {
+      "en": [
+       "stomp",
+       "towers",
+       "big bang"
+      ],
+      "fr": [
+       "tours",
+       "big bang"
+      ],
+      "de": [
+       "türme",
+       "big bang"
+      ],
+      "ja": [
+       "地団駄",
+       "塔"
+      ]
+     },
+     "how": {
+      "en": "Blizzard III baits under each player, then a 4-player stack on one role, four two-player towers, a stack on the other role, a Blizzard III motion check (keep moving or freeze) and Big Bang where the stacks were. Then both bosses must die before their enrages.",
+      "fr": "Méga Glace baitée sous chaque joueur, puis pack à 4 sur un rôle, quatre tours à deux, pack sur l'autre rôle, test de mouvement Méga Glace (bouge ou gèle) et Big Bang là où étaient les packs. Ensuite les deux boss doivent mourir avant leurs enrages.",
+      "de": "Eisga wird unter jedem Spieler geködert, dann ein 4er-Stack auf eine Rolle, vier 2er-Türme, Stack auf die andere Rolle, Eisga-Bewegungscheck (bewegen oder einfrieren) und Big Bang, wo die Stacks waren. Danach müssen beide Bosse vor ihren Enrages sterben.",
+      "ja": "ブリザガ散開、片方のロールに4人頭割り、2人塔4本、もう片方の頭割り、動いていないと凍るブリザガ、頭割り位置にビッグバン。最後に両ボスを時間内に倒す。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Kefka's last spot = north. Supports stack north, DPS south; dodge Blizzard to light-party intercardinals (T1/H1 NW, T2/H2 NE, M1/R1 SW, M2/R2 SE). LP1 takes the west tower, LP2 east; then swap with the other role's stack. Dodge out of the middle for Big Bang.",
+        "fr": "Dernière position de Kefka = nord. Soutiens packent au nord, DPS au sud ; esquive la Glace vers les intercardinaux des groupes légers (T1/H1 NO, T2/H2 NE, M1/R1 SO, M2/R2 SE). LP1 tour ouest, LP2 est ; puis échange avec le pack de l'autre rôle. Sors du milieu pour Big Bang.",
+        "de": "Kefkas letzter Platz = Norden. Supporter stacken Norden, DDs Süden; Eisga zu den Leichtgruppen-Zwischenrichtungen ausweichen (T1/H1 NW, T2/H2 NO, M1/R1 SW, M2/R2 SO). LP1 Westturm, LP2 Ost; dann mit dem Stack der anderen Rolle tauschen. Für Big Bang raus aus der Mitte.",
+        "ja": "ケフカの最後の位置が北。TH北、DPS南で集合、ブリザガはLPの斜め（T1/H1 NW、T2/H2 NE、M1/R1 SW、M2/R2 SE）へ。LP1は西、LP2は東の塔、その後もう片方の頭割りと交代。ビッグバンは中央から離れる。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Supports relative north, DPS relative south; stacks split into light parties. Kill Chaos first, Exdeath's enrage follows.",
+        "fr": "Soutiens au nord relatif, DPS au sud relatif ; packs en groupes légers. Tue Chaos d'abord, l'enrage d'Exdeath suit.",
+        "de": "Supporter relativ Nord, DDs relativ Süd; Stacks in Leichtgruppen. Zuerst Chaos töten, Exdeaths Enrage folgt.",
+        "ja": "TH相対北、DPS相対南、頭割りはLPで。先にカオスを倒す。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Kefka's foot shows north; role spread, stack, towers, then '突出せよ'. Burn Chaos in time, then Exdeath.",
+        "fr": "Le pied de Kefka indique le nord ; dispersion par rôle, pack, tours, puis « 突出せよ ». Tue Chaos à temps, puis Exdeath.",
+        "de": "Kefkas Fuß zeigt Norden; Rollenverteilung, Stack, Türme, dann „突出せよ“. Chaos rechtzeitig töten, dann Exdeath.",
+        "ja": "ケフカの足で北を判断。ロール散開、頭割り、塔、突出せよ。カオスを先に倒してからエクスデス。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "tower",
+      "dodge",
+      "dps-check",
+      "enrage"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p4",
+   "names": {
+    "en": "Phase 4: Kefka Says",
+    "fr": "Phase 4 : Kefka Says",
+    "de": "Phase 4: Kefka Says",
+    "ja": "P4：ケフカ様の言う通り（ネオエクスデス＆カオス）"
+   },
+   "mechanics": [
+    {
+     "id": "real-fake-rule",
+     "names": {
+      "en": "Kefka Says (real/fake rule)",
+      "fr": "Kefka Says (règle vrai/faux)",
+      "de": "Kefka Says (Echt/Falsch-Regel)",
+      "ja": "本当／嘘の判定"
+     },
+     "aliases": {
+      "en": [
+       "real fake",
+       "kefka says"
+      ],
+      "fr": [
+       "vrai faux"
+      ],
+      "de": [
+       "echt falsch"
+      ],
+      "ja": [
+       "本当",
+       "嘘",
+       "真偽"
+      ]
+     },
+     "how": {
+      "en": "Kefka is targetable while Chaos and Neo Exdeath cast alongside him. Every cast is marked real or fake, and a fake flips what its debuffs do. Mystery Magic (Blizzard/Thunder) is cast three times.",
+      "fr": "Kefka est ciblable pendant que Chaos et Néo-Exdeath lancent des sorts avec lui. Chaque sort est vrai ou faux, et un faux inverse l'effet de ses débuffs. Mystery Magic (Glace/Foudre) revient trois fois.",
+      "de": "Kefka ist angreifbar, während Chaos und Neo-Exdeath mit ihm zaubern. Jeder Zauber ist echt oder falsch, ein falscher dreht die Wirkung seiner Debuffs um. Mystery Magic (Eis/Blitz) kommt dreimal.",
+      "ja": "ケフカが攻撃対象、カオスとネオエクスデスも同時に技を使う。全ての技に本当/嘘があり、嘘ならデバフの効果が逆。なぞなぞマジックが3回。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Track each cast's real/fake state; JP players use echo macros to memorise.",
+        "fr": "Note l'état vrai/faux de chaque sort ; les joueurs JP utilisent des macros echo.",
+        "de": "Den Echt/Falsch-Zustand jedes Zaubers merken; JP-Spieler nutzen Echo-Makros.",
+        "ja": "各詠唱の真偽を覚える（echoマクロ推奨）。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "grand-cross",
+     "names": {
+      "en": "Grand Cross 1-2 debuffs",
+      "fr": "Débuffs de Grand Cross 1-2",
+      "de": "Grand-Cross-1-2-Debuffs",
+      "ja": "グランドクロス1・2回目"
+     },
+     "aliases": {
+      "en": [
+       "grand cross",
+       "gc",
+       "acceleration bomb",
+       "cursed shriek"
+      ],
+      "fr": [
+       "grand cross"
+      ],
+      "de": [
+       "großkreuz"
+      ],
+      "ja": [
+       "GC",
+       "加速度爆弾",
+       "呪詛"
+      ]
+     },
+     "how": {
+      "en": "Neo Exdeath gives pairs (1 support + 1 DPS) Compressed Water (real = stack, fake = spread), Forked Lightning (real = spread, fake = stack), Cursed Shriek (real = look away, fake = look at the marked player) and Acceleration Bombs (real = stand still, fake = keep moving), with short and long timers. Chaos adds Tsunami (Dynamic Fluid) and Inferno (Entropy) on everyone, each real or fake (donut vs circle).",
+      "fr": "Néo-Exdeath donne à des paires (1 soutien + 1 DPS) Eau comprimée (vrai = pack, faux = dispersion), Éclair fourchu (vrai = dispersion, faux = pack), Cri maudit (vrai = détourne le regard, faux = regarde le joueur marqué) et Bombes d'accélération (vrai = immobile, faux = continue de bouger), avec timers courts et longs. Chaos ajoute Tsunami (Fluide dynamique) et Inferno (Entropie) sur tout le monde, chacun vrai ou faux (donut ou cercle).",
+      "de": "Neo-Exdeath gibt Paaren (1 Supporter + 1 DD) Komprimiertes Wasser (echt = Stack, falsch = verteilen), Gegabelter Blitz (echt = verteilen, falsch = Stack), Verfluchter Schrei (echt = wegschauen, falsch = den Markierten ansehen) und Beschleunigungsbomben (echt = stillstehen, falsch = weiterlaufen), mit kurzen und langen Timern. Chaos fügt Tsunami (Dynamische Flüssigkeit) und Inferno (Entropie) für alle hinzu, jeweils echt oder falsch (Donut oder Kreis).",
+      "ja": "ネオエクスデスがTH1・DPS1のペアに水属性圧縮（本当=頭割り、嘘=散開）、フォークライトニング（本当=散開、嘘=頭割り）、呪詛の叫声（本当=見ない、嘘=見る）、加速度爆弾（本当=止まる、嘘=動く）を短・長で付与。カオスのつなみ（混沌の水）とほのお（混沌の炎）も本当/嘘でドーナツか円。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Short timers: supports stack north, DPS south; real Lightning / fake Water spreads away (support west, DPS east). Real Shriek: debuffed stand behind the party outside the hitbox; fake: they stand in the centre and everyone looks at them. Dynamic Fluid: stack under the boss and don't move; Entropy: stack, then run out of the hitbox.",
+        "fr": "Timers courts : soutiens packent au nord, DPS au sud ; Éclair vrai / Eau fausse se disperse (soutien à l'ouest, DPS à l'est). Cri vrai : les débuffés derrière le groupe hors de la hitbox ; faux : au centre et tout le monde les regarde. Fluide : pack sous le boss sans bouger ; Entropie : pack, puis sors de la hitbox.",
+        "de": "Kurze Timer: Supporter stacken Norden, DDs Süden; echter Blitz / falsches Wasser verteilt sich (Supporter West, DD Ost). Echter Schrei: Gedebuffte hinter der Gruppe außerhalb der Hitbox; falsch: in der Mitte, alle sehen sie an. Flüssigkeit: unter dem Boss stacken, nicht bewegen; Entropie: stacken, dann aus der Hitbox laufen.",
+        "ja": "短い方：TH北、DPS南で集合、本当フォーク/嘘水は散開（TH西、DPS東）。本当呪詛は対象がサークル外の後方で全員見ない、嘘は中央で全員見る。混沌の水はボス下で動かない、炎は集合後サークル外へ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Support stack north, DPS stack south, support spread west, DPS spread east; treat debuffs as real and swap only if the cast was fake.",
+        "fr": "Pack soutiens au nord, pack DPS au sud, dispersion soutien à l'ouest, DPS à l'est ; considère les débuffs comme vrais et inverse seulement si le sort était faux.",
+        "de": "Supporter-Stack Norden, DD-Stack Süden, Supporter-Verteilung West, DD-Verteilung Ost; Debuffs als echt behandeln und nur bei falschem Zauber umdrehen.",
+        "ja": "TH頭割り北、DPS頭割り南、TH散開西、DPS散開東。デバフは本当として扱い、嘘の時だけ入れ替え。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Spread reference point is where Neo Exdeath stood (some use compass directions). 'タケノコ': for Dynamic Fluid/Entropy puddles, step aside from where you stood.",
+        "fr": "Le point de référence des dispersions est la position de Néo-Exdeath (certains utilisent les directions). « タケノコ » : pour les flaques de Fluide/Entropie, décale-toi de ta position.",
+        "de": "Bezugspunkt für Verteilungen ist Neo-Exdeaths Position (manche nutzen Himmelsrichtungen). „タケノコ“: Bei Flüssigkeits-/Entropie-Pfützen von deiner Position zur Seite gehen.",
+        "ja": "散開の基準はネオエクスデスの位置（方角基準もあり）。タケノコは自分の位置に予約される範囲をずらして避ける。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "stack",
+      "spread",
+      "gaze"
+     ]
+    },
+    {
+     "id": "grand-cross-3-flood",
+     "names": {
+      "en": "Grand Cross 3 + Flood of Naught",
+      "fr": "Grand Cross 3 + Flood of Naught",
+      "de": "Grand Cross 3 + Flood of Naught",
+      "ja": "グランドクロス3回目＋無の氾濫"
+     },
+     "aliases": {
+      "en": [
+       "wounds",
+       "allagan field",
+       "beyond death",
+       "antilight"
+      ],
+      "fr": [
+       "blessures",
+       "antilumière"
+      ],
+      "de": [
+       "wunden",
+       "antilicht"
+      ],
+      "ja": [
+       "生者の傷",
+       "死者の傷",
+       "アラガンフィールド",
+       "死の超越"
+      ]
+     },
+     "how": {
+      "en": "Everyone gets Black or White Wound, plus Allagan Field (4 players) or Beyond Death (4). Neo Exdeath then casts two half-room cleaves, Black and White Antilight. Real Wound means that colour's Antilight is lethal for you; Allagan Field must avoid lethal damage when real, Beyond Death must take it when real. Fake casts flip it.",
+      "fr": "Tout le monde a Blessure noire ou blanche, plus Champ allagois (4) ou Au-delà de la mort (4). Néo-Exdeath lance deux demi-salles, Antilumière noire et blanche. Blessure vraie = l'Antilumière de cette couleur est létale pour toi ; Champ allagois vrai doit éviter les dégâts létaux, Au-delà vrai doit les prendre. Les sorts faux inversent tout.",
+      "de": "Alle bekommen Schwarze oder Weiße Wunde, dazu Allagisches Feld (4) oder Jenseits des Todes (4). Neo-Exdeath wirkt zwei Halbraum-Cleaves, Schwarzes und Weißes Antilicht. Echte Wunde = das Antilicht dieser Farbe ist für dich tödlich; echtes Allagisches Feld muss tödlichen Schaden meiden, echtes Jenseits muss ihn nehmen. Falsche Zauber drehen alles um.",
+      "ja": "全員に生者/死者の傷と、アラガンフィールド（4人）か死の超越（4人）。ネオエクスデスが白黒の半面攻撃。本当の傷はその色が致死。本当のアラガンは致死を避け、本当の死の超越は致死を受ける。嘘なら逆。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Simple rule (Wound and Field/Death are always both real or both fake): Allagan Field stands in the colour opposite your Wound, Beyond Death in the same colour; swap both if Flood is fake. Stand a bit to the side because the cleaves overlap in the middle.",
+        "fr": "Règle simple (Blessure et Champ/Au-delà sont toujours tous deux vrais ou faux) : Champ allagois dans la couleur opposée à ta Blessure, Au-delà dans la même couleur ; inverse si Flood est faux. Mets-toi un peu sur le côté, les cleaves se chevauchent au milieu.",
+        "de": "Einfache Regel (Wunde und Feld/Jenseits sind immer beide echt oder beide falsch): Allagisches Feld steht in der Gegenfarbe deiner Wunde, Jenseits in derselben Farbe; bei falschem Flood umdrehen. Etwas seitlich stehen, die Cleaves überlappen in der Mitte.",
+        "ja": "簡単ルール（傷とフィールド/超越の真偽は必ず同じ）：アラガンは傷と逆の色、死の超越は同じ色。無の氾濫が嘘なら逆。中央は重なるので少し横に立つ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "cleave"
+     ]
+    },
+    {
+     "id": "mana-release",
+     "names": {
+      "en": "Mana Charge + Mana Release",
+      "fr": "Mana Charge + Mana Release",
+      "de": "Mana Charge + Mana Release",
+      "ja": "マジックチャージ＋マジックアウト"
+     },
+     "aliases": {
+      "en": [
+       "mana charge",
+       "mana release",
+       "memory"
+      ],
+      "fr": [
+       "mémoire"
+      ],
+      "de": [
+       "gedächtnis"
+      ],
+      "ja": [
+       "マジックチャージ",
+       "マジックアウト"
+      ]
+     },
+     "how": {
+      "en": "Mana Charge records the next Thrumming Thunder III and Blizzard III Blowout, including whether each was real or fake. Mana Release later replays them, and its own real/fake state decides whether each replay keeps or flips the recorded version. Long debuffs and the long Dynamic Fluid/Entropy resolve around it.",
+      "fr": "Mana Charge enregistre la prochaine Méga Foudre et la Méga Glace, avec leur état vrai/faux. Mana Release les rejoue plus tard, et son propre état vrai/faux décide si chaque répétition garde ou inverse la version enregistrée. Les débuffs longs et le Fluide/Entropie long se résolvent autour.",
+      "de": "Mana Charge speichert die nächste Blitzga- und Eisga-Attacke samt Echt/Falsch. Mana Release spielt sie später ab, und dessen eigener Echt/Falsch-Zustand entscheidet, ob jede Wiederholung die gespeicherte Version behält oder umdreht. Lange Debuffs und die lange Flüssigkeit/Entropie lösen drumherum aus.",
+      "ja": "マジックチャージで次のもりもりサンダガとひろげるブリザガとその真偽を記憶。マジックアウトで再現し、その真偽で記憶通りか反転かが決まる。長いデバフも周辺で処理。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Note both recorded casts. Icy Veins' summary: one real and one fake makes that Release fake; both the same makes it real. Long Shriek resolves just before; the long Fluid/Entropy pops when the Release cast bar ends.",
+        "fr": "Note les deux sorts enregistrés. Résumé d'Icy Veins : un vrai et un faux rend la Release fausse ; deux identiques la rendent vraie. Le Cri long se résout juste avant ; le Fluide/Entropie long éclate à la fin de la barre de Release.",
+        "de": "Beide gespeicherten Zauber merken. Zusammenfassung von Icy Veins: einer echt und einer falsch macht den Release falsch; beide gleich macht ihn echt. Der lange Schrei löst kurz davor aus; lange Flüssigkeit/Entropie platzt am Ende der Release-Leiste.",
+        "ja": "記憶した2つを覚える。Icy Veinsの要約では片方本当・片方嘘ならマジックアウトは嘘、同じなら本当。長い呪詛は直前、長い水/炎はマジックアウト詠唱完了時。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Real Mana Release keeps each component as recorded; a fake Release flips it.",
+        "fr": "Une Mana Release vraie garde chaque composant tel qu'enregistré ; une fausse l'inverse.",
+        "de": "Ein echter Mana Release behält jede Komponente wie gespeichert; ein falscher dreht sie um.",
+        "ja": "本当のマジックアウトは記憶通り、嘘なら反転。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Memorise both Mana Charge spells as real/fake and compare with the Mana Release result.",
+        "fr": "Mémorise les deux sorts de Mana Charge (vrai/faux) et compare avec Mana Release.",
+        "de": "Beide Mana-Charge-Zauber als echt/falsch merken und mit dem Mana-Release-Ergebnis vergleichen.",
+        "ja": "サンダガ・ブリザガの真偽を記憶しマジックアウトと照合。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "The two English guides phrase the Mana Release rule differently; they may describe the same rule. Verify in a PoV.",
+      "fr": "Les deux guides anglais formulent la règle différemment ; c'est peut-être la même. Vérifie sur une vidéo PoV.",
+      "de": "Die zwei englischen Guides formulieren die Regel unterschiedlich; vielleicht dieselbe. Mit PoV prüfen.",
+      "ja": "英語資料2つで説明が異なる（同じルールの言い換えの可能性）。動画で確認。"
+     },
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "ultima-upsurge",
+     "names": {
+      "en": "Ultima Upsurge (25% check)",
+      "fr": "Ultima Upsurge (seuil 25 %)",
+      "de": "Ultima Upsurge (25 %-Check)",
+      "ja": "どきどきアルテマ"
+     },
+     "aliases": {
+      "en": [
+       "p4 enrage"
+      ],
+      "fr": [
+       "enrage p4"
+      ],
+      "de": [
+       "enrage p4"
+      ],
+      "ja": [
+       "P4時間切れ"
+      ]
+     },
+     "how": {
+      "en": "Kefka must be under 25% HP before Ultima Upsurge or it wipes; otherwise it is a raidwide into P5.",
+      "fr": "Kefka doit être sous 25 % avant Ultima Upsurge, sinon wipe ; sinon c'est une attaque de zone vers la P5.",
+      "de": "Kefka muss vor Ultima Upsurge unter 25 % LP sein, sonst Wipe; sonst Raidwide und weiter zu P5.",
+      "ja": "HP25%未満でないと全滅。未満なら全体攻撃でP5へ。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "DPS check, mitigate.",
+        "fr": "Test de DPS, réductions.",
+        "de": "DPS-Check, mitigieren.",
+        "ja": "火力チェック、軽減。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dps-check",
+      "raidwide"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p5",
+   "names": {
+    "en": "Phase 5: Ultima Kefka",
+    "fr": "Phase 5 : Ultima Kefka",
+    "de": "Phase 5: Ultima Kefka",
+    "ja": "P5：最終形態ケフカ"
+   },
+   "mechanics": [
+    {
+     "id": "ultima-repeater",
+     "names": {
+      "en": "Ultima Repeater",
+      "fr": "Ultima Repeater",
+      "de": "Ultima Repeater",
+      "ja": "連続アルテマ"
+     },
+     "aliases": {
+      "en": [
+       "4 hit raidwide"
+      ],
+      "fr": [
+       "4 coups"
+      ],
+      "de": [
+       "4 treffer"
+      ],
+      "ja": [
+       "連続アルテマ"
+      ]
+     },
+     "how": {
+      "en": "Fast four-hit raidwide as soon as Kefka is targetable; mitigation may need to go out before.",
+      "fr": "Attaque de zone rapide en quatre coups dès que Kefka est ciblable ; les réductions doivent parfois partir avant.",
+      "de": "Schneller Raidwide mit vier Treffern, sobald Kefka angreifbar ist; Mitigation eventuell schon vorher.",
+      "ja": "ケフカが出た直後の4連続全体攻撃。軽減は事前に。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Party mitigation and shields.",
+        "fr": "Réductions de groupe et boucliers.",
+        "de": "Gruppenmitigation und Schilde.",
+        "ja": "軽減とバリア。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "FR/DE: official in-game names not confirmed; English names used.",
+      "fr": "FR : noms officiels en jeu non confirmés, noms anglais utilisés.",
+      "de": "DE: offizielle Namen im Spiel nicht bestätigt, englische Namen verwendet.",
+      "ja": "FR/DE名は未確認のため英語名。"
+     },
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "fell-forces",
+     "names": {
+      "en": "Fell Forces (autos)",
+      "fr": "Fell Forces (attaques auto)",
+      "de": "Fell Forces (Autoangriffe)",
+      "ja": "魔撃（AA）"
+     },
+     "aliases": {
+      "en": [
+       "autos",
+       "role stacks"
+      ],
+      "fr": [
+       "autos"
+      ],
+      "de": [
+       "autos"
+      ],
+      "ja": [
+       "AA",
+       "魔撃"
+      ]
+     },
+     "how": {
+      "en": "Auto-attacks that each hit the top-enmity tank, one healer and one DPS as stacks; taking two because of magic vulnerability kills.",
+      "fr": "Attaques auto qui frappent chacune le tank en tête, un heal et un DPS en packs ; en prendre deux avec la vulnérabilité magique tue.",
+      "de": "Autoangriffe, die jeweils den Tank mit höchster Feindschaft, einen Heiler und einen DD als Stacks treffen; zwei wegen Magie-Verwundbarkeit zu nehmen tötet.",
+      "ja": "ヘイト1位・ヒーラー1人・DPS1人への頭割り。被魔法増加で重ねて受けると即死。"
+     },
+     "strats": [
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Role stacks: tanks north, healers south-west, DPS south-east.",
+        "fr": "Packs par rôle : tanks au nord, heals au sud-ouest, DPS au sud-est.",
+        "de": "Rollen-Stacks: Tanks Norden, Heiler Südwest, DDs Südost.",
+        "ja": "ロール頭割り：タンク北、ヒーラー南西、DPS南東。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Tanks at A, healers at 4 (SW), DPS at 3 (SE).",
+        "fr": "Tanks en A, heals en 4 (SO), DPS en 3 (SE).",
+        "de": "Tanks bei A, Heiler bei 4 (SW), DDs bei 3 (SO).",
+        "ja": "タンクA、ヒーラー4（南西）、DPS3（南東）。"
+       }
+      },
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Stack by role at your raidplan's spots.",
+        "fr": "Pack par rôle aux places de ton raidplan.",
+        "de": "Nach Rolle an den Plätzen deines Raidplans stacken.",
+        "ja": "レイドプランの位置でロール頭割り。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "flood",
+     "names": {
+      "en": "Flood + Chaotic Flood",
+      "fr": "Flood + Chaotic Flood",
+      "de": "Flood + Chaotic Flood",
+      "ja": "フラッド"
+     },
+     "aliases": {
+      "en": [
+       "flood",
+       "waves",
+       "lines"
+      ],
+      "fr": [
+       "vagues"
+      ],
+      "de": [
+       "wellen"
+      ],
+      "ja": [
+       "フラッド",
+       "波"
+      ]
+     },
+     "how": {
+      "en": "Four sets of paired line AoEs that rotate clockwise or counterclockwise, while four party stacks drop on random players.",
+      "fr": "Quatre séries de lignes par paires qui tournent dans le sens horaire ou antihoraire, pendant que quatre packs de groupe tombent sur des joueurs au hasard.",
+      "de": "Vier Sätze gepaarter Linien-AoEs, die im oder gegen den Uhrzeigersinn rotieren, während vier Gruppen-Stacks auf zufällige Spieler fallen.",
+      "ja": "直線AoEが4回、時計か反時計に回転。同時に4回の頭割り。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Ignore the wall lines and watch the centre line. Start in the melee-range quadrant safe from the first two telegraphs and rotate with the lines as one group.",
+        "fr": "Ignore les lignes du bord et regarde la ligne centrale. Commence dans le quart à portée de mêlée sûr pour les deux premiers indicateurs et tourne avec les lignes en un seul groupe.",
+        "de": "Ignoriere die Randlinien und beobachte die Mittellinie. Starte im Nahkampf-Viertel, das vor den ersten zwei Anzeigen sicher ist, und rotiere als eine Gruppe mit.",
+        "ja": "外周の線は無視し中央を見る。最初の2つの予兆から安全な近接範囲の区画から始め、全員で一緒に回る。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Wait next to the first and second centre telegraphs; step into the first after it lands, then into the second, then stop.",
+        "fr": "Attends à côté des 1er et 2e indicateurs centraux ; entre dans le premier après l'impact, puis dans le deuxième, puis arrête-toi.",
+        "de": "Warte neben der ersten und zweiten Mittelanzeige; nach dem Einschlag in die erste, dann in die zweite, dann stehen bleiben.",
+        "ja": "中央付近の1・2番目の予兆の隣で待機、着弾後に1番目、次に2番目へ入りそれ以上動かない。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack"
+     ]
+    },
+    {
+     "id": "maddening-orchestra",
+     "names": {
+      "en": "Maddening Orchestra",
+      "fr": "Maddening Orchestra",
+      "de": "Maddening Orchestra",
+      "ja": "狂気のオーケストラ"
+     },
+     "aliases": {
+      "en": [
+       "orchestra",
+       "surprise flare",
+       "surprise holy"
+      ],
+      "fr": [
+       "orchestre"
+      ],
+      "de": [
+       "orchester"
+      ],
+      "ja": [
+       "オーケストラ",
+       "フレア",
+       "ホーリー"
+      ]
+     },
+     "how": {
+      "en": "Top enmity gets Surprise Flare, second enmity Surprise Holy (both fire tankbusters), and random non-tanks get holy spreads with magic vulnerability, then a second round on the closest three. If Kefka moves to the wall, the next mechanic wipes.",
+      "fr": "L'inimitié 1 reçoit Surprise Flare, la 2 Surprise Holy (deux tankbusters de feu), des non-tanks au hasard ont des dispersions sacrées avec vulnérabilité magique, puis une 2e vague sur les trois plus proches. Si Kefka part au bord, la mécanique suivante wipe.",
+      "de": "Feindschaft 1 bekommt Surprise Flare, Feindschaft 2 Surprise Holy (beide Feuer-Tankbuster), zufällige Nicht-Tanks bekommen Heilig-Verteilungen mit Magie-Verwundbarkeit, dann eine zweite Runde auf die drei Nächsten. Läuft Kefka an den Rand, wipet die nächste Mechanik.",
+      "ja": "ヘイト1位にフレア、2位にホーリー（タンク強攻撃）、ランダム3人にホーリー散開と被魔法増加、続けて近い3人に2回目。ボスが外周に動くと次で全滅。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "The three unhit non-tanks step into the hitbox to bait the second holies. Tanks swap to keep Kefka in place; Flare tank runs to the wall for the big circle, Holy tank stays on the hitbox with an invuln.",
+        "fr": "Les trois non-tanks non touchés entrent dans la hitbox pour baiter les 2es sacrés. Les tanks échangent pour garder Kefka en place ; le tank Flare court au bord pour le gros cercle, le tank Holy reste sur la hitbox avec un invu.",
+        "de": "Die drei nicht getroffenen Nicht-Tanks gehen in die Hitbox, um die zweiten Heiligs zu ködern. Tanks wechseln, damit Kefka stehen bleibt; der Flare-Tank läuft an den Rand für den großen Kreis, der Holy-Tank bleibt mit Unverwundbarkeit an der Hitbox.",
+        "ja": "被弾しなかった3人がサークル内で2回目を誘導。タンクはスイッチでボスを固定、フレアのタンクは外周へ、ホーリーのタンクは無敵でサークル上。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Spread on cardinals; light party 1 rotates clockwise, light party 2 counterclockwise. Holy tank invulns. The Holy tank also takes the two autos that follow alone, and the shared tankbuster after the second holies is taken by both tanks at the north.",
+        "fr": "Dispersion sur les cardinaux ; groupe léger 1 tourne dans le sens horaire, groupe 2 antihoraire. Le tank Holy utilise son invu. Le tank Holy prend aussi seul les deux attaques auto qui suivent, et le tankbuster partagé après les 2es sacrés est pris par les deux tanks au nord.",
+        "de": "Auf den Hauptrichtungen verteilen; Leichtgruppe 1 im Uhrzeigersinn, Leichtgruppe 2 dagegen. Holy-Tank nutzt Unverwundbarkeit. Der Holy-Tank nimmt auch die zwei folgenden Autos allein, und den geteilten Tankbuster nach den zweiten Heiligs nehmen beide Tanks im Norden.",
+        "ja": "十字に散開、LP1は時計回り、LP2は反時計回り。ホーリー側は無敵。ホーリーのタンクは続くAA2回も単独で受ける。2回目のホーリー後の頭割り強攻撃は両タンクが北で受ける。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Spread as soon as the cast starts. Flare tank provokes right after the debuff and goes to the north edge; Holy tank invulns in front of the boss, tanks stay out of the boss's target circle; the other six wait south. Keep the swapped enmity until the next Orchestra.",
+        "fr": "Disperse-toi dès le début du sort. Le tank Flare provoque juste après le débuff et va au bord nord ; le tank Holy invu devant le boss, les tanks restent hors du cercle de cible du boss ; les six autres attendent au sud. Garde l'inimitié échangée jusqu'au prochain Orchestra.",
+        "de": "Sofort bei Zauberbeginn verteilen. Der Flare-Tank provoziert direkt nach dem Debuff und geht an den Nordrand; der Holy-Tank nutzt Unverwundbarkeit vor dem Boss, Tanks bleiben aus dem Zielkreis; die anderen sechs warten im Süden. Die getauschte Feindschaft bis zur nächsten Orchestra behalten.",
+        "ja": "詠唱開始で散開。フレア側はデバフ後すぐ挑発して北端へ、ホーリー側はボス前で無敵、タンクはサークルに入らない。他6人は南で待機。スイッチ後のヘイトは次のオーケストラまで戻さない。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "spread",
+      "debuff"
+     ]
+    },
+    {
+     "id": "celestriad",
+     "names": {
+      "en": "Celestriad (towers) + Catastrophic Choice",
+      "fr": "Celestriad (tours) + Catastrophic Choice",
+      "de": "Celestriad (Türme) + Catastrophic Choice",
+      "ja": "スリースターズ＋カタストロフ"
+     },
+     "aliases": {
+      "en": [
+       "celestriad",
+       "towers",
+       "catastrophic choice"
+      ],
+      "fr": [
+       "tours"
+      ],
+      "de": [
+       "türme"
+      ],
+      "ja": [
+       "スリースターズ",
+       "塔",
+       "カタストロフ"
+      ]
+     },
+     "how": {
+      "en": "Nine towers (three each of fire, ice, lightning). Two players each get Fire/Ice/Lightning Resistance Down, two get nothing. Three sets of four glowing duo towers; an unsoaked tower gives party damage down. During sets 1 and 3 Catastrophic Choice: green wind = donut (stand on the inner half), yellow/brown earth = circle (stand on the outer half).",
+      "fr": "Neuf tours (trois de feu, de glace, de foudre). Deux joueurs par élément ont une baisse de résistance, deux n'ont rien. Trois séries de quatre tours à deux qui brillent ; une tour vide = malus de dégâts. Pendant les séries 1 et 3, Catastrophic Choice : vent vert = donut (moitié intérieure), terre jaune/marron = cercle (moitié extérieure).",
+      "de": "Neun Türme (je drei Feuer, Eis, Blitz). Je zwei Spieler bekommen Feuer-/Eis-/Blitzresistenz runter, zwei nichts. Drei Sätze mit vier leuchtenden 2er-Türmen; ein leerer Turm gibt Gruppen-Schadensmalus. Bei Satz 1 und 3 Catastrophic Choice: grüner Wind = Donut (innere Hälfte), gelb/braune Erde = Kreis (äußere Hälfte).",
+      "ja": "炎・氷・雷の塔が各3本。2人ずつ耐性低下、2人は無職。光った2人塔4本を3回。踏まないと与ダメ低下。1回目と3回目にカタストロフ：緑（風）はドーナツで塔の内側、茶（土）は円で塔の外側。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Debuffed players take the first tower clockwise from their debuff element and rotate clockwise each set; no-debuff players take the counterclockwise tower of the doubled element. Final set: everyone takes the tower matching their starting debuff.",
+        "fr": "Les débuffés prennent la première tour dans le sens horaire depuis l'élément de leur débuff et tournent à chaque série ; ceux sans débuff prennent la tour antihoraire de l'élément doublé. Dernière série : chacun prend la tour de son débuff de départ.",
+        "de": "Gedebuffte nehmen den ersten Turm im Uhrzeigersinn von ihrem Debuff-Element und drehen jede Runde weiter; Spieler ohne Debuff nehmen den Turm gegen den Uhrzeigersinn beim doppelten Element. Letzter Satz: jeder nimmt den Turm seines Start-Debuffs.",
+        "ja": "デバフ持ちは自分の属性から時計回り側の塔、毎回時計回り。無職は2本光った属性の反時計回り側。最後は最初のデバフと同じ属性。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "Patch 7.55 made the element symbols bigger.",
+      "fr": "Le patch 7.55 a agrandi les symboles d'élément.",
+      "de": "Patch 7.55 hat die Elementsymbole vergrößert.",
+      "ja": "7.55で属性マークが大きくなった。"
+     },
+     "tags": [
+      "tower",
+      "debuff"
+     ]
+    },
+    {
+     "id": "stray-apocalypse",
+     "names": {
+      "en": "Stray Apocalypse + Stray Entropy",
+      "fr": "Stray Apocalypse + Stray Entropy",
+      "de": "Stray Apocalypse + Stray Entropy",
+      "ja": "混沌の終末＋混沌の渦"
+     },
+     "aliases": {
+      "en": [
+       "exaflares",
+       "stray apocalypse"
+      ],
+      "fr": [
+       "exaflares"
+      ],
+      "de": [
+       "exaflares"
+      ],
+      "ja": [
+       "エクサ",
+       "終末",
+       "渦"
+      ]
+     },
+     "how": {
+      "en": "Six fast exaflare sets alternate from NW and NE; there is always a one-lane gap, so strafe through it. The last set comes with Stray Entropy, a spread on everyone (stacking kills).",
+      "fr": "Six séries d'exaflares rapides alternent depuis le NO et le NE ; il y a toujours un couloir libre, glisse dedans en pas latéral. La dernière série vient avec Stray Entropy, dispersion sur tout le monde (se packer tue).",
+      "de": "Sechs schnelle Exaflare-Sätze wechseln von NW und NO; es gibt immer eine Spur Lücke, also seitlich hindurch. Der letzte Satz kommt mit Stray Entropy, Verteilung auf alle (Stacken tötet).",
+      "ja": "北西と北東から交互に6回の高速エクサ。必ず1レーンの隙間があるので平行移動で避ける。最後に全員散開の混沌の渦。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Dodge toward your assigned quadrant; ranged spread along the wall for Stray Entropy.",
+        "fr": "Esquive vers ton quart assigné ; les distances se dispersent le long du bord pour Stray Entropy.",
+        "de": "Zu deinem zugeteilten Viertel ausweichen; Fernkampf verteilt sich am Rand für Stray Entropy.",
+        "ja": "担当区画へ避け、渦は遠隔が外周に散開。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Finish dodging the 6th exaflare first, then spread using your Orchestra spread spot.",
+        "fr": "Termine d'esquiver la 6e exaflare, puis disperse-toi sur ta place d'Orchestra.",
+        "de": "Erst den 6. Exaflare fertig ausweichen, dann an deinem Orchestra-Verteilplatz verteilen.",
+        "ja": "6回目のエクサを避けきってからオーケストラの散開位置へ。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread"
+     ]
+    },
+    {
+     "id": "forsaken-enrage",
+     "names": {
+      "en": "Forsaken (enrage sequence) + Forsaken Null",
+      "fr": "Forsaken (séquence d'enrage) + Forsaken Null",
+      "de": "Forsaken (Enrage-Sequenz) + Forsaken Null",
+      "ja": "ミッシング＋ミッシング・ゼロ"
+     },
+     "aliases": {
+      "en": [
+       "final enrage",
+       "forsaken null"
+      ],
+      "fr": [
+       "enrage final"
+      ],
+      "de": [
+       "finaler enrage"
+      ],
+      "ja": [
+       "ミッシング・ゼロ",
+       "時間切れ"
+      ]
+     },
+     "how": {
+      "en": "Four heavy party stacks, each destroying two arena sections and dropping an AoE bait on a random player; entering a destroyed section kills and blocks revival. Forsaken Null is the final long enrage.",
+      "fr": "Quatre gros packs de groupe, chacun détruit deux sections de l'arène et pose une AoE sur un joueur au hasard ; entrer dans une section détruite tue sans résurrection possible. Forsaken Null est le long enrage final.",
+      "de": "Vier schwere Gruppen-Stacks, jeder zerstört zwei Arenaabschnitte und legt einen AoE-Köder auf einen zufälligen Spieler; ein zerstörter Abschnitt tötet und verhindert Wiederbelebung. Forsaken Null ist der lange finale Enrage.",
+      "ja": "重い頭割りが4回、毎回床2区画が消えランダム1人にAoE。消えた床に入ると蘇生不可の即死。ミッシング・ゼロが最終時間切れ。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Stack south of the boss, then after each stack and bait move clockwise: west, north, east, south. Wait for the next stack and bait to appear before moving.",
+        "fr": "Pack au sud du boss, puis après chaque pack et bait tourne dans le sens horaire : ouest, nord, est, sud. Attends que le pack et le bait suivants apparaissent avant de bouger.",
+        "de": "Südlich vom Boss stacken, dann nach jedem Stack und Köder im Uhrzeigersinn: West, Nord, Ost, Süd. Warte, bis der nächste Stack und Köder erscheinen, bevor du dich bewegst.",
+        "ja": "ボスの南で集合、各頭割りとAoEの後に時計回りで西→北→東→南。次の予兆が出てから動く。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Dodge in waymark order C, 4, 1, 2, 3.",
+        "fr": "Esquive dans l'ordre des marqueurs C, 4, 1, 2, 3.",
+        "de": "In Markerreihenfolge C, 4, 1, 2, 3 ausweichen.",
+        "ja": "マーカー C→4→1→2→3 の順に移動。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Gather at A during the cast; first go to the number marker without a black-floor telegraph, take the stack on a number, then move to a letter marker; if orange floor appears under you, move to the side where you can drop it, otherwise to the side without orange. Repeat number-letter. Always mitigate.",
+        "fr": "Rassemble-toi en A pendant le sort ; va d'abord au marqueur numéro sans indicateur de sol noir, prends le pack sur un numéro, puis va sur un marqueur lettre ; si un sol orange apparaît sous toi, va du côté où le poser, sinon du côté sans orange. Répète numéro-lettre. Réduis toujours.",
+        "de": "Während des Zaubers bei A sammeln; zuerst zum Zahlenmarker ohne Schwarzboden-Anzeige, Stack auf einer Zahl nehmen, dann zu einem Buchstabenmarker; erscheint oranger Boden unter dir, zur Seite, wo du ihn ablegen kannst, sonst zur Seite ohne Orange. Zahl-Buchstabe wiederholen. Immer mitigieren.",
+        "ja": "詠唱中にAへ集合。最初は黒床予兆のない数字マーカー、数字で頭割り後にアルファベットへ。足元にオレンジが出たら拾う側、他ならオレンジのない側へ。以降数字→アルファベットを繰り返す。軽減必須。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Each region's path is described with different reference points (directions vs waymarks); they may be the same route.",
+      "fr": "Chaque région décrit le trajet avec des repères différents (directions ou marqueurs) ; c'est peut-être le même trajet.",
+      "de": "Jede Region beschreibt den Weg mit anderen Bezugspunkten (Richtungen oder Marker); möglicherweise dieselbe Route.",
+      "ja": "地域ごとに基準（方角/マーカー）が違うため同じ動きの可能性あり。"
+     },
+     "tags": [
+      "stack",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Dancing Mad (Ultimate) - Console Games Wiki",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Dancing_Mad_(Ultimate)",
+   "lang": "en"
+  },
+  {
+   "title": "Patch 7.5 - Console Games Wiki",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Patch_7.5",
+   "lang": "en"
+  },
+  {
+   "title": "FFXIV 7.51 patch notes article - RPG Site",
+   "url": "https://www.rpgsite.net/news/20503-final-fantasy-xiv-7-51-patch-notes-full-update-dancing-mad-ultimate",
+   "lang": "en"
+  },
+  {
+   "title": "Dancing Mad (Ultimate) Guide & Overview - Icy Veins",
+   "url": "https://www.icy-veins.com/ffxiv/dancing-mad-ultimate-guide-and-overview",
+   "lang": "en"
+  },
+  {
+   "title": "DMU Phase 1 - Icy Veins",
+   "url": "https://www.icy-veins.com/ffxiv/dancing-mad-ultimate-phase-1-guide",
+   "lang": "en"
+  },
+  {
+   "title": "DMU Phase 2 - Icy Veins",
+   "url": "https://www.icy-veins.com/ffxiv/dancing-mad-ultimate-phase-2-guide",
+   "lang": "en"
+  },
+  {
+   "title": "DMU Phase 3 - Icy Veins",
+   "url": "https://www.icy-veins.com/ffxiv/dancing-mad-ultimate-phase-3-guide",
+   "lang": "en"
+  },
+  {
+   "title": "DMU Phase 4 - Icy Veins",
+   "url": "https://www.icy-veins.com/ffxiv/dancing-mad-ultimate-phase-4-guide",
+   "lang": "en"
+  },
+  {
+   "title": "DMU Phase 5 - Icy Veins",
+   "url": "https://www.icy-veins.com/ffxiv/dancing-mad-ultimate-phase-5-guide",
+   "lang": "en"
+  },
+  {
+   "title": "Dancing Mad Ultimate - Materia Raiding",
+   "url": "https://materiaraiding.com/ultimate/dmu",
+   "lang": "en"
+  },
+  {
+   "title": "絶妖星乱舞 攻略特設 - yan-flash",
+   "url": "https://yan-flash.com/ultimate/yosei-ranbu",
+   "lang": "ja"
+  },
+  {
+   "title": "絶・妖星乱舞 P1 - イディルシャイア居住区",
+   "url": "https://kanatan.info/archives/41988193.html",
+   "lang": "ja"
+  },
+  {
+   "title": "絶・妖星乱舞 P2 - イディルシャイア居住区",
+   "url": "https://kanatan.info/archives/41996903.html",
+   "lang": "ja"
+  },
+  {
+   "title": "絶・妖星乱舞 P3 - イディルシャイア居住区",
+   "url": "https://kanatan.info/archives/41970818.html",
+   "lang": "ja"
+  },
+  {
+   "title": "絶・妖星乱舞 P4 - イディルシャイア居住区",
+   "url": "https://kanatan.info/archives/41960996.html",
+   "lang": "ja"
+  },
+  {
+   "title": "絶・妖星乱舞 P5 - イディルシャイア居住区",
+   "url": "https://kanatan.info/archives/41984416.html",
+   "lang": "ja"
+  },
+  {
+   "title": "絶妖星乱舞 (Patch 7.51) - 電撃オンライン",
+   "url": "https://dengekionline.com/article/202605/76228",
+   "lang": "ja"
+  },
+  {
+   "title": "Dancing Mad Ultimate (FR) - conquestcapped",
+   "url": "https://conquestcapped.com/guides/fr/ffxiv/dancing-mad-ultimate/",
+   "lang": "fr"
+  },
+  {
+   "title": "Dancing Mad Ultimate (DE) - conquestcapped",
+   "url": "https://conquestcapped.com/guides/de/ffxiv/dancing-mad-ultimate/",
+   "lang": "de"
+  },
+  {
+   "title": "FFXIV neuer Raid (mein-mmo)",
+   "url": "https://mein-mmo.de/final-fantasy-xiv-neuer-heftiger-raid-taco-schaufel-stehlen-show/",
+   "lang": "de"
+  },
+  {
+   "title": "NAUR - Dancing Mad (Kefkabin)",
+   "url": "https://naurffxiv.com/ultimate/kefka",
+   "lang": "en"
+  },
+  {
+   "title": "Ultimate Uncoiled - Dancing Mad",
+   "url": "https://ultimateuncoiled.com/umad/",
+   "lang": "en"
+  },
+  {
+   "title": "xivpf.com - live party finder listings (Light/Chaos and NA ultimate listings)",
+   "url": "https://xivpf.com/listings",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

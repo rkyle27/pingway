@@ -1,0 +1,2275 @@
+{
+ "id": "top",
+ "type": "ultimate",
+ "expansion": "EW",
+ "patch": "6.31",
+ "names": {
+  "en": "The Omega Protocol (Ultimate)",
+  "fr": "le Protocole Oméga (fatal)",
+  "de": "Omega (fatal)",
+  "ja": "絶オメガ検証戦"
+ },
+ "aliases": {
+  "en": [
+   "top",
+   "omega ultimate",
+   "omega protocol",
+   "the omega protocol",
+   "tou"
+  ],
+  "fr": [
+   "top",
+   "protocole oméga",
+   "oméga fatal"
+  ],
+  "de": [
+   "top",
+   "omega fatal",
+   "omega-protokoll"
+  ],
+  "ja": [
+   "絶オメガ",
+   "絶オメガ検証戦",
+   "TOP",
+   "オメガ絶"
+  ]
+ },
+ "summary": {
+  "en": "Endwalker's second Ultimate (patch 6.31), a test run by Omega in six phases: Omega, Omega-M and F, a transition, Final Omega, Blue Screen, Run: Dynamis (Delta, Sigma and Omega) and Alpha Omega. It is famous for heavy debuff juggling (Program Loop, Hello World), precise spacing mechanics, strict DPS checks and a final phase that needs every limit break.",
+  "fr": "Le deuxième fatal d'Endwalker (patch 6.31), un test mené par Oméga en six phases : Oméga, Oméga-M et F, une transition, Oméga final, Écran bleu, Exécution : Dynamis (Delta, Sigma et Oméga) et Alpha-Oméga. Il est connu pour sa gestion de malus intense (Boucle de programme, Bonjour, le monde), ses placements précis, ses checks DPS stricts et une dernière phase qui demande toutes les limites.",
+  "de": "Der zweite Fatal-Raid von Endwalker (Patch 6.31), ein Test von Omega in sechs Phasen: Omega, Omega-M und W, ein Übergang, Final-Omega, Blauer Bildschirm, Ausführen: Dynamis (Delta, Sigma und Omega) und Alpha-Omega. Bekannt für intensives Debuff-Jonglieren (Programmschleife, Hallo, Welt!), präzise Abstandsmechaniken, strenge DPS-Checks und eine letzte Phase, die jedes Limitbreak braucht.",
+  "ja": "暁月2つ目の絶（パッチ6.31）。オメガによる検証で6フェーズ：オメガ、オメガM＆F、移行、ファイナルオメガ、ブルースクリーン、デュナミス（デルタ・シグマ・オメガ）、アルファオメガ。サークルプログラムやハロー・ワールドなどデバフ処理が多く、距離の精度、厳しいDPSチェック、全LBを使う最終フェーズで知られる。"
+ },
+ "strats_overview": [
+  {
+   "id": "na-pf",
+   "region": "NA/EU",
+   "name": {
+    "en": "NA PF (Segz Bin / Saus Bin, UAR toolbox)",
+    "fr": "PF NA (Segz Bin / Saus Bin, toolbox UAR)",
+    "de": "NA-PF (Segz Bin / Saus Bin, UAR-Toolbox)",
+    "ja": "NA野良（Segz Bin / Saus Bin、UARツールボックス）"
+   },
+   "note": {
+    "en": "North American party finder standard. Light party priority H > R > M > T, Blues to Beetle for Delta, automarkers expected for Sigma and Omega Hello World, true-clock spreads in P6. EU (Light/Chaos) PF: the LPDU community builds on the same NA/UAR cheat sheets for monitors and Sigma; its macro adds 'P2 BPOG full cross, right side adjusts', 'P3 RMTHHTMR, stacks north', 'P4 TRHM / MHRT, melee adjust' and 'Meteors like Wave Cannon 1 but swap with the physical ranged'. Check the PF description (uncertain: only one source lists the LPDU macro).",
+    "fr": "Standard du PF nord-américain. Priorité de groupe léger H > R > M > T, « Blues to Beetle » pour Delta, automarqueurs attendus pour les Hello World de Sigma et Omega, dispersions en horloge réelle en P6. PF EU (Light/Chaos) : la communauté LPDU se base sur les mêmes cheat sheets NA/UAR pour les moniteurs et Sigma ; sa macro ajoute « P2 BPOG croix complète, le côté droit s'ajuste », « P3 RMTHHTMR, packages au nord », « P4 TRHM / MHRT, les mêlées s'ajustent » et « Météores comme Wave Cannon 1, mais échange avec le distance physique ». Vérifie la description du PF (incertain : une seule source donne la macro LPDU).",
+    "de": "Standard im nordamerikanischen PF. Leichtgruppen-Priorität H > R > M > T, „Blues to Beetle“ für Delta, Automarker für die Hello Worlds in Sigma und Omega erwartet, Uhr-Verteilung in P6. EU-PF (Light/Chaos): Die LPDU-Community nutzt dieselben NA/UAR-Cheatsheets für Monitore und Sigma; ihr Makro ergänzt „P2 BPOG volles Kreuz, rechte Seite passt an“, „P3 RMTHHTMR, Stacks im Norden“, „P4 TRHM / MHRT, Nahkämpfer passen an“ und „Meteore wie Wave Cannon 1, aber Tausch mit dem physischen Fernkämpfer“. Prüf die PF-Beschreibung (unsicher: nur eine Quelle zeigt das LPDU-Makro).",
+    "ja": "北米野良の標準。LP優先はH＞R＞M＞T、デルタは「青線は虫へ」、シグマ・オメガのハロワはオートマーカー前提、P6は時計散開。 EU（Light/Chaos）野良：LPDUコミュニティはモニターとシグマにNA/UARの早見表を使用。マクロには「P2 BPOG フルクロス、右側が調整」「P3 RMTHHTMR、頭割り北」「P4 TRHM / MHRT、近接調整」「メテオは波動砲1と同じだが物理レンジと交代」とある。募集文を確認してね（不確実：LPDUマクロの資料は1つだけ）。"
+   },
+   "aliases": {
+    "en": [
+     "segz bin",
+     "saus bin",
+     "uar",
+     "uar toolbox",
+     "ultistrats",
+     "na pf"
+    ],
+    "fr": [
+     "segz bin",
+     "saus bin",
+     "uar",
+     "uar toolbox",
+     "ultistrats",
+     "na pf"
+    ],
+    "de": [
+     "segz bin",
+     "saus bin",
+     "uar",
+     "uar toolbox",
+     "ultistrats",
+     "na pf"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-elemental",
+   "region": "JP",
+   "name": {
+    "en": "JP Elemental PF",
+    "fr": "PF JP Elemental",
+    "de": "JP-Elemental-PF",
+    "ja": "Elemental野良"
+   },
+   "note": {
+    "en": "Japanese Elemental data center party finder standard: HTDH priority, NW/SE Pantokrator, Astoh monitors, TRHM in P4, 'awk' Delta, waymark towers in Sigma, clock spread and east Wave Cannon stack in P6.",
+    "fr": "Standard du PF japonais Elemental : priorité HTDH, Pantokrator NO/SE, moniteurs Astoh, TRHM en P4, Delta « awk », tours sur marqueurs en Sigma, dispersion en horloge et package Wave Cannon à l'est en P6.",
+    "de": "Standard im japanischen Elemental-PF: HTDH-Priorität, Pantokrator NW/SO, Astoh-Monitore, TRHM in P4, „awk“-Delta, Wegmarker-Türme in Sigma, Uhr-Verteilung und Wave-Cannon-Stack im Osten in P6.",
+    "ja": "Elemental野良の標準：HTDH優先、パンクラ北西/南東、アスト式モニター、P4はTRHM、デルタは「awk」、シグマはマーカー基準の塔、P6は時計散開・波動砲頭割り東。"
+   },
+   "aliases": {
+    "en": [
+     "tuufless",
+     "tuufless elemental",
+     "elemental",
+     "elemental pf",
+     "htdh"
+    ],
+    "fr": [
+     "tuufless",
+     "tuufless elemental",
+     "elemental",
+     "elemental pf",
+     "htdh"
+    ],
+    "de": [
+     "tuufless",
+     "tuufless elemental",
+     "elemental",
+     "elemental pf",
+     "htdh"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-mana",
+   "region": "JP",
+   "name": {
+    "en": "JP Mana PF (Lily Doll macros)",
+    "fr": "PF JP Mana (macros de Lily Doll)",
+    "de": "JP-Mana-PF (Lily-Doll-Makros)",
+    "ja": "マナ野良（Lily Doll氏のマクロ）"
+   },
+   "note": {
+    "en": "Japanese-language PF standard on the Mana data center, from Lily Doll's macro set (an English translation exists on the Lodestone). HTDH priority like Elemental, fixed left/right light parties (H1 MT D1 D3 / H2 ST D2 D4), first-come towers and tethers, near/far number markers in P5, tank LB3 by ST in P6. Gaia and Meteor groups were not checked separately; ask your group.",
+    "fr": "Standard du PF en japonais sur le centre Mana, tiré des macros de Lily Doll (une traduction anglaise existe sur le Lodestone). Priorité HTDH comme Elemental, groupes gauche/droite fixes (H1 MT D1 D3 / H2 ST D2 D4), tours et liens au premier arrivé, marqueurs proches/loin en P5, LB3 tank par le ST en P6. Gaia et Meteor n'ont pas été vérifiés à part ; demande à ton groupe.",
+    "de": "Japanischsprachiger PF-Standard im Datenzentrum Mana, aus Lily Dolls Makro-Set (eine englische Übersetzung gibt es im Lodestone). HTDH-Priorität wie Elemental, feste linke/rechte Leichtgruppen (H1 MT D1 D3 / H2 ST D2 D4), Türme und Verbindungen nach dem Prinzip wer zuerst kommt, Nah/Fern-Nummernmarker in P5, Tank-LB3 durch den ST in P6. Gaia und Meteor wurden nicht einzeln geprüft; frag deine Gruppe.",
+    "ja": "マナDCの日本語野良の標準。Lily Doll氏のマクロが元（ロドストに英訳あり）。ElementalのようにHTDH優先、左右LPは固定（H1 MT D1 D3／H2 ST D2 D4）、塔と線は早い者勝ち、P5は近❶❷・遠①②のマーカー、P6のタンクLB3はST。ガイア・メテオDCは個別に未確認なのでPTに確認してね。"
+   },
+   "aliases": {
+    "en": [
+     "lily doll",
+     "lilydoll",
+     "mana pf"
+    ],
+    "fr": [
+     "lily doll",
+     "lilydoll",
+     "mana pf"
+    ],
+    "de": [
+     "lily doll",
+     "lilydoll",
+     "mana pf"
+    ],
+    "ja": [
+     "リリド"
+    ]
+   }
+  },
+  {
+   "id": "oce-mur",
+   "region": "OCE",
+   "name": {
+    "en": "OCE MUR (Materia Ultimate Raiding)",
+    "fr": "OCE MUR (Materia Ultimate Raiding)",
+    "de": "OCE MUR (Materia Ultimate Raiding)",
+    "ja": "OCE MUR（Materia Ultimate Raiding）"
+   },
+   "note": {
+    "en": "Oceanian (Materia data center) standard from the MUR cheatsheet, with automarkers for Hello World in P5.",
+    "fr": "Standard océanien (centre Materia) de la cheatsheet MUR, avec automarqueurs pour les Hello World en P5.",
+    "de": "Ozeanischer Standard (Datenzentrum Materia) aus dem MUR-Cheatsheet, mit Automarkern für die Hello Worlds in P5.",
+    "ja": "オセアニア（Materia DC）MURの標準。P5のハロワはオートマーカー使用。"
+   },
+   "aliases": {
+    "en": [
+     "mur",
+     "materia",
+     "materia raiding",
+     "materiaraiding"
+    ],
+    "fr": [
+     "mur",
+     "materia",
+     "materia raiding",
+     "materiaraiding"
+    ],
+    "de": [
+     "mur",
+     "materia",
+     "materia raiding",
+     "materiaraiding"
+    ],
+    "ja": []
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "P1 Omega (Beetle)",
+    "fr": "P1 Oméga (scarabée)",
+    "de": "P1 Omega (Käfer)",
+    "ja": "P1 オメガ（虫）"
+   },
+   "mechanics": [
+    {
+     "id": "program-loop",
+     "names": {
+      "en": "Program Loop",
+      "fr": "Boucle de programme",
+      "de": "Programmschleife",
+      "ja": "サークルプログラム"
+     },
+     "aliases": {
+      "en": [
+       "loop",
+       "looper",
+       "towers and tethers"
+      ],
+      "fr": [
+       "boucle",
+       "loop"
+      ],
+      "de": [
+       "Loop",
+       "Schleife"
+      ],
+      "ja": [
+       "ループ",
+       "サークル",
+       "塔と線"
+      ]
+     },
+     "how": {
+      "en": "Players get First to Fourth in Line (two each). Two towers appear at a time and must be soaked in number order; at the same time two Blaster tethers must be taken, in the order 3, 4, 1, 2, and carried away from the towers. Tether hits apply an HP penalty, so nobody takes a tower right after a tether; a missed tower or tether wipes.",
+      "fr": "Les joueurs reçoivent Première à Quatrième cible (deux de chaque). Deux tours apparaissent à la fois et doivent être prises dans l'ordre des numéros ; en même temps, deux liens Électrochoc doivent être pris, dans l'ordre 3, 4, 1, 2, et éloignés des tours. Les coups de lien réduisent les PV max, donc personne ne prend une tour juste après un lien ; une tour ou un lien raté = wipe.",
+      "de": "Spieler bekommen Erstes bis Viertes Ziel (je zwei). Immer zwei Türme erscheinen und müssen in Nummernreihenfolge besetzt werden; gleichzeitig müssen zwei Blaster-Verbindungen in der Reihenfolge 3, 4, 1, 2 genommen und von den Türmen weggezogen werden. Treffer der Verbindung senken die max. HP, daher nimmt niemand direkt nach einer Verbindung einen Turm; ein verpasster Turm oder eine verpasste Verbindung führt zum Wipe.",
+      "ja": "ファースト〜フォースターゲット（各2人）。塔は2つずつ出て番号順に踏む。同時にブラスターの線2本を3→4→1→2の順に取り、塔から離す。線を受けると最大HPダウンになるので直後に塔は踏まない。塔や線の取り漏れは全滅。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Light party priority H > R > M > T (tanks flex). Group 1 references northwest and goes counter-clockwise, group 2 north and clockwise; the 3s step into the hitbox to grab the first tethers while everyone else stacks.",
+        "fr": "Priorité de groupe léger H > R > M > T (les tanks flex). Le groupe 1 part du nord-ouest en anti-horaire, le groupe 2 du nord en horaire ; les 3 entrent dans la hitbox pour prendre les premiers liens pendant que les autres se regroupent.",
+        "de": "Leichtgruppen-Priorität H > R > M > T (Tanks flexen). Gruppe 1 bezieht sich auf Nordwest gegen den Uhrzeigersinn, Gruppe 2 auf Norden im Uhrzeigersinn; die 3er gehen in die Hitbox, um die ersten Verbindungen zu nehmen, alle anderen stacken.",
+        "ja": "LP優先H＞R＞M＞T（タンクがフレックス）。1組は北西基準で反時計回り、2組は北基準で時計回り。3番が最初の線をヒットボックス内で取り、他は集合。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "HTDH: priority clockwise from northwest is H1, MT, ST, D1, D2, D3, D4, H2; within each number pair the earlier player takes the first tower or tether. 3s stand in front for the first tethers; tether holders always carry them to an empty spot.",
+        "fr": "HTDH : priorité dans le sens horaire depuis le nord-ouest H1, MT, ST, D1, D2, D3, D4, H2 ; dans chaque paire de numéro, le premier prend la première tour ou le premier lien. Les 3 se placent devant pour les premiers liens ; les porteurs de lien vont toujours vers une zone vide.",
+        "de": "HTDH: Priorität im Uhrzeigersinn ab Nordwest H1, MT, ST, D1, D2, D3, D4, H2; in jedem Nummernpaar nimmt der Frühere den ersten Turm bzw. die erste Verbindung. Die 3er stehen vorne für die ersten Verbindungen; Verbindungsträger gehen immer zu einer freien Stelle.",
+        "ja": "HTDH：北西から時計回りにH1・MT・ST・D1・D2・D3・D4・H2の優先。同じ番号のペアは優先が高い方が先の塔/線。3番が前で最初の線を取り、線持ちは空いている場所へ運ぶ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "MUR PF priority from the cheatsheet; healers manage the priority for the 3s and 4s and tanks use personal mitigation for the tethers.",
+        "fr": "Priorité MUR PF selon la cheatsheet ; les soigneurs gèrent la priorité des 3 et 4, et les tanks utilisent leurs réductions perso pour les liens.",
+        "de": "MUR-PF-Priorität laut Cheatsheet; Heiler regeln die Priorität für 3er und 4er, Tanks nutzen eigene Mitigation für die Verbindungen.",
+        "ja": "MURのシート通りの優先。3・4番の優先はヒーラーが調整、タンクは線で自己軽減。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "same_as": "jp-elemental"
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "The exact MUR movement priority is only in the cheatsheet image.",
+      "fr": "La priorité exacte MUR n'existe que sur l'image de la cheatsheet.",
+      "de": "Die genaue MUR-Priorität gibt es nur im Cheatsheet-Bild.",
+      "ja": "MURの正確な優先はシート画像のみ。"
+     },
+     "tags": [
+      "tower",
+      "tether",
+      "debuff"
+     ]
+    },
+    {
+     "id": "pantokrator",
+     "names": {
+      "en": "Pantokrator",
+      "fr": "Pantokrator",
+      "de": "Pantokrator",
+      "ja": "パントクラトル"
+     },
+     "aliases": {
+      "en": [
+       "panto",
+       "pantokrator",
+       "missiles"
+      ],
+      "fr": [
+       "panto"
+      ],
+      "de": [
+       "Panto"
+      ],
+      "ja": [
+       "パンクラ",
+       "パントクラトル"
+      ]
+     },
+     "how": {
+      "en": "Numbers 1-4 again. Omega's Flamethrower cones rotate around the arena; in number order, one player per group drops Guided Missile circles (kills anyone near) while the other three share a line stack (Condensed Wave Cannon) at the back of their safe slice. Ends with two tankbusters on the furthest players and line baits on the rest, then Atomic Ray enrage.",
+      "fr": "À nouveau les numéros 1-4. Les cônes Lance-flammes d'Oméga tournent autour de l'arène ; dans l'ordre des numéros, un joueur par groupe pose des cercles de missiles guidés (mortels pour ceux à côté) pendant que les trois autres partagent un package en ligne à l'arrière de leur part sûre. Fin avec deux tankbusters sur les plus éloignés et des lignes sur les autres, puis l'enrage Rayon atomique.",
+      "de": "Wieder Nummern 1-4. Omegas Flammenwerfer-Kegel rotieren um die Arena; in Nummernreihenfolge legt pro Gruppe ein Spieler Lenkraketen-Kreise (tödlich für Nahestehende), während die anderen drei einen Linien-Stack hinten in ihrem sicheren Stück teilen. Am Ende zwei Tankbuster auf die Entferntesten und Linien auf den Rest, dann Enrage Atomstrahlung.",
+      "ja": "再び番号1〜4。フレイムスロアーの扇が回転。番号順に各組1人が誘導ミサイル（近くの人も死ぬ）を捨て、残り3人は安置の後方で直線頭割り。最後は遠い2人へタンク強攻撃と残りへの直線、そしてアトミックレイ（時間切れ）。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Same groups and priority as Loop (group 1 northwest counter-clockwise, group 2 north clockwise, each with a healer). The line stack stays at the front of the rotating safe slice while the missile player drops at the back, then rejoins (or the reverse, 'missile front, stack back', if your group calls it).",
+        "fr": "Mêmes groupes et priorité que pour Loop (groupe 1 nord-ouest anti-horaire, groupe 2 nord horaire, chacun avec un soigneur). Le package en ligne reste à l'avant de la part sûre qui tourne pendant que le joueur missile pose à l'arrière puis revient (ou l'inverse, « missile devant, package derrière », si ton groupe l'annonce).",
+        "de": "Gleiche Gruppen und Priorität wie bei Loop (Gruppe 1 Nordwest gegen den Uhrzeigersinn, Gruppe 2 Norden im Uhrzeigersinn, jede mit Heiler). Der Linien-Stack bleibt vorne im rotierenden sicheren Stück, der Raketen-Spieler legt hinten und kommt zurück (oder umgekehrt, „Rakete vorne, Stack hinten“, wenn deine Gruppe das ansagt).",
+        "ja": "ループと同じ組と優先（1組北西反時計、2組北時計、各組ヒーラー1）。頭割りは回る安置の前側、ミサイルは後ろに捨てて戻る（PTによっては「ミサイル前・頭割り後ろ」の逆）。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Face Omega north. Groups reference NW and SE (one of each number and a healer each); if the first cones hit those spots, each group rotates clockwise to the next safe slice. The line stack is at the back, the missile player in front, dropping baits forward, center, front, then back-and-out before rejoining.",
+        "fr": "Oméga face au nord. Les groupes partent de NO et SE (un de chaque numéro et un soigneur chacun) ; si les premiers cônes touchent ces points, chaque groupe tourne dans le sens horaire vers la part sûre suivante. Package en ligne derrière, joueur missile devant, qui pose devant, au centre, devant, puis en arrière vers l'extérieur avant de revenir.",
+        "de": "Omega nach Norden ausrichten. Gruppen beziehen sich auf NW und SO (je eine Nummer jeder Art und ein Heiler); treffen die ersten Kegel diese Stellen, dreht jede Gruppe im Uhrzeigersinn zum nächsten sicheren Stück. Linien-Stack hinten, Raketen-Spieler vorne, legt vorne, Mitte, vorne, dann hinten-außen ab und kehrt zurück.",
+        "ja": "オメガ北向き。北西と南東基準（各組に番号1つずつとヒーラー）。最初の扇がそこに来たら時計回りに隣の安置へ。頭割りは後ろ、ミサイルは前で、前→中央→前→後ろ外の順に捨てて合流。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Light party 1 rotates counter-clockwise and light party 2 clockwise to the safe spots, lower priority flexes on conflicts; if the first cleaves hit NE/SW each party rotates clockwise of its start. Stack at the rear cleave for the 3-player line; numbers leave in order once a puddle is under them.",
+        "fr": "Le groupe léger 1 tourne en anti-horaire et le 2 en horaire vers les zones sûres, la plus basse priorité flex en cas de conflit ; si les premiers cleaves touchent NE/SO, chaque groupe tourne dans le sens horaire depuis son départ. Package au cleave arrière pour la ligne à 3 ; les numéros partent dans l'ordre dès qu'une flaque est sous eux.",
+        "de": "Leichtgruppe 1 dreht gegen, Gruppe 2 im Uhrzeigersinn zu den sicheren Stellen, bei Konflikt flext die niedrigere Priorität; treffen die ersten Cleaves NO/SW, dreht jede Gruppe im Uhrzeigersinn von ihrem Start. Stack am hinteren Cleave für die 3er-Linie; Nummern verlassen der Reihe nach, sobald eine Pfütze unter ihnen ist.",
+        "ja": "LP1は反時計、LP2は時計回りで安置へ、被りは優先低い方がフレックス。最初の扇が北東/南西なら開始位置の時計回り隣へ。後ろの扇位置で3人直線頭割り、番号順に足元に床が出たら離脱。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Line up from north to south H1, MT, ST, D1, D2, D3, D4, H2; the first Flamethrower decides your start and if it covers north and south everyone rotates clockwise. The missile player stands in front and the line stack behind; after dropping the missile go through the middle and rejoin the stack from the outside.",
+        "fr": "Alignement du nord au sud H1, MT, ST, D1, D2, D3, D4, H2 ; le premier Lance-flammes fixe ton départ et s'il couvre le nord et le sud, tout le monde tourne dans le sens horaire. Le joueur missile est devant, le package en ligne derrière ; après ton missile, passe par le milieu et reviens au package par l'extérieur.",
+        "de": "Aufstellung von Nord nach Süd H1, MT, ST, D1, D2, D3, D4, H2; der erste Flammenwerfer bestimmt deinen Start, und wenn er Nord und Süd trifft, dreht sich jeder im Uhrzeigersinn weiter. Der Raketen-Spieler steht vorn, der Linien-Stack dahinter; nach deiner Rakete gehst du durch die Mitte und kommst von außen zurück zum Stack.",
+        "ja": "北から南へH1、MT、ST、D1、D2、D3、D4、H2の順。最初の火炎放射で開始位置が決まり、南北に来たら全員時計回りにずれる。ミサイル担当が前、直線頭割りが後ろ。ミサイルを置いたら中央を通り、外側から頭割りに戻る。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack",
+      "spread"
+     ]
+    },
+    {
+     "id": "p1-wave-cannons",
+     "names": {
+      "en": "Diffuse Wave Cannon / Wave Cannon (end of P1)",
+      "fr": "Canons plasma (fin de P1)",
+      "de": "Wellenkanonen (Ende P1)",
+      "ja": "拡散波動砲 / 波動砲（P1終盤）"
+     },
+     "aliases": {
+      "en": [
+       "p1 busters",
+       "wave cannon kyrios"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "拡散波動砲P",
+       "波動砲P"
+      ]
+     },
+     "how": {
+      "en": "Two wide cone tankbusters hit the two furthest players: both tanks stand far out (north) and use invulnerabilities. Two sets of three line AoEs target the non-tanks, who spread inside Omega's circle.",
+      "fr": "Deux larges tankbusters en cône frappent les deux joueurs les plus éloignés : les deux tanks se placent loin (au nord) et utilisent leurs invus. Deux séries de trois lignes ciblent les non-tanks, qui s'écartent dans le cercle d'Oméga.",
+      "de": "Zwei breite Kegel-Tankbuster treffen die zwei entferntesten Spieler: Beide Tanks stehen weit draußen (Norden) und nutzen Unverwundbarkeiten. Zwei Sätze von drei Linien-AoEs zielen auf die Nicht-Tanks, die sich in Omegas Kreis verteilen.",
+      "ja": "遠い2人へ広い扇のタンク強攻撃：タンク2人が北の遠くで無敵。非タンクへの直線3本×2回はオメガの円内で散開して受ける。"
+     },
+     "strats": [
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Tanks use invulnerabilities at the top (far side); D3 and D4 take the outer sides and H1, H2, D1 and D2 the inner spots for the line baits.",
+        "fr": "Les tanks utilisent leurs invulnérabilités en haut (côté éloigné) ; D3 et D4 prennent les côtés extérieurs, et H1, H2, D1 et D2 les places intérieures pour les lignes.",
+        "de": "Die Tanks nutzen oben (weit entfernt) ihre Unverwundbarkeit; D3 und D4 nehmen die äußeren Seiten, H1, H2, D1 und D2 die inneren Plätze für die Linien.",
+        "ja": "タンクは上（遠い側）で無敵。D3とD4が外側、H1・H2・D1・D2が内側で直線を受ける。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Both tanks stack north and both use an invulnerability.",
+        "fr": "Les deux tanks se regroupent au nord et utilisent tous les deux un invu.",
+        "de": "Beide Tanks stacken im Norden und nutzen beide eine Unverwundbarkeit.",
+        "ja": "タンク2人は北で重なり、両者無敵。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Both tanks stack north outside the hitbox with invulnerabilities.",
+        "fr": "Les deux tanks se regroupent au nord hors de la hitbox avec leurs invus.",
+        "de": "Beide Tanks stacken im Norden außerhalb der Hitbox mit Unverwundbarkeiten.",
+        "ja": "タンク2人はサークル外の北で重なり、無敵で受ける。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "spread"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "P2 Omega-M and Omega-F",
+    "fr": "P2 Oméga-M et Oméga-F",
+    "de": "P2 Omega-M und Omega-W",
+    "ja": "P2 オメガM＆F"
+   },
+   "mechanics": [
+    {
+     "id": "firewall",
+     "names": {
+      "en": "Firewall",
+      "fr": "Programme protecteur",
+      "de": "Sicherungssystem",
+      "ja": "ガードプログラム"
+     },
+     "aliases": {
+      "en": [
+       "packet filter",
+       "firewall"
+      ],
+      "fr": [
+       "filtre"
+      ],
+      "de": [
+       "Paketfilter"
+      ],
+      "ja": [
+       "ガード"
+      ]
+     },
+     "how": {
+      "en": "The four players closest to each boss get a Packet Filter that blocks damage to the other boss, so split into two light parties (one per boss) at the start. Each tank takes their boss's Solar Ray buster. The opening Solar Ray from each boss hits its top-enmity player (invulnerabilities are an option). After Party Synergy the aggro flips, so each tank holds the other boss.",
+      "fr": "Les quatre joueurs les plus proches de chaque boss reçoivent un filtre qui bloque les dégâts sur l'autre boss : séparez-vous en deux groupes légers (un par boss) au début. Chaque tank prend le Rayon solaire de son boss. Le Solar Ray d'ouverture de chaque boss frappe son inimitié 1 (les invus sont une option). Après Party Synergy l'inimitié s'inverse, chaque tank garde donc l'autre boss.",
+      "de": "Die vier Spieler, die jedem Boss am nächsten sind, bekommen einen Paketfilter, der Schaden am anderen Boss verhindert, also zu Beginn in zwei Leichtgruppen (eine pro Boss) aufteilen. Jeder Tank nimmt den Sonnenstrahl seines Bosses. Der erste Solar Ray jedes Bosses trifft dessen Feindschaft 1 (Unverwundbarkeiten sind möglich). Nach Party Synergy kippt die Feindschaft, jeder Tank hat dann den anderen Boss.",
+      "ja": "各ボスに近い4人にガードプログラム（もう一方へダメージが通らない）。開始時にLP2つに分かれる。ソーラレイは各タンクが受ける。開幕のソーラレイはそれぞれのボスのヘイト1位に来る（無敵も可）。パーティシナジー後はヘイトが入れ替わり、各タンクがもう一方のボスを持つ。"
+     },
+     "strats": [
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Both tanks re-provoke after the bosses swap.",
+        "fr": "Les deux tanks reprovoquent après l'échange des boss.",
+        "de": "Beide Tanks provozieren nach dem Boss-Tausch neu.",
+        "ja": "ボスが入れ替わった後、両タンクが挑発し直す。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "debuff"
+     ]
+    },
+    {
+     "id": "party-synergy",
+     "names": {
+      "en": "Party Synergy",
+      "fr": "Programme synergique PT",
+      "de": "Synergieprogramm PT",
+      "ja": "連携プログラムPT"
+     },
+     "aliases": {
+      "en": [
+       "party synergy",
+       "glitch",
+       "mid glitch",
+       "remote glitch",
+       "p2 playstation"
+      ],
+      "fr": [
+       "glitch"
+      ],
+      "de": [
+       "Glitch"
+      ],
+      "ja": [
+       "連携PT",
+       "グリッチ",
+       "ミドル",
+       "ファー"
+      ]
+     },
+     "how": {
+      "en": "Pairs get matching symbols (circle, cross, triangle, square) and Mid or Remote Glitch: Mid pairs must stay about half the arena apart, Remote pairs across the whole arena. Dodge the real M/F clone pair's combined AoEs, split into two lines of four relative to Omega's eye for the laser and spreads, then two stacks and a knockback must land each pair at the right distance.",
+      "fr": "Les paires ont le même symbole (rond, croix, triangle, carré) et Glitch mi-distance ou distance : les paires mi-distance restent à environ la moitié de l'arène, les paires distance à toute la largeur. Esquive les AoE combinées de la vraie paire de clones M/F, sépare-toi en deux lignes de quatre par rapport à l'œil d'Oméga pour le laser et les dispersions, puis deux packages et un recul doivent placer chaque paire à la bonne distance.",
+      "de": "Paare bekommen gleiche Symbole (Kreis, Kreuz, Dreieck, Quadrat) und Glitch Mittel oder Fern: Mittel-Paare halten etwa eine halbe Arena Abstand, Fern-Paare die ganze Arena. Den kombinierten AoEs des echten M/W-Klonpaars ausweichen, relativ zu Omegas Auge in zwei Viererreihen für Laser und Verteilung aufteilen, dann müssen zwei Stacks und ein Rückstoß jedes Paar in den richtigen Abstand bringen.",
+      "ja": "同じ記号（○×△□）のペアにグリッチ：ミドル（約半面離れる）かファー（端から端）。本物のM/F分身ペアの複合AoEを避け、オメガの目を北に4人2列で散開、その後頭割り2つとノックバックで各ペアを正しい距離に。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Line up circle, cross, triangle, square from the eye, group 1 on the eye's left and group 2 on its right. Mid: both groups keep that order. Remote: group 2 reverses its order (full flex). Flex by priority if a tether points into your group. The stack further south swaps groups; group 1 is always knocked west, group 2 south for Mid or east for Remote.",
+        "fr": "Alignement rond, croix, triangle, carré depuis l'œil, groupe 1 à gauche de l'œil, groupe 2 à droite. Mi-distance : les deux gardent cet ordre. Distance : le groupe 2 inverse son ordre (full flex). Flex par priorité si un lien pointe dans ton groupe. Le package le plus au sud change de groupe ; le groupe 1 est toujours repoussé à l'ouest, le groupe 2 au sud pour mi-distance ou à l'est pour distance.",
+        "de": "Aufstellung Kreis, Kreuz, Dreieck, Quadrat ab dem Auge, Gruppe 1 links vom Auge, Gruppe 2 rechts. Mittel: beide behalten die Reihenfolge. Fern: Gruppe 2 dreht ihre Reihenfolge um (Full Flex). Nach Priorität flexen, wenn eine Verbindung in deine Gruppe zeigt. Der südlichere Stack wechselt die Gruppe; Gruppe 1 wird immer nach Westen gestoßen, Gruppe 2 bei Mittel nach Süden, bei Fern nach Osten.",
+        "ja": "目から○×△□の順に並び、1組は目の左、2組は右。ミドルは両組その順。ファーは2組が逆順（フルフレックス）。線が自組に向くなら優先で入れ替え。南側の頭割りが組を移動。ノックバックは1組が常に西、2組はミドルで南、ファーで東。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Light parties line up healer, tank, melee, ranged; duplicated symbols in a group make the lower player swap. With the eye as north, Mid spreads circle, cross, triangle, square top to bottom; for Remote only the right group's circle and square swap. If one side has both stacks, the player further from the eye swaps. Left group is knocked west, right group south (Mid) or east (Remote).",
+        "fr": "Les groupes légers s'alignent soigneur, tank, mêlée, distance ; un symbole en double dans un groupe fait changer le joueur le plus bas. Œil au nord, en mi-distance on s'écarte rond, croix, triangle, carré de haut en bas ; en distance, seuls le rond et le carré du groupe de droite échangent. Si un côté a les deux packages, celui le plus loin de l'œil change. Le groupe de gauche est repoussé à l'ouest, celui de droite au sud (mi-distance) ou à l'est (distance).",
+        "de": "Leichtgruppen stellen sich Heiler, Tank, Nahkampf, Fernkampf auf; doppelte Symbole in einer Gruppe lassen den unteren Spieler wechseln. Auge als Norden, bei Mittel verteilt man Kreis, Kreuz, Dreieck, Quadrat von oben nach unten; bei Fern tauschen nur Kreis und Quadrat der rechten Gruppe. Hat eine Seite beide Stacks, wechselt der vom Auge Entferntere. Linke Gruppe wird nach Westen gestoßen, rechte nach Süden (Mittel) oder Osten (Fern).",
+        "ja": "H・T・近接・遠隔の順に並び、同じ記号が組内で重なれば下の人が移動。目を北にミドルは上から○×△□、ファーは右組の○と□だけ入れ替え。頭割りが片側に2つなら目から遠い方が交代。ノックバックは左組西、右組はミドル南・ファー東。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Line up east to west; the westernmost of each pair is light party 1. Mid: LP1 west and LP2 east of the eye. Remote: the same, but cross and triangle in LP2 swap. For the knockback, use the middle male of the line of three as north: LP1 anchors west, LP2 goes south (Mid) or east (Remote); if both stacks are in one party the northmost swaps with its partner.",
+        "fr": "Alignement d'est en ouest ; le plus à l'ouest de chaque paire est le groupe léger 1. Mi-distance : LP1 à l'ouest et LP2 à l'est de l'œil. Distance : pareil, mais croix et triangle de LP2 échangent. Pour le recul, le mâle du milieu de la ligne de trois sert de nord : LP1 reste à l'ouest, LP2 va au sud (mi-distance) ou à l'est (distance) ; si les deux packages sont dans un groupe, le plus au nord échange avec son partenaire.",
+        "de": "Aufstellung von Ost nach West; der westlichste jedes Paars ist Leichtgruppe 1. Mittel: LG1 westlich, LG2 östlich vom Auge. Fern: gleich, aber Kreuz und Dreieck in LG2 tauschen. Für den Rückstoß ist das mittlere M der Dreierreihe Norden: LG1 bleibt im Westen, LG2 geht nach Süden (Mittel) oder Osten (Fern); sind beide Stacks in einer Gruppe, tauscht der nördlichste mit seinem Partner.",
+        "ja": "東→西に並び、各ペアの西側がLP1。ミドルはLP1が目の西、LP2が東。ファーも同じだがLP2の×と△が入れ替え。ノックバックは3体並んだMの中央を北に、LP1は西固定、LP2はミドル南・ファー東。頭割りが同じ組なら北側が相方と交代。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Fixed light parties: left H1, MT, D1, D3 and right H2, ST, D2, D4, lined up by symbol with priority from bottom to top; Omega-M/F sit in the middle row. A symbol table gives mid or far spots and the right party adjusts for Remote (far). For the knockback the three M clones are relative north: left party goes west, right party south (Mid) or east (Remote).",
+        "fr": "Groupes fixes : à gauche H1, MT, D1, D3 et à droite H2, ST, D2, D4, alignés par symbole avec la priorité de bas en haut ; Oméga-M/F au rang du milieu. Un tableau des symboles donne les places moyennes ou lointaines et le groupe de droite s'ajuste pour Remote (loin). Pour la projection, les trois M sont le nord relatif : groupe gauche à l'ouest, groupe droit au sud (Mid) ou à l'est (Remote).",
+        "de": "Feste Leichtgruppen: links H1, MT, D1, D3 und rechts H2, ST, D2, D4, nach Symbol aufgestellt mit Priorität von unten nach oben; Omega-M/W in der mittleren Reihe. Eine Symboltabelle gibt mittlere oder ferne Plätze vor, die rechte Gruppe passt für Remote (fern) an. Beim Rückstoß sind die drei M-Klone relativ Norden: linke Gruppe nach Westen, rechte nach Süden (Mid) oder Osten (Remote).",
+        "ja": "LPは固定：左H1・MT・D1・D3、右H2・ST・D2・D4。記号ごとに下から上の優先で並び、M/Fは中段。記号表で中距離か遠距離かが決まり、リモート（遠）は右側が調整。ノックバックはM3体を北とし、左LPが西、右LPが南（ミドル）か東（リモート）。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "NA guides list both a full-flex and a semi-flex Remote option; ultistrats writes the NA order as 'BPOG - GPOB', which matches the full reversal.",
+      "fr": "Les guides NA proposent une option distance full flex et une semi flex ; ultistrats écrit l'ordre NA « BPOG - GPOB », ce qui correspond à l'inversion complète.",
+      "de": "NA-Guides nennen eine Full-Flex- und eine Semi-Flex-Variante für Fern; ultistrats schreibt die NA-Reihenfolge als „BPOG - GPOB“, was der vollen Umkehrung entspricht.",
+      "ja": "NA資料にはファーのフル/セミフレックス両案あり。ultistratsの表記「BPOG - GPOB」は完全逆順に一致。"
+     },
+     "tags": [
+      "debuff",
+      "dodge",
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "limitless-synergy",
+     "names": {
+      "en": "Limitless Synergy",
+      "fr": "Programme synergique LB",
+      "de": "Synergieprogramm LB",
+      "ja": "連携プログラムLB"
+     },
+     "aliases": {
+      "en": [
+       "limitless",
+       "p2 second half",
+       "sagittarius",
+       "beyond defense",
+       "pile pitch"
+      ],
+      "fr": [
+       "limitless"
+      ],
+      "de": [
+       "Limitless"
+      ],
+      "ja": [
+       "連携LB",
+       "サジタリウス",
+       "パイルピッチ"
+      ]
+     },
+     "how": {
+      "en": "Clones tether two random players; tanks take both tethers and point them away. Sagittarius Arrow is a huge line baited on a player (dodge into the boss hitbox). Then the shield clone's Beyond Defense hits one of the two closest (a tank), Pile Pitch stacks on another close player, and Optimized Meteor flares are ignored while everyone stacks with heavy mitigation. Kill M, then F before Laser Shower.",
+      "fr": "Des clones lient deux joueurs au hasard ; les tanks prennent les deux liens et les orientent loin. Flèche du sagittaire est une énorme ligne ciblée sur un joueur (esquive dans la hitbox du boss). Ensuite, Combo bouclier S du clone à bouclier frappe un des deux plus proches (un tank), Lancement de pieu fait un package sur un autre proche, et les brasiers de Météore Oméga sont ignorés pendant que tout le monde se regroupe avec de grosses réductions. Tue M, puis F avant Pluie de lasers.",
+      "de": "Klone verbinden sich mit zwei zufälligen Spielern; Tanks nehmen beide Verbindungen und richten sie weg. Omega-Choral der Pfeile ist eine riesige Linie auf einen Spieler (in die Boss-Hitbox ausweichen). Dann trifft Schildkombo S des Schildklons einen der zwei Nächsten (einen Tank), Neigungsstoß stackt auf einen anderen Nahen, und die Flares von Omega-Meteor werden ignoriert, während alle mit starker Mitigation stacken. M töten, dann W vor Laserschauer.",
+      "ja": "分身の線2本はタンクが取り外へ向ける。サジタリウスアローは1人を狙う巨大直線（ボスのヒットボックス内へ避ける）。続いて盾の分身のシールドコンボSが近い2人のどちらか（タンク）へ、パイルピッチは別の近い人に頭割り、メテオ・オメガのフレアは無視して全員集合・重軽減。Mを倒し、レーザーシャワー前にFを倒す。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Everyone stacks on the edge of Omega-M's hitbox to bait the arrow, then steps in. Tanks bait Beyond Defense at max melee NE and NW; the hit tank runs along the hitbox away and the other tank joins the center stack for Pile Pitch.",
+        "fr": "Tout le monde se regroupe au bord de la hitbox d'Oméga-M pour attirer la flèche, puis entre. Les tanks prennent Combo bouclier à portée max de mêlée NE et NO ; le tank touché longe la hitbox pour s'éloigner et l'autre rejoint le package central pour Lancement de pieu.",
+        "de": "Alle stacken am Rand von Omega-Ms Hitbox, um den Pfeil zu ködern, dann hinein. Tanks ködern Schildkombo auf max. Nahkampfreichweite NO und NW; der getroffene Tank läuft an der Hitbox entlang weg, der andere geht in den mittleren Stack für Neigungsstoß.",
+        "ja": "全員がMのヒットボックス端でアローを誘導し内側へ。タンクは北東・北西の近接最大でシールドコンボを誘導、当たったタンクはヒットボックス沿いに離れ、もう一方は中央の頭割りへ。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Stack at true south outside the circle. MT takes the north tether, ST the south one, both pointed clockwise about five tick marks from the clones. After the arrow, tanks go out toward the shield clone, everyone else in the middle of the hitbox.",
+        "fr": "Regroupement au vrai sud hors du cercle. Le MT prend le lien nord, l'ST le lien sud, tous deux orientés dans le sens horaire à environ cinq crans des clones. Après la flèche, les tanks vont vers le clone à bouclier, les autres au milieu de la hitbox.",
+        "de": "Stack im echten Süden außerhalb des Kreises. Der MT nimmt die Nord-, der ST die Süd-Verbindung, beide etwa fünf Kerben im Uhrzeigersinn von den Klonen. Nach dem Pfeil gehen die Tanks Richtung Schildklon, alle anderen in die Mitte der Hitbox.",
+        "ja": "真南の円外に集合。MTが北、STが南の線を取り、分身から時計回りに約5目盛り伸ばす。アロー後、タンクは盾の分身側の外、他はヒットボックス中央。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Pre-position south-south-west. Tanks take tethers to the wall near their clone and rotate clockwise along the edge; non-tanks stack under Omega-M. Both tanks bait Beyond Defense, the unhit tank joins the stack, the hit tank moves away.",
+        "fr": "Placement au sud-sud-ouest. Les tanks emmènent les liens au mur près de leur clone et tournent dans le sens horaire le long du bord ; les non-tanks se regroupent sous Oméga-M. Les deux tanks attirent Combo bouclier, celui non touché rejoint le package, celui touché s'éloigne.",
+        "de": "Vorposition Süd-Südwest. Tanks ziehen die Verbindungen an die Wand nahe ihrem Klon und drehen im Uhrzeigersinn am Rand; Nicht-Tanks stacken unter Omega-M. Beide Tanks ködern Schildkombo, der Ungetroffene geht in den Stack, der Getroffene weg.",
+        "ja": "南南西に待機。タンクは線を分身近くの壁へ運び外周を時計回り、非タンクはMの下に集合。シールドコンボは両タンクで誘導、当たらなかった方が頭割りに入り、当たった方は離れる。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "MT takes a tether counter-clockwise from north and ST clockwise from north, both aimed clockwise. The party stacks south of the boss to bait the arrow; the shield goes to the MT/ST side (tanks adjust) and everyone else stacks in the middle for Pile Pitch.",
+        "fr": "Le MT prend un lien dans le sens antihoraire depuis le nord et le ST dans le sens horaire, tous deux orientés dans le sens horaire. Le groupe se package au sud du boss pour attirer la flèche ; le bouclier va du côté MT/ST (les tanks s'ajustent) et tous les autres se packagent au milieu pour Lancement de pieu.",
+        "de": "Der MT nimmt eine Verbindung gegen den Uhrzeigersinn von Norden, der ST im Uhrzeigersinn von Norden, beide im Uhrzeigersinn ausgerichtet. Die Gruppe stackt südlich vom Boss für den Pfeil; der Schild geht auf die MT/ST-Seite (Tanks passen an), alle anderen stacken in der Mitte für Neigungsstoß.",
+        "ja": "MTは北から反時計回り、STは北から時計回りの線を取り、どちらも時計回りに向ける。矢はボスの南に集まって誘導。シールドはMT/ST側（タンク調整）、他は中央でパイルピッチ頭割り。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "tankbuster",
+      "stack",
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "transition",
+   "names": {
+    "en": "Transition: Sniper Cannon",
+    "fr": "Transition : canons longue portée",
+    "de": "Übergang: Wellengeschütz",
+    "ja": "フェーズ移行：狙撃式波動砲"
+   },
+   "mechanics": [
+    {
+     "id": "sniper-cannon",
+     "names": {
+      "en": "Sniper Cannon / High-powered Sniper Cannon (with Wave Repeater and arms)",
+      "fr": "Canon plasma longue portée / surchargé (avec Canon plasma automatique et bras)",
+      "de": "Wellengeschütz „Pfeil“ / „Pfeil +“ (mit Schnellfeuer-Wellenkanone und Armen)",
+      "ja": "狙撃式波動砲 / 狙撃式高出力波動砲（速射式波動砲と腕付き）"
+     },
+     "aliases": {
+      "en": [
+       "transition",
+       "sniper",
+       "p2.5",
+       "arms"
+      ],
+      "fr": [
+       "transition"
+      ],
+      "de": [
+       "Übergang"
+      ],
+      "ja": [
+       "移行",
+       "狙撃",
+       "コロッサスブロー"
+      ]
+     },
+     "how": {
+      "en": "Four players get spread AoEs (lethal without a shield) and two get pair stacks that need a player without debuff. Wave Repeater rings expand from the center and arm units explode in sequence, so you dodge into the first explosion's spot while the debuffs go off. A shield on everyone is required.",
+      "fr": "Quatre joueurs ont des AoE de dispersion (mortelles sans bouclier) et deux des packages à deux qui demandent un joueur sans malus. Les anneaux de Canon plasma automatique s'étendent depuis le centre et les bras explosent à la suite : esquive dans la zone de la première explosion pendant que les malus sautent. Un bouclier sur tout le monde est obligatoire.",
+      "de": "Vier Spieler bekommen Verteil-AoEs (ohne Schild tödlich), zwei Paar-Stacks, die einen Spieler ohne Debuff brauchen. Ringe der Schnellfeuer-Wellenkanone breiten sich von der Mitte aus und Arme explodieren nacheinander, also weicht man in die Stelle der ersten Explosion aus, während die Debuffs auslösen. Ein Schild auf allen ist Pflicht.",
+      "ja": "4人に散開（バリアなしは即死）、2人に無職と組むペア頭割り。速射式波動砲の輪が中央から広がり、腕が順に爆発するので最初の爆発跡へ入りながらデバフを処理。全員にバリア必須。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Spread debuffs take west, north-west, north-east and east; the two stack debuffs pair with the two no-debuff players at south-west and south-east (spreads step forward, stacks back, then fill left to right).",
+        "fr": "Les dispersions prennent ouest, nord-ouest, nord-est et est ; les deux packages se mettent avec les deux sans malus au sud-ouest et au sud-est (dispersions en avant, packages en arrière, puis on remplit de gauche à droite).",
+        "de": "Verteiler nehmen West, Nordwest, Nordost und Ost; die zwei Stacks paaren sich mit den zwei Debuff-freien im Südwesten und Südosten (Verteiler treten vor, Stacks zurück, dann von links nach rechts auffüllen).",
+        "ja": "散開は西・北西・北東・東、頭割り2人は無職2人と南西・南東（散開は前、頭割りは後ろに出て左から埋める）。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Line up horizontally with shields up; stack debuffs pair with a no-debuff player to the north, spread debuffs take the southern half.",
+        "fr": "Alignement horizontal avec boucliers ; les packages se mettent avec un joueur sans malus au nord, les dispersions prennent la moitié sud.",
+        "de": "Horizontal aufstellen mit Schilden; Stacks paaren sich mit einem Debuff-freien im Norden, Verteiler nehmen die Südhälfte.",
+        "ja": "横一列でバリアを受け、頭割りは無職と北、散開は南半分。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Mirror of JP: spread players go to the north edge, stack and no-debuff players to the south edge.",
+        "fr": "Inverse du JP : les dispersions vont au bord nord, les packages et sans malus au bord sud.",
+        "de": "Umgekehrt zu JP: Verteiler gehen an den Nordrand, Stacks und Debuff-freie an den Südrand.",
+        "ja": "JPの逆：散開は北端、頭割りと無職は南端。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Players without a debuff stack on spots ① and ②, the four spread debuffs go to ❶ to ❹; when sorting, follow the HTDH order H1, MT, ST, D1-D4, H2.",
+        "fr": "Les joueurs sans débuff se packagent sur ① et ②, les quatre dispersions vont sur ❶ à ❹ ; pour te placer, suis l'ordre HTDH H1, MT, ST, D1-D4, H2.",
+        "de": "Spieler ohne Debuff stacken auf ① und ②, die vier Verteilungs-Debuffs gehen auf ❶ bis ❹; beim Sortieren gilt die HTDH-Reihenfolge H1, MT, ST, D1-D4, H2.",
+        "ja": "デバフなしは①②で頭割り、散開デバフ4人は❶～❹へ。並びはHTDH（H1、MT、ST、D1～D4、H2）。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "stack",
+      "dodge",
+      "transition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "P3 Omega Reconfigured (Final Omega)",
+    "fr": "P3 Oméga reconfiguré",
+    "de": "P3 Rekonfiguriertes Omega",
+    "ja": "P3 ファイナルオメガ"
+   },
+   "mechanics": [
+    {
+     "id": "hello-world",
+     "names": {
+      "en": "Hello, World",
+      "fr": "Bonjour, le monde",
+      "de": "Hallo, Welt!",
+      "ja": "ハロー・ワールド"
+     },
+     "aliases": {
+      "en": [
+       "hello world",
+       "p3 hello world",
+       "rot",
+       "towers",
+       "christmas tether"
+      ],
+      "fr": [
+       "hello world"
+      ],
+      "de": [
+       "Hello World"
+      ],
+      "ja": [
+       "ハロワ",
+       "ハローワールド",
+       "ニシ"
+      ]
+     },
+     "how": {
+      "en": "Over four rounds, two red-rot and two blue-rot players soak same-coloured towers (one colour gets a defamation, the other a stack), while a blue (Remote) tether pair must break by moving apart and a red-green (Local) tether pair by moving together, passing the rot and the defamation/stack roles on. Missing a pass or breaking too early wipes, then Critical Error and the monitors follow.",
+      "fr": "Sur quatre tours, deux joueurs pourriture rouge et deux pourriture bleue prennent des tours de leur couleur (une couleur a une diffamation, l'autre un package), pendant qu'une paire de liens bleus (distance) doit casser en s'écartant et une paire rouge-vert (proximité) en se rapprochant, en se passant la pourriture et les rôles diffamation/package. Un passage raté ou une rupture trop tôt = wipe, puis Erreur critique et les moniteurs.",
+      "de": "Über vier Runden nehmen zwei Rot- und zwei Blau-Fäule-Spieler gleichfarbige Türme (eine Farbe hat eine Defamation, die andere einen Stack), während ein blaues (Fern-)Verbindungspaar durch Auseinandergehen und ein rot-grünes (Nah-)Paar durch Zusammengehen bricht und Fäule und Defamation/Stack weitergibt. Verpasste Übergabe oder zu frühes Brechen führt zum Wipe, danach Schwerer Ausnahmefehler und die Monitore.",
+      "ja": "4セットにわたり、赤ニシ2人と青ニシ2人が同色の塔を踏む（片方の色に頭割り、もう片方に大範囲）。青線（ファー）は離れて、赤緑線（ニアー）は近づいて切り、ニシと役割を受け渡す。渡し損ねや早切りは全滅。その後クリティカルエラーとモニター。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Spread on clock spots inside the hitbox first. Rot players go to their colour's towers: stack players on the inner side, defamation players on the outer edge. Red-green tethers stand outside the defamation towers, blue tethers between the stack towers. Then the tethers pick up the rot and break; roles rotate each round. Final round: red-green go to the stack towers so their tether breaks before the stacks.",
+        "fr": "D'abord dispersion en horloge dans la hitbox. Les pourritures vont aux tours de leur couleur : packages côté intérieur, diffamations au bord extérieur. Les liens rouge-vert se placent à l'extérieur des tours de diffamation, les bleus entre les tours de package. Ensuite les liens récupèrent la pourriture et cassent ; les rôles tournent chaque tour. Dernier tour : les rouge-vert vont aux tours de package pour que leur lien casse avant les packages.",
+        "de": "Zuerst Uhr-Verteilung in der Hitbox. Fäule-Spieler gehen zu den Türmen ihrer Farbe: Stack-Spieler innen, Defamation-Spieler außen. Rot-grüne Verbindungen stehen außen an den Defamation-Türmen, blaue zwischen den Stack-Türmen. Dann nehmen die Verbindungen die Fäule auf und brechen; die Rollen rotieren jede Runde. Letzte Runde: Rot-grün geht zu den Stack-Türmen, damit die Verbindung vor den Stacks bricht.",
+        "ja": "最初はヒットボックス内で時計散開。ニシ持ちは同色の塔へ：頭割りは内側、大範囲は外側。赤緑線は大範囲の塔の外側、青線は頭割りの塔の間。線がニシを受け取り切る。役割は毎回交代。最終回は赤緑線が頭割りの塔へ行き先に切る。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Tether players wait inside the hitbox, defamation and rot players outside. The defamation takes its coloured tower outside, the synchronization (stack) its tower inside; red-green tethers stand beside the defamations, blue tethers between the stacks. Pass the rot within 3 seconds, then break blue by moving apart and red-green by moving together.",
+        "fr": "Les joueurs liés attendent dans la hitbox, diffamation et pourritures dehors. La diffamation prend sa tour colorée à l'extérieur, la synchronisation (package) sa tour à l'intérieur ; les rouge-vert se placent à côté des diffamations, les bleus entre les packages. Passe la pourriture en moins de 3 secondes, puis casse le bleu en t'écartant et le rouge-vert en te rapprochant.",
+        "de": "Verbundene warten in der Hitbox, Defamation- und Fäule-Spieler draußen. Die Defamation nimmt ihren farbigen Turm außen, die Synchronisation (Stack) ihren Turm innen; rot-grüne Verbindungen stehen neben den Defamations, blaue zwischen den Stacks. Fäule innerhalb von 3 Sekunden weitergeben, dann blau durch Auseinandergehen und rot-grün durch Zusammengehen brechen.",
+        "ja": "線組はヒットボックス内、大範囲とニシ組は外で待機。大範囲は外側の同色塔、シンクロ（頭割り）は内側の塔。赤緑線は大範囲の横、青線は頭割りの間。ニシは3秒以内に渡し、青は離れて、赤緑は近づいて切る。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Stack rots stand close together inside the hitbox, defamation rots on the far edges outside it. Blue tethers stack near a stack rot, step out after the hit, then stack on a rot to break. Christmas (red-green) tethers stand beside the defamation outside the puddle, take rot after the defamation and break together. Repeat four times.",
+        "fr": "Les pourritures package se tiennent ensemble dans la hitbox, les pourritures diffamation aux bords éloignés dehors. Les liens bleus se placent près d'une pourriture package, sortent après le coup, puis vont sur une pourriture pour casser. Les liens « Christmas » (rouge-vert) se placent près de la diffamation hors de la flaque, prennent la pourriture après la diffamation et cassent ensemble. Quatre fois.",
+        "de": "Stack-Fäulen stehen eng in der Hitbox, Defamation-Fäulen an den fernen Rändern draußen. Blaue Verbindungen stehen nahe einer Stack-Fäule, gehen nach dem Treffer raus und stellen sich dann zum Brechen auf eine Fäule. „Christmas“-(rot-grüne) Verbindungen stehen neben der Defamation außerhalb der Pfütze, nehmen nach der Defamation die Fäule und brechen zusammen. Viermal wiederholen.",
+        "ja": "頭割りニシはヒットボックス内で寄り、大範囲ニシは外の遠い端。青線は頭割りニシの近くで受けた後に外へ、その後ニシの上で切る。クリスマス線（赤緑）は大範囲の横の床外、大範囲後にニシを取り、近づいて切る。4回繰り返す。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "When moving, tethers go in and towers go out; towers and tethers are first come, first served, and the rot is passed from the tether players to the tower players.",
+        "fr": "Pendant les déplacements, les liens vont à l'intérieur et les tours à l'extérieur ; tours et liens sont au premier arrivé, et la pourriture passe des joueurs liés aux joueurs des tours.",
+        "de": "Beim Laufen gehen Verbindungen nach innen und Türme nach außen; Türme und Verbindungen nach dem Prinzip wer zuerst kommt, und die Fäule geht von den Verbindungs- zu den Turmspielern.",
+        "ja": "移動時は線が内、塔が外。塔と線は早い者勝ちで、腐敗は線の人から塔の人へ渡す。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "tether",
+      "debuff",
+      "stack"
+     ]
+    },
+    {
+     "id": "oversampled-wave-cannon",
+     "names": {
+      "en": "Oversampled Wave Cannon (monitors)",
+      "fr": "Canon plasma chercheur (moniteurs)",
+      "de": "Fokussierte Wellenkanone (Monitore)",
+      "ja": "検知式波動砲（モニター）"
+     },
+     "aliases": {
+      "en": [
+       "monitors",
+       "p3 monitors",
+       "astoh"
+      ],
+      "fr": [
+       "moniteurs"
+      ],
+      "de": [
+       "Monitore"
+      ],
+      "ja": [
+       "モニター",
+       "検知式",
+       "アスト式"
+      ]
+     },
+     "how": {
+      "en": "Omega faces north and its monitors fire on the east or west side; three players get mini monitors on their left or right. Every player must be hit exactly once by all the monitor beams combined (two hits kill). Then Ion Efflux enrage.",
+      "fr": "Oméga regarde le nord et ses moniteurs tirent du côté est ou ouest ; trois joueurs ont des mini-moniteurs à gauche ou à droite. Chaque joueur doit être touché exactement une fois par l'ensemble des rayons (deux coups tuent). Puis l'enrage Fuite d'ions.",
+      "de": "Omega schaut nach Norden, seine Monitore feuern auf die Ost- oder Westseite; drei Spieler bekommen Mini-Monitore links oder rechts. Jeder Spieler muss von allen Monitorstrahlen zusammen genau einmal getroffen werden (zwei Treffer töten). Dann Enrage Ionenstrom.",
+      "ja": "オメガは北向き、東か西にモニター。3人に左右どちらかのミニモニター。全員がモニター全体からちょうど1回当たるようにする（2回で死亡）。その後イオンエフラクス（時間切れ）。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "West-side vertical conga by priority (T, M, R, H north to south), then take numbered spots: either 'same side monitors' (all monitor players on one side by waymark) or the '1/2 monitor split'; follow your group's call.",
+        "fr": "Conga verticale côté ouest par priorité (T, M, R, H du nord au sud), puis places numérotées : soit « moniteurs du même côté » (tous les moniteurs d'un côté selon les marqueurs), soit le « split 1/2 » ; suis l'annonce de ton groupe.",
+        "de": "Vertikale Conga auf der Westseite nach Priorität (T, M, R, H von Nord nach Süd), dann nummerierte Plätze: entweder „gleiche Seite“ (alle Monitor-Spieler auf einer Seite nach Marker) oder der „1/2-Split“; folge der Ansage deiner Gruppe.",
+        "ja": "西側で縦一列（北からT・近接・遠隔・H）、番号の位置へ。「同じ側モニター」か「1/2分割」かはPTの指定に従う。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Astoh monitors: line up north to south H1, H2, MT, ST, D1-D4. The three monitor players stand on the far side of Omega's monitors and angle slightly so they see both targets; non-monitor 2 stands slightly off center and non-monitor 3 as close to center as possible.",
+        "fr": "Moniteurs Astoh : alignement nord-sud H1, H2, MT, ST, D1-D4. Les trois moniteurs se placent du côté opposé aux moniteurs d'Oméga et s'inclinent légèrement pour viser leurs deux cibles ; le non-moniteur 2 un peu décentré, le 3 le plus près possible du centre.",
+        "de": "Astoh-Monitore: Aufstellung Nord nach Süd H1, H2, MT, ST, D1-D4. Die drei Monitor-Spieler stehen auf der Gegenseite zu Omegas Monitoren und drehen sich leicht, um beide Ziele zu treffen; Nicht-Monitor 2 steht leicht außermittig, Nicht-Monitor 3 möglichst mittig.",
+        "ja": "アスト式：北から H1・H2・MT・ST・D1〜D4 で並ぶ。モニター3人はオメガのモニターの反対側で、2人の対象が見えるよう少し角度をつける。非モニター2は中央少し外、3はできるだけ中央。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Pre-position per the MUR cheatsheet; monitor positions lock as the cast finishes.",
+        "fr": "Placement selon la cheatsheet MUR ; les moniteurs se figent à la fin de l'incantation.",
+        "de": "Vorposition laut MUR-Cheatsheet; die Monitore rasten am Ende des Zaubers ein.",
+        "ja": "MURのシート通りに配置、詠唱完了で向きが確定。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Priority T, D, H (MT, ST, D1-D4, H1, H2) for the fixed numbered spots, mirrored if Omega's monitor is on the other side; players on ①, ④ and ⑤ stand opposite Omega's monitor. Groups that struggle with the DPS check use HTDH priority instead. A JP macro set describes this as a cross layout (十字式) instead.",
+        "fr": "Priorité T, D, H (MT, ST, D1-D4, H1, H2) pour les places numérotées fixes, en miroir si le moniteur d'Oméga est de l'autre côté ; les joueurs sur ①, ④ et ⑤ se placent à l'opposé du moniteur d'Oméga. Les groupes qui peinent au check DPS utilisent la priorité HTDH. Un set de macros JP décrit plutôt une disposition en croix (十字式).",
+        "de": "Priorität T, D, H (MT, ST, D1-D4, H1, H2) für die festen Nummernplätze, gespiegelt, wenn Omegas Monitor auf der anderen Seite ist; Spieler auf ①, ④ und ⑤ stehen gegenüber von Omegas Monitor. Gruppen mit Problemen beim DPS-Check nehmen stattdessen HTDH. Ein JP-Makroset beschreibt stattdessen eine Kreuzaufstellung (十字式).",
+        "ja": "固定の番号位置にTDH優先（MT、ST、D1～D4、H1、H2）。オメガのモニターが逆側なら反転し、①④⑤はオメガのモニターの反対側。DPSチェックが厳しいPTはHTDH優先。別の日本のマクロでは十字式として書かれている。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "MUR's exact spots are only in its image.",
+      "fr": "Les places exactes MUR ne sont que sur son image.",
+      "de": "Die genauen MUR-Plätze gibt es nur als Bild.",
+      "ja": "MURの正確な位置は画像のみ。"
+     },
+     "tags": [
+      "debuff",
+      "enrage"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p4",
+   "names": {
+    "en": "P4 Blue Screen",
+    "fr": "P4 Écran bleu",
+    "de": "P4 Blauer Bildschirm",
+    "ja": "P4 ブルースクリーン"
+   },
+   "mechanics": [
+    {
+     "id": "p4-wave-cannons",
+     "names": {
+      "en": "Wave Cannon stacks / Blue Screen",
+      "fr": "Packages Canon plasma / Écran bleu",
+      "de": "Wellenkanonen-Stacks / Blauer Bildschirm",
+      "ja": "波動砲 / ブルースクリーン"
+     },
+     "aliases": {
+      "en": [
+       "p4",
+       "blue screen",
+       "dps check"
+      ],
+      "fr": [
+       "écran bleu",
+       "check dps"
+      ],
+      "de": [
+       "DPS-Check"
+      ],
+      "ja": [
+       "P4",
+       "ブルスク",
+       "DPSチェック"
+      ]
+     },
+     "how": {
+      "en": "Three times: every player is hit by a single-target beam (spread along the boss's sides), then two line stacks of four go south side by side; any extra hit kills. Wave Repeater rings pass through twice, so step in and out. Omega must be under 20% before Blue Screen.",
+      "fr": "Trois fois : chaque joueur reçoit un rayon individuel (dispersion le long des côtés du boss), puis deux packages en ligne de quatre au sud côte à côte ; un coup en trop tue. Les anneaux de Canon plasma automatique passent deux fois, donc entre et sors. Oméga doit être sous 20 % avant Écran bleu.",
+      "de": "Dreimal: Jeder Spieler wird von einem Einzelstrahl getroffen (an den Bossseiten verteilen), dann zwei Viererlinien-Stacks nebeneinander im Süden; jeder zusätzliche Treffer tötet. Die Ringe der Schnellfeuer-Wellenkanone laufen zweimal durch, also rein und raus. Omega muss vor Blauer Bildschirm unter 20 % sein.",
+      "ja": "3回：全員に単体の波動砲（ボス左右に散開）→南で4人ずつ直線頭割り2本。余計に当たると死亡。速射式の輪が2回来るので出入り。ブルースクリーン前にHP20%未満にする。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Spread north to south tank, ranged, healer, melee on each side. If both stacks are on one side, a melee from the other side flexes (check only whether your own side has a stack).",
+        "fr": "Dispersion du nord au sud tank, distance, soigneur, mêlée de chaque côté. Si les deux packages sont d'un côté, un mêlée de l'autre côté flex (vérifie seulement si ton côté a un package).",
+        "de": "Verteilung von Nord nach Süd Tank, Fernkampf, Heiler, Nahkampf auf jeder Seite. Sind beide Stacks auf einer Seite, flext ein Nahkämpfer der anderen Seite (nur prüfen, ob die eigene Seite einen Stack hat).",
+        "ja": "各側で北からT・遠隔・H・近接。頭割りが片側に2つなら反対側の近接が移動（自分の側に頭割りがあるかだけ確認）。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "TRHM with melee adjust: if your side has both stack markers the lower one swaps; if your side has none, your melee swaps. Return to your spot after each stack, cutting through the boss.",
+        "fr": "TRHM avec ajustement mêlée : si ton côté a les deux marqueurs, le plus bas change ; si ton côté n'en a aucun, ton mêlée change. Reviens à ta place après chaque package en coupant par le boss.",
+        "de": "TRHM mit Nahkampf-Anpassung: Hat deine Seite beide Marker, wechselt der untere; hat sie keinen, wechselt dein Nahkämpfer. Nach jedem Stack durch den Boss zurück an deinen Platz.",
+        "ja": "TRHM近接調整：自分の側に頭割り2つなら下の人が移動、1つもなければ近接が移動。各頭割り後はボスを抜けて元の位置へ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "If both stacks land on one side, the southmost stack moves across and the opposite melee flexes.",
+        "fr": "Si les deux packages tombent d'un côté, le package le plus au sud traverse et le mêlée opposé flex.",
+        "de": "Landen beide Stacks auf einer Seite, wechselt der südlichste Stack hinüber und der gegenüberliegende Nahkämpfer flext.",
+        "ja": "頭割りが片側に2つなら南側が反対へ、反対側の近接がフレックス。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "MT and ST in front, D3 and D4 on the flanks, H1 and H2 in the middle, D1 and D2 at the back; the stacks go south and D1/D2 are the ones who swap sides.",
+        "fr": "MT et ST devant, D3 et D4 sur les flancs, H1 et H2 au milieu, D1 et D2 derrière ; les packages vont au sud et ce sont D1/D2 qui changent de côté.",
+        "de": "MT und ST vorn, D3 und D4 an den Flanken, H1 und H2 in der Mitte, D1 und D2 hinten; die Stacks gehen nach Süden und D1/D2 sind diejenigen, die die Seite wechseln.",
+        "ja": "MT・STが前、D3・D4が横、H1・H2が中、D1・D2が後ろ。頭割りは南で、入れ替えはD1/D2。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Some descriptions say the stack swaps, others say the melee swaps; in practice it is the same 4/4 split.",
+      "fr": "Certaines descriptions disent que le package change, d'autres que c'est le mêlée ; en pratique c'est le même partage 4/4.",
+      "de": "Manche Beschreibungen sagen, der Stack wechselt, andere der Nahkämpfer; praktisch ist es dieselbe 4/4-Aufteilung.",
+      "ja": "頭割りが動くか近接が動くかは資料で表現が違うが、結果は同じ4:4。"
+     },
+     "tags": [
+      "spread",
+      "stack",
+      "dodge",
+      "dps-check"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p5",
+   "names": {
+    "en": "P5 Run: Dynamis (Omega-M and Omega-F)",
+    "fr": "P5 Exécution : Dynamis (Oméga-M et Oméga-F)",
+    "de": "P5 Ausführen: Dynamis (Omega-M und Omega-W)",
+    "ja": "P5 デュナミス（オメガM＆F）"
+   },
+   "mechanics": [
+    {
+     "id": "hello-near-distant-world",
+     "names": {
+      "en": "Hello, Near World / Hello, Distant World (Dynamis stacks)",
+      "fr": "Bonjour, le monde : proximité / distance (cumuls Dynamis)",
+      "de": "Hallo, Welt: Nah / Fern (Dynamis-Stapel)",
+      "ja": "ハロー・ワールド：ニア / ファー（デュナミス）"
+     },
+     "aliases": {
+      "en": [
+       "near world",
+       "distant world",
+       "dynamis",
+       "quickening dynamis"
+      ],
+      "fr": [
+       "dynamis"
+      ],
+      "de": [
+       "Dynamis"
+      ],
+      "ja": [
+       "ニア",
+       "ファー",
+       "デュナミス",
+       "高揚"
+      ]
+     },
+     "how": {
+      "en": "Near World bounces to the closest players and Distant World to the furthest, twice each; every hit gives a Quickening Dynamis stack. Two players hit by the same bounce, or the debuffed player dying, wipes. Over Delta, Sigma and Omega everyone must reach exactly three stacks for P6.",
+      "fr": "Proximité rebondit sur les joueurs les plus proches et Distance sur les plus éloignés, deux fois chacun ; chaque coup donne un cumul de Dynamis. Deux joueurs touchés par le même rebond, ou la mort du joueur porteur, = wipe. Sur Delta, Sigma et Omega, tout le monde doit atteindre exactement trois cumuls pour P6.",
+      "de": "Nah springt zu den nächsten Spielern, Fern zu den entferntesten, je zweimal; jeder Treffer gibt einen Dynamis-Stapel. Zwei Spieler im selben Sprung oder Tod des Debuff-Trägers führt zum Wipe. Über Delta, Sigma und Omega müssen alle genau drei Stapel für P6 erreichen.",
+      "ja": "ニアは近い人、ファーは遠い人へ2回ずつ跳ね、当たるたびにデュナミスの高揚が1つ。同じ跳ねに2人当たる、またはデバフ持ちの死亡で全滅。デルタ・シグマ・オメガを通して全員ちょうど3スタックでP6へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "run-dynamis-delta",
+     "names": {
+      "en": "Run: ****mi* (Delta Version)",
+      "fr": "Exécution : ****mi* Delta",
+      "de": "Ausführen: XXXXmiX (Delta)",
+      "ja": "コード：＊＊＊ミ＊【デルタ】"
+     },
+     "aliases": {
+      "en": [
+       "delta",
+       "p5 delta",
+       "rocket punch",
+       "fists",
+       "blues to beetle"
+      ],
+      "fr": [
+       "delta"
+      ],
+      "de": [
+       "Delta"
+      ],
+      "ja": [
+       "デルタ",
+       "ロケパン"
+      ]
+     },
+     "how": {
+      "en": "Beetle Omega and Final Omega appear; four players have blue (Remote) tethers and four red-green (Local) tethers. Blue and yellow fists (Rocket Punch) must be stacked in opposite colours, arm units are baited, Beyond Defense and Pile Pitch hit the blues, a monitor and Swivel Cannon cleave one side, and two blue players carry Near and Distant World. Done right, six players get one stack.",
+      "fr": "Oméga scarabée et Oméga final apparaissent ; quatre joueurs ont des liens bleus (distance) et quatre des liens rouge-vert (proximité). Les poings bleus et jaunes (Astéropoing) doivent être empilés en couleurs opposées, les bras sont attirés, Combo bouclier et Lancement de pieu frappent les bleus, un moniteur et Canon plasma rotatif frappent un côté, et deux bleus portent Proximité et Distance. Bien fait, six joueurs ont un cumul.",
+      "de": "Käfer-Omega und Final-Omega erscheinen; vier Spieler haben blaue (Fern-) und vier rot-grüne (Nah-)Verbindungen. Blaue und gelbe Fäuste (Raketenschlag) müssen in Gegenfarben gestackt werden, Arme werden geködert, Schildkombo und Neigungsstoß treffen die Blauen, ein Monitor und Rotierende Wellenkanone treffen eine Seite, und zwei Blaue tragen Nah- und Fern-Welt. Richtig gemacht haben sechs Spieler einen Stapel.",
+      "ja": "虫オメガとファイナルオメガが出現。青線（ファー）4人と赤緑線（ニアー）4人。青黄のロケットパンチは反対色で重ね、腕を誘導、シールドコンボとパイルピッチは青線組、モニターと旋回式波動砲が片側、青線2人がニア/ファー。成功で6人に1スタック。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Blues to Beetle, reds to Final. The outer blue tether breaks first and those players stack fists with the inner blues; inner tethers swap with their partner if their fist matches the neighbour's. Outer red-green bait the two arms nearest Final, inner red-green the middle arms, outer blue the arms nearest Beetle; inner blue baits Beyond Defense in the middle. The red-green pair closest to Beetle breaks first.",
+        "fr": "Les bleus au scarabée, les rouges à Final. Le lien bleu extérieur casse en premier et ces joueurs empilent leurs poings avec les bleus intérieurs ; les liens intérieurs échangent avec leur partenaire si leur poing est de la même couleur que le voisin. Les rouge-vert extérieurs attirent les deux bras près de Final, les intérieurs ceux du milieu, le bleu extérieur ceux près du scarabée ; le bleu intérieur attire Combo bouclier au milieu. La paire rouge-vert la plus proche du scarabée casse en premier.",
+        "de": "Blaue zum Käfer, Rote zu Final. Die äußere blaue Verbindung bricht zuerst, diese Spieler stacken ihre Fäuste mit den inneren Blauen; innere Verbindungen tauschen mit dem Partner, wenn ihre Faust die Farbe des Nachbarn hat. Äußere Rot-grüne ködern die zwei Arme nahe Final, innere die mittleren, äußere Blaue die nahe dem Käfer; der innere Blaue ködert Schildkombo in der Mitte. Das rot-grüne Paar am nächsten zum Käfer bricht zuerst.",
+        "ja": "青線は虫、赤緑はファイナルへ。外側の青線が先に切れ、内側の青とパンチを重ねる。内側は隣と同色なら相方と交代。外側赤緑はファイナル側の腕2つ、内側赤緑は中央の腕、外側青は虫側の腕、内側青は中央でシールドコンボ誘導。虫に近い赤緑ペアが先に切る。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "'Kinda awk' Delta: blues line up by Beetle (the long line breaks right away), red-greens by Final stretched so they do not break; at most one inner pair swaps for fist colours. Green pair toward Beetle breaks at 15 seconds left; the last red-green breaks at 2 seconds. Near World three rings from center on the cardinal between the bosses, Distant World at the edge there.",
+        "fr": "Delta « kinda awk » : les bleus s'alignent près du scarabée (la longue ligne casse tout de suite), les rouge-vert près de Final, tendus pour ne pas casser ; au plus une paire intérieure échange pour les couleurs de poings. La paire verte côté scarabée casse à 15 secondes restantes ; le dernier rouge-vert à 2 secondes. Proximité à trois anneaux du centre sur le cardinal entre les boss, Distance au bord au même endroit.",
+        "de": "„Kinda awk“-Delta: Blaue stellen sich am Käfer auf (die lange Linie bricht sofort), Rot-grüne an Final, gespannt, damit sie nicht brechen; höchstens ein inneres Paar tauscht wegen der Faustfarben. Das grüne Paar zum Käfer bricht bei 15 Sekunden Rest, die letzte rot-grüne bei 2 Sekunden. Nah-Welt drei Ringe von der Mitte auf der Himmelsrichtung zwischen den Bossen, Fern-Welt dort am Rand.",
+        "ja": "「awk」式：青は虫側に並び（長い線は即切れ）、赤緑はファイナル側で切れないよう伸ばす。パンチの色合わせで内側ペアは最大1組交代。虫側の緑ペアは残り15秒で切る、最後の赤緑は残り2秒で切る。ニアはボス間の十字上で中央から3リング、ファーは同じ方向の外周。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Christmas (red-green) pairs stack fists together; outer blue waits for its tether to break, then stacks on inner blue. Outer blue baits the intercardinal arms on its side, Christmas players the other arms; inner blue breaks and baits Beyond Defense. Christmas breaks at 15 seconds and about 2 seconds.",
+        "fr": "Les paires « Christmas » (rouge-vert) empilent leurs poings ensemble ; le bleu extérieur attend que son lien casse, puis se met sur le bleu intérieur. Le bleu extérieur attire les bras intercardinaux de son côté, les Christmas les autres ; le bleu intérieur casse et attire Combo bouclier. Les Christmas cassent à 15 secondes et à environ 2 secondes.",
+        "de": "„Christmas“-(rot-grüne) Paare stacken ihre Fäuste zusammen; der äußere Blaue wartet, bis seine Verbindung bricht, und stackt dann auf dem inneren Blauen. Der äußere Blaue ködert die Zwischenrichtungs-Arme seiner Seite, die Christmas-Spieler die anderen; der innere Blaue bricht und ködert Schildkombo. Christmas bricht bei 15 und bei etwa 2 Sekunden.",
+        "ja": "クリスマス（赤緑）ペアは同士でパンチを重ね、外側青は線が切れてから内側青に重なる。外側青は自分側の斜めの腕、クリスマス組は残りの腕。内側青は切ってシールドコンボ誘導。クリスマスは残り15秒と約2秒で切る。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Rocket punches are first come, first served. Near group is ❶❷ and far group is ①②; adjust the inner tethers for the punch colours. Arm and Pile Pitch baits: ② far, ❶ and ❷ near, ① near-middle. ① breaks on its own, ② while moving to bait the arms, ❶ once the monitor debuff and Twice-come Ruin are gone, ❷ once all debuffs are gone.",
+        "fr": "Les Astéropoings sont au premier arrivé. Groupe proche ❶❷ et groupe lointain ①② ; les liens intérieurs s'ajustent pour les couleurs des poings. Bras et Lancement de pieu : ② loin, ❶ et ❷ proches, ① proche-milieu. ① casse tout seul, ② en allant attirer les bras, ❶ quand le débuff moniteur et Marque de ruine II ont disparu, ❷ quand tous les débuffs ont disparu.",
+        "de": "Raketenschläge nach dem Prinzip wer zuerst kommt. Nahgruppe ❶❷, Ferngruppe ①②; die inneren Verbindungen passen sich an die Faustfarben an. Arme und Neigungsstoß: ② fern, ❶ und ❷ nah, ① nah-mittig. ① bricht von selbst, ② beim Laufen zu den Armen, ❶ wenn der Monitor-Debuff und Zeichen des Untergangs II weg sind, ❷ wenn alle Debuffs weg sind.",
+        "ja": "ロケパンは早い者勝ち。近❶❷、遠①②で、内側の線はパンチの色で調整。腕とパイルピッチ：②が遠、❶❷が近、①が近の中間。①は自然に切れ、②は腕誘導の移動で切る、❶はモニターのデバフと破滅の刻印：弐が消えたら、❷は全デバフが消えたら切る。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "stack",
+      "debuff"
+     ]
+    },
+    {
+     "id": "delta-second-half",
+     "names": {
+      "en": "Swivel Cannon / Hello World (Delta second half)",
+      "fr": "Canon plasma rotatif / Hello World (Delta, 2e moitié)",
+      "de": "Rotierende Wellenkanone / Hello World (Delta, zweite Hälfte)",
+      "ja": "旋回式波動砲／ハロワ（デルタ後半）"
+     },
+     "aliases": {
+      "en": [
+       "delta second half",
+       "swivel cannon",
+       "beetle cleave",
+       "delta hello world"
+      ],
+      "fr": [
+       "canon plasma rotatif",
+       "delta fin"
+      ],
+      "de": [
+       "Rotierende Wellenkanone",
+       "Delta Ende"
+      ],
+      "ja": [
+       "旋回式波動砲",
+       "デルタ後半",
+       "デルタ ハロワ"
+      ]
+     },
+     "how": {
+      "en": "After Beyond Defense, Pile Pitch and the monitors, Beetle Omega cleaves more than half the arena with Swivel Cannon (his lights show the side). The two blue-tether players with Near and Distant World then place themselves so all six bounces hit different players, while the red-green tethers break at set times: breaking while Twice-come Ruin is still on gives Doom.",
+      "fr": "Après Combo bouclier, Lancement de pieu et les moniteurs, Oméga scarabée frappe plus de la moitié de l'arène avec Canon plasma rotatif (ses lumières montrent le côté). Les deux joueurs à lien bleu avec Proximité et Distance se placent pour que les six rebonds touchent six joueurs différents, et les liens rouge-vert cassent à des moments fixes : casser avec Marque de ruine II encore actif donne Glas.",
+      "de": "Nach Schildkombo, Neigungsstoß und den Monitoren trifft Käfer-Omega mit Rotierender Wellenkanone mehr als die halbe Arena (seine Lichter zeigen die Seite). Die zwei Blau-Verbundenen mit Nah- und Fern-Welt stellen sich so, dass alle sechs Sprünge verschiedene Spieler treffen, und die rot-grünen Verbindungen brechen zu festen Zeiten: Brechen mit noch aktivem Zeichen des Untergangs II gibt Verhängnis.",
+      "ja": "シールドコンボ、パイルピッチ、モニターの後、虫オメガが旋回式波動砲で半分以上を薙ぎ払う（光で向きがわかる）。ニア/ファーを持つ青線2人は6回のジャンプが全部別の人に当たるよう立ち、赤緑線は決まったタイミングで切る。破滅の刻印：弐が残っている間に切ると死の宣告。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Take the cleave direction as north. The two debuffed blues stand on the north-south line: Near World hugging the cleave edge, Distant World at the far wall; the two blues without a debuff go to the intercardinal away from Beetle and back up to the wall. The red-green pair closest to Beetle breaks during Swivel Cannon once every Twice-come Ruin is gone (check the party list); the last red-green breaks after the Hello World magic vulnerability ends.",
+        "fr": "Prends la direction du coup comme nord. Les deux bleus avec débuff se placent sur l'axe nord-sud : Proximité collé au bord du coup, Distance au mur opposé ; les deux bleus sans débuff vont à l'intercardinal loin du scarabée et reculent jusqu'au mur. La paire rouge-vert la plus proche du scarabée casse pendant Canon plasma rotatif quand toutes les Marque de ruine II ont disparu (regarde la liste du groupe) ; le dernier rouge-vert casse après la vulnérabilité magique de Hello World.",
+        "de": "Nimm die Schlagrichtung als Norden. Die zwei Blauen mit Debuff stehen auf der Nord-Süd-Linie: Nah-Welt direkt am Rand des Schlags, Fern-Welt an der fernen Wand; die zwei Blauen ohne Debuff gehen zur Interkardinale weg vom Käfer und zurück an die Wand. Das rot-grüne Paar am nächsten zum Käfer bricht während der Rotierenden Wellenkanone, sobald alle Zeichen des Untergangs II weg sind (Gruppenliste prüfen); das letzte Rot-grüne bricht nach der magischen Verwundbarkeit von Hello World.",
+        "ja": "薙ぎ払いの方向を北とする。デバフ付き青2人は南北線上で、ニアーは薙ぎ払いの縁、ファーは遠い壁。デバフなし青2人は虫から遠い斜めのマーカーから壁際へ。虫に近い赤緑ペアは旋回式波動砲中、全員の破滅の刻印：弐が消えたら（PTリストで確認）切る。最後の赤緑はハロワの魔法被ダメ上昇が切れてから。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "The green pair toward Beetle breaks at 15 seconds left. Near World stands three rings from the center on the cardinal between the two bosses, Distant World at the edge there. The two blues without a debuff go to the edge at the intercardinal away from Beetle, then three notches toward Beetle. The last red-green breaks at 2 seconds.",
+        "fr": "La paire verte côté scarabée casse à 15 secondes restantes. Proximité se met à trois anneaux du centre sur le cardinal entre les deux boss, Distance au bord au même endroit. Les deux bleus sans débuff vont au bord à l'intercardinal loin du scarabée, puis trois crans vers le scarabée. Le dernier rouge-vert casse à 2 secondes.",
+        "de": "Das grüne Paar Richtung Käfer bricht bei 15 Sekunden Rest. Nah-Welt steht drei Ringe von der Mitte auf der Kardinale zwischen den Bossen, Fern-Welt dort am Rand. Die zwei Blauen ohne Debuff gehen an den Rand bei der Interkardinale weg vom Käfer, dann drei Kerben Richtung Käfer. Das letzte Rot-grüne bricht bei 2 Sekunden.",
+        "ja": "虫側の緑ペアは残り15秒で切る。ニアーは2体のボスの間の正面で中央から3本目の線、ファーは同じ方向の外周。デバフなし青2人は虫から遠い斜めの外周から虫側へ3目盛り。最後の赤緑は残り2秒で切る。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Blues without a debuff move to the side opposite Beetle Omega; the outer red-green pair rotates so the player in the cleave ends up under Omega. Red-green breaks at 15 seconds (always safe) and at about 2 seconds; the Hello World spots are only in the MUR image.",
+        "fr": "Les bleus sans débuff vont du côté opposé à Oméga scarabée ; la paire rouge-vert extérieure tourne pour que le joueur dans le coup finisse sous Oméga. Les rouge-vert cassent à 15 secondes (toujours sûr) et vers 2 secondes ; les places Hello World ne sont que dans l'image MUR.",
+        "de": "Blaue ohne Debuff gehen auf die Seite gegenüber Käfer-Omega; das äußere rot-grüne Paar dreht sich so, dass der Spieler im Schlag unter Omega landet. Rot-grün bricht bei 15 Sekunden (immer sicher) und bei etwa 2 Sekunden; die Hello-World-Plätze gibt es nur im MUR-Bild.",
+        "ja": "デバフなし青は虫オメガの反対側へ。外側の赤緑ペアは回って、薙ぎ払い側の人がオメガの下に来るようにする。赤緑は残り15秒（常に安全）と約2秒で切る。ハロワの位置はMURの画像のみ。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Mirror everything if Beetle is on the other side. ❷ takes the inner near spot; Near and Distant World positions are set by the markers.",
+        "fr": "Tout est en miroir si le scarabée est de l'autre côté. ❷ prend la place proche intérieure ; les places Proximité et Distance sont fixées par les marqueurs.",
+        "de": "Alles spiegeln, wenn der Käfer auf der anderen Seite ist. ❷ nimmt den inneren Nahplatz; die Plätze für Nah- und Fern-Welt legen die Marker fest.",
+        "ja": "虫が逆側なら全部反転。❷は内側の近い位置。ニア/ファーの位置はマーカーで決まる。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "MUR and Mana positions for this part are mostly in images; only the principles are given.",
+      "fr": "Les positions MUR et Mana pour cette partie sont surtout dans des images ; seuls les principes sont donnés.",
+      "de": "Die MUR- und Mana-Positionen für diesen Teil gibt es meist nur als Bild; nur die Prinzipien stehen hier.",
+      "ja": "この部分のMURとマナの位置は主に画像のみなので、考え方だけ記載。"
+     },
+     "tags": [
+      "cleave",
+      "tether",
+      "debuff"
+     ]
+    },
+    {
+     "id": "run-dynamis-sigma",
+     "names": {
+      "en": "Run: ****mi* (Sigma Version)",
+      "fr": "Exécution : ****mi* Sigma",
+      "de": "Ausführen: XXXXmiX (Sigma)",
+      "ja": "コード：＊＊＊ミ＊【シグマ】"
+     },
+     "aliases": {
+      "en": [
+       "sigma",
+       "p5 sigma",
+       "sigma towers"
+      ],
+      "fr": [
+       "sigma"
+      ],
+      "de": [
+       "Sigma"
+      ],
+      "ja": [
+       "シグマ"
+      ]
+     },
+     "how": {
+      "en": "Glitch pairs and symbols return. Six players get line markers and spread to set spots (Mid Glitch near the waymarks, Remote at the wall) while arm units bait the furthest players. Then Omega-F knocks everyone into towers (six for Mid, five for Remote) and a rotating Rear Power Unit laser plus Hello World follow. Done right, four players have one stack and four have two.",
+      "fr": "Les paires Glitch et les symboles reviennent. Six joueurs ont des marqueurs de ligne et s'écartent à des places fixes (mi-distance près des marqueurs, distance au mur) pendant que les bras visent les joueurs les plus éloignés. Ensuite Oméga-F repousse tout le monde dans des tours (six en mi-distance, cinq en distance), puis un laser rotatif et Hello World. Bien fait, quatre joueurs ont un cumul et quatre en ont deux.",
+      "de": "Glitch-Paare und Symbole kehren zurück. Sechs Spieler bekommen Linienmarker und verteilen sich auf feste Plätze (Mittel an den Wegmarkern, Fern an der Wand), während Arme die entferntesten Spieler anvisieren. Dann stößt Omega-W alle in Türme (sechs bei Mittel, fünf bei Fern), danach ein rotierender Laser und Hello World. Richtig gemacht haben vier Spieler einen und vier zwei Stapel.",
+      "ja": "グリッチと記号が再び。6人に直線マーカー、決まった位置に散開（ミドルはマーカー前、ファーは壁）、腕は遠い人を狙う。その後オメガFのノックバックで塔へ（ミドル6、ファー5）、回転レーザーとハロワ。成功で1スタック4人・2スタック4人。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Pairs line up in front of Omega-M (north). Two-marker pairs: first goes north/south (left north), second west/east (left west). One-marker pairs: first goes NW/SE (unmarked NW), second NE/SW (unmarked NE). Remember your waymark: it is your tower after the knockback. Hello World uses automarkers.",
+        "fr": "Les paires s'alignent devant Oméga-M (nord). Paires à deux marqueurs : la première nord/sud (gauche au nord), la deuxième ouest/est (gauche à l'ouest). Paires à un marqueur : la première NO/SE (non-marqué NO), la deuxième NE/SO (non-marqué NE). Retiens ton marqueur : c'est ta tour après le recul. Hello World avec automarqueurs.",
+        "de": "Paare stellen sich vor Omega-M (Norden) auf. Zwei-Marker-Paare: das erste Nord/Süd (links Norden), das zweite West/Ost (links Westen). Ein-Marker-Paare: das erste NW/SO (Unmarkierter NW), das zweite NO/SW (Unmarkierter NO). Merke deinen Wegmarker: das ist dein Turm nach dem Rückstoß. Hello World mit Automarkern.",
+        "ja": "Mの前でペア整列（北）。マーカー2つのペア：1組目は南北（左が北）、2組目は東西（左が西）。マーカー1つのペア：1組目は北西/南東（無しが北西）、2組目は北東/南西（無しが北東）。立った場所のマーカーが塔の担当。ハロワはオートマーカー。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Waymark towers: same spread rule (columns ordered circle, cross, triangle, square). Towers are labelled by the waymark you stood beside; Mid stands in the tower center, Remote criss-crosses tethers at the tower edge. For Hello World, three players go to Omega-F by priority H1, MT, ST, D1-D4, H2 (two need one stack and none can hold a Hello debuff).",
+        "fr": "Tours sur marqueurs : même règle de dispersion (colonnes rond, croix, triangle, carré). Les tours portent le nom du marqueur près duquel tu étais ; mi-distance au centre de la tour, distance au bord en croisant les liens. Pour Hello World, trois joueurs vont vers Oméga-F par priorité H1, MT, ST, D1-D4, H2 (deux doivent avoir un cumul et aucun ne doit avoir de malus Hello).",
+        "de": "Wegmarker-Türme: gleiche Verteilregel (Spalten Kreis, Kreuz, Dreieck, Quadrat). Türme heißen nach dem Wegmarker, neben dem du standest; Mittel steht in der Turmmitte, Fern kreuzt die Verbindungen am Turmrand. Für Hello World gehen drei Spieler zu Omega-W nach Priorität H1, MT, ST, D1-D4, H2 (zwei brauchen einen Stapel, keiner darf einen Hello-Debuff haben).",
+        "ja": "マーカー基準の塔：散開ルールは同じ（列は○×△□）。塔は立っていたマーカー名で担当。ミドルは塔の中央、ファーは線を交差させ塔の端。ハロワではH1・MT・ST・D1〜D4・H2の優先で3人がオメガF側（2人は1スタック持ち、ハロワデバフ持ちは不可）。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "The pairs closest to Omega-M are ❶❷ and the pair with nothing is ①②. The side with four towers is relative north; your tower follows the waymark you spread to (A/B top, C/D bottom). For Remote, ①② treat their towers as a two-player soak.",
+        "fr": "Les paires les plus proches d'Oméga-M sont ❶❷ et la paire sans rien ①②. Le côté avec quatre tours est le nord relatif ; ta tour suit le marqueur où tu t'es dispersé (A/B en haut, C/D en bas). En Remote, ①② traitent leurs tours comme une prise à deux.",
+        "de": "Die Paare am nächsten zu Omega-M sind ❶❷, das Paar ohne Marker ①②. Die Seite mit vier Türmen ist relativ Norden; dein Turm folgt dem Wegmarker, an dem du verteilt hast (A/B oben, C/D unten). Bei Remote behandeln ①② ihre Türme als Turm für zwei.",
+        "ja": "オメガMに近いペアが❶❷、何もないペアが①②。塔が4つの側を北とし、塔は散開したマーカーで決まる（A/Bが上、C/Dが下）。リモートの時、①②は2人で踏む塔として扱う。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "MUR uses the same spread rule (northmost two-marker pair to N/S, southmost to E/W, one-marker pairs NW/SE and NE/SW) and automarkers.",
+      "fr": "MUR utilise la même règle de dispersion (paire à deux marqueurs la plus au nord en N/S, la plus au sud en E/O, paires à un marqueur NO/SE et NE/SO) et des automarqueurs.",
+      "de": "MUR nutzt dieselbe Verteilregel (nördlichstes Zwei-Marker-Paar N/S, südlichstes O/W, Ein-Marker-Paare NW/SO und NO/SW) und Automarker.",
+      "ja": "MURも同じ散開ルール（2マーカーの北側ペアは南北、南側は東西、1マーカーは北西/南東と北東/南西）とオートマーカー。"
+     },
+     "tags": [
+      "spread",
+      "knockback",
+      "tower",
+      "debuff"
+     ]
+    },
+    {
+     "id": "sigma-second-half",
+     "names": {
+      "en": "Rear Lasers / Hello, World (Sigma second half)",
+      "fr": "Lasers arrière / Bonjour, le monde (Sigma, 2e moitié)",
+      "de": "Hintere Laser / Hallo, Welt! (Sigma, zweite Hälfte)",
+      "ja": "リアレーザー／ハロー・ワールド（シグマ後半）"
+     },
+     "aliases": {
+      "en": [
+       "sigma second half",
+       "rear lasers",
+       "sigma hello world",
+       "spinning laser"
+      ],
+      "fr": [
+       "lasers arrière",
+       "sigma fin"
+      ],
+      "de": [
+       "Hintere Laser",
+       "Sigma Ende"
+      ],
+      "ja": [
+       "リアレーザー",
+       "シグマ後半",
+       "シグマ ハロワ"
+      ]
+     },
+     "how": {
+      "en": "After the towers Omega-F appears on a cardinal or intercardinal (new north) with two arm units behind her, and a laser in the center rotates almost half a turn (arrows show the direction). With a staff, wait at the laser's edge and follow it after her hit; with blade-legs, hug the laser right away. Three players without a Hello debuff go to Omega-F (two bait the arms and get no stack), the other five go opposite for Near and Distant World. Result: four players with one stack, four with two.",
+      "fr": "Après les tours, Oméga-F apparaît sur un cardinal ou intercardinal (nouveau nord) avec deux bras derrière elle, et un laser au centre tourne de presque un demi-tour (les flèches montrent le sens). Avec le bâton, attends au bord du laser et suis-le après son coup ; avec les patins, colle le laser tout de suite. Trois joueurs sans débuff Hello vont vers Oméga-F (deux attirent les bras et n'ont pas de cumul), les cinq autres en face pour Proximité et Distance. Résultat : quatre joueurs à un cumul, quatre à deux.",
+      "de": "Nach den Türmen erscheint Omega-W auf einer Kardinale oder Interkardinale (neuer Norden) mit zwei Armen hinter ihr, und ein Laser in der Mitte dreht sich fast eine halbe Runde (Pfeile zeigen die Richtung). Mit Stab wartest du am Rand des Lasers und folgst ihm nach ihrem Schlag; mit Klingenbeinen bleibst du sofort dicht am Laser. Drei Spieler ohne Hello-Debuff gehen zu Omega-W (zwei ködern die Arme und bekommen keinen Stapel), die anderen fünf gegenüber für Nah- und Fern-Welt. Ergebnis: vier Spieler mit einem Stapel, vier mit zwei.",
+      "ja": "塔の後、オメガFが正面か斜めに出現（新しい北）し、後ろに腕2つ。中央のレーザーが半周近く回る（矢印で向き）。杖なら縁で待ち、Fの攻撃後に追う。脚（ブレード）なら最初からレーザーに張り付く。ハロワデバフなし3人がオメガF側（2人が腕誘導でスタックなし）、残り5人は反対側でニア/ファー。結果は1スタック4人、2スタック4人。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "The three going north have no Hello debuff, preferring players with one stack; the north Distant bait stands at the north wall and the arm baiters go to the intercardinals. Near World follows the laser 90 degrees to the next cardinal and stands one ring in; Distant World stays on the start cardinal one ring in. First Near bait follows 90 degrees on the wall, second Near bait between that cardinal and the next intercardinal on the wall (not on the intercardinal), south Distant bait on the start cardinal at the wall. Automarkers expected.",
+        "fr": "Les trois qui vont au nord n'ont pas de débuff Hello, de préférence ceux à un cumul ; l'appât Distance nord se met au mur nord et les appâts des bras vont aux intercardinaux. Proximité suit le laser de 90 degrés jusqu'au cardinal suivant, un anneau vers l'intérieur ; Distance reste sur le cardinal de départ, un anneau vers l'intérieur. Premier appât Proximité : 90 degrés, au mur ; second : entre ce cardinal et l'intercardinal suivant, au mur (pas sur l'intercardinal) ; appât Distance sud : cardinal de départ, au mur. Automarqueurs attendus.",
+        "de": "Die drei im Norden haben keinen Hello-Debuff, bevorzugt Spieler mit einem Stapel; der nördliche Fern-Köder steht an der Nordwand, die Arm-Köder gehen auf die Interkardinalen. Nah-Welt folgt dem Laser 90 Grad zur nächsten Kardinale und steht einen Ring innen; Fern-Welt bleibt auf der Startkardinale einen Ring innen. Erster Nah-Köder 90 Grad an der Wand, zweiter zwischen dieser Kardinale und der nächsten Interkardinale an der Wand (nicht auf der Interkardinale), südlicher Fern-Köder auf der Startkardinale an der Wand. Automarker erwartet.",
+        "ja": "北へ行く3人はハロワデバフなし、1スタックの人を優先。北のファー受けは北の壁、腕誘導は斜めへ。ニアーはレーザーを90度追って次の正面の1本内側、ファーは開始の正面で1本内側。ニアー受け1人目は90度先の壁、2人目はその正面と次の斜めの間の壁（斜めには立たない）、南のファー受けは開始の正面の壁。オートマーカー前提。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Pick the three for Omega-F by priority H1, MT, ST, D1-D4, H2: at least two must have one stack and none may hold a Hello debuff. A one-stack tank should bait an arm laser so it keeps HP for the last Solar Ray. Hello holders stand one ring in front of their markers; the first Near bait stops at the edge mark and the second four notches behind. Automarkers are common.",
+        "fr": "Choisis les trois pour Oméga-F par priorité H1, MT, ST, D1-D4, H2 : au moins deux doivent avoir un cumul et aucun ne doit porter de débuff Hello. Un tank à un cumul attire de préférence un laser de bras pour garder ses PV pour le dernier Rayon solaire. Les porteurs Hello se placent un anneau devant leurs marqueurs ; le premier appât Proximité s'arrête au repère du bord, le second quatre crans derrière. Les automarqueurs sont courants.",
+        "de": "Wähle die drei für Omega-W nach Priorität H1, MT, ST, D1-D4, H2: mindestens zwei müssen einen Stapel haben und keiner darf einen Hello-Debuff tragen. Ein Tank mit einem Stapel ködert am besten einen Armlaser, damit er HP für den letzten Sonnenstrahl behält. Hello-Träger stehen einen Ring vor ihren Markern; der erste Nah-Köder stoppt an der Randmarkierung, der zweite vier Kerben dahinter. Automarker sind üblich.",
+        "ja": "オメガF側の3人はH1、MT、ST、D1～D4、H2の優先で選ぶ。2人以上は1スタック、ハロワデバフ持ちは不可。1スタックのタンクは最後のソーラレイのHPを残すため腕レーザーを誘導するとよい。ハロワ持ちはマーカーの1本手前。ニアー受け1人目は外周のマークで止まり、2人目はその4目盛り後ろ。オートマーカー使用が多い。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Three one-stack players go to Omega-F's side and the rest stack opposite. With a staff wait at the edge of the laser until it moves, with blade-legs chase it at once; the Hello World spots are only in the MUR image (groups without automarkers pre-position in a line).",
+        "fr": "Trois joueurs à un cumul vont du côté d'Oméga-F, les autres en face. Avec le bâton, attends au bord du laser qu'il bouge ; avec les patins, poursuis-le tout de suite ; les places Hello World ne sont que dans l'image MUR (sans automarqueurs, on se pré-place en ligne).",
+        "de": "Drei Spieler mit einem Stapel gehen auf Omega-Ws Seite, der Rest gegenüber. Mit Stab wartest du am Laserrand, bis er sich bewegt, mit Klingenbeinen jagst du ihm sofort nach; die Hello-World-Plätze gibt es nur im MUR-Bild (ohne Automarker stellt man sich vorher in einer Reihe auf).",
+        "ja": "1スタックの3人がオメガF側、残りは反対側。杖ならレーザーが動くまで縁で待ち、脚ならすぐ追う。ハロワの位置はMUR画像のみ（オートマーカーなしなら1列で先に並ぶ）。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Everything is relative to Omega-F: markers ①, ② and ③ go near her side, ④ and ⑤ opposite; the spots around the spinning laser are mirrored for its direction. Exact spots are in the cheat sheet.",
+        "fr": "Tout est relatif à Oméga-F : les marqueurs ①, ② et ③ vont de son côté, ④ et ⑤ en face ; les places autour du laser tournant sont en miroir selon son sens. Les places exactes sont dans la cheat sheet.",
+        "de": "Alles relativ zu Omega-W: Marker ①, ② und ③ auf ihrer Seite, ④ und ⑤ gegenüber; die Plätze um den drehenden Laser werden nach seiner Drehrichtung gespiegelt. Genaue Plätze stehen im Cheatsheet.",
+        "ja": "オメガF基準：①②③はF側、④⑤は反対側。回転レーザーの向きで位置を反転。正確な位置は早見表を見てね。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "The Mana marker layout comes from one translated write-up and its image; the MUR spots are image-only.",
+      "fr": "La disposition Mana vient d'une seule traduction et de son image ; les places MUR ne sont qu'en image.",
+      "de": "Das Mana-Markerlayout stammt aus einer einzigen Übersetzung und ihrem Bild; die MUR-Plätze gibt es nur als Bild.",
+      "ja": "マナのマーカー配置は1つの翻訳記事と画像のみ、MURの位置も画像のみ。"
+     },
+     "tags": [
+      "dodge",
+      "debuff"
+     ]
+    },
+    {
+     "id": "run-dynamis-omega",
+     "names": {
+      "en": "Run: ****mi* (Omega Version)",
+      "fr": "Exécution : ****mi* Oméga",
+      "de": "Ausführen: XXXXmiX (Omega)",
+      "ja": "コード：＊＊＊ミ＊【オメガ】"
+     },
+     "aliases": {
+      "en": [
+       "omega version",
+       "p5 omega",
+       "clone dodge"
+      ],
+      "fr": [
+       "oméga"
+      ],
+      "de": [
+       "Omega-Version"
+      ],
+      "ja": [
+       "オメガ",
+       "P5オメガ"
+      ]
+     },
+     "how": {
+      "en": "First and Second in Line Hello debuffs. M/F clone pairs on opposite intercardinals plus Final Omega's cleaves give one safe cardinal at near, mid or far distance; the second dodge is 90 degrees away. Then monitors hit two players and Beetle Omega's two Blaster tethers are taken, so all eight end with three stacks. Final Solar Ray and Blind Faith knock everyone south.",
+      "fr": "Malus Hello Première et Deuxième cible. Les paires de clones M/F aux intercardinaux opposés plus les cleaves d'Oméga final laissent un cardinal sûr à distance proche, moyenne ou loin ; la deuxième esquive est à 90 degrés. Ensuite des moniteurs touchent deux joueurs et les deux liens Électrochoc du scarabée sont pris, pour que les huit finissent à trois cumuls. Dernier Rayon solaire puis Confiance aveugle repousse tout le monde au sud.",
+      "de": "Hello-Debuffs Erstes und Zweites Ziel. M/W-Klonpaare auf gegenüberliegenden Zwischenrichtungen plus Final-Omegas Cleaves lassen eine sichere Himmelsrichtung in naher, mittlerer oder ferner Distanz; das zweite Ausweichen liegt 90 Grad daneben. Dann treffen Monitore zwei Spieler und die zwei Blaster-Verbindungen des Käfers werden genommen, sodass alle acht drei Stapel haben. Letzter Sonnenstrahl und Blindes Vertrauen stoßen alle nach Süden.",
+      "ja": "ファースト/セカンドのハロワ。対角のM/F分身ペアとファイナルの薙ぎで十字の1か所（近・中・遠）が安置、2回目は90度隣。その後モニター2人、虫オメガのブラスター線2本を取り全員3スタック。最後のソーラレイとブラインド・フェイスで南へ飛ばされる。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Dodge calls: Staff + Sword = M waymarks far, Staff + Shield = M waymarks mid, Scythe (blade-legs) + Sword = F waymarks close, Scythe + Shield = M waymarks close. Two-stack players take the monitors (a two-stack Second in Line must). Beetle tethers go to the three-stack players at the wall near Beetle. Automarkers for both sets.",
+        "fr": "Annonces d'esquive : bâton + épée = marqueurs côté M loin, bâton + bouclier = côté M milieu, faux (jambes-lames) + épée = côté F proche, faux + bouclier = côté M proche. Les joueurs à deux cumuls prennent les moniteurs (une Deuxième cible à deux cumuls doit le faire). Les liens du scarabée vont aux joueurs à trois cumuls au mur près du scarabée. Automarqueurs pour les deux séries.",
+        "de": "Ausweichansagen: Stab + Schwert = M-Marker fern, Stab + Schild = M-Marker mittel, Sense (Klingenbeine) + Schwert = W-Marker nah, Sense + Schild = M-Marker nah. Spieler mit zwei Stapeln nehmen die Monitore (ein Zweites Ziel mit zwei Stapeln muss). Käfer-Verbindungen gehen an die Drei-Stapel-Spieler an der Wand nahe dem Käfer. Automarker für beide Sätze.",
+        "ja": "避け方：杖＋剣＝M側の十字・遠、杖＋盾＝M側・中、脚（ブレード）＋剣＝F側・近、脚＋盾＝M側・近。モニターは2スタック持ち（セカンドで2スタックなら必須）。虫の線は3スタック持ちが虫近くの壁で。両セットともオートマーカー。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Same dodge logic: blade-legs F means a near cardinal (away from M if sword, toward M if shield); staff F means toward M (far if sword, mid if shield). Monitors: two-stack players, Second in Line must and First in Line cannot. Three-stack players take Beetle's tethers beside it. Hello players stand one ring in front of their markers.",
+        "fr": "Même logique d'esquive : F jambes-lames = cardinal proche (loin de M avec épée, vers M avec bouclier) ; F bâton = vers M (loin avec épée, milieu avec bouclier). Moniteurs : joueurs à deux cumuls, Deuxième cible obligatoire, Première cible interdite. Les trois cumuls prennent les liens du scarabée à côté de lui. Les porteurs Hello se placent un anneau devant leur marqueur.",
+        "de": "Gleiche Ausweichlogik: W mit Klingenbeinen heißt nahe Himmelsrichtung (weg von M bei Schwert, zu M bei Schild); W mit Stab heißt zu M (fern bei Schwert, mittel bei Schild). Monitore: Zwei-Stapel-Spieler, Zweites Ziel muss, Erstes Ziel darf nicht. Drei-Stapel-Spieler nehmen die Käfer-Verbindungen neben ihm. Hello-Spieler stehen einen Ring vor ihrem Marker.",
+        "ja": "避けの考え方は同じ：Fが脚なら十字の近（Mが剣なら離れ、盾なら寄る）、Fが杖ならM側（剣なら遠、盾なら中）。モニターは2スタック持ち、セカンドは必須、ファーストは不可。3スタック持ちが虫の横で線を取る。ハロワ持ちはマーカーの1リング内側。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Usually go to M cardinals unless the pattern is F (in) with M (out); the second dodge is always 90 degrees from the first. Monitors hit the two-stack players, prioritizing Second in Line; three-stack players then take Beetle's tethers.",
+        "fr": "En général, va sur les cardinaux de M sauf si le schéma est F (dedans) avec M (dehors) ; la deuxième esquive est toujours à 90 degrés de la première. Les moniteurs touchent les joueurs à deux cumuls, Deuxième cible en priorité ; les trois cumuls prennent ensuite les liens du scarabée.",
+        "de": "Meist zu den M-Himmelsrichtungen, außer das Muster ist W (innen) mit M (außen); das zweite Ausweichen liegt immer 90 Grad vom ersten. Monitore treffen die Zwei-Stapel-Spieler, Zweites Ziel zuerst; Drei-Stapel-Spieler nehmen dann die Käfer-Verbindungen.",
+        "ja": "基本はM側の十字、ただしF（内）とM（外）の形は例外。2回目は必ず90度隣。モニターは2スタック持ち（セカンド優先）、その後3スタック持ちが虫の線。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Omega's monitor (first set) and Beetle Omega (second set) are relative north. Markers go by Dynamis stacks: in the first set to two-stack players, in the second to three-stack players; ★ marks Distant World and ◆ Near World.",
+        "fr": "Le moniteur d'Oméga (1re série) et Oméga scarabée (2e série) sont le nord relatif. Les marqueurs suivent les cumuls de Dynamis : en 1re série pour les joueurs à deux cumuls, en 2e pour ceux à trois ; ★ indique Distance et ◆ Proximité.",
+        "de": "Omegas Monitor (erste Runde) und Käfer-Omega (zweite Runde) sind relativ Norden. Marker nach Dynamis-Stapeln: in der ersten Runde für Spieler mit zwei Stapeln, in der zweiten für Spieler mit drei; ★ steht für Fern-Welt, ◆ für Nah-Welt.",
+        "ja": "1回目はオメガのモニター、2回目は虫オメガを北とする。マーカーはデュナミスの数で決め、1回目は2スタック、2回目は3スタックの人へ。★がファー、◆がニアー。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "The MUR rule 'F (in) M (out)' was not explained further in the source.",
+      "fr": "La règle MUR « F (dedans) M (dehors) » n'est pas expliquée plus en détail dans la source.",
+      "de": "Die MUR-Regel „W (innen) M (außen)“ wird in der Quelle nicht weiter erklärt.",
+      "ja": "MURの「F（内）M（外）」はソースに詳しい説明なし。"
+     },
+     "tags": [
+      "dodge",
+      "debuff",
+      "tether"
+     ]
+    },
+    {
+     "id": "omega-second-half",
+     "names": {
+      "en": "Monitors and Beetle tethers (Omega second half)",
+      "fr": "Moniteurs et liens du scarabée (Oméga, 2e moitié)",
+      "de": "Monitore und Käfer-Verbindungen (Omega, zweite Hälfte)",
+      "ja": "モニターと虫の線（オメガ後半）"
+     },
+     "aliases": {
+      "en": [
+       "omega second half",
+       "omega monitors",
+       "beetle tethers",
+       "omega hello world"
+      ],
+      "fr": [
+       "oméga fin",
+       "moniteurs oméga"
+      ],
+      "de": [
+       "Omega Ende",
+       "Omega Monitore"
+      ],
+      "ja": [
+       "オメガ後半",
+       "オメガ モニター",
+       "虫の線"
+      ]
+     },
+     "how": {
+      "en": "During the dodges Final Omega aims a monitor east or west that must hit exactly two players while the First in Line Hello debuffs go off; then Beetle Omega appears on a cardinal with two Blaster tethers (like P1) and the Second in Line debuffs go off. A two-stack player with Second in Line must take a monitor, or Hello World gives them a fourth stack. Everyone must end with three stacks.",
+      "fr": "Pendant les esquives, Oméga final pointe un moniteur à l'est ou à l'ouest qui doit toucher exactement deux joueurs pendant que les débuffs Hello « premier » se déclenchent ; puis Oméga scarabée apparaît sur un cardinal avec deux liens Blaster (comme en P1) et les débuffs « second » se déclenchent. Un joueur à deux cumuls avec « second » doit prendre un moniteur, sinon Hello World lui donne un quatrième cumul. Tout le monde doit finir à trois cumuls.",
+      "de": "Während der Ausweichmanöver richtet Final-Omega einen Monitor nach Osten oder Westen, der genau zwei Spieler treffen muss, während die Hello-Debuffs „Erster“ auslösen; dann erscheint Käfer-Omega auf einer Kardinale mit zwei Blaster-Verbindungen (wie in P1) und die Debuffs „Zweiter“ lösen aus. Ein Spieler mit zwei Stapeln und „Zweiter“ muss einen Monitor nehmen, sonst gibt ihm Hello World einen vierten Stapel. Am Ende müssen alle drei Stapel haben.",
+      "ja": "回避中にファイナルオメガが東か西にモニターを向け、ちょうど2人に当てる。同時に1番目のハロワが発動。その後、虫オメガが正面のどこかに出てP1と同じブラスターの線2本、2番目のハロワが発動。2スタックで2番目の人は必ずモニターを受ける（受けないとハロワで4スタックになる）。最後は全員3スタック。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "First set, monitor side as north: First in Line Near one ring in front of the south waymark, First in Line Distant one ring in on the west or east waymark; Distant baits on the west and east walls, Near baits at the south wall. Monitors (Bind 1 left, Bind 2 right) go to two-stack players, Second in Line first; Distant baits (Attack 1 left, Attack 2 right) to one-stack players without First in Line. Second set, Beetle as north: the two three-stack players take the tethers to the wall at the intercardinals near Beetle, the other four bait.",
+        "fr": "1re série, côté moniteur au nord : Proximité « premier » un anneau devant le marqueur sud, Distance « premier » un anneau vers l'intérieur sur le marqueur ouest ou est ; appâts Distance aux murs ouest et est, appâts Proximité au mur sud. Moniteurs (Entrave 1 à gauche, 2 à droite) pour les joueurs à deux cumuls, « second » en premier ; appâts Distance (Attaque 1 à gauche, 2 à droite) pour les joueurs à un cumul sans « premier ». 2e série, scarabée au nord : les deux joueurs à trois cumuls prennent les liens au mur aux intercardinaux près du scarabée, les quatre autres servent d'appâts.",
+        "de": "Erste Runde, Monitorseite als Norden: „Erster“ Nah einen Ring vor dem Süd-Wegmarker, „Erster“ Fern einen Ring innen auf dem West- oder Ost-Wegmarker; Fern-Köder an den West- und Ostwänden, Nah-Köder an der Südwand. Monitore (Fessel 1 links, 2 rechts) für Spieler mit zwei Stapeln, „Zweiter“ zuerst; Fern-Köder (Angriff 1 links, 2 rechts) für Spieler mit einem Stapel ohne „Erster“. Zweite Runde, Käfer als Norden: die zwei Spieler mit drei Stapeln nehmen die Verbindungen an die Wand bei den Interkardinalen nahe dem Käfer, die anderen vier ködern.",
+        "ja": "1回目はモニター側を北：1番目ニアーは南マーカーの1本手前、1番目ファーは西か東マーカーの1本内側。ファー受けは西と東の壁、ニアー受けは南の壁。モニター（禁止1が左、禁止2が右）は2スタックの人で2番目優先、ファー受け（攻撃1が左、攻撃2が右）は1番目でない1スタックの人。2回目は虫を北：3スタックの2人が虫に近い斜めの壁際で線を取り、残り4人がジャンプ受け。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Monitors go to two-stack players: Second in Line must, First in Line cannot. Hello holders stand one ring in front of their markers, and Near can step slightly away from Distant so the jump lands right. In the second set the three-stack players take the tethers beside Beetle; which side does not matter. Automarkers are used for both sets.",
+        "fr": "Les moniteurs vont aux joueurs à deux cumuls : « second » obligatoirement, « premier » jamais. Les porteurs Hello se placent un anneau devant leurs marqueurs, et Proximité peut s'écarter un peu de Distance pour que le saut tombe bien. En 2e série, les joueurs à trois cumuls prennent les liens à côté du scarabée ; le côté n'a pas d'importance. Automarqueurs pour les deux séries.",
+        "de": "Monitore gehen an Spieler mit zwei Stapeln: „Zweiter“ muss, „Erster“ darf nicht. Hello-Träger stehen einen Ring vor ihren Markern, und Nah kann etwas von Fern weggehen, damit der Sprung richtig landet. In der zweiten Runde nehmen die Spieler mit drei Stapeln die Verbindungen neben dem Käfer; die Seite ist egal. Automarker für beide Runden.",
+        "ja": "モニターは2スタックの人。2番目は必須、1番目は不可。ハロワ持ちはマーカーの1本手前で、ニアーはファーから少し離れるとジャンプが正しく当たる。2回目は3スタックの人が虫の横で線を取る（左右はどちらでもよい）。両方ともオートマーカー。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Two-stack players with Second in Line have priority for the monitors; the three-stack players take Beetle Omega's two tethers and the other six stand as in the MUR image. Blind Faith then knocks everyone to true south.",
+        "fr": "Les joueurs à deux cumuls avec « second » sont prioritaires pour les moniteurs ; les joueurs à trois cumuls prennent les deux liens d'Oméga scarabée et les six autres se placent comme sur l'image MUR. Confiance aveugle projette ensuite tout le monde au vrai sud.",
+        "de": "Spieler mit zwei Stapeln und „Zweiter“ haben Vorrang bei den Monitoren; die Spieler mit drei Stapeln nehmen die zwei Verbindungen von Käfer-Omega, die anderen sechs stellen sich wie im MUR-Bild auf. Blindes Vertrauen stößt danach alle nach echtem Süden.",
+        "ja": "モニターは2スタックで2番目の人が優先。3スタックの人が虫オメガの線2本を取り、他の6人はMUR画像の位置。その後のブラインドフェイスで全員真南へノックバック。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Monitors go to two-stack players and Beetle's tethers to three-stack players; Omega's monitor (first set) and Beetle (second set) are relative north and the markers ★ (Distant) and ◆ (Near) set the Hello spots.",
+        "fr": "Les moniteurs vont aux joueurs à deux cumuls et les liens du scarabée à ceux à trois ; le moniteur d'Oméga (1re série) et le scarabée (2e série) sont le nord relatif, et les marqueurs ★ (Distance) et ◆ (Proximité) fixent les places Hello.",
+        "de": "Monitore an Spieler mit zwei Stapeln, die Käfer-Verbindungen an Spieler mit drei; Omegas Monitor (erste Runde) und der Käfer (zweite Runde) sind relativ Norden, die Marker ★ (Fern) und ◆ (Nah) legen die Hello-Plätze fest.",
+        "ja": "モニターは2スタック、虫の線は3スタックの人。1回目はオメガのモニター、2回目は虫を北とし、★（ファー）と◆（ニアー）のマーカーでハロワの位置が決まる。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "debuff"
+     ]
+    },
+    {
+     "id": "blind-faith",
+     "names": {
+      "en": "Solar Ray / Blind Faith",
+      "fr": "Rayon solaire / Confiance aveugle",
+      "de": "Sonnenstrahl / Blindes Vertrauen",
+      "ja": "ソーラレイ / ブラインド・フェイス"
+     },
+     "aliases": {
+      "en": [
+       "blind faith",
+       "p5 enrage"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ブラインドフェイス"
+      ]
+     },
+     "how": {
+      "en": "Solar Ray is a double tankbuster between versions. Blind Faith is P5's enrage: Omega-F must be under 20% by the end of the cast; it hurts a lot, so mitigate, shield and pre-place regens. Omega-M's Solar Ray hits the top-enmity player after each Run: Dynamis; top the tanks up before the last one if they took Blaster tethers.",
+      "fr": "Rayon solaire est un double tankbuster entre les versions. Confiance aveugle est l'enrage de P5 : Oméga-F doit être sous 20 % à la fin de l'incantation ; ça fait très mal, donc réductions, boucliers et régénérations posées avant. Le Solar Ray d'Omega-M frappe l'inimitié 1 après chaque Run: Dynamis ; remonte les tanks avant le dernier s'ils ont pris des liens Blaster.",
+      "de": "Sonnenstrahl ist ein doppelter Tankbuster zwischen den Versionen. Blindes Vertrauen ist der Enrage von P5: Omega-W muss am Ende des Zaubers unter 20 % sein; es tut sehr weh, also mitigieren, Schilde und vorher Regens setzen. Omega-Ms Solar Ray trifft nach jedem Run: Dynamis die Feindschaft 1; die Tanks vor dem letzten hochheilen, falls sie Blaster-Verbindungen hatten.",
+      "ja": "ソーラレイは各版の間の2連タンク強攻撃。ブラインド・フェイスはP5の時間切れ技：詠唱完了までにFを20%未満に。痛いので軽減・バリア・リジェネを事前に。オメガMのソーラレイは各ランダイナミスの後にヘイト1位に来る。最後の前にブラスターの線を取ったタンクを回復しておく。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "raidwide",
+      "enrage"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p6",
+   "names": {
+    "en": "P6 Alpha Omega",
+    "fr": "P6 Alpha-Oméga",
+    "de": "P6 Alpha-Omega",
+    "ja": "P6 アルファオメガ"
+   },
+   "mechanics": [
+    {
+     "id": "cosmo-memory",
+     "names": {
+      "en": "Cosmo Memory and Dynamis",
+      "fr": "Cosmomémoire et Dynamis",
+      "de": "Kosmospeicher und Dynamis",
+      "ja": "コスモメモリーとデュナミス"
+     },
+     "aliases": {
+      "en": [
+       "p6 start",
+       "tank lb3",
+       "brilliant dynamis"
+      ],
+      "fr": [
+       "lb3 tank"
+      ],
+      "de": [
+       "Tank-LB3"
+      ],
+      "ja": [
+       "コスモメモリー",
+       "タンクLB3"
+      ]
+     },
+     "how": {
+      "en": "Huge raidwide that needs a tank LB3 plus shields. It turns three Dynamis stacks into a buff that protects you; anyone without it (or who dies and loses it) dies to almost anything. Two auto-attack AoEs hit the top-enmity and the furthest player between mechanics, so the off-tank stands outside the hitbox.",
+      "fr": "Énorme dégât de zone qui demande une LB3 tank plus des boucliers. Il transforme trois cumuls Dynamis en un buff protecteur ; sans ce buff (ou en mourant et le perdant), presque tout tue. Entre les mécaniques, deux attaques auto en zone frappent le premier en inimitié et le plus éloigné, donc l'off-tank se tient hors de la hitbox.",
+      "de": "Riesiger Raidschaden, der Tank-LB3 plus Schilde braucht. Er macht aus drei Dynamis-Stapeln einen Schutz-Buff; ohne ihn (oder wer stirbt und ihn verliert) stirbt man an fast allem. Zwischen den Mechaniken treffen zwei AoE-Autoangriffe den Ersten der Feindseligkeit und den Entferntesten, daher steht der Off-Tank außerhalb der Hitbox.",
+      "ja": "タンクLB3＋バリアが必要な超大ダメージ。3スタックが保護バフに変わり、無い人（死んで失った人も）はほぼ何でも即死。ギミック間のAAは敵視1位と最遠の人へ範囲、STはヒットボックス外。"
+     },
+     "strats": [
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "The ST uses the tank LB3.",
+        "fr": "Le ST utilise la LB3 tank.",
+        "de": "Der ST nutzt das Tank-LB3.",
+        "ja": "タンクLB3はST。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "JP Elemental tank LB priority: WAR > PLD > DRK > GNB.",
+      "fr": "Priorité LB tank JP Elemental : GUE > PAL > CHN > PSB.",
+      "de": "JP-Elemental-Tank-LB-Priorität: KRG > PLD > DKR > REV.",
+      "ja": "Elementalのタンク LB優先：戦＞ナ＞暗＞ガ。"
+     },
+     "tags": [
+      "raidwide",
+      "transition"
+     ]
+    },
+    {
+     "id": "flash-gale",
+     "names": {
+      "en": "Flash Gale (auto-attacks)",
+      "fr": "Vent subit (attaques auto)",
+      "de": "Blitzwind (automatische Angriffe)",
+      "ja": "フラッシュウィンド（AA）"
+     },
+     "aliases": {
+      "en": [
+       "autos",
+       "p6 autos",
+       "flash gale",
+       "tank autos"
+      ],
+      "fr": [
+       "autos",
+       "vent subit"
+      ],
+      "de": [
+       "Autoangriffe",
+       "Blitzwind"
+      ],
+      "ja": [
+       "AA",
+       "フラッシュウィンド",
+       "オートアタック"
+      ]
+     },
+     "how": {
+      "en": "Between mechanics Alpha Omega auto-attacks twice; each hit is an AoE on the top-enmity player and on the furthest player. The off-tank stands furthest away, outside the hitbox, so the hits do not stack on one tank. They ignore invulnerabilities, so a tank left at 1 HP must be healed.",
+      "fr": "Entre les mécaniques, Alpha-Oméga attaque deux fois ; chaque coup est une zone sur le joueur en tête d'inimitié et sur le joueur le plus éloigné. Le tank secondaire se tient le plus loin, hors de la hitbox, pour que les coups ne tombent pas sur un seul tank. Ils ignorent les invulnérabilités, donc un tank à 1 PV doit être soigné.",
+      "de": "Zwischen den Mechaniken greift Alpha-Omega zweimal an; jeder Treffer ist eine Fläche auf dem Spieler mit der höchsten Feindseligkeit und auf dem entferntesten Spieler. Der Off-Tank steht am weitesten weg, außerhalb der Hitbox, damit nicht ein Tank beide abbekommt. Sie ignorieren Unverwundbarkeit, ein Tank auf 1 HP muss also geheilt werden.",
+      "ja": "ギミックの間に2回のAA。1位のヘイトと一番遠い人に範囲攻撃。STはヒットボックスの外で一番遠くに立ち、同じタンクに重ならないようにする。無敵を貫通するので、HP1のタンクは回復が必要。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "The off-tank drops tank stance and stays furthest from the boss; everyone else stays inside the hitbox.",
+        "fr": "Le tank secondaire retire sa posture et reste le plus loin du boss ; tous les autres restent dans la hitbox.",
+        "de": "Der Off-Tank nimmt seine Haltung raus und bleibt am weitesten weg; alle anderen bleiben in der Hitbox.",
+        "ja": "STはスタンスを切って一番遠く、他は全員ヒットボックス内。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "The ST stands outside the targeting circle and the rest of the party inside.",
+        "fr": "Le ST se met hors du cercle de ciblage, le reste du groupe à l'intérieur.",
+        "de": "Der ST steht außerhalb des Zielkreises, der Rest der Gruppe innen.",
+        "ja": "STはターゲットサークルの外、他は内側。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "MT north inside the hitbox, ST east outside it, the party southwest inside it.",
+        "fr": "MT au nord dans la hitbox, ST à l'est en dehors, le groupe au sud-ouest dedans.",
+        "de": "MT im Norden in der Hitbox, ST im Osten außerhalb, die Gruppe im Südwesten innen.",
+        "ja": "MTは北の内側、STは東の外側、他は南西の内側。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "cosmo-arrow",
+     "names": {
+      "en": "Cosmo Arrow",
+      "fr": "Cosmoflèche",
+      "de": "Kosmospfeil",
+      "ja": "コスモアロー"
+     },
+     "aliases": {
+      "en": [
+       "exasquares",
+       "arrows",
+       "plus or box"
+      ],
+      "fr": [
+       "flèches"
+      ],
+      "de": [
+       "Pfeile"
+      ],
+      "ja": [
+       "アロー",
+       "コスモアロー"
+      ]
+     },
+     "how": {
+      "en": "Line AoEs that cascade outward in either a plus pattern (starts in the center) or a box pattern (starts on the outside); any hit kills. Wait where the first lines are not, then step into where they already went off. Followed by Cosmo Dive: two tank busters on the closest players and a stack on the furthest.",
+      "fr": "Des lignes qui se propagent vers l'extérieur en forme de plus (commence au centre) ou de carré (commence à l'extérieur) ; un seul coup tue. Attends là où les premières lignes ne sont pas, puis entre là où elles ont déjà explosé. Suivi de Cosmoplongeon : deux tankbusters sur les plus proches et un package sur le plus éloigné.",
+      "de": "Linien-AoEs, die sich nach außen fortsetzen, entweder als Plus (startet in der Mitte) oder als Kasten (startet außen); jeder Treffer tötet. Dort warten, wo die ersten Linien nicht sind, dann in die schon explodierten Bereiche treten. Danach Kosmossturz: zwei Tankbuster auf die Nächsten und ein Stack auf den Entferntesten.",
+      "ja": "十字（中央から）か四角（外から）に外へ広がる直線AoE、当たると死亡。最初のラインが無い所で待ち、爆発済みの所へ入る。続くコスモダイブは近い2人にタンク強攻撃、最遠の人に頭割り。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Dodge together from the southwest safe spot; for Cosmo Dive tanks split left and right forward and the party stacks behind on the agreed spot. The second Cosmo Arrow is dodged in pairs from each intercardinal while Wave Cannon spreads go off, then everyone stacks for the line stack.",
+        "fr": "Esquive ensemble depuis la zone sûre sud-ouest ; pour Cosmoplongeon, les tanks se séparent à gauche et à droite en avant et le groupe se regroupe derrière sur le point convenu. La deuxième Cosmoflèche s'esquive en paires depuis chaque intercardinal pendant les dispersions Canon plasma, puis tout le monde se regroupe pour le package en ligne.",
+        "de": "Gemeinsam vom sicheren Südwest-Punkt ausweichen; für Kosmossturz gehen die Tanks links und rechts nach vorne, die Gruppe stackt dahinter am abgesprochenen Punkt. Der zweite Kosmospfeil wird paarweise von jeder Zwischenrichtung ausgewichen, während Wellenkanonen-Verteilungen auslösen, dann stacken alle für den Linien-Stack.",
+        "ja": "南西の安置からまとめて回避。コスモダイブはタンクが前方左右、PTは後方の決めた位置で頭割り。2回目のアローは各斜めにペアで避けつつ波動砲散開、最後に直線頭割りへ集合。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Read whether the inner or outer lines appear first and dodge accordingly; tanks take Cosmo Dive with mitigation and the rest stack on the furthest player. The second arrow is resolved together with the Wave Cannon spreads, then the east stack.",
+        "fr": "Regarde si les lignes intérieures ou extérieures apparaissent en premier et esquive en conséquence ; les tanks prennent Cosmoplongeon avec réductions et les autres se regroupent sur le plus éloigné. La deuxième flèche se fait avec les dispersions Canon plasma, puis le package à l'est.",
+        "de": "Erkennen, ob innere oder äußere Linien zuerst kommen, und entsprechend ausweichen; Tanks nehmen Kosmossturz mit Mitigation, der Rest stackt auf dem Entferntesten. Der zweite Pfeil läuft zusammen mit den Wellenkanonen-Verteilungen, dann der Stack im Osten.",
+        "ja": "内側と外側どちらのラインが先かを見て回避。コスモダイブはタンクが軽減、他は最遠の人に頭割り。2回目は波動砲散開と同時に処理し、東で頭割り。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Dodge together at southwest; for Cosmo Dive MT goes forward-left, OT forward-right, the rest stack on waymark 3. Second arrow: pairs on each intercardinal, DPS dodge clockwise and supports counter-clockwise, then stack on C.",
+        "fr": "Esquive ensemble au sud-ouest ; pour Cosmoplongeon, MT avant-gauche, OT avant-droite, les autres se regroupent sur le marqueur 3. Deuxième flèche : paires sur chaque intercardinal, DPS esquivent en horaire et supports en anti-horaire, puis package sur C.",
+        "de": "Gemeinsam im Südwesten ausweichen; für Kosmossturz geht der MT nach vorne links, der OT nach vorne rechts, der Rest stackt auf Marker 3. Zweiter Pfeil: Paare auf jeder Zwischenrichtung, DDs weichen im Uhrzeigersinn aus, Supporter dagegen, dann Stack auf C.",
+        "ja": "南西でまとめて回避。コスモダイブはMT前左、ST前右、他はマーカー3で頭割り。2回目は各斜めにペア、DPSは時計、サポートは反時計で避け、Cで頭割り。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "tankbuster",
+      "stack"
+     ]
+    },
+    {
+     "id": "cosmo-dive",
+     "names": {
+      "en": "Cosmo Dive",
+      "fr": "Cosmoplongeon",
+      "de": "Kosmossturz",
+      "ja": "コスモダイブ"
+     },
+     "aliases": {
+      "en": [
+       "cosmo dive",
+       "dive",
+       "p6 busters"
+      ],
+      "fr": [
+       "cosmoplongeon"
+      ],
+      "de": [
+       "Kosmossturz"
+      ],
+      "ja": [
+       "コスモダイブ",
+       "ダイブ"
+      ]
+     },
+     "how": {
+      "en": "Two heavy tankbusters hit the two closest players and a stack hits the furthest player, shared by the other six. It comes after the first Cosmo Arrow and again after the second Unlimited Wave Cannon, where the first melee LB3 is usually used.",
+      "fr": "Deux grosses attaques tank frappent les deux joueurs les plus proches et un package frappe le plus éloigné, partagé par les six autres. Ça arrive après la première Cosmoflèche et de nouveau après le second Canon plasma : Dépassement de limites, où l'on place souvent la première LB3 mêlée.",
+      "de": "Zwei schwere Tankbuster treffen die zwei nächsten Spieler, ein Stack den entferntesten, geteilt von den anderen sechs. Kommt nach dem ersten Kosmospfeil und wieder nach der zweiten Wellenkanone: Grenzwertüberschreitung, wo meist das erste Nahkampf-LB3 kommt.",
+      "ja": "近い2人に強力なタンク攻撃、一番遠い人に頭割り（他6人で受ける）。1回目のコスモアローの後と、2回目の波動砲（エクサ）の後に来る。2回目は1回目の近接LB3を使うことが多い。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Tanks step into the hitbox and split left and right in front; the party stacks behind near the hitbox edge on the agreed spot, then tucks in for the autos.",
+        "fr": "Les tanks entrent dans la hitbox et se séparent à gauche et à droite devant ; le groupe se package derrière près du bord de la hitbox sur la place prévue, puis rentre pour les autos.",
+        "de": "Die Tanks gehen in die Hitbox und teilen sich vorn links und rechts auf; die Gruppe stackt dahinter nahe am Hitbox-Rand auf dem abgesprochenen Platz und geht dann für die Autoangriffe rein.",
+        "ja": "タンクはヒットボックスに入って前方左右に分かれ、PTは決めた場所でヒットボックスの縁に集まり、その後AAのため中へ。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "First one: tanks close to the boss, party at the far end for the stack. Second one (after the sixth puddle): party stays just outside the targeting circle, MT forward-left and ST forward-right.",
+        "fr": "Première : tanks près du boss, groupe au bout opposé pour le package. Seconde (après la sixième flaque) : le groupe reste juste hors du cercle de ciblage, MT devant à gauche et ST devant à droite.",
+        "de": "Erster: Tanks nah am Boss, Gruppe am fernen Ende für den Stack. Zweiter (nach der sechsten Pfütze): Gruppe knapp außerhalb des Zielkreises, MT vorn links und ST vorn rechts.",
+        "ja": "1回目：タンクはボスの近く、PTは遠い側で頭割り。2回目（6回目の床の後）：PTはターゲットサークルのすぐ外、MTは前方左、STは前方右。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "First one: MT forward-left, OT forward-right, party stacks on waymark 3. Second one: tanks move in (MT left, OT right) and the party stays on the hitbox edge.",
+        "fr": "Première : MT devant à gauche, OT devant à droite, groupe en package sur le marqueur 3. Seconde : les tanks rentrent (MT à gauche, OT à droite) et le groupe reste au bord de la hitbox.",
+        "de": "Erster: MT vorn links, OT vorn rechts, Gruppe stackt auf Wegmarker 3. Zweiter: Tanks gehen rein (MT links, OT rechts), die Gruppe bleibt am Hitbox-Rand.",
+        "ja": "1回目：MT前方左、OT前方右、PTはマーカー3で頭割り。2回目：タンクが中へ（MT左、OT右）、PTはヒットボックスの縁。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "First one: MT north inside the hitbox, ST east inside, the party southwest outside. Second one (after the sixth puddle): MT left, ST right, party on the hitbox edge.",
+        "fr": "Première : MT au nord dans la hitbox, ST à l'est dedans, le groupe au sud-ouest dehors. Seconde (après la sixième flaque) : MT à gauche, ST à droite, groupe au bord de la hitbox.",
+        "de": "Erster: MT im Norden in der Hitbox, ST im Osten innen, die Gruppe im Südwesten außen. Zweiter (nach der sechsten Pfütze): MT links, ST rechts, Gruppe am Hitbox-Rand.",
+        "ja": "1回目：MTは北の内側、STは東の内側、PTは南西の外側。2回目（6回目の床の後）：MT左、ST右、PTはヒットボックスの縁。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "stack"
+     ]
+    },
+    {
+     "id": "unlimited-wave-cannon",
+     "names": {
+      "en": "Unlimited Wave Cannon",
+      "fr": "Canon plasma : Dépassement de limites",
+      "de": "Wellenkanone: Grenzwertüberschreitung",
+      "ja": "波動砲：リミッターカット"
+     },
+     "aliases": {
+      "en": [
+       "exaflares",
+       "uwc",
+       "p6 exas"
+      ],
+      "fr": [
+       "exaflares"
+      ],
+      "de": [
+       "Exaflares"
+      ],
+      "ja": [
+       "リミッターカット",
+       "エクサ"
+      ]
+     },
+     "how": {
+      "en": "Four exaflares sweep around the arena while six large puddles are baited on the stacked party. Start under the boss, then rotate into the first exaflare along the hitbox edge. Then Wave Cannon hits four random players and then the other four (spread), followed by a big line stack where tanks stand in front with invulnerability or heavy mitigation.",
+      "fr": "Quatre exaflares balaient l'arène pendant que six grandes flaques sont attirées sur le groupe regroupé. Commence sous le boss, puis tourne dans le premier exaflare le long du bord de la hitbox. Ensuite Canon plasma touche quatre joueurs au hasard puis les quatre autres (dispersion), suivi d'un gros package en ligne où les tanks se placent devant avec invu ou grosses réductions.",
+      "de": "Vier Exaflares fegen durch die Arena, während sechs große Pfützen auf die gestackte Gruppe geködert werden. Unter dem Boss starten, dann am Hitbox-Rand in das erste Exaflare hineindrehen. Danach trifft Wellenkanone vier zufällige Spieler, dann die anderen vier (verteilt), gefolgt von einem großen Linien-Stack, bei dem die Tanks vorne mit Unverwundbarkeit oder starker Mitigation stehen.",
+      "ja": "エクサ4本が回り、集合したPTに大きな床AoEが6回。ボス下から開始し、ヒットボックス端に沿って最初のエクサ側へ回り込む。その後波動砲が4人→残り4人（散開）、最後に大きな直線頭割り（タンクが前で無敵/重軽減）。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "After the sixth puddle run to true clock spots for the spreads, then stack south for the line stack with tanks in front.",
+        "fr": "Après la sixième flaque, va à ta place d'horloge réelle pour les dispersions, puis package au sud pour la ligne, tanks devant.",
+        "de": "Nach der sechsten Pfütze zu den Uhr-Plätzen für die Verteilung, dann Stack im Süden für die Linie, Tanks vorne.",
+        "ja": "6回目の床後に時計の位置で散開、その後南で直線頭割り（タンク前）。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Move out about 1.5 waymarks from the first exaflare and follow its direction; spread, then stack east with both tanks in front (MT invulnerability, ST heavy mitigation, swapped for the second one).",
+        "fr": "Sors d'environ 1,5 marqueur depuis le premier exaflare et suis sa direction ; dispersion, puis package à l'est avec les deux tanks devant (invu du MT, grosses réductions de l'ST, inversé au deuxième).",
+        "de": "Etwa 1,5 Wegmarker vom ersten Exaflare nach außen und seiner Richtung folgen; verteilen, dann Stack im Osten mit beiden Tanks vorn (MT Unverwundbarkeit, ST starke Mitigation, beim zweiten getauscht).",
+        "ja": "最初のエクサから約1.5マーカー外へ出て進行方向に沿う。散開後、東で頭割り（タンク2人が前、MT無敵・ST重軽減、2回目は逆）。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Sprint on the fourth or fifth puddle and mitigate the fifth or sixth; after the sixth go to clock spots, then everyone stacks on C with tanks in front.",
+        "fr": "Sprint à la quatrième ou cinquième flaque et réductions à la cinquième ou sixième ; après la sixième, va aux places d'horloge, puis tout le monde se regroupe sur C, tanks devant.",
+        "de": "Sprint bei der vierten oder fünften Pfütze, Mitigation bei der fünften oder sechsten; nach der sechsten zu den Uhr-Plätzen, dann stacken alle auf C, Tanks vorne.",
+        "ja": "4〜5回目でスプリント、5〜6回目で軽減。6回目後に時計散開、その後Cで頭割り（タンク前）。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Bait the first puddle under the boss, then move to the side of the first exaflare and rotate into it; for the Wave Cannon stack the party gathers on C.",
+        "fr": "Attire la première flaque sous le boss, puis va du côté de la première exaflare et tourne dedans ; pour le package Canon plasma, le groupe se réunit sur C.",
+        "de": "Ködere die erste Pfütze unter dem Boss, geh dann auf die Seite der ersten Exaflare und dreh dich in sie hinein; für den Wellenkanonen-Stack sammelt sich die Gruppe auf C.",
+        "ja": "最初の床はボスの下で誘導し、最初のエクサフレアの横へ移動してその方向に回る。波動砲の頭割りはCに集合。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Waymark C is usually south in these layouts, so MUR and NA stack in the same direction.",
+      "fr": "Le marqueur C est en général au sud dans ces schémas, donc MUR et NA se regroupent dans la même direction.",
+      "de": "Wegmarker C liegt in diesen Layouts meist im Süden, MUR und NA stacken also in dieselbe Richtung.",
+      "ja": "これらの配置ではCは通常南なので、MURとNAは同じ方向で頭割り。"
+     },
+     "tags": [
+      "dodge",
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "p6-wave-cannon",
+     "names": {
+      "en": "Wave Cannon (P6 spreads and line stack)",
+      "fr": "Canon plasma (dispersions et package en ligne P6)",
+      "de": "Wellenkanone (P6 Verteilen und Linien-Stack)",
+      "ja": "波動砲（P6散開と直線頭割り）"
+     },
+     "aliases": {
+      "en": [
+       "p6 wave cannon",
+       "wave cannon spreads",
+       "line stack",
+       "p6 stack"
+      ],
+      "fr": [
+       "canon plasma p6"
+      ],
+      "de": [
+       "Wellenkanone P6"
+      ],
+      "ja": [
+       "P6波動砲",
+       "波動砲散開",
+       "直線頭割り"
+      ]
+     },
+     "how": {
+      "en": "Two sets of four line AoEs hit random players (spread on clock spots; each gives magic vulnerability), then a big line stack hits the whole party and the front players take the most, so tanks stand in front with an invulnerability or heavy mitigation. It comes after the first Unlimited Wave Cannon and again together with the second Cosmo Arrow, where you dodge the arrows while spreading.",
+      "fr": "Deux séries de quatre lignes frappent des joueurs au hasard (dispersion en horloge ; chacune donne une vulnérabilité magique), puis un gros package en ligne frappe tout le groupe et les joueurs devant prennent le plus, donc les tanks se mettent devant avec invulnérabilité ou grosse réduction. Ça arrive après le premier Canon plasma : Dépassement de limites et de nouveau avec la seconde Cosmoflèche, où tu esquives les flèches en te dispersant.",
+      "de": "Zwei Runden mit je vier Linien treffen zufällige Spieler (Uhr-Verteilung; jede gibt magische Verwundbarkeit), dann trifft ein großer Linien-Stack die ganze Gruppe und vorn Stehende bekommen am meisten, also stehen Tanks mit Unverwundbarkeit oder starker Mitigation vorn. Kommt nach der ersten Wellenkanone: Grenzwertüberschreitung und wieder zusammen mit dem zweiten Kosmospfeil, wo du beim Verteilen den Pfeilen ausweichst.",
+      "ja": "ランダム4人ずつ2回の直線（時計散開、魔法被ダメ上昇付き）の後、全体に大きな直線頭割り。前の人ほど痛いのでタンクが無敵か軽減で前に立つ。1回目のエクサの後と、2回目のコスモアローと同時（矢を避けながら散開）に来る。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Spread on true clock spots, then stack south with tanks in front. With the second Cosmo Arrow, start in pairs on each intercardinal; cardinal players rotate back to their clock spots (plus pattern: cardinals hug the side they dodge to and intercardinals stay at max melee; box pattern: cardinals split early), then stack again.",
+        "fr": "Dispersion en vraie horloge, puis package au sud avec les tanks devant. Avec la seconde Cosmoflèche, commence en paires sur chaque intercardinal ; les joueurs des cardinaux reviennent à leur place d'horloge (motif en croix : les cardinaux collent le côté où ils esquivent, les intercardinaux restent au corps à corps max ; motif en carré : les cardinaux se séparent tôt), puis nouveau package.",
+        "de": "Auf echten Uhrplätzen verteilen, dann im Süden stacken, Tanks vorn. Beim zweiten Kosmospfeil startest du paarweise auf jeder Interkardinale; die Kardinalspieler drehen zurück auf ihre Uhrplätze (Plus-Muster: Kardinale bleiben dicht an der Seite, zu der sie ausweichen, Interkardinale auf maximaler Nahkampfdistanz; Kasten-Muster: Kardinale trennen sich früh), dann wieder stacken.",
+        "ja": "真の時計散開、その後南で頭割り、タンクが前。2回目のコスモアロー時は斜めにペアで開始し、正面担当は時計位置へ戻る（十字型なら避ける側に寄り、斜め担当は近接最大距離。四角型なら正面担当が早めに分かれる）。その後また頭割り。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Spread for both sets, then stack on the east side with both tanks in front: one tank uses an invulnerability and the other heavy mitigation, swapped for the second line stack.",
+        "fr": "Dispersion pour les deux séries, puis package du côté est avec les deux tanks devant : un tank utilise son invulnérabilité et l'autre une grosse réduction, inversé pour le second package.",
+        "de": "Für beide Runden verteilen, dann auf der Ostseite stacken, beide Tanks vorn: ein Tank nutzt Unverwundbarkeit, der andere starke Mitigation, beim zweiten Linien-Stack getauscht.",
+        "ja": "2回とも散開し、東で頭割り。タンク2人が前で、片方が無敵、もう片方が強い軽減。2回目は交代。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "After the sixth puddle run to clock spots, then everyone stacks on C with tanks in front. With the second Cosmo Arrow, pairs start on each intercardinal: DPS dodge clockwise and supports counter-clockwise, then stack on C.",
+        "fr": "Après la sixième flaque, file aux places d'horloge, puis tout le monde se package sur C avec les tanks devant. Avec la seconde Cosmoflèche, les paires partent de chaque intercardinal : les DPS esquivent dans le sens horaire et les supports dans le sens antihoraire, puis package sur C.",
+        "de": "Nach der sechsten Pfütze auf die Uhrplätze laufen, dann stacken alle auf C, Tanks vorn. Beim zweiten Kosmospfeil starten Paare auf jeder Interkardinale: DPS weichen im Uhrzeigersinn aus, Supporter gegen den Uhrzeigersinn, dann Stack auf C.",
+        "ja": "6回目の床の後に時計位置へ、その後全員Cで頭割り、タンクが前。2回目のコスモアローは斜めにペアで開始し、DPSは時計回り、タンクヒーラーは反時計回りに避けてからCで頭割り。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Stack on C. For the paired set: MT with D3, H2 with D4, H1 with D1, ST with D2. For the spread set: D3, MT, D4 at the top, H1 and H2 in the middle, D1, ST, D2 at the bottom.",
+        "fr": "Package sur C. Pour la série en paires : MT avec D3, H2 avec D4, H1 avec D1, ST avec D2. Pour la série en dispersion : D3, MT, D4 en haut, H1 et H2 au milieu, D1, ST, D2 en bas.",
+        "de": "Stack auf C. Für die Paar-Runde: MT mit D3, H2 mit D4, H1 mit D1, ST mit D2. Für die Verteil-Runde: D3, MT, D4 oben, H1 und H2 in der Mitte, D1, ST, D2 unten.",
+        "ja": "頭割りはC。ペア散開はMTとD3、H2とD4、H1とD1、STとD2。8方向散開は上にD3・MT・D4、中にH1・H2、下にD1・ST・D2。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "Sources disagree on which Elemental tank uses the invulnerability on the first stack; check your group.",
+      "fr": "Les sources ne sont pas d'accord sur quel tank Elemental met l'invulnérabilité au premier package ; vérifie avec ton groupe.",
+      "de": "Die Quellen sind sich nicht einig, welcher Elemental-Tank beim ersten Stack die Unverwundbarkeit nutzt; frag deine Gruppe.",
+      "ja": "Elementalで1回目の頭割りに無敵を使うタンクは資料により異なる。PTに確認してね。"
+     },
+     "tags": [
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "cosmo-meteor",
+     "names": {
+      "en": "Cosmo Meteor",
+      "fr": "Cosmométéore",
+      "de": "Kosmosmeteor",
+      "ja": "コスモメテオ"
+     },
+     "aliases": {
+      "en": [
+       "meteors",
+       "comets",
+       "lb3 meteor",
+       "flares"
+      ],
+      "fr": [
+       "météores",
+       "comètes"
+      ],
+      "de": [
+       "Meteore",
+       "Kometen"
+      ],
+      "ja": [
+       "メテオ",
+       "コメット"
+      ]
+     },
+     "how": {
+      "en": "Bait a puddle in the center, spread to clock spots for more puddles, then six comets and two meteors spawn. A caster LB3 in the center kills the comets and a ranged LB3 finishes the meteors. Three players get flares and one an unmarked stack, so the party stacks away from the flares.",
+      "fr": "Attire une flaque au centre, écarte-toi en horloge pour d'autres flaques, puis six comètes et deux météores apparaissent. Une LB3 de lanceur au centre tue les comètes et une LB3 distance achève les météores. Trois joueurs ont des brasiers et un a un package non indiqué, donc le groupe se regroupe loin des brasiers.",
+      "de": "Eine Pfütze in der Mitte ködern, auf Uhr-Plätze verteilen für weitere Pfützen, dann erscheinen sechs Kometen und zwei Meteore. Ein Magier-LB3 in der Mitte tötet die Kometen, ein Fernkampf-LB3 erledigt die Meteore. Drei Spieler bekommen Flares und einer einen unmarkierten Stack, also stackt die Gruppe abseits der Flares.",
+      "ja": "中央で床を誘導し時計散開でさらに床。その後コメット6とメテオ2。キャスターLB3を中央に撃ちコメットを倒し、遠隔LB3でメテオを倒す。3人にフレア、1人に表示なしの頭割りがあるので、フレアから離れて集合。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Physical ranged goes north and the main tank northwest; the shield healer usually takes the middle. If the physical ranged has no flare, stack north with flares west, south and east; if they have one, stack south and the other flares go west and east.",
+        "fr": "Le distance physique va au nord et le MT au nord-ouest ; le soigneur à boucliers prend en général le milieu. Si le distance physique n'a pas de brasier, package au nord et brasiers à l'ouest, au sud et à l'est ; s'il en a un, package au sud et les autres brasiers à l'ouest et à l'est.",
+        "de": "Der physische Fernkämpfer geht nach Norden, der MT nach Nordwesten; der Schild-Heiler nimmt meist die Mitte. Hat der physische Fernkämpfer kein Flare, Stack im Norden, Flares West, Süd und Ost; hat er eines, Stack im Süden, die anderen Flares West und Ost.",
+        "ja": "物理遠隔は北、MTは北西、バリアヒーラーが中央になりやすい。物理遠隔にフレアが無ければ北で頭割り（フレアは西・南・東）、あれば南で頭割り（他のフレアは西・東）。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Stack on A; if D3 has a flare, stack on C instead (D3 is the ranged LB3 player).",
+        "fr": "Package sur A ; si D3 a une Brasier, package sur C (D3 fait la LB3 distance).",
+        "de": "Stack auf A; wenn D3 ein Flare hat, stattdessen auf C (D3 macht das Fernkampf-LB3).",
+        "ja": "頭割りはA。D3にフレアが付いたらC（D3がレンジLB3担当）。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "JP Elemental writes it with D3 as the LB3 ranged and the pure healer (AST first) in the middle, which gives the same result; MUR writes it as waymarks A (north) and C (south).",
+      "fr": "JP Elemental l'écrit avec D3 comme distance LB3 et le soigneur pur (AST en premier) au milieu, ce qui donne le même résultat ; MUR l'écrit avec les marqueurs A (nord) et C (sud).",
+      "de": "JP Elemental schreibt es mit D3 als LB3-Fernkämpfer und dem reinen Heiler (AST zuerst) in der Mitte, was dasselbe ergibt; MUR nutzt die Wegmarker A (Norden) und C (Süden).",
+      "ja": "ElementalはD3がLB3役、中央はピュアヒーラー（占星優先）と書くが結果は同じ。MURはマーカーA（北）とC（南）で表記。"
+     },
+     "tags": [
+      "adds",
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "magic-number",
+     "names": {
+      "en": "Magic Number / Run: ****mi* (enrage)",
+      "fr": "Nombre magique / Exécution : ****mi* (enrage)",
+      "de": "Magische Zahl / Ausführen: XXXXmiX (Enrage)",
+      "ja": "マジックナンバー / コード：＊＊＊ミ＊（時間切れ）"
+     },
+     "aliases": {
+      "en": [
+       "magic number",
+       "enrage",
+       "healer lb3"
+      ],
+      "fr": [
+       "nombre magique",
+       "enrage"
+      ],
+      "de": [
+       "Enrage"
+      ],
+      "ja": [
+       "マジックナンバー",
+       "時間切れ",
+       "ヒーラーLB3"
+      ]
+     },
+     "how": {
+      "en": "Twice: a tank LB3 must be up as Magic Number hits, then a 6-second debuff kills everyone unless a healer LB3 removes it. After that the long enrage cast starts, a melee uses the last LB3 and the boss must die before it ends.",
+      "fr": "Deux fois : une LB3 tank doit être active quand Nombre magique frappe, puis un malus de 6 secondes tue tout le monde sauf si une LB3 soigneur le retire. Ensuite la longue incantation d'enrage commence, un mêlée utilise la dernière LB3 et le boss doit mourir avant la fin.",
+      "de": "Zweimal: Ein Tank-LB3 muss aktiv sein, wenn Magische Zahl trifft, danach tötet ein 6-Sekunden-Debuff alle, außer ein Heiler-LB3 entfernt ihn. Danach beginnt der lange Enrage-Zauber, ein Nahkämpfer nutzt den letzten LB3, und der Boss muss vorher sterben.",
+      "ja": "2回：マジックナンバーの瞬間にタンクLB3、その後6秒デバフはヒーラーLB3で解除しないと全滅。その後長い時間切れ詠唱、近接が最後のLB3を使い、終わるまでに倒す。"
+     },
+     "strats": [
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "LB3 order: MT, H1, ST, H2.",
+        "fr": "Ordre des LB3 : MT, H1, ST, H2.",
+        "de": "LB3-Reihenfolge: MT, H1, ST, H2.",
+        "ja": "LB3の順番はMT、H1、ST、H2。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "JP Elemental order: tank LB3 DRK > MT > ST, healer LB3 H1 > H2. A DRK can click off the tank LB to be raised by the healer LB for full mana.",
+      "fr": "Ordre JP Elemental : LB3 tank CHN > MT > ST, LB3 soigneur H1 > H2. Un CHN peut retirer la LB tank pour être relevé par la LB soigneur et récupérer tout son mana.",
+      "de": "JP-Elemental-Reihenfolge: Tank-LB3 DKR > MT > ST, Heiler-LB3 H1 > H2. Ein DKR kann den Tank-LB entfernen, um vom Heiler-LB mit vollem Mana wiederbelebt zu werden.",
+      "ja": "Elementalの順：タンクLB3は暗＞MT＞ST、ヒーラーLB3はH1＞H2。暗黒はタンクLBを外してヒーラーLBで蘇生されMP全快にできる。"
+     },
+     "tags": [
+      "raidwide",
+      "enrage",
+      "dps-check"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "The Omega Protocol (Ultimate) - Console Games Wiki",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/The_Omega_Protocol_(Ultimate)",
+   "lang": "en"
+  },
+  {
+   "title": "Console Games Wiki TOP (strategy links section)",
+   "url": "https://consolegameswiki.com/wiki/TOP",
+   "lang": "en"
+  },
+  {
+   "title": "ultistrats TOP (NA PF strat index)",
+   "url": "https://ultistrats.com/guides/top/",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins TOP Phase 1",
+   "url": "https://www.icy-veins.com/ffxiv/the-omega-protocol-ultimate-phase-1-guide",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins TOP Phase 2",
+   "url": "https://www.icy-veins.com/ffxiv/the-omega-protocol-ultimate-phase-2-guide",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins TOP Phase 3",
+   "url": "https://icy-veins.com/ffxiv/the-omega-protocol-ultimate-phase-3-guide",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins TOP Phase 4",
+   "url": "https://icy-veins.com/ffxiv/the-omega-protocol-ultimate-phase-4-guide",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins TOP Phase 5 Delta",
+   "url": "https://www.icy-veins.com/ffxiv/the-omega-protocol-ultimate-phase-5-guide-delta",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins TOP Phase 5 Sigma",
+   "url": "https://icy-veins.com/ffxiv/the-omega-protocol-ultimate-phase-5-guide-sigma",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins TOP Phase 5 Omega",
+   "url": "https://www.icy-veins.com/ffxiv/the-omega-protocol-ultimate-phase-5-guide-omega",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins TOP Phase 6",
+   "url": "https://www.icy-veins.com/ffxiv/the-omega-protocol-ultimate-phase-6-guide",
+   "lang": "en"
+  },
+  {
+   "title": "Materia Raiding TOP (MUR, OCE)",
+   "url": "https://materiaraiding.pages.dev/ultimate/top",
+   "lang": "en"
+  },
+  {
+   "title": "Tuufless FFXIV Notes - TOP (Elemental)",
+   "url": "https://ffxiv.tuufless.com/elemental/top/",
+   "lang": "en"
+  },
+  {
+   "title": "Tuufless - TOP Elemental phase pages (01-06)",
+   "url": "https://ffxiv.tuufless.com/elemental/top/01_omega/",
+   "lang": "en"
+  },
+  {
+   "title": "The Balance - RDM TOP guide (fight tips)",
+   "url": "https://www.thebalanceffxiv.com/jobs/casters/red-mage/fight-tips/the-omega-protocol-ultimate/",
+   "lang": "en"
+  },
+  {
+   "title": "ふぇにぶろ 絶オメガ検証戦 攻略 (JP mechanic names)",
+   "url": "https://phoenixff14.livedoor.blog/archives/35853282.html",
+   "lang": "ja"
+  },
+  {
+   "title": "XIVAPI v2 (official game text: duty, action, status and NPC names in EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone blog: Mana DC - The Omega Protocol (Ultimate) (English translation of Lily Doll's Mana strats)",
+   "url": "https://eu.finalfantasyxiv.com/lodestone/character/40730370/blog/5536808/",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone blog (ja): これから始める絶オメガ - JP party macros",
+   "url": "https://na.finalfantasyxiv.com/lodestone/character/36478083/blog/5318815",
+   "lang": "ja"
+  },
+  {
+   "title": "Ultimate Uncoiled - TOP PF strats (NAUAR, UAR, LPDU)",
+   "url": "https://ultimateuncoiled.com/top-pug-strats/",
+   "lang": "en"
+  },
+  {
+   "title": "Materia Raiding - TOP (MUR)",
+   "url": "https://materiaraiding.com/ultimate/top",
+   "lang": "en"
+  },
+  {
+   "title": "Aether PF Strats - Omega Protocol",
+   "url": "https://www.thepfstrat.com/u/top",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

@@ -1,0 +1,647 @@
+{
+ "id": "ex-doomtrain",
+ "type": "extreme",
+ "expansion": "DT",
+ "patch": "7.4",
+ "names": {
+  "en": "Hell on Rails (Extreme) - Doomtrain",
+  "fr": "Le Convoi maléfique (extrême) - Glasya-Labolas",
+  "de": "Gok Tajaal - Doomtrain",
+  "ja": "極グラシャラボラス討滅戦"
+ },
+ "aliases": {
+  "en": [
+   "doomtrain ex",
+   "doomtrain extreme",
+   "hell on rails",
+   "train ex",
+   "glasya labolas"
+  ],
+  "fr": [
+   "glasya-labolas extrême",
+   "convoi maléfique"
+  ],
+  "de": [
+   "doomtrain extrem"
+  ],
+  "ja": [
+   "極グラシャラボラス",
+   "グラシャラボラス",
+   "列車"
+  ]
+ },
+ "summary": {
+  "en": "Doomtrain Extreme, fought on a moving train car by car. Mechanics are Dead Man's Overdraught (stored spread or pair stack), Express knockbacks and Windpipe pulls blocked by boxes, turret lasers, a Runaway Train adds phase with an Aether add to burn, Third Rail invisible AoEs, Head-on Emission elevation checks with teleporters, Arcane Revelation rotating circles with conductor stacks, and Psychokinesis spreads in a maze car.",
+  "fr": "Le Convoi maléfique Extrême, combattu wagon par wagon. Mécaniques : Surcharge turbo (dispersion ou paires stockée), poussées de l'Express et aspirations de l'Aspirateur bloquées par les caisses, lasers des tourelles, phase d'adds Train fou avec une sphère à détruire, AoE invisibles du Troisième rail, Charge annihilante avec téléporteurs pour changer de niveau, cercles tournants du Déploiement arcanique avec packages, et Psychokinésie dans un wagon labyrinthe.",
+  "de": "Doomtrain Extrem, Wagen für Wagen auf einem fahrenden Zug. Mechaniken: Toter Übertakt (gespeichertes Verteilen oder Paare), Express-Rückstöße und Sog, die man mit Kisten blockt, Geschütz-Laser, die Add-Phase Endlose Irrfahrt mit einer Äthersphäre, unsichtbare Stromschienen-AoEs, Frontalannihilation mit Teleportern für die Höhe, drehende Kreise beim Ätherausstoß mit Sammeln, und Psychokinese in einem Labyrinth-Wagen.",
+  "ja": "極グラシャラボラス。走る列車の車両ごとに進む。オーバーブースト（散開/ペアの予約）、ブーステッド・エクスプレスのノックバックとバキュームの引き寄せを障害物で防ぐ、随伴機のビーム、果てしなき暴走の異空間（エーテルスフィア）、フラッシュサンダー、ヘッドオン・エリミネーションの上下段、魔法陣展開、サイコキネシス。"
+ },
+ "strats_overview": [
+  {
+   "id": "na-pf",
+   "name": {
+    "en": "NA PF (Hector / raidplan, Static or Normal Intermission, Arcane Cheese or Normal Arcane)",
+    "fr": "PF NA (Hector / raidplan, intermission fixe ou normale, Arcane cheese ou normal)",
+    "de": "NA-PF (Hector / Raidplan, Static oder Normal Intermission, Arcane Cheese oder Normal)",
+    "ja": "NA野良（Hector/レイドプラン、固定/通常の異空間、魔法陣チーズ/通常）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "NAUR terms: Full Hector or the raidplan with Hector Psychokinesis spreads; Static Intermission (healers and melee in boxes around the Aether) or Normal; Arcane Cheese (mitigation, tanks front left, everyone else front right) or Normal Arcane. Light parties left/right, tank+melee front three rows, healer+ranged back three.",
+    "fr": "Termes NAUR : Full Hector ou le raidplan avec les dispersions Psychokinésie de Hector ; intermission fixe (heals et mêlées dans les caisses autour de la sphère) ou normale ; Arcane cheese (mitigation, tanks devant à gauche, les autres devant à droite) ou normal. Light parties gauche/droite, tank+mêlée les trois rangées avant, heal+distance les trois arrière.",
+    "de": "NAUR-Begriffe: Full Hector oder der Raidplan mit Hectors Psychokinese-Verteilung; Static Intermission (Heiler und Nahkampf in Kisten um die Sphäre) oder Normal; Arcane Cheese (Mitigation, Tanks vorne links, alle anderen vorne rechts) oder Normal. Leichtgruppen links/rechts, Tank+Nahkampf vordere drei Reihen, Heiler+Fernkampf hintere drei.",
+    "ja": "NAUR：Full Hectorかレイドプラン（サイコキネシスはHector散開）、異空間は固定式（ヒーラー近接が箱）か通常、魔法陣はチーズ（軽減、タンク左前・他右前）か通常。左右LP、タンク近接は前3列、ヒーラー遠隔は後ろ3列。"
+   },
+   "aliases": {
+    "en": [
+     "hector",
+     "full hector",
+     "naur",
+     "static intermission",
+     "arcane cheese"
+    ],
+    "fr": [
+     "hector",
+     "full hector",
+     "naur",
+     "static intermission",
+     "arcane cheese"
+    ],
+    "de": [
+     "hector",
+     "full hector",
+     "naur",
+     "static intermission",
+     "arcane cheese"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-game8",
+   "name": {
+    "en": "JP Game8 (Nukemaru + Arcane 2:6 soak)",
+    "fr": "JP Game8 (Nukemaru + Déploiement 2:6)",
+    "de": "JP Game8 (Nukemaru + Ätherausstoß 2:6)",
+    "ja": "JP game8（ぬけまる式＋魔法陣2：6受け）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "Based on Nukemaru's video; Arcane Revelation is taken with tanks 2 / others 6 using mitigation and tank LB.",
+    "fr": "D'après la vidéo de Nukemaru ; Déploiement arcanique pris à 2 tanks / 6 autres avec mitigation et LB tank.",
+    "de": "Nach Nukemarus Video; Ätherausstoß mit 2 Tanks / 6 anderen, Mitigation und Tank-LB.",
+    "ja": "ぬけまる氏の動画準拠。魔法陣展開は軽減とタンクLBでT2人・他6人受け。"
+   },
+   "aliases": {
+    "en": [
+     "nukemaru",
+     "game8"
+    ],
+    "fr": [
+     "nukemaru",
+     "game8"
+    ],
+    "de": [
+     "nukemaru",
+     "game8"
+    ],
+    "ja": [
+     "ぬけまる式",
+     "ぬけまる",
+     "ぬけまる式＋魔法陣2：6受け",
+     "nukemaru"
+    ]
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "car1-2",
+   "names": {
+    "en": "Cars 1 and 2",
+    "fr": "Wagons 1 et 2",
+    "de": "Wagen 1 und 2",
+    "ja": "1〜2両目"
+   },
+   "mechanics": [
+    {
+     "id": "overdraught",
+     "names": {
+      "en": "Dead Man's Overdraught",
+      "fr": "Surcharge turbo",
+      "de": "Toter Übertakt",
+      "ja": "オーバーブースト"
+     },
+     "aliases": {
+      "en": [
+       "orbs",
+       "stored spread pairs"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "雷玉"
+      ]
+     },
+     "how": {
+      "en": "Stores spread (8 orbs) or pair stacks (4 orbs), resolved after the next Express or Windpipe; remember which.",
+      "fr": "Stocke dispersion (8 orbes) ou paires (4 orbes), résolu après le prochain Express ou Aspirateur ; retiens lequel.",
+      "de": "Speichert Verteilen (8 Kugeln) oder Paare (4 Kugeln), gelöst nach dem nächsten Express oder Sog; merk es dir.",
+      "ja": "雷玉8つなら散開、4つならペア。ブーステッド系の後に処理。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "stack",
+      "debuff"
+     ]
+    },
+    {
+     "id": "express-windpipe",
+     "names": {
+      "en": "Dead Man's Express / Dead Man's Windpipe",
+      "fr": "Express turbo / Aspirateur turbo",
+      "de": "InterBlitz-Express S / Schneller Sog",
+      "ja": "ブーステッド・エクスプレス / ブーステッド・バキューム"
+     },
+     "aliases": {
+      "en": [
+       "knockback",
+       "pull"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Express knocks everyone back with lightning lines down columns; Windpipe pulls everyone in with an AoE on the front rows. Use the boxes, lightning fields or knockback immunity, then do the stored spread/pairs.",
+      "fr": "Express repousse tout le monde avec des lignes d'éclairs par colonne ; Aspirateur attire tout le monde avec une AoE sur les premières rangées. Utilise les caisses, les champs électriques ou l'anti-poussée, puis la dispersion/paires stockée.",
+      "de": "Express stößt alle zurück mit Blitzlinien in Spalten; Sog zieht alle heran mit AoE auf den vorderen Reihen. Nutz Kisten, Blitzfelder oder Rückstoß-Immunität, dann das gespeicherte Verteilen/Paare.",
+      "ja": "エクスプレスはノックバックと上下段の雷光輪、バキュームは正面へ引き寄せ。障害物を壁にするか、アムレン・堅実で無効化。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "dodge"
+     ]
+    },
+    {
+     "id": "unlimited-express",
+     "names": {
+      "en": "Unlimited Express",
+      "fr": "Express illimité",
+      "de": "Unregional-Express",
+      "ja": "アンリミテッドエクスプレス"
+     },
+     "aliases": {
+      "en": [
+       "car change",
+       "raidwide"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Heavy physical raidwide that destroys the car and moves you to the next one; mitigate.",
+      "fr": "Gros raidwide physique qui détruit le wagon et t'envoie au suivant ; mitige.",
+      "de": "Schwerer physischer Raidwide, der den Wagen zerstört und dich in den nächsten bringt; mitigieren.",
+      "ja": "物理大ダメージで車両破壊、次の車両へ。軽減と牽制。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "transition"
+     ]
+    },
+    {
+     "id": "turret-crossing-burst",
+     "names": {
+      "en": "Turret Crossing / Lightning Burst",
+      "fr": "Tourelles croisées / Explosion électrique",
+      "de": "Kanonenkreuzung / Blitzknall",
+      "ja": "随伴機出撃 / サンダーバースト"
+     },
+     "aliases": {
+      "en": [
+       "turrets",
+       "tank busters"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Turrets on the sides fire lasers across; only normal boxes block them (not lightning fields). Lightning Burst is a magic buster on both tanks, who move out after the laser. Lightning Burst targets the top two in enmity, one hit on each tank.",
+      "fr": "Des tourelles sur les côtés tirent des lasers ; seules les caisses normales les bloquent (pas les champs électriques). Explosion électrique = buster magique sur les deux tanks, qui sortent après le laser. Explosion électrique vise les deux premiers en inimitié, un coup sur chaque tank.",
+      "de": "Geschütze an den Seiten feuern Laser quer; nur normale Kisten blocken sie (keine Blitzfelder). Blitzknall ist ein magischer Buster auf beide Tanks, die nach dem Laser rausgehen. Blitzknall trifft die beiden Ersten in der Feindseligkeit, je einen Treffer pro Tank.",
+      "ja": "タレットのビームは北東・南西の障害物で遮る（雷の床は不可）。サンダーバーストはヘイト1・2位、ビーム後にタンクが前方左右へ。サンダーバーストはヘイト1位と2位が対象で、タンク2人が1発ずつ受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "tankbuster"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "car3",
+   "names": {
+    "en": "Car 3: Runaway Train (adds)",
+    "fr": "Wagon 3 : Train fou (adds)",
+    "de": "Wagen 3: Endlose Irrfahrt (Adds)",
+    "ja": "3両目：果てしなき暴走（異空間）"
+   },
+   "mechanics": [
+    {
+     "id": "runaway-train",
+     "names": {
+      "en": "Runaway Train: Aether + Aetherial Ray / Aetherosote / Aetherochar",
+      "fr": "Train fou : sphère + Rayon éthéré / Choc éthéré",
+      "de": "Endlose Irrfahrt: Äthersphäre + Ätherstrahl / Ätherschlag / Ätherreigen",
+      "ja": "果てしなき暴走：エーテルスフィア＋エーテルレイ / ブラスター / バレット"
+     },
+     "aliases": {
+      "en": [
+       "intermission",
+       "adds",
+       "aether"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "異空間",
+       "スフィア"
+      ]
+     },
+     "how": {
+      "en": "Everyone is teleported and must kill the Aether before the power gauge hits 100. A grounded ghost train cones both tanks; an airborne train puffs twice (healer stacks) or three times (spreads on three random non-tanks). Then a tower stack (Derailment Siege) and Derail: run to the back teleporter.",
+      "fr": "Tout le monde est téléporté et doit tuer la sphère avant que la jauge atteigne 100. Un train fantôme au sol fait des cônes sur les tanks ; un train aérien souffle deux fois (packages sur heals) ou trois fois (dispersion sur trois non-tanks). Puis une tour-package (Déraillement violent) et Déraillement : cours au téléporteur arrière.",
+      "de": "Alle werden teleportiert und müssen die Äthersphäre töten, bevor die Leiste 100 erreicht. Ein Geisterzug am Boden kegelt beide Tanks; ein Zug in der Luft pufft zweimal (Heiler-Sammeln) oder dreimal (Verteilen auf drei Nicht-Tanks). Dann ein Turm-Sammeln (Schienenbruch) und Entgleisung: zum hinteren Teleporter laufen.",
+      "ja": "異空間でエーテルスフィアを魔力100前に削る。外周列車の砲撃2発は3:3頭割り、3発はタンク以外3人に円。散開は内周列車の停止位置を北に。その後ディレールパウンドと後方ワープ。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Static intermission: healers and melee stand in boxes around the Aether; on spread don't move, on stack DPS join their healer; tanks stand close left and close right of the grounded train.",
+        "fr": "Intermission fixe : heals et mêlées dans les caisses autour de la sphère ; dispersion = ne bouge pas, package = DPS avec leur heal ; tanks près à gauche et à droite du train au sol.",
+        "de": "Static Intermission: Heiler und Nahkampf in Kisten um die Sphäre; bei Verteilen nicht bewegen, bei Sammeln gehen DPS zu ihrem Heiler; Tanks nah links und rechts vom Bodenzug.",
+        "ja": "固定式：ヒーラーと近接はスフィア周りの箱、散開は動かない、頭割りはDPSがヒーラーへ。タンクは地上列車の左右近く。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Take the stopping position of the inner train as north for the spreads; the 3:3 stacks and three circles follow the macro.",
+        "fr": "Prends la position d'arrêt du train intérieur comme nord pour les dispersions ; packages 3:3 et cercles selon la macro.",
+        "de": "Nimm die Halteposition des inneren Zugs als Norden für die Verteilung; 3:3-Sammeln und Kreise laut Makro.",
+        "ja": "内周列車の停止位置を北として散開、3:3頭割りと円はマクロ通り。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "dps-check",
+      "tankbuster",
+      "cleave",
+      "stack",
+      "spread",
+      "tower",
+      "transition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "car4",
+   "names": {
+    "en": "Car 4",
+    "fr": "Wagon 4",
+    "de": "Wagen 4",
+    "ja": "4両目"
+   },
+   "mechanics": [
+    {
+     "id": "third-rail",
+     "names": {
+      "en": "Third Rail",
+      "fr": "Troisième rail",
+      "de": "Stromschiene",
+      "ja": "フラッシュサンダー"
+     },
+     "aliases": {
+      "en": [
+       "twister",
+       "snap"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Invisible AoEs under everyone that lock in with a snap sound; stack, then move away right after the snap.",
+      "fr": "AoE invisibles sous chacun qui se fixent avec un claquement ; packe, puis bouge juste après le son.",
+      "de": "Unsichtbare AoEs unter allen, die mit einem Knall feststehen; sammeln, dann direkt nach dem Knall weggehen.",
+      "ja": "見えない範囲、「パンッ」の音で位置確定、その後移動。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "head-on-emission",
+     "names": {
+      "en": "Head-on Emission",
+      "fr": "Charge annihilante",
+      "de": "Frontalannihilation",
+      "ja": "ヘッドオン・エリミネーション"
+     },
+     "aliases": {
+      "en": [
+       "teleporter",
+       "elevation",
+       "up down"
+      ],
+      "fr": [
+       "Head-on Emission"
+      ],
+      "de": [
+       "Head-on Emission"
+      ],
+      "ja": [
+       "ヘッドオンエリミネーション"
+      ]
+     },
+     "how": {
+      "en": "Either a ground AoE (electricity) or an air AoE (headlights); use the teleporters to be on the safe level (JP: blue mouth = go up, red head = go down).",
+      "fr": "Soit une AoE au sol (électricité), soit en l'air (phares) ; prends les téléporteurs pour être au bon niveau (JP : bouche bleue = en haut, tête rouge = en bas).",
+      "de": "Entweder ein Boden-AoE (Strom) oder ein Luft-AoE (Scheinwerfer); nutz die Teleporter, um auf der sicheren Höhe zu sein (JP: blauer Mund = hoch, roter Kopf = runter).",
+      "ja": "口が青なら上段、頭が赤なら下段へ転送装置で。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "arcane-revelation",
+     "names": {
+      "en": "Arcane Revelation",
+      "fr": "Déploiement arcanique",
+      "de": "Ätherausstoß",
+      "ja": "魔法陣展開"
+     },
+     "aliases": {
+      "en": [
+       "arcane",
+       "rotating circle",
+       "conductor"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "魔法陣"
+      ]
+     },
+     "how": {
+      "en": "A lightning circle rotates between four areas and explodes on the next spot when the arms crackle; a tank and a healer are conductors whose explosions are shared stacks. Happens three times per set.",
+      "fr": "Un cercle de foudre tourne entre quatre zones et explose sur le suivant quand les bras crépitent ; un tank et un heal sont conducteurs et chaque explosion est un package. Trois fois par série.",
+      "de": "Ein Blitzkreis wandert zwischen vier Bereichen und explodiert am nächsten, wenn die Arme knistern; ein Tank und ein Heiler sind Leiter, deren Explosionen geteilt werden. Dreimal pro Satz.",
+      "ja": "雷の魔法陣が4か所を回り腕が光ると次の場所で爆発。タンクとヒーラーに頭割りデバフ。1セット3回。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Normal: tank+melee group on the top right platform, healer+ranged bottom left; if both safe spots are front or back, melee right and ranged left, otherwise melee front, ranged back. Cheese: tanks front left, everyone else front right, LP1 mitigates the first hit and LP2 the second.",
+        "fr": "Normal : groupe tank+mêlée sur la plateforme haut droite, heal+distance en bas à gauche ; si les deux safe spots sont devant ou derrière, mêlées à droite et distances à gauche, sinon mêlées devant, distances derrière. Cheese : tanks devant à gauche, les autres devant à droite, LP1 mitige le premier coup et LP2 le second.",
+        "de": "Normal: Tank+Nahkampf oben rechts, Heiler+Fernkampf unten links; liegen beide sicheren Stellen vorne oder hinten, Nahkampf rechts und Fernkampf links, sonst Nahkampf vorne, Fernkampf hinten. Cheese: Tanks vorne links, alle anderen vorne rechts, LG1 mitigiert den ersten Treffer, LG2 den zweiten.",
+        "ja": "通常：タンク近接は右上、ヒーラー遠隔は左下。安地が両方前/後ろなら近接右・遠隔左、それ以外は近接前・遠隔後ろ。チーズ：タンク左前、他右前、LP1が1回目、LP2が2回目を軽減。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "2:6 soak with mitigation in order: first MT group, second ST group, third with tank LB.",
+        "fr": "2:6 avec mitigation à tour de rôle : 1re groupe MT, 2e groupe ST, 3e avec LB tank.",
+        "de": "2:6 mit Mitigation der Reihe nach: erstes MT-Gruppe, zweites ST-Gruppe, drittes mit Tank-LB.",
+        "ja": "2:6受け、軽減は1回目MT組、2回目ST組、3回目タンクLB。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack",
+      "debuff"
+     ]
+    },
+    {
+     "id": "lightning-burst-car4",
+     "names": {
+      "en": "Lightning Burst (car 4)",
+      "fr": "Explosion électrique (wagon 4)",
+      "de": "Blitzknall (Wagen 4)",
+      "ja": "サンダーバースト（4両目）"
+     },
+     "aliases": {
+      "en": [
+       "lightning burst",
+       "tank buster car 4"
+      ],
+      "fr": [
+       "explosion électrique"
+      ],
+      "de": [
+       "blitzknall"
+      ],
+      "ja": [
+       "サンダーバースト"
+      ]
+     },
+     "how": {
+      "en": "Magic tank buster on both tanks (top two in enmity) right before Derailment Siege; mitigate it.",
+      "fr": "Tankbuster magique sur les deux tanks (les deux premiers en inimitié) juste avant Déraillement violent ; utilise tes réductions.",
+      "de": "Magischer Tankbuster auf beide Tanks (die beiden Ersten in der Feindseligkeit) direkt vor Schienenbruch; mitigiere ihn.",
+      "ja": "ディレールパウンド直前に来る魔法のタンク強攻撃で、タンク2人（ヘイト1位・2位）が軽減して受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "derailment-siege",
+     "names": {
+      "en": "Derailment Siege / Derail",
+      "fr": "Déraillement violent / Déraillement",
+      "de": "Schienenbruch / Entgleisung",
+      "ja": "ディレールパウンド / ディレール"
+     },
+     "aliases": {
+      "en": [
+       "tower stack",
+       "car end"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Multi-hit stack tower at the front, then Derail kills everyone on the car, so run to the teleporter at the back.",
+      "fr": "Tour-package multi-coups à l'avant, puis Déraillement tue tout le monde sur le wagon, donc cours au téléporteur arrière.",
+      "de": "Mehrfacher Sammel-Turm vorne, dann tötet Entgleisung alle auf dem Wagen, also zum hinteren Teleporter laufen.",
+      "ja": "前方に連続頭割り、終わったら後方のワープへ。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "MT uses an invulnerability on the second Derailment Siege, OT on the third.",
+        "fr": "Le MT met son invincibilité au deuxième Déraillement violent, l'OT au troisième.",
+        "de": "MT nutzt Unverwundbarkeit beim zweiten Schienenbruch, OT beim dritten.",
+        "ja": "2回目はMT無敵、3回目はST無敵。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "stack",
+      "transition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "car5-6",
+   "names": {
+    "en": "Cars 5 and 6",
+    "fr": "Wagons 5 et 6",
+    "de": "Wagen 5 und 6",
+    "ja": "5〜6両目"
+   },
+   "mechanics": [
+    {
+     "id": "psychokinesis",
+     "names": {
+      "en": "Psychokinesis",
+      "fr": "Psychokinésie",
+      "de": "Psychokinese",
+      "ja": "サイコキネシス"
+     },
+     "aliases": {
+      "en": [
+       "maze",
+       "spreads"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Boxes are removed into a maze; Psychokinesis marks players with big AoEs (physical vulnerability) three times with more targets each time, combined with Third Rail and a tank buster. The tank buster after it hits both tanks, who spread apart with mitigation.",
+      "fr": "Les caisses sont retirées en labyrinthe ; Psychokinésie marque des joueurs avec de grosses AoE (vulnérabilité physique) trois fois avec plus de cibles à chaque fois, avec Troisième rail et un buster. Le tankbuster qui suit frappe les deux tanks, qui s'écartent l'un de l'autre avec leurs réductions de dégâts.",
+      "de": "Die Kisten werden zu einem Labyrinth; Psychokinese markiert Spieler mit großen AoEs (physische Verwundbarkeit) dreimal mit jeweils mehr Zielen, kombiniert mit Stromschiene und einem Tankbuster. Der Tankbuster danach trifft beide Tanks; sie verteilen sich mit Mitigation.",
+      "ja": "障害物が迷路状に。サイコキネシスで大きな円（物理被ダメ上昇）、3回で対象が増える。フラッシュサンダーとタンク強攻撃も。その後のタンク強攻撃はタンク2人が対象で、軽減を使って離れて受ける。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Hector spreads: 1st support left, DPS right; 2nd healer back, tank left, DPS right; 3rd (five players) spread loosely without overlapping and wait for the snap.",
+        "fr": "Dispersions Hector : 1re support à gauche, DPS à droite ; 2e heal derrière, tank à gauche, DPS à droite ; 3e (cinq joueurs) dispersion large sans chevauchement, attends le son.",
+        "de": "Hector-Verteilung: erste Supporter links, DPS rechts; zweite Heiler hinten, Tank links, DPS rechts; dritte (fünf Spieler) locker ohne Überlappen verteilen und auf den Knall warten.",
+        "ja": "Hector散開：1回目サポート左・DPS右、2回目ヒーラー後ろ・タンク左・DPS右、3回目（5人）は重ならずに散開し音を待つ。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Split left and right to bait Third Rail, use the nooks to spread the circles; tanks take the buster.",
+        "fr": "Séparez-vous à gauche et à droite pour baiter le Troisième rail, utilisez les recoins pour écarter les cercles ; les tanks prennent le buster.",
+        "de": "Links und rechts aufteilen, um die Stromschiene zu ködern, die Nischen zum Verteilen nutzen; Tanks nehmen den Buster.",
+        "ja": "左右に分かれてフラッシュサンダー誘導、窪みで円を散開、タンクは強攻撃。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "debuff",
+      "dodge",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "final-car",
+     "names": {
+      "en": "Final car repeats / Derail (enrage)",
+      "fr": "Répétitions du dernier wagon / Déraillement (enrage)",
+      "de": "Wiederholungen im letzten Wagen / Entgleisung (Finalangriff)",
+      "ja": "最終車両〜ディレール（時間切れ）"
+     },
+     "aliases": {
+      "en": [
+       "enrage"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The opposite Overdraught, turrets on the ground on one side and in the air on the other, Psychokinesis, Third Rail, Express/Windpipe, Arcane Revelation twice, Head-on Emission and a last Derailment Siege, then a long Derail cast is the enrage. Lightning Burst hits both tanks again here (after Express/Windpipe and before the last Derailment Siege).",
+      "fr": "La Surcharge opposée, tourelles au sol d'un côté et en l'air de l'autre, Psychokinésie, Troisième rail, Express/Aspirateur, deux Déploiements, Charge annihilante et un dernier Déraillement violent, puis un long Déraillement = enrage. Explosion électrique frappe encore les deux tanks ici (après Express turbo/Aspirateur turbo et avant le dernier Déraillement violent).",
+      "de": "Der entgegengesetzte Übertakt, Geschütze am Boden auf einer und in der Luft auf der anderen Seite, Psychokinese, Stromschiene, Express/Sog, zweimal Ätherausstoß, Frontalannihilation und ein letzter Schienenbruch, dann ist eine lange Entgleisung der Finalangriff. Blitzknall trifft hier erneut beide Tanks (nach InterBlitz-Express S/Schneller Sog und vor dem letzten Schienenbruch).",
+      "ja": "逆のオーバーブースト、片側地上・片側空中の随伴機、サイコキネシス、フラッシュサンダー、ブーステッド、魔法陣2回、ヘッドオン、最後のディレールパウンドの後に長詠唱のディレールで時間切れ。ここでもサンダーバーストがタンク2人に来る（ブーステッド・エクスプレス/バキュームの後と最後のディレールパウンドの前）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage",
+      "tankbuster"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Icy Veins - Hell on Rails (Extreme)",
+   "url": "https://www.icy-veins.com/ffxiv/hell-on-rails-extreme-trial-guide",
+   "lang": "en"
+  },
+  {
+   "title": "NAUR FFXIV - Hell on Rails",
+   "url": "https://naurffxiv.com/extreme/hell-on-rails",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - 極グラシャラボラス",
+   "url": "https://game8.jp/ff14/750586",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot doomtrain-ex",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/trial/doomtrain-ex.ts",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 (official names, Action/BNpcName/Status sheets)",
+   "url": "https://v2.xivapi.com/api/search",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

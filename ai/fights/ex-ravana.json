@@ -1,0 +1,657 @@
+{
+ "id": "ex-ravana",
+ "type": "extreme",
+ "expansion": "HW",
+ "patch": "3.0",
+ "names": {
+  "en": "Thok ast Thok (Extreme)",
+  "fr": "Thok ast Thok (extrême)",
+  "de": "Zenit der Götter - Ravana",
+  "ja": "極ラーヴァナ討滅戦"
+ },
+ "aliases": {
+  "en": [
+   "ex-ravana",
+   "ravana ex",
+   "ravana extreme",
+   "thok ast thok extreme"
+  ],
+  "fr": [
+   "ravana extrême",
+   "thok ast thok extrême"
+  ],
+  "de": [
+   "ravana extrem",
+   "zenit der götter ravana"
+  ],
+  "ja": [
+   "極ラーヴァナ",
+   "極ラヴァ",
+   "ラーヴァナ極"
+  ]
+ },
+ "summary": {
+  "en": "Ravana fights on a small round arena with wooden fences; falling off kills. He parries from shielded sides, uses the Liberation charges, and has a butterfly add phase. A Bloodlust meter drives phase changes; hard enrage at 10 minutes.",
+  "fr": "Ravana combat sur une petite arène ronde avec des barrières en bois ; tomber tue. Il pare depuis ses côtés protégés, utilise les charges Liberation et a une phase d'adds papillons. Une jauge de Bloodlust déclenche les phases ; enrage à 10 minutes.",
+  "de": "Ravana kämpft in einer kleinen runden Arena mit Holzzäunen; Runterfallen tötet. Er pariert von geschützten Seiten, nutzt die Liberation-Anstürme und hat eine Schmetterlings-Add-Phase. Eine Blutrausch-Leiste steuert die Phasen; harter Enrage nach 10 Minuten.",
+  "ja": "柵のある小さな円形フィールド（落下で即死）。防御方向の受け流し、光焔の突進、胡蝶の雑魚フェーズがある。ゲージで形態が変わり、10分で時間切れ。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "This fight is mostly cleared unsynced or at minimum item level today, so strats rarely matter. The entries below explain how each mechanic works. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Aujourd'hui ce combat se fait surtout en mode sans restriction ou en ilvl minimum, donc la strat compte rarement. Les entrées ci-dessous expliquent comment marche chaque mécanique. Les noms des mécaniques sont en anglais (noms FR officiels non vérifiés).",
+  "de": "Heute wird dieser Kampf meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel gemacht, die Strat spielt also selten eine Rolle. Die Einträge unten erklären, wie jede Mechanik funktioniert. Die Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "現在このコンテンツは主に制限解除やIL最低限で攻略されるため、攻略法の違いはほとんど問題になりません。以下では各ギミックの仕組みを説明します。英語名のままのギミック名は日本語の公式名を確認できなかったものです。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Dragonfly avatar",
+    "fr": "Forme libellule",
+    "de": "Libellen-Avatar",
+    "ja": "序盤"
+   },
+   "mechanics": [
+    {
+     "id": "blinding-blade",
+     "names": {
+      "en": "Blinding Blade",
+      "fr": "Lame aveuglante",
+      "de": "Blendende Klinge",
+      "ja": "武神閃"
+     },
+     "aliases": {
+      "en": [
+       "blinding blade"
+      ],
+      "fr": [
+       "blinding blade"
+      ],
+      "de": [
+       "blinding blade"
+      ],
+      "ja": [
+       "武神閃"
+      ]
+     },
+     "how": {
+      "en": "Shared tank cleave: both tanks take it together.",
+      "fr": "Cleave partagé sur les tanks : les deux ensemble.",
+      "de": "Geteilter Tankcleave: beide Tanks zusammen.",
+      "ja": "タンク2人で頭割りする前方攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "cleave"
+     ]
+    },
+    {
+     "id": "the-seeing",
+     "names": {
+      "en": "The Seeing (Left / Right / Wings)",
+      "fr": "Élytre gauche / Élytre droit / Élytres bilatéraux",
+      "de": "Sehende Linke / Sehende Rechte / Sehende Schwingen",
+      "ja": "右翼防御／左翼防御／両翼防御"
+     },
+     "aliases": {
+      "en": [
+       "the seeing (left / right / wings)"
+      ],
+      "fr": [
+       "the seeing (left / right / wings)"
+      ],
+      "de": [
+       "the seeing (left / right / wings)"
+      ],
+      "ja": [
+       "右翼防御／左翼防御／両翼防御"
+      ]
+     },
+     "how": {
+      "en": "Ravana parries from three sides; only the side opposite the cast name is open. Attacking a protected side gives knockback and Slow, so stop until you reach the open side.",
+      "fr": "Ravana pare de trois côtés ; seul le côté opposé au nom du sort est ouvert. Frapper un côté protégé = recul et Lenteur, donc arrête jusqu'à être du bon côté.",
+      "de": "Ravana pariert von drei Seiten; nur die Seite gegenüber dem Castnamen ist offen. Angriffe auf eine geschützte Seite geben Rückstoß und Gemach, also aufhören, bis du an der offenen Seite bist.",
+      "ja": "3方向を防御し、空いているのは1方向のみ（右翼防御なら左、両翼なら正面）。防御側を殴るとノックバックとスロウ。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "CGW says the open side is opposite the cast name; gameranbu says left for right-wing, front for both-wing. Treat 'Wings' as front open.",
+      "fr": "Pour 'Wings', l'avant est ouvert selon gameranbu.",
+      "de": "Bei 'Wings' ist laut gameranbu vorne offen.",
+      "ja": "両翼防御は正面が空き（gameranbu）。"
+     },
+     "tags": []
+    },
+    {
+     "id": "tapasya",
+     "names": {
+      "en": "Tapasya",
+      "fr": "Tapasya",
+      "de": "Tapasya",
+      "ja": "鬼武神"
+     },
+     "aliases": {
+      "en": [
+       "tapasya"
+      ],
+      "fr": [
+       "tapasya"
+      ],
+      "de": [
+       "tapasya"
+      ],
+      "ja": [
+       "鬼武神"
+      ]
+     },
+     "how": {
+      "en": "Heavy frontal cleave followed by two untelegraphed cones the same way; tanks face him away and step out of the follow-ups.",
+      "fr": "Gros cleave frontal suivi de deux cônes sans marqueur dans le même sens ; les tanks le tournent et sortent des suivants.",
+      "de": "Starker Frontalcleave, danach zwei unmarkierte Kegel in dieselbe Richtung; Tanks drehen ihn weg und weichen den Folgekegeln aus.",
+      "ja": "前方への連続範囲（後続は予兆なし）。タンクは向きを外し、後続から外れる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "atma-linga",
+     "names": {
+      "en": "Atma-Linga",
+      "fr": "Atma-Linga",
+      "de": "Atma-Linga",
+      "ja": "アートマリンガ"
+     },
+     "aliases": {
+      "en": [
+       "atma-linga"
+      ],
+      "fr": [
+       "atma-linga"
+      ],
+      "de": [
+       "atma-linga"
+      ],
+      "ja": [
+       "アートマリンガ"
+      ]
+     },
+     "how": {
+      "en": "Unavoidable raid-wide damage.",
+      "fr": "Dégâts de zone inévitables.",
+      "de": "Unvermeidbarer Raumschaden.",
+      "ja": "全体攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Liberation",
+    "fr": "Libération",
+    "de": "Befreiung",
+    "ja": "光焔【序】【破】"
+   },
+   "mechanics": [
+    {
+     "id": "prelude-to-liberation",
+     "names": {
+      "en": "Prelude to Liberation",
+      "fr": "Prélude de la libération",
+      "de": "Auftakt zur Befreiung",
+      "ja": "光焔【序】"
+     },
+     "aliases": {
+      "en": [
+       "prelude to liberation"
+      ],
+      "fr": [
+       "prelude to liberation"
+      ],
+      "de": [
+       "prelude to liberation"
+      ],
+      "ja": [
+       "光焔【序】"
+      ]
+     },
+     "how": {
+      "en": "Big circle around Ravana, line AoEs that leave fire puddles, then large spread circles. Stack for the lines so puddles overlap, then spread.",
+      "fr": "Grand cercle autour de Ravana, des lignes qui laissent des flaques de feu, puis de grands cercles de dispersion. Groupe-toi pour les lignes, puis disperse-toi.",
+      "de": "Großer Kreis um Ravana, Linien-AoEs mit Feuerpfützen, dann große Verteil-Kreise. Für die Linien sammeln, damit die Pfützen überlappen, dann verteilen.",
+      "ja": "ボス周囲の大範囲→直線と炎床→大きな散開円。直線は集まって床を重ね、その後散開。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack",
+      "spread"
+     ]
+    },
+    {
+     "id": "liberation",
+     "names": {
+      "en": "Liberation",
+      "fr": "Libération",
+      "de": "Befreiung",
+      "ja": "光焔【破】"
+     },
+     "aliases": {
+      "en": [
+       "liberation"
+      ],
+      "fr": [
+       "liberation"
+      ],
+      "de": [
+       "liberation"
+      ],
+      "ja": [
+       "光焔【破】"
+      ]
+     },
+     "how": {
+      "en": "270-degree frontal cone, then four clones land at the edge and charge across the center in order. Stand behind Ravana, then go to the side of the first clone and rotate as they charge.",
+      "fr": "Cône frontal de 270°, puis quatre clones atterrissent au bord et chargent au centre dans l'ordre. Reste derrière Ravana, puis va du côté du premier clone et tourne avec les charges.",
+      "de": "270°-Frontalkegel, dann landen vier Klone am Rand und stürmen nacheinander durch die Mitte. Hinter Ravana stehen, dann zur Seite des ersten Klons und mit den Anstürmen rotieren.",
+      "ja": "前方270度→外周に分身が着地し順に中央を突進。最初は背後、その後最初の分身側へ移動して回る。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Gana (butterflies)",
+    "fr": "Gana (papillons)",
+    "de": "Gana (Schmetterlinge)",
+    "ja": "胡蝶"
+   },
+   "mechanics": [
+    {
+     "id": "warlord-shell",
+     "names": {
+      "en": "Warlord Shell",
+      "fr": "Bouclier du Maître des lames",
+      "de": "Kriegsherren-Hülle",
+      "ja": "武神甲"
+     },
+     "aliases": {
+      "en": [
+       "warlord shell"
+      ],
+      "fr": [
+       "warlord shell"
+      ],
+      "de": [
+       "warlord shell"
+      ],
+      "ja": [
+       "武神甲"
+      ]
+     },
+     "how": {
+      "en": "A barrier you must break within about 20 s, or Ravana gets a big damage buff.",
+      "fr": "Une barrière à casser en ~20 s, sinon Ravana prend un gros buff.",
+      "de": "Eine Barriere, die du in etwa 20 s brechen musst, sonst bekommt Ravana einen starken Schadensbuff.",
+      "ja": "時間内に壊すバリア。失敗するとボス強化。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dps-check"
+     ]
+    },
+    {
+     "id": "gana",
+     "names": {
+      "en": "Spirit Gana / Moon Gana",
+      "fr": "Gana spirituel / Gana lunaire",
+      "de": "Geisterfalter / Mondfalter",
+      "ja": "幻蝶／月光蝶"
+     },
+     "aliases": {
+      "en": [
+       "spirit gana / moon gana"
+      ],
+      "fr": [
+       "spirit gana / moon gana"
+      ],
+      "de": [
+       "spirit gana / moon gana"
+      ],
+      "ja": [
+       "胡蝶／月光蝶"
+      ]
+     },
+     "how": {
+      "en": "Five waves of butterflies; kill them before they turn into swords (Moon Gana first, more HP). Each sword makes the next raid attack stronger.",
+      "fr": "Cinq vagues de papillons ; tue-les avant qu'ils ne deviennent des épées (Moon Gana d'abord). Chaque épée renforce l'attaque de zone suivante.",
+      "de": "Fünf Wellen Schmetterlinge; vor der Verwandlung in Schwerter töten (Moon Gana zuerst). Jedes Schwert verstärkt den nächsten Raumangriff.",
+      "ja": "蝶の雑魚が5回。月剣召来で剣になる前に倒す（月光蝶優先）。剣が多いほど次の全体攻撃が痛い。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "dps-check"
+     ]
+    },
+    {
+     "id": "bloody-fuller",
+     "names": {
+      "en": "Bloody Fuller",
+      "fr": "Entaille sanglante",
+      "de": "Blutrille",
+      "ja": "チャンドラハース"
+     },
+     "aliases": {
+      "en": [
+       "bloody fuller"
+      ],
+      "fr": [
+       "bloody fuller"
+      ],
+      "de": [
+       "bloody fuller"
+      ],
+      "ja": [
+       "チャンドラハース"
+      ]
+     },
+     "how": {
+      "en": "Raid attack when Bloodlust is full, stronger per sword; it breaks three fence segments, creating places you can fall off.",
+      "fr": "Attaque de zone quand la jauge est pleine, plus forte par épée ; elle casse trois morceaux de barrière, ce qui crée des endroits où tomber.",
+      "de": "Raumangriff bei voller Leiste, stärker pro Schwert; er bricht drei Zaunstücke, wodurch man herunterfallen kann.",
+      "ja": "ゲージ満タン時の全体攻撃。剣の数で威力増、柵の一部が壊れ落下の危険が生じる。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "gameranbu lists 神通力 (bind + damage by swords) and チャンドラハース (breaks the fence) separately; CGW calls the fence-breaking attack Bloody Fuller.",
+      "fr": "Noms JP pas sûrs (神通力 / チャンドラハース).",
+      "de": "JP-Namen unsicher (神通力 / チャンドラハース).",
+      "ja": "神通力とチャンドラハースの対応は不確か。"
+     },
+     "tags": [
+      "raidwide"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p4",
+   "names": {
+    "en": "Beetle avatar",
+    "fr": "Forme scarabée",
+    "de": "Käfer-Avatar",
+    "ja": "衝天撃フェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "pillars-of-heaven",
+     "names": {
+      "en": "Pillars of Heaven",
+      "fr": "Piliers du ciel",
+      "de": "Säulen des Himmels",
+      "ja": "衝天撃"
+     },
+     "aliases": {
+      "en": [
+       "pillars of heaven"
+      ],
+      "fr": [
+       "pillars of heaven"
+      ],
+      "de": [
+       "pillars of heaven"
+      ],
+      "ja": [
+       "衝天撃"
+      ]
+     },
+     "how": {
+      "en": "Proximity hit and knockback from the center: stand with your back to an intact fence, never a broken gap.",
+      "fr": "Coup de proximité et recul depuis le centre : dos à une barrière intacte, jamais un trou.",
+      "de": "Distanztreffer und Rückstoß von der Mitte: mit dem Rücken an einen heilen Zaun, nie an eine Lücke.",
+      "ja": "中央からのノックバック。壊れていない柵を背にして受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "proximity"
+     ]
+    },
+    {
+     "id": "laughing-rose",
+     "names": {
+      "en": "Laughing Rose",
+      "fr": "Rose rieuse",
+      "de": "Lachende Rose",
+      "ja": "月気弾"
+     },
+     "aliases": {
+      "en": [
+       "laughing rose"
+      ],
+      "fr": [
+       "laughing rose"
+      ],
+      "de": [
+       "laughing rose"
+      ],
+      "ja": [
+       "月気弾"
+      ]
+     },
+     "how": {
+      "en": "White stack marker on a random player after the knockback; stack.",
+      "fr": "Marqueur blanc de partage après le recul ; groupe-toi.",
+      "de": "Weißer Sammelmarker nach dem Rückstoß; sammeln.",
+      "ja": "白マーカーの頭割り。集まる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack"
+     ]
+    },
+    {
+     "id": "surpanakha",
+     "names": {
+      "en": "Surpanakha",
+      "fr": "Surpanakha",
+      "de": "Surpanakha",
+      "ja": "徹甲散弾"
+     },
+     "aliases": {
+      "en": [
+       "surpanakha"
+      ],
+      "fr": [
+       "surpanakha"
+      ],
+      "de": [
+       "surpanakha"
+      ],
+      "ja": [
+       "徹甲散弾"
+      ]
+     },
+     "how": {
+      "en": "Prey on a random player, passable by touch; long series of cones at the holder. Pass it to the main tank, who stays opposite the party.",
+      "fr": "Proie sur un joueur au hasard, passable au contact ; longue série de cônes vers le porteur. Passe-la au MT, qui reste à l'opposé du groupe.",
+      "de": "Beute auf einem zufälligen Spieler, durch Berührung übertragbar; lange Kegelserie auf den Träger. An den MT weitergeben, der gegenüber vom Team steht.",
+      "ja": "赤マーカー（触れて移せる）の人へ連続扇範囲。MTに渡し、他は背後へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "debuff"
+     ]
+    },
+    {
+     "id": "rose-of-conviction",
+     "names": {
+      "en": "Rose of Conviction",
+      "fr": "Rose de la conviction",
+      "de": "Rose der Überzeugung",
+      "ja": "闘気弾"
+     },
+     "aliases": {
+      "en": [
+       "rose of conviction"
+      ],
+      "fr": [
+       "rose of conviction"
+      ],
+      "de": [
+       "rose of conviction"
+      ],
+      "ja": [
+       "闘気弾"
+      ]
+     },
+     "how": {
+      "en": "Five orbs chase five players and explode on contact with Vulnerability Up; drag them away from the group while rotating.",
+      "fr": "Cinq orbes suivent cinq joueurs et explosent au contact avec Vulnérabilité ; éloigne-les du groupe en tournant.",
+      "de": "Fünf Kugeln verfolgen fünf Spieler und explodieren bei Kontakt mit Verwundbarkeit; vom Team wegziehen und rotieren.",
+      "ja": "5つの玉が5人を追う。触れると爆発＋被ダメ上昇。集団から離して処理。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p5",
+   "names": {
+    "en": "Swift / Final Liberation",
+    "fr": "Libération rapide / finale",
+    "de": "Schnelle / Endgültige Befreiung",
+    "ja": "光焔【急】【滅】"
+   },
+   "mechanics": [
+    {
+     "id": "swift-liberation",
+     "names": {
+      "en": "Swift Liberation",
+      "fr": "Libération rapide",
+      "de": "Schnelle Befreiung",
+      "ja": "光焔【急】"
+     },
+     "aliases": {
+      "en": [
+       "swift liberation"
+      ],
+      "fr": [
+       "swift liberation"
+      ],
+      "de": [
+       "swift liberation"
+      ],
+      "ja": [
+       "光焔【急】"
+      ]
+     },
+     "how": {
+      "en": "Four numbered players are charged in order; then line puddles split the arena and four spread circles drop. Common setup: numbered waymarks at the cardinals, each target runs to their number, then to the center.",
+      "fr": "Quatre joueurs numérotés sont chargés dans l'ordre ; puis des lignes coupent l'arène et quatre cercles tombent. Setup courant : marqueurs numérotés aux points cardinaux, chaque cible court à son numéro, puis au centre.",
+      "de": "Vier nummerierte Spieler werden der Reihe nach angestürmt; dann teilen Linienpfützen die Arena und vier Verteil-Kreise fallen. Übliches Setup: nummerierte Wegmarken an den Himmelsrichtungen, jedes Ziel läuft zu seiner Nummer, dann in die Mitte.",
+      "ja": "番号1〜4の順に突進、その後直線床と散開円。東西南北に番号マーカーを置き、対象は自分の番号へ、その後中央へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread"
+     ]
+    },
+    {
+     "id": "final-liberation",
+     "names": {
+      "en": "Final Liberation",
+      "fr": "Libération finale",
+      "de": "Endgültige Befreiung",
+      "ja": "光焔【滅】"
+     },
+     "aliases": {
+      "en": [
+       "final liberation"
+      ],
+      "fr": [
+       "final liberation"
+      ],
+      "de": [
+       "final liberation"
+      ],
+      "ja": [
+       "光焔【滅】"
+      ]
+     },
+     "how": {
+      "en": "Two Prey targets are charged by Ravana and a clone, then spread circles, then a second double charge at whoever holds Prey. First targets go to opposite edges, then return to the center.",
+      "fr": "Deux cibles Proie sont chargées par Ravana et un clone, puis cercles, puis une 2e double charge sur les porteurs de Proie. Les premières cibles vont aux bords opposés puis reviennent au centre.",
+      "de": "Zwei Beute-Ziele werden von Ravana und einem Klon angestürmt, dann Verteil-Kreise, dann ein zweiter Doppelansturm auf die Beute-Träger. Die ersten Ziele gehen an gegenüberliegende Ränder und dann zurück in die Mitte.",
+      "ja": "赤マーカー2人へボスと分身が突進→散開→再び突進。対象は反対側の外周へ、その後中央へ戻る。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "dodge"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Thok ast Thok (Extreme)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Thok_ast_Thok_(Extreme)",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/83f028575c8/",
+   "lang": "en"
+  },
+  {
+   "title": "ゲーム乱舞 極ラーヴァナ討滅戦",
+   "url": "https://gameranbu.jp/ff14/1b83e6ad27950dedd0cc",
+   "lang": "ja"
+  },
+  {
+   "title": "FF14予習室 極ラーヴァナ討滅戦",
+   "url": "https://ru-eka.com/archives/9207",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

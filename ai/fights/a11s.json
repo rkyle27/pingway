@@ -1,0 +1,644 @@
+{
+ "id": "a11s",
+ "type": "savage",
+ "expansion": "HW",
+ "patch": "3.4",
+ "names": {
+  "en": "Alexander - The Heart of the Creator (Savage)",
+  "fr": "Alexander - Le Cœur du Créateur (sadique)",
+  "de": "Alexander - Herz des Schöpfers (episch)",
+  "ja": "機工城アレキサンダー零式：天動編3"
+ },
+ "aliases": {
+  "en": [
+   "a11s",
+   "a11 savage",
+   "alexander 11 savage",
+   "cruise chaser savage",
+   "heart of the creator savage"
+  ],
+  "fr": [
+   "a11s",
+   "alexander 11 sadique",
+   "cœur du créateur sadique"
+  ],
+  "de": [
+   "a11s",
+   "alexander 11 episch",
+   "herz des schöpfers episch"
+  ],
+  "ja": [
+   "天動編3零式",
+   "天動編零式3層",
+   "アレキ零式11層",
+   "天動3層",
+   "クルーズチェイサー"
+  ]
+ },
+ "summary": {
+  "en": "Floor 3 of Alexander: The Creator (Savage) against Cruise Chaser. Fast fight built around Limit Cut (numbered dash/sword order), Optical Sight patterns, Photon, Blastoff, Pyretic, and a final phase with three pillars that must survive while you hide from Propeller Wind.",
+  "fr": "Étage 3 d'Alexander : Le Créateur (sadique) contre Cruise Chaser. Combat rapide autour de Limit Cut (ordre numéroté de charges/coups), des motifs Optical Sight, Photon, Blastoff, Pyretic et une phase finale avec trois piliers à protéger tout en se cachant de Propeller Wind.",
+  "de": "Ebene 3 von Alexander: Der Schöpfer (episch) gegen Cruise Chaser. Schneller Kampf um Limit Cut (nummerierte Ansturm-/Schwert-Reihenfolge), Optical-Sight-Muster, Photon, Blastoff, Pyretic und eine Schlussphase mit drei Säulen, die überleben müssen, während du dich vor Propeller Wind versteckst.",
+  "ja": "天動編3層零式、クルーズチェイサー戦。リミッターカット（番号順の斬撃・突進）、照準、フォトン、ブラストオフ、ヒート、最終フェーズの柱（積層科学フィールド）を守りながらプロペラウィンドを避けるのが中心。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "This fight is mostly cleared unsynced or at minimum item level today, so strats rarely matter. The entries below explain how each mechanic works. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Aujourd'hui ce combat se fait surtout en mode sans restriction ou en ilvl minimum, donc la strat compte rarement. Les entrées ci-dessous expliquent comment marche chaque mécanique. Les noms des mécaniques sont en anglais (noms FR officiels non vérifiés).",
+  "de": "Heute wird dieser Kampf meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel gemacht, die Strat spielt also selten eine Rolle. Die Einträge unten erklären, wie jede Mechanik funktioniert. Die Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "現在このコンテンツは主に制限解除やIL最低限で攻略されるため、攻略法の違いはほとんど問題になりません。以下では各ギミックの仕組みを説明します。英語名のままのギミック名は日本語の公式名を確認できなかったものです。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "フェーズ1"
+   },
+   "mechanics": [
+    {
+     "id": "laser-sword",
+     "names": {
+      "en": "Left / Right Laser Sword",
+      "fr": "Épée laser gauche / droite",
+      "de": "Linkes / Rechtes Laserschwert",
+      "ja": "レフト／ライト・レーザースウォード"
+     },
+     "aliases": {
+      "en": [
+       "left / right laser sword"
+      ],
+      "fr": [
+       "left / right laser sword"
+      ],
+      "de": [
+       "left / right laser sword"
+      ],
+      "ja": [
+       "レフト／ライト・レーザースウォード"
+      ]
+     },
+     "how": {
+      "en": "Unmarked 210-degree cleave on the named side; go to the other side.",
+      "fr": "Cleave de 210° sans marqueur du côté annoncé ; va de l'autre côté.",
+      "de": "Unmarkierter 210°-Cleave auf der genannten Seite; auf die andere Seite.",
+      "ja": "指定側への予兆なし範囲。反対側へ避ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "optical-sight",
+     "names": {
+      "en": "Optical Sight",
+      "fr": "Visée optique",
+      "de": "Visier",
+      "ja": "照準"
+     },
+     "aliases": {
+      "en": [
+       "optical sight"
+      ],
+      "fr": [
+       "optical sight"
+      ],
+      "de": [
+       "optical sight"
+      ],
+      "ja": [
+       "照準"
+      ]
+     },
+     "how": {
+      "en": "Three random patterns: spread (big orbs: run to the edge), stack (circles drop where you stood: stack then step away), rotation (explosions travel clockwise around the edge then hit center: stack center and follow).",
+      "fr": "Trois motifs : dispersion (gros orbes : cours au bord), partage (cercles là où tu étais : groupe puis décale-toi), rotation (explosions qui tournent puis frappent le centre : groupe au centre et suis).",
+      "de": "Drei Muster: Verteilen (große Kugeln: zum Rand), Sammeln (Kreise, wo du standest: sammeln, dann wegtreten), Rotation (Explosionen laufen im Uhrzeigersinn am Rand und dann in die Mitte: in der Mitte sammeln und folgen).",
+      "ja": "3種：大玉（外周へ）、タケノコ（集まって少し移動）、回転（外周を時計回りに爆発後中央、中央から追いかける）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "edd",
+     "names": {
+      "en": "E.D.D",
+      "fr": "E.D.D.",
+      "de": "E.D.D.-Mecha",
+      "ja": "イーディーディー"
+     },
+     "aliases": {
+      "en": [
+       "e.d.d"
+      ],
+      "fr": [
+       "e.d.d"
+      ],
+      "de": [
+       "e.d.d"
+      ],
+      "ja": [
+       "イーディーディー"
+      ]
+     },
+     "how": {
+      "en": "Add that summons a shoulder armor (Overboost); break the armor before the cast ends and kill E.D.D before it self-detonates (about 20-25 s). Its Beam Saber is a tankbuster on the OT (ST), who holds E.D.D., mitigates and sidesteps.",
+      "fr": "Add qui invoque une épaulière (Overboost) ; casse-la avant la fin du sort et tue E.D.D avant son autodestruction (~20-25 s). Son Beam Saber est un tankbuster sur l'OT, qui tient l'E.D.D., utilise un cooldown et se décale.",
+      "de": "Add, das eine Schulterpanzerung ruft (Overboost); Panzerung vor Castende brechen und E.D.D vor der Selbstzerstörung töten (ca. 20-25 s). Sein Beam Saber ist ein Tankbuster auf den OT, der den E.D.D. hält, mitigiert und zur Seite geht.",
+      "ja": "ショルダーアーマーを持つ雑魚。オーバーブースト前にアーマーを壊し、自爆（約20〜25秒）前に倒す。ビームサーベルはE.D.Dを持つSTへのタンク強攻撃。軽減して横に避ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "ga-100",
+     "names": {
+      "en": "GA-100",
+      "fr": "GA-100",
+      "de": "GA-100",
+      "ja": "GA-100"
+     },
+     "aliases": {
+      "en": [
+       "ga-100"
+      ],
+      "fr": [
+       "ga-100"
+      ],
+      "de": [
+       "ga-100"
+      ],
+      "ja": [
+       "GA-100"
+      ]
+     },
+     "how": {
+      "en": "Flare marker on the off-tank: damage falls off with distance, so the target goes away from everyone.",
+      "fr": "Marqueur Brasier sur l'off-tank : dégâts selon la distance, la cible s'éloigne de tout le monde.",
+      "de": "Flare-Marker auf dem Off-Tank: Schaden nimmt mit Abstand ab, das Ziel geht weg von allen.",
+      "ja": "STへの距離減衰攻撃。対象は離れる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "proximity"
+     ]
+    },
+    {
+     "id": "whirlwind",
+     "names": {
+      "en": "Whirlwind",
+      "fr": "Tornade",
+      "de": "Wirbelwind",
+      "ja": "竜巻"
+     },
+     "aliases": {
+      "en": [
+       "whirlwind"
+      ],
+      "fr": [
+       "whirlwind"
+      ],
+      "de": [
+       "whirlwind"
+      ],
+      "ja": [
+       "竜巻"
+      ]
+     },
+     "how": {
+      "en": "Heavy raid-wide damage; heal.",
+      "fr": "Gros dégâts de zone ; soigne.",
+      "de": "Starker Raumschaden; heilen.",
+      "ja": "全体攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "spin-crusher",
+     "names": {
+      "en": "Spin Crusher",
+      "fr": "Écrasement tournoyant",
+      "de": "Rotorbrecher",
+      "ja": "スピンクラッシャー"
+     },
+     "aliases": {
+      "en": [
+       "spin crusher"
+      ],
+      "fr": [
+       "spin crusher"
+      ],
+      "de": [
+       "spin crusher"
+      ],
+      "ja": [
+       "スピンクラッシャー"
+      ]
+     },
+     "how": {
+      "en": "Unmarked frontal 90-degree cone with knockback; the tank moves behind the boss.",
+      "fr": "Cône frontal de 90° sans marqueur avec recul ; le tank passe derrière.",
+      "de": "Unmarkierter 90°-Frontalkegel mit Rückstoß; der Tank geht hinter den Boss.",
+      "ja": "前方範囲＋ノックバック。タンクは背後へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "knockback",
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Limit Cut and Lapis",
+    "fr": "Limit Cut et Lapis",
+    "de": "Limit Cut und Lapis",
+    "ja": "リミッターカット"
+   },
+   "mechanics": [
+    {
+     "id": "limit-cut",
+     "names": {
+      "en": "Limit Cut (Alpha Sword / Super Blassty Charge)",
+      "fr": "Dépassement de limites (Épée alpha / Super charge Blassty)",
+      "de": "Grenzwertüberschreitung (Alpha-Schwert / Super-Blassty-Ladung)",
+      "ja": "リミッターカット（アルファソード／スーパーブラスティ・チャージ）"
+     },
+     "aliases": {
+      "en": [
+       "limit cut (alpha sword / super blassty charge)"
+      ],
+      "fr": [
+       "limit cut (alpha sword / super blassty charge)"
+      ],
+      "de": [
+       "limit cut (alpha sword / super blassty charge)"
+      ],
+      "ja": [
+       "リミッターカット（アルファソード／スーパーブラスティ・チャージ）"
+      ]
+     },
+     "how": {
+      "en": "Everyone gets a number 1-8. Odd numbers: the boss teleports behind and cleaves in the player's facing direction (face a wall). Even numbers: the boss charges them (face the boss to avoid knockback). Nobody survives two hits, so keep lines clear.",
+      "fr": "Chacun reçoit un numéro 1 à 8. Impair : le boss se téléporte derrière et cleave dans la direction du joueur (face à un mur). Pair : le boss le charge (regarde le boss pour éviter le recul). Personne ne survit à deux coups, garde les lignes libres.",
+      "de": "Jeder bekommt eine Nummer 1-8. Ungerade: Der Boss teleportiert sich hinter dich und cleavet in deine Blickrichtung (zur Wand schauen). Gerade: Der Boss stürmt auf dich (zum Boss schauen gegen Rückstoß). Niemand überlebt zwei Treffer, Linien frei halten.",
+      "ja": "全員に1〜8の番号。奇数は背後から向いている方向へ斬撃（壁を向く）、偶数は突進（ボスを向いてノックバック防止）。2回受けると死亡、ライン上に他の人を入れない。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "limit-cut",
+      "knockback",
+      "cleave"
+     ]
+    },
+    {
+     "id": "photon",
+     "names": {
+      "en": "Photon",
+      "fr": "Photon",
+      "de": "Photon",
+      "ja": "フォトン"
+     },
+     "aliases": {
+      "en": [
+       "photon"
+      ],
+      "fr": [
+       "photon"
+      ],
+      "de": [
+       "photon"
+      ],
+      "ja": [
+       "フォトン"
+      ]
+     },
+     "how": {
+      "en": "Sets several players to 1 HP (targets change per cast, often followed by Whirlwind); heal them right away. During Pyretic, moving or acting at that moment kills.",
+      "fr": "Met plusieurs joueurs à 1 PV (cibles variables, souvent suivi de Whirlwind) ; soigne tout de suite. Pendant Pyretic, bouger à ce moment tue.",
+      "de": "Setzt mehrere Spieler auf 1 LP (Ziele wechseln, oft gefolgt von Whirlwind); sofort heilen. Während Pyretic tötet Bewegen in dem Moment.",
+      "ja": "数人をHP1にする（対象は回ごとに変わり、直後に竜巻が多い）。すぐ回復。ヒート中は動くと死亡。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    },
+    {
+     "id": "blastoff",
+     "names": {
+      "en": "Blastoff",
+      "fr": "Lancement",
+      "de": "Absprengen",
+      "ja": "ブラストオフ"
+     },
+     "aliases": {
+      "en": [
+       "blastoff"
+      ],
+      "fr": [
+       "blastoff"
+      ],
+      "de": [
+       "blastoff"
+      ],
+      "ja": [
+       "ブラストオフ"
+      ]
+     },
+     "how": {
+      "en": "Use one of the four ducts to jump onto the boss in time, or you are knocked off the platform and die.",
+      "fr": "Utilise un des quatre conduits pour sauter sur le boss à temps, sinon tu es éjecté et meurs.",
+      "de": "Nutze rechtzeitig einen der vier Schächte, um auf den Boss zu springen, sonst wirst du von der Plattform gestoßen und stirbst.",
+      "ja": "4つのダクトから時間内に乗り込まないと落下して死亡。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback"
+     ]
+    },
+    {
+     "id": "lapis",
+     "names": {
+      "en": "Limit Cut: Lapis Lazuli / Eternal Darkness",
+      "fr": "Dépassement de limites : Lapis-lazuli / Ténèbres éternelles",
+      "de": "Grenzwertüberschreitung: Lapislazuli / Ewiges Dunkel",
+      "ja": "ラピスラズリ／暗黒の運命"
+     },
+     "aliases": {
+      "en": [
+       "limit cut: lapis lazuli / eternal darkness"
+      ],
+      "fr": [
+       "limit cut: lapis lazuli / eternal darkness"
+      ],
+      "de": [
+       "limit cut: lapis lazuli / eternal darkness"
+      ],
+      "ja": [
+       "ラピスラズリ／暗黒の運命"
+      ]
+     },
+     "how": {
+      "en": "Four Lapis Lazuli appear while the boss is invulnerable; kill all before Eternal Darkness or the party wipes. Eternal Darkness also starts Pyretic (Heat).",
+      "fr": "Quatre Lapis Lazuli apparaissent pendant que le boss est invulnérable ; tue-les tous avant Eternal Darkness sinon wipe. Eternal Darkness applique aussi Pyretic.",
+      "de": "Vier Lapis Lazuli erscheinen, während der Boss unverwundbar ist; alle vor Eternal Darkness töten, sonst Wipe. Eternal Darkness startet außerdem Pyretic.",
+      "ja": "ボス無敵中にラピスラズリ4体。暗黒の運命までに全滅させないと全滅。暗黒の運命でヒート付与。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "dps-check"
+     ]
+    },
+    {
+     "id": "aetheroplasm",
+     "names": {
+      "en": "Aetheroplasm (plasma spheres)",
+      "fr": "Éthéroplasma (sphères de plasma)",
+      "de": "Ätheroplasma (Plasmasphären)",
+      "ja": "爆雷起爆（プラズマスフィア）"
+     },
+     "aliases": {
+      "en": [
+       "aetheroplasm (plasma spheres)"
+      ],
+      "fr": [
+       "aetheroplasm (plasma spheres)"
+      ],
+      "de": [
+       "aetheroplasm (plasma spheres)"
+      ],
+      "ja": [
+       "爆雷起爆（プラズマスフィア）"
+      ]
+     },
+     "how": {
+      "en": "Orbs chase tethered players and explode into puddles; overlapping puddles wipe, so burst them in separate spots.",
+      "fr": "Des orbes suivent les joueurs liés et explosent en flaques ; des flaques qui se chevauchent = wipe, éclate-les à des endroits séparés.",
+      "de": "Kugeln verfolgen verbundene Spieler und explodieren zu Pfützen; überlappende Pfützen sind ein Wipe, also an getrennten Stellen platzen lassen.",
+      "ja": "線の人を追う玉。爆発して床が残り、重なると全滅。別々の場所で処理。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether"
+     ]
+    },
+    {
+     "id": "laser-x-sword",
+     "names": {
+      "en": "Laser X Sword",
+      "fr": "Épée laser X",
+      "de": "Laserschwert X",
+      "ja": "レーザーエックススウォード"
+     },
+     "aliases": {
+      "en": [
+       "laser x sword"
+      ],
+      "fr": [
+       "laser x sword"
+      ],
+      "de": [
+       "laser x sword"
+      ],
+      "ja": [
+       "レーザーエックススウォード"
+      ]
+     },
+     "how": {
+      "en": "Wide shared tankbuster; both tanks stand together facing the boss.",
+      "fr": "Tankbuster partagé large ; les deux tanks ensemble face au boss.",
+      "de": "Breiter geteilter Tankbuster; beide Tanks zusammen, zum Boss schauen.",
+      "ja": "MTとSTで頭割りする強攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Pyretic phase",
+    "fr": "Phase Pyretic",
+    "de": "Pyretic-Phase",
+    "ja": "ヒートフェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "pyretic-shield",
+     "names": {
+      "en": "Pyretic / Plasma Shield / Blassty Charge",
+      "fr": "Chaleur / Plasma Shield / Charge Blassty",
+      "de": "Pyretisch / Plasma Shield / Blassty-Ladung",
+      "ja": "ヒート／プラズマシールド／ブラスティ・チャージ"
+     },
+     "aliases": {
+      "en": [
+       "pyretic / plasma shield / blassty charge"
+      ],
+      "fr": [
+       "pyretic / plasma shield / blassty charge",
+       "pyromanie"
+      ],
+      "de": [
+       "pyretic / plasma shield / blassty charge"
+      ],
+      "ja": [
+       "ヒート／プラズマシールド／ブラスティ・チャージ"
+      ]
+     },
+     "how": {
+      "en": "Heat makes each action hurt a bit for the whole phase. The shield can only be damaged from the front. Blassty Charge dashes at a random player with a DoT; spread and face the boss.",
+      "fr": "Pyretic fait mal à chaque action pendant toute la phase. Le bouclier ne se frappe que de face. Blassty Charge fonce sur un joueur au hasard avec un DoT ; disperse-toi et regarde le boss.",
+      "de": "Pyretic lässt jede Aktion die ganze Phase leicht schmerzen. Das Schild kann nur von vorne beschädigt werden. Blassty Charge stürmt auf einen zufälligen Spieler mit DoT; verteilen und zum Boss schauen.",
+      "ja": "ヒート中は行動ごとに小ダメージ。シールドは正面からのみ攻撃可能。ブラスティ・チャージはランダム1人へ突進＋DoT、散開してボスを向く。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p4",
+   "names": {
+    "en": "Pillars (final phase)",
+    "fr": "Piliers (phase finale)",
+    "de": "Säulen (Schlussphase)",
+    "ja": "柱フェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "multifield",
+     "names": {
+      "en": "Multifield (pillars) / Propeller Wind",
+      "fr": "Champ multistrate (piliers) / Vent turbine",
+      "de": "Schichtfeld (Säulen) / Luftschraube",
+      "ja": "積層科学フィールド（柱）／プロペラウィンド"
+     },
+     "aliases": {
+      "en": [
+       "multifield (pillars) / propeller wind"
+      ],
+      "fr": [
+       "multifield (pillars) / propeller wind"
+      ],
+      "de": [
+       "multifield (pillars) / propeller wind"
+      ],
+      "ja": [
+       "積層科学フィールド（柱）／プロペラウィンド"
+      ]
+     },
+     "how": {
+      "en": "Three pillars take damage from most attacks (GA-100 near one destroys it; Limit Cut hits and charges break them). If all three fall, the floor collapses and wipes. Propeller Wind confuses anyone not hidden behind a pillar.",
+      "fr": "Trois piliers prennent des dégâts de la plupart des attaques (GA-100 près d'un le détruit ; les coups de Limit Cut et charges les cassent). Si les trois tombent, le sol s'effondre = wipe. Propeller Wind rend confus quiconque n'est pas caché derrière un pilier.",
+      "de": "Drei Säulen nehmen Schaden von den meisten Angriffen (GA-100 nahe einer zerstört sie; Limit-Cut-Treffer und Anstürme brechen sie). Fallen alle drei, bricht der Boden ein = Wipe. Propeller Wind verwirrt alle, die nicht hinter einer Säule stehen.",
+      "ja": "柱3本は攻撃でダメージを受け（GA-100が近いと破壊、リミッターカットの斬撃・突進でも壊れる）、全部壊れると床が崩れて全滅。プロペラウィンドは柱の陰に隠れないと混乱。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "limit-cut-pillars",
+     "names": {
+      "en": "Limit Cut with pillars",
+      "fr": "Limit Cut with pillars",
+      "de": "Limit Cut with pillars",
+      "ja": "柱フェーズのリミッターカット"
+     },
+     "aliases": {
+      "en": [
+       "limit cut with pillars"
+      ],
+      "fr": [
+       "limit cut with pillars"
+      ],
+      "de": [
+       "limit cut with pillars"
+      ],
+      "ja": [
+       "柱フェーズのリミッターカット"
+      ]
+     },
+     "how": {
+      "en": "Only three safe gaps exist between pillars for four pairs, so pairs swap gaps after resolving (common: pair 7-8 reuses pair 1-2's gap). Aim every hit away from pillars.",
+      "fr": "Il n'y a que trois trous entre les piliers pour quatre paires, donc les paires changent de trou (souvent la paire 7-8 reprend celui de la 1-2). Vise toujours loin des piliers.",
+      "de": "Es gibt nur drei Lücken zwischen den Säulen für vier Paare, also wechseln Paare nach dem Auflösen (oft nutzt Paar 7-8 die Lücke von 1-2). Jeden Treffer von Säulen wegrichten.",
+      "ja": "柱の間は3か所しかないため、4組のうち処理後の組と入れ替える（7-8が1-2の場所を使う方法など）。柱に当てない。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Only CGW describes the gap swap; not cross-checked with a second source.",
+      "fr": "Seul CGW décrit l'échange de trous.",
+      "de": "Nur CGW beschreibt den Lückenwechsel.",
+      "ja": "入れ替え方法はCGWのみで確認。"
+     },
+     "tags": [
+      "limit-cut"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Alexander - The Heart of the Creator (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Alexander_-_The_Heart_of_the_Creator_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/a1ebaba1ae8/",
+   "lang": "en"
+  },
+  {
+   "title": "FF14私的メモ 天動編3 タイムライン",
+   "url": "https://www.ff14memo.com/battle/raids/heavensward/alex3_heart_creator_savage/flow.php",
+   "lang": "ja"
+  },
+  {
+   "title": "dopr.net 天動編3層",
+   "url": "https://www.dopr.net/karna/Alex3_H3",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

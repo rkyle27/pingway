@@ -1,0 +1,458 @@
+{
+ "id": "o8s",
+ "type": "savage",
+ "expansion": "SB",
+ "patch": "4.2",
+ "names": {
+  "en": "Sigmascape V4.0 (Savage)",
+  "fr": "Sigmastice v4.0 (sadique)",
+  "de": "Sigmametrie 4.0 (episch)",
+  "ja": "次元の狭間オメガ零式：シグマ編4"
+ },
+ "aliases": {
+  "en": [
+   "o8s",
+   "kefka",
+   "god kefka",
+   "sigmascape 4 savage"
+  ],
+  "fr": [
+   "o8s",
+   "kefka",
+   "kefka dieu",
+   "sigmastice 4"
+  ],
+  "de": [
+   "o8s",
+   "kefka",
+   "gott kefka",
+   "sigmametrie 4"
+  ],
+  "ja": [
+   "シグマ零式4層",
+   "ケフカ",
+   "神ケフカ",
+   "o8s"
+  ]
+ },
+ "summary": {
+  "en": "Last floor of Sigmascape Savage: Kefka (push him to 60% by about 6:50), then God Kefka with a checkpoint. Kefka's '?' spells do the opposite of what they show, and God Kefka has three Forsaken mini-phases built on towers.",
+  "fr": "Dernier étage de Sigmastice sadique : Kefka (à pousser à 60 % vers 6:50), puis Kefka dieu avec un point de sauvegarde. Les sorts '?' de Kefka font l'inverse de ce qu'ils montrent, et Kefka dieu a trois mini-phases Cataclysme avec des tours.",
+  "de": "Letzte Ebene von Sigmametrie episch: Kefka (bis etwa 6:50 auf 60 % bringen), dann Gott Kefka mit Checkpoint. Kefkas '?'-Zauber machen das Gegenteil dessen, was sie zeigen, und Gott Kefka hat drei Verloren-Miniphasen mit Türmen.",
+  "ja": "シグマ編4層。前半ケフカ（6:50頃までに60%）、後半神ケフカ（チェックポイントあり）。ケフカの「？」付き魔法は見た目と逆の効果で、神ケフカには塔を使うミッシングが3回あります。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "kefka",
+   "names": {
+    "en": "Kefka",
+    "fr": "Kefka",
+    "de": "Kefka",
+    "ja": "ケフカ"
+   },
+   "mechanics": [
+    {
+     "id": "fake-spells",
+     "names": {
+      "en": "Flagrant Fire / Thrumming Thunder / Blizzard Blitz (with '?')",
+      "fr": "Méga Feu faufilant / Méga Foudre fourmillante / Méga Glace glissante (avec '?')",
+      "de": "Flammendes Feuga / Brachiales Blitzga / Erstarrendes Eisga (mit '?')",
+      "ja": "めらめらファイガ／もりもりサンダガ／ぐるぐるブリザガ（？付き）"
+     },
+     "aliases": {
+      "en": [
+       "jester's antics",
+       "fake spells",
+       "question mark"
+      ],
+      "fr": [
+       "bouffon menteur"
+      ],
+      "de": [
+       "narrenspiel"
+      ],
+      "ja": [
+       "？マーク",
+       "嘘魔法",
+       "虚偽の道化"
+      ]
+     },
+     "how": {
+      "en": "Fire = spreads or one stack, Thunder = crossing lines, Blizzard = circle or donut on Kefka. With question marks (Jester's Antics) the result is reversed: spread becomes stack, Thunder is only safe at line crossings, Blizzard swaps safe and unsafe.",
+      "fr": "Feu = dispersions ou un package, Foudre = lignes croisées, Glace = cercle ou anneau sur Kefka. Avec des points d'interrogation (Jester's Antics), c'est inversé : dispersion devient package, la Foudre n'est sûre qu'aux croisements, la Glace échange zone sûre et dangereuse.",
+      "de": "Feuga = Verteilen oder ein Sammelpunkt, Blitzga = sich kreuzende Linien, Eisga = Kreis oder Ring um Kefka. Mit Fragezeichen (Jester's Antics) ist alles umgekehrt: Verteilen wird Sammeln, Blitzga ist nur an Kreuzungen sicher, Eisga tauscht sicher und unsicher.",
+      "ja": "ファイガ＝散開か頭割り、サンダガ＝交差する直線、ブリザガ＝ケフカ中心の円かドーナツ。「？」（Jester's Antics）付きだと逆：散開⇔頭割り、サンダガは交点のみ安置、ブリザガは安置が反転。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "mana-charge",
+     "names": {
+      "en": "Mana Charge / Mana Release",
+      "fr": "Concentration de mana / Décharge de mana",
+      "de": "Mana-Aufladung / Mana-Entladung",
+      "ja": "マジックチャージ／マジックアウト"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Mana Charge stores the next Fire, Thunder or Blizzard; Mana Release casts all stored spells at once. A stored '?' stays reversed even though no question marks show, so remember it.",
+      "fr": "Concentration de mana stocke le prochain Feu, Foudre ou Glace ; Mana Release les lance tous d'un coup. Un '?' stocké reste inversé même sans points d'interrogation visibles, donc retiens-le.",
+      "de": "Mana-Aufladung speichert das nächste Feuga, Blitzga oder Eisga; Mana Release wirkt alle gespeicherten auf einmal. Ein gespeichertes '?' bleibt umgekehrt, auch ohne sichtbare Fragezeichen, also merk es dir.",
+      "ja": "マジックチャージで次の炎・雷・氷を記憶、Mana Releaseで記憶したものを同時に発動。記憶した「？」は表示がなくても逆のままなので覚えておきます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "timely-teleport",
+     "names": {
+      "en": "Timely Teleport / Aero Assault",
+      "fr": "Téléportation turbulente / Méga Vent véhément",
+      "de": "Turbulenter Teleport / Wallendes Windga",
+      "ja": "ぶっとびテレポ／ずんずんエアロガ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Kefka teleports to an edge and fires a cone toward the center; run to where he lands and stand behind him. Aero Assault is a radial knockback to resist with Arm's Length / Surecast.",
+      "fr": "Kefka se téléporte au bord et tire un cône vers le centre ; cours là où il arrive et mets-toi derrière lui. Méga Vent véhément est une projection circulaire à contrer avec Distance / Sang-froid.",
+      "de": "Kefka teleportiert sich an den Rand und feuert einen Kegel zur Mitte; lauf dorthin, wo er landet, und stell dich hinter ihn. Wallendes Windga ist ein Rundum-Rückstoß, mit Armlänge / Unbeirrbarkeit widerstehen.",
+      "ja": "ケフカが外周へテレポし中央へ扇攻撃。着地点の後ろへ回ります。ずんずんエアロガは放射ノックバックで、アームズレングス／堅実魔で防ぎます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "knockback",
+      "dodge"
+     ]
+    },
+    {
+     "id": "graven-image",
+     "names": {
+      "en": "Graven Image (statue sets)",
+      "fr": "Statue divine (séquences)",
+      "de": "Göttliche Statue (Sets)",
+      "ja": "神々の像（各セット）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A statue adds mechanics each time: set 1 circles, line spreads, knockback tethers and stacks; set 2 a big orb that pushes players (it may switch sides, so wait); set 3 tank/healer and DPS tethered to opposite halves with pair stacks (Gravitas, leave bleed puddles) and knockback spreads (Vitrophyre), then half-room eruptions; set 5 gazes with sleep/confusion tethers ('?' means look at it).",
+      "fr": "La statue ajoute des mécaniques à chaque fois : séquence 1 cercles, lignes de dispersion, liens de projection et packages ; séquence 2 un gros orbe qui pousse (il peut changer de côté, attends) ; séquence 3 tanks/healers et DPS liés aux moitiés opposées avec packages à deux (Gravitas, laissent des flaques de saignement) et dispersions qui projettent (Vitrophyre), puis éruptions sur une moitié ; séquence 5 regards avec liens de sommeil/confusion ('?' = regarde-la).",
+      "de": "Die Statue fügt jedes Mal Mechaniken hinzu: Set 1 Kreise, Linien-Verteiler, Rückstoß-Verbindungen und Sammelpunkte; Set 2 eine große Kugel, die schiebt (kann die Seite wechseln, also warten); Set 3 Tanks/Heiler und DDs mit gegenüberliegenden Hälften verbunden, Zweier-Sammelpunkte (Gravitas, hinterlassen Blutungspfützen) und Rückstoß-Verteiler (Vitrophyre), dann Ausbrüche auf einer Hälfte; Set 5 Blicke mit Schlaf-/Verwirrungs-Verbindungen ('?' heißt hinschauen).",
+      "ja": "像が毎回ギミックを追加。1回目：円・直線散開・ノックバック線・頭割り。2回目：押し出す大きな玉（左右が入れ替わることがあるので待つ）。3回目：タンク・ヒーラーとDPSが左右の像に線、2人頭割り（Gravitas、出血の床が残る）とノックバック散開（Vitrophyre）、その後半面噴出。5回目：睡眠/混乱の線と視線（「？」なら見る）。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Gravitas / Vitrophyre and the set details come from one guide; names not verified in FR/DE/JA. CGW says the box formation was the most common for set 3.",
+      "fr": "Gravitas / Vitrophyre et les détails viennent d'un guide ; noms FR non vérifiés. CGW dit que la formation en carré était la plus courante pour la séquence 3.",
+      "de": "Gravitas / Vitrophyre und die Details stammen aus einem Guide; DE-Namen nicht geprüft. CGW nennt die Box-Formation als häufigste für Set 3.",
+      "ja": "Gravitas/Vitrophyreと詳細は1つの資料のみで、日本語名は未確認。CGWによると3回目は四角配置が最も一般的。"
+     },
+     "tags": [
+      "dodge",
+      "spread",
+      "stack",
+      "knockback",
+      "tether",
+      "gaze"
+     ]
+    },
+    {
+     "id": "enrage-p1",
+     "names": {
+      "en": "60% check",
+      "fr": "Seuil 60 %",
+      "de": "60-%-Check",
+      "ja": "60%チェック"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "If Kefka is not at 60% by about 6:50 he becomes untargetable and Light of Judgment kills everyone.",
+      "fr": "Si Kefka n'est pas à 60 % vers 6:50, il devient inciblable et Triade guerrière tue tout le monde.",
+      "de": "Ist Kefka bis etwa 6:50 nicht bei 60 %, wird er unangreifbar und Licht des Urteils tötet alle.",
+      "ja": "6:50頃までに60%にならないとターゲット不可になり、裁きの光で全滅。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage",
+      "dps-check"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "god-kefka",
+   "names": {
+    "en": "God Kefka",
+    "fr": "Kefka dieu",
+    "de": "Gott Kefka",
+    "ja": "神ケフカ"
+   },
+   "mechanics": [
+    {
+     "id": "heartless-angel",
+     "names": {
+      "en": "Heartless Angel",
+      "fr": "Ange sans cœur",
+      "de": "Herzloser Engel",
+      "ja": "心ない天使"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Sets everyone to 1 HP (barriers stay); heal everyone up.",
+      "fr": "Met tout le monde à 1 PV (les boucliers restent) ; remets tout le monde en vie.",
+      "de": "Setzt alle auf 1 HP (Barrieren bleiben); alle hochheilen.",
+      "ja": "全員のHPを1に（バリアは残る）。全員を回復します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "celestriad",
+     "names": {
+      "en": "Celestriad",
+      "fr": "Tristella",
+      "de": "Dreigestirn",
+      "ja": "スリースターズ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Circle, crossing lines and a healer stack, then a donut with spreads on the DPS: tanks and healers stack, DPS spread. Groups either tank it at the north edge or in the center (intercardinal safe spots).",
+      "fr": "Cercle, lignes croisées et package sur un healer, puis anneau avec dispersions sur les DPS : tanks et healers en package, DPS dispersés. Les groupes le font soit au bord nord soit au centre (points sûrs en intercardinal).",
+      "de": "Kreis, Kreuzlinien und ein Heiler-Sammelpunkt, dann ein Ring mit Verteilern auf den DDs: Tanks und Heiler sammeln sich, DDs verteilen sich. Gruppen machen es am Nordrand oder in der Mitte (sichere Punkte auf den Zwischenrichtungen).",
+      "ja": "円・十字の直線・ヒーラー頭割り、続いてドーナツとDPS散開。タンク・ヒーラーは頭割り、DPSは散開。北端で処理する方法と中央（斜め方向が安置）で処理する方法があります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "forsaken",
+     "names": {
+      "en": "Forsaken (mini-phases)",
+      "fr": "Cataclysme (mini-phases)",
+      "de": "Verloren (Miniphasen)",
+      "ja": "ミッシング（各回）"
+     },
+     "aliases": {
+      "en": [
+       "forsaken 1",
+       "forsaken 2",
+       "forsaken 3",
+       "starstrafe",
+       "towers"
+      ],
+      "fr": [
+       "fou dansant"
+      ],
+      "de": [
+       "sternentanz"
+      ],
+      "ja": [
+       "妖星乱舞"
+      ]
+     },
+     "how": {
+      "en": "Forsaken hits very hard and starts a tower mini-phase. 1: skull tethers on DPS, each takes the tower nearest their skull. 2: Starstrafe, two far DPS drop lava puddles and two others drag chasing AoEs, then enter the 4-player tower; Future's End/Past's End cones; a Meteor stack goes to the tanks. 3: east/west 2-player towers for tanks/healers, south 4-player tower for DPS, with knockback tethers and statue sleep/confusion tethers.",
+      "fr": "Cataclysme frappe très fort et lance une mini-phase de tours. 1 : crânes liés aux DPS, chacun prend la tour la plus proche de son crâne. 2 : Fou dansant, deux DPS éloignés posent des flaques de lave et deux autres traînent des zones qui suivent, puis entrent dans la tour à 4 ; cônes de Future's End / Past's End ; un package Météore va sur les tanks. 3 : tours à 2 à l'est/ouest pour tanks/healers, tour à 4 au sud pour les DPS, avec liens de projection et liens de sommeil/confusion de la statue.",
+      "de": "Verloren trifft sehr hart und startet eine Turm-Miniphase. 1: Schädelverbindungen auf DDs, jeder nimmt den Turm nahe seinem Schädel. 2: Sternentanz, zwei ferne DDs legen Lavapfützen, zwei andere ziehen verfolgende AoEs, dann in den Vierer-Turm; Kegel von Future's End/Past's End; ein Meteor-Sammelpunkt geht zu den Tanks. 3: Zweier-Türme Ost/West für Tanks/Heiler, Vierer-Turm Süd für DDs, mit Rückstoß-Verbindungen und Schlaf-/Verwirrungs-Verbindungen der Statue.",
+      "ja": "ミッシングは強力な全体攻撃で塔のミニフェーズ開始。1回目：DPSにドクロの線、自分のドクロに近い塔へ。2回目：妖星乱舞、遠い2人のDPSが溶岩を置き、他の2人が追尾範囲を誘導して4人塔へ、Future's End/Past's Endの扇、メテオ頭割りはタンクへ。3回目：東西の2人塔はタンク・ヒーラー、南の4人塔はDPS、ノックバック線と像の睡眠/混乱の線あり。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "raidwide",
+      "tether",
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "futures-pasts",
+     "names": {
+      "en": "Futures Numbered / Pasts Forgotten",
+      "fr": "Ruine du futur / Ruine du passé",
+      "de": "Vernichtung der Zukunft / Vernichtung der Vergangenheit",
+      "ja": "未来の破滅／過去の破滅"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Stack, then a 180-degree cone in front (Futures) or behind (Pasts) Kefka two seconds later; in Forsaken 2 clones do the same, so face out for Future and run through for Past.",
+      "fr": "Package, puis cône à 180° devant (Futur) ou derrière (Passé) Kefka deux secondes après ; dans Cataclysme 2 les clones font pareil, donc tourne-toi vers l'extérieur pour Futur et traverse pour Passé.",
+      "de": "Sammeln, dann zwei Sekunden später ein 180-Grad-Kegel vor (Zukunft) oder hinter (Vergangenheit) Kefka; in Verloren 2 machen Klone dasselbe, also bei Zukunft nach außen schauen, bei Vergangenheit durchlaufen.",
+      "ja": "頭割り後、2秒でケフカの前方（未来）か後方（過去）に180度扇。ミッシング2では分身も同様なので、未来は外向き、過去はすり抜けます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "trine-wings",
+     "names": {
+      "en": "Trine / Wings of Destruction",
+      "fr": "Trine / Aile de la destruction",
+      "de": "Trine / Vernichtungsschwinge",
+      "ja": "トライン／破壊の翼"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Trine drops triangles that explode in order (small: move into the first set's spot; big: safe zone on an empty edge or center). Wings: one wing = 180-degree cleave on the glowing side; two wings = tankbusters on the closest and farthest player. The tanks take the two-wing hits by being the closest and farthest players from Kefka; everyone else stays away from them.",
+      "fr": "Trine pose des triangles qui explosent dans l'ordre (petit : va dans l'emplacement de la première série ; grand : zone sûre sur un bord vide ou au centre). Ailes : une aile = cleave à 180° du côté lumineux ; deux ailes = tankbusters sur le plus proche et le plus éloigné. Les tanks prennent les coups à deux ailes en étant le plus près et le plus loin de Kefka ; les autres restent loin d'eux.",
+      "de": "Trine legt Dreiecke, die nacheinander explodieren (klein: in den Platz der ersten Serie; groß: sichere Zone an einem leeren Rand oder in der Mitte). Schwingen: eine Schwinge = 180-Grad-Cleave auf der leuchtenden Seite; zwei = Tankbuster auf den nächsten und den entferntesten Spieler. Die Tanks nehmen die Zwei-Flügel-Treffer, indem sie am nächsten und am weitesten von Kefka stehen; alle anderen halten Abstand.",
+      "ja": "トラインは三角形が順に爆発（小：1組目の跡へ、大：空いた外周か中央が安置）。破壊の翼：片翼＝光る側に180度、両翼＝最も近い人と遠い人へタンク強攻撃。両翼のときはタンクがケフカの最も近くと最も遠くに立って受け、他の人はタンクから離れます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "tank-busters",
+     "names": {
+      "en": "Hyperdrive / Ultimate Embrace",
+      "fr": "Colonne de feu / Étreinte fatidique",
+      "de": "Hyperantrieb / Ultima-Umarmung",
+      "ja": "ハイパードライブ／終末の双腕"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Hyperdrive is a circle tankbuster (tanks apart), Ultimate Embrace a shared tankbuster (tanks together). Hyperdrive lands on the MT while the OT moves away; for Ultimate Embrace both tanks stand together.",
+      "fr": "Colonne de feu est un tankbuster en cercle (tanks écartés), Étreinte fatidique un tankbuster partagé (tanks ensemble). Hyperdrive tombe sur le MT pendant que l'OT s'éloigne ; pour Ultimate Embrace, les deux tanks se mettent ensemble.",
+      "de": "Hyperantrieb ist ein Kreis-Tankbuster (Tanks getrennt), Ultima-Umarmung ein geteilter Tankbuster (Tanks zusammen). Hyperdrive trifft den MT, während der OT weggeht; bei Ultimate Embrace stehen beide Tanks zusammen.",
+      "ja": "ハイパードライブは円範囲のタンク強攻撃（離れる）、終末の双腕は分散タンク強攻撃（重なる）。ハイパードライブはMTに来るのでSTは離れます。アルテマエンブレイスは両タンクが重なります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "enrage-p2",
+     "names": {
+      "en": "Enrage",
+      "fr": "Enrage",
+      "de": "Enrage",
+      "ja": "時間切れ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "After the second Forsaken 3, Kefka casts Ultima four times with growing damage, then Light of Judgment wipes the party.",
+      "fr": "Après le deuxième Cataclysme 3, Kefka lance Ultima quatre fois de plus en plus fort, puis Triade guerrière tue le groupe.",
+      "de": "Nach dem zweiten Verloren 3 wirkt Kefka viermal Ultima mit steigendem Schaden, dann löscht Licht des Urteils die Gruppe aus.",
+      "ja": "2回目のミッシング3の後、威力が上がるアルテマを4回、その後裁きの光で全滅。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage",
+      "raidwide"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - Sigmascape V4.0 (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Sigmascape_V4.0_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "Blue Academy - O8S Blue Mage guide",
+   "url": "https://blue-academy.pages.dev/savage-guides/omega/o8s/",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

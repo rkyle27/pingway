@@ -1,0 +1,1100 @@
+{
+ "id": "m8s",
+ "type": "savage",
+ "expansion": "DT",
+ "patch": "7.2",
+ "names": {
+  "en": "AAC Cruiserweight M4 (Savage) - Howling Blade",
+  "fr": "Poids lourds-légers CCA - match 4 (sadique) - Howling Blade",
+  "de": "Arkadion - Schwergewicht R4 (episch) - Heulende Klinge",
+  "ja": "至天の座アルカディア零式：クルーザー級4 - ハウリングブレード"
+ },
+ "aliases": {
+  "en": [
+   "m8s",
+   "m8 savage",
+   "howling blade",
+   "wolf",
+   "cw4",
+   "cruiserweight 4"
+  ],
+  "fr": [
+   "m8s",
+   "howling blade",
+   "loup"
+  ],
+  "de": [
+   "m8s",
+   "howling blade",
+   "wolf",
+   "heulende klinge"
+  ],
+  "ja": [
+   "m8s",
+   "零式4層",
+   "クルーザー級4層",
+   "ハウリングブレード",
+   "狼",
+   "4層前半",
+   "4層後半"
+  ]
+ },
+ "summary": {
+  "en": "Final Cruiserweight fight: Howling Blade, a wolf swordsman. Phase 1 mixes Stonefang/Windfang reads, Eminent/Revolutionary Reign, the Millennial Decay wolf-head knockbacks, a timed adds phase (Tactical Pack) with element debuff swaps, and Beckon Moonlight clone cleaves. Phase 2 is on five small platforms with teleporters: tank busters per platform, Ultraviolent Ray spreads, Twofold Tempest tether relay, Lone Wolf's Lament tethers and towers, and multi-hit Howling Eight towers while Mooncleaver destroys platforms.",
+  "fr": "Dernier combat Poids lourds-légers : Howling Blade, un loup épéiste. La phase 1 mêle lectures Magie tellurique/des tempêtes, Lame de la meute, les poussées des têtes de loup d'Érosion millénaire, une phase d'adds chronométrée avec échange de debuffs élémentaires, et les clones d'Invocation du loup spectral. La phase 2 se joue sur cinq petites plateformes à téléporteurs : busters par plateforme, dispersions Rayon mystique, relais de lien Tempête de crocs, liens et tours de Malédiction du loup solitaire, et tours multi-coups Octorayon pendant que Tranchage éclair détruit les plateformes.",
+  "de": "Letzter Schwergewicht-Kampf: Howling Blade, ein Wolf-Schwertkämpfer. Phase 1 mischt Kunst der Erde/des Windes, Wolfsrudel-Angriffe, die Wolfskopf-Rückstöße bei Milleniumsverwitterung, eine zeitkritische Add-Phase mit Element-Debuff-Tausch und die Phantomwolf-Klone. Phase 2 spielt auf fünf kleinen Plattformen mit Teleportern: Tankbuster pro Plattform, Ätherlicht-Verteilen, Orkanreißer-Verbindungsstaffel, Fluch des Wolfes mit Verbindungen und Türmen, und mehrfache Achtfache-Lichtkugel-Türme, während Klingensturz Plattformen zerstört.",
+  "ja": "クルーザー級4層、狼の剣士「ハウリングブレード」戦。前半は土/風の魔技、薙/廻の群狼剣、千年の風化の狼頭とノックバック、デバフ交換の雑魚フェーズ（光狼招来）、幻狼招来の分身半面。後半はワープ装置付きの5つの島で、双牙撃、魔光の散開、双牙暴風撃の線リレー、孤狼の呪いの線と塔、八連光弾の塔、剛刃一閃で島が壊れていく。"
+ },
+ "strats_overview": [
+  {
+   "id": "na-pf",
+   "name": {
+    "en": "NA PF (Toxic Friends + Fering Millennial + Tera Clock + Quad Moonlight; P2 Toxic/Rinon)",
+    "fr": "PF NA (Toxic Friends + Fering Millennial + Tera Clock + Quad Moonlight ; P2 Toxic/Rinon)",
+    "de": "NA-PF (Toxic Friends + Fering Millennial + Tera Clock + Quad Moonlight; P2 Toxic/Rinon)",
+    "ja": "NA野良（Toxic Friends＋Fering千年＋Teraクロック＋Quad Moonlight、後半Toxic/Rinon）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "NAUR's NA PF set: Toxic Friends P1 raidplan, FERINGBIN Millennial Decay, clock-spot Terrestrial Rage, Quad Moonlight, and the Toxic/Rinon raidplan for all of phase 2.",
+    "fr": "Le set PF NA de NAUR : raidplan Toxic Friends P1, Érosion millénaire FERINGBIN, Fureur tellurique en horloge, Quad Moonlight et le raidplan Toxic/Rinon pour toute la phase 2.",
+    "de": "Das NA-PF-Set von NAUR: Toxic-Friends-P1-Raidplan, FERINGBIN-Milleniumsverwitterung, Uhr-Gaias-Zorn, Quad Moonlight und der Toxic/Rinon-Raidplan für ganz Phase 2.",
+    "ja": "NAURのNA野良セット：Toxic Friends前半、FERINGBIN千年の風化、クロック大地の怒り、Quad Moonlight、後半はToxic/Rinonレイドプラン。"
+   },
+   "aliases": {
+    "en": [
+     "toxic friends",
+     "toxic",
+     "fering",
+     "feringbin",
+     "tera clock",
+     "quad moonlight",
+     "tf rinon",
+     "gigabin"
+    ],
+    "fr": [
+     "toxic friends",
+     "toxic",
+     "fering",
+     "feringbin",
+     "tera clock",
+     "quad moonlight",
+     "tf rinon",
+     "gigabin"
+    ],
+    "de": [
+     "toxic friends",
+     "toxic",
+     "fering",
+     "feringbin",
+     "tera clock",
+     "quad moonlight",
+     "tf rinon",
+     "gigabin"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "eu-rinon",
+   "name": {
+    "en": "EU PF (Rinon)",
+    "fr": "PF EU (Rinon)",
+    "de": "EU-PF (Rinon)",
+    "ja": "EU野良（Rinon）"
+   },
+   "region": "EU",
+   "note": {
+    "en": "WTFDIG lists a Rinon EU option (also 84ddog and a Toxic pastebin). Details were not verified separately; phase 2 largely matches the Toxic/Rinon raidplan.",
+    "fr": "WTFDIG liste une option Rinon EU (et aussi 84ddog et un pastebin Toxic). Non vérifié à part ; la phase 2 suit surtout le raidplan Toxic/Rinon.",
+    "de": "WTFDIG listet eine Rinon-EU-Option (auch 84ddog und ein Toxic-Pastebin). Nicht separat geprüft; Phase 2 entspricht größtenteils dem Toxic/Rinon-Raidplan.",
+    "ja": "WTFDIGにRinon EU（他に84ddog、Toxic pastebin）。詳細は未確認、後半はToxic/Rinonとほぼ同じ。"
+   },
+   "aliases": {
+    "en": [
+     "rinon"
+    ],
+    "fr": [
+     "rinon"
+    ],
+    "de": [
+     "rinon"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-game8",
+   "name": {
+    "en": "JP Game8 (Nukemaru macro: Idyll earth-fix, IQ6000 Millennial, Alice Lament, 81128 towers)",
+    "fr": "JP Game8 (macro Nukemaru : Idyll terre corrigée, IQ6000, Alice, 81128)",
+    "de": "JP Game8 (Nukemaru-Makro: Idyll Erd-Fix, IQ6000, Alice, 81128)",
+    "ja": "JP game8（ぬけまるマクロ：イディル土修正・風化IQ6000・狐狼Alice・81128）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "Phase 1 uses the Idyllshire earth-fixed Nukemaru macro with the IQ6000 method for Millennial Decay (called mainstream); phase 2 uses 'Main-in regular' for Elemental Purge, Alice method for Lone Wolf's Lament and 81128 for Howling Eight.",
+    "fr": "Phase 1 : macro Nukemaru version Idyllshire terre corrigée avec IQ6000 pour Érosion millénaire (dite majoritaire) ; phase 2 : traitement normal du Sceau, méthode Alice pour la Malédiction et 81128 pour Octorayon.",
+    "de": "Phase 1: Nukemaru-Makro (Idyllshire Erd-Fix) mit IQ6000 für Milleniumsverwitterung (als Standard bezeichnet); Phase 2: reguläre Lösung beim Siegel, Alice-Methode für den Fluch und 81128 für die Achtfache Lichtkugel.",
+    "ja": "前半はイディル土修正版ぬけまるマクロ、千年の風化はIQ6000式（主流と明記）。後半は風震の魔印正規処理、孤狼の呪いAlice式、八連光弾81128受け。"
+   },
+   "aliases": {
+    "en": [
+     "nukemaru",
+     "idyll",
+     "iq6000",
+     "alice",
+     "81128",
+     "game8"
+    ],
+    "fr": [
+     "nukemaru",
+     "idyll",
+     "iq6000",
+     "alice",
+     "81128",
+     "game8"
+    ],
+    "de": [
+     "nukemaru",
+     "idyll",
+     "iq6000",
+     "alice",
+     "81128",
+     "game8"
+    ],
+    "ja": [
+     "ぬけまる",
+     "イディル",
+     "IQ6000式",
+     "Alice式",
+     "81128受け",
+     "nukemaru"
+    ]
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "前半"
+   },
+   "mechanics": [
+    {
+     "id": "extraplanar-pursuit",
+     "names": {
+      "en": "Extraplanar Pursuit",
+      "fr": "Tranchage du vide",
+      "de": "Raumspalter",
+      "ja": "空間斬り"
+     },
+     "aliases": {
+      "en": [
+       "raidwide"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Heavy physical raidwide, followed by strong auto-attacks; layer mitigation.",
+      "fr": "Gros raidwide physique suivi d'auto-attaques fortes ; superpose la mitigation.",
+      "de": "Schwerer physischer Raidwide, danach starke Auto-Angriffe; Mitigation stapeln.",
+      "ja": "物理全体攻撃、直後に強いAAが2回。軽減を重ねる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "stonefang-windfang",
+     "names": {
+      "en": "Stonefang / Windfang",
+      "fr": "Magie tellurique / Magie des tempêtes",
+      "de": "Kunst der Erde / Kunst des Windes",
+      "ja": "土の魔技 / 風の魔技"
+     },
+     "aliases": {
+      "en": [
+       "stone wind",
+       "cardinals intercardinals"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "魔技"
+      ]
+     },
+     "how": {
+      "en": "Bits mark cardinals or intercardinals (the other set is safe). Windfang = donut plus pair-split cones (stack inside with your partner); Stonefang = point-blank circle plus cones on all eight (spread outside).",
+      "fr": "Les bits marquent cardinaux ou intercardinaux (l'autre série est sûre). Tempêtes = donut + cônes partagés en paires (pack dedans avec ton partenaire) ; Tellurique = cercle + cônes sur les huit (disperse dehors).",
+      "de": "Bits markieren Haupt- oder Zwischenrichtungen (die anderen sind sicher). Wind = Donut + Paar-Kegel (innen mit Partner sammeln); Erde = Kreis + Kegel auf alle acht (außen verteilen).",
+      "ja": "ビットの十字/X字の逆が安地。風はドーナツ＋ペア頭割りの扇（内側でペア）、土は円＋8人への扇（外側で散開）。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Stonefang spread: supports left, DPS right, facing the boss; Windfang: stack inside with your colour partner.",
+        "fr": "Tellurique : supports à gauche, DPS à droite face au boss ; Tempêtes : pack dedans avec ton partenaire de couleur.",
+        "de": "Erde verteilen: Supporter links, DPS rechts mit Blick zum Boss; Wind: innen mit Farbpartner sammeln.",
+        "ja": "土はボスを向いてサポート左・DPS右で散開、風は色ペアで内側。"
+       }
+      },
+      {
+       "strat": "eu-rinon",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-game8",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack",
+      "cleave"
+     ]
+    },
+    {
+     "id": "wolves-reign",
+     "names": {
+      "en": "Eminent Reign / Revolutionary Reign",
+      "fr": "Lame de la meute dévastatrice / tourbillonnante",
+      "de": "Wildes / Kreisendes Wolfsrudel",
+      "ja": "薙の群狼剣 / 廻の群狼剣"
+     },
+     "aliases": {
+      "en": [
+       "reign",
+       "eminent",
+       "revolutionary"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "群狼剣",
+       "薙",
+       "廻"
+      ]
+     },
+     "how": {
+      "en": "Clones charge, then the boss dashes to one: Eminent is a wide cone (go close behind him), Revolutionary a big point-blank knockback (stay away). Then the top two enmity take cones and the healers take stack cones.",
+      "fr": "Des clones chargent, puis le boss fonce vers l'un : Dévastatrice = large cône (va derrière lui, près), Tourbillonnante = grosse poussée autour de lui (reste loin). Ensuite les deux premiers en inimitié prennent des cônes et les heals des cônes partagés.",
+      "de": "Klone stürmen, dann springt der Boss zu einem: Wildes = breiter Kegel (nah hinter ihn), Kreisendes = großer Rückstoß um ihn (weg bleiben). Danach nehmen die zwei Ersten in der Feindseligkeit Kegel und die Heiler geteilte Kegel.",
+      "ja": "分身の突進後、ボスが分身へ。薙は広い扇（ボスに近づく）、廻は大きな円ノックバック（離れる）。その後ヘイト1・2位への扇とヒーラーへの頭割り扇。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "LP1 faces the wall on the left, LP2 on the right. Eminent: chase the boss, tanks between rear and flank. Revolutionary: stay where he jumped from, tanks at the edge about 90 degrees from the jump spot.",
+        "fr": "LP1 face au mur à gauche, LP2 à droite. Dévastatrice : suis le boss, tanks entre l'arrière et le flanc. Tourbillonnante : reste là d'où il a sauté, tanks au bord à environ 90 degrés.",
+        "de": "LG1 mit Blick zur Wand links, LG2 rechts. Wildes: dem Boss nach, Tanks zwischen Rücken und Flanke. Kreisendes: bleib am Absprungpunkt, Tanks am Rand etwa 90 Grad versetzt.",
+        "ja": "LP1は左、LP2は右で壁を向く。薙はボスを追い、タンクは背後と側面の間。廻は跳んだ元の位置、タンクは外周で約90度ずれた所。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Revolutionary: tanks stand at the very edge of the circle; Eminent: tanks inside behind the boss.",
+        "fr": "Tourbillonnante : tanks au bord du cercle ; Dévastatrice : tanks dedans derrière le boss.",
+        "de": "Kreisendes: Tanks am äußersten Kreisrand; Wildes: Tanks innen hinter dem Boss.",
+        "ja": "廻ならタンクは円範囲のギリギリ、薙なら背後の内側。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "knockback",
+      "tankbuster",
+      "cleave",
+      "stack"
+     ]
+    },
+    {
+     "id": "millennial-decay",
+     "names": {
+      "en": "Millennial Decay / Winds of Decay / Aero III / Prowling Gale",
+      "fr": "Érosion millénaire / Tempête millénaire / Méga Vent / Meute des loups du vent",
+      "de": "Milleniumsverwitterung / Milleniumstaifun / Windga / Windwolfszirkel",
+      "ja": "千年の風化 / 千年の大風 / エアロガ / 風狼陣"
+     },
+     "aliases": {
+      "en": [
+       "millennial",
+       "wolf heads",
+       "decay"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "千年",
+       "風化",
+       "狼頭"
+      ]
+     },
+     "how": {
+      "en": "Raidwide, then wolf heads appear and rotate, firing lines while one role then the other gets marked AoEs, with knockbacks. Then wolf-head tethers hit four players of one role (Aero III knocks them behind the opposite head) and four one-person towers must be soaked by the other role.",
+      "fr": "Raidwide, puis des têtes de loup tournent en tirant des lignes pendant qu'un rôle puis l'autre a des AoE marquées, avec des poussées. Ensuite des liens de têtes touchent quatre joueurs d'un rôle (Méga Vent les pousse derrière la tête opposée) et quatre tours d'une personne sont prises par l'autre rôle.",
+      "de": "Raidwide, dann drehen sich Wolfsköpfe und feuern Linien, während erst eine, dann die andere Rolle markierte AoEs bekommt, mit Rückstößen. Danach treffen Kopf-Verbindungen vier Spieler einer Rolle (Windga stößt sie hinter den gegenüberliegenden Kopf) und die andere Rolle nimmt vier Ein-Personen-Türme.",
+      "ja": "全体攻撃後に狼頭が回転し直線、片方ずつのロールにマーカー範囲とノックバック。その後狼頭の線で片ロール4人がエアロガで反対の狼頭の裏へ、もう片方が1人塔を踏む。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Fering Millennial: healers and melee west, tanks and ranged east, G1/G2 split north and south. The marked role is knocked to its colour, the other role takes the safe cardinal then shifts one intercardinal (melee/tanks far, ranged/healers near). Tethered players end behind the opposite head; the other role soaks towers at their colour markers.",
+        "fr": "Fering : heals et mêlées à l'ouest, tanks et distances à l'est, G1/G2 nord et sud. Le rôle marqué est poussé à sa couleur, l'autre prend le cardinal sûr puis décale d'un intercardinal (mêlées/tanks loin, distances/heals près). Les liés finissent derrière la tête opposée ; l'autre rôle prend les tours à sa couleur.",
+        "de": "Fering: Heiler und Nahkampf West, Tanks und Fernkampf Ost, G1/G2 Nord und Süd. Die markierte Rolle wird zu ihrer Farbe gestoßen, die andere nimmt die sichere Richtung und rückt eine Zwischenrichtung weiter (Nah/Tank fern, Fern/Heiler nah). Verbundene landen hinter dem gegenüberliegenden Kopf; die andere Rolle nimmt Türme an ihrer Farbe.",
+        "ja": "Fering式：ヒーラーと近接が西、タンクと遠隔が東、G1/G2で南北。マーカー組は自分の色へ飛ばされ、もう一方は安全な方角→斜めへ1つずれる（近接タンクは遠い方、遠隔ヒーラーは近い方）。線の人は反対の狼頭の裏、もう一方は色マーカーの塔。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "IQ6000 (mainstream): heads drop from A/C in order; drop the first circles in an X (watch the Aero III knockback); ranged take the second set at A/C while melee and tanks follow the edge of the line; at the end players without a job soak the towers.",
+        "fr": "IQ6000 (majoritaire) : les têtes tombent depuis A/C ; pose les premiers cercles en X (attention à la poussée) ; les distances prennent la 2e série en A/C, mêlées et tanks suivent le bord de la ligne ; à la fin ceux sans rôle prennent les tours.",
+        "de": "IQ6000 (Standard): Köpfe kommen von A/C; erste Kreise im X ablegen (Rückstoß beachten); Fernkämpfer nehmen den zweiten Satz an A/C, Nahkampf und Tanks folgen dem Linienrand; am Ende nehmen die ohne Aufgabe die Türme.",
+        "ja": "IQ6000式（主流）：狼頭がA/Cから順に降り、1回目の円はX字に捨てる（ノックバック注意）、2回目は遠隔がA/C、近接タンクは直線の端を追う。最後は無職が塔。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "dodge",
+      "spread",
+      "knockback",
+      "tether"
+     ]
+    },
+    {
+     "id": "tracking-tremors-great-divide",
+     "names": {
+      "en": "Tracking Tremors / Great Divide",
+      "fr": "Secousses en cascade / Tranchage net",
+      "de": "Multi-Beben / Lichtspalter",
+      "ja": "連震撃 / 一刀両断"
+     },
+     "aliases": {
+      "en": [
+       "8 hit stack",
+       "tank buster"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Tracking Tremors is an eight-hit stack on a healer with auto-attacks in between, heavy mitigation needed. Great Divide is a shared line buster on the tanks, ideally with an invulnerability.",
+      "fr": "Secousses = package en huit coups sur un heal avec des auto-attaques entre, grosse mitigation. Tranchage net = buster en ligne partagé par les tanks, idéalement sous invincibilité.",
+      "de": "Multi-Beben ist ein achtfaches Sammeln auf einen Heiler mit Auto-Angriffen dazwischen, viel Mitigation nötig. Lichtspalter ist ein geteilter Linien-Buster auf die Tanks, am besten mit Unverwundbarkeit.",
+      "ja": "連震撃はヒーラーへの8連頭割り（間にAA）、軽減必須。一刀両断はタンク2人の直線頭割り、無敵推奨。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "terrestrial-titans",
+     "names": {
+      "en": "Terrestrial Titans / Titanic Pursuit / Fanged Crossing",
+      "fr": "Invocation tellurique / Tranchage du loup spectral / bits",
+      "de": "Ruf der Erde / Himmelschneider / Bits",
+      "ja": "大地の呼び声 / 斬空剣 / ビット"
+     },
+     "aliases": {
+      "en": [
+       "pillars",
+       "towerfall"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Two stone pillars on opposite cardinals are cut and fall; the safe intercardinal is the one next to the X-shaped bit on the side where nothing falls.",
+      "fr": "Deux piliers aux cardinaux opposés sont tranchés et tombent ; l'intercardinal sûr est celui à côté du bit en X, du côté où rien ne tombe.",
+      "de": "Zwei Steinsäulen auf gegenüberliegenden Himmelsrichtungen werden durchtrennt und fallen; die sichere Zwischenrichtung ist die neben dem X-Bit auf der Seite, wo nichts fällt.",
+      "ja": "東西か南北に石塔、斬空剣で倒れる。倒れてこない側のX字ビットのある方が安地。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "adds",
+   "names": {
+    "en": "Adds (Tactical Pack)",
+    "fr": "Adds (Invocation du loup radieux)",
+    "de": "Adds (Lichtwolf-Beschwörung)",
+    "ja": "雑魚（光狼招来）"
+   },
+   "mechanics": [
+    {
+     "id": "tactical-pack",
+     "names": {
+      "en": "Tactical Pack: Howling Havoc / Pack Predation / element swaps",
+      "fr": "Invocation du loup radieux : Hurlement tempétueux / Meute du loup radieux / échanges",
+      "de": "Lichtwolf-Beschwörung: Ruf des Sturms / Lichtwolfszirkel / Tausch",
+      "ja": "光狼招来：風塵の咆哮 / 光狼陣 / デバフ交換"
+     },
+     "aliases": {
+      "en": [
+       "adds",
+       "wolves",
+       "fonts",
+       "earth wind debuff"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "雑魚",
+       "光狼",
+       "デバフ"
+      ]
+     },
+     "how": {
+      "en": "A stone wolf and a wind wolf must die before their enrage. Players get earth or wind debuffs (20, 36, 53 s) that must be swapped by running through the matching rotating font, which costs raid HP, gives a short magic vulnerability, and damages the add; a font touching an add wipes. Both adds must die close together, then Ravenous Saber hits five times. Each wolf's Pack Predation is a cone buster on its own top-enmity player, so each tank holds one wolf and points the cone away.",
+      "fr": "Un loup de terre et un de vent doivent mourir avant leur enrage. Les joueurs ont des debuffs terre ou vent (20, 36, 53 s) à échanger en traversant la source qui tourne de la bonne couleur, ce qui coûte des PV au groupe, donne une courte vulnérabilité magique et blesse l'add ; une source qui touche un add = wipe. Les deux adds doivent mourir proches, puis Rafale du loup radieux frappe cinq fois. Le Meute du loup radieux de chaque loup est un buster en cône sur son premier en inimitié : chaque tank garde un loup et oriente le cône à l'écart.",
+      "de": "Ein Erd- und ein Windwolf müssen vor ihrem Enrage sterben. Spieler bekommen Erd- oder Wind-Debuffs (20, 36, 53 s), die man tauscht, indem man durch die passende kreisende Quelle läuft; das kostet Gruppen-HP, gibt kurze Magie-Verwundbarkeit und schadet dem Add; berührt eine Quelle ein Add, Wipe. Beide Adds müssen fast gleichzeitig sterben, dann trifft Wirbellichtklinge fünfmal. Lichtwolfszirkel jedes Wolfs ist ein Kegel-Buster auf den Ersten seiner Feindseligkeit, daher hält jeder Tank einen Wolf und richtet den Kegel weg.",
+      "ja": "土と風の狼を狼吼までに倒す。土/風デバフ（20・36・53秒）は同じ属性の回るシンボルに当たって解除（全体ダメージと被魔法増加、雑魚にもダメージ、雑魚に当たると全滅）。2体はほぼ同時に倒す。その後5連全体攻撃。各狼の強攻撃（光狼陣）はそれぞれのヘイト1位への扇なので、タンクが1体ずつ持ち、扇を外へ向ける。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Two light parties rotate around the center; tanks point busters in the rotation direction, the prey stands behind. Shortest Earthborne goes first through the earth font, then shortest Windborne after the vulnerability fades; repeat three times, hold DPS if an add is below 25% after the second set.",
+        "fr": "Deux light parties tournent autour du centre ; les tanks orientent les busters dans le sens de rotation, la cible se met derrière. Le plus court en terre passe d'abord dans la source de terre, puis le plus court en vent quand la vulnérabilité a disparu ; trois fois, retenez le DPS si un add est sous 25 % après la 2e série.",
+        "de": "Zwei Leichtgruppen drehen um die Mitte; Tanks richten Buster in Drehrichtung, das Ziel steht dahinter. Kürzester Erd-Debuff zuerst durch die Erdquelle, dann kürzester Wind, wenn die Verwundbarkeit weg ist; dreimal, DPS zurückhalten, wenn ein Add nach dem zweiten Satz unter 25 % ist.",
+        "ja": "2組で中央を回る。タンクは強攻撃の扇を回転方向へ、対象者は後ろ。土の短い人から土シンボル、被魔法増加が切れたら風の短い人。3回、2セット後に25%以下なら火力調整。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Wind players hit their symbol quickly, earth players wait until the magic vulnerability is gone; go in order of shortest timer (20 s or less means it's your turn).",
+        "fr": "Les joueurs vent touchent leur symbole vite, les joueurs terre attendent la fin de la vulnérabilité ; ordre du plus court (20 s ou moins = ton tour).",
+        "de": "Wind-Spieler laufen schnell durch ihr Symbol, Erd-Spieler warten, bis die Verwundbarkeit weg ist; Reihenfolge nach kürzestem Timer (20 s oder weniger = du bist dran).",
+        "ja": "風の人は素早くシンボルへ、土の人は被魔法増加が切れてから。秒数の短い順（20秒以下なら自分の番）。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "debuff",
+      "dps-check",
+      "tankbuster",
+      "transition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p1b",
+   "names": {
+    "en": "Phase 1 part 2",
+    "fr": "Phase 1 partie 2",
+    "de": "Phase 1 Teil 2",
+    "ja": "前半（雑魚後）"
+   },
+   "mechanics": [
+    {
+     "id": "terrestrial-rage",
+     "names": {
+      "en": "Terrestrial Rage / Shadowchase / Roaring Wind",
+      "fr": "Fureur tellurique / Tranchage mirage / Déferlante du loup tempétueux",
+      "de": "Gaias Zorn / Echoklinge / Jaulender Wind",
+      "ja": "大地の怒り / 残影剣 / 風狼豪波"
+     },
+     "aliases": {
+      "en": [
+       "tera",
+       "clock spots",
+       "heavensearth",
+       "suspended stone"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "大地の怒り",
+       "残影剣"
+      ]
+     },
+     "how": {
+      "en": "Bits fire two sets of lines; four players of one role get spread AoEs (Suspended Stone) and one player of the other role gets a stack (Heavensearth), then they swap. Clones fire lines (Shadowchase) and wind heads spawn where you must stand behind them, then a Reign with stone lines.",
+      "fr": "Les bits tirent deux séries de lignes ; quatre joueurs d'un rôle ont des AoE à écarter (Piliers rocheux) et un de l'autre rôle un package (Secousse ciblée), puis on inverse. Des clones tirent des lignes (Tranchage mirage) et des têtes de vent apparaissent, mets-toi derrière, puis une Lame de la meute avec lignes de pierre.",
+      "de": "Bits feuern zwei Linien-Sätze; vier Spieler einer Rolle bekommen Verteil-AoEs (Felsen) und einer der anderen ein Sammeln (Großes Beben), dann getauscht. Klone feuern Linien (Echoklinge), dann Windköpfe, hinter denen du stehen musst, danach ein Wolfsrudel mit Steinlinien.",
+      "ja": "ビットの直線2回。片ロール4人に範囲（大岩石）、もう片方1人に頭割り（大震撃）、次は交代。分身の直線（残影剣）、狼頭の裏へ、群狼剣と狼頭の直線。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Tera Clock: stay at your clock spot; stack 1 goes under the boss, stack 2 goes north or northeast.",
+        "fr": "Tera Clock : reste à ton spot d'horloge ; package 1 sous le boss, package 2 au nord ou nord-est.",
+        "de": "Tera Clock: bleib auf deinem Uhrplatz; Sammeln 1 unter dem Boss, Sammeln 2 Nord oder Nordost.",
+        "ja": "クロック式：時計位置で処理、1回目の頭割りはボス下、2回目は北か北東。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Wait in the first safe spot; spread role goes outside the first hit, stack role takes it near the second bits; then dodge clones and head lines, and read Eminent/Revolutionary from the cast.",
+        "fr": "Attends au premier safe spot ; le rôle de dispersion sort de la première frappe, le rôle de package le prend près des seconds bits ; puis esquive clones et têtes, et lis la Lame dans l'incantation.",
+        "de": "Im ersten sicheren Bereich warten; die Verteil-Rolle geht aus dem ersten Treffer, die Sammel-Rolle nimmt es nahe den zweiten Bits; dann Klone und Kopflinien ausweichen und Wildes/Kreisendes am Zauber erkennen.",
+        "ja": "1回目の安地で待ち、範囲担当は1発目の外、頭割り担当は2発目のビット付近。その後分身と狼頭の直線、薙か廻は詠唱で判断。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "beckon-moonlight",
+     "names": {
+      "en": "Beckon Moonlight",
+      "fr": "Invocation du loup spectral",
+      "de": "Phantomwolf-Beschwörung",
+      "ja": "幻狼招来"
+     },
+     "aliases": {
+      "en": [
+       "moonlight",
+       "quad moonlight"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "幻狼"
+      ]
+     },
+     "how": {
+      "en": "Four clones dash with half-room cleaves; dodge in the safe quadrants while the spread/stack roles swap after the first two cleaves. Then stone heads fire lines across the middle (cardinal edges safe) and the boss uses the element (Stone/Windfang) not used yet. The second Great Divide follows this part: shared by the tanks on the top-enmity tank, mitigate or invuln.",
+      "fr": "Quatre clones foncent avec des demi-salles ; esquive dans les quarts sûrs pendant que dispersion/package s'inversent après les deux premiers. Ensuite des têtes de pierre tirent au milieu (bords cardinaux sûrs) et le boss utilise l'élément pas encore utilisé. Le second Tranchage net suit cette partie : partagé par les tanks sur le tank en tête d'inimitié, réductions ou invulnérabilité.",
+      "de": "Vier Klone stürmen mit Halbraum-Angriffen; in den sicheren Vierteln ausweichen, während Verteilen/Sammeln nach den ersten zwei tauschen. Dann feuern Steinköpfe über die Mitte (Himmelsrichtungs-Ränder sicher) und der Boss nutzt das noch nicht genutzte Element. Danach kommt der zweite Lichtspalter: von den Tanks geteilt, auf dem Tank mit der höchsten Feindseligkeit, mitigieren oder Unverwundbarkeit.",
+      "ja": "分身4体の半面突進、安地で範囲と頭割りを入れ替え。続く狼頭のX字直線は東西南北の端が安地。最後の魔技はまだ使っていない属性。この後に2回目の一刀両断（ヘイト1位対象、タンク2人で頭割り）が来る。軽減か無敵で受ける。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Quad Moonlight: use the safe quadrant after cleaves 1-2, then after 3-4; stack at the wall, melee take front spreads, ranged back, LP1 left and LP2 right.",
+        "fr": "Quad Moonlight : quart sûr après les coups 1-2, puis 3-4 ; package au mur, mêlées devant, distances derrière, LP1 à gauche, LP2 à droite.",
+        "de": "Quad Moonlight: sicheres Viertel nach Angriff 1-2, dann 3-4; Sammeln an der Wand, Nahkampf vorn, Fernkampf hinten, LG1 links, LG2 rechts.",
+        "ja": "Quad Moonlight：1-2回目後と3-4回目後の安地を使う。頭割りは壁際、近接が前、遠隔が後ろ、LP1左・LP2右。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "dodge",
+      "spread",
+      "stack",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "p1-end",
+     "names": {
+      "en": "Tracking Tremors / Extraplanar Feast (phase transition)",
+      "fr": "Secousses en cascade / Tranchage funeste du vide (transition)",
+      "de": "Multi-Beben / Radikaler Raumspalter (Übergang)",
+      "ja": "連震撃 / 空間斬り・滅（フェーズ移行）"
+     },
+     "aliases": {
+      "en": [
+       "transition",
+       "dps check"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Heal and mitigate the last stack and raidwide; the boss must be at 1 HP by the timer or the party wipes, then everyone is moved to the platform phase. Saving LB3 helps the phase 2 DPS check.",
+      "fr": "Soigne et mitige le dernier package et raidwide ; le boss doit être à 1 PV avant le chrono sinon wipe, puis tout le monde passe sur les plateformes. Garder la LB3 aide pour la phase 2.",
+      "de": "Letztes Sammeln und Raidwide heilen und mitigieren; der Boss muss bis zum Timer auf 1 HP sein, sonst Wipe, danach geht es auf die Plattformen. LB3 aufheben hilft beim DPS-Check in Phase 2.",
+      "ja": "最後の頭割りと全体攻撃を軽減。時間内にHPを削り切らないと全滅、その後足場フェーズへ。LB3は温存すると後半が楽。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "raidwide",
+      "dps-check",
+      "transition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2 (platforms)",
+    "fr": "Phase 2 (plateformes)",
+    "de": "Phase 2 (Plattformen)",
+    "ja": "後半（足場）"
+   },
+   "mechanics": [
+    {
+     "id": "quake-iii",
+     "names": {
+      "en": "Quake III",
+      "fr": "Méga Séisme",
+      "de": "Seisga",
+      "ja": "クエイガ"
+     },
+     "aliases": {
+      "en": [
+       "healer stacks",
+       "platform stack"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Stack on each healer that hits the whole platform; with fewer than four on a platform the damage is much higher.",
+      "fr": "Package sur chaque heal qui frappe toute la plateforme ; à moins de quatre sur la plateforme les dégâts montent fort.",
+      "de": "Sammeln auf jedem Heiler, das die ganze Plattform trifft; mit weniger als vier Leuten ist der Schaden viel höher.",
+      "ja": "ヒーラー2人への頭割り、島全体に当たる。4人未満だとダメージ大。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Light party 1 southwest, light party 2 southeast, facing the boss.",
+        "fr": "LP1 au sud-ouest, LP2 au sud-est, face au boss.",
+        "de": "LG1 Südwest, LG2 Südost, mit Blick zum Boss.",
+        "ja": "LP1が南西、LP2が南東。"
+       }
+      },
+      {
+       "strat": "eu-rinon",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "MT group west island, ST group east island, standing toward the front.",
+        "fr": "Groupe MT île ouest, groupe ST île est, vers l'avant.",
+        "de": "MT-Gruppe Westinsel, ST-Gruppe Ostinsel, nach vorne.",
+        "ja": "MT組は西島、ST組は東島、前寄り。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "stack"
+     ]
+    },
+    {
+     "id": "ultraviolent-ray",
+     "names": {
+      "en": "Ultraviolent Ray",
+      "fr": "Rayon mystique",
+      "de": "Ätherlicht",
+      "ja": "魔光"
+     },
+     "aliases": {
+      "en": [
+       "uv",
+       "spreads"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Five players are marked (four of one role, one of the other) and must each end on a different platform while dodging Gleaming Beam.",
+      "fr": "Cinq joueurs sont marqués (quatre d'un rôle, un de l'autre) et doivent chacun finir sur une plateforme différente en esquivant Artillerie éclair.",
+      "de": "Fünf Spieler werden markiert (vier einer Rolle, einer der anderen) und müssen auf verschiedenen Plattformen landen, während sie der Blitzartillerie ausweichen.",
+      "ja": "5人にマーカー（片ロール4人＋もう片方1人）、それぞれ別の島に散開し、背後ビットの半面も避ける。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Line up MRRM with supports north and DPS south; the side with three marks sends its southernmost marked player to the south platform, and the northernmost marked player on each side goes to that side's north platform.",
+        "fr": "Alignez-vous MRRM, supports au nord, DPS au sud ; le côté à trois marques envoie son marqué le plus au sud sur la plateforme sud, et le plus au nord de chaque côté va sur la plateforme nord de son côté.",
+        "de": "Aufstellung MRRM, Supporter Nord, DPS Süd; die Seite mit drei Markierten schickt ihren südlichsten zur Südplattform, und der nördlichste Markierte jeder Seite geht zur Nordplattform seiner Seite.",
+        "ja": "MRRMで並び、サポート北・DPS南。マーカー3人の側は一番南が南島へ、各側の一番北が自分側の北島へ。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Line up from north T, ranged DPS, melee DPS, H. With three marks on an island: north one to the north island, middle stays, south one to the base (south) island; with two: north one to the north island, south one stays.",
+        "fr": "Alignez-vous du nord : T, DPS distance, DPS mêlée, H. Avec trois marques sur une île : le nord va sur l'île nord, le milieu reste, le sud va sur l'île de base (sud) ; avec deux : nord sur l'île nord, sud reste.",
+        "de": "Von Norden aufstellen: T, Fern-DPS, Nah-DPS, H. Bei drei Markierten auf einer Insel: Nördlicher zur Nordinsel, mittlerer bleibt, südlicher zur Basisinsel (Süd); bei zwei: nördlicher zur Nordinsel, südlicher bleibt.",
+        "ja": "北からT・遠D・近D・Hで並ぶ。島に3つなら北の人は北島、中間はその場、南は基準島（南）へ。2つなら北は北島、南はその場。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "twinbite-heros-blow",
+     "names": {
+      "en": "Twinbite / Hero's Blow / Gleaming Barrage",
+      "fr": "Frappe des crocs jumeaux / Frappe du manche / Rafale d'artillerie éclair",
+      "de": "Doppelreißer / Leichte Beute / Multiblitzkanone",
+      "ja": "双牙撃 / 鎧袖一触 / 連撃閃光砲"
+     },
+     "aliases": {
+      "en": [
+       "tank busters",
+       "platform cleave"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Twinbite is a platform-wide magic buster on each tank, so the tanks go to separate north/side platforms alone. Hero's Blow cleaves about half the platforms from the sword side, and the bits' glow says whether the circle or donut is safe. Twinbite targets the top two in enmity, so the OT (ST) keeps second enmity.",
+      "fr": "Frappe des crocs jumeaux = buster magique sur toute une plateforme pour chaque tank, donc les tanks vont seuls sur des plateformes séparées. Frappe du manche frappe environ la moitié des plateformes du côté de l'épée, et la lueur des bits dit si cercle ou donut. Frappe des crocs jumeaux vise les deux premiers en inimitié, donc l'OT reste deuxième en inimitié.",
+      "de": "Doppelreißer ist ein plattformweiter Magie-Buster auf jeden Tank, also gehen die Tanks allein auf getrennte Plattformen. Leichte Beute trifft etwa die Hälfte der Plattformen von der Schwertseite, und das Leuchten der Bits zeigt Kreis oder Donut. Doppelreißer trifft die beiden Ersten in der Feindseligkeit, daher bleibt der OT Zweiter.",
+      "ja": "双牙撃はヘイト1・2位への島全体の強攻撃、タンクは別々の島へ。鎧袖一触は剣の向きからの半面と、ビットで判断する円かドーナツ。双牙撃はヘイト1位・2位が対象なので、STはヘイト2位を維持する。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Tanks go to the north platforms and mitigate, everyone else waits SW/SE.",
+        "fr": "Les tanks vont sur les plateformes nord et mitigent, les autres attendent SO/SE.",
+        "de": "Tanks gehen auf die Nordplattformen und mitigieren, alle anderen warten SW/SO.",
+        "ja": "タンクは北の島へ、他は南西/南東。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "MT west island, ST east island, everyone else on the base (south) island; ST keeps second enmity.",
+        "fr": "MT île ouest, OT île est, les autres sur l'île de base (sud) ; l'OT garde la 2e place.",
+        "de": "MT Westinsel, ST Ostinsel, alle anderen auf der Basisinsel (Süd); ST hält Platz 2.",
+        "ja": "MTは西島、STは東島、他は基準島。STはヘイト2位維持。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "mooncleaver-elemental-purge",
+     "names": {
+      "en": "Mooncleaver + Elemental Purge",
+      "fr": "Tranchage éclair + Sceau du vent et de la terre",
+      "de": "Klingensturz + Siegel des Windes",
+      "ja": "剛刃一閃＋風震の魔印"
+     },
+     "aliases": {
+      "en": [
+       "mooncleaver",
+       "platform break",
+       "purge"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "剛刃一閃",
+       "魔印"
+      ]
+     },
+     "how": {
+      "en": "Mooncleaver destroys the platform it locks onto (bait on the south platform, move only after it locks). Elemental Purge: a 210-degree cleave on the top-enmity tank, a big AoE buster on one tank (Patience of Wind) and a shared stack on a non-tank (Patience of Stone).",
+      "fr": "Tranchage éclair détruit la plateforme visée (bait sur la plateforme sud, bouge seulement après le verrouillage). Sceau : cône de 210 degrés sur le premier en inimitié, gros buster de zone sur un tank (vent) et package sur un non-tank (terre).",
+      "de": "Klingensturz zerstört die anvisierte Plattform (auf der Südplattform ködern, erst nach dem Anvisieren bewegen). Siegel: 210-Grad-Hieb auf den Feindseligkeits-Ersten, großer AoE-Buster auf einen Tank (Wind) und ein Sammeln auf einen Nicht-Tank (Erde).",
+      "ja": "剛刃一閃は狙った島を破壊（南の基準島で誘導、ロック後に移動）。風震の魔印はヘイト1位への210度扇、タンク1人への巨大円（風）、タンク以外への頭割り（土）。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "MT goes SW, everyone else right; the OT stays SE and the party goes NE. If the MT gets Patience of Wind, the OT provokes; the party sits on the platform next to the wind tank.",
+        "fr": "Le MT va au SO, les autres à droite ; l'OT reste au SE et le groupe va au NE. Si le MT a le vent, l'OT provoque ; le groupe se met sur la plateforme à côté du tank vent.",
+        "de": "MT geht SW, alle anderen rechts; OT bleibt SO und die Gruppe geht NO. Bekommt der MT Wind, provoziert der OT; die Gruppe steht auf der Plattform neben dem Wind-Tank.",
+        "ja": "MTは南西、他は右へ。STは南東、パーティは北東。MTが風ならSTが挑発、パーティは風タンクの隣の島。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Everyone gathers on the south base island before the cast, then MT goes west and ST east, waiting next to the island that breaks. Regular method: the debuffed tank takes the big circle on its island, the top-enmity tank takes the cone and bind, the unmarked tank provokes; the stack target moves next to the marked tank.",
+        "fr": "Tout le monde sur l'île sud avant l'incantation, puis MT à l'ouest et OT à l'est, à côté de l'île qui casse. Méthode normale : le tank avec debuff prend le gros cercle sur son île, le premier en inimitié prend le cône et l'entrave, le tank sans marque provoque ; la cible du package va à côté du tank marqué.",
+        "de": "Vor dem Zauber alle auf der Süd-Basisinsel, dann MT West, ST Ost, neben der Insel, die bricht. Reguläre Lösung: Der Tank mit Debuff nimmt den großen Kreis auf seiner Insel, der Feindseligkeits-Erste Kegel und Fessel, der unmarkierte Tank provoziert; das Sammel-Ziel geht neben den markierten Tank.",
+        "ja": "詠唱前に全員南の基準島、開始後MT西・ST東、壊れる島の隣で待機。正規処理：デバフタンクは元の島で巨大円、ヘイト1位は扇とバインド、マーカーなしタンクが挑発、頭割り対象はマーカータンクの隣の島。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "tankbuster",
+      "tankswap",
+      "cleave",
+      "stack",
+      "debuff"
+     ]
+    },
+    {
+     "id": "twofold-tempest",
+     "names": {
+      "en": "Rise of the Howling Wind / Prowling Gale towers / Twofold Tempest",
+      "fr": "Tempête divine / tours / Tempête de crocs",
+      "de": "Dämonenwolf: Himmelsturm / Türme / Orkanreißer",
+      "ja": "魔狼戦型・天嵐の相 / 風狼陣 / 双牙暴風撃"
+     },
+     "aliases": {
+      "en": [
+       "tether relay",
+       "tempest"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "線リレー",
+       "暴風撃"
+      ]
+     },
+     "how": {
+      "en": "Teleporter cooldown becomes long. Two-person towers on four platforms, then a tether that must be shared by two players is passed around the platforms four times, alternating with shared line baits on the other platforms.",
+      "fr": "Le délai des téléporteurs devient long. Tours à deux sur quatre plateformes, puis un lien à partager à deux passe quatre fois autour des plateformes, en alternance avec des lignes partagées sur les autres.",
+      "de": "Die Teleporter-Abklingzeit wird lang. Zwei-Personen-Türme auf vier Plattformen, dann wird eine Verbindung, die zwei teilen müssen, viermal um die Plattformen gereicht, abwechselnd mit geteilten Linien auf den anderen.",
+      "ja": "ワープの再使用が長くなる。4つの島に2人塔、その後2人で受ける線を4回リレー、同時に他の島で直線頭割り。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Tanks and melee SW/SE, healers and ranged NW/NE. Starting SW the tether goes SW, NW, NE, SE and baits go NE, SE, SW, NW; starting SE it goes SE, NE, NW, SW and baits NW, SW, SE, NE.",
+        "fr": "Tanks et mêlées SO/SE, heals et distances NO/NE. Départ SO : lien SO, NO, NE, SE et baits NE, SE, SO, NO ; départ SE : lien SE, NE, NO, SO et baits NO, SO, SE, NE.",
+        "de": "Tanks und Nahkampf SW/SO, Heiler und Fernkampf NW/NO. Start SW: Verbindung SW, NW, NO, SO, Köder NO, SO, SW, NW; Start SO: SO, NO, NW, SW, Köder NW, SW, SO, NO.",
+        "ja": "タンク・近接が南西/南東、ヒーラー・遠隔が北西/北東。南西開始なら線は南西→北西→北東→南東、誘導は北東→南東→南西→北西。南東開始は逆。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Two patterns (tether starts on MT side or ST side); TH group and DPS group relay it, melee recommended as carriers; tanks and healers pass it on their own islands.",
+        "fr": "Deux patterns (départ côté MT ou OT) ; groupe TH et groupe DPS se relaient, mêlées conseillées comme porteurs ; tanks et heals passent sur leur île.",
+        "de": "Zwei Muster (Start auf MT- oder ST-Seite); TH- und DPS-Gruppe reichen sie weiter, Nahkämpfer als Träger empfohlen; Tanks und Heiler geben auf ihrer Insel weiter.",
+        "ja": "線がMT側先かST側先の2パターン。TH組とDPS組でリレー、線担当は近接推奨、THは自分の島で受け渡す。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "tether",
+      "knockback"
+     ]
+    },
+    {
+     "id": "champions-circuit",
+     "names": {
+      "en": "Bare Fangs / Champion's Circuit",
+      "fr": "Invocation des crocs radieux / Secousse cosmique",
+      "de": "Lichtreißer-Beschwörung / Himmelsreigen",
+      "ja": "光牙招来 / 廻天動地"
+     },
+     "aliases": {
+      "en": [
+       "circuit",
+       "rotating aoes"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Big bits behind each platform; five kinds of AoE rotate around the platforms five times together with half-platform cleaves; predict the next one from the rotation direction and the neighbouring platform. The second Twinbite comes in this part and is handled like the first (each tank alone on a platform).",
+      "fr": "De gros bits derrière chaque plateforme ; cinq types d'AoE tournent cinq fois avec des demi-plateformes ; anticipe la suivante grâce au sens de rotation et à la plateforme voisine. Le second Frappe des crocs jumeaux arrive dans cette partie et se gère comme le premier (chaque tank seul sur une plateforme).",
+      "de": "Große Bits hinter jeder Plattform; fünf AoE-Arten rotieren fünfmal mit Halb-Plattform-Angriffen; sag die nächste aus Drehrichtung und Nachbarplattform voraus. Der zweite Doppelreißer kommt in diesem Teil und wird wie der erste gelöst (jeder Tank allein auf einer Plattform).",
+      "ja": "各島の背後に巨大ビット、5種類の範囲が5回回転し半面も同時。回転方向と隣の島の範囲から次を判断。この区間で2回目の双牙撃が来る。1回目と同じく各タンクが別の島で受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "lone-wolfs-lament",
+     "names": {
+      "en": "Lone Wolf's Lament + Prowling Gale towers",
+      "fr": "Malédiction du loup solitaire + tours",
+      "de": "Fluch des Wolfes + Türme",
+      "ja": "孤狼の呪い＋風狼陣"
+     },
+     "aliases": {
+      "en": [
+       "lament",
+       "close far tethers"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "孤狼",
+       "Alice式"
+      ]
+     },
+     "how": {
+      "en": "Pairs get close (must stay near) or far (must stay apart) tethers to the opposite role, then towers appear: south, southeast and southwest have fixed 3/1/1 soaks, while the two north platforms randomly have a two-person and a one-person tower.",
+      "fr": "Des paires ont des liens proches (rester près) ou éloignés (rester loin) avec le rôle opposé, puis des tours apparaissent : sud, sud-est et sud-ouest ont toujours 3/1/1, les deux plateformes nord ont au hasard une tour à deux et une à un.",
+      "de": "Paare bekommen Nah- (zusammen bleiben) oder Fern-Verbindungen (auseinander) zur anderen Rolle, dann erscheinen Türme: Süd, Südost und Südwest haben fest 3/1/1, die zwei Nordplattformen zufällig einen Zwei- und einen Ein-Personen-Turm.",
+      "ja": "逆ロールと近づく線（緑）/離れる線（青）。塔は南・南東・南西が3/1/1固定、北の2島は2人塔と1人塔がランダム。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Tanks NW, healers S, DPS SE. Far DPS tethered to a healer go NE, far DPS tethered to a tank stay; the close tank goes NE with the close DPS and the far tank goes SW. Close pair takes the two-person tower, far pair the one-person tower.",
+        "fr": "Tanks NO, heals S, DPS SE. DPS loin lié à un heal va au NE, DPS loin lié à un tank reste ; le tank proche va au NE avec son DPS proche et le tank loin au SO. Paire proche = tour à deux, paire loin = tour à un.",
+        "de": "Tanks NW, Heiler S, DPS SO. Fern-DPS mit Heiler geht NO, Fern-DPS mit Tank bleibt; der Nah-Tank geht mit seinem Nah-DPS nach NO, der Fern-Tank nach SW. Nah-Paar nimmt den Zwei-Personen-Turm, Fern-Paar den Ein-Personen-Turm.",
+        "ja": "タンク北西、ヒーラー南、DPS南東。ヒーラーと離れる線のDPSは北東、タンクと離れる線のDPSはその場。近づく線のタンクはDPSと北東、離れる線のタンクは南西。近づくペアは2人塔、離れるペアは1人塔。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Alice method: tanks NW island, DPS east island, healers base island. If the NW tower is one-person, the blue-tether DPS moves to soak it; if it's two-person, the green-tether tank and DPS move to soak it.",
+        "fr": "Méthode Alice : tanks île NO, DPS île est, heals île de base. Si la tour NO est pour une personne, le DPS au lien bleu y va ; si elle est pour deux, le tank et le DPS au lien vert y vont.",
+        "de": "Alice-Methode: Tanks NW-Insel, DPS Ostinsel, Heiler Basisinsel. Ist der NW-Turm für eine Person, geht der DPS mit blauer Verbindung; ist er für zwei, gehen Tank und DPS mit grüner Verbindung.",
+        "ja": "Alice式：タンク北西島、DPS東島、ヒーラー基準島。北西の塔が1人なら青線のDPS、2人なら緑線のタンクとDPSが踏む。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "tower"
+     ]
+    },
+    {
+     "id": "howling-eight",
+     "names": {
+      "en": "Howling Eight + Mooncleaver / Starcleaver (enrage)",
+      "fr": "Octorayon + Tranchage éclair / Tranchage éclair final (enrage)",
+      "de": "Achtfache Lichtkugel + Klingensturz / Finaler Klingensturz (Finalangriff)",
+      "ja": "八連光弾＋剛刃一閃 / 剛刃一閃・終（時間切れ）"
+     },
+     "aliases": {
+      "en": [
+       "howling eight",
+       "towers",
+       "81128"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "八連光弾",
+       "81128"
+      ]
+     },
+     "how": {
+      "en": "A multi-hit tower appears on a platform each round, then Mooncleaver destroys a platform and the boss gets stronger every time; the soakers and invulnerabilities rotate until Starcleaver ends the fight.",
+      "fr": "Une tour multi-coups apparaît sur une plateforme à chaque tour, puis Tranchage éclair détruit une plateforme et le boss se renforce à chaque fois ; soakers et invincibilités tournent jusqu'à ce que Tranchage éclair final termine le combat.",
+      "de": "Jede Runde erscheint ein mehrfacher Turm auf einer Plattform, dann zerstört Klingensturz eine Plattform und der Boss wird jedes Mal stärker; Turmnehmer und Unverwundbarkeiten rotieren, bis Finaler Klingensturz den Kampf beendet.",
+      "ja": "毎回島に多段の塔、その後剛刃一閃で島が壊れボスが強化。受け方をローテーションし、剛刃一閃・終で時間切れ。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Party soaks normally with cooldowns for the fifth tower, then a non-Warrior tank invuln, then both tanks together with all cooldowns, then Warrior or the other tank invuln, then the party with all mitigation; go clockwise after each Mooncleaver.",
+        "fr": "Le groupe prend normalement avec CD pour la 5e tour, puis invincibilité d'un tank non-Guerrier, puis les deux tanks avec tous les CD, puis invincibilité Guerrier ou l'autre tank, puis le groupe avec toute la mitigation ; tournez en horaire après chaque Tranchage.",
+        "de": "Gruppe nimmt normal mit Cooldowns für den fünften Turm, dann Unverwundbarkeit eines Nicht-Krieger-Tanks, dann beide Tanks mit allen Cooldowns, dann Krieger oder der andere Tank mit Unverwundbarkeit, dann die Gruppe mit aller Mitigation; nach jedem Klingensturz im Uhrzeigersinn.",
+        "ja": "パーティで受ける→戦士以外のタンク無敵→タンク2人で全バフ→戦士かもう1人の無敵→パーティ全軽減。剛刃一閃の後は時計回り。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "81128: first tower all eight, then one tank invuln, then the other tank invuln, then both tanks with full buffs, then all eight again.",
+        "fr": "81128 : 1re tour à huit, puis invincibilité d'un tank, puis de l'autre, puis les deux tanks avec tous les buffs, puis à huit.",
+        "de": "81128: erster Turm alle acht, dann Unverwundbarkeit eines Tanks, dann des anderen, dann beide Tanks mit allen Buffs, dann wieder alle acht.",
+        "ja": "81128受け：1回目8人、タンク1人無敵、もう1人無敵、タンク2人フルバフ、最後に8人。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Icy Veins - M8S guide",
+   "url": "https://www.icy-veins.com/ffxiv/aac-cruiserweight-m4-savage-raid-guide",
+   "lang": "en"
+  },
+  {
+   "title": "NAUR FFXIV - M8S",
+   "url": "https://naurffxiv.com/savage/m8s",
+   "lang": "en"
+  },
+  {
+   "title": "WTFDIG - M8S strat selector",
+   "url": "https://wtfdig.info/72/m8s",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - クルーザー級4層前半",
+   "url": "https://game8.jp/ff14/681843",
+   "lang": "ja"
+  },
+  {
+   "title": "game8 JP - クルーザー級4層後半",
+   "url": "https://game8.jp/ff14/681846",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot r8s timeline translations",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/raid/r8s.ts",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI Action names",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

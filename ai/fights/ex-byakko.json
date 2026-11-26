@@ -1,0 +1,365 @@
+{
+ "id": "ex-byakko",
+ "type": "extreme",
+ "expansion": "SB",
+ "patch": "4.2",
+ "names": {
+  "en": "The Jade Stoa (Extreme)",
+  "fr": "La Clairière de Jade (extrême)",
+  "de": "Seelensturm - Byakko",
+  "ja": "極白虎征魂戦"
+ },
+ "aliases": {
+  "en": [
+   "byakko ex",
+   "byakko extreme",
+   "jade stoa"
+  ],
+  "fr": [
+   "byakko extrême",
+   "clairière de jade"
+  ],
+  "de": [
+   "byakko extrem",
+   "seelensturm byakko"
+  ],
+  "ja": [
+   "極白虎",
+   "白虎"
+  ]
+ },
+ "summary": {
+  "en": "Extreme trial against Byakko and his tiger Hakutei. Phase 1 has the State of Shock grabs, orb spirals and the Hakutei add; a free-fall transition follows, then phase 2 adds Hundredfold Havoc and Gale Force puddles.",
+  "fr": "Défi extrême contre Byakko et son tigre Hakutei. La phase 1 a les saisies de Foudroiement, les spirales d'orbes et l'add Hakutei ; ensuite une chute libre, puis la phase 2 ajoute Ravages centuples et les flaques de Coup de rafale.",
+  "de": "Extrem-Prüfung gegen Byakko und seinen Tiger Hakutei. Phase 1 hat die Bannblitze-Griffe, Kugelspiralen und das Add Hakutei; dann ein Freifall-Übergang, und Phase 2 bringt Hundertfache Verwüstung und Orkan-Pfützen.",
+  "ja": "白虎征魂戦（極）。白虎と白帝（Hakutei）が相手。フェーズ1は呪縛雷の掴み、玉の渦、Hakuteiの雑魚。落下の移行フェーズの後、フェーズ2で百雷繚乱と暴風の床が加わります。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "フェーズ1"
+   },
+   "mechanics": [
+    {
+     "id": "basics",
+     "names": {
+      "en": "Storm Pulse / Heavenly Strike / Fire and Lightning",
+      "fr": "Pulsion de tempête / Frappe céleste / Feu et foudre",
+      "de": "Gewitterwelle / Himmlischer Schlag / Feuer und Blitz",
+      "ja": "風雷波動／天雷掌／雷火一閃"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Storm Pulse is raid damage, Heavenly Strike a tankbuster, Fire and Lightning a big line at a random player (dodge).",
+      "fr": "Storm Pulse : dégâts de groupe ; Heavenly Strike : tankbuster ; Fire and Lightning : grande ligne vers un joueur au hasard (esquive).",
+      "de": "Storm Pulse ist Gruppenschaden, Heavenly Strike ein Tankbuster, Fire and Lightning eine große Linie auf einen zufälligen Spieler (ausweichen).",
+      "ja": "Storm Pulseは全体攻撃、Heavenly Strikeはタンク強攻撃、Fire and Lightningはランダムな人への大きな直線（回避）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "tankbuster",
+      "dodge"
+     ]
+    },
+    {
+     "id": "state-of-shock",
+     "names": {
+      "en": "State of Shock",
+      "fr": "État de choc",
+      "de": "Bannblitze",
+      "ja": "呪縛雷"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Byakko grabs the main tank and puts a stack on the opposite side, then grabs the next tank; you can't be in both stacks, so split three players to the first and the rest to the second. Grabbed tanks lose all enmity, so the main tank provokes back.",
+      "fr": "Byakko saisit le main tank et place un package de l'autre côté, puis saisit le tank suivant ; impossible d'être dans les deux packages, donc trois joueurs vont au premier et le reste au second. Les tanks saisis perdent toute inimitié, donc le main tank provoque pour revenir.",
+      "de": "Byakko packt den Main-Tank und setzt einen Sammelpunkt auf die andere Seite, dann packt er den nächsten Tank; du kannst nicht in beiden sein, also drei Spieler in den ersten, der Rest in den zweiten. Gepackte Tanks verlieren alle Feindseligkeit, der Main-Tank provoziert zurück.",
+      "ja": "白虎がMTを掴み反対側に頭割り、続いて次のタンクを掴みます。両方には入れないので1回目は3人、2回目は残り。掴まれたタンクは敵視がリセットされるので、MTが挑発で取り返します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "tankswap"
+     ]
+    },
+    {
+     "id": "unrelenting-anguish",
+     "names": {
+      "en": "Unrelenting Anguish",
+      "fr": "Douleur continuelle",
+      "de": "Pandämonium",
+      "ja": "無間地獄"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Red orbs spiral out from the center, avoid them. One tank, one healer and one DPS get a debuff that explodes on others near them: keep those three apart.",
+      "fr": "Des orbes rouges partent en spirale du centre, évite-les. Un tank, un healer et un DPS reçoivent un debuff qui explose sur ceux à proximité : gardez ces trois-là séparés.",
+      "de": "Rote Kugeln spiralen aus der Mitte, ausweichen. Ein Tank, ein Heiler und ein DD bekommen einen Debuff, der Spieler in der Nähe trifft: diese drei auseinanderhalten.",
+      "ja": "中央から赤い玉が渦状に広がるので回避。タンク・ヒーラー・DPS各1人に周囲を巻き込むデバフ：3人は離れます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "debuff",
+      "spread"
+     ]
+    },
+    {
+     "id": "hakutei",
+     "names": {
+      "en": "Hakutei / Aratama / White Herald / Distant Clap",
+      "fr": "Hakutei / Aratama / Héraut blanc / Tonnerre lointain",
+      "de": "Hakutei / Aratama / Herbstböe / Donnergrollen",
+      "ja": "白帝／荒弾／白帝衝／遠雷"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The tiger Hakutei splits off and cleaves; kill it. Aratama: two non-tanks drop three bleed puddles along the edges (Byakko pulled north, Hakutei center). White Herald is a flare on Hakutei's tank, who runs to the far side, while everyone else stands under Byakko for the Distant Clap donut.",
+      "fr": "Le tigre Hakutei se détache et cleave ; tue-le. Aratama : deux non-tanks posent trois flaques de saignement le long des bords (Byakko tiré au nord, Hakutei au centre). Héraut blanc est un brasier sur le tank d'Hakutei, qui court de l'autre côté, pendant que les autres se mettent sous Byakko pour l'anneau de Tonnerre lointain.",
+      "de": "Der Tiger Hakutei spaltet sich ab und cleavt; töte ihn. Aratama: zwei Nicht-Tanks legen drei Blutungspfützen am Rand (Byakko nach Norden, Hakutei in die Mitte). Herbstböe ist ein Flare auf Hakuteis Tank, der auf die andere Seite läuft, während alle anderen für den Donnergrollen-Ring unter Byakko stehen.",
+      "ja": "白虎から分かれたHakuteiが範囲攻撃、倒します。Aratama：タンク以外2人が外周に出血の床を3つずつ（白虎は北、Hakuteiは中央）。白帝衝はHakuteiのタンクへのフレアで反対側へ、他は遠雷（ドーナツ）のため白虎の下へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "roar-of-thunder",
+     "names": {
+      "en": "The Roar of Thunder",
+      "fr": "Rugissement du tonnerre",
+      "de": "Brüllen des Donners",
+      "ja": "雷轟"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A 20-second cast whose raid damage depends on Hakutei's remaining HP; eight souls fly to heal Hakutei, healers pop them while DPS burn the tiger.",
+      "fr": "Une incantation de 20 secondes dont les dégâts de groupe dépendent des PV restants d'Hakutei ; huit âmes volent pour le soigner, les healers les éclatent pendant que les DPS tapent le tigre.",
+      "de": "Ein 20-Sekunden-Zauber, dessen Gruppenschaden von Hakuteis Rest-HP abhängt; acht Seelen fliegen, um ihn zu heilen, Heiler lassen sie platzen, während DDs den Tiger angreifen.",
+      "ja": "20秒詠唱、Hakuteiの残りHPに応じた全体ダメージ。Hakuteiを回復する魂8つをヒーラーが割り、DPSは虎を攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "adds",
+      "dps-check"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fall",
+   "names": {
+    "en": "Free-fall transition",
+    "fr": "Transition en chute libre",
+    "de": "Freifall-Übergang",
+    "ja": "落下フェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "free-fall",
+     "names": {
+      "en": "Free fall / Fell Swoop",
+      "fr": "Chute libre / Éléments déchaînés",
+      "de": "Freier Fall / Auf einen Schlag",
+      "ja": "落下／迅雷風烈波"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "No actions while falling; the outer ring kills. Dodge orbs, the donut (go center) and lines; on landing Fell Swoop kills anyone who took too much damage.",
+      "fr": "Aucune action pendant la chute ; l'anneau extérieur tue. Esquive les orbes, l'anneau (va au centre) et les lignes ; à l'atterrissage Fell Swoop tue ceux qui ont pris trop de dégâts.",
+      "de": "Keine Aktionen im Fall; der äußere Ring tötet. Weich Kugeln, dem Ring (in die Mitte) und Linien aus; bei der Landung tötet Fell Swoop alle, die zu viel Schaden genommen haben.",
+      "ja": "落下中は行動不可、外側の輪は即死。玉・ドーナツ（中央へ）・直線を避け、着地時のFell Swoopで被弾が多いと死亡。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "transition",
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2",
+    "fr": "Phase 2",
+    "de": "Phase 2",
+    "ja": "フェーズ2"
+   },
+   "mechanics": [
+    {
+     "id": "hundredfold-havoc",
+     "names": {
+      "en": "Hundredfold Havoc",
+      "fr": "Ravages centuples",
+      "de": "Hundertfache Verwüstung",
+      "ja": "百雷繚乱"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Two sets of moving AoEs from the center, cardinals and intercardinals: dodge the first, then step into its lane for the second.",
+      "fr": "Deux séries de zones mobiles depuis le centre, cardinaux et intercardinaux : esquive la première, puis va dans son couloir pour la seconde.",
+      "de": "Zwei Serien wandernder AoEs aus der Mitte, Himmels- und Zwischenrichtungen: der ersten ausweichen, dann in ihre Bahn für die zweite.",
+      "ja": "中央から十字と斜めの2組の移動範囲。1組目を避け、2組目はその通り道へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "sweep-the-leg",
+     "names": {
+      "en": "Sweep the Leg",
+      "fr": "Balayage du pied",
+      "de": "Vertikalität",
+      "ja": "旋体脚"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Unmarked 270-degree frontal cone with knockback; stay behind Byakko.",
+      "fr": "Cône frontal à 270° non marqué avec projection ; reste derrière Byakko.",
+      "de": "Unmarkierter 270-Grad-Frontalkegel mit Rückstoß; hinter Byakko bleiben.",
+      "ja": "予兆なしの前方270度＋ノックバック。白虎の背後へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "knockback"
+     ]
+    },
+    {
+     "id": "gale-force",
+     "names": {
+      "en": "Gale Force",
+      "fr": "Coup de rafale",
+      "de": "Orkan",
+      "ja": "暴風"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A tank, a healer and a DPS drop growing puddles that explode after 20 seconds as raid damage; place them evenly around the edge.",
+      "fr": "Un tank, un healer et un DPS posent des flaques qui grossissent et explosent après 20 secondes en dégâts de groupe ; répartis-les au bord.",
+      "de": "Ein Tank, ein Heiler und ein DD legen wachsende Pfützen, die nach 20 Sekunden als Gruppenschaden explodieren; gleichmäßig am Rand verteilen.",
+      "ja": "タンク・ヒーラー・DPS各1人が広がる床を設置、20秒後に全体ダメージで爆発。外周に等間隔で置きます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "raidwide"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Enrage",
+      "fr": "Enrage",
+      "de": "Enrage",
+      "ja": "時間切れ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Several Storm Pulses, then a long cast that wipes the party.",
+      "fr": "Plusieurs Storm Pulse, puis une longue incantation qui tue le groupe.",
+      "de": "Mehrere Storm Pulse, dann ein langer Zauber, der die Gruppe auslöscht.",
+      "ja": "Storm Pulseが数回の後、長い詠唱で全滅。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage",
+      "raidwide"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - The Jade Stoa (Extreme)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/The_Jade_Stoa_(Extreme)",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

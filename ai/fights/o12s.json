@@ -1,0 +1,689 @@
+{
+ "id": "o12s",
+ "type": "savage",
+ "expansion": "SB",
+ "patch": "4.4",
+ "names": {
+  "en": "Alphascape V4.0 (Savage)",
+  "fr": "Alphastice v4.0 (sadique)",
+  "de": "Alphametrie 4.0 (episch)",
+  "ja": "次元の狭間オメガ零式：アルファ編4"
+ },
+ "aliases": {
+  "en": [
+   "o12s",
+   "omega-m",
+   "omega-f",
+   "final omega",
+   "alphascape 4 savage"
+  ],
+  "fr": [
+   "o12s",
+   "oméga-m",
+   "oméga-f",
+   "alphastice 4"
+  ],
+  "de": [
+   "o12s",
+   "omega-m",
+   "omega-f",
+   "alphametrie 4"
+  ],
+  "ja": [
+   "アルファ零式4層",
+   "オメガM",
+   "オメガF",
+   "o12s"
+  ]
+ },
+ "summary": {
+  "en": "Last floor of Alphascape Savage: Omega-M and Omega-F (door boss, two bosses with Firewall and Synergy mechanics), then the final Omega with a checkpoint. The final boss is known for Hello, World (debuff and tower juggling) and Patch tethers.",
+  "fr": "Dernier étage d'Alphastice sadique : Oméga-M et Oméga-F (boss de porte, deux boss avec Programme protecteur et Programmes synergiques), puis l'Oméga final avec un point de sauvegarde. Le boss final est connu pour Bonjour, le monde (jonglage de debuffs et de tours) et les liens de Patch.",
+  "de": "Letzte Ebene von Alphametrie episch: Omega-M und Omega-F (Türboss, zwei Bosse mit Sicherungssystem- und Synergie-Mechaniken), danach der finale Omega mit Checkpoint. Der Endboss ist bekannt für Hallo, Welt! (Debuffs und Türme jonglieren) und die Patch-Verbindungen.",
+  "ja": "アルファ編4層。前半オメガM/F（2体、ガードプログラムと連携プログラム）、後半最終オメガ（チェックポイントあり）。最終戦はハロー・ワールド（デバフと塔の処理）とパッチの線が有名です。"
+ },
+ "strats_overview": [
+  {
+   "id": "old-synced-standard",
+   "name": {
+    "en": "Old synced standard",
+    "fr": "Ancien standard synchronisé",
+    "de": "Alter synchroner Standard",
+    "ja": "旧シンク時の一般的な処理"
+   },
+   "region": "all",
+   "note": {
+    "en": "Old synced standard: only listed where Console Games Wiki and the Blue Academy guide describe the same resolution.",
+    "fr": "Ancien standard synchronisé : listé seulement là où Console Games Wiki et le guide Blue Academy décrivent la même résolution.",
+    "de": "Alter synchroner Standard: nur dort aufgeführt, wo Console Games Wiki und der Blue-Academy-Guide dieselbe Lösung beschreiben.",
+    "ja": "旧シンク時の一般的な処理。Console Games WikiとBlue Academyの両方で同じ処理が確認できる箇所のみ記載。"
+   },
+   "aliases": {
+    "en": [],
+    "fr": [],
+    "de": [],
+    "ja": []
+   }
+  }
+ ],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "omega-mf",
+   "names": {
+    "en": "Omega-M and Omega-F",
+    "fr": "Oméga-M et Oméga-F",
+    "de": "Omega-M und Omega-F",
+    "ja": "オメガM・オメガF"
+   },
+   "mechanics": [
+    {
+     "id": "suppression",
+     "names": {
+      "en": "Suppression / Advanced Suppression",
+      "fr": "Programme d'assistance F / S",
+      "de": "Hilfsprogramm F / S",
+      "ja": "援護プログラムF／S"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The Optical Unit fires a delayed line or half-arena cone and moves to a random cardinal after each; keep Omega-M at the east or west edge and stand to one side out of the line.",
+      "fr": "L'unité optique tire une ligne retardée ou un cône sur une moitié d'arène et change de cardinal après chaque tir ; garde Oméga-M au bord est ou ouest et place-toi sur un côté hors de la ligne.",
+      "de": "Die optische Einheit feuert eine verzögerte Linie oder einen halben Arenakegel und wechselt danach die Himmelsrichtung; halte Omega-M am Ost- oder Westrand und stell dich seitlich aus der Linie.",
+      "ja": "光学ユニットが遅れて直線か半面扇を撃ち、毎回ランダムな方角へ移動。オメガMを東か西の端に置き、直線の外へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave"
+     ]
+    },
+    {
+     "id": "beyond-defense-pile-pitch",
+     "names": {
+      "en": "Beyond Defense / Pile Pitch",
+      "fr": "Combo bouclier S / Lancement de pieu",
+      "de": "Schildkombo S / Neigungsstoß",
+      "ja": "シールドコンボS／パイルピッチ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Beyond Defense hits one random player with a spread and magic vulnerability; everyone else stacks for Pile Pitch (it can't target the Beyond Defense player). Stack fairly close to center, the snapshot is early.",
+      "fr": "Combo bouclier S frappe un joueur au hasard avec une dispersion et vulnérabilité magique ; les autres se regroupent pour Lancement de pieu (qui ne peut pas viser ce joueur). Regroupe-toi assez près du centre, l'instant de calcul est tôt.",
+      "de": "Schildkombo S trifft einen zufälligen Spieler mit einem Verteiler und magischer Verwundbarkeit; alle anderen sammeln sich für Neigungsstoß (kann diesen Spieler nicht treffen). Eher nahe der Mitte sammeln, der Treffer wird früh berechnet.",
+      "ja": "シールドコンボSはランダム1人に散開と魔法被ダメ上昇。他はパイルピッチで頭割り（その人は対象外）。判定が早いので中央寄りで集まります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "stack",
+      "debuff"
+     ]
+    },
+    {
+     "id": "superliminal-motion",
+     "names": {
+      "en": "Superliminal Motion / Optimized Fire III / Discharger",
+      "fr": "Combo lame F / Méga Feu Oméga / Déchargeur",
+      "de": "Klingenkombo F / Omega-Feuga / Entlader",
+      "ja": "ブレードコンボF／ファイラ・オメガ／ディスチャージャー"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Superliminal Motion is a 330-degree cone from Omega-F's front: stand behind her, then spread on clock spots for Optimized Fire III. Discharger is a strong knockback: stand near Omega or resist it.",
+      "fr": "Combo lame F est un cône à 330° devant Oméga-F : place-toi derrière elle, puis disperse-toi en horloge pour Optimized Fire III. Déchargeur est une forte projection : colle-toi à Oméga ou résiste.",
+      "de": "Klingenkombo F ist ein 330-Grad-Kegel vor Omega-F: stell dich hinter sie, dann für Optimized Fire III auf Uhrpositionen verteilen. Entlader ist ein starker Rückstoß: nah an Omega stehen oder widerstehen.",
+      "ja": "ブレードコンボFはオメガF前方330度：背後へ。続くOptimized Fire IIIはクロック位置で散開。ディスチャージャーは強ノックバック：オメガの近くか耐性で。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "spread",
+      "knockback"
+     ]
+    },
+    {
+     "id": "electric-slide",
+     "names": {
+      "en": "Electric Slide",
+      "fr": "Glissement Oméga",
+      "de": "Elektrosturz",
+      "ja": "オメガスライド"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The bosses split; two stack markers go on players and each light party takes one on its own side.",
+      "fr": "Les boss se séparent ; deux packages tombent sur des joueurs et chaque groupe léger en prend un de son côté.",
+      "de": "Die Bosse teilen sich; zwei Sammelmarker landen auf Spielern und jede Leichtgruppe nimmt einen auf ihrer Seite.",
+      "ja": "ボスが分裂し、2人に頭割り。ライトパーティごとに自分の側で1つずつ受けます。"
+     },
+     "strats": [
+      {
+       "strat": "old-synced-standard",
+       "how": {
+        "en": "Light parties split to two sides with one stack each; if both markers land in the same light party, one player swaps sides.",
+        "fr": "Les groupes légers se séparent de deux côtés avec un package chacun ; si les deux marqueurs tombent dans le même groupe, un joueur change de côté.",
+        "de": "Die Leichtgruppen teilen sich auf zwei Seiten mit je einem Sammelpunkt; landen beide Marker in derselben Gruppe, wechselt ein Spieler die Seite.",
+        "ja": "ライトパーティで2方向に分かれて頭割り。同じ組に2つ付いたら1人が入れ替わります。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "CGW says the stacks are on the two healers, Blue Academy says random players; check in game.",
+      "fr": "CGW dit que les packages sont sur les deux healers, Blue Academy dit des joueurs au hasard ; vérifie en jeu.",
+      "de": "CGW sagt, die Sammelmarker liegen auf den zwei Heilern, Blue Academy sagt zufällige Spieler; im Spiel prüfen.",
+      "ja": "CGWはヒーラー2人、Blue Academyはランダムとしており資料で異なります。"
+     },
+     "tags": [
+      "stack"
+     ]
+    },
+    {
+     "id": "firewall-resonance",
+     "names": {
+      "en": "Firewall / Resonance",
+      "fr": "Programme protecteur / Résonance",
+      "de": "Sicherungssystem / Resonanz",
+      "ja": "ガードプログラム／レゾナンス"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Firewall: the four players closest to each boss can only damage the other boss; the second cast swaps it. Local Resonance means the bosses must be pulled apart, Remote Resonance means they must be brought together (away from the Optical Unit's line).",
+      "fr": "Programme protecteur : les quatre joueurs les plus proches de chaque boss ne peuvent frapper que l'autre ; la deuxième incantation inverse. Local Resonance : il faut séparer les boss ; Remote Resonance : il faut les rapprocher (hors de la ligne de l'unité optique).",
+      "de": "Sicherungssystem: die vier Spieler, die jedem Boss am nächsten sind, können nur den anderen Boss treffen; der zweite Zauber tauscht das. Local Resonance heißt Bosse auseinanderziehen, Remote Resonance heißt sie zusammenbringen (weg von der Linie der optischen Einheit).",
+      "ja": "ガードプログラム：各ボスに近い4人はそのボスに攻撃が通らず、もう一方を攻撃。2回目で入れ替わります。Local Resonanceはボスを離し、Remote Resonanceは近づけます（光学ユニットの直線外）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "fundamental-synergy",
+     "names": {
+      "en": "Fundamental Synergy",
+      "fr": "Programme synergique C",
+      "de": "Synergieprogramm C",
+      "ja": "連携プログラムC"
+     },
+     "aliases": {
+      "en": [
+       "numbers",
+       "synergy numbers"
+      ],
+      "fr": [
+       "numéros"
+      ],
+      "de": [
+       "nummern"
+      ],
+      "ja": [
+       "連携C",
+       "番号"
+      ]
+     },
+     "how": {
+      "en": "Numbered charges 1 to 4 from both bosses with damage that falls off with distance; each number must be hit by its own charge only.",
+      "fr": "Charges numérotées de 1 à 4 depuis les deux boss, dégâts selon la distance ; chaque numéro ne doit prendre que sa propre charge.",
+      "de": "Nummerierte Ansturm-Angriffe 1 bis 4 von beiden Bossen mit Distanzschaden; jede Nummer darf nur von ihrem eigenen Angriff getroffen werden.",
+      "ja": "両ボスから番号1〜4の突進、距離減衰。各番号は自分の突進だけを受けます。"
+     },
+     "strats": [
+      {
+       "strat": "old-synced-standard",
+       "how": {
+        "en": "Odd numbers run to the opposite side, even numbers stay; 1 and 2 stand in front, 3 and 4 behind, and after being hit each player swaps with the one behind.",
+        "fr": "Les impairs vont du côté opposé, les pairs restent ; 1 et 2 devant, 3 et 4 derrière, et après le coup chacun échange avec celui derrière.",
+        "de": "Ungerade Nummern laufen auf die Gegenseite, gerade bleiben; 1 und 2 vorne, 3 und 4 dahinter, nach dem Treffer tauscht jeder mit dem hinter ihm.",
+        "ja": "奇数は反対側へ、偶数はその場。1・2が前、3・4が後ろに並び、当たったら後ろの人と入れ替わります。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "proximity"
+     ]
+    },
+    {
+     "id": "solar-ray",
+     "names": {
+      "en": "Solar Ray",
+      "fr": "Rayon solaire",
+      "de": "Sonnenstrahl",
+      "ja": "ソーラレイ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Omega-M and Omega-F both cast it at the same time: circle tankbusters on the tanks. Tanks mitigate and the rest of the party stays away from them.",
+      "fr": "Oméga-M et Oméga-F le lancent en même temps : des tankbusters en cercle sur les tanks. Les tanks mitigent et le reste du groupe reste loin d'eux.",
+      "de": "Omega-M und Omega-F wirken ihn gleichzeitig: kreisförmige Tankbuster auf die Tanks. Die Tanks reduzieren, der Rest der Gruppe hält Abstand.",
+      "ja": "オメガMとオメガFが同時に使う円形のタンク強攻撃。タンクは軽減し、他の人はタンクから離れます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "operational-synergy",
+     "names": {
+      "en": "Operational Synergy (Synthetic Shield / Blades)",
+      "fr": "Programme synergique W (Bouclier optionnel / Lame optionnelle)",
+      "de": "Synergieprogramm W (Synthetischer Schild / Synthetische Klinge)",
+      "ja": "連携プログラムW（シールドオプション／ブレードオプション）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A long combo set up earlier by Synthetic Shield or Synthetic Blades. Blades: Pile Pitch and Optimized Blizzard III lines, Superliminal Steel (left/right cleaves, center safe), spreads for Efficient Bladework. Shield: Beyond Defense pairs, Pile Pitch, Optimized Fire III spreads, then Beyond Strength (donut on a jumped player) followed by Efficient Bladework.",
+      "fr": "Long combo préparé plus tôt par Synthetic Shield ou Synthetic Blades. Blades : Lancement de pieu et lignes d'Optimized Blizzard III, Combo lame B (cleaves gauche/droite, centre sûr), dispersions pour Efficient Bladework. Shield : paires Combo bouclier S, Lancement de pieu, dispersions Optimized Fire III, puis Combo bouclier G (anneau sur un joueur ciblé par un saut) suivi d'Efficient Bladework.",
+      "de": "Lange Kombo, vorher durch Synthetic Shield oder Synthetic Blades vorbereitet. Blades: Neigungsstoß und Optimized-Blizzard-III-Linien, Klingenkombo B (Cleaves links/rechts, Mitte sicher), Verteilen für Efficient Bladework. Shield: Schildkombo-S-Paare, Neigungsstoß, Optimized-Fire-III-Verteiler, dann Schildkombo G (Ring auf einem angesprungenen Spieler), gefolgt von Efficient Bladework.",
+      "ja": "事前のSynthetic ShieldかSynthetic Bladesで決まる長いコンボ。Blades：パイルピッチ、Optimized Blizzard IIIの直線、ブレードコンボB（左右なぎ払い、中央安置）、Efficient Bladeworkで散開。Shield：シールドコンボSのペア、パイルピッチ、Optimized Fire III散開、シールドコンボG（跳んだ先のドーナツ）、続いてEfficient Bladework。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "spread",
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "cosmo-memory",
+     "names": {
+      "en": "Cosmo Memory and tankbusters",
+      "fr": "Cosmomémoire et tankbusters",
+      "de": "Kosmospeicher und Tankbuster",
+      "ja": "コスモメモリーとタンク強攻撃"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Optimized Meteor and Optimized Sagittarius Arrow tankbusters come with Suppression (Meteor tank to one edge, party to the other); Cosmo Memory is lethal raid damage, usually a tank Limit Break plus party mitigation. Each of the two markers picks a random tank, so check which one you got.",
+      "fr": "Les tankbusters Optimized Meteor et Optimized Sagittarius Arrow arrivent avec Programme d'assistance (tank Meteor à un bord, groupe à l'autre) ; Cosmomémoire est mortel pour le groupe, en général Transcendance tank plus mitigations. Chacun des deux marqueurs choisit un tank au hasard : regarde lequel tu as.",
+      "de": "Die Tankbuster Optimized Meteor und Optimized Sagittarius Arrow kommen mit Hilfsprogramm (Meteor-Tank an einen Rand, Gruppe an den anderen); Kosmospeicher ist tödlicher Gruppenschaden, meist Tank-Limitrausch plus Gruppenreduktion. Jeder der beiden Marker wählt einen zufälligen Tank, also schau, welchen du hast.",
+      "ja": "Optimized MeteorとOptimized Sagittarius Arrowのタンク強攻撃が援護プログラムと同時（メテオのタンクは片側、PTは反対側）。コスモメモリーは致死の全体攻撃で、通常タンクLB＋軽減。2つのマーカーはそれぞれランダムなタンクに付くので、自分に何が付いたか確認します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "raidwide"
+     ]
+    },
+    {
+     "id": "optimized-bladedance",
+     "names": {
+      "en": "Optimized Bladedance",
+      "fr": "Danse de la lame Oméga",
+      "de": "Omega-Schwertertanz",
+      "ja": "ブレードダンス・オメガ"
+     },
+     "aliases": {
+      "en": [
+       "bladedance"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "After Cosmo Memory both bosses cast a heavy tankbuster at the same time; tanks mitigate and get healed. A tank can also Provoke the other tank's boss and use an invulnerability to take both hits.",
+      "fr": "Après Cosmomémoire, les deux boss lancent en même temps un gros tankbuster ; les tanks mitigent et sont soignés. Un tank peut aussi provoquer le boss de l'autre tank et utiliser son invulnérabilité pour prendre les deux coups.",
+      "de": "Nach Kosmospeicher wirken beide Bosse gleichzeitig einen schweren Tankbuster; die Tanks reduzieren und werden geheilt. Ein Tank kann auch den Boss des anderen Tanks provozieren und mit seiner Unverwundbarkeit beide Treffer nehmen.",
+      "ja": "コスモメモリーの後、両ボスが同時に強力なタンク強攻撃。タンクは軽減し回復をもらいます。片方のタンクがもう一方のボスを挑発して無敵で2発とも受けることもできます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "final-omega",
+   "names": {
+    "en": "Final Omega",
+    "fr": "Oméga final",
+    "de": "Finaler Omega",
+    "ja": "最終オメガ"
+   },
+   "mechanics": [
+    {
+     "id": "tank-opener",
+     "names": {
+      "en": "Target Analysis / Savage Wave Cannon / Oversampled Wave Cannon",
+      "fr": "Analyse de cible / Canon plasma absolu / Canon plasma chercheur",
+      "de": "Zielerkennung / Grausame Wellenkanone / Fokussierte Wellenkanone",
+      "ja": "標的識別／零式波動砲／検知式波動砲"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Target Analysis marks a top-enmity player for a shared tankbuster laser (Savage Wave Cannon). Oversampled Wave Cannon hits two players on the side shown by the screens: tanks go to that side and mitigate, everyone else avoids it. Target Analysis picks one of the two top-enmity players at random (so either tank); that tank goes to the edge while the other stays under Omega.",
+      "fr": "Target Analysis marque un joueur en tête d'inimitié pour un laser tankbuster partagé (Canon plasma absolu). Canon plasma chercheur frappe deux joueurs du côté indiqué par les écrans : les tanks y vont et mitigent, les autres l'évitent. Target Analysis choisit au hasard l'un des deux joueurs en tête d'inimitié (donc l'un ou l'autre tank) ; ce tank va au bord pendant que l'autre reste sous Oméga.",
+      "de": "Target Analysis markiert einen Spieler mit hoher Feindseligkeit für einen geteilten Tankbuster-Laser (Grausame Wellenkanone). Fokussierte Wellenkanone trifft zwei Spieler auf der Seite, die die Bildschirme zeigen: Tanks gehen dorthin und reduzieren, alle anderen meiden sie. Target Analysis wählt zufällig einen der beiden Spieler mit der höchsten Feindseligkeit (also einen der Tanks); dieser Tank geht an den Rand, der andere bleibt unter Omega.",
+      "ja": "Target Analysisで敵視上位を指定し、分散のタンク強レーザー（零式波動砲）。検知式波動砲はモニターが示す側の2人に攻撃：タンクがその側で軽減、他は避けます。Target Analysisは敵視上位2人からランダム（どちらのタンクもあり得る）。対象のタンクは外周へ、もう片方はオメガの下に残ります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "debuff"
+     ]
+    },
+    {
+     "id": "diffuse-wave-cannon",
+     "names": {
+      "en": "Diffuse Wave Cannon",
+      "fr": "Canon plasma diffuseur",
+      "de": "Streuende Wellenkanone",
+      "ja": "拡散波動砲"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Two 120-degree cones front/back or left/right; follow the lights on the floating ring to find the safe sides.",
+      "fr": "Deux cônes à 120° avant/arrière ou gauche/droite ; suis les lumières de l'anneau flottant pour trouver les côtés sûrs.",
+      "de": "Zwei 120-Grad-Kegel vorne/hinten oder links/rechts; folge den Lichtern am schwebenden Ring, um die sicheren Seiten zu finden.",
+      "ja": "前後か左右に120度扇2つ。浮遊リングの光を見て安置を判断します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "patch",
+     "names": {
+      "en": "Patch",
+      "fr": "Bogue intentionnel",
+      "de": "Regression",
+      "ja": "エンバグ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [
+       "bogue intentionnel : proximité",
+       "bogue intentionnel : distance"
+      ],
+      "de": [
+       "regression: nah",
+       "regression: fern"
+      ],
+      "ja": [
+       "エンバグ：ニアー",
+       "エンバグ：ファー"
+      ]
+     },
+     "how": {
+      "en": "Tethers between supports and DPS: Local Regression breaks if the pair gets too close, Remote Regression if too far. A break or a death hurts the party and gives magic vulnerability, so two breaks close together wipe.",
+      "fr": "Liens entre soutiens et DPS : Local Regression casse si la paire est trop proche, Remote Regression si elle est trop loin. Une rupture ou une mort blesse le groupe et donne vulnérabilité magique, donc deux ruptures rapprochées font wipe.",
+      "de": "Verbindungen zwischen Tanks/Heilern und DDs: Local Regression bricht, wenn das Paar zu nah ist, Remote Regression, wenn es zu weit ist. Ein Bruch oder Tod schadet der Gruppe und gibt magische Verwundbarkeit, zwei Brüche kurz hintereinander bedeuten Wipe.",
+      "ja": "タンク・ヒーラーとDPSの線。Local Regressionは近づきすぎ、Remote Regressionは離れすぎで切れます。切れるか死ぬと全体ダメージと魔法被ダメ上昇なので、続けて2本切れると全滅。"
+     },
+     "strats": [
+      {
+       "strat": "old-synced-standard",
+       "how": {
+        "en": "Break the tethers one at a time in a fixed order (Blue Academy lists GGBB or GBBG orders): first right away, the next during or after Diffuse Wave Cannon, the next after Oversampled, the last after the vulnerability fades and before Ion Efflux.",
+        "fr": "Casse les liens un par un dans un ordre fixe (Blue Academy donne GGBB ou GBBG) : le premier tout de suite, le suivant pendant ou après Canon plasma diffuseur, le suivant après Canon plasma chercheur, le dernier quand la vulnérabilité a disparu et avant Fuite d'ions.",
+        "de": "Brich die Verbindungen einzeln in fester Reihenfolge (Blue Academy nennt GGBB oder GBBG): die erste sofort, die nächste während oder nach Streuender Wellenkanone, die nächste nach Fokussierter Wellenkanone, die letzte nach Ablauf der Verwundbarkeit und vor Ionenstrom.",
+        "ja": "線は決まった順番で1本ずつ切ります（Blue AcademyはGGBBかGBBG）。1本目はすぐ、2本目は拡散波動砲の最中か後、3本目は検知式波動砲の後、4本目は被ダメ上昇が切れてからイオンエフラクスの前。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "debuff",
+      "raidwide"
+     ]
+    },
+    {
+     "id": "hello-world",
+     "names": {
+      "en": "Hello, World / Critical Error",
+      "fr": "Bonjour, le monde / Erreur critique",
+      "de": "Hallo, Welt! / Schwerer Ausnahmefehler",
+      "ja": "ハロー・ワールド／クリティカルエラー"
+     },
+     "aliases": {
+      "en": [
+       "hello world",
+       "hw",
+       "cob",
+       "csb",
+       "rot"
+      ],
+      "fr": [
+       "hello world"
+      ],
+      "de": [
+       "hello world"
+      ],
+      "ja": [
+       "HW",
+       "ハローワールド"
+      ]
+     },
+     "how": {
+      "en": "Debuffs: Overflow (20y explosion; being hit by two at once kills), Synchronization (shared with one other player) and Latent Defect (kills unless replaced by Overflow or Synchronization). The second Hello, World adds Underflow (rot that spreads, 5y) and three Cascading Latent Defect towers. At least five players need the Overflow Debugger before Critical Error, which hits everyone without it.",
+      "fr": "Debuffs : Overflow (explosion de 20 m ; en prendre deux d'un coup tue), Synchronization (partagé avec un autre joueur) et Latent Defect (tue sauf s'il est remplacé par Overflow ou Synchronization). Le deuxième Bonjour, le monde ajoute Underflow (pourriture qui se transmet, 5 m) et trois tours Cascading Latent Defect. Au moins cinq joueurs doivent avoir Overflow Debugger avant Erreur critique, qui frappe tous ceux qui ne l'ont pas.",
+      "de": "Debuffs: Overflow (20-Yalm-Explosion; von zweien gleichzeitig getroffen zu werden tötet), Synchronization (mit einem anderen Spieler geteilt) und Latent Defect (tötet, außer es wird durch Overflow oder Synchronization ersetzt). Das zweite Hallo, Welt! fügt Underflow (übertragbare Fäule, 5 Yalm) und drei Cascading-Latent-Defect-Türme hinzu. Mindestens fünf Spieler brauchen Overflow Debugger vor dem Schweren Ausnahmefehler, der alle ohne ihn trifft.",
+      "ja": "デバフ：Overflow（20mの爆発、2つ同時に受けると死亡）、Synchronization（1人と分散）、Latent Defect（OverflowかSynchronizationで上書きしないと死亡）。2回目はUnderflow（移るデバフ、5m）とCascading Latent Defectの塔3つが追加。クリティカルエラー前に5人以上がOverflow Debuggerを持つ必要があり、持っていない人に当たります。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Debuff names (Critical Overflow/Synchronization/Underflow Bug etc.) kept in English; FR/DE/JA not verified. Details from two guides that use different wording.",
+      "fr": "Noms des debuffs gardés en anglais ; FR non vérifié. Détails de deux guides avec des formulations différentes.",
+      "de": "Debuff-Namen bleiben englisch; DE nicht geprüft. Details aus zwei Guides mit unterschiedlicher Wortwahl.",
+      "ja": "デバフ名は英語のまま（日本語名未確認）。詳細は表現の異なる2つの資料による。"
+     },
+     "tags": [
+      "debuff",
+      "tower",
+      "raidwide"
+     ]
+    },
+    {
+     "id": "archive-peripheral",
+     "names": {
+      "en": "Archive Peripheral",
+      "fr": "Périphérique d'archivage",
+      "de": "Archiv-Peripherie",
+      "ja": "アーカイブアーム"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Three arms fire lines with rotating arrows; the colour/rotation of the arms shows the safe edge. The targeted tank goes to the edge, the other stays under Omega, and a tankbuster combo follows.",
+      "fr": "Trois bras tirent des lignes avec des flèches qui tournent ; la couleur/rotation des bras indique le bord sûr. Le tank ciblé va au bord, l'autre reste sous Oméga, et un combo de tankbusters suit.",
+      "de": "Drei Arme feuern Linien mit rotierenden Pfeilen; Farbe/Drehung der Arme zeigt den sicheren Rand. Der anvisierte Tank geht an den Rand, der andere bleibt unter Omega, danach folgt eine Tankbuster-Kombo.",
+      "ja": "3本の腕が回転する矢印付きの直線攻撃。腕の色と回転方向で安全な外周が分かります。対象タンクは外周、もう1人はオメガの下、その後タンク強攻撃コンボ。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "The two guides describe the reading rule differently (CGW: orange left / blue right while facing the northwest arm; Blue Academy: pair blue with counter-clockwise and orange with clockwise), so no single strat is given.",
+      "fr": "Les deux guides décrivent la règle de lecture différemment (CGW : orange à gauche / bleu à droite face au bras nord-ouest ; Blue Academy : bleu avec anti-horaire, orange avec horaire), donc aucune strat unique n'est donnée.",
+      "de": "Die beiden Guides beschreiben die Leseregel unterschiedlich (CGW: orange links / blau rechts mit Blick zum Nordwest-Arm; Blue Academy: blau mit gegen den Uhrzeigersinn, orange mit im Uhrzeigersinn), daher keine einzelne Strat.",
+      "ja": "2つの資料で判断方法の説明が異なる（CGW：北西の腕を向いてオレンジ左・青右、Blue Academy：青＝反時計、オレンジ＝時計）ため、処理法は1つに絞っていません。"
+     },
+     "tags": [
+      "dodge",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "index-archive-peripheral",
+     "names": {
+      "en": "Index and Archive Peripheral",
+      "fr": "Périphérique d'archivage X",
+      "de": "Archiv-Peripherie X",
+      "ja": "アーカイブアームX"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Arms tether a tank, a healer and a DPS and fire spread lasers after 8 seconds: tethered players run to the edge opposite their arm. Wave Cannon hits the four closest unmarked players, so the rest spread between the tethers closer to Omega.",
+      "fr": "Des bras se lient à un tank, un healer et un DPS et tirent des lasers de dispersion après 8 secondes : les liés courent au bord opposé à leur bras. Un Canon plasma frappe les quatre plus proches non marqués, donc les autres se dispersent entre les liens près d'Oméga.",
+      "de": "Arme verbinden sich mit einem Tank, einem Heiler und einem DD und feuern nach 8 Sekunden Verteil-Laser: die Verbundenen laufen an den Rand gegenüber ihrem Arm. Eine Wellenkanone trifft die vier nächsten Unmarkierten, also verteilen sich die anderen zwischen den Verbindungen näher an Omega.",
+      "ja": "腕がタンク・ヒーラー・DPSに線を付け、8秒後に散開レーザー。線の人は自分の腕の反対側の外周へ。波動砲はマーカーのない近い4人に当たるので、他は線の間のオメガ寄りに散開。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "archive-all",
+     "names": {
+      "en": "Archive All",
+      "fr": "Archivage intégral",
+      "de": "Alles archivieren",
+      "ja": "アーカイブオール"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A rotating line plus Electric Slide and arm units casting Colossal Blow, then Delta Attack: run to the far edge from where Omega turns, stack behind the arm the line rotates away from and kill it fast, then leave the circles while spread players run out.",
+      "fr": "Une ligne qui tourne plus Glissement Oméga et des bras qui lancent Colossal Blow, puis Attaque Delta : cours au bord opposé à là où Oméga se tourne, regroupe-toi derrière le bras dont la ligne s'éloigne et tue-le vite, puis sors des cercles pendant que les dispersions s'écartent.",
+      "de": "Eine rotierende Linie plus Elektrosturz und Arm-Einheiten mit Colossal Blow, dann Delta-Attacke: lauf an den Rand weg von Omegas Drehrichtung, sammelt euch hinter dem Arm, von dem sich die Linie wegdreht, und tötet ihn schnell, dann aus den Kreisen raus, während die Verteiler weglaufen.",
+      "ja": "回転する直線、オメガスライド、腕ユニットのColossal Blow、続いてデルタアタック。オメガが向く方向と反対の外周へ走り、直線が離れていく腕の後ろに集まって素早く倒し、円から出て散開対象は離れます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack",
+      "adds",
+      "spread"
+     ]
+    },
+    {
+     "id": "ion-efflux",
+     "names": {
+      "en": "Ion Efflux / Program Omega (enrage)",
+      "fr": "Fuite d'ions / Programme Oméga (enrage)",
+      "de": "Ionenstrom / Programm Omega (Enrage)",
+      "ja": "イオンエフラクス／プログラム・オメガ（時間切れ）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Ion Efflux is regular raid damage that needs mitigation. Program Omega is the soft enrage: repeated damage and Ion Efflux casts that stack Damage Up, and at about 10:30 a 10-second Ion Efflux wipes the party.",
+      "fr": "Fuite d'ions est des dégâts de groupe réguliers à mitiger. Programme Oméga est l'enrage progressif : dégâts répétés et Fuites d'ions qui empilent des bonus de dégâts, et vers 10:30 une Fuite d'ions de 10 secondes tue le groupe.",
+      "de": "Ionenstrom ist regelmäßiger Gruppenschaden, der Reduktion braucht. Programm Omega ist der Soft-Enrage: wiederholter Schaden und Ionenströme mit stapelndem Schadensbonus, und gegen 10:30 löscht ein 10-Sekunden-Ionenstrom die Gruppe aus.",
+      "ja": "イオンエフラクスは軽減が必要な定期的な全体攻撃。プログラム・オメガはソフト時間切れで、与ダメージ上昇が重なるイオンエフラクスが続き、10:30頃の10秒詠唱で全滅。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - Alphascape V4.0 (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Alphascape_V4.0_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "Blue Academy - O12S Blue Mage guide",
+   "url": "https://blue-academy.pages.dev/savage-guides/omega/o12s/",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

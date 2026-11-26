@@ -1,0 +1,720 @@
+{
+ "id": "ex-enuo",
+ "type": "extreme",
+ "expansion": "DT",
+ "patch": "7.5",
+ "names": {
+  "en": "The Unmaking (Extreme) - Enuo",
+  "fr": "L'Anticréation (extrême) - Énuo",
+  "de": "Gok Tajaal - Enuo",
+  "ja": "極エヌオー討滅戦"
+ },
+ "aliases": {
+  "en": [
+   "enuo ex",
+   "enuo extreme",
+   "the unmaking",
+   "unmaking ex"
+  ],
+  "fr": [
+   "énuo extrême",
+   "anticréation"
+  ],
+  "de": [
+   "enuo extrem"
+  ],
+  "ja": [
+   "極エヌオー",
+   "エヌオー"
+  ]
+ },
+ "summary": {
+  "en": "Enuo Extreme (patch 7.5). Enuo uses void portals: Naught Grows makes a donut or circle from a portal, Naught Wakes moves portals or fires lasers, and Naught Hunts sends orbs chasing tethered players. Other key mechanics are Meltdown (don't move while chained, then spread), Airy/Dense Emptiness stacks, Gaze of the Void orb soaks, Deep Freeze, a tower adds phase with role-specific adds, and Lightless World before the two-portal final phase.",
+  "fr": "Énuo Extrême (patch 7.5). Énuo utilise des portails de néant : Abcès du néant fait un donut ou un cercle depuis un portail, Vitalisation du néant déplace les portails ou tire des lasers, et Poursuite du néant envoie des orbes chasser des joueurs liés. Autres mécaniques clés : Fusion ancestrale (ne bouge pas enchaîné, puis disperse-toi), packages d'Onde diffusée/concentrée, orbes de Torrents chaotiques, Congélation ancestrale, une phase d'adds avec tours et adds par rôle, et Monde sans Lumière avant la phase finale à deux portails.",
+  "de": "Enuo Extrem (Patch 7.5). Enuo nutzt Nichts-Portale: Anschwellen des Nichts macht Donut oder Kreis von einem Portal, Auftreten des Nichts verschiebt Portale oder feuert Laser, und Verfolgung des Nichts lässt Kugeln verbundene Spieler jagen. Weitere Kernmechaniken: Komplettschmelze (gekettet nicht bewegen, dann verteilen), Streuende/Sammelnde Welle, Chaotischer-Strom-Kugeln, Tiefenfrost, eine Turm-Add-Phase mit Rollen-Adds und Lichtlose Welt vor der Zwei-Portal-Endphase.",
+  "ja": "極エヌオー（7.5）。無の肥大で外周の無からドーナツか円、無の活性で無が移動/レーザー、無の追跡で線の人を追う。メルトダウン（動かず、切れたら散開）、拡散/集束波動、混沌の激流の玉、ディープフリーズ、塔と雑魚フェーズ（ロール別）、ライトレス・ワールド後は無が2つ。"
+ },
+ "strats_overview": [
+  {
+   "id": "hector",
+   "name": {
+    "en": "Hector (NA PF, CC to CC)",
+    "fr": "Hector (PF NA, CC puis CC)",
+    "de": "Hector (NA-PF, CC zu CC)",
+    "ja": "Hector（NA野良、CC→CC）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "NAUR PF default: Hector video strat. Airy/Dense baits on intercardinals so supports rotate; Naught Hunts both pairs run clockwise ('CC -> CC').",
+    "fr": "Par défaut PF NAUR : strat vidéo de Hector. Baits Onde diffusée/concentrée aux intercardinaux donc les supports tournent ; Poursuite du néant : les deux paires courent en horaire (« CC -> CC »).",
+    "de": "NAUR-PF-Standard: Hectors Video-Strat. Wellen-Köder auf Zwischenrichtungen, also rotieren Supporter; Verfolgung des Nichts: beide Paare laufen im Uhrzeigersinn („CC -> CC“).",
+    "ja": "NAUR標準はHector。拡散/集束は斜めでサポートが回る。無の追跡は2組とも時計回り（CC→CC）。"
+   },
+   "aliases": {
+    "en": [
+     "hector",
+     "cc to cc",
+     "cc cc"
+    ],
+    "fr": [
+     "hector",
+     "cc to cc",
+     "cc cc"
+    ],
+    "de": [
+     "hector",
+     "cc to cc",
+     "cc cc"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "modified-enuo",
+   "name": {
+    "en": "Modified Enuo raidplan (CC to CCW)",
+    "fr": "Raidplan Modified Enuo (CC puis CCW)",
+    "de": "Modified-Enuo-Raidplan (CC zu CCW)",
+    "ja": "Modified Enuoレイドプラン（CC→CCW）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "Older common PF raidplan, same as Hector except: Airy/Dense baits on cardinals so DPS rotate, second Naught Hunts pair runs counterclockwise, and in the adds phase TR always take the northmost towers and HM the southmost ('snake prio'). Kobe's Classroom guide also puts the baits on cardinals.",
+    "fr": "Ancien raidplan PF courant, comme Hector sauf : baits aux cardinaux donc les DPS tournent, la 2e paire de Poursuite court en antihoraire, et en phase d'adds TR prennent toujours les tours les plus au nord et HM les plus au sud (« snake prio »). Le guide Kobe's Classroom met aussi les baits aux cardinaux.",
+    "de": "Älterer üblicher PF-Raidplan, wie Hector außer: Köder auf Himmelsrichtungen, also rotieren DPS, das zweite Verfolgungs-Paar läuft gegen den Uhrzeigersinn, und in der Add-Phase nehmen TR immer die nördlichsten, HM die südlichsten Türme („Snake Prio“). Kobe's Classroom legt die Köder ebenfalls auf Himmelsrichtungen.",
+    "ja": "以前の野良レイドプラン。Hectorと同じだが、拡散/集束は方角でDPSが回る、無の追跡2組目は反時計回り、雑魚の塔はTRが北・HMが南（snake prio）。Kobe's Classroomも方角。"
+   },
+   "aliases": {
+    "en": [
+     "modified enuo",
+     "cc to ccw",
+     "snake prio"
+    ],
+    "fr": [
+     "modified enuo",
+     "cc to ccw",
+     "snake prio"
+    ],
+    "de": [
+     "modified enuo",
+     "cc to ccw",
+     "snake prio"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-nukemaru",
+   "name": {
+    "en": "JP Game8 / Nukemaru",
+    "fr": "JP Game8 / Nukemaru",
+    "de": "JP Game8 / Nukemaru",
+    "ja": "JP game8 / ぬけまる式"
+   },
+   "region": "JP",
+   "note": {
+    "en": "Based on Nukemaru's video; mainly differs from other videos in the Gaze of the Void spread.",
+    "fr": "D'après la vidéo de Nukemaru ; diffère surtout pour la dispersion de Torrents chaotiques.",
+    "de": "Nach Nukemarus Video; unterscheidet sich vor allem bei der Verteilung im Chaotischen Strom.",
+    "ja": "ぬけまる氏の動画準拠。他動画との違いは混沌の激流の散開程度。"
+   },
+   "aliases": {
+    "en": [
+     "nukemaru",
+     "game8"
+    ],
+    "fr": [
+     "nukemaru",
+     "game8"
+    ],
+    "de": [
+     "nukemaru",
+     "game8"
+    ],
+    "ja": [
+     "ぬけまる式",
+     "ぬけまる",
+     "nukemaru"
+    ]
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "前半"
+   },
+   "mechanics": [
+    {
+     "id": "meteorain",
+     "names": {
+      "en": "Meteorain",
+      "fr": "Pluie de météorites",
+      "de": "Meteorregen",
+      "ja": "メテオレイン"
+     },
+     "aliases": {
+      "en": [
+       "raidwide"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Magic raidwide.",
+      "fr": "Raidwide magique.",
+      "de": "Magischer Raidwide.",
+      "ja": "魔法全体攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "naught-grows",
+     "names": {
+      "en": "Naught Grows + Return to Nothing / Great Return to Nothing",
+      "fr": "Abcès du néant + Onde régressive / Grande onde régressive",
+      "de": "Anschwellen des Nichts + Welle der Wiederkehr / Große Welle",
+      "ja": "無の肥大＋回帰の波動 / 回帰の重波動"
+     },
+     "aliases": {
+      "en": [
+       "portal",
+       "donut circle",
+       "healer lines"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "無",
+       "肥大"
+      ]
+     },
+     "how": {
+      "en": "Enuo tethers a void portal: donut = stand close to the portal, circle = stand away from it; tanks stand closest to the portal. With it comes a line stack on both healers (light parties) or one big one on a single healer (whole party).",
+      "fr": "Énuo se lie à un portail : donut = près du portail, cercle = loin ; les tanks au plus près du portail. Avec ça, un package en ligne sur les deux heals (light parties) ou un gros sur un seul heal (tout le groupe).",
+      "de": "Enuo verbindet sich mit einem Portal: Donut = nah am Portal, Kreis = weg davon; Tanks am nächsten am Portal. Dazu ein Linien-Sammeln auf beide Heiler (Leichtgruppen) oder ein großes auf einen Heiler (ganze Gruppe).",
+      "ja": "外周の無からドーナツか円。ヒーラーの線が1人なら全員、2人ならボスを見て左MT組・右ST組で4:4。タンクは外周寄りで初動。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack"
+     ]
+    },
+    {
+     "id": "meltdown",
+     "names": {
+      "en": "Meltdown",
+      "fr": "Fusion ancestrale",
+      "de": "Komplettschmelze",
+      "ja": "メルトダウン"
+     },
+     "aliases": {
+      "en": [
+       "chains",
+       "don't move"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Everyone is chained and takes damage if they move; ground AoEs drop under everyone and go off after the debuff, then unmarked spreads. Stack under the boss, wait, then run to clock spots.",
+      "fr": "Tout le monde est enchaîné et prend des dégâts en bougeant ; des AoE tombent sous chacun et partent après la debuff, puis des dispersions. Packe sous le boss, attends, puis cours aux spots d'horloge.",
+      "de": "Alle sind gekettet und nehmen Schaden bei Bewegung; Boden-AoEs unter allen lösen nach dem Debuff aus, dann Verteilen. Unter dem Boss sammeln, warten, dann zu den Uhrplätzen.",
+      "ja": "詠唱中に中央、焔の枷の間は動かない、切れた瞬間に散開場所へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "dodge",
+      "spread"
+     ]
+    },
+    {
+     "id": "airy-dense",
+     "names": {
+      "en": "Airy Emptiness / Dense Emptiness",
+      "fr": "Onde diffusée / Onde concentrée",
+      "de": "Streuende / Sammelnde Welle",
+      "ja": "拡散波動 / 集束波動"
+     },
+     "aliases": {
+      "en": [
+       "airy",
+       "dense",
+       "pairs",
+       "light parties"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "拡散",
+       "集束"
+      ]
+     },
+     "how": {
+      "en": "Airy = cone stacks on four players of one role (pairs); Dense = cone stacks on both healers (light parties). Both give magic vulnerability.",
+      "fr": "Diffusée = cônes partagés sur quatre joueurs d'un rôle (paires) ; Concentrée = cônes partagés sur les deux heals (light parties). Vulnérabilité magique.",
+      "de": "Streuend = geteilte Kegel auf vier Spieler einer Rolle (Paare); Sammelnd = geteilte Kegel auf beide Heiler (Leichtgruppen). Beide geben Magie-Verwundbarkeit.",
+      "ja": "拡散はペア割り、集束は4:4（MT組西、ST組東）。北基準で並ぶ。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "Pairs on intercardinals, supports rotate; light parties east/west.",
+        "fr": "Paires aux intercardinaux, supports tournent ; light parties est/ouest.",
+        "de": "Paare auf Zwischenrichtungen, Supporter rotieren; Leichtgruppen Ost/West.",
+        "ja": "ペアは斜め、サポートが回る。4:4は東西。"
+       }
+      },
+      {
+       "strat": "modified-enuo",
+       "how": {
+        "en": "Pairs on cardinals, DPS rotate; light parties east/west.",
+        "fr": "Paires aux cardinaux, DPS tournent ; light parties est/ouest.",
+        "de": "Paare auf Himmelsrichtungen, DPS rotieren; Leichtgruppen Ost/West.",
+        "ja": "ペアは方角、DPSが回る。4:4は東西。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Airy = pairs, Dense = 4:4 with MT group west and ST group east, lined up from map north.",
+        "fr": "Diffusée = paires, Concentrée = 4:4 groupe MT ouest et OT est, alignés selon le nord.",
+        "de": "Streuend = Paare, Sammelnd = 4:4 MT-Gruppe West, ST-Gruppe Ost, nach Kartennorden.",
+        "ja": "拡散はペア、集束は4:4（MT組西・ST組東）、マップ北基準。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "cleave",
+      "debuff"
+     ]
+    },
+    {
+     "id": "gaze-of-the-void",
+     "names": {
+      "en": "Gaze of the Void",
+      "fr": "Torrents chaotiques",
+      "de": "Chaotischer Strom",
+      "ja": "混沌の激流"
+     },
+     "aliases": {
+      "en": [
+       "orbs",
+       "yellow purple"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "玉",
+       "黄色",
+       "紫"
+      ]
+     },
+     "how": {
+      "en": "Ten orbs fire cones in spawn order, rotating; then tethered orbs move in and each needs two soakers (short magic vulnerability). Take the yellow (fast) orb first and the purple (slow) after the vulnerability fades; tanks take the two big orbs.",
+      "fr": "Dix orbes tirent des cônes dans l'ordre en tournant ; puis des orbes liés arrivent et chacun demande deux joueurs (courte vulnérabilité). Prends le jaune (rapide) d'abord et le violet (lent) après la vulnérabilité ; les tanks prennent les deux gros.",
+      "de": "Zehn Kugeln feuern nacheinander drehend Kegel; dann kommen verbundene Kugeln, jede braucht zwei Spieler (kurze Verwundbarkeit). Erst die gelbe (schnell), die lila (langsam) nach der Verwundbarkeit; Tanks nehmen die zwei großen.",
+      "ja": "玉の出現順に扇。その後黄色（速い）→紫（遅い）の順にペアで玉に当たる（デバフが切れてから紫）。タンクは大玉。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "Start behind the first cone and rotate; healers take the first yellow and purple clockwise of the tank orbs, ranged the first counterclockwise, melee the second set.",
+        "fr": "Commence derrière le premier cône et tourne ; heals prennent le premier jaune et violet en horaire des orbes tank, distances en antihoraire, mêlées la deuxième série.",
+        "de": "Hinter dem ersten Kegel starten und drehen; Heiler nehmen die erste gelbe und lila im Uhrzeigersinn der Tank-Kugeln, Fernkampf gegen den Uhrzeigersinn, Nahkampf den zweiten Satz.",
+        "ja": "最初の扇の後ろから回る。ヒーラーはタンク玉から時計回りの最初の黄・紫、遠隔は反時計回り、近接は2セット目。"
+       }
+      },
+      {
+       "strat": "modified-enuo",
+       "same_as": "hector"
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Spread with the tanks' big orbs as reference: healers to the left, melee to the right.",
+        "fr": "Disperse-toi par rapport aux gros orbes des tanks : heals à gauche, mêlées à droite.",
+        "de": "Verteil dich nach den großen Tank-Kugeln: Heiler links, Nahkampf rechts.",
+        "ja": "タンク担当の大玉を基準にヒーラー左、近接右に散開。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave",
+      "tower",
+      "debuff"
+     ]
+    },
+    {
+     "id": "vacuum-deep-freeze",
+     "names": {
+      "en": "Vacuum / Deep Freeze",
+      "fr": "Vortex du néant / Congélation ancestrale",
+      "de": "Nichtswirbel / Tiefenfrost",
+      "ja": "無の渦 / ディープフリーズ"
+     },
+     "aliases": {
+      "en": [
+       "curved lines",
+       "freeze",
+       "proximity"
+      ],
+      "fr": [
+       "Vacuum"
+      ],
+      "de": [
+       "Vacuum"
+      ],
+      "ja": []
+     },
+     "how": {
+      "en": "Vacuum: curved lines with big orbs at the ends; squeeze in opposite the single short curve. Deep Freeze: proximity markers on the top two enmity, and everyone must be moving at the end of the cast or freeze.",
+      "fr": "Vortex du néant : lignes courbes avec de gros orbes au bout ; serre-toi à l'opposé de la seule courbe courte. Congélation : marqueurs de proximité sur les deux premiers en inimitié, et tout le monde doit bouger à la fin ou geler.",
+      "de": "Nichtswirbel: gebogene Linien mit großen Kugeln am Ende; drück dich gegenüber der einzigen kurzen Kurve hin. Tiefenfrost: Entfernungsmarker auf die zwei Ersten, und alle müssen am Ende des Zaubers in Bewegung sein, sonst frieren sie ein.",
+      "ja": "無の渦は曲線の安地（長い曲線側）。ディープフリーズはヘイト1・2位に距離減衰、MT北西・ST北東、他は南、詠唱完了前に動く。"
+     },
+     "strats": [
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Deep Freeze: MT drops its marker to the northwest and OT (ST) to the northeast; ST keeps stance to stay second in enmity.",
+        "fr": "Congélation ancestrale : le MT pose son marqueur au nord-ouest et l'OT au nord-est ; l'OT garde sa posture pour rester deuxième en inimitié.",
+        "de": "Tiefenfrost: Der MT legt seinen Marker im Nordwesten ab, der OT im Nordosten; der OT behält die Haltung an, um Zweiter in der Feindseligkeit zu bleiben.",
+        "ja": "ディープフリーズ：MTは北西、STは北東でマーカーを処理。STはスタンスを入れてヘイト2位を維持する。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "tankbuster",
+      "proximity",
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "adds",
+   "names": {
+    "en": "Phase 2: adds",
+    "fr": "Phase 2 : adds",
+    "de": "Phase 2: Adds",
+    "ja": "雑魚フェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "voidal-turbulence",
+     "names": {
+      "en": "Looming Emptiness + Voidal Turbulence + Empty Shadow",
+      "fr": "Grand impact de vacuité + Maelström du néant + Impact de vacuité",
+      "de": "Schwere Last der Leere + Nichtsstrudel + Last der Leere",
+      "ja": "虚ろなる大衝撃＋無の渦流＋虚ろなる衝撃"
+     },
+     "aliases": {
+      "en": [
+       "towers",
+       "role adds",
+       "gaze"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "塔",
+       "雑魚"
+      ]
+     },
+     "how": {
+      "en": "Knockback from the middle, then towers: soaking spawns an add tethered to you that only you can damage (tank add: interrupt and buster, healer add: cleanse curse, DPS add: look away from its gaze). Four marked players drop cones on the side with no towers; then the roles swap. Finally kill the big shadow and the Beacon in the Dark. The tank add's line buster (Weight of Nothing) hits the tank tethered to it, so each tank handles its own add.",
+      "fr": "Poussée depuis le centre, puis tours : en prendre une fait apparaître un add lié à toi que toi seul peux blesser (add tank : interruption et buster, add heal : purger la malédiction, add DPS : détourner le regard). Quatre marqués posent des cônes côté sans tours ; puis on inverse. Enfin tuez la grande ombre et la balise. Le buster en ligne de l'add tank (Weight of Nothing) frappe le tank lié à lui : chaque tank gère son propre add.",
+      "de": "Rückstoß aus der Mitte, dann Türme: Wer einen nimmt, bekommt ein verbundenes Add, das nur er schädigen kann (Tank-Add: unterbrechen und Buster, Heiler-Add: Fluch reinigen, DPS-Add: vom Blick wegschauen). Vier Markierte legen Kegel auf die Seite ohne Türme; dann tauschen. Am Ende den großen Schatten und das Leuchtfeuer töten. Der Linien-Buster des Tank-Adds (Weight of Nothing) trifft den Tank, der mit ihm verbunden ist; jeder Tank kümmert sich um sein eigenes Add.",
+      "ja": "中央からノックバック（アムレン可）、塔を踏むと線で繋がった雑魚（タンクは沈黙と強攻撃、ヒーラーはエスナ、DPSは視線）。マーカー4人は塔の間を避けて扇を捨てる。次は逆、最後に光の兆しを倒す。タンク用の雑魚の直線強攻撃（Weight of Nothing）は線でつながったタンクに来るので、各タンクが自分の雑魚を担当する。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "Each light party takes the closest tower on its side by clock spot: party 1 ranged and tank look north counterclockwise, melee and healer south clockwise; party 2 ranged and healer north clockwise, melee and tank south clockwise.",
+        "fr": "Chaque light party prend la tour la plus proche de son côté : groupe 1 distance et tank au nord en antihoraire, mêlée et heal au sud en horaire ; groupe 2 distance et heal au nord en horaire, mêlée et tank au sud en horaire.",
+        "de": "Jede Leichtgruppe nimmt den nächsten Turm ihrer Seite: Gruppe 1 Fern und Tank Nord gegen den Uhrzeigersinn, Nah und Heiler Süd im Uhrzeigersinn; Gruppe 2 Fern und Heiler Nord im Uhrzeigersinn, Nah und Tank Süd im Uhrzeigersinn.",
+        "ja": "各組が自分側の近い塔：1組は遠隔・タンクが北を反時計回り、近接・ヒーラーが南を時計回り。2組は遠隔・ヒーラーが北を時計回り、近接・タンクが南を時計回り。"
+       }
+      },
+      {
+       "strat": "modified-enuo",
+       "how": {
+        "en": "Snake prio: TR always take the northmost towers, HM the southmost.",
+        "fr": "Snake prio : TR toujours les tours les plus au nord, HM les plus au sud.",
+        "de": "Snake Prio: TR immer die nördlichsten Türme, HM die südlichsten.",
+        "ja": "snake prio：TRは常に北、HMは常に南。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Tower soakers wait clear of the middle circle; markers drop cones avoiding the narrow gaps between towers; DPS or the four tower players handle the small adds while others hit the big one.",
+        "fr": "Les preneurs de tours attendent hors du cercle central ; les marqués posent les cônes en évitant les espaces étroits ; DPS ou les quatre des tours gèrent les petits adds, les autres tapent le gros.",
+        "de": "Turmnehmer warten außerhalb des Mittelkreises; Markierte legen Kegel und meiden die engen Lücken; DPS oder die vier Turmspieler übernehmen die kleinen Adds, die anderen den großen.",
+        "ja": "塔担当は中央の円を避けて待機、マーカーは狭い塔の間を避けて扇。小さい雑魚はDPSか塔担当、他は中央の大きい敵。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "tower",
+      "adds",
+      "tether",
+      "tankbuster",
+      "gaze",
+      "cleave",
+      "transition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Phase 3 (two portals)",
+    "fr": "Phase 3 (deux portails)",
+    "de": "Phase 3 (zwei Portale)",
+    "ja": "後半（無が2つ）"
+   },
+   "mechanics": [
+    {
+     "id": "lightless-world",
+     "names": {
+      "en": "Lightless World + Almagest",
+      "fr": "Monde sans Lumière + Almageste",
+      "de": "Lichtlose Welt + Almagest",
+      "ja": "ライトレス・ワールド＋アルマゲスト"
+     },
+     "aliases": {
+      "en": [
+       "ultimate",
+       "raidwides"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Multi-hit raidwide ultimate followed by another raidwide; use the burst and mitigation saved from the adds phase.",
+      "fr": "Ultime en raidwide multi-coups suivi d'un autre raidwide ; utilise la burst et la mitigation gardées de la phase d'adds.",
+      "de": "Mehrfacher Raidwide-Ultimate, dann ein weiterer Raidwide; nutz die in der Add-Phase gesparte Burst und Mitigation.",
+      "ja": "連続全体攻撃とアルマゲスト。雑魚フェーズで温存したバースト・軽減を使う。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "naught-grows-2",
+     "names": {
+      "en": "Naught Grows (two portals) + Naught Wakes (lasers) + Shrouded Holy",
+      "fr": "Abcès du néant (deux portails) + Vitalisation du néant (lasers) + Miracle d'ombre",
+      "de": "Anschwellen des Nichts (zwei Portale) + Auftreten des Nichts (Laser) + Schattenheiligtum",
+      "ja": "無の肥大（2つ）＋無の活性＋シャドウホーリー"
+     },
+     "aliases": {
+      "en": [
+       "two portals",
+       "lasers"
+      ],
+      "fr": [
+       "Naught Wakes"
+      ],
+      "de": [
+       "Naught Wakes"
+      ],
+      "ja": []
+     },
+     "how": {
+      "en": "One portal tethers Enuo and Enuo tethers the other: if a donut points at Enuo stand inside its hitbox away from the other portal, if a circle does stand near the other portal by the wall. Naught Wakes either splits portals firing down the sides or fires one across the middle. Shrouded Holy is light-party stacks east/west.",
+      "fr": "Un portail lie Énuo et Énuo lie l'autre : si un donut vise Énuo, mets-toi dans sa hitbox loin de l'autre portail ; si c'est un cercle, près de l'autre portail contre le mur. Vitalisation du néant sépare les portails qui tirent sur les côtés ou tire une ligne au centre. Miracle d'ombre = packages par light party est/ouest.",
+      "de": "Ein Portal verbindet Enuo und Enuo das andere: zeigt ein Donut auf Enuo, in seine Hitbox weg vom anderen Portal; ein Kreis, dann nahe dem anderen Portal an der Wand. Auftreten des Nichts teilt die Portale, die an den Seiten feuern, oder feuert quer durch die Mitte. Schattenheiligtum ist Leichtgruppen-Sammeln Ost/West.",
+      "ja": "外周→ボスがドーナツ、ボス→外周が円（またはその逆）。ヒーラーはボス付近でハの字、4:4、タンク最後尾。無が2つ1組×2なら中央安地、ペア＋大1つならペア側。シャドウホーリーはD側MT組、B側ST組。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack"
+     ]
+    },
+    {
+     "id": "dimension-zero",
+     "names": {
+      "en": "Dimension Zero",
+      "fr": "Dimension zéro",
+      "de": "Dimension Null",
+      "ja": "ディメンションゼロ"
+     },
+     "aliases": {
+      "en": [
+       "line stack"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Three-hit line stack on a healer; everyone stacks.",
+      "fr": "Package en ligne en trois coups sur un heal ; tout le monde ensemble.",
+      "de": "Dreifaches Linien-Sammeln auf einen Heiler; alle zusammen.",
+      "ja": "3連の直線頭割り、全員で。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack"
+     ]
+    },
+    {
+     "id": "naught-hunts",
+     "names": {
+      "en": "Naught Hunts",
+      "fr": "Poursuite du néant",
+      "de": "Verfolgung des Nichts",
+      "ja": "無の追跡"
+     },
+     "aliases": {
+      "en": [
+       "chasing orbs",
+       "cc ccw"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "追跡"
+      ]
+     },
+     "how": {
+      "en": "Two tethered players are chased by void orbs that pulse with stacking vulnerability; halfway two more players take over. It happens twice (the second time on the four not hit before).",
+      "fr": "Deux joueurs liés sont chassés par des orbes qui pulsent avec vulnérabilité cumulée ; à mi-chemin deux autres prennent le relais. Deux fois (la seconde sur les quatre non touchés avant).",
+      "de": "Zwei verbundene Spieler werden von Kugeln gejagt, die mit stapelnder Verwundbarkeit pulsieren; zur Hälfte übernehmen zwei andere. Zweimal (beim zweiten Mal die vier, die vorher nicht dran waren).",
+      "ja": "線の2人を無が追う（脈動でスタック）。途中で別の2人へ。2セット。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "Both pairs run clockwise along the outside.",
+        "fr": "Les deux paires courent en horaire par l'extérieur.",
+        "de": "Beide Paare laufen außen im Uhrzeigersinn.",
+        "ja": "2組とも外周を時計回り。"
+       }
+      },
+      {
+       "strat": "modified-enuo",
+       "how": {
+        "en": "First pair clockwise, second pair counterclockwise so they don't clip the first group.",
+        "fr": "Première paire en horaire, seconde en antihoraire pour ne pas toucher le premier groupe.",
+        "de": "Erstes Paar im Uhrzeigersinn, zweites dagegen, damit es die erste Gruppe nicht trifft.",
+        "ja": "1組目は時計回り、2組目は反時計回り。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "First clockwise, second counterclockwise.",
+        "fr": "Premier en horaire, second en antihoraire.",
+        "de": "Erstes im Uhrzeigersinn, zweites dagegen.",
+        "ja": "1番目は時計回り、2番目は反時計回り。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "dodge",
+      "debuff"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Enrage loop",
+      "fr": "Boucle d'enrage",
+      "de": "Finalangriff-Schleife",
+      "ja": "時間切れ前のループ"
+     },
+     "aliases": {
+      "en": [
+       "enrage"
+      ],
+      "fr": [
+       "Naught Wakes"
+      ],
+      "de": [
+       "Naught Wakes"
+      ],
+      "ja": []
+     },
+     "how": {
+      "en": "Almagest, Naught Grows, Naught Wakes, Deep Freeze, Naught Grows, Dimension Zero and Meteorain, then the hard enrage.",
+      "fr": "Almageste, Abcès, Vitalisation du néant, Congélation, Abcès, Dimension zéro et Pluie de météorites, puis l'enrage.",
+      "de": "Almagest, Anschwellen, Auftreten des Nichts, Tiefenfrost, Anschwellen, Dimension Null und Meteorregen, dann der harte Finalangriff.",
+      "ja": "アルマゲスト、無の肥大、無の活性、ディープフリーズ、無の肥大、ディメンションゼロ、メテオレインの後に時間切れ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Icy Veins - The Unmaking (Extreme)",
+   "url": "https://www.icy-veins.com/ffxiv/the-unmaking-extreme-trial-guide",
+   "lang": "en"
+  },
+  {
+   "title": "NAUR FFXIV - The Unmaking",
+   "url": "https://naurffxiv.com/extreme/the-unmaking",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - 極エヌオー",
+   "url": "https://game8.jp/ff14/782325",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot enuo-ex",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/trial/enuo-ex.ts",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 (official names, Action/BNpcName/Status sheets)",
+   "url": "https://v2.xivapi.com/api/search",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

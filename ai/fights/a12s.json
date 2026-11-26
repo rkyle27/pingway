@@ -1,0 +1,635 @@
+{
+ "id": "a12s",
+ "type": "savage",
+ "expansion": "HW",
+ "patch": "3.4",
+ "names": {
+  "en": "Alexander - The Soul of the Creator (Savage)",
+  "fr": "Alexander - L'Âme du Créateur (sadique)",
+  "de": "Alexander - Seele des Schöpfers (episch)",
+  "ja": "機工城アレキサンダー零式：天動編4"
+ },
+ "aliases": {
+  "en": [
+   "a12s",
+   "a12 savage",
+   "alexander 12 savage",
+   "alexander prime savage",
+   "soul of the creator savage",
+   "temporal stasis"
+  ],
+  "fr": [
+   "a12s",
+   "alexander 12 sadique",
+   "âme du créateur sadique"
+  ],
+  "de": [
+   "a12s",
+   "alexander 12 episch",
+   "seele des schöpfers episch"
+  ],
+  "ja": [
+   "天動編4零式",
+   "天動編零式4層",
+   "アレキ零式12層",
+   "天動4層",
+   "アレキサンダー"
+  ]
+ },
+ "summary": {
+  "en": "Floor 4 of Alexander: The Creator (Savage) against Alexander Prime. Phases: opener, add waves ending in Divine Judgement (needs tank LB3), Temporal Stasis (time-stop debuffs), Time Gates with Judgement Crystals and Inception, then the final phase with the summoned Alexander and Void of Repentance towers.",
+  "fr": "Étage 4 d'Alexander : Le Créateur (sadique) contre Alexander Prime. Phases : ouverture, vagues d'adds qui finissent par Divine Judgement (LB3 tank), Temporal Stasis (malus d'arrêt du temps), Time Gate avec cristaux et Inception, puis la phase finale avec Alexander invoqué et les tours Void of Repentance.",
+  "de": "Ebene 4 von Alexander: Der Schöpfer (episch) gegen Alexander Prime. Phasen: Einstieg, Add-Wellen bis Divine Judgement (Tank-LB3), Temporal Stasis (Zeitstopp-Debuffs), Time Gates mit Kristallen und Inception, dann die Schlussphase mit dem beschworenen Alexander und den Void-of-Repentance-Türmen.",
+  "ja": "天動編4層零式、アレキサンダー・プライム戦。序盤→雑魚と聖なる審判（タンクLB3）→時間停止→タイムゲートとクリスタル・時空潜航→アレキサンダー召喚と懺悔の間（塔）の最終フェーズ。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "This fight is mostly cleared unsynced or at minimum item level today, so strats rarely matter. The entries below explain how each mechanic works. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Aujourd'hui ce combat se fait surtout en mode sans restriction ou en ilvl minimum, donc la strat compte rarement. Les entrées ci-dessous expliquent comment marche chaque mécanique. Les noms des mécaniques sont en anglais (noms FR officiels non vérifiés).",
+  "de": "Heute wird dieser Kampf meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel gemacht, die Strat spielt also selten eine Rolle. Die Einträge unten erklären, wie jede Mechanik funktioniert. Die Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "現在このコンテンツは主に制限解除やIL最低限で攻略されるため、攻略法の違いはほとんど問題になりません。以下では各ギミックの仕組みを説明します。英語名のままのギミック名は日本語の公式名を確認できなかったものです。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Opener",
+    "fr": "Ouverture",
+    "de": "Einstieg",
+    "ja": "序盤"
+   },
+   "mechanics": [
+    {
+     "id": "punishing-heat",
+     "names": {
+      "en": "Divine Spear / Punishing Heat",
+      "fr": "Épieu divin / Chaleur punitive",
+      "de": "Heiliger Speer / Brennendes Urteil",
+      "ja": "聖なる炎／懲罰の熱線"
+     },
+     "aliases": {
+      "en": [
+       "divine spear / punishing heat"
+      ],
+      "fr": [
+       "divine spear / punishing heat"
+      ],
+      "de": [
+       "divine spear / punishing heat"
+      ],
+      "ja": [
+       "聖なる炎／懲罰の熱線"
+      ]
+     },
+     "how": {
+      "en": "Divine Spear is an instant frontal cleave on the MT (only the MT in front); Punishing Heat is a casted tankbuster. Mitigate both.",
+      "fr": "Divine Spear : cleave frontal instantané sur le MT (seul le MT devant) ; Punishing Heat : tankbuster incanté. Réduis les deux.",
+      "de": "Divine Spear ist ein sofortiger Frontalcleave auf den MT (nur der MT vorne); Punishing Heat ein gecasteter Tankbuster. Beide mitigieren.",
+      "ja": "聖なる炎は詠唱なしの前方攻撃（MT以外は前に立たない）、懲罰の熱線はMTへの強攻撃。軽減で受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "cleave"
+     ]
+    },
+    {
+     "id": "scourge-heat",
+     "names": {
+      "en": "Blazing Scourge + Incinerating Heat",
+      "fr": "Lumière fustigeante + Chaleur purifiante",
+      "de": "Peitschendes Licht + Sengende Hitze",
+      "ja": "白光の鞭＋浄化の熱線"
+     },
+     "aliases": {
+      "en": [
+       "blazing scourge + incinerating heat"
+      ],
+      "fr": [
+       "blazing scourge + incinerating heat"
+      ],
+      "de": [
+       "blazing scourge + incinerating heat"
+      ],
+      "ja": [
+       "白光の鞭＋浄化の熱線"
+      ]
+     },
+     "how": {
+      "en": "Two DPS get Prey and take three AoEs: they spread away but stay in heal range. Then a stack on a healer: everyone else stacks.",
+      "fr": "Deux DPS reçoivent Proie et prennent trois AoE : ils s'écartent mais restent à portée de soin. Puis partage sur un soigneur : tout le monde dessus.",
+      "de": "Zwei DPS bekommen Beute und nehmen drei AoEs: sie gehen weg, bleiben aber in Heilreichweite. Dann Sammeln auf einem Heiler: alle anderen dazu.",
+      "ja": "DPS2人に赤マーカー（3連範囲）、離れて受ける。続いてヒーラーに頭割り、全員で集まる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "mega-holy",
+     "names": {
+      "en": "Mega Holy",
+      "fr": "Méga Miracle",
+      "de": "Super-Sanctus",
+      "ja": "メガホーリー"
+     },
+     "aliases": {
+      "en": [
+       "mega holy"
+      ],
+      "fr": [
+       "mega holy"
+      ],
+      "de": [
+       "mega holy"
+      ],
+      "ja": [
+       "メガホーリー"
+      ]
+     },
+     "how": {
+      "en": "Two heavy raid-wide hits; mitigate and heal.",
+      "fr": "Deux gros dégâts de zone ; réduis et soigne.",
+      "de": "Zwei starke Raumtreffer; mitigieren und heilen.",
+      "ja": "2回の全体大ダメージ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "gravity-sacrament",
+     "names": {
+      "en": "Gravitational Anomaly + Sacrament / Radiant Sacrament",
+      "fr": "Anomalie gravitationnelle + Sacrement / Sacrement rayonnant",
+      "de": "Gravitationsanomalie + Sakrament / Brennendes Sakrament",
+      "ja": "重力異常＋十字の秘蹟／拝火の秘蹟"
+     },
+     "aliases": {
+      "en": [
+       "gravitational anomaly + sacrament / radiant sacrament"
+      ],
+      "fr": [
+       "gravitational anomaly + sacrament / radiant sacrament"
+      ],
+      "de": [
+       "gravitational anomaly + sacrament / radiant sacrament"
+      ],
+      "ja": [
+       "重力異常＋十字の秘蹟／拝火の秘蹟"
+      ]
+     },
+     "how": {
+      "en": "Red circles in a fixed rotated pattern (stack away from the center first), then either Sacrament (lines from front/back/sides: stand diagonally) or Radiant Sacrament (donut: get right next to the boss).",
+      "fr": "Cercles rouges en motif fixe tourné (groupe-toi hors du centre d'abord), puis soit Sacrament (lignes avant/arrière/côtés : place-toi en diagonale), soit Radiant Sacrament (donut : colle-toi au boss).",
+      "de": "Rote Kreise in festem, gedrehtem Muster (zuerst außerhalb der Mitte sammeln), dann entweder Sacrament (Linien vorne/hinten/seitlich: diagonal stehen) oder Radiant Sacrament (Donut: direkt an den Boss).",
+      "ja": "重力異常の円を避けた後、十字の秘蹟（前後左右の直線、斜めへ）か拝火の秘蹟（ドーナツ、ボスの足元へ）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Adds and Divine Judgement",
+    "fr": "Adds et Divine Judgement",
+    "de": "Adds und Divine Judgement",
+    "ja": "雑魚フェーズと聖なる審判"
+   },
+   "mechanics": [
+    {
+     "id": "adds",
+     "names": {
+      "en": "Add waves (Lanners, General's Wing, Time, Might)",
+      "fr": "Vagues d'adds (messagers, aile, temps et pouvoir d'Arrhabée)",
+      "de": "Add waves (Lanners, General's Wing, Time, Might)",
+      "ja": "雑魚（アリダイオス・ランナー／ウィング／タイム／マイト）"
+     },
+     "aliases": {
+      "en": [
+       "add waves (lanners, general's wing, time, might)"
+      ],
+      "fr": [
+       "add waves (lanners, general's wing, time, might)"
+      ],
+      "de": [
+       "add waves (lanners, general's wing, time, might)"
+      ],
+      "ja": [
+       "雑魚（8体／4体／マイト・タイム）"
+      ]
+     },
+     "how": {
+      "en": "Eight small adds (gather and AoE), four Wings that cast growing Almost Holy (kill one at a time), then Might and Time tanked apart (Smash / Half Gravity tankbusters). Kills build the Limit gauge. Might and Time are tanked apart, one per tank (sources don't say which); tanks may swap if one runs out of mitigation.",
+      "fr": "Huit petits adds (regroupe et AoE), quatre Wing qui lancent Almost Holy de plus en plus fort (un à la fois), puis Might et Time tankés séparément (tankbusters Smash / Half Gravity). Les kills remplissent la jauge de Limit. Might et Time sont tankés séparément, un par tank (les sources ne disent pas lequel) ; les tanks peuvent swap si l'un n'a plus de cooldowns.",
+      "de": "Acht kleine Adds (sammeln und AoE), vier Wings mit stärker werdendem Almost Holy (einzeln töten), dann Might und Time getrennt getankt (Tankbuster Smash / Half Gravity). Kills füllen die Limitleiste. Might und Time werden getrennt getankt, einer pro Tank (die Quellen sagen nicht, wer welchen); bei fehlender Mitigation dürfen die Tanks swappen.",
+      "ja": "8体（まとめて範囲）、4体（プチホーリーが強くなる、1体ずつ）、マイトとタイム（別々に受ける）。撃破でLBゲージが溜まる。マイトとタイムはタンク1人1体で離して持つ（どちらが持つかは資料に記載なし）。軽減が足りなければスイッチしてよい。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "divine-judgement",
+     "names": {
+      "en": "Divine Judgement",
+      "fr": "Jugement divin",
+      "de": "Göttliches Urteil",
+      "ja": "聖なる審判"
+     },
+     "aliases": {
+      "en": [
+       "divine judgement"
+      ],
+      "fr": [
+       "divine judgement"
+      ],
+      "de": [
+       "divine judgement"
+      ],
+      "ja": [
+       "聖なる審判"
+      ]
+     },
+     "how": {
+      "en": "Countdown wipe: a tank uses Limit Break 3 when about 4 seconds or less remain. Too early and it runs out.",
+      "fr": "Wipe sur compte à rebours : un tank utilise la Limit Break 3 quand il reste ~4 s ou moins. Trop tôt et elle s'arrête avant.",
+      "de": "Countdown-Wipe: ein Tank nutzt Limitrausch 3, wenn etwa 4 Sekunden oder weniger übrig sind. Zu früh läuft er vorher aus.",
+      "ja": "カウント後の全滅攻撃。残り4秒前後でタンクがLB3を使う。早すぎると切れる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Temporal Stasis",
+    "fr": "Stase temporelle",
+    "de": "Zeitstillstand",
+    "ja": "時間停止"
+   },
+   "mechanics": [
+    {
+     "id": "temporal-stasis",
+     "names": {
+      "en": "Temporal Stasis",
+      "fr": "Stase temporelle",
+      "de": "Zeitstillstand",
+      "ja": "時間停止"
+     },
+     "aliases": {
+      "en": [
+       "temporal stasis"
+      ],
+      "fr": [
+       "temporal stasis"
+      ],
+      "de": [
+       "temporal stasis"
+      ],
+      "ja": [
+       "時間停止"
+      ]
+     },
+     "how": {
+      "en": "Time stops and debuffs resolve where you stand: Defamation (huge AoE, go far), Shared Sentence (stack; two Shared Sentences must not stack together), Restraining Order (tether partners stay apart), House Arrest (tether partners stay together). Always followed by Gravitational Anomaly and a Sacrament.",
+      "fr": "Le temps s'arrête et les malus se résolvent là où tu es : Defamation (énorme AoE, va loin), Shared Sentence (partage ; deux Shared Sentence ne doivent pas se superposer), Restraining Order (partenaires liés éloignés), House Arrest (partenaires liés ensemble). Toujours suivi de Gravitational Anomaly et d'un Sacrament.",
+      "de": "Die Zeit stoppt und Debuffs lösen dort aus, wo du stehst: Defamation (riesiges AoE, weit weg), Shared Sentence (Sammeln; zwei Shared Sentences dürfen nicht zusammen), Restraining Order (verbundene Partner auseinander), House Arrest (verbundene Partner zusammen). Danach immer Gravitational Anomaly und ein Sacrament.",
+      "ja": "時間停止時の位置で判定：名誉罰（大範囲、遠くへ）、集団罰（頭割り、集団罰同士は重ねない）、接近禁止命令（線の相手と離れる）、接近強制命令（線の相手とくっつく）。直後に重力異常と秘蹟。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Which roles get which debuff on each Stasis differs between sources, so it is not listed.",
+      "fr": "Les rôles qui reçoivent chaque malus diffèrent selon les sources, donc non listés.",
+      "de": "Welche Rolle welchen Debuff bekommt, unterscheidet sich je nach Quelle, daher nicht aufgeführt.",
+      "ja": "各回でどのロールに何が付くかは資料で食い違うため記載なし。"
+     },
+     "tags": [
+      "debuff",
+      "tether",
+      "stack",
+      "spread"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p4",
+   "names": {
+    "en": "Time Gates",
+    "fr": "Time Gates",
+    "de": "Time Gates",
+    "ja": "タイムゲート"
+   },
+   "mechanics": [
+    {
+     "id": "time-gate",
+     "names": {
+      "en": "Time Gate",
+      "fr": "Time Gate",
+      "de": "Time Gate",
+      "ja": "タイムゲート"
+     },
+     "aliases": {
+      "en": [
+       "time gate"
+      ],
+      "fr": [
+       "time gate"
+      ],
+      "de": [
+       "time gate"
+      ],
+      "ja": [
+       "タイムゲート"
+      ]
+     },
+     "how": {
+      "en": "Four players enter the four gates (often two DPS north, a healer and the off-tank south) and kill the adds inside before the Temporal Reconfiguration gauge fills, or the party wipes. The OT (ST) in the Smash gate takes that add's tankbuster about every 20 seconds.",
+      "fr": "Quatre joueurs entrent dans les quatre portes (souvent deux DPS au nord, un soigneur et l'off-tank au sud) et tuent les adds avant que la jauge ne se remplisse, sinon wipe. L'OT dans la porte de Smash prend le tankbuster de cet add environ toutes les 20 secondes.",
+      "de": "Vier Spieler betreten die vier Tore (oft zwei DPS im Norden, ein Heiler und der Off-Tank im Süden) und töten die Adds darin, bevor die Leiste voll ist, sonst Wipe. Der OT im Smash-Tor nimmt den Tankbuster dieses Adds etwa alle 20 Sekunden.",
+      "ja": "4人が黒い球体（過去空間）に入り、ゲージが満タンになる前に中のザコを倒す（北にDPS2人、南にヒーラーとSTなど）。スマッシュの扉に入ったSTが、約20秒ごとに雑魚のタンク強攻撃を受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "judgement-crystal",
+     "names": {
+      "en": "Judgement Crystal",
+      "fr": "Cristal du jugement",
+      "de": "Urteilskristall",
+      "ja": "審判の結晶"
+     },
+     "aliases": {
+      "en": [
+       "judgement crystal"
+      ],
+      "fr": [
+       "judgement crystal"
+      ],
+      "de": [
+       "judgement crystal"
+      ],
+      "ja": [
+       "クリスタル"
+      ]
+     },
+     "how": {
+      "en": "Outside, a marked player drops a crystal on a waymark; if the boss gets close the crystal explodes (Tetrashatter). Keep the boss away from crystals.",
+      "fr": "Dehors, un joueur marqué pose un cristal sur un marqueur ; si le boss s'approche, le cristal explose (Tetrashatter). Garde le boss loin.",
+      "de": "Draußen legt ein markierter Spieler einen Kristall auf eine Wegmarke; kommt der Boss nahe, explodiert er (Tetrashatter). Boss fernhalten.",
+      "ja": "外の担当がマーカーにクリスタルを置く。ボスが近づくと爆発するので離して戦う。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "inception",
+     "names": {
+      "en": "Inception",
+      "fr": "Commencement",
+      "de": "Raumzeit-Eingriff",
+      "ja": "時空潜行"
+     },
+     "aliases": {
+      "en": [
+       "inception"
+      ],
+      "fr": [
+       "inception"
+      ],
+      "de": [
+       "inception"
+      ],
+      "ja": [
+       "時空潜航"
+      ]
+     },
+     "how": {
+      "en": "The boss turns invisible, moves to the edge and fires a Sacrament; the exploding crystal shows where he is, use the crystals to find the safe spot. The second Inception adds Temporal Stasis-style debuffs. Radiant Sacrament follows: sprint to him.",
+      "fr": "Le boss devient invisible, va au bord et lance un Sacrament ; le cristal qui explose montre où il est, sers-t'en pour trouver le coin sûr. La 2e Inception ajoute des malus type Temporal Stasis. Puis Radiant Sacrament : sprinte vers lui.",
+      "de": "Der Boss wird unsichtbar, geht an den Rand und feuert ein Sacrament; der explodierende Kristall zeigt, wo er ist, nutze die Kristalle für den sicheren Platz. Die zweite Inception bringt Temporal-Stasis-Debuffs. Danach Radiant Sacrament: zu ihm sprinten.",
+      "ja": "ボスが消えて外周から十字の秘蹟。爆発するクリスタルで位置を判断し、安置へ。2回目は時間停止系デバフ付き。直後の拝火の秘蹟はボスの足元へ走る。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p5",
+   "names": {
+    "en": "Summon Alexander (final)",
+    "fr": "Invocation d'Alexander (finale)",
+    "de": "Alexander beschwören (Schluss)",
+    "ja": "アレキサンダー召喚（最終）"
+   },
+   "mechanics": [
+    {
+     "id": "void-of-repentance",
+     "names": {
+      "en": "Void of Repentance",
+      "fr": "Vide du repentir",
+      "de": "Kammer der Buße",
+      "ja": "懺悔の間"
+     },
+     "aliases": {
+      "en": [
+       "void of repentance"
+      ],
+      "fr": [
+       "void of repentance"
+      ],
+      "de": [
+       "void of repentance"
+      ],
+      "ja": [
+       "懺悔の間"
+      ]
+     },
+     "how": {
+      "en": "Two towers on opposite sides resolve three times, shrinking each time; they must always be filled (empty = heavy raid damage). Common order: healers, then DPS, then both tanks.",
+      "fr": "Deux tours opposées se résolvent trois fois en rétrécissant ; il faut toujours y être (vide = gros dégâts de zone). Ordre courant : soigneurs, puis DPS, puis les deux tanks.",
+      "de": "Zwei gegenüberliegende Türme lösen dreimal aus und schrumpfen; sie müssen immer besetzt sein (leer = starker Raumschaden). Übliche Reihenfolge: Heiler, dann DPS, dann beide Tanks.",
+      "ja": "左右の塔が3回判定し、だんだん小さくなる。必ず入る（空だと全体大ダメージ）。ヒーラー→DPS→タンクの順が一般的。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "CGW gives healers/DPS/tanks; one JP source says MT and ST each take a tower. Order may vary by group.",
+      "fr": "CGW : soigneurs/DPS/tanks ; une source JP dit MT et ST. Ordre variable.",
+      "de": "CGW: Heiler/DPS/Tanks; eine JP-Quelle nennt MT und ST. Reihenfolge variiert.",
+      "ja": "CGWはヒーラー→DPS→タンク、日本の資料はMT・STが踏むと記載。"
+     },
+     "tags": [
+      "tower"
+     ]
+    },
+    {
+     "id": "holy-scourge",
+     "names": {
+      "en": "Holy Scourge / Chastening Heat",
+      "fr": "Lumière fustigeante / Chaleur de l'ordalie",
+      "de": "Peitschende Gloriole / Brennende Verdammung",
+      "ja": "聖光の鞭／神罰の熱線"
+     },
+     "aliases": {
+      "en": [
+       "holy scourge / chastening heat"
+      ],
+      "fr": [
+       "holy scourge / chastening heat"
+      ],
+      "de": [
+       "holy scourge / chastening heat"
+      ],
+      "ja": [
+       "聖光の鞭／神罰の熱線"
+      ]
+     },
+     "how": {
+      "en": "Four-hit tankbuster (off-tank provokes for the last hits or MT invulns), then Chastening Heat with a tank swap.",
+      "fr": "Tankbuster en quatre coups (l'off-tank provoque pour les derniers ou invincibilité du MT), puis Chastening Heat avec swap.",
+      "de": "Vierfach-Tankbuster (Off-Tank provoziert für die letzten Treffer oder MT-Unverwundbarkeit), dann Chastening Heat mit Tankwechsel.",
+      "ja": "4連撃のタンク強攻撃（STが挑発して受ける、または無敵）、続いて神罰の熱線でタンクスイッチ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "debuff"
+     ]
+    },
+    {
+     "id": "holy-bleed",
+     "names": {
+      "en": "Holy Bleed",
+      "fr": "Impact miraculeux",
+      "de": "Sanctus-Einschlag",
+      "ja": "ホーリーバースト"
+     },
+     "aliases": {
+      "en": [
+       "holy bleed"
+      ],
+      "fr": [
+       "holy bleed"
+      ],
+      "de": [
+       "holy bleed"
+      ],
+      "ja": [
+       "ホーリーバースト"
+      ]
+     },
+     "how": {
+      "en": "Upgraded Mega Holy: heal the party to full first.",
+      "fr": "Mega Holy renforcé : remets tout le monde full avant.",
+      "de": "Verstärktes Mega Holy: vorher alle voll heilen.",
+      "ja": "強化版メガホーリー。事前に全員満タンに。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "communion",
+     "names": {
+      "en": "Communion",
+      "fr": "Communion",
+      "de": "Kommunion",
+      "ja": "コミュニオン"
+     },
+     "aliases": {
+      "en": [
+       "communion"
+      ],
+      "fr": [
+       "communion"
+      ],
+      "de": [
+       "communion"
+      ],
+      "ja": [
+       "コミュニオン"
+      ]
+     },
+     "how": {
+      "en": "CGW: homing AoEs on two DPS that leave puddles at the edge. A JP guide calls Communion the final attack (time-out).",
+      "fr": "CGW : AoE à tête chercheuse sur deux DPS qui laissent des flaques au bord. Un guide JP l'appelle l'attaque finale.",
+      "de": "CGW: zielsuchende AoEs auf zwei DPS, die Pfützen am Rand hinterlassen. Ein JP-Guide nennt Communion den Schlussangriff.",
+      "ja": "CGWではDPS2人への追尾範囲（床が残る）。日本の資料では最後の攻撃（時間切れ）と記載。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Sources disagree on what Communion is; enrage name per CGW is Judgment Protocol.",
+      "fr": "Les sources divergent ; enrage selon CGW : Judgment Protocol.",
+      "de": "Quellen widersprechen sich; Enrage laut CGW: Judgment Protocol.",
+      "ja": "コミュニオンの内容は資料で食い違い。CGWでは時間切れ技は別名。"
+     },
+     "tags": [
+      "dodge",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Alexander - The Soul of the Creator (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Alexander_-_The_Soul_of_the_Creator_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/def61a894af/",
+   "lang": "en"
+  },
+  {
+   "title": "モルボルチャレンジの会 天動編4層",
+   "url": "https://ff14malborochallenge.com/malchalle_tendou4/",
+   "lang": "ja"
+  },
+  {
+   "title": "FF14予習室 天動編4（ノーマル）",
+   "url": "https://ru-eka.com/archives/7951",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

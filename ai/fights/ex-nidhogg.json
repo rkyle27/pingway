@@ -1,0 +1,587 @@
+{
+ "id": "ex-nidhogg",
+ "type": "extreme",
+ "expansion": "HW",
+ "patch": "3.3",
+ "names": {
+  "en": "The Minstrel's Ballad: Nidhogg's Rage",
+  "fr": "L'ire de Nidhogg",
+  "de": "Das Lied von Nidhoggs letztem Ruf",
+  "ja": "極ニーズヘッグ征竜戦"
+ },
+ "aliases": {
+  "en": [
+   "ex-nidhogg",
+   "nidhogg ex",
+   "nidhogg extreme",
+   "nidhogg's rage"
+  ],
+  "fr": [
+   "nidhogg extrême",
+   "ire de nidhogg"
+  ],
+  "de": [
+   "nidhogg extrem",
+   "nidhoggs letzter ruf"
+  ],
+  "ja": [
+   "極ニーズヘッグ",
+   "極ニーズ",
+   "ニーズヘッグ征竜戦"
+  ]
+ },
+ "summary": {
+  "en": "Nidhogg in dragon form, then three Shadow dragon adds (DPS check before Mortal Chorus), then human 'dragoon' form with Fang and Claw tethers and a jump/tower sequence, then the final dragon form with Akh Morn, Bitter Hate and Flame Blast patterns. Enrage at 11 minutes.",
+  "fr": "Nidhogg en forme de dragon, puis trois dragons-ombres (test de DPS avant Mortal Chorus), puis forme humaine « chevalier dragon » avec les liens Fang et Claw et une séquence de sauts/tours, puis la forme finale avec Akh Morn, Bitter Hate et les motifs Flame Blast. Enrage à 11 minutes.",
+  "de": "Nidhogg in Drachenform, dann drei Schattendrachen-Adds (DPS-Check vor Mortal Chorus), dann die menschliche 'Dragoon'-Form mit Fang- und Claw-Verbindungen und einer Sprung-/Turm-Sequenz, dann die letzte Drachenform mit Akh Morn, Bitter Hate und Flame-Blast-Mustern. Enrage nach 11 Minuten.",
+  "ja": "邪竜ニーズヘッグ。竜形態→眷属3体（終焉の竜詩までのDPSチェック）→竜騎士形態（邪竜の牙・爪、ジャンプと塔）→最終形態（アク・モーン、真紅の珠）。11分で時間切れ。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "This fight is mostly cleared unsynced or at minimum item level today, so strats rarely matter. The entries below explain how each mechanic works. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Aujourd'hui ce combat se fait surtout en mode sans restriction ou en ilvl minimum, donc la strat compte rarement. Les entrées ci-dessous expliquent comment marche chaque mécanique. Les noms des mécaniques sont en anglais (noms FR officiels non vérifiés).",
+  "de": "Heute wird dieser Kampf meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel gemacht, die Strat spielt also selten eine Rolle. Die Einträge unten erklären, wie jede Mechanik funktioniert. Die Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "現在このコンテンツは主に制限解除やIL最低限で攻略されるため、攻略法の違いはほとんど問題になりません。以下では各ギミックの仕組みを説明します。英語名のままのギミック名は日本語の公式名を確認できなかったものです。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Dragon form",
+    "fr": "Forme dragon",
+    "de": "Drachenform",
+    "ja": "竜形態"
+   },
+   "mechanics": [
+    {
+     "id": "scarlet-whisper",
+     "names": {
+      "en": "Scarlet Whisper / Deafening Bellow",
+      "fr": "Souffle écarlate / Cri assourdissant",
+      "de": "Drakonischer Atem / Ruf des Drachen",
+      "ja": "真紅の吐息／竜の咆哮"
+     },
+     "aliases": {
+      "en": [
+       "scarlet whisper / deafening bellow"
+      ],
+      "fr": [
+       "scarlet whisper / deafening bellow"
+      ],
+      "de": [
+       "scarlet whisper / deafening bellow"
+      ],
+      "ja": [
+       "真紅の吐息／竜の咆哮"
+      ]
+     },
+     "how": {
+      "en": "Magic tank cleave (face away) and raid-wide damage.",
+      "fr": "Cleave magique sur le tank (tourne-le) et dégâts de zone.",
+      "de": "Magischer Tankcleave (wegdrehen) und Raumschaden.",
+      "ja": "前方攻撃と全体攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "raidwide"
+     ]
+    },
+    {
+     "id": "cauterize-horrid-roar",
+     "names": {
+      "en": "Cauterize + Horrid Roar",
+      "fr": "Cautérisation + Rugissement horrible",
+      "de": "Kauterisieren + Entsetzliches Brüllen",
+      "ja": "カータライズ＋ホリッドロア"
+     },
+     "aliases": {
+      "en": [
+       "cauterize + horrid roar"
+      ],
+      "fr": [
+       "cauterize + horrid roar"
+      ],
+      "de": [
+       "cauterize + horrid roar"
+      ],
+      "ja": [
+       "カータライズ＋ホリッドロア"
+      ]
+     },
+     "how": {
+      "en": "Nidhogg charges across half the arena from the edge (go to the other half); Horrid Roar puts spread circles on players or circles under them that cause Hysteria.",
+      "fr": "Nidhogg charge sur la moitié de l'arène depuis le bord (va dans l'autre moitié) ; Horrid Roar met des cercles de dispersion ou des cercles au sol qui donnent Hystérie.",
+      "de": "Nidhogg stürmt vom Rand über die halbe Arena (in die andere Hälfte); Horrid Roar gibt Verteil-Kreise oder Bodenkreise, die Hysterie verursachen.",
+      "ja": "場外から半面への突進（反対側へ）。ホリッドロアは散開円、または足元の範囲（恐慌）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread",
+      "debuff"
+     ]
+    },
+    {
+     "id": "hot-wing-tail",
+     "names": {
+      "en": "Hot Wing / Hot Tail",
+      "fr": "Aile calorifique / Queue calorifique",
+      "de": "Flirrender Flügel / Schwelender Schweif",
+      "ja": "ヒートウィング／ヒートテイル"
+     },
+     "aliases": {
+      "en": [
+       "hot wing / hot tail"
+      ],
+      "fr": [
+       "hot wing / hot tail"
+      ],
+      "de": [
+       "hot wing / hot tail"
+      ],
+      "ja": [
+       "ヒートウィング／ヒートテイル"
+      ]
+     },
+     "how": {
+      "en": "Hot Wing hits both sides of him: stand front, back or under. Hot Tail hits a line through head and tail: stand at his sides.",
+      "fr": "Hot Wing frappe ses deux côtés : place-toi devant, derrière ou dessous. Hot Tail frappe une ligne tête-queue : place-toi sur ses côtés.",
+      "de": "Hot Wing trifft seine beiden Seiten: vorne, hinten oder darunter stehen. Hot Tail trifft eine Linie durch Kopf und Schwanz: an seine Seiten.",
+      "ja": "ヒートウィングは左右、前後か真下へ。ヒートテイルは前後、横へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Shadow dragons",
+    "fr": "Dragons-ombres",
+    "de": "Schattendrachen",
+    "ja": "眷属"
+   },
+   "mechanics": [
+    {
+     "id": "shadows",
+     "names": {
+      "en": "Shadow Brobinyak / Falak / Dragon",
+      "fr": "Shadow Brobinyak / Falak / Dragon",
+      "de": "Shadow Brobinyak / Falak / Dragon",
+      "ja": "ブロビニャク／ファラク／ウェアドラゴン"
+     },
+     "aliases": {
+      "en": [
+       "shadow brobinyak / falak / dragon"
+      ],
+      "fr": [
+       "shadow brobinyak / falak / dragon"
+      ],
+      "de": [
+       "shadow brobinyak / falak / dragon"
+      ],
+      "ja": [
+       "ブロビニャク／ファラク／ウェアドラゴン"
+      ]
+     },
+     "how": {
+      "en": "Brobinyak (physical vulnerability stacks) and Falak (magic vulnerability stacks) are tanked one per tank; the third ignores enmity and uses an unmarked cone and a fireball on the farthest player. Kill Brobinyak, then Falak (tanks swap), then the third, before Mortal Chorus or the party wipes. Brobinyak's and Falak's casts are tankbusters on the tank holding each one.",
+      "fr": "Brobinyak (cumuls Vulnérabilité physique) et Falak (Vulnérabilité magique) : un par tank ; le troisième ignore l'aggro et lance un cône sans marqueur et une boule de feu sur le plus loin. Tue Brobinyak, puis Falak (swap), puis le troisième, avant Mortal Chorus sinon wipe. Les sorts de Brobinyak et de Falak sont des tankbusters sur le tank qui tient chacun.",
+      "de": "Brobinyak (Physische-Verwundbarkeit-Stacks) und Falak (Magische-Verwundbarkeit-Stacks) bekommt je ein Tank; der dritte ignoriert Aggro und nutzt einen unmarkierten Kegel und einen Feuerball auf den Fernsten. Erst Brobinyak, dann Falak (Tankwechsel), dann den dritten, vor Mortal Chorus, sonst Wipe. Die Casts von Brobinyak und Falak sind Tankbuster auf den Tank, der sie jeweils hält.",
+      "ja": "ブロビニャクとファラクを1体ずつタンクが受け、ウェアドラゴンは敵視無視（前方範囲と最遠へのファイアボール）。ブロビニャク→ファラク→ウェアドラゴンの順に、終焉の竜詩までに倒す。ブロビニャクとファラクの詠唱技は、それぞれを持つタンクへの強攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "tankbuster",
+      "tankswap",
+      "debuff",
+      "cleave",
+      "dps-check"
+     ]
+    },
+    {
+     "id": "mortal-chorus",
+     "names": {
+      "en": "Mortal Chorus / Final Chorus",
+      "fr": "Chant mortel / Chant ultime",
+      "de": "Todes-Choral / Endchoral",
+      "ja": "破滅の竜詩／終焉の竜詩"
+     },
+     "aliases": {
+      "en": [
+       "mortal chorus / final chorus"
+      ],
+      "fr": [
+       "mortal chorus / final chorus"
+      ],
+      "de": [
+       "mortal chorus / final chorus"
+      ],
+      "ja": [
+       "終焉の竜詩"
+      ]
+     },
+     "how": {
+      "en": "Wipes if any Shadow is alive; even with all dead it deals heavy damage. Mitigate.",
+      "fr": "Wipe si un dragon-ombre vit ; sinon gros dégâts. Réduis.",
+      "de": "Wipe, wenn ein Schatten lebt; sonst starker Schaden. Mitigieren.",
+      "ja": "眷属が残っていると全滅、倒していても大ダメージ。軽減。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "dps-check"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Human form",
+    "fr": "Forme humaine",
+    "de": "Menschengestalt",
+    "ja": "竜騎士形態"
+   },
+   "mechanics": [
+    {
+     "id": "high-jump-geirskogul",
+     "names": {
+      "en": "High Jump / Geirskogul",
+      "fr": "Grand saut / Geirskögul",
+      "de": "Hochsprung / Geirskogul",
+      "ja": "ハイジャンプ／ゲイルスコグル"
+     },
+     "aliases": {
+      "en": [
+       "high jump / geirskogul"
+      ],
+      "fr": [
+       "high jump / geirskogul"
+      ],
+      "de": [
+       "high jump / geirskogul"
+      ],
+      "ja": [
+       "ハイジャンプ／ゲイルスコグル"
+      ]
+     },
+     "how": {
+      "en": "Spread circles on non-tanks that leave bleed puddles (drop at the edge); then Geirskogul lines fire from Nidhogg and each puddle at players.",
+      "fr": "Cercles sur les non-tanks qui laissent des flaques de saignement (au bord) ; puis des lignes Geirskogul partent de Nidhogg et de chaque flaque vers les joueurs.",
+      "de": "Kreise auf Nicht-Tanks, die Blutungspfützen hinterlassen (an den Rand); dann feuern Geirskogul-Linien von Nidhogg und jeder Pfütze auf Spieler.",
+      "ja": "タンク以外にマーカー、外周に床を置く。着地点とボスから直線攻撃（ゲイルスコグル）を避ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "soul-tether",
+     "names": {
+      "en": "Soul Tether",
+      "fr": "Bride de l'âme",
+      "de": "Seelenstrick",
+      "ja": "ソウルテザー"
+     },
+     "aliases": {
+      "en": [
+       "soul tether"
+      ],
+      "fr": [
+       "soul tether"
+      ],
+      "de": [
+       "soul tether"
+      ],
+      "ja": [
+       "ソウルテザー"
+      ]
+     },
+     "how": {
+      "en": "Tether on a healer that ends in an AoE tankbuster; a tank takes it away from the party.",
+      "fr": "Lien sur un soigneur qui finit en tankbuster de zone ; un tank le prend loin.",
+      "de": "Verbindung auf einem Heiler, die in einem AoE-Tankbuster endet; ein Tank nimmt sie weg vom Team.",
+      "ja": "ヒーラーへの線、タンクが取って離れて受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tether"
+     ]
+    },
+    {
+     "id": "ala-morn",
+     "names": {
+      "en": "Ala Morn",
+      "fr": "Ala Morn",
+      "de": "Ala Morn",
+      "ja": "アラモーン"
+     },
+     "aliases": {
+      "en": [
+       "ala morn"
+      ],
+      "fr": [
+       "ala morn"
+      ],
+      "de": [
+       "ala morn"
+      ],
+      "ja": [
+       "アラモーン"
+      ]
+     },
+     "how": {
+      "en": "Heavy tankbuster used several times in this phase, the first one right after the first Geirskogul + Soul Tether. The MT takes it with a mitigation.",
+      "fr": "Gros tankbuster lancé plusieurs fois dans cette phase, le premier juste après le premier Geirskogul + Soul Tether. Le MT le prend avec un cooldown.",
+      "de": "Schwerer Tankbuster, mehrmals in dieser Phase, der erste direkt nach dem ersten Geirskogul + Soul Tether. Der MT nimmt ihn mit Mitigation.",
+      "ja": "このフェーズで数回来るタンク強攻撃。1回目は最初のゲイルスコグル＋ソウルテザーの直後。MTが軽減して受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "note": {
+      "en": "FR/DE: English name (official name not verified).",
+      "fr": "FR : nom anglais (nom officiel non vérifié).",
+      "de": "DE: englischer Name (offizieller Name nicht geprüft).",
+      "ja": "日本語名はゲーム乱舞より。"
+     },
+     "tags": [
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "fang-claw",
+     "names": {
+      "en": "Fang and Claw",
+      "fr": "Croc et griffe de Nidhogg",
+      "de": "Nidhoggs Fang und Klaue",
+      "ja": "邪竜の牙／邪竜の爪"
+     },
+     "aliases": {
+      "en": [
+       "fang and claw"
+      ],
+      "fr": [
+       "fang and claw"
+      ],
+      "de": [
+       "fang and claw"
+      ],
+      "ja": [
+       "邪竜の牙／邪竜の爪"
+      ]
+     },
+     "how": {
+      "en": "Fang (blue) tethers the MT and two players: Fangbound must avoid all damage (it heals the Fang). Claw (red) tethers three others: Clawbound players take damage on purpose (orbs, the stack). DPS kill the Fang; both cast Self-Destruct, which wipes if they survive. Eye of the Tyrant is a stack on a Fangbound player for the Clawbound players.",
+      "fr": "Fang (bleu) lie le MT et deux joueurs : les Fangbound doivent éviter tout dégât (ça soigne le Fang). Claw (rouge) lie trois autres : les Clawbound prennent des dégâts exprès (orbes, partage). Les DPS tuent le Fang ; les deux lancent Self-Destruct, qui wipe s'ils survivent. Eye of the Tyrant est un partage sur un Fangbound pour les Clawbound.",
+      "de": "Fang (blau) verbindet den MT und zwei Spieler: Fangbound müssen jedem Schaden ausweichen (er heilt den Fang). Claw (rot) verbindet drei andere: Clawbound nehmen absichtlich Schaden (Kugeln, Sammeln). DPS töten den Fang; beide casten Self-Destruct, was ein Wipe ist, wenn sie überleben. Eye of the Tyrant ist ein Sammeln auf einem Fangbound-Spieler für die Clawbound.",
+      "ja": "邪竜の牙（青線）はMTと2人：被弾すると牙が回復するので避ける。邪竜の爪（赤線）の3人は玉や頭割りを受ける。牙を倒す。残すと自爆で全滅。アイ・オブ・タイラントは頭割り（青線の人は入らない）。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "CGW and gameranbu disagree on which structure DPS attack (CGW: the Fang; gameranbu: red-chained attack the Fang). Both say the Fang is the target.",
+      "fr": "Les deux sources disent que le Fang est la cible.",
+      "de": "Beide Quellen nennen den Fang als Ziel.",
+      "ja": "両資料とも攻撃対象は牙。"
+     },
+     "tags": [
+      "tether",
+      "stack",
+      "adds",
+      "tankswap"
+     ]
+    },
+    {
+     "id": "jump-towers",
+     "names": {
+      "en": "Jump sequence (towers)",
+      "fr": "Jump sequence (towers)",
+      "de": "Jump sequence (towers)",
+      "ja": "ダークドラゴンダイブ"
+     },
+     "aliases": {
+      "en": [
+       "jump sequence (towers)"
+      ],
+      "fr": [
+       "jump sequence (towers)"
+      ],
+      "de": [
+       "jump sequence (towers)"
+      ],
+      "ja": [
+       "ダークドラゴンダイブ"
+      ]
+     },
+     "how": {
+      "en": "After Fang and Claw: four towers in the intercardinals (DPS and tanks take them), High Jumps on healers, Soul Tethers, more Geirskogul, and a Super Jump proximity AoE on one jump spot: go to the far side.",
+      "fr": "Après Fang et Claw : quatre tours en intercardinal (DPS et tanks), High Jump sur les soigneurs, Soul Tether, encore Geirskogul, et un Super Jump de proximité sur un point de saut : va de l'autre côté.",
+      "de": "Nach Fang und Claw: vier Türme in den Zwischenrichtungen (DPS und Tanks nehmen sie), High Jumps auf Heilern, Soul Tethers, weitere Geirskogul und ein Super-Jump-Distanz-AoE auf einem Sprungpunkt: auf die andere Seite.",
+      "ja": "牙と爪の後：斜めの塔4つ（DPSとタンク）、ヒーラーにハイジャンプ、ソウルテザー、ゲイルスコグル、スーパージャンプ（予兆地点から離れる）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "spread",
+      "tether",
+      "proximity"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p4",
+   "names": {
+    "en": "Final dragon form",
+    "fr": "Forme dragon finale",
+    "de": "Letzte Drachenform",
+    "ja": "最終形態"
+   },
+   "mechanics": [
+    {
+     "id": "akh-morn",
+     "names": {
+      "en": "Akh Morn",
+      "fr": "Akh Morn",
+      "de": "Akh Morn",
+      "ja": "アク・モーン"
+     },
+     "aliases": {
+      "en": [
+       "akh morn"
+      ],
+      "fr": [
+       "akh morn"
+      ],
+      "de": [
+       "akh morn"
+      ],
+      "ja": [
+       "アク・モーン"
+      ]
+     },
+     "how": {
+      "en": "Multi-hit stack that gains a hit each cast; everyone stacks.",
+      "fr": "Partage multi-coups qui gagne un coup à chaque fois ; tout le monde ensemble.",
+      "de": "Mehrfach-Sammeln, das mit jedem Cast einen Treffer mehr hat; alle sammeln.",
+      "ja": "回数が増える連続頭割り。全員で受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack"
+     ]
+    },
+    {
+     "id": "bitter-hate",
+     "names": {
+      "en": "Bitter Hate",
+      "fr": "Haine amère",
+      "de": "Bitterer Hass",
+      "ja": "邪竜の怨念"
+     },
+     "aliases": {
+      "en": [
+       "bitter hate"
+      ],
+      "fr": [
+       "bitter hate"
+      ],
+      "de": [
+       "bitter hate"
+      ],
+      "ja": [
+       "Bitter Hate"
+      ]
+     },
+     "how": {
+      "en": "Stacking debuff on the top-enmity player; 8 stacks kill. Tanks swap at about 5-6.",
+      "fr": "Malus cumulatif sur le premier en aggro ; 8 cumuls tuent. Swap vers 5-6.",
+      "de": "Stapelnder Debuff auf dem Aggro-Ersten; 8 Stacks töten. Bei etwa 5-6 wechseln.",
+      "ja": "敵視1位に溜まるデバフ、8で死亡。5〜6でタンクスイッチ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "tankswap"
+     ]
+    },
+    {
+     "id": "flame-blast",
+     "names": {
+      "en": "Flame Blast patterns",
+      "fr": "Fournaise (schémas)",
+      "de": "Flammenhölle (Muster)",
+      "ja": "真紅の珠"
+     },
+     "aliases": {
+      "en": [
+       "flame blast patterns"
+      ],
+      "fr": [
+       "flame blast patterns"
+      ],
+      "de": [
+       "flame blast patterns"
+      ],
+      "ja": [
+       "真紅の珠"
+      ]
+     },
+     "how": {
+      "en": "Fire orbs explode in + shapes, combined with Horrid Roar and Hot Wing or Hot Tail; two patterns alternate. Pattern 1: stack front/back for Hot Wing, center for the floor roar, then corners. Pattern 2: orbs on a diagonal; start in the corner of the last cluster, go center, then a safe cardinal.",
+      "fr": "Des orbes de feu explosent en +, avec Horrid Roar et Hot Wing ou Hot Tail ; deux motifs alternent. Motif 1 : groupe devant/derrière pour Hot Wing, centre pour le roar au sol, puis les coins. Motif 2 : orbes en diagonale ; commence dans le coin du dernier groupe, va au centre, puis un point cardinal sûr.",
+      "de": "Feuerkugeln explodieren in +-Form, kombiniert mit Horrid Roar und Hot Wing oder Hot Tail; zwei Muster wechseln sich ab. Muster 1: vorne/hinten sammeln für Hot Wing, Mitte für das Bodengebrüll, dann Ecken. Muster 2: Kugeln auf einer Diagonale; in der Ecke der letzten Gruppe beginnen, zur Mitte, dann zu einer sicheren Himmelsrichtung.",
+      "ja": "十字に爆発する火の玉＋ホリッドロア＋ヒートウィング／テイル。2パターンが交互。1回目：前後で集まる→中央→四隅。2回目：最後に出る隅に集合→中央→安全な方向へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "The Minstrel's Ballad: Nidhogg's Rage",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/The_Minstrel%27s_Ballad:_Nidhogg%27s_Rage",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/0e880006330/",
+   "lang": "en"
+  },
+  {
+   "title": "ゲーム乱舞 極ニーズヘッグ征竜戦",
+   "url": "https://gameranbu.jp/ff14/e191489953176a602d43",
+   "lang": "ja"
+  },
+  {
+   "title": "FF14予習室 極ニーズヘッグ征竜戦",
+   "url": "https://ru-eka.com/archives/9267",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

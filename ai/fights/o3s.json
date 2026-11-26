@@ -1,0 +1,451 @@
+{
+ "id": "o3s",
+ "type": "savage",
+ "expansion": "SB",
+ "patch": "4.05",
+ "names": {
+  "en": "Deltascape V3.0 (Savage)",
+  "fr": "Deltastice v3.0 (sadique)",
+  "de": "Deltametrie 3.0 (episch)",
+  "ja": "次元の狭間オメガ零式：デルタ編3"
+ },
+ "aliases": {
+  "en": [
+   "o3s",
+   "halicarnassus",
+   "deltascape 3 savage"
+  ],
+  "fr": [
+   "o3s",
+   "halicarnasse",
+   "deltastice 3"
+  ],
+  "de": [
+   "o3s",
+   "halikarnassos",
+   "deltametrie 3"
+  ],
+  "ja": [
+   "デルタ零式3層",
+   "ハリカルナッソス",
+   "o3s"
+  ]
+ },
+ "summary": {
+  "en": "Third floor of Deltascape Savage against Halicarnassus, played on changing boards (Blank, Forest, Cave, Library, Mixed). Her Queen's Waltz does something different on every board, and tile-based mechanics punish wrong positions.",
+  "fr": "Troisième étage de Deltastice sadique contre Halicarnasse, sur des plateaux qui changent (vide, forêt, grotte, bibliothèque, mixte). Sa Danse de la reine change d'effet à chaque plateau, et les mécaniques de cases punissent les mauvaises positions.",
+  "de": "Dritte Ebene von Deltametrie episch gegen Halikarnassos auf wechselnden Spielbrettern (leer, Wald, Höhle, Bibliothek, gemischt). Ihr Tanz der Königin wirkt auf jedem Brett anders, und Feld-Mechaniken bestrafen falsche Positionen.",
+  "ja": "デルタ編3層、ハリカルナッソス戦。盤面（無地・森・洞窟・図書館・混合）が切り替わり、女王の舞いの効果が盤面ごとに変わります。マス目のギミックで位置ミスが厳しく罰せられます。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "blank",
+   "names": {
+    "en": "Blank board",
+    "fr": "Plateau vide",
+    "de": "Leeres Brett",
+    "ja": "無地の盤面"
+   },
+   "mechanics": [
+    {
+     "id": "critical-hit",
+     "names": {
+      "en": "Critical Hit / Dimensional Wave",
+      "fr": "Attaque critique / Onde dimensionnelle",
+      "de": "Kritischer Treffer / Dimensionswelle",
+      "ja": "クリティカル／次元波動"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Critical Hit is a tankbuster that always crits; Dimensional Wave is raid-wide damage.",
+      "fr": "Critical Hit est un tankbuster toujours critique ; Dimensional Wave frappe tout le groupe.",
+      "de": "Critical Hit ist ein Tankbuster, der immer kritisch trifft; Dimensional Wave trifft die ganze Gruppe.",
+      "ja": "Critical Hitは必ずクリティカルになるタンク強攻撃、Dimensional Waveは全体攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "raidwide"
+     ]
+    },
+    {
+     "id": "spellblade-holy",
+     "names": {
+      "en": "Spellblade Holy",
+      "fr": "Magilame Miracle",
+      "de": "Magieklinge Sanctus",
+      "ja": "魔法剣ホーリー"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Blank board: three spreads and one stack, tethered in pairs, and the boss swaps tethered partners before it resolves. The spread player tethered to the stack goes into the stack with the group; the other markers spread.",
+      "fr": "Plateau vide : trois dispersions et un package, liés par paires, et le boss échange les partenaires avant la résolution. Le joueur de dispersion lié au package rejoint le groupe ; les autres marqués se dispersent.",
+      "de": "Leeres Brett: drei Verteilmarker und ein Sammelmarker, paarweise verbunden, und der Boss tauscht die Partner vor der Auflösung. Der Verteilspieler, der mit dem Sammelmarker verbunden ist, geht in den Sammelpunkt; die anderen verteilen sich.",
+      "ja": "無地盤面：散開3つと頭割り1つが2人ずつ線でつながり、解決前に相手が入れ替わります。頭割りとつながった散開の人は全員と頭割りへ、他のマーカーは散開。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "spellblade-elements",
+     "names": {
+      "en": "Haste + Spellblade Fire III / Blizzard III / Thunder III",
+      "fr": "Hâte + Magilame Méga Feu / Méga Glace / Méga Foudre",
+      "de": "Hast + Magieklinge Feuga / Eisga / Blitzga",
+      "ja": "ヘイスト＋魔法剣ファイガ／ブリザガ／サンダガ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "After Haste the next spell is a 2-second cast: Blizzard III is a circle on the boss, Fire III a donut on the boss, Thunder III a line at a random player. Dodge accordingly.",
+      "fr": "Après Hâte, le sort suivant ne prend que 2 secondes : Méga Glace est un cercle sur le boss, Méga Feu un anneau sur le boss, Méga Foudre une ligne vers un joueur au hasard. Esquive en conséquence.",
+      "de": "Nach Hast hat der nächste Zauber nur 2 Sekunden: Eisga ist ein Kreis um den Boss, Feuga ein Ring um den Boss, Blitzga eine Linie auf einen zufälligen Spieler. Weich entsprechend aus.",
+      "ja": "ヘイスト後の魔法は2秒詠唱。ブリザガはボス中心の円、ファイガはボス中心のドーナツ、サンダガはランダムな人への直線。それぞれ避けます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "oink-playing-field",
+     "names": {
+      "en": "Oink / The Playing Field",
+      "fr": "Abracadabri / Plateau de jeu",
+      "de": "Quiiiek / Spielfeld",
+      "ja": "ポルルルル！／ゲームボード"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Oink gives everyone a stack marker; anyone who stacks with nobody turns into a pig. The Playing Field shows six role tiles (two tank, two healer, two DPS) that must be filled by the right role; pigs count as no role and die.",
+      "fr": "Abracadabri met un package sur tout le monde ; qui ne se regroupe avec personne devient cochon. Plateau de jeu affiche six cases de rôle (deux tank, deux healer, deux DPS) à remplir par le bon rôle ; les cochons ne comptent pour aucun rôle et meurent.",
+      "de": "Quiiiek gibt allen einen Sammelmarker; wer mit niemandem steht, wird zum Schwein. Spielfeld zeigt sechs Rollenfelder (zwei Tank, zwei Heiler, zwei DD), die von der richtigen Rolle besetzt werden müssen; Schweine zählen als keine Rolle und sterben.",
+      "ja": "ポルルルル！で全員に頭割りマーカー。誰とも重ならないと豚になります。ゲームボードでは6つの役割マス（タンク2・ヒーラー2・DPS2）が出て、正しいロールが乗る必要があり、豚はロールなし扱いで死にます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "debuff"
+     ]
+    },
+    {
+     "id": "queens-waltz",
+     "names": {
+      "en": "The Queen's Waltz",
+      "fr": "Danse de la reine",
+      "de": "Tanz der Königin",
+      "ja": "女王の舞い"
+     },
+     "aliases": {
+      "en": [
+       "waltz"
+      ],
+      "fr": [
+       "danse"
+      ],
+      "de": [
+       "tanz"
+      ],
+      "ja": [
+       "舞い"
+      ]
+     },
+     "how": {
+      "en": "Its effect depends on the board: blank = spread cones on everyone (use clock spots), forest = tethers to break toward the safe corners, cave = spikes on all non-blue tiles (stand on a blue crystal tile), library = books hit each occupied tile (one player per tile). Later she jumps to a random tile and uses that tile's version.",
+      "fr": "Son effet dépend du plateau : vide = cônes de dispersion sur tous (positions horloge), forêt = liens à casser vers les coins sûrs, grotte = pics sur toutes les cases non bleues (va sur une case à cristal bleu), bibliothèque = des livres frappent chaque case occupée (un joueur par case). Plus tard, elle saute sur une case au hasard et utilise la version de cette case.",
+      "de": "Die Wirkung hängt vom Brett ab: leer = Verteilkegel auf alle (Uhrpositionen), Wald = Verbindungen zu den sicheren Ecken brechen, Höhle = Stacheln auf allen nicht blauen Feldern (auf ein blaues Kristallfeld), Bibliothek = Bücher treffen jedes besetzte Feld (ein Spieler pro Feld). Später springt sie auf ein zufälliges Feld und nutzt dessen Version.",
+      "ja": "盤面で効果が変わります。無地＝全員に扇の散開（クロック位置）、森＝線を安全な角へ伸ばして切る、洞窟＝青いクリスタル以外のマスから棘（青マスへ）、図書館＝人がいるマスに本の攻撃（1マス1人）。後半はランダムなマスへ跳び、そのマスの舞いを使います。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "tether",
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "forest-cave",
+   "names": {
+    "en": "Forest and Cave boards",
+    "fr": "Plateaux forêt et grotte",
+    "de": "Wald- und Höhlenbrett",
+    "ja": "森と洞窟の盤面"
+   },
+   "mechanics": [
+    {
+     "id": "place-token",
+     "names": {
+      "en": "Place Token",
+      "fr": "Pion en jeu",
+      "de": "Spielstein",
+      "ja": "サモントークン"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Summons the board's add: White Flame (forest, heals the boss if near her), Great Dragon (cave, big cleave), Apanda (library), Iron Giant and Ninjas (mixed). The off-tank pulls each add where the guide says and the party kills it fast.",
+      "fr": "Invoque l'add du plateau : White Flame (forêt, soigne le boss si elle est près), Great Dragon (grotte, gros cleave), Apanda (bibliothèque), Iron Giant et Ninjas (mixte). Le off-tank place chaque add au bon endroit et le groupe le tue vite.",
+      "de": "Beschwört das Add des Bretts: White Flame (Wald, heilt den Boss in der Nähe), Great Dragon (Höhle, großer Cleave), Apanda (Bibliothek), Iron Giant und Ninjas (gemischt). Der Off-Tank zieht jedes Add an seinen Platz und die Gruppe tötet es schnell.",
+      "ja": "盤面ごとの雑魚を召喚：White Flame（森、近いとボスを回復）、Great Dragon（洞窟、強い範囲攻撃）、Apanda（図書館）、Iron GiantとNinja（混合）。STが所定の位置へ運び、素早く倒します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "cleave"
+     ]
+    },
+    {
+     "id": "mindjack",
+     "names": {
+      "en": "Mindjack",
+      "fr": "Contrainte mentale",
+      "de": "Geistlenkung",
+      "ja": "マインドジャック"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Forces each player to march in a set direction; plan your start spot so the march takes you where you need to be.",
+      "fr": "Force chaque joueur à marcher dans une direction ; choisis ton point de départ pour que la marche t'amène au bon endroit.",
+      "de": "Zwingt jeden Spieler, in eine Richtung zu marschieren; wähle deinen Startpunkt so, dass der Marsch dich ans Ziel bringt.",
+      "ja": "各プレイヤーに強制移動を付与。移動後に目的地へ着くよう開始位置を調整します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "ribbit",
+     "names": {
+      "en": "Ribbit",
+      "fr": "Coâââ",
+      "de": "Quaaak",
+      "ja": "クルルルル！"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Wide frontal cone that turns players into toads; aim the boss away from the party.",
+      "fr": "Grand cône frontal qui transforme en crapaud ; oriente le boss loin du groupe.",
+      "de": "Breiter Frontalkegel, der Spieler zu Kröten macht; richte den Boss vom Team weg aus.",
+      "ja": "前方広範囲の扇でカエルに変身させます。ボスの向きをPTから外します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "debuff"
+     ]
+    },
+    {
+     "id": "place-dark-token",
+     "names": {
+      "en": "Place Dark Token",
+      "fr": "Pions obscurs en jeu",
+      "de": "Todesspielstein",
+      "ja": "サモンデストークン"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Soul Reapers charge across the tiles in the direction they face. Cave board: find the blue crystal tile no reaper is aimed at; mixed board: stay in the center four tiles and use Mindjack to reach the tile diagonal from your reaper.",
+      "fr": "Des Soul Reapers chargent sur les cases dans leur direction. Grotte : trouve la case à cristal bleu qu'aucun Soul Reaper ne vise ; mixte : reste sur les quatre cases centrales et utilise la Contrainte mentale pour atteindre la case en diagonale de ton Soul Reaper.",
+      "de": "Soul Reaper stürmen in Blickrichtung über die Felder. Höhle: finde das blaue Kristallfeld, auf das keiner zielt; gemischt: bleib auf den vier mittleren Feldern und nutze Geistlenkung, um das Feld diagonal zu deinem Soul Reaper zu erreichen.",
+      "ja": "Soul Reaperが向いている方向へ突進。洞窟：どのSoul Reaperにも狙われていない青マスを探す。混合：中央4マスに立ち、マインドジャックで自分のSoul Reaperの対角マスへ移動。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "library-mixed",
+   "names": {
+    "en": "Library and Mixed boards",
+    "fr": "Plateaux bibliothèque et mixte",
+    "de": "Bibliotheks- und gemischtes Brett",
+    "ja": "図書館と混合の盤面"
+   },
+   "mechanics": [
+    {
+     "id": "squelch",
+     "names": {
+      "en": "Squelch",
+      "fr": "Abracadabra",
+      "de": "Gurrr",
+      "ja": "カルルルル！"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Gaze that turns you into an imp; look away.",
+      "fr": "Regard qui te transforme en lutin ; détourne les yeux.",
+      "de": "Blickangriff, der dich zum Kobold macht; schau weg.",
+      "ja": "見るとインプになる視線攻撃。背を向けます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "gaze",
+      "debuff"
+     ]
+    },
+    {
+     "id": "library-holy",
+     "names": {
+      "en": "Spellblade Holy (library)",
+      "fr": "Magilame Miracle (bibliothèque)",
+      "de": "Magieklinge Sanctus (Bibliothek)",
+      "ja": "魔法剣ホーリー（図書館）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Four physical spreads, two magic stacks and two unmarked players, resolved with the Waltz. Take the matching Buffing Folio (green north = physical down, blue south = magic down) and keep one player per tile except the planned stacks.",
+      "fr": "Quatre dispersions physiques, deux packages magiques et deux joueurs non marqués, résolus avec la Danse. Prends le grimoire qui correspond (vert au nord = physique réduit, bleu au sud = magique réduit) et garde un joueur par case sauf les packages prévus.",
+      "de": "Vier physische Verteilmarker, zwei magische Sammelmarker und zwei unmarkierte Spieler, zusammen mit dem Tanz. Nimm das passende Buch (grün im Norden = physisch reduziert, blau im Süden = magisch reduziert) und halte einen Spieler pro Feld außer den geplanten Sammelpunkten.",
+      "ja": "物理散開4・魔法頭割り2・無職2が舞いと同時に解決。対応する本を取り（北の緑＝物理被ダメ減、南の青＝魔法被ダメ減）、予定の頭割り以外は1マス1人を守ります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "mixed-playing-field",
+     "names": {
+      "en": "The Playing Field (mixed)",
+      "fr": "Plateau de jeu (mixte)",
+      "de": "Spielfeld (gemischt)",
+      "ja": "ゲームボード（混合）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Tiles need pigs, toads and imps; Ribbit, Squelch and Oink follow in random order, and each role group deliberately fails one of them to get the right transformation, then stands on the matching tile.",
+      "fr": "Les cases demandent des cochons, crapauds et lutins ; Coâââ, Abracadabra et Abracadabri suivent dans un ordre aléatoire, et chaque groupe de rôle rate exprès l'un d'eux pour avoir la bonne transformation, puis va sur la case correspondante.",
+      "de": "Die Felder brauchen Schweine, Kröten und Kobolde; Quaaak, Gurrr und Quiiiek folgen in zufälliger Reihenfolge, und jede Rollengruppe lässt sich absichtlich von einem treffen, um die richtige Verwandlung zu bekommen, und stellt sich dann aufs passende Feld.",
+      "ja": "豚・カエル・インプのマスが出て、クルルルル・カルルルル・ポルルルルがランダム順で来ます。ロールごとにわざと1つ失敗して必要な変身になり、対応するマスへ乗ります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Haste III and enrage",
+      "fr": "Méga Hâte et enrage",
+      "de": "Hast III und Enrage",
+      "ja": "ヘイスガと時間切れ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Haste III halves her casts for a heavy healing check; at about 11:20 an unsolvable Playing Field ends the fight.",
+      "fr": "Haste III divise ses incantations par deux, gros check de soins ; vers 11:20 un Plateau de jeu impossible termine le combat.",
+      "de": "Haste III halbiert ihre Zauberzeiten, schwerer Heilcheck; gegen 11:20 beendet ein unlösbares Spielfeld den Kampf.",
+      "ja": "Haste IIIで詠唱が半分になり回復が厳しくなります。11:20頃、解決不能なゲームボードで時間切れ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - Deltascape V3.0 (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Deltascape_V3.0_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

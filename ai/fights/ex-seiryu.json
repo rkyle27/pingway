@@ -1,0 +1,541 @@
+{
+ "id": "ex-seiryu",
+ "type": "extreme",
+ "expansion": "SB",
+ "patch": "4.5",
+ "names": {
+  "en": "The Wreath of Snakes (Extreme)",
+  "fr": "L'Îlot des Amertumes (extrême)",
+  "de": "Seelensturm - Seiryu",
+  "ja": "極青龍征魂戦"
+ },
+ "aliases": {
+  "en": [
+   "seiryu ex",
+   "seiryu extreme",
+   "wreath of snakes"
+  ],
+  "fr": [
+   "seiryu extrême",
+   "îlot des amertumes"
+  ],
+  "de": [
+   "seiryu extrem",
+   "seelensturm seiryu"
+  ],
+  "ja": [
+   "極青龍",
+   "青龍"
+  ]
+ },
+ "summary": {
+  "en": "Extreme trial against Seiryu. Phase 1 ends in a gauntlet of shiki adds that must die before a meter fills; phase 2 adds water cones, snake-wall knockbacks, a giant Mountain shiki with Handprint slams, and Blazing Aramitama doubles most attacks.",
+  "fr": "Défi extrême contre Seiryu. La phase 1 finit par une série d'adds shiki à tuer avant que la jauge se remplisse ; la phase 2 ajoute des cônes d'eau, des murs de serpents qui projettent, un shiki géant de la montagne avec Main lourde, et Aramitama incandescent renforce la plupart des attaques.",
+  "de": "Extrem-Prüfung gegen Seiryu. Phase 1 endet mit einer Reihe von Shiki-Adds, die sterben müssen, bevor eine Leiste voll ist; Phase 2 bringt Wasserkegel, Rückstöße durch Schlangenwände, einen riesigen Berg-Shiki mit Handabdruck, und Flammende Aramitama verstärkt die meisten Angriffe.",
+  "ja": "青龍征魂戦（極）。フェーズ1は最後に式鬼の雑魚を連続で倒し、ゲージが溜まる前に処理。フェーズ2は水の扇、蛇の壁のノックバック、巨大な式鬼の圧殺掌が加わり、荒魂燃焼でほとんどの攻撃が強化されます。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "フェーズ1"
+   },
+   "mechanics": [
+    {
+     "id": "fifth-element",
+     "names": {
+      "en": "Fifth Element",
+      "fr": "Cinq éléments",
+      "de": "Fünftes Element",
+      "ja": "陰陽五行"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Unavoidable raid damage.",
+      "fr": "Dégâts de groupe inévitables.",
+      "de": "Unvermeidbarer Gruppenschaden.",
+      "ja": "回避不能の全体攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "serpent-ascending",
+     "names": {
+      "en": "Serpent Ascending / Kuji-kiri",
+      "fr": "Serpent levant / Kuji-kiri",
+      "de": "Aufstieg der Schlange / Kuji-kiri",
+      "ja": "登り蛇／九字切り"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Four players get spreads (Serpent Descending) with water vulnerability while thin crossing water lines cover the arena; spread while avoiding the lines. In phase 2 Kuji-kiri casts a second set that covers the first set's safe spots, so dodge them in order.",
+      "fr": "Quatre joueurs ont des dispersions (Serpent Descending) avec vulnérabilité à l'eau pendant que de fines lignes d'eau croisées couvrent l'arène ; disperse-toi en évitant les lignes. En phase 2, Kuji-kiri lance une deuxième série qui couvre les zones sûres de la première, esquive dans l'ordre.",
+      "de": "Vier Spieler bekommen Verteiler (Serpent Descending) mit Wasserverwundbarkeit, während dünne gekreuzte Wasserlinien die Arena bedecken; verteilen und den Linien ausweichen. In Phase 2 wirkt Kuji-kiri eine zweite Serie über die sicheren Stellen der ersten, der Reihe nach ausweichen.",
+      "ja": "4人に散開（Serpent Descending）と水属性被ダメ上昇、細い水の直線が交差してフィールドを覆います。直線を避けて散開。フェーズ2の九字切りは1組目の安置に2組目が来るので順番に避けます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "dodge",
+      "debuff"
+     ]
+    },
+    {
+     "id": "onmyo",
+     "names": {
+      "en": "Onmyo Sigil / Serpent Eye Sigil",
+      "fr": "Onmyo / Serpent Eye Sigil",
+      "de": "Onmyo-Siegel / Serpent Eye Sigil",
+      "ja": "陰陽の印／Serpent Eye Sigil"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Onmyo (Yin and Yang) is a circle around Seiryu, so get away. In phase 2 Yin and Yang and Serpent Eye sigils appear in a random order and resolve in that same order: watch the order and dodge each in turn.",
+      "fr": "Onmyo (Yin and Yang) est un cercle autour de Seiryu, donc éloigne-toi. En phase 2, les sceaux Yin and Yang et Serpent Eye apparaissent dans un ordre aléatoire et se résolvent dans le même ordre : retiens l'ordre et esquive-les un par un.",
+      "de": "Onmyo (Yin and Yang) ist ein Kreis um Seiryu, also weg von ihm. In Phase 2 erscheinen die Siegel Yin and Yang und Serpent Eye in zufälliger Reihenfolge und lösen in derselben Reihenfolge aus: merk dir die Reihenfolge und weich jedem nacheinander aus.",
+      "ja": "陰陽の印（Yin and Yang）は青龍周囲の円なので離れます。フェーズ2ではYin and YangとSerpent Eyeの印がランダム順に出て、同じ順番で発動するので、順番を見て1つずつ避けます。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "The guide does not say what shape Serpent Eye has, so it is not described here.",
+      "fr": "Le guide ne précise pas la forme de Serpent Eye, donc elle n'est pas décrite ici.",
+      "de": "Der Guide nennt die Form von Serpent Eye nicht, daher wird sie hier nicht beschrieben.",
+      "ja": "資料にSerpent Eyeの形の記載がないため、ここでは説明していません。"
+     },
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "cursekeeper",
+     "names": {
+      "en": "Cursekeeper / Infirm Soul",
+      "fr": "Katashiro / Onde d'amertume",
+      "de": "Wächter des Fluchs / Kraftlose Seele",
+      "ja": "呪怨の形代／虚証弾"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The main tank gets Cursekeeper, then Infirm Soul is a strong tankbuster; if it hits the Cursekeeper holder the damage is shared with the whole party when the debuff ends. Tank swap during the cast and mitigate. So the OT takes Infirm Soul, not the MT holding Cursekeeper.",
+      "fr": "Le main tank reçoit Katashiro, puis Onde d'amertume est un gros tankbuster ; s'il touche le porteur de Katashiro, les dégâts sont partagés avec tout le groupe à la fin du debuff. Swap pendant l'incantation et mitige. C'est donc l'OT qui prend Infirm Soul, pas le MT qui porte Cursekeeper.",
+      "de": "Der Main-Tank bekommt Wächter des Fluchs, dann ist Kraftlose Seele ein starker Tankbuster; trifft er den Träger, wird der Schaden beim Ablauf des Debuffs auf die ganze Gruppe verteilt. Während des Zaubers Tank-Wechsel und reduzieren. Infirm Soul nimmt also der OT, nicht der MT mit Cursekeeper.",
+      "ja": "MTに呪怨の形代、続いて虚証弾（強いタンク強攻撃）。形代の人に当たるとデバフ終了時にPT全体へダメージ。詠唱中にタンクスイッチし軽減。つまりInfirm SoulはCursekeeperを持つMTではなくSTが受けます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "debuff"
+     ]
+    },
+    {
+     "id": "summon-shiki",
+     "names": {
+      "en": "Summon Shiki (add gauntlet)",
+      "fr": "Invocation de shiki (série d'adds)",
+      "de": "Shiki-Beschwörung (Add-Reihe)",
+      "ja": "式鬼召喚（雑魚連戦）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Red shiki tether DPS and knock back in a line (point it at the nearest wall), blue shiki give a healer a line stack (healer runs to the far edge, group stacks in a line), rock shiki hit the edges and tether tanks for lines (point away), wind shiki make lines (stay central), mud shiki explode on death and the big ones cast Stoneskin (interrupt). Kill all before the Focus meter fills (about 90 seconds).",
+      "fr": "Les shiki rouges se lient aux DPS et projettent en ligne (vise le mur le plus proche), les bleus donnent un package en ligne à un healer (il court au bord opposé, le groupe s'aligne), ceux de roche frappent les bords et se lient aux tanks pour des lignes (oriente-les loin), ceux de vent font des lignes (reste au centre), ceux de boue explosent à leur mort et les gros lancent Cuirasse (interromps). Tue-les tous avant que la jauge Focus soit pleine (environ 90 secondes).",
+      "de": "Rote Shiki verbinden sich mit DDs und stoßen in einer Linie zurück (zur nächsten Wand zielen), blaue geben einem Heiler einen Linien-Sammelpunkt (Heiler läuft zum fernen Rand, Gruppe stellt sich in Linie), Fels-Shiki treffen die Ränder und verbinden sich mit Tanks für Linien (weg ausrichten), Wind-Shiki machen Linien (in der Mitte bleiben), Schlamm-Shiki explodieren beim Tod und die großen wirken Steinhaut (unterbrechen). Alle töten, bevor die Focus-Leiste voll ist (etwa 90 Sekunden).",
+      "ja": "赤の式鬼はDPSに線、直線ノックバック（近い壁へ向ける）。青はヒーラーに直線頭割り（ヒーラーは遠い外周、PTは直線上に）。岩は外周への範囲とタンクへの線（外へ向ける）。風は直線（中央に）。泥は倒すと爆発し、大きい方はストンスキン（中断）。Focusゲージが満ちる前（約90秒）に全滅させます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "tether",
+      "knockback",
+      "stack",
+      "cleave"
+     ]
+    },
+    {
+     "id": "hundred-tonze-swing",
+     "names": {
+      "en": "100-tonze Swing",
+      "fr": "Swing de 100 tonz",
+      "de": "100-Tonzen-Schwung",
+      "ja": "100トンズ・スイング"
+     },
+     "aliases": {
+      "en": [
+       "hundred tonze swing",
+       "100 tonze swing",
+       "rock shiki circles"
+      ],
+      "fr": [
+       "swing de 100 tonz"
+      ],
+      "de": [
+       "100-Tonzen-Schwung"
+      ],
+      "ja": [
+       "100トンズ",
+       "岩の式鬼"
+      ]
+     },
+     "how": {
+      "en": "Cast by the two rock shiki (Iwa-no-shiki) that land at the edge during the shiki gauntlet: a huge circle around each of them. Stay out of the circles near the edges and keep to the middle. They come back in phase 2 together with an Onmyo sigil.",
+      "fr": "Lancé par les deux shiki de roche (Iwa-no-shiki) qui atterrissent au bord pendant la série de shiki : un énorme cercle autour de chacun. Reste hors des cercles près des bords et garde le milieu. Ils reviennent en phase 2 avec un sceau Onmyo.",
+      "de": "Gewirkt von den zwei Fels-Shiki (Iwa-no-shiki), die während der Shiki-Reihe am Rand landen: ein riesiger Kreis um jeden. Bleib aus den Kreisen am Rand raus und halt dich in der Mitte. Sie kommen in Phase 2 zusammen mit einem Onmyo-Siegel wieder.",
+      "ja": "式鬼連戦で外周に降りる岩の式鬼（Iwa-no-shiki）2体が使う、自分の周りの大きな円範囲。外周付近の円に入らず中央にいる。フェーズ2でも陰陽の印と一緒にまた来る。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Which add casts it comes from game data timelines; that it is the big edge circles is matched from a wiki description of the rock shiki.",
+      "fr": "Quel add le lance vient des timelines du jeu ; le lien avec les grands cercles du bord vient d'une description wiki du shiki de roche.",
+      "de": "Welches Add es wirkt, stammt aus Spieldaten-Timelines; dass es die großen Randkreise sind, kommt aus einer Wiki-Beschreibung des Fels-Shiki.",
+      "ja": "使う雑魚はゲームデータのタイムラインから、外周の大きな円であることはWikiの岩の式鬼の説明から対応させたもの。"
+     },
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "kanabo",
+     "names": {
+      "en": "Kanabo",
+      "fr": "Massue démoniaque",
+      "de": "Kanabo",
+      "ja": "鬼に金棒"
+     },
+     "aliases": {
+      "en": [
+       "kanabo",
+       "tank tethers",
+       "rock shiki tethers"
+      ],
+      "fr": [
+       "massue démoniaque",
+       "liens tank"
+      ],
+      "de": [
+       "Kanabo",
+       "Tank-Verbindungen"
+      ],
+      "ja": [
+       "鬼に金棒",
+       "タンク線"
+      ]
+     },
+     "how": {
+      "en": "The rock shiki tether two players and then hit each tether with a tankbuster-strength cleave. Tanks take one tether each (tethers can be taken over) and point the cleave away from the group. It returns in phase 2 with the rock shiki.",
+      "fr": "Les shiki de roche lient deux joueurs puis frappent chaque lien d'un cône de la force d'une attaque tank. Chaque tank prend un lien (on peut les reprendre) et oriente le cône loin du groupe. Ça revient en phase 2 avec les shiki de roche.",
+      "de": "Die Fels-Shiki verbinden sich mit zwei Spielern und treffen dann jede Verbindung mit einem Kegel in Tankbuster-Stärke. Jeder Tank nimmt eine Verbindung (sie lassen sich übernehmen) und richtet den Kegel weg von der Gruppe. Kommt in Phase 2 mit den Fels-Shiki wieder.",
+      "ja": "岩の式鬼が2人に線を付け、それぞれにタンク強攻撃級の扇。タンクが1本ずつ線を取り（奪える）、PTから外へ向ける。フェーズ2でも岩の式鬼と一緒に来る。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tether",
+      "cleave"
+     ]
+    },
+    {
+     "id": "yama-kagura",
+     "names": {
+      "en": "Yama-kagura",
+      "fr": "Yama-kagura",
+      "de": "Yamakagura",
+      "ja": "山神楽"
+     },
+     "aliases": {
+      "en": [
+       "yama kagura",
+       "wind shiki lines"
+      ],
+      "fr": [
+       "yama-kagura"
+      ],
+      "de": [
+       "Yamakagura"
+      ],
+      "ja": [
+       "山神楽",
+       "風の式鬼"
+      ]
+     },
+     "how": {
+      "en": "Cast by the four wind shiki (Ten-no-shiki): long line AoEs straight across the arena. Watch where the wind shiki face and stand between their lines, staying central while the tanks handle the rock tethers.",
+      "fr": "Lancé par les quatre shiki du vent (Ten-no-shiki) : de longues lignes qui traversent l'arène. Regarde où ils sont tournés et place-toi entre leurs lignes, au centre, pendant que les tanks gèrent les liens de roche.",
+      "de": "Gewirkt von den vier Wind-Shiki (Ten-no-shiki): lange Linien quer durch die Arena. Achte darauf, wohin sie schauen, und stell dich zwischen ihre Linien in die Mitte, während die Tanks die Fels-Verbindungen nehmen.",
+      "ja": "風の式鬼（Ten-no-shiki）4体が使う、フィールドを横切る長い直線範囲。向きを見て線の間に立ち、タンクが岩の線を処理する間は中央にいる。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Which add casts it comes from game data timelines; its effect is matched from a wiki description of the wind shiki.",
+      "fr": "Quel add le lance vient des timelines du jeu ; son effet vient d'une description wiki du shiki du vent.",
+      "de": "Welches Add es wirkt, stammt aus Spieldaten-Timelines; die Wirkung kommt aus einer Wiki-Beschreibung des Wind-Shiki.",
+      "ja": "使う雑魚はゲームデータのタイムラインから、効果はWikiの風の式鬼の説明から対応させたもの。"
+     },
+     "tags": [
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2",
+    "fr": "Phase 2",
+    "de": "Phase 2",
+    "ja": "フェーズ2"
+   },
+   "mechanics": [
+    {
+     "id": "water-snakes",
+     "names": {
+      "en": "White Water / snake walls",
+      "fr": "White Water / murs de serpents",
+      "de": "White Water / Schlangenwände",
+      "ja": "White Water／蛇の壁"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Moving water cones hit hard and give vulnerability, stay out. A snake wall charges from outside with a knockback: run toward the snakes.",
+      "fr": "Des cônes d'eau mobiles frappent fort et donnent de la vulnérabilité, reste hors. Un mur de serpents charge de l'extérieur avec projection : cours vers les serpents.",
+      "de": "Wandernde Wasserkegel treffen hart und geben Verwundbarkeit, draußen bleiben. Eine Schlangenwand stürmt von außen mit Rückstoß: lauf auf die Schlangen zu.",
+      "ja": "移動する水の扇は大ダメージと被ダメ上昇、入らない。蛇の壁が外から突進しノックバック：蛇の方へ走ります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "knockback",
+      "debuff"
+     ]
+    },
+    {
+     "id": "coursing-river",
+     "names": {
+      "en": "Coursing River",
+      "fr": "Vague de serpents",
+      "de": "Woge der Schlange",
+      "ja": "蛇崩"
+     },
+     "aliases": {
+      "en": [
+       "coursing river",
+       "snake wall",
+       "snakes knockback"
+      ],
+      "fr": [
+       "vague de serpents",
+       "mur de serpents"
+      ],
+      "de": [
+       "Woge der Schlange",
+       "Schlangenwand"
+      ],
+      "ja": [
+       "蛇崩",
+       "蛇の壁"
+      ]
+     },
+     "how": {
+      "en": "The Blue Orochi snake wall rushes in from outside the arena: light damage, a vulnerability and a strong knockback in its direction. Stand at the side the snakes come from so you are pushed across the dry land instead of into the water. After Force of Nature it comes right away, so aim that knockback toward the snakes too.",
+      "fr": "Le mur de serpents Blue Orochi fonce depuis l'extérieur de l'arène : petits dégâts, une vulnérabilité et une forte projection dans sa direction. Mets-toi du côté d'où viennent les serpents pour être poussé sur la terre ferme et pas dans l'eau. Il suit tout de suite Main écrasante, alors oriente aussi cette projection vers les serpents.",
+      "de": "Die Schlangenwand Blue Orochi stürmt von außen herein: wenig Schaden, eine Verwundbarkeit und ein starker Rückstoß in ihre Richtung. Stell dich auf die Seite, von der die Schlangen kommen, damit du über das Land geschoben wirst und nicht ins Wasser. Sie folgt direkt auf Naturgewalt, also richte auch diesen Rückstoß zu den Schlangen aus.",
+      "ja": "蛇の壁（Blue Orochi）がフィールドの外から突進：小ダメージ、被ダメ上昇、進む方向への強いノックバック。蛇が来る側に立てば水ではなく陸地の上を押される。大圧殺のすぐ後にも来るので、そのノックバックも蛇の方向へ受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback"
+     ]
+    },
+    {
+     "id": "handprint",
+     "names": {
+      "en": "Handprint / Force of Nature",
+      "fr": "Main lourde / Main écrasante",
+      "de": "Handabdruck / Naturgewalt",
+      "ja": "圧殺掌／大圧殺"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A giant shiki raises a fist over one half: avoid that side. Force of Nature is a knockback from the center; the last one comes with snakes, so aim toward the snakes, not the water.",
+      "fr": "Un shiki géant lève un poing au-dessus d'une moitié : évite ce côté. Main écrasante est une projection depuis le centre ; la dernière vient avec les serpents, donc vise les serpents, pas l'eau.",
+      "de": "Ein riesiger Shiki hebt eine Faust über eine Hälfte: diese Seite meiden. Naturgewalt ist ein Rückstoß aus der Mitte; der letzte kommt mit den Schlangen, also Richtung Schlangen, nicht ins Wasser.",
+      "ja": "巨大な式鬼が片側に拳を上げる：その半面を避ける。大圧殺は中央からのノックバック。最後は蛇と同時なので水ではなく蛇の方へ飛ばされるように。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "knockback"
+     ]
+    },
+    {
+     "id": "forbidden-arts",
+     "names": {
+      "en": "Forbidden Arts / Blazing Aramitama",
+      "fr": "Lame interdite / Aramitama incandescent",
+      "de": "Verbotene Künste / Flammende Aramitama",
+      "ja": "刀禁呪／荒魂燃焼"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Forbidden Arts is a line stack on one healer, then an unmarked one on the other. After Blazing Aramitama (permanent buff) the stacks give magic vulnerability, so split into two light parties on opposite sides of Seiryu.",
+      "fr": "Lame interdite est un package en ligne sur un healer, puis un autre non marqué sur l'autre healer. Après Aramitama incandescent (buff permanent), les packages donnent vulnérabilité magique, donc séparez-vous en deux groupes légers de chaque côté de Seiryu.",
+      "de": "Verbotene Künste ist ein Linien-Sammelpunkt auf einem Heiler, dann ein unmarkierter auf dem anderen. Nach Flammende Aramitama (dauerhafter Buff) geben die Sammelpunkte magische Verwundbarkeit, also in zwei Leichtgruppen auf gegenüberliegenden Seiten von Seiryu teilen.",
+      "ja": "刀禁呪はヒーラー1人への直線頭割り、続いてもう1人へ予兆なしの直線頭割り。荒魂燃焼（永続バフ）後は魔法被ダメ上昇が付くので、ライトパーティで青龍の反対側に分かれます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "debuff"
+     ]
+    },
+    {
+     "id": "towers",
+     "names": {
+      "en": "Serpent Ascending (towers)",
+      "fr": "Serpent levant (tours)",
+      "de": "Aufstieg der Schlange (Türme)",
+      "ja": "登り蛇（塔）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Spreads go on all DPS or all supports and four intercardinal towers appear (an empty tower hurts everyone); marked players can't take towers. Pair one DPS and one support per quadrant so the unmarked one takes the tower.",
+      "fr": "Les dispersions tombent sur tous les DPS ou tous les soutiens et quatre tours apparaissent en intercardinal (une tour vide blesse tout le monde) ; les marqués ne peuvent pas les prendre. Mets un DPS et un soutien par quart pour que le non-marqué prenne la tour.",
+      "de": "Verteiler landen auf allen DDs oder allen Tanks/Heilern und vier Türme erscheinen auf den Zwischenrichtungen (ein leerer Turm schadet allen); Markierte können keine Türme nehmen. Pro Viertel ein DD und ein Tank/Heiler, damit der Unmarkierte den Turm nimmt.",
+      "ja": "散開がDPS全員かタンク・ヒーラー全員に付き、斜めに塔4つ（空くと全体ダメージ）。マーカー持ちは塔に入れないので、各区画にDPS1人とタンク/ヒーラー1人を置き、マーカーのない方が塔へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "spread"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Enrage",
+      "fr": "Enrage",
+      "de": "Enrage",
+      "ja": "時間切れ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The fight ends with Kuji-kiri and three Fifth Elements, then an enrage Fifth Element.",
+      "fr": "Le combat se termine par Kuji-kiri et trois Cinq éléments, puis un Cinq éléments d'enrage.",
+      "de": "Der Kampf endet mit Kuji-kiri und drei Fünften Elementen, dann einem Enrage-Fünften-Element.",
+      "ja": "最後は九字切りと陰陽五行3回、その後時間切れの陰陽五行。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage",
+      "raidwide"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - The Wreath of Snakes (Extreme)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/The_Wreath_of_Snakes_(Extreme)",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  },
+  {
+   "title": "cactbot Seiryu Extreme timeline (which add casts each ability)",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/04-sb/trial/seiryu-ex.txt",
+   "lang": "en"
+  },
+  {
+   "title": "cactbot Seiryu Extreme triggers and FR/DE/JA translation table",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/04-sb/trial/seiryu-ex.ts",
+   "lang": "en"
+  },
+  {
+   "title": "Akurosia FFXIV guide - The Wreath of Snakes (Extreme) (abilities per add)",
+   "url": "https://ffxivguide.akurosia.org/sb/the-wreath-of-snakes-extreme.html",
+   "lang": "de"
+  }
+ ],
+ "updated": "2026-11-26"
+}

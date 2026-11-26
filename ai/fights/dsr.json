@@ -1,0 +1,2999 @@
+{
+ "id": "dsr",
+ "type": "ultimate",
+ "expansion": "EW",
+ "patch": "6.11",
+ "names": {
+  "en": "Dragonsong's Reprise (Ultimate)",
+  "fr": "la Guerre du chant des dragons (fatal)",
+  "de": "Drachenkrieg (fatal)",
+  "ja": "絶竜詩戦争"
+ },
+ "aliases": {
+  "en": [
+   "dsr",
+   "dragonsong",
+   "dragonsong ultimate",
+   "dragonsong's reprise",
+   "dsu"
+  ],
+  "fr": [
+   "dsr",
+   "chant des dragons",
+   "guerre du chant des dragons",
+   "fatal dragons"
+  ],
+  "de": [
+   "dsr",
+   "drachenkrieg",
+   "drachenkrieg fatal"
+  ],
+  "ja": [
+   "絶竜詩",
+   "絶竜詩戦争",
+   "竜詩",
+   "DSR"
+  ]
+ },
+ "summary": {
+  "en": "Endwalker's first Ultimate (patch 6.11), retelling the Dragonsong War in seven phases: the door knights, King Thordan, Nidhogg, the Eyes, a rewind intermission, an alternate Thordan, the twin dragons Nidhogg and Hraesvelgr, and Dragon-king Thordan. It is long and very execution-heavy, with tight DPS checks, complex Playstation chain and tower mechanics, and a punishing final phase.",
+  "fr": "Le premier fatal d'Endwalker (patch 6.11), qui raconte la Guerre du chant des dragons en sept phases : les chevaliers gardiens, le roi Thordan, Nidhogg, les Yeux, une intermission de retour en arrière, un Thordan alternatif, les deux dragons Nidhogg et Hraesvelgr, puis Thordan le Dieu Dragon. Il est long et très exigeant, avec des checks DPS serrés, des chaînes Playstation et des tours complexes, et une dernière phase impitoyable.",
+  "de": "Der erste Fatal-Raid von Endwalker (Patch 6.11) erzählt den Drachenkrieg in sieben Phasen: die Türwächter-Ritter, König Thordan, Nidhogg, die Augen, eine Rückspul-Zwischenphase, ein alternativer Thordan, die Zwillingsdrachen Nidhogg und Hraesvelgr und König Thordan als Drachenkönig. Er ist lang und sehr ausführungslastig, mit knappen DPS-Checks, komplexen Playstation-Ketten und Türmen und einer gnadenlosen letzten Phase.",
+  "ja": "暁月最初の絶（パッチ6.11）。竜詩戦争を7フェーズで再現：門番の騎士、騎神トールダン、ニーズヘッグ、邪竜の眼、時間遡行の幕間、異なる歴史のトールダン、ニーズヘッグとフレースヴェルグ、騎竜神トールダン。長く処理量が多く、DPSチェックが厳しく、PS線や塔が複雑で、最終フェーズも厳しい。"
+ },
+ "strats_overview": [
+  {
+   "id": "na-pf",
+   "region": "NA",
+   "name": {
+    "en": "NA PF (UAR toolbox / ultistrats)",
+    "fr": "PF NA (toolbox UAR / ultistrats)",
+    "de": "NA-PF (UAR-Toolbox / ultistrats)",
+    "ja": "NA野良（UARツールボックス / ultistrats）"
+   },
+   "note": {
+    "en": "North American party finder standard: HMRT, DRK-relative Sanctity, Westhogg, melee red / ranged blue Eyes, party-right Wrath, Dooms North and anchor, Triangle WB1, Static WB2, P7 3-3-2 then 6-1-1.",
+    "fr": "Standard du PF nord-américain : HMRT, Sanctity relatif au DRK, Westhogg, mêlée rouge / distance bleu aux Yeux, Wrath groupe à droite, Dooms au nord avec ancres, WB1 en triangle, WB2 statique, P7 en 3-3-2 puis 6-1-1.",
+    "de": "Standard im nordamerikanischen PF: HMRT, DRK-relatives Sanctity, Westhogg, Nahkampf rot / Fernkampf blau bei den Augen, Wrath mit Gruppe rechts, Dooms im Norden mit Ankern, Dreieck-WB1, statisches WB2, P7 zuerst 3-3-2, danach 6-1-1.",
+    "ja": "北米野良の標準：HMRT、暗黒騎士基準の聖杖、Westhogg、目は近接赤・遠隔青、風槍はパーティ右、死刻は北＋アンカー、三角WB1、固定WB2、P7は3-3-2の後6-1-1。"
+   },
+   "aliases": {
+    "en": [
+     "uar",
+     "uar toolbox",
+     "ultistrats",
+     "na pf"
+    ],
+    "fr": [
+     "uar",
+     "uar toolbox",
+     "ultistrats",
+     "na pf"
+    ],
+    "de": [
+     "uar",
+     "uar toolbox",
+     "ultistrats",
+     "na pf"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-mana",
+   "region": "JP",
+   "name": {
+    "en": "JP Mana PF (Lily Doll strat)",
+    "fr": "PF JP Mana (strat Lily Doll)",
+    "de": "JP-Mana-PF (Lily-Doll-Strat)",
+    "ja": "Mana野良（リリドッ式）"
+   },
+   "note": {
+    "en": "Japanese Mana data center party finder standard: HMRT, DRK-relative with role adjust, Westhogg, tanks/healers blue and DPS red at the Eyes, 2-2 Dooms South anchored, triangle WB1, DTTMR vow, fixed WB2, P7 all 3-3-2.",
+    "fr": "Standard du PF japonais du centre de données Mana : HMRT, relatif au DRK avec ajustement par rôle, Westhogg, tanks/soigneurs bleu et DPS rouge aux Yeux, Dooms 2-2 au sud ancrés, WB1 en triangle, vœu DTTMR, WB2 fixe, P7 tout en 3-3-2.",
+    "de": "Standard im japanischen PF des Datenzentrums Mana: HMRT, DRK-relativ mit Rollenanpassung, Westhogg, Tanks/Heiler blau und DDs rot bei den Augen, 2-2-Dooms im Süden mit Ankern, Dreieck-WB1, DTTMR-Schwur, festes WB2, P7 komplett 3-3-2.",
+    "ja": "Manaデータセンター野良の標準：HMRT、暗黒基準＋ロール調整、Westhogg、目はタンヒラ青・DPS赤、死刻2-2南アンカー、三角WB1、DTTMR誓い回し、固定WB2、P7はすべて3-3-2。"
+   },
+   "aliases": {
+    "en": [
+     "lily doll",
+     "lilydoll",
+     "mana pf",
+     "tuufless mana"
+    ],
+    "fr": [
+     "lily doll",
+     "lilydoll",
+     "mana pf",
+     "tuufless mana"
+    ],
+    "de": [
+     "lily doll",
+     "lilydoll",
+     "mana pf",
+     "tuufless mana"
+    ],
+    "ja": [
+     "リリド"
+    ]
+   }
+  },
+  {
+   "id": "jp-elemental",
+   "region": "JP",
+   "name": {
+    "en": "JP Elemental PF",
+    "fr": "PF JP Elemental",
+    "de": "JP-Elemental-PF",
+    "ja": "Elemental野良"
+   },
+   "note": {
+    "en": "Japanese Elemental data center party finder standard. Mostly like Mana, but Easthogg, tanks/healers red and DPS blue at the Eyes, Dooms North, 5-1 WB2 and other mirrored details.",
+    "fr": "Standard du PF japonais du centre de données Elemental. Proche de Mana, mais Easthogg, tanks/soigneurs rouge et DPS bleu aux Yeux, Dooms au nord, WB2 en 5-1 et d'autres détails inversés.",
+    "de": "Standard im japanischen PF des Datenzentrums Elemental. Größtenteils wie Mana, aber Easthogg, Tanks/Heiler rot und DDs blau bei den Augen, Dooms im Norden, 5-1-WB2 und weitere gespiegelte Details.",
+    "ja": "Elementalデータセンター野良の標準。Manaとほぼ同じだが、Easthogg、目はタンヒラ赤・DPS青、死刻は北、WB2は5-1など一部が逆。"
+   },
+   "aliases": {
+    "en": [
+     "elemental",
+     "elemental pf",
+     "tuufless elemental"
+    ],
+    "fr": [
+     "elemental",
+     "elemental pf",
+     "tuufless elemental"
+    ],
+    "de": [
+     "elemental",
+     "elemental pf",
+     "tuufless elemental"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "oce-mur",
+   "region": "OCE",
+   "name": {
+    "en": "OCE MUR (Materia Ultimate Raiding)",
+    "fr": "OCE MUR (Materia Ultimate Raiding)",
+    "de": "OCE MUR (Materia Ultimate Raiding)",
+    "ja": "OCE MUR（Materia Ultimate Raiding）"
+   },
+   "note": {
+    "en": "Oceanian (Materia data center) standard from the MUR guide on materiaraiding.com, which now covers the whole fight including P6 after Wyrmsbreath 1 and P7. Some placements (Wyrmsbreath 2 spots, Exaflare dodges) are only shown in its diagrams.",
+    "fr": "Standard océanien (centre Materia) du guide MUR sur materiaraiding.com, qui couvre maintenant tout le combat, y compris la P6 après Wyrmsbreath 1 et la P7. Certaines places (Wyrmsbreath 2, esquives d'Exaflare) ne sont que dans ses schémas.",
+    "de": "Ozeanischer Standard (Datenzentrum Materia) aus dem MUR-Guide auf materiaraiding.com, der jetzt den ganzen Kampf abdeckt, auch P6 nach Wyrmsbreath 1 und P7. Manche Plätze (Wyrmsbreath 2, Exaflare-Ausweichen) gibt es nur in seinen Diagrammen.",
+    "ja": "オセアニア（Materia DC）の標準。materiaraiding.comのMURガイドが元で、現在はP6の邪竜/聖竜の息吹1回目以降とP7まで全部を掲載。一部の位置（邪竜/聖竜の息吹2回目、エクサフレアの避け方）は図のみ。"
+   },
+   "aliases": {
+    "en": [
+     "mur",
+     "materia",
+     "materia raiding",
+     "materiaraiding"
+    ],
+    "fr": [
+     "mur",
+     "materia",
+     "materia raiding",
+     "materiaraiding"
+    ],
+    "de": [
+     "mur",
+     "materia",
+     "materia raiding",
+     "materiaraiding"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "eu-pf",
+   "region": "EU",
+   "name": {
+    "en": "EU PF (LPDU, Light/Chaos)",
+    "fr": "PF EU (LPDU, Light/Chaos)",
+    "de": "EU-PF (LPDU, Light/Chaos)",
+    "ja": "EU野良（LPDU、Light/Chaos）"
+   },
+   "note": {
+    "en": "Strat set of the 'Light PF Does Ultimate' (LPDU) community for the EU data centers: HMRT, Easthogg, tanks/healers east and DPS west at the Eyes, dive-relative Wrath, WAR-relative Death with Dooms north, triangle WB1, 5-1 WB2 north, P7 Trinity M > R > H. Many current Light PF listings advertise 'NAUR' (the NA strats) instead, so always read the PF description. Details come from one written summary (uncertain).",
+    "fr": "Ensemble de strats de la communauté « Light PF Does Ultimate » (LPDU) pour les centres EU : HMRT, Easthogg, tanks/soigneurs à l'est et DPS à l'ouest aux Yeux, Wrath relatif aux plongeons, Death relatif au guerrier avec les Glas au nord, WB1 en triangle, WB2 en 5-1 au nord, Trinity P7 M > R > H. Beaucoup d'annonces PF actuelles sur Light indiquent plutôt « NAUR » (les strats NA), alors lis toujours la description. Les détails viennent d'un seul résumé écrit (incertain).",
+    "de": "Strat-Set der Community „Light PF Does Ultimate“ (LPDU) für die EU-Datenzentren: HMRT, Easthogg, Tanks/Heiler im Osten und DPS im Westen bei den Augen, Wrath relativ zu den Sturzflügen, Death relativ zum Krieger mit den Verhängnissen im Norden, Dreieck-WB1, 5-1-WB2 im Norden, P7 Trinity M > R > H. Viele aktuelle PF-Einträge auf Light schreiben stattdessen „NAUR“ (die NA-Strats), lies also immer die PF-Beschreibung. Die Details stammen aus einer einzigen schriftlichen Übersicht (unsicher).",
+    "ja": "EU DC向け「Light PF Does Ultimate」（LPDU）コミュニティの処理：HMRT、東ニーズ（Easthogg）、目はタンクヒーラー東・DPS西、怒りはダイブ基準、死の宣告は戦士基準で宣告北、息吹1回目は三角、息吹2回目は北で5-1、P7トリニティはM＞R＞H。現在のLight野良は「NAUR」（NAの処理）と書く募集も多いので、必ず募集文を読んでね。詳細は1つの資料のみ（不確実）。"
+   },
+   "aliases": {
+    "en": [
+     "lpdu",
+     "light pf",
+     "light pf does ultimate",
+     "chaos pf"
+    ],
+    "fr": [
+     "lpdu",
+     "light pf",
+     "light pf does ultimate",
+     "chaos pf"
+    ],
+    "de": [
+     "lpdu",
+     "light pf",
+     "light pf does ultimate",
+     "chaos pf"
+    ],
+    "ja": []
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "P1 Door boss: Adelphel, Grinnaux, Charibert",
+    "fr": "P1 Gardiens : Adelphel, Grinnaux, Charibert",
+    "de": "P1 Türwächter: Adelphel, Grinnaux, Charibert",
+    "ja": "P1 門番：アデルフェル、グリノー、シャリベル"
+   },
+   "mechanics": [
+    {
+     "id": "holy-shield-bash",
+     "names": {
+      "en": "Holy Shield Bash / Holy Bladedance",
+      "fr": "Holy Shield Bash / Holy Bladedance",
+      "de": "Holy Shield Bash / Holy Bladedance",
+      "ja": "ホーリーシールドバッシュ / ホーリーブレードダンス"
+     },
+     "aliases": {
+      "en": [
+       "tether buster",
+       "bladedance"
+      ],
+      "fr": [
+       "lien tankbuster"
+      ],
+      "de": [
+       "Tank-Verbindung"
+      ],
+      "ja": [
+       "線取り",
+       "ブレードダンス"
+      ]
+     },
+     "how": {
+      "en": "Adelphel tethers a player, charges and stuns them, then follows with a multi-hit tankbuster. A tank must take the tether and use an invulnerability or very heavy mitigation. The tether starts on a random player; a tank takes it over on the north side of the ring.",
+      "fr": "Adelphel lie un joueur, le charge et l'étourdit, puis enchaîne un tankbuster à plusieurs coups. Un tank doit prendre le lien et utiliser une invulnérabilité ou une très grosse réduction. Le lien part sur un joueur au hasard ; un tank le récupère côté nord de l'anneau.",
+      "de": "Adelphel verbindet sich mit einem Spieler, stürmt auf ihn zu, betäubt ihn und folgt mit einem mehrteiligen Tankbuster. Ein Tank nimmt die Verbindung und nutzt eine Unverwundbarkeit oder sehr starke Mitigation. Die Verbindung startet auf einem zufälligen Spieler; ein Tank übernimmt sie auf der Nordseite des Rings.",
+      "ja": "アデルフェルが1人に線を付け、突進してスタンさせた後、多段の強攻撃。タンクが線を取り、無敵か強い軽減で受ける。線はランダムな人に付くので、タンクがリングの北側で取る。"
+     },
+     "strats": [
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "MT walks through the tether, brings it north of the bosses and takes it with an invulnerability.",
+        "fr": "Le MT passe dans le lien, l'emmène au nord des boss et le prend avec un invu.",
+        "de": "Der MT läuft durch die Verbindung, bringt sie nördlich der Bosse und nimmt sie mit Unverwundbarkeit.",
+        "ja": "MTが線を取りボスの北へ運び、無敵で受ける。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "MT takes the tether and uses an invulnerability.",
+        "fr": "Le MT prend le lien et utilise un invu.",
+        "de": "Der MT nimmt die Verbindung und nutzt eine Unverwundbarkeit.",
+        "ja": "MTが線を取り無敵で受ける。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "Tank side: Mana has MT on Adelphel (west) and ST on Grinnaux; Elemental is reversed. MUR has the MT take the tether north with invulnerability.",
+      "fr": "Côté tanks : sur Mana, le MT prend Adelphel (ouest) et l'ST Grinnaux ; sur Elemental, c'est l'inverse. Dans MUR, le MT prend le lien au nord avec une invu.",
+      "de": "Tankseite: Auf Mana nimmt der MT Adelphel (Westen) und der ST Grinnaux, auf Elemental umgekehrt. Bei MUR nimmt der MT die Verbindung im Norden mit Unverwundbarkeit.",
+      "ja": "タンク担当：ManaはMTがアデルフェル（西）、STがグリノー。Elementalは逆。MURではMTが北で無敵を使って線を取る。"
+     },
+     "tags": [
+      "tankbuster",
+      "tether"
+     ]
+    },
+    {
+     "id": "hyperdimensional-slash",
+     "names": {
+      "en": "Hyperdimensional Slash",
+      "fr": "Lacération hyperdimensionnelle",
+      "de": "Hyperdimensionsschlag",
+      "ja": "ハイパーディメンション"
+     },
+     "aliases": {
+      "en": [
+       "hyper slash",
+       "black orbs",
+       "portals"
+      ],
+      "fr": [
+       "portails"
+      ],
+      "de": [
+       "Portale"
+      ],
+      "ja": [
+       "ハイパー",
+       "黒玉"
+      ]
+     },
+     "how": {
+      "en": "Four marked players get line AoEs that leave void portals at the arena edge; portals placed too close together or near players cause trouble. The unmarked four stack for a cleave on the other side, then the roles swap for a second set.",
+      "fr": "Quatre joueurs marqués reçoivent des AoE en ligne qui laissent des portails au bord de l'arène ; des portails trop proches l'un de l'autre ou des joueurs posent problème. Les quatre autres se regroupent de l'autre côté pour un cleave, puis les rôles s'inversent.",
+      "de": "Vier markierte Spieler bekommen Linien-AoEs, die Portale am Arenarand hinterlassen; Portale zu nah beieinander oder an Spielern sind gefährlich. Die vier anderen stacken auf der anderen Seite für einen Cleave, danach tauschen die Rollen.",
+      "ja": "マーカー4人に直線AoEが来て、外周に黒い玉（ポータル）が残る。玉同士や人に近すぎると事故。残り4人は反対側で頭割りの扇範囲を受け、その後役割交代でもう1セット。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Marked players line up by their position in the party list (leftmost marker takes the leftmost spot) and aim the lasers at the waymarked spots on the far side; unmarked players stack south. Then swap.",
+        "fr": "Les marqués s'alignent selon leur ordre (le marqueur le plus à gauche prend la place la plus à gauche) et visent les points marqués côté opposé ; les non-marqués se regroupent au sud. Puis on inverse.",
+        "de": "Markierte stellen sich in Reihenfolge auf (der linkeste Marker nimmt den linkesten Platz) und zielen die Laser auf die markierten Punkte; Unmarkierte stacken im Süden. Danach tauschen.",
+        "ja": "マーカー持ちは並び順（左端のマーカーが左端の位置）で並び、マーカー位置へレーザーを誘導。無しは南で頭割り。その後交代。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "First marked set spreads north at max melee and the unmarked stack south; for the second set it is reversed.",
+        "fr": "Le premier groupe marqué s'écarte au nord à portée max de mêlée, les non-marqués se regroupent au sud ; au deuxième set, c'est l'inverse.",
+        "de": "Erste Markierte verteilen sich im Norden auf max. Nahkampfreichweite, Unmarkierte stacken im Süden; beim zweiten Set umgekehrt.",
+        "ja": "1回目はマーカー組が北の近接最大距離に散開、無しは南で頭割り。2回目は逆。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Same idea as Mana but mirrored: the first marked set resolves south and the unmarked stack north, then reverse.",
+        "fr": "Même principe que Mana mais inversé : le premier groupe marqué se place au sud, les non-marqués au nord, puis on inverse.",
+        "de": "Wie Mana, aber gespiegelt: Die ersten Markierten lösen im Süden auf, Unmarkierte stacken im Norden, dann umgekehrt.",
+        "ja": "Manaの逆。1回目はマーカー組が南、無しは北。その後逆。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "eu-pf",
+       "how": {
+        "en": "First beams go north, second beams go south.",
+        "fr": "Les premiers lasers vont au nord, les seconds au sud.",
+        "de": "Die ersten Laser gehen nach Norden, die zweiten nach Süden.",
+        "ja": "1回目のレーザーは北、2回目は南。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "MUR also places prey north first with waymarked spots; it matches the NA layout as far as the guides show.",
+      "fr": "MUR place aussi les cibles au nord en premier sur des points marqués ; cela correspond au schéma NA d'après les guides.",
+      "de": "MUR stellt die Markierten ebenfalls zuerst im Norden auf Wegmarker; laut den Guides entspricht das dem NA-Layout.",
+      "ja": "MURもマーカー組を先に北のマーカー位置へ置く。ガイド上はNAと同じ配置。"
+     },
+     "tags": [
+      "cleave",
+      "stack",
+      "spread"
+     ]
+    },
+    {
+     "id": "shining-blade-execution",
+     "names": {
+      "en": "Faith Unmoving / Shining Blade / Execution",
+      "fr": "Faith Unmoving / Shining Blade / Execution",
+      "de": "Faith Unmoving / Shining Blade / Execution",
+      "ja": "フェイスアンムーブ / シャイニングブレード / エクスキューション"
+     },
+     "aliases": {
+      "en": [
+       "adelphel dash",
+       "hourglass dash",
+       "execution"
+      ],
+      "fr": [
+       "charge d'Adelphel"
+      ],
+      "de": [
+       "Adelphel-Sprint"
+      ],
+      "ja": [
+       "アデルフェル突進",
+       "処刑"
+      ]
+     },
+     "how": {
+      "en": "Grinnaux knocks everyone back (use knockback immunity and avoid the portals), then Adelphel dashes across the arena leaving explosions in a zigzag. Follow his path to the safe spots, then Adelphel jumps on the top-enmity tank with Execution, which needs an invulnerability; anyone else hit is knocked away and dies. Execution goes to the tank who held Adelphel before his dash; that tank dodges away from the party.",
+      "fr": "Grinnaux repousse tout le monde (utilise une immunité au recul et évite les portails), puis Adelphel traverse l'arène en zigzag en laissant des explosions. Suis son chemin vers les zones sûres ; ensuite Adelphel saute sur le tank en tête de l'inimitié avec Execution, qui demande une invu ; toute autre personne touchée est projetée et meurt. Execution va sur le tank qui avait Adelphel avant sa charge ; ce tank esquive à l'opposé du groupe.",
+      "de": "Grinnaux stößt alle zurück (Rückstoß-Immunität nutzen, Portale meiden), dann sprintet Adelphel im Zickzack durch die Arena und hinterlässt Explosionen. Folge seinem Weg zu den sicheren Stellen; danach springt Adelphel mit Execution auf den Tank mit der höchsten Feindseligkeit – das braucht eine Unverwundbarkeit, andere Getroffene fliegen weg und sterben. Execution geht auf den Tank, der Adelphel vor seinem Sprint hatte; dieser Tank weicht von der Gruppe weg aus.",
+      "ja": "グリノーのノックバック（ノックバック無効を使い、黒玉に注意）、その後アデルフェルがジグザグに突進して爆発を残す。突進の跡を追って安置へ。最後にアデルフェルが敵視1位のタンクへエクスキューション（無敵推奨）、他の人が当たると吹き飛ばされて死ぬ。エクスキューションは突進前にアデルフェルを持っていたタンクに来るので、そのタンクはPTと反対側へ避ける。"
+     },
+     "strats": [
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "OT takes Execution with an invulnerability and keeps moving past the party.",
+        "fr": "L'OT prend Execution avec un invu et continue de bouger au-delà du groupe.",
+        "de": "Der OT nimmt Execution mit Unverwundbarkeit und läuft an der Gruppe vorbei weiter.",
+        "ja": "OTが無敵でエクスキューションを受け、そのままPTの先へ移動する。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "OT (ST) takes Execution with an invulnerability.",
+        "fr": "L'OT (ST) prend Execution avec un invu.",
+        "de": "Der OT (ST) nimmt Execution mit Unverwundbarkeit.",
+        "ja": "エクスキューションはSTが無敵で受ける。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "dodge",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "playstation-1",
+     "names": {
+      "en": "Playstation chains (Holy Chain)",
+      "fr": "Chaînes Playstation (Chaîne sacrée)",
+      "de": "Playstation-Ketten (Heilige Kette)",
+      "ja": "PS線（ホーリーチェーン）"
+     },
+     "aliases": {
+      "en": [
+       "playstation",
+       "ps1",
+       "chains",
+       "symbols"
+      ],
+      "fr": [
+       "playstation",
+       "chaînes"
+      ],
+      "de": [
+       "Playstation",
+       "Ketten"
+      ],
+      "ja": [
+       "プレステ",
+       "PS",
+       "鎖"
+      ]
+     },
+     "how": {
+      "en": "Players get circle, cross, triangle or square in pairs and are chained to their partner. Grinnaux's knockback must send each pair far enough apart to break the chain (move further to the edge after the knockback if needed), then everyone stays spread for fire AoEs. Do not use knockback immunity here.",
+      "fr": "Les joueurs reçoivent rond, croix, triangle ou carré par paires et sont enchaînés à leur partenaire. Le recul de Grinnaux doit séparer chaque paire assez loin pour casser la chaîne (recule encore vers le bord si besoin), puis tout le monde reste écarté pour les AoE de feu. Pas d'immunité au recul ici.",
+      "de": "Spieler bekommen paarweise Kreis, Kreuz, Dreieck oder Quadrat und sind mit ihrem Partner verkettet. Grinnaux' Rückstoß muss jedes Paar weit genug trennen, damit die Kette reißt (danach notfalls weiter zum Rand), dann bleiben alle für Feuer-AoEs verteilt. Hier keine Rückstoß-Immunität nutzen.",
+      "ja": "○×△□がペアで付き、同じ記号同士が鎖でつながる。グリノーのノックバックで鎖が切れる距離まで離れ（足りなければその後さらに外へ）、続く炎の散開に備える。ここではノックバック無効は使わない。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Bosses in the middle and everyone spread around them using the HMRT marker macro: tanks lean north, healers south, DPS fill the gaps, so each partner ends up on the opposite side before the knockback.",
+        "fr": "Boss au centre, tout le monde autour selon la macro HMRT : tanks plutôt au nord, soigneurs au sud, DPS dans les trous, pour que chaque partenaire soit du côté opposé avant le recul.",
+        "de": "Bosse in der Mitte, alle verteilen sich nach dem HMRT-Makro: Tanks eher Norden, Heiler Süden, DDs füllen die Lücken, sodass jeder Partner vor dem Rückstoß gegenüber steht.",
+        "ja": "ボスを中央に置き、HMRTマクロで散開：タンクは北寄り、ヒーラーは南、DPSが空きを埋め、ペア同士が対角になるように立つ。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Healers take the NW side and DPS the SE side of the pattern; the two circle DPS pick sides by priority (west: D1 > D2 > D3 > D4).",
+        "fr": "Les soigneurs prennent le côté NO et les DPS le côté SE ; les deux DPS rond choisissent leur côté par priorité (ouest : D1 > D2 > D3 > D4).",
+        "de": "Heiler nehmen die NW-Seite, DDs die SO-Seite; die beiden Kreis-DDs wählen ihre Seite nach Priorität (Westen: D1 > D2 > D3 > D4).",
+        "ja": "ヒーラーは北西側、DPSは南東側。○のDPS2人は優先順（西：D1＞D2＞D3＞D4）で左右を決める。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Same as Mana but DPS take the NW side and healers the SE side.",
+        "fr": "Comme Mana, mais les DPS prennent le côté NO et les soigneurs le SE.",
+        "de": "Wie Mana, aber DDs nehmen die NW-Seite und Heiler die SO-Seite.",
+        "ja": "Manaと同じだが、DPSが北西側、ヒーラーが南東側。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Fixed pattern from the MUR image; warriors must click off Inner Strength so they can be knocked back.",
+        "fr": "Schéma fixe d'après l'image MUR ; les guerriers doivent retirer Inner Strength pour pouvoir être repoussés.",
+        "de": "Festes Muster laut MUR-Grafik; Krieger müssen Inner Strength entfernen, damit sie zurückgestoßen werden.",
+        "ja": "MURの図の固定配置。戦士は原初の猛り（Inner Strength）を外してノックバックを受ける。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Exact spots are shown only in images and macros, so only the general layout is given here.",
+      "fr": "Les positions exactes ne figurent que dans des images et macros ; seul le principe est donné ici.",
+      "de": "Die genauen Plätze gibt es nur als Bilder und Makros, hier steht nur der Grundaufbau.",
+      "ja": "正確な位置は画像・マクロのみなので、ここでは大まかな配置だけ。"
+     },
+     "tags": [
+      "tether",
+      "knockback",
+      "spread"
+     ]
+    },
+    {
+     "id": "holiest-hallowing",
+     "names": {
+      "en": "Holiest Hallowing",
+      "fr": "Sacrement béni",
+      "de": "Heilige Segnung",
+      "ja": "ホリエストブレッシング"
+     },
+     "aliases": {
+      "en": [
+       "interrupt",
+       "silence",
+       "heal cast"
+      ],
+      "fr": [
+       "interruption"
+      ],
+      "de": [
+       "Unterbrechen"
+      ],
+      "ja": [
+       "沈黙",
+       "インタラ"
+      ]
+     },
+     "how": {
+      "en": "Adelphel casts a big heal three times in the phase; each cast must be interrupted or the knights heal a lot. Both knights must die close together, because when one dies the other enrages.",
+      "fr": "Adelphel lance trois fois un gros soin pendant la phase ; chaque incantation doit être interrompue, sinon les chevaliers se soignent beaucoup. Les deux chevaliers doivent mourir presque en même temps, car quand l'un meurt l'autre s'enrage.",
+      "de": "Adelphel wirkt in der Phase dreimal eine große Heilung; jeder Zauber muss unterbrochen werden, sonst heilen sich die Ritter stark. Beide Ritter müssen fast gleichzeitig sterben, denn stirbt einer, wird der andere wütend.",
+      "ja": "アデルフェルがフェーズ中に3回大回復を詠唱、すべて沈黙が必要。2体はほぼ同時に倒す（片方が倒れるともう片方が時間切れ技を使う）。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "First interrupt by the tank who took Execution, second by a physical ranged (tanks are out of range during the chains), third by the agreed tank.",
+        "fr": "Première interruption par le tank qui a pris Execution, la deuxième par un distance physique (les tanks sont hors de portée pendant les chaînes), la troisième par le tank convenu.",
+        "de": "Erste Unterbrechung durch den Tank, der Execution genommen hat, zweite durch einen physischen Fernkämpfer (Tanks sind bei den Ketten außer Reichweite), dritte durch den abgesprochenen Tank.",
+        "ja": "1回目はエクスキューションを受けたタンク、2回目は物理遠隔（鎖中はタンクが届かない）、3回目は決めたタンク。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "MT interrupts the first cast, D3 the second, and the third is assigned in the group.",
+        "fr": "Le MT interrompt la première, D3 la deuxième ; la troisième est attribuée dans le groupe.",
+        "de": "Der MT unterbricht den ersten, D3 den zweiten, der dritte wird in der Gruppe festgelegt.",
+        "ja": "1回目MT、2回目D3、3回目はPT内で決める。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Rotation ST, then D3, then ST.",
+        "fr": "Rotation : ST, puis D3, puis ST.",
+        "de": "Reihenfolge: ST, dann D3, dann ST.",
+        "ja": "ST→D3→STの順。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Ranged or MT takes the first, the off-tank takes the last; the middle one is assigned.",
+        "fr": "Un distance ou le MT prend la première, l'off-tank la dernière ; celle du milieu est attribuée.",
+        "de": "Fernkampf oder MT nimmt die erste, der Off-Tank die letzte; die mittlere wird verteilt.",
+        "ja": "1回目は遠隔かMT、最後はST。中間は割り当て。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "The Mana third interrupt was not spelled out in the source.",
+      "fr": "La troisième interruption sur Mana n'est pas précisée dans la source.",
+      "de": "Die dritte Unterbrechung bei Mana ist in der Quelle nicht genannt.",
+      "ja": "Manaの3回目担当はソースに明記なし。"
+     },
+     "tags": [
+      "dps-check"
+     ]
+    },
+    {
+     "id": "planar-prison-pure-of-heart",
+     "names": {
+      "en": "Planar Prison / Brightwing / Pure of Heart",
+      "fr": "Prison dimensionnelle / Aile lumineuse / Pureté du cœur",
+      "de": "Dimensionsfalle / Lichtschwinge / Reines Herz",
+      "ja": "ディメンションジェイル / 光翼閃 / ピュア・オブ・ハート"
+     },
+     "aliases": {
+      "en": [
+       "charibert",
+       "haurchefant",
+       "brightwing",
+       "pure of heart",
+       "hmrt"
+      ],
+      "fr": [
+       "charibert",
+       "haurchefant"
+      ],
+      "de": [
+       "Charibert",
+       "Haurchefant"
+      ],
+      "ja": [
+       "シャリベル",
+       "オルシュファン",
+       "光翼閃",
+       "ピュアオブハート"
+      ]
+     },
+     "how": {
+      "en": "Charibert pulls everyone into a ring (leaving it kills). Brightwing cleaves the two closest players and gives them a delayed puddle where they stand, so the cleaves are taken in pairs by role, one pair per set. Charibert must be under about 30% when Pure of Heart finishes or it wipes.",
+      "fr": "Charibert enferme tout le monde dans un anneau (en sortir tue). Aile lumineuse frappe les deux joueurs les plus proches et leur pose une flaque retardée là où ils sont ; les cleaves se prennent donc par paires de rôle, une paire par set. Charibert doit être sous environ 30 % à la fin de Pureté du cœur, sinon wipe.",
+      "de": "Charibert zieht alle in einen Ring (Verlassen tötet). Lichtschwinge trifft die zwei nächsten Spieler und legt ihnen eine verzögerte Pfütze unter die Füße, daher nehmen Rollenpaare die Cleaves nacheinander, ein Paar pro Durchgang. Charibert muss am Ende von Reines Herz unter etwa 30 % sein, sonst Wipe.",
+      "ja": "シャリベルが全員をリングに閉じ込める（出ると死亡）。光翼閃は近い2人に扇範囲＋足元に遅延AoE、ロールごとにペアで順番に受ける。ピュア・オブ・ハート完了時にシャリベルのHPが約30%以上だと全滅。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Order Healers, Melee, Ranged, Tanks (HMRT). The baiting pair stands in front, then steps left or right out of the stack and comes back when their puddles go off.",
+        "fr": "Ordre Soigneurs, Mêlée, Distance, Tanks (HMRT). La paire qui prend se place devant, puis sort à gauche ou à droite et revient quand ses flaques ont explosé.",
+        "de": "Reihenfolge Heiler, Nahkampf, Fernkampf, Tanks (HMRT). Das ködernde Paar steht vorne, geht dann links oder rechts raus und kommt zurück, wenn die Pfützen explodiert sind.",
+        "ja": "順番はヒーラー→近接→遠隔→タンク（HMRT）。担当ペアは前に出て受け、左右に抜けて足元AoEが爆発したら戻る。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "HMRT order. Each pair first baits Brightwing, then on the next set moves in front of Charibert to drop puddles while the next role baits; ranged and melee drop on opposite sides.",
+        "fr": "Ordre HMRT. Chaque paire prend d'abord Aile lumineuse, puis au set suivant passe devant Charibert pour poser ses flaques pendant que le rôle suivant prend ; distance et mêlée posent de côtés opposés.",
+        "de": "HMRT-Reihenfolge. Jedes Paar ködert zuerst Lichtschwinge und legt im nächsten Durchgang vor Charibert seine Pfützen ab, während die nächste Rolle ködert; Fern- und Nahkampf legen auf gegenüberliegenden Seiten.",
+        "ja": "HMRT順。各ペアは光翼閃を受け、次のセットでシャリベル前に出て床AoEを捨て、その間に次のロールが受ける。遠隔と近接は左右逆側に捨てる。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "same_as": "jp-mana"
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "HMRT order with ranged dropping their puddles east and melee west.",
+        "fr": "Ordre HMRT, les distances posent leurs flaques à l'est et les mêlées à l'ouest.",
+        "de": "HMRT-Reihenfolge, Fernkämpfer legen ihre Pfützen im Osten ab, Nahkämpfer im Westen.",
+        "ja": "HMRT順、遠隔は東、近接は西に床AoEを捨てる。"
+       }
+      },
+      {
+       "strat": "eu-pf",
+       "how": {
+        "en": "Priority H > M > R > T; drop the puddles on alternating sides, starting east.",
+        "fr": "Priorité H > M > R > T ; pose les flaques en alternant les côtés, en commençant à l'est.",
+        "de": "Priorität H > M > R > T; leg die Pfützen abwechselnd auf beide Seiten, beginnend im Osten.",
+        "ja": "優先はH＞M＞R＞T。床は左右交互に、東から置く。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "dodge",
+      "dps-check"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "P2 King Thordan",
+    "fr": "P2 Roi Thordan",
+    "de": "P2 König Thordan",
+    "ja": "P2 騎神トールダン"
+   },
+   "mechanics": [
+    {
+     "id": "ascalons-mercy-might",
+     "names": {
+      "en": "Ascalon's Mercy Concealed / Ascalon's Might / Heavenly Heel",
+      "fr": "Grâce d'Ascalon dissimulée / Puissance d'Ascalon / Estoc céleste",
+      "de": "Askalons geheime Gnade / Macht von Askalon / Himmelsschritt",
+      "ja": "インビジブル・アスカロンメルシー / アスカロンマイト / ヘヴンリーヒール"
+     },
+     "aliases": {
+      "en": [
+       "mercy",
+       "might",
+       "tank cleaves"
+      ],
+      "fr": [
+       "cleaves tank"
+      ],
+      "de": [
+       "Tank-Cleaves"
+      ],
+      "ja": [
+       "アスカロン",
+       "タンク強攻撃"
+      ]
+     },
+     "how": {
+      "en": "Mercy Concealed is an invisible cone baited on each player: stack behind Thordan, then sidestep. Might is three heavy tank cleaves on the main tank; Heavenly Heel later gives a slashing vulnerability, so the next Might needs a swap or an invulnerability. Might hits Thordan's main tank; tanks swap aggro during the Heavenly Heel cast, or one tank's invulnerability (Hallowed Ground covers all hits) avoids the swap.",
+      "fr": "Grâce dissimulée est un cône invisible ciblé sur chaque joueur : regroupe-toi derrière Thordan puis décale-toi. Puissance d'Ascalon, ce sont trois gros cleaves sur le MT ; Estoc céleste donne ensuite une vulnérabilité, donc la Puissance suivante demande un swap ou une invu. Puissance d'Ascalon frappe le main tank de Thordan ; les tanks échangent l'inimitié pendant l'incantation d'Estoc céleste, ou une invu (Invincible couvre tous les coups) évite le swap.",
+      "de": "Die geheime Gnade ist ein unsichtbarer Kegel auf jeden Spieler: hinter Thordan stacken, dann seitlich ausweichen. Macht von Askalon sind drei schwere Cleaves auf den MT; Himmelsschritt gibt danach eine Hiebverwundbarkeit, also braucht die nächste Macht einen Wechsel oder eine Unverwundbarkeit. Macht von Askalon trifft Thordans Main-Tank; die Tanks wechseln die Feindschaft während Himmelsschritt gewirkt wird, oder eine Unverwundbarkeit (Unverwundbar deckt alle Treffer) erspart den Wechsel.",
+      "ja": "インビジブル・アスカロンメルシーは各自に見えない扇。背面に集まり、横にずれて避ける。アスカロンマイトはMTへの3連強攻撃。ヘヴンリーヒールで斬耐性ダウンが付くので、次のマイトはスイッチか無敵。アスカロンマイトはMTに来る。ヘヴンリーヒールの詠唱中にスイッチするか、無敵（インビンシブルなら全段）でスイッチを省く。"
+     },
+     "strats": [
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "MT always uses an invulnerability on the first Might; after Heavenly Heel the ST always uses an invulnerability.",
+        "fr": "Le MT utilise toujours une invu sur la première Puissance ; après Estoc céleste, l'ST utilise toujours une invu.",
+        "de": "Der MT nutzt bei der ersten Macht immer eine Unverwundbarkeit; nach Himmelsschritt nutzt der ST immer eine.",
+        "ja": "最初のマイトはMTが無敵。ヘヴンリーヒール後はSTが無敵。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "First Might: Holmgang then mitigation; after Heavenly Heel the tanks swap.",
+        "fr": "Première Puissance : Holmgang puis réductions ; après Estoc céleste, les tanks swap.",
+        "de": "Erste Macht: Holmgang, danach Mitigation; nach Himmelsschritt tauschen die Tanks.",
+        "ja": "最初のマイトはホルムギャング→軽減。ヘヴンリーヒール後はタンクスイッチ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "MUR mitigation plan allows a warrior invulnerability on Might. MT takes the first Might.",
+        "fr": "Le plan de réductions MUR permet une invu de guerrier sur Puissance. Le MT prend la première Puissance d'Ascalon.",
+        "de": "Der MUR-Mitigationsplan erlaubt eine Krieger-Unverwundbarkeit bei der Macht. Der MT nimmt die erste Macht von Askalon.",
+        "ja": "MURの軽減表では戦士の無敵をマイトに使える。最初のアスカロンマイトはMT。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "strength-of-the-ward-1",
+     "names": {
+      "en": "Strength of the Ward (part 1: dashes)",
+      "fr": "Force du Saint-Siège (partie 1 : charges)",
+      "de": "Übermacht der Königsschar (Teil 1: Sprints)",
+      "ja": "蒼天の陣：雷槍（前半：突進）"
+     },
+     "aliases": {
+      "en": [
+       "strength",
+       "sotw",
+       "knight dashes",
+       "spiral thrust",
+       "heavy impact"
+      ],
+      "fr": [
+       "force"
+      ],
+      "de": [
+       "Übermacht"
+      ],
+      "ja": [
+       "雷槍",
+       "一運"
+      ]
+     },
+     "how": {
+      "en": "Three knights dash across the arena in lines (being hit kills), leaving two opposite safe areas. Lightning hits every player (spread), and Guerrique's Heavy Impact expands in rings from his spot, so move away from him while the rings pass. Then bait Mercy Concealed again in two stacks.",
+      "fr": "Trois chevaliers chargent en ligne à travers l'arène (être touché tue), laissant deux zones sûres opposées. La foudre touche chaque joueur (écarte-toi), et Heavy Impact de Guerrique s'étend en anneaux depuis sa position : éloigne-toi pendant les anneaux. Puis rebait Grâce dissimulée en deux packs.",
+      "de": "Drei Ritter sprinten in Linien über die Arena (Treffer tötet) und lassen zwei gegenüberliegende sichere Bereiche. Blitze treffen jeden Spieler (verteilen), Guerriques Heavy Impact breitet sich in Ringen von ihm aus – während der Ringe von ihm weg. Danach die geheime Gnade wieder in zwei Gruppen ködern.",
+      "ja": "3体の騎士が直線突進（当たると死亡）、対角の2か所が安置。全員に雷（散開）、ゲリックのヘヴィインパクトが輪状に広がるので離れる。その後2グループでメルシーを再誘導。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Two light parties (tank, healer, two DPS) spread in a small triangle inside their safe area, then stack and move toward Thordan together while dodging the rings, ending diagonally in to bait the cones.",
+        "fr": "Deux groupes légers (tank, soigneur, deux DPS) s'écartent en petit triangle dans leur zone sûre, puis se regroupent et avancent vers Thordan en évitant les anneaux, pour finir en diagonale afin de prendre les cônes.",
+        "de": "Zwei Leichtgruppen (Tank, Heiler, zwei DDs) verteilen sich im kleinen Dreieck in ihrem sicheren Bereich, stacken dann und laufen gemeinsam zu Thordan, weichen den Ringen aus und enden diagonal, um die Kegel zu ködern.",
+        "ja": "2つのライトパーティが安置内で小さな三角に散開、その後まとまって輪を避けつつトールダンへ寄り、斜め内側でメルシーを誘導。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "MT group takes the sector from west to northeast, ST group from southwest to east; healers stand in front so they can dodge early. Locate Guerrique, then stack in two opposite groups near the center for the cones.",
+        "fr": "Le groupe du MT prend le secteur d'ouest à nord-est, celui de l'ST de sud-ouest à est ; les soigneurs se placent devant pour esquiver tôt. Repère Guerrique, puis regroupe-toi en deux groupes opposés près du centre pour les cônes.",
+        "de": "MT-Gruppe nimmt den Sektor von West bis Nordost, ST-Gruppe von Südwest bis Ost; Heiler stehen vorn, um früh auszuweichen. Guerrique finden, dann in zwei gegenüberliegenden Gruppen nahe der Mitte für die Kegel stacken.",
+        "ja": "MT組は西〜北東、ST組は南西〜東。ヒーラーは前に立って早めに避ける。ゲリック位置を確認し、中央付近で対角2グループに分かれてメルシーを受ける。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "same_as": "jp-mana"
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Light party 1 uses the number waymarks, light party 2 the letter waymarks; opposite waymarks share a colour, so one colour call gives both safe spots.",
+        "fr": "Le groupe léger 1 utilise les marqueurs chiffres, le groupe 2 les marqueurs lettres ; les marqueurs opposés ont la même couleur, donc une seule couleur annoncée donne les deux zones sûres.",
+        "de": "Leichtgruppe 1 nutzt die Zahlen-Wegmarker, Gruppe 2 die Buchstaben; gegenüberliegende Marker haben dieselbe Farbe, eine Farbansage gibt also beide sicheren Stellen.",
+        "ja": "LP1は数字マーカー、LP2は英字マーカー。対角のマーカーは同色なので色の指示1つで両方の安置が決まる。"
+       }
+      },
+      {
+       "strat": "eu-pf",
+       "same_as": "oce-mur"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread",
+      "stack",
+      "proximity"
+     ]
+    },
+    {
+     "id": "strength-of-the-ward-2",
+     "names": {
+      "en": "Strength of the Ward (part 2: Skyward Leap and towers)",
+      "fr": "Force du Saint-Siège (partie 2 : Bond céleste et tours)",
+      "de": "Übermacht der Königsschar (Teil 2: Luftsprung und Türme)",
+      "ja": "蒼天の陣：雷槍（後半：スカイワードリープと塔）"
+     },
+     "aliases": {
+      "en": [
+       "skyward leap",
+       "towers",
+       "dragon's rage",
+       "tethers"
+      ],
+      "fr": [
+       "tours",
+       "bond céleste"
+      ],
+      "de": [
+       "Türme",
+       "Luftsprung"
+      ],
+      "ja": [
+       "スカイワードリープ",
+       "塔",
+       "青マーカー"
+      ]
+     },
+     "how": {
+      "en": "Thordan moves to a new north. Three players get blue Skyward Leap markers (huge AoEs on them), two knights tether players for tank hits, one stack hits the rest, and towers spawn that must all be soaked or they wipe.",
+      "fr": "Thordan se place à un nouveau nord. Trois joueurs ont un marqueur bleu Bond céleste (énormes AoE sur eux), deux chevaliers lient des joueurs pour des coups de tank, un package touche le reste, et des tours apparaissent qui doivent toutes être prises, sinon wipe.",
+      "de": "Thordan geht zu einem neuen Norden. Drei Spieler bekommen blaue Luftsprung-Marker (riesige AoEs auf ihnen), zwei Ritter verbinden sich für Tank-Treffer, ein Stack trifft den Rest, und Türme erscheinen, die alle besetzt werden müssen, sonst Wipe.",
+      "ja": "トールダンが新しい北へ。3人に青マーカー（スカイワードリープの大範囲）、騎士2体の線はタンクが取る、残りは頭割り、塔はすべて踏まないと全滅。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Blue markers go south, east and west at the edge; tanks take the knight tethers to the north edge and cross them into an X to lower damage; unmarked players stack under Thordan, then everyone takes their tower.",
+        "fr": "Les marqueurs bleus vont au sud, à l'est et à l'ouest au bord ; les tanks prennent les liens des chevaliers au bord nord et les croisent en X pour réduire les dégâts ; les non-marqués se regroupent sous Thordan, puis chacun prend sa tour.",
+        "de": "Blaue Marker gehen an den Rand im Süden, Osten und Westen; Tanks nehmen die Ritterverbindungen zum Nordrand und kreuzen sie zu einem X für weniger Schaden; Unmarkierte stacken unter Thordan, dann nimmt jeder seinen Turm.",
+        "ja": "青マーカーは南・東・西の外周。タンクは騎士の線を北端へ持って行きXに交差させて軽減。無しはトールダン下で頭割り、その後各自の塔へ。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Blue markers go west, east and south (east/west 1-2 notches from Thordan); the other three non-tanks go north to Thordan. Tanks take the tethers to the edge without crossing them; the unmarked show their tower briefly, then stack.",
+        "fr": "Les bleus vont à l'ouest, l'est et le sud (est/ouest à 1-2 crans de Thordan) ; les trois autres non-tanks vont au nord vers Thordan. Les tanks emmènent les liens au bord sans les croiser ; les non-marqués montrent brièvement leur tour, puis se regroupent.",
+        "de": "Blaue gehen nach Westen, Osten und Süden (Ost/West 1-2 Kerben von Thordan); die anderen drei Nicht-Tanks gehen nach Norden zu Thordan. Tanks ziehen die Verbindungen ungekreuzt zum Rand; Unmarkierte zeigen kurz ihren Turm, dann stacken.",
+        "ja": "青は西・東・南（東西はトールダンから1〜2目盛り）、残りの非タンク3人は北のトールダンへ。タンクは線を交差させずに外へ。無し組は担当塔を一瞬示してから頭割り。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Like Mana, but the tanks cross their tethers. MT takes the west tether and moves east of the party; ST takes the east tether and moves west.",
+        "fr": "Comme Mana, mais les tanks croisent leurs liens. Le MT prend le lien ouest et passe à l'est du groupe ; le ST prend le lien est et passe à l'ouest.",
+        "de": "Wie Mana, aber die Tanks kreuzen ihre Verbindungen. Der MT nimmt die West-Verbindung und geht östlich der Gruppe; der ST nimmt die Ost-Verbindung und geht nach Westen.",
+        "ja": "Manaと同じだが、タンクは線を交差させる。MTは西の線を取ってPTの東へ、STは東の線を取って西へ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Skyward Leap players stand on the edge of their waymark, tanks cross their tethers, the six towers are taken by the non-Leap players and the tanks stack for the shared hit. MT takes the left knight's tether and OT the right one, both facing Thordan, then they cross into the safe spot under Thordan.",
+        "fr": "Les joueurs Bond céleste se placent au bord de leur marqueur, les tanks croisent leurs liens, les six tours sont prises par les non-Bond et les tanks se regroupent pour le coup partagé. Le MT prend le lien du chevalier de gauche et l'OT celui de droite, face à Thordan, puis ils se croisent vers la zone sûre sous Thordan.",
+        "de": "Luftsprung-Spieler stehen am Rand ihres Wegmarkers, Tanks kreuzen ihre Verbindungen, die sechs Türme nehmen die Nicht-Luftsprung-Spieler, die Tanks stacken für den geteilten Treffer. Der MT nimmt die Verbindung des linken Ritters, der OT die des rechten, beide Blick zu Thordan, dann kreuzen sie in die sichere Stelle unter Thordan.",
+        "ja": "リープ組は担当マーカーの外周。タンクは線を交差。6つの塔はリープ以外が踏み、タンクは頭割りを一緒に受ける。MTは左の騎士、OTは右の騎士の線を取り（トールダン向き）、交差してトールダン下の安置へ。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Sources disagree on the tower count (some say six, some describe three key towers); follow your group's toolbox.",
+      "fr": "Les sources ne s'accordent pas sur le nombre de tours (six selon certaines, trois selon d'autres) ; suis la toolbox de ton groupe.",
+      "de": "Die Quellen sind sich bei der Turmanzahl uneinig (teils sechs, teils drei beschrieben); halte dich an die Toolbox deiner Gruppe.",
+      "ja": "塔の数はソースによって異なる（6または3）。PTの資料に従うこと。"
+     },
+     "tags": [
+      "tankbuster",
+      "tether",
+      "tower",
+      "stack",
+      "spread"
+     ]
+    },
+    {
+     "id": "sanctity-of-the-ward-1",
+     "names": {
+      "en": "Sanctity of the Ward (part 1: Sacred Sever and gazes)",
+      "fr": "Béatitude du Saint-Siège (partie 1 : Sacred Sever et regards)",
+      "de": "Erhabenheit der Königsschar (Teil 1: Sacred Sever und Blicke)",
+      "ja": "蒼天の陣：聖杖（前半：ディバインスラッシュと視線）"
+     },
+     "aliases": {
+      "en": [
+       "sanctity",
+       "sanctity 1",
+       "drk relative",
+       "sacred sever",
+       "swords"
+      ],
+      "fr": [
+       "béatitude"
+      ],
+      "de": [
+       "Erhabenheit"
+      ],
+      "ja": [
+       "聖杖",
+       "二運",
+       "剣マーカー"
+      ]
+     },
+     "how": {
+      "en": "Two paladin knights dash and leave explosions moving clockwise or counter-clockwise, Thordan and a dragon eye cast gazes (look away), and the dark knight Zephirin jumps four times on the two sword-marked players (1 and 2) with shared hits, so each group must contain one sword player.",
+      "fr": "Deux chevaliers paladins chargent et laissent des explosions qui tournent dans le sens horaire ou anti-horaire, Thordan et un œil de dragon lancent des regards (regarde ailleurs), et le chevalier noir Zephirin saute quatre fois sur les deux joueurs à épée (1 et 2) avec des coups partagés : chaque groupe doit avoir un porteur d'épée.",
+      "de": "Zwei Paladin-Ritter sprinten und hinterlassen Explosionen im oder gegen den Uhrzeigersinn, Thordan und ein Drachenauge wirken Blicke (wegschauen), und der Dunkelritter Zephirin springt viermal auf die zwei Schwert-Spieler (1 und 2) mit geteilten Treffern, also braucht jede Gruppe einen Schwert-Spieler.",
+      "ja": "ナイト騎士2体が突進して時計回りか反時計回りに爆発が走る。トールダンと竜の目の視線（背を向ける）。暗黒騎士ゼフィランが剣マーカー1・2の2人へ交互に4回跳躍（頭割り）、各グループに剣持ちが1人必要。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "DRK-relative: the dark knight at the edge is north. Group 1 goes away from him, group 2 toward him; a sword player whose number does not match swaps with their role partner. Rotate in the knights' direction, look away from both eyes, and walk into each explosion after it goes off.",
+        "fr": "Relatif au DRK : le chevalier noir au bord est le nord. Le groupe 1 va à l'opposé, le groupe 2 de son côté ; un porteur d'épée dont le numéro ne correspond pas échange avec son partenaire de rôle. Tourne dans le sens des chevaliers, regarde à l'opposé des deux yeux et entre dans chaque explosion après qu'elle a sauté.",
+        "de": "DRK-relativ: Der Dunkelritter am Rand ist Norden. Gruppe 1 geht von ihm weg, Gruppe 2 zu ihm; passt die Schwertnummer nicht, tauscht man mit dem Rollenpartner. In Richtung der Ritter rotieren, von beiden Augen wegschauen und jeweils in die Explosion laufen, nachdem sie hochging.",
+        "ja": "暗黒騎士基準：外周の暗黒騎士を北とする。1組は反対側、2組は暗黒側。剣の番号が合わない場合はロール相方と交代。騎士の向きに回り、両方の目から背を向け、爆発後の場所に入っていく。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Group 1 (MT, H1, D1, D3) opposite the dark knight, group 2 (ST, H2, D2, D4) on his side. Sword players go to the group of their number; if your role partner has a sword for your group, swap. Start 3-4 notches from the intercardinals, offset toward the knights' facing, and face outward.",
+        "fr": "Groupe 1 (MT, H1, D1, D3) en face du chevalier noir, groupe 2 (ST, H2, D2, D4) de son côté. Les porteurs d'épée vont dans le groupe de leur numéro ; si ton partenaire de rôle a une épée pour ton groupe, vous échangez. Départ à 3-4 crans des intercardinaux, décalé vers le sens des chevaliers, face vers l'extérieur.",
+        "de": "Gruppe 1 (MT, H1, D1, D3) gegenüber dem Dunkelritter, Gruppe 2 (ST, H2, D2, D4) auf seiner Seite. Schwert-Spieler gehen in die Gruppe ihrer Nummer; hat dein Rollenpartner ein Schwert für deine Gruppe, tauscht ihr. Start 3-4 Kerben von den Zwischenhimmelsrichtungen, zur Blickrichtung der Ritter versetzt, Blick nach außen.",
+        "ja": "1組（MT・H1・D1・D3）は暗黒騎士の反対、2組（ST・H2・D2・D4）は暗黒側。剣持ちは番号の組へ、ロール相方が自組の剣を持っていたら交代。斜めから騎士の向き側に3〜4目盛りずれて外向きに待機。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "same_as": "jp-mana"
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Players with two swords move behind the third knight and the single-sword player moves to the opposite waymark; each stack moves four notches per step.",
+        "fr": "Les joueurs avec deux épées passent derrière le troisième chevalier et le joueur à une épée va au marqueur opposé ; chaque pack avance de quatre crans par étape.",
+        "de": "Spieler mit zwei Schwertern gehen hinter den dritten Ritter, der Ein-Schwert-Spieler zum gegenüberliegenden Marker; jede Gruppe bewegt sich pro Schritt vier Kerben.",
+        "ja": "剣2つ組は3体目の騎士の後ろ、剣1つの人は反対のマーカーへ。各グループは1ステップ4目盛り移動。"
+       }
+      },
+      {
+       "strat": "eu-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "The MUR summary for this part was unclear; check the MUR toolbox.",
+      "fr": "Le résumé MUR de cette partie n'était pas clair ; vérifie la toolbox MUR.",
+      "de": "Die MUR-Zusammenfassung zu diesem Teil war unklar; prüfe die MUR-Toolbox.",
+      "ja": "MURのこの部分は要約が不明瞭。MUR資料を確認。"
+     },
+     "tags": [
+      "gaze",
+      "dodge",
+      "stack"
+     ]
+    },
+    {
+     "id": "sanctity-of-the-ward-2",
+     "names": {
+      "en": "Sanctity of the Ward (part 2: meteors and towers)",
+      "fr": "Béatitude du Saint-Siège (partie 2 : météores et tours)",
+      "de": "Erhabenheit der Königsschar (Teil 2: Meteore und Türme)",
+      "ja": "蒼天の陣：聖杖（後半：メテオと塔）"
+     },
+     "aliases": {
+      "en": [
+       "meteors",
+       "holy comet",
+       "sanctity 2",
+       "cursed pattern",
+       "ice and fire"
+      ],
+      "fr": [
+       "météores"
+      ],
+      "de": [
+       "Meteore"
+      ],
+      "ja": [
+       "メテオ",
+       "ホーリーコメット",
+       "塔"
+      ]
+     },
+     "how": {
+      "en": "Two players of the same role get meteor markers and drop seven meteors that must not land near each other. Ice puddles drop on pairs, then towers appear inside and outside; the knight's knockback (Faith Unmoving) pushes inside players into outer towers, and every tower must be soaked.",
+      "fr": "Deux joueurs du même rôle ont un marqueur météore et lâchent sept météores qui ne doivent pas tomber près les uns des autres. Des flaques de glace tombent sur les paires, puis des tours apparaissent dedans et dehors ; le recul du chevalier (Faith Unmoving) pousse les joueurs du centre dans les tours extérieures, et toutes les tours doivent être prises.",
+      "de": "Zwei Spieler derselben Rolle bekommen Meteor-Marker und lassen sieben Meteore fallen, die nicht nah beieinander landen dürfen. Eis-Pfützen fallen auf die Paare, dann erscheinen innere und äußere Türme; der Rückstoß des Ritters (Faith Unmoving) schiebt Innenspieler in die äußeren Türme, alle Türme müssen besetzt sein.",
+      "ja": "同じロール2人にメテオマーカー、7個のメテオを互いに近づけずに落とす。ペアに氷の床、その後内外に塔。騎士のノックバックで内側の人が外の塔へ飛ばされる。塔はすべて踏む。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Pairs on the cardinals. If a meteor player is east or west, swap so the two meteors are north and south. Meteor-role players take the outside towers and run zigzag between puddles and wall to keep meteors apart; avoid the cursed pattern. Before the knockback, outside players use knockback immunity and inside players stand so they fly into their tower.",
+        "fr": "Paires sur les cardinaux. Si un joueur météore est à l'est ou à l'ouest, échangez pour que les deux météores soient au nord et au sud. Le rôle météore prend les tours extérieures et court en zigzag entre flaques et mur pour espacer les météores ; évitez le schéma maudit. Avant le recul, ceux dehors utilisent une immunité, ceux dedans se placent pour être projetés dans leur tour.",
+        "de": "Paare auf den Haupthimmelsrichtungen. Steht ein Meteor-Spieler im Osten oder Westen, tauschen, damit beide Meteore Nord und Süd sind. Die Meteor-Rolle nimmt die äußeren Türme und läuft im Zickzack zwischen Pfützen und Wand, damit die Meteore Abstand haben; das verfluchte Muster vermeiden. Vor dem Rückstoß nutzen Außenspieler Immunität, Innenspieler stellen sich so, dass sie in ihren Turm fliegen.",
+        "ja": "ペアは十字に配置。メテオが東西なら入れ替えて南北にする。メテオロールは外の塔担当で床と壁の間をジグザグに走ってメテオを離す（呪いパターンに注意）。ノックバック前、外の人は無効、内の人は自分の塔へ飛ぶ位置に立つ。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Meteor role always goes outside; if meteors start east/west, west swaps with north and east with south. Non-meteor role: two towers in your quarter means go out, one means go in; take the tower clockwise of your ice puddle if there is one. Meteor players drop clockwise, the other two meteor-role players take the east and west towers.",
+        "fr": "Le rôle météore va toujours dehors ; si les météores commencent à l'est/ouest, l'ouest échange avec le nord et l'est avec le sud. Rôle non-météore : deux tours dans ton quart, tu sors ; une seule, tu rentres ; prends la tour dans le sens horaire de ta flaque de glace s'il y en a une. Les météores tournent dans le sens horaire, les deux autres du rôle météore prennent les tours est et ouest.",
+        "de": "Die Meteor-Rolle geht immer raus; starten die Meteore Ost/West, tauscht West mit Nord und Ost mit Süd. Nicht-Meteor-Rolle: zwei Türme in deinem Viertel heißt raus, einer heißt rein; nimm den Turm im Uhrzeigersinn neben deiner Eis-Pfütze, falls vorhanden. Meteor-Spieler laufen im Uhrzeigersinn, die anderen zwei der Meteor-Rolle nehmen die Ost- und West-Türme.",
+        "ja": "メテオロールは必ず外。メテオが東西開始なら西↔北、東↔南で交代。非メテオロール：自分の区画に塔が2つなら外、1つなら内。氷床の時計回り隣に塔があればそれを取る。メテオは時計回りに捨て、メテオロールの残り2人は東西の塔。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "same_as": "jp-mana"
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Fixed pairs: MT/D3 north, OT/D4 south, H1/D1 east, H2/D2 west. Meteor players swap to north/south (clockwise preferred), puddles are dropped between pairs, and towers are taken by the meteor role first, then the other role; anti-knockback outside, ride the knockback inside.",
+        "fr": "Paires fixes : MT/D3 nord, OT/D4 sud, H1/D1 est, H2/D2 ouest. Les météores passent au nord/sud (horaire de préférence), les flaques sont posées entre les paires, et les tours sont prises d'abord par le rôle météore puis par l'autre ; immunité dehors, recul dedans.",
+        "de": "Feste Paare: MT/D3 Nord, OT/D4 Süd, H1/D1 Ost, H2/D2 West. Meteor-Spieler wechseln nach Nord/Süd (bevorzugt im Uhrzeigersinn), Pfützen zwischen den Paaren, Türme zuerst Meteor-Rolle, dann die andere; außen Immunität, innen den Rückstoß nutzen.",
+        "ja": "固定ペア：MT/D3北、ST/D4南、H1/D1東、H2/D2西。メテオは南北へ（時計回り優先）、床はペア間に捨て、塔はメテオロール優先。外は無効、内はノックバックで飛ぶ。"
+       }
+      },
+      {
+       "strat": "eu-pf",
+       "how": {
+        "en": "Adjust sides within your role and always force the meteors to north and south.",
+        "fr": "Ajuste les côtés au sein de ton rôle et force toujours les météores au nord et au sud.",
+        "de": "Passt die Seiten innerhalb eurer Rolle an und zwingt die Meteore immer nach Norden und Süden.",
+        "ja": "ロール内で左右を調整し、メテオは必ず南北にする。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "knockback",
+      "dodge"
+     ]
+    },
+    {
+     "id": "ultimate-end-broad-swing",
+     "names": {
+      "en": "Ultimate End / Broad Swing",
+      "fr": "Fin ultime / Broad Swing",
+      "de": "Ultimatives Ende / Broad Swing",
+      "ja": "アルティメットエンド / ブロードスイング"
+     },
+     "aliases": {
+      "en": [
+       "ultimate end",
+       "broad swing",
+       "enrage"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "アルティメットエンド"
+      ]
+     },
+     "how": {
+      "en": "Very heavy raidwide with no visible cast bar; mitigate fully. Then two sets of Broad Swing cleaves (dodge behind to the side he swings first) before the Aetheric Burst enrage, so Thordan must die first.",
+      "fr": "Énorme dégât de zone sans barre d'incantation visible ; réductions complètes. Puis deux séries de Broad Swing (esquive derrière, du côté qu'il frappe en premier) avant l'enrage Aetheric Burst : Thordan doit mourir avant.",
+      "de": "Sehr starker Raidschaden ohne sichtbaren Zauberbalken; voll mitigieren. Danach zwei Broad-Swing-Serien (hinter ihn ausweichen, je nach erster Schlagseite) vor dem Enrage Aetheric Burst, Thordan muss vorher fallen.",
+      "ja": "詠唱バーの見えない超大ダメージ、全軽減。その後ブロードスイング2回（最初に振る側を見て背面へ）、エーテリックバースト（時間切れ）までに倒す。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "dodge",
+      "enrage"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "P3 Nidhogg",
+    "fr": "P3 Nidhogg",
+    "de": "P3 Nidhogg",
+    "ja": "P3 ニーズヘッグ"
+   },
+   "mechanics": [
+    {
+     "id": "dive-from-grace",
+     "names": {
+      "en": "Dive from Grace",
+      "fr": "Dragon déchu",
+      "de": "Gefallener Drache",
+      "ja": "堕天のドラゴンダイブ"
+     },
+     "aliases": {
+      "en": [
+       "dfg",
+       "wyrmhole",
+       "westhogg",
+       "easthogg",
+       "nidhogg towers",
+       "arrows"
+      ],
+      "fr": [
+       "westhogg",
+       "easthogg",
+       "flèches"
+      ],
+      "de": [
+       "Westhogg",
+       "Easthogg",
+       "Pfeile"
+      ],
+      "ja": [
+       "ドラゴンダイブ",
+       "矢印",
+       "塔"
+      ]
+     },
+     "how": {
+      "en": "Players get numbers 1 (three players), 2 (two) and 3 (three), and jump types: circle drops a tower where you stand, up arrow drops it in front of you, down arrow behind you. Towers resolve 1, 2, 3 and must be soaked by players who are not diving at that moment, while Gnash and Lash / Lash and Gnash (in/out), Eye of the Tyrant stacks and Geirskogul line baits happen at the same time.",
+      "fr": "Les joueurs reçoivent des numéros 1 (trois joueurs), 2 (deux) et 3 (trois), et un type de saut : le cercle pose une tour là où tu es, la flèche vers le haut devant toi, la flèche vers le bas derrière toi. Les tours se résolvent 1, 2, 3 et doivent être prises par des joueurs qui ne plongent pas à ce moment-là, pendant que Gnash and Lash / Lash and Gnash (dedans/dehors), les packages Eye of the Tyrant et les lignes Geirskögul s'enchaînent.",
+      "de": "Spieler bekommen Nummern 1 (drei Spieler), 2 (zwei) und 3 (drei) und Sprungtypen: Kreis setzt einen Turm an deine Stelle, Pfeil hoch vor dich, Pfeil runter hinter dich. Türme lösen 1, 2, 3 aus und werden von gerade nicht springenden Spielern besetzt, während gleichzeitig Reißen und Beißen / Beißen und Reißen (rein/raus), Eye-of-the-Tyrant-Stacks und Geirskogul-Linien laufen.",
+      "ja": "1（3人）、2（2人）、3（3人）の番号と跳躍タイプ：○は足元、上矢印は前方、下矢印は後方に塔を置く。塔は1→2→3の順に置かれ、その時跳ばない人が踏む。同時に牙尾の連旋/尾牙の連旋（内外）、頭割り、ゲイルスコグル誘導もある。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Westhogg. 1s stand west, south and east of Nidhogg's hitbox, 3s north on the hitbox with the 2s behind them. Arrows face east: up arrow goes east, down arrow west, circle south. 3s soak the first towers, then the east/west 1s soak the 2s' towers, then the south 1 and the 2s soak the last towers; Lash means in first, Gnash means out first.",
+        "fr": "Westhogg. Les 1 se placent à l'ouest, au sud et à l'est de la hitbox de Nidhogg, les 3 au nord sur la hitbox avec les 2 derrière. Les flèches regardent vers l'est : flèche haut à l'est, flèche bas à l'ouest, cercle au sud. Les 3 prennent les premières tours, puis les 1 est/ouest celles des 2, puis le 1 sud et les 2 les dernières ; Lash d'abord = dedans, Gnash d'abord = dehors.",
+        "de": "Westhogg. Die 1er stehen westlich, südlich und östlich der Hitbox, die 3er nördlich auf der Hitbox, die 2er dahinter. Pfeile schauen nach Osten: Pfeil hoch geht nach Osten, Pfeil runter nach Westen, Kreis nach Süden. Die 3er nehmen die ersten Türme, dann die Ost/West-1er die Türme der 2er, dann der Süd-1er und die 2er die letzten; Lash zuerst heißt rein, Gnash zuerst heißt raus.",
+        "ja": "Westhogg。1は西・南・東のヒットボックス上、3は北のヒットボックス上、2はその後ろ。矢印組は東向き：上矢印は東、下矢印は西、○は南。1回目の塔は3が踏み、2の塔は東西の1、最後の塔は南の1と2が踏む。尾（Lash）先なら内、牙（Gnash）先なら外。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Easthogg: same idea but mirrored, with arrow players facing east so the up arrow goes west and the down arrow east; the three 3s start west, south and east of the boss.",
+        "fr": "Easthogg : même principe mais inversé, les joueurs à flèche regardent vers l'est, donc flèche haut à l'ouest et flèche bas à l'est ; les trois 3 commencent à l'ouest, au sud et à l'est du boss.",
+        "de": "Easthogg: gleiche Idee, aber gespiegelt; Pfeil-Spieler schauen nach Osten, also geht Pfeil hoch nach Westen und Pfeil runter nach Osten; die drei 3er starten westlich, südlich und östlich vom Boss.",
+        "ja": "Easthogg：考え方は同じで逆。矢印組は東向きなので上矢印は西、下矢印は東。3の3人はボスの西・南・東から開始。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "jp-elemental"
+      },
+      {
+       "strat": "eu-pf",
+       "how": {
+        "en": "Easthogg: pre-position to claim your spot; the stacks go north.",
+        "fr": "Easthogg : pré-place-toi pour prendre ta place ; les packages vont au nord.",
+        "de": "Easthogg: stell dich vorher auf, um deinen Platz zu sichern; die Stacks gehen nach Norden.",
+        "ja": "東ニーズ（Easthogg）：先に立ち位置を取っておく。頭割りは北。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Mana lines the 3s up north west-to-east while the NA guide puts the 2s behind the 3s; facing details differ slightly between write-ups, so check your group's toolbox.",
+      "fr": "Sur Mana, les 3 s'alignent au nord d'ouest en est, alors que le guide NA met les 2 derrière les 3 ; les détails d'orientation varient un peu selon les guides, vérifie la toolbox de ton groupe.",
+      "de": "Auf Mana stehen die 3er im Norden von West nach Ost, der NA-Guide stellt die 2er hinter die 3er; Details zur Blickrichtung weichen leicht ab, prüfe die Toolbox deiner Gruppe.",
+      "ja": "Manaは3が北に西→東で並び、NAガイドは3の後ろに2。向きの細部は資料で差があるのでPTの資料を確認。"
+     },
+     "tags": [
+      "tower",
+      "debuff",
+      "dodge"
+     ]
+    },
+    {
+     "id": "darkdragon-dive-towers",
+     "names": {
+      "en": "Darkdragon Dive (four towers)",
+      "fr": "Piqué du dragon sombre (quatre tours)",
+      "de": "Dunkeldrachensturz (vier Türme)",
+      "ja": "ダークドラゴンダイブ（4つの塔）"
+     },
+     "aliases": {
+      "en": [
+       "4 towers",
+       "enumeration towers",
+       "second towers"
+      ],
+      "fr": [
+       "4 tours"
+      ],
+      "de": [
+       "4 Türme"
+      ],
+      "ja": [
+       "4塔",
+       "人数塔"
+      ]
+     },
+     "how": {
+      "en": "Four towers spawn on the intercardinals, each needing 1 to 4 players (8 in total); a tower without enough players explodes. Afterwards clones bait Geirskogul lines on the closest players.",
+      "fr": "Quatre tours apparaissent sur les intercardinaux, chacune demandant 1 à 4 joueurs (8 au total) ; une tour sans assez de joueurs explose. Ensuite, des clones lancent des lignes Geirskögul sur les joueurs les plus proches.",
+      "de": "Vier Türme erscheinen auf den Zwischenhimmelsrichtungen, jeder braucht 1 bis 4 Spieler (insgesamt 8); ein unterbesetzter Turm explodiert. Danach ködern Klone Geirskogul-Linien auf die nächsten Spieler.",
+      "ja": "斜め4か所に塔、それぞれ1〜4人（合計8人）必要。人数不足は爆発。その後分身が近い人へゲイルスコグル。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Each tower has an anchor (ranged or healer) and a flex (melee or tank). If your tower needs 2 or more, both stay. If it needs only 1, the flex goes clockwise if that tower needs 3-4, else counter-clockwise if that one needs 3-4, else to the opposite tower. Anchors then bait Geirskogul.",
+        "fr": "Chaque tour a une ancre (distance ou soigneur) et un flex (mêlée ou tank). Si ta tour demande 2 ou plus, les deux restent. Si elle en demande 1, le flex va dans le sens horaire si cette tour en demande 3-4, sinon anti-horaire si elle en demande 3-4, sinon à la tour opposée. Les ancres prennent ensuite Geirskögul.",
+        "de": "Jeder Turm hat einen Anker (Fernkampf oder Heiler) und einen Flex (Nahkampf oder Tank). Braucht dein Turm 2 oder mehr, bleiben beide. Braucht er nur 1, geht der Flex im Uhrzeigersinn, wenn der Turm 3-4 braucht, sonst gegen den Uhrzeigersinn, wenn der 3-4 braucht, sonst zum gegenüberliegenden Turm. Anker ködern danach Geirskogul.",
+        "ja": "各塔にアンカー（遠隔かヒーラー）とフレックス（近接かタンク）。2人以上必要なら両方残る。1人なら、フレックスは時計回りの塔が3〜4人ならそこ、無理なら反時計回り、それも無理なら対角へ。アンカーはその後ゲイルスコグル誘導。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Start MT NW, ST NE, D1 SW, D2 SE with healers and ranged in fixed towers; tanks and melee move only if their tower needs 1, checking clockwise, counter-clockwise, then across. At most two players move.",
+        "fr": "Départ MT NO, ST NE, D1 SO, D2 SE, soigneurs et distances dans des tours fixes ; tanks et mêlées ne bougent que si leur tour demande 1, en vérifiant horaire, anti-horaire puis en face. Au maximum deux joueurs bougent.",
+        "de": "Start MT NW, ST NO, D1 SW, D2 SO, Heiler und Fernkämpfer in festen Türmen; Tanks und Nahkämpfer bewegen sich nur, wenn ihr Turm 1 braucht – erst im Uhrzeigersinn, dann dagegen, dann gegenüber. Höchstens zwei Spieler bewegen sich.",
+        "ja": "開始はMT北西、ST北東、D1南西、D2南東。ヒーラーと遠隔は固定。自分の塔が1人ならタンク・近接が時計回り→反時計回り→対角の順で移動。動くのは最大2人。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "same_as": "jp-mana"
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "eu-pf",
+       "how": {
+        "en": "Healers and ranged anchor and later bait Geirskogul; tanks and melee adjust between towers.",
+        "fr": "Les soigneurs et distances restent fixes puis attirent Geirskogul ; tanks et mêlées s'ajustent entre les tours.",
+        "de": "Heiler und Fernkämpfer bleiben fest und ködern später Geirskogul; Tanks und Nahkämpfer passen sich zwischen den Türmen an.",
+        "ja": "ヒーラーとレンジは固定でゲイルスコグルを誘導、タンクと近接が塔を調整。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower"
+     ]
+    },
+    {
+     "id": "soul-tether",
+     "names": {
+      "en": "Soul Tether",
+      "fr": "Bride de l'âme",
+      "de": "Seelenstrick",
+      "ja": "ソウルテザー"
+     },
+     "aliases": {
+      "en": [
+       "tethers",
+       "tank tethers"
+      ],
+      "fr": [
+       "liens"
+      ],
+      "de": [
+       "Verbindungen"
+      ],
+      "ja": [
+       "線",
+       "タンク線"
+      ]
+     },
+     "how": {
+      "en": "Nidhogg and one clone tether players with heavy tankbusters; tanks must take both tethers and resolve them away from the party. Then Drachenlance and the Revenge of the Horde enrage.",
+      "fr": "Nidhogg et un clone lient des joueurs avec de lourds tankbusters ; les tanks doivent prendre les deux liens et les résoudre loin du groupe. Puis Drachenlance et l'enrage Revenge of the Horde.",
+      "de": "Nidhogg und ein Klon verbinden sich mit Spielern für schwere Tankbuster; die Tanks nehmen beide Verbindungen und lösen sie abseits der Gruppe auf. Danach Drachenlanze und der Enrage Revenge of the Horde.",
+      "ja": "ニーズヘッグと分身1体が強攻撃の線。タンクが両方取り、PTから離れて受ける。その後ドラッケンランス、時間切れ技。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Tanks intercept both tethers and take them north or south of the boss with heavy mitigation.",
+        "fr": "Les tanks interceptent les deux liens et les prennent au nord ou au sud du boss avec de grosses réductions.",
+        "de": "Tanks fangen beide Verbindungen ab und nehmen sie nördlich oder südlich vom Boss mit starker Mitigation.",
+        "ja": "タンクが両方の線を取り、ボスの南北で強い軽減で受ける。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "MT takes Nidhogg's tether under Nidhogg, ST takes the clone's away from others; both use mitigation, not invulnerabilities.",
+        "fr": "Le MT prend le lien de Nidhogg sous Nidhogg, l'ST celui du clone loin des autres ; les deux utilisent des réductions, pas d'invu.",
+        "de": "Der MT nimmt Nidhoggs Verbindung unter Nidhogg, der ST die des Klons abseits; beide mit Mitigation, keine Unverwundbarkeit.",
+        "ja": "MTはニーズヘッグの線をボス下で、STは分身の線を人のいない所で。両者とも軽減のみ。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Both tanks use invulnerabilities and stack in the middle. Tuufless's Elemental page lists MT on Nidhogg's tether under the boss and ST on the clone's tether.",
+        "fr": "Les deux tanks utilisent une invu et se regroupent au centre. La page Elemental de Tuufless indique le MT sur le lien de Nidhogg sous le boss et le ST sur celui du clone.",
+        "de": "Beide Tanks nutzen Unverwundbarkeiten und stacken in der Mitte. Die Elemental-Seite von Tuufless nennt den MT auf Nidhoggs Verbindung unter dem Boss und den ST auf der des Klons.",
+        "ja": "両タンクが無敵を使い中央で重なる。TuuflessのElementalページでは、MTがボス下でニーズヘッグの線、STが分身の線。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Two sources describe this differently (both tanks invuln and stack in the middle, vs MT on the boss tether and ST on the clone tether).",
+        "fr": "Deux sources le décrivent différemment (les deux tanks utilisent une invulnérabilité au centre, ou MT sur le lien du boss et ST sur celui du clone).",
+        "de": "Zwei Quellen beschreiben es unterschiedlich (beide Tanks nutzen Unverwundbarkeit in der Mitte, oder MT auf der Boss-Verbindung und ST auf der des Klons).",
+        "ja": "2つの情報源で内容が異なります（タンク2人が無敵で中央に集まる／MTがボスの線、STが分身の線を取る）。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Each tank takes one tether and uses an invulnerability for the buster.",
+        "fr": "Chaque tank prend un lien et utilise un invu pour le buster.",
+        "de": "Jeder Tank nimmt eine Verbindung und nutzt für den Buster eine Unverwundbarkeit.",
+        "ja": "タンクが1本ずつ線を取り、無敵で受ける。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tether",
+      "enrage"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p4",
+   "names": {
+    "en": "P4 Eyes of Nidhogg",
+    "fr": "P4 Yeux de Nidhogg",
+    "de": "P4 Augen von Nidhogg",
+    "ja": "P4 ニーズヘッグの眼"
+   },
+   "mechanics": [
+    {
+     "id": "hatebound-orbs",
+     "names": {
+      "en": "Hatebound (tethers and orbs)",
+      "fr": "Lacération de Nidhogg (liens et orbes)",
+      "de": "Nidhoggs Hass (Verbindungen und Kugeln)",
+      "ja": "邪竜爪牙（線と玉）"
+     },
+     "aliases": {
+      "en": [
+       "eyes",
+       "red blue tethers",
+       "orbs",
+       "chains"
+      ],
+      "fr": [
+       "yeux",
+       "liens rouge bleu"
+      ],
+      "de": [
+       "Augen",
+       "rot blau"
+      ],
+      "ja": [
+       "目",
+       "赤青線",
+       "玉"
+      ]
+     },
+     "how": {
+      "en": "First stack on Alphinaud for the buffs that let you hit the eyes. Each player gets a red or blue tether: damage on a red-tethered player hurts the red eye, damage on a blue-tethered player heals the blue eye. Tethers swap by touching a different colour (short lockout after), and yellow orbs (pair) and blue orbs (single) are popped when fully grown.",
+      "fr": "D'abord, regroupe-toi sur Alphinaud pour les buffs qui permettent de frapper les yeux. Chaque joueur a un lien rouge ou bleu : les dégâts sur un lien rouge blessent l'œil rouge, ceux sur un lien bleu soignent l'œil bleu. Les liens s'échangent au contact d'une autre couleur (courte attente ensuite), et les orbes jaunes (à deux) et bleus (seul) se prennent quand ils sont à pleine taille.",
+      "de": "Zuerst auf Alphinaud stacken für die Buffs, mit denen man die Augen treffen kann. Jeder bekommt eine rote oder blaue Verbindung: Schaden an Rot-Verbundenen verletzt das rote Auge, Schaden an Blau-Verbundenen heilt das blaue Auge. Verbindungen tauschen bei Kontakt mit der anderen Farbe (kurze Sperre danach), gelbe Kugeln (zu zweit) und blaue Kugeln (allein) werden voll ausgewachsen genommen.",
+      "ja": "まずアルフィノに集まり目を攻撃できるバフをもらう。赤線の人が受けたダメージは赤目にダメージ、青線の人のダメージは青目を回復。違う色に触れると線が入れ替わる（直後は短い交換不可）。黄玉（2人）と青玉（1人）は最大サイズで踏む。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Melee DPS and tanks take red, healers and ranged take blue. Tanks soak the yellow orb on the red eye, melee the one on the blue eye, then hand their red tethers to their group partner; healers and ranged soak the blue orbs. Swaps are done on Estinien in the middle.",
+        "fr": "Mêlées et tanks prennent rouge, soigneurs et distances bleu. Les tanks prennent l'orbe jaune sur l'œil rouge, les mêlées celui de l'œil bleu, puis passent leur lien rouge à leur partenaire de groupe ; soigneurs et distances prennent les orbes bleus. Les échanges se font sur Estinien au centre.",
+        "de": "Nahkämpfer und Tanks nehmen Rot, Heiler und Fernkämpfer Blau. Tanks nehmen die gelbe Kugel am roten Auge, Nahkämpfer die am blauen, geben dann ihre rote Verbindung an den Gruppenpartner; Heiler und Fernkämpfer nehmen die blauen Kugeln. Getauscht wird auf Estinien in der Mitte.",
+        "ja": "近接とタンクが赤、ヒーラーと遠隔が青。黄玉は赤目側をタンク、青目側を近接が踏み、その後赤線を同グループの相方へ渡す。青玉はヒーラーと遠隔。交換は中央のエスティニアン上で。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Tanks and healers want blue, DPS want red; wrong colours fix it on Estinien. DPS pop yellow orbs together, then take blue tethers from tanks/healers, who then pop the blue orbs.",
+        "fr": "Tanks et soigneurs veulent bleu, DPS rouge ; les mauvaises couleurs se corrigent sur Estinien. Les DPS prennent ensemble les orbes jaunes, puis récupèrent les liens bleus des tanks/soigneurs, qui prennent ensuite les orbes bleus.",
+        "de": "Tanks und Heiler wollen Blau, DDs Rot; falsche Farben werden auf Estinien korrigiert. DDs nehmen zusammen die gelben Kugeln, holen sich dann die blauen Verbindungen von Tanks/Heilern, die danach die blauen Kugeln nehmen.",
+        "ja": "タンヒラが青、DPSが赤。違う色はエスティニアン上で調整。DPSが黄玉を2人で踏み、その後タンヒラから青線を受け取り、タンヒラが青玉を踏む。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Mirror of Mana: tanks and healers take red, DPS take blue; after the yellow orbs the red tethers wait and the blue tethers swap.",
+        "fr": "Inverse de Mana : tanks et soigneurs prennent rouge, DPS bleu ; après les orbes jaunes, les liens rouges attendent et les bleus échangent.",
+        "de": "Umgekehrt zu Mana: Tanks und Heiler nehmen Rot, DDs Blau; nach den gelben Kugeln warten die roten, die blauen tauschen.",
+        "ja": "Manaの逆：タンヒラが赤、DPSが青。黄玉後は赤線が待ち、青線が交換。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Tanks split the eyes (MT red, OT blue). Melee start red; supports end on red and DPS on blue; melee pop the yellow orb as a pair after it grows twice, then swap back with their partners.",
+        "fr": "Les tanks se partagent les yeux (MT rouge, OT bleu). Les mêlées commencent en rouge ; les supports finissent en rouge et les DPS en bleu ; les mêlées prennent l'orbe jaune à deux après sa deuxième croissance, puis rééchangent avec leurs partenaires.",
+        "de": "Tanks teilen die Augen auf (MT rot, OT blau). Nahkämpfer starten rot; Supporter enden auf Rot, DDs auf Blau; Nahkämpfer nehmen die gelbe Kugel zu zweit nach dem zweiten Wachsen und tauschen dann mit ihren Partnern zurück.",
+        "ja": "タンクは目を分担（MT赤、ST青）。近接は赤から開始、最終的にサポートが赤・DPSが青。黄玉は2段階成長後に近接2人で踏み、相方と再交換。"
+       }
+      },
+      {
+       "strat": "eu-pf",
+       "how": {
+        "en": "Tanks and healers east, DPS west. Tanks and melee take the red chain, healers and ranged the blue one; group 1 takes the north spot and group 2 the south.",
+        "fr": "Tanks et soigneurs à l'est, DPS à l'ouest. Tanks et mêlées prennent la chaîne rouge, soigneurs et distances la bleue ; le groupe 1 prend la place nord et le groupe 2 la sud.",
+        "de": "Tanks und Heiler im Osten, DPS im Westen. Tanks und Nahkämpfer nehmen die rote Kette, Heiler und Fernkämpfer die blaue; Gruppe 1 nimmt den Nordplatz, Gruppe 2 den Süden.",
+        "ja": "タンクヒーラーは東、DPSは西。タンクと近接が赤の鎖、ヒーラーとレンジが青。G1が北、G2が南。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "adds"
+     ]
+    },
+    {
+     "id": "mirage-dive",
+     "names": {
+      "en": "Mirage Dive",
+      "fr": "Piqué mirage",
+      "de": "Illusionssprung",
+      "ja": "ミラージュダイブ"
+     },
+     "aliases": {
+      "en": [
+       "dives",
+       "mirage dives"
+      ],
+      "fr": [
+       "piqués"
+      ],
+      "de": [
+       "Sprünge"
+      ],
+      "ja": [
+       "ミラージュ"
+      ]
+     },
+     "how": {
+      "en": "Four rounds of dives hit two red-tethered players; a second dive on the same player kills, so dived players hand their red tether to someone fresh. Kill both eyes before Steep in Rage finishes and before the gauge reaches 100.",
+      "fr": "Quatre vagues de piqués touchent deux joueurs à lien rouge ; un deuxième piqué sur le même joueur tue, donc les joueurs touchés passent leur lien rouge à quelqu'un de frais. Tuez les deux yeux avant la fin d'Onde de fureur et avant que la jauge atteigne 100.",
+      "de": "Vier Sprungrunden treffen zwei Rot-Verbundene; ein zweiter Treffer auf denselben Spieler tötet, daher geben Getroffene ihre rote Verbindung an jemand Frisches. Beide Augen vor Ende von Welle des Zorns und bevor die Leiste 100 erreicht töten.",
+      "ja": "赤線2人へダイブが4回。同じ人が2回受けると死ぬので、受けた人は赤線を未被弾の人へ渡す。憤怒の波動完了前、ゲージ100前に両目を倒す。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Blue tethers stack under the blue eye, red tethers spread at max melee. Swap order: tanks swap for the first set, melee for the second, the first-dived players for the third; the fourth needs no swap. Group 1 rotates northwest counter-clockwise, group 2 northeast clockwise.",
+        "fr": "Les liens bleus se regroupent sous l'œil bleu, les rouges s'écartent à portée max de mêlée. Ordre d'échange : les tanks pour le premier set, les mêlées pour le deuxième, les premiers touchés pour le troisième ; le quatrième ne demande pas d'échange. Groupe 1 au nord-ouest en anti-horaire, groupe 2 au nord-est en horaire.",
+        "de": "Blaue stacken unter dem blauen Auge, Rote verteilen sich auf max. Nahkampfreichweite. Tauschreihenfolge: Tanks beim ersten Set, Nahkämpfer beim zweiten, die zuerst Getroffenen beim dritten; das vierte braucht keinen Tausch. Gruppe 1 dreht im Nordwesten gegen den Uhrzeigersinn, Gruppe 2 im Nordosten im Uhrzeigersinn.",
+        "ja": "青線は青目の下、赤線は近接最大距離に散開。交換順：1回目タンク、2回目近接、3回目は最初に受けた人、4回目は交換なし。1組は北西から反時計回り、2組は北東から時計回り。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Swap pairs in order D1+D2, D3+D4, then the tanks/healers hit earlier, reading clockwise or counter-clockwise from west (for the third pair: MT, ST, H2, H1 clockwise). Switch to the blue eye once red is at 40%.",
+        "fr": "Échanges dans l'ordre D1+D2, D3+D4, puis les tanks/soigneurs touchés plus tôt, en lisant dans le sens horaire ou anti-horaire depuis l'ouest (pour la troisième paire : MT, ST, H2, H1 en horaire). Passe sur l'œil bleu quand le rouge est à 40 %.",
+        "de": "Tauschpaare in der Reihenfolge D1+D2, D3+D4, dann die früher getroffenen Tanks/Heiler, gelesen im oder gegen den Uhrzeigersinn ab Westen (drittes Paar: MT, ST, H2, H1 im Uhrzeigersinn). Bei 40 % auf Rot zum blauen Auge wechseln.",
+        "ja": "交換はD1+D2→D3+D4→先に受けたタンヒラの順、西から時計/反時計回りで判断（3回目は時計回りにMT・ST・H2・H1）。赤目40%で青目へ。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Same idea as Mana, but read from north (counter-clockwise / clockwise) with a different priority per group.",
+        "fr": "Même principe que Mana, mais en lisant depuis le nord (anti-horaire / horaire) avec une priorité différente par groupe.",
+        "de": "Wie Mana, aber ab Norden gelesen (gegen / im Uhrzeigersinn) mit anderer Priorität pro Gruppe.",
+        "ja": "Manaと同じ考え方だが、北から反時計/時計回りで読み、グループごとの優先順が異なる。"
+       }
+      },
+      {
+       "strat": "eu-pf",
+       "how": {
+        "en": "Swap order: tanks, then melee, then the players who dove first.",
+        "fr": "Ordre des échanges : tanks, puis mêlées, puis les joueurs qui ont plongé en premier.",
+        "de": "Tauschreihenfolge: Tanks, dann Nahkämpfer, dann die Spieler, die zuerst getaucht sind.",
+        "ja": "交代順はタンク→近接→最初にダイブした人。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "The exact Elemental priority order was not spelled out in the source.",
+      "fr": "L'ordre exact de priorité Elemental n'est pas précisé dans la source.",
+      "de": "Die genaue Elemental-Priorität ist in der Quelle nicht genannt.",
+      "ja": "Elementalの正確な優先順はソースに明記なし。"
+     },
+     "tags": [
+      "tether",
+      "dps-check",
+      "enrage"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "intermission",
+   "names": {
+    "en": "Intermission: Rewind (Haurchefant)",
+    "fr": "Intermission : Retour en arrière (Haurchefant)",
+    "de": "Zwischenphase: Zurückgespult (Haurchefant)",
+    "ja": "幕間：時間遡行（オルシュファン）"
+   },
+   "mechanics": [
+    {
+     "id": "haurchefant-spear",
+     "names": {
+      "en": "Haurchefant and the Spear (Pierce)",
+      "fr": "Haurchefant et la lance (Pierce)",
+      "de": "Haurchefant und der Speer (Pierce)",
+      "ja": "オルシュファンと槍"
+     },
+     "aliases": {
+      "en": [
+       "intermission",
+       "rewind",
+       "haurchefant",
+       "spear",
+       "pierce"
+      ],
+      "fr": [
+       "haurchefant",
+       "lance"
+      ],
+      "de": [
+       "Haurchefant",
+       "Speer"
+      ],
+      "ja": [
+       "オルシュファン",
+       "槍",
+       "幕間"
+      ]
+     },
+     "how": {
+      "en": "Time rewinds to the end of P1: Planar Prison and Brightwing/Pure of Heart repeat, but Haurchefant must survive. Use tank LB3 when he appears so he can be healed, keep him high, then destroy the Spear before Pierce; failing loops the fight back to P2.",
+      "fr": "Le temps revient à la fin de P1 : Prison dimensionnelle et Aile lumineuse/Pureté du cœur se répètent, mais Haurchefant doit survivre. Utilise la LB3 tank dès qu'il apparaît pour qu'il puisse être soigné, garde-le haut, puis détruis la lance avant Pierce ; en cas d'échec, retour en P2.",
+      "de": "Die Zeit springt zum Ende von P1 zurück: Dimensionsfalle und Lichtschwinge/Reines Herz wiederholen sich, aber Haurchefant muss überleben. Tank-LB3 nutzen, sobald er erscheint, damit er geheilt werden kann, ihn hochhalten, dann den Speer vor Pierce zerstören; bei Fehlschlag geht es zurück zu P2.",
+      "ja": "P1の終盤に戻り、ジェイルと光翼閃/ピュア・オブ・ハートを再処理、ただしオルシュファンを生かす。登場したらタンクLB3で回復可能にし、HPを高く保ち、ピアス前に槍を破壊。失敗するとP2へ戻る。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "transition",
+      "adds",
+      "dps-check"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p5",
+   "names": {
+    "en": "P5 Thordan (alternate timeline)",
+    "fr": "P5 Thordan (histoire alternative)",
+    "de": "P5 Thordan (alternative Zeitlinie)",
+    "ja": "P5 騎神トールダン（異なる歴史）"
+   },
+   "mechanics": [
+    {
+     "id": "wrath-of-the-heavens",
+     "names": {
+      "en": "Wrath of the Heavens",
+      "fr": "Colère d'azur",
+      "de": "Himmel des Zorns",
+      "ja": "至天の陣：風槍"
+     },
+     "aliases": {
+      "en": [
+       "wrath",
+       "woth",
+       "p5 first"
+      ],
+      "fr": [
+       "colère"
+      ],
+      "de": [
+       "Zorn"
+      ],
+      "ja": [
+       "風槍",
+       "一運"
+      ]
+     },
+     "how": {
+      "en": "A white dragon appears on a cardinal (relative north). Two players are tethered for Spiral Pierce lines, one gets a blue Skyward Leap marker, twisters spawn under everyone, two players get lightning, and a green dive marker goes out. Then Mercy Revealed cleaves everyone, Liquid Heaven (5 puddles) and Altar Flare (4 puddles) are baited, and everyone gathers under the warrior knight for the donut.",
+      "fr": "Un dragon blanc apparaît sur un cardinal (nord relatif). Deux joueurs sont liés pour les lignes Spiral Pierce, un reçoit un marqueur bleu Bond céleste, des tornades apparaissent sous tout le monde, deux joueurs ont la foudre et un marqueur vert de piqué sort. Puis Grâce révélée frappe tout le monde, Liquid Heaven (5 flaques) et Altar Flare (4 flaques) sont posés, et tout le monde se regroupe sous le chevalier guerrier pour le donut.",
+      "de": "Ein weißer Drache erscheint auf einer Himmelsrichtung (relativer Norden). Zwei Spieler werden für Spiral-Pierce-Linien verbunden, einer bekommt einen blauen Luftsprung-Marker, Wirbel erscheinen unter allen, zwei Spieler bekommen Blitze und ein grüner Sturz-Marker kommt. Dann trifft die enthüllte Gnade alle, Liquid Heaven (5 Pfützen) und Altar Flare (4 Pfützen) werden geködert, und alle sammeln sich unter dem Krieger-Ritter für den Donut.",
+      "ja": "白竜が十字のどこかに出現（相対北）。2人にスパイラルピアスの線、1人に青マーカー、全員の足元に竜巻、2人に雷、緑のダイブマーカー。続いてアスカロンメルシー、リキッドヘヴン（5回）とアルターフレア（4回）を誘導し、最後は戦士騎士の下でドーナツ回避。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Party-right Wrath: tethered players go opposite the knights, south; the blue marker goes northwest on the wall; everyone else spreads along the east wall. Green dive goes to the wall behind the mage knight. Baits run toward the warrior knight; lightning players stay on the outside of the final stack.",
+        "fr": "Wrath groupe à droite : les liés vont à l'opposé des chevaliers, au sud ; le bleu va au nord-ouest contre le mur ; les autres s'écartent le long du mur est. Le piqué vert va au mur derrière le chevalier mage. Les baits courent vers le chevalier guerrier ; les joueurs foudre restent à l'extérieur du pack final.",
+        "de": "Wrath mit Gruppe rechts: Verbundene gehen gegenüber den Rittern nach Süden, der Blaue nach Nordwesten an die Wand, alle anderen verteilen sich an der Ostwand. Grüner Sturz geht an die Wand hinter dem Magier-Ritter. Köder laufen zum Krieger-Ritter; Blitz-Spieler bleiben außen am letzten Stack.",
+        "ja": "パーティ右：線の2人は騎士の反対の南、青は北西の壁、他は東の壁に散開。緑は黒魔騎士の後ろの壁。誘導組は戦士騎士へ向かい、雷の人は最後の集合の外側。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-elemental",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "eu-pf",
+       "how": {
+        "en": "Relative to the dive: the blue marker goes northwest and the group goes east.",
+        "fr": "Relatif au plongeon : le marqueur bleu va au nord-ouest et le groupe à l'est.",
+        "de": "Relativ zum Sturzflug: Der blaue Marker geht nach Nordwesten, die Gruppe nach Osten.",
+        "ja": "ダイブ基準：青マーカーは北西、PTは東。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "All four write-ups use the same layout (white dragon north, blue NW, tethers crossed south, party east); small differences in spacing only.",
+      "fr": "Les quatre guides utilisent le même schéma (dragon blanc au nord, bleu NO, liens croisés au sud, groupe à l'est) ; seules de petites différences d'espacement.",
+      "de": "Alle vier Quellen nutzen dasselbe Layout (weißer Drache Norden, Blau NW, gekreuzte Verbindungen Süden, Gruppe Osten); nur kleine Abstandsunterschiede.",
+      "ja": "4資料とも同じ配置（白竜北、青は北西、線は交差して南、PTは東）。間隔に小差のみ。"
+     },
+     "tags": [
+      "tether",
+      "spread",
+      "knockback",
+      "dodge"
+     ]
+    },
+    {
+     "id": "heavenly-heel-might-p5",
+     "names": {
+      "en": "Heavenly Heel / Ascalon's Might (P5)",
+      "fr": "Estoc céleste / Puissance d'Ascalon (P5)",
+      "de": "Himmelsschritt / Macht von Askalon (P5)",
+      "ja": "ヘヴンリーヒール / アスカロンマイト（P5）"
+     },
+     "aliases": {
+      "en": [
+       "heavenly heel",
+       "might",
+       "p5 tankbuster"
+      ],
+      "fr": [
+       "estoc céleste",
+       "puissance d'ascalon"
+      ],
+      "de": [
+       "himmelsschritt",
+       "macht von askalon"
+      ],
+      "ja": [
+       "ヘヴンリーヒール",
+       "アスカロンマイト"
+      ]
+     },
+     "how": {
+      "en": "The same pair as in P2 but stronger: Heavenly Heel, then Ascalon's Might on the main tank; swap aggro during Heavenly Heel or use an invulnerability. Another set comes after Ancient Quaga, just before the enrage.",
+      "fr": "La même paire qu'en P2 mais plus forte : Estoc céleste, puis Puissance d'Ascalon sur le main tank ; échange l'inimitié pendant Estoc céleste ou utilise un invu. Une autre série arrive après Ancient Quaga, juste avant l'enrage.",
+      "de": "Dasselbe Paar wie in P2, nur stärker: Himmelsschritt, dann Macht von Askalon auf den Main-Tank; Feindschaft während Himmelsschritt wechseln oder Unverwundbarkeit nutzen. Ein weiterer Satz kommt nach Ancient Quaga, kurz vor dem Enrage.",
+      "ja": "P2と同じ組み合わせで威力が上がっている。ヘヴンリーヒールの後にMTへアスカロンマイト。ヒール詠唱中にスイッチするか無敵。エンシェントクエイガの後、時間切れ前にもう1セット来る。"
+     },
+     "strats": [
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "A Warrior MT can use an invulnerability on Heavenly Heel into Ascalon's Might.",
+        "fr": "Un MT Guerrier peut utiliser son invu sur Estoc céleste puis Puissance d'Ascalon.",
+        "de": "Ein Krieger-MT kann bei Himmelsschritt mit folgender Macht von Askalon seine Unverwundbarkeit nutzen.",
+        "ja": "戦士MTならヘヴンリーヒール→アスカロンマイトに無敵を使える。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap"
+     ]
+    },
+    {
+     "id": "death-of-the-heavens",
+     "names": {
+      "en": "Death of the Heavens (with Playstation 2)",
+      "fr": "Condamnation d'azur (avec Playstation 2)",
+      "de": "Himmel des Todes (mit Playstation 2)",
+      "ja": "至天の陣：死刻（PS2含む）"
+     },
+     "aliases": {
+      "en": [
+       "doth",
+       "death",
+       "dooms",
+       "playstation 2",
+       "ps2"
+      ],
+      "fr": [
+       "dooms",
+       "playstation 2"
+      ],
+      "de": [
+       "Dooms",
+       "Playstation 2"
+      ],
+      "ja": [
+       "死刻",
+       "二運",
+       "PS2",
+       "プレステ2"
+      ]
+     },
+     "how": {
+      "en": "Four players get Doom. Knights and a dragon dash, twisters spawn, Heavy Impact rings expand, then Playstation chains appear: Doomed players get circles, non-Doomed get crosses, one of each gets square and triangle. Look away from Thordan and the eye, get knocked back to break chains, and Doomed players step into a white puddle (from Wings of Salvation) to cleanse.",
+      "fr": "Quatre joueurs reçoivent Doom. Chevaliers et dragon chargent, des tornades apparaissent, les anneaux Heavy Impact s'étendent, puis viennent les chaînes Playstation : les Doom ont les ronds, les non-Doom les croix, un de chaque reçoit carré et triangle. Regarde à l'opposé de Thordan et de l'œil, fais-toi repousser pour casser les chaînes, et les Doom marchent dans une flaque blanche (Aile de la salvation) pour se purifier.",
+      "de": "Vier Spieler bekommen Doom. Ritter und Drache sprinten, Wirbel erscheinen, Heavy-Impact-Ringe breiten sich aus, dann kommen die Playstation-Ketten: Doom-Spieler bekommen Kreise, Nicht-Doom Kreuze, je einer Quadrat und Dreieck. Von Thordan und dem Auge wegschauen, durch den Rückstoß die Ketten reißen, Doom-Spieler gehen in eine weiße Pfütze (Rettende Schwinge), um sich zu reinigen.",
+      "ja": "4人に死の宣告。騎士と竜の突進、竜巻、ヘヴィインパクトの輪の後、PS線：宣告者が○、無しが×、□△は両方から1人ずつ。トールダンと目に背を向け、ノックバックで鎖を切り、宣告者は白い床（サルヴェーションウィング）を踏んで解除。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Dooms North and anchor: line up east to west; Doomed go relative north (outer two east/west on the grey ring, inner two NE/NW), non-Doomed south (outer on the walls, inner SE/SW). The two Dooms furthest apart bait circles; Doomed players stay put (anchor) and non-Doomed square/triangle position opposite their partner; X players go north/south.",
+        "fr": "Dooms au nord avec ancres : alignez-vous d'est en ouest ; les Doom vont au nord relatif (les deux extérieurs est/ouest sur l'anneau gris, les deux intérieurs NE/NO), les non-Doom au sud (extérieurs aux murs, intérieurs SE/SO). Les deux Doom les plus éloignés prennent les ronds ; les Doom ne bougent pas (ancres) et les non-Doom carré/triangle se placent en face de leur partenaire ; les croix vont au nord/sud.",
+        "de": "Dooms Nord mit Ankern: von Ost nach West aufstellen; Doom-Spieler gehen relativ nach Norden (äußere zwei Ost/West auf dem grauen Ring, innere zwei NO/NW), Nicht-Doom nach Süden (äußere an die Wände, innere SO/SW). Die zwei am weitesten entfernten Dooms ködern die Kreise; Doom-Spieler bleiben stehen (Anker), Nicht-Doom mit Quadrat/Dreieck stellen sich gegenüber ihrem Partner; Kreuze gehen Nord/Süd.",
+        "ja": "死刻北＋アンカー：東西に並び、宣告者は相対北（外側2人は灰色リング上の東西、内側2人は北東・北西）、無しは南（外側は壁、内側は南東・南西）。一番離れた宣告者2人が○を誘導。宣告者は動かず（アンカー）、無しの□△は相方の反対へ、×は南北へ。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "2-2 Dooms South, anchored: line up MT, ST, D1-D4, H1, H2. Doomed step away from Guerrique (south) in a line of four, the rest toward him. Outermost take the cardinal sides, inner two the intercardinals. Same anchored Playstation as NA: circle Dooms move toward center, X non-Dooms left goes north and right goes south.",
+        "fr": "Dooms 2-2 au sud, ancrés : ordre MT, ST, D1-D4, H1, H2. Les Doom s'éloignent de Guerrique (sud) en ligne de quatre, les autres vont vers lui. Les plus extérieurs prennent les côtés cardinaux, les deux intérieurs les intercardinaux. Playstation ancrée comme en NA : les Doom rond vont vers le centre, la croix non-Doom de gauche va au nord et celle de droite au sud.",
+        "de": "2-2-Dooms Süden, verankert: Reihenfolge MT, ST, D1-D4, H1, H2. Doom-Spieler gehen von Guerrique weg (Süden) in eine Viererlinie, die anderen zu ihm. Die Äußersten nehmen die Hauptrichtungen, die inneren zwei die Zwischenrichtungen. Verankerte Playstation wie bei NA: Kreis-Dooms gehen zur Mitte, das linke Nicht-Doom-Kreuz nach Norden, das rechte nach Süden.",
+        "ja": "2-2南アンカー：並びはMT・ST・D1〜D4・H1・H2。宣告者はゲリックから離れて（南）4人並び、無しはゲリック側。外側は十字、内側2人は斜め。PS処理はNAと同じアンカー式：○の宣告者は中央へ、無しの×は左が北・右が南。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "2-2 Dooms North, anchored, with the order MT, ST, H1, H2, D1-D4; otherwise like Mana mirrored, with Grinnaux as reference.",
+        "fr": "Dooms 2-2 au nord, ancrés, ordre MT, ST, H1, H2, D1-D4 ; sinon comme Mana inversé, avec Grinnaux comme repère.",
+        "de": "2-2-Dooms Norden, verankert, Reihenfolge MT, ST, H1, H2, D1-D4; sonst wie Mana gespiegelt, mit Grinnaux als Bezug.",
+        "ja": "2-2北アンカー、並びはMT・ST・H1・H2・D1〜D4。その他はManaの逆で基準はグリノー。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Line up H1 MT D3 D1 D2 D4 ST H2. Doomed take spots 1-4 on the south wall, non-Doomed 1-4 on the north wall (intercardinals by waymark). Circles only go to Dooms (outer ones bait), crosses only to non-Dooms, one square and one triangle per group.",
+        "fr": "Ordre H1 MT D3 D1 D2 D4 ST H2. Les Doom prennent les places 1-4 au mur sud, les non-Doom 1-4 au mur nord (intercardinaux par marqueur). Les ronds ne vont qu'aux Doom (les extérieurs les prennent), les croix qu'aux non-Doom, un carré et un triangle par groupe.",
+        "de": "Reihenfolge H1 MT D3 D1 D2 D4 ST H2. Doom-Spieler nehmen Plätze 1-4 an der Südwand, Nicht-Doom 1-4 an der Nordwand (Zwischenrichtungen per Marker). Kreise gehen nur an Dooms (die äußeren ködern), Kreuze nur an Nicht-Dooms, je Gruppe ein Quadrat und ein Dreieck.",
+        "ja": "並びはH1 MT D3 D1 D2 D4 ST H2。宣告者は南の壁で1〜4、無しは北の壁で1〜4（斜めはマーカー）。○は宣告者のみ（外側が誘導）、×は無しのみ、□△は各組1つ。"
+       }
+      },
+      {
+       "strat": "eu-pf",
+       "how": {
+        "en": "Warrior-knight relative: Dooms go north and the far Dooms bait east and west; the players with the cross and the triangle anchor southeast and southwest, and the non-Doomed adjust to their partner. Cross positions are adjusted on the fly.",
+        "fr": "Relatif au chevalier guerrier : les Glas vont au nord et les Glas éloignés attirent à l'est et à l'ouest ; les joueurs à la croix et au triangle restent fixes au sud-est et au sud-ouest, et les non-Glas s'ajustent à leur partenaire. Les places de la croix s'ajustent sur le moment.",
+        "de": "Relativ zum Kriegerritter: Verhängnisse gehen nach Norden, die äußeren ködern im Osten und Westen; die Spieler mit Kreuz und Dreieck bleiben fest im Südosten und Südwesten, die ohne Verhängnis passen sich ihrem Partner an. Das Kreuz wird spontan angepasst.",
+        "ja": "戦士の騎士基準：宣告は北、遠い宣告2人が東西で誘導。バツと三角の人は南東・南西で固定、宣告なしは相方に合わせて調整。バツは状況で調整。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "gaze",
+      "knockback",
+      "tether",
+      "dodge"
+     ]
+    },
+    {
+     "id": "holy-meteor",
+     "names": {
+      "en": "Holy Meteor (8 meteors)",
+      "fr": "Météore sacré (8 météores)",
+      "de": "Heiliger Meteor (8 Meteore)",
+      "ja": "ホーリーメテオ（8個）"
+     },
+     "aliases": {
+      "en": [
+       "meteors",
+       "lb2 meteors"
+      ],
+      "fr": [
+       "météores"
+      ],
+      "de": [
+       "Meteore"
+      ],
+      "ja": [
+       "メテオ",
+       "LB2"
+      ]
+     },
+     "how": {
+      "en": "Eight meteors spawn around the arena and must all be killed before they explode. A ranged LB2 can kill several at once. Then Thordan's tank sequence and enrage; stop attacking him around 3% (he yields), killing him changes the next phase.",
+      "fr": "Huit météores apparaissent autour de l'arène et doivent tous mourir avant d'exploser. Une LB2 distance peut en tuer plusieurs d'un coup. Ensuite séquence tank de Thordan et enrage ; arrête de le frapper vers 3 % (il se rend), le tuer change la phase suivante.",
+      "de": "Acht Meteore erscheinen rund um die Arena und müssen alle vor der Explosion sterben. Ein Fernkampf-LB2 kann mehrere auf einmal töten. Danach Thordans Tank-Abfolge und Enrage; bei etwa 3 % aufhören (er gibt auf), ihn zu töten ändert die nächste Phase.",
+      "ja": "外周に8個のメテオ、爆発前にすべて倒す。遠隔LB2で複数まとめて削れる。その後タンク攻撃と時間切れ技。トールダンは約3%で降参するので攻撃をやめる（倒すと次フェーズが変わる）。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Use a caster or ranged LB2 on three meteors (four is possible but very precise), ideally the ones near where you landed from the knockback.",
+        "fr": "Utilise une LB2 de lanceur ou de distance sur trois météores (quatre est possible mais très précis), idéalement près de là où tu as atterri après le recul.",
+        "de": "Nutze ein Magier- oder Fernkampf-LB2 auf drei Meteore (vier geht, ist aber sehr präzise), idealerweise nahe deiner Landestelle nach dem Rückstoß.",
+        "ja": "キャスターか遠隔のLB2で3個（4個も可能だが精密）、ノックバックで着地した近くを狙う。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Caster LB2 always on the north meteor, hitting NW, N and NE.",
+        "fr": "LB2 du lanceur toujours sur le météore nord, ce qui touche NO, N et NE.",
+        "de": "Magier-LB2 immer auf den Nord-Meteor, trifft NW, N und NO.",
+        "ja": "キャスターLB2は必ず北のメテオへ（北西・北・北東を巻き込む）。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Caster LB2 wherever convenient.",
+        "fr": "LB2 du lanceur là où c'est le plus pratique.",
+        "de": "Magier-LB2 dort, wo es am besten passt.",
+        "ja": "キャスターLB2は撃ちやすい所で。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "jp-mana"
+      },
+      {
+       "strat": "eu-pf",
+       "how": {
+        "en": "Casters and ranged use the LB at true north, on the meteors at markers 4, A and B.",
+        "fr": "Les lanceurs et distances utilisent la LB au vrai nord, sur les météores des marqueurs 4, A et B.",
+        "de": "Magier und Fernkämpfer nutzen das LB im echten Norden auf die Meteore bei den Markern 4, A und B.",
+        "ja": "キャスター/レンジのLBは真北で、マーカー4・A・Bのメテオに。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "dps-check",
+      "enrage"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p6",
+   "names": {
+    "en": "P6 Nidhogg and Hraesvelgr",
+    "fr": "P6 Nidhogg et Hraesvelgr",
+    "de": "P6 Nidhogg und Hraesvelgr",
+    "ja": "P6 ニーズヘッグとフレースヴェルグ"
+   },
+   "mechanics": [
+    {
+     "id": "vows-hp-check",
+     "names": {
+      "en": "Vows and HP balance",
+      "fr": "Vœux et équilibre des PV",
+      "de": "Schwüre und HP-Gleichgewicht",
+      "ja": "誓いとHP差"
+     },
+     "aliases": {
+      "en": [
+       "vows",
+       "hp check",
+       "dragons hp"
+      ],
+      "fr": [
+       "vœux"
+      ],
+      "de": [
+       "Schwüre"
+      ],
+      "ja": [
+       "誓い",
+       "HP調整"
+      ]
+     },
+     "how": {
+      "en": "Nidhogg's vow breaks if Mortal Vow falls off without being passed; Hraesvelgr's vow breaks if he kills anyone. Keep the dragons within about 3% HP of each other: if they are tethered when Akh Afah ends, one stack becomes lethal.",
+      "fr": "Le vœu de Nidhogg se brise si Vœu d'anéantissement tombe sans être passé ; celui de Hraesvelgr se brise s'il tue quelqu'un. Garde les dragons à environ 3 % de PV d'écart : s'ils sont liés à la fin d'Akh Afah, un des packages devient mortel.",
+      "de": "Nidhoggs Schwur bricht, wenn Schwur der Vergeltung ohne Weitergabe abläuft; Hraesvelgrs Schwur bricht, wenn er jemanden tötet. Halte die Drachen innerhalb von etwa 3 % HP: sind sie am Ende von Akh Afah verbunden, wird ein Stack tödlich.",
+      "ja": "滅殺の誓いを渡さず切らすとニーズヘッグの誓いが破れ、フレースヴェルグは誰かを倒すと誓いが破れる。2体のHP差は約3%以内、アク・アファー終了時に線があると片方の頭割りが即死。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "dps-check"
+     ]
+    },
+    {
+     "id": "wyrmsbreath-1",
+     "names": {
+      "en": "Wyrmsbreath 1",
+      "fr": "Souffle 1 (Wyrmsbreath)",
+      "de": "Drachenodem 1 (Wyrmsbreath)",
+      "ja": "邪竜/聖竜の息吹 1回目"
+     },
+     "aliases": {
+      "en": [
+       "wb1",
+       "wyrmsbreath 1",
+       "triangle wb1",
+       "breaths"
+      ],
+      "fr": [
+       "wb1"
+      ],
+      "de": [
+       "WB1"
+      ],
+      "ja": [
+       "WB1",
+       "息吹1"
+      ]
+     },
+     "how": {
+      "en": "Three non-tanks get fire tethers from Nidhogg and three get ice tethers from Hraesvelgr; each fire must stand with an ice to cancel the debuffs. Tanks read the dragons' mouths: both glowing means a shared buster, one glowing means separate big busters. The tank on the dragon whose mouth does not glow takes that dragon's big buster; if both mouths glow, the tanks stack and share.",
+      "fr": "Trois non-tanks ont un lien de feu de Nidhogg et trois un lien de glace de Hraesvelgr ; chaque feu doit se placer avec une glace pour annuler les malus. Les tanks lisent les gueules : les deux brillent = buster partagé, une seule brille = gros busters séparés. Le tank du dragon dont la gueule ne brille pas prend son gros buster ; si les deux brillent, les tanks se regroupent et partagent.",
+      "de": "Drei Nicht-Tanks bekommen Feuer-Verbindungen von Nidhogg, drei Eis-Verbindungen von Hraesvelgr; jedes Feuer muss bei einem Eis stehen, um die Debuffs aufzuheben. Tanks lesen die Mäuler: beide leuchten heißt geteilter Buster, nur eines heißt getrennte große Buster. Der Tank des Drachen, dessen Maul nicht leuchtet, nimmt dessen großen Buster; leuchten beide, stacken die Tanks und teilen.",
+      "ja": "非タンク3人にニーズヘッグの炎線、3人にフレースヴェルグの氷線。炎と氷が組になって打ち消す。タンクは口を見る：両方光れば頭割り、片方なら別々の強攻撃。口が光っていない竜を持っているタンクがその竜の強攻撃を受ける。両方光ったらタンク2人で重なって頭割り。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Triangle WB1: three groups in a triangle in the south, each with an anchor who stays; if your group has two of the same colour, the flex swaps with the matching flex of another group. Tanks go north and stack or spread NE/NW.",
+        "fr": "WB1 en triangle : trois groupes en triangle au sud, chacun avec une ancre qui reste ; si ton groupe a deux fois la même couleur, le flex échange avec le flex correspondant d'un autre groupe. Les tanks vont au nord et se regroupent ou s'écartent NE/NO.",
+        "de": "Dreieck-WB1: drei Gruppen im Dreieck im Süden, jede mit einem Anker, der bleibt; hat deine Gruppe zweimal dieselbe Farbe, tauscht der Flex mit dem passenden Flex einer anderen Gruppe. Tanks gehen nach Norden und stacken oder verteilen sich NO/NW.",
+        "ja": "三角WB1：南に3組の三角、各組にアンカー（動かない）。同色が重なったらフレックスが他組の対応フレックスと交代。タンクは北で、重なるか北東・北西に分かれる。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Groups: MT, H1, D1, D3 lean Nidhogg; ST, H2, D2, D4 lean Hraesvelgr. Pre-position D1+D2 center, H1+D3 bottom-left, H2+D4 bottom-right. D1, H1, D4 are anchors; D2, D3, H2 swap with the pair holding the opposite colour.",
+        "fr": "Groupes : MT, H1, D1, D3 côté Nidhogg ; ST, H2, D2, D4 côté Hraesvelgr. Placement D1+D2 au centre, H1+D3 en bas à gauche, H2+D4 en bas à droite. D1, H1, D4 sont les ancres ; D2, D3, H2 échangent avec la paire qui a la couleur opposée.",
+        "de": "Gruppen: MT, H1, D1, D3 Richtung Nidhogg; ST, H2, D2, D4 Richtung Hraesvelgr. Vorposition D1+D2 Mitte, H1+D3 unten links, H2+D4 unten rechts. D1, H1, D4 sind Anker; D2, D3, H2 tauschen mit dem Paar, das die andere Farbe hat.",
+        "ja": "組：MT・H1・D1・D3がニーズヘッグ側、ST・H2・D2・D4がフレースヴェルグ側。初期位置はD1+D2中央、H1+D3左下、H2+D4右下。アンカーはD1・H1・D4、D2・D3・H2が反対色のペアと交代。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Also a triangle WB1 with fixed and adjusting positions, but the south-west, middle and south-east assignments and anchors differ from Mana. MT tanks Nidhogg and ST tanks Hraesvelgr.",
+        "fr": "Aussi un WB1 en triangle avec positions fixes et ajustables, mais les attributions sud-ouest, milieu et sud-est et les ancres diffèrent de Mana. Le MT tank Nidhogg et le ST Hraesvelgr.",
+        "de": "Ebenfalls Dreieck-WB1 mit festen und flexiblen Plätzen, aber SW-, Mitte- und SO-Zuweisungen und Anker unterscheiden sich von Mana. Der MT tankt Nidhogg, der ST Hraesvelgr.",
+        "ja": "三角WB1だが、南西・中央・南東の担当とアンカーがManaと異なる。MTがニーズヘッグ、STがフレースヴェルグを持つ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Three pre-set pairs with flex players, same principle as the triangle. MT tanks Nidhogg and OT tanks Hraesvelgr.",
+        "fr": "Trois paires prédéfinies avec des flex, même principe que le triangle. Le MT tank Nidhogg et l'OT Hraesvelgr.",
+        "de": "Drei feste Paare mit Flex-Spielern, gleiches Prinzip wie das Dreieck. Der MT tankt Nidhogg, der OT Hraesvelgr.",
+        "ja": "フレックス付きの固定3ペア、三角と同じ考え方。MTがニーズヘッグ、OTがフレースヴェルグを持つ。"
+       }
+      },
+      {
+       "strat": "eu-pf",
+       "how": {
+        "en": "Triangle in the south: healers southwest, ranged southeast, melee toward the middle; group 1 anchors and group 2 adjusts. Group 1 attacks Nidhogg and group 2 Hraesvelgr.",
+        "fr": "Triangle au sud : soigneurs au sud-ouest, distances au sud-est, mêlées vers le milieu ; le groupe 1 reste fixe et le groupe 2 s'ajuste. Le groupe 1 attaque Nidhogg et le groupe 2 Hraesvelgr.",
+        "de": "Dreieck im Süden: Heiler im Südwesten, Fernkämpfer im Südosten, Nahkämpfer zur Mitte; Gruppe 1 bleibt fest, Gruppe 2 passt an. Gruppe 1 greift Nidhogg an, Gruppe 2 Hraesvelgr.",
+        "ja": "南で三角：ヒーラー南西、レンジ南東、近接は中央寄り。G1固定、G2が調整。G1はニーズヘッグ、G2はフレースヴェルグを攻撃。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Exact Elemental and MUR assignments were not available in text.",
+      "fr": "Les attributions exactes Elemental et MUR n'étaient pas disponibles en texte.",
+      "de": "Die genauen Elemental- und MUR-Zuweisungen gab es nicht als Text.",
+      "ja": "ElementalとMURの正確な割り当ては文章で確認できず。"
+     },
+     "tags": [
+      "tether",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "mortal-vow",
+     "names": {
+      "en": "Mortal Vow",
+      "fr": "Vœu d'anéantissement",
+      "de": "Schwur der Vergeltung",
+      "ja": "滅殺の誓い"
+     },
+     "aliases": {
+      "en": [
+       "vow",
+       "vow pass",
+       "dttmr",
+       "xttmr"
+      ],
+      "fr": [
+       "vœu"
+      ],
+      "de": [
+       "Schwur"
+      ],
+      "ja": [
+       "誓い",
+       "誓い回し"
+      ]
+     },
+     "how": {
+      "en": "A random DPS gets Mortal Vow, a small AoE that must be passed to exactly one other player about four times; anyone extra hit gets a heavy debuff (Suppuration). Letting it fall off breaks Nidhogg's vow.",
+      "fr": "Un DPS au hasard reçoit Vœu d'anéantissement, une petite AoE qu'il faut passer à exactement un autre joueur environ quatre fois ; toute personne en plus touchée reçoit un gros malus (Suppuration). Le laisser tomber brise le vœu de Nidhogg.",
+      "de": "Ein zufälliger DD bekommt Schwur der Vergeltung, ein kleines AoE, das etwa viermal an genau einen anderen Spieler weitergegeben werden muss; jeder zusätzlich Getroffene bekommt einen schweren Debuff (Suppuration). Ablaufen lassen bricht Nidhoggs Schwur.",
+      "ja": "ランダムなDPSに滅殺の誓い、小範囲を毎回ちょうど1人に約4回渡す。余計に当たると重いデバフ。切らすとニーズヘッグの誓いが破れる。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Pass order: the DPS who got it, then MT, then ST, then a melee (the other melee if the first melee started with it), then the caster/ranged last.",
+        "fr": "Ordre : le DPS qui l'a eu, puis MT, puis ST, puis un mêlée (l'autre mêlée si le premier l'avait au départ), puis le lanceur/distance en dernier.",
+        "de": "Reihenfolge: der DD, der ihn bekam, dann MT, dann ST, dann ein Nahkämpfer (der andere, falls der erste ihn zuerst hatte), zuletzt der Magier/Fernkämpfer.",
+        "ja": "順番：最初のDPS→MT→ST→近接（最初が近接ならもう一方）→最後にキャスター/遠隔。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "DTTMR: DPS to MT in the center after Hallowed Wings 1, MT to ST after Wroth Flames, ST to D1 (or D2 if D1 started) after Hallowed Wings 2, last pass at the edge to D3 after Touchdown.",
+        "fr": "DTTMR : DPS vers MT au centre après Aile sacrée 1, MT vers ST après Haine enflammée, ST vers D1 (ou D2 si D1 l'avait) après Aile sacrée 2, dernier passage au bord vers D3 après Touchdown.",
+        "de": "DTTMR: DD zu MT in der Mitte nach Heilige Schwingen 1, MT zu ST nach Flammender Zorn, ST zu D1 (oder D2, falls D1 ihn zuerst hatte) nach Heilige Schwingen 2, letzte Übergabe am Rand an D3 nach Touchdown.",
+        "ja": "DTTMR：ホーリーウィング1後に中央でDPS→MT、邪念の炎後にMT→ST、ホーリーウィング2後にST→D1（D1が最初ならD2）、タッチダウン後に外周でD3へ。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "same_as": "jp-mana"
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Spread away from the DPS who got it. Passes: to the MT in the middle after Hallowed Wings 1, MT to OT around Wroth Flames (both tanks move to the middle), OT to D1 after Hallowed Wings 2 (D2 if D1 had the first vow), and the last pass to D3 at the north after Touchdown. D1 and D2 must remember who had the first vow.",
+        "fr": "Dispersez-vous loin du DPS qui l'a reçu. Passes : au MT au milieu après Aile sacrée 1, du MT à l'OT autour de Haine enflammée (les deux tanks vont au milieu), de l'OT à D1 après Aile sacrée 2 (D2 si D1 avait le premier vœu), et la dernière passe à D3 au nord après Touchdown. D1 et D2 doivent retenir qui avait le premier vœu.",
+        "de": "Verteilt euch weg vom DPS, der ihn bekommen hat. Übergaben: an den MT in der Mitte nach Heilige Schwingen 1, MT an OT um Flammender Zorn (beide Tanks gehen in die Mitte), OT an D1 nach Heilige Schwingen 2 (D2, falls D1 den ersten Schwur hatte), und die letzte an D3 im Norden nach Touchdown. D1 und D2 müssen sich merken, wer den ersten Schwur hatte.",
+        "ja": "最初に付いたDPSから離れて散開。受け渡し：ホーリーウィング1の後に中央でMTへ、邪念の炎の頃にMTからOTへ（タンク2人とも中央へ）、ホーリーウィング2の後にOTからD1へ（D1が最初の宣誓ならD2へ）、最後はタッチダウンの後に北でD3へ。D1とD2は最初の宣誓が誰かを覚えておく。"
+       }
+      },
+      {
+       "strat": "eu-pf",
+       "how": {
+        "en": "Passes happen in the middle of the arena except the last one. Order: DPS > MT > OT > melee (M1, or M2) > caster; the caster stays north.",
+        "fr": "Les passes se font au milieu de l'arène sauf la dernière. Ordre : DPS > MT > OT > mêlée (M1, ou M2) > lanceur ; le lanceur reste au nord.",
+        "de": "Übergaben in der Arenamitte außer der letzten. Reihenfolge: DPS > MT > OT > Nahkämpfer (M1 oder M2) > Magier; der Magier bleibt im Norden.",
+        "ja": "受け渡しは最後以外フィールド中央。順番はDPS＞MT＞OT＞近接（M1かM2）＞キャスター。キャスターは北で待機。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "NA sources name this order XTTMR, DTTMR or DTTMC; it is the same idea.",
+      "fr": "Les sources NA appellent cet ordre XTTMR, DTTMR ou DTTMC ; c'est le même principe.",
+      "de": "NA-Quellen nennen die Reihenfolge XTTMR, DTTMR oder DTTMC; gemeint ist dasselbe.",
+      "ja": "NA資料ではXTTMR・DTTMR・DTTMCなど表記がばらつくが同じ考え方。"
+     },
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "akh-afah-hallowed-wings",
+     "names": {
+      "en": "Akh Afah / Hallowed Wings",
+      "fr": "Akh Afah / Aile sacrée",
+      "de": "Akh Afah / Heilige Schwingen",
+      "ja": "アク・アファー / ホーリーウィング"
+     },
+     "aliases": {
+      "en": [
+       "akh afah",
+       "hallowed wings",
+       "wings"
+      ],
+      "fr": [
+       "aile sacrée"
+      ],
+      "de": [
+       "Schwingen"
+      ],
+      "ja": [
+       "アファー",
+       "ホーリーウィング"
+      ]
+     },
+     "how": {
+      "en": "Akh Afah: each healer takes a 4-player stack (do not overlap). Hallowed Wings: Nidhogg cauterizes half the arena from an edge and Hraesvelgr's lit wing cleaves another half, leaving one safe quarter; his head decides whether the busters go to the closest or furthest players (head up: party near, tanks far; head down: the opposite).",
+      "fr": "Akh Afah : chaque soigneur prend un package de 4 (sans chevauchement). Aile sacrée : Nidhogg cautérise la moitié de l'arène depuis un bord et l'aile allumée de Hraesvelgr frappe une autre moitié, laissant un quart sûr ; sa tête décide si les busters vont aux plus proches ou aux plus loin (tête haute : groupe près, tanks loin ; tête basse : l'inverse).",
+      "de": "Akh Afah: Jeder Heiler nimmt einen 4er-Stack (nicht überlappen). Heilige Schwingen: Nidhogg brennt vom Rand die halbe Arena ab, Hraesvelgrs leuchtender Flügel trifft eine andere Hälfte, ein Viertel bleibt sicher; sein Kopf entscheidet, ob die Buster die Nächsten oder Entferntesten treffen (Kopf oben: Gruppe nah, Tanks fern; Kopf unten: umgekehrt).",
+      "ja": "アク・アファー：ヒーラー2人に4人頭割り（重ねない）。ホーリーウィング：ニーズヘッグが端から半面カータライズ、フレースヴェルグの光る翼側の半面、残る1/4が安置。頭の向きで近い/遠い2人に強攻撃（頭上ならPT近く・タンク遠く、頭下なら逆）。"
+     },
+     "strats": [
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "MT goes to the edge, ST to the middle of the safe quarter.",
+        "fr": "Le MT va au bord, l'ST au milieu du quart sûr.",
+        "de": "Der MT geht an den Rand, der ST in die Mitte des sicheren Viertels.",
+        "ja": "MTは外周、STは安置の中ほど。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Akh Afah: light party 1 stacks leaning north and light party 2 leaning south, both near the middle. Hallowed Wings: tanks bait the busters and the party groups on the opposite side; in the second one the OT stays toward the center line while MT and the party go to the opposite side, near or far depending on the bait.",
+        "fr": "Akh Afah : groupe léger 1 en package un peu au nord, groupe léger 2 un peu au sud, les deux près du milieu. Aile sacrée : les tanks attirent les attaques tank et le groupe se met du côté opposé ; à la seconde, l'OT reste vers la ligne centrale tandis que le MT et le groupe vont de l'autre côté, près ou loin selon l'appât.",
+        "de": "Akh Afah: Leichtgruppe 1 stackt etwas nördlich, Leichtgruppe 2 etwas südlich, beide nahe der Mitte. Heilige Schwingen: Die Tanks ködern die Tankbuster, die Gruppe steht auf der Gegenseite; beim zweiten Mal bleibt der OT zur Mittellinie hin, MT und Gruppe gehen auf die Gegenseite, nah oder fern je nach Köder.",
+        "ja": "アク・アファー：LP1はやや北、LP2はやや南で、どちらも中央付近で頭割り。ホーリーウィング：タンクがタンク強攻撃を誘導し、PTは反対側。2回目はOTが中央線寄り、MTとPTは反対側で、誘導に合わせて近いか遠い位置。"
+       }
+      },
+      {
+       "strat": "eu-pf",
+       "how": {
+        "en": "Akh Afah: group 1 slightly north, group 2 slightly south.",
+        "fr": "Akh Afah : groupe 1 un peu au nord, groupe 2 un peu au sud.",
+        "de": "Akh Afah: Gruppe 1 etwas nördlich, Gruppe 2 etwas südlich.",
+        "ja": "アク・アファー：G1はやや北、G2はやや南。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "same_as": "jp-mana"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "cleave",
+      "tankbuster",
+      "proximity"
+     ]
+    },
+    {
+     "id": "wroth-flames",
+     "names": {
+      "en": "Wroth Flames (with Akh Morn and Hot Wing/Hot Tail)",
+      "fr": "Haine enflammée (avec Akh Morn et Aile/Queue calorifique)",
+      "de": "Flammender Zorn (mit Akh Morn und Flirrender Flügel/Schwelender Schweif)",
+      "ja": "邪念の炎（アク・モーン、ヒートウィング/テイル含む）"
+     },
+     "aliases": {
+      "en": [
+       "wroth",
+       "wroth flames",
+       "spreads and stacks"
+      ],
+      "fr": [
+       "haine"
+      ],
+      "de": [
+       "Zorn"
+      ],
+      "ja": [
+       "邪念",
+       "邪念の炎"
+      ]
+     },
+     "how": {
+      "en": "Three sets of orbs explode in crosses (center first, then two opposite corners). Four players get spread debuffs and two get pair-stack debuffs, each paired with a player without debuff. Hraesvelgr dives one side, Akh Morn drops four stacks that leave lethal bleed puddles, and Nidhogg's Hot Wing (middle safe) or Hot Tail (middle hit) decides the final spots.",
+      "fr": "Trois séries d'orbes explosent en croix (centre d'abord, puis deux coins opposés). Quatre joueurs ont un malus de dispersion et deux un package à deux, chacun avec un joueur sans malus. Hraesvelgr plonge sur un côté, Akh Morn pose quatre packages qui laissent des flaques de saignement mortelles, et Aile calorifique (milieu sûr) ou Queue calorifique (milieu touché) de Nidhogg décide des places finales.",
+      "de": "Drei Kugelsets explodieren als Kreuze (zuerst Mitte, dann zwei gegenüberliegende Ecken). Vier Spieler bekommen Verteil-Debuffs, zwei Paar-Stacks mit je einem Spieler ohne Debuff. Hraesvelgr stürzt auf eine Seite, Akh Morn legt vier Stacks mit tödlichen Blutungspfützen, und Nidhoggs Flirrender Flügel (Mitte sicher) oder Schwelender Schweif (Mitte getroffen) bestimmt die Endpositionen.",
+      "ja": "玉が十字に3回爆発（中央→対角の角2か所）。4人に散開、2人にペア頭割り（無しと組む）。フレースヴェルグの突進、アク・モーン4回頭割り（出血床が残る）、ニーズヘッグのヒートウィング（中央安置）かヒートテイル（中央危険）で最終位置が決まる。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Automarkers west to east: Attack 1-4 for the spreads (toward Nidhogg), then Ignore 1-2 (a stack pair just east of center) and Bind 1-2 (a stack pair at the east wall). Walk Akh Morn in a J shape (three puddles along, then curve to the middle).",
+        "fr": "Automarqueurs d'ouest en est : Attack 1-4 pour les dispersions (vers Nidhogg), puis Ignore 1-2 (une paire juste à l'est du centre) et Bind 1-2 (une paire au mur est). Déplace Akh Morn en forme de J (trois flaques en ligne, puis courbe vers le milieu).",
+        "de": "Automarker von West nach Ost: Attack 1-4 für die Verteiler (Richtung Nidhogg), dann Ignore 1-2 (ein Paar knapp östlich der Mitte) und Bind 1-2 (ein Paar an der Ostwand). Akh Morn in J-Form laufen (drei Pfützen gerade, dann zur Mitte biegen).",
+        "ja": "オートマーカーで西→東：散開は攻撃1〜4（ニーズヘッグ側）、無視1・2（中央やや東のペア）、禁止1・2（東壁のペア）。アク・モーンはJ字（3回直線、4回目で中央へ曲がる）。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Fixed west-to-east order MT, ST, D1, D2, D3, D4, H1, H2; stacks go west toward Nidhogg and spreads east toward Hraesvelgr. Akh Morn: walk straight, turn 90 degrees toward center at the north or south.",
+        "fr": "Ordre fixe d'ouest en est MT, ST, D1, D2, D3, D4, H1, H2 ; les packages vont à l'ouest vers Nidhogg et les dispersions à l'est vers Hraesvelgr. Akh Morn : marche droit, tourne de 90 degrés vers le centre au nord ou au sud.",
+        "de": "Feste Reihenfolge West nach Ost MT, ST, D1, D2, D3, D4, H1, H2; Stacks gehen nach Westen zu Nidhogg, Verteiler nach Osten zu Hraesvelgr. Akh Morn: geradeaus laufen, im Norden oder Süden um 90 Grad zur Mitte abbiegen.",
+        "ja": "西→東の固定順MT・ST・D1・D2・D3・D4・H1・H2。頭割りは西（ニーズヘッグ側）、散開は東（フレースヴェルグ側）。アク・モーンは直進し、南北で中央へ90度曲がる。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Spreads go west and stacks east, assigned with automarkers.",
+        "fr": "Les dispersions vont à l'ouest et les packages à l'est, attribués par automarqueurs.",
+        "de": "Verteiler gehen nach Westen, Stacks nach Osten, per Automarker zugewiesen.",
+        "ja": "散開が西、頭割りが東。オートマーカーで割り当て。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Four Spreading Flames resolve under Nidhogg, two Entangled Flames under Hraesvelgr with the two unmarked players. Start on the side Hraesvelgr is not cleaving, then go to the wall corner opposite the second orb and walk the fixed J-shaped path, stopping at each puddle's edge.",
+        "fr": "Quatre Spreading Flames se résolvent sous Nidhogg, deux Entangled Flames sous Hraesvelgr avec les deux joueurs sans marque. Commence du côté que Hraesvelgr ne frappe pas, puis va au coin du mur opposé au second orbe et suis le chemin fixe en J en t'arrêtant au bord de chaque flaque.",
+        "de": "Vier Spreading Flames lösen unter Nidhogg aus, zwei Entangled Flames unter Hraesvelgr mit den zwei Unmarkierten. Starte auf der Seite, die Hraesvelgr nicht trifft, geh dann in die Wandecke gegenüber der zweiten Kugel und lauf den festen J-Weg, an jedem Pfützenrand stoppen.",
+        "ja": "散開4人はニーズヘッグの下、頭割り2人はフレースヴェルグの下でマークなし2人と一緒。フレースヴェルグの薙ぎ払いがない側から始め、2つ目の玉の反対の壁の角へ行き、決まったJ字の道を床の縁ごとに止まりながら進む。"
+       }
+      },
+      {
+       "strat": "eu-pf",
+       "how": {
+        "en": "J-shaped dodge, starting close to Nidhogg if possible; spreads go toward Nidhogg and stacks toward Hraesvelgr.",
+        "fr": "Esquive en J, en commençant près de Nidhogg si possible ; les dispersions vont vers Nidhogg et les packages vers Hraesvelgr.",
+        "de": "J-förmiges Ausweichen, möglichst nahe an Nidhogg beginnend; Verteilungen gehen zu Nidhogg, Stacks zu Hraesvelgr.",
+        "ja": "J字で避け、できればニーズヘッグの近くから。散開はニーズヘッグ側、頭割りはフレースヴェルグ側。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Sources disagree on which side spreads and stacks go for Mana versus NA; follow your group.",
+      "fr": "Les sources divergent sur le côté des dispersions et des packages entre Mana et NA ; suis ton groupe.",
+      "de": "Die Quellen sind uneins, auf welche Seite Verteiler und Stacks bei Mana bzw. NA gehen; folge deiner Gruppe.",
+      "ja": "散開と頭割りの左右はManaとNAで資料により異なる。PTに従う。"
+     },
+     "tags": [
+      "spread",
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "wyrmsbreath-2",
+     "names": {
+      "en": "Wyrmsbreath 2",
+      "fr": "Souffle 2 (Wyrmsbreath)",
+      "de": "Drachenodem 2 (Wyrmsbreath)",
+      "ja": "邪竜/聖竜の息吹 2回目"
+     },
+     "aliases": {
+      "en": [
+       "wb2",
+       "wyrmsbreath 2",
+       "static wb2",
+       "5-1"
+      ],
+      "fr": [
+       "wb2"
+      ],
+      "de": [
+       "WB2"
+      ],
+      "ja": [
+       "WB2",
+       "息吹2"
+      ]
+     },
+     "how": {
+      "en": "Fire and ice tethers again plus tank busters, but this time each non-tank resolves the breath from a fixed spot (no fire/ice stacking needed in static versions). Melee should use personal shields.",
+      "fr": "À nouveau des liens de feu et de glace plus des tankbusters, mais cette fois chaque non-tank résout le souffle depuis une place fixe (pas besoin d'empiler feu/glace dans les versions statiques). Les mêlées utilisent leurs boucliers perso.",
+      "de": "Wieder Feuer- und Eis-Verbindungen plus Tankbuster, diesmal löst aber jeder Nicht-Tank den Odem von einem festen Platz aus (bei statischen Varianten kein Feuer/Eis-Stacken nötig). Nahkämpfer nutzen eigene Schilde.",
+      "ja": "再び炎/氷の線とタンク強攻撃。今回は非タンクが固定位置で受ける（固定式では炎氷を重ねない）。近接は自己バリアを使う。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Static WB2: everyone has a fixed spot, group 1 north and group 2 south; tanks move between two spots depending on whether the buster is shared or split.",
+        "fr": "WB2 statique : chacun a une place fixe, groupe 1 au nord et groupe 2 au sud ; les tanks alternent entre deux places selon que le buster est partagé ou séparé.",
+        "de": "Statisches WB2: Jeder hat einen festen Platz, Gruppe 1 Norden, Gruppe 2 Süden; Tanks wählen zwischen zwei Plätzen, je nachdem ob der Buster geteilt oder getrennt ist.",
+        "ja": "固定WB2：全員固定位置、1組北・2組南。タンクは頭割りか別々かで2か所から選ぶ。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Fixed WB2: opposite tethers are not stacked; every non-tank has a marked spot and each tank has two possible spots.",
+        "fr": "WB2 fixe : les liens opposés ne s'empilent pas ; chaque non-tank a une place marquée et chaque tank deux places possibles.",
+        "de": "Festes WB2: Gegensätzliche Verbindungen werden nicht gestackt; jeder Nicht-Tank hat einen markierten Platz, jeder Tank zwei mögliche.",
+        "ja": "固定WB2：反対色は重ねない。非タンクは各自のマーカー位置、タンクは2か所のどちらか。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "5-1 WB2, with D3 going south; exact spots are in the group's image.",
+        "fr": "WB2 en 5-1, D3 va au sud ; les places exactes sont sur l'image du groupe.",
+        "de": "5-1-WB2, D3 geht nach Süden; genaue Plätze stehen auf dem Bild der Gruppe.",
+        "ja": "5-1式WB2、D3が南。正確な位置は図で確認。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Tether debuffs are not cleared here: each player takes only one tether and keeps it, using fixed spots from the MUR diagram. Tanks check the mouths: both glowing means they share the buster in the middle, one glowing means they go to their fixed spread spots.",
+        "fr": "Les débuffs de liens ne sont pas annulés ici : chaque joueur prend un seul lien et le garde, sur des places fixes du schéma MUR. Les tanks regardent les gueules : les deux brillent, ils partagent l'attaque au milieu ; une seule brille, ils vont sur leurs places de dispersion fixes.",
+        "de": "Die Verbindungs-Debuffs werden hier nicht aufgehoben: Jeder nimmt nur eine Verbindung und behält sie, auf festen Plätzen aus dem MUR-Diagramm. Die Tanks schauen auf die Mäuler: beide leuchten, dann teilen sie den Buster in der Mitte; nur eins leuchtet, dann gehen sie auf ihre festen Verteilplätze.",
+        "ja": "ここでは線のデバフは消えない。各自1本だけ取ってそのまま保持し、MURの図の固定位置へ。タンクは口を見る：両方光れば中央で頭割り、片方なら決まった散開位置へ。"
+       }
+      },
+      {
+       "strat": "eu-pf",
+       "how": {
+        "en": "5-1 to the north: the regen healer anchors south and the shield healer north, and the tethers stretch around them. If both healers have the same tether, the north healer swaps with the closest DPS who has the other tether.",
+        "fr": "5-1 au nord : le soigneur régén reste fixe au sud et le soigneur bouclier au nord, et les liens s'étirent autour d'eux. Si les deux soigneurs ont le même lien, celui du nord échange avec le DPS le plus proche qui a l'autre lien.",
+        "de": "5-1 im Norden: Der Regen-Heiler bleibt fest im Süden, der Schild-Heiler im Norden, die Verbindungen werden um sie herum gespannt. Haben beide Heiler dieselbe Verbindung, tauscht der nördliche mit dem nächsten DPS mit der anderen Verbindung.",
+        "ja": "北で5-1：リジェネヒーラーが南、バリアヒーラーが北で固定し、線はその周りに伸ばす。ヒーラー2人が同じ線なら、北のヒーラーが逆の線を持つ一番近いDPSと交代。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "All WB2 versions are defined by position images; only the principle is described here.",
+      "fr": "Toutes les versions de WB2 sont définies par des images de positions ; seul le principe est décrit ici.",
+      "de": "Alle WB2-Varianten sind über Positionsbilder definiert; hier steht nur das Prinzip.",
+      "ja": "WB2はどの方式も位置図で決まるため、ここでは原理のみ。"
+     },
+     "tags": [
+      "tether",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "cauterize-touchdown",
+     "names": {
+      "en": "Cauterize / Touchdown",
+      "fr": "Cautérisation / Touchdown",
+      "de": "Kauterisieren / Touchdown",
+      "ja": "カータライズ / タッチダウン"
+     },
+     "aliases": {
+      "en": [
+       "cauterize",
+       "touchdown",
+       "double dive"
+      ],
+      "fr": [
+       "cautérisation"
+      ],
+      "de": [
+       "Kauterisieren"
+      ],
+      "ja": [
+       "カータライズ",
+       "タッチダウン"
+      ]
+     },
+     "how": {
+      "en": "Both dragons dive through the arena from the north edge. Fire-debuffed players stand in front of Hraesvelgr and ice-debuffed players in front of Nidhogg so the hit cancels their debuff; tanks take the first hits. Then Touchdown (proximity damage), the last vow pass and the Revenge of the Horde enrage.",
+      "fr": "Les deux dragons plongent à travers l'arène depuis le bord nord. Les joueurs avec le malus feu se placent devant Hraesvelgr et ceux avec la glace devant Nidhogg pour que le coup annule leur malus ; les tanks prennent les premiers coups. Puis Touchdown (dégâts selon la distance), le dernier passage de vœu et l'enrage Revenge of the Horde.",
+      "de": "Beide Drachen stürzen vom Nordrand durch die Arena. Spieler mit Feuer-Debuff stehen vor Hraesvelgr, mit Eis-Debuff vor Nidhogg, damit der Treffer ihren Debuff aufhebt; Tanks nehmen die ersten Treffer. Danach Touchdown (Distanzschaden), die letzte Schwur-Übergabe und der Enrage Revenge of the Horde.",
+      "ja": "2体が北端から突進。炎デバフの人はフレースヴェルグ前、氷デバフはニーズヘッグ前に立って打ち消す。先頭はタンク。その後タッチダウン（距離減衰）、最後の誓い渡し、時間切れ技。"
+     },
+     "strats": [
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "MT takes the west half, ST the east half, both near north. Do not move after the debuffs are set, or they turn into Pyretic.",
+        "fr": "Le MT prend la moitié ouest, l'ST la moitié est, tous deux près du nord. Ne bouge plus une fois les malus posés, sinon ils se transforment en Pyretic.",
+        "de": "Der MT nimmt die Westhälfte, der ST die Osthälfte, beide nahe Norden. Nach dem Setzen der Debuffs nicht mehr bewegen, sonst werden sie zu Pyretic.",
+        "ja": "MTが西半分、STが東半分の北寄り。デバフ確定後は動かない（ヒートになる）。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "MT takes the west front and OT the east front of the dragons, both with invulnerabilities. Stand in the path of the dragon opposite your debuff (Freezing in Nidhogg's path, Boiling in Hraesvelgr's) and stay on your side; Boiling DPS untarget the boss. Then stack north for Touchdown; everyone runs out except D3 and the vow holder, who do the last pass at north.",
+        "fr": "Le MT prend l'avant ouest et l'OT l'avant est des dragons, tous deux avec invulnérabilité. Mets-toi sur le chemin du dragon opposé à ton débuff (Congélation graduelle sur Nidhogg, Chaleur graduelle sur Hraesvelgr) et reste de ton côté ; les DPS avec Chaleur graduelle retirent leur cible. Ensuite package au nord pour Touchdown ; tout le monde sort sauf D3 et le porteur du vœu, qui font la dernière passe au nord.",
+        "de": "Der MT nimmt vorn West, der OT vorn Ost der Drachen, beide mit Unverwundbarkeit. Stell dich in den Weg des Drachen gegenüber deinem Debuff (Allmähliche Kühlung bei Nidhogg, Nagende Hitze bei Hraesvelgr) und bleib auf deiner Seite; DPS mit Nagender Hitze nehmen das Ziel raus. Dann im Norden stacken für Touchdown; alle laufen raus außer D3 und dem Schwurträger, die im Norden die letzte Übergabe machen.",
+        "ja": "MTは西側、OTは東側の前で無敵。自分のデバフと逆のドラゴンの通り道に立ち（徐々に氷結はニーズヘッグ、徐々にヒートはフレースヴェルグ）、自分の側から動かない。徐々にヒートのDPSはターゲットを外す。その後タッチダウンは北で頭割り。D3と宣誓持ち以外は外へ、2人は北で最後の受け渡し。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "MT takes the west side and ST the east side, both with an invulnerability.",
+        "fr": "Le MT prend le côté ouest et le ST le côté est, tous les deux avec un invu.",
+        "de": "Der MT nimmt die Westseite, der ST die Ostseite, beide mit Unverwundbarkeit.",
+        "ja": "MTが西、STが東、両者無敵で受ける。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "proximity",
+      "debuff",
+      "enrage"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p7",
+   "names": {
+    "en": "P7 Dragon-king Thordan",
+    "fr": "P7 Thordan le Dieu Dragon",
+    "de": "P7 König Thordan",
+    "ja": "P7 騎竜神トールダン"
+   },
+   "mechanics": [
+    {
+     "id": "alternative-end",
+     "names": {
+      "en": "Alternative End",
+      "fr": "Fin alternative",
+      "de": "Ein neues Ende",
+      "ja": "アルティメットエンド・オルタナ"
+     },
+     "aliases": {
+      "en": [
+       "alternative end",
+       "p7 start"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "オルタナ"
+      ]
+     },
+     "how": {
+      "en": "Huge raidwide at the start of P7 that leaves heavy bleeds; use heavy mitigation and heal through.",
+      "fr": "Énorme dégât de zone au début de P7 qui laisse de lourds saignements ; grosses réductions et soins.",
+      "de": "Riesiger Raidschaden zu Beginn von P7 mit starken Blutungen; starke Mitigation und durchheilen.",
+      "ja": "P7開始時の超大ダメージ＋強い出血。強く軽減して回復。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "trinity",
+     "names": {
+      "en": "Trinity",
+      "fr": "Trinité",
+      "de": "Trinität",
+      "ja": "トリニティ"
+     },
+     "aliases": {
+      "en": [
+       "trinity",
+       "autos",
+       "auto attacks"
+      ],
+      "fr": [
+       "autos"
+      ],
+      "de": [
+       "Autoangriffe"
+      ],
+      "ja": [
+       "トリニティ",
+       "AA"
+      ]
+     },
+     "how": {
+      "en": "Between mechanics Thordan auto-attacks twice; each hits the top-enmity tank (dark), second enmity (light) and the closest player, who also gets a physical vulnerability that makes a second hit lethal. Tanks swap and non-tanks take turns as the closest player. Top enmity gets the dark debuff and second enmity the light one; tanks swap aggro after each pair of autos (watch the enmity list, Shirk may be down).",
+      "fr": "Entre les mécaniques, Thordan fait deux attaques auto ; chacune frappe le tank en tête (ténèbres), le deuxième en inimitié (lumière) et le joueur le plus proche, qui reçoit aussi une vulnérabilité physique rendant un deuxième coup mortel. Les tanks échangent et les non-tanks se relaient comme joueur le plus proche. L'inimitié 1 reçoit le débuff ténèbres et l'inimitié 2 celui de lumière ; les tanks échangent l'inimitié après chaque paire d'attaques (surveille la liste, Shirk peut être en recharge).",
+      "de": "Zwischen den Mechaniken greift Thordan zweimal automatisch an; jeder Treffer geht auf den Tank mit höchster Feindseligkeit (Dunkel), den zweiten (Licht) und den nächsten Spieler, der zusätzlich eine physische Verwundbarkeit bekommt, die einen zweiten Treffer tödlich macht. Tanks wechseln, Nicht-Tanks wechseln sich als Nächster ab. Feindschaft 1 bekommt den Dunkel-Debuff, Feindschaft 2 den Licht-Debuff; die Tanks wechseln die Feindschaft nach jedem Paar Autos (Feindschaftsliste beachten, Shirk kann auf Cooldown sein).",
+      "ja": "ギミック間に2回のAA。敵視1位（闇）、2位（光）、最も近い人に当たり、近い人には物理被ダメ上昇（2回目で死亡）。タンクはスイッチ、非タンクは交代で受ける。ヘイト1位に闇、2位に光のデバフ。AA2回ごとにスイッチする（ヘイトリストを確認、シャークが無いこともある）。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Non-tanks rotate in pairs by role; players not taking the close hit stay at max melee.",
+        "fr": "Les non-tanks tournent par paires de rôle ; ceux qui ne prennent pas le coup proche restent à portée max de mêlée.",
+        "de": "Nicht-Tanks rotieren paarweise nach Rolle; wer den nahen Treffer nicht nimmt, bleibt auf max. Nahkampfreichweite.",
+        "ja": "非タンクはロールペアで交代。担当外は近接最大距離。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "Pairs H1/H2 after Exaflare's Edge, D1/D2 after Akh Morn's Edge, D3/D4 after Gigaflare's Edge.",
+        "fr": "Paires H1/H2 après Lame d'ExaBrasier, D1/D2 après Lame d'Akh Morn, D3/D4 après Lame de GigaBrasier.",
+        "de": "Paare H1/H2 nach Exaflare-Klinge, D1/D2 nach Akh Morns Klinge, D3/D4 nach Gigaflare-Klinge.",
+        "ja": "エクサフレア後H1/H2、アク・モーン後D1/D2、ギガフレア後D3/D4。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "Pairs D1/D2, then D3/D4, then H1/H2.",
+        "fr": "Paires D1/D2, puis D3/D4, puis H1/H2.",
+        "de": "Paare D1/D2, dann D3/D4, dann H1/H2.",
+        "ja": "D1/D2→D3/D4→H1/H2の順。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Non-tank bait order for the close auto: after Exaflare's Edge D1 then D2, after Akh Morn's Edge D3 then D4, after Gigaflare's Edge H1 then H2. Tanks keep both stances and swap every two autos; if a baiter dies, someone else takes it and the order swaps.",
+        "fr": "Ordre des appâts non-tanks pour l'auto proche : après Lame d'ExaBrasier D1 puis D2, après Lame d'Akh Morn D3 puis D4, après Lame de GigaBrasier H1 puis H2. Les tanks gardent leurs deux postures et échangent toutes les deux autos ; si un appât meurt, quelqu'un d'autre le prend et l'ordre s'inverse.",
+        "de": "Köder-Reihenfolge der Nicht-Tanks für den nahen Angriff: nach Exaflare-Klinge D1 dann D2, nach Akh Morns Klinge D3 dann D4, nach Gigaflare-Klinge H1 dann H2. Die Tanks behalten beide Haltungen und tauschen alle zwei Autoangriffe; stirbt ein Köder, übernimmt jemand anderes und die Reihenfolge tauscht.",
+        "ja": "近い人へのAA担当：騎竜剣エクサフレア後はD1→D2、騎竜剣アク・モーン後はD3→D4、騎竜剣ギガフレア後はH1→H2。タンクは両方スタンスで2回ごとに交代。担当が死んだら他の人が受けて順番を入れ替える。"
+       }
+      },
+      {
+       "strat": "eu-pf",
+       "how": {
+        "en": "Priority melee > ranged > healers; group 1 takes the first auto.",
+        "fr": "Priorité mêlées > distances > soigneurs ; le groupe 1 prend la première auto.",
+        "de": "Priorität Nahkämpfer > Fernkämpfer > Heiler; Gruppe 1 nimmt den ersten Autoangriff.",
+        "ja": "優先は近接＞レンジ＞ヒーラー。最初のAAはG1。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "The exact NA rotation order differed between NA write-ups.",
+      "fr": "L'ordre exact de rotation NA diffère selon les guides NA.",
+      "de": "Die genaue NA-Rotation unterscheidet sich zwischen NA-Quellen.",
+      "ja": "NAの正確な交代順は資料ごとに異なる。"
+     },
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "debuff"
+     ]
+    },
+    {
+     "id": "exaflares-edge",
+     "names": {
+      "en": "Exaflare's Edge",
+      "fr": "Lame d'ExaBrasier",
+      "de": "Exaflare-Klinge",
+      "ja": "騎竜剣エクサフレア"
+     },
+     "aliases": {
+      "en": [
+       "exaflares",
+       "exas"
+      ],
+      "fr": [
+       "exaflares"
+      ],
+      "de": [
+       "Exaflares"
+      ],
+      "ja": [
+       "エクサ"
+      ]
+     },
+     "how": {
+      "en": "Three exaflare starts appear around Thordan (behind, front-left, front-right relative to his facing) and fire lines of moving circles; any hit kills. Stack behind, step into the start of the safe exaflare, then dodge the next set. A blue sword glow means stand inside his hitbox, red means just outside.",
+      "fr": "Trois départs d'exaflare apparaissent autour de Thordan (derrière, avant-gauche, avant-droite selon son orientation) et tirent des lignes de cercles mobiles ; un seul coup tue. Regroupe-toi derrière, entre au départ de l'exaflare sûr, puis esquive la série suivante. Lame bleue = dans sa hitbox, rouge = juste dehors.",
+      "de": "Drei Exaflare-Startpunkte erscheinen um Thordan (hinten, vorne links, vorne rechts relativ zu seiner Blickrichtung) und feuern Linien wandernder Kreise; jeder Treffer tötet. Hinten stacken, in den Start des sicheren Exaflares treten, dann dem nächsten Satz ausweichen. Blaues Schwertleuchten heißt in die Hitbox, rot heißt knapp außerhalb.",
+      "ja": "トールダンの向きに対し後方・左前・右前に3つのエクサ。当たると死亡。背面に集まり、安全なエクサの起点に入り、次を避ける。剣が青ならヒットボックス内、赤なら少し外。"
+     },
+     "strats": [
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Go to the boss's rear (inside or outside the hitbox by the imbue), run to the light beam after the first hit, then to the spot behind you where the ground lines cross, and hold until the lines pass. The tanks and D1 go opposite the party for the autos; MT faces the boss north or south and OT takes the diagonal in front.",
+        "fr": "Va à l'arrière du boss (dans ou hors de la hitbox selon l'imprégnation), cours au rayon de lumière après le premier coup, puis à l'endroit derrière toi où les lignes au sol se croisent, et attends que les lignes passent. Les tanks et D1 vont à l'opposé du groupe pour les autos ; le MT oriente le boss au nord ou au sud et l'OT prend la diagonale devant.",
+        "de": "Geh hinter den Boss (in oder außerhalb der Hitbox je nach Prägung), lauf nach dem ersten Treffer zum Lichtstrahl, dann zur Stelle hinter dir, wo sich die Bodenlinien kreuzen, und bleib dort, bis die Linien vorbei sind. Tanks und D1 gehen für die Autoangriffe gegenüber der Gruppe; der MT dreht den Boss nach Norden oder Süden, der OT nimmt die Diagonale vorn.",
+        "ja": "ボスの後ろへ（属性でヒットボックスの内か外）、1発目の後に光の筋へ走り、次に後ろの床の線が交わる場所へ移って線が過ぎるまで待つ。タンクとD1はAAのためPTの反対側。MTはボスを北か南に向け、OTは前方の斜め。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "Main tank points Thordan north or south before it; most groups use the safe 'move to the exaflare directly behind' dodge.",
+      "fr": "Le MT tourne Thordan vers le nord ou le sud avant ; la plupart des groupes utilisent l'esquive sûre « aller sur l'exaflare juste derrière ».",
+      "de": "Der MT dreht Thordan vorher nach Norden oder Süden; die meisten Gruppen nutzen die sichere Variante „zum Exaflare direkt dahinter“.",
+      "ja": "事前にMTがボスを南北に向ける。多くのPTは「真後ろのエクサへ」の安全な避け方。"
+     },
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "akh-morns-edge",
+     "names": {
+      "en": "Akh Morn's Edge",
+      "fr": "Lame d'Akh Morn",
+      "de": "Akh Morns Klinge",
+      "ja": "騎竜剣アク・モーン"
+     },
+     "aliases": {
+      "en": [
+       "akh morn",
+       "towers",
+       "3-3-2",
+       "6-1-1",
+       "611"
+      ],
+      "fr": [
+       "tours"
+      ],
+      "de": [
+       "Türme"
+      ],
+      "ja": [
+       "アク・モーン",
+       "塔",
+       "332"
+      ]
+     },
+     "how": {
+      "en": "Three towers appear: two red towers (front-left, front-right) and a blue tank tower behind. Each tower hits repeatedly and more times with each cast; an empty tower wipes. Everyone stays inside his hitbox so both healers reach.",
+      "fr": "Trois tours apparaissent : deux rouges (avant-gauche, avant-droite) et une bleue pour les tanks derrière. Chaque tour frappe plusieurs fois, de plus en plus à chaque cast ; une tour vide = wipe. Tout le monde reste dans sa hitbox pour que les deux soigneurs atteignent.",
+      "de": "Drei Türme erscheinen: zwei rote (vorne links, vorne rechts) und ein blauer Tank-Turm hinten. Jeder Turm trifft mehrmals, mit jedem Zauber öfter; ein leerer Turm führt zum Wipe. Alle bleiben in seiner Hitbox, damit beide Heiler erreichen.",
+      "ja": "赤い塔2つ（左前・右前）と青いタンク塔（後方）。多段で回数は毎回増える。空の塔は全滅。両ヒーラーが届くようヒットボックス内で。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "First Akh Morn 3-3-2 (healer + two DPS per red tower, both tanks in the blue). Second and third 6-1-1: one tank invulns the rear tower alone, the other tank takes a side tower alone with mitigation, and the six others take the northwest (front-left) tower.",
+        "fr": "Premier Akh Morn en 3-3-2 (soigneur + deux DPS par tour rouge, les deux tanks dans la bleue). Deuxième et troisième en 6-1-1 : un tank prend seul la tour arrière avec une invu, l'autre tank seul une tour latérale avec réductions, et les six autres la tour nord-ouest (avant-gauche).",
+        "de": "Erster Akh Morn 3-3-2 (Heiler + zwei DDs pro rotem Turm, beide Tanks im blauen). Zweiter und dritter 6-1-1: Ein Tank nimmt den hinteren Turm allein mit Unverwundbarkeit, der andere allein einen Seitenturm mit Mitigation, die sechs anderen den Nordwest-Turm (vorne links).",
+        "ja": "1回目は3-3-2（赤塔にヒーラー＋DPS2人、青塔にタンク2人）。2・3回目は6-1-1：片方のタンクが無敵で後方塔を1人、もう片方が軽減で横の塔を1人、残り6人は北西（左前）の塔。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "All three are 3-3-2: front-left H1, D1, D3; front-right H2, D2, D4; back MT and ST. The second one uses a tank LB3.",
+        "fr": "Les trois en 3-3-2 : avant-gauche H1, D1, D3 ; avant-droite H2, D2, D4 ; arrière MT et ST. Le deuxième utilise une LB3 tank.",
+        "de": "Alle drei 3-3-2: vorne links H1, D1, D3; vorne rechts H2, D2, D4; hinten MT und ST. Beim zweiten wird ein Tank-LB3 genutzt.",
+        "ja": "3回とも3-3-2：左前H1・D1・D3、右前H2・D2・D4、後方MT・ST。2回目はタンクLB3。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "All three 3-3-2 with the same groups as Mana, but the second one is mitigated instead of using tank LB3.",
+        "fr": "Les trois en 3-3-2 avec les mêmes groupes que Mana, mais le deuxième est encaissé avec des réductions au lieu de la LB3 tank.",
+        "de": "Alle drei 3-3-2 mit denselben Gruppen wie Mana, aber der zweite wird mitigiert statt mit Tank-LB3.",
+        "ja": "3回とも3-3-2でManaと同じ組。ただし2回目はLB3ではなく軽減。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Three towers every time: northwest H1, D1, D3; northeast H2, D2, D4; rear both tanks. With ice stay inside the hitbox and still; with fire start outside and step in after the first hit.",
+        "fr": "Trois tours à chaque fois : nord-ouest H1, D1, D3 ; nord-est H2, D2, D4 ; arrière les deux tanks. Avec la glace, reste dans la hitbox sans bouger ; avec le feu, commence dehors et entre après le premier coup.",
+        "de": "Jedes Mal drei Türme: Nordwest H1, D1, D3; Nordost H2, D2, D4; hinten beide Tanks. Bei Eis bleib still in der Hitbox; bei Feuer starte außen und geh nach dem ersten Treffer rein.",
+        "ja": "毎回塔3つ：北西H1・D1・D3、北東H2・D2・D4、後ろはタンク2人。氷ならヒットボックス内で動かない、炎なら外から始めて1発目の後に中へ。"
+       }
+      },
+      {
+       "strat": "eu-pf",
+       "how": {
+        "en": "Group 1 on the left flank and group 2 on the right; in the 6-1-1 versions the group is on the left.",
+        "fr": "Groupe 1 sur le flanc gauche et groupe 2 sur le droit ; dans les versions 6-1-1, le groupe est à gauche.",
+        "de": "Gruppe 1 an der linken Flanke, Gruppe 2 an der rechten; bei den 6-1-1-Versionen ist die Gruppe links.",
+        "ja": "G1が左、G2が右。6-1-1の時はPTが左。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "gigaflares-edge",
+     "names": {
+      "en": "Gigaflare's Edge",
+      "fr": "Lame de GigaBrasier",
+      "de": "Gigaflare-Klinge",
+      "ja": "騎竜剣ギガフレア"
+     },
+     "aliases": {
+      "en": [
+       "gigaflare",
+       "giga"
+      ],
+      "fr": [
+       "gigabrasier"
+      ],
+      "de": [
+       "Gigaflare"
+      ],
+      "ja": [
+       "ギガフレア",
+       "ギガ"
+      ]
+     },
+     "how": {
+      "en": "Three proximity explosions go off one after another in a triangle around Thordan (clockwise or counter-clockwise); being close kills, far away is heavy damage. Move away from each one in turn and mitigate.",
+      "fr": "Trois explosions à distance sautent l'une après l'autre en triangle autour de Thordan (horaire ou anti-horaire) ; être près tue, loin fait de gros dégâts. Éloigne-toi de chacune à tour de rôle et utilise des réductions.",
+      "de": "Drei Distanzexplosionen gehen nacheinander im Dreieck um Thordan hoch (im oder gegen den Uhrzeigersinn); nah tötet, fern macht schweren Schaden. Nacheinander von jeder weggehen und mitigieren.",
+      "ja": "トールダン周囲に三角状の距離減衰爆発が時計/反時計回りに3回。近いと死亡、遠くても大ダメージ。順に離れて軽減。"
+     },
+     "strats": [
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Move opposite the first of the three growing AoEs and check the imbue: with ice stand right at the hitbox edge, with fire rotate as a party opposite the second AoE at max melee. Tanks keep rotating until the MT is on a north or south waymark, then face the boss for the Exaflares.",
+        "fr": "Va à l'opposé de la première des trois zones qui grandissent et regarde l'imprégnation : avec la glace, colle le bord de la hitbox ; avec le feu, tourne en groupe à l'opposé de la deuxième zone, au corps à corps max. Les tanks continuent de tourner jusqu'à ce que le MT soit sur un marqueur nord ou sud, puis orientent le boss pour les Exaflares.",
+        "de": "Geh gegenüber der ersten der drei wachsenden Flächen und prüf die Prägung: bei Eis direkt an den Hitbox-Rand, bei Feuer als Gruppe gegenüber der zweiten Fläche auf maximaler Nahkampfdistanz drehen. Die Tanks drehen weiter, bis der MT auf einem Nord- oder Süd-Wegmarker steht, dann richten sie den Boss für die Exaflares aus.",
+        "ja": "3つ広がる範囲の1つ目の反対へ移動し属性を確認。氷ならヒットボックスの縁ぎりぎり、炎ならPTで2つ目の反対側の近接最大距離へ回る。タンクはMTが北か南のマーカーに来るまで回し、エクサフレアに向けてボスの向きを直す。"
+       }
+      },
+      {
+       "strat": "eu-pf",
+       "how": {
+        "en": "Do not run through the middle (you can miss heals). The first two-minute buffs go on Gigaflare 1.",
+        "fr": "Ne passe pas par le milieu (tu peux rater des soins). Les premiers buffs de deux minutes vont sur le premier GigaBrasier.",
+        "de": "Lauf nicht durch die Mitte (sonst verpasst du Heilungen). Die ersten Zwei-Minuten-Buffs kommen auf den ersten Gigaflare.",
+        "ja": "中央を突っ切らない（回復を受け損ねる）。最初の2分バフはギガフレア1回目。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "proximity",
+      "dodge"
+     ]
+    },
+    {
+     "id": "morn-afahs-edge",
+     "names": {
+      "en": "Morn Afah's Edge (enrage)",
+      "fr": "Lame de Morn Afah (enrage)",
+      "de": "Morn Afahs Klinge (Enrage)",
+      "ja": "騎竜剣モーン・アファー（時間切れ）"
+     },
+     "aliases": {
+      "en": [
+       "enrage",
+       "morn afah",
+       "final towers"
+      ],
+      "fr": [
+       "enrage"
+      ],
+      "de": [
+       "Enrage"
+      ],
+      "ja": [
+       "時間切れ",
+       "モーン・アファー"
+      ]
+     },
+     "how": {
+      "en": "The enrage: three sets of single-person towers in the Akh Morn spots; each soaker dies and an empty tower wipes. Sending one player per tower in the first two sets buys a few extra seconds to finish the kill.",
+      "fr": "L'enrage : trois séries de tours à une personne aux places d'Akh Morn ; chaque joueur dedans meurt et une tour vide = wipe. Envoyer un joueur par tour sur les deux premières séries donne quelques secondes de plus pour finir.",
+      "de": "Der Enrage: drei Sätze Ein-Personen-Türme an den Akh-Morn-Stellen; jeder darin stirbt, ein leerer Turm führt zum Wipe. Ein Spieler pro Turm in den ersten zwei Sätzen bringt ein paar Sekunden mehr.",
+      "ja": "時間切れ技：アク・モーンの位置に1人塔が3セット。踏んだ人は死に、空なら全滅。最初の2セットに1人ずつ入れると数秒延命。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "First set: healers and tank 1; second set: ranged and tank 2; melee stay out to keep attacking.",
+        "fr": "Première série : soigneurs et tank 1 ; deuxième : distances et tank 2 ; les mêlées restent dehors pour continuer à frapper.",
+        "de": "Erster Satz: Heiler und Tank 1; zweiter: Fernkämpfer und Tank 2; Nahkämpfer bleiben draußen und schlagen weiter.",
+        "ja": "1セット目：ヒーラー＋T1、2セット目：遠隔＋T2、近接は攻撃継続。"
+       }
+      },
+      {
+       "strat": "jp-mana",
+       "how": {
+        "en": "First set H1, H2, MT; second set D3, D4, ST; the third set is left empty.",
+        "fr": "Première série H1, H2, MT ; deuxième D3, D4, ST ; la troisième reste vide.",
+        "de": "Erster Satz H1, H2, MT; zweiter D3, D4, ST; der dritte bleibt leer.",
+        "ja": "1セット目H1・H2・MT、2セット目D3・D4・ST、3セット目は空。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Towers in the same layout as Akh Morn's Edge. First set H1 northwest, H2 northeast, MT south; second set D3 northwest, D4 northeast, OT south. If the boss is still alive after the last set it is a wipe.",
+        "fr": "Tours dans la même disposition que Lame d'Akh Morn. Première série H1 nord-ouest, H2 nord-est, MT sud ; seconde série D3 nord-ouest, D4 nord-est, OT sud. Si le boss est encore en vie après la dernière série, c'est un wipe.",
+        "de": "Türme im gleichen Aufbau wie bei Akh Morns Klinge. Erste Runde H1 Nordwest, H2 Nordost, MT Süd; zweite Runde D3 Nordwest, D4 Nordost, OT Süd. Lebt der Boss nach der letzten Runde noch, ist es ein Wipe.",
+        "ja": "塔は騎竜剣アク・モーンと同じ配置。1回目はH1北西、H2北東、MT南。2回目はD3北西、D4北東、OT南。最後の塔の後もボスが生きていれば全滅。"
+       }
+      },
+      {
+       "strat": "jp-elemental",
+       "how": {
+        "en": "MT goes with H1 and H2, ST with D3 and D4.",
+        "fr": "Le MT va avec H1 et H2, le ST avec D3 et D4.",
+        "de": "Der MT geht mit H1 und H2, der ST mit D3 und D4.",
+        "ja": "MTはH1・H2と、STはD3・D4と入る。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Elemental's enrage assignment was not found.",
+      "fr": "L'attribution Elemental pour l'enrage n'a pas été trouvée.",
+      "de": "Die Elemental-Zuteilung für den Enrage wurde nicht gefunden.",
+      "ja": "Elementalの時間切れ担当は未確認。"
+     },
+     "tags": [
+      "tower",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Dragonsong's Reprise (Ultimate) - Console Games Wiki",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Dragonsong%27s_Reprise",
+   "lang": "en"
+  },
+  {
+   "title": "ultistrats DSR (NA PF strat index)",
+   "url": "https://ultistrats.com/guides/dsr/",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins DSR guide - Vault phase",
+   "url": "https://www.icy-veins.com/ffxiv/dragonsongs-reprise-ultimate-guide-for-the-vault-phase",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins DSR guide - King Thordan",
+   "url": "https://www.icy-veins.com/ffxiv/dragonsongs-reprise-ultimate-guide-for-king-thordan",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins DSR guide - Nidhogg",
+   "url": "https://icy-veins.com/ffxiv/dragonsongs-reprise-ultimate-guide-for-nidhogg",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins DSR guide - Eyes and Rewind",
+   "url": "https://www.icy-veins.com/ffxiv/dragonsongs-reprise-ultimate-guide-for-eyes",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins DSR guide - Alternate Thordan",
+   "url": "https://icy-veins.com/ffxiv/dragonsongs-reprise-ultimate-guide-for-thordanii",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins DSR guide - Nidhogg and Hraesvelgr",
+   "url": "https://www.icy-veins.com/ffxiv/dragonsongs-reprise-ultimate-guide-for-nidhogg-and-hraesvelgr",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins DSR guide - Dragon-king Thordan",
+   "url": "https://www.icy-veins.com/ffxiv/dragonsongs-reprise-ultimate-guide-for-dragonking-thordan",
+   "lang": "en"
+  },
+  {
+   "title": "Materia Raiding DSR (MUR, OCE)",
+   "url": "https://materiaraiding.pages.dev/ultimate/dsr",
+   "lang": "en"
+  },
+  {
+   "title": "Tuufless FFXIV Notes - DSR (Mana)",
+   "url": "https://ffxiv.tuufless.com/mana/dsr/",
+   "lang": "en"
+  },
+  {
+   "title": "Tuufless - DSR Mana phase pages 01-07",
+   "url": "https://ffxiv.tuufless.com/mana/dsr/02_thordan/",
+   "lang": "en"
+  },
+  {
+   "title": "Tuufless - DSR Mana vs Elemental differences",
+   "url": "https://ffxiv.tuufless.com/mana/dsr/differences/",
+   "lang": "en"
+  },
+  {
+   "title": "Tuufless FFXIV Notes - DSR (Elemental)",
+   "url": "https://ffxiv.tuufless.com/elemental/dsr/",
+   "lang": "en"
+  },
+  {
+   "title": "The Balance - RDM DSR guide (fight tips)",
+   "url": "https://www.thebalanceffxiv.com/jobs/casters/red-mage/fight-tips/dragonsongs-reprise-ultimate-guide",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 (official game text: duty, action and NPC names in EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=ContentFinderCondition",
+   "lang": "en"
+  },
+  {
+   "title": "Materia Raiding - DSR (MUR, full guide incl. P6 and P7)",
+   "url": "https://materiaraiding.com/ultimate/dsr",
+   "lang": "en"
+  },
+  {
+   "title": "Ultimate Uncoiled - DSR PF strats (NA and Europe/LPDU sections)",
+   "url": "https://ultimateuncoiled.com/dsr-pug-strats/",
+   "lang": "en"
+  },
+  {
+   "title": "xivpf.com - live party finder listings (Light DC DSR listings advertise NAUR)",
+   "url": "https://xivpf.com/listings",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

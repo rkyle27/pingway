@@ -1,0 +1,397 @@
+{
+ "id": "o9s",
+ "type": "savage",
+ "expansion": "SB",
+ "patch": "4.4",
+ "names": {
+  "en": "Alphascape V1.0 (Savage)",
+  "fr": "Alphastice v1.0 (sadique)",
+  "de": "Alphametrie 1.0 (episch)",
+  "ja": "次元の狭間オメガ零式：アルファ編1"
+ },
+ "aliases": {
+  "en": [
+   "o9s",
+   "chaos",
+   "alphascape 1 savage"
+  ],
+  "fr": [
+   "o9s",
+   "chaos",
+   "alphastice 1"
+  ],
+  "de": [
+   "o9s",
+   "chaos",
+   "alphametrie 1"
+  ],
+  "ja": [
+   "アルファ零式1層",
+   "カオス",
+   "o9s"
+  ]
+ },
+ "summary": {
+  "en": "First floor of Alphascape Savage against Chaos. The fight runs through four elemental phases (fire, wind, water, earth) whose debuffs must be cleansed with the right hit, plus an add interlude (Bowels of Agony) where those debuffs are used to cancel each other.",
+  "fr": "Premier étage d'Alphastice sadique contre Chaos. Le combat enchaîne quatre phases élémentaires (feu, vent, eau, terre) dont les debuffs doivent être purgés par le bon coup, plus un intermède (Entrailles de l'agonie) où ces debuffs s'annulent entre eux.",
+  "de": "Erste Ebene von Alphametrie episch gegen Chaos. Der Kampf läuft durch vier Elementphasen (Feuer, Wind, Wasser, Erde), deren Debuffs mit dem richtigen Treffer gereinigt werden müssen, plus ein Zwischenspiel (Quälende Eingeweide), in dem sich diese Debuffs gegenseitig aufheben.",
+  "ja": "アルファ編1層、カオス戦。火・風・水・土の4つの属性フェーズがあり、それぞれのデバフを正しい攻撃で解除します。途中のバウル・オブ・アゴニーではデバフ同士を打ち消し合います。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "shared",
+   "names": {
+    "en": "Shared mechanics",
+    "fr": "Mécaniques communes",
+    "de": "Gemeinsame Mechaniken",
+    "ja": "共通ギミック"
+   },
+   "mechanics": [
+    {
+     "id": "damning-edict",
+     "names": {
+      "en": "Damning Edict / Umbra Smash",
+      "fr": "Décret accablant / Fracas ombral",
+      "de": "Verdammendes Edikt / Schattenschlag",
+      "ja": "ダミングイーディクト／アンブラスマッシュ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Damning Edict is a 180-degree frontal cone: go behind Chaos. Umbra Smash is a proximity hit where he jumps to an edge, always followed by Damning Edict.",
+      "fr": "Décret accablant est un cône frontal à 180° : va derrière Chaos. Fracas ombral : il saute au bord avec dégâts selon la distance, toujours suivi de Décret accablant.",
+      "de": "Verdammendes Edikt ist ein 180-Grad-Frontalkegel: geh hinter Chaos. Schattenschlag: er springt an einen Rand mit Distanzschaden, immer gefolgt von Verdammendem Edikt.",
+      "ja": "ダミングイーディクトは前方180度：カオスの後ろへ。アンブラスマッシュは外周へ跳ぶ距離減衰攻撃で、必ずダミングイーディクトが続きます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "proximity"
+     ]
+    },
+    {
+     "id": "implosion",
+     "names": {
+      "en": "Longitudinal / Latitudinal Implosion",
+      "fr": "Implosion verticale / horizontale",
+      "de": "Vertikale / Horizontale Implosion",
+      "ja": "ヴァーティカル／ホリゾンタルインプロージョン"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Two opposite 90-degree cones, then the other pair; the name tells the order and a faint purple mist shows the first safe areas.",
+      "fr": "Deux cônes opposés à 90°, puis l'autre paire ; le nom donne l'ordre et une légère brume violette montre les premières zones sûres.",
+      "de": "Zwei gegenüberliegende 90-Grad-Kegel, dann das andere Paar; der Name verrät die Reihenfolge, ein leichter lila Nebel zeigt die ersten sicheren Bereiche.",
+      "ja": "対角の90度扇が2つ、続いて残りの2つ。名前で順番が分かり、薄い紫の霧が最初の安置を示します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "chaotic-dispersion",
+     "names": {
+      "en": "Chaotic Dispersion",
+      "fr": "Dispersion chaotique",
+      "de": "Chaos-Dispersion",
+      "ja": "カオティックディスパーション"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Tankbuster with a physical vulnerability; tanks swap after each one.",
+      "fr": "Tankbuster avec vulnérabilité physique ; les tanks swap après chaque.",
+      "de": "Tankbuster mit physischer Verwundbarkeit; Tanks wechseln nach jedem.",
+      "ja": "物理被ダメージ上昇付きのタンク強攻撃。毎回タンクスイッチ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "debuff"
+     ]
+    },
+    {
+     "id": "knock-down-big-bang",
+     "names": {
+      "en": "Knock Down / Big Bang",
+      "fr": "Ordre d'impact / Ordre de saillie",
+      "de": "Niederschmettern / Quantengravitationsschleife",
+      "ja": "着弾せよ／突出せよ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Knock Down is either stack markers on each tank and healer (pair with a DPS) or Flares on both healers (they go to the sides); it stores energy for Big Bang, a circle that is much larger after Flares, so everyone comes back for it.",
+      "fr": "Ordre d'impact est soit des packages sur chaque tank et healer (en paire avec un DPS), soit des Brasiers sur les deux healers (ils vont sur les côtés) ; il stocke de l'énergie pour Ordre de saillie, un cercle bien plus grand après des Brasiers, donc tout le monde revient.",
+      "de": "Niederschmettern sind entweder Sammelmarker auf jedem Tank und Heiler (mit einem DD paaren) oder Flares auf beiden Heilern (sie gehen zur Seite); es speichert Energie für die Quantengravitationsschleife, einen Kreis, der nach Flares viel größer ist, also kommen alle zurück.",
+      "ja": "着弾せよはタンク・ヒーラーへの頭割り（DPSとペア）か、ヒーラー2人へのフレア（左右へ）。エネルギーを蓄えて突出せよ（円範囲）になり、フレア後は特に大きいので全員戻ります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "fiendish-orbs",
+     "names": {
+      "en": "Fiendish Orbs",
+      "fr": "Ordre de poursuite",
+      "de": "Höllenkugeln",
+      "ja": "追尾せよ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Either four orbs firing lines (dodge) or two passable tethers on the healers that end in a tankbuster, so tanks take the tethers and mitigate.",
+      "fr": "Soit quatre orbes qui tirent des lignes (esquive), soit deux liens transférables sur les healers qui finissent en tankbuster, donc les tanks les prennent et mitigent.",
+      "de": "Entweder vier Kugeln mit Linien (ausweichen) oder zwei übertragbare Verbindungen auf den Heilern, die in einem Tankbuster enden, also übernehmen die Tanks sie und reduzieren.",
+      "ja": "4つの玉の直線攻撃（回避）か、ヒーラーへの受け渡し可能な線（最後にタンク強攻撃なのでタンクが取って軽減）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "tether",
+      "tankbuster"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "elements",
+   "names": {
+    "en": "Elemental phases",
+    "fr": "Phases élémentaires",
+    "de": "Elementphasen",
+    "ja": "属性フェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "fire",
+     "names": {
+      "en": "Fire phase (Entropy)",
+      "fr": "Phase de feu (Flammes du chaos)",
+      "de": "Feuerphase (Chaosflammen)",
+      "ja": "火フェーズ（混沌の炎）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Raid damage gives Entropy, short on tanks/healers and long on DPS, which ends in a spread with knockback; only the center is not burning. Tanks/healers spread to clock spots while DPS stay central, then swap.",
+      "fr": "Les dégâts de groupe donnent Entropy, courte sur tanks/healers et longue sur DPS, qui finit en dispersion avec projection ; seul le centre ne brûle pas. Tanks/healers se dispersent en horloge pendant que les DPS restent au centre, puis on inverse.",
+      "de": "Gruppenschaden gibt Entropy, kurz auf Tanks/Heilern und lang auf DDs, endet mit einem Verteiler mit Rückstoß; nur die Mitte brennt nicht. Tanks/Heiler verteilen sich auf Uhrpositionen, DDs bleiben in der Mitte, dann tauschen.",
+      "ja": "全体攻撃でEntropyが付与（タンク・ヒーラーは短く、DPSは長い）、切れると散開＋ノックバック。燃えていないのは中央のみ。タンク・ヒーラーがクロック位置へ散開しDPSは中央、その後入れ替え。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "knockback",
+      "debuff"
+     ]
+    },
+    {
+     "id": "wind",
+     "names": {
+      "en": "Wind phase (Headwind / Tailwind)",
+      "fr": "Phase de vent (Vent du chaos / Vent contraire du chaos)",
+      "de": "Windphase (Chaosböen / Chaossturm)",
+      "ja": "風フェーズ（混沌の風／混沌の逆風）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Headwind (tanks/healers) doubles knockback from the front, Tailwind (DPS) from behind; taking a knockback clears it, letting it expire gives Damage Down, and knockback immunity stops the cleanse. Face toward or away from the center by your debuff so the knockback puts you behind Chaos.",
+      "fr": "Headwind (tanks/healers) double la projection de face, Tailwind (DPS) de dos ; une projection le retire, l'expiration donne Dégâts réduits, et l'anti-projection empêche le retrait. Tourne-toi vers le centre ou dos au centre selon ton debuff pour finir derrière Chaos.",
+      "de": "Headwind (Tanks/Heiler) verdoppelt Rückstoß von vorne, Tailwind (DDs) von hinten; ein Rückstoß entfernt es, Ablaufen gibt Schaden runter, Rückstoß-Immunität verhindert das Entfernen. Schau je nach Debuff zur Mitte oder weg, damit du hinter Chaos landest.",
+      "ja": "Headwind（タンク・ヒーラー）は正面から、Tailwind（DPS）は背面からのノックバックが2倍。ノックバックで解除、時間切れで与ダメージ低下、耐性を使うと解除できません。デバフに応じて中央向き/外向きになり、カオスの後ろへ飛ばされます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "debuff"
+     ]
+    },
+    {
+     "id": "water",
+     "names": {
+      "en": "Water phase (Dynamic Fluid)",
+      "fr": "Phase d'eau (Eaux du chaos)",
+      "de": "Wasserphase (Chaosspritzer)",
+      "ja": "水フェーズ（混沌の水）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Dynamic Fluid ends in an unmarked donut around each holder (small safe center); stack very tightly so the donuts don't hit others, and the side edges are flooded.",
+      "fr": "Dynamic Fluid finit par un anneau non marqué autour de chaque porteur (petit centre sûr) ; groupe-toi très serré pour que les anneaux ne touchent personne, et les bords latéraux sont inondés.",
+      "de": "Dynamic Fluid endet in einem unmarkierten Ring um jeden Träger (kleine sichere Mitte); steht sehr eng zusammen, damit die Ringe niemanden treffen, die Seitenränder sind überflutet.",
+      "ja": "Dynamic Fluidは時間切れで保持者中心の見えないドーナツ（中央の小さな安置）。他人に当たらないよう密着して集まります。東西の外周は水で危険。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "debuff"
+     ]
+    },
+    {
+     "id": "earth",
+     "names": {
+      "en": "Earth phase (Accretion / Primordial Crust)",
+      "fr": "Phase de terre (Bourbier du chaos / Terre du chaos)",
+      "de": "Erdphase (Chaossumpf / Chaoserde)",
+      "ja": "土フェーズ（混沌の泥土／混沌の土）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Tanks/healers get Accretion (die unless healed to full before it ends); DPS get Primordial Crust (no healing, removed by one lethal hit that leaves 1 HP). DPS take exactly one of the implosion cones or one Big Bang; a second hit kills.",
+      "fr": "Tanks/healers ont Accretion (mort s'ils ne sont pas soignés à fond avant la fin) ; DPS ont Primordial Crust (pas de soins, retirée par un coup mortel qui laisse 1 PV). Les DPS prennent exactement un cône d'implosion ou un Ordre de saillie ; un deuxième coup tue.",
+      "de": "Tanks/Heiler bekommen Accretion (sterben, wenn nicht vor Ablauf voll geheilt); DDs bekommen Primordial Crust (keine Heilung, entfernt durch einen tödlichen Treffer, der 1 HP lässt). DDs nehmen genau einen Implosionskegel oder eine Quantengravitationsschleife; ein zweiter Treffer tötet.",
+      "ja": "タンク・ヒーラーにAccretion（切れる前に全快しないと死亡）、DPSにPrimordial Crust（回復不可、致死攻撃を1回受けるとHP1で解除）。DPSはインプロージョンか突出せよを1回だけ受け、2回目は死にます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "cleave"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "interlude",
+   "names": {
+    "en": "Bowels of Agony interlude",
+    "fr": "Intermède Entrailles de l'agonie",
+    "de": "Zwischenspiel Quälende Eingeweide",
+    "ja": "バウル・オブ・アゴニー"
+   },
+   "mechanics": [
+    {
+     "id": "bowels-of-agony",
+     "names": {
+      "en": "Bowels of Agony",
+      "fr": "Entrailles de l'agonie",
+      "de": "Quälende Eingeweide",
+      "ja": "バウル・オブ・アゴニー"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Chaos leaves, a Dark Aether gauge fills (100 = wipe), HP drops to 1. Tanks/healers get Dynamic Fluid + Headwind, DPS get Entropy + Primordial Crust: DPS spread around the Dark Crystal with a tank/healer behind each, Entropy's knockback clears Headwind and the donut clears Primordial Crust. Destroy the crystal in time.",
+      "fr": "Chaos part, une jauge d'éther noir monte (100 = wipe), les PV tombent à 1. Tanks/healers ont Dynamic Fluid + Headwind, DPS ont Entropy + Primordial Crust : les DPS se dispersent autour du Cristal noir avec un tank/healer derrière chacun, la projection d'Entropy retire Headwind et l'anneau retire Primordial Crust. Détruis le cristal à temps.",
+      "de": "Chaos verschwindet, eine Dunkeläther-Leiste füllt sich (100 = Wipe), HP fallen auf 1. Tanks/Heiler bekommen Dynamic Fluid + Headwind, DDs Entropy + Primordial Crust: DDs verteilen sich um den Dunkelkristall mit je einem Tank/Heiler dahinter, der Rückstoß von Entropy entfernt Headwind und der Ring entfernt Primordial Crust. Zerstöre den Kristall rechtzeitig.",
+      "ja": "カオスが離脱し、闇エーテルのゲージが上昇（100で全滅）、全員HP1。タンク・ヒーラーにDynamic Fluid＋Headwind、DPSにEntropy＋Primordial Crust。DPSがダーククリスタルの周りに散開し、各DPSの後ろにタンク/ヒーラー。EntropyのノックバックでHeadwindを、ドーナツでPrimordial Crustを解除。時間内にクリスタルを破壊します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "transition",
+      "adds",
+      "debuff",
+      "knockback"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Enrage",
+      "fr": "Enrage",
+      "de": "Enrage",
+      "ja": "時間切れ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "After the fourth elemental phase (about 8:40 into phase 2) Chaos casts all elements with 6-second debuffs on everyone, which cannot be survived.",
+      "fr": "Après la quatrième phase élémentaire (vers 8:40 de la phase 2), Chaos lance tous les éléments avec des debuffs de 6 secondes sur tout le monde, impossible à survivre.",
+      "de": "Nach der vierten Elementphase (etwa 8:40 in Phase 2) wirkt Chaos alle Elemente mit 6-Sekunden-Debuffs auf alle, nicht überlebbar.",
+      "ja": "4つ目の属性フェーズ後（フェーズ2の約8:40）、全属性を6秒デバフで全員に付与し、耐えられません。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - Alphascape V1.0 (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Alphascape_V1.0_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

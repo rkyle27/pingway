@@ -1,0 +1,1034 @@
+{
+ "id": "m4s",
+ "type": "savage",
+ "expansion": "DT",
+ "patch": "7.05",
+ "names": {
+  "en": "AAC Light-heavyweight M4 (Savage) - Wicked Thunder",
+  "fr": "Poids mi-lourds CCA - match 4 (sadique) - Wicked Thunder",
+  "de": "Arkadion - Halbschwergewicht R4 (episch) - Wicked Thunder",
+  "ja": "至天の座アルカディア零式：ライトヘビー級4 - ウィケッドサンダー"
+ },
+ "aliases": {
+  "en": [
+   "m4s",
+   "m4 savage",
+   "wicked thunder",
+   "wt",
+   "lh4",
+   "light heavyweight 4"
+  ],
+  "fr": [
+   "m4s",
+   "wicked thunder"
+  ],
+  "de": [
+   "m4s",
+   "wicked thunder"
+  ],
+  "ja": [
+   "m4s",
+   "零式4層",
+   "ライトヘビー級4層",
+   "ウィケッドサンダー",
+   "4層前半",
+   "4層後半"
+  ]
+ },
+ "summary": {
+  "en": "Final Light-heavyweight fight: Wicked Thunder, a lightning witch. Phase 1 is about Witch Hunt baits, Electrope Edge hit-counting (how many times you were hit decides your explosion size) and the Ion Cluster colour cleanse; after Electrope Transplant the party is knocked to a new platform. Phase 2 has exaflares, Mustard Bomb, the three Sabbath clone puzzles, Chain Lightning memory and Sword Quiver before enrage.",
+  "fr": "Dernier combat Poids mi-lourds : Wicked Thunder, une sorcière de foudre. La phase 1 tourne autour des baits de Piqué fulgurant, du comptage de coups d'Élévation d'électrope (le nombre de coups reçus décide la taille de ton explosion) et de la purge de couleurs d'Accumulation d'ions ; après Transplantation d'électrope le groupe est projeté sur une nouvelle plateforme. La phase 2 a des exaflares, Bombe sulfurée, trois puzzles de clones Diablerie obscure, Chaîne d'éclairs à mémoriser et Épée dansante avant l'enrage.",
+  "de": "Letzter Halbschwergewicht-Kampf: Wicked Thunder, eine Blitz-Hexe. Phase 1 dreht sich um Hexenjagd-Köder, das Zählen der Treffer bei Elektrob-Aufreihung (wie oft du getroffen wurdest, bestimmt deine Explosionsgröße) und die Farb-Reinigung bei Ionen-Ansammlung; nach Elektrob-Umsetzung wird die Gruppe auf eine neue Plattform gestoßen. Phase 2 hat Exaflares, Senfbombe, drei Sabbat-Klon-Puzzles, Kettenblitz zum Merken und Klingentanz vor dem Finalangriff.",
+  "ja": "ライトヘビー級4層「ウィケッドサンダー」戦。前半はウィッチハントの誘導、エレクトロープ展開の被弾回数管理（回数で爆発範囲が変わる）、イオンクラスターの色消し。エレクトロープ移植の後に別フィールドへ飛ばされる。後半はエクサフレア、マスタードボム、ブラックサバト3種、チェインライトニングの記憶、剣の舞で時間切れ。"
+ },
+ "strats_overview": [
+  {
+   "id": "na-pf",
+   "name": {
+    "en": "NA PF standard (thepfstrat / Shabadadu)",
+    "fr": "Standard PF NA (thepfstrat / Shabadadu)",
+    "de": "NA-PF-Standard (thepfstrat / Shabadadu)",
+    "ja": "NA野良標準（thepfstrat / Shabadadu）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "Resolutions as described on ConsoleGamesWiki and the NA PF pages (thepfstrat, Shabadadu pastebin). Many groups also use the uptime Sunrise Sabbath raidplan.",
+    "fr": "Résolutions comme décrites sur ConsoleGamesWiki et les pages PF NA (thepfstrat, pastebin Shabadadu). Beaucoup utilisent aussi le raidplan « uptime » pour Diablerie - Aurore.",
+    "de": "Lösungen wie auf ConsoleGamesWiki und den NA-PF-Seiten (thepfstrat, Shabadadu-Pastebin). Viele nutzen auch den „Uptime“-Raidplan für den Morgensonnensabbat.",
+    "ja": "ConsoleGamesWikiとNA野良（thepfstrat、Shabadadu）の処理。日出はuptime式のレイドプランを使う所も多い。"
+   },
+   "aliases": {
+    "en": [
+     "thepfstrat",
+     "shabadadu"
+    ],
+    "fr": [
+     "thepfstrat",
+     "shabadadu"
+    ],
+    "de": [
+     "thepfstrat",
+     "shabadadu"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "eu-raidplan",
+   "name": {
+    "en": "EU PF (OQ5 phase 1 / Q-Go phase 2 raidplans)",
+    "fr": "PF EU (raidplans OQ5 phase 1 / Q-Go phase 2)",
+    "de": "EU-PF (Raidplans OQ5 Phase 1 / Q-Go Phase 2)",
+    "ja": "EU野良（前半OQ5 / 後半Q-Goレイドプラン）"
+   },
+   "region": "EU",
+   "note": {
+    "en": "EU PF commonly uses the OQ5 raidplan for phase 1 and the Q-Go raidplan for phase 2 (ConsoleGamesWiki lists both as EU). Their contents could not be read and no written EU guide was found, so no per-mechanic steps are stored; tell the user to check those raidplans for exact spots.",
+    "fr": "La PF EU utilise souvent le raidplan OQ5 pour la phase 1 et Q-Go pour la phase 2 (ConsoleGamesWiki les indique comme EU). Leur contenu n'a pas pu être lu et aucun guide EU écrit trouvé, donc pas d'étapes par mécanique ; regarde ces raidplans pour les spots exacts.",
+    "de": "EU-PF nutzt meist den OQ5-Raidplan für Phase 1 und Q-Go für Phase 2 (ConsoleGamesWiki führt beide als EU). Ihr Inhalt war nicht lesbar und kein geschriebener EU-Guide wurde gefunden, daher keine Schritte pro Mechanik; schau für genaue Plätze in diese Raidplans.",
+    "ja": "EU野良は前半OQ5、後半Q-Goのレイドプランが多い（ConsoleGamesWikiでEUと記載）。中身が読めず、文章のEU解説もないため、ギミック別の手順はなし。正確な位置はレイドプランで確認。"
+   },
+   "aliases": {
+    "en": [
+     "oq5",
+     "q-go"
+    ],
+    "fr": [
+     "oq5",
+     "q-go"
+    ],
+    "de": [
+     "oq5",
+     "q-go"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-pf",
+   "name": {
+    "en": "JP PF (Nukemaru macro, game8)",
+    "fr": "PF JP (macro Nukemaru, game8)",
+    "de": "JP-PF (Nukemaru-Makro, game8)",
+    "ja": "日本野良（ぬけまるマクロ / game8準拠）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "game8 switched from the Idyll macro to Nukemaru's. Some mechanics have Idyll and Hamukatsu-Tonkatsu variants, mentioned per mechanic.",
+    "fr": "game8 est passé de la macro Idyll à celle de Nukemaru. Certaines mécaniques ont des variantes Idyll et Hamukatsu-Tonkatsu, indiquées par mécanique.",
+    "de": "game8 wechselte vom Idyll-Makro zu Nukemaru. Einige Mechaniken haben Idyll- und Hamukatsu-Tonkatsu-Varianten, pro Mechanik vermerkt.",
+    "ja": "game8はイディル準拠からぬけまる準拠に変更。一部ギミックはイディル版・ハムカツトンカツ版あり（各ギミックに記載）。"
+   },
+   "aliases": {
+    "en": [
+     "nukemaru",
+     "game8"
+    ],
+    "fr": [
+     "nukemaru",
+     "game8"
+    ],
+    "de": [
+     "nukemaru",
+     "game8"
+    ],
+    "ja": [
+     "ぬけまる",
+     "nukemaru"
+    ]
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1 (first half)",
+    "fr": "Phase 1 (première moitié)",
+    "de": "Phase 1 (erste Hälfte)",
+    "ja": "前半"
+   },
+   "mechanics": [
+    {
+     "id": "wrath-of-zeus",
+     "names": {
+      "en": "Wrath of Zeus",
+      "fr": "Colère de Zeus",
+      "de": "Zorn des Zeus",
+      "ja": "ラス・オブ・ゼウス"
+     },
+     "aliases": {
+      "en": [
+       "raidwide"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Magic raidwide; the second one comes about 80 s later, so 90 s mitigations used early cover both.",
+      "fr": "Dégâts de zone magiques ; le second arrive environ 80 s après, donc une mitigation de 90 s utilisée tôt couvre les deux.",
+      "de": "Magischer Raidwide; der zweite kommt etwa 80 s später, also decken früh genutzte 90-s-Mitigationen beide ab.",
+      "ja": "魔法全体攻撃。2回目は約80秒後なので、リキャスト90秒の軽減を早めに使えば両方に使える。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "bewitching-flight",
+     "names": {
+      "en": "Bewitching Flight / Electrifying Witch Hunt",
+      "fr": "Vol enchanteur / Piqué supra-fulgurant",
+      "de": "Hexenflug / Elektrisierende Hexenjagd",
+      "ja": "フライングウィッチ / ライトニング・ウィッチハント"
+     },
+     "aliases": {
+      "en": [
+       "lines",
+       "witch hunt"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ウィッチハント"
+      ]
+     },
+     "how": {
+      "en": "The boss jumps north and fires line AoEs while Gun Batteries fire lines from the west; then all DPS or all supports get hit by Witch Hunt circles, and the four players not just hit bait the diamond-marked follow-up while dodging the lines.",
+      "fr": "Le boss saute au nord et tire des lignes pendant que des canons tirent depuis l'ouest ; ensuite tous les DPS ou tous les supports prennent des cercles Piqué fulgurant, et les quatre qui n'ont pas été touchés baitent la suite marquée d'un losange en esquivant les lignes.",
+      "de": "Der Boss springt nach Norden und feuert Linien, während Geschütze von Westen feuern; danach treffen Hexenjagd-Kreise alle DPS oder alle Supporter, und die vier, die nicht gerade getroffen wurden, ködern die Raute-markierte Folge und weichen den Linien aus.",
+      "ja": "ボスは必ず北、エレクトロープは必ず西から直線。続いてTH4人かDPS4人に円範囲、ボス頭上の菱形を見て直前に当たっていない4人が誘導。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread"
+     ]
+    },
+    {
+     "id": "narrowing-widening-witch-hunt",
+     "names": {
+      "en": "Narrowing / Widening Witch Hunt",
+      "fr": "Piqué fulgurant condensé / élargi",
+      "de": "Ringförmige / Runde Hexenjagd",
+      "ja": "輪円式 / 円輪式ウィッチハント"
+     },
+     "aliases": {
+      "en": [
+       "in out",
+       "out in"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "輪円",
+       "円輪"
+      ]
+     },
+     "how": {
+      "en": "Long cast with alternating donuts and point-blank circles (in-out or out-in) plus baited hits on pairs of players; the cast name tells you which pattern.",
+      "fr": "Longue incantation alternant donuts et cercles (in-out ou out-in) avec des coups baités sur des paires ; le nom de l'incantation donne le pattern.",
+      "de": "Langer Zauber mit abwechselnd Donuts und Kreisen (rein-raus oder raus-rein) plus Ködertreffern auf Paare; der Zaubername verrät das Muster.",
+      "ja": "ドーナツと円が交互（内→外か外→内）に来て、2人ずつ誘導。詠唱名でパターンが決まる。"
+     },
+     "strats": [
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Two patterns by cast name; each role stands exactly on its assigned spot (marker, hitbox edge or cross line), no near/far baiting needed.",
+        "fr": "Deux patterns selon le nom ; chaque rôle se met exactement sur son spot (marqueur, bord de hitbox ou ligne en croix), pas besoin de bait proche/loin.",
+        "de": "Zwei Muster je nach Zaubername; jede Rolle steht genau auf ihrem Platz (Marker, Hitbox-Rand oder Kreuzlinie), kein Nah/Fern-Ködern nötig.",
+        "ja": "詠唱で2パターン。各ロールが担当位置（マーカー・タゲサ・十字ライン）に正確に立つ。近遠の誘導は不要。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "proximity"
+     ]
+    },
+    {
+     "id": "electrope-edge-1",
+     "names": {
+      "en": "Electrope Edge 1 (Witchgleam / Sidewise Spark)",
+      "fr": "Élévation d'électrope 1 (Rayon éclatant / Éclair latéral)",
+      "de": "Elektrob-Aufreihung 1 (Knisternder Funken / Seitlicher Funken)",
+      "ja": "エレクトロープ展開1回目（シャインスパーク / サイドスパーク）"
+     },
+     "aliases": {
+      "en": [
+       "ee1",
+       "mines"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "展開1"
+      ]
+     },
+     "how": {
+      "en": "Four mines in the corners are hit by Witchgleam lines; one hit makes a 1-tile explosion, two hits a 2x2. Sidewise Spark then leaves one quadrant safe: eight small orbs = spread (Eight Star), four big orbs = partner stacks (Four Star).",
+      "fr": "Quatre mines dans les coins sont touchées par des lignes ; un coup = explosion d'une case, deux coups = 2x2. Éclair latéral laisse ensuite un quart sûr : huit petits orbes = dispersion (Huit étoiles), quatre gros = paires (Quatre étoiles).",
+      "de": "Vier Minen in den Ecken werden von Linien getroffen; ein Treffer = 1-Feld-Explosion, zwei = 2x2. Seitlicher Funken lässt ein Viertel sicher: acht kleine Kugeln = verteilen (Acht Sterne), vier große = Paare (Vier Sterne).",
+      "ja": "四隅のエレクトロープにシャインスパーク。1回被弾で1マス、2回で2x2の爆発。サイドスパークで1区画が安地、小玉8つなら散開、大玉4つならペア。"
+     },
+     "strats": [
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Work out the safe area from the hit counts and resolve inside the half-room safe side. Tank spots: Nukemaru = MT at the boss, ST away; Idyll = ST at the boss, MT away.",
+        "fr": "Déduis la zone sûre des coups et résous dans la moitié sûre. Tanks : Nukemaru = MT au boss, OT loin ; Idyll = OT au boss, MT loin.",
+        "de": "Leite die sichere Zone aus den Treffern ab und löse in der sicheren Hälfte. Tanks: Nukemaru = MT am Boss, ST weg; Idyll = ST am Boss, MT weg.",
+        "ja": "被弾回数から安地を割り出し半面の安地内で処理。タンク：ぬけまる版はMT足元・ST離れ、イディル版はST足元・MT離れ。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread"
+     ]
+    },
+    {
+     "id": "wicked-jolt",
+     "names": {
+      "en": "Wicked Jolt",
+      "fr": "Électrochoc vicieux",
+      "de": "Tosender Stoß",
+      "ja": "ウィケッドジョルト"
+     },
+     "aliases": {
+      "en": [
+       "tankbuster",
+       "tb"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Double magic line tankbuster with magic vulnerability; swap tanks or use an invulnerability. It targets the main tank; the OT (ST) swaps in right after, because the vulnerability lasts into the next auto-attack.",
+      "fr": "Double tankbuster magique en ligne avec vulnérabilité ; swap ou invincibilité. Il vise le main tank ; l'OT reprend le boss juste après, car la vulnérabilité dure jusqu'à l'auto-attaque suivante.",
+      "de": "Doppelter magischer Linien-Tankbuster mit Verwundbarkeit; Tankwechsel oder Unverwundbarkeit. Er zielt auf den Main-Tank; der OT übernimmt direkt danach, weil die Verwundbarkeit bis zum nächsten Auto-Angriff anhält.",
+      "ja": "魔法の直線タンク強攻撃2連、被魔法ダメ上昇付き。スイッチか無敵。MTが対象。被ダメージ上昇がオートアタックまで残るので、受けた直後にSTがスイッチする。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "debuff"
+     ]
+    },
+    {
+     "id": "electrope-edge-2",
+     "names": {
+      "en": "Electrope Edge 2 (Electrical Condenser / Lightning Cage)",
+      "fr": "Élévation d'électrope 2 (condensateur / Cage d'éclairs)",
+      "de": "Elektrob-Aufreihung 2 (Kondensator / Blitzkäfig)",
+      "ja": "エレクトロープ展開2回目（蓄雷 / ライトニングケージ）"
+     },
+     "aliases": {
+      "en": [
+       "ee2",
+       "spark 2",
+       "spark 3",
+       "hit count"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "展開2",
+       "蓄雷"
+      ]
+     },
+     "how": {
+      "en": "Everyone gets a 22 s or 42 s debuff; when it ends you explode based on how many Witchgleam hits you took (2 = 3x3, 3 = 5x5, 4+ = wipe). Players spread to tiles by timer and hit count, then Sidewise Spark asks for spread or pairs again.",
+      "fr": "Chacun a une debuff de 22 s ou 42 s ; à la fin tu exploses selon le nombre de coups reçus (2 = 3x3, 3 = 5x5, 4+ = wipe). On se place sur des cases selon minuteur et coups, puis Éclair latéral demande encore dispersion ou paires.",
+      "de": "Jeder bekommt 22 s oder 42 s; danach explodierst du je nach Trefferzahl (2 = 3x3, 3 = 5x5, 4+ = Wipe). Verteilt euch nach Timer und Trefferzahl auf Felder, dann verlangt Seitlicher Funken wieder Verteilen oder Paare.",
+      "ja": "全員に22秒/42秒の蓄雷。切れると被弾回数で爆発（2回=3x3、3回=5x5、4回以上=全滅）。時間と回数で散開位置を分け、サイドスパークは玉の数で散開かペア。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Long debuffs go to the safe north tile. Short with 2 hits: supports NW, DPS NE under the unsafe corner. Short with 3 hits: supports SW, DPS SE corners. On the second Witchgleam long-debuff players add 1 to their count; pairs are made by hit count.",
+        "fr": "Debuffs longues sur la case nord sûre. Courtes à 2 coups : supports NO, DPS NE. Courtes à 3 coups : supports SO, DPS SE. Au second rayon, les longues ajoutent 1 ; paires selon le nombre de coups.",
+        "de": "Lange Debuffs auf das sichere Nordfeld. Kurz mit 2 Treffern: Supporter NW, DPS NO. Kurz mit 3 Treffern: Supporter SW, DPS SO. Beim zweiten Strahl zählen Lange +1; Paare nach Trefferzahl.",
+        "ja": "長いデバフは北の安全マス。短い2回はサポート北西・DPS北東、短い3回はサポート南西・DPS南東の角。2回目のシャインスパークで長い人は回数+1、ペアは回数で組む。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Spread spots: Nukemaru = MT in front of the boss, D1 at the boss's feet; Hamukatsu-Tonkatsu = MT front, D2 at the feet; Idyll = D1 front, ST at the feet. Pair stack for the low-hit TH group: Nukemaru at marker A, Idyll south of B or D.",
+        "fr": "Spots : Nukemaru = MT devant le boss, D1 à ses pieds ; Hamukatsu-Tonkatsu = MT devant, D2 aux pieds ; Idyll = D1 devant, OT aux pieds. Paires du groupe TH à peu de coups : Nukemaru sur A, Idyll au sud de B ou D.",
+        "de": "Plätze: Nukemaru = MT vor dem Boss, D1 an seinen Füßen; Hamukatsu-Tonkatsu = MT vorn, D2 an den Füßen; Idyll = D1 vorn, ST an den Füßen. Paare der TH-Gruppe mit wenigen Treffern: Nukemaru auf A, Idyll südlich von B oder D.",
+        "ja": "散開：ぬけまる版はMTボス正面・D1足元、ハムカツトンカツ版はMT正面・D2足元、イディル版はD1正面・ST足元。ペア割りのTH少ない組：ぬけまる版はA、イディル版はBかDの南。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "wicked-bolt",
+     "names": {
+      "en": "Wicked Bolt",
+      "fr": "Fulguration vicieuse",
+      "de": "Tosender Blitz",
+      "ja": "ウィケッドボルト"
+     },
+     "aliases": {
+      "en": [
+       "stack",
+       "5 hit stack"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Five-hit magic stack (game8: on a healer); mitigate well. The boss then moves north.",
+      "fr": "Package magique en cinq coups ; mitige bien. Le boss va ensuite au nord.",
+      "de": "Fünffacher magischer Sammel-Angriff; gut mitigieren. Danach geht der Boss nach Norden.",
+      "ja": "5連続の魔法頭割り。しっかり軽減。その後ボスは北へ（MTは北寄せ）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack"
+     ]
+    },
+    {
+     "id": "ion-cluster-electron-stream",
+     "names": {
+      "en": "Ion Cluster + Electron Stream",
+      "fr": "Accumulation d'ions + Courant d'électrons",
+      "de": "Ionen-Ansammlung + Elektronen-Strom",
+      "ja": "イオンクラスター＋エレクトロンストリーム"
+     },
+     "aliases": {
+      "en": [
+       "colors",
+       "positron negatron",
+       "yellow blue"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "黄白",
+       "色"
+      ]
+     },
+     "how": {
+      "en": "Everyone gets three stacks of one colour (one tank, one healer, two DPS per colour). Stand in the beam of the opposite colour to remove a stack (same colour adds one); tanks stand at the front. Follow-up conductor debuffs (spread, donut, cones, a collider that must be hit) resolve by side; it repeats twice.",
+      "fr": "Chacun a trois cumuls d'une couleur (un tank, un heal, deux DPS par couleur). Mets-toi dans le rayon de la couleur opposée pour retirer un cumul (même couleur = un de plus) ; les tanks devant. Les debuffs suivantes (dispersion, donut, cônes, collisionneur à toucher) se résolvent par côté ; deux fois.",
+      "de": "Jeder bekommt drei Stapel einer Farbe (pro Farbe ein Tank, ein Heiler, zwei DPS). Stell dich in den Strahl der Gegenfarbe, um einen Stapel zu entfernen (gleiche Farbe = einer mehr); Tanks vorn. Die Folge-Debuffs (Verteilen, Donut, Kegel, Kollider, der getroffen werden muss) werden seitenweise gelöst; zweimal.",
+      "ja": "全員に黄か白のスタック3。逆の色のビームを受けてスタックを消す（同色だと増える）、タンクが先頭。その後のデバフ（散開・ドーナツ・扇・当たる必要のあるもの）をサイドごとに処理。2回。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Blue-debuff players go to the NW/NE rivets (supports NW, DPS NE), purple-circle players stand in the middle, arrow-debuff players stand just in front of their side's collider player.",
+        "fr": "Debuff bleue sur les rivets NO/NE (supports NO, DPS NE), cercle violet au milieu, flèche juste devant le joueur collisionneur de ton côté.",
+        "de": "Blauer Debuff zu den Nieten NW/NO (Supporter NW, DPS NO), lila Kreis in die Mitte, Pfeil-Debuff knapp vor den Kollider-Spieler deiner Seite.",
+        "ja": "青デバフは北西/北東の鋲（サポート北西、DPS北東）、紫の円は中央、矢印デバフは自分側の当たり役の少し前。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Go to the single safe column, take the opposite colour beam (tanks first), then move to the spot for your debuff from the macro.",
+        "fr": "Va dans la seule colonne sûre, prends le rayon opposé (tanks devant), puis va au spot de ta debuff selon la macro.",
+        "de": "Geh in die einzige sichere Spalte, nimm den Gegenfarben-Strahl (Tanks vorn), dann zu deinem Debuff-Platz laut Makro.",
+        "ja": "1列の安地へ退避、逆色のビームを受け（タンク先頭）、デバフごとのマクロ位置へ。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "spread",
+      "stack",
+      "cleave"
+     ]
+    },
+    {
+     "id": "wicked-jolt-2",
+     "names": {
+      "en": "Wicked Jolt (2nd)",
+      "fr": "Électrochoc vicieux (2e)",
+      "de": "Tosender Stoß (2.)",
+      "ja": "ウィケッドジョルト（2回目）"
+     },
+     "aliases": {
+      "en": [
+       "wicked jolt",
+       "2nd tank buster"
+      ],
+      "fr": [
+       "électrochoc vicieux"
+      ],
+      "de": [
+       "tosender stoß"
+      ],
+      "ja": [
+       "ウィケッドジョルト"
+      ]
+     },
+     "how": {
+      "en": "Second Wicked Jolt, after Ion Cluster and before the phase change: the same double magic line buster on the main tank, so swap or invuln again.",
+      "fr": "Deuxième Électrochoc vicieux, après Accumulation d'ions et avant le changement de phase : même double buster magique en ligne sur le main tank, donc swap ou invulnérabilité.",
+      "de": "Zweiter Tosender Stoß, nach Ionen-Ansammlung und vor dem Phasenwechsel: derselbe magische Doppel-Linienbuster auf den Main-Tank, also wieder wechseln oder Unverwundbarkeit.",
+      "ja": "イオンクラスターの後、フェーズ移行前に来る2回目。MTへの魔法の直線2連強攻撃なので、スイッチか無敵で受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "note": {
+      "en": "Position from Icy Veins (after Ion Cluster); game8's timeline also shows two Wicked Jolts.",
+      "fr": "Position d'après Icy Veins (après Ion Cluster) ; la timeline de game8 montre aussi deux Wicked Jolt.",
+      "de": "Position laut Icy Veins (nach Ion Cluster); die Zeitleiste von game8 zeigt ebenfalls zwei Wicked Jolts.",
+      "ja": "位置はIcy Veins（イオンクラスターの後）より。game8のタイムラインでも2回。"
+     },
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "debuff"
+     ]
+    },
+    {
+     "id": "stampeding-thunder",
+     "names": {
+      "en": "Stampeding Thunder",
+      "fr": "Tonnerre déferlant",
+      "de": "Stampfender Kanonenschlag",
+      "ja": "カノンスタンピード"
+     },
+     "aliases": {
+      "en": [
+       "cannon",
+       "column"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A cannon fires a multi-hit column, then an untelegraphed column drops anyone in it; move to the safe column.",
+      "fr": "Un canon tire une colonne multi-coups, puis une colonne non signalée fait tomber ceux dedans ; va dans la colonne sûre.",
+      "de": "Eine Kanone feuert eine mehrfache Spalte, danach lässt eine unangezeigte Spalte jeden darin fallen; geh in die sichere Spalte.",
+      "ja": "大砲の多段直線、その後予兆なしの列で落下。安全な列へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "electrope-transplant",
+     "names": {
+      "en": "Electrope Transplant / Forked Fissures",
+      "fr": "Transplantation d'électrope / Flux foudroyant",
+      "de": "Elektrob-Umsetzung / Blitzstrom",
+      "ja": "エレクトロープ移植 / ライトニングカレント"
+     },
+     "aliases": {
+      "en": [
+       "transplant",
+       "cones",
+       "transition"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "移植"
+      ]
+     },
+     "how": {
+      "en": "Seven sets of cones on cardinals and intercardinals; untelegraphed cones then hit the old safe spots, so you keep stepping into the previously unsafe lanes. On the fifth set one role gets Conduction Point, and Forked Fissures then needs each partner to stand in front of them. After two rounds, raidwides and knockbacks send everyone to the south platform.",
+      "fr": "Sept séries de cônes aux cardinaux et intercardinaux ; des cônes non signalés frappent ensuite les anciens safe spots, donc tu entres dans les couloirs qui étaient dangereux. À la 5e série un rôle a Pointe foudroyante, et Flux foudroyant demande que chaque partenaire se mette devant. Après deux tours, raidwides et poussées envoient tout le monde sur la plateforme sud.",
+      "de": "Sieben Kegel-Sätze auf Haupt- und Zwischenrichtungen; danach treffen unangezeigte Kegel die alten sicheren Stellen, also gehst du in die vorher gefährlichen Bahnen. Beim fünften Satz bekommt eine Rolle Blitzpunkt, und bei Blitzstrom muss der Partner davor stehen. Nach zwei Runden stoßen Raidwides alle auf die Südplattform.",
+      "ja": "8方向の扇を7セット、予兆なしの扇が直前の安地を襲うので往復して避ける。5セット目で片方のロールにライトニングポイント、続くライトニングカレントは相方が前に立って受ける。2セット後、全体攻撃とノックバックで南の足場へ。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Take the Forked Fissures on the intercardinals with your quadrant partner in front; stack south for the final knockback.",
+        "fr": "Prends Flux foudroyant aux intercardinaux avec ton partenaire devant ; regroupe au sud pour la poussée finale.",
+        "de": "Nimm Blitzstrom auf den Zwischenrichtungen mit deinem Partner davor; sammeln im Süden für den letzten Rückstoß.",
+        "ja": "ライトニングカレントは斜めで相方が前。最後のノックバックは南に集合。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Pairs spread with melee in front and ranged behind; whoever is not the Conduction Point target takes the current at the front.",
+        "fr": "Paires avec mêlée devant et distance derrière ; celui qui n'a pas Pointe foudroyante prend le flux devant.",
+        "de": "Paare mit Nahkämpfer vorn und Fernkämpfer hinten; wer keinen Blitzpunkt hat, nimmt den Strom vorne.",
+        "ja": "ペア散開で近接が前、遠隔が後ろ。ライトニングポイント対象者以外が先頭でカレントを受ける。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave",
+      "transition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2 (second half)",
+    "fr": "Phase 2 (seconde moitié)",
+    "de": "Phase 2 (zweite Hälfte)",
+    "ja": "後半"
+   },
+   "mechanics": [
+    {
+     "id": "cross-tail-switch",
+     "names": {
+      "en": "Cross Tail Switch",
+      "fr": "Empalement tentaculaire",
+      "de": "Elektroschwanz-Wirbel",
+      "ja": "クロステイル・スペシャル"
+     },
+     "aliases": {
+      "en": [
+       "tank lb",
+       "9 hits"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Nine magic raidwide hits; a tank Limit Break 3 on the last hit is strongly recommended plus party mitigation.",
+      "fr": "Neuf coups de zone magiques ; une LB3 tank sur le dernier coup est fortement conseillée, plus la mitigation.",
+      "de": "Neun magische Raidwide-Treffer; ein Tank-Limitrausch 3 auf den letzten Treffer wird dringend empfohlen, plus Mitigation.",
+      "ja": "魔法の9連続全体攻撃。タンクLBを最後の1発に合わせる（詠唱バー「ャ」付近）、他の軽減も必要。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "wicked-blaze",
+     "names": {
+      "en": "Wicked Blaze (Sabertail exaflares)",
+      "fr": "Embrasement vicieux (exaflares)",
+      "de": "Tosende Flammen (Exaflares)",
+      "ja": "ウィケッドブレイズ（エクサフレア）"
+     },
+     "aliases": {
+      "en": [
+       "exaflares",
+       "healer stacks"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Light parties go to their wall (group 1 west, group 2 east) and find the safe row from the exaflare pointing out of the arena, while taking a four-hit stack on each healer. If a healer dies the stack moves to a random player.",
+      "fr": "Les light parties vont à leur mur (groupe 1 ouest, groupe 2 est) et trouvent la ligne sûre grâce à l'exaflare qui pointe hors de l'arène, en prenant un package en quatre coups sur chaque heal. Si un heal meurt, le package va sur quelqu'un au hasard.",
+      "de": "Die Leichtgruppen gehen an ihre Wand (Gruppe 1 West, Gruppe 2 Ost) und finden die sichere Reihe am Exaflare, der aus der Arena zeigt, während sie einen vierfachen Sammel-Angriff pro Heiler nehmen. Stirbt ein Heiler, geht er auf einen Zufallsspieler.",
+      "ja": "MT組とST組で東西に分かれ、外向きのエクサフレアで安全な列を見つける。ヒーラー2人に4連の頭割り。足を止めずに移動、スプリント推奨。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack"
+     ]
+    },
+    {
+     "id": "wicked-special",
+     "names": {
+      "en": "Wicked Special",
+      "fr": "Spéciale vicieuse",
+      "de": "Donnerknall",
+      "ja": "ウィケッドスペシャル"
+     },
+     "aliases": {
+      "en": [
+       "in or out",
+       "sword or claws"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Flaming sword = middle column hit, go out to the sides; claws = side columns hit, go to the middle.",
+      "fr": "Épée enflammée = colonne du milieu, va sur les côtés ; griffes = colonnes latérales, va au milieu.",
+      "de": "Flammenschwert = mittlere Spalte, geh an die Seiten; Klauen = Seitenspalten, geh in die Mitte.",
+      "ja": "中央への直線なら外側、左右への直線なら内側が安地。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "mustard-bomb",
+     "names": {
+      "en": "Mustard Bomb",
+      "fr": "Bombe sulfurée",
+      "de": "Senfbombe",
+      "ja": "マスタードボム"
+     },
+     "aliases": {
+      "en": [
+       "tank tethers",
+       "bomb pass"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Tanks take two tethers for big busters and get a Mustard Bomb debuff; four random players get hit by AoEs, and the tanks pass the bombs by touching the two unhit players. MT and OT each take one tether with mitigation.",
+      "fr": "Les tanks prennent deux liens pour de gros busters et reçoivent une debuff Bombe sulfurée ; quatre joueurs au hasard prennent des AoE, puis les tanks passent les bombes en touchant les deux non touchés. Le MT et l'OT prennent chacun un lien avec leurs réductions.",
+      "de": "Tanks nehmen zwei Verbindungen für große Buster und bekommen einen Senfbomben-Debuff; vier Zufallsspieler bekommen AoEs, dann geben die Tanks die Bomben durch Berühren an die zwei Ungetroffenen weiter. MT und OT nehmen je eine Verbindung mit Mitigation.",
+      "ja": "タンクが線を2本取り強攻撃とマスタードボムのデバフ。ランダム4人に円範囲、当たらなかった2人がタンクに触れてデバフを受け取る。線はMTとSTが1本ずつバフを使って取る。"
+     },
+     "strats": [
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Bomb pass priority from the macro: MT receives from D1, D3, H1 and ST from H2, D4, D2.",
+        "fr": "Priorité de passage de la bombe selon la macro : le MT la reçoit de D1, D3, H1 et l'OT de H2, D4, D2.",
+        "de": "Reihenfolge für das Weitergeben laut Makro: Der MT bekommt sie von D1, D3, H1, der OT von H2, D4, D2.",
+        "ja": "マクロのデバフ受け渡し優先：MT←D1・D3・H1、ST←H2・D4・D2。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "tankbuster",
+      "debuff",
+      "spread"
+     ]
+    },
+    {
+     "id": "aetherial-conversion",
+     "names": {
+      "en": "Aetherial Conversion / Tail Thrust",
+      "fr": "Altération élémentaire / Percée tentaculaire",
+      "de": "Elementarwandlung / Schwanzstoß",
+      "ja": "属性変換 / テイルスラスト"
+     },
+     "aliases": {
+      "en": [
+       "fire water",
+       "tails"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The boss charges fire or water into its tails and releases them later in the order charged, from the red dots on the left or right: fire is a huge circle to run away from, water is a knockback.",
+      "fr": "Le boss charge feu ou eau dans ses queues et les libère plus tard dans l'ordre, depuis les points rouges à gauche ou à droite : le feu est un énorme cercle à fuir, l'eau une poussée.",
+      "de": "Der Boss lädt Feuer oder Wasser in die Schwänze und entlädt sie später in Lade-Reihenfolge von den roten Punkten links oder rechts: Feuer ist ein riesiger Kreis zum Weglaufen, Wasser ein Rückstoß.",
+      "ja": "尻尾に炎か水を溜め、付与順にフィールド左右の赤い点から発動。炎は巨大円（前方へ避ける）、水はノックバック。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "knockback"
+     ]
+    },
+    {
+     "id": "azure-thunder",
+     "names": {
+      "en": "Azure Thunder",
+      "fr": "Foudre azur",
+      "de": "Azurblauer Donner",
+      "ja": "アズールサンダー"
+     },
+     "aliases": {
+      "en": [
+       "raidwide"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Big magic raidwide, then the arena shrinks into a circle with deadly edges.",
+      "fr": "Gros dégâts de zone magiques, puis l'arène devient un cercle aux bords mortels.",
+      "de": "Großer magischer Raidwide, danach wird die Arena zu einem Kreis mit tödlichem Rand.",
+      "ja": "魔法全体攻撃の後、円形に即死床が設置される。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "twilight-sabbath",
+     "names": {
+      "en": "Twilight Sabbath",
+      "fr": "Diablerie obscure - Crépuscule",
+      "de": "Zwielichtssabbat",
+      "ja": "ブラックサバト【日没】"
+     },
+     "aliases": {
+      "en": [
+       "twilight"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Four clones (two at a time) use Sidewise Spark leaving one safe quadrant each round; bait Wicked Fire circles in the middle first, then run to the safe quadrant. The second round lines up with Wicked Special, so stand in or out accordingly.",
+      "fr": "Quatre clones (deux par deux) font Éclair latéral, un quart sûr à chaque fois ; baite les cercles Feu vicieux au centre d'abord, puis cours au quart sûr. Le second tour tombe avec Spéciale vicieuse, donc place-toi dedans ou dehors.",
+      "de": "Vier Klone (zwei auf einmal) nutzen Seitlicher Funken, jeweils ein sicheres Viertel; zuerst Tosendes Feuer in der Mitte ködern, dann ins sichere Viertel. Die zweite Runde kommt mit Donnerknall, also innen oder außen.",
+      "ja": "分身4体（2体ずつ）のサイドスパーク。中央でウィケッドファイアを誘導してから安地へ。2回目はウィケッドスペシャルと重なるので内外を判断。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread"
+     ]
+    },
+    {
+     "id": "midnight-sabbath",
+     "names": {
+      "en": "Midnight Sabbath (Concentrated / Scattered Burst)",
+      "fr": "Diablerie obscure - Minuit (Déflagration concentrée / dispersée)",
+      "de": "Mitternachtssabbat (Gebündelter / Gebrochener Strahl)",
+      "ja": "ブラックサバト【夜半】（集散式 / 散集式ブラスター）"
+     },
+     "aliases": {
+      "en": [
+       "midnight",
+       "cannons wings"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Eight clones appear (cardinals or intercardinals first): cannon clones fire a line in front of them, winged clones do a donut so stay close to them. Scattered Burst = spread then pairs, Concentrated Burst = pairs then spread; read which clones come down first.",
+      "fr": "Huit clones apparaissent (cardinaux ou intercardinaux d'abord) : les clones canons tirent une ligne devant eux, les clones ailés font un donut donc reste près d'eux. Dispersée = dispersion puis paires, Concentrée = paires puis dispersion ; regarde quels clones descendent en premier.",
+      "de": "Acht Klone erscheinen (zuerst Haupt- oder Zwischenrichtungen): Kanonen-Klone feuern eine Linie nach vorn, geflügelte Klone machen einen Donut, also bleib nah. Gebrochen = verteilen dann Paare, Gebündelt = Paare dann verteilen; schau, welche Klone zuerst runterkommen.",
+      "ja": "分身8体（方角か斜めが先）。大砲は前方直線、羽は周囲ドーナツなので近くへ。散集式は散開→ペア、集散式はペア→散開。先に降りる分身を見て判断。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "DPS stay with their support partner on assigned spots: tanks and melee NW/NE, healers and ranged SW/SE. On spread, supports go left (facing center), DPS right.",
+        "fr": "Les DPS restent avec leur partenaire support : tanks et mêlées NO/NE, heals et distances SO/SE. En dispersion, supports à gauche (face au centre), DPS à droite.",
+        "de": "DPS bleiben bei ihrem Support-Partner: Tanks und Nahkampf NW/NO, Heiler und Fernkampf SW/SO. Beim Verteilen Supporter links (Blick zur Mitte), DPS rechts.",
+        "ja": "DPSはサポートの相方と。タンク・近接が北西/北東、ヒーラー・遠隔が南西/南東。散開はサポートが左（中央向き）、DPSが右。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack",
+      "spread"
+     ]
+    },
+    {
+     "id": "flame-slash-raining-swords",
+     "names": {
+      "en": "Flame Slash / Raining Swords / Chain Lightning",
+      "fr": "Tranchant enflammé / Pluie d'épées / Chaîne d'éclairs",
+      "de": "Feuerschnitt / Klingenregen / Kettenblitz",
+      "ja": "火炎斬り / 剣の雨 / チェインライトニング"
+     },
+     "aliases": {
+      "en": [
+       "swords",
+       "towers",
+       "sword order"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "剣",
+       "塔"
+      ]
+     },
+     "how": {
+      "en": "Flame Slash destroys the middle columns, splitting the party into two sides; each side soaks four sword towers (a missed tower hurts everyone). Then the swords explode in a chained order: each side has one safe sword per step, each sword shown twice, so memorise the four-step safe order and move with Sprint. Mustard Bomb comes again during Chain Lightning and is handled exactly like the first one.",
+      "fr": "Tranchant enflammé détruit les colonnes du milieu et sépare le groupe en deux ; chaque côté prend quatre tours d'épée (une tour ratée blesse tout le monde). Puis les épées explosent en chaîne : chaque côté a une épée sûre par étape, montrée deux fois, donc mémorise l'ordre en quatre étapes et bouge avec Sprint. Bombe sulfurée revient pendant Chaîne d'éclairs et se gère exactement comme la première fois.",
+      "de": "Feuerschnitt zerstört die mittleren Spalten und teilt die Gruppe in zwei Seiten; jede Seite nimmt vier Schwerttürme (verpasster Turm schadet allen). Dann explodieren die Schwerter in Kettenreihenfolge: pro Seite ein sicheres Schwert pro Schritt, jedes zweimal gezeigt, also merk dir die vier sicheren Schritte und nutz Sprint. Senfbombe kommt während Kettenblitz erneut und wird genau wie beim ersten Mal gelöst.",
+      "ja": "火炎斬りで中央が壊れ、MT組が左・ST組が右に分断。剣の雨の塔をマクロの位置で踏む。チェインライトニングは線が繋がった順に爆発、線の繋がらない（安全な）剣の順番4つを覚える。チェインライトニングの間にマスタードボムがもう一度来るので、1回目と同じ処理をする。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "dodge",
+      "tether",
+      "tankbuster",
+      "debuff"
+     ]
+    },
+    {
+     "id": "sunrise-sabbath",
+     "names": {
+      "en": "Ion Cluster 2 + Sunrise Sabbath",
+      "fr": "Accumulation d'ions 2 + Diablerie obscure - Aurore",
+      "de": "Ionen-Ansammlung 2 + Morgensonnensabbat",
+      "ja": "イオンクラスター2回目＋ブラックサバト【日出】"
+     },
+     "aliases": {
+      "en": [
+       "sunrise",
+       "cannons towers"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "日出"
+      ]
+     },
+     "how": {
+      "en": "Players get a colour with a short or long timer. Two blue and two yellow cannons fire at the nearest player and must be baited by a short-timer player of the opposite colour, while winged clones make towers soaked by two long-timer players each; then the jobs swap after a Wicked Special.",
+      "fr": "Chacun a une couleur avec minuteur court ou long. Deux canons bleus et deux jaunes tirent sur le joueur le plus proche et doivent être baités par un joueur court de la couleur opposée, pendant que les clones ailés créent des tours prises par deux joueurs longs ; puis on inverse après une Spéciale vicieuse.",
+      "de": "Jeder bekommt eine Farbe mit kurzem oder langem Timer. Zwei blaue und zwei gelbe Kanonen feuern auf den nächsten Spieler und werden von einem Kurz-Spieler der Gegenfarbe geködert, während geflügelte Klone Türme machen, die je zwei Lang-Spieler nehmen; nach einem Donnerknall wird getauscht.",
+      "ja": "デバフ時間が短い人はビーム（大砲）誘導、長い人は塔。大砲は逆色の短い人が誘導、羽の分身の塔は長い人が2人ずつ。ウィケッドスペシャル後に交代。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Round two: supports usually take south/west towers, DPS north/east. To find cannons, supports look NW and scan counterclockwise, DPS look NE and scan clockwise, waiting in the middle. Uptime raidplan groups bait through the middle using south-platform waymarks.",
+        "fr": "2e tour : supports souvent tours sud/ouest, DPS nord/est. Pour les canons, supports regardent NO et tournent en antihoraire, DPS regardent NE en horaire, en attendant au milieu. Les groupes « uptime » baitent par le milieu avec les marqueurs de la plateforme sud.",
+        "de": "Runde zwei: Supporter meist Türme Süd/West, DPS Nord/Ost. Für die Kanonen schauen Supporter NW und suchen gegen den Uhrzeigersinn, DPS schauen NO im Uhrzeigersinn, in der Mitte wartend. Uptime-Gruppen ködern über die Mitte mit den Markern der Südplattform.",
+        "ja": "2回目はサポートが南/西、DPSが北/東の塔が多い。大砲探しはサポートが北西から反時計回り、DPSが北東から時計回り、中央で待つ。uptime式は南の足場のマーカーで中央から誘導。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Positions per role follow the macro table.",
+        "fr": "Positions par rôle selon le tableau de la macro.",
+        "de": "Positionen je Rolle laut Makro-Tabelle.",
+        "ja": "ロールごとの位置はマクロの表に従う。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "tower",
+      "stack",
+      "spread"
+     ]
+    },
+    {
+     "id": "sword-quiver",
+     "names": {
+      "en": "Sword Quiver (enrage sequence)",
+      "fr": "Épée dansante (séquence d'enrage)",
+      "de": "Klingentanz (Finalangriff-Sequenz)",
+      "ja": "剣の舞（時間切れまで）"
+     },
+     "aliases": {
+      "en": [
+       "quiver",
+       "enrage"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Four physical raidwide hits leave glowing lines that explode later; players pair up in the four big gaps at the wall, one group also takes cones. It repeats three times, then Wicked Thunder (enrage).",
+      "fr": "Quatre coups de zone physiques laissent des lignes lumineuses qui explosent ensuite ; les joueurs se mettent en paires dans les quatre grands trous au mur, un groupe prend aussi des cônes. Trois fois, puis Wicked Thunder (enrage).",
+      "de": "Vier physische Raidwide-Treffer hinterlassen leuchtende Linien, die später explodieren; Paare stellen sich in die vier großen Lücken an der Wand, eine Gruppe nimmt zusätzlich Kegel. Dreimal, dann Tosender Donner (Finalangriff).",
+      "ja": "物理全体4発の後、光った線が遅れて直線爆発。4か所の安地に2:2:2:2で入りペア頭割り。3回で時間切れ（ウィケッドサンダー）。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Tanks and melee take the NW/NE gaps, healers and ranged the SW/SE gaps.",
+        "fr": "Tanks et mêlées dans les trous NO/NE, heals et distances SO/SE.",
+        "de": "Tanks und Nahkampf in die Lücken NW/NO, Heiler und Fernkampf SW/SO.",
+        "ja": "タンク・近接が北西/北東、ヒーラー・遠隔が南西/南東の安地。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "JP gap assignment assumed same split; game8 only says 2:2:2:2 in four safe spots.",
+      "fr": "Répartition JP supposée identique ; game8 dit seulement 2:2:2:2.",
+      "de": "JP-Aufteilung als gleich angenommen; game8 sagt nur 2:2:2:2.",
+      "ja": "日本野良の割り当ては同じと仮定。game8は2:2:2:2とのみ記載。"
+     },
+     "tags": [
+      "raidwide",
+      "dodge",
+      "cleave",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "ConsoleGamesWiki - AAC Light-heavyweight M4 (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/AAC_Light-heavyweight_M4_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - 4層前半",
+   "url": "https://game8.jp/ff14/631136",
+   "lang": "ja"
+  },
+  {
+   "title": "game8 JP - 4層後半",
+   "url": "https://game8.jp/ff14/631340",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot r4s timeline translations",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/raid/r4s.ts",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI Action names",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

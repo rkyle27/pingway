@@ -1,0 +1,450 @@
+{
+ "id": "a7s",
+ "type": "savage",
+ "expansion": "HW",
+ "patch": "3.2",
+ "names": {
+  "en": "Alexander - The Arm of the Son (Savage)",
+  "fr": "Alexander - Le Bras du Fils (sadique)",
+  "de": "Alexander - Arm des Sohnes (episch)",
+  "ja": "機工城アレキサンダー零式：律動編3"
+ },
+ "aliases": {
+  "en": [
+   "a7s",
+   "a7 savage",
+   "alexander 7 savage",
+   "quickthinx savage",
+   "arm of the son savage"
+  ],
+  "fr": [
+   "a7s",
+   "alexander 7 sadique",
+   "bras du fils sadique"
+  ],
+  "de": [
+   "a7s",
+   "alexander 7 episch",
+   "arm des sohnes episch"
+  ],
+  "ja": [
+   "律動編3零式",
+   "律動編零式3層",
+   "アレキ零式7層",
+   "律動3層",
+   "クイックシンクス"
+  ]
+ },
+ "summary": {
+  "en": "Floor 3 of Alexander: Midas (Savage) against Quickthinx Allthoughts. A long fixed rotation of bombs, jail mechanics (Zoomdoom), True Hearts that must not reach the boss, and an electrified final phase where the party rotates around a corner square; it ends in a Sizzlespark enrage.",
+  "fr": "Étage 3 d'Alexander : Midas (sadique) contre Quickthinx Allthoughts. Une longue rotation fixe de bombes, de prisons (Zoomdoom), de True Heart qui ne doivent pas atteindre le boss et une phase électrifiée où le groupe tourne dans un coin ; ça finit par un enrage Sizzlespark.",
+  "de": "Ebene 3 von Alexander: Midas (episch) gegen Quickthinx Allthoughts. Lange feste Rotation mit Bomben, Gefängnissen (Zoomdoom), True Hearts, die den Boss nicht erreichen dürfen, und einer elektrischen Phase, in der das Team in einer Ecke rotiert; endet in einem Sizzlespark-Enrage.",
+  "ja": "律動編3層零式、クイックシンクス戦。爆弾、檻（ゴブロケット）、ボスに届かせてはいけない真心、電気床の四隅を回る終盤など、長い固定ループ。最後は全体攻撃の時間切れ。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "This fight is mostly cleared unsynced or at minimum item level today, so strats rarely matter. The entries below explain how each mechanic works. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Aujourd'hui ce combat se fait surtout en mode sans restriction ou en ilvl minimum, donc la strat compte rarement. Les entrées ci-dessous expliquent comment marche chaque mécanique. Les noms des mécaniques sont en anglais (noms FR officiels non vérifiés).",
+  "de": "Heute wird dieser Kampf meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel gemacht, die Strat spielt also selten eine Rolle. Die Einträge unten erklären, wie jede Mechanik funktioniert. Die Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "現在このコンテンツは主に制限解除やIL最低限で攻略されるため、攻略法の違いはほとんど問題になりません。以下では各ギミックの仕組みを説明します。英語名のままのギミック名は日本語の公式名を確認できなかったものです。"
+ },
+ "phases": [
+  {
+   "id": "main",
+   "names": {
+    "en": "Main rotation",
+    "fr": "Rotation principale",
+    "de": "Hauptrotation",
+    "ja": "通常ループ"
+   },
+   "mechanics": [
+    {
+     "id": "sizzlespark",
+     "names": {
+      "en": "Sizzlespark",
+      "fr": "Gobétincelle",
+      "de": "Brutzelblitz",
+      "ja": "ゴブリスパーク"
+     },
+     "aliases": {
+      "en": [
+       "sizzlespark"
+      ],
+      "fr": [
+       "sizzlespark"
+      ],
+      "de": [
+       "sizzlespark"
+      ],
+      "ja": [
+       "ゴブリスパーク"
+      ]
+     },
+     "how": {
+      "en": "Raid-wide magic damage that stacks Lightning Resistance Down; heal up. The final long cast is the enrage.",
+      "fr": "Dégâts magiques de zone qui cumulent baisse de résistance foudre ; soigne. Le dernier long sort est l'enrage.",
+      "de": "Magischer Raumschaden, der Blitzresistenz-runter stapelt; heilen. Der letzte lange Cast ist der Enrage.",
+      "ja": "全体魔法攻撃、雷耐性低下が重なる。最後の長い詠唱が時間切れ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "debuff",
+      "enrage"
+     ]
+    },
+    {
+     "id": "sizzlebeam",
+     "names": {
+      "en": "Sizzlebeam",
+      "fr": "Gobrayon",
+      "de": "Gobpartikelstrahl",
+      "ja": "ゴブ式波動砲"
+     },
+     "aliases": {
+      "en": [
+       "sizzlebeam"
+      ],
+      "fr": [
+       "sizzlebeam"
+      ],
+      "de": [
+       "sizzlebeam"
+      ],
+      "ja": [
+       "ゴブ式波動砲"
+      ]
+     },
+     "how": {
+      "en": "Purple line marker on one player; they aim it away from everyone.",
+      "fr": "Marqueur violet en ligne sur un joueur ; il l'oriente loin des autres.",
+      "de": "Lila Linienmarker auf einem Spieler; er richtet ihn weg von allen.",
+      "ja": "紫マーカーの直線攻撃。対象は誰もいない方へ向ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    },
+    {
+     "id": "corporal-punishment",
+     "names": {
+      "en": "Corporal Punishment",
+      "fr": "Punition corporelle",
+      "de": "Züchtigung",
+      "ja": "オシオキ"
+     },
+     "aliases": {
+      "en": [
+       "corporal punishment"
+      ],
+      "fr": [
+       "corporal punishment"
+      ],
+      "de": [
+       "corporal punishment"
+      ],
+      "ja": [
+       "オシオキ"
+      ]
+     },
+     "how": {
+      "en": "Hammer AoEs under players that cause Bleeding and drain MP; dodge them (in phase 4 the stack rotates around the corner square).",
+      "fr": "AoE marteau sous les joueurs, Saignement et perte de PM ; esquive (en phase 4 le groupe tourne autour du carré du coin).",
+      "de": "Hammer-AoEs unter Spielern, Blutung und MP-Verlust; ausweichen (in Phase 4 rotiert die Gruppe um das Eckfeld).",
+      "ja": "足元に連続範囲、出血とMP減少。避ける（終盤は四隅の床を一方向に回る）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "debuff"
+     ]
+    },
+    {
+     "id": "bomb",
+     "names": {
+      "en": "Bomb",
+      "fr": "Bomb",
+      "de": "Bomb",
+      "ja": "爆弾"
+     },
+     "aliases": {
+      "en": [
+       "bomb"
+      ],
+      "fr": [
+       "bomb"
+      ],
+      "de": [
+       "bomb"
+      ],
+      "ja": [
+       "爆弾"
+      ]
+     },
+     "how": {
+      "en": "Bombs chain to every player (or one player); carry them to assigned spots/corners so nobody takes two blasts. A bomb carrier must not enter a jail.",
+      "fr": "Des bombes sont liées à chaque joueur (ou un seul) ; amène-les à tes places/coins pour que personne n'en prenne deux. Un porteur ne doit pas entrer dans une prison.",
+      "de": "Bomben sind mit jedem Spieler (oder einem) verbunden; zu festen Stellen/Ecken tragen, damit niemand zwei Explosionen abbekommt. Ein Bombenträger darf in kein Gefängnis.",
+      "ja": "爆弾が全員（または1人）に線で付く。決めた位置や隅へ運び、2発受けないようにする。爆弾持ちは檻に入らない。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    },
+    {
+     "id": "zoomdoom",
+     "names": {
+      "en": "Zoomdoom (jails)",
+      "fr": "Gobroquette (cages)",
+      "de": "Zoomdoom (jails)",
+      "ja": "ゴブロケット（檻）"
+     },
+     "aliases": {
+      "en": [
+       "zoomdoom (jails)"
+      ],
+      "fr": [
+       "zoomdoom (jails)"
+      ],
+      "de": [
+       "zoomdoom (jails)"
+      ],
+      "ja": [
+       "ゴブロケット（檻）"
+      ]
+     },
+     "how": {
+      "en": "A tethered player and a Prey player are thrown into two of four colored jails; only one player per jail. Each jail has its own task (kill the Alarum, break the Padlock, stand on the vent, tank the enemy). Extra people grabbed spawn extra enemies.",
+      "fr": "Un joueur lié et un joueur Proie sont jetés dans deux des quatre prisons colorées ; un seul joueur par prison. Chaque prison a sa tâche (tuer l'Alarum, casser le cadenas, se tenir sur l'aération, tanker l'ennemi). Chaque joueur en trop fait apparaître un ennemi en plus.",
+      "de": "Ein verbundener und ein Beute-Spieler werden in zwei von vier farbigen Gefängnissen gesteckt; nur ein Spieler pro Gefängnis. Jedes hat eine Aufgabe (Alarum töten, Schloss brechen, auf dem Lüftungsschacht stehen, Gegner tanken). Zusätzliche Spieler erzeugen zusätzliche Gegner.",
+      "ja": "線の人と予兆の人が4色の檻のうち2つに入れられる。1つの檻には1人だけ。檻ごとに処理（アラームを倒す、錠前を壊す、通気口に立つ、敵を受ける）がある。巻き込まれた人数分、敵が増える。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "tether"
+     ]
+    },
+    {
+     "id": "uplander-doom",
+     "names": {
+      "en": "Uplander Doom",
+      "fr": "Fusillade",
+      "de": "Knallregen",
+      "ja": "一斉射撃"
+     },
+     "aliases": {
+      "en": [
+       "uplander doom"
+      ],
+      "fr": [
+       "uplander doom"
+      ],
+      "de": [
+       "uplander doom"
+      ],
+      "ja": [
+       "一斉射撃"
+      ]
+     },
+     "how": {
+      "en": "Multi-hit on the main tank with stacking Physical Vulnerability; swap at about 3 stacks or use invulns later. It hits the current main target. Later casts have 5-6 hits: prepare a swap or an invuln.",
+      "fr": "Coups multiples sur le MT avec Vulnérabilité physique cumulée ; swap vers 3 cumuls ou invincibilité plus tard. Il frappe la cible actuelle du boss. Les versions suivantes ont 5-6 coups : prépare un swap ou une invu.",
+      "de": "Mehrfachtreffer auf den MT mit stapelnder Physischer Verwundbarkeit; bei etwa 3 Stacks wechseln oder später Unverwundbarkeit. Er trifft das aktuelle Hauptziel. Spätere Casts haben 5-6 Treffer: Swap oder Unverwundbarkeit einplanen.",
+      "ja": "MTへの連続攻撃、被物理ダメ増加が蓄積。3スタック程度でスイッチ、後半は無敵。敵視1位に当たる。後半は5〜6回攻撃になるので、スイッチか無敵を用意する。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "heart",
+   "names": {
+    "en": "Shanoa and True Hearts",
+    "fr": "Shanoa et True Hearts",
+    "de": "Shanoa und True Hearts",
+    "ja": "シャノアと真心"
+   },
+   "mechanics": [
+    {
+     "id": "weight-of-the-world",
+     "names": {
+      "en": "Weight of the World (rolling balls)",
+      "fr": "Weight of the World (rolling balls)",
+      "de": "Weight of the World (rolling balls)",
+      "ja": "鉄球"
+     },
+     "aliases": {
+      "en": [
+       "weight of the world (rolling balls)"
+      ],
+      "fr": [
+       "weight of the world (rolling balls)"
+      ],
+      "de": [
+       "weight of the world (rolling balls)"
+      ],
+      "ja": [
+       "鉄球"
+      ]
+     },
+     "how": {
+      "en": "Two big metal balls roll around; getting hit means heavy damage and knockback. Drag the boss away from them.",
+      "fr": "Deux grosses boules roulent ; être touché = gros dégâts et recul. Éloigne le boss d'elles.",
+      "de": "Zwei große Metallkugeln rollen herum; Treffer gibt viel Schaden und Rückstoß. Boss von ihnen wegziehen.",
+      "ja": "大きな鉄球が転がる。当たると大ダメージとノックバック。ボスを離して戦う。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "JP name taken from a normal-mode JP guide and matched to this ability by its description.",
+      "fr": "Nom JP pris d'un guide JP du mode normal et associé par sa description.",
+      "de": "JP-Name aus einem JP-Guide des Normalmodus, über die Beschreibung zugeordnet.",
+      "ja": "日本語名はノーマル版の攻略記事から、内容が一致するものを採用。"
+     },
+     "tags": [
+      "knockback",
+      "dodge"
+     ]
+    },
+    {
+     "id": "undying-affection",
+     "names": {
+      "en": "Undying Affection (True Heart)",
+      "fr": "Affection éternelle (Affection féline)",
+      "de": "Ungebrochene Treue (Reines Herz)",
+      "ja": "おうえん（真心）"
+     },
+     "aliases": {
+      "en": [
+       "undying affection (true heart)"
+      ],
+      "fr": [
+       "undying affection (true heart)"
+      ],
+      "de": [
+       "undying affection (true heart)"
+      ],
+      "ja": [
+       "真心"
+      ]
+     },
+     "how": {
+      "en": "A True Heart flies toward the boss; if it arrives the boss heals and gets stronger. DPS focus it, stun/Heavy it, main tank pulls the boss away.",
+      "fr": "Un True Heart vole vers le boss ; s'il arrive, le boss se soigne et se renforce. Les DPS le focus, étourdis/ralentis-le, le MT éloigne le boss.",
+      "de": "Ein True Heart fliegt zum Boss; kommt es an, heilt er sich und wird stärker. DPS fokussieren es, betäuben/verlangsamen, der MT zieht den Boss weg.",
+      "ja": "真心がボスへ向かう。到達するとボスが回復・強化。DPSで集中攻撃、スタンやヘヴィ、MTはボスを離す。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds"
+     ]
+    },
+    {
+     "id": "thrown-flames",
+     "names": {
+      "en": "Thrown Flames",
+      "fr": "Napalm",
+      "de": "Napalm",
+      "ja": "ナパーム"
+     },
+     "aliases": {
+      "en": [
+       "thrown flames"
+      ],
+      "fr": [
+       "thrown flames"
+      ],
+      "de": [
+       "thrown flames"
+      ],
+      "ja": [
+       "Thrown Flames"
+      ]
+     },
+     "how": {
+      "en": "A healer gets a fire line; anyone hit gets Searing Wind (repeated knockback bursts). The healer goes far away until it ends.",
+      "fr": "Un soigneur reçoit une ligne de feu ; les touchés prennent Searing Wind (explosions avec recul). Le soigneur s'éloigne jusqu'à la fin.",
+      "de": "Ein Heiler bekommt eine Feuerlinie; Getroffene bekommen Searing Wind (wiederholte Rückstoß-Explosionen). Der Heiler geht weit weg, bis es endet.",
+      "ja": "ヒーラーに炎の直線。当たった人は周囲にノックバック付き爆発が続く。対象のヒーラーは離れる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "debuff"
+     ]
+    },
+    {
+     "id": "electrocution-field",
+     "names": {
+      "en": "Electrocution Field",
+      "fr": "Electrocution Field",
+      "de": "Electrocution Field",
+      "ja": "Electrocution Field"
+     },
+     "aliases": {
+      "en": [
+       "electrocution field"
+      ],
+      "fr": [
+       "electrocution field"
+      ],
+      "de": [
+       "electrocution field"
+      ],
+      "ja": [
+       "Electrocution Field"
+      ]
+     },
+     "how": {
+      "en": "The center electrifies, forcing everyone into the corner squares; stack in one corner and rotate in one direction to dodge Corporal Punishment.",
+      "fr": "Le centre s'électrifie, tout le monde va dans les carrés des coins ; groupe-toi dans un coin et tourne dans un sens pour esquiver Corporal Punishment.",
+      "de": "Die Mitte wird elektrisch, alle müssen in die Eckfelder; in einer Ecke sammeln und in eine Richtung rotieren, um Corporal Punishment auszuweichen.",
+      "ja": "中央が電気床になり四隅へ。1つの隅に集まり、一方向に回ってオシオキを避ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "note": {
+      "en": "English name used: official Japanese name not found in the sources.",
+      "fr": "Nom anglais utilisé : nom japonais officiel non trouvé.",
+      "de": "Englischer Name verwendet: offizieller japanischer Name nicht gefunden.",
+      "ja": "英語名のまま：日本語の公式名は資料で確認できませんでした。"
+     },
+     "tags": [
+      "stack",
+      "dodge"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Alexander - The Arm of the Son (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Alexander_-_The_Arm_of_the_Son_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/e003bd330e2/",
+   "lang": "en"
+  },
+  {
+   "title": "ゲームエイト 律動編3層（ノーマル）",
+   "url": "https://game8.jp/ff14/309112",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

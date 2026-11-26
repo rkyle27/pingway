@@ -1,0 +1,622 @@
+{
+ "id": "a4s",
+ "type": "savage",
+ "expansion": "HW",
+ "patch": "3.05",
+ "names": {
+  "en": "Alexander - The Burden of the Father (Savage)",
+  "fr": "Alexander - Le Fardeau du Père (sadique)",
+  "de": "Alexander - Last des Vaters (episch)",
+  "ja": "機工城アレキサンダー零式：起動編4"
+ },
+ "aliases": {
+  "en": [
+   "a4s",
+   "a4 savage",
+   "alexander 4 savage",
+   "manipulator savage",
+   "burden of the father savage"
+  ],
+  "fr": [
+   "a4s",
+   "alexander 4 sadique",
+   "fardeau du père sadique"
+  ],
+  "de": [
+   "a4s",
+   "alexander 4 episch",
+   "last des vaters episch"
+  ],
+  "ja": [
+   "起動編4零式",
+   "起動編零式4層",
+   "アレキ零式4層",
+   "起動4層",
+   "マニピュレーター"
+  ]
+ },
+ "summary": {
+  "en": "Floor 4 of Alexander: Gordias (Savage) against The Manipulator. You break its four legs one by one (each break opens a short burn window), then fight the body. Hardest parts: the Jagd Doll feeding, Judgement Nisi and the Steam Regulators of Royal Pentacle; hard enrage at about 13:10.",
+  "fr": "Étage 4 d'Alexander : Gordias (sadique) contre The Manipulator. Tu casses ses quatre pattes une par une (chaque casse ouvre une courte fenêtre), puis le corps. Le plus dur : nourrir les Jagd Doll, Judgement Nisi et les Steam Regulator de Royal Pentacle ; enrage vers 13:10.",
+  "de": "Ebene 4 von Alexander: Gordias (episch) gegen The Manipulator. Du brichst nacheinander seine vier Beine (jeder Bruch öffnet ein kurzes Burst-Fenster), dann kommt der Körper. Am schwersten: Jagd Dolls füttern, Judgement Nisi und die Steam Regulators bei Royal Pentacle; harter Enrage bei etwa 13:10.",
+  "ja": "起動編4層零式、マニピュレーター戦。4本の脚を順番に破壊（破壊ごとに短い本体攻撃の時間）してから本体戦。ヤークトドールの処理、ジャッジメント・ナイサイ、スチームジャッジが難所。約13分10秒で時間切れ。"
+ },
+ "strats_overview": [
+  {
+   "id": "nisi-juggle",
+   "name": {
+    "en": "Nisi juggling (old synced standard)",
+    "fr": "Jonglage Nisi (ancien standard synchro)",
+    "de": "Nisi-Jonglieren (alter Sync-Standard)",
+    "ja": "ナイサイ受け渡し（当時の標準）"
+   },
+   "region": "all",
+   "note": {
+    "en": "Keep Nisi A/B alive by passing it between healer/ranged pairs, then use it on the regulators. Documented by CGW and JP blogs. Mechanic names in FR/DE stay English.",
+    "fr": "Garde Nisi A/B en vie en le passant entre paires soigneur/distance, puis utilise-le sur les regulators. Documenté par CGW et des blogs JP. Noms des mécaniques en anglais.",
+    "de": "Halte Nisi A/B am Leben, indem du ihn zwischen Heiler/Fernkampf-Paaren weitergibst, und nutze ihn dann an den Regulators. Von CGW und JP-Blogs beschrieben. Mechaniknamen bleiben englisch.",
+    "ja": "ヒーラーと遠隔のペアで仮判決を受け渡して維持し、スチームジャッジで使う。CGWと日本の攻略ブログで確認。"
+   },
+   "aliases": {
+    "en": [
+     "nisi juggle",
+     "nisi juggling",
+     "nisi pass"
+    ],
+    "fr": [
+     "jonglage nisi"
+    ],
+    "de": [
+     "nisi jonglieren"
+    ],
+    "ja": [
+     "ナイサイ受け渡し",
+     "受け渡し"
+    ]
+   }
+  },
+  {
+   "id": "nisi-sacrifice",
+   "name": {
+    "en": "Ignore Nisi / sacrifice (old synced standard)",
+    "fr": "Ignorer Nisi / sacrifice (ancien standard synchro)",
+    "de": "Nisi ignorieren / Opfer (alter Sync-Standard)",
+    "ja": "無視法・自殺法（当時の標準）"
+   },
+   "region": "all",
+   "note": {
+    "en": "Let Nisi run out and have three players die on the regulators, then raise them. Also the fallback if the juggle fails. Today most groups clear unsynced, where this rarely matters.",
+    "fr": "Laisse Nisi expirer et fais mourir trois joueurs sur les regulators, puis relève-les. C'est aussi le plan B si le jonglage rate. Aujourd'hui on fait surtout en sans restriction, où ça compte peu.",
+    "de": "Lass Nisi auslaufen, drei Spieler sterben an den Regulators und werden belebt. Auch der Plan B, wenn das Jonglieren scheitert. Heute meist ohne Stufenbegrenzung, wo das kaum zählt.",
+    "ja": "仮判決を無視し、スチームジャッジは3人が取って死亡→蘇生。受け渡し失敗時の予備策でもある。現在は制限解除が主流。"
+   },
+   "aliases": {
+    "en": [
+     "ignore nisi",
+     "nisi sacrifice",
+     "sacrifice"
+    ],
+    "fr": [
+     "ignorer nisi",
+     "sacrifice"
+    ],
+    "de": [
+     "nisi ignorieren",
+     "opfer"
+    ],
+    "ja": [
+     "無視法",
+     "自殺法"
+    ]
+   }
+  }
+ ],
+ "note": {
+  "en": "Old content: mostly cleared unsynced or at minimum item level today. The strats listed are the old synced standards. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Vieux contenu : surtout fait en sans restriction ou ilvl minimum aujourd'hui. Les strats listées sont les anciens standards synchro. Noms des mécaniques en anglais (noms FR officiels non vérifiés).",
+  "de": "Alter Inhalt: heute meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel. Die Strats sind die alten Sync-Standards. Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "旧コンテンツ：現在は主に制限解除・IL最低限で攻略。記載の攻略法は当時の標準。英語名のままのギミック名は日本語公式名を確認できなかったもの。"
+ },
+ "phases": [
+  {
+   "id": "legs",
+   "names": {
+    "en": "Leg phases (legs 1-4)",
+    "fr": "Phases des pattes (1-4)",
+    "de": "Beinphasen (1-4)",
+    "ja": "脚フェーズ（1〜4本目）"
+   },
+   "mechanics": [
+    {
+     "id": "hydrothermal-missile",
+     "names": {
+      "en": "Hydrothermal Missile",
+      "fr": "Missile hydrothermique",
+      "de": "Hydrothermales Geschoss",
+      "ja": "蒸気ミサイル"
+     },
+     "aliases": {
+      "en": [
+       "hydrothermal missile"
+      ],
+      "fr": [
+       "hydrothermal missile"
+      ],
+      "de": [
+       "hydrothermal missile"
+      ],
+      "ja": [
+       "蒸気ミサイル"
+      ]
+     },
+     "how": {
+      "en": "Untelegraphed AoE tankbuster on the main tank; others stay away from the MT.",
+      "fr": "Tankbuster de zone sans marqueur sur le MT ; les autres restent loin.",
+      "de": "Unmarkierter AoE-Tankbuster auf den MT; andere halten Abstand.",
+      "ja": "MT中心の予兆なし範囲。他の人はMTから離れる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "seed-of-the-sky",
+     "names": {
+      "en": "Seed of the Sky",
+      "fr": "Graine du ciel",
+      "de": "Samen des Himmels",
+      "ja": "シード・オブ・スカイ"
+     },
+     "aliases": {
+      "en": [
+       "seed of the sky"
+      ],
+      "fr": [
+       "seed of the sky"
+      ],
+      "de": [
+       "seed of the sky"
+      ],
+      "ja": [
+       "シード・オブ・スカイ"
+      ]
+     },
+     "how": {
+      "en": "Ground circles under random players; step out.",
+      "fr": "Cercles au sol sous des joueurs ; sors.",
+      "de": "Bodenkreise unter zufälligen Spielern; raus.",
+      "ja": "ランダム足元範囲。避ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "discoid",
+     "names": {
+      "en": "Discoid",
+      "fr": "Discoïde",
+      "de": "Diskoid",
+      "ja": "ディスコイド"
+     },
+     "aliases": {
+      "en": [
+       "discoid"
+      ],
+      "fr": [
+       "discoid"
+      ],
+      "de": [
+       "discoid"
+      ],
+      "ja": [
+       "ディスコイド"
+      ]
+     },
+     "how": {
+      "en": "A marked player draws Steam Gasket orbs from the edge; each orb hurts whoever it touches. Tanks or assigned players intercept them (often each tank takes three).",
+      "fr": "Un joueur marqué attire des orbes Steam Gasket depuis le bord ; chaque orbe blesse qui le touche. Les tanks ou des joueurs assignés les interceptent (souvent trois par tank).",
+      "de": "Ein markierter Spieler zieht Steam-Gasket-Kugeln vom Rand an; jede verletzt, wen sie berührt. Tanks oder eingeteilte Spieler fangen sie ab (oft drei pro Tank).",
+      "ja": "青マーカー対象へ外周から玉が飛ぶ。触れた人の周囲で爆発。タンクや担当が分担して受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    },
+    {
+     "id": "perpetual-ray",
+     "names": {
+      "en": "Perpetual Ray",
+      "fr": "Rayon perpétuel",
+      "de": "Perpetueller Strahl",
+      "ja": "パーペチュアルレイ"
+     },
+     "aliases": {
+      "en": [
+       "perpetual ray"
+      ],
+      "fr": [
+       "perpetual ray"
+      ],
+      "de": [
+       "perpetual ray"
+      ],
+      "ja": [
+       "パーペチュアル・レイ"
+      ]
+     },
+     "how": {
+      "en": "A living leg starts steaming: stun it in time or two players take big damage and lose MP. Melee or a tank is assigned to stun.",
+      "fr": "Une patte vivante fume : étourdis-la à temps, sinon deux joueurs prennent gros et perdent des PM. Un mêlée ou un tank est assigné au stun.",
+      "de": "Ein lebendes Bein dampft: rechtzeitig betäuben, sonst nehmen zwei Spieler viel Schaden und verlieren MP. Ein Nahkämpfer oder Tank übernimmt die Betäubung.",
+      "ja": "残っている脚から蒸気が出たらスタン。失敗するとランダム2人に大ダメージとMP減少。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    },
+    {
+     "id": "emergency-quarantine",
+     "names": {
+      "en": "Emergency Quarantine",
+      "fr": "Quarantaine d'urgence",
+      "de": "Notquarantäne",
+      "ja": "緊急隔離"
+     },
+     "aliases": {
+      "en": [
+       "emergency quarantine"
+      ],
+      "fr": [
+       "emergency quarantine"
+      ],
+      "de": [
+       "emergency quarantine"
+      ],
+      "ja": [
+       "緊急隔離"
+      ]
+     },
+     "how": {
+      "en": "Legs 1-2: the off-tank and a random DPS are sent to a side room to kill a Panzer Doll; a player who dies there cannot simply be raised.",
+      "fr": "Pattes 1-2 : l'off-tank et un DPS au hasard sont envoyés dans une salle à part pour tuer un Panzer Doll ; un mort là-bas ne peut pas être simplement relevé.",
+      "de": "Beine 1-2: Off-Tank und ein zufälliger DPS werden in einen Nebenraum geschickt und töten eine Panzer Doll; wer dort stirbt, kann nicht einfach wiederbelebt werden.",
+      "ja": "1〜2本目。STとDPS1人が隔離され、パンツァードールを倒す。隔離中に死ぬと簡単には戻れない。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds"
+     ]
+    },
+    {
+     "id": "carnage",
+     "names": {
+      "en": "Carnage",
+      "fr": "Carnage",
+      "de": "Carnage",
+      "ja": "カーネイジ"
+     },
+     "aliases": {
+      "en": [
+       "carnage"
+      ],
+      "fr": [
+       "carnage"
+      ],
+      "de": [
+       "carnage"
+      ],
+      "ja": [
+       "カーネイジ"
+      ]
+     },
+     "how": {
+      "en": "Leg 2: a player is tethered by five drones but only three fire; others stand between the drones and the target to take the lines, spread apart. If the target dies the boss gains Damage Up.",
+      "fr": "Patte 2 : un joueur est lié à cinq drones dont trois tirent ; les autres se placent entre les drones et la cible pour prendre les lignes, écartés. Si la cible meurt, le boss gagne Bonus de dégâts.",
+      "de": "Bein 2: Ein Spieler ist mit fünf Drohnen verbunden, drei feuern; andere stellen sich zwischen Drohnen und Ziel, um die Linien abzufangen, mit Abstand. Stirbt das Ziel, bekommt der Boss Schaden erhöht.",
+      "ja": "1人に5本の線、うち3本が本物。他の人が線と対象の間に入って遮り、散開して受ける。対象が倒れるとボス強化。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether"
+     ]
+    },
+    {
+     "id": "jagd-dolls",
+     "names": {
+      "en": "Summon Dolls (Jagd Doll / Straf Doll)",
+      "fr": "Summon Dolls (Poupée jagd / Poupée straf)",
+      "de": "Summon Dolls (Jagdpuppe / Strafpuppe)",
+      "ja": "ヤークトドール／ストラッフドール"
+     },
+     "aliases": {
+      "en": [
+       "summon dolls (jagd doll / straf doll)"
+      ],
+      "fr": [
+       "summon dolls (jagd doll / straf doll)"
+      ],
+      "de": [
+       "summon dolls (jagd doll / straf doll)"
+      ],
+      "ja": [
+       "ヤークトドール／ストラッフドール"
+      ]
+     },
+     "how": {
+      "en": "Leg 3 onward: three Jagd Dolls revive when killed and give nearby players stacks (4 stacks explode and wipe). Bring each to 25% or lower (single-target only) and drag it into melee range of the central Straf Doll, which makes it explode for damage scaled to its HP. Kill the Straf Doll last, before Wirbelwind empties everyone's MP.",
+      "fr": "Dès la patte 3 : trois Jagd Doll ressuscitent si tuées et donnent des cumuls (4 cumuls = explosion et wipe). Descends chacune à 25 % ou moins (monocible) et amène-la au contact de la Straf Doll centrale, qui la fait exploser selon ses PV restants. Tue la Straf Doll en dernier, avant que Wirbelwind vide les PM.",
+      "de": "Ab Bein 3: Drei Jagd Dolls stehen nach dem Tod wieder auf und geben nahen Spielern Stacks (4 Stacks = Explosion und Wipe). Bring jede auf 25 % oder weniger (nur Einzelziel) und zieh sie in Nahkampfreichweite der Straf Doll in der Mitte, die sie je nach Rest-LP explodieren lässt. Straf Doll zuletzt töten, bevor Wirbelwind alle MP leert.",
+      "ja": "3本目以降。外周のヤークトドールは倒すと復活し、周囲に光性爆雷を付与（4スタックで全滅級）。単体攻撃で25%以下にしてから中央のストラッフドールに近づけて爆発させる。ストラッフドールはヴィルベルヴィント（MP0）前に最後に倒す。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "debuff"
+     ]
+    },
+    {
+     "id": "mortal-revolution",
+     "names": {
+      "en": "Mortal Revolution",
+      "fr": "Révolution mortelle",
+      "de": "Rechte Retribution",
+      "ja": "モータルレボリューション"
+     },
+     "aliases": {
+      "en": [
+       "mortal revolution"
+      ],
+      "fr": [
+       "mortal revolution"
+      ],
+      "de": [
+       "mortal revolution"
+      ],
+      "ja": [
+       "モータルレボリューション"
+      ]
+     },
+     "how": {
+      "en": "Raid-wide hit after each leg break; stronger with more legs left. Mitigate.",
+      "fr": "Dégâts de zone après chaque patte cassée ; plus forts s'il reste des pattes. Réduis.",
+      "de": "Raumschaden nach jedem Beinbruch; stärker, je mehr Beine übrig sind. Mitigieren.",
+      "ja": "脚破壊後の全体攻撃。残りの脚が多いほど痛い。軽減で受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "judgement-nisi",
+     "names": {
+      "en": "Judgement Nisi",
+      "fr": "Jugement conditionnel",
+      "de": "Vorläufige Vollstreckung",
+      "ja": "ジャッジメントナイサイ"
+     },
+     "aliases": {
+      "en": [
+       "judgement nisi"
+      ],
+      "fr": [
+       "judgement nisi"
+      ],
+      "de": [
+       "judgement nisi"
+      ],
+      "ja": [
+       "ジャッジメント・ナイサイ"
+      ]
+     },
+     "how": {
+      "en": "Leg 4: two ranged/healer players get Decree Nisi A and B, damage-over-time debuffs that spread by touch. If A and B touch, both players die. The debuffs are needed later for the Steam Regulators.",
+      "fr": "Patte 4 : deux distants/soigneurs reçoivent Decree Nisi A et B, des DoT qui se transmettent au contact. Si A et B se touchent, les deux meurent. Ils servent ensuite pour les Steam Regulator.",
+      "de": "Bein 4: Zwei Fernkämpfer/Heiler bekommen Decree Nisi A und B, Schaden-über-Zeit-Debuffs, die sich durch Berührung übertragen. Berühren sich A und B, sterben beide. Die Debuffs braucht man später für die Steam Regulators.",
+      "ja": "4本目。2人に仮判決α／β（DoT、触れると移る）。αとβが重なると死刑判決で即死。最終フェーズのスチームジャッジで使う。"
+     },
+     "strats": [
+      {
+       "strat": "nisi-juggle",
+       "how": {
+        "en": "Each healer pairs with a ranged DPS and they pass Nisi back and forth (touch) before it expires, so A and B stay alive, far apart from each other and the party.",
+        "fr": "Chaque soigneur fait équipe avec un DPS distance et ils se repassent Nisi (au contact) avant expiration, pour garder A et B en vie, loin l'un de l'autre et du groupe.",
+        "de": "Jeder Heiler bildet ein Paar mit einem Fernkampf-DPS; sie reichen Nisi vor dem Ablauf hin und her (Berührung), damit A und B erhalten bleiben, weit voneinander und vom Team entfernt.",
+        "ja": "ヒーラーと遠隔DPSがペアになり、切れる前に触れて受け渡し（アラガンロット方式）、αとβを離したまま維持する。"
+       }
+      },
+      {
+       "strat": "nisi-sacrifice",
+       "how": {
+        "en": "Ignore Nisi: the holders spread away and let it run out.",
+        "fr": "Ignore Nisi : les porteurs s'écartent et le laissent expirer.",
+        "de": "Nisi ignorieren: die Träger gehen weg und lassen ihn auslaufen.",
+        "ja": "無視法：対象は散開して時間切れまで1人で受ける。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "body",
+   "names": {
+    "en": "Body phase",
+    "fr": "Phase du corps",
+    "de": "Körperphase",
+    "ja": "本体フェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "carnage-zero",
+     "names": {
+      "en": "Carnage Zero",
+      "fr": "Carnage zéro",
+      "de": "Carnage Zero",
+      "ja": "カーネイジ・ゼロ"
+     },
+     "aliases": {
+      "en": [
+       "carnage zero"
+      ],
+      "fr": [
+       "carnage zero"
+      ],
+      "de": [
+       "carnage zero"
+      ],
+      "ja": [
+       "カーネイジ・ゼロ"
+      ]
+     },
+     "how": {
+      "en": "Small AoEs on several random players without tethers; spread.",
+      "fr": "Petites AoE sur plusieurs joueurs sans lien ; disperse-toi.",
+      "de": "Kleine AoEs auf mehreren Spielern ohne Verbindung; verteilen.",
+      "ja": "線なしでランダム数人に範囲。散開。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread"
+     ]
+    },
+    {
+     "id": "steam-pump",
+     "names": {
+      "en": "Discoid with Steam Pump",
+      "fr": "Discoid with Steam Pump",
+      "de": "Discoid with Steam Pump",
+      "ja": "ディスコイド（スチームポンプ）"
+     },
+     "aliases": {
+      "en": [
+       "discoid with steam pump"
+      ],
+      "fr": [
+       "discoid with steam pump"
+      ],
+      "de": [
+       "discoid with steam pump"
+      ],
+      "ja": [
+       "ディスコイド（スチームポンプ）"
+      ]
+     },
+     "how": {
+      "en": "The last orb is a big Steam Pump: a stack hit with Vulnerability Up that lasts longer the fewer people share it. Pop the yellow orbs first, then everyone except the main tank stacks on it (keep clear of Nisi holders).",
+      "fr": "Le dernier orbe est une grosse Steam Pump : un partage avec Vulnérabilité qui dure plus longtemps si peu de gens la prennent. Fais d'abord sauter les orbes jaunes, puis tout le monde sauf le MT la prend ensemble (loin des porteurs de Nisi).",
+      "de": "Die letzte Kugel ist eine große Steam Pump: ein Sammeltreffer mit Verwundbarkeit, der länger anhält, je weniger ihn teilen. Erst die gelben Kugeln platzen lassen, dann alle außer dem MT zusammen (weg von den Nisi-Trägern).",
+      "ja": "最後の大玉スチームポンプは頭割り＋被ダメ上昇（人数が少ないほど長い）。黄色玉を先に処理し、MT以外で中央に集まって受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "debuff"
+     ]
+    },
+    {
+     "id": "royal-pentacle",
+     "names": {
+      "en": "Royal Pentacle / Steam Regulators",
+      "fr": "Pentacle royal / Régulateurs de vapeur",
+      "de": "Penta-Kaustik / Dampfregler",
+      "ja": "スチームジャッジ／スチームジャッジα・β"
+     },
+     "aliases": {
+      "en": [
+       "royal pentacle / steam regulators"
+      ],
+      "fr": [
+       "royal pentacle / steam regulators"
+      ],
+      "de": [
+       "royal pentacle / steam regulators"
+      ],
+      "ja": [
+       "スチームジャッジ"
+      ]
+     },
+     "how": {
+      "en": "Five hits on the main tank (mitigate or invuln), then six Steam Regulators (A=blue / B=red) appear in the center. Touching one with the matching Nisi destroys it, removes your Nisi and gives a short Vulnerability Up; touching it without the matching Nisi kills you but still destroys it. Any regulator left after about 20 seconds wipes the party.",
+      "fr": "Cinq coups sur le MT (réduction ou invincibilité), puis six Steam Regulator (A=bleu / B=rouge) au centre. En toucher un avec le bon Nisi le détruit, enlève ton Nisi et donne une courte Vulnérabilité ; le toucher sans le bon Nisi te tue mais le détruit quand même. Un regulator restant après ~20 s = wipe.",
+      "de": "Fünf Treffer auf den MT (Mitigation oder Unverwundbarkeit), dann erscheinen sechs Steam Regulators (A=blau / B=rot) in der Mitte. Berührst du einen mit dem passenden Nisi, zerstörst du ihn, verlierst dein Nisi und bekommst kurz Verwundbarkeit; ohne passenden Nisi stirbst du, er wird aber trotzdem zerstört. Bleibt nach etwa 20 Sekunden einer übrig, ist es ein Wipe.",
+      "ja": "MTへの5連撃（軽減か無敵）の後、中央にα（青）とβ（赤）のスチームジャッジが計6個。対応する仮判決を持って触れると破壊でき、仮判決が消え被ダメ上昇。持たずに触れると死亡するが破壊はされる。約20秒放置で全滅。"
+     },
+     "strats": [
+      {
+       "strat": "nisi-juggle",
+       "how": {
+        "en": "The two Nisi pairs refresh their debuff from their partner, take a matching regulator, then the partner (now holding Nisi) takes the next one while the first waits out Vulnerability; repeat until all six are gone.",
+        "fr": "Les deux paires Nisi récupèrent le malus chez leur partenaire, prennent un regulator de la bonne couleur, puis le partenaire (qui a maintenant Nisi) prend le suivant pendant que l'autre attend la fin de Vulnérabilité ; répète jusqu'aux six.",
+        "de": "Die zwei Nisi-Paare holen sich den Debuff vom Partner, nehmen einen passenden Regulator, dann nimmt der Partner (jetzt mit Nisi) den nächsten, während der erste die Verwundbarkeit abwartet; wiederholen, bis alle sechs weg sind.",
+        "ja": "ナイサイを受け渡しながら、持っている人が対応する色を取り、被ダメ上昇中は相方が次を取る。6個すべて取るまで繰り返す。"
+       }
+      },
+      {
+       "strat": "nisi-sacrifice",
+       "how": {
+        "en": "Three players (usually DPS and off-tank) Sprint through two regulators each and die; healers raise them afterward (Healer Limit Break 3 is often used).",
+        "fr": "Trois joueurs (souvent DPS et off-tank) traversent deux regulators chacun en Sprint et meurent ; les soigneurs les relèvent ensuite (souvent avec la Limit Break 3 soigneur).",
+        "de": "Drei Spieler (meist DPS und Off-Tank) sprinten jeweils durch zwei Regulators und sterben; die Heiler beleben sie danach (oft mit Heiler-Limitrausch 3).",
+        "ja": "自殺法：3人がスプリントで2個ずつ取って死亡し、後で蘇生（ヒーラーLB3を使うことも多い）。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "debuff"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Alexander - The Burden of the Father (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Alexander_-_The_Burden_of_the_Father_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/fd7aa157f29/",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone blog: 起動編 零式4層 攻撃パターンまとめ",
+   "url": "https://na.finalfantasyxiv.com/lodestone/character/1569100/blog/2446502",
+   "lang": "ja"
+  },
+  {
+   "title": "やまけんゲームズ モルボルチャレンジ 起動編4層",
+   "url": "https://yamaken-games.com/molbolcharange-kidou04/",
+   "lang": "ja"
+  },
+  {
+   "title": "モルボルチャレンジの会 起動編4層",
+   "url": "https://ff14malborochallenge.com/malchalle_kidou4/",
+   "lang": "ja"
+  },
+  {
+   "title": "ゲームエイト 起動編4層（ノーマル）",
+   "url": "https://game8.jp/ff14/308601",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

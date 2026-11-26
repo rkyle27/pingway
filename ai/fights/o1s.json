@@ -1,0 +1,406 @@
+{
+ "id": "o1s",
+ "type": "savage",
+ "expansion": "SB",
+ "patch": "4.05",
+ "names": {
+  "en": "Deltascape V1.0 (Savage)",
+  "fr": "Deltastice v1.0 (sadique)",
+  "de": "Deltametrie 1.0 (episch)",
+  "ja": "次元の狭間オメガ零式：デルタ編1"
+ },
+ "aliases": {
+  "en": [
+   "o1s",
+   "alte roite",
+   "deltascape 1 savage",
+   "delta 1 savage"
+  ],
+  "fr": [
+   "o1s",
+   "alte roite",
+   "deltastice 1"
+  ],
+  "de": [
+   "o1s",
+   "alte roite",
+   "deltametrie 1"
+  ],
+  "ja": [
+   "デルタ零式1層",
+   "アルテ・ロイテ",
+   "アルテロイテ",
+   "o1s"
+  ]
+ },
+ "summary": {
+  "en": "First floor of Omega Deltascape Savage against Alte Roite, a single-phase fight. The hard part is The Classical Elements: fire orbs, knockbacks and an ice floor that must be read and dodged in order.",
+  "fr": "Premier étage de Deltastice sadique contre Alte Roite, en une seule phase. Le plus dur, c'est Élément neutre : des orbes de feu, des projections et un sol glacé à lire et esquiver dans l'ordre.",
+  "de": "Erste Ebene von Deltametrie episch gegen Alte Roite, ein Kampf in einer Phase. Schwierig ist Klassisches Element: Feuerkugeln, Rückstöße und ein Eisboden, die du der Reihe nach lesen und ausweichen musst.",
+  "ja": "オメガ零式デルタ編1層、アルテ・ロイテ戦。フェーズは1つ。難所はクラシカルエレメントで、火の玉・ノックバック・氷床を順番に見て避ける必要があります。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Alte Roite",
+    "fr": "Alte Roite",
+    "de": "Alte Roite",
+    "ja": "アルテ・ロイテ"
+   },
+   "mechanics": [
+    {
+     "id": "wyrm-tail",
+     "names": {
+      "en": "Wyrm Tail",
+      "fr": "Queue du dragon ancestral",
+      "de": "Antiker Drachenschweif",
+      "ja": "太古の龍尾"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Hit on the main tank; mitigate it.",
+      "fr": "Coup sur le tank principal ; mets une réduction de dégâts.",
+      "de": "Treffer auf den Main-Tank; nutze Schadensreduktion.",
+      "ja": "メインタンクへの攻撃。軽減で受けます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave"
+     ]
+    },
+    {
+     "id": "twin-bolt",
+     "names": {
+      "en": "Twin Bolt",
+      "fr": "Éclairs jumeaux",
+      "de": "Zwillingsschlag",
+      "ja": "ツインボルト"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Shared tankbuster split between the top-enmity player and the player closest to the boss. The off-tank stands next to the main tank and both mitigate.",
+      "fr": "Tankbuster partagé entre le joueur en tête d'inimitié et le joueur le plus proche du boss. Le off-tank se colle au main tank et les deux mitigent.",
+      "de": "Geteilter Tankbuster zwischen dem Spieler mit der höchsten Feindseligkeit und dem Spieler, der dem Boss am nächsten ist. Der Off-Tank stellt sich neben den Main-Tank, beide nutzen Reduktion.",
+      "ja": "敵視1位とボスに最も近い人に分散するタンク強攻撃。STはMTの隣に立ち、2人とも軽減します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "stack"
+     ]
+    },
+    {
+     "id": "clamp",
+     "names": {
+      "en": "Clamp",
+      "fr": "Pinçage",
+      "de": "Klammer",
+      "ja": "クランプ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Unmarked line in front of the boss with huge damage and knockback. Get out of the front.",
+      "fr": "Ligne non marquée devant le boss, gros dégâts et projection. Sors de devant.",
+      "de": "Unmarkierte Linie vor dem Boss mit hohem Schaden und Rückstoß. Geh aus dem Frontbereich.",
+      "ja": "予兆なしの前方直線攻撃。大ダメージとノックバック。正面から離れます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "knockback",
+      "dodge"
+     ]
+    },
+    {
+     "id": "blaze",
+     "names": {
+      "en": "Blaze",
+      "fr": "Givre",
+      "de": "Frost",
+      "ja": "ブレイズ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Stack marker on a healer; everyone stacks on that player.",
+      "fr": "Marqueur de package sur un healer ; tout le monde se regroupe sur lui.",
+      "de": "Sammelmarker auf einem Heiler; alle sammeln sich bei ihm.",
+      "ja": "ヒーラーに頭割りマーカー。全員で頭割りします。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack"
+     ]
+    },
+    {
+     "id": "levinbolt",
+     "names": {
+      "en": "Levinbolt",
+      "fr": "Fulguration",
+      "de": "Blitzschlag",
+      "ja": "稲妻"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Spread circle on every player; spread to clock spots at the edge.",
+      "fr": "Cercle de dispersion sur chaque joueur ; disperse-toi sur les positions horloge au bord.",
+      "de": "Verteilkreis auf jedem Spieler; verteilt euch auf die Uhrpositionen am Rand.",
+      "ja": "全員に散開マーカー。外周のクロック位置に散開します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread"
+     ]
+    },
+    {
+     "id": "charybdis",
+     "names": {
+      "en": "Charybdis",
+      "fr": "Charybde",
+      "de": "Charybdis",
+      "ja": "ミールストーム"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Drops everyone to 1 HP; heal the party right away before the next Roar.",
+      "fr": "Met tout le monde à 1 PV ; soigne le groupe tout de suite avant le prochain Rugissement.",
+      "de": "Setzt alle auf 1 HP; heile die Gruppe sofort vor dem nächsten Brüllen.",
+      "ja": "全員のHPを1にします。次の咆哮までにすぐ回復します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "roar",
+     "names": {
+      "en": "Roar",
+      "fr": "Rugissement",
+      "de": "Brüllen",
+      "ja": "咆哮"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Unavoidable raid-wide damage.",
+      "fr": "Dégâts de zone inévitables sur tout le groupe.",
+      "de": "Unvermeidbarer Schaden auf die ganze Gruppe.",
+      "ja": "回避不能の全体攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "flame",
+     "names": {
+      "en": "Flame",
+      "fr": "Flamme",
+      "de": "Flamme",
+      "ja": "炎"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Fire orbs grow and explode as circles that give Vulnerability Up; knockbacks can move the orbs. Watch where they end up and stand away.",
+      "fr": "Des orbes de feu grossissent puis explosent en cercles qui donnent Vulnérabilité augmentée ; les projections peuvent les déplacer. Regarde où ils finissent et éloigne-toi.",
+      "de": "Feuerkugeln wachsen und explodieren als Kreise mit Verwundbarkeit; Rückstöße können sie verschieben. Achte darauf, wo sie landen, und halte Abstand.",
+      "ja": "火の玉が大きくなり円範囲で爆発、被ダメージ上昇が付きます。ノックバックで玉が動くので、最終位置を見て離れます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "debuff"
+     ]
+    },
+    {
+     "id": "downburst",
+     "names": {
+      "en": "Downburst",
+      "fr": "Rafale descendante",
+      "de": "Fallböe",
+      "ja": "ダウンバースト"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Knockback from under the boss; players in the middle are pushed out and get Vulnerability Up.",
+      "fr": "Projection depuis sous le boss ; les joueurs au centre sont repoussés et reçoivent Vulnérabilité augmentée.",
+      "de": "Rückstoß von unter dem Boss; Spieler in der Mitte werden weggestoßen und bekommen Verwundbarkeit.",
+      "ja": "ボスの足元からのノックバック。中央にいる人は外へ飛ばされ被ダメージ上昇が付きます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "debuff"
+     ]
+    },
+    {
+     "id": "breath-wing",
+     "names": {
+      "en": "Breath Wing",
+      "fr": "Aile déferlante",
+      "de": "Atemschwinge",
+      "ja": "ブレスウィング"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The boss jumps to an edge and knocks everyone away from it. On the ice floor, stand right next to the boss so you don't slide into an orb or off the arena.",
+      "fr": "Le boss saute au bord et repousse tout le monde. Sur le sol glacé, colle-toi au boss pour ne pas glisser dans un orbe ou hors de l'arène.",
+      "de": "Der Boss springt an den Rand und stößt alle weg. Auf dem Eisboden stell dich direkt neben den Boss, damit du nicht in eine Kugel oder von der Arena rutschst.",
+      "ja": "ボスが外周へ跳び、そこから全員をノックバック。氷床中はボスに密着して、玉や場外へ滑らないようにします。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback"
+     ]
+    },
+    {
+     "id": "classical-elements",
+     "names": {
+      "en": "The Classical Elements",
+      "fr": "Élément neutre",
+      "de": "Klassisches Element",
+      "ja": "クラシカルエレメント"
+     },
+     "aliases": {
+      "en": [
+       "classical elements",
+       "ice phase"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "クラシカル"
+      ]
+     },
+     "how": {
+      "en": "Four-part combo of Flame orbs, Downburst and an ice floor, ending in Levinbolt or Blaze. You let Downburst knock you to a gap between orbs, slide to the safe area on the ice, then spread or stack; the third set uses fake outer orbs that explode first.",
+      "fr": "Combo en quatre parties : orbes de Flamme, Rafale descendante et sol glacé, qui finit par Fulguration ou Givre. Laisse la projection t'envoyer dans un trou entre les orbes, glisse vers la zone sûre, puis disperse-toi ou package ; la troisième fois, les orbes extérieurs sont des leurres qui explosent d'abord.",
+      "de": "Vierteilige Kombo aus Flammen-Kugeln, Fallböe und Eisboden, endet mit Blitzschlag oder Frost. Lass dich von der Fallböe in eine Lücke zwischen den Kugeln stoßen, rutsch in den sicheren Bereich und verteil dich oder sammle dich; beim dritten Mal sind die äußeren Kugeln Köder, die zuerst explodieren.",
+      "ja": "炎・ダウンバースト・氷床を組み合わせた4回のギミックで、最後は稲妻か頭割り。ノックバックで玉の隙間へ飛ばされ、氷の上を安置へ滑ってから散開または頭割り。3回目は外側の玉がダミーで先に爆発します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "dodge",
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Enrage",
+      "fr": "Enrage",
+      "de": "Enrage",
+      "ja": "時間切れ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Around 9:45 Flame orbs cover the whole arena and the party dies.",
+      "fr": "Vers 9:45, les orbes de Flamme couvrent toute l'arène et le groupe meurt.",
+      "de": "Gegen 9:45 bedecken Flammen-Kugeln die ganze Arena und die Gruppe stirbt.",
+      "ja": "9:45頃、炎の玉が全体を覆い全滅します。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Exact enrage time comes from one source only.",
+      "fr": "Le temps exact de l'enrage vient d'une seule source.",
+      "de": "Die genaue Enrage-Zeit stammt nur aus einer Quelle.",
+      "ja": "時間切れの正確な時間は1つの資料のみ。"
+     },
+     "tags": [
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - Deltascape V1.0 (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Deltascape_V1.0_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

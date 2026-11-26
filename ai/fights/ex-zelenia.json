@@ -1,0 +1,686 @@
+{
+ "id": "ex-zelenia",
+ "type": "extreme",
+ "expansion": "DT",
+ "patch": "7.2",
+ "names": {
+  "en": "Recollection (Extreme) - Zelenia",
+  "fr": "Le Sanctuaire du Serment (extrême) - Zelenia",
+  "de": "Gok Tajaal - Zelenia",
+  "ja": "極ゼレニア討滅戦"
+ },
+ "aliases": {
+  "en": [
+   "zelenia ex",
+   "zelenia extreme",
+   "recollection extreme",
+   "recollection"
+  ],
+  "fr": [
+   "zelenia extrême",
+   "sanctuaire du serment"
+  ],
+  "de": [
+   "zelenia extrem"
+  ],
+  "ja": [
+   "極ゼレニア",
+   "ゼレニア"
+  ]
+ },
+ "summary": {
+  "en": "Zelenia Extreme. Early mechanics are Shock donuts/circles with towers, Escelons' Fall near/far cone baits and an adds phase (Blessed Barricade). The rest of the fight is the Roseblood Bloom series: rose tiles copy any AoE that touches them to neighbouring tiles, so every Bloom (1st to 6th) is a floor puzzle where you place or avoid rose tiles while dodging thunder cones, rings and cleaves.",
+  "fr": "Zelenia Extrême. Au début : Choc (donuts/cercles) avec tours, baits proche/loin de Péril cruciforme et une phase d'adds (Mur sacré). Le reste du combat est la série Déploiement arcanique : les dalles de rose copient toute AoE qui les touche sur les dalles voisines, donc chaque forme (1 à 6) est un puzzle de sol où l'on pose ou évite des roses en esquivant cônes, anneaux et demi-salles.",
+  "de": "Zelenia Extrem. Anfangs Schock (Donuts/Kreise) mit Türmen, Aufsteigendes Kreuz mit Nah/Fern-Kegelködern und eine Add-Phase (Heilige Mauer). Der Rest ist die Arkane-Enthüllung-Reihe: Rosenfelder kopieren jeden AoE, der sie berührt, auf Nachbarfelder, also ist jede Form (1 bis 6) ein Boden-Puzzle, bei dem man Rosen legt oder meidet und Donnerkegeln, Ringen und Halbraum-Angriffen ausweicht.",
+  "ja": "極ゼレニア。序盤はショック（ドーナツ/円）と塔、クライムクロスの遠近扇誘導、聖護壁の雑魚フェーズ。以降は魔法陣展開（一式〜六式）で、バラの床に範囲が当たると隣接マスへ広がる床パズルを、雷の扇・リング・半面と同時に処理。"
+ },
+ "strats_overview": [
+  {
+   "id": "hector",
+   "name": {
+    "en": "Hector (NA PF) + EF2 Braindead",
+    "fr": "Hector (PF NA) + EF2 Braindead",
+    "de": "Hector (NA-PF) + EF2 Braindead",
+    "ja": "Hector（NA野良）＋EF2脳死"
+   },
+   "region": "NA",
+   "note": {
+    "en": "NAUR PF summary 'Hector | EF2 Braindead'. Supports on cardinals, DPS on intercardinals with colour partners. For the 6th Bloom many PFs use the mitigation method (always place buds inside and take the hit with heavy mitigation / tank LB).",
+    "fr": "Résumé PF NAUR « Hector | EF2 Braindead ». Supports aux cardinaux, DPS aux intercardinaux avec partenaires de couleur. Pour la 6e forme, beaucoup de PF utilisent la méthode mitigation (toujours poser à l'intérieur et encaisser avec grosse mitigation / LB tank).",
+    "de": "NAUR-PF-Kurzform „Hector | EF2 Braindead“. Supporter auf Himmelsrichtungen, DPS auf Zwischenrichtungen mit Farbpartner. Für die sechste Form nutzen viele PFs die Mitigations-Methode (immer innen legen und mit viel Mitigation / Tank-LB tanken).",
+    "ja": "NAUR「Hector｜EF2脳死」。サポート方角、DPS斜めで色ペア。六式は内側に置いて軽減（タンクLB）で受ける方法が多い。"
+   },
+   "aliases": {
+    "en": [
+     "hector",
+     "ef2 braindead"
+    ],
+    "fr": [
+     "hector",
+     "ef2 braindead"
+    ],
+    "de": [
+     "hector",
+     "ef2 braindead"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-game8",
+   "name": {
+    "en": "JP Game8 (basic Nukemaru + 3rd form Kurapon)",
+    "fr": "JP Game8 (Nukemaru de base + 3e forme Kurapon)",
+    "de": "JP Game8 (Nukemaru-Basis + dritte Form Kurapon)",
+    "ja": "JP game8（基本ぬけまる＋三式くらぽん）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "Nukemaru's video as base, Kurapon's solution for the 3rd form, and Ponikone's 'take one hit' method for the 6th form.",
+    "fr": "Vidéo de Nukemaru en base, solution de Kurapon pour la 3e forme et méthode « prendre un coup » de Ponikone pour la 6e.",
+    "de": "Nukemarus Video als Basis, Kurapons Lösung für die dritte Form und Ponikones „einen Treffer nehmen“-Methode für die sechste.",
+    "ja": "ぬけまる氏の動画が基本、三式はくらぽん氏、六式はぽにこね氏の1被弾前提。"
+   },
+   "aliases": {
+    "en": [
+     "nukemaru",
+     "kurapon",
+     "game8"
+    ],
+    "fr": [
+     "nukemaru",
+     "kurapon",
+     "game8"
+    ],
+    "de": [
+     "nukemaru",
+     "kurapon",
+     "game8"
+    ],
+    "ja": [
+     "基本ぬけまる+三式くらぽん",
+     "ぬけまる",
+     "くらぽん式",
+     "くらぽん",
+     "nukemaru",
+     "kurapon"
+    ]
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Opening and adds",
+    "fr": "Ouverture et adds",
+    "de": "Eröffnung und Adds",
+    "ja": "序盤・聖護壁"
+   },
+   "mechanics": [
+    {
+     "id": "thorned-catharsis",
+     "names": {
+      "en": "Thorned Catharsis",
+      "fr": "Roses cathartiques",
+      "de": "Rosenkatharsis",
+      "ja": "ローズ・カタルシス"
+     },
+     "aliases": {
+      "en": [
+       "raidwide"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Magic raidwide.",
+      "fr": "Raidwide magique.",
+      "de": "Magischer Raidwide.",
+      "ja": "魔法全体攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "shock",
+     "names": {
+      "en": "Shock + Alexandrian Holy",
+      "fr": "Choc + Miracle chevaleresque",
+      "de": "Schock + Ritterliches Sanctus",
+      "ja": "ショック＋キングダム・ホーリー"
+     },
+     "aliases": {
+      "en": [
+       "donuts",
+       "circles",
+       "towers"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Four players of one role get circles and four get donuts; overlapping two AoEs is fatal. The donut role stands still on the towers, the circle role moves out after the drop.",
+      "fr": "Quatre joueurs d'un rôle ont des cercles et quatre des donuts ; deux AoE superposées tuent. Le rôle donut reste sur les tours, le rôle cercle sort après la pose.",
+      "de": "Vier Spieler einer Rolle haben Kreise, vier Donuts; zwei überlappende AoEs sind tödlich. Die Donut-Rolle bleibt auf den Türmen, die Kreis-Rolle geht nach dem Ablegen raus.",
+      "ja": "片ロールに円、もう片方にドーナツ。円は発動後に移動、ドーナツは動かず塔を踏む。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "Donut role on the intercardinal towers, partner spreads on the cardinal waymark and steps out.",
+        "fr": "Rôle donut sur les tours intercardinales, le partenaire sur le marqueur cardinal et sort.",
+        "de": "Donut-Rolle auf den Zwischenrichtungs-Türmen, Partner auf dem Himmelsrichtungs-Marker und raus.",
+        "ja": "ドーナツは斜めの塔、ペアは方角マーカーで散開して出る。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "same_as": "hector"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "tower",
+      "dodge"
+     ]
+    },
+    {
+     "id": "specter-stock-break",
+     "names": {
+      "en": "Specter of the Lost / Stock Break",
+      "fr": "Fente spectrale / Fente",
+      "de": "Spektralschlag / Exekutionsschlag",
+      "ja": "スペクトルブレイク / ストックブレイク"
+     },
+     "aliases": {
+      "en": [
+       "tank tethers",
+       "multi stack"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Specter: two tethers lead to cone busters, tanks take them. Stock Break: multi-hit magic stack on a healer. The tethers start on two random non-tanks and each tank takes one with mitigation.",
+      "fr": "Fente spectrale : deux liens menant à des busters en cône, les tanks les prennent. Fente : package magique multi-coups sur un heal. Les liens apparaissent sur deux non-tanks au hasard et chaque tank en prend un avec ses réductions.",
+      "de": "Spektralschlag: zwei Verbindungen führen zu Kegel-Bustern, Tanks nehmen sie. Exekutionsschlag: mehrfaches magisches Sammeln auf einen Heiler. Die Verbindungen landen auf zwei zufälligen Nicht-Tanks, und jeder Tank übernimmt eine mit Mitigation.",
+      "ja": "線の扇タンク強攻撃はタンクが取る。ストックブレイクは連続頭割り。線はタンク以外のランダム2人に付くので、タンクが1本ずつバフを使って取る。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "tankbuster",
+      "cleave",
+      "stack"
+     ]
+    },
+    {
+     "id": "escelons-fall",
+     "names": {
+      "en": "Escelons' Fall",
+      "fr": "Péril cruciforme",
+      "de": "Aufsteigendes Kreuz",
+      "ja": "クライムクロス"
+     },
+     "aliases": {
+      "en": [
+       "near far",
+       "cones",
+       "witch hunt"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "遠近",
+       "扇"
+      ]
+     },
+     "how": {
+      "en": "Cones hit the four closest or four farthest players four times in a row; the boss's diamond shows which (JP: purple = far, pink = near). Two groups alternate so nobody takes two in a row. It comes back three times, combined with other mechanics.",
+      "fr": "Des cônes frappent les quatre plus proches ou plus éloignés quatre fois de suite ; le losange du boss l'indique (JP : violet = loin, rose = près). Deux groupes alternent pour ne pas en prendre deux de suite. Revient trois fois, combiné à d'autres mécaniques.",
+      "de": "Kegel treffen viermal hintereinander die vier Nächsten oder Fernsten; die Raute am Boss zeigt es (JP: lila = fern, pink = nah). Zwei Gruppen wechseln sich ab, damit niemand zwei in Folge nimmt. Kommt dreimal, kombiniert mit anderem.",
+      "ja": "近い4人か遠い4人に扇4連。ボスの菱形が紫なら遠い4人、ピンクなら近い4人。2回連続で受けないよう交互に。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "Group 1 baits hits 1 and 3, group 2 hits 2 and 4, switching near/far as needed.",
+        "fr": "Groupe 1 bait les coups 1 et 3, groupe 2 les coups 2 et 4, en changeant proche/loin.",
+        "de": "Gruppe 1 ködert Treffer 1 und 3, Gruppe 2 Treffer 2 und 4, je nach Nah/Fern wechselnd.",
+        "ja": "1組が1・3回目、2組が2・4回目を誘導。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "TH start inside the hitbox, DPS outside. If the 1st and 2nd telegraphs differ: DPS bait, swap so TH bait, DPS bait. If they're the same: swap so DPS bait, TH bait, swap so DPS bait.",
+        "fr": "TH commencent dans la hitbox, DPS dehors. Si les deux premiers signaux diffèrent : DPS baitent, on échange et TH baitent, DPS baitent. S'ils sont identiques : échange, DPS baitent, TH baitent, échange, DPS baitent.",
+        "de": "TH starten in der Hitbox, DPS außen. Unterscheiden sich die ersten zwei Anzeigen: DPS ködern, tauschen, TH ködern, DPS ködern. Sind sie gleich: tauschen, DPS ködern, TH ködern, tauschen, DPS ködern.",
+        "ja": "THはサークル内、DPSは外で待機。1・2回目の予兆が違う時：DPS→入れ替えTH→DPS。同じ時：入れ替えDPS→TH→入れ替えDPS。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "proximity",
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "blessed-barricade",
+     "names": {
+      "en": "Blessed Barricade (adds) + Power Break + Perfumed Quietus",
+      "fr": "Mur sacré (adds) + Fente puissante + Quietus de la rose",
+      "de": "Heilige Mauer (Adds) + Schockbolzen + Quietus-Rose",
+      "ja": "聖護壁（雑魚）＋パワーブレイク＋クワイタスローズ"
+     },
+     "aliases": {
+      "en": [
+       "adds",
+       "towers",
+       "shades"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Four adds must die before the aether gauge reaches 100, while towers need three players each and shades tether players to aim half-room cleaves outward. Perfumed Quietus is then a huge raidwide (a wipe if the gauge hit 100).",
+      "fr": "Quatre adds doivent mourir avant que la jauge atteigne 100, pendant que les tours demandent trois joueurs et que des ombres lient des joueurs pour orienter des demi-salles vers l'extérieur. Quietus de la rose est ensuite un énorme raidwide (wipe si la jauge est à 100).",
+      "de": "Vier Adds müssen sterben, bevor die Ätherleiste 100 erreicht, während Türme je drei Spieler brauchen und Schatten Spieler verbinden, um Halbraum-Angriffe nach außen zu richten. Danach ist Quietus-Rose ein riesiger Raidwide (Wipe bei voller Leiste).",
+      "ja": "雑魚4体をエーテル100前に倒す。塔は3人以上、幻影の線の2人が半面を外向きに誘導。クワイタスローズは痛い全体攻撃（100なら全滅）。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "East shades tether DPS, west shades supports; aim the cleave outward.",
+        "fr": "Ombres est sur les DPS, ouest sur les supports ; vise l'extérieur.",
+        "de": "Ost-Schatten verbinden DPS, West-Schatten Supporter; Hieb nach außen richten.",
+        "ja": "東の幻影はDPS、西はサポート、外向きに誘導。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "DPS take the east shade, TH the west; tower spawns are fixed (TH side alternates from the south, DPS side from the north).",
+        "fr": "DPS prennent l'ombre est, TH l'ouest ; les tours sont fixes (côté TH en alternance depuis le sud, côté DPS depuis le nord).",
+        "de": "DPS nehmen den Ost-Schatten, TH den West-Schatten; Türme sind fest (TH-Seite abwechselnd ab Süden, DPS-Seite ab Norden).",
+        "ja": "東の幻影はDPS、西はTH。塔はTH側が南から、DPS側が北から交互。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Icy Veins itself gives two different add positions (supports west / DPS east vs DPS NE / supports SW).",
+      "fr": "Icy Veins donne lui-même deux positions différentes.",
+      "de": "Icy Veins nennt selbst zwei verschiedene Positionen.",
+      "ja": "Icy Veins内でも雑魚の位置が2通り記載。"
+     },
+     "tags": [
+      "adds",
+      "dps-check",
+      "tower",
+      "tether",
+      "cleave",
+      "raidwide"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "blooms",
+   "names": {
+    "en": "Roseblood Bloom 1-4",
+    "fr": "Déploiement arcanique 1-4",
+    "de": "Arkane Enthüllung 1-4",
+    "ja": "魔法陣展開 一式〜四式"
+   },
+   "mechanics": [
+    {
+     "id": "rose-tiles",
+     "names": {
+      "en": "Roseblood Bloom (rose tiles)",
+      "fr": "Déploiement arcanique (dalles de rose)",
+      "de": "Arkane Enthüllung (Rosenfelder)",
+      "ja": "魔法陣展開（バラの床）"
+     },
+     "aliases": {
+      "en": [
+       "rose tiles",
+       "floor"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Any AoE touching a rose tile also hits that tile and the adjacent ones, so most solutions are about standing and dropping AoEs on plain tiles.",
+      "fr": "Toute AoE qui touche une dalle de rose frappe aussi cette dalle et les voisines, donc il faut surtout rester et poser sur des dalles normales.",
+      "de": "Jeder AoE, der ein Rosenfeld berührt, trifft auch dieses und die Nachbarfelder, also stehst du und legst AoEs meist auf normalen Feldern ab.",
+      "ja": "バラの床に範囲が当たると隣接マスにも広がる。基本は魔法陣のない床で処理。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    },
+    {
+     "id": "bloom-1-2",
+     "names": {
+      "en": "1st / 2nd Bloom: Alexandrian Thunder II/III/IV + Thunder Slash",
+      "fr": "1re / 2e forme : Foudre chevaleresque + Foudrolle",
+      "de": "Erste / zweite Form: Ritterliches Blitzra/ga/ka + Donnerhieb",
+      "ja": "一式・二式：キングダム・サンダラ/ガ/ジャ＋雷鳴剣"
+     },
+     "aliases": {
+      "en": [
+       "rotating cones",
+       "rings"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "1st: three rotating cones (chase them on plain tiles) then spreads off rose tiles. 2nd: inner and outer rings resolve in order with cone slashes, step between safe tiles. Afterwards the tanks pick up the tank buster tethers again, one each.",
+      "fr": "1re : trois cônes tournants (suis-les sur des dalles normales) puis dispersions hors des roses. 2e : anneaux intérieur et extérieur dans l'ordre avec des cônes, passe d'une dalle sûre à l'autre. Ensuite les tanks reprennent les liens de tankbuster, un chacun.",
+      "de": "Erste: drei drehende Kegel (auf normalen Feldern folgen), dann Verteilen abseits der Rosen. Zweite: innerer und äußerer Ring nacheinander mit Kegelhieben, zwischen sicheren Feldern wechseln. Danach übernehmen die Tanks wieder die Tankbuster-Verbindungen, je eine.",
+      "ja": "一式は回転扇を魔法陣のない場所で避け、サンダガは散開。二式は円とドーナツを1マスずつ移動して回避。その後、タンクが再び強攻撃の線を1本ずつ取る。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "1st: start southeast if clockwise, northwest if counterclockwise.",
+        "fr": "1re : commence au SE si horaire, NO si antihoraire.",
+        "de": "Erste: Start Südost bei Uhrzeigersinn, Nordwest dagegen.",
+        "ja": "一式は時計回りなら南東、反時計回りなら北西開始。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "1st: clockwise = wait on the clockwise side of B, counterclockwise = counterclockwise side of A.",
+        "fr": "1re : horaire = côté horaire de B, antihoraire = côté antihoraire de A.",
+        "de": "Erste: im Uhrzeigersinn = Uhrzeigerseite von B, dagegen = Gegenseite von A.",
+        "ja": "一式は時計回りならBの時計回り側、反時計回りならAの反時計回り側。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread",
+      "cleave",
+      "tankbuster",
+      "tether"
+     ]
+    },
+    {
+     "id": "bloom-3",
+     "names": {
+      "en": "3rd Bloom: Bud of Valor + Emblazon + towers",
+      "fr": "3e forme : Dupligenèse + Cercle d'exhortation + tours",
+      "de": "Dritte Form: Lug und Trug + Mahnendes Siegel + Türme",
+      "ja": "三式：幻影生成＋活性紋＋塔"
+     },
+     "aliases": {
+      "en": [
+       "emblazon",
+       "rose markers"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "One role gets rose markers (Emblazon) that create new rose tiles where they stand; the other role soaks towers. Build the pattern so no tower connects to others, then Escelons' Fall with donut Shocks and a stack.",
+      "fr": "Un rôle a des marqueurs de rose qui créent de nouvelles dalles là où il est ; l'autre prend les tours. Forme le motif pour qu'aucune tour ne soit reliée, puis Péril cruciforme avec Chocs donut et un package.",
+      "de": "Eine Rolle bekommt Rosen-Marker, die dort neue Rosenfelder erzeugen; die andere nimmt Türme. Bau das Muster so, dass kein Turm verbunden ist, dann Aufsteigendes Kreuz mit Donut-Schocks und Sammeln.",
+      "ja": "片ロールがバラのマーカーを指定位置に捨て（新しい魔法陣）、もう片方が塔。捨てた人は魔法陣のない床へ。その後クライムクロスとドーナツ・頭割り。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "Each pair takes a quadrant; the Emblazon player with inner rose tiles takes that spot, others squeeze toward the opposite tile; the other role soaks the tower.",
+        "fr": "Chaque paire prend un quart ; le joueur marqué avec dalles intérieures prend ce spot, les autres vers la dalle opposée ; l'autre rôle prend la tour.",
+        "de": "Jedes Paar nimmt ein Viertel; der Markierte mit inneren Rosenfeldern nimmt diesen Platz, die anderen drängen zum Gegenfeld; die andere Rolle nimmt den Turm.",
+        "ja": "ペアごとに区画、内側にバラがある区画のマーカー者はそこ、他は反対側へ寄る。塔はもう一方のロール。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Kurapon method: if TH soak towers, DPS drop markers; if DPS soak, TH drop markers.",
+        "fr": "Méthode Kurapon : si TH prennent les tours, les DPS posent les marqueurs ; si les DPS prennent, les TH posent.",
+        "de": "Kurapon-Methode: nehmen TH die Türme, legen DPS die Marker; nehmen DPS sie, legen TH die Marker.",
+        "ja": "くらぽん式：THが塔ならDPSがマーカー、DPSが塔ならTHがマーカー。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "stack",
+      "proximity"
+     ]
+    },
+    {
+     "id": "bloom-4",
+     "names": {
+      "en": "4th Bloom: Encircling Thorns + Alexandrian Banish III",
+      "fr": "4e forme : Épine de rose + Méga Bannissement chevaleresque",
+      "de": "Vierte Form: Rosendorn + Ritterliches Verbannga",
+      "ja": "四式：ローズソーン＋キングダム・バニシュガ"
+     },
+     "aliases": {
+      "en": [
+       "thorns tethers",
+       "stack through roses"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Markers either add rose tiles or trigger them; then tethers between roles must be broken by moving apart, while a healer stack spreads through connected rose tiles so everyone can share it.",
+      "fr": "Les marqueurs ajoutent ou déclenchent des roses ; puis des liens entre rôles se cassent en s'éloignant, pendant qu'un package sur heal se propage par les roses reliées pour que tout le monde partage.",
+      "de": "Marker fügen Rosenfelder hinzu oder lösen sie aus; dann brechen Verbindungen zwischen Rollen durch Auseinandergehen, während ein Heiler-Sammeln sich über verbundene Rosenfelder ausbreitet, damit alle teilen.",
+      "ja": "増やすマーカーはバラの反対側、起動はバラ側に捨てる。茨の線はTH西・DPS東に伸ばして切り、魔法陣を使って8人で頭割り。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "Supports left and DPS right (facing the boss) to break the thorns; pass through the outer rose tiles so all are in the stack.",
+        "fr": "Supports à gauche, DPS à droite (face au boss) pour casser ; passez par les roses extérieures pour être dans le package.",
+        "de": "Supporter links, DPS rechts (Blick zum Boss) zum Brechen; über die äußeren Rosenfelder gehen, damit alle im Sammeln sind.",
+        "ja": "ボスを向いてサポート左・DPS右で切り、外側のバラを通って全員頭割り。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "TH west, DPS east; gather behind the boss (changed in an August 2025 update, per comments).",
+        "fr": "TH à l'ouest, DPS à l'est ; regroupe derrière le boss (changé par une mise à jour d'août 2025 selon les commentaires).",
+        "de": "TH West, DPS Ost; hinter dem Boss sammeln (laut Kommentaren seit einem Update im August 2025).",
+        "ja": "TH西・DPS東。集合はボス背面（2025年8月の変更とのコメント）。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "game8 article says gather south, but comments say an August 2025 change made it behind the boss.",
+      "fr": "L'article game8 dit sud, mais des commentaires parlent d'un changement en août 2025.",
+      "de": "Der game8-Artikel sagt Süden, Kommentare sprechen von einer Änderung im August 2025.",
+      "ja": "記事は南集合、コメントでは2025年8月の変更でボス背面とされる。"
+     },
+     "tags": [
+      "tether",
+      "stack"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "late",
+   "names": {
+    "en": "Bloom 5-6 and enrage",
+    "fr": "Formes 5-6 et enrage",
+    "de": "Formen 5-6 und Finalangriff",
+    "ja": "五式・六式〜時間切れ"
+   },
+   "mechanics": [
+    {
+     "id": "bloom-5",
+     "names": {
+      "en": "5th Bloom: Valorous Ascension + Thunder Slash",
+      "fr": "5e forme : Mortimer + Foudrolle",
+      "de": "Fünfte Form: Atomisator + Donnerhieb",
+      "ja": "五式：クライムハザード＋雷鳴剣"
+     },
+     "aliases": {
+      "en": [
+       "lines",
+       "thorns"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Briar thorn lines cross the arena plus raidwides; stay on plain tiles away from the first line, then dodge in/out and move diagonally across when the slash goes off, without crossing the middle. Right after it comes another set of tank buster tethers for the tanks.",
+      "fr": "Des lignes d'épines traversent l'arène plus des raidwides ; reste sur des dalles normales loin de la première ligne, puis in/out et traverse en diagonale au moment du coup, sans passer par le centre. Juste après arrive une nouvelle paire de liens de tankbuster pour les tanks.",
+      "de": "Dornenlinien queren die Arena plus Raidwides; bleib auf normalen Feldern weg von der ersten Linie, dann rein/raus und diagonal wechseln, wenn der Hieb kommt, ohne die Mitte zu queren. Direkt danach kommt eine weitere Runde Tankbuster-Verbindungen für die Tanks.",
+      "ja": "外周の直線を魔法陣のない床で避け、円とドーナツの1回目が当たらない位置、雷鳴剣で時計回りに対角へ。直後にもう一度、タンクが取る強攻撃の線が来る。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "raidwide",
+      "tankbuster",
+      "tether"
+     ]
+    },
+    {
+     "id": "bloom-6",
+     "names": {
+      "en": "6th Bloom: Holy Hazard",
+      "fr": "6e forme : Péril miraculeux",
+      "de": "Sechste Form: Heilige Gefahr",
+      "ja": "六式：ホーリーハザード"
+     },
+     "aliases": {
+      "en": [
+       "hardest",
+       "mit method"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Two sets of opposing 120-degree cleaves while rose markers and towers must be placed to make a safe path; the 'correct' solution is hard, so most groups accept one hit with heavy mitigation.",
+      "fr": "Deux séries de cônes opposés de 120 degrés pendant qu'il faut placer marqueurs de rose et tours pour créer un chemin sûr ; la vraie solution est dure, donc la plupart prennent un coup avec grosse mitigation.",
+      "de": "Zwei Sätze gegenüberliegender 120-Grad-Hiebe, während Rosenmarker und Türme einen sicheren Weg bilden müssen; die „richtige“ Lösung ist schwer, also nehmen die meisten Gruppen einen Treffer mit viel Mitigation.",
+      "ja": "対向する120度扇を2セット。バラのマーカーと塔で安全な道を作る正攻法は難しく、軽減を厚めにして扇を1枚受ける方法が推奨。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "Mitigation method: always place buds on the inner tiles and absorb Rose and Holy Hazard with heavy mitigation (tank LB). Full solution: group 1 north, group 2 south, buds outside if the inner tower is hit first, inside if the outer is; melee inner tower, ranged outer.",
+        "fr": "Méthode mitigation : toujours poser à l'intérieur et encaisser avec grosse mitigation (LB tank). Solution complète : groupe 1 nord, 2 sud, roses dehors si la tour intérieure est touchée d'abord, dedans sinon ; mêlées tour intérieure, distances extérieure.",
+        "de": "Mitigations-Methode: immer innen legen und mit viel Mitigation (Tank-LB) tanken. Volle Lösung: Gruppe 1 Nord, 2 Süd, Rosen außen, wenn der innere Turm zuerst getroffen wird, sonst innen; Nahkampf innerer Turm, Fernkampf äußerer.",
+        "ja": "軽減式：常に内側に置きタンクLBなどで受ける。正攻法：1組北・2組南、内側の塔が先なら外にバラ、外が先なら内側、近接は内側の塔・遠隔は外側。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Ponikone 'one hit' method: go to the basic spread spots, place roses so circles don't touch, stand where you can dodge one cone and take the other with mitigation (the vulnerability is gone by the stack).",
+        "fr": "Méthode Ponikone « un coup » : va aux spots de base, pose les roses sans qu'elles se touchent, place-toi pour esquiver un cône et prendre l'autre avec mitigation (la vulnérabilité a disparu au package).",
+        "de": "Ponikone-„ein Treffer“-Methode: auf die Grund-Verteilplätze, Rosen so legen, dass sie sich nicht berühren, so stehen, dass du einem Kegel ausweichst und den anderen mit Mitigation nimmst (die Verwundbarkeit ist bis zum Sammeln weg).",
+        "ja": "ぽにこね式（1被弾前提）：基本散開位置、魔法陣が隣接しないよう捨て、扇を1回避けられる位置で1枚受ける（頭割り時には被ダメ上昇は切れる）。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave",
+      "tower"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Final sequence and enrage",
+      "fr": "Séquence finale et enrage",
+      "de": "Letzte Sequenz und Finalangriff",
+      "ja": "最後〜時間切れ"
+     },
+     "aliases": {
+      "en": [
+       "enrage"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The 1st Bloom rotating cones again, Specter of the Lost, three Stock Breaks and the enrage; the DPS check is lenient.",
+      "fr": "Les cônes tournants de la 1re forme, Fente spectrale, trois Fentes et l'enrage ; le check DPS est léger.",
+      "de": "Wieder die drehenden Kegel der ersten Form, Spektralschlag, drei Exekutionsschläge und der Finalangriff; der DPS-Check ist mild.",
+      "ja": "一式の回転扇、スペクトルブレイク、ストックブレイク3回の後に時間切れ。火力要求は緩め。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tether",
+      "stack",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Icy Veins - Recollection (Extreme)",
+   "url": "https://www.icy-veins.com/ffxiv/recollection-extreme-trial-guide",
+   "lang": "en"
+  },
+  {
+   "title": "NAUR FFXIV - Recollection",
+   "url": "https://naurffxiv.com/extreme/recollection",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - 極ゼレニア",
+   "url": "https://game8.jp/ff14/678687",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot zelenia-ex",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/trial/zelenia-ex.ts",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

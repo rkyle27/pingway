@@ -1,0 +1,583 @@
+{
+ "id": "ex-zoraal-ja",
+ "type": "extreme",
+ "expansion": "DT",
+ "patch": "7.0",
+ "names": {
+  "en": "Everkeep (Extreme) - Zoraal Ja",
+  "fr": "Le Pinacle de l'Éternité (extrême) - Zoraal Ja",
+  "de": "Gok Tajaal - Zoraal Ja",
+  "ja": "極ゾラージャ討滅戦"
+ },
+ "aliases": {
+  "en": [
+   "zoraal ja ex",
+   "zj ex",
+   "everkeep extreme",
+   "everkeep"
+  ],
+  "fr": [
+   "zoraal ja extrême",
+   "pinacle de l'éternité"
+  ],
+  "de": [
+   "zoraal ja extrem"
+  ],
+  "ja": [
+   "極ゾラージャ",
+   "ゾラージャ"
+  ]
+ },
+ "summary": {
+  "en": "Zoraal Ja Extreme, the second Dawntrail launch Extreme. A sword fight with Forward/Backward half-room cleaves, X-shaped Multidirectional Divide, split platform phases (Dawn of an Age) with Vollok swords that Sync between platforms and colour-coded gateway lines, the Projection of Turmoil line-stack conga, tank-swap Bitter Whirlwind, and Burning Chains with tornado platform jumps.",
+  "fr": "Zoraal Ja Extrême, le second Extrême du lancement de Dawntrail. Un combat d'épées avec demi-salles avant/arrière, Division multidirectionnelle en X, phases de plateformes séparées (Âge de l'aurore) avec des épées Vollok synchronisées entre plateformes et des lignes de passerelle colorées, la conga de Salve repoussante, Tourbillon amer avec swap et les Chaînes brûlantes avec sauts par tornade.",
+  "de": "Zoraal Ja Extrem, der zweite Extremkampf zum Start von Dawntrail. Ein Schwertkampf mit Vorder-/Hinter-Halbraum-Angriffen, X-förmigen Wechselseitigen Klingen, geteilten Plattform-Phasen (Dämmerung eines Zeitalters) mit Vollok-Schwertern, die zwischen Plattformen synchronisieren, farbigen Tor-Linien, der Aufruhr-Conga, Bitterer Wirbelwind mit Tankwechsel und Brennende Ketten mit Tornado-Sprüngen.",
+  "ja": "極ゾラージャ。前後のルーズハーフ、X字のマルチウェイ、ドーン・エイジで足場が4x4に変わりヴォロクの剣がシンクロナスで連動、エンチャントゲートウェイの線の色、プロジェクション・バーストの頭割りリレー、ビターウィンドのタンクスイッチ、炎の鎖と竜巻での移動。"
+ },
+ "strats_overview": [
+  {
+   "id": "na-pf",
+   "name": {
+    "en": "NA PF (Conga | RMMR, Braindead B2)",
+    "fr": "PF NA (Conga | RMMR, Braindead B2)",
+    "de": "NA-PF (Conga | RMMR, Braindead B2)",
+    "ja": "NA野良（Conga｜RMMR、脳死B2）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "NAUR: Projection of Turmoil done as a conga line (raidplan), RMMR, and 'Braindead B2' knock-up pairs ranged, melee, melee, ranged. Pairs: tanks with melee, healers with ranged.",
+    "fr": "NAUR : Salve repoussante en conga (raidplan), RMMR, et « Braindead B2 » paires distance, mêlée, mêlée, distance. Paires : tanks avec mêlées, heals avec distances.",
+    "de": "NAUR: Aufruhr als Conga-Linie (Raidplan), RMMR und „Braindead B2“-Paare Fern, Nah, Nah, Fern. Paare: Tanks mit Nahkampf, Heiler mit Fernkampf.",
+    "ja": "NAUR：プロジェクション・バーストはconga（一列）、RMMR、脳死B2（遠近近遠のペア）。タンク＋近接、ヒーラー＋遠隔。"
+   },
+   "aliases": {
+    "en": [
+     "conga",
+     "conga rmmr",
+     "rmmr",
+     "braindead b2",
+     "naur"
+    ],
+    "fr": [
+     "conga",
+     "conga rmmr",
+     "rmmr",
+     "braindead b2",
+     "naur"
+    ],
+    "de": [
+     "conga",
+     "conga rmmr",
+     "rmmr",
+     "braindead b2",
+     "naur"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-game8",
+   "name": {
+    "en": "JP Game8 (Hamukatsu)",
+    "fr": "JP Game8 (Hamukatsu)",
+    "de": "JP Game8 (Hamukatsu)",
+    "ja": "JP game8（ハムカツ式）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "Based on Hamukatsu's video.",
+    "fr": "D'après la vidéo de Hamukatsu.",
+    "de": "Nach Hamukatsus Video.",
+    "ja": "ハムカツ氏の動画準拠。"
+   },
+   "aliases": {
+    "en": [
+     "hamukatsu",
+     "game8"
+    ],
+    "fr": [
+     "hamukatsu",
+     "game8"
+    ],
+    "de": [
+     "hamukatsu",
+     "game8"
+    ],
+    "ja": [
+     "ハムカツ式",
+     "ハムカツ",
+     "hamukatsu"
+    ]
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "前半"
+   },
+   "mechanics": [
+    {
+     "id": "actualize",
+     "names": {
+      "en": "Actualize",
+      "fr": "Actualisation",
+      "de": "Verwirklichung",
+      "ja": "アクチュアライズ"
+     },
+     "aliases": {
+      "en": [
+       "raidwide"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Magic raidwide; also resets the arena after platform phases. The last one is the enrage.",
+      "fr": "Raidwide magique ; remet aussi l'arène après les phases de plateformes. Le dernier est l'enrage.",
+      "de": "Magischer Raidwide; setzt die Arena nach Plattform-Phasen zurück. Der letzte ist der Finalangriff.",
+      "ja": "魔法全体攻撃。足場を元に戻す。最後は時間切れ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "enrage"
+     ]
+    },
+    {
+     "id": "forward-backward-half",
+     "names": {
+      "en": "Multidirectional Divide + Forward Half / Backward Half",
+      "fr": "Division multidirectionnelle + Demi-avancée / Demi-recul",
+      "de": "Wechselseitige Klingen + Vordere Hälfte / Hintere Hälfte",
+      "ja": "マルチウェイ＋フォワード/バックワード・ルーズハーフ"
+     },
+     "aliases": {
+      "en": [
+       "half room",
+       "glowing sword",
+       "x lines"
+      ],
+      "fr": [
+       "Division multidirectionnelle + demi-salle avant / arrière",
+       "Forward Half",
+       "Backward Half",
+       "Demi-avancée",
+       "Demi-recul"
+      ],
+      "de": [
+       "Wechselseitige Klingen + Vorder- / Hinter-Hälfte",
+       "Forward Half",
+       "Backward Half",
+       "Vordere Hälfte",
+       "Hintere Hälfte"
+      ],
+      "ja": [
+       "ルーズハーフ",
+       "マルチウェイ",
+       "フォワード・ルーズハーフ",
+       "バックワード・ルーズハーフ"
+      ]
+     },
+     "how": {
+      "en": "X-shaped lines that widen, plus a cleave: Forward = stand in front on the glowing-sword side, Backward = behind on the non-glowing side.",
+      "fr": "Lignes en X qui s'élargissent plus une demi-salle : avant = devant côté épée lumineuse, arrière = derrière côté épée non lumineuse.",
+      "de": "X-förmige Linien, die breiter werden, plus Halbraum-Angriff: Vorder = vorne auf der Seite des leuchtenden Schwerts, Hinter = hinten auf der nicht leuchtenden Seite.",
+      "ja": "X字範囲と半面。フォワードは光る剣側の前、バックヤードは光っていない剣側の背面。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave"
+     ]
+    },
+    {
+     "id": "regicidal-rage",
+     "names": {
+      "en": "Regicidal Rage",
+      "fr": "Régicide",
+      "de": "Wut des Regizids",
+      "ja": "レジサイド"
+     },
+     "aliases": {
+      "en": [
+       "tethers",
+       "tank tethers"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Two tethers; tanks take them and move away from the party and each other with mitigation, party stacks behind. MT and OT each take one tether.",
+      "fr": "Deux liens ; les tanks les prennent et s'éloignent du groupe et l'un de l'autre avec mitigation, le groupe derrière. Le MT et l'OT prennent chacun un lien.",
+      "de": "Zwei Verbindungen; Tanks nehmen sie und gehen mit Mitigation weg von der Gruppe und voneinander, die Gruppe hinten. MT und OT nehmen je eine Verbindung.",
+      "ja": "線2本をMTとSTが取り、味方と重ならない正面側で受ける。防御バフ。MTとSTが1本ずつ線を取る。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "dawn-vollok-sync",
+     "names": {
+      "en": "Dawn of an Age + Vollok + Sync + Half Full",
+      "fr": "Âge de l'aurore + Vollok + Synchronisation + Demi-plénitude",
+      "de": "Dämmerung eines Zeitalters + Vollok + Synchro + Halbes Ganzes",
+      "ja": "ドーン・エイジ＋エッジ・ザ・ヴォロク＋シンクロナス＋ルーズハーフ"
+     },
+     "aliases": {
+      "en": [
+       "platforms",
+       "swords",
+       "sync"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "4x4",
+       "剣"
+      ]
+     },
+     "how": {
+      "en": "Heavy raidwide that turns the arena into a 4x4 middle with side platforms (you can fall). Swords on side platforms are copied onto the middle; find a square safe on both, then dodge Half Full.",
+      "fr": "Gros raidwide qui transforme l'arène en milieu 4x4 avec plateformes latérales (on peut tomber). Les épées des plateformes sont copiées au centre ; trouve une case sûre sur les deux, puis esquive Demi-plénitude.",
+      "de": "Schwerer Raidwide, der die Arena in eine 4x4-Mitte mit Seitenplattformen verwandelt (man kann fallen). Schwerter auf Seitenplattformen werden auf die Mitte kopiert; such ein Feld, das auf beiden sicher ist, dann Halbes Ganzes ausweichen.",
+      "ja": "全体攻撃でフィールドが4x4に。共鳴する外のフィールドの剣が中央に連動。南角マスが潰れていれば1つ手前、潰れていなければ南角が安地。ルーズハーフは左右に寄る。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "dodge",
+      "cleave",
+      "transition"
+     ]
+    },
+    {
+     "id": "greater-gateway",
+     "names": {
+      "en": "Greater Gateway + Blade Warp + Forged Track + Chasm of Vollok",
+      "fr": "Passerelle enchantée + Invocation incisive + Traque incisive + Trappe de Vollok",
+      "de": "Großes Tor der Welten + Klingensprung + Unbestimmter Pfad + Klippe von Vollok",
+      "ja": "エンチャント・ゲートウェイ＋サモンエッジ＋エッジトラック＋ピット・オブ・ヴォロク"
+     },
+     "aliases": {
+      "en": [
+       "gateway",
+       "red green blue lines"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "線の色"
+      ]
+     },
+     "how": {
+      "en": "Swords travel through coloured gateway lines: blue = plain line, red = widens to three rows, green = knockback one row (immunity works). Then everyone gets a marker that drops a sword on their square, so spread one per square.",
+      "fr": "Les épées passent par des lignes colorées : bleu = ligne simple, rouge = s'élargit à trois rangées, vert = poussée d'une rangée (anti-poussée possible). Puis chacun a un marqueur qui fait tomber une épée sur sa case, donc une personne par case.",
+      "de": "Schwerter laufen durch farbige Tor-Linien: Blau = normale Linie, Rot = drei Reihen breit, Grün = Rückstoß um eine Reihe (Immunität hilft). Danach bekommt jeder einen Marker, der ein Schwert auf sein Feld fallen lässt, also ein Spieler pro Feld.",
+      "ja": "赤線は3列範囲（1列の安地へ）、緑はノックバック（2列側か無効化）、青は直線。最後に黄マーカーで1マスずつ散開。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "knockback",
+      "spread"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2",
+    "fr": "Phase 2",
+    "de": "Phase 2",
+    "ja": "中盤"
+   },
+   "mechanics": [
+    {
+     "id": "projection-of-triumph",
+     "names": {
+      "en": "Projection of Triumph",
+      "fr": "Lames repoussantes",
+      "de": "Vorhersage von Triumph",
+      "ja": "プロジェクション・エッジ"
+     },
+     "aliases": {
+      "en": [
+       "moving lines",
+       "donut circle"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Two lines sweep across from the edge and explode on the swords as they touch them: donut lines are safe at the swords, small-circle lines are safe between swords. A half-room cleave comes in the middle.",
+      "fr": "Deux lignes balayent depuis le bord et explosent sur les épées : lignes donut = sûr sur les épées, lignes petits cercles = sûr entre les épées. Une demi-salle arrive au milieu.",
+      "de": "Zwei Linien laufen vom Rand herein und explodieren an den Schwertern: Donut-Linien sind an den Schwertern sicher, Kleinkreis-Linien zwischen den Schwertern. Mittendrin ein Halbraum-Angriff.",
+      "ja": "外周から線が迫り剣で範囲。ドーナツなら剣の場所、小円なら剣の間が安地。途中のルーズハーフは安地側の剣で。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave"
+     ]
+    },
+    {
+     "id": "projection-of-turmoil",
+     "names": {
+      "en": "Projection of Turmoil",
+      "fr": "Salve repoussante",
+      "de": "Vorhersage von Aufruhr",
+      "ja": "プロジェクション・バースト"
+     },
+     "aliases": {
+      "en": [
+       "conga",
+       "line stack",
+       "order pops"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "頭割りリレー"
+      ]
+     },
+     "how": {
+      "en": "A stack line moves across the arena and everyone must touch it once, one at a time, waiting for the vulnerability to fade before the next player goes.",
+      "fr": "Une ligne de package traverse l'arène et chacun doit la toucher une fois, l'un après l'autre, en attendant la fin de la vulnérabilité avant le suivant.",
+      "de": "Eine Sammel-Linie wandert über die Arena und jeder muss sie einmal berühren, nacheinander, warte, bis die Verwundbarkeit weg ist, bevor der Nächste geht.",
+      "ja": "移動する線に全員1回ずつ当たる（頭割り8回）。被魔法デバフが切れてから次の人。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Conga line per the raidplan; stack north and step in one by one while the party moves south ahead of the line.",
+        "fr": "Conga selon le raidplan ; package au nord, chacun entre à son tour pendant que le groupe recule vers le sud.",
+        "de": "Conga-Linie laut Raidplan; im Norden sammeln, einer nach dem anderen rein, während die Gruppe vor der Linie nach Süden geht.",
+        "ja": "raidplanのconga順、北に集まり順番に、全体は南へ下がる。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Order H1, H2, D4, D3, D2, D1, ST, MT; MT drags the boss so melee can keep hitting.",
+        "fr": "Ordre H1, H2, D4, D3, D2, D1, OT, MT ; le MT tire le boss pour que les mêlées tapent.",
+        "de": "Reihenfolge H1, H2, D4, D3, D2, D1, ST, MT; der MT zieht den Boss, damit Nahkämpfer weiter treffen.",
+        "ja": "順番はH1→H2→D4→D3→D2→D1→ST→MT。MTは近接が殴れる範囲で引っ張る。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "debuff"
+     ]
+    },
+    {
+     "id": "bitter-whirlwind",
+     "names": {
+      "en": "Bitter Whirlwind",
+      "fr": "Tourbillon amer",
+      "de": "Bitterer Wirbelwind",
+      "ja": "ビターウィンド"
+     },
+     "aliases": {
+      "en": [
+       "tankbuster",
+       "3 hits"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Three-hit tankbuster with stacking magic vulnerability; swap tanks for hit two, or one tank invulns all three (press it at the very end of the cast). It targets the main tank: the MT takes hits one and three, the OT (ST) takes hit two.",
+      "fr": "Tankbuster en trois coups avec vulnérabilité ; swap pour le deuxième, ou un tank met une invincibilité pour les trois (à la toute fin de l'incantation). Il vise le main tank : le MT prend les coups un et trois, l'OT prend le deuxième.",
+      "de": "Dreifacher Tankbuster mit stapelnder Verwundbarkeit; Wechsel für Treffer zwei, oder ein Tank nimmt alle drei mit Unverwundbarkeit (ganz am Ende des Zaubers). Er zielt auf den Main-Tank: Der MT nimmt Treffer eins und drei, der OT Treffer zwei.",
+      "ja": "3連タンク強攻撃。2発目でスイッチ、または全弾無敵（詠唱完了ギリギリ）。2回目は戦士以外が無敵でスイッチ。MTが対象で、1発目と3発目をMT、2発目をSTが受ける。"
+     },
+     "strats": [
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "First cast: one tank takes all three hits with an invulnerability pressed right before the cast ends. Second cast: a Warrior can use Holmgang again; other tanks swap because their invulnerability is not back.",
+        "fr": "Premier cast : un tank prend les trois coups sous invulnérabilité, lancée juste avant la fin de l'incantation. Deuxième cast : un Guerrier peut refaire Holmgang ; les autres tanks swap car leur invulnérabilité n'est pas revenue.",
+        "de": "Erster Cast: Ein Tank nimmt alle drei Treffer mit Unverwundbarkeit, kurz vor Ende des Zaubers gedrückt. Zweiter Cast: Ein Krieger kann wieder Holmgang nutzen; andere Tanks wechseln, weil ihre Unverwundbarkeit noch nicht zurück ist.",
+        "ja": "1回目：詠唱終了直前に無敵を使い、1人で3発受ける。2回目：戦士はホルムギャングが戻っているので無敵可、他のタンクは無敵が戻らないので直前にスイッチする。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "debuff"
+     ]
+    },
+    {
+     "id": "drum-of-vollok-chains",
+     "names": {
+      "en": "Drum of Vollok + Aero III + Duty's Edge + Burning Chains",
+      "fr": "Coup de Vollok + Méga Vent + Devoir d'acier + Chaînes brûlantes",
+      "de": "Trommel von Vollok + Windga + Pflichtes Schneide + Brennende Ketten",
+      "ja": "ノック・オブ・ヴォロク＋エアロガ＋デューティエッジ＋炎の鎖"
+     },
+     "aliases": {
+      "en": [
+       "two platforms",
+       "tornado",
+       "chains"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "竜巻",
+       "鎖"
+      ]
+     },
+     "how": {
+      "en": "Two-player stacks knock the others up to the neighbouring platform; big swords then cover four squares and markers need one player per square. Tornadoes knock you to the other platform (once only), a four-hit stack follows, then chains between supports and DPS that must be broken by running apart, using the tornado if you haven't yet.",
+      "fr": "Les paires projettent les autres sur la plateforme voisine ; ensuite de grandes épées couvrent quatre cases et les marqueurs demandent une personne par case. Les tornades te projettent sur l'autre plateforme (une seule fois), puis un package en quatre coups, puis des chaînes entre supports et DPS à casser en s'éloignant, avec la tornade si tu ne l'as pas encore utilisée.",
+      "de": "Zwei-Spieler-Sammeln schleudern die anderen auf die Nachbarplattform; große Schwerter decken dann vier Felder ab und Marker brauchen einen Spieler pro Feld. Tornados stoßen dich auf die andere Plattform (nur einmal), dann ein vierfaches Sammeln, dann Ketten zwischen Supportern und DPS, die durch Auseinanderlaufen brechen, mit dem Tornado, falls noch nicht benutzt.",
+      "ja": "2人頭割り（マーカーなしは後ろに並んで隣のフィールドへ飛ぶ）、大剣の後に1マス散開。エアロガで反対側へ（1回のみ）、4連頭割り、炎の鎖は飛んでいない人が風で反対へ飛び端まで走って切る。風の縁に立つと安定。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Braindead B2: knock-up pairs ranged, melee, melee, ranged.",
+        "fr": "Braindead B2 : paires distance, mêlée, mêlée, distance.",
+        "de": "Braindead B2: Paare Fern, Nah, Nah, Fern.",
+        "ja": "脳死B2：遠近近遠のペア。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "knockback",
+      "spread",
+      "tether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Phase 3 and enrage",
+    "fr": "Phase 3 et enrage",
+    "de": "Phase 3 und Finalangriff",
+    "ja": "後半〜時間切れ"
+   },
+   "mechanics": [
+    {
+     "id": "half-circuit",
+     "names": {
+      "en": "Projection of Triumph 2 + Half Circuit",
+      "fr": "Lames repoussantes 2 + Demi-circuit",
+      "de": "Vorhersage von Triumph 2 + Halbe Runde",
+      "ja": "プロジェクション・エッジ2回目＋ルーズハーフ・サーキット"
+     },
+     "aliases": {
+      "en": [
+       "half circuit",
+       "in out"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Like before, but Half Circuit adds blades: inside the hitbox means point-blank (go out), outside means donut (go in), plus the side cleave.",
+      "fr": "Comme avant, mais Demi-circuit ajoute des lames : dans la hitbox = cercle (sors), dehors = donut (entre), plus la demi-salle.",
+      "de": "Wie vorher, aber Halbe Runde fügt Klingen hinzu: in der Hitbox = Kreis (raus), außen = Donut (rein), plus der Seitenangriff.",
+      "ja": "ルーズハーフ・サーキットは左右とターゲットサークル内外の判断。最後にレジサイド。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave"
+     ]
+    },
+    {
+     "id": "final-repeat",
+     "names": {
+      "en": "Projection of Turmoil 2 / Dawn of an Age 3 / Greater Gateway 2 / enrage",
+      "fr": "Salve 2 / Âge de l'aurore 3 / Passerelle 2 / enrage",
+      "de": "Aufruhr 2 / Dämmerung 3 / Tor 2 / Finalangriff",
+      "ja": "プロジェクション・バースト2回目 / ドーン・エイジ3回目 / ゲートウェイ2回目 / 時間切れ"
+     },
+     "aliases": {
+      "en": [
+       "enrage"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Repeats of the earlier mechanics (the line stacks now with three Half Full cleaves, Vollok with Chasm markers, Gateway again), then the final Multidirectional Divide and the enrage Actualize.",
+      "fr": "Répétitions des mécaniques (les packages avec trois Demi-plénitudes, Vollok avec marqueurs, Passerelle), puis la dernière Division et l'Actualisation d'enrage.",
+      "de": "Wiederholungen (Sammel-Linie jetzt mit drei Halbes-Ganzes-Angriffen, Vollok mit Markern, wieder das Tor), dann die letzte Wechselseitige Klinge und die Finalangriff-Verwirklichung.",
+      "ja": "頭割り8回中にルーズハーフ3回、ヴォロクとピット、ゲートウェイの再来、最後のマルチウェイと時間切れのアクチュアライズ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "dodge",
+      "cleave",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Icy Veins - Everkeep (Extreme)",
+   "url": "https://www.icy-veins.com/ffxiv/everkeep-extreme-trial-guide",
+   "lang": "en"
+  },
+  {
+   "title": "NAUR FFXIV - Everkeep",
+   "url": "https://naurffxiv.com/extreme/everkeep",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - 極ゾラージャ",
+   "url": "https://game8.jp/ff14/622454",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot zoraal-ja-ex",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/trial/zoraal-ja-ex.ts",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 (official names, Action/BNpcName/Status sheets)",
+   "url": "https://v2.xivapi.com/api/search",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

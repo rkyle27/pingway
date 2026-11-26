@@ -1,0 +1,744 @@
+{
+ "id": "a6s",
+ "type": "savage",
+ "expansion": "HW",
+ "patch": "3.2",
+ "names": {
+  "en": "Alexander - The Cuff of the Son (Savage)",
+  "fr": "Alexander - Le Poignet du Fils (sadique)",
+  "de": "Alexander - Elle des Sohnes (episch)",
+  "ja": "機工城アレキサンダー零式：律動編2"
+ },
+ "aliases": {
+  "en": [
+   "a6s",
+   "a6 savage",
+   "alexander 6 savage",
+   "cuff of the son savage",
+   "vortexer savage",
+   "blaster brawler swindler vortexer"
+  ],
+  "fr": [
+   "a6s",
+   "alexander 6 sadique",
+   "poignet du fils sadique"
+  ],
+  "de": [
+   "a6s",
+   "alexander 6 episch",
+   "elle des sohnes episch"
+  ],
+  "ja": [
+   "律動編2零式",
+   "律動編零式2層",
+   "アレキ零式6層",
+   "律動2層",
+   "ボルテッカー"
+  ]
+ },
+ "summary": {
+  "en": "Floor 2 of Alexander: Midas (Savage). Four bosses back to back (Blaster, Brawler, Swindler, Vortexer) under one 10:30 timer; a wipe sends you back to Blaster. Vortexer, with Compressed Water/Lightning, Water Spouts, ice blocks and Ultra Flash, is the hardest.",
+  "fr": "Étage 2 d'Alexander : Midas (sadique). Quatre boss d'affilée (Blaster, Brawler, Swindler, Vortexer) sous un seul chrono de 10:30 ; un wipe te renvoie à Blaster. Vortexer, avec Compressed Water/Lightning, Water Spout, blocs de glace et Ultra Flash, est le plus dur.",
+  "de": "Ebene 2 von Alexander: Midas (episch). Vier Bosse hintereinander (Blaster, Brawler, Swindler, Vortexer) mit einem 10:30-Timer; ein Wipe schickt dich zurück zu Blaster. Vortexer mit Compressed Water/Lightning, Water Spouts, Eisblöcken und Ultra Flash ist am schwersten.",
+  "ja": "律動編2層零式。ブラスター、ブロウラー、スウィンドラー、ボルテッカーの4連戦（全体で10分30秒）。全滅するとブラスターからやり直し。水・雷圧縮、水柱、氷柱、ウルトラフラッシュのあるボルテッカーが最難関。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "This fight is mostly cleared unsynced or at minimum item level today, so strats rarely matter. The entries below explain how each mechanic works. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Aujourd'hui ce combat se fait surtout en mode sans restriction ou en ilvl minimum, donc la strat compte rarement. Les entrées ci-dessous expliquent comment marche chaque mécanique. Les noms des mécaniques sont en anglais (noms FR officiels non vérifiés).",
+  "de": "Heute wird dieser Kampf meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel gemacht, die Strat spielt also selten eine Rolle. Die Einträge unten erklären, wie jede Mechanik funktioniert. Die Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "現在このコンテンツは主に制限解除やIL最低限で攻略されるため、攻略法の違いはほとんど問題になりません。以下では各ギミックの仕組みを説明します。英語名のままのギミック名は日本語の公式名を確認できなかったものです。"
+ },
+ "phases": [
+  {
+   "id": "blaster",
+   "names": {
+    "en": "Blaster",
+    "fr": "Fracasseur",
+    "de": "Blaster",
+    "ja": "ブラスター"
+   },
+   "mechanics": [
+    {
+     "id": "brute-force",
+     "names": {
+      "en": "Brute Force",
+      "fr": "Force brute",
+      "de": "Brutaler Schlag",
+      "ja": "ブルートパンチ"
+     },
+     "aliases": {
+      "en": [
+       "brute force"
+      ],
+      "fr": [
+       "brute force"
+      ],
+      "de": [
+       "brute force"
+      ],
+      "ja": [
+       "ブルートパンチ"
+      ]
+     },
+     "how": {
+      "en": "Physical tank hit that stacks Magic Vulnerability Up on the tank; manage with mitigation. In the Blaster phase the MT keeps taking it (no swap), so the OT (ST) stays free for the hidden mine.",
+      "fr": "Coup physique sur le tank qui cumule Vulnérabilité magique ; gère avec la réduction. Dans la phase Blaster, le MT le prend à chaque fois (pas de swap), pour que l'OT reste libre pour la mine cachée.",
+      "de": "Physischer Tanktreffer, der Magische Verwundbarkeit stapelt; mit Mitigation handhaben. In der Blaster-Phase nimmt der MT ihn jedes Mal (kein Swap), damit der OT für die versteckte Mine frei bleibt.",
+      "ja": "タンクへの物理攻撃、被魔法ダメージ増加が蓄積。ブラスター戦ではMTが受け続ける（スイッチなし）。STは隠し地雷を踏むため空けておく。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "debuff"
+     ]
+    },
+    {
+     "id": "mind-blast",
+     "names": {
+      "en": "Mind Blast",
+      "fr": "Explosion mentale",
+      "de": "Geiststoß",
+      "ja": "マインドブラスト"
+     },
+     "aliases": {
+      "en": [
+       "mind blast"
+      ],
+      "fr": [
+       "mind blast"
+      ],
+      "de": [
+       "mind blast"
+      ],
+      "ja": [
+       "マインドブラスト"
+      ]
+     },
+     "how": {
+      "en": "Interruptible raid-wide cast; always interrupt it.",
+      "fr": "Sort de zone interruptible ; interromps-le toujours.",
+      "de": "Unterbrechbarer Raumzauber; immer unterbrechen.",
+      "ja": "全体攻撃。沈黙で必ず止める。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "ballistic-missile",
+     "names": {
+      "en": "Ballistic Missile (mines)",
+      "fr": "Champ de mines",
+      "de": "Minenfeld",
+      "ja": "地雷散布"
+     },
+     "aliases": {
+      "en": [
+       "ballistic missile (mines)"
+      ],
+      "fr": [
+       "ballistic missile (mines)",
+       "champ de mines caché"
+      ],
+      "de": [
+       "ballistic missile (mines)",
+       "getarntes minenfeld"
+      ],
+      "ja": [
+       "地雷散布",
+       "ステルス地雷散布"
+      ]
+     },
+     "how": {
+      "en": "Visible mines paralyze on contact; the hidden mine must be stepped on by one player (usually the off-tank) before it goes off, or the party wipes.",
+      "fr": "Les mines visibles paralysent au contact ; la mine cachée doit être déclenchée par un joueur (souvent l'off-tank) avant qu'elle n'explose, sinon wipe.",
+      "de": "Sichtbare Minen lähmen bei Berührung; die versteckte Mine muss ein Spieler (meist der Off-Tank) auslösen, bevor sie hochgeht, sonst Wipe.",
+      "ja": "見える地雷は踏むと麻痺。見えない地雷は時間で大爆発するので、STが先に踏んで処理する。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    },
+    {
+     "id": "supercharge",
+     "names": {
+      "en": "Mirage: Supercharge",
+      "fr": "Mirage : Super charge",
+      "de": "Illusion: Superladung",
+      "ja": "ミラージュシステム：スーパーチャージ"
+     },
+     "aliases": {
+      "en": [
+       "mirage: supercharge"
+      ],
+      "fr": [
+       "mirage: supercharge"
+      ],
+      "de": [
+       "mirage: supercharge"
+      ],
+      "ja": [
+       "スーパーチャージ"
+      ]
+     },
+     "how": {
+      "en": "Four marked players get line charges from Mirages; line up so the charges point out, others avoid the lines.",
+      "fr": "Quatre joueurs marqués subissent des charges en ligne des Mirage ; alignez-vous pour les orienter vers l'extérieur.",
+      "de": "Vier markierte Spieler bekommen Linienansturm von Mirages; so aufstellen, dass er nach außen zeigt.",
+      "ja": "マーカー4人へ分身が直線突進。並んで突進を外周へ向ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "mirage-tethers",
+     "names": {
+      "en": "Mirage: Blinder / Power Tackle",
+      "fr": "Mirage : Missile aveuglant / Tacle puissant",
+      "de": "Illusion: Blendgeschoss / Niederringen",
+      "ja": "ミラージュシステム：ブラインダーミサイル／パワータックル"
+     },
+     "aliases": {
+      "en": [
+       "mirage: blinder / power tackle"
+      ],
+      "fr": [
+       "mirage: blinder / power tackle"
+      ],
+      "de": [
+       "mirage: blinder / power tackle"
+      ],
+      "ja": [
+       "タックル（分身の線）"
+      ]
+     },
+     "how": {
+      "en": "Tethered players face away if the Mirage's arms are up (Blinder) and face it if its arms are down (Power Tackle).",
+      "fr": "Les joueurs liés se détournent si le Mirage lève les bras (Blinder) et le regardent s'il les baisse (Power Tackle).",
+      "de": "Verbundene Spieler schauen weg, wenn der Mirage die Arme hebt (Blinder), und zu ihm, wenn sie unten sind (Power Tackle).",
+      "ja": "線で繋がれた人は分身の姿勢で向きを変える：腕が上なら背を向け、下なら正面を向く。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "gaze"
+     ]
+    },
+    {
+     "id": "mind-blast-mirages",
+     "names": {
+      "en": "Mirage: Mind Blast wave",
+      "fr": "Mirage : Explosion mentale",
+      "de": "Illusion: Geiststoß",
+      "ja": "ブラスターミラージュ"
+     },
+     "aliases": {
+      "en": [
+       "mirage: mind blast wave"
+      ],
+      "fr": [
+       "mirage: mind blast wave"
+      ],
+      "de": [
+       "mirage: mind blast wave"
+      ],
+      "ja": [
+       "ブラスターミラージュ"
+      ]
+     },
+     "how": {
+      "en": "Five Mirages cast Mind Blast in a fixed order; kill each before its cast ends (small ones first).",
+      "fr": "Cinq Mirage lancent Mind Blast dans un ordre fixe ; tue chacun avant la fin du sort (petits d'abord).",
+      "de": "Fünf Mirages casten Mind Blast in fester Reihenfolge; jeden vor Castende töten (kleine zuerst).",
+      "ja": "分身5体が順に詠唱。詠唱完了前に倒す（小さい方から）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "dps-check"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "brawler",
+   "names": {
+    "en": "Brawler",
+    "fr": "Bagarreur",
+    "de": "Blechbrecher",
+    "ja": "ブロウラー"
+   },
+   "mechanics": [
+    {
+     "id": "magicked-mark",
+     "names": {
+      "en": "Magicked Mark",
+      "fr": "Tir magique",
+      "de": "Magiegeschoss",
+      "ja": "マジックショット"
+     },
+     "aliases": {
+      "en": [
+       "magicked mark"
+      ],
+      "fr": [
+       "magicked mark"
+      ],
+      "de": [
+       "magicked mark"
+      ],
+      "ja": [
+       "マジックショット"
+      ]
+     },
+     "how": {
+      "en": "Magic tank hit with stacking Magic Vulnerability; swap tanks at 2-3 stacks. In the Brawler phase the OT, who has no stacks yet, takes it first; swap at 2 stacks.",
+      "fr": "Coup magique sur le tank, Vulnérabilité magique cumulée ; swap à 2-3 cumuls. Dans la phase Brawler, l'OT, qui n'a pas encore de stacks, le prend en premier ; swap à 2 stacks.",
+      "de": "Magischer Tanktreffer mit stapelnder Magischer Verwundbarkeit; bei 2-3 Stacks wechseln. In der Brawler-Phase nimmt ihn zuerst der OT, der noch keine Stacks hat; Swap bei 2 Stacks.",
+      "ja": "被魔法ダメ増加が溜まるタンク攻撃。2〜3スタックでスイッチ。ブロウラー戦では、まだスタックのないSTが最初に受ける。2スタックでスイッチ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "debuff"
+     ]
+    },
+    {
+     "id": "attachment",
+     "names": {
+      "en": "Attachment",
+      "fr": "Extension",
+      "de": "Anlegen",
+      "ja": "アタッチメント"
+     },
+     "aliases": {
+      "en": [
+       "attachment"
+      ],
+      "fr": [
+       "attachment"
+      ],
+      "de": [
+       "attachment"
+      ],
+      "ja": [
+       "アタッチメント"
+      ]
+     },
+     "how": {
+      "en": "Random arm each cycle: Single Buster (big line hit on MT), Double Buster (line stack behind the MT), Rocket Drill (proximity hit on one player, get far), Double Drill Crush (hits nearest and farthest player with knockback and stun; spread). Tanks with 2 or more Magic Vulnerability stacks stay out of Double Buster; the MT is the close Double Drill target.",
+      "fr": "Bras aléatoire à chaque cycle : Single Buster (grosse ligne sur le MT), Double Buster (partage en ligne derrière le MT), Rocket Drill (dégâts selon la distance, éloigne-toi), Double Drill Crush (frappe le plus proche et le plus loin avec recul et étourdissement ; disperse-toi). Un tank avec 2 stacks ou plus de vulnérabilité magique reste hors du Double Buster ; le MT est la cible proche du Double Drill.",
+      "de": "Zufälliger Arm pro Zyklus: Single Buster (starker Linientreffer auf MT), Double Buster (Liniensammeln hinter dem MT), Rocket Drill (Distanzschaden auf einen Spieler, weit weg), Double Drill Crush (trifft Nächsten und Fernsten mit Rückstoß und Betäubung; verteilen). Tanks mit 2 oder mehr Magieverwundbarkeit-Stacks bleiben aus dem Double Buster raus; der MT ist das nahe Ziel von Double Drill.",
+      "ja": "4種をループ：バスターアタック（MTへ直線大ダメージ）、ダブルバスターアタック（直線頭割り）、ロケットドリル（距離減衰、離れる）、ダブルドリルクラッシュ（最も近い人と遠い人に範囲、周囲スタン、散開）。魔法被ダメージ増加が2スタック以上のタンクはダブルバスターに入らない。ダブルドリルの近い対象はMT。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "stack",
+      "proximity",
+      "knockback",
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "power-plasma",
+     "names": {
+      "en": "Power Plasma orbs",
+      "fr": "Plasma puissant",
+      "de": "Kraftplasma",
+      "ja": "パワープラズマ α／β／γ"
+     },
+     "aliases": {
+      "en": [
+       "power plasma orbs"
+      ],
+      "fr": [
+       "power plasma orbs"
+      ],
+      "de": [
+       "power plasma orbs"
+      ],
+      "ja": [
+       "パワープラズマ α／β／γ"
+      ]
+     },
+     "how": {
+      "en": "Brawler goes to the center. Alpha orbs must be killed before reaching it; Gamma must be popped by a tank without Magic Vulnerability; Beta orbs are invulnerable and must reach it one at a time (stun one so they don't arrive together).",
+      "fr": "Brawler va au centre. Les orbes Alpha doivent mourir avant de l'atteindre ; Gamma doit être éclaté par un tank sans Vulnérabilité magique ; les Beta sont invulnérables et doivent arriver un par un (étourdis-en un).",
+      "de": "Brawler geht in die Mitte. Alpha-Kugeln müssen vorher sterben; Gamma muss ein Tank ohne Magische Verwundbarkeit platzen lassen; Beta-Kugeln sind unverwundbar und müssen einzeln ankommen (eine betäuben).",
+      "ja": "中央で無敵化。αは到達前に倒す、γは被魔法デバフのないタンクが接触して処理、βは倒せないので1つスタンして到達をずらす。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "swindler",
+   "names": {
+    "en": "Swindler",
+    "fr": "Arnaqueur",
+    "de": "Schwindler",
+    "ja": "スウィンドラー"
+   },
+   "mechanics": [
+    {
+     "id": "height",
+     "names": {
+      "en": "Height (Arithmeticks)",
+      "fr": "Dénivellation",
+      "de": "Nivellierung",
+      "ja": "ハイト"
+     },
+     "aliases": {
+      "en": [
+       "height (arithmeticks)"
+      ],
+      "fr": [
+       "height (arithmeticks)"
+      ],
+      "de": [
+       "height (arithmeticks)"
+      ],
+      "ja": [
+       "ハイト"
+      ]
+     },
+     "how": {
+      "en": "Each player gets High or Low Arithmeticks; stand on the floor height that does NOT match the debuff, or you die. Check after the floor changes.",
+      "fr": "Chacun reçoit High ou Low Arithmeticks ; tiens-toi sur la hauteur de sol qui NE correspond PAS au malus, sinon tu meurs. Vérifie après le changement du sol.",
+      "de": "Jeder bekommt High oder Low Arithmeticks; stell dich auf die Bodenhöhe, die NICHT zum Debuff passt, sonst stirbst du. Nach dem Bodenwechsel prüfen.",
+      "ja": "高低いずれかのデバフに応じて床の高さを選ぶ。誤ると即死。床の切り替わりを確認してから移動。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "CGW says players on the matching height die; the JP guide only says 'move to the right height'. Wording kept as CGW.",
+      "fr": "CGW dit que ceux sur la hauteur correspondante meurent ; le guide JP dit juste 'va à la bonne hauteur'.",
+      "de": "CGW sagt, wer auf der passenden Höhe steht, stirbt; der JP-Guide sagt nur 'richtige Höhe'.",
+      "ja": "CGWは一致する高さで死亡と記載、日本の資料は正しい高さへ移動とのみ記載。"
+     },
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "enumeration",
+     "names": {
+      "en": "Enumeration",
+      "fr": "Compte",
+      "de": "Zählen",
+      "ja": "カウント"
+     },
+     "aliases": {
+      "en": [
+       "enumeration"
+      ],
+      "fr": [
+       "enumeration"
+      ],
+      "de": [
+       "enumeration"
+      ],
+      "ja": [
+       "カウント"
+      ]
+     },
+     "how": {
+      "en": "A circle on a tank/healer shows a number of orbs: exactly that many players must stand in it, or everyone inside dies.",
+      "fr": "Un cercle sur un tank/soigneur montre un nombre d'orbes : exactement autant de joueurs doivent être dedans, sinon tous meurent.",
+      "de": "Ein Kreis auf Tank/Heiler zeigt eine Zahl Kugeln: genau so viele Spieler müssen darin stehen, sonst sterben alle darin.",
+      "ja": "タンク・ヒーラーに玉の数の円。玉と同じ人数で入らないと中の全員が死亡。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack"
+     ]
+    },
+    {
+     "id": "bio-arithmeticks",
+     "names": {
+      "en": "Bio-arithmeticks",
+      "fr": "Biomathématiques",
+      "de": "Biomathematik",
+      "ja": "生命計算術"
+     },
+     "aliases": {
+      "en": [
+       "bio-arithmeticks"
+      ],
+      "fr": [
+       "bio-arithmeticks"
+      ],
+      "de": [
+       "bio-arithmeticks"
+      ],
+      "ja": [
+       "生命計算術"
+      ]
+     },
+     "how": {
+      "en": "Heavy unavoidable raid damage.",
+      "fr": "Gros dégâts de zone inévitables.",
+      "de": "Starker unvermeidbarer Raumschaden.",
+      "ja": "全体への大ダメージ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "summon-goblins",
+     "names": {
+      "en": "Summon Goblins",
+      "fr": "Summon Goblins",
+      "de": "Summon Goblins",
+      "ja": "雑魚沸き"
+     },
+     "aliases": {
+      "en": [
+       "summon goblins"
+      ],
+      "fr": [
+       "summon goblins"
+      ],
+      "de": [
+       "summon goblins"
+      ],
+      "ja": [
+       "雑魚沸き"
+      ]
+     },
+     "how": {
+      "en": "First a big goblin pack (stun Hardhelm and Hardmind, AoE them with Limit Break or tank mitigation), later four Gunners at the cardinals that buff each other; kill quickly.",
+      "fr": "D'abord un gros groupe de gobelins (étourdis Hardhelm et Hardmind, AoE + Limit Break ou réduction des tanks), puis quatre Gunner aux points cardinaux ; tue-les vite.",
+      "de": "Zuerst ein großes Goblin-Rudel (Hardhelm und Hardmind betäuben, mit AoE und Limitrausch bzw. Tank-Mitigation), später vier Gunner an den Himmelsrichtungen; schnell töten.",
+      "ja": "最初は大量の雑魚（ハードヘルム・ハードマインドをスタン、範囲＋LB）、その後東西南北にガンナー。素早く倒す。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vortexer",
+   "names": {
+    "en": "Vortexer",
+    "fr": "Tourbillonneur",
+    "de": "Wirbler",
+    "ja": "ボルテッカー"
+   },
+   "mechanics": [
+    {
+     "id": "elemental-jammer",
+     "names": {
+      "en": "Elemental Jammer (Compressed Water / Lightning)",
+      "fr": "Grippage élémentaire (Compression aqueuse / électrique)",
+      "de": "Elementarstörer (Wasserkompression / Blitzkompression)",
+      "ja": "エレメンタルジャミング（水属性圧縮／雷属性圧縮）"
+     },
+     "aliases": {
+      "en": [
+       "elemental jammer (compressed water / lightning)"
+      ],
+      "fr": [
+       "elemental jammer (compressed water / lightning)"
+      ],
+      "de": [
+       "elemental jammer (compressed water / lightning)"
+      ],
+      "ja": [
+       "エレメンタルジャミング"
+      ]
+     },
+     "how": {
+      "en": "Two DPS get Compressed Water (a stack) and Compressed Lightning (needs exactly two players). Each resolution passes the debuff on and gives a resistance-down that blocks that element. If a holder dies, the party wipes. A Water Spout appears where Water resolved.",
+      "fr": "Deux DPS reçoivent Compressed Water (partage) et Compressed Lightning (exactement deux joueurs). Chaque résolution passe le malus et donne une baisse de résistance qui bloque l'élément. Si un porteur meurt, wipe. Un Water Spout apparaît où Water a explosé.",
+      "de": "Zwei DPS bekommen Compressed Water (Sammeln) und Compressed Lightning (genau zwei Spieler). Jede Auflösung gibt den Debuff weiter und eine Resistenz-runter, die das Element sperrt. Stirbt ein Träger, Wipe. Wo Water auflöst, erscheint ein Water Spout.",
+      "ja": "DPSに水圧縮（頭割り）と雷圧縮（2人で受ける）。処理のたびに別の人へ移り、元の人は耐性低下。対象が死ぬと全滅。水の処理地点に水柱が出る。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "stack"
+     ]
+    },
+    {
+     "id": "earth-fire",
+     "names": {
+      "en": "Earth Missile + Fire Beam",
+      "fr": "Missile de terre + Rayon de feu",
+      "de": "Erd-Geschoss + Feuerstrahl",
+      "ja": "アースミサイル＋ファイアビーム"
+     },
+     "aliases": {
+      "en": [
+       "earth missile + fire beam"
+      ],
+      "fr": [
+       "earth missile + fire beam"
+      ],
+      "de": [
+       "earth missile + fire beam"
+      ],
+      "ja": [
+       "ミサイル（沼）／ファイアビーム"
+      ]
+     },
+     "how": {
+      "en": "Earth leaves sludge puddles (stack them in one spot). Fire Beam lines on a tank, healer and two DPS; aim one into a Water Spout to destroy it, never into the ice block.",
+      "fr": "Earth laisse des flaques de boue (regroupe-les). Fire Beam : lignes sur un tank, un soigneur et deux DPS ; vise un Water Spout pour le détruire, jamais le bloc de glace.",
+      "de": "Earth hinterlässt Schlammpfützen (an einer Stelle bündeln). Fire Beam: Linien auf Tank, Heiler und zwei DPS; eine in einen Water Spout zielen, um ihn zu zerstören, nie in den Eisblock.",
+      "ja": "沼は一か所にまとめて捨てる。ファイアビームは水柱に当てて消す。氷柱には当てない。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    },
+    {
+     "id": "ice-missile",
+     "names": {
+      "en": "Ice Missile",
+      "fr": "Missile de glace",
+      "de": "Eisgeschoss",
+      "ja": "アイスミサイル"
+     },
+     "aliases": {
+      "en": [
+       "ice missile"
+      ],
+      "fr": [
+       "ice missile"
+      ],
+      "de": [
+       "ice missile"
+      ],
+      "ja": [
+       "氷範囲"
+      ]
+     },
+     "how": {
+      "en": "Two spread circles drop ice puddles; place them next to a Water Spout to freeze it into an Ice Block.",
+      "fr": "Deux cercles posent des flaques de glace ; place-les près d'un Water Spout pour le geler en bloc de glace.",
+      "de": "Zwei Kreise legen Eispfützen; neben einen Water Spout legen, um ihn zu einem Eisblock zu frieren.",
+      "ja": "2人の円範囲で氷床。水柱の近くに置いて氷柱にする。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread"
+     ]
+    },
+    {
+     "id": "super-cyclone",
+     "names": {
+      "en": "Super Cyclone",
+      "fr": "Super cyclone",
+      "de": "Superzyklon",
+      "ja": "スーパーサイクロン"
+     },
+     "aliases": {
+      "en": [
+       "super cyclone"
+      ],
+      "fr": [
+       "super cyclone"
+      ],
+      "de": [
+       "super cyclone"
+      ],
+      "ja": [
+       "スーパーサイクロン"
+      ]
+     },
+     "how": {
+      "en": "Arena knockback from the boss; aim so you land on your next spot.",
+      "fr": "Recul depuis le boss ; vise pour atterrir à ta prochaine place.",
+      "de": "Rückstoß vom Boss; so stehen, dass du an deiner nächsten Stelle landest.",
+      "ja": "ボス中心の吹き飛ばし。次の位置に飛ばされるよう調整。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback"
+     ]
+    },
+    {
+     "id": "ultra-flash",
+     "names": {
+      "en": "Ultra Flash",
+      "fr": "Ultraflash",
+      "de": "Ultrablitz",
+      "ja": "ウルトラフラッシュ"
+     },
+     "aliases": {
+      "en": [
+       "ultra flash"
+      ],
+      "fr": [
+       "ultra flash"
+      ],
+      "de": [
+       "ultra flash"
+      ],
+      "ja": [
+       "ウルトラフラッシュ"
+      ]
+     },
+     "how": {
+      "en": "Line-of-sight wipe: hide behind the Ice Block. It also clears all debuffs and the block, then the rotation loops.",
+      "fr": "Mort par ligne de vue : cache-toi derrière le bloc de glace. Ça efface aussi les malus et le bloc, puis la rotation recommence.",
+      "de": "Sichtlinien-Tod: hinter dem Eisblock verstecken. Entfernt auch alle Debuffs und den Block, dann beginnt die Rotation neu.",
+      "ja": "氷柱の陰に隠れないと即死。デバフと氷柱が消え、ループする。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Alexander - The Cuff of the Son (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Alexander_-_The_Cuff_of_the_Son_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/0ed79e8abf3/",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone blog: 【零式】律動2層 固定用メモ",
+   "url": "https://na.finalfantasyxiv.com/lodestone/character/6108356/blog/2811093/",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

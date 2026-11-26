@@ -1,0 +1,339 @@
+{
+ "id": "a9s",
+ "type": "savage",
+ "expansion": "HW",
+ "patch": "3.4",
+ "names": {
+  "en": "Alexander - The Eyes of the Creator (Savage)",
+  "fr": "Alexander - Les Yeux du Créateur (sadique)",
+  "de": "Alexander - Augen des Schöpfers (episch)",
+  "ja": "機工城アレキサンダー零式：天動編1"
+ },
+ "aliases": {
+  "en": [
+   "a9s",
+   "a9 savage",
+   "alexander 9 savage",
+   "refurbisher savage",
+   "eyes of the creator savage",
+   "creator 1 savage"
+  ],
+  "fr": [
+   "a9s",
+   "alexander 9 sadique",
+   "yeux du créateur sadique"
+  ],
+  "de": [
+   "a9s",
+   "alexander 9 episch",
+   "augen des schöpfers episch"
+  ],
+  "ja": [
+   "天動編1零式",
+   "天動編零式1層",
+   "アレキ零式9層",
+   "天動1層",
+   "リファビッシャー"
+  ]
+ },
+ "summary": {
+  "en": "Floor 1 of Alexander: The Creator (Savage). A Faust Z DPS check (2-minute enrage), then Refurbisher 0, which absorbs robot corpses with Stockpile to rebuild itself. The party revives corpses with Power Generators and walks them into the rising lava so the boss cannot use them.",
+  "fr": "Étage 1 d'Alexander : Le Créateur (sadique). Un test de DPS sur Faust Z (enrage à 2 minutes), puis Refurbisher 0, qui absorbe des carcasses de robots avec Stockpile pour se reconstruire. Le groupe ranime les carcasses avec les Power Generator et les mène dans la lave montante.",
+  "de": "Ebene 1 von Alexander: Der Schöpfer (episch). Ein Faust-Z-DPS-Check (Enrage nach 2 Minuten), dann Refurbisher 0, der mit Stockpile Roboterwracks aufsaugt, um sich wieder aufzubauen. Das Team belebt die Wracks mit Power Generators und führt sie in die steigende Lava.",
+  "ja": "天動編1層零式。ファウスト系のDPSチェック（2分）後、リファビッシャー戦。吸収でロボットの残骸を取り込み体を修復するので、パワージェネレーターで残骸を起こし、溶岩エリアへ誘導して処理する。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "This fight is mostly cleared unsynced or at minimum item level today, so strats rarely matter. The entries below explain how each mechanic works. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Aujourd'hui ce combat se fait surtout en mode sans restriction ou en ilvl minimum, donc la strat compte rarement. Les entrées ci-dessous expliquent comment marche chaque mécanique. Les noms des mécaniques sont en anglais (noms FR officiels non vérifiés).",
+  "de": "Heute wird dieser Kampf meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel gemacht, die Strat spielt also selten eine Rolle. Die Einträge unten erklären, wie jede Mechanik funktioniert. Die Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "現在このコンテンツは主に制限解除やIL最低限で攻略されるため、攻略法の違いはほとんど問題になりません。以下では各ギミックの仕組みを説明します。英語名のままのギミック名は日本語の公式名を確認できなかったものです。"
+ },
+ "phases": [
+  {
+   "id": "door",
+   "names": {
+    "en": "Faust Z",
+    "fr": "Endfaust",
+    "de": "Endfaust",
+    "ja": "ファイナル・ファウスト"
+   },
+   "mechanics": [
+    {
+     "id": "faust-z",
+     "names": {
+      "en": "Faust Z (Kaltstrahl / Panzerschreck)",
+      "fr": "Endfaust (Kaltstrahl / Panzerschreck)",
+      "de": "Endfaust (Kaltstrahl / Panzerschreck)",
+      "ja": "ファイナル・ファウスト（カルトシュトラール／パンツァーシュレッケ）"
+     },
+     "aliases": {
+      "en": [
+       "faust z (kaltstrahl / panzerschreck)"
+      ],
+      "fr": [
+       "faust z (kaltstrahl / panzerschreck)"
+      ],
+      "de": [
+       "faust z (kaltstrahl / panzerschreck)"
+      ],
+      "ja": [
+       "カルトシュトラール／Panzerschreck"
+      ]
+     },
+     "how": {
+      "en": "Shared tank cleave plus raid-wide Panzerschreck that grows stronger each cast; kill it within about 2 minutes or the long Panzerschreck wipes. Both tanks stand together to share Kaltstrahl.",
+      "fr": "Cleave partagé sur les tanks et Panzerschreck de zone qui se renforce ; tue-le en ~2 minutes sinon le long Panzerschreck wipe. Les deux tanks se mettent ensemble pour partager Kaltstrahl.",
+      "de": "Geteilter Tankcleave und Raum-Panzerschreck, der stärker wird; in etwa 2 Minuten töten, sonst wipet der lange Panzerschreck. Beide Tanks stellen sich zusammen und teilen sich Kaltstrahl.",
+      "ja": "タンク頭割りの前方攻撃と、回数ごとに強くなる全体攻撃。約2分で倒さないと時間切れ。カルトシュトラールはMTとSTで一緒に受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "cleave",
+      "raidwide",
+      "dps-check",
+      "enrage"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "boss",
+   "names": {
+    "en": "Refurbisher 0",
+    "fr": "Récupérateur",
+    "de": "Rekompositor",
+    "ja": "リファビッシャー"
+   },
+   "mechanics": [
+    {
+     "id": "stockpile",
+     "names": {
+      "en": "Stockpile",
+      "fr": "Agglomération",
+      "de": "Absorption",
+      "ja": "吸収"
+     },
+     "aliases": {
+      "en": [
+       "stockpile"
+      ],
+      "fr": [
+       "stockpile"
+      ],
+      "de": [
+       "stockpile"
+      ],
+      "ja": [
+       "吸収"
+      ]
+     },
+     "how": {
+      "en": "The boss absorbs every robot corpse on the floor: small ones give Damage Up, medium/large ones rebuild its arms and body. Rebuilding the wrong part, or letting Full Metal Faust be absorbed (16 Damage Up), wipes. Clear corpses before each Stockpile.",
+      "fr": "Le boss absorbe chaque carcasse au sol : les petites donnent Bonus de dégâts, les moyennes/grandes reconstruisent bras et corps. Reconstruire la mauvaise partie, ou laisser absorber Full Metal Faust (16 Bonus), = wipe. Nettoie avant chaque Stockpile.",
+      "de": "Der Boss saugt jedes Roboterwrack am Boden auf: kleine geben Schaden erhöht, mittlere/große bauen Arme und Körper auf. Das falsche Teil aufbauen oder Full Metal Faust aufsaugen lassen (16 Stacks) ist ein Wipe. Vor jedem Stockpile aufräumen.",
+      "ja": "床の残骸をすべて取り込み、小型は与ダメ上昇、中・大型は腕や胴を修復。修復させてはいけない部位の修復や、フルアーマー・ファウストの吸収で全滅。吸収前に残骸を処理する。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds"
+     ]
+    },
+    {
+     "id": "lava-power-generator",
+     "names": {
+      "en": "Lava + Power Generator",
+      "fr": "Lave + Générateur d'énergie",
+      "de": "Lava + Generator",
+      "ja": "溶岩エリア生成＋パワージェネレーター"
+     },
+     "aliases": {
+      "en": [
+       "lava + power generator"
+      ],
+      "fr": [
+       "lava + power generator"
+      ],
+      "de": [
+       "lava + power generator"
+      ],
+      "ja": [
+       "溶岩エリア生成"
+      ]
+     },
+     "how": {
+      "en": "Arrows mark a quadrant that fills with lava and destroys corpses inside (players get Burns; a living robot inside explodes and wipes). Players place Power Generators (one placement each) to revive corpses, which then chase the reviver; lead them into the lava quadrant and kill them there. Taking damage drops a carried generator.",
+      "fr": "Des flèches marquent un quadrant qui se remplit de lave et détruit les carcasses (les joueurs prennent Brûlure ; un robot vivant dedans explose = wipe). Des joueurs posent les Power Generator (une seule pose) pour ranimer les carcasses, qui suivent le joueur ; mène-les dans la lave et tue-les là. Prendre des dégâts fait lâcher le générateur.",
+      "de": "Pfeile markieren einen Quadranten, der sich mit Lava füllt und Wracks darin zerstört (Spieler bekommen Verbrennung; ein lebender Roboter darin explodiert = Wipe). Spieler setzen Power Generators (einmal setzen) ab, um Wracks zu beleben, die dann dem Spieler folgen; in die Lava führen und dort töten. Schaden lässt den Generator fallen.",
+      "ja": "矢印の区画が溶岩になり残骸を破壊（中で生きている敵は爆発して全滅）。パワージェネレーターを置いて残骸を復活させ、溶岩区画へ誘導して倒す。被弾すると持っているジェネレーターを落とす。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds"
+     ]
+    },
+    {
+     "id": "scrap-burst",
+     "names": {
+      "en": "Scrap Burst",
+      "fr": "Déflagration de ferraille",
+      "de": "Schrottknall",
+      "ja": "スクラップバースト"
+     },
+     "aliases": {
+      "en": [
+       "scrap burst"
+      ],
+      "fr": [
+       "scrap burst"
+      ],
+      "de": [
+       "scrap burst"
+      ],
+      "ja": [
+       "スクラップバースト"
+      ]
+     },
+     "how": {
+      "en": "Four red-arrow players (one is the main tank) get scrap piles dropped on them, then a line-of-sight raid hit: hide behind a pile. Survivors may need Esuna for Concussion.",
+      "fr": "Quatre joueurs à flèche rouge (dont le MT) reçoivent des tas de ferraille, puis un coup de zone par ligne de vue : cache-toi derrière un tas. Guérison possible contre Commotion.",
+      "de": "Vier Spieler mit rotem Pfeil (einer ist der MT) bekommen Schrotthaufen, dann ein Sichtlinien-Raumtreffer: hinter einem Haufen verstecken. Danach evtl. Esuna gegen Gehirnerschütterung.",
+      "ja": "赤矢印4人（1人はMT）にスクラップが落ち、その後全体攻撃。スクラップの陰に隠れる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "scrapline",
+     "names": {
+      "en": "Scrapline / Double Scrapline",
+      "fr": "Corde à ferraille / Double corde à ferraille",
+      "de": "In Schrottlinie / Zweifache Schrottlinie",
+      "ja": "スクラップラリアット／ダブルラリアット"
+     },
+     "aliases": {
+      "en": [
+       "scrapline / double scrapline"
+      ],
+      "fr": [
+       "scrapline / double scrapline"
+      ],
+      "de": [
+       "scrapline / double scrapline"
+      ],
+      "ja": [
+       "スクラップラリアット"
+      ]
+     },
+     "how": {
+      "en": "Scrapline is a 270-degree frontal cleave: stand behind the boss, the main tank mitigates. After the left arm returns it becomes Double Scrapline, arena-wide, dodged only by being small from a Minimum puddle (kill the Alarum outside the lava so its puddle stays).",
+      "fr": "Scrapline : cleave frontal de 270°, reste derrière le boss, le MT réduit. Après le retour du bras gauche, ça devient Double Scrapline sur toute l'arène, évité seulement en étant petit grâce à une flaque Minimum (tue l'Alarum hors de la lave).",
+      "de": "Scrapline ist ein 270°-Frontalcleave: hinter dem Boss stehen, der MT mitigiert. Nach dem linken Arm wird daraus Double Scrapline auf der ganzen Arena, nur vermeidbar durch Verkleinerung in einer Minimum-Pfütze (Alarum außerhalb der Lava töten).",
+      "ja": "前方270度の範囲。背後に立ち、MTは軽減で受ける。左腕修復後は全体の二連版になり、アラームのミニマム床で小さくなって回避（アラームは溶岩外で倒す）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "acid-rain-scrap-bomb",
+     "names": {
+      "en": "Acid Rain / Scrap Bomb",
+      "fr": "Pluie acide / Bombe de ferraille",
+      "de": "Säureregen / Schrottbombe",
+      "ja": "アシッドレイン／スクラップボム"
+     },
+     "aliases": {
+      "en": [
+       "acid rain / scrap bomb"
+      ],
+      "fr": [
+       "acid rain / scrap bomb"
+      ],
+      "de": [
+       "acid rain / scrap bomb"
+      ],
+      "ja": [
+       "Acid Rain / Scrap Bomb"
+      ]
+     },
+     "how": {
+      "en": "Acid Rain: four spread circles. Scrap Bomb: a stack marker.",
+      "fr": "Acid Rain : quatre cercles de dispersion. Scrap Bomb : un partage.",
+      "de": "Acid Rain: vier Verteil-Kreise. Scrap Bomb: ein Sammelmarker.",
+      "ja": "4人散開と頭割り。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "full-metal-faust",
+     "names": {
+      "en": "Full Metal Faust",
+      "fr": "Eisernfaust",
+      "de": "Vollmetall-Faust",
+      "ja": "フルアーマー・ファウスト"
+     },
+     "aliases": {
+      "en": [
+       "full metal faust"
+      ],
+      "fr": [
+       "full metal faust"
+      ],
+      "de": [
+       "full metal faust"
+      ],
+      "ja": [
+       "フルアーマー・ファウスト"
+      ]
+     },
+     "how": {
+      "en": "Big add tethered to the boss; it must be fully killed (in a quadrant without lava timing issues) and its corpse burned before the next Stockpile, or the boss gains 16 Damage Up and wipes the party.",
+      "fr": "Gros add lié au boss ; il doit être tué et sa carcasse brûlée dans la lave avant le prochain Stockpile, sinon le boss prend 16 Bonus de dégâts et wipe le groupe.",
+      "de": "Großes Add, mit dem Boss verbunden; es muss getötet und sein Wrack vor dem nächsten Stockpile in Lava zerstört werden, sonst bekommt der Boss 16 Stacks und wipet das Team.",
+      "ja": "ボスと繋がった大型雑魚。次の吸収までに倒し、残骸を溶岩で処理しないとボスが大幅強化され全滅。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "tether"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Alexander - The Eyes of the Creator (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Alexander_-_The_Eyes_of_the_Creator_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/20c0e4f75a6/",
+   "lang": "en"
+  },
+  {
+   "title": "ゲームエイト 天動編1層（ノーマル）",
+   "url": "https://game8.jp/ff14/309470",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

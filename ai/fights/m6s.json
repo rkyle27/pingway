@@ -1,0 +1,847 @@
+{
+ "id": "m6s",
+ "type": "savage",
+ "expansion": "DT",
+ "patch": "7.2",
+ "names": {
+  "en": "AAC Cruiserweight M2 (Savage) - Sugar Riot",
+  "fr": "Poids lourds-légers CCA - match 2 (sadique) - Sugar Riot",
+  "de": "Arkadion - Schwergewicht R2 (episch) - Zuckerschock",
+  "ja": "至天の座アルカディア零式：クルーザー級2 - シュガーライオット"
+ },
+ "aliases": {
+  "en": [
+   "m6s",
+   "m6 savage",
+   "sugar riot",
+   "cw2",
+   "adds fight"
+  ],
+  "fr": [
+   "m6s",
+   "sugar riot"
+  ],
+  "de": [
+   "m6s",
+   "sugar riot",
+   "zuckerschock"
+  ],
+  "ja": [
+   "m6s",
+   "零式2層",
+   "クルーザー級2層",
+   "シュガーライオット",
+   "雑魚フェーズ"
+  ]
+ },
+ "summary": {
+  "en": "Second Cruiserweight fight: Sugar Riot, a painter who changes the arena. Phase 1 is the desert Sugarscape (cacti, quicksand, paint bombs) plus Wingmark jumps to safe corners; phase 2 is a heavy four-wave adds phase (Yan, Mu, Gimme Cat, Feather Ray, Jabberwock) that is a big DPS and coordination check; phase 3 is the river and lava islands with towers, then a repeat of opener mechanics before enrage.",
+  "fr": "Deuxième combat Poids lourds-légers : Sugar Riot, une peintre qui change l'arène. La phase 1 est le désert (cactus, sables mouvants, bombes de peinture) avec les sauts Emblème ailé vers les coins sûrs ; la phase 2 est une grosse phase d'adds en quatre vagues (Belhamel, Mu, Chat-pardeur, Manta, Jabberwocky), gros check DPS et coordination ; la phase 3 est la rivière et les îles de lave avec des tours, puis les mécaniques d'ouverture reviennent avant l'enrage.",
+  "de": "Zweiter Schwergewicht-Kampf: Sugar Riot, eine Malerin, die die Arena verändert. Phase 1 ist die Wüste (Kakteen, Treibsand, Farbbomben) mit Flügelzeichen-Sprüngen in sichere Ecken; Phase 2 ist eine schwere Add-Phase in vier Wellen (Putschi, Mu, Bettelcat, Federrochen, Brabbelback), ein großer DPS- und Koordinationscheck; Phase 3 ist Fluss und Lava-Inseln mit Türmen, danach wiederholen sich die Start-Mechaniken vor dem Finalangriff.",
+  "ja": "クルーザー級2層「シュガーライオット」戦。前半は砂漠のランドスケープ（サボテン・流砂・ペイント爆弾）とウイングマークで四隅へ飛ぶギミック、中盤は4ウェーブの雑魚フェーズ（ヤーン・ムー・キャット・フェザー・ジャバウォック）でDPSと連携が試される。後半は山と川、マグマの島で塔、最後に序盤ギミックの再来から時間切れ。"
+ },
+ "strats_overview": [
+  {
+   "id": "hector-toxic",
+   "name": {
+    "en": "Hector / Toxic Friends raidplan (NA/EU PF)",
+    "fr": "Hector / raidplan Toxic Friends (PF NA/EU)",
+    "de": "Hector / Toxic-Friends-Raidplan (NA/EU-PF)",
+    "ja": "Hector / Toxic Friendsレイドプラン（NA/EU野良）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "PF standard in NA and EU (WTFDIG: NAEU Hector/Toxic). Light parties: tanks with melee, healers with ranged; letters on cardinals, numbers on intercardinals.",
+    "fr": "Standard PF NA et EU (WTFDIG : NAEU Hector/Toxic). Light parties : tanks avec mêlées, heals avec distances ; lettres aux cardinaux, chiffres aux intercardinaux.",
+    "de": "PF-Standard in NA und EU (WTFDIG: NAEU Hector/Toxic). Leichtgruppen: Tanks mit Nahkampf, Heiler mit Fernkampf; Buchstaben auf Himmelsrichtungen, Zahlen auf Zwischenrichtungen.",
+    "ja": "NA/EU野良標準（WTFDIG：NAEU Hector/Toxic）。タンク＋近接、ヒーラー＋遠隔の組。方角にA〜D、斜めに1〜4。"
+   },
+   "aliases": {
+    "en": [
+     "hector",
+     "toxic friends",
+     "toxic",
+     "naeu hector"
+    ],
+    "fr": [
+     "hector",
+     "toxic friends",
+     "toxic",
+     "naeu hector"
+    ],
+    "de": [
+     "hector",
+     "toxic friends",
+     "toxic",
+     "naeu hector"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "cleavemaxxing",
+   "name": {
+    "en": "Cleavemaxxing (adds phase alternative)",
+    "fr": "Cleavemaxxing (alternative pour les adds)",
+    "de": "Cleavemaxxing (Alternative für die Add-Phase)",
+    "ja": "Cleavemaxxing（雑魚フェーズの別方式）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "Alternative NA adds-phase plan that groups adds to maximise cleave damage. No readable source with its positions was found (its raidplan pages could not be read), so no per-mechanic steps are stored; ask your PF.",
+    "fr": "Plan NA alternatif pour la phase des adds, qui regroupe les adds pour maximiser les dégâts de zone. Aucune source lisible avec ses positions trouvée (raidplans illisibles), donc pas d'étapes par mécanique ; demande à ta PF.",
+    "de": "Alternativer NA-Plan für die Add-Phase, der die Adds für maximalen Flächenschaden sammelt. Keine lesbare Quelle mit Positionen gefunden (Raidplans nicht lesbar), daher keine Schritte pro Mechanik; frag deine PF.",
+    "ja": "雑魚を集めて範囲火力を最大化するNAの別案。位置が読めるソースが見つからず（レイドプラン読めず）、ギミック別の手順はなし。PFに確認。"
+   },
+   "aliases": {
+    "en": [
+     "cleavemaxxing",
+     "cleave maxxing"
+    ],
+    "fr": [
+     "cleavemaxxing",
+     "cleave maxxing"
+    ],
+    "de": [
+     "cleavemaxxing",
+     "cleave maxxing"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-game8",
+   "name": {
+    "en": "JP Game8 (Shin-FFO macro)",
+    "fr": "JP Game8 (macro Shin-FFO)",
+    "de": "JP Game8 (Shin-FFO-Makro)",
+    "ja": "JP game8（新FFOマクロ）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "game8's 'Shin FFO' macro: macro 1 up to the adds, macro 2 from the mountain/river part; the second half follows Lucrezia's video with optimised spreads.",
+    "fr": "Macro « Shin FFO » de game8 : macro 1 jusqu'aux adds, macro 2 à partir de la montagne/rivière ; la seconde moitié suit la vidéo de Lucrezia.",
+    "de": "game8s „Shin FFO“-Makro: Makro 1 bis zu den Adds, Makro 2 ab Berg/Fluss; die zweite Hälfte folgt Lucrezias Video.",
+    "ja": "新FFOマクロ（マクロ1は雑魚まで、マクロ2は山川以降）。後半はLucrezia氏の動画主体で散開を最適化。"
+   },
+   "aliases": {
+    "en": [
+     "shin ffo",
+     "ffo",
+     "lucrezia",
+     "game8"
+    ],
+    "fr": [
+     "shin ffo",
+     "ffo",
+     "lucrezia",
+     "game8"
+    ],
+    "de": [
+     "shin ffo",
+     "ffo",
+     "lucrezia",
+     "game8"
+    ],
+    "ja": [
+     "新FFO",
+     "ffo",
+     "lucrezia",
+     "shin ffo"
+    ]
+   }
+  },
+  {
+   "id": "oce",
+   "name": {
+    "en": "OCE MR Latte / Yukizuri",
+    "fr": "OCE MR Latte / Yukizuri",
+    "de": "OCE MR Latte / Yukizuri",
+    "ja": "OCE MR Latte / Yukizuri"
+   },
+   "region": "OCE",
+   "note": {
+    "en": "Materia Raiding's OCE strat (Latte / Yukizuri). Per-mechanic spots below come from its PF macro only; main, desert and bridges raidplans exist but could not be read.",
+    "fr": "Strat OCE de Materia Raiding (Latte / Yukizuri). Les spots par mécanique viennent seulement de sa macro PF ; les raidplans (principal, désert, ponts) n'ont pas pu être lus.",
+    "de": "OCE-Strat von Materia Raiding (Latte / Yukizuri). Die Plätze pro Mechanik stammen nur aus dem PF-Makro; die Raidplans (Haupt, Wüste, Brücken) waren nicht lesbar.",
+    "ja": "Materia RaidingのOCE（Latte / Yukizuri）。ギミック別の位置はPFマクロのみ。メイン・砂漠・橋のレイドプランは読めなかった。"
+   },
+   "aliases": {
+    "en": [
+     "mr",
+     "materia raiding",
+     "latte",
+     "yukizuri"
+    ],
+    "fr": [
+     "mr",
+     "materia raiding",
+     "latte",
+     "yukizuri"
+    ],
+    "de": [
+     "mr",
+     "materia raiding",
+     "latte",
+     "yukizuri"
+    ],
+    "ja": []
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1 (desert)",
+    "fr": "Phase 1 (désert)",
+    "de": "Phase 1 (Wüste)",
+    "ja": "前半（砂漠）"
+   },
+   "mechanics": [
+    {
+     "id": "mousse-mural",
+     "names": {
+      "en": "Mousse Mural",
+      "fr": "Averse de mousse",
+      "de": "Mousse-Regen",
+      "ja": "ムースシャワー"
+     },
+     "aliases": {
+      "en": [
+       "raidwide"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Magic raidwide.",
+      "fr": "Dégâts de zone magiques.",
+      "de": "Magischer Raidwide.",
+      "ja": "魔法全体攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "color-riot",
+     "names": {
+      "en": "Color Riot",
+      "fr": "Révolte chromatique",
+      "de": "Farbenschock",
+      "ja": "カラーライオット"
+     },
+     "aliases": {
+      "en": [
+       "tankbuster",
+       "warm cold"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Magic busters on the closest and farthest player (raised gun = closest, lowered gun = farthest), giving a warm or cold tint; each tank must take the colour opposite to the one they already have, so tanks adjust their distance. Both hits go to the tanks: one tank stays close inside the hitbox and the other runs far (often the tank with better ranged tools).",
+      "fr": "Busters magiques sur le plus proche et le plus éloigné (arme levée = proche, baissée = loin), avec teinte chaude ou froide ; chaque tank doit prendre la couleur opposée à celle qu'il a, donc les tanks ajustent leur distance. Les deux coups vont aux tanks : un tank reste près, dans la hitbox, et l'autre part loin (souvent celui qui a les meilleurs outils à distance).",
+      "de": "Magische Buster auf den nächsten und fernsten Spieler (gehobene Waffe = nah, gesenkte = fern) mit warmer oder kalter Tönung; jeder Tank muss die Gegenfarbe zu seiner aktuellen nehmen, also passen die Tanks den Abstand an. Beide Treffer gehen an die Tanks: Ein Tank bleibt nah in der Hitbox, der andere läuft weit weg (oft der Tank mit den besseren Fernkampf-Werkzeugen).",
+      "ja": "最寄りと最遠へ魔法強攻撃（銃が上なら最寄り、下なら最遠）。直前と違う色を受けるよう、タンクはデバフを見て距離調整。他は最大近接。2発ともタンクが受ける。1人はボスの近く（ヒットボックス内）、もう1人は遠くで受ける（遠隔攻撃手段が多いタンクが遠くになることが多い）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "proximity",
+      "debuff"
+     ]
+    },
+    {
+     "id": "wingmark-color-clash",
+     "names": {
+      "en": "Wingmark + Color Clash + Double Style",
+      "fr": "Emblème ailé + Impact chromatique + Double graffiti",
+      "de": "Flügelzeichen + Farbbruch + Doppel-Graffiti",
+      "ja": "ウイングマーク＋カラークラッシュ＋ダブル・グラフィティ"
+     },
+     "aliases": {
+      "en": [
+       "wingmark",
+       "jump",
+       "corners"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ウイングマーク",
+       "ジャンプ"
+      ]
+     },
+     "how": {
+      "en": "Wingmark launches you in the direction you face when it expires. Color Clash shots decide the stack: two shots = healer light-party stacks, four shots = pairs. Read the paintings to find the safe corner and jump there facing the right way.",
+      "fr": "Emblème ailé te projette dans la direction où tu regardes quand il expire. Le nombre de tirs décide du package : deux = light parties sur les heals, quatre = paires. Lis les peintures pour trouver le coin sûr et saute-y en regardant dans le bon sens.",
+      "de": "Flügelzeichen schleudert dich in Blickrichtung, wenn es abläuft. Die Schüsse bestimmen das Sammeln: zwei = Leichtgruppen auf Heiler, vier = Paare. Lies die Bilder, um die sichere Ecke zu finden, und spring dorthin.",
+      "ja": "ウイングマークは切れた時に向いている方向へジャンプ。カラークラッシュの弾数で2発は4:4、4発は2:2:2:2の頭割り。絵から四隅の安地を判断し、ジャンプで移動。"
+     },
+     "strats": [
+      {
+       "strat": "oce",
+       "how": {
+        "en": "Wingmark pairs: H1+D3 on the left, MT+D1 in the middle, H2+D4 on the right, ST+D2 just below the middle pair.",
+        "fr": "Paires Wingmark : H1+D3 à gauche, MT+D1 au milieu, H2+D4 à droite, ST+D2 juste sous la paire du milieu.",
+        "de": "Wingmark-Paare: H1+D3 links, MT+D1 in der Mitte, H2+D4 rechts, ST+D2 direkt unter dem mittleren Paar.",
+        "ja": "ウィングマークのペア：左H1+D3、中央MT+D1、右H2+D4、中央の下にST+D2。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only one source for these OCE positions (Materia Raiding macro); the toolbox raidplan could not be read and no second source was found. Check your PF macro.",
+        "fr": "Une seule source pour ces positions OCE (macro Materia Raiding) ; le raidplan n'a pas pu être lu et aucune deuxième source trouvée. Vérifie la macro de ta PF.",
+        "de": "Nur eine Quelle für diese OCE-Positionen (Materia Raiding-Makro); der Raidplan war nicht lesbar und keine zweite Quelle gefunden. Prüf das Makro deiner PF.",
+        "ja": "このOCEの位置は1つのソースのみ（Materia Raidingのマクロ）。レイドプランは読めず、2つ目のソースも見つからない。PFのマクロで確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "stack"
+     ]
+    },
+    {
+     "id": "sticky-mousse",
+     "names": {
+      "en": "Sticky Mousse",
+      "fr": "Mousse collante",
+      "de": "Klebriges Mousse",
+      "ja": "ねばねばムース"
+     },
+     "aliases": {
+      "en": [
+       "stacks",
+       "rooted"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Two non-tanks are hit and rooted, then each becomes a stack target; stack by light party. If both are in the same light party, split so nobody takes both.",
+      "fr": "Deux non-tanks sont touchés et immobilisés, puis chacun devient cible de package ; packez par light party. Si les deux sont dans la même, séparez-vous pour que personne ne prenne les deux.",
+      "de": "Zwei Nicht-Tanks werden getroffen und festgehalten, dann ist jeder ein Sammel-Ziel; nach Leichtgruppe sammeln. Sind beide in derselben, aufteilen, damit niemand beide nimmt.",
+      "ja": "タンク以外2人に円範囲と拘束、その後その2人に4:4頭割り。基本散開、タンクは中央で近い方の頭割りに入る。"
+     },
+     "strats": [
+      {
+       "strat": "oce",
+       "how": {
+        "en": "Spread on clock spots using true north.",
+        "fr": "Dispersion en horloge selon le nord réel.",
+        "de": "Verteilen auf Uhr-Plätzen nach echtem Norden.",
+        "ja": "真北基準の時計回り散開。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only one source for these OCE positions (Materia Raiding macro); the toolbox raidplan could not be read and no second source was found. Check your PF macro.",
+        "fr": "Une seule source pour ces positions OCE (macro Materia Raiding) ; le raidplan n'a pas pu être lu et aucune deuxième source trouvée. Vérifie la macro de ta PF.",
+        "de": "Nur eine Quelle für diese OCE-Positionen (Materia Raiding-Makro); der Raidplan war nicht lesbar und keine zweite Quelle gefunden. Prüf das Makro deiner PF.",
+        "ja": "このOCEの位置は1つのソースのみ（Materia Raidingのマクロ）。レイドプランは読めず、2つ目のソースも見つからない。PFのマクロで確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "debuff"
+     ]
+    },
+    {
+     "id": "sugarscape-desert",
+     "names": {
+      "en": "Sugarscape (desert): cacti, quicksand, Pudding Graf",
+      "fr": "Nature morte (désert) : cactus, sables mouvants, Pudding pétulent",
+      "de": "Landschaftsmalerei (Wüste): Kakteen, Treibsand, Pudding-Platzer",
+      "ja": "ランドスケープ（砂漠）：サボテン・流砂・ぼっかんプリン"
+     },
+     "aliases": {
+      "en": [
+       "desert",
+       "quicksand",
+       "cactus",
+       "paint bombs"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "砂漠",
+       "流砂",
+       "サボテン"
+      ]
+     },
+     "how": {
+      "en": "Everyone takes damage over time; players get Heating Up/Burning Up explosions with short or long timers. Cacti erupt in sets to dodge, quicksand kills if you stand in it too long or dash inside, and Pudding Graf gives winged and normal paint bombs that must be dropped into the quicksand.",
+      "fr": "Tout le monde prend des dégâts sur la durée ; certains ont des explosions à minuteur court ou long. Des cactus jaillissent par séries, les sables mouvants tuent si tu y restes trop ou dashes dedans, et Pudding pétulent donne des bombes ailées et normales à envoyer dans les sables.",
+      "de": "Alle nehmen Schaden über Zeit; Spieler bekommen Explosionen mit kurzem oder langem Timer. Kakteen sprießen in Sätzen, Treibsand tötet bei zu langem Stehen oder Sprint-Fähigkeiten darin, und Pudding-Platzer gibt geflügelte und normale Farbbomben, die in den Treibsand müssen.",
+      "ja": "継続ダメージとデバフ（早い/遅い爆発）。サボテンを避け、流砂は長く立つか移動技で即死、ぼっかんプリンの爆弾・羽根爆弾を流砂に落とす。"
+     },
+     "strats": [
+      {
+       "strat": "hector-toxic",
+       "how": {
+        "en": "Quicksand: the cut-off corner becomes the new south, the party goes to the opposite corner and healers take the adjacent corners (LP1 healer left, LP2 healer right). Bombs: winged bomb holders face the quicksand, normal bomb holders stand in it and step out; spread RMMR, group 1 east, group 2 west.",
+        "fr": "Sables : le coin coupé devient le nouveau sud, le groupe va au coin opposé et les heals prennent les coins adjacents (heal LP1 à gauche, LP2 à droite). Bombes : ailées face aux sables, normales dans les sables puis on sort ; dispersion RMMR, groupe 1 est, groupe 2 ouest.",
+        "de": "Treibsand: die abgeschnittene Ecke wird neuer Süden, die Gruppe geht in die gegenüberliegende Ecke, Heiler in die benachbarten (LG1-Heiler links, LG2 rechts). Bomben: Geflügelte schauen zum Treibsand, Normale stehen darin und gehen raus; Verteilung RMMR, Gruppe 1 Osten, Gruppe 2 Westen.",
+        "ja": "流砂：サボテンで潰れた角が新しい南、全員は対角へ、ヒーラーは隣の角（LP1ヒーラー左、LP2右）。爆弾：羽根持ちは流砂を向いて飛ばす、通常は流砂に入って出る。RMMRで散開、1組東・2組西。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Cacti: dodge left/right along the north edge (bait from the east only if they spawn under the boss). Quicksand: three corners safe, H1 northwest, H2 southeast, others northeast (southwest if crushed). Bombs: normal bomb side handles it on the quicksand side, winged bomb side on the ground side.",
+        "fr": "Cactus : esquive à gauche/droite au bord nord (bait depuis l'est seulement s'ils sortent sous le boss). Sables : trois coins sûrs, H1 NO, H2 SE, les autres NE (SO s'il est écrasé). Bombes : bombe normale côté sables, ailée côté sol.",
+        "de": "Kakteen: am Nordrand links/rechts ausweichen (nur bei Spawn unter dem Boss von Osten ködern). Treibsand: drei Ecken sicher, H1 NW, H2 SO, Rest NO (SW falls zerdrückt). Bomben: normale Bombe auf der Treibsandseite, geflügelte auf der Bodenseite.",
+        "ja": "サボテンは北辺で左右に避ける（ボス足元から生える時のみ東から誘導）。流砂は3隅が安地、H1北西・H2南東・他は北東（潰れたら南西）。爆弾側は流砂側、羽根爆弾側は地上側で処理。"
+       }
+      },
+      {
+       "strat": "oce",
+       "how": {
+        "en": "Desert (boss north): tanks west, DPS east, H1 goes clockwise and H2 counterclockwise, the party waits south of the cactus. Bombs (true north): north row H1, MT, ST, H2; south row D3, D1, D2, D4.",
+        "fr": "Désert (boss au nord) : tanks à l'ouest, DPS à l'est, H1 en sens horaire et H2 en anti-horaire, le groupe attend au sud du cactus. Bombes (nord réel) : rangée nord H1, MT, ST, H2 ; rangée sud D3, D1, D2, D4.",
+        "de": "Wüste (Boss im Norden): Tanks West, DPS Ost, H1 im Uhrzeigersinn, H2 gegen den Uhrzeigersinn, die Gruppe wartet südlich vom Kaktus. Bomben (echter Norden): Nordreihe H1, MT, ST, H2; Südreihe D3, D1, D2, D4.",
+        "ja": "砂漠（ボス北）：タンク西、DPS東、H1は時計回り・H2は反時計回り、他はサボテンの南で待機。爆弾（真北）：北列H1・MT・ST・H2、南列D3・D1・D2・D4。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only one source for these OCE positions (Materia Raiding macro); the toolbox raidplan could not be read and no second source was found. Check your PF macro.",
+        "fr": "Une seule source pour ces positions OCE (macro Materia Raiding) ; le raidplan n'a pas pu être lu et aucune deuxième source trouvée. Vérifie la macro de ta PF.",
+        "de": "Nur eine Quelle für diese OCE-Positionen (Materia Raiding-Makro); der Raidplan war nicht lesbar und keine zweite Quelle gefunden. Prüf das Makro deiner PF.",
+        "ja": "このOCEの位置は1つのソースのみ（Materia Raidingのマクロ）。レイドプランは読めず、2つ目のソースも見つからない。PFのマクロで確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "debuff",
+      "spread"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "adds",
+   "names": {
+    "en": "Adds phase (Live Painting)",
+    "fr": "Phase d'adds (Peinture vivante)",
+    "de": "Add-Phase (Sofortkunst)",
+    "ja": "雑魚フェーズ（ライブペインティング）"
+   },
+   "mechanics": [
+    {
+     "id": "adds-overview",
+     "names": {
+      "en": "Live Painting adds",
+      "fr": "Adds de Peinture vivante",
+      "de": "Sofortkunst-Adds",
+      "ja": "ライブペインティングの雑魚"
+     },
+     "aliases": {
+      "en": [
+       "adds",
+       "yan",
+       "mu",
+       "cat",
+       "feather ray",
+       "jabberwock"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "雑魚",
+       "ヤーン",
+       "ムー",
+       "キャット",
+       "フェザー",
+       "ジャバウォック"
+      ]
+     },
+     "how": {
+      "en": "Yan hits hard and gets stronger near Mu; Mu casts Ready Ore Not (stacking DoT); Gimme Cat drains the limit gauge and enrages if left alive; Feather Ray tethers whoever hits it first and drops water puddles; Jabberwock binds a healer and kills them if it reaches them (it can be stunned). Killing the last Yans quickly refills limit break.",
+      "fr": "Belhamel frappe fort et se renforce près des Mu ; Mu lance Gemmes la pluie (DoT cumulatif) ; Chat-pardeur vide la jauge de limite et s'enrage s'il reste ; Manta se lie au premier qui le frappe et pose des flaques d'eau ; Jabberwocky immobilise un heal et le tue s'il l'atteint (étourdissable). Tuer vite les derniers Belhamel remplit la LB.",
+      "de": "Putschi schlägt hart und wird nahe Mu stärker; Mu wirkt Edelstein-Regen (stapelnder DoT); Bettelcat leert die Limitleiste und rastet aus, wenn er lebt; Federrochen verbindet sich mit dem ersten Angreifer und legt Wasserflächen; Brabbelback fesselt einen Heiler und tötet ihn bei Ankunft (betäubbar). Die letzten Putschis schnell töten füllt den Limitrausch.",
+      "ja": "ヤーンは高火力でムーの近くで強化、ムーは原石あげる（DoT）、キャットはLBゲージを減らし放置で時間切れ、フェザーは最初に殴った人に線を付け水の床、ジャバウォックはヒーラーを拘束し到達で即死（スタン可）。最後にヤーンを倒すとLB全開。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds"
+     ]
+    },
+    {
+     "id": "adds-waves",
+     "names": {
+      "en": "Adds waves 1-4",
+      "fr": "Vagues d'adds 1-4",
+      "de": "Add-Wellen 1-4",
+      "ja": "Wave1〜4"
+     },
+     "aliases": {
+      "en": [
+       "wave 1",
+       "wave 2",
+       "wave 3",
+       "wave 4",
+       "jabberwock stun"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ウェーブ",
+       "スタン順"
+      ]
+     },
+     "how": {
+      "en": "Four waves with fixed jobs: tanks split Yan and Mu, ranged handle Feather Rays and the cat, the bound healer waits in a corner while the Jabberwock is burned and chain-stunned.",
+      "fr": "Quatre vagues aux rôles fixes : les tanks se partagent Belhamel et Mu, les distances gèrent Mantas et chat, le heal immobilisé attend dans un coin pendant que Jabberwocky est tué et étourdi en chaîne.",
+      "de": "Vier Wellen mit festen Aufgaben: Tanks teilen Putschi und Mu, Fernkämpfer übernehmen Federrochen und Katze, der gefesselte Heiler wartet in einer Ecke, während Brabbelback zerlegt und kettenbetäubt wird.",
+      "ja": "4ウェーブで担当固定。タンクがヤーンとムー、遠隔がフェザーとキャット、拘束されたヒーラーは角で待ち、ジャバウォックを即殺・スタン回し。"
+     },
+     "strats": [
+      {
+       "strat": "hector-toxic",
+       "how": {
+        "en": "Wave 1: OT takes Yan east, MT both Mu west, melee burn Yan, ranged the cat. Wave 2: physical ranged east Ray, caster west Ray, puddles along the north then east/west walls; MT drags Mu and boss to the east Ray then west. Wave 3: prey healer goes southeast, stun Jabberwock MT then M1 then M2. Wave 4: ranged take their Rays, OT second Yan and moves to the southwest Ray, MT brings both Mu to the Jabberwock; kill both Yans last for three LB bars.",
+        "fr": "Vague 1 : OT prend Belhamel à l'est, MT les deux Mu à l'ouest, mêlées sur Belhamel, distances sur le chat. Vague 2 : distance physique Manta est, caster Manta ouest, flaques au mur nord puis est/ouest ; le MT amène Mu et boss au Manta est puis ouest. Vague 3 : le heal ciblé va au SE, stun Jabberwocky MT puis M1 puis M2. Vague 4 : distances sur leurs Mantas, OT deuxième Belhamel vers le Manta SO, MT amène les Mu au Jabberwocky ; tuez les deux Belhamel en dernier pour trois barres de LB.",
+        "de": "Welle 1: OT nimmt Putschi im Osten, MT beide Mu im Westen, Nahkampf auf Putschi, Fernkampf auf die Katze. Welle 2: physischer Fernkämpfer Ost-Rochen, Caster West-Rochen, Flächen an der Nordwand dann Ost/West; MT zieht Mu und Boss zum Ost-Rochen, dann West. Welle 3: gejagter Heiler nach Südosten, Brabbelback betäuben MT, dann M1, dann M2. Welle 4: Fernkämpfer auf ihre Rochen, OT zweiter Putschi zum SW-Rochen, MT bringt beide Mu zum Brabbelback; beide Putschis zuletzt töten für drei Limitbalken.",
+        "ja": "W1：STが東のヤーン、MTが西のムー2体、近接はヤーン、遠隔はキャット。W2：物理遠隔が東、キャスターが西のフェザー、北壁→東西壁に水を捨てる。MTはムーとボスを東→西のフェザーへ。W3：狙われたヒーラーは南東、スタンはMT→M1→M2。W4：遠隔は各フェザー、STは2体目のヤーンを南西フェザーへ、MTはムーをジャバウォックへ。最後にヤーン2体でLB3ゲージ。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Wave 1: kill order Yan then cat; ST (west Yan) and melee on Yan, MT takes Mu southeast, ranged on the cat. Wave 2: D3 west Ray, H2 east Ray; MT takes Mu east then west. Wave 3: bound healer waits at the southeast edge, stun order MT, D1, D2; ST keeps the north Yan away from Mu. Wave 4: priority Jabberwock, then cat = Rays, then Yan; D3 west Ray, D4 east Ray; stun order ST, D1, D2.",
+        "fr": "Vague 1 : ordre Belhamel puis chat ; ST (Belhamel ouest) et mêlées dessus, MT amène les Mu au SE, distances sur le chat. Vague 2 : D3 Manta ouest, H2 Manta est ; MT amène les Mu à l'est puis à l'ouest. Vague 3 : le heal lié attend au bord SE, stun MT, D1, D2 ; ST garde le Belhamel nord loin des Mu. Vague 4 : priorité Jabberwocky, puis chat = Mantas, puis Belhamel ; D3 ouest, D4 est ; stun ST, D1, D2.",
+        "de": "Welle 1: Reihenfolge Putschi, dann Katze; ST (West-Putschi) und Nahkampf darauf, MT zieht Mu nach Südosten, Fernkampf auf die Katze. Welle 2: D3 West-Rochen, H2 Ost-Rochen; MT zieht Mu nach Osten, dann Westen. Welle 3: gefesselter Heiler wartet am Südostrand, Betäubung MT, D1, D2; ST hält den Nord-Putschi von Mu fern. Welle 4: Priorität Brabbelback, dann Katze = Rochen, dann Putschi; D3 West, D4 Ost; Betäubung ST, D1, D2.",
+        "ja": "W1：ヤーン→キャットの順、ST（西ヤーン）と近接でヤーン、MTはムーを南東へ、遠隔はキャット。W2：西フェザーD3、東フェザーH2、MTはムーを東→西へ。W3：拘束ヒーラーは南東端、スタンMT→D1→D2、STは北ヤーンをムーに近づけない。W4：優先ジャバウォック→キャット＝フェザー→ヤーン、西D3・東D4、スタンST→D1→D2。"
+       }
+      },
+      {
+       "strat": "oce",
+       "how": {
+        "en": "Kill order per wave: 1) ranged on the cat, melee on Yan; 2) northeast Ray, northwest Ray, then the squirrels (Mu); 3) Jabberwock, squirrels, cat; 4) Jabberwock, southeast Ray, cat, southwest Ray, squirrels, then the Yans. Tanks: ST takes the west Yan and MT the southeast squirrels first, later ST the north Yan and MT the south squirrels. Rays: D3 northwest, H1 northeast, later D3 southwest and D4 southeast. Jabberwock stuns: MT, D1, D2 the first time, OT, D1, D2 the second.",
+        "fr": "Ordre par vague : 1) distance sur le chat, mêlées sur Yan ; 2) Raie nord-est, raie nord-ouest, puis les écureuils (Mu) ; 3) Jabberwock, écureuils, chat ; 4) Jabberwock, raie sud-est, chat, raie sud-ouest, écureuils, puis les Yan. Tanks : ST prend le Yan ouest et MT les écureuils sud-est, puis ST le Yan nord et MT les écureuils sud. Raies : D3 nord-ouest, H1 nord-est, puis D3 sud-ouest et D4 sud-est. Stuns du Jabberwock : MT, D1, D2 la première fois, OT, D1, D2 la seconde.",
+        "de": "Reihenfolge je Welle: 1) Fernkampf auf die Katze, Nahkampf auf Yan; 2) Rochen Nordost, Rochen Nordwest, dann die Eichhörnchen (Mu); 3) Jabberwock, Eichhörnchen, Katze; 4) Jabberwock, Rochen Südost, Katze, Rochen Südwest, Eichhörnchen, dann die Yans. Tanks: ST nimmt den West-Yan, MT die Südost-Eichhörnchen, später ST den Nord-Yan und MT die Süd-Eichhörnchen. Rochen: D3 Nordwest, H1 Nordost, später D3 Südwest und D4 Südost. Jabberwock-Betäubungen: MT, D1, D2 beim ersten, OT, D1, D2 beim zweiten Mal.",
+        "ja": "ウェーブごとの処理順：1）遠隔は猫、近接はヤン　2）北東エイ→北西エイ→リス（ムー）　3）ジャバウォック→リス→猫　4）ジャバウォック→南東エイ→猫→南西エイ→リス→ヤン。タンク：最初はSTが西ヤン・MTが南東リス、後でSTが北ヤン・MTが南リス。エイ：D3北西・H1北東、後でD3南西・D4南東。ジャバウォックのスタンは1回目MT→D1→D2、2回目OT→D1→D2。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "From the OCE macro only (shortened lines; the exact wave for each Ray line was read from the macro order). Check the MR adds raidplan or your PF.",
+        "fr": "Seulement d'après la macro OCE (lignes abrégées ; la vague de chaque raie est déduite de l'ordre de la macro). Vérifie le raidplan MR ou ta PF.",
+        "de": "Nur aus dem OCE-Makro (verkürzte Zeilen; welche Welle zu welchem Rochen gehört, ist aus der Makro-Reihenfolge abgeleitet). Prüf den MR-Raidplan oder deine PF.",
+        "ja": "OCEマクロのみ（短縮表記。どのエイが何ウェーブ目かはマクロの順から判断）。MRのレイドプランかPFで確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "Assignments can shift with party composition; the Cleavemaxxing plan handles waves differently.",
+      "fr": "Les rôles peuvent changer selon la compo ; le plan Cleavemaxxing gère les vagues autrement.",
+      "de": "Aufgaben können sich je nach Gruppe ändern; der Cleavemaxxing-Plan macht die Wellen anders.",
+      "ja": "構成で担当が変わることあり。Cleavemaxxing方式はウェーブの処理が異なる。"
+     },
+     "tags": [
+      "adds",
+      "dps-check",
+      "tether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Phase 3 (river and lava)",
+    "fr": "Phase 3 (rivière et lave)",
+    "de": "Phase 3 (Fluss und Lava)",
+    "ja": "後半（山と川・マグマ）"
+   },
+   "mechanics": [
+    {
+     "id": "double-style-river",
+     "names": {
+      "en": "Sugarscape (river) + Double Style: Taste of Fire / Taste of Thunder",
+      "fr": "Nature morte (rivière) + Double graffiti : Feu sirupeux / Foudre sucrée",
+      "de": "Landschaftsmalerei (Fluss) + Doppel-Graffiti: Zuckerfeuer / Zuckerblitz",
+      "ja": "ランドスケープ（山と川）＋ダブル・グラフィティ：シュガーファイア / シュガーサンダー"
+     },
+     "aliases": {
+      "en": [
+       "river",
+       "fire arrows",
+       "thunder arrows"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "川",
+       "炎の矢",
+       "雷の矢"
+      ]
+     },
+     "how": {
+      "en": "Standing in the river gives fire resistance but lightning vulnerability. Fire is a healer stack taken in the river; thunder is a spread taken on land.",
+      "fr": "Être dans la rivière donne résistance au feu mais vulnérabilité à la foudre. Le feu est un package sur les heals à prendre dans la rivière ; la foudre une dispersion sur la terre ferme.",
+      "de": "Im Fluss bekommst du Feuerresistenz, aber Blitzverwundbarkeit. Feuer ist ein Heiler-Sammeln im Fluss, Blitz ein Verteilen an Land.",
+      "ja": "川に立つと炎耐性、雷に弱くなる。炎はヒーラー2人への頭割りを川で、雷は地上で1人ずつ。"
+     },
+     "strats": [
+      {
+       "strat": "hector-toxic",
+       "how": {
+        "en": "Lightning: spread on land near your clock spot. Fire: melee and group 1 supports in the middle river, ranged and group 2 healer behind the southwest or southeast bridge.",
+        "fr": "Foudre : dispersion sur terre près de ton spot d'horloge. Feu : mêlées et supports du groupe 1 dans la rivière au milieu, distances et heal du groupe 2 derrière le pont SO ou SE.",
+        "de": "Blitz: an Land nahe deinem Uhrplatz verteilen. Feuer: Nahkampf und Supporter Gruppe 1 im mittleren Fluss, Fernkampf und Heiler Gruppe 2 hinter der SW- oder SO-Brücke.",
+        "ja": "雷は時計位置付近の地上で散開。炎は近接と1組サポートが中央の川、遠隔と2組ヒーラーが南西/南東の橋の裏。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "same_as": "hector-toxic"
+      },
+      {
+       "strat": "oce",
+       "how": {
+        "en": "Fire (stack): group 1 in the west river, group 2 in the middle. Thunder (spread) on land: MT, ST, D4 on the first row, D1, D2, H2 on the second, D3, H1 on the third.",
+        "fr": "Feu (package) : groupe 1 dans la rivière ouest, groupe 2 au milieu. Foudre (dispersion) sur la terre : MT, ST, D4 en première rangée, D1, D2, H2 en deuxième, D3, H1 en troisième.",
+        "de": "Feuer (Sammeln): Gruppe 1 im westlichen Fluss, Gruppe 2 in der Mitte. Blitz (Verteilen) an Land: MT, ST, D4 in der ersten Reihe, D1, D2, H2 in der zweiten, D3, H1 in der dritten.",
+        "ja": "炎（頭割り）：G1は西の川、G2は中央。雷（散開）は陸で、1列目MT・ST・D4、2列目D1・D2・H2、3列目D3・H1。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only one source for these OCE positions (Materia Raiding macro); the toolbox raidplan could not be read and no second source was found. Check your PF macro.",
+        "fr": "Une seule source pour ces positions OCE (macro Materia Raiding) ; le raidplan n'a pas pu être lu et aucune deuxième source trouvée. Vérifie la macro de ta PF.",
+        "de": "Nur eine Quelle für diese OCE-Positionen (Materia Raiding-Makro); der Raidplan war nicht lesbar und keine zweite Quelle gefunden. Prüf das Makro deiner PF.",
+        "ja": "このOCEの位置は1つのソースのみ（Materia Raidingのマクロ）。レイドプランは読めず、2つ目のソースも見つからない。PFのマクロで確認。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "JP positions for this mechanic were not detailed by game8 beyond 'fire in the river, thunder on land'.",
+      "fr": "Positions JP non détaillées par game8 au-delà de « feu dans la rivière, foudre sur terre ».",
+      "de": "JP-Positionen von game8 nur als „Feuer im Fluss, Blitz an Land“ beschrieben.",
+      "ja": "game8は炎は川・雷は地上とのみ記載。"
+     },
+     "tags": [
+      "stack",
+      "spread",
+      "debuff"
+     ]
+    },
+    {
+     "id": "lightning-storm-pudding-party",
+     "names": {
+      "en": "Lightning Storm + Pudding Party",
+      "fr": "Pluie d'éclairs + Fête du flan",
+      "de": "Blitzsturm + Pudding-Party",
+      "ja": "百雷＋プリンパーティー"
+     },
+     "aliases": {
+      "en": [
+       "storm",
+       "cloud",
+       "5 hit stack"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A storm cloud moves; stack on a bridge and move away from it when the screen flashes, while one support and one DPS get prey markers to drop away. Pudding Party is a five-hit stack, mitigate.",
+      "fr": "Un nuage d'orage se déplace ; packez sur un pont et éloignez-vous quand l'écran flashe, pendant qu'un support et un DPS ont des marqueurs à poser à l'écart. Fête du flan = package en cinq coups, mitige.",
+      "de": "Eine Gewitterwolke wandert; sammelt auf einer Brücke und geht weg, wenn der Bildschirm blitzt, während ein Supporter und ein DPS Marker weglegen. Pudding-Party ist ein fünffaches Sammeln, mitigieren.",
+      "ja": "雷雲が移動。橋に集まり、光ったら雲から離れる。サポート1・DPS1のマーカーは離れて捨てる。プリンパーティーは5連頭割り。"
+     },
+     "strats": [
+      {
+       "strat": "hector-toxic",
+       "how": {
+        "en": "Marked DPS go counterclockwise and marked support clockwise of the safe bridge; repeats four times.",
+        "fr": "DPS marqué en antihoraire et support marqué en horaire par rapport au pont sûr ; quatre fois.",
+        "de": "Markierter DPS gegen den Uhrzeigersinn, markierter Supporter im Uhrzeigersinn von der sicheren Brücke; viermal.",
+        "ja": "マーカーDPSは安全な橋から反時計回り、サポートは時計回り。4回。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "game8 drops the markers based on the cloud's position after it moves (sources disagree on spawn-based vs moved-based).",
+        "fr": "game8 pose les marqueurs selon la position du nuage après son déplacement (les sources varient).",
+        "de": "game8 legt die Marker nach der Wolkenposition nach dem Wandern ab (Quellen uneinig).",
+        "ja": "マーカー捨ては移動後の雷雲位置基準（出現位置基準とする説もある）。"
+       }
+      },
+      {
+       "strat": "oce",
+       "how": {
+        "en": "Relative to the storm cloud: tanks and healers on one side of the party, DPS on the other side.",
+        "fr": "Par rapport au nuage : tanks et heals d'un côté du groupe, DPS de l'autre.",
+        "de": "Relativ zur Gewitterwolke: Tanks und Heiler auf einer Seite der Gruppe, DPS auf der anderen.",
+        "ja": "雷雲基準でパーティの片側にタンクヒラ、反対側にDPS。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only one source for these OCE positions (Materia Raiding macro); the toolbox raidplan could not be read and no second source was found. Check your PF macro.",
+        "fr": "Une seule source pour ces positions OCE (macro Materia Raiding) ; le raidplan n'a pas pu être lu et aucune deuxième source trouvée. Vérifie la macro de ta PF.",
+        "de": "Nur eine Quelle für diese OCE-Positionen (Materia Raiding-Makro); der Raidplan war nicht lesbar und keine zweite Quelle gefunden. Prüf das Makro deiner PF.",
+        "ja": "このOCEの位置は1つのソースのみ（Materia Raidingのマクロ）。レイドプランは読めず、2つ目のソースも見つからない。PFのマクロで確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "lava-towers",
+     "names": {
+      "en": "Lava islands: Mousse Drip, Moussacre, towers",
+      "fr": "Îles de lave : Mousse éclaboussante, Défilé de mousse, tours",
+      "de": "Lava-Inseln: Mousse-Spritzer, Mousse-Marsch, Türme",
+      "ja": "マグマ：びちゃっとムース・ムース大行進・塔"
+     },
+     "aliases": {
+      "en": [
+       "lava",
+       "islands",
+       "towers"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "マグマ",
+       "塔",
+       "島"
+      ]
+     },
+     "how": {
+      "en": "Bridges break and three islands remain. Mousse Drip is a multi-hit stack on the two farthest players who drop puddles away from towers; Moussacre cones hit the closest four. Bait lightning outside the towers, then soak; Wingmark then sends you to new towers.",
+      "fr": "Les ponts cassent, il reste trois îles. Mousse éclaboussante = package multi-coups sur les deux plus éloignés qui posent des flaques loin des tours ; Défilé de mousse = cônes sur les quatre plus proches. Baite la foudre hors des tours puis prends-les ; Emblème ailé t'envoie ensuite vers de nouvelles tours.",
+      "de": "Brücken brechen, drei Inseln bleiben. Mousse-Spritzer ist ein mehrfaches Sammeln auf die zwei Fernsten, die Flächen weg von Türmen legen; Mousse-Marsch-Kegel treffen die nächsten vier. Blitz außerhalb der Türme ködern, dann rein; Flügelzeichen schickt dich zu neuen Türmen.",
+      "ja": "橋が壊れ3つの島。びちゃっとムースは遠い2人への多段頭割り（塔を埋めないよう捨てる）、ムース大行進は近い4人への扇。雷を塔の外で受けてから塔へ、その後ウイングマークで次の塔へ。"
+     },
+     "strats": [
+      {
+       "strat": "hector-toxic",
+       "how": {
+        "en": "Tanks and melee on the south island, group 1 healer and ranged northwest, group 2 northeast. Towers 2-2-4: tanks and melee jump to the four-tower platform, ranged/healers rotate. 8 towers on one platform: ranged/healers jump to the south island, tanks and melee jump from the southwest corner.",
+        "fr": "Tanks et mêlées sur l'île sud, heal et distances du groupe 1 au NO, groupe 2 au NE. Tours 2-2-4 : tanks et mêlées sautent sur la plateforme à quatre, distances/heals tournent. 8 tours sur une plateforme : distances/heals sautent sur l'île sud, tanks et mêlées depuis le coin SO.",
+        "de": "Tanks und Nahkampf auf der Südinsel, Heiler und Fernkampf Gruppe 1 NW, Gruppe 2 NO. Türme 2-2-4: Tanks und Nahkampf springen zur Vier-Turm-Plattform, Fern/Heiler rotieren. 8 Türme auf einer Plattform: Fern/Heiler springen zur Südinsel, Tanks und Nahkampf von der SW-Ecke.",
+        "ja": "タンク・近接は南島、1組ヒーラー・遠隔は北西、2組は北東。2-2-4塔はタンク・近接が4塔の足場へ、遠隔ヒーラーは回る。8塔1か所なら遠隔ヒーラーが南島へ、タンク近接は南西角から飛ぶ。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "H1+D3 northwest island, H2+D4 northeast, melee and tanks south. Northwest four towers clockwise, northeast four counterclockwise; for eight towers on the south island, melee/tanks jump to the opposite side of the east/west edge.",
+        "fr": "H1+D3 île NO, H2+D4 NE, mêlées et tanks au sud. Quatre tours NO en horaire, NE en antihoraire ; pour huit tours au sud, mêlées/tanks sautent vers le bord opposé.",
+        "de": "H1+D3 NW-Insel, H2+D4 NO, Nahkampf und Tanks Süd. Vier NW-Türme im Uhrzeigersinn, NO gegen; bei acht Türmen im Süden springen Nahkampf/Tanks zur Gegenseite.",
+        "ja": "北西島H1D3、北東島H2D4、南島に近接とタンク。北西4塔は時計回り、北東4塔は反時計回り、南島8塔なら近接タンクが東西端の反対側へ。"
+       }
+      },
+      {
+       "strat": "oce",
+       "how": {
+        "en": "D3 and H1 on the northwest island, D4 and H2 northeast, D1 and D2 next to the boss, tanks south. For the eight towers the order is D2, H2, D4 then MT, D1, ST, H1, D3.",
+        "fr": "D3 et H1 sur l'île nord-ouest, D4 et H2 au nord-est, D1 et D2 près du boss, tanks au sud. Pour les huit tours, l'ordre est D2, H2, D4 puis MT, D1, ST, H1, D3.",
+        "de": "D3 und H1 auf der Nordwest-Insel, D4 und H2 Nordost, D1 und D2 beim Boss, Tanks Süd. Bei den acht Türmen ist die Reihenfolge D2, H2, D4, dann MT, D1, ST, H1, D3.",
+        "ja": "D3とH1は北西の島、D4とH2は北東、D1とD2はボス横、タンクは南。8塔はD2・H2・D4、次にMT・D1・ST・H1・D3の順。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "From the OCE macro only; the eight-tower line is short and its exact meaning (order or layout) is not explained. Check the MR toolbox.",
+        "fr": "Seulement d'après la macro OCE ; la ligne des huit tours est courte et son sens exact (ordre ou placement) n'est pas expliqué. Vérifie la toolbox MR.",
+        "de": "Nur aus dem OCE-Makro; die Zeile zu den acht Türmen ist kurz und ihre genaue Bedeutung (Reihenfolge oder Aufstellung) nicht erklärt. Prüf die MR-Toolbox.",
+        "ja": "OCEマクロのみ。8塔の行は短く、順番か配置かの説明がない。MRのツールボックスで確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "stack",
+      "cleave",
+      "proximity"
+     ]
+    },
+    {
+     "id": "final-repeat-enrage",
+     "names": {
+      "en": "Final repeat and Artistic Anarchy (enrage)",
+      "fr": "Répétition finale et Anarchie artistique (enrage)",
+      "de": "Letzte Wiederholung und Artistische Anarchie (Finalangriff)",
+      "ja": "前半ギミック再来〜アーティスティック・アナーキー（時間切れ）"
+     },
+     "aliases": {
+      "en": [
+       "enrage"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Back on the normal arena: Mousse Mural, Sticky Mousse, Color Riot, then Wingmark + Color Clash + Double Style again, then the enrage.",
+      "fr": "Retour sur l'arène normale : Averse de mousse, Mousse collante, Révolte chromatique, puis Emblème ailé + Impact chromatique + Double graffiti, puis l'enrage.",
+      "de": "Zurück in der normalen Arena: Mousse-Regen, Klebriges Mousse, Farbenschock, dann wieder Flügelzeichen + Farbbruch + Doppel-Graffiti, dann der Finalangriff.",
+      "ja": "通常フィールドに戻り、ムースシャワー・ねばねばムース・カラーライオット、ウイングマーク＋カラークラッシュ＋ダブル・グラフィティの後に時間切れ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "tankbuster",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Icy Veins - M6S guide",
+   "url": "https://www.icy-veins.com/ffxiv/aac-cruiserweight-m2-savage-raid-guide",
+   "lang": "en"
+  },
+  {
+   "title": "NAUR FFXIV - M6S",
+   "url": "https://naurffxiv.com/savage/m6s",
+   "lang": "en"
+  },
+  {
+   "title": "WTFDIG - M6S strat selector",
+   "url": "https://wtfdig.info/72/m6s",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - クルーザー級2層",
+   "url": "https://game8.jp/ff14/681086",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot r6s timeline translations",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/raid/r6s.ts",
+   "lang": "en"
+  },
+  {
+   "title": "Materia Raiding (OCE) - M6S",
+   "url": "https://materiaraiding.pages.dev/savage/m6s",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

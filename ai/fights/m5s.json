@@ -1,0 +1,929 @@
+{
+ "id": "m5s",
+ "type": "savage",
+ "expansion": "DT",
+ "patch": "7.2",
+ "names": {
+  "en": "AAC Cruiserweight M1 (Savage) - Dancing Green",
+  "fr": "Poids lourds-légers CCA - match 1 (sadique) - Dancing Green",
+  "de": "Arkadion - Schwergewicht R1 (episch) - Springhis Khan",
+  "ja": "至天の座アルカディア零式：クルーザー級1 - ダンシング・グリーン"
+ },
+ "aliases": {
+  "en": [
+   "m5s",
+   "m5 savage",
+   "dancing green",
+   "disco",
+   "frog",
+   "cw1",
+   "cruiserweight 1"
+  ],
+  "fr": [
+   "m5s",
+   "dancing green",
+   "disco"
+  ],
+  "de": [
+   "m5s",
+   "dancing green",
+   "disco",
+   "springhis khan"
+  ],
+  "ja": [
+   "m5s",
+   "零式1層",
+   "クルーザー級1層",
+   "ダンシンググリーン",
+   "ダンス"
+  ]
+ },
+ "summary": {
+  "en": "First Cruiserweight fight: Dancing Green, a disco dancer with frog backup dancers. Most mechanics are rhythm patterns: stored A/B-side spreads after snap-twist cleaves, Disco Infernal spotlights, Arcady Night Fever in/out cones, Ride the Waves lanes, Quarter/Eighth Beats stacks or spreads, and Frogtourage frog lines. Doing everything cleanly fills the Grooviness gauge and gives extra limit break.",
+  "fr": "Premier combat Poids lourds-légers : Dancing Green, un danseur disco avec des grenouilles danseuses. La plupart des mécaniques sont des rythmes : faces A/B stockées après les demi-salles pointées, projecteurs d'Enfer du disco, cônes in/out de Fièvre de l'Arcadion, couloirs de Roulement de vagues, Tempo quadruple/octuple (packages ou dispersion) et lignes des grenouilles. Tout réussir remplit la jauge de groove et donne de la LB en plus.",
+  "de": "Erster Schwergewicht-Kampf: Dancing Green, ein Disco-Tänzer mit Frosch-Tänzern. Die meisten Mechaniken sind Rhythmus-Muster: gespeicherte A/B-Seite nach Zeig-Halbraum-Angriffen, Disco-Pogo-Scheinwerfer, Arkadion-Tanzfieber mit Rein/Raus-Kegeln, Bahnen bei Perfekte Welle, Viertel-/Achteltakt (Sammeln oder Verteilen) und Froschlinien. Sauberes Spielen füllt die Groove-Leiste und gibt mehr Limitrausch.",
+  "ja": "クルーザー級1層、ディスコダンサー「ダンシング・グリーン」とカエルのダンサー戦。ジングル予約A/Bとポイント半面、ディスコインファーナルのスポットライト、ナイトフィーバーの内外扇、ウェーブ・オン・ウェーブの安全レーン、4/8ビート、フロッグダンサーの線などリズム系ギミックが中心。全部成功するとノリノリ度が上がりLBが増える。"
+ },
+ "strats_overview": [
+  {
+   "id": "hector",
+   "name": {
+    "en": "Hector (NA/EU PF)",
+    "fr": "Hector (PF NA/EU)",
+    "de": "Hector (NA/EU-PF)",
+    "ja": "Hector（NA/EU野良）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "The PF standard in NA and EU, from Hector Hectorson's animated guide (WTFDIG lists it as NAEU Hector).",
+    "fr": "Le standard PF en NA et en EU, tiré du guide animé de Hector Hectorson (WTFDIG l'appelle NAEU Hector).",
+    "de": "Der PF-Standard in NA und EU, aus Hector Hectorsons animiertem Guide (WTFDIG nennt ihn NAEU Hector).",
+    "ja": "NAとEUの野良標準。Hector Hectorson氏の解説動画由来（WTFDIGではNAEU Hector）。"
+   },
+   "aliases": {
+    "en": [
+     "hector",
+     "naeu hector"
+    ],
+    "fr": [
+     "hector",
+     "naeu hector"
+    ],
+    "de": [
+     "hector",
+     "naeu hector"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-nukemaru",
+   "name": {
+    "en": "JP Game8 / Nukemaru (jingle fixed method)",
+    "fr": "JP Game8 / Nukemaru (méthode jingle fixe)",
+    "de": "JP Game8 / Nukemaru (feste Jingle-Methode)",
+    "ja": "JP game8 / ぬけまる式（ジングル固定法）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "game8 uses Nukemaru's video with fixed spread spots for A/B-side (jingle fixed method) instead of the default role/light-party split.",
+    "fr": "game8 suit la vidéo de Nukemaru avec des spots fixes pour les faces A/B au lieu du split par rôle/light party.",
+    "de": "game8 folgt Nukemarus Video mit festen Plätzen für A/B-Seite statt Rollen-/Leichtgruppen-Split.",
+    "ja": "game8はぬけまる氏の動画準拠。ジングルA/Bは本来の分け方ではなく固定位置で散開する。"
+   },
+   "aliases": {
+    "en": [
+     "nukemaru",
+     "game8"
+    ],
+    "fr": [
+     "nukemaru",
+     "game8"
+    ],
+    "de": [
+     "nukemaru",
+     "game8"
+    ],
+    "ja": [
+     "ぬけまる式",
+     "ぬけまる",
+     "固定法",
+     "nukemaru"
+    ]
+   }
+  },
+  {
+   "id": "oce-toxic",
+   "name": {
+    "en": "OCE MR Latte Toxic Friends raidplan",
+    "fr": "Raidplan OCE MR Latte Toxic Friends",
+    "de": "OCE MR Latte Toxic Friends Raidplan",
+    "ja": "OCE MR Latte Toxic Friendsレイドプラン"
+   },
+   "region": "OCE",
+   "note": {
+    "en": "Materia Raiding's OCE toolbox (M5S OCE V4) with its PF macro; per-mechanic spots below come from that macro only. Mechanics not covered by the macro are not stored for OCE; ask your PF.",
+    "fr": "Toolbox OCE de Materia Raiding (M5S OCE V4) avec sa macro PF ; les spots par mécanique viennent seulement de cette macro. Les mécaniques hors macro ne sont pas stockées pour l'OCE ; demande à ta PF.",
+    "de": "OCE-Toolbox von Materia Raiding (M5S OCE V4) mit PF-Makro; die Plätze pro Mechanik stammen nur aus diesem Makro. Nicht abgedeckte Mechaniken sind für OCE nicht gespeichert; frag deine PF.",
+    "ja": "Materia RaidingのOCEツールボックス（M5S OCE V4）とPFマクロ。ギミック別の位置はこのマクロのみ。マクロにないギミックはOCE分なし、PFに確認。"
+   },
+   "aliases": {
+    "en": [
+     "toxic friends",
+     "toxic",
+     "mr",
+     "materia raiding",
+     "latte",
+     "oce toolbox"
+    ],
+    "fr": [
+     "toxic friends",
+     "toxic",
+     "mr",
+     "materia raiding",
+     "latte",
+     "oce toolbox"
+    ],
+    "de": [
+     "toxic friends",
+     "toxic",
+     "mr",
+     "materia raiding",
+     "latte",
+     "oce toolbox"
+    ],
+    "ja": []
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "前半"
+   },
+   "mechanics": [
+    {
+     "id": "deep-cut",
+     "names": {
+      "en": "Deep Cut",
+      "fr": "Entaille profonde",
+      "de": "Tiefschnitt",
+      "ja": "ディープカット"
+     },
+     "aliases": {
+      "en": [
+       "tankbuster",
+       "cleave buster"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Cone tankbuster on both tanks with a bleed; the off-tank needs stance on at pull to be second in enmity, and the cones must not overlap.",
+      "fr": "Tankbuster en cône sur les deux tanks avec saignement ; l'OT met sa posture au pull pour être deuxième, et les cônes ne doivent pas se croiser.",
+      "de": "Kegel-Tankbuster auf beide Tanks mit Blutung; der OT braucht Haltung beim Pull für Platz 2, und die Kegel dürfen sich nicht überlappen.",
+      "ja": "タンク2人への扇強攻撃（出血付き）。STは開幕スタンスでヘイト2位、扇を重ねない。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "cleave",
+      "debuff"
+     ]
+    },
+    {
+     "id": "snap-twist-ab-side",
+     "names": {
+      "en": "X-snap Twist & Drop the Needle / Flip to A-side / B-side",
+      "fr": "Pointé, pose & NUIT DE FOLIE ! / Programmation face A / B",
+      "de": "X-fachzeig, Pose, Musik ab! / A-Seite / B-Seite auflegen",
+      "ja": "Xポイント、ポーズ＆ジングル / ジングル予約A / B"
+     },
+     "aliases": {
+      "en": [
+       "snap",
+       "a side",
+       "b side",
+       "jingle"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ジングル",
+       "ポイント"
+      ]
+     },
+     "how": {
+      "en": "Flip to A or B stores the next Drop the Needle: A = cones on one tank, one healer, one DPS (split by role), B = line stacks on both healers (light parties). Snap Twist then does 2-4 half-room cleaves on the side the boss points to, then one on the other side, and the stored spread/stack goes off.",
+      "fr": "Programmation A ou B stocke la prochaine NUIT DE FOLIE : A = cônes sur un tank, un heal, un DPS (split par rôle), B = packages en ligne sur les deux heals (light parties). Pointé fait 2 à 4 demi-salles du côté pointé, puis une de l'autre côté, et l'attaque stockée part.",
+      "de": "A- oder B-Seite speichert das nächste Musik ab!: A = Kegel auf einen Tank, einen Heiler, einen DPS (nach Rolle), B = Linien-Sammeln auf beide Heiler (Leichtgruppen). Danach 2-4 Halbraum-Angriffe auf der gezeigten Seite, dann einer auf der anderen, und das Gespeicherte löst aus.",
+      "ja": "ジングル予約Aは次のジングルがタンク・ヒーラー・DPS各1への扇（ロール別）、Bはヒーラー2人への直線頭割り（4:4）。ポイントで手を上げた側の半面を回数分、その後反対側の半面、最後に記憶した技。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "A-side: tanks north, healers on the flank, DPS south after the cleave. B-side: light party 1 north, light party 2 south.",
+        "fr": "Face A : tanks au nord, heals sur le flanc, DPS au sud après la demi-salle. Face B : LP1 au nord, LP2 au sud.",
+        "de": "A-Seite: Tanks Norden, Heiler an der Flanke, DPS Süden nach dem Halbraum-Angriff. B-Seite: LG1 Norden, LG2 Süden.",
+        "ja": "Aはタンク北・ヒーラー横・DPS南、BはLP1北・LP2南。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Whether A or B comes, everyone goes to the same fixed spread spot from the macro (jingle fixed method).",
+        "fr": "Que ce soit A ou B, tout le monde va au même spot fixe de la macro (méthode fixe).",
+        "de": "Egal ob A oder B, jeder geht auf denselben festen Platz laut Makro (feste Methode).",
+        "ja": "AでもBでも記事の固定図の位置に散開（ジングル固定法）。"
+       }
+      },
+      {
+       "strat": "oce-toxic",
+       "how": {
+        "en": "Fixed A/B: the same spots whether A or B comes. Relative to the boss, H1 and the tanks stand on the north side (H1 left, tanks right), DPS and H2 on the south side (DPS left, H2 right).",
+        "fr": "A/B fixe : mêmes places que ce soit A ou B. Par rapport au boss, H1 et les tanks au nord (H1 à gauche, tanks à droite), les DPS et H2 au sud (DPS à gauche, H2 à droite).",
+        "de": "Festes A/B: gleiche Plätze, egal ob A oder B kommt. Vom Boss aus stehen H1 und die Tanks im Norden (H1 links, Tanks rechts), DPS und H2 im Süden (DPS links, H2 rechts).",
+        "ja": "A/B固定：A・Bどちらでも同じ位置。ボス基準で北側にH1とタンク（H1左・タンク右）、南側にDPSとH2（DPS左・H2右）。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only one source for these OCE positions (Materia Raiding macro); the toolbox raidplan could not be read and no second source was found. Check your PF macro.",
+        "fr": "Une seule source pour ces positions OCE (macro Materia Raiding) ; le raidplan n'a pas pu être lu et aucune deuxième source trouvée. Vérifie la macro de ta PF.",
+        "de": "Nur eine Quelle für diese OCE-Positionen (Materia Raiding-Makro); der Raidplan war nicht lesbar und keine zweite Quelle gefunden. Prüf das Makro deiner PF.",
+        "ja": "このOCEの位置は1つのソースのみ（Materia Raidingのマクロ）。レイドプランは読めず、2つ目のソースも見つからない。PFのマクロで確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "celebrate-good-times",
+     "names": {
+      "en": "Celebrate Good Times",
+      "fr": "Lève les bras, balance-toi !",
+      "de": "Völlig losgelöst",
+      "ja": "セレブレート・グッドタイムズ"
+     },
+     "aliases": {
+      "en": [
+       "raidwide"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Heavy magic raidwide; shields and magic mitigation.",
+      "fr": "Gros dégâts de zone magiques ; boucliers et mitigation magique.",
+      "de": "Starker magischer Raidwide; Schilde und Magie-Mitigation.",
+      "ja": "強めの魔法全体攻撃。バリアと魔法軽減。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "disco-infernal-1",
+     "names": {
+      "en": "Disco Infernal 1 / Funky Floor / Inside Out",
+      "fr": "Enfer du disco 1 / Terrain de danse / Pas extérieur",
+      "de": "Disco Pogo 1 / Tanzflächen-Tango / Innerer Rhythmus",
+      "ja": "ディスコインファーナル1回目 / ダンシングフィールド / インサイドアウト"
+     },
+     "aliases": {
+      "en": [
+       "spotlights",
+       "disco 1"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "スポットライト"
+      ]
+     },
+     "how": {
+      "en": "One role gets a short (about 23 s) and the other a long (about 31 s) burn debuff; when it ends you must stand alone in a spotlight. Meanwhile checkerboard tiles explode alternately (keep moving) and Inside Out / Outside In adds an in-out. Find the spotlight on a bad tile on your side: the safe spotlights are in that quadrant.",
+      "fr": "Un rôle a une brûlure courte (environ 23 s), l'autre longue (environ 31 s) ; à la fin tu dois être seul dans un projecteur. En même temps les dalles en damier explosent en alternance (bouge) et Pas extérieur/intérieur ajoute un in-out. Repère le projecteur sur une mauvaise dalle de ton côté : les projecteurs sûrs sont dans ce quart.",
+      "de": "Eine Rolle bekommt einen kurzen (ca. 23 s), die andere einen langen (ca. 31 s) Brand-Debuff; am Ende musst du allein in einem Scheinwerfer stehen. Gleichzeitig explodieren Schachbrett-Felder abwechselnd (bleib in Bewegung) und Innerer/Äußerer Rhythmus bringt ein Rein-Raus. Such den Scheinwerfer auf einem schlechten Feld deiner Seite: die sicheren sind in diesem Viertel.",
+      "ja": "デバフ早い（23秒）と遅い（31秒）。切れる前にスポットライトへ（1つに1人）。市松模様の床が交互に爆発し、イン/アウトも重なる。自分側で赤マス上のライトを見つけ、その区画の安全なライトで処理。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "Light party 1 west, light party 2 east; each set has four safe spotlights: one per side in melee range and one at range on the marker.",
+        "fr": "LP1 à l'ouest, LP2 à l'est ; chaque série a quatre projecteurs sûrs : un par côté au contact et un à distance sur le marqueur.",
+        "de": "LG1 Westen, LG2 Osten; jeder Satz hat vier sichere Scheinwerfer: pro Seite einer in Nahkampfreichweite und einer auf Distanz am Marker.",
+        "ja": "LP1が西、LP2が東。安全なライトは各側に近接位置1つとマーカー上の遠隔位置1つ。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "same_as": "hector"
+      },
+      {
+       "strat": "oce-toxic",
+       "how": {
+        "en": "Group 1 takes the west half and group 2 the east half (same split as Hector).",
+        "fr": "Le groupe 1 prend la moitié ouest, le groupe 2 la moitié est (même partage que Hector).",
+        "de": "Gruppe 1 nimmt die Westhälfte, Gruppe 2 die Osthälfte (gleiche Aufteilung wie Hector).",
+        "ja": "G1が西半分、G2が東半分（Hectorと同じ分け方）。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "The OCE macro says group 1 west / group 2 east, but a site describing the Toxic raidplan splits melee diagonally by long/short debuff instead. Confirm with your PF.",
+        "fr": "La macro OCE dit groupe 1 ouest / groupe 2 est, mais une description du raidplan Toxic sépare les mêlées en diagonale selon debuff long/court. Vérifie avec ta PF.",
+        "de": "Das OCE-Makro sagt Gruppe 1 West / Gruppe 2 Ost, eine Beschreibung des Toxic-Raidplans teilt die Nahkämpfer aber diagonal nach langem/kurzem Debuff. Mit der PF abklären.",
+        "ja": "OCEマクロはG1西・G2東だが、Toxicレイドプランの解説では近接を長短デバフで斜めに分ける。PFで確認。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "The JP east/west split was not stated explicitly by game8.",
+      "fr": "Le split est/ouest JP n'est pas indiqué explicitement par game8.",
+      "de": "Die JP-Ost/West-Aufteilung wurde von game8 nicht ausdrücklich genannt.",
+      "ja": "JPの東西分担はgame8に明記なし。"
+     },
+     "tags": [
+      "debuff",
+      "dodge",
+      "spread"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2",
+    "fr": "Phase 2",
+    "de": "Phase 2",
+    "ja": "中盤"
+   },
+   "mechanics": [
+    {
+     "id": "arcady-night-fever",
+     "names": {
+      "en": "Ensemble Assemble / Arcady Night Fever",
+      "fr": "Rassemblement des danseurs / Fièvre de l'Arcadion",
+      "de": "Gruppen-Groove / Arkadion-Tanzfieber",
+      "ja": "ダンサーズ・アッセンブル / アルカディア・ナイトフィーバー"
+     },
+     "aliases": {
+      "en": [
+       "night fever",
+       "cones in out"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ナイトフィーバー"
+      ]
+     },
+     "how": {
+      "en": "Eight players are hit one after another by cones alternating with point-blank and donut AoEs (start out), and each cone repeats once where it hit. Players spread eight ways and avoid the cone afterimages.",
+      "fr": "Huit joueurs prennent des cônes l'un après l'autre, en alternance avec cercle et donut (commence dehors), et chaque cône se répète une fois au même endroit. On s'écarte en huit et on évite les traces des cônes.",
+      "de": "Acht Spieler werden nacheinander von Kegeln getroffen, abwechselnd mit Kreis und Donut (starte außen), und jeder Kegel wiederholt sich einmal an derselben Stelle. Achtfach verteilen und den Kegel-Spuren ausweichen.",
+      "ja": "8人に順番に扇、円とドーナツが交互（外から）。扇は同じ場所で1回再発動。8方向に散開して跡地を避ける。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "Keep north and south clear, or the hit player steps into a same-role player for the repeat and steps back.",
+        "fr": "Laisse nord et sud libres, ou le joueur touché va sur un joueur du même rôle pour la répétition puis revient.",
+        "de": "Halte Nord und Süd frei, oder der getroffene Spieler tritt für die Wiederholung zu einem Spieler gleicher Rolle und zurück.",
+        "ja": "南北を空ける、または被弾者が同ロールの人に寄って再発動を受け、戻る。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "TH spread eight ways on the north, DPS on the south.",
+        "fr": "TH en huit au nord, DPS au sud.",
+        "de": "TH achtfach im Norden, DPS im Süden.",
+        "ja": "THは北、DPSは南に8方向散開。"
+       }
+      },
+      {
+       "strat": "oce-toxic",
+       "how": {
+        "en": "Two rows: supports on the north row (west to east H1, MT, ST, H2), DPS on the south row (D3, D1, D2, D4).",
+        "fr": "Deux rangées : supports au nord (d'ouest en est H1, MT, ST, H2), DPS au sud (D3, D1, D2, D4).",
+        "de": "Zwei Reihen: Supporter in der Nordreihe (von West nach Ost H1, MT, ST, H2), DPS in der Südreihe (D3, D1, D2, D4).",
+        "ja": "2列：北列にサポ（西からH1・MT・ST・H2）、南列にDPS（D3・D1・D2・D4）。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "From the OCE macro only. A Toxic raidplan description puts supports west and DPS east instead, so OCE may differ from plain Toxic here.",
+        "fr": "Seulement d'après la macro OCE. Une description du raidplan Toxic met les supports à l'ouest et les DPS à l'est, donc l'OCE peut différer ici.",
+        "de": "Nur aus dem OCE-Makro. Eine Toxic-Raidplan-Beschreibung stellt Supporter West und DPS Ost, OCE kann hier also abweichen.",
+        "ja": "OCEマクロのみ。Toxicレイドプラン解説ではサポ西・DPS東なので、OCEはここで違う可能性あり。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "dodge",
+      "spread"
+     ]
+    },
+    {
+     "id": "lets-dance-bombs",
+     "names": {
+      "en": "Let's Dance! + Wavelength α/β (Freak Out)",
+      "fr": "Alors on danse ! + longueurs d'onde α/β (Déflagration acoustique)",
+      "de": "Fühl' dich Disco! + Wellenlänge α/β (Schallexplosion)",
+      "ja": "レッツダンス！＋α/β音響爆弾（音響爆発）"
+     },
+     "aliases": {
+      "en": [
+       "bombs",
+       "alpha beta",
+       "lets dance"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "音響爆弾",
+       "レッツダンス"
+      ]
+     },
+     "how": {
+      "en": "The boss tethers frogs in order; each points east or west and the boss cleaves that half. At the same time α and β bombs with different timers must be paired: when yours expires, stack with the opposite letter of the same timer.",
+      "fr": "Le boss lie les grenouilles dans l'ordre ; chacune pointe est ou ouest et le boss frappe cette moitié. En même temps les bombes α et β à minuteurs différents doivent être associées : quand la tienne finit, rejoins la lettre opposée au même minuteur.",
+      "de": "Der Boss verbindet Frösche nacheinander; jeder zeigt nach Osten oder Westen und der Boss trifft diese Hälfte. Gleichzeitig müssen α- und β-Bomben mit verschiedenen Timern gepaart werden: wenn deine abläuft, steh beim anderen Buchstaben mit gleichem Timer.",
+      "ja": "カエルに順に線、カエルが示す東西の半面をボスが攻撃。同時にα/β爆弾を、同じ秒数の逆の文字とペアで頭割り。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "Line up by duration: 1 and 8 longest, 2 and 7, 3 and 6, 4 and 5 shortest, and dodge the cleaves together.",
+        "fr": "Alignez-vous par durée : 1 et 8 les plus longues, 2 et 7, 3 et 6, 4 et 5 les plus courtes, et esquivez ensemble.",
+        "de": "Nach Dauer aufstellen: 1 und 8 am längsten, 2 und 7, 3 und 6, 4 und 5 am kürzesten, und gemeinsam ausweichen.",
+        "ja": "時間順に並ぶ：1と8が最長、2と7、3と6、4と5が最短。一緒に半面を避ける。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Line up from the north in order of shortest timer, pairs of the same time stack.",
+        "fr": "Alignez-vous depuis le nord par minuteur le plus court, les paires du même temps se packent.",
+        "de": "Vom Norden nach kürzestem Timer aufstellen, Paare mit gleicher Zeit sammeln.",
+        "ja": "秒数が少ない順に北から整列し、同秒数のペアで頭割り。"
+       }
+      },
+      {
+       "strat": "oce-toxic",
+       "same_as": "hector"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "debuff",
+      "dodge"
+     ]
+    },
+    {
+     "id": "lets-pose",
+     "names": {
+      "en": "Let's Pose!",
+      "fr": "Prends la pose !",
+      "de": "Perfekte Pose",
+      "ja": "レッツポーズ！"
+     },
+     "aliases": {
+      "en": [
+       "groove",
+       "perfect groove"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Magic raidwide; everyone who was not hit by a mechanic gets Perfect Groove, and if all succeed you gain a bar of limit break.",
+      "fr": "Dégâts de zone magiques ; ceux qui n'ont pris aucune mécanique gagnent le groove parfait, et si tout le monde réussit on gagne une barre de LB.",
+      "de": "Magischer Raidwide; wer von keiner Mechanik getroffen wurde, bekommt Perfekten Groove, und wenn alle es schaffen, gibt es einen Balken Limitrausch.",
+      "ja": "魔法全体攻撃。ギミックに当たっていない人にバフ、全員成功でLBが1ゲージ増える。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "ride-the-waves",
+     "names": {
+      "en": "Ride the Waves + Quarter / Eighth Beats",
+      "fr": "Roulement de vagues + Tempo quadruple / octuple",
+      "de": "Perfekte Welle + Viertel- / Achteltakt",
+      "ja": "ウェーブ・オン・ウェーブ＋4/8ビート"
+     },
+     "aliases": {
+      "en": [
+       "waves",
+       "lanes",
+       "beats"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ウェーブ",
+       "ビート"
+      ]
+     },
+     "how": {
+      "en": "Glowing panels slide down from the north leaving two safe lanes that shift. Eighth Beats is a spread on everyone, Quarter Beats a stack on four players of one role (pairs), and the opposite beat follows right after.",
+      "fr": "Des panneaux lumineux descendent du nord en laissant deux couloirs sûrs qui changent. Tempo octuple = dispersion sur tout le monde, Tempo quadruple = packages sur quatre joueurs d'un rôle (paires), et l'autre tempo suit juste après.",
+      "de": "Leuchtende Felder gleiten von Norden herab und lassen zwei sichere Bahnen, die wechseln. Achteltakt = alle verteilen, Vierteltakt = Sammeln auf vier Spieler einer Rolle (Paare), und der andere Takt folgt direkt.",
+      "ja": "北から光る床が流れ、2本の安全レーンが移動。8ビートは全員散開、4ビートは片ロール4人とペア頭割り、すぐ逆のビートも来る。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "Colour partners pair up; the main tank moves the boss quickly between the two safe lanes so melee keep uptime.",
+        "fr": "Les partenaires de couleur se mettent ensemble ; le MT déplace vite le boss entre les deux couloirs pour garder l'uptime.",
+        "de": "Farbpartner bleiben zusammen; der MT zieht den Boss schnell zwischen die zwei sicheren Bahnen für Uptime.",
+        "ja": "色ペアで組み、MTが2本の安全レーンの間にボスを素早く寄せる。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "MT group uses the west safe lane, ST group the east; the MT doesn't drag the boss too far to its own side so the other melee can still hit.",
+        "fr": "Groupe MT dans le couloir ouest, groupe ST à l'est ; le MT ne tire pas trop le boss de son côté pour que les autres mêlées tapent.",
+        "de": "MT-Gruppe nutzt die westliche Bahn, ST-Gruppe die östliche; der MT zieht den Boss nicht zu weit auf seine Seite.",
+        "ja": "MT組は西、ST組は東の安地。MTは自分側に寄せすぎず反対側の近接も殴れるように。"
+       }
+      },
+      {
+       "strat": "oce-toxic",
+       "how": {
+        "en": "Two columns: tanks and melee on the inside column (MT, D1, D2, ST from north to south), healers and ranged on the outside column (H1, D3, D4, H2). Quarter Beats partners are the players side by side: MT+H1, D1+D3, D2+D4, ST+H2.",
+        "fr": "Deux colonnes : tanks et mêlées à l'intérieur (MT, D1, D2, ST du nord au sud), heals et distance à l'extérieur (H1, D3, D4, H2). Les partenaires de Quarter Beats sont côte à côte : MT+H1, D1+D3, D2+D4, ST+H2.",
+        "de": "Zwei Spalten: Tanks und Nahkampf innen (MT, D1, D2, ST von Nord nach Süd), Heiler und Fernkampf außen (H1, D3, D4, H2). Quarter-Beats-Partner stehen nebeneinander: MT+H1, D1+D3, D2+D4, ST+H2.",
+        "ja": "2列：内側にタンク近接（北からMT・D1・D2・ST）、外側にヒラ遠隔（H1・D3・D4・H2）。クォーターの相方は横並び：MT+H1、D1+D3、D2+D4、ST+H2。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only one source for these OCE positions (Materia Raiding macro); the toolbox raidplan could not be read and no second source was found. Check your PF macro.",
+        "fr": "Une seule source pour ces positions OCE (macro Materia Raiding) ; le raidplan n'a pas pu être lu et aucune deuxième source trouvée. Vérifie la macro de ta PF.",
+        "de": "Nur eine Quelle für diese OCE-Positionen (Materia Raiding-Makro); der Raidplan war nicht lesbar und keine zweite Quelle gefunden. Prüf das Makro deiner PF.",
+        "ja": "このOCEの位置は1つのソースのみ（Materia Raidingのマクロ）。レイドプランは読めず、2つ目のソースも見つからない。PFのマクロで確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "frogtourage",
+     "names": {
+      "en": "Frogtourage + Beats",
+      "fr": "Danceur batracien + Tempo",
+      "de": "Schenkelschwinger + Takt",
+      "ja": "カモン！フロッグダンサー＋4/8ビート"
+     },
+     "aliases": {
+      "en": [
+       "frogs",
+       "frog lines"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "カエル"
+      ]
+     },
+     "how": {
+      "en": "Frogs on opposite cardinals dance down the arena leaving lines that explode. If the two frogs move away from each other, that cardinal pair is safe; if they move toward each other, the other pair is safe. Then do the Quarter or Eighth Beats.",
+      "fr": "Des grenouilles aux cardinaux opposés dansent à travers l'arène en laissant des lignes qui explosent. Si elles s'éloignent l'une de l'autre, cette paire de cardinaux est sûre ; si elles se rapprochent, c'est l'autre paire. Puis fais le Tempo.",
+      "de": "Frösche auf gegenüberliegenden Himmelsrichtungen tanzen durch die Arena und hinterlassen explodierende Linien. Bewegen sie sich voneinander weg, ist dieses Richtungspaar sicher; aufeinander zu, das andere. Dann den Takt lösen.",
+      "ja": "カエルが踊って線を残し爆発。中央を囲う形なら南北、外周を囲う形なら東西が安地（離れるならその方角、近づくなら逆）。その後ビート。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "LP1 north or east, LP2 south or west. Stack: tank and melee near the boss, ranged and healers at the wall. Spread: supports left, DPS right, in the corner facing the boss.",
+        "fr": "LP1 nord ou est, LP2 sud ou ouest. Package : tank et mêlée près du boss, distances et heals au mur. Dispersion : supports à gauche, DPS à droite, dans le coin face au boss.",
+        "de": "LG1 Nord oder Ost, LG2 Süd oder West. Sammeln: Tank und Nahkampf am Boss, Fernkampf und Heiler an der Wand. Verteilen: Supporter links, DPS rechts, in der Ecke mit Blick zum Boss.",
+        "ja": "LP1が北か東、LP2が南か西。頭割りはタンクと近接がボス寄り、遠隔とヒーラーが壁際。散開はボスを向いてサポート左・DPS右。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "MT group north/west, ST group south/east.",
+        "fr": "Groupe MT nord/ouest, groupe ST sud/est.",
+        "de": "MT-Gruppe Nord/West, ST-Gruppe Süd/Ost.",
+        "ja": "MT組は北/西、ST組は南/東。"
+       }
+      },
+      {
+       "strat": "oce-toxic",
+       "how": {
+        "en": "Left group MT, D1, D3, H1 and right group ST, D2, D4, H2. For the stack beat, pairs are MT+D3, ST+D4, H1+D1, H2+D2.",
+        "fr": "Groupe gauche MT, D1, D3, H1 et groupe droit ST, D2, D4, H2. Pour le beat en package, paires MT+D3, ST+D4, H1+D1, H2+D2.",
+        "de": "Linke Gruppe MT, D1, D3, H1 und rechte Gruppe ST, D2, D4, H2. Beim Sammel-Beat Paare MT+D3, ST+D4, H1+D1, H2+D2.",
+        "ja": "左グループMT・D1・D3・H1、右グループST・D2・D4・H2。頭割りのペアはMT+D3、ST+D4、H1+D1、H2+D2。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only one source for these OCE positions (Materia Raiding macro); the toolbox raidplan could not be read and no second source was found. Check your PF macro.",
+        "fr": "Une seule source pour ces positions OCE (macro Materia Raiding) ; le raidplan n'a pas pu être lu et aucune deuxième source trouvée. Vérifie la macro de ta PF.",
+        "de": "Nur eine Quelle für diese OCE-Positionen (Materia Raiding-Makro); der Raidplan war nicht lesbar und keine zweite Quelle gefunden. Prüf das Makro deiner PF.",
+        "ja": "このOCEの位置は1つのソースのみ（Materia Raidingのマクロ）。レイドプランは読めず、2つ目のソースも見つからない。PFのマクロで確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "disco-infernal-2",
+     "names": {
+      "en": "Disco Infernal 2 (frog baits)",
+      "fr": "Enfer du disco 2 (baits des grenouilles)",
+      "de": "Disco Pogo 2 (Frosch-Köder)",
+      "ja": "ディスコインファーナル2回目（カエル誘導）"
+     },
+     "aliases": {
+      "en": [
+       "disco 2",
+       "spotlight frogs"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Short (about 9 s) and long (about 19 s) burns again. Four frogs in the middle cone the nearest player; the short role stands in the moving spotlights while the other role baits frog cones away from them, then they swap.",
+      "fr": "Brûlures courtes (environ 9 s) et longues (environ 19 s). Quatre grenouilles au centre font un cône sur le plus proche ; le rôle court se met dans les projecteurs mobiles pendant que l'autre bait les cônes loin d'eux, puis on échange.",
+      "de": "Wieder kurze (ca. 9 s) und lange (ca. 19 s) Brände. Vier Frösche in der Mitte kegeln den nächsten Spieler; die kurze Rolle steht in den wandernden Scheinwerfern, die andere ködert die Kegel weg, dann tauschen.",
+      "ja": "短い（9秒）と長い（19秒）デバフ。中央のカエル4匹が最寄りに扇。短い人はスポットライトへ、長い人はライトから外れた位置へ扇を誘導し、次は交代。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "Find the frog and spotlight matching your colour and resolve there.",
+        "fr": "Trouve la grenouille et le projecteur de ta couleur et résous là.",
+        "de": "Such Frosch und Scheinwerfer in deiner Farbe und löse dort.",
+        "ja": "自分の色のカエルとライトで処理。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "same_as": "hector"
+      },
+      {
+       "strat": "oce-toxic",
+       "how": {
+        "en": "D3 northwest and D4 northeast, tanks in the middle-north, melee in the middle-south, H1 southwest and H2 southeast.",
+        "fr": "D3 au nord-ouest et D4 au nord-est, tanks au centre-nord, mêlées au centre-sud, H1 au sud-ouest et H2 au sud-est.",
+        "de": "D3 Nordwest und D4 Nordost, Tanks Mitte-Nord, Nahkampf Mitte-Süd, H1 Südwest und H2 Südost.",
+        "ja": "D3北西・D4北東、タンクは中央北、近接は中央南、H1南西・H2南東。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only one source for these OCE positions (Materia Raiding macro); the toolbox raidplan could not be read and no second source was found. Check your PF macro.",
+        "fr": "Une seule source pour ces positions OCE (macro Materia Raiding) ; le raidplan n'a pas pu être lu et aucune deuxième source trouvée. Vérifie la macro de ta PF.",
+        "de": "Nur eine Quelle für diese OCE-Positionen (Materia Raiding-Makro); der Raidplan war nicht lesbar und keine zweite Quelle gefunden. Prüf das Makro deiner PF.",
+        "ja": "このOCEの位置は1つのソースのみ（Materia Raidingのマクロ）。レイドプランは読めず、2つ目のソースも見つからない。PFのマクロで確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "cleave",
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Phase 3",
+    "fr": "Phase 3",
+    "de": "Phase 3",
+    "ja": "後半"
+   },
+   "mechanics": [
+    {
+     "id": "night-encore-remix",
+     "names": {
+      "en": "Arcady Night Encore / Let's Dance! Remix",
+      "fr": "Fièvre de l'Arcadion : rappel / Alors on danse, danse, danse !",
+      "de": "Tanzfieber-Zugabe / Fühl' dich Disco, Disco, Disco!",
+      "ja": "ナイトフィーバー・アンコール / レッツダンス・ダンス・ダンス！"
+     },
+     "aliases": {
+      "en": [
+       "encore",
+       "remix"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Night Fever again without bombs; then Let's Dance Remix where frogs can point to any cardinal and hits come faster, so stay near the boss's center and make small moves.",
+      "fr": "Fièvre à nouveau sans bombes ; puis la version remix où les grenouilles pointent vers n'importe quel cardinal et c'est plus rapide, donc reste près du centre du boss et bouge peu.",
+      "de": "Tanzfieber ohne Bomben; dann der Remix, bei dem Frösche in jede Richtung zeigen können und es schneller geht, also bleib nah an der Boss-Mitte und mach kleine Schritte.",
+      "ja": "爆弾なしのナイトフィーバー。続くレッツダンス×3はカエルが全方向を示し発動が早いので、ボス中心近くで小さく動く。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "frogtourage-2-hustle",
+     "names": {
+      "en": "Frogtourage 2 / Do the Hustle",
+      "fr": "Danceur batracien 2 / Danse le Mia !",
+      "de": "Schenkelschwinger 2 / Schüttel deinen Speck",
+      "ja": "フロッグダンサー2回目 / ドゥ・ザ・ハッスル"
+     },
+     "aliases": {
+      "en": [
+       "hustle",
+       "frogs 2"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Frogs do half-room cleaves in sets with one cardinal safe, plus frogs that make an inner or outer AoE and need cone baits; at the end the boss and two frogs all do Do the Hustle together.",
+      "fr": "Les grenouilles font des demi-salles par séries avec un cardinal sûr, plus des grenouilles qui font une AoE intérieure ou extérieure et des cônes à baiter ; à la fin le boss et deux grenouilles font Danse le Mia ensemble.",
+      "de": "Frösche machen Halbraum-Angriffe in Sätzen mit einer sicheren Richtung, dazu Frösche mit innerem oder äußerem AoE und Kegel-Ködern; am Ende machen Boss und zwei Frösche gemeinsam Schüttel deinen Speck.",
+      "ja": "カエルの半面が数セット（方角1つが安地）、内か外のAoEと扇誘導。最後はボスとカエル2匹が同時にドゥ・ザ・ハッスル。"
+     },
+     "strats": [
+      {
+       "strat": "hector",
+       "how": {
+        "en": "Inside safe: supports bait the cones outward, DPS stay at max melee away from frogs. Outside safe: the baiting role hugs the adds, the other role stands on the middle line.",
+        "fr": "Intérieur sûr : les supports baitent vers l'extérieur, DPS au max mêlée loin des grenouilles. Extérieur sûr : le rôle qui bait colle aux adds, l'autre reste sur la ligne médiane.",
+        "de": "Innen sicher: Supporter ködern nach außen, DPS auf Max-Nahkampf weg von Fröschen. Außen sicher: die Köder-Rolle klebt an den Adds, die andere steht auf der Mittellinie.",
+        "ja": "内側安全：サポートが外向きに誘導、DPSは最大近接でカエルから離れる。外側安全：誘導役はカエルに密着、もう一方は中央線上。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Read frogs and cleaves by their effects; TH bait the cones first, then DPS.",
+        "fr": "Lis grenouilles et demi-salles à leurs effets ; TH baitent d'abord, puis DPS.",
+        "de": "Frösche und Halbraum-Angriffe an den Effekten lesen; TH ködern zuerst, dann DPS.",
+        "ja": "エフェクトで判断して避ける。扇誘導はTH先、その後DPS。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "funky-floor-2",
+     "names": {
+      "en": "Funky Floor 2 + Beats + Inside Out / Outside In",
+      "fr": "Terrain de danse 2 + Tempo + Pas extérieur / intérieur",
+      "de": "Tanzflächen-Tango 2 + Takt + Innerer / Äußerer Rhythmus",
+      "ja": "ダンシングフィールド2回目＋4/8ビート＋インサイドアウト/アウトサイドイン"
+     },
+     "aliases": {
+      "en": [
+       "floor 2"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Dodge the checkerboard tiles near your partner while resolving the beats, then the in-out, then the opposite beat on a safe tile. Deep Cut hits both tanks again right before it.",
+      "fr": "Esquive les dalles en damier près de ton partenaire en faisant le Tempo, puis le in-out, puis l'autre Tempo sur une dalle sûre. Entaille profonde frappe encore les deux tanks juste avant.",
+      "de": "Weich den Schachbrett-Feldern nahe deinem Partner aus, während du den Takt löst, dann Rein-Raus, dann den anderen Takt auf einem sicheren Feld. Direkt davor trifft Tiefschnitt wieder beide Tanks.",
+      "ja": "赤床を避けつつペアの近くでビート、続いてイン/アウト、最後に逆のビート。直前にもう一度ディープカットがタンク2人に来る。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack",
+      "spread",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Frogtourage Finale / Hi-NRG Fever (enrage)",
+      "fr": "Rassemblement final / Fièvre de la nuit survoltée (enrage)",
+      "de": "Finaler Groove / Totales Tanzfieber (Finalangriff)",
+      "ja": "ファイナル・アッセンブル / ハイエナジー・ナイトフィーバー（時間切れ）"
+     },
+     "aliases": {
+      "en": [
+       "enrage"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Two more Celebrate Good Times, then the enrage cast; burn everything.",
+      "fr": "Encore deux Lève les bras, puis l'enrage ; balance tout.",
+      "de": "Noch zweimal Völlig losgelöst, dann der Finalangriff; alles reinhauen.",
+      "ja": "セレブレート2回の後に時間切れ詠唱。リソースを使い切って倒す。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "ConsoleGamesWiki - AAC Cruiserweight M1 (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/AAC_Cruiserweight_M1_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins - M5S guide",
+   "url": "https://www.icy-veins.com/ffxiv/aac-cruiserweight-m1-savage-raid-guide",
+   "lang": "en"
+  },
+  {
+   "title": "NAUR FFXIV - M5S",
+   "url": "https://naurffxiv.com/savage/m5s",
+   "lang": "en"
+  },
+  {
+   "title": "WTFDIG - M5S strat selector",
+   "url": "https://wtfdig.info/72/m5s",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - クルーザー級1層",
+   "url": "https://game8.jp/ff14/680424",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot r5s timeline translations",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/raid/r5s.ts",
+   "lang": "en"
+  },
+  {
+   "title": "Materia Raiding (OCE) - M5S",
+   "url": "https://materiaraiding.pages.dev/savage/m5s",
+   "lang": "en"
+  },
+  {
+   "title": "ffraid-tips - M5S strat comparison",
+   "url": "https://ffraid-tips.pages.dev/m5s",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

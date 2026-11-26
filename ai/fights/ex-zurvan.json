@@ -1,0 +1,551 @@
+{
+ "id": "ex-zurvan",
+ "type": "extreme",
+ "expansion": "HW",
+ "patch": "3.5",
+ "names": {
+  "en": "Containment Bay Z1T9 (Extreme)",
+  "fr": "Unité de contention Z1P9 (extrême)",
+  "de": "Zenit der Götter - Zurvan",
+  "ja": "極鬼神ズルワーン討滅戦"
+ },
+ "aliases": {
+  "en": [
+   "ex-zurvan",
+   "zurvan ex",
+   "zurvan extreme",
+   "z1t9 extreme",
+   "containment bay z1t9"
+  ],
+  "fr": [
+   "zurvan extrême",
+   "unité de contention z1p9"
+  ],
+  "de": [
+   "zurvan extrem",
+   "zenit der götter zurvan"
+  ],
+  "ja": [
+   "極ズルワーン",
+   "極鬼神ズルワーン",
+   "ズルワーン極"
+  ]
+ },
+ "summary": {
+  "en": "Zurvan the Demon. A caged opener while the floor collapses, phase 1 with Soar/Twin Spirit and Demon's Claw, phase 2 with the ice patch and Southern Cross, an add phase before Ahura Mazda, and the final phase with fire/ice tethers, Tyrfing and Broken Seal towers. Enrage after the fifth Broken Seal.",
+  "fr": "Zurvan le Démon. Une ouverture enchaînée pendant que le sol s'effondre, phase 1 avec Soar/Twin Spirit et Demon's Claw, phase 2 avec la glace et Southern Cross, une phase d'adds avant Ahura Mazda, puis la phase finale avec liens feu/glace, Tyrfing et tours Broken Seal. Enrage après le 5e Broken Seal.",
+  "de": "Zurvan der Dämon. Ein gefesselter Einstieg, während der Boden einbricht, Phase 1 mit Soar/Twin Spirit und Demon's Claw, Phase 2 mit Eisfläche und Southern Cross, eine Add-Phase vor Ahura Mazda und die Schlussphase mit Feuer/Eis-Verbindungen, Tyrfing und Broken-Seal-Türmen. Enrage nach dem fünften Broken Seal.",
+  "ja": "鬼神ズルワーン戦。床が崩れる拘束状態から始まり、飛翔・ツインスピリット・デモンクロー、氷床とサザンクロス、雑魚とアフラ・マズダー、最後に刻印の線・ティルフィング・氷炎の紋（塔）。5回目の氷炎の紋の後に時間切れ。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "This fight is mostly cleared unsynced or at minimum item level today, so strats rarely matter. The entries below explain how each mechanic works. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Aujourd'hui ce combat se fait surtout en mode sans restriction ou en ilvl minimum, donc la strat compte rarement. Les entrées ci-dessous expliquent comment marche chaque mécanique. Les noms des mécaniques sont en anglais (noms FR officiels non vérifiés).",
+  "de": "Heute wird dieser Kampf meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel gemacht, die Strat spielt also selten eine Rolle. Die Einträge unten erklären, wie jede Mechanik funktioniert. Die Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "現在このコンテンツは主に制限解除やIL最低限で攻略されるため、攻略法の違いはほとんど問題になりません。以下では各ギミックの仕組みを説明します。英語名のままのギミック名は日本語の公式名を確認できなかったものです。"
+ },
+ "phases": [
+  {
+   "id": "p0",
+   "names": {
+    "en": "Caged opener",
+    "fr": "Ouverture enchaînée",
+    "de": "Gefesselter Einstieg",
+    "ja": "拘束フェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "metal-cutter",
+     "names": {
+      "en": "Metal Cutter",
+      "fr": "Métaillade",
+      "de": "Metallschneider",
+      "ja": "メタルカッター"
+     },
+     "aliases": {
+      "en": [
+       "metal cutter"
+      ],
+      "fr": [
+       "metal cutter"
+      ],
+      "de": [
+       "metal cutter"
+      ],
+      "ja": [
+       "メタルカッター"
+      ]
+     },
+     "how": {
+      "en": "Frontal tank cleave; the main tank stays apart from the group.",
+      "fr": "Cleave frontal sur le tank ; le MT reste à l'écart.",
+      "de": "Frontaler Tankcleave; der MT steht abseits.",
+      "ja": "前方範囲。MTはパーティから離れる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave"
+     ]
+    },
+    {
+     "id": "flare-star-purge",
+     "names": {
+      "en": "Flare Star / The Purge",
+      "fr": "Astre flamboyant / Purge",
+      "de": "Flare-Stern / Läuterung",
+      "ja": "フレアスター／パージ"
+     },
+     "aliases": {
+      "en": [
+       "flare star / the purge"
+      ],
+      "fr": [
+       "flare star / the purge"
+      ],
+      "de": [
+       "flare star / the purge"
+      ],
+      "ja": [
+       "フレアスター／パージ"
+      ]
+     },
+     "how": {
+      "en": "Quarters of the floor collapse in order (east, north, west) until only the south is left; Flare Star circles are taken together by the non-tanks. The Purge ends the opener with raid damage.",
+      "fr": "Les quarts du sol s'effondrent (est, nord, ouest) jusqu'à ne laisser que le sud ; les cercles Flare Star sont pris ensemble par les non-tanks. The Purge finit l'ouverture avec des dégâts de zone.",
+      "de": "Viertel des Bodens brechen nacheinander ein (Ost, Nord, West), bis nur Süd bleibt; Flare-Star-Kreise nehmen die Nicht-Tanks zusammen. The Purge beendet den Einstieg mit Raumschaden.",
+      "ja": "床が東→北→西の順に崩れ南だけ残る。フレアスターはタンク以外で集まって受ける。パージ（全体攻撃）で終了。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "raidwide"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "前半"
+   },
+   "mechanics": [
+    {
+     "id": "soar-twin-spirit",
+     "names": {
+      "en": "Soar / Twin Spirit / Flame Halberd",
+      "fr": "Ascension / Double spirituel / Hallebarde de flammes",
+      "de": "Auffliegen / Zwiegeist / Flammenhellebarde",
+      "ja": "飛翔／ツインスピリット／フレイムハルバード"
+     },
+     "aliases": {
+      "en": [
+       "soar / twin spirit / flame halberd"
+      ],
+      "fr": [
+       "soar / twin spirit / flame halberd"
+      ],
+      "de": [
+       "soar / twin spirit / flame halberd"
+      ],
+      "ja": [
+       "飛翔／ツインスピリット／フレイムハルバード"
+      ]
+     },
+     "how": {
+      "en": "Three lines show where clones will charge; then six non-healers get big fire spread circles (puddles give Fire Resistance Down) while the charges go off. Spread into the gaps; the two healers share one player's fireball. The arena edge is a lethal fire ring.",
+      "fr": "Trois lignes montrent où les clones chargeront ; puis six non-soigneurs reçoivent de grands cercles de feu (les flaques baissent la résistance feu) pendant les charges. Disperse-toi dans les trous ; les deux soigneurs partagent le cercle d'un joueur. Le bord de l'arène est un anneau de feu mortel.",
+      "de": "Drei Linien zeigen, wo Klone anstürmen; dann bekommen sechs Nicht-Heiler große Feuer-Verteil-Kreise (Pfützen geben Feuerresistenz runter), während die Anstürme auslösen. In die Lücken verteilen; die zwei Heiler teilen sich den Kreis eines Spielers. Der Arenarand ist ein tödlicher Feuerring.",
+      "ja": "飛翔の3本線が分身の突進ルート。続いてヒーラー以外6人に大きな炎の円、ヒーラー2人は誰かの円を共有。外周の炎は即死。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "dodge",
+      "stack"
+     ]
+    },
+    {
+     "id": "demonic-dive-cool-flame",
+     "names": {
+      "en": "Demonic Dive / Cool Flame",
+      "fr": "Plongeon du démon / Flamme froide",
+      "de": "Dämonenschwung / Kühle Flamme",
+      "ja": "デモンダイブ／クールフレイム"
+     },
+     "aliases": {
+      "en": [
+       "demonic dive / cool flame"
+      ],
+      "fr": [
+       "demonic dive / cool flame"
+      ],
+      "de": [
+       "demonic dive / cool flame"
+      ],
+      "ja": [
+       "デモンダイブ／クールフレイム"
+      ]
+     },
+     "how": {
+      "en": "Stack on one healer, while the other healer has a red spread marker and stays out alone.",
+      "fr": "Partage sur un soigneur, l'autre soigneur a un marqueur rouge et reste seul à l'écart.",
+      "de": "Sammeln auf einem Heiler, der andere Heiler hat einen roten Marker und bleibt allein draußen.",
+      "ja": "片方のヒーラーに頭割り、もう片方は赤マーカーで1人で受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "spread"
+     ]
+    },
+    {
+     "id": "demons-claw-wave-cannon",
+     "names": {
+      "en": "Demon's Claw + Wave Cannon",
+      "fr": "Griffe du démon + Canon plasma",
+      "de": "Klaue des Dämonen + Wellenkanone",
+      "ja": "デモンクロー＋波動砲"
+     },
+     "aliases": {
+      "en": [
+       "demon's claw + wave cannon"
+      ],
+      "fr": [
+       "demon's claw + wave cannon"
+      ],
+      "de": [
+       "demon's claw + wave cannon"
+      ],
+      "ja": [
+       "デモンクロー＋波動砲"
+      ]
+     },
+     "how": {
+      "en": "The MT is knocked back across half the arena and stunned, then Wave Cannon is a line stack where the front player takes the most: the off-tank stands closest to Zurvan, everyone else in the line behind.",
+      "fr": "Le MT est repoussé sur la moitié de l'arène et étourdi, puis Wave Cannon est un partage en ligne où le premier prend le plus : l'off-tank se place le plus près de Zurvan, les autres derrière dans la ligne.",
+      "de": "Der MT wird über die halbe Arena zurückgestoßen und betäubt, dann ist Wave Cannon ein Liniensammeln, bei dem der Vorderste am meisten nimmt: der Off-Tank steht Zurvan am nächsten, alle anderen dahinter in der Linie.",
+      "ja": "MTが吹き飛ばされスタン、続く波動砲は直線頭割り（先頭が最も痛い）。STが先頭、他は後ろに並ぶ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "knockback",
+      "stack"
+     ]
+    },
+    {
+     "id": "wave-cannon-normal",
+     "names": {
+      "en": "Wave Cannon (single)",
+      "fr": "Canon plasma (unique)",
+      "de": "Wellenkanone (einzeln)",
+      "ja": "波動砲（単体）"
+     },
+     "aliases": {
+      "en": [
+       "wave cannon (single)"
+      ],
+      "fr": [
+       "wave cannon (single)"
+      ],
+      "de": [
+       "wave cannon (single)"
+      ],
+      "ja": [
+       "波動砲（単体）"
+      ]
+     },
+     "how": {
+      "en": "Blue-circle line on one player that also bleeds; the target goes to Zurvan's side, others avoid that side.",
+      "fr": "Ligne avec cercle bleu sur un joueur, avec saignement ; la cible va sur le côté de Zurvan, les autres évitent ce côté.",
+      "de": "Linie mit blauem Kreis auf einem Spieler, mit Blutung; das Ziel geht an Zurvans Seite, andere meiden diese Seite.",
+      "ja": "1人への直線攻撃（ペイン）。対象はボスの横へ、他はその方向を避ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Ice phase",
+    "fr": "Phase de glace",
+    "de": "Eisphase",
+    "ja": "氷床フェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "southern-cross",
+     "names": {
+      "en": "Southern Cross",
+      "fr": "Croix du sud",
+      "de": "Kreuz des Südens",
+      "ja": "サザンクロス"
+     },
+     "aliases": {
+      "en": [
+       "southern cross"
+      ],
+      "fr": [
+       "southern cross"
+      ],
+      "de": [
+       "southern cross"
+      ],
+      "ja": [
+       "サザンクロス"
+      ]
+     },
+     "how": {
+      "en": "Invisible circles under every player that leave ice puddles; stack behind Zurvan during the cast and rotate 90 degrees when it ends. The center ice patch blocks walking through him.",
+      "fr": "Cercles invisibles sous chaque joueur qui laissent de la glace ; groupe-toi derrière Zurvan pendant le sort et tourne de 90° à la fin. La glace au centre empêche de passer à travers lui.",
+      "de": "Unsichtbare Kreise unter jedem Spieler, die Eispfützen hinterlassen; während des Casts hinter Zurvan sammeln und am Ende 90° weitergehen. Die Eisfläche in der Mitte verhindert das Durchlaufen.",
+      "ja": "全員の足元に見えない範囲と氷床。詠唱中はボスの背後に集まり、終了後90度回る。中央の氷床は通れない。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "ice-attacks",
+     "names": {
+      "en": "Biting Halberd / Tail End / Ciclicle",
+      "fr": "Hallebarde mordante / Pointe de queue / Cyclictite",
+      "de": "Beißende Hellebarde / Schweifspitze / Cyclotit",
+      "ja": "バイティングハルバード／テイルエンド／シクリクル"
+     },
+     "aliases": {
+      "en": [
+       "biting halberd / tail end / ciclicle"
+      ],
+      "fr": [
+       "biting halberd / tail end / ciclicle"
+      ],
+      "de": [
+       "biting halberd / tail end / ciclicle"
+      ],
+      "ja": [
+       "バイティングハルバード／テイルエンド／シクリクル"
+      ]
+     },
+     "how": {
+      "en": "One of three at random: Biting Halberd (270-degree cone at a random player: go behind him, around the side, not through the ice), Tail End (circle on Zurvan: go to the edge), Ciclicle (donut: go close).",
+      "fr": "Un des trois au hasard : Biting Halberd (cône de 270° vers un joueur : va derrière lui par le côté, pas à travers la glace), Tail End (cercle sur Zurvan : va au bord), Ciclicle (donut : viens près).",
+      "de": "Einer von dreien zufällig: Biting Halberd (270°-Kegel auf einen Spieler: über die Seite hinter ihn, nicht durch das Eis), Tail End (Kreis um Zurvan: zum Rand), Ciclicle (Donut: nah ran).",
+      "ja": "3択：バイティングハルバード（270度、横から背後へ）、テイルエンド（ボス中心円、外へ）、シクリクル（ドーナツ、近づく）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Execrated adds",
+    "fr": "Adds Execrated",
+    "de": "Execrated-Adds",
+    "ja": "雑魚フェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "execrated-adds",
+     "names": {
+      "en": "Execrated Wit / Will / Wile / Thew",
+      "fr": "Malice / Volonté / Ruse / Muscle honnis",
+      "de": "Verfluchter Verstand / Wille / List / Muskel",
+      "ja": "テンパード・ウィット／ウィル／ワイル／セウ"
+     },
+     "aliases": {
+      "en": [
+       "execrated wit / will / wile / thew"
+      ],
+      "fr": [
+       "execrated wit / will / wile / thew"
+      ],
+      "de": [
+       "execrated wit / will / wile / thew"
+      ],
+      "ja": [
+       "テンパード・ウィット／ウィル／ワイル／セウ"
+      ]
+     },
+     "how": {
+      "en": "Three waves. Wit casts Meracydian Meteor (wipe if it finishes): kill it first. Will gets stronger over time (Berserk). Wile has a gaze (look away). Thews only auto-attack. Then Ahura Mazda hits the whole party hard.",
+      "fr": "Trois vagues. Wit lance Meracydian Meteor (wipe s'il finit) : tue-le d'abord. Will se renforce avec le temps. Wile a un regard (détourne-toi). Thew ne fait que des attaques auto. Puis Ahura Mazda frappe fort tout le groupe.",
+      "de": "Drei Wellen. Wit castet Meracydian Meteor (Wipe bei Abschluss): zuerst töten. Will wird mit der Zeit stärker. Wile hat einen Blickangriff (wegschauen). Thews machen nur Auto-Angriffe. Danach trifft Ahura Mazda das ganze Team hart.",
+      "ja": "3ウェーブ。ウィットはメラジディアン・メテオ（完了で全滅）を詠唱するので最優先、ウィルは時間で強化、ワイルは視線（背を向ける）、セウは通常攻撃のみ。その後アフラ・マズダー。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "gaze",
+      "raidwide",
+      "dps-check"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p4",
+   "names": {
+    "en": "Final phase",
+    "fr": "Phase finale",
+    "de": "Schlussphase",
+    "ja": "最終フェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "infinite-fire-ice",
+     "names": {
+      "en": "Infinite Fire & Ice",
+      "fr": "Feu infini et Glace infinie",
+      "de": "Endloses Feuer und Endloses Eis",
+      "ja": "炎の刻印・氷の刻印"
+     },
+     "aliases": {
+      "en": [
+       "infinite fire & ice"
+      ],
+      "fr": [
+       "infinite fire & ice"
+      ],
+      "de": [
+       "infinite fire & ice"
+      ],
+      "ja": [
+       "炎の刻印・氷の刻印"
+      ]
+     },
+     "how": {
+      "en": "Four players get fire and four get ice, tethered in same-color pairs; partners must stay close or the tether turns purple and deals growing damage.",
+      "fr": "Quatre joueurs reçoivent feu et quatre glace, liés en paires de même couleur ; les partenaires restent proches sinon le lien devient violet et fait des dégâts croissants.",
+      "de": "Vier Spieler bekommen Feuer, vier Eis, verbunden in gleichfarbigen Paaren; Partner müssen nah bleiben, sonst wird die Verbindung lila und macht steigenden Schaden.",
+      "ja": "炎と氷の刻印が4人ずつ、同じ色同士で線。離れると線が紫になりDoT。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether"
+     ]
+    },
+    {
+     "id": "tyrfing",
+     "names": {
+      "en": "Tyrfing",
+      "fr": "Tyrfing",
+      "de": "Tyrfing",
+      "ja": "ティルフィング"
+     },
+     "aliases": {
+      "en": [
+       "tyrfing"
+      ],
+      "fr": [
+       "tyrfing"
+      ],
+      "de": [
+       "tyrfing"
+      ],
+      "ja": [
+       "ティルフィング"
+      ]
+     },
+     "how": {
+      "en": "Multi-stab tankbuster ending in a fire hit; it gains a stab each time. Heavy mitigation. It hits the MT.",
+      "fr": "Tankbuster en plusieurs coups qui finit par du feu ; un coup de plus à chaque fois. Grosse réduction. Il frappe le MT.",
+      "de": "Mehrfachstich-Tankbuster mit Feuertreffer am Ende; jedes Mal ein Stich mehr. Starke Mitigation. Er trifft den MT.",
+      "ja": "連続突き＋炎のタンク強攻撃、回ごとに回数が増える。強い軽減で。MTが受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "broken-seal",
+     "names": {
+      "en": "Broken Seal",
+      "fr": "Marque brisée",
+      "de": "Endloses Siegel",
+      "ja": "氷炎の紋"
+     },
+     "aliases": {
+      "en": [
+       "broken seal"
+      ],
+      "fr": [
+       "broken seal"
+      ],
+      "de": [
+       "broken seal"
+      ],
+      "ja": [
+       "氷炎の紋"
+      ]
+     },
+     "how": {
+      "en": "Eight towers, four red and four blue: each must hold a player with the matching color (wrong color is likely lethal, empty tower hits everyone). Move with your partner to a matching tower. The tower pattern tells which ice attack follows (cross = Biting Halberd, inner ring = Tail End, outer ring = Ciclicle).",
+      "fr": "Huit tours, quatre rouges et quatre bleues : chacune doit avoir un joueur de la bonne couleur (mauvaise couleur souvent mortelle, tour vide = tout le monde touché). Va avec ton partenaire vers une tour de ta couleur. Le motif des tours indique l'attaque de glace suivante (croix = Biting Halberd, anneau intérieur = Tail End, anneau extérieur = Ciclicle).",
+      "de": "Acht Türme, vier rot und vier blau: in jedem muss ein Spieler mit passender Farbe stehen (falsche Farbe meist tödlich, leerer Turm trifft alle). Mit deinem Partner zu einem passenden Turm gehen. Das Turmmuster zeigt den folgenden Eisangriff (Kreuz = Biting Halberd, innerer Ring = Tail End, äußerer Ring = Ciclicle).",
+      "ja": "赤と青の塔8つ。自分の刻印と同じ色に入る（違う色は致死、空きは全体ダメージ）。相方と一緒に移動。塔の配置で次の3択が分かる（十字＝バイティングハルバード、内側＝テイルエンド、外側＝シクリクル）。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "The pattern-to-attack link is from CGW only.",
+      "fr": "Lien motif/attaque seulement selon CGW.",
+      "de": "Zuordnung Muster/Angriff nur laut CGW.",
+      "ja": "配置と3択の対応はCGWのみで確認。"
+     },
+     "tags": [
+      "tower"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Containment Bay Z1T9 (Extreme)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Containment_Bay_Z1T9_(Extreme)",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/26a86785be9/",
+   "lang": "en"
+  },
+  {
+   "title": "ゲーム乱舞 極鬼神ズルワーン討滅戦",
+   "url": "https://gameranbu.jp/ff14/e8463bb2c8c46d2d3a93",
+   "lang": "ja"
+  },
+  {
+   "title": "ゲームエイト 幻・極ズルワーン討滅戦",
+   "url": "https://game8.jp/ff14/528616",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

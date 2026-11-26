@@ -1,0 +1,989 @@
+{
+ "id": "m7s",
+ "type": "savage",
+ "expansion": "DT",
+ "patch": "7.2",
+ "names": {
+  "en": "AAC Cruiserweight M3 (Savage) - Brute Abombinator",
+  "fr": "Poids lourds-légers CCA - match 3 (sadique) - Brute Bombinator",
+  "de": "Arkadion - Schwergewicht R3 (episch) - Brutalo Biestinator",
+  "ja": "至天の座アルカディア零式：クルーザー級3 - ブルートアボミネーター"
+ },
+ "aliases": {
+  "en": [
+   "m7s",
+   "m7 savage",
+   "brute abombinator",
+   "abombinator",
+   "cw3",
+   "plant bomber"
+  ],
+  "fr": [
+   "m7s",
+   "brute bombinator",
+   "brute abombinator"
+  ],
+  "de": [
+   "m7s",
+   "brute abombinator",
+   "brutalo biestinator"
+  ],
+  "ja": [
+   "m7s",
+   "零式3層",
+   "クルーザー級3層",
+   "ブルートアボミネーター",
+   "アボミ"
+  ]
+ },
+ "summary": {
+  "en": "Third Cruiserweight fight: Brute Bomber fused with a plant (Brute Abombinator), across three arenas. Phase 1 has weapon in/out reads with near/far tankbusters, seed and spore baits, adds to interrupt and hide behind; phase 2 on the city rooftop adds building tethers and Thorny Deathmatch damage-over-time tethers; phase 3 uses both weapons, wall tethers, Lashing Lariat, tower Slaminators and more seed patterns.",
+  "fr": "Troisième combat Poids lourds-légers : Brute Bomber fusionné avec une plante, sur trois arènes. Phase 1 : lecture d'arme in/out avec busters proche/loin, baits de graines et de spores, adds à interrompre et derrière lesquels se cacher ; phase 2 sur les toits : liens vers les bâtiments et liens Mise à mort épineuse à dégâts croissants ; phase 3 : deux armes, liens aux murs, Lariat épineux, tours Plongeon brutal et d'autres graines.",
+  "de": "Dritter Schwergewicht-Kampf: Brute Bomber mit einer Pflanze verschmolzen, in drei Arenen. Phase 1 hat Waffen-Rein/Raus mit Nah/Fern-Tankbustern, Samen- und Sporen-Köder, Adds zum Unterbrechen und Verstecken; Phase 2 auf dem Dach bringt Gebäude-Verbindungen und Dornen-Todeskampf-Verbindungen mit steigendem Schaden; Phase 3 nutzt beide Waffen, Wand-Verbindungen, Efeu-Lariat, Brutalo-Sturz-Türme und weitere Samen.",
+  "ja": "クルーザー級3層、植物と融合したブルートボンバー戦（3フィールド）。前半は武器の内外判断とニア/ファー・スマッシュ、種とスポア、沈黙で止めて隠れる雑魚。中盤はビルとの蔦、ソーンデスマッチの線。後半はツインウェポン、壁の蔦、アイビーラリアット、ブルートダイブの塔、種の再来。"
+ },
+ "strats_overview": [
+  {
+   "id": "toxic",
+   "name": {
+    "en": "Toxic Friends raidplan (NA/EU PF)",
+    "fr": "Raidplan Toxic Friends (PF NA/EU)",
+    "de": "Toxic-Friends-Raidplan (NA/EU-PF)",
+    "ja": "Toxic Friendsレイドプラン（NA/EU野良）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "PF standard in NA and EU (WTFDIG: NAEU Toxic). Light party 1 west/left, light party 2 east/right; tanks and melee inside, ranged and healers outside for seed baits.",
+    "fr": "Standard PF NA et EU (WTFDIG : NAEU Toxic). LP1 ouest/gauche, LP2 est/droite ; tanks et mêlées dedans, distances et heals dehors pour les graines.",
+    "de": "PF-Standard in NA und EU (WTFDIG: NAEU Toxic). LG1 West/links, LG2 Ost/rechts; Tanks und Nahkampf innen, Fernkampf und Heiler außen bei den Samen.",
+    "ja": "NA/EU野良標準（WTFDIG：NAEU Toxic）。LP1西/左、LP2東/右、種はタンク近接が内側・遠隔ヒーラーが外側。"
+   },
+   "aliases": {
+    "en": [
+     "toxic friends",
+     "toxic",
+     "hector",
+     "naeu toxic"
+    ],
+    "fr": [
+     "toxic friends",
+     "toxic",
+     "hector",
+     "naeu toxic"
+    ],
+    "de": [
+     "toxic friends",
+     "toxic",
+     "hector",
+     "naeu toxic"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-game8",
+   "name": {
+    "en": "JP Game8 (Building Sari method)",
+    "fr": "JP Game8 (méthode Building Sari)",
+    "de": "JP Game8 (Building-Sari-Methode)",
+    "ja": "JP game8（ビルディングさり式）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "Building Sari macro (first half based on Asche Okumura's Lodestone post). game8 also shows the Ishia method for Demolition Deathmatch, used with the Ponikone macro.",
+    "fr": "Macro Building Sari (première moitié d'après le post Lodestone d'Asche Okumura). game8 montre aussi la méthode Ishia pour Mise à mort épineuse gigantesque, avec la macro Ponikone.",
+    "de": "Building-Sari-Makro (erste Hälfte nach Asche Okumuras Lodestone-Beitrag). game8 zeigt auch die Ishia-Methode für den Dornengebäude-Todeskampf, mit dem Ponikone-Makro.",
+    "ja": "ビルディングさり式マクロ（前半はAsche Okumura氏のLodestone記事基準）。ソーンデスマッチ・ビルディングはぽにこね式マクロ用のいしあ式も掲載。"
+   },
+   "aliases": {
+    "en": [
+     "sari",
+     "building sari",
+     "game8"
+    ],
+    "fr": [
+     "sari",
+     "building sari",
+     "game8"
+    ],
+    "de": [
+     "sari",
+     "building sari",
+     "game8"
+    ],
+    "ja": [
+     "ビルディングさり式",
+     "さり式",
+     "いしあ式",
+     "ぽにこね式",
+     "sari"
+    ]
+   }
+  },
+  {
+   "id": "oce",
+   "name": {
+    "en": "OCE MR Kindred",
+    "fr": "OCE MR Kindred",
+    "de": "OCE MR Kindred",
+    "ja": "OCE MR Kindred"
+   },
+   "region": "OCE",
+   "note": {
+    "en": "Materia Raiding's OCE strat (Kindred base). Per-mechanic spots below come from its PF macro only; its phase raidplans could not be read. MR also lists an \"Uptime Seeds\" test variant (V2 / New Seeds).",
+    "fr": "Strat OCE de Materia Raiding (base Kindred). Les spots par mécanique viennent seulement de sa macro PF ; ses raidplans n'ont pas pu être lus. MR liste aussi une variante test « Uptime Seeds » (V2 / New Seeds).",
+    "de": "OCE-Strat von Materia Raiding (Kindred-Basis). Die Plätze pro Mechanik stammen nur aus dem PF-Makro; die Raidplans waren nicht lesbar. MR nennt auch eine Testvariante „Uptime Seeds“ (V2 / New Seeds).",
+    "ja": "Materia RaidingのOCE（Kindredベース）。ギミック別の位置はPFマクロのみ、各フェーズのレイドプランは読めなかった。MRには試験版「Uptime Seeds」（V2 / New Seeds）もある。"
+   },
+   "aliases": {
+    "en": [
+     "mr",
+     "materia raiding",
+     "kindred"
+    ],
+    "fr": [
+     "mr",
+     "materia raiding",
+     "kindred"
+    ],
+    "de": [
+     "mr",
+     "materia raiding",
+     "kindred"
+    ],
+    "ja": []
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "前半"
+   },
+   "mechanics": [
+    {
+     "id": "brutal-impact",
+     "names": {
+      "en": "Brutal Impact",
+      "fr": "Impact brutal",
+      "de": "Knallender Impakt",
+      "ja": "スマッシュインパクト"
+     },
+     "aliases": {
+      "en": [
+       "raidwide"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Multi-hit physical raidwide, more hits each time; Feint and mitigation.",
+      "fr": "Raidwide physique multi-coups, plus de coups à chaque fois ; Feinte et mitigation.",
+      "de": "Mehrfacher physischer Raidwide, jedes Mal mehr Treffer; Zermürben und Mitigation.",
+      "ja": "物理多段全体攻撃。回数が増えていく。牽制と軽減。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "stoneringer-smash",
+     "names": {
+      "en": "Stoneringer + Smash Here / Smash There",
+      "fr": "Arme de pierre + Balayage proche / éloigné",
+      "de": "Steinwaffe + Naher / Ferner Schlag",
+      "ja": "ストーンウェポン＋ニア/ファー・スマッシュ"
+     },
+     "aliases": {
+      "en": [
+       "sword club",
+       "in out",
+       "near far buster"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ニアファー",
+       "武器"
+      ]
+     },
+     "how": {
+      "en": "The weapon decides the AoE: sword = donut (stand inside the boss), club = circle (stand out). Smash Here is a shared buster on the closest players, Smash There on the farthest, so tanks go close or far and the party does the opposite.",
+      "fr": "L'arme décide l'AoE : épée = donut (dans le boss), massue = cercle (dehors). Balayage proche = buster partagé sur les plus proches, éloigné = sur les plus loin, donc les tanks vont près ou loin et le groupe fait l'inverse.",
+      "de": "Die Waffe bestimmt den AoE: Schwert = Donut (im Boss stehen), Keule = Kreis (raus). Naher Schlag ist ein geteilter Buster auf die Nächsten, Ferner Schlag auf die Fernsten, also gehen die Tanks nah oder fern und die Gruppe macht das Gegenteil.",
+      "ja": "ブレードならドーナツ（内側）、クラブなら円（外側）。ニアは近い人、ファーは遠い人へのタンク頭割り。タンクが寄るか離れ、他は逆。前半はタンク無敵で処理（JP）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "tankbuster",
+      "proximity"
+     ]
+    },
+    {
+     "id": "sinister-seeds-1",
+     "names": {
+      "en": "Spore Sac + Sinister Seeds + Impact",
+      "fr": "Sac de spores + Éparpillement des graines + Ensevelissement",
+      "de": "Sporensack + Streusamen + Impakt",
+      "ja": "スポアサック＋スキャッターシード＋衝撃"
+     },
+     "aliases": {
+      "en": [
+       "seeds",
+       "spores",
+       "erupt baits"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "種",
+       "スポア"
+      ]
+     },
+     "how": {
+      "en": "Spores drop at the edge; one role gets seeds to drop, the other role gets chasing ground AoEs to bait. Afterwards both healers get a stack (Impact), and the seeds grow into adds.",
+      "fr": "Des spores tombent au bord ; un rôle a des graines à poser, l'autre des AoE au sol qui le suivent. Ensuite les deux heals ont un package (Ensevelissement), et les graines deviennent des adds.",
+      "de": "Sporen fallen an den Rand; eine Rolle legt Samen ab, die andere ködert verfolgende Boden-AoEs. Danach bekommen beide Heiler ein Sammeln (Impakt), und aus den Samen werden Adds.",
+      "ja": "外周にスポア。片方のロールが種捨て、もう片方が追尾エラプ捨て。その後ヒーラー2人へ頭割り、種は雑魚になる。"
+     },
+     "strats": [
+      {
+       "strat": "toxic",
+       "how": {
+        "en": "Melee get the marker: melee drop seeds on the intercardinals at max melee, ranged bait counterclockwise along the wall, then stack east and west inside. Ranged get the marker: ranged drop seeds at the cardinal walls, melee bait counterclockwise inside, then stack on the inner intercardinals and move to the outer edge.",
+        "fr": "Si les mêlées ont le marqueur : graines aux intercardinaux au max mêlée, les distances baitent en antihoraire au mur, puis packages est et ouest à l'intérieur. Si les distances l'ont : graines aux murs cardinaux, mêlées baitent en antihoraire dedans, puis packages aux intercardinaux intérieurs et on sort au bord.",
+        "de": "Haben Nahkämpfer den Marker: Samen auf Zwischenrichtungen auf Max-Nahkampf, Fernkämpfer ködern gegen den Uhrzeigersinn an der Wand, dann Sammeln Ost und West innen. Haben Fernkämpfer ihn: Samen an den Himmelsrichtungs-Wänden, Nahkampf ködert gegen den Uhrzeigersinn innen, dann Sammeln an inneren Zwischenrichtungen und zum Rand.",
+        "ja": "近接がマーカー：近接が斜めの最大近接に種、遠隔は壁沿い反時計回りに誘導、その後東西の内側で頭割り。遠隔がマーカー：遠隔は方角の壁に種、近接は内側を反時計回り、その後内側の斜めで頭割りし外へ。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Decide who drops seeds and who baits by melee/ranged, stack in the safe spot, then gather the adds to the west and stop them with silences.",
+        "fr": "Décidez qui pose les graines et qui bait par mêlée/distance, packez dans le safe spot, puis regroupez les adds à l'ouest et coupez-les avec des silences.",
+        "de": "Bestimmt nach Nah-/Fernkampf, wer Samen legt und wer ködert, sammelt im sicheren Bereich, dann die Adds im Westen sammeln und mit Stille stoppen.",
+        "ja": "種捨てとエラプ捨ての担当を近接・遠隔で決め、安地で頭割り後に雑魚を西にまとめ沈黙で止める。"
+       }
+      },
+      {
+       "strat": "oce",
+       "how": {
+        "en": "Puddles: MT and D3 top left, OT and D4 top right, H1 and D1 bottom left, H2 and D2 bottom right; group 1 stacks west, group 2 east. Seeds: melee start southwest and move clockwise, ranged DPS start north and healers south; adds are pulled east.",
+        "fr": "Flaques : MT et D3 en haut à gauche, OT et D4 en haut à droite, H1 et D1 en bas à gauche, H2 et D2 en bas à droite ; groupe 1 en package à l'ouest, groupe 2 à l'est. Graines : les mêlées partent du sud-ouest en sens horaire, DPS distance au nord et heals au sud ; les adds sont tirés à l'est.",
+        "de": "Pfützen: MT und D3 oben links, OT und D4 oben rechts, H1 und D1 unten links, H2 und D2 unten rechts; Gruppe 1 sammelt West, Gruppe 2 Ost. Samen: Nahkampf startet Südwest und geht im Uhrzeigersinn, Fernkampf-DPS starten Nord, Heiler Süd; die Adds werden nach Osten gezogen.",
+        "ja": "沼：MTとD3左上、OTとD4右上、H1とD1左下、H2とD2右下、G1は西・G2は東で頭割り。種：近接は南西から時計回り、遠隔DPSは北・ヒーラーは南から。雑魚は東に集める。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only one source for these OCE positions (Materia Raiding macro); the toolbox raidplan could not be read and no second source was found. Check your PF macro.",
+        "fr": "Une seule source pour ces positions OCE (macro Materia Raiding) ; le raidplan n'a pas pu être lu et aucune deuxième source trouvée. Vérifie la macro de ta PF.",
+        "de": "Nur eine Quelle für diese OCE-Positionen (Materia Raiding-Makro); der Raidplan war nicht lesbar und keine zweite Quelle gefunden. Prüf das Makro deiner PF.",
+        "ja": "このOCEの位置は1つのソースのみ（Materia Raidingのマクロ）。レイドプランは読めず、2つ目のソースも見つからない。PFのマクロで確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack"
+     ]
+    },
+    {
+     "id": "blooming-adds-quarry-swamp",
+     "names": {
+      "en": "Blooming Abomination adds + Quarry Swamp",
+      "fr": "Adds + Vague de pétrification",
+      "de": "Adds + Versteinernde Welle",
+      "ja": "雑魚＋石化の波動"
+     },
+     "aliases": {
+      "en": [
+       "adds",
+       "interrupt",
+       "petrify"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "雑魚",
+       "石化",
+       "沈黙"
+      ]
+     },
+     "how": {
+      "en": "Adds cast Winding Wildwinds (donut) which must be interrupted, and Crossing Crosswinds (cross). Quarry Swamp petrifies everyone in line of sight, so hide behind an add or its corpse; then three proximity Explosions drop from the edges.",
+      "fr": "Les adds lancent Bourrasque circulaire (donut) à interrompre, et Bourrasque croisée (croix). Vague de pétrification pétrifie tout le monde en vue, donc cache-toi derrière un add ou son cadavre ; ensuite trois Explosions de proximité tombent depuis les bords.",
+      "de": "Adds wirken Kreiswind (Donut), der unterbrochen werden muss, und Kreuzwind (Kreuz). Versteinernde Welle versteinert alle in Sichtlinie, also versteck dich hinter einem Add oder seiner Leiche; danach fallen drei Entfernungs-Explosionen vom Rand.",
+      "ja": "雑魚のリングゲイル（ドーナツ）は沈黙で止める、クロッシングゲイル（十字）は避ける。石化の波動は雑魚か死体の裏に隠れる。その後外周から距離減衰の爆発が3回。"
+     },
+     "strats": [
+      {
+       "strat": "toxic",
+       "how": {
+        "en": "MT interrupts first, OT second, ranged as backup.",
+        "fr": "MT interrompt en premier, OT en second, distances en secours.",
+        "de": "MT unterbricht zuerst, OT als Zweiter, Fernkämpfer als Reserve.",
+        "ja": "沈黙はMT→ST、遠隔が予備。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Hide behind the corpses; for the proximity hits move into the first hit's spot.",
+        "fr": "Cache-toi derrière les cadavres ; pour la proximité, va à l'endroit du premier impact.",
+        "de": "Hinter den Leichen verstecken; bei den Entfernungs-Treffern in die Stelle des ersten Treffers gehen.",
+        "ja": "死体の裏に隠れる。距離減衰は1発目の跡地へ移動。"
+       }
+      },
+      {
+       "strat": "oce",
+       "how": {
+        "en": "Adds are pulled to the east.",
+        "fr": "Les adds sont tirés à l'est.",
+        "de": "Die Adds werden nach Osten gezogen.",
+        "ja": "雑魚は東に集める。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only one source for these OCE positions (Materia Raiding macro); the toolbox raidplan could not be read and no second source was found. Check your PF macro.",
+        "fr": "Une seule source pour ces positions OCE (macro Materia Raiding) ; le raidplan n'a pas pu être lu et aucune deuxième source trouvée. Vérifie la macro de ta PF.",
+        "de": "Nur eine Quelle für diese OCE-Positionen (Materia Raiding-Makro); der Raidplan war nicht lesbar und keine zweite Quelle gefunden. Prüf das Makro deiner PF.",
+        "ja": "このOCEの位置は1つのソースのみ（Materia Raidingのマクロ）。レイドプランは読めず、2つ目のソースも見つからない。PFのマクロで確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "gaze",
+      "dodge"
+     ]
+    },
+    {
+     "id": "pulp-smash",
+     "names": {
+      "en": "Pulp Smash",
+      "fr": "Impact épineux",
+      "de": "Dornenschlag",
+      "ja": "ソーンスマッシュ"
+     },
+     "aliases": {
+      "en": [
+       "healer stack",
+       "protean"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Stack on a marked healer; the boss jumps there and then cones hit everyone, so after the stack spread into eight clock spots based on the boss's facing.",
+      "fr": "Package sur un heal marqué ; le boss y saute puis des cônes frappent tout le monde, donc après le package écarte-toi en huit selon l'orientation du boss.",
+      "de": "Sammeln auf einem markierten Heiler; der Boss springt dorthin und Kegel treffen alle, also nach dem Sammeln achtfach nach Blickrichtung des Bosses verteilen.",
+      "ja": "ヒーラーへの頭割りを中央で、着弾時のボス向き基準で8方向散開。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "cleave",
+      "spread"
+     ]
+    },
+    {
+     "id": "neo-bombarian-special",
+     "names": {
+      "en": "Neo Bombarian Special",
+      "fr": "Néo-spéciale brutale",
+      "de": "Neo-Brutalo-Spezial",
+      "ja": "ネオ・ボンバリアンスペシャル"
+     },
+     "aliases": {
+      "en": [
+       "transition",
+       "knockback"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Heavy damage and a knockback off the platform into the next arena; stand at the north edge or you fall.",
+      "fr": "Gros dégâts et poussée hors de la plateforme vers l'arène suivante ; reste au bord nord sinon tu tombes.",
+      "de": "Starker Schaden und Rückstoß von der Plattform in die nächste Arena; stell dich an den Nordrand, sonst fällst du.",
+      "ja": "大ダメージとノックバックで次のフィールドへ。北端にいないと落下。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "knockback",
+      "transition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2 (rooftops)",
+    "fr": "Phase 2 (toits)",
+    "de": "Phase 2 (Dächer)",
+    "ja": "中盤（ビル）"
+   },
+   "mechanics": [
+    {
+     "id": "swing-glower-vines",
+     "names": {
+      "en": "Stoneringer combo: Brutish Swing / Glower Power / Revenge of the Vines",
+      "fr": "Combo Arme de pierre : Swing brutal / Regard brutal / Règne des épines",
+      "de": "Steinwaffen-Kombo: Brutalo-Schwung / Brutalo-Blick / Welt der Dornen",
+      "ja": "ストーンウェポン＋ブルートスイング＋ブルートグラワー＋ソーンワールド"
+     },
+     "aliases": {
+      "en": [
+       "combo",
+       "glower"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The boss jumps to the tethered building during Brutish Swing (in or out by weapon), then Glower Power is a line in front plus a circle on everyone, then Revenge of the Vines is a heavy raidwide.",
+      "fr": "Le boss saute vers le bâtiment lié pendant Swing brutal (in ou out selon l'arme), puis Regard brutal = ligne devant plus cercle sur tout le monde, puis Règne des épines = gros raidwide.",
+      "de": "Der Boss springt beim Brutalo-Schwung zum verbundenen Gebäude (rein oder raus je nach Waffe), dann ist Brutalo-Blick eine Linie vorn plus Kreis auf alle, dann Welt der Dornen ein schwerer Raidwide.",
+      "ja": "ブルートスイングで蔦の先のビルへ跳ぶ（武器で内外）。ブルートグラワーは前方直線＋全員に円、ソーンワールドは魔法全体攻撃。"
+     },
+     "strats": [
+      {
+       "strat": "toxic",
+       "how": {
+        "en": "Melee hug the boss, two on each side of the line, so ranged have room.",
+        "fr": "Les mêlées collent au boss, deux de chaque côté de la ligne, pour laisser de la place aux distances.",
+        "de": "Nahkämpfer kleben am Boss, zwei auf jeder Seite der Linie, damit Fernkämpfer Platz haben.",
+        "ja": "近接はボスに密着し直線の両側に2人ずつ。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Split into MT group and ST group for the eight circles.",
+        "fr": "Groupes MT et ST pour les huit cercles.",
+        "de": "MT- und ST-Gruppe für die acht Kreise.",
+        "ja": "MT組とST組に分かれて円を処理。"
+       }
+      },
+      {
+       "strat": "oce",
+       "how": {
+        "en": "Two groups for the circles: MT group (MT, D1, H1, D3) on one row and OT group (OT, D2, H2, D4) on the other, boss in the middle.",
+        "fr": "Deux groupes pour les cercles : groupe MT (MT, D1, H1, D3) sur une rangée et groupe OT (OT, D2, H2, D4) sur l'autre, boss au milieu.",
+        "de": "Zwei Gruppen für die Kreise: MT-Gruppe (MT, D1, H1, D3) in einer Reihe und OT-Gruppe (OT, D2, H2, D4) in der anderen, Boss in der Mitte.",
+        "ja": "円範囲は2グループ：MT組（MT・D1・H1・D3）とOT組（OT・D2・H2・D4）がボスを挟んで1列ずつ。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "From the OCE macro only; the macro line lists D1 twice, so D2 in the OT group is assumed.",
+        "fr": "Seulement d'après la macro OCE ; la ligne cite D1 deux fois, D2 dans le groupe OT est supposé.",
+        "de": "Nur aus dem OCE-Makro; die Zeile nennt D1 zweimal, D2 in der OT-Gruppe ist angenommen.",
+        "ja": "OCEマクロのみ。D1が2回書かれているため、OT組のD2は推定。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "tether",
+      "spread"
+     ]
+    },
+    {
+     "id": "thorny-deathmatch-blink",
+     "names": {
+      "en": "Thorny Deathmatch + Abominable Blink",
+      "fr": "Mise à mort épineuse + Étincelle brutale",
+      "de": "Dornen-Todeskampf + Brutalo-Funken",
+      "ja": "ソーンデスマッチ＋ブルートスパーク"
+     },
+     "aliases": {
+      "en": [
+       "tether",
+       "flare"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A tether on the top-enmity player deals damage over time that grows with stacks and distance; Abominable Blink is a proximity flare on a tank, so the flared tank goes far away and the other tank takes enmity if needed.",
+      "fr": "Un lien sur le premier en inimitié inflige des dégâts croissants avec les cumuls et la distance ; Étincelle brutale est une flare de proximité sur un tank, donc ce tank s'éloigne et l'autre prend l'inimitié si besoin.",
+      "de": "Eine Verbindung auf den Feindseligkeits-Ersten macht Schaden über Zeit, der mit Stapeln und Distanz steigt; Brutalo-Funken ist eine Entfernungs-Flare auf einen Tank, also geht dieser weit weg und der andere übernimmt bei Bedarf.",
+      "ja": "ヘイト1位に線（スタックと距離でダメージ増）。タンク1人に距離減衰、対象は離れて処理し必要ならスイッチ。"
+     },
+     "strats": [
+      {
+       "strat": "oce",
+       "how": {
+        "en": "The macro gives three roles: MT stays on the boss, H2 takes the long tether spot and H1 the short one.",
+        "fr": "La macro donne trois rôles : MT reste sur le boss, H2 prend la place du lien long et H1 celle du court.",
+        "de": "Das Makro nennt drei Rollen: MT bleibt am Boss, H2 nimmt den Platz der langen Verbindung, H1 den der kurzen.",
+        "ja": "マクロでは3役：MTはボス、H2が長い線の位置、H1が短い線の位置。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "From the OCE macro only and read from column alignment; no directions are given. Confirm with your PF.",
+        "fr": "Seulement d'après la macro OCE, lu selon l'alignement des colonnes ; aucune direction donnée. Vérifie avec ta PF.",
+        "de": "Nur aus dem OCE-Makro, aus der Spaltenausrichtung gelesen; keine Richtungen angegeben. Mit der PF abklären.",
+        "ja": "OCEマクロのみで列の並びから判断、方角の記載なし。PFで確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "tankbuster",
+      "proximity",
+      "tankswap"
+     ]
+    },
+    {
+     "id": "sporesplosion",
+     "names": {
+      "en": "Sporesplosion",
+      "fr": "Nuage de spores",
+      "de": "Sporenwolke",
+      "ja": "スポアクラウド"
+     },
+     "aliases": {
+      "en": [
+       "circles"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Three sets of circles; move from the second set's spot into the first set's spot.",
+      "fr": "Trois séries de cercles ; passe de l'emplacement de la 2e série à celui de la 1re.",
+      "de": "Drei Kreis-Sätze; geh vom Platz des zweiten in den des ersten.",
+      "ja": "3回の円。2回目の範囲から1回目の範囲へ移動。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "demolition-deathmatch",
+     "names": {
+      "en": "Demolition Deathmatch + Strange Seeds",
+      "fr": "Mise à mort épineuse gigantesque + Dissémination de graines",
+      "de": "Dornengebäude-Todeskampf + Verwehte Samen",
+      "ja": "ソーンデスマッチ・ビルディング＋ブロウシード"
+     },
+     "aliases": {
+      "en": [
+       "building tethers",
+       "seeds"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ビルディング",
+       "さり式",
+       "いしあ式"
+      ]
+     },
+     "how": {
+      "en": "Two passable tethers from the buildings plus one on the top-enmity player; tethered players keep the damage-over-time low. Players drop seed markers in assigned spots and dodge Tendrils of Terror lines, then pair stacks and a tank flare follow. For that last flare both tanks use mitigation and stack together in a corner.",
+      "fr": "Deux liens transférables depuis les bâtiments plus un sur le premier en inimitié ; les liés limitent les dégâts. On pose les graines aux spots assignés et on esquive les lignes de Grille épineuse, puis paires et flare sur tank. Pour cette dernière flare, les deux tanks utilisent leurs réductions et se packent dans un coin.",
+      "de": "Zwei übergebbare Verbindungen von den Gebäuden plus eine auf den Feindseligkeits-Ersten; Verbundene halten den Schaden niedrig. Samen werden an festen Plätzen abgelegt, Dornenzaun-Linien ausweichen, dann Paare und eine Tank-Flare. Für diese letzte Flare nutzen beide Tanks Mitigation und stacken zusammen in einer Ecke.",
+      "ja": "ビルからの線2本（DPS2人が取る）とヘイト1位の線。ブロウシードのマーカーを決めた位置に捨て、ソーンフェンスの直線を避け、ペア頭割りと距離減衰。最後のフレアはタンク2人が軽減を使い、隅で一緒に受ける。"
+     },
+     "strats": [
+      {
+       "strat": "toxic",
+       "how": {
+        "en": "Two known methods: Bilibili (static, line up from the boss's corner to the opposite corner and drop seeds at your spot) or Zenith (alternating: first pair drops inside, second pair outside). Check which your PF uses.",
+        "fr": "Deux méthodes : Bilibili (fixe, alignez-vous du coin du boss au coin opposé et posez au spot) ou Zenith (alterné : 1re paire dedans, 2e dehors). Vérifie celle de ta PF.",
+        "de": "Zwei Methoden: Bilibili (fest, vom Boss-Eck zur Gegenecke aufreihen und am Platz ablegen) oder Zenith (abwechselnd: erstes Paar innen, zweites außen). Prüf, was deine PF nutzt.",
+        "ja": "ビリビリ式（固定、ボスの角から対角へ並び所定位置に捨てる）とゼニス式（交互、1組目内・2組目外）。PFを確認。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Two DPS take the wall tethers, tanks and the flare target stay away; markers and four-player stacks go to the spots of the Sari method (or Ishia method with the Ponikone macro).",
+        "fr": "Deux DPS prennent les liens du mur, tanks et cible de flare restent loin ; marqueurs et packages à quatre aux spots de la méthode Sari (ou Ishia avec la macro Ponikone).",
+        "de": "Zwei DPS nehmen die Wand-Verbindungen, Tanks und Flare-Ziel bleiben weg; Marker und Vier-Spieler-Sammeln an den Plätzen der Sari-Methode (oder Ishia mit Ponikone-Makro).",
+        "ja": "DPS2人が壁の線、タンクと距離減衰対象は離れる。マーカーと4人頭割りはさり式（ぽにこね式ならいしあ式）の位置。"
+       }
+      },
+      {
+       "strat": "oce",
+       "how": {
+        "en": "Uptime waymark method: supports at waymarks A and D, DPS at B and C; partners MT+D1, OT+D2, H1+D3, H2+D4.",
+        "fr": "Méthode uptime avec marqueurs : supports sur A et D, DPS sur B et C ; partenaires MT+D1, OT+D2, H1+D3, H2+D4.",
+        "de": "Uptime-Markermethode: Supporter auf Marker A und D, DPS auf B und C; Partner MT+D1, OT+D2, H1+D3, H2+D4.",
+        "ja": "アップタイム（マーカー）式：サポはA・D、DPSはB・C。ペアはMT+D1、OT+D2、H1+D3、H2+D4。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only one source for these OCE positions (Materia Raiding macro); the toolbox raidplan could not be read and no second source was found. Check your PF macro.",
+        "fr": "Une seule source pour ces positions OCE (macro Materia Raiding) ; le raidplan n'a pas pu être lu et aucune deuxième source trouvée. Vérifie la macro de ta PF.",
+        "de": "Nur eine Quelle für diese OCE-Positionen (Materia Raiding-Makro); der Raidplan war nicht lesbar und keine zweite Quelle gefunden. Prüf das Makro deiner PF.",
+        "ja": "このOCEの位置は1つのソースのみ（Materia Raidingのマクロ）。レイドプランは読めず、2つ目のソースも見つからない。PFのマクロで確認。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Which of Bilibili or Zenith the NA/EU Toxic raidplan uses was not confirmed.",
+      "fr": "On n'a pas confirmé si le raidplan Toxic utilise Bilibili ou Zenith.",
+      "de": "Nicht bestätigt, ob der Toxic-Raidplan Bilibili oder Zenith nutzt.",
+      "ja": "Toxicレイドプランがビリビリ式かゼニス式かは未確認。"
+     },
+     "tags": [
+      "tether",
+      "dodge",
+      "stack",
+      "tankbuster",
+      "proximity"
+     ]
+    },
+    {
+     "id": "powerslam",
+     "names": {
+      "en": "Powerslam",
+      "fr": "Explongeon",
+      "de": "Bombensturz",
+      "ja": "パワーダイブ"
+     },
+     "aliases": {
+      "en": [
+       "transition"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Physical raidwide that breaks the floor and drops everyone into phase 3; don't overuse mitigation, Brutal Impact follows.",
+      "fr": "Raidwide physique qui casse le sol et fait tomber tout le monde en phase 3 ; n'utilise pas toute ta mitigation, Impact brutal suit.",
+      "de": "Physischer Raidwide, der den Boden bricht und alle in Phase 3 fallen lässt; nicht alle Mitigation verbrauchen, Knallender Impakt folgt.",
+      "ja": "物理全体攻撃でフィールド移動。直後のスマッシュインパクトに備え軽減を使いすぎない。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "transition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Phase 3",
+    "fr": "Phase 3",
+    "de": "Phase 3",
+    "ja": "後半"
+   },
+   "mechanics": [
+    {
+     "id": "stoneringers-lariat",
+     "names": {
+      "en": "Stoneringer 2: Stoneringers + Lashing Lariat",
+      "fr": "Armes de pierre jumelles + Lariat épineux",
+      "de": "Steinwaffen-Kombo + Efeu-Lariat",
+      "ja": "ストーンウェポン：ツイン＋アイビーラリアット"
+     },
+     "aliases": {
+      "en": [
+       "twin weapons",
+       "lariat"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ツイン",
+       "ラリアット"
+      ]
+     },
+     "how": {
+      "en": "The boss holds both weapons; the one glowing at Brutish Swing is used (in or out at the tethered wall). Then that weapon vanishes and Lashing Lariat fires a big line from that hand while he dashes across, so move to the glowing-weapon side early; the next swing uses the other weapon (opposite in/out).",
+      "fr": "Le boss tient les deux armes ; celle qui brille au Swing est utilisée (in ou out au mur lié). Ensuite elle disparaît et Lariat épineux tire une grande ligne de ce côté pendant qu'il traverse, donc va tôt du côté de l'arme lumineuse ; le swing suivant utilise l'autre arme (in/out inverse).",
+      "de": "Der Boss hält beide Waffen; die beim Schwung leuchtende wird benutzt (rein oder raus an der verbundenen Wand). Dann verschwindet sie und Efeu-Lariat feuert eine große Linie von dieser Hand, während er quer stürmt, also früh zur Seite der leuchtenden Waffe; der nächste Schwung nutzt die andere Waffe.",
+      "ja": "両方の武器を持ち、スイングで光った方を使う（蔦の壁で内外）。その武器が消えてアイビーラリアットの直線と突進、光った武器側へ先に避ける。次のスイングは残った武器（内外逆）。最後の頭割りはタンク無敵（JP）。"
+     },
+     "strats": [
+      {
+       "strat": "oce",
+       "how": {
+        "en": "Pairs: MT+D3 top left, OT+D4 top right, H1+D1 bottom left, H2+D2 bottom right, using true north.",
+        "fr": "Paires : MT+D3 en haut à gauche, OT+D4 en haut à droite, H1+D1 en bas à gauche, H2+D2 en bas à droite, selon le nord réel.",
+        "de": "Paare: MT+D3 oben links, OT+D4 oben rechts, H1+D1 unten links, H2+D2 unten rechts, nach echtem Norden.",
+        "ja": "ペア：左上MT+D3、右上OT+D4、左下H1+D1、右下H2+D2（真北基準）。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only one source for these OCE positions (Materia Raiding macro); the toolbox raidplan could not be read and no second source was found. Check your PF macro.",
+        "fr": "Une seule source pour ces positions OCE (macro Materia Raiding) ; le raidplan n'a pas pu être lu et aucune deuxième source trouvée. Vérifie la macro de ta PF.",
+        "de": "Nur eine Quelle für diese OCE-Positionen (Materia Raiding-Makro); der Raidplan war nicht lesbar und keine zweite Quelle gefunden. Prüf das Makro deiner PF.",
+        "ja": "このOCEの位置は1つのソースのみ（Materia Raidingのマクロ）。レイドプランは読めず、2つ目のソースも見つからない。PFのマクロで確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "tether"
+     ]
+    },
+    {
+     "id": "slaminator",
+     "names": {
+      "en": "Slaminator",
+      "fr": "Plongeon brutal",
+      "de": "Brutalo-Sturz",
+      "ja": "ブルートダイブ"
+     },
+     "aliases": {
+      "en": [
+       "tower",
+       "tank invuln"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A tower the boss jumps onto with massive damage; a tank soaks it with an invulnerability (tanks alternate).",
+      "fr": "Une tour sur laquelle le boss saute avec d'énormes dégâts ; un tank la prend sous invincibilité (en alternance).",
+      "de": "Ein Turm, auf den der Boss mit riesigem Schaden springt; ein Tank nimmt ihn mit Unverwundbarkeit (abwechselnd).",
+      "ja": "ボスが跳ぶ塔、大ダメージ。タンクが無敵で受ける（交互）。"
+     },
+     "strats": [
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "MT soaks the first Slaminator alone with an invulnerability; the tank assigned to the later one uses its invulnerability there.",
+        "fr": "Le MT prend seul le premier Plongeon brutal sous invulnérabilité ; le tank assigné au suivant utilise la sienne à ce moment-là.",
+        "de": "Der MT nimmt den ersten Brutalo-Sturz allein mit Unverwundbarkeit; der für den späteren eingeteilte Tank nutzt dort seine.",
+        "ja": "1回目のブルートダイブはMTが無敵で1人受け。後の回は担当のタンクが無敵で受ける。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "debris-deathmatch-killer-seeds",
+     "names": {
+      "en": "Debris Deathmatch + Spore Sac + Killer Seeds",
+      "fr": "Mise à mort épineuse emprisonnée + Sac de spores + Grosse graine",
+      "de": "Dornenwand-Todeskampf + Sporensack + Schwerer Samen",
+      "ja": "ソーンデスマッチ・ウォール＋スポアサック＋ヘビーシード"
+     },
+     "aliases": {
+      "en": [
+       "wall tethers",
+       "killer seeds"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ウォール",
+       "ヘビーシード"
+      ]
+     },
+     "how": {
+      "en": "Four wall tethers on the cardinals (taken by healers and ranged, don't let the debuff reach three stacks), a safe intercardinal from the spores, then pair stacks on one role (Killer Seeds) one line in from the cardinal, then adds and Quarry Swamp again (hide behind them, no need to kill).",
+      "fr": "Quatre liens de mur aux cardinaux (pris par heals et distances, sans atteindre trois cumuls), un intercardinal sûr pour les spores, puis paires sur un rôle (Grosse graine) une ligne vers l'intérieur, puis adds et Vague de pétrification (cache-toi derrière, pas besoin de les tuer).",
+      "de": "Vier Wand-Verbindungen auf den Himmelsrichtungen (Heiler und Fernkampf nehmen sie, nicht drei Stapel erreichen), eine sichere Zwischenrichtung bei den Sporen, dann Paare auf eine Rolle (Schwerer Samen) eine Linie nach innen, dann wieder Adds und Versteinernde Welle (dahinter verstecken, nicht töten nötig).",
+      "ja": "方角の壁4本の線はヒーラーと遠隔が取る（3スタックにしない）。スポアサックで安全な斜め、ヘビーシードは片ロール4人とペア頭割り、その後雑魚の裏で石化の波動。"
+     },
+     "strats": [
+      {
+       "strat": "toxic",
+       "how": {
+        "en": "Killer Seeds partners: MT + R1 north, OT + R2 south, M1 + H1 east, M2 + H2 west. MT takes the north and west adds, OT the south and east adds.",
+        "fr": "Paires Grosse graine : MT + R1 nord, OT + R2 sud, M1 + H1 est, M2 + H2 ouest. MT prend les adds nord et ouest, OT sud et est.",
+        "de": "Schwerer-Samen-Partner: MT + R1 Nord, OT + R2 Süd, M1 + H1 Ost, M2 + H2 West. MT nimmt Nord- und West-Adds, OT Süd und Ost.",
+        "ja": "ヘビーシードのペア：MT+R1北、ST+R2南、M1+H1東、M2+H2西。雑魚はMTが北と西、STが南と東。"
+       }
+      },
+      {
+       "strat": "jp-game8",
+       "how": {
+        "en": "Healers and ranged take the wall tethers; after the stacks the tanks grab the adds and everyone hides behind them, then drop markers and chasing AoEs at assigned spots.",
+        "fr": "Heals et distances prennent les liens ; après les packages, les tanks prennent les adds et tout le monde se cache derrière, puis on pose marqueurs et AoE au sol aux spots assignés.",
+        "de": "Heiler und Fernkampf nehmen die Verbindungen; nach dem Sammeln greifen die Tanks die Adds und alle verstecken sich dahinter, dann Marker und Verfolger-AoEs an festen Plätzen ablegen.",
+        "ja": "ヒーラーと遠隔が壁の線。頭割り後に雑魚のタゲを取って裏で石化回避、マーカーと追尾AoEを担当位置へ。"
+       }
+      },
+      {
+       "strat": "oce",
+       "how": {
+        "en": "Wall tether pairs: MT+D3, OT+D4, H1+D1, H2+D2. For the seeds, melee (MT, OT, D1, D2) stand in the upper part and ranged (D3, H1, H2, D4) below them, left and right as in the pairs.",
+        "fr": "Paires des liens muraux : MT+D3, OT+D4, H1+D1, H2+D2. Pour les graines, les mêlées (MT, OT, D1, D2) en haut et les distances (D3, H1, H2, D4) en dessous, gauche et droite comme les paires.",
+        "de": "Wand-Verbindungspaare: MT+D3, OT+D4, H1+D1, H2+D2. Bei den Samen stehen Nahkämpfer (MT, OT, D1, D2) oben und Fernkämpfer (D3, H1, H2, D4) darunter, links und rechts wie die Paare.",
+        "ja": "壁の線のペア：MT+D3、OT+D4、H1+D1、H2+D2。種は近接（MT・OT・D1・D2）が上、遠隔（D3・H1・H2・D4）が下、左右はペアと同じ。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only one source for these OCE positions (Materia Raiding macro); the toolbox raidplan could not be read and no second source was found. Check your PF macro.",
+        "fr": "Une seule source pour ces positions OCE (macro Materia Raiding) ; le raidplan n'a pas pu être lu et aucune deuxième source trouvée. Vérifie la macro de ta PF.",
+        "de": "Nur eine Quelle für diese OCE-Positionen (Materia Raiding-Makro); der Raidplan war nicht lesbar und keine zweite Quelle gefunden. Prüf das Makro deiner PF.",
+        "ja": "このOCEの位置は1つのソースのみ（Materia Raidingのマクロ）。レイドプランは読めず、2つ目のソースも見つからない。PFのマクロで確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "dodge",
+      "stack",
+      "debuff"
+     ]
+    },
+    {
+     "id": "sinister-seeds-tethered",
+     "names": {
+      "en": "Sinister Seeds (tethered) / Pulp Smash",
+      "fr": "Éparpillement des graines (lié) / Impact épineux",
+      "de": "Streusamen (verbunden) / Dornenschlag",
+      "ja": "スキャッターシード（線付き）/ ソーンスマッシュ"
+     },
+     "aliases": {
+      "en": [
+       "seeds 2"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Seeds and chasing baits again while the wall tethers stay active; then Pulp Smash is resolved relative to the boss because the raid may be in a corner.",
+      "fr": "Graines et AoE au sol à nouveau avec les liens encore actifs ; ensuite Impact épineux se fait par rapport au boss car le groupe peut être dans un coin.",
+      "de": "Wieder Samen und Verfolger, während die Wand-Verbindungen aktiv bleiben; danach Dornenschlag relativ zum Boss, weil die Gruppe in einer Ecke sein kann.",
+      "ja": "線がある状態で種とエラプ捨て。続くソーンスマッシュは隅になりやすいのでボス基準で散開。"
+     },
+     "strats": [
+      {
+       "strat": "toxic",
+       "how": {
+        "en": "Ranged baits: ranged run clockwise, melee drop seeds on the intercardinal markers, then everyone goes inside. Melee baits: melee bait clockwise at max melee, ranged drop seeds at the cardinal edge, then everyone goes southwest.",
+        "fr": "Baits distance : distances tournent en horaire, mêlées posent aux marqueurs intercardinaux, puis tout le monde rentre. Baits mêlée : mêlées tournent en horaire au max mêlée, distances posent au bord cardinal, puis tout le monde au SO.",
+        "de": "Fernkampf-Köder: Fernkämpfer laufen im Uhrzeigersinn, Nahkampf legt Samen an Zwischenrichtungs-Marker, dann alle rein. Nahkampf-Köder: Nahkampf im Uhrzeigersinn auf Max-Nahkampf, Fernkampf legt am Himmelsrichtungs-Rand ab, dann alle nach SW.",
+        "ja": "遠隔が追尾：遠隔は時計回り、近接は斜めのマーカーに種、その後全員内側。近接が追尾：近接は最大近接で時計回り、遠隔は方角の外周に種、全員南西へ。"
+       }
+      },
+      {
+       "strat": "oce",
+       "how": {
+        "en": "Melee start at a north corner, go clockwise and stack southwest, then spread facing the corner. Ranged start at a corner, walk along the side, stack in the middle, then spread to true north.",
+        "fr": "Les mêlées partent d'un coin nord, tournent en sens horaire et se packent au sud-ouest, puis se dispersent face au coin. Les distances partent d'un coin, longent le côté, se packent au milieu, puis se dispersent selon le nord réel.",
+        "de": "Nahkämpfer starten an einer Nordecke, gehen im Uhrzeigersinn und sammeln Südwest, dann verteilen sie sich zur Ecke hin. Fernkämpfer starten an einer Ecke, laufen die Seite entlang, sammeln in der Mitte und verteilen sich nach echtem Norden.",
+        "ja": "近接は北の角から時計回り、南西で頭割り、角向きで散開。遠隔は角から辺沿いに歩き、中央で頭割り、真北基準で散開。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "From the OCE macro only; the abbreviations are short, so check the MR toolbox for exact corners.",
+        "fr": "Seulement d'après la macro OCE ; abréviations courtes, vérifie la toolbox MR pour les coins exacts.",
+        "de": "Nur aus dem OCE-Makro; die Abkürzungen sind knapp, prüf die MR-Toolbox für die genauen Ecken.",
+        "ja": "OCEマクロのみ。略記が短いので正確な角はMRのツールボックスで確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack",
+      "spread",
+      "tether"
+     ]
+    },
+    {
+     "id": "final-seeds-enrage",
+     "names": {
+      "en": "Strange Seeds + Stoneringers finale / Special Bombarian Special (enrage)",
+      "fr": "Dissémination finale + armes jumelles / Spéciale brutale ultime (enrage)",
+      "de": "Verwehte Samen + Steinwaffen-Finale / Ultimativer Brutalo-Spezial (Finalangriff)",
+      "ja": "ブロウシード＋ツイン最終 / アルティメット・ボンバリアンスペシャル（時間切れ）"
+     },
+     "aliases": {
+      "en": [
+       "enrage"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Two rounds of seeds with both weapons and Lashing Lariat, another Slaminator for the other tank, a last near/far buster and Brutal Impact, then the enrage (LB3 around here).",
+      "fr": "Deux séries de graines avec les deux armes et Lariat épineux, un autre Plongeon brutal pour l'autre tank, un dernier buster proche/loin et Impact brutal, puis l'enrage (LB3 vers ici).",
+      "de": "Zwei Samen-Runden mit beiden Waffen und Efeu-Lariat, ein weiterer Brutalo-Sturz für den anderen Tank, ein letzter Nah/Fern-Buster und Knallender Impakt, dann der Finalangriff (LB3 hier).",
+      "ja": "ブロウシード2回とツインウェポン、ラリアット、もう一方のタンクの無敵でブルートダイブ、最後のニア/ファーとスマッシュインパクトの後に時間切れ（LB3はこの前後）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "tankbuster",
+      "raidwide",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Icy Veins - M7S guide",
+   "url": "https://www.icy-veins.com/ffxiv/aac-cruiserweight-m3-savage-raid-guide",
+   "lang": "en"
+  },
+  {
+   "title": "NAUR FFXIV - M7S",
+   "url": "https://naurffxiv.com/savage/m7s",
+   "lang": "en"
+  },
+  {
+   "title": "WTFDIG - M7S strat selector",
+   "url": "https://wtfdig.info/72/m7s",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - クルーザー級3層",
+   "url": "https://game8.jp/ff14/681274",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot r7s timeline translations",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/raid/r7s.ts",
+   "lang": "en"
+  },
+  {
+   "title": "Materia Raiding (OCE) - M7S",
+   "url": "https://materiaraiding.pages.dev/savage/m7s",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

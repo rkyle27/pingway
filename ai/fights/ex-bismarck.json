@@ -1,0 +1,425 @@
+{
+ "id": "ex-bismarck",
+ "type": "extreme",
+ "expansion": "HW",
+ "patch": "3.0",
+ "names": {
+  "en": "The Limitless Blue (Extreme)",
+  "fr": "L'Immensité bleue (extrême)",
+  "de": "Zenit der Götter - Bismarck",
+  "ja": "極ビスマルク討滅戦"
+ },
+ "aliases": {
+  "en": [
+   "ex-bismarck",
+   "bismarck ex",
+   "bismarck extreme",
+   "limitless blue extreme",
+   "ex1 hw"
+  ],
+  "fr": [
+   "bismarck extrême",
+   "immensité bleue extrême"
+  ],
+  "de": [
+   "bismarck extrem",
+   "zenit der götter bismarck"
+  ],
+  "ja": [
+   "極ビスマルク",
+   "極ビス",
+   "ビスマルク極"
+  ]
+ },
+ "summary": {
+  "en": "Bismarck circles the floating island. Kill the adds, fire the Dragonkiller ballistas to pull it in, then jump on its back and break its shell or core while Turbulence stacks build. In between come the two Sanuwa adds and weather phases; the island itself has an HP bar and must not be destroyed.",
+  "fr": "Bismarck tourne autour de l'île flottante. Tue les adds, tire les balistes Dragonkiller pour l'attirer, puis saute sur son dos et casse sa carapace ou son cœur pendant que Turbulence se cumule. Entre-temps viennent les deux Sanuwa et les phases de météo ; l'île a des PV et ne doit pas être détruite.",
+  "de": "Bismarck kreist um die schwebende Insel. Töte die Adds, feuere die Dragonkiller-Ballisten, um ihn heranzuziehen, dann spring auf seinen Rücken und brich Panzer oder Kern, während Turbulenz-Stacks steigen. Dazwischen kommen die zwei Sanuwa und Wetterphasen; die Insel hat LP und darf nicht zerstört werden.",
+  "ja": "ビスマルクが浮島の周りを回る。雑魚を倒して対竜バリスタで引き寄せ、背中に乗って外殻／心核を攻撃（乱気流が溜まる）。間にサヌワ2体と天候変化。浮島にもHPがあり、壊されると全滅。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "This fight is mostly cleared unsynced or at minimum item level today, so strats rarely matter. The entries below explain how each mechanic works. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Aujourd'hui ce combat se fait surtout en mode sans restriction ou en ilvl minimum, donc la strat compte rarement. Les entrées ci-dessous expliquent comment marche chaque mécanique. Les noms des mécaniques sont en anglais (noms FR officiels non vérifiés).",
+  "de": "Heute wird dieser Kampf meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel gemacht, die Strat spielt also selten eine Rolle. Die Einträge unten erklären, wie jede Mechanik funktioniert. Die Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "現在このコンテンツは主に制限解除やIL最低限で攻略されるため、攻略法の違いはほとんど問題になりません。以下では各ギミックの仕組みを説明します。英語名のままのギミック名は日本語の公式名を確認できなかったものです。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Shell phase",
+    "fr": "Phase de la carapace",
+    "de": "Panzerphase",
+    "ja": "外殻フェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "vundu-adds",
+     "names": {
+      "en": "Vundu adds",
+      "fr": "Adds Vundu",
+      "de": "Vundo-Adds",
+      "ja": "ザコブンド"
+     },
+     "aliases": {
+      "en": [
+       "vundu adds"
+      ],
+      "fr": [
+       "vundu adds"
+      ],
+      "de": [
+       "vundu adds"
+      ],
+      "ja": [
+       "ザコブンド"
+      ]
+     },
+     "how": {
+      "en": "Two adds (melee and caster) spawn; tanks split them and DPS kill both to unlock the ballistas.",
+      "fr": "Deux adds (mêlée et lanceur) ; les tanks se les partagent et les DPS les tuent pour débloquer les balistes.",
+      "de": "Zwei Adds (Nahkampf und Zauberer); Tanks teilen sie auf, DPS töten beide, um die Ballisten freizuschalten.",
+      "ja": "雑魚2体をMTとSTで分担し倒すとバリスタが使えるようになる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds"
+     ]
+    },
+    {
+     "id": "cetacean-rage",
+     "names": {
+      "en": "Cetacean Rage / Magitek Field Generator",
+      "fr": "Rage du cétacé / Générateur de champ de force magitek",
+      "de": "Zetazeischer Zorn / Magitek-Feldgenerator",
+      "ja": "白鯨の猛り／魔導フィールド発生器"
+     },
+     "aliases": {
+      "en": [
+       "cetacean rage / magitek field generator"
+      ],
+      "fr": [
+       "cetacean rage / magitek field generator"
+      ],
+      "de": [
+       "cetacean rage / magitek field generator"
+      ],
+      "ja": [
+       "白鯨の猛り／魔導フィールド発生器"
+      ]
+     },
+     "how": {
+      "en": "Bismarck rams the island; an assigned player uses the Magitek Field Generator beforehand to reduce the island damage.",
+      "fr": "Bismarck percute l'île ; un joueur assigné active le Magitek Field Generator avant pour réduire les dégâts à l'île.",
+      "de": "Bismarck rammt die Insel; ein eingeteilter Spieler nutzt vorher den Magitek-Feldgenerator, um den Inselschaden zu senken.",
+      "ja": "浮島への体当たり。担当が事前に魔導フィールド発生器を操作して被害を減らす。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    },
+    {
+     "id": "dragonkiller",
+     "names": {
+      "en": "Dragonkiller ballistas / boarding",
+      "fr": "Baliste anti-dragon / boarding",
+      "de": "Drachenhaubitze / boarding",
+      "ja": "対竜バリスタ／乗り移り"
+     },
+     "aliases": {
+      "en": [
+       "dragonkiller ballistas / boarding"
+      ],
+      "fr": [
+       "dragonkiller ballistas / boarding"
+      ],
+      "de": [
+       "dragonkiller ballistas / boarding"
+      ],
+      "ja": [
+       "対竜バリスタ／乗り移り"
+      ]
+     },
+     "how": {
+      "en": "Two assigned players fire the ballistas within about 10 seconds; then everyone (ranged too) boards Bismarck, because damage only counts while standing on it. When it starts shaking, get off before you fall.",
+      "fr": "Deux joueurs assignés tirent les balistes en ~10 s ; puis tout le monde (distants aussi) monte sur Bismarck, car les dégâts ne comptent que dessus. Quand il tremble, descends avant de tomber.",
+      "de": "Zwei eingeteilte Spieler feuern die Ballisten innerhalb von etwa 10 Sekunden; dann steigen alle (auch Fernkämpfer) auf Bismarck, da Schaden nur dort zählt. Wenn er zittert, absteigen, bevor du fällst.",
+      "ja": "担当2人が約10秒以内にバリスタを撃つ。全員（遠隔も）背中に乗らないとダメージが入らない。身震いしたら落ちる前に島へ戻る。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    },
+    {
+     "id": "turbulence",
+     "names": {
+      "en": "Turbulence",
+      "fr": "Turbulence",
+      "de": "Turbulence",
+      "ja": "乱気流"
+     },
+     "aliases": {
+      "en": [
+       "turbulence"
+      ],
+      "fr": [
+       "turbulence"
+      ],
+      "de": [
+       "turbulence"
+      ],
+      "ja": [
+       "乱気流"
+      ]
+     },
+     "how": {
+      "en": "Stacking DoT while on Bismarck's back, with a burst on each new stack. Keep it low (about 3 stacks); let all stacks expire before boarding again.",
+      "fr": "DoT cumulatif sur le dos de Bismarck, avec un burst à chaque cumul. Garde-le bas (~3) ; attends qu'il expire avant de remonter.",
+      "de": "Stapelnder DoT auf Bismarcks Rücken mit einem Stoß bei jedem neuen Stack. Niedrig halten (ca. 3); vor dem nächsten Aufsteigen auslaufen lassen.",
+      "ja": "背中にいる間に溜まるDoT。3程度に抑え、次に乗る前に消えるのを待つ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Sanuwa",
+    "fr": "Sanuwa",
+    "de": "Sanuwa",
+    "ja": "サヌワ"
+   },
+   "mechanics": [
+    {
+     "id": "dead-water-wind",
+     "names": {
+      "en": "Dead Water / Dead Wind",
+      "fr": "Eau morte / Vent mort",
+      "de": "Totes Wasser / Toter Wind",
+      "ja": "デッドウォーター／デッドウィンド"
+     },
+     "aliases": {
+      "en": [
+       "dead water / dead wind"
+      ],
+      "fr": [
+       "dead water / dead wind"
+      ],
+      "de": [
+       "dead water / dead wind"
+      ],
+      "ja": [
+       "デッドウォーター"
+      ]
+     },
+     "how": {
+      "en": "Ul'Sanuwa (blue) and So'Suwa (green) appear; tanks keep them far apart (close = Vulnerability Down). Players get a blue or green debuff and attack the Sanuwa of the OTHER color (same color reflects damage). Tanks may need to swap targets. Both must die before the time limit or Bismarck wipes the party.",
+      "fr": "Ul'Sanuwa (bleu) et So'Suwa (vert) arrivent ; les tanks les séparent (proches = résistance accrue). Chacun reçoit un malus bleu ou vert et tape le Sanuwa de l'AUTRE couleur (même couleur = renvoi de dégâts). Les tanks peuvent devoir échanger. Les deux doivent mourir à temps, sinon wipe.",
+      "de": "Ul'Sanuwa (blau) und So'Suwa (grün) erscheinen; Tanks halten sie weit auseinander (nah = Verwundbarkeit runter). Spieler bekommen einen blauen oder grünen Debuff und greifen den Sanuwa der ANDEREN Farbe an (gleiche Farbe reflektiert Schaden). Tanks müssen evtl. tauschen. Beide müssen rechtzeitig sterben, sonst Wipe.",
+      "ja": "青と緑のサヌワ。タンクは離して抱える。青か緑のデバフと逆の色を攻撃（同色は反射）。タンク同士で入れ替えが必要な場合あり。時間内に両方倒さないと全滅。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "debuff",
+      "tankswap"
+     ]
+    },
+    {
+     "id": "sanuwa-attacks",
+     "names": {
+      "en": "Fin cleaves, Baleen Bomb, Vacuum Wave",
+      "fr": "Fin cleaves, Bombe-fanon, Vague de vide",
+      "de": "Fin cleaves, Bartenbombe, Vakuumwelle",
+      "ja": "竜巻"
+     },
+     "aliases": {
+      "en": [
+       "fin cleaves, baleen bomb, vacuum wave"
+      ],
+      "fr": [
+       "fin cleaves, baleen bomb, vacuum wave"
+      ],
+      "de": [
+       "fin cleaves, baleen bomb, vacuum wave"
+      ],
+      "ja": [
+       "竜巻"
+      ]
+     },
+     "how": {
+      "en": "Frontal fin cleaves (face away), blue water circles (Baleen Bomb), and slow tornadoes that stun (Vacuum Wave): dodge.",
+      "fr": "Cleaves frontaux (tourne-les), cercles d'eau bleus (Baleen Bomb) et tornades lentes qui étourdissent (Vacuum Wave) : esquive.",
+      "de": "Frontale Flossencleaves (wegdrehen), blaue Wasserkreise (Baleen Bomb) und langsame Tornados, die betäuben (Vacuum Wave): ausweichen.",
+      "ja": "前方攻撃、青い水の円、移動する竜巻（スタン）を避ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "note": {
+      "en": "JP name matched to this ability by its description in a JP guide.",
+      "fr": "Nom JP associé à cette action par sa description dans un guide JP.",
+      "de": "JP-Name über die Beschreibung in einem JP-Guide zugeordnet.",
+      "ja": "日本語名は攻略記事の説明内容から対応付けたもの。"
+     },
+     "tags": [
+      "cleave",
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Weather loop",
+    "fr": "Boucle météo",
+    "de": "Wetterschleife",
+    "ja": "天候変化ループ"
+   },
+   "mechanics": [
+    {
+     "id": "nat-maii-vundu",
+     "names": {
+      "en": "Nat'maii Vundu",
+      "fr": "Nat'maii des Vundu",
+      "de": "Nat'maii Vundo",
+      "ja": "ナツマイ・ブンド"
+     },
+     "aliases": {
+      "en": [
+       "nat'maii vundu"
+      ],
+      "fr": [
+       "nat'maii vundu"
+      ],
+      "de": [
+       "nat'maii vundu"
+      ],
+      "ja": [
+       "Nat'maii Vundu"
+      ]
+     },
+     "how": {
+      "en": "A big add that damages the island every 10 s if alive when you board; kill it before boarding.",
+      "fr": "Un gros add qui abîme l'île toutes les 10 s s'il vit quand tu montes ; tue-le avant.",
+      "de": "Ein großes Add, das die Insel alle 10 s beschädigt, wenn es beim Aufsteigen lebt; vorher töten.",
+      "ja": "乗り込み時に生きていると10秒ごとに島へ攻撃する大型雑魚。先に倒す。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds"
+     ]
+    },
+    {
+     "id": "weather",
+     "names": {
+      "en": "Weather changes",
+      "fr": "Weather changes",
+      "de": "Weather changes",
+      "ja": "天候変化"
+     },
+     "aliases": {
+      "en": [
+       "weather changes"
+      ],
+      "fr": [
+       "weather changes"
+      ],
+      "de": [
+       "weather changes"
+      ],
+      "ja": [
+       "天候変化"
+      ]
+     },
+     "how": {
+      "en": "Showers: Sharp Gust knocks back from the center, then a donut (Rain Storm): stay center then come back. Rain: Primal Tears hits the center, kill the Vapor Bubbles fast (Deep Draught buffs them). Thunder: Lightning Bolt on random players, keep the Vapor Bubbles alive so Thunderhead hits them, spread.",
+      "fr": "Averses : Sharp Gust repousse depuis le centre, puis donut (Rain Storm) : reste au centre puis reviens. Pluie : Primal Tears frappe le centre, tue vite les Vapor Bubble (Deep Draught les buffe). Orage : Lightning Bolt sur des joueurs, garde les Vapor Bubble en vie pour qu'elles prennent Thunderhead, disperse-toi.",
+      "de": "Schauer: Sharp Gust stößt von der Mitte weg, dann ein Donut (Rain Storm): in der Mitte bleiben, dann zurück. Regen: Primal Tears trifft die Mitte, Vapor Bubbles schnell töten (Deep Draught stärkt sie). Gewitter: Lightning Bolt auf zufällige Spieler, Vapor Bubbles am Leben lassen, damit Thunderhead sie trifft, verteilen.",
+      "ja": "天候で攻撃が変わる：暴雨はシャープガスト（中央から吹き飛ばし）、雨は中央に大ダメージ（水玉を早く倒す）、雷雨は落雷（水玉は倒さず残す、散開）。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "CGW and gameranbu describe the rain/heavy-rain effects slightly differently (which one knocks back).",
+      "fr": "CGW et gameranbu décrivent un peu différemment pluie/averse.",
+      "de": "CGW und gameranbu beschreiben Regen/Starkregen etwas unterschiedlich.",
+      "ja": "雨と暴雨の効果の説明が資料間で少し異なる。"
+     },
+     "tags": [
+      "knockback",
+      "dodge",
+      "spread",
+      "adds"
+     ]
+    },
+    {
+     "id": "corona",
+     "names": {
+      "en": "Core / Corona finish",
+      "fr": "Core / Corona finish",
+      "de": "Core / Corona finish",
+      "ja": "心核への攻撃"
+     },
+     "aliases": {
+      "en": [
+       "core / corona finish"
+      ],
+      "fr": [
+       "core / corona finish"
+      ],
+      "de": [
+       "core / corona finish"
+      ],
+      "ja": [
+       "心核への攻撃"
+      ]
+     },
+     "how": {
+      "en": "Board again and burn the core (melee Limit Break is good here); about two boardings end the fight if done well.",
+      "fr": "Remonte et tape le cœur (Limit Break mêlée efficace) ; environ deux montées finissent le combat.",
+      "de": "Wieder aufsteigen und den Kern angreifen (Nahkampf-Limitrausch ist gut); etwa zwei Durchgänge beenden den Kampf.",
+      "ja": "再び乗って心核を攻撃（近接LBが有効）。うまくいけば2回ほどで終わる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dps-check"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "The Limitless Blue (Extreme)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/The_Limitless_Blue_(Extreme)",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/e9bb63551a4/",
+   "lang": "en"
+  },
+  {
+   "title": "ゲーム乱舞 極ビスマルク討滅戦",
+   "url": "https://gameranbu.jp/ff14/9df38d3c2525fa1c37bd",
+   "lang": "ja"
+  },
+  {
+   "title": "FF14予習室 極ビスマルク討滅戦",
+   "url": "https://ru-eka.com/archives/9186",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

@@ -1,0 +1,678 @@
+{
+ "id": "a3s",
+ "type": "savage",
+ "expansion": "HW",
+ "patch": "3.05",
+ "names": {
+  "en": "Alexander - The Arm of the Father (Savage)",
+  "fr": "Alexander - Le Bras du Père (sadique)",
+  "de": "Alexander - Arm des Vaters (episch)",
+  "ja": "機工城アレキサンダー零式：起動編3"
+ },
+ "aliases": {
+  "en": [
+   "a3s",
+   "a3 savage",
+   "alexander 3 savage",
+   "living liquid savage",
+   "arm of the father savage"
+  ],
+  "fr": [
+   "a3s",
+   "alexander 3 sadique",
+   "bras du père sadique"
+  ],
+  "de": [
+   "a3s",
+   "alexander 3 episch",
+   "arm des vaters episch"
+  ],
+  "ja": [
+   "起動編3零式",
+   "起動編零式3層",
+   "アレキ零式3層",
+   "起動3層",
+   "リビングリキッド"
+  ]
+ },
+ "summary": {
+  "en": "Floor 3 of Alexander: Gordias (Savage) against Living Liquid. It changes form: human, hand (then split into two hands whose HP must stay equal), a slime add phase with magnets and tethers, and a final loop with tornadoes, Liquid Limb and Embolus.",
+  "fr": "Étage 3 d'Alexander : Gordias (sadique) contre Living Liquid. Il change de forme : humain, main (puis deux mains aux PV égaux), une phase d'adds slime avec aimants et liens, puis une boucle finale avec tornades, Liquid Limb et Embolus.",
+  "de": "Ebene 3 von Alexander: Gordias (episch) gegen Living Liquid. Er wechselt die Form: Mensch, Hand (dann zwei Hände mit gleichen LP), eine Schleim-Add-Phase mit Magneten und Verbindungen und eine Schluss-Schleife mit Tornados, Liquid Limb und Embolus.",
+  "ja": "起動編3層零式、リビングリキッド戦。人型→手型（後に左右の手に分裂しHPをそろえる）→スライム雑魚とマグネット・ドレナージ→竜巻・リキッドハンド・エンボラスのループへと形態が変わる。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "This fight is mostly cleared unsynced or at minimum item level today, so strats rarely matter. The entries below explain how each mechanic works. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Aujourd'hui ce combat se fait surtout en mode sans restriction ou en ilvl minimum, donc la strat compte rarement. Les entrées ci-dessous expliquent comment marche chaque mécanique. Les noms des mécaniques sont en anglais (noms FR officiels non vérifiés).",
+  "de": "Heute wird dieser Kampf meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel gemacht, die Strat spielt also selten eine Rolle. Die Einträge unten erklären, wie jede Mechanik funktioniert. Die Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "現在このコンテンツは主に制限解除やIL最低限で攻略されるため、攻略法の違いはほとんど問題になりません。以下では各ギミックの仕組みを説明します。英語名のままのギミック名は日本語の公式名を確認できなかったものです。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Human form",
+    "fr": "Forme humaine",
+    "de": "Menschengestalt",
+    "ja": "人型"
+   },
+   "mechanics": [
+    {
+     "id": "fluid-swing",
+     "names": {
+      "en": "Fluid Swing",
+      "fr": "Coup fluide",
+      "de": "Flüssiger Schwung",
+      "ja": "フルイドスイング"
+     },
+     "aliases": {
+      "en": [
+       "fluid swing"
+      ],
+      "fr": [
+       "fluid swing"
+      ],
+      "de": [
+       "fluid swing"
+      ],
+      "ja": [
+       "フルイドスイング"
+      ]
+     },
+     "how": {
+      "en": "Frontal cleave on the tank; later it stacks Blunt Resistance Down, so tanks swap.",
+      "fr": "Cleave frontal sur le tank ; plus tard il cumule une baisse de résistance, donc swap.",
+      "de": "Frontalcleave auf den Tank; später stapelt er Schlagresistenz-runter, also Tankwechsel.",
+      "ja": "タンクへの前方範囲。後半は打耐性低下が重なるのでタンクスイッチ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "tankswap",
+      "debuff"
+     ]
+    },
+    {
+     "id": "protean-wave",
+     "names": {
+      "en": "Protean Wave",
+      "fr": "Vague inconstante",
+      "de": "Proteische Welle",
+      "ja": "プロティアンウェイブ"
+     },
+     "aliases": {
+      "en": [
+       "protean wave"
+      ],
+      "fr": [
+       "protean wave"
+      ],
+      "de": [
+       "protean wave"
+      ],
+      "ja": [
+       "プロティアンウェイブ"
+      ]
+     },
+     "how": {
+      "en": "Cones go out from the boss; the first set knocks back, the second targets players. Spread evenly around the boss (one per line) so each cone hits only one person.",
+      "fr": "Des cônes partent du boss ; la 1re série repousse, la 2e vise les joueurs. Répartis-toi autour du boss (un par ligne) pour qu'un cône ne touche qu'une personne.",
+      "de": "Kegel gehen vom Boss aus; die erste Welle stößt zurück, die zweite zielt auf Spieler. Verteilt euch gleichmäßig um den Boss (einer pro Linie), damit jeder Kegel nur eine Person trifft.",
+      "ja": "ボス中心の扇範囲。1回目はノックバック、2回目は各プレイヤーへ。フィールドの線に沿って1人ずつ散開する。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "knockback"
+     ]
+    },
+    {
+     "id": "sluice",
+     "names": {
+      "en": "Sluice",
+      "fr": "Éclusage",
+      "de": "Schleusenöffnung",
+      "ja": "スルース"
+     },
+     "aliases": {
+      "en": [
+       "sluice"
+      ],
+      "fr": [
+       "sluice"
+      ],
+      "de": [
+       "sluice"
+      ],
+      "ja": [
+       "スルース"
+      ]
+     },
+     "how": {
+      "en": "Spread circles on several players, then ground AoEs under random players; marked players spread, everyone leaves the puddles.",
+      "fr": "Cercles de dispersion sur plusieurs joueurs, puis AoE au sol ; les marqués se dispersent, tout le monde sort des zones.",
+      "de": "Verteil-Kreise auf mehreren Spielern, dann Boden-AoEs; Markierte verteilen sich, alle raus aus den Flächen.",
+      "ja": "複数人に散開円、その後足元範囲。対象は散開し、全員床範囲を避ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "splash",
+     "names": {
+      "en": "Splash",
+      "fr": "Éclaboussement",
+      "de": "Schwall",
+      "ja": "スプラッシュ"
+     },
+     "aliases": {
+      "en": [
+       "splash"
+      ],
+      "fr": [
+       "splash"
+      ],
+      "de": [
+       "splash"
+      ],
+      "ja": [
+       "スプラッシュ"
+      ]
+     },
+     "how": {
+      "en": "Three (later six) raid-wide hits in a row; heal between them.",
+      "fr": "Trois (puis six) dégâts de zone d'affilée ; soigne entre.",
+      "de": "Drei (später sechs) Raumtreffer hintereinander; dazwischen heilen.",
+      "ja": "3連（後半は6連）の全体攻撃。合間に回復。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Hand form",
+    "fr": "Forme main",
+    "de": "Handgestalt",
+    "ja": "手型"
+   },
+   "mechanics": [
+    {
+     "id": "fluid-strike",
+     "names": {
+      "en": "Fluid Strike",
+      "fr": "Frappe fluide",
+      "de": "Flüssiger Schlag",
+      "ja": "フルイドストライク"
+     },
+     "aliases": {
+      "en": [
+       "fluid strike"
+      ],
+      "fr": [
+       "fluid strike"
+      ],
+      "de": [
+       "fluid strike"
+      ],
+      "ja": [
+       "フルイドストライク"
+      ]
+     },
+     "how": {
+      "en": "Frontal stack cleave: almost everyone must share it with the tank, except a player with Physical Vulnerability Up from Digititis.",
+      "fr": "Cleave partagé frontal : presque tout le monde le partage avec le tank, sauf le joueur qui a Vulnérabilité physique (Digititis).",
+      "de": "Frontaler Sammelcleave: fast alle teilen ihn mit dem Tank, außer wer Physische Verwundbarkeit von Digititis hat.",
+      "ja": "前方の頭割り。ほぼ全員で受けないと致死量。ゆびさきの被物理ダメ上昇を持つ人は入らない。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "cleave"
+     ]
+    },
+    {
+     "id": "wash-away",
+     "names": {
+      "en": "Wash Away",
+      "fr": "Lessivage",
+      "de": "Wegspülen",
+      "ja": "ウォッシュアウェイ"
+     },
+     "aliases": {
+      "en": [
+       "wash away"
+      ],
+      "fr": [
+       "wash away"
+      ],
+      "de": [
+       "wash away"
+      ],
+      "ja": [
+       "ウォッシュアウェイ"
+      ]
+     },
+     "how": {
+      "en": "Random-direction knockback; stand in the middle or use knockback immunity.",
+      "fr": "Recul dans une direction aléatoire ; reste au centre ou utilise un anti-recul.",
+      "de": "Rückstoß in zufällige Richtung; in der Mitte stehen oder Rückstoß-Immunität nutzen.",
+      "ja": "方向ランダムのノックバック。中央で受けるか堅実魔・アームズレングス。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback"
+     ]
+    },
+    {
+     "id": "digititis",
+     "names": {
+      "en": "Digititis",
+      "fr": "Phalangette",
+      "de": "Digititis",
+      "ja": "ゆびさき"
+     },
+     "aliases": {
+      "en": [
+       "digititis"
+      ],
+      "fr": [
+       "digititis"
+      ],
+      "de": [
+       "digititis"
+      ],
+      "ja": [
+       "ゆびさき"
+      ]
+     },
+     "how": {
+      "en": "One tank, one healer and one DPS get debuffs (Physical Vulnerability Up, Healing Down, Damage Down). Pass each debuff once by touching a player of another role; a debuff can only move once. Groups use fixed pairs.",
+      "fr": "Un tank, un soigneur et un DPS reçoivent des malus (Vulnérabilité physique, Soins réduits, Dégâts réduits). Passe chaque malus une fois en touchant un joueur d'un autre rôle ; il ne bouge qu'une fois. Les groupes utilisent des paires fixes.",
+      "de": "Ein Tank, ein Heiler und ein DPS bekommen Debuffs (Physische Verwundbarkeit, Heilung runter, Schaden runter). Gib jeden Debuff einmal durch Berührung an eine andere Rolle weiter; er wandert nur einmal. Gruppen nutzen feste Paare.",
+      "ja": "タンク・ヒーラー・DPSにデバフ。他ロールに触れて1回だけ交換でき、交換後は再交換不可。固定ペアで交換する。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "hand-of-prayer-parting",
+     "names": {
+      "en": "Hand of Prayer / Hand of Parting",
+      "fr": "Main de prière / Main de séparation",
+      "de": "Betende Hand / Scheidende Hand",
+      "ja": "ハンド・オブ・プレイヤー／パーティング"
+     },
+     "aliases": {
+      "en": [
+       "hand of prayer / hand of parting"
+      ],
+      "fr": [
+       "hand of prayer / hand of parting"
+      ],
+      "de": [
+       "hand of prayer / hand of parting"
+      ],
+      "ja": [
+       "ハンド・オブ・プレイヤー／パーティング"
+      ]
+     },
+     "how": {
+      "en": "After the split, one hand glows: open palm means bring the two hands together, fist means pull them apart. A wrong distance gives the party Atrophy.",
+      "fr": "Après la séparation, une main brille : paume ouverte = rapproche les deux mains, poing = éloigne-les. Mauvaise distance = Atrophie pour le groupe.",
+      "de": "Nach der Teilung leuchtet eine Hand: offene Handfläche = Hände zusammenbringen, Faust = auseinander. Falscher Abstand gibt dem Team Atrophie.",
+      "ja": "分裂後、片方の手が光る。パーなら近づける、グーなら離す。距離を誤ると全員に衰弱。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Sources agree on palm=close, fist=apart for the hands; the exact distance thresholds are not given.",
+      "fr": "Les sources s'accordent (paume = proche, poing = loin) ; les distances exactes ne sont pas données.",
+      "de": "Quellen stimmen überein (Handfläche = nah, Faust = weit); genaue Abstände fehlen.",
+      "ja": "パー＝近づける、グー＝離すは一致。具体的な距離は資料になし。"
+     },
+     "tags": [
+      "adds"
+     ]
+    },
+    {
+     "id": "hand-of-pain",
+     "names": {
+      "en": "Equal Concentration / Hand of Pain",
+      "fr": "Nivellement aqueux / Main de douleur",
+      "de": "Isotonie / Qualhand",
+      "ja": "水量均等化／ハンド・オブ・ペイン"
+     },
+     "aliases": {
+      "en": [
+       "equal concentration / hand of pain"
+      ],
+      "fr": [
+       "equal concentration / hand of pain"
+      ],
+      "de": [
+       "equal concentration / hand of pain"
+      ],
+      "ja": [
+       "水量均等化／ハンド・オブ・ペイン"
+      ]
+     },
+     "how": {
+      "en": "Equal Concentration moves HP between the hands, then Hand of Pain deals raid damage scaled by the HP gap. Keep both hands within about 5% HP: DPS hit the higher one.",
+      "fr": "Equal Concentration transfère des PV entre les mains, puis Hand of Pain inflige des dégâts selon l'écart. Garde les mains à ~5 % d'écart : les DPS tapent la plus haute.",
+      "de": "Equal Concentration verschiebt LP zwischen den Händen, dann macht Hand of Pain Raumschaden je nach LP-Unterschied. Beide Hände innerhalb von etwa 5 % halten: DPS schlagen die höhere.",
+      "ja": "水量均等化で片手のHPが移り、ハンド・オブ・ペインで両手のHP差に応じた全体ダメージ。差を約5%以内に（高い方を攻撃）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "raidwide",
+      "dps-check"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Slime add phase",
+    "fr": "Phase d'adds slime",
+    "de": "Schleim-Add-Phase",
+    "ja": "スライム雑魚フェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "lubricants",
+     "names": {
+      "en": "Gear / Piston Lubricant",
+      "fr": "Lubrifiant d'engrenage / Lubrifiant de piston",
+      "de": "Getriebeschmiermittel / Kolbenschmiermittel",
+      "ja": "ギアオイル／ピストンオイル"
+     },
+     "aliases": {
+      "en": [
+       "gear / piston lubricant"
+      ],
+      "fr": [
+       "gear / piston lubricant"
+      ],
+      "de": [
+       "gear / piston lubricant"
+      ],
+      "ja": [
+       "ギア／ピストンオイル（スライム）"
+      ]
+     },
+     "how": {
+      "en": "Slimes walk to the electrified edge; if they reach it they explode for raid damage and buff the boss. Kill them first, and interrupt or stun Piston Lubricant's Mucilage (sprint cast).",
+      "fr": "Des slimes marchent vers le bord électrifié ; s'ils l'atteignent ils explosent et buffent le boss. Tue-les vite et interromps/étourdis le Mucilage des Piston Lubricant.",
+      "de": "Schleime laufen zum elektrischen Rand; erreichen sie ihn, explodieren sie und stärken den Boss. Schnell töten und das Mucilage der Piston Lubricant unterbrechen oder betäuben.",
+      "ja": "スライムが外周へ歩き、到達すると全体攻撃とボス強化。先に倒し、ピストン側のヌメヌメ（突進）はスタンか沈黙で止める。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds"
+     ]
+    },
+    {
+     "id": "ferrofluid",
+     "names": {
+      "en": "Ferrofluid",
+      "fr": "Ferrofluide",
+      "de": "Ferrofluid",
+      "ja": "マグネット"
+     },
+     "aliases": {
+      "en": [
+       "ferrofluid"
+      ],
+      "fr": [
+       "ferrofluid"
+      ],
+      "de": [
+       "ferrofluid"
+      ],
+      "ja": [
+       "マグネット"
+      ]
+     },
+     "how": {
+      "en": "Players get plus/minus charges and are linked in pairs. Same charge repels, opposite charges attract; place yourselves so you are not pulled into the tornado or pushed into the pool/edge.",
+      "fr": "Les joueurs reçoivent des charges +/- et sont liés en paires. Même charge = répulsion, charges opposées = attraction ; place-toi pour ne pas être tiré dans la tornade ni poussé au bord.",
+      "de": "Spieler bekommen Plus/Minus-Ladungen und sind paarweise verbunden. Gleiche Ladung stößt ab, verschiedene ziehen an; stell dich so, dass du nicht in den Tornado gezogen oder an den Rand geschoben wirst.",
+      "ja": "＋−のマークでペアが引き合い／反発。同色は反発、異色は引き寄せ。竜巻や水溜り、外周に当たらない位置で受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether"
+     ]
+    },
+    {
+     "id": "drainage",
+     "names": {
+      "en": "Drainage",
+      "fr": "Drainage",
+      "de": "Entwässerung",
+      "ja": "ドレナージ"
+     },
+     "aliases": {
+      "en": [
+       "drainage"
+      ],
+      "fr": [
+       "drainage"
+      ],
+      "de": [
+       "drainage"
+      ],
+      "ja": [
+       "ドレナージ"
+      ]
+     },
+     "how": {
+      "en": "Two tethers that end in heavy AoE tankbusters; tanks take the tethers and stand away from the group. Each tank grabs one tether and takes it away from the group; when only one tether comes in the last phase, the OT (ST) takes it.",
+      "fr": "Deux liens qui finissent en gros tankbusters de zone ; les tanks les prennent et s'éloignent. Chaque tank prend un lien et l'éloigne du groupe ; quand il n'y a qu'un lien en dernière phase, c'est l'OT qui le prend.",
+      "de": "Zwei Verbindungen, die in starken AoE-Tankbustern enden; Tanks nehmen sie und gehen weg vom Team. Jeder Tank nimmt eine Verbindung und geht damit vom Raid weg; kommt in der letzten Phase nur eine, nimmt der OT sie.",
+      "ja": "線を付けられた対象に大ダメージ。タンクが線を取り、離れて受ける。MTとSTが線を1本ずつ取り、離れて受ける。最終フェーズで1本だけの時はSTが取る。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p4",
+   "names": {
+    "en": "Final loop",
+    "fr": "Boucle finale",
+    "de": "Schluss-Schleife",
+    "ja": "最終ループ"
+   },
+   "mechanics": [
+    {
+     "id": "cascade",
+     "names": {
+      "en": "Cascade",
+      "fr": "Cascade",
+      "de": "Kaskade",
+      "ja": "カスケード"
+     },
+     "aliases": {
+      "en": [
+       "cascade"
+      ],
+      "fr": [
+       "cascade"
+      ],
+      "de": [
+       "cascade"
+      ],
+      "ja": [
+       "カスケード"
+      ]
+     },
+     "how": {
+      "en": "Raid-wide damage that leaves puddles (Dropsy); after the third one the puddles become tornadoes.",
+      "fr": "Dégâts de zone qui laissent des flaques (Hydropisie) ; après la troisième elles deviennent des tornades.",
+      "de": "Raumschaden, der Pfützen hinterlässt; nach der dritten werden sie zu Tornados.",
+      "ja": "全体攻撃と水溜り。3回目以降、水溜りが竜巻になる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "liquid-limb",
+     "names": {
+      "en": "Summon Limb (Liquid Limb)",
+      "fr": "Summon Limb (Membre liquide)",
+      "de": "Summon Limb (Belebte Hand)",
+      "ja": "リキッドハンド"
+     },
+     "aliases": {
+      "en": [
+       "summon limb (liquid limb)"
+      ],
+      "fr": [
+       "summon limb (liquid limb)"
+      ],
+      "de": [
+       "summon limb (liquid limb)"
+      ],
+      "ja": [
+       "リキッドハンド"
+      ]
+     },
+     "how": {
+      "en": "A healer is grabbed and carried toward the electrified edge. Kill or stun/Heavy the hand quickly, keep it out of puddles (they heal it).",
+      "fr": "Un soigneur est attrapé et porté vers le bord électrifié. Tue ou ralentis vite la main, garde-la hors des flaques (elles la soignent).",
+      "de": "Ein Heiler wird gepackt und zum elektrischen Rand getragen. Hand schnell töten oder betäuben/verlangsamen, nicht in Pfützen lassen (heilen sie).",
+      "ja": "ヒーラーが拘束され外周へ運ばれる。スタンやヘヴィで遅らせて早く倒す。水溜りは回復させるので避ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds"
+     ]
+    },
+    {
+     "id": "liquid-gaol",
+     "names": {
+      "en": "Liquid Gaol (Throttle)",
+      "fr": "Geôle liquide (Suffocation)",
+      "de": "Wasserkerker (Erstickung)",
+      "ja": "リキッドジェイル（窒息）"
+     },
+     "aliases": {
+      "en": [
+       "liquid gaol (throttle)"
+      ],
+      "fr": [
+       "liquid gaol (throttle)"
+      ],
+      "de": [
+       "liquid gaol (throttle)"
+      ],
+      "ja": [
+       "リキッドジェイル（窒息）"
+      ]
+     },
+     "how": {
+      "en": "A player gets Throttle, which kills them unless cleansed with Esuna in time.",
+      "fr": "Un joueur reçoit Suffocation, qui le tue s'il n'est pas purifié (Guérison) à temps.",
+      "de": "Ein Spieler bekommt Würgen; ohne rechtzeitiges Esuna stirbt er.",
+      "ja": "窒息が付き、時間内にエスナで解除しないと死亡。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "embolus",
+     "names": {
+      "en": "Embolus",
+      "fr": "Caillot",
+      "de": "Pfropfen",
+      "ja": "エンボラス"
+     },
+     "aliases": {
+      "en": [
+       "embolus"
+      ],
+      "fr": [
+       "embolus"
+      ],
+      "de": [
+       "embolus"
+      ],
+      "ja": [
+       "エンボラス"
+      ]
+     },
+     "how": {
+      "en": "A bubble moves from a tornado toward the boss; touching a player or the boss explodes it for raid damage and a boss buff. Main tank drags the boss away from its path.",
+      "fr": "Une bulle va d'une tornade vers le boss ; si elle touche quelqu'un ou le boss, elle explose et buffe le boss. Le MT déplace le boss hors de sa route.",
+      "de": "Eine Blase bewegt sich vom Tornado zum Boss; berührt sie jemanden oder den Boss, explodiert sie und stärkt ihn. Der MT zieht den Boss aus ihrem Weg.",
+      "ja": "竜巻からボスへ向かう水玉。人やボスに触れると爆発。MTがボスを移動させて当てない。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Alexander - The Arm of the Father (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Alexander_-_The_Arm_of_the_Father_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/aa5e1798294/",
+   "lang": "en"
+  },
+  {
+   "title": "dopr.net 機工城アレキサンダー零式：起動編3層",
+   "url": "https://www.dopr.net/karna/Alex1_H3",
+   "lang": "ja"
+  },
+  {
+   "title": "雨の音が好き 起動編3層零式",
+   "url": "https://amaotob.hatenablog.com/entry/2015/08/30/202232",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

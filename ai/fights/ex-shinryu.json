@@ -1,0 +1,422 @@
+{
+ "id": "ex-shinryu",
+ "type": "extreme",
+ "expansion": "SB",
+ "patch": "4.1",
+ "names": {
+  "en": "The Minstrel's Ballad: Shinryu's Domain",
+  "fr": "Le domaine de Shinryu",
+  "de": "Heldenlied von Shinryu",
+  "ja": "極神龍討滅戦"
+ },
+ "aliases": {
+  "en": [
+   "shinryu ex",
+   "shinryu extreme",
+   "shinryu"
+  ],
+  "fr": [
+   "shinryu extrême"
+  ],
+  "de": [
+   "shinryu extrem"
+  ],
+  "ja": [
+   "極神龍",
+   "神龍"
+  ]
+ },
+ "summary": {
+  "en": "Minstrel's Ballad (extreme) against Shinryu, fought on his body. Phase 1 has chained pairs, wing attacks and the Worm's Heart to destroy; then an add transition on his back, a phase 2 with a Doom puddle, and a final race to break his wings before Tidal Wave.",
+  "fr": "Ballade du ménestrel (extrême) contre Shinryu, sur son corps. La phase 1 a des paires enchaînées, des attaques d'ailes et un cœur (Worm's Heart) à détruire ; puis une transition d'adds sur son dos, une phase 2 avec une flaque de Glas, et une course finale pour briser ses ailes avant Tidal Wave.",
+  "de": "Heldenlied (Extrem) gegen Shinryu, auf seinem Körper. Phase 1 hat verkettete Paare, Flügelangriffe und das Worm's Heart, das zerstört werden muss; dann ein Add-Übergang auf seinem Rücken, Phase 2 mit einer Todesurteil-Pfütze und zum Schluss ein Wettlauf, um seine Flügel vor Tidal Wave zu brechen.",
+  "ja": "極神龍討滅戦。神龍の体の上で戦います。フェーズ1は鎖のペア、翼の攻撃、Worm's Heartの破壊。背中での雑魚の移行フェーズ、死の宣告の床があるフェーズ2、最後はTidal Waveまでに翼を壊すフェーズ。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1 (100-44%)",
+    "fr": "Phase 1 (100-44 %)",
+    "de": "Phase 1 (100-44 %)",
+    "ja": "フェーズ1（100〜44%）"
+   },
+   "mechanics": [
+    {
+     "id": "earthen-fury-heart",
+     "names": {
+      "en": "Earthen Fury / The Worm's Heart",
+      "fr": "Fureur tellurique / The Worm's Heart",
+      "de": "Gaias Zorn / The Worm's Heart",
+      "ja": "大地の怒り／The Worm's Heart"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Earthen Fury is heavy raid damage that destroys the east and west platforms. The Worm's Heart reappears every 70 seconds; destroy it at once, since a Corrupted Aether cast finishing while it is up wipes the party.",
+      "fr": "Fureur tellurique fait de gros dégâts de groupe et détruit les plateformes est et ouest. The Worm's Heart revient toutes les 70 secondes ; détruis-le tout de suite, car si une incantation d'éther corrompu se termine pendant qu'il est là, c'est le wipe.",
+      "de": "Gaias Zorn ist starker Gruppenschaden und zerstört die Ost- und Westplattformen. The Worm's Heart erscheint alle 70 Sekunden neu; sofort zerstören, denn endet ein Corrupted-Aether-Zauber, während es da ist, gibt es einen Wipe.",
+      "ja": "大地の怒りは強い全体攻撃で東西の足場を破壊。The Worm's Heartは70秒ごとに再出現、Corrupted Aetherの詠唱完了時に残っていると全滅なので即破壊。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "adds",
+      "dps-check"
+     ]
+    },
+    {
+     "id": "tail-slap",
+     "names": {
+      "en": "Tail Slap",
+      "fr": "Gifle caudale",
+      "de": "Schweifklapser",
+      "ja": "テールスラップ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A marked player makes the tail strike the nearest side: first a healer (southeast), second a DPS (center if uncracked, else northwest), third a tank (southwest).",
+      "fr": "Un joueur marqué fait frapper la queue sur le côté le plus proche : d'abord un healer (sud-est), puis un DPS (centre s'il n'est pas fissuré, sinon nord-ouest), puis un tank (sud-ouest).",
+      "de": "Ein markierter Spieler lässt den Schweif auf die nächste Seite schlagen: zuerst ein Heiler (Südost), dann ein DD (Mitte, wenn nicht gerissen, sonst Nordwest), dann ein Tank (Südwest).",
+      "ja": "マーカー対象の近い側を尻尾が叩きます。1回目ヒーラー（南東）、2回目DPS（割れていなければ中央、割れていれば北西）、3回目タンク（南西）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    },
+    {
+     "id": "wing-attacks",
+     "names": {
+      "en": "Wing attacks (Hellfire / Judgement Bolt / Ice Storm / Hypernova / Levinbolt)",
+      "fr": "Attaques d'ailes (Flammes de l'enfer / Éclair du jugement / Tempête de glace / Hypernova / Fulguration)",
+      "de": "Flügelangriffe (Höllenfeuer / Ionenschlag / Eissturm / Supernova / Keraunisches Feld)",
+      "ja": "翼の攻撃（地獄の火炎／裁きの雷／吹雪／スーパーノヴァ／稲妻）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Hellfire: stand in a water puddle; Judgement Bolt: stay out of puddles (both with icicles to dodge). Left wing: icicles or Ice Storm raid damage; right wing: Levinbolt spreads or Hypernova stack.",
+      "fr": "Hellfire : va dans une flaque d'eau ; Judgement Bolt : reste hors des flaques (les deux avec des stalactites à esquiver). Aile gauche : stalactites ou dégâts de groupe Ice Storm ; aile droite : dispersions Levinbolt ou package Hypernova.",
+      "de": "Hellfire: in eine Wasserpfütze; Judgement Bolt: aus den Pfützen raus (beides mit Eiszapfen zum Ausweichen). Linker Flügel: Eiszapfen oder Ice-Storm-Gruppenschaden; rechter Flügel: Levinbolt-Verteiler oder Hypernova-Sammelpunkt.",
+      "ja": "Hellfire：水たまりに入る。Judgement Bolt：水たまりの外（どちらもつららを避ける）。左翼：つららかIce Stormの全体攻撃。右翼：Levinboltの散開かHypernovaの頭割り。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread",
+      "stack",
+      "raidwide"
+     ]
+    },
+    {
+     "id": "burning-chains",
+     "names": {
+      "en": "Burning Chains / Diamond Dust / Aerial Blast",
+      "fr": "Chaînes brûlantes / Poussière de diamant / Rafale aérienne",
+      "de": "Brennende Ketten / Diamantenstaub / Windschlag",
+      "ja": "炎の鎖／ダイアモンドダスト／エリアルブラスト"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Chains link same-role partners: move to opposite corners. With Diamond Dust (ice floor) the chained healers stand together and one slides away. Aerial Blast knocks back from the center, so aim to be knocked away from your partner (or resist it).",
+      "fr": "Des chaînes lient des partenaires du même rôle : allez dans des coins opposés. Avec Diamond Dust (sol glacé), les healers enchaînés se mettent ensemble et l'un glisse à l'opposé. Rafale aérienne projette depuis le centre, vise d'être poussé loin de ton partenaire (ou résiste).",
+      "de": "Ketten verbinden Partner gleicher Rolle: in gegenüberliegende Ecken. Mit Diamond Dust (Eisboden) stehen die verketteten Heiler zusammen und einer rutscht weg. Windschlag stößt aus der Mitte zurück, lass dich weg von deinem Partner stoßen (oder widerstehe).",
+      "ja": "同じロール同士が鎖でつながり、対角の角へ。Diamond Dust（氷床）中は鎖のヒーラー2人が並び、1人が反対へ滑ります。エリアルブラストは中央からのノックバックなので、相方と反対に飛ぶ位置で受けるか耐性。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "knockback"
+     ]
+    },
+    {
+     "id": "reiryu",
+     "names": {
+      "en": "Reiryu / Earth Breath / Gyre Charge",
+      "fr": "Reiryu / Souffle de terre / Gyrocharge",
+      "de": "Reiryu / Erdatem / Wirbel-Aufladung",
+      "ja": "Reiryu／アースブレス／ジャイヤチャージ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Reiryu: four heads tether DPS; heal the heads to full with single-target heals (AoE heals don't work). Earth Breath: cones on a healer and a DPS, they go northwest/northeast. Gyre Charge: he dives across the arena, run far into a corner beside the charge line.",
+      "fr": "Reiryu : quatre têtes se lient aux DPS ; soigne les têtes à fond avec des soins monocibles (les soins de zone ne marchent pas). Earth Breath : cônes sur un healer et un DPS, ils vont au nord-ouest/nord-est. Gyrocharge : il plonge à travers l'arène, cours loin dans un coin à côté de la ligne.",
+      "de": "Reiryu: vier Köpfe verbinden sich mit DDs; heile die Köpfe mit Einzelheilungen voll (Flächenheilung wirkt nicht). Earth Breath: Kegel auf einem Heiler und einem DD, sie gehen nach Nordwest/Nordost. Wirbel-Aufladung: er stürzt über die Arena, lauf weit in eine Ecke neben der Linie.",
+      "ja": "Reiryu：首4つがDPSに線、単体回復で全快にします（範囲回復は無効）。Earth Breath：ヒーラーとDPSに扇、北西/北東へ。ジャイヤチャージ：横断突進、突進線の横の角へ遠く逃げます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "tether",
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "dragonfist-akh",
+     "names": {
+      "en": "Dragonfist / Akh Morn / Akh Rhai",
+      "fr": "Poing dragon / Akh Morn / Akh Rhai",
+      "de": "Drachenfaust / Akh Morn / Akh Rhai",
+      "ja": "龍掌／アク・モーン／アク・ラーイ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Dragonfist: leave the center. Akh Morn: shared tankbuster, tanks stack and mitigate. Akh Rhai: DPS spread and move off fire pillars.",
+      "fr": "Poing dragon : sors du centre. Akh Morn : tankbuster partagé, les tanks se regroupent et mitigent. Akh Rhai : les DPS se dispersent et sortent des piliers de feu.",
+      "de": "Drachenfaust: raus aus der Mitte. Akh Morn: geteilter Tankbuster, Tanks stehen zusammen und reduzieren. Akh Rhai: DDs verteilen sich und gehen aus den Feuersäulen.",
+      "ja": "龍掌：中央から出る。アク・モーン：分散タンク強攻撃、タンクが重なり軽減。Akh Rhai：DPSは散開し火柱から移動。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "dodge",
+      "spread"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "transition",
+   "names": {
+    "en": "Transition (adds)",
+    "fr": "Transition (adds)",
+    "de": "Übergang (Adds)",
+    "ja": "移行フェーズ（雑魚）"
+   },
+   "mechanics": [
+    {
+     "id": "adds",
+     "names": {
+      "en": "Add waves / Protostar",
+      "fr": "Vagues d'adds / Proto-étoile",
+      "de": "Add-Wellen / Protostern",
+      "ja": "雑魚ウェーブ／プロトスター"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Get launched onto the blue platform, then kill three waves of Ginryu (line AoEs) and Hakkinryu (tankbusters) before Protostar finishes; the third wave hatches from five spread circles that must not overlap. Then cross the tail dodging stun lines and jump off over the southern platform.",
+      "fr": "Fais-toi projeter sur la plateforme bleue, puis tue trois vagues de Ginryu (lignes) et Hakkinryu (tankbusters) avant la fin de Protostar ; la troisième vague naît de cinq cercles de dispersion qui ne doivent pas se chevaucher. Ensuite traverse la queue en esquivant les lignes qui étourdissent et saute au-dessus de la plateforme sud.",
+      "de": "Lass dich auf die blaue Plattform schleudern und töte drei Wellen Ginryu (Linien-AoEs) und Hakkinryu (Tankbuster), bevor Protostar fertig ist; die dritte Welle schlüpft aus fünf Verteilkreisen, die sich nicht überlappen dürfen. Dann über den Schweif laufen, Betäubungslinien ausweichen und über der südlichen Plattform abspringen.",
+      "ja": "打ち上げで青い足場へ。Protostar完了までにGinryu（直線範囲）とHakkinryu（タンク強攻撃）の3ウェーブを倒します。3ウェーブ目は5人の散開円から孵化し、重なると全滅。その後スタン付きの直線を避けて尻尾を渡り、南の足場の上で飛び降ります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "transition",
+      "adds",
+      "tankbuster",
+      "dodge"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2 (44-24%) and wings",
+    "fr": "Phase 2 (44-24 %) et ailes",
+    "de": "Phase 2 (44-24 %) und Flügel",
+    "ja": "フェーズ2（44〜24%）と翼"
+   },
+   "mechanics": [
+    {
+     "id": "tera-slash",
+     "names": {
+      "en": "Tera Slash / Doom puddle",
+      "fr": "TéraTaillade / flaque de Glas",
+      "de": "Tera-Schlag / Todesurteil-Pfütze",
+      "ja": "テラスラッシュ／死の宣告の床"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Tera Slash is a tankbuster with physical vulnerability, tanks swap. A permanent puddle under Shinryu gives Doom while you stand in it.",
+      "fr": "TéraTaillade est un tankbuster avec vulnérabilité physique, les tanks swap. Une flaque permanente sous Shinryu donne Glas tant que tu es dedans.",
+      "de": "Tera-Schlag ist ein Tankbuster mit physischer Verwundbarkeit, Tanks wechseln. Eine dauerhafte Pfütze unter Shinryu gibt Todesurteil, solange du drinstehst.",
+      "ja": "テラスラッシュは物理被ダメ上昇付きタンク強攻撃、タンクスイッチ。神龍の下には立つと死の宣告が付く床があります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "debuff"
+     ]
+    },
+    {
+     "id": "atomic-ray-chains",
+     "names": {
+      "en": "Atomic Ray + Burning Chains",
+      "fr": "Rayon atomique + Chaînes brûlantes",
+      "de": "Atomstrahlung + Brennende Ketten",
+      "ja": "アトミックレイ＋炎の鎖"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Tanks are chained to healers and the four DPS get stack markers with magic vulnerability: group briefly, then split into stack pairs in the agreed directions.",
+      "fr": "Les tanks sont enchaînés aux healers et les quatre DPS ont des packages avec vulnérabilité magique : regroupe-toi un instant, puis séparez-vous en paires dans les directions prévues.",
+      "de": "Tanks sind an Heiler gekettet und die vier DDs haben Sammelmarker mit magischer Verwundbarkeit: kurz zusammen, dann in Sammelpaare in die abgesprochenen Richtungen teilen.",
+      "ja": "タンクとヒーラーが鎖、DPS4人に魔法被ダメ上昇付き頭割り。一度集まってから、決めた方向にペアで分かれます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "stack",
+      "debuff"
+     ]
+    },
+    {
+     "id": "ice-storm-p2",
+     "names": {
+      "en": "Ice Storm + Hypernova or Levinbolt",
+      "fr": "Tempête de glace + Hypernova ou Fulguration",
+      "de": "Eissturm + Supernova oder Keraunisches Feld",
+      "ja": "吹雪＋スーパーノヴァか稲妻"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "With Hypernova: stack and stand still to get frozen, the ice protects you. With Levinbolt: keep moving to avoid freezing and spread.",
+      "fr": "Avec Hypernova : regroupe-toi et ne bouge pas pour être gelé, la glace te protège. Avec Levinbolt : continue de bouger pour ne pas geler et disperse-toi.",
+      "de": "Mit Hypernova: sammeln und stillstehen, um einzufrieren, das Eis schützt dich. Mit Levinbolt: in Bewegung bleiben, um nicht einzufrieren, und verteilen.",
+      "ja": "Hypernovaの時：集まって静止し凍結、氷で軽減。Levinboltの時：凍らないよう動き続けて散開。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "spread",
+      "debuff"
+     ]
+    },
+    {
+     "id": "breath-wormwail",
+     "names": {
+      "en": "Benighting Breath / Wormwail",
+      "fr": "Souffle enténébrant / Gémissement draconique",
+      "de": "Dunkelhauch / Shinryus Ruf",
+      "ja": "ダークネスブレス／神龍の咆哮"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Dodge the cone or the donut; for Wormwail wait a few seconds before stepping back near the Doom puddle.",
+      "fr": "Esquive le cône ou l'anneau ; pour Gémissement draconique, attends quelques secondes avant de revenir près de la flaque.",
+      "de": "Weich dem Kegel oder dem Ring aus; bei Shinryus Ruf ein paar Sekunden warten, bevor du wieder zur Pfütze gehst.",
+      "ja": "扇かドーナツを回避。神龍の咆哮は数秒待ってから床の近くへ戻ります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "wings-enrage",
+     "names": {
+      "en": "Wings and Tidal Wave (enrage)",
+      "fr": "Ailes et Raz-de-marée (enrage)",
+      "de": "Flügel und Flutwelle (Enrage)",
+      "ja": "翼とタイダルウェイブ（時間切れ）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "At 24% he starts a 70-second Tidal Wave that knocks everyone off. Use the jump pads to reach each wing and destroy it before its own 35-second cast; each broken wing removes about 9% HP, then jump off his back and finish him.",
+      "fr": "À 24 %, il lance un Tidal Wave de 70 secondes qui éjecte tout le monde. Utilise les tremplins pour atteindre chaque aile et la détruire avant sa propre incantation de 35 secondes ; chaque aile brisée retire environ 9 % de PV, puis saute de son dos et achève-le.",
+      "de": "Bei 24 % beginnt er eine 70-Sekunden-Tidal-Wave, die alle hinunterwirft. Nutze die Sprungfelder, um jeden Flügel zu erreichen und vor seinem eigenen 35-Sekunden-Zauber zu zerstören; jeder Flügel nimmt etwa 9 % HP, dann von seinem Rücken springen und ihn erledigen.",
+      "ja": "24%で70秒のTidal Wave（全員場外）。ジャンプ台で各翼へ行き、35秒の詠唱前に破壊。翼1つで約9%減るので、その後背中から降りてとどめ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage",
+      "dps-check",
+      "knockback"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - The Minstrel's Ballad: Shinryu's Domain",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/The_Minstrel%27s_Ballad:_Shinryu%27s_Domain",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

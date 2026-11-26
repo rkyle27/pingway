@@ -1,0 +1,2245 @@
+{
+ "id": "fru",
+ "type": "ultimate",
+ "expansion": "DT",
+ "patch": "7.11",
+ "names": {
+  "en": "Futures Rewritten (Ultimate)",
+  "fr": "Futures Rewritten (fatal)",
+  "de": "Eine zweite Zukunft (fatal)",
+  "ja": "絶もうひとつの未来"
+ },
+ "aliases": {
+  "en": [
+   "fru",
+   "futures rewritten",
+   "eden ultimate",
+   "futures rewritten ultimate"
+  ],
+  "fr": [
+   "fru",
+   "fatal eden",
+   "futures rewritten"
+  ],
+  "de": [
+   "fru",
+   "eine zweite zukunft",
+   "fatal eden",
+   "eden fatal"
+  ],
+  "ja": [
+   "絶もう",
+   "絶もうひとつの未来",
+   "絶エデン",
+   "fru"
+  ]
+ },
+ "summary": {
+  "en": "Futures Rewritten is the sixth Ultimate (patch 7.11), built on the Eden raids. It has five phases: Fatebreaker, Usurper of Frost (with the Ice Veil crystal intermission), Oracle of Darkness, both of them together, and Pandora. Hard parts are Ultimate Relativity, Light Rampant, Crystallize Time and the long, mechanic-dense Pandora phase.",
+  "fr": "Futures Rewritten est le sixième fatal (patch 7.11), basé sur les raids Eden. Il a cinq phases : Fatebreaker, Usurper of Frost (avec l'intermission des cristaux du Voile de glace), Oracle of Darkness, les deux ensemble, puis Pandora. Les gros morceaux : Ultimate Relativity, Light Rampant, Crystallize Time et la longue phase de Pandora.",
+  "de": "Eine zweite Zukunft ist der sechste Fatal-Raid (Patch 7.11) und basiert auf den Eden-Raids. Es gibt fünf Phasen: Fatebreaker, Usurper of Frost (mit der Kristall-Zwischenphase am Eisschleier), Oracle of Darkness, beide zusammen und Pandora. Am schwersten sind Ultimate Relativity, Light Rampant, Crystallize Time und die lange Pandora-Phase.",
+  "ja": "絶もうひとつの未来はパッチ7.11の6つ目の絶で、エデン零式がモチーフ。フェイトブレイカー、シヴァ・ミトロン（間にクリスタル）、オラクル、2体同時、パンドラの5フェーズ構成。時間圧縮・絶、光の暴走、P4の時間結晶、P5パンドラが山場。"
+ },
+ "strats_overview": [
+  {
+   "id": "na-pf",
+   "name": {
+    "en": "NA PF standard",
+    "fr": "Standard PF NA",
+    "de": "NA-PF-Standard",
+    "ja": "NA野良標準"
+   },
+   "region": "NA/EU",
+   "note": {
+    "en": "Raidplan used by most NA Party Finder groups (Icy Veins follows Tor's guide); PF listings write it as 'NAUR' (often with 'FMBG'). Clock spots: tanks N/E, healers W/S, melee SW/SE, ranged NW/NE; light parties 1 Tank/Healer/Melee/Ranged. EU (Light) PF listings also advertise 'NAUR | FMBG'; the LPDU community additionally has its own P1 and P2 raidplans, so check whether a listing says LPDU. Small PF variations exist, always check the PF description.",
+    "fr": "Raidplan utilisé par la plupart des groupes PF NA (Icy Veins suit le guide de Tor) ; les annonces l'écrivent « NAUR » (souvent avec « FMBG »). Places en horloge : tanks N/E, soigneurs O/S, mêlées SO/SE, distances NO/NE ; groupes légers 1 tank/soigneur/mêlée/distance. Les annonces PF EU (Light) indiquent aussi « NAUR | FMBG » ; la communauté LPDU a en plus ses propres raidplans P1 et P2, donc regarde si l'annonce dit LPDU. Il existe de petites variantes PF, lis toujours la description.",
+    "de": "Raidplan, den die meisten NA-PF-Gruppen nutzen (Icy Veins folgt Tors Guide); PF-Einträge schreiben ihn als „NAUR“ (oft mit „FMBG“). Uhrplätze: Tanks N/O, Heiler W/S, Nahkämpfer SW/SO, Fernkämpfer NW/NO; Leichtgruppen je 1 Tank/Heiler/Nahkampf/Fernkampf. EU-PF-Einträge (Light) schreiben ebenfalls „NAUR | FMBG“; die LPDU-Community hat zusätzlich eigene P1- und P2-Raidplans, also schau, ob ein Eintrag LPDU sagt. Es gibt kleine PF-Varianten, lies immer die PF-Beschreibung.",
+    "ja": "NA野良の多くが使うレイドプラン（Icy VeinsはTor氏のガイドに準拠）。募集文では「NAUR」（よく「FMBG」と一緒）。時計位置：タンクN/E、ヒーラーW/S、近接SW/SE、レンジNW/NE。LPは各1タンク/ヒーラー/近接/レンジ。EU（Light）の募集も「NAUR | FMBG」が多い。LPDUにはP1・P2の独自レイドプランもあるので、募集文にLPDUとあるか確認してね。野良ごとに細かい違いがあるので必ず募集文を確認。"
+   },
+   "aliases": {
+    "en": [
+     "naur",
+     "fmbg",
+     "naur fmbg",
+     "icy veins",
+     "tor",
+     "na pf"
+    ],
+    "fr": [
+     "naur",
+     "fmbg",
+     "naur fmbg",
+     "icy veins",
+     "tor",
+     "na pf"
+    ],
+    "de": [
+     "naur",
+     "fmbg",
+     "naur fmbg",
+     "icy veins",
+     "tor",
+     "na pf"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "oce-mur",
+   "name": {
+    "en": "Materia (MUR) standard",
+    "fr": "Standard Materia (MUR)",
+    "de": "Materia-Standard (MUR)",
+    "ja": "Materia(MUR)標準"
+   },
+   "region": "OCE",
+   "note": {
+    "en": "Materia Ultimate Raiding strats (Materia is the Oceanian data center). Base spread: D3 MT D4 / H1 - ST / D1 H2 D2. Diamond Dust has two accepted options (Relative North or Colour Partners), confirm which one your group uses.",
+    "fr": "Strats de Materia Ultimate Raiding (Materia = data center d'Océanie). Placement de base : D3 MT D4 / H1 - ST / D1 H2 D2. Pour Diamond Dust il existe deux options (Relative North ou Colour Partners), demande laquelle ton groupe utilise.",
+    "de": "Strats von Materia Ultimate Raiding (Materia ist das ozeanische Datenzentrum). Grundaufstellung: D3 MT D4 / H1 - ST / D1 H2 D2. Für Diamond Dust gibt es zwei Optionen (Relative North oder Colour Partners), frag deine Gruppe, welche sie nutzt.",
+    "ja": "Materia Ultimate Raiding（オセアニアDC）の処理。基本散開はD3 MT D4 / H1 - ST / D1 H2 D2。ダイアモンドダストは「相対北」と「カラーペア」の2種類があるので要確認。"
+   },
+   "aliases": {
+    "en": [
+     "mur",
+     "materia",
+     "materia raiding",
+     "materiaraiding"
+    ],
+    "fr": [
+     "mur",
+     "materia",
+     "materia raiding",
+     "materiaraiding"
+    ],
+    "de": [
+     "mur",
+     "materia",
+     "materia raiding",
+     "materiaraiding"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-pf",
+   "name": {
+    "en": "JP PF: Lily Doll (P1-3) + Nukemaru (P4-5)",
+    "fr": "PF JP : Lily Doll (P1-3) + Nukemaru (P4-5)",
+    "de": "JP-PF: Lily Doll (P1-3) + Nukemaru (P4-5)",
+    "ja": "リリドッ（P1〜3）＋ぬけまる（P4〜5）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "Japanese PF standard: Lily Doll strats for P1-P3, Nukemaru strats for P4-P5, written as 'P123リリド P45ぬけまる'. Common tags: Apocalypse-relative positions (アポ基準), water swap before the cones (扇前), 1:7 Akh Morn, red-Blizzard rush (赤爆), Y-shape Arm's Length (Y字アムレン). Some groups use marker macros (e.g. 跡部王国式 for Ultimate Relativity).",
+    "fr": "Standard PF japonais : strats Lily Doll pour P1-P3, Nukemaru pour P4-P5 (écrit « P123リリド P45ぬけまる »). Tags courants : positions basées sur Apocalypse (アポ基準), échange d'eau avant les cônes (扇前), Akh Morn 1:7, course des glaces rouges (赤爆), Arm's Length en Y (Y字アムレン). Certains groupes utilisent des macros de marqueurs (ex. 跡部王国式 pour Ultimate Relativity).",
+    "de": "Japanischer PF-Standard: Lily-Doll-Strats für P1-P3, Nukemaru für P4-P5 (geschrieben „P123リリド P45ぬけまる“). Übliche Tags: Positionen nach Apocalypse (アポ基準), Wassertausch vor den Kegeln (扇前), Akh Morn 1:7, Rot-Eis-Sprint (赤爆), Y-Form-Arm's-Length (Y字アムレン). Manche Gruppen nutzen Marker-Makros (z. B. 跡部王国式 für Ultimate Relativity).",
+    "ja": "日本野良の主流は「P123リリド P45ぬけまる」。アポ基準、扇前、1:7アクモーン、赤爆走、Y字アムレンなどの表記が使われる。時間圧縮・絶はマーカーマクロ式（跡部王国式など）を使う固定もある。"
+   },
+   "aliases": {
+    "en": [
+     "lily doll",
+     "lilydoll",
+     "nukemaru",
+     "xivjp"
+    ],
+    "fr": [
+     "lily doll",
+     "lilydoll",
+     "nukemaru",
+     "xivjp"
+    ],
+    "de": [
+     "lily doll",
+     "lilydoll",
+     "nukemaru",
+     "xivjp"
+    ],
+    "ja": [
+     "リリド",
+     "ぬけまる",
+     "P123リリド P45ぬけまる"
+    ]
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1: Fatebreaker",
+    "fr": "Phase 1 : Fatebreaker",
+    "de": "Phase 1: Fatebreaker",
+    "ja": "P1：フェイトブレイカー"
+   },
+   "mechanics": [
+    {
+     "id": "cyclonic-break",
+     "names": {
+      "en": "Cyclonic Break",
+      "fr": "Cyclonic Break",
+      "de": "Cyclonic Break",
+      "ja": "サイクロニックブレイク"
+     },
+     "aliases": {
+      "en": [
+       "proteans",
+       "cyclonic"
+      ],
+      "fr": [
+       "protéennes"
+      ],
+      "de": [
+       "proteans"
+      ],
+      "ja": [
+       "サイクロ",
+       "扇"
+      ]
+     },
+     "how": {
+      "en": "The boss fires a cone at every player (proteans), then more cones land between and on top of the first ones. Red fire means partner stacks, blue lightning means big spreads. Standing in a second cone or stacking wrong kills you.",
+      "fr": "Le boss envoie un cône sur chaque joueur, puis d'autres cônes tombent entre et sur les premiers. Feu rouge = packs à deux, foudre bleue = grosses dispersions. Prendre un deuxième cône ou mal te packer te tue.",
+      "de": "Der Boss feuert einen Kegel auf jeden Spieler, danach landen weitere Kegel dazwischen und auf den ersten. Rotes Feuer = Partner-Stacks, blauer Blitz = große Verteilung. Ein zweiter Kegel oder falsches Stacken bringt dich um.",
+      "ja": "全員に扇が飛び、続けて扇の間と同じ位置に追撃が来る。炎なら2人頭割り、雷なら大きな散開。2発目の扇を踏む・頭割りミスで死亡。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Start on your clock spot with your partner (tank/melee with ranged/healer). Fire: stack with your partner; lightning: spread, ranged and healers toward the wall. After the second cone set, rotate clockwise into the gap.",
+        "fr": "Commence sur ta position horloge avec ton partenaire (tank/mêlée avec distance/heal). Feu : pack avec ton partenaire ; foudre : disperse-toi, distance et heals vers le bord. Après la 2e série de cônes, tourne dans le sens horaire dans le trou.",
+        "de": "Starte auf deiner Uhrposition mit deinem Partner (Tank/Nahkampf mit Fernkampf/Heiler). Feuer: mit Partner stacken; Blitz: verteilen, Fernkampf und Heiler zum Rand. Nach der 2. Kegelwelle im Uhrzeigersinn in die Lücke gehen.",
+        "ja": "時計配置でペア（タンク/近接と遠隔/ヒーラー）。炎はペア頭割り、雷は散開で遠隔・ヒーラーは外周寄り。2回目の扇の後は時計回りに隙間へ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Role-based partner stacks for fire, big spreads for lightning, both from the MUR protean spots, then alternate into the gaps.",
+        "fr": "Packs à deux par rôle pour le feu, grosses dispersions pour la foudre, depuis les positions protéennes MUR, puis alterne dans les trous.",
+        "de": "Feuer: Partner-Stacks nach Rolle, Blitz: große Verteilung, jeweils von den MUR-Protean-Positionen aus, danach abwechselnd in die Lücken.",
+        "ja": "MURの散開位置から、炎はロールペア頭割り、雷は散開。その後は扇の隙間へ交互に移動。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Fire: tanks/healers move clockwise and DPS counterclockwise into partner stacks. Lightning: everyone moves clockwise and spreads. Then step into the middle of the previous cone for the two follow-up hits.",
+        "fr": "Feu : tanks/heals tournent dans le sens horaire, DPS dans le sens antihoraire pour les packs à deux. Foudre : tout le monde tourne dans le sens horaire et se disperse. Ensuite, entre au milieu du cône précédent pour les deux coups suivants.",
+        "de": "Feuer: Tanks/Heiler gehen im Uhrzeigersinn, DDs gegen den Uhrzeigersinn in die Partner-Stacks. Blitz: alle im Uhrzeigersinn und verteilen. Danach in die Mitte des vorherigen Kegels für die zwei Folgetreffer.",
+        "ja": "炎はTHが時計回り・DPSが反時計回りでペア頭割り。雷は全員時計回りで散開。その後は直前の扇の中央に入って2連続の扇を避ける。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "stack",
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "powder-mark-trail",
+     "names": {
+      "en": "Powder Mark Trail",
+      "fr": "Powder Mark Trail",
+      "de": "Powder Mark Trail",
+      "ja": "連鎖爆印刻"
+     },
+     "aliases": {
+      "en": [
+       "powder mark",
+       "tankbuster"
+      ],
+      "fr": [
+       "tankbuster"
+      ],
+      "de": [
+       "tankbuster"
+      ],
+      "ja": [
+       "爆印",
+       "連鎖爆印"
+      ]
+     },
+     "how": {
+      "en": "A heavy tankbuster that leaves physical vulnerability (tank swap) and a debuff that later explodes on that tank and the closest player. It hits the player holding aggro, so the tanks swap right away; when the mark explodes, the other tank should be the closest player.",
+      "fr": "Un gros tankbuster qui laisse une vulnérabilité physique (swap de tank) et un débuff qui explose plus tard sur ce tank et le joueur le plus proche. Il frappe le joueur qui a l'inimitié, donc swap tout de suite ; quand la marque explose, l'autre tank doit être le joueur le plus proche.",
+      "de": "Ein schwerer Tankbuster mit physischer Verwundbarkeit (Tankwechsel) und einem Debuff, der später auf dem Tank und dem nächsten Spieler explodiert. Er trifft den Spieler mit der Feindschaft, also sofort wechseln; wenn das Mal explodiert, sollte der andere Tank der nächste Spieler sein.",
+      "ja": "被物理ダメージ増加と爆印が付く強攻撃。スイッチが必要で、爆印は本人と最も近い1人に円範囲で爆発する。ヘイトを持っている人に来るのですぐスイッチ。爆印の爆発時は、もう一方のタンクが一番近くにいるようにする。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Swap tanks. When the mark explodes, both tanks stand together away from the party with mitigation so the second hit lands on the other tank.",
+        "fr": "Swap de tanks. Quand la marque explose, les deux tanks se mettent ensemble, loin du groupe, avec réductions, pour que le 2e coup tombe sur l'autre tank.",
+        "de": "Tankwechsel. Wenn das Mal explodiert, stehen beide Tanks mit Mitigation zusammen und weg von der Gruppe, damit der 2. Treffer den anderen Tank trifft.",
+        "ja": "スイッチ。爆印はタンク2人がバフを使って並び、他の人を巻き込まない。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Swap. Both tanks line up in the middle with buffs for the explosion; during the Burnt Strike version MT stands left and ST right, facing the middle.",
+        "fr": "Swap. Les deux tanks se placent au centre avec buffs pour l'explosion ; pendant la version Burnt Strike, MT à gauche et ST à droite, face au centre.",
+        "de": "Wechsel. Beide Tanks stellen sich mit Buffs in der Mitte für die Explosion auf; bei der Burnt-Strike-Version steht MT links und ST rechts, Blick zur Mitte.",
+        "ja": "スイッチ。爆発はタンク2人が中央でバフを使って並ぶ。バーンストライク時は中央を向いて左MT、右ST。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "proximity",
+      "debuff"
+     ]
+    },
+    {
+     "id": "utopian-sky",
+     "names": {
+      "en": "Utopian Sky",
+      "fr": "Utopian Sky",
+      "de": "Utopian Sky",
+      "ja": "楽園絶技"
+     },
+     "aliases": {
+      "en": [
+       "clones",
+       "fog",
+       "utopian"
+      ],
+      "fr": [
+       "clones"
+      ],
+      "de": [
+       "klone"
+      ],
+      "ja": [
+       "楽園絶技",
+       "分身"
+      ]
+     },
+     "how": {
+      "en": "Eight boss clones appear on the wall, each only visible up close. Clones with a raised weapon fire line AoEs across the arena; the axis where neither clone raises its weapon is safe. Then fire means two light-party stacks, lightning means spreads.",
+      "fr": "Huit clones du boss apparaissent au bord, visibles seulement de près. Ceux qui lèvent l'arme tirent des lignes à travers l'arène ; l'axe où aucun des deux ne lève l'arme est sûr. Ensuite feu = deux packs par groupe léger, foudre = dispersion.",
+      "de": "Acht Bossklone erscheinen am Rand, nur aus der Nähe sichtbar. Klone mit erhobener Waffe feuern Linien quer durch die Arena; die Achse, auf der keiner die Waffe hebt, ist sicher. Danach Feuer = zwei Leichtgruppen-Stacks, Blitz = verteilen.",
+      "ja": "外周8方向に分身が出現し、近くの人にしか見えない。武器を上げた分身は直線範囲を撃つ。向かい合う2体とも上げていない軸が安地。その後、炎ならLP頭割り、雷なら散開。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Everyone checks the clone at their wall spot. If yours raised its weapon, you and the player opposite move in; the two remaining opposite players mark the safe axis. Light parties fill the safe spots by priority, then stack (fire) or spread in a T shape (lightning).",
+        "fr": "Chacun regarde le clone à sa position au bord. Si le tien lève l'arme, toi et le joueur en face vous rentrez ; les deux joueurs restants marquent l'axe sûr. Les groupes légers remplissent les zones sûres par priorité, puis packent (feu) ou se dispersent en T (foudre).",
+        "de": "Jeder prüft den Klon an seiner Randposition. Hebt deiner die Waffe, gehen du und der Spieler gegenüber rein; die zwei übrigen gegenüberliegenden Spieler markieren die sichere Achse. Leichtgruppen füllen die Safespots nach Priorität, dann stacken (Feuer) oder in T-Form verteilen (Blitz).",
+        "ja": "自分の担当方角の分身を確認し、手を上げていたら対面と一緒に中央へ。残った2人が安地の軸。LPは優先順で安地へ入り、炎は頭割り、雷はT字散開。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Spread at the wall on protean spots with ST and D4 swapped. Players whose clone raises its arm walk in; LP1 takes the SW-to-N side, LP2 NE-to-S. Then stack or spread, DPS about 3.5 notches from the star.",
+        "fr": "Dispersion au bord sur les positions protéennes, avec ST et D4 échangés. Ceux dont le clone lève le bras rentrent ; LP1 prend le côté SO→N, LP2 NE→S. Puis pack ou dispersion, DPS à environ 3,5 crans de l'étoile.",
+        "de": "Am Rand auf den Protean-Positionen verteilen, ST und D4 getauscht. Wessen Klon den Arm hebt, geht rein; LP1 nimmt die Seite SW→N, LP2 NO→S. Dann stacken oder verteilen, DDs etwa 3,5 Kerben vom Stern.",
+        "ja": "外周散開（STとD4を入れ替え）。手を上げた分身の担当は中へ。LP1はSW〜N側、LP2はNE〜S側。その後頭割りか散開（DPSは星から約3.5目盛り）。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Find the axis where both facing clones keep their arms down. Inside the safe area: fire = split into MT group and ST group stacks, lightning = spread.",
+        "fr": "Trouve l'axe où les deux clones face à face gardent les bras baissés. Dans la zone sûre : feu = packs groupe MT et groupe ST, foudre = dispersion.",
+        "de": "Finde die Achse, auf der beide gegenüberliegenden Klone die Arme unten lassen. Im Safespot: Feuer = Stacks als MT-Gruppe und ST-Gruppe, Blitz = verteilen.",
+        "ja": "向かい合う2体がどちらも手を上げていない軸が安地。安地内で炎ならMT組・ST組で頭割り、雷なら散開。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack",
+      "spread"
+     ]
+    },
+    {
+     "id": "turn-of-the-heavens",
+     "names": {
+      "en": "Turn of the Heavens (tethers 1)",
+      "fr": "Turn of the Heavens (liens 1)",
+      "de": "Turn of the Heavens (Verbindungen 1)",
+      "ja": "ターン・オブ・ヘヴンズ（線1回目）"
+     },
+     "aliases": {
+      "en": [
+       "tethers 1",
+       "shifting sky",
+       "rings"
+      ],
+      "fr": [
+       "liens 1"
+      ],
+      "de": [
+       "verbindungen 1"
+      ],
+      "ja": [
+       "線1",
+       "サンダー/ファイア輪"
+      ]
+     },
+     "how": {
+      "en": "A clone channels fire or lightning rings (stand on the opposite element), a Burnt Strike line hits (fire version knocks back, lightning version widens), and two players get tethers that resolve as four-player stacks. A 4/4 split is needed or you take a heavy damage down.",
+      "fr": "Un clone canalise des anneaux de feu ou de foudre (va sur l'élément opposé), une ligne Burnt Strike frappe (version feu = projection, version foudre = elle s'élargit) et deux joueurs ont des liens qui deviennent des packs à quatre. Il faut un 4/4, sinon gros malus de dégâts.",
+      "de": "Ein Klon kanalisiert Feuer- oder Blitzringe (stell dich auf das andere Element), eine Burnt-Strike-Linie trifft (Feuer = Rückstoß, Blitz = wird breiter) und zwei Spieler bekommen Verbindungen, die als 4er-Stacks auslösen. Es braucht eine 4/4-Aufteilung, sonst gibt es einen schweren Schadensmalus.",
+      "ja": "分身が炎か雷の輪を出す（逆属性側へ）。バーンストライクの直線（炎はノックバック、雷は範囲拡大）の後、2人の線が4人頭割りになる。4:4にならないと与ダメ低下。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "LP1 north, LP2 south. If both tethers land in one party, flex: tanks swap first, then melee, then ranged; healers never flex.",
+        "fr": "LP1 au nord, LP2 au sud. Si les deux liens tombent dans le même groupe, on échange : d'abord les tanks, puis les mêlées, puis les distances ; les heals ne bougent jamais.",
+        "de": "LP1 Norden, LP2 Süden. Landen beide Verbindungen in einer Gruppe, wird getauscht: zuerst Tanks, dann Nahkampf, dann Fernkampf; Heiler tauschen nie.",
+        "ja": "LP1北、LP2南。同じLPに線が2本なら入れ替え。優先はタンク→近接→遠隔、ヒーラーは動かない。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "LP1 north, LP2 south; if a swap is needed, use TMRH priority and the opposite tank flexes to match.",
+        "fr": "LP1 au nord, LP2 au sud ; si un échange est nécessaire, priorité TMRH et le tank opposé s'adapte.",
+        "de": "LP1 Norden, LP2 Süden; wenn getauscht werden muss, gilt TMRH-Priorität und der andere Tank passt sich an.",
+        "ja": "LP1北、LP2南。入れ替えはTMRH優先で、反対側のタンクが合わせる。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Official name of this tether set not confirmed in the guides read (Icy Veins calls it the Shifting Sky part). JP strat for this part not found.",
+      "fr": "Nom officiel de cette série de liens non confirmé dans les guides lus. Strat JP introuvable pour cette partie.",
+      "de": "Offizieller Name dieser Verbindungsrunde in den gelesenen Guides nicht bestätigt. JP-Strat für diesen Teil nicht gefunden.",
+      "ja": "このパートの正式名は未確認。日本式の処理は見つからず。"
+     },
+     "tags": [
+      "dodge",
+      "knockback",
+      "tether",
+      "stack"
+     ]
+    },
+    {
+     "id": "burnished-glory",
+     "names": {
+      "en": "Burnished Glory",
+      "fr": "Burnished Glory",
+      "de": "Burnished Glory",
+      "ja": "Burnished Glory"
+     },
+     "aliases": {
+      "en": [
+       "raidwide",
+       "bleed"
+      ],
+      "fr": [
+       "dégâts de zone"
+      ],
+      "de": [
+       "raidwide"
+      ],
+      "ja": [
+       "全体攻撃"
+      ]
+     },
+     "how": {
+      "en": "Heavy raidwide with a bleed; heal and mitigate. It also returns as the P1 enrage.",
+      "fr": "Grosse attaque de zone avec saignement ; soigne et réduis. Elle revient aussi comme enrage de la P1.",
+      "de": "Schwerer Raidwide mit Blutung; heilen und mitigieren. Kommt auch als P1-Enrage zurück.",
+      "ja": "出血付きの全体攻撃。回復と軽減で受ける。P1の時間切れ技でもある。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Party mitigation and healing; nothing to position.",
+        "fr": "Réductions de groupe et soins, aucun placement.",
+        "de": "Gruppenmitigation und Heilung, keine Positionierung.",
+        "ja": "軽減と回復のみ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "JP name not confirmed, English name used.",
+      "fr": "Nom JP non confirmé.",
+      "de": "JP-Name nicht bestätigt.",
+      "ja": "日本語名は未確認のため英語名。"
+     },
+     "tags": [
+      "raidwide",
+      "enrage"
+     ]
+    },
+    {
+     "id": "fall-of-faith",
+     "names": {
+      "en": "Fall of Faith",
+      "fr": "Fall of Faith",
+      "de": "Fall of Faith",
+      "ja": "シンソイルセヴァー"
+     },
+     "aliases": {
+      "en": [
+       "tethers 2",
+       "fall of faith",
+       "conga"
+      ],
+      "fr": [
+       "liens 2"
+      ],
+      "de": [
+       "verbindungen 2"
+      ],
+      "ja": [
+       "シンソイル",
+       "線2"
+      ]
+     },
+     "how": {
+      "en": "Four players get fire or lightning tethers one after another. Fire = a big conal stack on the tethered player's group, lightning = cones on the others. Wrong counts give damage down.",
+      "fr": "Quatre joueurs reçoivent l'un après l'autre des liens de feu ou de foudre. Feu = gros pack en cône sur le groupe du joueur lié, foudre = cônes sur les autres. Un mauvais nombre donne un malus de dégâts.",
+      "de": "Vier Spieler bekommen nacheinander Feuer- oder Blitzverbindungen. Feuer = großer Kegel-Stack auf die Gruppe des Verbundenen, Blitz = Kegel auf die anderen. Falsche Anzahl gibt Schadensmalus.",
+      "ja": "4人に順番に炎か雷の線が付く。炎は扇状の頭割り、雷は他の人への扇。人数ミスで与ダメ低下。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Conga line R-H-M-T-T-M-H-R. Tethers 1 and 3 go west of the boss, 2 and 4 go east; the rest fill from the conga ends. Fire: three stack behind the tethered player; lightning: the partner stands so the tethered player is between them and the boss.",
+        "fr": "Conga R-H-M-T-T-M-H-R. Liens 1 et 3 à l'ouest du boss, 2 et 4 à l'est ; les autres complètent depuis les bouts de la conga. Feu : trois joueurs packent derrière le lié ; foudre : le partenaire se place pour que le lié soit entre lui et le boss.",
+        "de": "Conga-Reihe R-H-M-T-T-M-H-R. Verbindungen 1 und 3 westlich vom Boss, 2 und 4 östlich; der Rest füllt von den Enden auf. Feuer: drei stacken hinter dem Verbundenen; Blitz: der Partner stellt sich so, dass der Verbundene zwischen ihm und dem Boss steht.",
+        "ja": "整列はR-H-M-T-T-M-H-R。1・3本目は西、2・4本目は東、残りは端から補充。炎は3人が線の人の後ろで頭割り、雷は線の人がボスとの間に来るように立つ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Tethers 1 and 3 west of Fatebreaker, 2 and 4 east; players swap sides after each tether resolves.",
+        "fr": "Liens 1 et 3 à l'ouest de Fatebreaker, 2 et 4 à l'est ; on change de côté après chaque lien.",
+        "de": "Verbindungen 1 und 3 westlich, 2 und 4 östlich von Fatebreaker; nach jeder Verbindung die Seite wechseln.",
+        "ja": "1・3本目は西、2・4本目は東。各線の処理後に入れ替わる。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Line up H1 MT ST D1 D2 D3 D4 H2 and split east/west into two groups. Fire tether: stack at the outer edge; lightning tether: cones are taken by priority from the north, T > H > D.",
+        "fr": "Ligne H1 MT ST D1 D2 D3 D4 H2, séparation est/ouest en deux groupes. Lien de feu : pack au bord extérieur ; lien de foudre : les cônes se prennent par priorité depuis le nord, T > H > D.",
+        "de": "Aufstellung H1 MT ST D1 D2 D3 D4 H2, Aufteilung Ost/West in zwei Gruppen. Feuerverbindung: am Außenrand stacken; Blitzverbindung: Kegel nach Priorität von Norden, T > H > D.",
+        "ja": "H1 MT ST D1 D2 D3 D4 H2で整列し東西2組。炎の線は外周で頭割り、雷の線は北からT＞H＞Dの優先で扇。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "stack",
+      "cleave"
+     ]
+    },
+    {
+     "id": "burnt-strike-towers",
+     "names": {
+      "en": "Burnt Strike towers",
+      "fr": "Tours de Burnt Strike",
+      "de": "Burnt-Strike-Türme",
+      "ja": "バーンストライク塔"
+     },
+     "aliases": {
+      "en": [
+       "towers",
+       "enum towers"
+      ],
+      "fr": [
+       "tours"
+      ],
+      "de": [
+       "türme"
+      ],
+      "ja": [
+       "塔",
+       "塔踏み"
+      ]
+     },
+     "how": {
+      "en": "Three towers spawn on the east or west wall and need six soakers in total, while a Burnt Strike line (fire knockback or widening lightning) goes off. Tanks resolve the second Powder Mark explosion on the other side.",
+      "fr": "Trois tours apparaissent au bord est ou ouest et demandent six joueurs en tout, pendant qu'une ligne Burnt Strike part (projection feu ou foudre qui s'élargit). Les tanks gèrent la 2e explosion de Powder Mark de l'autre côté.",
+      "de": "Drei Türme erscheinen am Ost- oder Westrand und brauchen insgesamt sechs Spieler, während eine Burnt-Strike-Linie auslöst (Feuer-Rückstoß oder breiter werdender Blitz). Die Tanks lösen die 2. Powder-Mark-Explosion auf der anderen Seite.",
+      "ja": "東か西の外周に塔が3本（計6人）。同時にバーンストライク（炎はノックバック、雷は範囲拡大）。タンクは逆側で2回目の爆印を処理。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Anchors: G1 healer north tower, caster middle, G2 healer south; fill north to south with G1 melee, G2 melee, physical ranged. Fire: ride the knockback into your tower; lightning: step in after the line.",
+        "fr": "Ancres : heal G1 tour nord, caster au milieu, heal G2 au sud ; complétez du nord au sud avec mêlée G1, mêlée G2, distance physique. Feu : laisse-toi projeter dans ta tour ; foudre : entre après la ligne.",
+        "de": "Anker: G1-Heiler Nordturm, Caster Mitte, G2-Heiler Süd; von Nord nach Süd auffüllen mit G1-Nahkampf, G2-Nahkampf, physischer Fernkampf. Feuer: mit dem Rückstoß in deinen Turm; Blitz: nach der Linie reingehen.",
+        "ja": "固定はG1ヒーラー北、キャスター中、G2ヒーラー南。北から順にG1近接、G2近接、物理遠隔で補充。炎はノックバックで、雷は直線後に入る。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "North to south: H1/D1, D4/D2, H2/D3. Ride the knockback for fire, step in directly for lightning.",
+        "fr": "Du nord au sud : H1/D1, D4/D2, H2/D3. Projection pour le feu, entre directement pour la foudre.",
+        "de": "Von Nord nach Süd: H1/D1, D4/D2, H2/D3. Bei Feuer mit dem Rückstoß, bei Blitz direkt reingehen.",
+        "ja": "北から H1/D1、D4/D2、H2/D3。炎はノックバックで、雷は直接入る。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Face the outer wall and take towers from the left by priority H1 H2 D1 D2 D3 D4. Tanks resolve Burnt Strike on the opposite side; waiting at the edge is safer than hitting the boss right after.",
+        "fr": "Face au bord extérieur, prends les tours depuis la gauche par priorité H1 H2 D1 D2 D3 D4. Les tanks gèrent Burnt Strike de l'autre côté ; attendre au bord est plus sûr que frapper le boss juste après.",
+        "de": "Blick zum Außenrand, Türme von links nach Priorität H1 H2 D1 D2 D3 D4. Tanks lösen Burnt Strike auf der anderen Seite; am Rand warten ist sicherer, als sofort auf den Boss zu hauen.",
+        "ja": "外周を向いて左からH1 H2 D1 D2 D3 D4の優先で踏む。タンクは逆側で処理。直後にボスを殴ると爆印が事故るので外周待機が安全。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "knockback",
+      "dodge"
+     ]
+    },
+    {
+     "id": "p1-enrage",
+     "names": {
+      "en": "Enrage (Burnished Glory)",
+      "fr": "Enrage (Burnished Glory)",
+      "de": "Enrage (Burnished Glory)",
+      "ja": "時間切れ"
+     },
+     "aliases": {
+      "en": [
+       "p1 enrage"
+      ],
+      "fr": [
+       "enrage p1"
+      ],
+      "de": [
+       "enrage p1"
+      ],
+      "ja": [
+       "P1時間切れ"
+      ]
+     },
+     "how": {
+      "en": "Bring Fatebreaker to 1 HP before the final Burnished Glory finishes or the party wipes.",
+      "fr": "Amène Fatebreaker à 1 PV avant la fin du dernier Burnished Glory, sinon c'est le wipe.",
+      "de": "Bring Fatebreaker auf 1 LP, bevor das letzte Burnished Glory endet, sonst Wipe.",
+      "ja": "最後のBurnished Glory完了までにHP1にしないと全滅。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "DPS check only.",
+        "fr": "Simple test de DPS.",
+        "de": "Reiner DPS-Check.",
+        "ja": "火力チェックのみ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dps-check",
+      "enrage"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2: Usurper of Frost",
+    "fr": "Phase 2 : Usurper of Frost",
+    "de": "Phase 2: Usurper of Frost",
+    "ja": "P2：シヴァ・ミトロン"
+   },
+   "mechanics": [
+    {
+     "id": "quadruple-slap",
+     "names": {
+      "en": "Quadruple Slap",
+      "fr": "Quadruple Slap",
+      "de": "Quadruple Slap",
+      "ja": "Quadruple Slap"
+     },
+     "aliases": {
+      "en": [
+       "tankbuster"
+      ],
+      "fr": [
+       "tankbuster"
+      ],
+      "de": [
+       "tankbuster"
+      ],
+      "ja": [
+       "タンク強攻撃"
+      ]
+     },
+     "how": {
+      "en": "Two-hit tankbuster with physical vulnerability after the first hit; swap, or one tank takes both with heavy mitigation and the vuln cleansed (Esuna/Warden's Paean). It hits Shiva's current target right after she appears.",
+      "fr": "Tankbuster en deux coups avec vulnérabilité physique après le premier ; swap, ou un seul tank prend tout avec grosses réductions et la vulnérabilité dissipée (Guérison/Péan du gardien). Il frappe la cible actuelle de Shiva juste après son apparition.",
+      "de": "Tankbuster mit zwei Treffern und physischer Verwundbarkeit nach dem ersten; Tankwechsel, oder ein Tank nimmt beide mit starker Mitigation und reinigtem Debuff. Er trifft Shivas aktuelles Ziel direkt nach ihrem Erscheinen.",
+      "ja": "2連続タンク強攻撃。1発目で被物理増加。スイッチ、またはエスナ等で消して1人で受ける。シヴァ出現直後に現在のターゲットへ来る。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Swap or cleanse the vuln, as your group decides.",
+        "fr": "Swap ou dissipation, selon ton groupe.",
+        "de": "Wechsel oder Debuff reinigen, je nach Gruppe.",
+        "ja": "スイッチかエスナ、固定・募集次第。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "JP name not confirmed.",
+      "fr": "Nom JP non confirmé.",
+      "de": "JP-Name nicht bestätigt.",
+      "ja": "日本語名は未確認。"
+     },
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "debuff"
+     ]
+    },
+    {
+     "id": "diamond-dust",
+     "names": {
+      "en": "Diamond Dust",
+      "fr": "Diamond Dust",
+      "de": "Diamond Dust",
+      "ja": "ダイアモンドダスト"
+     },
+     "aliases": {
+      "en": [
+       "dd",
+       "axe kick",
+       "scythe kick",
+       "icicles"
+      ],
+      "fr": [
+       "dd"
+      ],
+      "de": [
+       "dd"
+      ],
+      "ja": [
+       "DD",
+       "ダイダス",
+       "アクス",
+       "サイス"
+      ]
+     },
+     "how": {
+      "en": "Circle AoEs start on cardinals or intercardinals, four players (all supports or all DPS) get ice markers, and Shiva casts Axe Kick (get out) or Scythe Kick (get in). House of Light cones go on the unmarked, then a knockback sends everyone out, followed by icicle lines and a Sinbound Holy stack.",
+      "fr": "Des cercles tombent sur les cardinaux ou intercardinaux, quatre joueurs (tous les soutiens ou tous les DPS) ont un marqueur de glace, et Shiva lance Axe Kick (sors) ou Scythe Kick (rentre). Des cônes House of Light visent les non-marqués, puis une projection envoie tout le monde au bord, suivie de lignes de glace et d'un pack Sinbound Holy.",
+      "de": "Kreis-AoEs starten auf den Haupt- oder Zwischenrichtungen, vier Spieler (alle Supporter oder alle DDs) bekommen Eismarker und Shiva wirkt Axe Kick (raus) oder Scythe Kick (rein). House-of-Light-Kegel gehen auf die Unmarkierten, dann wirft ein Rückstoß alle raus, danach Eislinien und ein Sinbound-Holy-Stack.",
+      "ja": "最初の円範囲が十字か斜めに出る。4人（THかDPS）に氷マーカー。アクスキック（外）かサイスキック（内）。マーカー無しに扇、その後ノックバック、氷の直線、シンホーリー頭割り。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "If the first circles are on cardinals, marked players take intercardinals and unmarked take cardinals (reverse if not); swap only with your partner. Axe: marked drop ice at the wall, unmarked bait just outside the ring. Scythe: unmarked bait in the middle, marked drop on the inner ring. Knockback: G1 lands SW-to-N, G2 NE-to-S.",
+        "fr": "Si les premiers cercles sont sur les cardinaux, les marqués prennent les intercardinaux et les autres les cardinaux (inverse sinon) ; échange seulement avec ton partenaire. Axe : marqués posent la glace au bord, non-marqués baitent juste hors de l'anneau. Scythe : non-marqués baitent au centre, marqués posent sur l'anneau intérieur. Projection : G1 vers SO→N, G2 vers NE→S.",
+        "de": "Starten die Kreise auf den Hauptrichtungen, nehmen Markierte die Zwischenrichtungen, Unmarkierte die Hauptrichtungen (sonst umgekehrt); nur mit deinem Partner tauschen. Axe: Markierte legen das Eis am Rand, Unmarkierte ködern knapp außerhalb des Rings. Scythe: Unmarkierte ködern in der Mitte, Markierte legen am inneren Ring. Rückstoß: G1 landet SW→N, G2 NO→S.",
+        "ja": "最初の円が十字ならマーカー持ちは斜め、無しは十字（逆も同様）。ペアとのみ入れ替え。アクスはマーカー持ちが外周に設置、無しはリングのすぐ外で誘導。サイスは無しが中央で誘導、マーカー持ちは内側リングに設置。ノックバックはG1がSW〜N、G2がNE〜S。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Two accepted options. Relative North: markers form safe spots relative north/south. Colour Partners: partners come from the P1 protean spread. Axe: non-AoE bait outside the outer ring, AoE players drop on the colour waymark nearest the first AoEs. Scythe: start near Shiva, AoE players drop on the middle ring; knockback LP1 to Red/Purple, LP2 to Yellow/Blue.",
+        "fr": "Deux options. Relative North : les marqueurs forment des zones sûres au nord/sud relatif. Colour Partners : partenaires issus de la dispersion protéenne de P1. Axe : les non-AoE baitent hors de l'anneau extérieur, les AoE posent sur le marqueur de couleur le plus proche des premières AoE. Scythe : départ près de Shiva, AoE sur l'anneau du milieu ; projection LP1 vers Rouge/Violet, LP2 vers Jaune/Bleu.",
+        "de": "Zwei Optionen. Relative North: Marker bilden Safespots im relativen Norden/Süden. Colour Partners: Partner aus der P1-Protean-Aufstellung. Axe: Nicht-AoE ködern außerhalb des Außenrings, AoE-Spieler legen am Farbmarker nahe den ersten AoEs. Scythe: nah an Shiva starten, AoE auf den mittleren Ring; Rückstoß LP1 zu Rot/Lila, LP2 zu Gelb/Blau.",
+        "ja": "相対北式とカラーペア式の2種。アクスは無しが外リングの外で誘導、AoE持ちは最初の範囲に近いカラーマーカーへ設置。サイスはシヴァ近くから、AoE持ちは中リングに設置。ノックバックはLP1が赤/紫、LP2が黄/青。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Marked players move clockwise to the spot of the second AoE; the four unmarked go to the first/third AoE spot to dump the cones. Scythe: dodge at the boss's feet; Axe: cone baiters sprint out. Each group then takes its knockback and dodges at the edge.",
+        "fr": "Les marqués tournent dans le sens horaire vers l'emplacement de la 2e AoE ; les quatre non-marqués vont sur la 1re/3e AoE pour lâcher les cônes. Scythe : esquive aux pieds du boss ; Axe : les baiteurs de cônes sprintent dehors. Chaque groupe prend ensuite sa projection et esquive au bord.",
+        "de": "Markierte gehen im Uhrzeigersinn zur Stelle der 2. AoE; die vier Unmarkierten zur 1./3. AoE, um die Kegel abzuladen. Scythe: an den Füßen des Bosses ausweichen; Axe: Kegelköder sprinten raus. Danach nimmt jede Gruppe ihren Rückstoß und weicht am Rand aus.",
+        "ja": "マーカー持ちは時計回りで2番目のAoE位置へ、無しは1・3番目のAoE位置で扇を捨てる。サイスはボス足元、アクスは扇誘導者がスプリント。その後各組でノックバックし外周で回避。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave",
+      "knockback",
+      "stack"
+     ]
+    },
+    {
+     "id": "twin-stillness-silence",
+     "names": {
+      "en": "Redress + Twin Stillness / Twin Silence",
+      "fr": "Redress + Twin Stillness / Twin Silence",
+      "de": "Redress + Twin Stillness / Twin Silence",
+      "ja": "閑寂・静寂の剣技（床凍結）"
+     },
+     "aliases": {
+      "en": [
+       "stillness",
+       "silence",
+       "slide",
+       "ice floor"
+      ],
+      "fr": [
+       "glissade"
+      ],
+      "de": [
+       "rutschen"
+      ],
+      "ja": [
+       "閑寂",
+       "静寂",
+       "床凍結"
+      ]
+     },
+     "how": {
+      "en": "After four bleed-puddle stacks, look away from the gaze, then the floor freezes so moving makes you slide. The former white-dress clone casts Stillness (270° front then rear) or Silence (rear then 270° front); you slide into the first safe area, then the second.",
+      "fr": "Après quatre packs qui laissent des flaques, détourne le regard, puis le sol gèle et chaque pas te fait glisser. L'ancien clone en robe blanche lance Stillness (270° devant puis derrière) ou Silence (derrière puis 270° devant) ; tu glisses vers la première zone sûre, puis la deuxième.",
+      "de": "Nach vier Stacks mit Blutungspfützen wegschauen, dann friert der Boden ein und jede Bewegung lässt dich rutschen. Der frühere Klon im weißen Kleid wirkt Stillness (270° vorne, dann hinten) oder Silence (hinten, dann 270° vorne); du rutschst in den ersten Safespot, dann in den zweiten.",
+      "ja": "出血床を残す頭割り4回の後、視線を外す。床が凍って移動すると滑る。白ドレスの分身が閑寂（前方270°→後方）か静寂（後方→前方270°）を使い、1つ目、2つ目の安地へ滑る。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Rotate so no puddles go behind the white-dress clone and end across or behind her. Look away from the blue-armour clone and stop. The group outside the first safe area slides over and back; the other group waits, then slides to the second safe spot.",
+        "fr": "Tourne pour ne pas laisser de flaques derrière le clone en robe blanche et finis en face ou derrière elle. Détourne le regard du clone en armure bleue et arrête-toi. Le groupe hors de la première zone sûre glisse et revient ; l'autre attend, puis glisse vers la deuxième.",
+        "de": "Rotiere so, dass keine Pfützen hinter dem weißen Klon liegen, und ende ihr gegenüber oder hinter ihr. Vom Klon in blauer Rüstung wegschauen und stehen bleiben. Die Gruppe außerhalb des ersten Safespots rutscht hin und zurück; die andere wartet und rutscht dann zum zweiten.",
+        "ja": "白ドレスの後ろに床を置かないよう回り、彼女の対面か背後で終わる。青い鎧の分身から視線を外して止まる。最初の安地外の組は滑って往復、もう一方は待って2つ目の安地へ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Light parties drop bleed puddles rotating clockwise (counterclockwise if the clone is 45° clockwise of your start). After Redress (look away) slide across; the second cast follows immediately so slide to the opposite safe spot, then a Hallowed Ray line stack.",
+        "fr": "Les groupes légers posent les flaques en tournant dans le sens horaire (antihoraire si le clone est à 45° horaire de ton départ). Après Redress (regard détourné), glisse ; le 2e sort suit tout de suite, glisse donc vers la zone opposée, puis pack en ligne Hallowed Ray.",
+        "de": "Leichtgruppen legen die Pfützen im Uhrzeigersinn (gegen den Uhrzeigersinn, wenn der Klon 45° im Uhrzeigersinn von deinem Start steht). Nach Redress (wegschauen) rutschen; der 2. Zauber folgt sofort, also zum gegenüberliegenden Safespot rutschen, danach Hallowed-Ray-Linienstack.",
+        "ja": "LPで時計回りに床を置く（分身が開始位置の45°時計回りなら反時計回り）。視線後に滑り、2回目もすぐ来るので逆の安地へ。その後ホーリーの直線頭割り。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "JP strat assumed to follow the same logic; the JP guide read only describes it briefly.",
+      "fr": "La strat JP suivrait la même logique ; le guide JP lu n'en parle que brièvement.",
+      "de": "JP-Strat folgt vermutlich derselben Logik; der gelesene JP-Guide beschreibt es nur kurz.",
+      "ja": "日本式も同じ考え方と思われるが、参照記事の記述は簡略。"
+     },
+     "tags": [
+      "gaze",
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "mirror-mirror",
+     "names": {
+      "en": "Mirror, Mirror",
+      "fr": "Mirror, Mirror",
+      "de": "Mirror, Mirror",
+      "ja": "鏡の国"
+     },
+     "aliases": {
+      "en": [
+       "mirrors",
+       "blue mirror",
+       "red mirror"
+      ],
+      "fr": [
+       "miroirs"
+      ],
+      "de": [
+       "spiegel"
+      ],
+      "ja": [
+       "鏡",
+       "ミラー"
+      ]
+     },
+     "how": {
+      "en": "One blue and two red mirrors appear. Shiva and the blue mirror cast Scythe Kick plus cones on the four closest players; the red mirrors repeat it a moment later. Banish III follows: one orb = pairs, four orbs = spread.",
+      "fr": "Un miroir bleu et deux rouges apparaissent. Shiva et le miroir bleu lancent Scythe Kick plus des cônes sur les quatre joueurs les plus proches ; les miroirs rouges répètent juste après. Puis Banish III : un orbe = paires, quatre orbes = dispersion.",
+      "de": "Ein blauer und zwei rote Spiegel erscheinen. Shiva und der blaue Spiegel wirken Scythe Kick plus Kegel auf die vier nächsten Spieler; die roten Spiegel wiederholen es kurz danach. Dann Banish III: ein Orb = Paare, vier Orbs = verteilen.",
+      "ja": "青鏡1枚と赤鏡2枚。ボスと青鏡がサイスと近い4人への扇、少し後に赤鏡が同じ技を撃つ。続くバニシュガは球1つならペア、4つなら散開。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Healers and ranged go to the blue mirror, tanks and melee stay with the boss opposite it; spread so cones don't overlap (healers/tanks on the wall, DPS inside, G1 left, G2 right). Then each party goes to its nearest red mirror.",
+        "fr": "Heals et distances vont au miroir bleu, tanks et mêlées restent avec le boss en face ; disperse-toi pour que les cônes ne se chevauchent pas (heals/tanks au bord, DPS à l'intérieur, G1 à gauche, G2 à droite). Ensuite chaque groupe va au miroir rouge le plus proche.",
+        "de": "Heiler und Fernkampf zum blauen Spiegel, Tanks und Nahkampf beim Boss gegenüber; so verteilen, dass sich die Kegel nicht überlappen (Heiler/Tanks am Rand, DDs innen, G1 links, G2 rechts). Danach geht jede Gruppe zum nächsten roten Spiegel.",
+        "ja": "ヒーラーと遠隔は青鏡、タンクと近接はボスと青鏡の反対側。扇が重ならないよう散開（ヒーラー/タンク外周、DPS内側、G1左G2右）。その後各組が近い赤鏡へ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "MT pulls opposite the blue mirror, melee and tanks stay close; healers and ranged stand next to blue. Then MT pulls to the nearest red, ranged go to the red nearest blue. For a red-blue-red layout melee and ranged rotate clockwise to the first red.",
+        "fr": "Le MT tire le boss à l'opposé du miroir bleu, mêlées et tanks restent près ; heals et distances se placent à côté du bleu. Puis le MT tire vers le rouge le plus proche, les distances vont au rouge le plus proche du bleu. En configuration rouge-bleu-rouge, mêlées et distances tournent dans le sens horaire vers le premier rouge.",
+        "de": "MT zieht den Boss gegenüber vom blauen Spiegel, Nahkampf und Tanks bleiben nah; Heiler und Fernkampf neben Blau. Dann zieht MT zum nächsten Rot, Fernkampf zum Rot nahe Blau. Bei Rot-Blau-Rot drehen Nahkampf und Fernkampf im Uhrzeigersinn zum ersten Rot.",
+        "ja": "MTが青鏡の反対へ誘導、近接とタンクは近く、ヒーラーと遠隔は青鏡の横。次にMTは近い赤鏡へ、遠隔は青鏡に近い赤鏡へ。赤青赤の並びなら時計回りで最初の赤へ。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Bring the boss to the side opposite the blue mirror; melee on the boss side, ranged on the mirror side. Then bring the boss near the closest red mirror. Hugging just inside the outer tick marks is safest.",
+        "fr": "Amène le boss à l'opposé du miroir bleu ; mêlées côté boss, distances côté miroir. Ensuite amène le boss près du miroir rouge le plus proche. Rester juste à l'intérieur des graduations du bord est le plus sûr.",
+        "de": "Bring den Boss gegenüber dem blauen Spiegel; Nahkampf auf der Boss-Seite, Fernkampf auf der Spiegel-Seite. Dann den Boss zum nächsten roten Spiegel. Knapp innerhalb der Randmarkierungen ist am sichersten.",
+        "ja": "ボスを青鏡の反対へ誘導、ボス側は近接、鏡側は遠隔。次にボスを近い赤鏡へ。外周の目盛りの内側にビタ付けが安全。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave",
+      "stack",
+      "spread"
+     ]
+    },
+    {
+     "id": "light-rampant",
+     "names": {
+      "en": "Light Rampant",
+      "fr": "Light Rampant",
+      "de": "Light Rampant",
+      "ja": "光の暴走"
+     },
+     "aliases": {
+      "en": [
+       "lr",
+       "tethers",
+       "lightsteeped"
+      ],
+      "fr": [
+       "lr"
+      ],
+      "de": [
+       "lr"
+      ],
+      "ja": [
+       "光の暴走",
+       "過剰光"
+      ]
+     },
+     "how": {
+      "en": "Six players are chained together and must stretch the tethers, two others get AoEs that drop bleed puddles, and everyone builds Lightsteeped stacks (too many wipes). Towers must be taken, the two-stack players soak the central tower, then Banish III and House of Light.",
+      "fr": "Six joueurs sont enchaînés et doivent tendre les liens, deux autres ont des AoE qui laissent des flaques, et tout le monde accumule des Lightsteeped (trop = wipe). Il faut prendre les tours, les joueurs à deux stacks prennent la tour centrale, puis Banish III et House of Light.",
+      "de": "Sechs Spieler sind verkettet und müssen die Verbindungen strecken, zwei andere bekommen AoEs mit Blutungspfützen, und alle sammeln Lightsteeped-Stapel (zu viele = Wipe). Türme müssen genommen werden, Spieler mit zwei Stapeln nehmen den Mittelturm, danach Banish III und House of Light.",
+      "ja": "6人が線で繋がり伸ばす必要があり、2人はAoEで床を残す。過剰光が溜まり上限を超えると全滅。塔を踏み、過剰光2の人が中央塔へ。その後バニシュガと扇。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Tethered players form a six-point star from clock spots (N and S swap, NW and NE swap) and take their towers. AoE players go east/west and drop five puddles (three toward the middle, then turn 90° left for two toward the wall). Two-stack players take the central tower.",
+        "fr": "Les liés forment une étoile à six branches depuis les positions horloge (N et S s'échangent, NO et NE aussi) et prennent leurs tours. Les joueurs AoE vont à l'est/ouest et posent cinq flaques (trois vers le centre, puis 90° à gauche pour deux vers le bord). Les joueurs à deux stacks prennent la tour centrale.",
+        "de": "Verbundene bilden aus den Uhrpositionen einen sechszackigen Stern (N und S tauschen, NW und NO tauschen) und nehmen ihre Türme. AoE-Spieler gehen nach Ost/West und legen fünf Pfützen (drei zur Mitte, dann 90° links zwei zum Rand). Spieler mit zwei Stapeln nehmen den Mittelturm.",
+        "ja": "線の6人は時計配置から六芒星（NとS、NWとNEを入れ替え）を作り塔へ。AoEの2人は東西で5回設置（中央へ3回、左90°で外周へ2回）。過剰光2の人が中央塔。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Supports north, DPS south. Tethered players form a hexagon with the N and S waymarks, then swap N/S and NE/NW and spread to towers. AoE players drop five puddles each; players with two stacks soak the four-player central tower.",
+        "fr": "Soutiens au nord, DPS au sud. Les liés forment un hexagone avec les marqueurs N et S, puis échangent N/S et NE/NO et vont aux tours. Les joueurs AoE posent cinq flaques chacun ; les joueurs à deux stacks prennent la tour centrale à quatre.",
+        "de": "Supporter Norden, DDs Süden. Verbundene bilden mit den Markern N und S ein Sechseck, tauschen dann N/S und NO/NW und gehen zu den Türmen. AoE-Spieler legen je fünf Pfützen; Spieler mit zwei Stapeln nehmen den 4er-Mittelturm.",
+        "ja": "THが北、DPSが南。線の人はN/Sマーカーで六角形を作り、N/SとNE/NWを入れ替えて塔へ。AoE持ちは5回設置。過剰光2の人が中央の4人塔。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Adjust so three tethered players are north and three south, each takes the tower for their spot. After the towers drop AoEs clockwise and take the stack; the four with two stacks enter the central tower.",
+        "fr": "Ajuste pour avoir trois liés au nord et trois au sud, chacun prend la tour de sa position. Après les tours, pose les AoE dans le sens horaire et prends le pack ; les quatre à deux stacks entrent dans la tour centrale.",
+        "de": "So anpassen, dass drei Verbundene im Norden und drei im Süden stehen, jeder nimmt den Turm seiner Position. Nach den Türmen AoEs im Uhrzeigersinn ablegen und den Stack nehmen; die vier mit zwei Stapeln gehen in den Mittelturm.",
+        "ja": "線の人が北3人・南3人になるよう調整し、位置ごとの塔へ。塔後はAoEを時計回りに捨てて頭割り。過剰光2の4人が中央塔。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Sources disagree on the Lightsteeped limit (one says more than 4 wipes, another more than 5). Check in-game.",
+      "fr": "Les sources ne sont pas d'accord sur la limite de Lightsteeped (plus de 4 ou plus de 5 = wipe). Vérifie en jeu.",
+      "de": "Die Quellen sind sich beim Lightsteeped-Limit uneinig (mehr als 4 oder mehr als 5 = Wipe). Im Spiel prüfen.",
+      "ja": "過剰光の上限は資料で食い違う（4超/5超で全滅）。要確認。"
+     },
+     "tags": [
+      "tether",
+      "tower",
+      "stack",
+      "debuff"
+     ]
+    },
+    {
+     "id": "absolute-zero",
+     "names": {
+      "en": "Absolute Zero (enrage)",
+      "fr": "Absolute Zero (enrage)",
+      "de": "Absolute Zero (Enrage)",
+      "ja": "絶対零度（時間切れ）"
+     },
+     "aliases": {
+      "en": [
+       "p2 enrage"
+      ],
+      "fr": [
+       "enrage p2"
+      ],
+      "de": [
+       "enrage p2"
+      ],
+      "ja": [
+       "P2時間切れ"
+      ]
+     },
+     "how": {
+      "en": "Shiva must be under 20% HP when the cast ends or the party wipes; otherwise it is a big raidwide that starts the intermission.",
+      "fr": "Shiva doit être sous 20 % de PV à la fin du sort, sinon wipe ; sinon c'est une grosse attaque de zone qui lance l'intermission.",
+      "de": "Shiva muss am Ende des Zaubers unter 20 % LP sein, sonst Wipe; sonst ist es ein starker Raidwide, der die Zwischenphase startet.",
+      "ja": "詠唱完了時にHP20%未満でないと全滅。未満なら全体攻撃で間フェーズへ。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "DPS check, mitigate the raidwide.",
+        "fr": "Test de DPS, réduis l'attaque de zone.",
+        "de": "DPS-Check, Raidwide mitigieren.",
+        "ja": "火力チェック、全体攻撃を軽減。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "JP name not confirmed.",
+      "fr": "Nom JP non confirmé.",
+      "de": "JP-Name nicht bestätigt.",
+      "ja": "日本語名は未確認。"
+     },
+     "tags": [
+      "dps-check",
+      "raidwide",
+      "transition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "intermission",
+   "names": {
+    "en": "Intermission: Ice Veil (crystals)",
+    "fr": "Intermission : Voile de glace (cristaux)",
+    "de": "Zwischenphase: Eisschleier (Kristalle)",
+    "ja": "間：氷の帳（クリスタル）"
+   },
+   "mechanics": [
+    {
+     "id": "crystals",
+     "names": {
+      "en": "Crystals of Light and Darkness",
+      "fr": "Cristaux de Lumière et de Ténèbres",
+      "de": "Kristalle des Lichts und der Dunkelheit",
+      "ja": "光と闇のクリスタル"
+     },
+     "aliases": {
+      "en": [
+       "crystals",
+       "ice veil",
+       "intermission"
+      ],
+      "fr": [
+       "cristaux",
+       "intermission"
+      ],
+      "de": [
+       "kristalle",
+       "zwischenphase"
+      ],
+      "ja": [
+       "クリスタル",
+       "間"
+      ]
+     },
+     "how": {
+      "en": "Ryne is frozen in the Ice Veil. Four Light crystals (cardinals) shoot circles and leave puddles, four Darkness crystals (intercardinals) fire cones. Kill all Light crystals, never damage Darkness crystals (all four must live for Phase 5), then get the veil under 50% before Endless Ice Age.",
+      "fr": "Ryne est gelée dans le Voile de glace. Quatre cristaux de Lumière (cardinaux) lancent des cercles et laissent des flaques, quatre de Ténèbres (intercardinaux) des cônes. Détruis tous ceux de Lumière, ne touche jamais ceux de Ténèbres (les quatre doivent survivre pour la P5), puis descends le voile sous 50 % avant Endless Ice Age.",
+      "de": "Ryne ist im Eisschleier eingefroren. Vier Lichtkristalle (Hauptrichtungen) schießen Kreise und hinterlassen Pfützen, vier Dunkelkristalle (Zwischenrichtungen) feuern Kegel. Zerstöre alle Lichtkristalle, greif nie Dunkelkristalle an (alle vier müssen für Phase 5 leben), dann den Schleier vor Endless Ice Age unter 50 % bringen.",
+      "ja": "リーンが氷の中。光クリスタル4つ（十字）は円範囲と床、闇クリスタル4つ（斜め）は扇。光を全部壊し、闇は絶対に攻撃しない（P5に行くには4つとも必要）。その後帳を50%未満に。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Melee and tanks go to the Light crystals on cardinals, ranged and healers to the Darkness crystals on intercardinals and bait their cones between Light crystals. Ranged attack the Light crystal one spot clockwise. Melee LB3 on the veil helps.",
+        "fr": "Mêlées et tanks vont aux cristaux de Lumière (cardinaux), distances et heals aux cristaux de Ténèbres (intercardinaux) et baitent leurs cônes entre les cristaux de Lumière. Les distances frappent le cristal de Lumière un cran dans le sens horaire. Une LB3 mêlée sur le voile aide.",
+        "de": "Nahkampf und Tanks zu den Lichtkristallen (Hauptrichtungen), Fernkampf und Heiler zu den Dunkelkristallen (Zwischenrichtungen) und ködern deren Kegel zwischen die Lichtkristalle. Fernkampf greift den Lichtkristall eine Position im Uhrzeigersinn an. Nahkampf-LB3 auf den Schleier hilft.",
+        "ja": "近接とタンクは十字の光、遠隔とヒーラーは斜めの闇で扇を光の間に誘導。遠隔は時計回り隣の光を攻撃。帳に近接LB3が有効。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Melee attack the Light crystal at their spread spot, ranged the one adjacent clockwise; ranged bait the Darkness cones out of the arena. Destroy the Light crystals, then the veil under 50%.",
+        "fr": "Les mêlées frappent le cristal de Lumière de leur position, les distances celui d'à côté dans le sens horaire ; les distances baitent les cônes des Ténèbres vers l'extérieur. Détruis les cristaux de Lumière, puis le voile sous 50 %.",
+        "de": "Nahkampf greift den Lichtkristall an seiner Position an, Fernkampf den im Uhrzeigersinn daneben; Fernkampf ködert die Dunkelkegel aus der Arena. Lichtkristalle zerstören, dann Schleier unter 50 %.",
+        "ja": "近接は自分の位置の光、遠隔は時計回り隣を攻撃。遠隔が闇の扇を外へ誘導。光を壊してから帳を50%未満に。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "JP strat for this part not found in the sources read.",
+      "fr": "Strat JP introuvable dans les sources lues.",
+      "de": "JP-Strat in den gelesenen Quellen nicht gefunden.",
+      "ja": "日本式の詳細は参照資料で見つからず。"
+     },
+     "tags": [
+      "adds",
+      "dps-check"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Phase 3: Oracle of Darkness",
+    "fr": "Phase 3 : Oracle of Darkness",
+    "de": "Phase 3: Oracle of Darkness",
+    "ja": "P3：オラクル・オブ・ダークネス"
+   },
+   "mechanics": [
+    {
+     "id": "hells-judgment",
+     "names": {
+      "en": "Hell's Judgment",
+      "fr": "Hell's Judgment",
+      "de": "Hell's Judgment",
+      "ja": "ヘルズジャッジメント"
+     },
+     "aliases": {
+      "en": [
+       "1 hp"
+      ],
+      "fr": [
+       "1 pv"
+      ],
+      "de": [
+       "1 lp"
+      ],
+      "ja": [
+       "HP1"
+      ]
+     },
+     "how": {
+      "en": "Sets everyone to 1 HP at the start of the phase; good moment for melee LB3.",
+      "fr": "Met tout le monde à 1 PV au début de la phase ; bon moment pour une LB3 mêlée.",
+      "de": "Setzt zu Phasenbeginn alle auf 1 LP; guter Moment für Nahkampf-LB3.",
+      "ja": "フェーズ開幕で全員HP1。近接LB3のタイミング。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Heal up before Ultimate Relativity's raidwide.",
+        "fr": "Remonte la vie avant l'attaque de zone d'Ultimate Relativity.",
+        "de": "Vor dem Raidwide von Ultimate Relativity hochheilen.",
+        "ja": "時間圧縮の全体攻撃までに回復。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "JP name not confirmed.",
+      "fr": "Nom JP non confirmé.",
+      "de": "JP-Name nicht bestätigt.",
+      "ja": "日本語名は未確認。"
+     },
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "ultimate-relativity",
+     "names": {
+      "en": "Ultimate Relativity",
+      "fr": "Ultimate Relativity",
+      "de": "Ultimate Relativity",
+      "ja": "時間圧縮・絶"
+     },
+     "aliases": {
+      "en": [
+       "ur",
+       "relativity",
+       "hourglasses"
+      ],
+      "fr": [
+       "ur",
+       "sabliers"
+      ],
+      "de": [
+       "ur",
+       "sanduhren"
+      ],
+      "ja": [
+       "時間圧縮",
+       "砂時計"
+      ]
+     },
+     "how": {
+      "en": "Everyone gets Dark Fire III with 10/20/30s timers (one player gets Dark Blizzard instead), plus Unholy Darkness stacks, Return (position snapshot), Shadoweye, Eruption and Water. Hourglass lasers fire in order yellow-tethered, untethered, purple-tethered; each player baits one and steps behind it. At the end everyone is rewound to their Return spot and the stored debuffs go off.",
+      "fr": "Tout le monde reçoit Méga Feu des ténèbres à 10/20/30 s (un joueur a Glace des ténèbres à la place), plus des packs Unholy Darkness, Return (sauvegarde de position), Shadoweye, Eruption et Eau. Les lasers des sabliers partent dans l'ordre : lien jaune, sans lien, lien violet ; chacun en baite un puis passe derrière. À la fin tout le monde revient à son point Return et les débuffs stockés partent.",
+      "de": "Alle bekommen Dark Fire III mit 10/20/30 s (ein Spieler stattdessen Dark Blizzard), dazu Unholy-Darkness-Stacks, Return (Positionsspeicher), Shadoweye, Eruption und Wasser. Die Sanduhr-Laser feuern in der Reihenfolge gelb verbunden, unverbunden, lila verbunden; jeder ködert einen und tritt dahinter. Am Ende werden alle zur Return-Position zurückgesetzt und die gespeicherten Debuffs lösen aus.",
+      "ja": "全員にファイガ（10/20/30秒、1人だけブリザガ）、ホーリー頭割り、リターン、視線、エラプション、ウォタガなど。砂時計のビームは黄色線→線無し→黒(紫)線の順。各自1本誘導して後ろへ。最後にリターン位置へ戻りデバフが発動。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Relative north is the untethered hourglass between the top of the yellow Y. Supports take west to northeast, DPS east to southwest. 10s fires explode at the wall first, then 30s fires bait the yellow lasers, 10s fires bait the untethered, 20s fires bait the purple. Face outward before the rewind so you don't look at a Shadoweye.",
+        "fr": "Le nord relatif est le sablier sans lien entre le haut du Y jaune. Soutiens de l'ouest au nord-est, DPS de l'est au sud-ouest. Les feux 10 s explosent d'abord au bord, puis les feux 30 s baitent les lasers jaunes, les 10 s ceux sans lien, les 20 s les violets. Regarde vers l'extérieur avant le retour pour ne pas fixer un Shadoweye.",
+        "de": "Relativer Norden ist die unverbundene Sanduhr zwischen der Spitze des gelben Y. Supporter West bis Nordost, DDs Ost bis Südwest. 10-s-Feuer explodieren zuerst am Rand, dann ködern 30-s-Feuer die gelben Laser, 10-s-Feuer die unverbundenen, 20-s-Feuer die lilafarbenen. Vor dem Zurückspulen nach außen schauen, um kein Shadoweye anzusehen.",
+        "ja": "黄色Y字の上の線無し砂時計が相対北。THは西〜北東、DPSは東〜南西。10秒ファイガが先に外周で爆発、黄色ビームは30秒、線無しは10秒、紫は20秒が誘導。巻き戻し前に外を向いて視線を見ない。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "'Balls North': the two close yellow hourglasses mark north. Priority DPS D3-D1-D2-D4, supports H1-MT-ST-H2. 10s DPS fires take SW/SE, 30s support fires NW/NE, 20s DPS east and 20s supports west; ranged and healers are static, melee flex. Dark Water and Shadoweye stand mid, Eruption in front of the lights.",
+        "fr": "« Balls North » : les deux sabliers jaunes proches marquent le nord. Priorité DPS D3-D1-D2-D4, soutiens H1-MT-ST-H2. Feux DPS 10 s au SO/SE, feux soutiens 30 s au NO/NE, DPS 20 s à l'est et soutiens 20 s à l'ouest ; distances et heals fixes, mêlées flexibles. Eau et Shadoweye au milieu, Eruption devant les lumières.",
+        "de": "„Balls North“: Die zwei nahen gelben Sanduhren markieren Norden. Priorität DDs D3-D1-D2-D4, Supporter H1-MT-ST-H2. 10-s-DD-Feuer SW/SO, 30-s-Supporter-Feuer NW/NO, 20-s-DDs Osten und 20-s-Supporter Westen; Fernkampf und Heiler fix, Nahkampf flexibel. Wasser und Shadoweye in der Mitte, Eruption vor den Lichtern.",
+        "ja": "近い2つの黄色が北（Balls North）。優先DPSはD3-D1-D2-D4、THはH1-MT-ST-H2。10秒DPSはSW/SE、30秒THはNW/NE、20秒DPSは東、THは西。遠隔とヒーラー固定、近接が調整。ウォタガと視線は中央、エラプションは光の前。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Lasers fire yellow-tethered, untethered, then black-tethered hourglass. With 2 early fires, the late-fire DPS takes the triangle tip; with 3 early fires the Blizzard DPS does. The other two spots use priority '9 o'clock side > MT ST H1 H2 > 3 o'clock side'. Many groups use marker macros (/mk attack for short fire DPS, bind for long fire TH, e.g. 跡部王国式).",
+        "fr": "Les lasers partent : sablier lien jaune, sans lien, puis lien noir. Avec 2 feux courts, le DPS feu long prend la pointe du triangle ; avec 3 feux courts, c'est le DPS Glace. Les deux autres places suivent la priorité « côté 9 h > MT ST H1 H2 > côté 3 h ». Beaucoup de groupes utilisent des macros de marqueurs (/mk attack pour DPS feu court, bind pour TH feu long, ex. 跡部王国式).",
+        "de": "Laser feuern: gelb verbunden, unverbunden, dann schwarz verbunden. Bei 2 frühen Feuern nimmt der späte-Feuer-DD die Dreiecksspitze, bei 3 frühen der Blizzard-DD. Die zwei anderen Plätze nach Priorität „9-Uhr-Seite > MT ST H1 H2 > 3-Uhr-Seite“. Viele Gruppen nutzen Marker-Makros (/mk attack für Kurzfeuer-DDs, bind für Langfeuer-TH, z. B. 跡部王国式).",
+        "ja": "ビームは黄色線→線無し→黒線。早ファイガ2人なら三角の頂点は遅ファイガDPS、3人ならブリザガDPS。残り2か所は「9時側＞MT ST H1 H2＞3時側」。マーカーマクロ式（/mk attackで短ファイガDPS、bindで長ファイガTH、跡部王国式など）も多い。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Exact hourglass/timer assignments differ between sources and between groups; confirm with your raidplan.",
+      "fr": "Les assignations exactes sablier/timer varient selon les sources et les groupes ; vérifie avec ton raidplan.",
+      "de": "Die genaue Sanduhr-/Timer-Zuteilung unterscheidet sich je nach Quelle und Gruppe; mit deinem Raidplan prüfen.",
+      "ja": "砂時計と秒数の担当は資料・固定で差がある。自分の募集の図で確認。"
+     },
+     "tags": [
+      "debuff",
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "shell-crusher-black-halo",
+     "names": {
+      "en": "Shell Crusher, Shockwave Pulsar, Black Halo",
+      "fr": "Shell Crusher, Shockwave Pulsar, Black Halo",
+      "de": "Shell Crusher, Shockwave Pulsar, Black Halo",
+      "ja": "シェルクラッシャー・パルサー・ブラックヘイロー"
+     },
+     "aliases": {
+      "en": [
+       "shell crusher",
+       "black halo"
+      ],
+      "fr": [
+       "shell crusher"
+      ],
+      "de": [
+       "shell crusher"
+      ],
+      "ja": [
+       "シェルクラッシャー"
+      ]
+     },
+     "how": {
+      "en": "Shell Crusher is a full party stack, Shockwave Pulsar a raidwide, Black Halo a cone tankbuster (solo with big mitigation or shared by both tanks). Black Halo hits the tank holding aggro.",
+      "fr": "Shell Crusher = pack de tout le groupe, Shockwave Pulsar = attaque de zone, Black Halo = tankbuster en cône (seul avec grosses réductions ou partagé entre les deux tanks). Black Halo frappe le tank qui a l'inimitié.",
+      "de": "Shell Crusher = Stack der ganzen Gruppe, Shockwave Pulsar = Raidwide, Black Halo = Kegel-Tankbuster (allein mit starker Mitigation oder von beiden Tanks geteilt). Black Halo trifft den Tank mit der Feindschaft.",
+      "ja": "シェルクラッシャーは全員頭割り、パルサーは全体攻撃、ブラックヘイローは扇のタンク強攻撃（1人で受けるか2人で分担）。ブラックヘイローはヘイトを持つタンクに来る。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Stack in the middle, then tanks share or one tank solos Black Halo.",
+        "fr": "Pack au centre, puis les tanks partagent ou un tank prend Black Halo seul.",
+        "de": "In der Mitte stacken, dann teilen die Tanks oder einer nimmt Black Halo allein.",
+        "ja": "中央で頭割り。ブラックヘイローはタンク分担か1人。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "JP names not confirmed.",
+      "fr": "Noms JP non confirmés.",
+      "de": "JP-Namen nicht bestätigt.",
+      "ja": "日本語名は未確認。"
+     },
+     "tags": [
+      "stack",
+      "raidwide",
+      "tankbuster",
+      "cleave"
+     ]
+    },
+    {
+     "id": "apocalypse",
+     "names": {
+      "en": "Spell-in-Waiting Refrain + Apocalypse",
+      "fr": "Spell-in-Waiting Refrain + Apocalypse",
+      "de": "Spell-in-Waiting Refrain + Apocalypse",
+      "ja": "アポカリプス＋ダークウォタガ"
+     },
+     "aliases": {
+      "en": [
+       "apoc",
+       "apocalypse",
+       "water stacks"
+      ],
+      "fr": [
+       "apo",
+       "apocalypse"
+      ],
+      "de": [
+       "apo",
+       "apocalypse"
+      ],
+      "ja": [
+       "アポカリプス",
+       "アポ",
+       "ウォタガ"
+      ]
+     },
+     "how": {
+      "en": "Six players get Dark Water III stacks at 10s, 29s and 38s; each light party needs one of each timer plus one free player or someone gets Mark of Mortality. Rotating light lines (Apocalypse) explode across the arena, Dark Eruption spreads everyone, a tank baits Darkest Dance, and a knockback follows.",
+      "fr": "Six joueurs reçoivent Méga Eau des ténèbres à 10, 29 et 38 s ; chaque groupe léger doit avoir un de chaque timer plus un joueur libre, sinon Mark of Mortality. Des lignes de lumière tournantes (Apocalypse) explosent, Dark Eruption disperse tout le monde, un tank baite Darkest Dance et une projection suit.",
+      "de": "Sechs Spieler bekommen Dark-Water-III-Stacks mit 10, 29 und 38 s; jede Leichtgruppe braucht einen pro Timer plus einen freien Spieler, sonst gibt es Mark of Mortality. Rotierende Lichtlinien (Apocalypse) explodieren, Dark Eruption verteilt alle, ein Tank ködert Darkest Dance und ein Rückstoß folgt.",
+      "ja": "6人に10/29/38秒のウォタガ。各組に各秒数1人＋無職1人が必要（不足で死の宣告）。回転する光（アポカリプス）、エラプション散開、タンクが暗夜の舞踏技を誘導、ノックバック。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Support party west, DPS party east, each in a square. If two in a party share a timer, the higher-priority one swaps (supports G2T, G1T, G2H, G1H; DPS G2M, G1M, G2R, G1R). Safe slice is opposite the direction the lights rotate; Darkest Dance is baited at the wall 90° from the lights' start.",
+        "fr": "Groupe soutiens à l'ouest, DPS à l'est, chacun en carré. Si deux joueurs d'un groupe ont le même timer, celui avec la plus haute priorité change (soutiens G2T, G1T, G2H, G1H ; DPS G2M, G1M, G2R, G1R). La part sûre est opposée au sens de rotation des lumières ; Darkest Dance se baite au bord, à 90° du départ des lumières.",
+        "de": "Supporter-Gruppe West, DD-Gruppe Ost, jeweils im Quadrat. Haben zwei in einer Gruppe denselben Timer, tauscht der mit höherer Priorität (Supporter G2T, G1T, G2H, G1H; DDs G2M, G1M, G2R, G1R). Sicher ist das Stück gegen die Drehrichtung der Lichter; Darkest Dance wird am Rand 90° vom Start der Lichter geködert.",
+        "ja": "TH組は西、DPS組は東で四角。同じ秒数が被ったら優先度高い方が交代（TH: G2T, G1T, G2H, G1H／DPS: G2M, G1M, G2R, G1R）。安地は光の回転と逆側、暗夜の舞踏技は光の開始位置から90°の外周で誘導。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "LP1 slightly west, LP2 slightly east in squares; same-timer players flex with TOP-style priority. Safe spot is one waymark back from the rotation; a tank baits Darkest Dance.",
+        "fr": "LP1 légèrement à l'ouest, LP2 légèrement à l'est en carrés ; les joueurs au même timer changent avec la priorité style TOP. La zone sûre est un marqueur en arrière de la rotation ; un tank baite Darkest Dance.",
+        "de": "LP1 leicht westlich, LP2 leicht östlich im Quadrat; Spieler mit gleichem Timer tauschen nach TOP-Priorität. Safespot ist ein Marker hinter der Drehrichtung; ein Tank ködert Darkest Dance.",
+        "ja": "LP1はやや西、LP2はやや東で四角。被りはTOP式優先で交代。安地は回転の1マーカー手前。タンクが暗夜の舞踏技を誘導。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "TH team vs DPS team. Swap priority MT > ST > H1 > H2 and D1 > D2 > D3 > D4. Positions are set from where the first lights spawn (アポ基準): TH use the A-2 marker side, DPS the C-4 side; spread for Eruption around markers 4/2. After Darkest Dance the safe spot is 90° from the start.",
+        "fr": "Équipe TH contre équipe DPS. Priorité d'échange MT > ST > H1 > H2 et D1 > D2 > D3 > D4. Les positions se basent sur l'apparition des premières lumières (アポ基準) : TH côté marqueurs A-2, DPS côté C-4 ; dispersion d'Eruption autour des marqueurs 4/2. Après Darkest Dance, la zone sûre est à 90° du départ.",
+        "de": "TH-Team gegen DD-Team. Tauschpriorität MT > ST > H1 > H2 und D1 > D2 > D3 > D4. Positionen richten sich danach, wo die ersten Lichter erscheinen (アポ基準): TH Seite A-2, DDs Seite C-4; Eruption-Verteilung um Marker 4/2. Nach Darkest Dance ist der Safespot 90° vom Start.",
+        "ja": "THチームとDPSチーム。交代優先はMT>ST>H1>H2、D1>D2>D3>D4。最初の光の位置基準（アポ基準）でTHはA〜2、DPSはC〜4。エラプション散開は4/2エリア。暗夜の舞踏技後はスタートから90°ずれた所が安地。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "NA flex priority given differently in two parts of the same guide; confirm with your PF.",
+      "fr": "La priorité NA est donnée différemment à deux endroits du même guide ; vérifie avec ton PF.",
+      "de": "Die NA-Priorität steht im selben Guide an zwei Stellen unterschiedlich; mit deinem PF prüfen.",
+      "ja": "NA式の優先度はガイド内で2通り書かれている。要確認。"
+     },
+     "tags": [
+      "debuff",
+      "stack",
+      "spread",
+      "dodge",
+      "knockback",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "memorys-end",
+     "names": {
+      "en": "Memory's End (enrage)",
+      "fr": "Memory's End (enrage)",
+      "de": "Memory's End (Enrage)",
+      "ja": "Memory's End（時間切れ）"
+     },
+     "aliases": {
+      "en": [
+       "p3 enrage"
+      ],
+      "fr": [
+       "enrage p3"
+      ],
+      "de": [
+       "enrage p3"
+      ],
+      "ja": [
+       "P3時間切れ"
+      ]
+     },
+     "how": {
+      "en": "Oracle must be under 20% HP or the cast wipes the party. Where she dies sets where Shiva spawns in P4.",
+      "fr": "L'Oracle doit être sous 20 % de PV, sinon le sort tue tout le monde. L'endroit où elle meurt décide où Shiva apparaît en P4.",
+      "de": "Das Orakel muss unter 20 % LP sein, sonst Wipe. Wo sie stirbt, bestimmt, wo Shiva in P4 erscheint.",
+      "ja": "HP20%未満でないと全滅。倒した位置でP4のシヴァの出現位置が決まる。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "DPS check.",
+        "fr": "Test de DPS.",
+        "de": "DPS-Check.",
+        "ja": "火力チェック。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dps-check"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p4",
+   "names": {
+    "en": "Phase 4: Usurper of Frost & Oracle of Darkness",
+    "fr": "Phase 4 : Usurper of Frost et Oracle of Darkness",
+    "de": "Phase 4: Usurper of Frost und Oracle of Darkness",
+    "ja": "P4：シヴァ・ミトロン＆オラクル"
+   },
+   "mechanics": [
+    {
+     "id": "akh-rhai",
+     "names": {
+      "en": "Akh Rhai + Fragment",
+      "fr": "Akh Rhai + Fragment",
+      "de": "Akh Rhai + Fragment",
+      "ja": "アク・ラーイ＋記憶の欠片"
+     },
+     "aliases": {
+      "en": [
+       "akh rhai",
+       "fragment",
+       "crystal"
+      ],
+      "fr": [
+       "fragment"
+      ],
+      "de": [
+       "fragment"
+      ],
+      "ja": [
+       "アクラーイ",
+       "欠片"
+      ]
+     },
+     "how": {
+      "en": "A Fragment crystal spawns and must never be hit by AoEs (it is needed for Phase 5). Shiva transforms and puts pulsing AoEs on every player's position.",
+      "fr": "Un cristal Fragment apparaît et ne doit jamais être touché par des AoE (il faut l'avoir pour la P5). Shiva se transforme et pose des AoE répétées sur la position de chaque joueur.",
+      "de": "Ein Fragment-Kristall erscheint und darf nie von AoEs getroffen werden (für Phase 5 nötig). Shiva verwandelt sich und legt pulsierende AoEs auf die Position jedes Spielers.",
+      "ja": "記憶の欠片が出現し、範囲に当ててはいけない（P5に必要）。シヴァが変身し全員の足元に連続AoE。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Stack in the middle, then dodge out together without dropping anything on the Fragment.",
+        "fr": "Pack au centre, puis esquive ensemble sans rien poser sur le Fragment.",
+        "de": "In der Mitte stacken, dann zusammen raus, ohne etwas auf das Fragment zu legen.",
+        "ja": "中央に集まり、欠片に当てないよう一緒に避ける。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "JP name not confirmed.",
+      "fr": "Nom JP non confirmé.",
+      "de": "JP-Name nicht bestätigt.",
+      "ja": "日本語名は未確認。"
+     },
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "darklit-dragonsong",
+     "names": {
+      "en": "Darklit Dragonsong",
+      "fr": "Darklit Dragonsong",
+      "de": "Darklit Dragonsong",
+      "ja": "光と闇の竜詩"
+     },
+     "aliases": {
+      "en": [
+       "darklit",
+       "bowtie",
+       "tethers"
+      ],
+      "fr": [
+       "darklit",
+       "nœud papillon"
+      ],
+      "de": [
+       "darklit",
+       "fliege"
+      ],
+      "ja": [
+       "竜詩",
+       "光と闇"
+      ]
+     },
+     "how": {
+      "en": "Four players are tethered into a 'bowtie', two players get Dark Water stacks, tethered players soak two towers, Path of Light cones hit the four closest, then Spirit Taker (spread), Hallowed Wings (half-room cleave) and two Somber Dance tankbusters (farthest, then closest). Somber Dance: the first hit goes to the farthest player and the second to the closest; one tank with an invulnerability can take both, otherwise the first tank runs away so the other tank takes the second.",
+      "fr": "Quatre joueurs sont liés en « nœud papillon », deux ont des packs d'Eau, les liés prennent deux tours, des cônes Path of Light frappent les quatre plus proches, puis Spirit Taker (dispersion), Hallowed Wings (demi-salle) et deux tankbusters Somber Dance (le plus loin, puis le plus proche). Somber Dance : le 1er coup va sur le plus éloigné et le 2e sur le plus proche ; un tank avec invu peut prendre les deux, sinon le premier tank s'éloigne pour que l'autre prenne le 2e.",
+      "de": "Vier Spieler werden zu einer „Fliege“ verbunden, zwei bekommen Wasser-Stacks, Verbundene nehmen zwei Türme, Path-of-Light-Kegel treffen die vier Nächsten, dann Spirit Taker (verteilen), Hallowed Wings (halbe Arena) und zwei Somber-Dance-Tankbuster (der Fernste, dann der Nächste). Somber Dance: Der erste Treffer geht auf den Fernsten, der zweite auf den Nächsten; ein Tank mit Unverwundbarkeit kann beide nehmen, sonst läuft der erste Tank weg, damit der andere den zweiten nimmt.",
+      "ja": "4人が蝶ネクタイ状の線、2人にウォタガ。線の人が塔2本、近い4人に光の扇、スピリットテイカー（散開）、半面の翼、ソンバーダンス2回（遠い人→近い人）。ソンバーダンス：1回目は一番遠い人、2回目は一番近い人。無敵があれば1人で両方受けられ、そうでなければ1回目のタンクは離れてもう一方のタンクが2回目を受ける。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Pairs in role spots (healers NW, tanks NE, melee SE, ranged SW). Make north and south groups of four; if both Water players end up on one side, the untethered Water swaps with the untethered player on the same east/west side. Untethered move in for the cones, then spread; one tank takes the first Somber Dance by running away, then steps in for the second (or swap).",
+        "fr": "Paires aux positions de rôle (heals NO, tanks NE, mêlées SE, distances SO). Forme deux groupes de quatre nord/sud ; si les deux Eau sont du même côté, l'Eau non lié échange avec le non-lié du même côté est/ouest. Les non-liés rentrent pour les cônes puis se dispersent ; un tank prend le 1er Somber Dance en s'éloignant, puis rentre pour le 2e (ou swap).",
+        "de": "Paare auf Rollenpositionen (Heiler NW, Tanks NO, Nahkampf SO, Fernkampf SW). Nord- und Südgruppe zu viert; landen beide Wasser auf einer Seite, tauscht das unverbundene Wasser mit dem Unverbundenen derselben Ost/West-Seite. Unverbundene gehen für die Kegel rein, dann verteilen; ein Tank nimmt Somber Dance 1 weglaufend, dann rein für den zweiten (oder Wechsel).",
+        "ja": "役割ペア（ヒーラーNW、タンクNE、近接SE、遠隔SW）。南北4人ずつ。ウォタガが同じ側なら線無しのウォタガと同じ東西側の線無しが交代。線無しは扇を受けに中へ、その後散開。ソンバーは1人目は離れて、2人目は近づいて（またはスイッチ）。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Ryne spawns true N/S; stack true west of her. Supports stand true N, DPS true S, forming the bowtie; two towers need two players each. Akh Morn after: LP1 north, LP2 south. A tank runs to the farthest true east or west spot for the first Somber Dance; invulnerability priority WAR > DRK > GNB (no PLD).",
+        "fr": "Ryne apparaît au vrai N/S ; pack au vrai ouest d'elle. Soutiens au vrai N, DPS au vrai S pour le nœud papillon ; deux tours à deux joueurs. Akh Morn ensuite : LP1 au nord, LP2 au sud. Un tank court au point est ou ouest le plus éloigné pour le 1er Somber Dance ; priorité d'invu WAR > DRK > GNB (pas de PLD).",
+        "de": "Ryne erscheint im echten N/S; echt westlich von ihr stacken. Supporter echt N, DDs echt S für die Fliege; zwei Türme mit je zwei Spielern. Danach Akh Morn: LP1 Norden, LP2 Süden. Ein Tank läuft für den ersten Somber Dance an den fernsten Punkt genau im Osten oder Westen; Unverwundbarkeits-Priorität WAR > DRK > GNB (kein PLD).",
+        "ja": "リーンは真北か真南に出現、その真西に集合。THが真北、DPSが真南で蝶ネクタイ。塔は2人ずつ。アクモーンはLP1北、LP2南。1回目のソンバーダンスはタンクが真東か真西の一番遠い位置へ。無敵の優先はWAR > DRK > GNB（ナイトは除く）。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Nukemaru P4 with '扇前': the Water stack swap is decided before the cones, not after.",
+        "fr": "Nukemaru P4 avec « 扇前 » : l'échange des packs d'Eau se décide avant les cônes, pas après.",
+        "de": "Nukemaru P4 mit „扇前“: Der Wasser-Tausch wird vor den Kegeln entschieden, nicht danach.",
+        "ja": "ぬけまるP4（扇前）：ウォタガの調整を扇の前に行う。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "JP name 光と闇の竜詩 from memory of JP usage, not confirmed on the pages read. Bowtie patterns vary; see your raidplan.",
+      "fr": "Nom JP non confirmé sur les pages lues. Les motifs du nœud papillon varient ; regarde ton raidplan.",
+      "de": "JP-Name auf den gelesenen Seiten nicht bestätigt. Fliegen-Muster variieren; siehe Raidplan.",
+      "ja": "日本語名は参照ページで未確認。線の形は複数パターンあり。"
+     },
+     "tags": [
+      "tether",
+      "tower",
+      "stack",
+      "cleave",
+      "spread",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "akh-morn-morn-afah",
+     "names": {
+      "en": "Akh Morn + Morn Afah",
+      "fr": "Akh Morn + Morn Afah",
+      "de": "Akh Morn + Morn Afah",
+      "ja": "アク・モーン＋モーン・アファー"
+     },
+     "aliases": {
+      "en": [
+       "akh morn",
+       "morn afah",
+       "hp check"
+      ],
+      "fr": [
+       "akh morn",
+       "morn afah"
+      ],
+      "de": [
+       "akh morn",
+       "morn afah"
+      ],
+      "ja": [
+       "アクモーン",
+       "モーンアファー"
+      ]
+     },
+     "how": {
+      "en": "Both bosses hit their tank's group with multi-hit stacks (4 hits first time, 5 the second); a tank swap during it wipes. Morn Afah is a full party stack that kills everyone if the two bosses are more than 5% HP apart.",
+      "fr": "Les deux boss frappent chacun le groupe de leur tank avec des packs à coups multiples (4 coups la 1re fois, 5 la 2e) ; un swap pendant ça = wipe. Morn Afah est un pack de tout le groupe qui tue tout le monde si les deux boss ont plus de 5 % de PV d'écart.",
+      "de": "Beide Bosse treffen die Gruppe ihres Tanks mit Mehrfach-Stacks (beim 1. Mal 4, beim 2. Mal 5 Treffer); ein Tankwechsel dabei = Wipe. Morn Afah ist ein Stack der ganzen Gruppe, der alle tötet, wenn die Bosse mehr als 5 % LP auseinander sind.",
+      "ja": "両ボスが連続頭割り（1回目4発、2回目5発）。途中でヘイトが入れ替わると全滅。モーン・アファーは全員頭割りで、両ボスのHP差が5%超なら即死。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "LP1 north, LP2 south, each tank holds one boss. Keep both bosses within 5% HP.",
+        "fr": "LP1 au nord, LP2 au sud, chaque tank garde un boss. Garde les deux boss à moins de 5 % d'écart.",
+        "de": "LP1 Norden, LP2 Süden, jeder Tank hält einen Boss. Beide Bosse innerhalb von 5 % LP halten.",
+        "ja": "LP1北、LP2南、タンクは1体ずつ。HP差5%以内。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "'1:7' Akh Morn: one tank takes one boss's stack alone with mitigation and the other seven stack on the other boss's target.",
+        "fr": "Akh Morn « 1:7 » : un tank prend seul le pack d'un boss avec réductions, les sept autres packent sur la cible de l'autre boss.",
+        "de": "Akh Morn „1:7“: Ein Tank nimmt den Stack eines Bosses allein mit Mitigation, die anderen sieben stacken auf dem Ziel des anderen Bosses.",
+        "ja": "1:7アクモーン：タンク1人が片方を軽減して単独で受け、残り7人がもう片方で頭割り。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "JP '1:7' meaning is inferred from the PF tag and a wiki mention of a '7-1' setup; check with your group.",
+      "fr": "Le sens de « 1:7 » est déduit du tag PF et d'une mention de wiki ; vérifie avec ton groupe.",
+      "de": "Die Bedeutung von „1:7“ ist aus dem PF-Tag und einer Wiki-Erwähnung abgeleitet; mit deiner Gruppe prüfen.",
+      "ja": "1:7の意味は募集表記とwikiの記述からの推定。"
+     },
+     "tags": [
+      "stack",
+      "tankbuster",
+      "dps-check"
+     ]
+    },
+    {
+     "id": "crystallize-time",
+     "names": {
+      "en": "Crystallize Time",
+      "fr": "Crystallize Time",
+      "de": "Crystallize Time",
+      "ja": "時間結晶"
+     },
+     "aliases": {
+      "en": [
+       "ct",
+       "crystallize",
+       "dragon heads",
+       "red blue"
+      ],
+      "fr": [
+       "ct",
+       "têtes de dragon"
+      ],
+      "de": [
+       "ct",
+       "drachenköpfe"
+      ],
+      "ja": [
+       "時間結晶",
+       "竜頭",
+       "赤青"
+      ]
+     },
+     "how": {
+      "en": "Red (Wyrmclaw) players must pop floating dragon heads, blue (Wyrmfang) players must pick up the puddles they leave. Alongside come Dark Aero knockback, Blizzard, Eruption, Water, Unholy Darkness, hourglasses, Tidal Light waves, Quietus, Spirit Taker and a Return rewind into a final line knockback.",
+      "fr": "Les rouges (Wyrmclaw) doivent éclater les têtes de dragon flottantes, les bleus (Wyrmfang) ramasser les flaques qu'elles laissent. En même temps : projection Dark Aero, Glace, Eruption, Eau, Unholy Darkness, sabliers, vagues Tidal Light, Quietus, Spirit Taker et un retour Return vers une dernière projection en ligne.",
+      "de": "Rote (Wyrmclaw) müssen schwebende Drachenköpfe platzen lassen, Blaue (Wyrmfang) die zurückgelassenen Pfützen aufnehmen. Dazu kommen Dark-Aero-Rückstoß, Blizzard, Eruption, Wasser, Unholy Darkness, Sanduhren, Tidal-Light-Wellen, Quietus, Spirit Taker und ein Return-Zurückspulen in einen letzten Linien-Rückstoß.",
+      "ja": "赤（竜の爪）は竜頭に当たり、青（竜の牙）は竜頭が残す床を拾う。同時にエアロガのノックバック、ブリザガ、エラプション、ウォタガ、ホーリー、砂時計、タイダルライト、クワイタス、スピリットテイカー、リターン後の直線ノックバック。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Supports west, DPS east. Blue players have fixed spots, red players flex by priority (DPS G1M, G2M, G1R, G2R; supports G1T, G2T, G1H, G2H). Blue Eruption goes to the north wall by the northern purple hourglass, other blues to the southern one; Red Ice go east/west, Red Aero SE/SW. Blues clean puddles: Unholy east, Water SE, Ice SW, Eruption west. End in the corner between both wave starts for the rewind knockback, tanks closest to the wall.",
+        "fr": "Soutiens à l'ouest, DPS à l'est. Les bleus ont des places fixes, les rouges s'adaptent par priorité (DPS G1M, G2M, G1R, G2R ; soutiens G1T, G2T, G1H, G2H). Bleu Eruption va au bord nord près du sablier violet nord, les autres bleus au sud ; Rouge Glace à l'est/ouest, Rouge Aero au SE/SO. Les bleus ramassent : Unholy est, Eau SE, Glace SO, Eruption ouest. Finis dans le coin entre les deux départs de vagues pour la projection finale, tanks au plus près du bord.",
+        "de": "Supporter West, DDs Ost. Blaue haben feste Plätze, Rote flexen nach Priorität (DDs G1M, G2M, G1R, G2R; Supporter G1T, G2T, G1H, G2H). Blau-Eruption geht an den Nordrand bei der nördlichen lila Sanduhr, die anderen Blauen zur südlichen; Rot-Eis nach Ost/West, Rot-Aero SO/SW. Blaue sammeln: Unholy Ost, Wasser SO, Eis SW, Eruption West. Am Ende in die Ecke zwischen beiden Wellenstarts für den letzten Rückstoß, Tanks am nächsten zur Wand.",
+        "ja": "THは西、DPSは東。青は固定、赤は優先で調整（DPS: G1M, G2M, G1R, G2R／TH: G1T, G2T, G1H, G2H）。青エラプションは北の紫砂時計側の北外周、他の青は南側。赤氷は東西、赤エアロはSE/SW。床回収はホーリー東、ウォタガSE、氷SW、エラプション西。最後は2つの波の開始方向の間の角へ、タンクが壁寄り。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Lineup west to east: H1 D3 D1 MT ST D2 D4 H2. Reds intercept the dragon heads; blues pick up puddles in order Stack (yellow side), Water, Dark, Ice. The traffic lights set the purple positions.",
+        "fr": "Ligne d'ouest en est : H1 D3 D1 MT ST D2 D4 H2. Les rouges interceptent les têtes ; les bleus ramassent dans l'ordre Pack (côté jaune), Eau, Ténèbres, Glace. Les sabliers fixent les positions violettes.",
+        "de": "Aufstellung West nach Ost: H1 D3 D1 MT ST D2 D4 H2. Rote fangen die Köpfe ab; Blaue sammeln in der Reihenfolge Stack (gelbe Seite), Wasser, Dunkel, Eis. Die Sanduhren legen die lila Positionen fest.",
+        "ja": "西から H1 D3 D1 MT ST D2 D4 H2 で整列。赤が竜頭、青は頭割り（黄側）→水→闇→氷の順で床回収。砂時計で紫の位置が決まる。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Nukemaru P4: '赤爆' = the red Blizzard players run north after popping their heads, one joins the Unholy stack and the other dodges the hourglass. Puddles are assigned with an attack-marker macro. 'Y字アムレン': record Return in a V/Y shape (party near the centre, tanks relative NW/NE), mitigate Hallowed Wings and use anti-knockback right before the rewind.",
+        "fr": "Nukemaru P4 : « 赤爆 » = les rouges Glace courent au nord après leurs têtes, l'un rejoint le pack Unholy, l'autre esquive le sablier. Les flaques sont attribuées par macro de marqueurs. « Y字アムレン » : Return enregistré en V/Y (groupe près du centre, tanks au NO/NE relatif), réduis Hallowed Wings et utilise l'anti-projection juste avant le retour.",
+        "de": "Nukemaru P4: „赤爆“ = rote Eis-Spieler laufen nach ihren Köpfen nach Norden, einer geht in den Unholy-Stack, der andere weicht der Sanduhr aus. Pfützen werden per Marker-Makro verteilt. „Y字アムレン“: Return in V/Y-Form speichern (Gruppe nahe der Mitte, Tanks relativ NW/NO), Hallowed Wings mitigieren und kurz vor dem Zurückspulen Anti-Rückstoß nutzen.",
+        "ja": "ぬけまるP4：赤爆走は赤ブリザガが竜頭後に北へ走り、1人はホーリー頭割り、1人は砂時計を避ける。床はattackマーカーのマクロで割り当て。Y字アムレンはY（V）字でリターンを置き（タンクは相対NW/NE）、翼を軽減し巻き戻し直前にアムレン。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "JP name 時間結晶 not confirmed on the pages read. Many sub-variants; check your raidplan.",
+      "fr": "Nom JP non confirmé sur les pages lues. Beaucoup de variantes ; vérifie ton raidplan.",
+      "de": "JP-Name auf den gelesenen Seiten nicht bestätigt. Viele Varianten; Raidplan prüfen.",
+      "ja": "日本語名は参照ページで未確認。細かい差分が多い。"
+     },
+     "tags": [
+      "debuff",
+      "knockback",
+      "dodge"
+     ]
+    },
+    {
+     "id": "p4-enrage",
+     "names": {
+      "en": "Enrage (Absolute Zero + Memory's End)",
+      "fr": "Enrage (Absolute Zero + Memory's End)",
+      "de": "Enrage (Absolute Zero + Memory's End)",
+      "ja": "時間切れ"
+     },
+     "aliases": {
+      "en": [
+       "p4 enrage"
+      ],
+      "fr": [
+       "enrage p4"
+      ],
+      "de": [
+       "enrage p4"
+      ],
+      "ja": [
+       "P4時間切れ"
+      ]
+     },
+     "how": {
+      "en": "Both bosses must be killed before their enrage casts finish. Phase 5 only starts if all four Darkness crystals and the Fragment survived; otherwise Paradise Lost wipes the party.",
+      "fr": "Les deux boss doivent mourir avant la fin de leurs enrages. La P5 ne commence que si les quatre cristaux de Ténèbres et le Fragment ont survécu ; sinon Paradise Lost tue tout le monde.",
+      "de": "Beide Bosse müssen vor Ende ihrer Enrage-Zauber sterben. Phase 5 beginnt nur, wenn alle vier Dunkelkristalle und das Fragment überlebt haben; sonst wipet Paradise Lost die Gruppe.",
+      "ja": "両ボスを時間切れ前に倒す。闇クリスタル4つと欠片が残っていないとP5に行けず全滅。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "DPS check; keep both bosses even.",
+        "fr": "Test de DPS ; garde les deux boss à égalité.",
+        "de": "DPS-Check; beide Bosse gleich halten.",
+        "ja": "火力チェック、HPを揃える。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dps-check",
+      "enrage"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p5",
+   "names": {
+    "en": "Phase 5: Pandora",
+    "fr": "Phase 5 : Pandora",
+    "de": "Phase 5: Pandora",
+    "ja": "P5：パンドラ"
+   },
+   "mechanics": [
+    {
+     "id": "fulgent-blade",
+     "names": {
+      "en": "Fulgent Blade + Akh Morn",
+      "fr": "Fulgent Blade + Akh Morn",
+      "de": "Fulgent Blade + Akh Morn",
+      "ja": "Fulgent Blade＋アク・モーン"
+     },
+     "aliases": {
+      "en": [
+       "exalines",
+       "fulgent",
+       "lines"
+      ],
+      "fr": [
+       "lignes"
+      ],
+      "de": [
+       "linien"
+      ],
+      "ja": [
+       "エクサライン"
+      ]
+     },
+     "how": {
+      "en": "A raidwide, then six light/dark lines in three crossing pairs sweep the arena in order (clockwise or counterclockwise); getting hit gives light/dark resistance down. During it, Akh Morn puts a light stack on Pandora's left and a dark stack on her right; a stack of the element you're weak to kills you.",
+      "fr": "Une attaque de zone, puis six lignes lumière/ténèbres en trois paires croisées balaient l'arène dans l'ordre (horaire ou antihoraire) ; être touché donne une baisse de résistance lumière/ténèbres. Pendant ce temps, Akh Morn met un pack lumière à gauche de Pandora et un pack ténèbres à droite ; un pack de l'élément où tu es affaibli te tue.",
+      "de": "Ein Raidwide, dann fegen sechs Licht/Dunkel-Linien in drei Kreuzpaaren nacheinander (im oder gegen den Uhrzeigersinn) durch die Arena; Treffer geben Licht-/Dunkelresistenz runter. Dabei legt Akh Morn einen Lichtstack links und einen Dunkelstack rechts von Pandora; ein Stack des Elements, gegen das du geschwächt bist, tötet dich.",
+      "ja": "全体攻撃後、光と闇の線が3組交差し順番に走る（時計/反時計）。当たると耐性低下。同時にアク・モーンでパンドラ左に光、右に闇の頭割り。耐性低下と同属性を受けると死亡。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Stand between the left and right X, away from the first glowing one. On the second pulse step into the diamond half away from the next X; repeat, the whole diamond is safe for the third. Light parties split left/right for Akh Morn; one party chases the last lines to reach its side.",
+        "fr": "Place-toi entre le X gauche et le X droit, loin du premier qui brille. À la 2e pulsation, entre dans la moitié du losange loin du X suivant ; répète, tout le losange est sûr pour le troisième. Les groupes légers se séparent gauche/droite pour Akh Morn ; un groupe suit les dernières lignes pour rejoindre son côté.",
+        "de": "Stell dich zwischen das linke und rechte X, weg vom ersten leuchtenden. Beim 2. Puls in die Rauten-Hälfte weg vom nächsten X; wiederholen, beim dritten ist die ganze Raute sicher. Leichtgruppen teilen sich für Akh Morn links/rechts; eine Gruppe läuft den letzten Linien hinterher, um ihre Seite zu erreichen.",
+        "ja": "左右のXの間、最初に光るXから離れて待機。2回目の脈動で次のXから遠い側のひし形へ。同様に繰り返し、3回目はひし形全体が安地。アク・モーンはLPで左右に分かれ、片方は最後の線を追いかけて移動。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "Only the NA strat is documented in text in the sources read; MUR (OCE) and Nukemaru (JP) put P5 in linked plans/videos.",
+      "fr": "Seule la strat NA est décrite en texte dans les sources lues ; MUR (OCE) et Nukemaru (JP) mettent la P5 dans des plans/vidéos.",
+      "de": "Nur die NA-Strat ist in den gelesenen Quellen als Text beschrieben; MUR (OCE) und Nukemaru (JP) haben P5 nur in Plänen/Videos.",
+      "ja": "テキストで確認できたのはNA式のみ。MUR・ぬけまるP5は図・動画のみ。"
+     },
+     "tags": [
+      "raidwide",
+      "dodge",
+      "stack",
+      "debuff"
+     ]
+    },
+    {
+     "id": "paradise-regained",
+     "names": {
+      "en": "Paradise Regained + Wings Dark and Light",
+      "fr": "Paradise Regained + Wings Dark and Light",
+      "de": "Paradise Regained + Wings Dark and Light",
+      "ja": "Paradise Regained＋光と闇の翼"
+     },
+     "aliases": {
+      "en": [
+       "towers",
+       "wings",
+       "paradise regained"
+      ],
+      "fr": [
+       "tours",
+       "ailes"
+      ],
+      "de": [
+       "türme",
+       "flügel"
+      ],
+      "ja": [
+       "塔",
+       "翼"
+      ]
+     },
+     "how": {
+      "en": "Three two-player towers spawn one by one, 120° apart; soaking gives magic vulnerability, so nobody takes two. At the same time Pandora's wings give tank cleaves and proximity busters (light hits farthest, dark hits closest) that force a tank swap. The tank holding aggro when the cast starts takes the first wing cleave, and the other tank (after the swap) the second; the proximity busters hit the farthest (light) or closest (dark) tethered player, and the tank who took the first cleave takes the second proximity buster.",
+      "fr": "Trois tours à deux apparaissent une par une, à 120° ; les prendre donne une vulnérabilité magique, donc personne n'en prend deux. En même temps les ailes de Pandora donnent des cleaves de tank et des busters de proximité (lumière = le plus loin, ténèbres = le plus proche) qui forcent un swap. Le tank qui a l'inimitié au début du sort prend le 1er cleave d'aile, l'autre tank (après le swap) le 2e ; les busters de proximité touchent le joueur lié le plus loin (lumière) ou le plus proche (ténèbres), et le tank du 1er cleave prend le 2e buster de proximité.",
+      "de": "Drei 2er-Türme erscheinen nacheinander im 120°-Abstand; Reinstehen gibt Magie-Verwundbarkeit, also nimmt niemand zwei. Gleichzeitig geben Pandoras Flügel Tank-Cleaves und Nähe-Buster (Licht = Fernster, Dunkel = Nächster), die einen Tankwechsel erzwingen. Der Tank mit der Feindschaft beim Zauberbeginn nimmt den ersten Flügel-Cleave, der andere Tank (nach dem Wechsel) den zweiten; die Nähe-Buster treffen den fernsten (Licht) oder nächsten (Dunkel) verbundenen Spieler, und der Tank des ersten Cleaves nimmt den zweiten Nähe-Buster.",
+      "ja": "2人塔が120°ずつ順番に3本。踏むと被魔法増加で2本目は死亡。同時に翼でタンクへの範囲と距離強攻撃（光は遠い人、闇は近い人）、スイッチ必須。詠唱開始時にヘイトを持つタンクが1回目の翼、スイッチ後のもう一方が2回目を受ける。距離強攻撃は線の付いた一番遠い人（光）か近い人（闇）に来て、2回目は1回目の翼を受けたタンクが受ける。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "The first tower becomes south and both healers take it. Group 1 DPS take the front-right tower, Group 2 DPS the front-left. Tanks place the boss so cleaves miss towers, swap after the first set; one tank uses an invuln, the other heavy mitigation.",
+        "fr": "La première tour devient le sud et les deux heals la prennent. DPS du G1 tour avant-droite, DPS du G2 avant-gauche. Les tanks placent le boss pour que les cleaves ratent les tours, swap après la 1re série ; un tank utilise un invu, l'autre de grosses réductions.",
+        "de": "Der erste Turm wird Süden und beide Heiler nehmen ihn. G1-DDs nehmen den Turm vorne rechts, G2-DDs vorne links. Tanks stellen den Boss so, dass Cleaves die Türme verfehlen, Wechsel nach dem ersten Satz; ein Tank nutzt Unverwundbarkeit, der andere starke Mitigation.",
+        "ja": "最初の塔を南としてヒーラー2人。G1のDPSが前方右、G2のDPSが前方左の塔。タンクは範囲が塔に当たらない位置へ誘導し、1セット目後にスイッチ。片方は無敵、もう片方は大きく軽減。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "Only the NA strat is documented in text in the sources read; MUR (OCE) and Nukemaru (JP) put P5 in linked plans/videos.",
+      "fr": "Seule la strat NA est décrite en texte dans les sources lues ; MUR (OCE) et Nukemaru (JP) mettent la P5 dans des plans/vidéos.",
+      "de": "Nur die NA-Strat ist in den gelesenen Quellen als Text beschrieben; MUR (OCE) und Nukemaru (JP) haben P5 nur in Plänen/Videos.",
+      "ja": "テキストで確認できたのはNA式のみ。MUR・ぬけまるP5は図・動画のみ。"
+     },
+     "tags": [
+      "tower",
+      "tankbuster",
+      "tankswap",
+      "cleave",
+      "proximity"
+     ]
+    },
+    {
+     "id": "polarizing-strikes",
+     "names": {
+      "en": "Polarizing Strikes / Paths",
+      "fr": "Polarizing Strikes / Paths",
+      "de": "Polarizing Strikes / Paths",
+      "ja": "Polarizing Strikes"
+     },
+     "aliases": {
+      "en": [
+       "stack rotation",
+       "polarizing"
+      ],
+      "fr": [
+       "rotation des packs"
+      ],
+      "de": [
+       "stack-rotation"
+      ],
+      "ja": [
+       "ローテ頭割り"
+      ]
+     },
+     "how": {
+      "en": "Four sets of light and dark line stacks on Pandora's left and right. The front player of each stack gets a matching resistance down, so the front role must rotate and swap sides every set; lingering AoEs must be dodged.",
+      "fr": "Quatre séries de packs en ligne lumière et ténèbres à gauche et à droite de Pandora. Le joueur devant chaque pack reçoit une baisse de résistance, donc le rôle devant doit tourner et changer de côté à chaque série ; esquive les AoE persistantes.",
+      "de": "Vier Sätze von Licht- und Dunkel-Linienstacks links und rechts von Pandora. Der vorderste Spieler jedes Stacks bekommt eine passende Resistenzsenkung, daher muss die vordere Rolle jede Runde wechseln und die Seite tauschen; nachwirkende AoEs ausweichen.",
+      "ja": "パンドラの左右に光と闇の直線頭割りが4回。先頭の人に同属性の耐性低下が付くので、毎回先頭役を交代し左右を入れ替える。残留AoEは回避。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Group 1 left, Group 2 right. Front order: tank, healer, melee, ranged. After taking the front, swap to the other side.",
+        "fr": "Groupe 1 à gauche, groupe 2 à droite. Ordre devant : tank, heal, mêlée, distance. Après avoir pris l'avant, change de côté.",
+        "de": "Gruppe 1 links, Gruppe 2 rechts. Vorne-Reihenfolge: Tank, Heiler, Nahkampf, Fernkampf. Nachdem du vorne warst, Seite wechseln.",
+        "ja": "G1左、G2右。先頭はタンク→ヒーラー→近接→遠隔。先頭を受けたら反対側へ。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "how": {
+        "en": "Same idea but MUR's front order is TMRH: tank, melee, ranged, healer.",
+        "fr": "Même principe, mais l'ordre MUR devant est TMRH : tank, mêlée, distance, heal.",
+        "de": "Gleiches Prinzip, aber MURs Reihenfolge vorne ist TMRH: Tank, Nahkampf, Fernkampf, Heiler.",
+        "ja": "考え方は同じ。MURの先頭順はTMRH（タンク→近接→遠隔→ヒーラー）。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "note": {
+      "en": "Only the NA strat is documented in text in the sources read; MUR (OCE) and Nukemaru (JP) put P5 in linked plans/videos.",
+      "fr": "Seule la strat NA est décrite en texte dans les sources lues ; MUR (OCE) et Nukemaru (JP) mettent la P5 dans des plans/vidéos.",
+      "de": "Nur die NA-Strat ist in den gelesenen Quellen als Text beschrieben; MUR (OCE) und Nukemaru (JP) haben P5 nur in Plänen/Videos.",
+      "ja": "テキストで確認できたのはNA式のみ。MUR・ぬけまるP5は図・動画のみ。"
+     },
+     "tags": [
+      "stack",
+      "debuff",
+      "dodge"
+     ]
+    },
+    {
+     "id": "pandoras-box",
+     "names": {
+      "en": "Pandora's Box",
+      "fr": "Pandora's Box",
+      "de": "Pandora's Box",
+      "ja": "Pandora's Box"
+     },
+     "aliases": {
+      "en": [
+       "tank lb",
+       "lb3"
+      ],
+      "fr": [
+       "lb tank"
+      ],
+      "de": [
+       "tank-lb"
+      ],
+      "ja": [
+       "タンクLB"
+      ]
+     },
+     "how": {
+      "en": "A huge raidwide that needs tank LB3 (or LB2 with very heavy mitigation); a late LB wipes.",
+      "fr": "Une énorme attaque de zone qui demande la LB3 tank (ou LB2 avec énormément de réductions) ; une LB trop tard = wipe.",
+      "de": "Riesiger Raidwide, der Tank-LB3 braucht (oder LB2 mit sehr starker Mitigation); zu spät = Wipe.",
+      "ja": "タンクLB3（またはLB2＋大量軽減）が必要な超全体攻撃。遅れると全滅。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "The assigned LB tank presses LB3 around the \"'s\" of \"Pandora's\" on the cast bar.",
+        "fr": "Le tank désigné lance la LB3 vers le « 's » de « Pandora's » sur la barre d'incantation.",
+        "de": "Der zugeteilte Tank drückt LB3 etwa beim „'s“ von „Pandora's“ in der Zauberleiste.",
+        "ja": "担当タンクが詠唱バーの「Pandora's」の「's」付近でLB3。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "paradise-lost",
+     "names": {
+      "en": "Paradise Lost (enrage)",
+      "fr": "Paradise Lost (enrage)",
+      "de": "Paradise Lost (Enrage)",
+      "ja": "Paradise Lost（時間切れ）"
+     },
+     "aliases": {
+      "en": [
+       "p5 enrage",
+       "final enrage"
+      ],
+      "fr": [
+       "enrage final"
+      ],
+      "de": [
+       "finaler enrage"
+      ],
+      "ja": [
+       "最終時間切れ"
+      ]
+     },
+     "how": {
+      "en": "Long final enrage cast; Pandora must die before it ends. The party gets extra limit break during it, use melee LB3 as soon as it fills.",
+      "fr": "Long enrage final ; Pandora doit mourir avant la fin. Le groupe reçoit de la LB pendant l'incantation, lance la LB3 mêlée dès qu'elle est pleine.",
+      "de": "Langer finaler Enrage; Pandora muss vorher sterben. Die Gruppe bekommt dabei Limitrausch, Nahkampf-LB3 sofort nutzen, wenn voll.",
+      "ja": "長い最終時間切れ。詠唱中にLBが溜まるので近接LB3をすぐ使う。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "DPS check, melee LB3 at the end.",
+        "fr": "Test de DPS, LB3 mêlée à la fin.",
+        "de": "DPS-Check, Nahkampf-LB3 am Ende.",
+        "ja": "火力チェック、最後に近接LB3。"
+       }
+      },
+      {
+       "strat": "oce-mur",
+       "same_as": "na-pf"
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "enrage",
+      "dps-check"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Futures Rewritten (Ultimate) - Console Games Wiki",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Futures_Rewritten_(Ultimate)",
+   "lang": "en"
+  },
+  {
+   "title": "FRU Phase 1 Fatebreaker - Icy Veins",
+   "url": "https://www.icy-veins.com/ffxiv/futures-rewritten-ultimate-guide-for-the-fatebreaker-phase",
+   "lang": "en"
+  },
+  {
+   "title": "FRU Phase 2 Usurper of Frost - Icy Veins",
+   "url": "https://icy-veins.com/ffxiv/futures-rewritten-ultimate-guide-for-the-usurper-of-frost-phase",
+   "lang": "en"
+  },
+  {
+   "title": "FRU Phase 3 Oracle of Darkness - Icy Veins",
+   "url": "https://www.icy-veins.com/ffxiv/futures-rewritten-ultimate-guide-for-phase-3-oracle-of-darkness",
+   "lang": "en"
+  },
+  {
+   "title": "FRU Phase 4 Enter the Dragon - Icy Veins",
+   "url": "https://www.icy-veins.com/ffxiv/futures-rewritten-ultimate-guide-for-phase-4-enter-the-dragon",
+   "lang": "en"
+  },
+  {
+   "title": "FRU Phase 5 Pandora - Icy Veins",
+   "url": "https://www.icy-veins.com/ffxiv/futures-rewritten-ultimate-guide-for-phase-5-pandora",
+   "lang": "en"
+  },
+  {
+   "title": "FRU - Materia Raiding",
+   "url": "https://materiaraiding.com/ultimate/fru",
+   "lang": "en"
+  },
+  {
+   "title": "FRU - tuufless",
+   "url": "https://ffxiv.tuufless.com/ultimates/fru",
+   "lang": "en"
+  },
+  {
+   "title": "FRU Mana (JP) PF strat - tuufless",
+   "url": "https://ffxiv.tuufless.com/mana/fru/",
+   "lang": "en"
+  },
+  {
+   "title": "FRU xivjp - tuufless",
+   "url": "https://tuufless.github.io/xivjp/ultimates/fru",
+   "lang": "en"
+  },
+  {
+   "title": "絶もうひとつの未来 フェーズ1 - イディルシャイア居住区",
+   "url": "https://kanatan.info/archives/38569800.html",
+   "lang": "ja"
+  },
+  {
+   "title": "絶もうひとつの未来 フェーズ2 - イディルシャイア居住区",
+   "url": "https://kanatan.info/archives/38569803.html",
+   "lang": "ja"
+  },
+  {
+   "title": "絶もうひとつの未来 フェーズ3 - イディルシャイア居住区",
+   "url": "https://kanatan.info/archives/38569805.html",
+   "lang": "ja"
+  },
+  {
+   "title": "Final Fantasy XIV: Patch 7.11 - Alle Infos zum neuen Fatalen Raid (mein-mmo)",
+   "url": "https://mein-mmo.de/final-fantasy-14-patch-7-11-fataler-raid-ultimate/",
+   "lang": "de"
+  },
+  {
+   "title": "Ultimate Uncoiled - FRU (NAUR and LPDU resources)",
+   "url": "https://ultimateuncoiled.com/fru/",
+   "lang": "en"
+  },
+  {
+   "title": "YASS - Futures Rewritten (LPDU raidplans)",
+   "url": "https://yass-xiv.co.uk/ultimates/fru",
+   "lang": "en"
+  },
+  {
+   "title": "xivpf.com - live party finder listings (Light/Chaos and NA ultimate listings)",
+   "url": "https://xivpf.com/listings",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

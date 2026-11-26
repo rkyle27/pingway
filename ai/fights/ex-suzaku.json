@@ -1,0 +1,382 @@
+{
+ "id": "ex-suzaku",
+ "type": "extreme",
+ "expansion": "SB",
+ "patch": "4.4",
+ "names": {
+  "en": "Hells' Kier (Extreme)",
+  "fr": "Le Nid des Lamentations (extrême)",
+  "de": "Seelensturm - Suzaku",
+  "ja": "極朱雀征魂戦"
+ },
+ "aliases": {
+  "en": [
+   "suzaku ex",
+   "suzaku extreme",
+   "hells kier"
+  ],
+  "fr": [
+   "suzaku extrême",
+   "nid des lamentations"
+  ],
+  "de": [
+   "suzaku extrem",
+   "seelensturm suzaku"
+  ],
+  "ja": [
+   "極朱雀",
+   "朱雀"
+  ]
+ },
+ "summary": {
+  "en": "Extreme trial against Suzaku. Phase 1 has Scarlet Lady adds to revive and kill, then a dance phase where you face arrows like a rhythm game, and phase 2 on a ring-shaped arena with Scarlet Hymn quadrant eruptions, forced marches and tower knockbacks.",
+  "fr": "Défi extrême contre Suzaku. La phase 1 a des adds Scarlet Lady à ressusciter et tuer, puis une phase de danse où tu te tournes vers des flèches comme dans un jeu de rythme, et une phase 2 sur une arène en anneau avec les éruptions de quarts d'Hymne vermillon, des marches forcées et des tours avec projection.",
+  "de": "Extrem-Prüfung gegen Suzaku. Phase 1 hat Scarlet-Lady-Adds zum Wiederbeleben und Töten, dann eine Tanzphase, in der du dich wie in einem Rhythmusspiel nach Pfeilen drehst, und Phase 2 auf einer ringförmigen Arena mit Zinnoberhymne-Viertelausbrüchen, Zwangsmärschen und Türmen mit Rückstoß.",
+  "ja": "朱雀征魂戦（極）。フェーズ1はScarlet Ladyを蘇生して倒す雑魚処理、続いて矢印の方向を向く音ゲーのようなダンスフェーズ、フェーズ2は輪の形のフィールドで朱の旋律の区画噴出、強制移動、ノックバックで入る塔。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "フェーズ1"
+   },
+   "mechanics": [
+    {
+     "id": "basics",
+     "names": {
+      "en": "Screams of the Damned / Cremate / Fleeting Summer",
+      "fr": "Cris des damnés / Crématorium / Ailes vermillon",
+      "de": "Schreie der Verdammten / Einäschern / Vergänglicher Sommer",
+      "ja": "叫喚地獄／赤熱撃／翼宿撃"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Raid damage, a tankbuster, and a cone at a random player (dodge).",
+      "fr": "Dégâts de groupe, un tankbuster et un cône vers un joueur au hasard (esquive).",
+      "de": "Gruppenschaden, ein Tankbuster und ein Kegel auf einen zufälligen Spieler (ausweichen).",
+      "ja": "全体攻撃、タンク強攻撃、ランダムな人への扇（回避）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "tankbuster",
+      "dodge"
+     ]
+    },
+    {
+     "id": "rout-rekindle",
+     "names": {
+      "en": "Rout / Rekindle",
+      "fr": "Irruption / Ravivement",
+      "de": "Kolossgalopp / Wiederaufleben",
+      "ja": "猛進／再生の炎"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Everyone gets Rekindle spreads and Suzaku charges across from a random edge: spread toward the edges away from her path. Rekindle revives any Scarlet Lady inside it.",
+      "fr": "Tout le monde a une dispersion Ravivement et Suzaku charge depuis un bord au hasard : disperse-toi vers les bords hors de sa trajectoire. Ravivement ressuscite toute Scarlet Lady dedans.",
+      "de": "Alle bekommen Wiederaufleben-Verteiler und Suzaku stürmt von einem zufälligen Rand: zum Rand verteilen, weg von ihrer Bahn. Wiederaufleben belebt jede Scarlet Lady darin wieder.",
+      "ja": "全員に再生の炎の散開、朱雀がランダムな外周から突進：進路を避けて外周へ散開。再生の炎の範囲にいるScarlet Ladyは蘇生します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "scarlet-lady",
+     "names": {
+      "en": "Scarlet Lady adds (Phoenix Down)",
+      "fr": "Adds Oiseau de feu (Queue de phénix)",
+      "de": "Flammenvogel-Adds (Phönixsturz)",
+      "ja": "火焔鳥（再生の羽根）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [
+       "oiseau de feu"
+      ],
+      "de": [
+       "flammenvogel"
+      ],
+      "ja": [
+       "火焔鳥"
+      ]
+     },
+     "how": {
+      "en": "Each DPS kills its Scarlet Plume, revives its Scarlet Lady, drags it out of the AoEs and kills it with a support partner within 15 seconds, or it self-destructs (Ashes to Ashes) for heavy raid damage.",
+      "fr": "Chaque DPS tue sa Scarlet Plume, ressuscite sa Scarlet Lady, la sort des zones et la tue avec un partenaire soutien en 15 secondes, sinon elle s'autodétruit (Ashes to Ashes) avec de gros dégâts de groupe.",
+      "de": "Jeder DD tötet seine Scarlet Plume, belebt seine Scarlet Lady wieder, zieht sie aus den AoEs und tötet sie mit einem Tank/Heiler-Partner innerhalb von 15 Sekunden, sonst sprengt sie sich (Ashes to Ashes) mit hohem Gruppenschaden.",
+      "ja": "各DPSが担当のScarlet Plumeを倒し、Scarlet Ladyを蘇生、範囲外へ引き出してタンク/ヒーラーの相方と15秒以内に倒します。間に合わないと自爆（Ashes to Ashes）で大ダメージ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "dps-check"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dance",
+   "names": {
+    "en": "Dance phase",
+    "fr": "Phase de danse",
+    "de": "Tanzphase",
+    "ja": "ダンスフェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "eternal-flame-dance",
+     "names": {
+      "en": "Eternal Flame / Scarlet Fever",
+      "fr": "Flamme éternelle / Fièvre écarlate",
+      "de": "Ewige Flamme / Feuertod",
+      "ja": "再生の大火／焼滅天火"
+     },
+     "aliases": {
+      "en": [
+       "dance",
+       "rhythm game",
+       "arrows"
+      ],
+      "fr": [
+       "danse"
+      ],
+      "de": [
+       "tanz"
+      ],
+      "ja": [
+       "ダンス",
+       "音ゲー"
+      ]
+     },
+     "how": {
+      "en": "Suzaku leaves and eight circles appear; one player per circle. An arrow shows in each circle and a light ball travels to it: face the arrow's direction when it arrives for a damage buff; each miss fills the meter. Scarlet Fever then hits the party based on how full the meter is.",
+      "fr": "Suzaku part et huit cercles apparaissent ; un joueur par cercle. Une flèche s'affiche dans chaque cercle et une boule de lumière y arrive : tourne-toi dans la direction de la flèche quand elle arrive pour un bonus de dégâts ; chaque raté remplit la jauge. Fièvre écarlate frappe ensuite le groupe selon le remplissage.",
+      "de": "Suzaku verschwindet und acht Kreise erscheinen; ein Spieler pro Kreis. In jedem Kreis zeigt sich ein Pfeil und eine Lichtkugel fliegt hin: schau in Pfeilrichtung, wenn sie ankommt, für einen Schadensbonus; jeder Fehler füllt die Leiste. Feuertod trifft danach die Gruppe je nach Füllstand.",
+      "ja": "朱雀が離脱し円が8つ。1人1つに入ります。各円に矢印が出て光の玉が届く時にその方向を向くと与ダメージ上昇、失敗するとゲージが溜まり、焼滅天火のダメージが増えます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "transition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2 (ring arena)",
+    "fr": "Phase 2 (arène en anneau)",
+    "de": "Phase 2 (Ringarena)",
+    "ja": "フェーズ2（輪のフィールド）"
+   },
+   "mechanics": [
+    {
+     "id": "melody-refrain",
+     "names": {
+      "en": "Mesmerizing Melody / Ruthless Refrain",
+      "fr": "Mélodie hypnotique / Refrain impitoyable",
+      "de": "Bezaubernde Melodie / Rabiater Refrain",
+      "ja": "誘引の旋律／拒絶の旋律"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The arena has a hole in the middle and no walls. Mesmerizing Melody pulls you in: stand at the far edge. Ruthless Refrain pushes you out: stay near the center.",
+      "fr": "L'arène a un trou au milieu et pas de murs. Mélodie hypnotique t'attire : place-toi au bord extérieur. Refrain impitoyable te repousse : reste près du centre.",
+      "de": "Die Arena hat ein Loch in der Mitte und keine Wände. Bezaubernde Melodie zieht dich an: an den äußeren Rand. Rabiater Refrain stößt dich weg: nah an der Mitte bleiben.",
+      "ja": "中央に穴があり外壁なし。誘引の旋律は引き寄せ：外側の端へ。拒絶の旋律はノックバック：中央寄りに。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback"
+     ]
+    },
+    {
+     "id": "phantom-flurry",
+     "names": {
+      "en": "Phantom Flurry",
+      "fr": "Frénésie spectrale",
+      "de": "Phantomhast",
+      "ja": "鬼宿脚"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Multi-hit tankbuster that ends in a 180-degree frontal cone; mitigate, and everyone else stays behind Suzaku. It hits the MT and leaves a physical vulnerability; a tank swap before or after it is optional.",
+      "fr": "Tankbuster multi-coups qui finit par un cône frontal à 180° ; mitige, et les autres restent derrière Suzaku. Il frappe le MT et laisse une vulnérabilité physique ; un échange de tanks avant ou après est facultatif.",
+      "de": "Mehrfacher Tankbuster, der mit einem 180-Grad-Frontalkegel endet; reduzieren, alle anderen bleiben hinter Suzaku. Es trifft den MT und hinterlässt eine physische Verwundbarkeit; ein Tankwechsel davor oder danach ist optional.",
+      "ja": "多段タンク強攻撃、最後に前方180度。軽減し、他は背後へ。MTに来て物理被ダメージ上昇が付きます。前後のタンクスイッチは任意です。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "cleave",
+      "debuff"
+     ]
+    },
+    {
+     "id": "well-scathing",
+     "names": {
+      "en": "Well of Flame / Scathing Net / Rekindle",
+      "fr": "Puits ardent / Étoiles des enfers / Ravivement",
+      "de": "Flammenbrunnen / Vernichtendes Netz / Wiederaufleben",
+      "ja": "井宿焔／張宿業火／再生の炎"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Well of Flame is a huge line at a random player (dodge), Scathing Net a healer stack, Rekindle spreads on four to six players.",
+      "fr": "Puits ardent est une énorme ligne vers un joueur au hasard (esquive), Étoiles des enfers un package healer, Ravivement des dispersions sur quatre à six joueurs.",
+      "de": "Flammenbrunnen ist eine riesige Linie auf einen zufälligen Spieler (ausweichen), Vernichtendes Netz ein Heiler-Sammelpunkt, Wiederaufleben Verteiler auf vier bis sechs Spielern.",
+      "ja": "井宿焔はランダムな人への巨大な直線（回避）、張宿業火はヒーラー頭割り、再生の炎は4〜6人に散開。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack",
+      "spread"
+     ]
+    },
+    {
+     "id": "scarlet-hymn",
+     "names": {
+      "en": "Scarlet Hymn / Close-quarter Crescendo",
+      "fr": "Hymne vermillon / Mélopée fantoche",
+      "de": "Zinnoberhymne / Puppencrescendo",
+      "ja": "朱の旋律／傀儡の調べ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Quadrants get colours and runes and a phoenix flies to them in an order; each quadrant erupts with a knock-up and vulnerability. Stand next to the first quadrant to erupt and step in right after it goes off. With Crescendo you are tethered to an arrow orb and forced to march its way: aim the march into an already-erupted quadrant and not off the edge.",
+      "fr": "Les quarts reçoivent des couleurs et des runes et un phénix y vole dans un ordre ; chaque quart entre en éruption avec projection en l'air et vulnérabilité. Place-toi à côté du premier quart qui éclate et entre juste après. Avec Mélopée fantoche, tu es lié à un orbe fléché et forcé de marcher dans sa direction : vise un quart déjà éclaté et pas le vide.",
+      "de": "Die Viertel bekommen Farben und Runen, ein Phönix fliegt sie in einer Reihenfolge an; jedes Viertel bricht mit Hochschleudern und Verwundbarkeit aus. Stell dich neben das zuerst ausbrechende Viertel und geh direkt danach hinein. Mit Puppencrescendo bist du mit einer Pfeilkugel verbunden und musst in ihre Richtung marschieren: ziel in ein schon ausgebrochenes Viertel und nicht über den Rand.",
+      "ja": "区画に色とルーンが付き、鳳凰が順に飛んで噴出（打ち上げ＋被ダメ上昇）。最初に噴出する区画の隣に立ち、噴出直後に入ります。傀儡の調べでは矢印の玉に線でつながれ強制移動：噴出済みの区画へ向け、場外へ落ちないように。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "tether",
+      "debuff"
+     ]
+    },
+    {
+     "id": "incandescent-interlude",
+     "names": {
+      "en": "Incandescent Interlude",
+      "fr": "Mélopée incandescente",
+      "de": "Glühendes Intermezzo",
+      "ja": "灼熱の調べ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Four towers on the cardinals (an empty tower gives everyone Damage Down) with Rekindle on four players and a Ruthless Refrain knockback: marked players go to the intercardinals, unmarked players wait to be knocked into a tower. One tank/healer and one DPS per cardinal.",
+      "fr": "Quatre tours sur les cardinaux (une tour vide donne Dégâts réduits à tous) avec Ravivement sur quatre joueurs et une projection Refrain impitoyable : les marqués vont en intercardinal, les autres attendent d'être projetés dans une tour. Un tank/healer et un DPS par cardinal.",
+      "de": "Vier Türme auf den Himmelsrichtungen (ein leerer Turm gibt allen Schaden runter) mit Wiederaufleben auf vier Spielern und einem Rabiater-Refrain-Rückstoß: Markierte gehen auf die Zwischenrichtungen, Unmarkierte lassen sich in einen Turm stoßen. Pro Himmelsrichtung ein Tank/Heiler und ein DD.",
+      "ja": "東西南北に塔4つ（空くと全員与ダメ低下）、4人に再生の炎、拒絶の旋律のノックバック。マーカー持ちは斜めへ、それ以外はノックバックで塔に入ります。各方角にタンク/ヒーラー1人とDPS1人。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "spread",
+      "knockback"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Southron Star (enrage)",
+      "fr": "Étoile australe (enrage)",
+      "de": "Stern des Südens (Enrage)",
+      "ja": "星宿波（時間切れ）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Southron Star is normal raid damage, and a long version of it ends the fight.",
+      "fr": "Étoile australe fait des dégâts de groupe normaux, et une longue version termine le combat.",
+      "de": "Stern des Südens ist normaler Gruppenschaden, eine lange Version beendet den Kampf.",
+      "ja": "星宿波は通常の全体攻撃で、長い詠唱版で時間切れ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - Hells' Kier (Extreme)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Hells%27_Kier_(Extreme)",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

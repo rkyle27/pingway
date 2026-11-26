@@ -1,0 +1,343 @@
+{
+ "id": "o2s",
+ "type": "savage",
+ "expansion": "SB",
+ "patch": "4.05",
+ "names": {
+  "en": "Deltascape V2.0 (Savage)",
+  "fr": "Deltastice v2.0 (sadique)",
+  "de": "Deltametrie 2.0 (episch)",
+  "ja": "次元の狭間オメガ零式：デルタ編2"
+ },
+ "aliases": {
+  "en": [
+   "o2s",
+   "catastrophe",
+   "deltascape 2 savage"
+  ],
+  "fr": [
+   "o2s",
+   "catastrophe",
+   "deltastice 2"
+  ],
+  "de": [
+   "o2s",
+   "katastroph",
+   "deltametrie 2"
+  ],
+  "ja": [
+   "デルタ零式2層",
+   "カタストロフィー",
+   "o2s"
+  ]
+ },
+ "summary": {
+  "en": "Second floor of Deltascape Savage against Catastrophe. The fight is all about Levitation (the duty action): some attacks kill grounded players, others kill floating ones, and many mechanics target all DPS or all tanks/healers at once.",
+  "fr": "Deuxième étage de Deltastice sadique contre Catastrophe. Tout tourne autour de la Lévitation (action de mission) : certaines attaques tuent les joueurs au sol, d'autres ceux qui flottent, et beaucoup visent tous les DPS ou tous les tanks/healers.",
+  "de": "Zweite Ebene von Deltametrie episch gegen Katastroph. Alles dreht sich um Levitation (Inhaltsaktion): manche Angriffe töten Spieler am Boden, andere schwebende, und viele treffen alle DDs oder alle Tanks/Heiler gleichzeitig.",
+  "ja": "デルタ編2層、カタストロフィー戦。コンテンツアクションのレビテトが軸で、地上の人を倒す攻撃と浮いている人を倒す攻撃があり、多くのギミックがDPS全員かタンク・ヒーラー全員を対象にします。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Catastrophe",
+    "fr": "Catastrophe",
+    "de": "Katastroph",
+    "ja": "カタストロフィー"
+   },
+   "mechanics": [
+    {
+     "id": "earthquake",
+     "names": {
+      "en": "Earthquake",
+      "fr": "Grand séisme",
+      "de": "Erdbeben",
+      "ja": "大地震"
+     },
+     "aliases": {
+      "en": [
+       "tremblor"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "地震"
+      ]
+     },
+     "how": {
+      "en": "Always comes after Tremblor; huge damage and Vulnerability Up to grounded players. Be levitating.",
+      "fr": "Arrive toujours après Tremblement de terre ; gros dégâts et Vulnérabilité augmentée aux joueurs au sol. Sois en lévitation.",
+      "de": "Kommt immer nach Erdbeben (Tremblor); hoher Schaden und Verwundbarkeit für Spieler am Boden. Schwebe.",
+      "ja": "地震の後に必ず来る攻撃。地上の人に大ダメージと被ダメージ上昇。レビテトで浮いておきます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "debuff"
+     ]
+    },
+    {
+     "id": "100-gs",
+     "names": {
+      "en": "100 Gs",
+      "fr": "Gravité 100",
+      "de": "100 G",
+      "ja": "重力100"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Circles on the two top-enmity players that remove Levitation from anyone inside after 5 seconds; stand in the tanks' circles to get grounded.",
+      "fr": "Cercles sur les deux premiers en inimitié qui retirent la Lévitation à ceux dedans après 5 secondes ; place-toi dans les cercles des tanks pour redescendre.",
+      "de": "Kreise auf den zwei Spielern mit höchster Feindseligkeit, die nach 5 Sekunden allen darin die Levitation nehmen; stell dich in die Kreise der Tanks, um zu landen.",
+      "ja": "敵視上位2人に円範囲。5秒後に中の人のレビテトを解除するので、タンクの円に入って地上に降ります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    },
+    {
+     "id": "antilight",
+     "names": {
+      "en": "Antilight",
+      "fr": "Lumière obscure",
+      "de": "Dunkellicht",
+      "ja": "暗黒光"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Blue (ground) and yellow (floating height) circles that petrify; only a small center spot is safe and levitating players die.",
+      "fr": "Cercles bleus (au sol) et jaunes (en hauteur) qui pétrifient ; seul un petit point au centre est sûr et les joueurs en lévitation meurent.",
+      "de": "Blaue (Boden) und gelbe (Schwebehöhe) Kreise, die versteinern; nur ein kleiner Punkt in der Mitte ist sicher, schwebende Spieler sterben.",
+      "ja": "青（地上）と黄（浮遊高度）の円範囲で石化。安置は中央の小さな場所のみで、浮いている人は死にます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "gravitational-manipulation",
+     "names": {
+      "en": "Gravitational Manipulation",
+      "fr": "Manipulation gravitationnelle",
+      "de": "Schwerkraftmanipulation",
+      "ja": "重力操作"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "One DPS and one tank/healer get donut markers that need exactly four players each, one on the ground and one in the air. The common split is tanks/healers float and DPS stay grounded.",
+      "fr": "Un DPS et un tank/healer reçoivent des marqueurs en anneau qui demandent exactement quatre joueurs chacun, un au sol et un en l'air. Le partage courant : tanks/healers flottent, DPS restent au sol.",
+      "de": "Ein DD und ein Tank/Heiler bekommen Ringmarker, die je genau vier Spieler brauchen, einer am Boden und einer in der Luft. Üblich: Tanks/Heiler schweben, DDs bleiben am Boden.",
+      "ja": "DPS1人とタンク/ヒーラー1人にドーナツマーカー。それぞれちょうど4人必要で、片方は地上、片方は空中。一般的にはタンク・ヒーラーが浮き、DPSは地上。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack"
+     ]
+    },
+    {
+     "id": "paranormal-wave",
+     "names": {
+      "en": "Paranormal Wave / Evilsphere",
+      "fr": "Onde maudite / Sphère démoniaque",
+      "de": "Paranormale Welle / Sphäre des Bösen",
+      "ja": "呪詛波／イビルスフィア"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Paranormal Wave is a cleave that stacks Gradual Petrification (three stacks petrify), so tanks swap between hits. Evilsphere is a tankbuster to mitigate.",
+      "fr": "Onde maudite est un cleave qui empile Pétrification progressive (trois cumuls pétrifient), donc les tanks swap entre les coups. Sphère démoniaque est un tankbuster à mitiger.",
+      "de": "Paranormale Welle ist ein Cleave mit stapelnder Versteinerung (drei Stapel versteinern), also wechseln die Tanks zwischen den Treffern. Sphäre des Bösen ist ein Tankbuster, den man reduziert.",
+      "ja": "呪詛波は石化のカウントが重なる攻撃（3つで石化）なので合間にタンクスイッチ。イビルスフィアはタンク強攻撃で軽減します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "cleave",
+      "debuff"
+     ]
+    },
+    {
+     "id": "maniacal-probe",
+     "names": {
+      "en": "Maniacal Probe / Epicenter",
+      "fr": "Farandole de tentacules / Épicentre",
+      "de": "Tentakeltanz / Epizentrum",
+      "ja": "触手乱舞／震源生成"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Four players (all DPS or all tanks/healers) drop probes; then huge AoEs hit three sides. The probe that stops moving shows the safe wall, so run there.",
+      "fr": "Quatre joueurs (tous les DPS ou tous les tanks/healers) posent des sondes, puis d'énormes zones frappent trois côtés. La sonde qui s'arrête montre le mur sûr : cours-y.",
+      "de": "Vier Spieler (alle DDs oder alle Tanks/Heiler) legen Sonden ab, danach treffen riesige AoEs drei Seiten. Die Sonde, die stehen bleibt, zeigt die sichere Wand; lauf dorthin.",
+      "ja": "4人（DPS全員かタンク・ヒーラー全員）が触手を設置し、その後3方向に巨大範囲。動きが止まった触手の方向が安置なので、その壁際へ走ります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "deaths-gaze",
+     "names": {
+      "en": "Death's Gaze",
+      "fr": "Œil de la Mort",
+      "de": "Todesblick",
+      "ja": "死神の瞳"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Gaze that petrifies; look away.",
+      "fr": "Regard qui pétrifie ; détourne les yeux.",
+      "de": "Blickangriff, der versteinert; schau weg.",
+      "ja": "石化の視線攻撃。背を向けます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "gaze"
+     ]
+    },
+    {
+     "id": "-100-gs",
+     "names": {
+      "en": "-100 Gs",
+      "fr": "Gravité -100",
+      "de": "Minus 100 G",
+      "ja": "重力マイナス100"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Two crossing Antilights leave north and south safe; spread circles split two north and two south, and look away from Death's Gaze as you land.",
+      "fr": "Deux Lumières obscures croisées laissent le nord et le sud sûrs ; les cercles de dispersion se répartissent deux au nord et deux au sud, et détourne les yeux du Regard en atterrissant.",
+      "de": "Zwei gekreuzte Dunkellichter lassen Nord und Süd sicher; Verteilkreise gehen zwei nach Nord und zwei nach Süd, beim Landen vom Todesblick wegschauen.",
+      "ja": "暗黒光が交差し北と南が安置。散開は北2人・南2人に分かれ、着地時に死神の瞳から目をそらします。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread",
+      "gaze"
+     ]
+    },
+    {
+     "id": "long-drop",
+     "names": {
+      "en": "The Long Drop / Unstable Gravity",
+      "fr": "Chute ininterrompue / Gravité instable",
+      "de": "Tiefer Fall / Schwerkraftschwankung",
+      "ja": "自由落下／グラビティバースト"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Unstable Gravity players levitate, and The Long Drop stack knocks floating players toward their assigned cardinal wall. Assign one tank/healer and one DPS per cardinal.",
+      "fr": "Les joueurs avec Unstable Gravity lévitent, et le package de Chute ininterrompue projette ceux qui flottent vers leur mur cardinal attribué. Attribue un tank/healer et un DPS par point cardinal.",
+      "de": "Spieler mit Unstable Gravity schweben, und der Sammelpunkt von Tiefer Fall stößt Schwebende zu ihrer zugewiesenen Himmelsrichtung. Pro Richtung ein Tank/Heiler und ein DD.",
+      "ja": "Unstable Gravityの人は浮き、自由落下の頭割りで浮いている人が担当方角の壁へ飛ばされます。各方角にタンク/ヒーラー1人とDPS1人を割り当てます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "stack"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Gravitational Wave (enrage)",
+      "fr": "Onde gravitationnelle (enrage)",
+      "de": "Gravitationswelle (Enrage)",
+      "ja": "重力波（時間切れ）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Gravitational Wave is normally raid-wide damage; at about 10:15 a 10-second cast of it wipes the party.",
+      "fr": "Onde gravitationnelle fait normalement des dégâts de groupe ; vers 10:15, une incantation de 10 secondes tue tout le monde.",
+      "de": "Gravitationswelle ist normalerweise Gruppenschaden; gegen 10:15 löscht eine 10-Sekunden-Version die Gruppe aus.",
+      "ja": "重力波は通常は全体攻撃。10:15頃の10秒詠唱で全滅します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage",
+      "raidwide"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - Deltascape V2.0 (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Deltascape_V2.0_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

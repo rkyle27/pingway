@@ -1,0 +1,444 @@
+{
+ "id": "o7s",
+ "type": "savage",
+ "expansion": "SB",
+ "patch": "4.2",
+ "names": {
+  "en": "Sigmascape V3.0 (Savage)",
+  "fr": "Sigmastice v3.0 (sadique)",
+  "de": "Sigmametrie 3.0 (episch)",
+  "ja": "次元の狭間オメガ零式：シグマ編3"
+ },
+ "aliases": {
+  "en": [
+   "o7s",
+   "guardian",
+   "sigmascape 3 savage"
+  ],
+  "fr": [
+   "o7s",
+   "gardien",
+   "sigmastice 3"
+  ],
+  "de": [
+   "o7s",
+   "wächter",
+   "sigmametrie 3"
+  ],
+  "ja": [
+   "シグマ零式3層",
+   "ガーディアン",
+   "o7s"
+  ]
+ },
+ "summary": {
+  "en": "Third floor of Sigmascape Savage against Guardian, which loads and runs programs (Dadaluma, Bibliotaph, Air Force, Ultros). The order is fixed by which program opens the fight; around 5 minutes Virus Combat starts with magnetic tethers and a passed Aether Rot.",
+  "fr": "Troisième étage de Sigmastice sadique contre le Gardien, qui charge et lance des programmes (Dadaluma, Bibliotaph, Air Force, Ultros). L'ordre dépend du programme d'ouverture ; vers 5 minutes commence le combat viral avec des liens magnétiques et une Aether Rot à se passer.",
+  "de": "Dritte Ebene von Sigmametrie episch gegen den Wächter, der Programme lädt und ausführt (Dadaluma, Bibliotaph, Air Force, Ultros). Die Reihenfolge hängt vom Startprogramm ab; nach etwa 5 Minuten beginnt der Virenkampf mit Magnetverbindungen und weitergegebener Aether Rot.",
+  "ja": "シグマ編3層、ガーディアン戦。Dadaluma・Bibliotaph・Air Force・Ultrosのプログラムを読み込み実行します。順番は開幕のプログラムで固定。約5分でウィルス戦闘に入り、磁力の線とAether Rotの受け渡しがあります。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Programs",
+    "fr": "Programmes",
+    "de": "Programme",
+    "ja": "プログラム"
+   },
+   "mechanics": [
+    {
+     "id": "basics",
+     "names": {
+      "en": "Magitek Ray / Arm and Hammer / Diffractive Plasma",
+      "fr": "Rayon magitek / Marteau stratégique / Plasma diffracteur",
+      "de": "Magitek-Laser / Arm-Hammer / Diffusionsplasma",
+      "ja": "魔導レーザー／アームハンマー／拡散プラズマ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Magitek Ray is a line toward a random player (move away from where Guardian points), Arm and Hammer a tankbuster, Diffractive Plasma raid-wide damage.",
+      "fr": "Rayon magitek est une ligne vers un joueur au hasard (écarte-toi d'où pointe le Gardien), Arm and Hammer un tankbuster, Diffractive Plasma des dégâts de groupe.",
+      "de": "Magitek-Laser ist eine Linie auf einen zufälligen Spieler (geh weg, wohin der Wächter zeigt), Arm and Hammer ein Tankbuster, Diffractive Plasma Gruppenschaden.",
+      "ja": "魔導レーザーはランダムな人への直線（向いている方向から離れる）、Arm and Hammerはタンク強攻撃、Diffractive Plasmaは全体攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "tankbuster",
+      "raidwide"
+     ]
+    },
+    {
+     "id": "atomic-ray",
+     "names": {
+      "en": "Atomic Ray",
+      "fr": "Rayon atomique",
+      "de": "Atomstrahlung",
+      "ja": "アトミックレイ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Spread markers on the four DPS that drop lightning bombs; spread to the edge, then come back.",
+      "fr": "Dispersion sur les quatre DPS qui laissent des bombes de foudre ; va au bord puis reviens.",
+      "de": "Verteilmarker auf den vier DDs, die Blitzbomben ablegen; an den Rand verteilen, dann zurück.",
+      "ja": "DPS4人に散開マーカー、雷の爆弾を残します。外周へ散開してから戻ります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread"
+     ]
+    },
+    {
+     "id": "missiles",
+     "names": {
+      "en": "Missile / Missile Simulation",
+      "fr": "Missile / Chargement : missiles",
+      "de": "Rakete / Raketensimulation",
+      "ja": "ミサイル／ローディング：ミサイル"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Missile hits a Prey target with Burns (heal them); Missile Simulation sends missiles along the edges, dodge through the gaps.",
+      "fr": "Missile frappe une cible marquée avec Brûlure (soigne-la) ; Chargement : missiles envoie des missiles le long des bords, passe par les trous.",
+      "de": "Missile trifft ein Beute-Ziel mit Brand (heilen); Raketensimulation schickt Raketen entlang der Ränder, durch die Lücken ausweichen.",
+      "ja": "Missileは対象に火傷（回復する）、ローディング：ミサイルは外周を飛ぶミサイルを隙間で避けます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "debuff"
+     ]
+    },
+    {
+     "id": "dadaluma",
+     "names": {
+      "en": "Dadaluma program",
+      "fr": "Programme Dadaluma",
+      "de": "Dadarma-Programm",
+      "ja": "ダダルマープログラム"
+     },
+     "aliases": {
+      "en": [
+       "super chakra burst"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "スーパーチャクラバースト"
+      ]
+     },
+     "how": {
+      "en": "Load: radial knockback, aim it toward a corner or resist it. Super Chakra Burst: eight towers, assign them by clock spots. Run: Dadaluma joins; the off-tank takes it and it must die.",
+      "fr": "Chargement : projection circulaire, vise un coin ou résiste. Super explosion de chakra : huit tours, attribuées par positions horloge. Exécution : Dadaluma arrive ; le off-tank le prend et il doit mourir.",
+      "de": "Laden: kreisförmiger Rückstoß, in eine Ecke zielen oder widerstehen. Super-Chakra-Ausbruch: acht Türme, per Uhrpositionen verteilen. Ausführen: Dadaluma kommt; der Off-Tank nimmt ihn, er muss sterben.",
+      "ja": "ロード：放射ノックバック、角へ向けるか耐性で防ぐ。スーパーチャクラバースト：塔8つ、クロック位置で担当。ラン：Dadaluma出現、STが受け持ち倒します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "tower",
+      "adds"
+     ]
+    },
+    {
+     "id": "aura-cannon",
+     "names": {
+      "en": "Aura Cannon",
+      "fr": "Rayon d'aura",
+      "de": "Aura-Kanone",
+      "ja": "オーラキャノン"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Line spread on a healer or DPS (alternating, healer first) with Bleeding; move away from the group and heal them.",
+      "fr": "Ligne de dispersion sur un healer ou un DPS (en alternance, healer d'abord) avec Saignement ; éloigne-toi du groupe et soignez-le.",
+      "de": "Linien-Verteiler auf einem Heiler oder DD (abwechselnd, Heiler zuerst) mit Blutung; weg von der Gruppe und heilen.",
+      "ja": "ヒーラーかDPS（交互、ヒーラーから）に直線散開＋出血。PTから離れ、回復します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "debuff"
+     ]
+    },
+    {
+     "id": "bibliotaph",
+     "names": {
+      "en": "Bibliotaph program",
+      "fr": "Programme Bibliotaphe",
+      "de": "Bibliotaph-Programm",
+      "ja": "ビブリオタフプログラム"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Load: four summoning circles, two groups of four take two each and finish them before Demon Simulation. Run (virus phase): a Bibliotaph with frequent tankbusters is tanked separately.",
+      "fr": "Chargement : quatre cercles d'invocation, deux groupes de quatre en prennent deux chacun et les finissent avant Demon Simulation. Exécution (phase virale) : un Bibliotaph à tankbusters fréquents est tanké à part.",
+      "de": "Laden: vier Beschwörungskreise, zwei Vierergruppen nehmen je zwei und schließen sie vor Demon Simulation ab. Ausführen (Virenphase): ein Bibliotaph mit häufigen Tankbustern wird getrennt getankt.",
+      "ja": "ロード：召喚陣4つを4人ずつ2班で2つずつ処理し、Demon Simulation前に完了。ラン（ウィルス中）：タンク強攻撃が多いBibliotaphを別で受けます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "air-force",
+     "names": {
+      "en": "Air Force program",
+      "fr": "Programme Force aérienne",
+      "de": "Luftwaffe-Programm",
+      "ja": "エアフォースプログラム"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Diffractive Laser: circle around Guardian that stuns. Run: four Air Force planes tether DPS and fire cones; DPS go to their corners and dodge.",
+      "fr": "Laser diffractif : cercle autour du Gardien qui étourdit. Exécution : quatre Air Force se lient aux DPS et tirent des cônes ; les DPS vont dans leurs coins et esquivent.",
+      "de": "Diffraktiver Laser: Kreis um den Wächter, der betäubt. Ausführen: vier Air Force verbinden sich mit DDs und feuern Kegel; DDs gehen in ihre Ecken und weichen aus.",
+      "ja": "拡散レーザー：ガーディアン周囲の円、スタン付き。ラン：Air Force 4機がDPSに線を付けて扇攻撃、DPSは担当の角で避けます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "tether",
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "ultros",
+     "names": {
+      "en": "Ultros program",
+      "fr": "Programme Orthros",
+      "de": "Ultros-Programm",
+      "ja": "オルトロスプログラム"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Load: ink spreads on everyone (clock spots). Tentacle Simulation: stack behind the boss facing the same way so the tentacles hit one area. Run: Ultros joins; interrupt its Stoneskin and keep it away from Chain Cannon.",
+      "fr": "Chargement : dispersions d'encre sur tous (horloge). Tentacle Simulation : package derrière le boss, tous dans le même sens, pour que les tentacules tapent au même endroit. Exécution : Ultros arrive ; interromps sa Cuirasse et éloigne-le du Canon automatique.",
+      "de": "Laden: Tinten-Verteiler auf allen (Uhrpositionen). Tentacle Simulation: hinter dem Boss sammeln, alle in dieselbe Richtung, damit die Tentakel eine Stelle treffen. Ausführen: Ultros kommt; unterbrich seine Steinhaut und halte ihn von der Kettenkanone fern.",
+      "ja": "ロード：全員に墨の散開（クロック位置）。Tentacle Simulation：ボス後方で同じ向きに頭割りし触手を一か所に。ラン：Ultros出現、ストンスキンを中断しチェーンガンから離します。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "bomb-deployment",
+     "names": {
+      "en": "Bomb Deployment",
+      "fr": "Déploiement de bombes",
+      "de": "Bombeneinsatz",
+      "ja": "爆弾設置"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A blue and a red bomb; a player steps into the glowing ring to defuse each. The wrong ring or a timeout hurts the whole party, so two non-DPS are usually assigned.",
+      "fr": "Une bombe bleue et une rouge ; un joueur entre dans l'anneau lumineux pour désamorcer chacune. Le mauvais anneau ou trop tard blesse tout le groupe, donc on assigne en général deux non-DPS.",
+      "de": "Eine blaue und eine rote Bombe; ein Spieler tritt in den leuchtenden Ring, um jede zu entschärfen. Falscher Ring oder zu spät schadet allen, daher meist zwei Nicht-DDs eingeteilt.",
+      "ja": "青と赤の爆弾。光っている輪に入って解除します。間違いや時間切れは全体ダメージなので、DPS以外の2人を担当にするのが一般的。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    }
+   ]
+  },
+  {
+   "id": "virus",
+   "names": {
+    "en": "Virus Combat",
+    "fr": "Combat viral",
+    "de": "Virenkampf",
+    "ja": "ウィルス戦闘"
+   },
+   "mechanics": [
+    {
+     "id": "virus-tethers",
+     "names": {
+      "en": "Virus Combat tethers",
+      "fr": "Liens du combat viral",
+      "de": "Virenkampf-Verbindungen",
+      "ja": "ウィルス戦闘の線"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Four magnetic pairs (tank-healer, DPS-DPS): opposite-polarity pairs have Searing Wind (repeated hits and knockback to nearby players) and go to the outside; matching pairs have Abandonment (must stay within 5y of someone) and stay inside. Keep tethers parallel.",
+      "fr": "Quatre paires magnétiques (tank-healer, DPS-DPS) : les paires de polarité opposée ont Searing Wind (coups répétés et projection autour) et vont à l'extérieur ; les paires de même polarité ont Abandonment (doivent rester à 5 m de quelqu'un) et restent à l'intérieur. Garde les liens parallèles.",
+      "de": "Vier Magnetpaare (Tank-Heiler, DD-DD): Paare mit entgegengesetzter Polarität haben Searing Wind (wiederholte Treffer und Rückstoß in der Nähe) und gehen nach außen; gleiche Polarität hat Abandonment (muss innerhalb 5 Yalm von jemandem bleiben) und bleibt innen. Verbindungen parallel halten.",
+      "ja": "磁力の線で4ペア（タンク-ヒーラー、DPS-DPS）。極性が逆のペアはSearing Wind（周囲に連続ダメージ＋ノックバック）で外側、同じ極性のペアはAbandonment（5m以内に誰かが必要）で内側。線を平行に保ちます。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Debuff names are from the English guide; FR/DE/JA not verified.",
+      "fr": "Noms des debuffs issus du guide anglais ; FR non vérifié.",
+      "de": "Debuff-Namen aus dem englischen Guide; DE nicht geprüft.",
+      "ja": "デバフ名は英語攻略より、日本語名は未確認。"
+     },
+     "tags": [
+      "tether",
+      "knockback",
+      "debuff"
+     ]
+    },
+    {
+     "id": "aether-rot",
+     "names": {
+      "en": "Aether Rot / Viral Weapon",
+      "fr": "Pourriture éthéréenne / Arme virologique",
+      "de": "Ätherfäule / Panikvirus",
+      "ja": "エーテルロット／ウィルス兵器"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Aether Rot wipes the party if it runs out or its holder dies; pass it by touch (past holders are immune) at least five times before Viral Weapon at 60 seconds, which removes it and gives everyone confused movement.",
+      "fr": "Aether Rot tue le groupe si elle expire ou si son porteur meurt ; passe-la au contact (les anciens porteurs sont immunisés) au moins cinq fois avant Arme virologique à 60 secondes, qui la retire et trouble les déplacements de tous.",
+      "de": "Aether Rot löscht die Gruppe aus, wenn sie abläuft oder ihr Träger stirbt; gib sie per Berührung weiter (frühere Träger sind immun), mindestens fünfmal vor Panikvirus bei 60 Sekunden, das sie entfernt und allen verwirrte Bewegung gibt.",
+      "ja": "Aether Rotは時間切れか保持者の死亡で全滅。接触で渡し（一度持った人は免疫）、60秒のウィルス兵器までに5回以上回します。ウィルス兵器で解除され、全員の移動が乱れます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "electric-pulse",
+     "names": {
+      "en": "Electric Pulse",
+      "fr": "Impulsion électrique",
+      "de": "Elektrischer Impuls",
+      "ja": "エレクトリックパルス"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Red light: anyone moving takes heavy damage and long Paralysis. Casting and attacking are fine, just don't move.",
+      "fr": "Lumière rouge : qui bouge prend de gros dégâts et une longue Paralysie. Lancer des sorts et attaquer est permis, mais ne bouge pas.",
+      "de": "Rotes Licht: wer sich bewegt, nimmt hohen Schaden und lange Paralyse. Zaubern und Angreifen ist okay, nur nicht bewegen.",
+      "ja": "赤い光：移動すると大ダメージと長い麻痺。詠唱や攻撃は大丈夫なので、動かないこと。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Enrage",
+      "fr": "Enrage",
+      "de": "Enrage",
+      "ja": "時間切れ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "At about 12:05 a 10-second cast wipes the party.",
+      "fr": "Vers 12:05, une incantation de 10 secondes tue le groupe.",
+      "de": "Gegen 12:05 löscht ein 10-Sekunden-Zauber die Gruppe aus.",
+      "ja": "12:05頃、10秒詠唱で全滅。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - Sigmascape V3.0 (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Sigmascape_V3.0_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

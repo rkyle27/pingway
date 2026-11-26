@@ -1,0 +1,692 @@
+{
+ "id": "ex-arkveld",
+ "type": "extreme",
+ "expansion": "DT",
+ "patch": "7.35",
+ "names": {
+  "en": "The Windward Wilds (Extreme) - Guardian Arkveld",
+  "fr": "Chasse à l'Arkveld Gardien (extrême) - Arkveld Gardien",
+  "de": "Jagd auf Wächter-Arkveld (schwer) - Wächter-Arkveld",
+  "ja": "極護竜アルシュベルド狩猟戦"
+ },
+ "aliases": {
+  "en": [
+   "arkveld ex",
+   "guardian arkveld",
+   "windward wilds",
+   "monster hunter ex",
+   "mh wilds collab"
+  ],
+  "fr": [
+   "arkveld extrême",
+   "arkveld gardien"
+  ],
+  "de": [
+   "arkveld extrem",
+   "wächter-arkveld"
+  ],
+  "ja": [
+   "極アルシュベルド",
+   "極護竜アルシュベルド",
+   "アルシュベルド"
+  ]
+ },
+ "summary": {
+  "en": "Monster Hunter Wilds collaboration Extreme against Guardian Arkveld. Everyone has a limited number of Mega Potions (a duty action) for self-healing. The fight is about chainblade cleaves, Siegeflight charges read by crack colour, Rush ring explosions, towers that leave spikes which explode when hit, and in phase 2 a permanent DoT, the Clamorous Chase numbered dashes and Wyvern's Weal lasers.",
+  "fr": "Extrême de la collaboration Monster Hunter Wilds contre l'Arkveld Gardien. Chacun a un nombre limité de Mega Potions (action de mission) pour se soigner. Le combat tourne autour des coups de chaîne, des charges lues à la couleur des fissures, des anneaux de Ruée, de tours qui laissent des pointes explosives, et en phase 2 un DoT permanent, la Chasse vociférante numérotée et les lasers d'Euphorie de la wyverne.",
+  "de": "Monster-Hunter-Wilds-Kollaboration gegen Wächter-Arkveld. Jeder hat begrenzt Mega Potions (Inhaltsaktion) zur Selbstheilung. Es geht um Klingenpeitschen, Siegeflight-Angriffe nach Rissfarbe, Ring-Explosionen beim Ansturm, Türme mit explodierenden Stacheln und in Phase 2 einen dauerhaften DoT, die nummerierte Jähzornige Jagd und Wyvernkanonen-Laser.",
+  "ja": "モンハンワイルズコラボの極護竜アルシュベルド。コンテンツアクションの回復薬グレートで自己回復（回数制限）。鎖刃叩きつけ、予兆の色で安地が変わる飛翔突進、突進の連続ドーナツ、塔の跡の結晶が攻撃で爆発、後半は永続DoT、鎖刃躍動の番号突進、龍閃砲。"
+ },
+ "strats_overview": [
+  {
+   "id": "pf-common",
+   "name": {
+    "en": "Common PF approach (light parties, Icy Veins)",
+    "fr": "Approche PF courante (light parties, Icy Veins)",
+    "de": "Übliche PF-Lösung (Leichtgruppen, Icy Veins)",
+    "ja": "一般的な野良処理（Icy Veins）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "NAUR's page was still under construction on 2026-11-26 (it points to its Discord), so this is the common approach from Icy Veins (light party 1 melee, light party 2 ranged), used in NA and EU PF. EU specifics were not verified.",
+    "fr": "La page NAUR était toujours en construction le 2026-11-26 (elle renvoie à son Discord) ; voici donc l'approche courante d'Icy Veins (LP1 mêlée, LP2 distance), utilisée en PF NA et EU. Détails EU non vérifiés.",
+    "de": "Die NAUR-Seite war am 2026-11-26 noch im Aufbau (sie verweist auf ihren Discord), daher ist das die übliche Lösung von Icy Veins (LG1 Nahkampf, LG2 Fernkampf), in NA- und EU-PF genutzt. EU-Details nicht geprüft.",
+    "ja": "NAURのページは2026-11-26時点でも作成中（Discordへ誘導）。Icy Veinsの一般的な処理（LP1近接、LP2遠隔）でNA・EU野良向け。EUの細部は未確認。"
+   },
+   "aliases": {
+    "en": [
+     "icy veins",
+     "pf"
+    ],
+    "fr": [
+     "icy veins",
+     "pf"
+    ],
+    "de": [
+     "icy veins",
+     "pf"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-pf",
+   "name": {
+    "en": "JP PF (game8, Nukemaru video)",
+    "fr": "PF JP (game8, vidéo de Nukemaru)",
+    "de": "JP-PF (game8, Nukemaru-Video)",
+    "ja": "JP野良（game8・ぬけまる動画準拠）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "game8's extreme guide follows Nukemaru's video: tanks and melee on the boss side for head splits, ranged on the far side; MT takes the north/west big tower, ST the south/east one; Clamorous Chase on waymarks A-D by odd/even number.",
+    "fr": "Le guide extrême de game8 suit la vidéo de Nukemaru : tanks et mêlées côté boss pour les partages, distances de l'autre côté ; MT prend la grande tour nord/ouest, ST celle du sud/est ; Chasse vociférante sur les marqueurs A-D selon numéro pair/impair.",
+    "de": "game8s Extrem-Guide folgt Nukemarus Video: Tanks und Nahkampf auf der Bossseite für geteilten Schaden, Fernkampf auf der anderen Seite; MT nimmt den großen Turm Nord/West, ST den Süd/Ost; Jähzornige Jagd auf Markern A-D nach gerader/ungerader Zahl.",
+    "ja": "game8の極攻略はぬけまる動画準拠：頭割りはタンク近接がボス側、遠隔は反対側。大塔はMT北/西、ST南/東。鎖刃躍動は奇数・偶数でA〜Dマーカー。"
+   },
+   "aliases": {
+    "en": [
+     "nukemaru",
+     "game8"
+    ],
+    "fr": [
+     "nukemaru",
+     "game8"
+    ],
+    "de": [
+     "nukemaru",
+     "game8"
+    ],
+    "ja": [
+     "ぬけまる",
+     "ぬけまる式",
+     "nukemaru"
+    ]
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "前半"
+   },
+   "mechanics": [
+    {
+     "id": "mega-potion",
+     "names": {
+      "en": "Mega Potion (duty action)",
+      "fr": "Mega Potion (action de mission)",
+      "de": "Mega Potion (Inhaltsaktion)",
+      "ja": "回復薬グレート（コンテンツアクション）"
+     },
+     "aliases": {
+      "en": [
+       "potion",
+       "self heal"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Everyone can heal themselves a limited number of times per attempt (game8: 10); use it after taking a hit or after a raise, especially before a stack.",
+      "fr": "Chacun peut se soigner un nombre limité de fois par essai (game8 : 10) ; utilise-la après un coup ou une résurrection, surtout avant un package.",
+      "de": "Jeder kann sich pro Versuch begrenzt oft selbst heilen (game8: 10); nach einem Treffer oder einer Wiederbelebung benutzen, vor allem vor einem Sammeln.",
+      "ja": "1回の挑戦で10回まで自己回復。被弾後や蘇生後、頭割り前に使う。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    },
+    {
+     "id": "roar",
+     "names": {
+      "en": "Roar",
+      "fr": "Rugissement",
+      "de": "Brüllen",
+      "ja": "咆哮"
+     },
+     "aliases": {
+      "en": [
+       "raidwide"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Magic raidwide.",
+      "fr": "Raidwide magique.",
+      "de": "Magischer Raidwide.",
+      "ja": "魔法全体攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "chainblade-blow",
+     "names": {
+      "en": "Chainblade Blow",
+      "fr": "Chaîne écrasante",
+      "de": "Klingenpeitsche",
+      "ja": "鎖刃叩きつけ"
+     },
+     "aliases": {
+      "en": [
+       "arm smash",
+       "cleave"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The boss smashes on the side of the raised arm, then the ground explodes; dodge the first, then cross to the other side (three hits in phase 2). The AoE reaches close to the hitbox, so melee step back a bit.",
+      "fr": "Le boss frappe du côté du bras levé, puis le sol explose ; esquive le premier puis passe de l'autre côté (trois coups en phase 2). L'AoE va jusqu'à la hitbox, donc les mêlées reculent un peu.",
+      "de": "Der Boss schlägt auf der Seite des erhobenen Arms, dann explodiert der Boden; dem ersten ausweichen, dann auf die andere Seite (drei Treffer in Phase 2). Der AoE reicht bis zur Hitbox, also Nahkämpfer etwas zurück.",
+      "ja": "振り上げた側に2連の爆発（後半は3回）。1発目を避けて逆側へ。範囲はサークル付近まで広い。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave"
+     ]
+    },
+    {
+     "id": "siegeflight",
+     "names": {
+      "en": "Siegeflight (Guardian Resonance / Dragonspark)",
+      "fr": "Charge aérienne (Résonance du Gardien / Étincelle draconique)",
+      "de": "Siegeflight (Wächter-Resonanz / Drakonischer Funke)",
+      "ja": "鎖刃飛翔突進【護竜共振／龍閃】"
+     },
+     "aliases": {
+      "en": [
+       "red white cracks",
+       "charge"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "赤",
+       "白"
+      ]
+     },
+     "how": {
+      "en": "The boss charges across from the edge. Red cracks mean side cleaves afterward (stand in the middle); white cracks mean a line down the middle (stand on the sides). A healer stack follows (with white, ground AoEs under everyone too).",
+      "fr": "Le boss charge depuis le bord. Fissures rouges = demi-salles latérales ensuite (reste au milieu) ; blanches = ligne au centre (va sur les côtés). Un package sur heal suit (avec blanc, des AoE au sol sous tout le monde aussi).",
+      "de": "Der Boss stürmt vom Rand quer. Rote Risse heißen danach Seitenangriffe (in die Mitte); weiße Risse eine Linie durch die Mitte (an die Seiten). Danach ein Heiler-Sammeln (bei Weiß zusätzlich Boden-AoEs unter allen).",
+      "ja": "赤（龍閃）はエリア中央、白（護竜共振）は外側。突進を避けてから色で移動。その後ヒーラー頭割り。"
+     },
+     "strats": [
+      {
+       "strat": "pf-common",
+       "how": {
+        "en": "Light party 1 (melee) stays close, light party 2 (ranged) in the middle; healers go to the sides for white and the middle for red.",
+        "fr": "LP1 (mêlée) reste près, LP2 (distance) au milieu ; heals sur les côtés pour blanc, au centre pour rouge.",
+        "de": "LG1 (Nahkampf) bleibt nah, LG2 (Fernkampf) in der Mitte; Heiler bei Weiß an die Seiten, bei Rot in die Mitte.",
+        "ja": "LP1（近接）は近く、LP2（遠隔）は中央。ヒーラーは白なら横、赤なら中央。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Before a white charge, move to the boss's left side. After the charge, tanks and melee stack on the boss side (north) for the head split, ranged on the south side.",
+        "fr": "Avant une charge blanche, va sur le côté gauche du boss. Après la charge, tanks et mêlées se packent côté boss (nord) pour le partage, les distances au sud.",
+        "de": "Vor einem weißen Ansturm auf die linke Seite des Bosses. Nach dem Ansturm sammeln Tanks und Nahkampf auf der Bossseite (Norden) für den geteilten Schaden, Fernkampf im Süden.",
+        "ja": "白の突進前はボスの左へ。突進後、頭割りはタンク近接がボス側（北）、遠隔は南側。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only game8 describes a JP strat for this fight (it follows Nukemaru's video); no second JP source was found.",
+        "fr": "Seul game8 décrit une strat JP pour ce combat (d'après la vidéo de Nukemaru) ; aucune deuxième source JP trouvée.",
+        "de": "Nur game8 beschreibt eine JP-Strat für diesen Kampf (nach Nukemarus Video); keine zweite JP-Quelle gefunden.",
+        "ja": "この討滅戦のJP処理はgame8のみ（ぬけまる動画準拠）。2つ目のJPソースは見つからない。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave",
+      "stack"
+     ]
+    },
+    {
+     "id": "rush",
+     "names": {
+      "en": "Rush (ring explosions) / Wyvern's Rattle",
+      "fr": "Ruée (anneaux) / Râle de la wyverne",
+      "de": "Ansturm (Ringe) / Klagende Klingen",
+      "ja": "3連突進＋龍閃爆発 / 鎖哭龍閃"
+     },
+     "aliases": {
+      "en": [
+       "three charges",
+       "donuts",
+       "exaflare lines"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Three charges whose landing spots explode in expanding rings; walk into a spot that already exploded. Wyvern's Rattle is a sequence of lines from the edge: wait in front and run into the hit area after it goes off.",
+      "fr": "Trois charges dont les points d'impact explosent en anneaux qui s'élargissent ; entre dans un endroit qui a déjà explosé. Râle de la wyverne = suite de lignes depuis le bord : attends devant et entre après l'explosion.",
+      "de": "Drei Sturmangriffe, deren Landepunkte in wachsenden Ringen explodieren; geh in eine schon explodierte Stelle. Klagende Klingen ist eine Linienfolge vom Rand: davor warten und nach der Explosion hineinlaufen.",
+      "ja": "3連突進の着弾地点からドーナツが広がる。発動済みの地点へ入る。鎖哭龍閃は端からの連続直線、爆発を見て跡地へ。"
+     },
+     "strats": [
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Stand in the third charge's warning area and step into the crater right after it lands.",
+        "fr": "Place-toi dans la zone de la troisième charge et entre dans le cratère juste après l'impact.",
+        "de": "Stell dich in den Warnbereich des dritten Ansturms und geh direkt nach dem Einschlag in den Krater.",
+        "ja": "3回目の突進の予兆内で待ち、着弾後すぐ穴に入る。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only game8 describes a JP strat for this fight (it follows Nukemaru's video); no second JP source was found.",
+        "fr": "Seul game8 décrit une strat JP pour ce combat (d'après la vidéo de Nukemaru) ; aucune deuxième source JP trouvée.",
+        "de": "Nur game8 beschreibt eine JP-Strat für diesen Kampf (nach Nukemarus Video); keine zweite JP-Quelle gefunden.",
+        "ja": "この討滅戦のJP処理はgame8のみ（ぬけまる動画準拠）。2つ目のJPソースは見つからない。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "game8 notes two ways to dodge the triple charge (enter each landing spot in order, or wait outside the third); not verified which is more common.",
+      "fr": "game8 cite deux façons (entrer dans chaque point dans l'ordre, ou attendre hors du troisième) ; non vérifié laquelle domine.",
+      "de": "game8 nennt zwei Wege (jede Landestelle nacheinander betreten oder außerhalb der dritten warten); nicht geprüft, welcher üblicher ist.",
+      "ja": "3連突進の避け方は2通り（順に入る/3回目の外で待つ）。どちらが主流か未確認。"
+     },
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "wild-energy-ouroblade",
+     "names": {
+      "en": "Wyvern's Ouroblade / Wild Energy / Chainblade Charge",
+      "fr": "Tourbillon de la wyverne / Énergie sauvage / Chaîne oppressante",
+      "de": "Wyvern-Klingenfeger / Energie der Wildnis / Klingenschlag",
+      "ja": "回転鎖刃【龍閃】 / 龍光放散 / 鎖刃振り下ろし"
+     },
+     "aliases": {
+      "en": [
+       "half room",
+       "spreads",
+       "healer stack"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Ouroblade is a half-room cleave toward the raised arm; Wild Energy is spreads on four players of one role, then the other four; Chainblade Charge is a physical stack on a healer.",
+      "fr": "Tourbillon = demi-salle vers le bras levé ; Énergie sauvage = dispersion sur quatre joueurs d'un rôle puis les quatre autres ; Chaîne oppressante = package physique sur un heal.",
+      "de": "Klingenfeger ist ein Halbraum-Angriff zur Seite des erhobenen Arms; Energie der Wildnis Verteilen auf vier Spieler einer Rolle, dann die anderen; Klingenschlag ein physisches Sammeln auf einen Heiler.",
+      "ja": "回転鎖刃は半面、龍光放散は片ロールずつ散開、鎖刃振り下ろしはヒーラーへの物理頭割り。"
+     },
+     "strats": [
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "For the spinning cleave the tail side is safe, so use the tail as your reference. For Chainblade Charge, stack in front of the boss for the head split, then dodge the two slams.",
+        "fr": "Pour le tourbillon, le côté de la queue est sûr : sers-toi de la queue comme repère. Pour Chaîne oppressante, package devant le boss pour le partage, puis esquive les deux frappes.",
+        "de": "Beim Wirbel ist die Schwanzseite sicher, orientier dich am Schwanz. Bei Klingenschlag vor dem Boss sammeln für den geteilten Schaden, dann den zwei Schlägen ausweichen.",
+        "ja": "回転鎖刃は尻尾側が安置、尻尾を基準に。鎖刃振り下ろしはボス正面で頭割り、その後の叩きつけ2回を避ける。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only game8 describes a JP strat for this fight (it follows Nukemaru's video); no second JP source was found.",
+        "fr": "Seul game8 décrit une strat JP pour ce combat (d'après la vidéo de Nukemaru) ; aucune deuxième source JP trouvée.",
+        "de": "Nur game8 beschreibt eine JP-Strat für diesen Kampf (nach Nukemarus Video); keine zweite JP-Quelle gefunden.",
+        "ja": "この討滅戦のJP処理はgame8のみ（ぬけまる動画準拠）。2つ目のJPソースは見つからない。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "cleave",
+      "stack"
+     ]
+    },
+    {
+     "id": "towers",
+     "names": {
+      "en": "Aetheric Resonance (towers) + Wyvern's Vengeance",
+      "fr": "Résonance éthérée (tours) + exaflares",
+      "de": "Ätherische Resonanz (Türme) + Exaflares",
+      "ja": "地脈共振（塔）＋波状龍閃"
+     },
+     "aliases": {
+      "en": [
+       "towers",
+       "spikes",
+       "crystals"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Six towers (two big tank towers, four normal). Dodge three baited ground AoEs first, then soak; the spikes/crystals left behind explode when another attack touches them, so dodge the following exaflares away from them.",
+      "fr": "Six tours (deux grandes pour les tanks, quatre normales). Esquive d'abord trois AoE au sol, puis prends ; les pointes laissées explosent si une autre attaque les touche, donc esquive les exaflares loin d'elles.",
+      "de": "Sechs Türme (zwei große Tanktürme, vier normale). Zuerst drei geköderten Boden-AoEs ausweichen, dann nehmen; die zurückbleibenden Stacheln explodieren bei Berührung mit einem anderen Angriff, also den Exaflares weg von ihnen ausweichen.",
+      "ja": "塔6本（タンク用大2、他4）。円範囲を避けてから塔。跡地の結晶は攻撃が触れると爆発（タンク塔跡は大きい）。エクサフレアは結晶を避けて。"
+     },
+     "strats": [
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Tanks take the big towers: MT north/west, ST south/east. Everyone else spreads and takes a small tower. Melee bait center, outside, center, then go to the tower; ranged bait center, outside, then the outer edge. Two people may share a small tower and a missed tower is not a wipe.",
+        "fr": "Les tanks prennent les grandes tours : MT nord/ouest, ST sud/est. Les autres se dispersent sur les petites tours. Les mêlées baitent centre, extérieur, centre puis la tour ; les distances centre, extérieur puis le bord. Deux personnes peuvent partager une petite tour et une tour ratée ne fait pas wipe.",
+        "de": "Tanks nehmen die großen Türme: MT Nord/West, ST Süd/Ost. Alle anderen verteilen sich auf kleine Türme. Nahkampf ködert Mitte, außen, Mitte, dann zum Turm; Fernkampf Mitte, außen, dann ganz außen. Zwei Leute dürfen einen kleinen Turm teilen, ein verpasster Turm ist kein Wipe.",
+        "ja": "大塔はタンク：MT北/西、ST南/東。他は散って小塔へ。近接の誘導は中央→外→中央→塔、遠隔は中央→外→最外周。小塔は2人で踏んでもよく、1つ踏み損ねても全滅しない。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only game8 describes a JP strat for this fight (it follows Nukemaru's video); no second JP source was found.",
+        "fr": "Seul game8 décrit une strat JP pour ce combat (d'après la vidéo de Nukemaru) ; aucune deuxième source JP trouvée.",
+        "de": "Nur game8 beschreibt eine JP-Strat für diesen Kampf (nach Nukemarus Video); keine zweite JP-Quelle gefunden.",
+        "ja": "この討滅戦のJP処理はgame8のみ（ぬけまる動画準拠）。2つ目のJPソースは見つからない。"
+       }
+      },
+      {
+       "strat": "pf-common",
+       "how": {
+        "en": "Bait the three ground AoEs first, then tanks take the two big towers with mitigation and the other six take the four normal towers (doubling up is fine). Dodge the exaflares away from the tower spikes, then spread for Wild Energy.",
+        "fr": "Baite d'abord les trois AoE au sol, puis les tanks prennent les deux grandes tours avec mitigation et les six autres les quatre tours normales (à deux, c'est bon). Esquive les exaflares loin des pics, puis disperse-toi pour Énergie sauvage.",
+        "de": "Zuerst die drei Boden-AoEs ködern, dann nehmen die Tanks die zwei großen Türme mit Mitigation und die anderen sechs die vier normalen Türme (zu zweit ist okay). Den Exaflares weg von den Turmstacheln ausweichen, dann für Energie der Wildnis verteilen.",
+        "ja": "先に床AoE3つを捨て、タンクは軽減して大塔2つ、他6人は通常塔4つ（重なってもOK）。エクサフレアは塔の棘から離れて避け、龍光放散で散開。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "dodge"
+     ]
+    },
+    {
+     "id": "forged-fury",
+     "names": {
+      "en": "Forged Fury",
+      "fr": "Fureur du Gardien",
+      "de": "Rasselnde Raserei",
+      "ja": "護竜乱撃"
+     },
+     "aliases": {
+      "en": [
+       "ultimate",
+       "phase 2 start"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Huge raidwide that starts phase 2 and gives a permanent DoT that also increases damage taken; heal and use potions.",
+      "fr": "Énorme raidwide qui lance la phase 2 et donne un DoT permanent qui augmente aussi les dégâts subis ; soigne et utilise les potions.",
+      "de": "Riesiger Raidwide, der Phase 2 startet und einen dauerhaften DoT gibt, der auch den erlittenen Schaden erhöht; heilen und Tränke nutzen.",
+      "ja": "全体攻撃で後半へ。永続DoT（被ダメ上昇）。回復薬も使う。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "debuff",
+      "transition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2",
+    "fr": "Phase 2",
+    "de": "Phase 2",
+    "ja": "後半"
+   },
+   "mechanics": [
+    {
+     "id": "clamorous-chase",
+     "names": {
+      "en": "Clamorous Chase",
+      "fr": "Chasse vociférante",
+      "de": "Jähzornige Jagd",
+      "ja": "鎖刃躍動"
+     },
+     "aliases": {
+      "en": [
+       "limit cut",
+       "numbers",
+       "dashes"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "番号",
+       "躍動"
+      ]
+     },
+     "how": {
+      "en": "Players get numbers 1-8; the boss dashes to each in order, turns and cleaves toward its forward arm. Stand on the edge and move in after you've been dashed to; right arm = go clockwise, left arm = counterclockwise.",
+      "fr": "Les joueurs ont des numéros 1-8 ; le boss fonce sur chacun dans l'ordre, se tourne et frappe vers son bras avant. Mets-toi au bord et rentre après ton passage ; bras droit = horaire, bras gauche = antihoraire.",
+      "de": "Spieler bekommen Nummern 1-8; der Boss stürmt nacheinander zu jedem, dreht sich und schlägt zur Seite des vorderen Arms. Stell dich an den Rand und geh nach deinem Ansturm rein; rechter Arm = Uhrzeigersinn, linker = dagegen.",
+      "ja": "1〜8の番号、順に突進して前の腕側へ攻撃。外周に立ち突進後は内側へ。右腕なら時計回り、左腕なら反時計回り。"
+     },
+     "strats": [
+      {
+       "strat": "pf-common",
+       "how": {
+        "en": "Even numbers are fixed: 2 and 6 south, 4 and 8 north; 1 and 5 make sure the dash goes the right way, 3 and 7 take the spots opposite them.",
+        "fr": "Pairs fixes : 2 et 6 au sud, 4 et 8 au nord ; 1 et 5 orientent bien la charge, 3 et 7 en face d'eux.",
+        "de": "Gerade Nummern fest: 2 und 6 Süd, 4 und 8 Nord; 1 und 5 sorgen für die richtige Richtung, 3 und 7 gegenüber von ihnen.",
+        "ja": "偶数固定：2と6が南、4と8が北。1と5が向きを作り、3と7はその反対。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Players go to waymarks in number order: odd numbers to B or D (diagonal from player 1), even numbers to A or C. Players not up wait in the center, and whoever was just charged steps toward the center at once.",
+        "fr": "Les joueurs vont aux marqueurs dans l'ordre : impairs sur B ou D (en diagonale du joueur 1), pairs sur A ou C. Ceux qui ne sont pas concernés attendent au centre, et celui qui vient d'être chargé revient tout de suite vers le centre.",
+        "de": "Spieler gehen der Nummer nach zu den Markern: ungerade auf B oder D (diagonal zu Spieler 1), gerade auf A oder C. Wer nicht dran ist, wartet in der Mitte, und wer gerade angegriffen wurde, geht sofort zur Mitte.",
+        "ja": "番号順にマーカーへ：奇数はBかD（1番の対角）、偶数はAかC。出番でない人は中央で待ち、突進された人はすぐ中央へ。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only game8 describes a JP strat for this fight (it follows Nukemaru's video); no second JP source was found. game8 says a left-hand pull goes clockwise, while Icy Veins says the right arm means clockwise; this may be a difference in point of view (player vs boss), so watch the boss's raised arm and follow your group.",
+        "fr": "Seul game8 décrit une strat JP pour ce combat (d'après la vidéo de Nukemaru) ; aucune deuxième source JP trouvée. game8 dit que la main gauche va en sens horaire, Icy Veins que le bras droit veut dire horaire ; c'est peut-être une question de point de vue (joueur ou boss), regarde le bras levé et suis ton groupe.",
+        "de": "Nur game8 beschreibt eine JP-Strat für diesen Kampf (nach Nukemarus Video); keine zweite JP-Quelle gefunden. game8 sagt, die linke Hand bedeutet Uhrzeigersinn, Icy Veins sagt der rechte Arm; das kann am Blickwinkel liegen (Spieler oder Boss), achte auf den erhobenen Arm und folge deiner Gruppe.",
+        "ja": "この討滅戦のJP処理はgame8のみ（ぬけまる動画準拠）。2つ目のJPソースは見つからない。game8は左手で時計回り、Icy Veinsは右腕で時計回りとしており、視点（プレイヤーかボスか）の違いの可能性。上げた腕を見てグループに従う。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave"
+     ]
+    },
+    {
+     "id": "wyverns-weal",
+     "names": {
+      "en": "Wyvern's Weal",
+      "fr": "Euphorie de la wyverne",
+      "de": "Wyvernkanone",
+      "ja": "龍閃砲"
+     },
+     "aliases": {
+      "en": [
+       "laser",
+       "rotating beam"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The boss marks a player and fires a rotating laser at them that breaks tower spikes; it happens three times (with a stack, then with spreads).",
+      "fr": "Le boss marque un joueur et tire un laser tournant sur lui qui casse les pointes ; trois fois (avec package, puis avec dispersion).",
+      "de": "Der Boss markiert einen Spieler und feuert einen drehenden Laser auf ihn, der Turmstacheln zerbricht; dreimal (mit Sammeln, dann mit Verteilen).",
+      "ja": "マーカー対象へ回転ビーム、塔跡の結晶を壊す。3回（頭割り、散開と組み合わせ）。ビームの外側へ。"
+     },
+     "strats": [
+      {
+       "strat": "pf-common",
+       "how": {
+        "en": "Bait on the side with the big tank spike: the marked player starts there, the party on the opposite side, then the marked player runs to the party.",
+        "fr": "Bait du côté de la grande pointe de tank : le marqué commence là, le groupe en face, puis le marqué rejoint le groupe.",
+        "de": "Auf der Seite des großen Tankstachels ködern: der Markierte startet dort, die Gruppe gegenüber, dann läuft der Markierte zur Gruppe.",
+        "ja": "大きいタンク結晶側で誘導、対象者はそこから、他は反対側、その後対象者が合流。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Lead the beam east, then west, then east. The marked player stays on the boss side. After the second beam, tanks and melee stack on the boss side for the head split while ranged stay on the far side, then spread.",
+        "fr": "Guide le rayon à l'est, puis à l'ouest, puis à l'est. Le joueur marqué reste côté boss. Après le deuxième rayon, tanks et mêlées se packent côté boss pour le partage, les distances restent de l'autre côté, puis dispersion.",
+        "de": "Führ den Strahl nach Osten, dann Westen, dann Osten. Der markierte Spieler bleibt auf der Bossseite. Nach dem zweiten Strahl sammeln Tanks und Nahkampf auf der Bossseite für den geteilten Schaden, Fernkampf bleibt drüben, dann verteilen.",
+        "ja": "ビームは東→西→東へ誘導。対象者はボス側。2回目の後、頭割りはタンク近接がボス側、遠隔は反対側、その後散開。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only game8 describes a JP strat for this fight (it follows Nukemaru's video); no second JP source was found.",
+        "fr": "Seul game8 décrit une strat JP pour ce combat (d'après la vidéo de Nukemaru) ; aucune deuxième source JP trouvée.",
+        "de": "Nur game8 beschreibt eine JP-Strat für diesen Kampf (nach Nukemarus Video); keine zweite JP-Quelle gefunden.",
+        "ja": "この討滅戦のJP処理はgame8のみ（ぬけまる動画準拠）。2つ目のJPソースは見つからない。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "wrathful-rattle-steeltail",
+     "names": {
+      "en": "Wrathful Rattle / Steeltail Thrust / Wyvern's Radiance",
+      "fr": "Grondement de la wyverne / Queue d'acier / Wyvern's Radiance",
+      "de": "Zornige Klingen / Stachel / Wyvern's Radiance",
+      "ja": "鎖哭龍閃・改 / 尻尾突き上げ"
+     },
+     "aliases": {
+      "en": [
+       "lines",
+       "tail knockback"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Lines that keep spawning in one direction then bounce back from the edges; Steeltail Thrust knocks back and stuns players behind the boss, so stand in front; moving AoEs come in from the edge in the last tower set.",
+      "fr": "Des lignes qui avancent dans un sens puis reviennent depuis les bords ; Queue d'acier repousse et étourdit ceux derrière le boss, donc reste devant ; des AoE mobiles arrivent du bord à la dernière série de tours.",
+      "de": "Linien, die in eine Richtung wandern und dann vom Rand zurückkommen; Stachel stößt Spieler hinter dem Boss zurück und betäubt sie, also vorne stehen; im letzten Turmsatz kommen wandernde AoEs vom Rand.",
+      "ja": "中央から外への直線が外周で折り返す（鎖刃叩きつけも同時）。尻尾突き上げは背後をノックバック＋スタン、正面へ。"
+     },
+     "strats": [
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "For the repeating lines, move outward and then back in. In the last tower set an exaflare comes from the east: step into its trail, but don't take the exaflare and a white crystal hit together.",
+        "fr": "Pour les lignes répétées, sors puis reviens. Dans la dernière série de tours, une exaflare arrive de l'est : entre dans sa trace, mais ne prends pas l'exaflare et un cristal blanc en même temps.",
+        "de": "Bei den wiederholten Linien erst nach außen, dann wieder rein. Im letzten Turmsatz kommt ein Exaflare von Osten: tritt in seine Spur, aber nimm nicht Exaflare und weißen Kristall zusammen.",
+        "ja": "鎖哭龍閃・改は外→内へ。最後の塔ではエクサが東から来るので通った跡に入る。エクサと白い結晶を同時に受けない。"
+       },
+       "uncertain": true,
+       "note": {
+        "en": "Only game8 describes a JP strat for this fight (it follows Nukemaru's video); no second JP source was found.",
+        "fr": "Seul game8 décrit une strat JP pour ce combat (d'après la vidéo de Nukemaru) ; aucune deuxième source JP trouvée.",
+        "de": "Nur game8 beschreibt eine JP-Strat für diesen Kampf (nach Nukemarus Video); keine zweite JP-Quelle gefunden.",
+        "ja": "この討滅戦のJP処理はgame8のみ（ぬけまる動画準拠）。2つ目のJPソースは見つからない。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "knockback"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Final repeats / enrage",
+      "fr": "Répétitions finales / enrage",
+      "de": "Letzte Wiederholungen / Finalangriff",
+      "ja": "最後〜時間切れ"
+     },
+     "aliases": {
+      "en": [
+       "enrage"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Siegeflight, Rush, Wild Energy with Ouroblade and Steeltail, and a last Chainblade Blow before the enrage.",
+      "fr": "Charge aérienne, Ruée, Énergie sauvage avec Tourbillon et Queue d'acier, et une dernière Chaîne écrasante avant l'enrage.",
+      "de": "Siegeflight, Ansturm, Energie der Wildnis mit Klingenfeger und Stachel, und eine letzte Klingenpeitsche vor dem Finalangriff.",
+      "ja": "飛翔突進、突進、龍光放散＋回転鎖刃＋尻尾、最後の鎖刃叩きつけの後に時間切れ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Icy Veins - The Windward Wilds (Extreme)",
+   "url": "https://www.icy-veins.com/ffxiv/the-windward-wilds-extreme-trial-guide",
+   "lang": "en"
+  },
+  {
+   "title": "NAUR FFXIV - The Windward Wilds (under construction)",
+   "url": "https://naurffxiv.com/extreme/the-windward-wilds",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - アルシュベルド（ノーマル、技名と仕様の確認用）",
+   "url": "https://game8.jp/ff14/727152",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot arkveld-ex",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/trial/arkveld-ex.ts",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - 極アルシュベルド狩猟戦 攻略",
+   "url": "https://game8.jp/ff14/728013",
+   "lang": "ja"
+  },
+  {
+   "title": "game8 JP - 極アルシュベルド comments (PF notes)",
+   "url": "https://game8.jp/ff14/728013/comments",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

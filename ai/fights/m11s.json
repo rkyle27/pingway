@@ -1,0 +1,929 @@
+{
+ "id": "m11s",
+ "type": "savage",
+ "expansion": "DT",
+ "patch": "7.4",
+ "names": {
+  "en": "AAC Heavyweight M3 (Savage) - The Tyrant",
+  "fr": "Poids lourds CCA - match 3 (sadique) - The Tyrant",
+  "de": "Arkadion - Superschwergewicht R3 (episch) - Der Tyrann",
+  "ja": "至天の座アルカディア零式：ヘビー級3 - ザ・タイラント"
+ },
+ "aliases": {
+  "en": [
+   "m11s",
+   "m11 savage",
+   "the tyrant",
+   "tyrant",
+   "hw3",
+   "heavyweight 3"
+  ],
+  "fr": [
+   "m11s",
+   "tyrant",
+   "the tyrant"
+  ],
+  "de": [
+   "m11s",
+   "der tyrann",
+   "tyrant"
+  ],
+  "ja": [
+   "m11s",
+   "ヘビー級3層",
+   "零式3層",
+   "タイラント",
+   "ザ・タイラント"
+  ]
+ },
+ "summary": {
+  "en": "Third Heavyweight fight: The Tyrant, the reigning champion. Phase 1 is the Trophy Weapons sequence (sword, axe and scythe each need a different stack, split or spread) with Void Stardust and the HP-to-1 Charybdistopia; phase 2 is meteors and rocks to hide behind; phase 3 splits the arena with Flatliner and adds knockback towers, tethers and Fire Breath; phase 4 is Ecliptic Stampede and the Heartbreak Kick towers that end in enrage.",
+  "fr": "Troisième combat Poids lourds : The Tyrant, le champion en titre. Phase 1 : la séquence des Armes trophées (épée, hache et faux demandent chacune package, split ou dispersion) avec Pluie de comètes et Maelström qui met les PV à 1 ; phase 2 : météores et rochers derrière lesquels se cacher ; phase 3 : Dernière ligne coupe l'arène avec tours à projection, liens et Souffle enflammé ; phase 4 : Ruée de météores et les tours Talon déchirant jusqu'à l'enrage.",
+  "de": "Dritter Superschwergewicht-Kampf: der Tyrann, der amtierende Champion. Phase 1 ist die Waffentrophäen-Folge (Schwert, Axt und Sense verlangen je Sammeln, Teilen oder Verteilen) mit Kometenschauer und Charybdis, die die HP auf 1 setzt; Phase 2 sind Meteore und Felsen zum Verstecken; Phase 3 teilt die Arena mit Herzstopper, dazu Rückstoß-Türme, Verbindungen und Feueratem; Phase 4 ist Meteo-Stampede und die Herzensbrecher-Kick-Türme bis zum Finalangriff.",
+  "ja": "ヘビー級3層「ザ・タイラント」戦。前半はトロフィーウェポンズ（剣・斧・鎌で頭割り・4:4・散開が変わる）、コメットレイン、HPを1にするザ・ミールストーム。中盤はメテオと岩に隠れるギミック、フラットライナーで分断されチャンピオンズ・メテオの塔・線・ファイアブレス、最後はメテオスタンピードとハートブレイクキックの塔で時間切れ。"
+ },
+ "strats_overview": [
+  {
+   "id": "na-hector",
+   "name": {
+    "en": "NA Hector (Toxic / No Buddies)",
+    "fr": "NA Hector (Toxic / No Buddies)",
+    "de": "NA Hector (Toxic / No Buddies)",
+    "ja": "NA Hector（Toxic / No Buddies）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "NA PF: Toxic Friends raidplan for most of the fight, a No Buddies Flatliner (Toxic or Kindred version, prey on the inside or outside corner of a static marker), and Uptime or Fixed Ecliptic for the end. Check which Flatliner and Ecliptic version the PF lists.",
+    "fr": "PF NA : raidplan Toxic Friends pour l'essentiel, Dernière ligne en No Buddies (version Toxic ou Kindred, proie au coin intérieur ou extérieur d'un marqueur fixe) et Ecliptic Uptime ou Fixed à la fin. Vérifie les versions dans la PF.",
+    "de": "NA-PF: Toxic-Friends-Raidplan für das meiste, No-Buddies-Herzstopper (Toxic- oder Kindred-Version, Beute an der Innen- oder Außenecke eines festen Markers) und Uptime- oder Fixed-Ecliptic am Ende. Prüf die Versionen in der PF.",
+    "ja": "NA野良：大部分はToxic Friends、フラットライナーはNo Buddies（Toxic版かKindred版、固定マーカーの内角か外角）、スタンピードはUptimeかFixed。PFで確認。"
+   },
+   "aliases": {
+    "en": [
+     "hector",
+     "toxic friends",
+     "toxic",
+     "no buddies",
+     "kindred no buddies"
+    ],
+    "fr": [
+     "hector",
+     "toxic friends",
+     "toxic",
+     "no buddies",
+     "kindred no buddies"
+    ],
+    "de": [
+     "hector",
+     "toxic friends",
+     "toxic",
+     "no buddies",
+     "kindred no buddies"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "eu-usb",
+   "name": {
+    "en": "EU USB + WdZ + Fixed Toxic Friends",
+    "fr": "EU USB + WdZ + Toxic Friends fixe",
+    "de": "EU USB + WdZ + Fixed Toxic Friends",
+    "ja": "EU USB + WdZ + Fixed Toxic Friends"
+   },
+   "region": "EU",
+   "note": {
+    "en": "WTFDIG's EU option (USB + WdZ + Fixed Toxic Friends). WTFDIG loads the strat text only in the browser and no other written source was found, so no per-mechanic steps are stored; the base is the Toxic Friends raidplan with fixed variants.",
+    "fr": "Option EU de WTFDIG (USB + WdZ + Fixed Toxic Friends). WTFDIG ne charge le texte que dans le navigateur et aucune autre source écrite trouvée, donc pas d'étapes par mécanique ; la base est le raidplan Toxic Friends en version fixe.",
+    "de": "EU-Option von WTFDIG (USB + WdZ + Fixed Toxic Friends). WTFDIG lädt den Text nur im Browser, und keine andere schriftliche Quelle wurde gefunden, daher keine Schritte pro Mechanik; Basis ist der Toxic-Friends-Raidplan in fester Version.",
+    "ja": "WTFDIGのEU版（USB + WdZ + Fixed Toxic Friends）。WTFDIGの本文はブラウザでしか読めず、他の文章ソースもないため、ギミック別の手順はなし。Toxic Friendsの固定版が基本。"
+   },
+   "aliases": {
+    "en": [
+     "usb",
+     "wdz",
+     "fixed toxic friends"
+    ],
+    "fr": [
+     "usb",
+     "wdz",
+     "fixed toxic friends"
+    ],
+    "de": [
+     "usb",
+     "wdz",
+     "fixed toxic friends"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-nukemaru",
+   "name": {
+    "en": "JP Game8 / Nukemaru (Jiji Champion's Meteor, DXA Stampede)",
+    "fr": "JP Game8 / Nukemaru (Météore Jiji, Ruée DXA)",
+    "de": "JP Game8 / Nukemaru (Jiji-Meteo, DXA-Stampede)",
+    "ja": "JP game8 / ぬけまる式（Cメテオジジ式・スタンピードDXA式）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "Basic Lucre spreads, Domination safe spot as north, Orbital fixed north, Comet Rain split by near/far, Jiji method for Champion's Meteor and DXA method for Ecliptic Stampede.",
+    "fr": "Dispersion de base Lucre, safe spot de Domination comme nord, Orbitale fixée au nord, comètes séparées proche/loin, méthode Jiji pour le Météore du champion et DXA pour la Ruée.",
+    "de": "Grundverteilung Lucre, sicherer Bereich bei Überlegenheit als Norden, Orbital fest Norden, Kometen nach nah/fern, Jiji-Methode für Herrscher-Meteo und DXA für Meteo-Stampede.",
+    "ja": "基本ルクレ、ドミネーション安置北基準、オービタル北固定、コメットレイン遠近分け、チャンピオンズメテオはジジ式、メテオスタンピードはDXA式。"
+   },
+   "aliases": {
+    "en": [
+     "nukemaru",
+     "lucre",
+     "jiji",
+     "dxa",
+     "game8"
+    ],
+    "fr": [
+     "nukemaru",
+     "lucre",
+     "jiji",
+     "dxa",
+     "game8"
+    ],
+    "de": [
+     "nukemaru",
+     "lucre",
+     "jiji",
+     "dxa",
+     "game8"
+    ],
+    "ja": [
+     "ぬけまる",
+     "基本ルクレ",
+     "ルクレ",
+     "ジジ式",
+     "DXA式",
+     "nukemaru"
+    ]
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1 (Trophy Weapons)",
+    "fr": "Phase 1 (Armes trophées)",
+    "de": "Phase 1 (Waffentrophäen)",
+    "ja": "前半（トロフィーウェポンズ）"
+   },
+   "mechanics": [
+    {
+     "id": "crown-of-arcadia",
+     "names": {
+      "en": "Crown of Arcadia",
+      "fr": "Souverain de l'Arcadion",
+      "de": "Wort des Herrschers",
+      "ja": "キング・オブ・アルカディア"
+     },
+     "aliases": {
+      "en": [
+       "raidwide"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Physical raidwide; Feint and mitigation.",
+      "fr": "Raidwide physique ; Feinte et mitigation.",
+      "de": "Physischer Raidwide; Zermürben und Mitigation.",
+      "ja": "物理全体攻撃。牽制と軽減。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "raw-steel-trophy",
+     "names": {
+      "en": "Raw Steel Trophy",
+      "fr": "Génération d'arme : écrasement",
+      "de": "Spaltende Waffenkunst",
+      "ja": "ウェポンジェネレート：バスター"
+     },
+     "aliases": {
+      "en": [
+       "axe buster",
+       "scythe buster"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Axe: tanks share a buster while the others spread for small AoEs. Scythe: party stacks behind, tanks separate, cones on top two enmity and a random player. The off-tank keeps stance for second enmity.",
+      "fr": "Hache : les tanks partagent un buster pendant que les autres s'écartent. Faux : le groupe derrière, tanks séparés, cônes sur les deux premiers en inimitié et un joueur au hasard. L'OT garde sa posture.",
+      "de": "Axt: Tanks teilen einen Buster, der Rest verteilt sich. Sense: Gruppe hinten, Tanks getrennt, Kegel auf die zwei Ersten und einen Zufallsspieler. Der OT hält Haltung für Platz 2.",
+      "ja": "斧はタンク頭割り＋他は散開、鎌はボス背面に集合しタンクは離れる（ヘイト1・2位とランダム1人に扇）。STはスタンスで2位。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "spread",
+      "stack",
+      "cleave"
+     ]
+    },
+    {
+     "id": "trophy-weapons",
+     "names": {
+      "en": "Trophy Weapons + Assault Evolved",
+      "fr": "Armes trophées + Arsenal d'assaut",
+      "de": "Waffentrophäen + Waffensturm",
+      "ja": "トロフィーウェポンズ＋ウェポンアサルト"
+     },
+     "aliases": {
+      "en": [
+       "weapons",
+       "sword axe scythe"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "剣",
+       "斧",
+       "鎌",
+       "武器"
+      ]
+     },
+     "how": {
+      "en": "Three weapons spawn and the boss jumps to each clockwise, starting with the one facing him. Sword = plus and lines on both healers (split left/right into light parties), Axe = one big stack in the middle, Scythe = donut and cones on everyone (spread under the boss).",
+      "fr": "Trois armes apparaissent et le boss saute sur chacune en horaire, en commençant par celle en face. Épée = croix et lignes sur les deux heals (split gauche/droite en light parties), Hache = gros package au centre, Faux = donut et cônes sur tout le monde (dispersion sous le boss).",
+      "de": "Drei Waffen erscheinen und der Boss springt im Uhrzeigersinn zu jeder, beginnend mit der vor ihm. Schwert = Plus und Linien auf beide Heiler (links/rechts in Leichtgruppen), Axt = ein großes Sammeln in der Mitte, Sense = Donut und Kegel auf alle (unter dem Boss verteilen).",
+      "ja": "武器3つ、ボスの正面の武器から時計回りに跳ぶ。剣はヒーラー2人へ十字と直線（左右4:4）、斧は中央で8人頭割り、鎌はボス向き基準で8方向散開。"
+     },
+     "strats": [
+      {
+       "strat": "na-hector",
+       "how": {
+        "en": "Sword: left and right light parties. Axe: stack near the middle. Scythe: clock spots under the boss. Sword into scythe needs one light party to move far and fast.",
+        "fr": "Épée : light parties gauche et droite. Hache : package près du centre. Faux : spots d'horloge sous le boss. Épée puis faux oblige une light party à bouger loin et vite.",
+        "de": "Schwert: Leichtgruppen links und rechts. Axt: in der Mitte sammeln. Sense: Uhrplätze unter dem Boss. Schwert dann Sense zwingt eine Leichtgruppe, weit und schnell zu laufen.",
+        "ja": "剣は左右に4:4、斧は中央、鎌はボス下で時計位置。剣→鎌は片方の組が素早く大移動。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Scythe: eight-way spread by the boss's facing; Sword: MT and ST split left/right 4:4; Axe: all eight stack in the center.",
+        "fr": "Faux : dispersion en huit selon l'orientation du boss ; Épée : MT et OT split gauche/droite 4:4 ; Hache : les huit au centre.",
+        "de": "Sense: achtfach nach Blickrichtung des Bosses verteilen; Schwert: MT und ST links/rechts 4:4; Axt: alle acht in der Mitte.",
+        "ja": "鎌はボス向き基準で8方向散開、剣はMT/STで左右4:4、斧は中央で8人頭割り。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "stack"
+     ]
+    },
+    {
+     "id": "void-stardust",
+     "names": {
+      "en": "Void Stardust",
+      "fr": "Pluie de comètes",
+      "de": "Kometenschauer",
+      "ja": "コメットレイン"
+     },
+     "aliases": {
+      "en": [
+       "comets",
+       "comet rain"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Three sets of baited ground AoEs, then either spread markers or a healer stack; the second Void Stardust is untelegraphed and always the opposite follow-up.",
+      "fr": "Trois séries d'AoE au sol à baiter, puis dispersion ou package sur heal ; la deuxième Pluie n'est pas signalée et c'est toujours la suite inverse.",
+      "de": "Drei Sätze geköderter Boden-AoEs, dann Verteil-Marker oder ein Heiler-Sammeln; der zweite Kometenschauer ist unangezeigt und hat immer die andere Folge.",
+      "ja": "3回のコメットを捨て、その後散開か頭割り。2回目は1回目に来なかった方。"
+     },
+     "strats": [
+      {
+       "strat": "na-hector",
+       "how": {
+        "en": "Melee and tanks stack north of the boss and rotate clockwise to drop comets, ranged join or spread outside; after, melee east/west, tanks north/south, ranged fan out.",
+        "fr": "Mêlées et tanks packent au nord du boss et tournent en horaire pour poser, les distances suivent ou s'écartent dehors ; ensuite mêlées est/ouest, tanks nord/sud, distances en éventail.",
+        "de": "Nahkampf und Tanks sammeln nördlich vom Boss und drehen im Uhrzeigersinn zum Ablegen, Fernkampf folgt oder verteilt außen; danach Nahkampf Ost/West, Tanks Nord/Süd, Fernkampf gefächert.",
+        "ja": "近接タンクはボス北に集まり時計回りでコメット捨て、遠隔は一緒か外で散開。その後近接は東西、タンクは南北、遠隔は扇状。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Gather behind the boss to drop comets (near/far split), then follow the spread or stack marker.",
+        "fr": "Regroupe-toi derrière le boss pour poser les comètes (séparation proche/loin), puis suis le marqueur.",
+        "de": "Hinter dem Boss sammeln zum Ablegen (nah/fern getrennt), dann dem Marker folgen.",
+        "ja": "背面に集まってコメットを捨て（遠近分け）、散開か頭割り。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread",
+      "stack"
+     ]
+    },
+    {
+     "id": "dance-of-domination",
+     "names": {
+      "en": "Dance of Domination Trophy",
+      "fr": "Génération d'arme : domination",
+      "de": "Überlegene Waffenkunst",
+      "ja": "ウェポンジェネレート：ドミネーション"
+     },
+     "aliases": {
+      "en": [
+       "domination",
+       "7 hits"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Seven physical raidwide hits plus six lines and pair stacks on four players of one role; use the outer safe spots, two players per spot.",
+      "fr": "Sept coups de zone physiques plus six lignes et des paires sur quatre joueurs d'un rôle ; utilise les safe spots extérieurs, deux par spot.",
+      "de": "Sieben physische Raidwide-Treffer plus sechs Linien und Paare auf vier Spieler einer Rolle; nutzt die äußeren sicheren Stellen, zwei pro Stelle.",
+      "ja": "物理7連全体、直線6本と4人頭割り。外周の安地に2人ずつ。"
+     },
+     "strats": [
+      {
+       "strat": "na-hector",
+       "how": {
+        "en": "Safe spots in the middle and south: LP1 left, LP2 right, tanks and melee in, ranged and healers out.",
+        "fr": "Safe spots au centre et au sud : LP1 à gauche, LP2 à droite, tanks et mêlées dedans, distances et heals dehors.",
+        "de": "Sichere Stellen Mitte und Süd: LG1 links, LG2 rechts, Tanks und Nahkampf innen, Fern und Heiler außen.",
+        "ja": "安地は中央と南、LP1左・LP2右、タンク近接は内側、遠隔ヒーラーは外側。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Take the outer safe spot as north and pair up per safe spot.",
+        "fr": "Prends le safe spot extérieur comme nord et mets-toi en paire par spot.",
+        "de": "Nimm die äußere sichere Stelle als Norden und paare dich pro Stelle.",
+        "ja": "外周の安地を北として、安地ごとに2人で頭割り。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "dodge",
+      "stack"
+     ]
+    },
+    {
+     "id": "charybdistopia-ultimate-weapons",
+     "names": {
+      "en": "Charybdistopia + Ultimate Trophy Weapons / Assault Apex / Powerful Gust",
+      "fr": "Maelström + Armes trophées ultimes / Avalanche d'armes / Ouragan violent",
+      "de": "Charybdis des Herrschers + Unantastbare Waffentrophäen / Waffenlawine / Starke Bö",
+      "ja": "ザ・ミールストーム＋アルティメット・トロフィーウェポンズ / ウェポンアバランチ / 強風"
+     },
+     "aliases": {
+      "en": [
+       "hp to 1",
+       "6 weapons",
+       "tornadoes"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "HP1",
+       "竜巻"
+      ]
+     },
+     "how": {
+      "en": "Charybdistopia sets everyone to 1 HP (the buster right before doesn't need healing). Then six weapons in a row while tornadoes appear where weapons were (knockback and damage down); finally each tornado cones the two closest players.",
+      "fr": "Maelström met tout le monde à 1 PV (inutile de soigner le buster juste avant). Puis six armes d'affilée et des tornades là où étaient les armes (poussée et malus) ; à la fin chaque tornade fait un cône sur les deux plus proches.",
+      "de": "Charybdis setzt alle auf 1 HP (den Buster davor muss man nicht heilen). Dann sechs Waffen hintereinander, Tornados entstehen, wo Waffen waren (Rückstoß und Schaden runter); am Ende kegelt jeder Tornado die zwei Nächsten.",
+      "ja": "全員のHPが1（直前のバスターは回復不要、ヒーラーは中央付近）。武器6つを順に処理、武器の跡に竜巻（触れない）。最後に四方の竜巻から近い人へ扇。"
+     },
+     "strats": [
+      {
+       "strat": "na-hector",
+       "how": {
+        "en": "Tornado baits at your colour marker on the outside: supports left, DPS right, facing in.",
+        "fr": "Baits des tornades à ton marqueur de couleur dehors : supports à gauche, DPS à droite, face à l'intérieur.",
+        "de": "Tornado-Köder an deinem Farbmarker außen: Supporter links, DPS rechts, Blick nach innen.",
+        "ja": "竜巻の扇は外周の色マーカーで、内向きにサポート左・DPS右。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Bait the cones standing deep so you don't clip your neighbour.",
+        "fr": "Baite les cônes en te plaçant loin pour ne pas toucher ton voisin.",
+        "de": "Köder die Kegel weit draußen, damit du den Nachbarn nicht triffst.",
+        "ja": "扇は深く立って隣を巻き込まない。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "raidwide",
+      "dodge",
+      "knockback",
+      "debuff",
+      "proximity"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2 (meteors)",
+    "fr": "Phase 2 (météores)",
+    "de": "Phase 2 (Meteore)",
+    "ja": "中盤（メテオ）"
+   },
+   "mechanics": [
+    {
+     "id": "great-wall-of-fire",
+     "names": {
+      "en": "Great Wall of Fire",
+      "fr": "Courants de feu",
+      "de": "Feuerstrom",
+      "ja": "ファイアストリーム"
+     },
+     "aliases": {
+      "en": [
+       "line buster",
+       "tank share"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Two shared line busters on the top enmity tank; the first one gives a fire debuff, so the other tank takes the front for the second, then sidestep the lingering line.",
+      "fr": "Deux busters en ligne partagés sur le tank principal ; le premier donne une debuff de feu, donc l'autre tank prend l'avant pour le second, puis décale-toi de la ligne qui reste.",
+      "de": "Zwei geteilte Linien-Buster auf den Haupttank; der erste gibt einen Feuer-Debuff, also steht der andere Tank beim zweiten vorne, dann der bleibenden Linie ausweichen.",
+      "ja": "ヘイト1位に直線頭割り2回。1発目でデバフが付くので2発目は付いていないタンクが先頭、直後に左右へ。"
+     },
+     "strats": [
+      {
+       "strat": "na-hector",
+       "how": {
+        "en": "MT in front for the first, OT for the second, moving clockwise together; tanks may invuln (ideally not a Paladin).",
+        "fr": "MT devant pour le premier, OT pour le second, en tournant ensemble en horaire ; les tanks peuvent mettre une invincibilité (idéalement pas Paladin).",
+        "de": "MT vorne beim ersten, OT beim zweiten, gemeinsam im Uhrzeigersinn; Tanks dürfen Unverwundbarkeit nutzen (am besten kein Paladin).",
+        "ja": "1発目MT、2発目STが先頭で一緒に時計回り。無敵も可（ナイト以外推奨）。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Mainstream: MT invulns the first one (not Paladin, because Hallowed Ground wouldn't be back for Heartbreak Kick) and the second is shared; alternative: MT invuln first, ST in front for the second.",
+        "fr": "Majoritaire : le MT met son invincibilité au premier (pas Paladin, sinon pas prête pour Talon déchirant) et le second est partagé ; variante : invincibilité MT puis OT devant.",
+        "de": "Üblich: MT nutzt beim ersten Unverwundbarkeit (kein Paladin, sonst nicht bereit für den Kick) und der zweite wird geteilt; Variante: MT-Unverwundbarkeit, dann ST vorne.",
+        "ja": "方式A（主流）：1回目はMT無敵（ナイト以外）、2回目は頭割り。方式B：1回目MT無敵、2回目はSTが先頭。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "debuff",
+      "dodge"
+     ]
+    },
+    {
+     "id": "orbital-omen",
+     "names": {
+      "en": "Orbital Omen + Fire and Fury",
+      "fr": "Pluie orbitale + Queue enflammée",
+      "de": "Orbitalachse + Feueratem & Flammenschweif",
+      "ja": "オービタルライン＋ファイア・アンド・テイル"
+     },
+     "aliases": {
+      "en": [
+       "orbital",
+       "portals",
+       "front back cleave"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Portals fire lines in spawn order (getting hit gives damage down) while Fire and Fury cleaves front and back; the boss is faced north and players stand in line intersections at his sides.",
+      "fr": "Des portails tirent des lignes dans l'ordre d'apparition (touché = malus) pendant que Queue enflammée frappe devant et derrière ; le boss regarde le nord et on se place aux intersections sur ses côtés.",
+      "de": "Portale feuern Linien in Erscheinungsreihenfolge (Treffer = Schaden runter), während Feueratem & Flammenschweif vorne und hinten trifft; der Boss schaut nach Norden und man steht an Linienkreuzungen an seinen Seiten.",
+      "ja": "出現順に直線（当たると与ダメ低下）、ファイア・アンド・テイルは前後。ボスを北向きに固定し、側面の交点で待機。"
+     },
+     "strats": [
+      {
+       "strat": "na-hector",
+       "how": {
+        "en": "MT faces the boss north; ranged step diagonally into the first intersection at 'Fury' and stay, melee use the second intersection moving across and back for uptime.",
+        "fr": "Le MT oriente le boss au nord ; les distances entrent en diagonale dans la première intersection et restent, les mêlées utilisent la seconde en traversant et revenant.",
+        "de": "MT richtet den Boss nach Norden; Fernkämpfer gehen diagonal in die erste Kreuzung und bleiben, Nahkämpfer nutzen die zweite, hin und zurück für Uptime.",
+        "ja": "MTがボスを北向き。遠隔は1つ目の交点へ斜めに入って待機、近接は2つ目の交点で対角へ往復。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Wait at the second intersection at the boss's side, dodge diagonally right after the tail, then return after the second hit.",
+        "fr": "Attends à la deuxième intersection sur le flanc du boss, esquive en diagonale juste après la queue, puis reviens après le second coup.",
+        "de": "Warte an der zweiten Kreuzung an der Bossseite, weich direkt nach dem Schweif diagonal aus und komm nach dem zweiten Treffer zurück.",
+        "ja": "2発目の交点かつボス側面で待ち、テイル直後に対角へ、2発目後に戻る。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave",
+      "debuff"
+     ]
+    },
+    {
+     "id": "meteorain",
+     "names": {
+      "en": "Meteorain + Fearsome Fireball + Foregone Fatality + Triple Tyrannhilation",
+      "fr": "Pluie de météorites + Rayon incandescent + Pluie fatale + Triple annihilation tyrannique",
+      "de": "Meteorregen + Fürstliches Feuer + Strahl der Verdammnis + Drillingsstern-Tyrannensturz",
+      "ja": "メテオレイン＋ビッグファイア＋フェイタルライン＋トライスターズ・タイラントフォール"
+     },
+     "aliases": {
+      "en": [
+       "meteors",
+       "rocks",
+       "hide"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "隕石",
+       "岩",
+       "メテオ",
+       "Triple Tyrannhilation"
+      ]
+     },
+     "how": {
+      "en": "Prey markers on the two closest drop meteors that leave rocks (rocks too close explode). Line stacks break rocks they pass through, portals tether rocks (the tanks must take the tethers or the rock explodes), and finally three unavoidable raidwides where you hide behind the remaining rocks. The portal tethers (Foregone Fatality) are magic tank busters with a vulnerability; each tank takes two of them.",
+      "fr": "Des marqueurs sur les deux plus proches font tomber des météores qui laissent des rochers (trop proches = explosion). Les packages en ligne cassent les rochers traversés, des portails lient des rochers (les tanks doivent prendre les liens sinon le rocher explose), et enfin trois raidwides où tu te caches derrière les rochers restants. Les liens des portails (Pluie fatale) sont des tankbusters magiques avec vulnérabilité ; chaque tank en prend deux.",
+      "de": "Marker auf die zwei Nächsten lassen Meteore fallen, die Felsen hinterlassen (zu nah = Explosion). Linien-Sammeln zerbrechen Felsen auf dem Weg, Portale verbinden Felsen (Tanks müssen die Verbindungen nehmen, sonst explodiert der Fels), und am Ende drei unvermeidbare Raidwides, bei denen du dich hinter die übrigen Felsen stellst. Die Portal-Verbindungen (Strahl der Verdammnis) sind magische Tankbuster mit Verwundbarkeit; jeder Tank nimmt zwei davon.",
+      "ja": "近い2人に隕石（岩が残る、近すぎると爆発）。直線頭割りは通った岩を壊す、ポータルの線はタンクが取る、最後の3連全体攻撃は残った岩の裏に隠れる。ポータルの線（フェイタルライン）は被ダメージ上昇付きの魔法タンク強攻撃で、各タンクが2本ずつ取る。"
+     },
+     "strats": [
+      {
+       "strat": "na-hector",
+       "how": {
+        "en": "Stack northwest; melee stay inside the boss, healers bait next (H1 southwest, H2 northwest), ranged after (R1 near the edge, R2 northeast); LP1 places in a southwest line, LP2 alternates NE/NW. T1 takes north and east tethers, T2 south and west.",
+        "fr": "Package au NO ; mêlées dans le boss, heals ensuite (H1 SO, H2 NO), distances après (R1 près du bord, R2 NE) ; LP1 pose en ligne au SO, LP2 alterne NE/NO. T1 prend les liens nord et est, T2 sud et ouest.",
+        "de": "Sammeln im NW; Nahkampf im Boss, dann Heiler (H1 SW, H2 NW), danach Fernkampf (R1 am Rand, R2 NO); LG1 legt in einer SW-Linie, LG2 abwechselnd NO/NW. T1 nimmt Nord- und Ost-Verbindungen, T2 Süd und West.",
+        "ja": "北西に集合。近接はボス内、ヒーラーが次（H1南西、H2北西）、遠隔が次（R1外周寄り、R2北東）。LP1は南西に一列、LP2は北東/北西交互。線はT1が北と東、T2が南と西。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Healers, ranged and melee each place meteors at their assigned spots over three rounds; tanks take the outer meteor tethers. Check your role's spot in the macro.",
+        "fr": "Heals, distances et mêlées posent les météores à leurs spots en trois tours ; les tanks prennent les liens extérieurs. Vérifie ton spot dans la macro.",
+        "de": "Heiler, Fern und Nah legen die Meteore in drei Runden an ihren Plätzen ab; Tanks nehmen die äußeren Verbindungen. Prüf deinen Platz im Makro.",
+        "ja": "3回に分けてヒーラー・遠隔・近接が指定の場所に隕石、タンクは外周の線。担当位置はマクロで確認。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "stack",
+      "tether",
+      "tankbuster",
+      "raidwide"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Phase 3 (split arena)",
+    "fr": "Phase 3 (arène coupée)",
+    "de": "Phase 3 (geteilte Arena)",
+    "ja": "分断（フラットライナー）"
+   },
+   "mechanics": [
+    {
+     "id": "flatliner-majestic-meteor",
+     "names": {
+      "en": "Flatliner + Majestic Meteor + Fire Breath",
+      "fr": "Dernière ligne + Météore du champion + Souffle enflammé",
+      "de": "Herzstopper + Herrscher-Meteo + Feueratem",
+      "ja": "フラットライナー＋チャンピオンズ・メテオ＋ファイアブレス"
+     },
+     "aliases": {
+      "en": [
+       "flatliner",
+       "towers",
+       "tethers",
+       "no buddies"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "フラットライナー",
+       "Cメテオ",
+       "ジジ式"
+      ]
+     },
+     "how": {
+      "en": "A knockback from the middle splits the arena into two platforms. Four two-person towers knock players up, four portals tether players who must stretch far, and north/south portals make the front or back unsafe; then Fire Breath puts lines and puddles on the four closest. It repeats with a per-platform multi-hit stack.",
+      "fr": "Une poussée depuis le centre coupe l'arène en deux plateformes. Quatre tours à deux projettent les joueurs, quatre portails lient des joueurs qui doivent s'éloigner, et des portails nord/sud rendent l'avant ou l'arrière dangereux ; puis Souffle enflammé met lignes et flaques sur les quatre plus proches. Ça se répète avec un package multi-coups par plateforme.",
+      "de": "Ein Rückstoß aus der Mitte teilt die Arena in zwei Plattformen. Vier Zwei-Personen-Türme schleudern Spieler hoch, vier Portale verbinden Spieler, die weit dehnen müssen, und Nord/Süd-Portale machen vorne oder hinten unsicher; dann bringt Feueratem Linien und Flächen auf die vier Nächsten. Es wiederholt sich mit einem mehrfachen Sammeln pro Plattform.",
+      "ja": "中央からのノックバックで2島に分断。2人塔4つ（打ち上げ）、ポータルの線4本（遠くへ伸ばす）、南北ポータルで前後が危険。続いてファイアブレスで近い4人に直線と床。2回目は島ごとの多段頭割りも。"
+     },
+     "strats": [
+      {
+       "strat": "na-hector",
+       "how": {
+        "en": "LP1 west, LP2 east. Tanks and ranged north, healers and melee south; tethered players stretch so four remain per platform. Four non-tethered players bait Fire Breath inside the hitbox, tethers go to the wall, prey to the inside (Toxic) or outside (Kindred) corner of their number marker.",
+        "fr": "LP1 ouest, LP2 est. Tanks et distances au nord, heals et mêlées au sud ; les liés s'étirent pour qu'il reste quatre par plateforme. Quatre non liés baitent le Souffle dans la hitbox, les liens au mur, les proies au coin intérieur (Toxic) ou extérieur (Kindred) de leur marqueur.",
+        "de": "LG1 West, LG2 Ost. Tanks und Fern Nord, Heiler und Nah Süd; Verbundene dehnen so, dass vier pro Plattform bleiben. Vier Unverbundene ködern Feueratem in der Hitbox, Verbindungen an die Wand, Beute an die Innen- (Toxic) oder Außenecke (Kindred) ihres Nummernmarkers.",
+        "ja": "LP1西、LP2東。タンク遠隔が北、ヒーラー近接が南、線持ちは伸ばして各島4人に。線なし4人がタゲサ内でブレス誘導、線は壁際、マーカー対象は番号マーカーの内角（Toxic）か外角（Kindred）。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Jiji method for the towers and tethers; Champion's Meteor happens twice, then the per-island heavy meteor stack.",
+        "fr": "Méthode Jiji pour tours et liens ; deux Météores du champion, puis le package lourd par île.",
+        "de": "Jiji-Methode für Türme und Verbindungen; zweimal Herrscher-Meteo, dann das schwere Sammeln pro Insel.",
+        "ja": "塔と線はジジ式。Cメテオ2回の後、島ごとにヘビーメテオの頭割り。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "tower",
+      "tether"
+     ]
+    },
+    {
+     "id": "arcadion-avalanche",
+     "names": {
+      "en": "Arcadion Avalanche",
+      "fr": "Écrasement de l'Arcadion",
+      "de": "Arkadionbruch",
+      "ja": "アルカディア・クラッシュ"
+     },
+     "aliases": {
+      "en": [
+       "platform throw"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The boss grabs one platform (killing anyone on it) and throws it at the other; get to the platform he is not facing and run to the edge opposite his swing.",
+      "fr": "Le boss attrape une plateforme (tuant ceux dessus) et la lance sur l'autre ; va sur la plateforme qu'il ne regarde pas et cours au bord opposé à son geste.",
+      "de": "Der Boss packt eine Plattform (tötet alle darauf) und wirft sie auf die andere; geh auf die Plattform, die er nicht anschaut, und lauf an den Rand gegenüber seinem Schwung.",
+      "ja": "ボスが向いている側の床が壊れるので、その側の人は対面へ移動。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "transition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p4",
+   "names": {
+    "en": "Phase 4 (Ecliptic Stampede and enrage)",
+    "fr": "Phase 4 (Ruée de météores et enrage)",
+    "de": "Phase 4 (Meteo-Stampede und Finalangriff)",
+    "ja": "後半（メテオスタンピード〜時間切れ）"
+   },
+   "mechanics": [
+    {
+     "id": "great-wall-of-fire-2",
+     "names": {
+      "en": "Great Wall of Fire (2nd)",
+      "fr": "Courants de feu (2e)",
+      "de": "Feuerstrom (2.)",
+      "ja": "ファイアストリーム（2回目）"
+     },
+     "aliases": {
+      "en": [
+       "great wall of fire",
+       "2nd great wall"
+      ],
+      "fr": [
+       "courants de feu"
+      ],
+      "de": [
+       "feuerstrom"
+      ],
+      "ja": [
+       "ファイアストリーム"
+      ]
+     },
+     "how": {
+      "en": "Opens the last phase: the same two shared line busters, this time both tanks share them with their 120 s and short mitigations plus healer help, keeping the rest for Heartbreak Kick.",
+      "fr": "Ouvre la dernière phase : les mêmes deux busters en ligne partagés ; cette fois les deux tanks les partagent avec leurs réductions de 120 s et courtes, plus l'aide des soigneurs, en gardant le reste pour Talon déchirant.",
+      "de": "Eröffnet die letzte Phase: dieselben zwei geteilten Linien-Buster; diesmal teilen beide Tanks sie mit ihren 120-s- und kurzen Mitigations plus Heilerhilfe und sparen den Rest für Herzensbrecher-Kick.",
+      "ja": "最終フェーズの最初。同じ直線頭割り2回を、今回はタンク2人が120秒・短い軽減とヒーラーの支援で一緒に受け、残りはハートブレイクキックに温存する。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "note": {
+      "en": "Source: Icy Veins (phase 4 opener).",
+      "fr": "Source : Icy Veins (début de la phase 4).",
+      "de": "Quelle: Icy Veins (Beginn von Phase 4).",
+      "ja": "出典：Icy Veins（フェーズ4冒頭）。"
+     },
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "debuff"
+     ]
+    },
+    {
+     "id": "ecliptic-stampede",
+     "names": {
+      "en": "Ecliptic Stampede + Two-way / Four-way Fireball",
+      "fr": "Ruée de météores + Double / quadruple spirale",
+      "de": "Meteo-Stampede + Zweifaches / Vierfaches Drehfeuer",
+      "ja": "メテオスタンピード＋ツーウェイ/フォーウェイ"
+     },
+     "aliases": {
+      "en": [
+       "stampede",
+       "ecliptic",
+       "fireball"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "スタンピード",
+       "DXA式"
+      ]
+     },
+     "how": {
+      "en": "Proximity hits, two prey players dropping six puddles, baited AoEs, then four towers (two tank busters and two for two players, each with a tethered player). Ends with Two-way or Four-way Fireball shared lines on the closest players.",
+      "fr": "Coups de proximité, deux proies qui posent six flaques, AoE à baiter, puis quatre tours (deux busters de tank et deux pour deux joueurs, chacune avec un joueur lié). Termine par des lignes partagées Double ou Quadruple spirale sur les plus proches.",
+      "de": "Entfernungstreffer, zwei Beute-Spieler legen sechs Flächen, geköderte AoEs, dann vier Türme (zwei Tankbuster und zwei für zwei Spieler, jeder mit einem verbundenen Spieler). Endet mit geteilten Linien Zweifach oder Vierfach auf die Nächsten.",
+      "ja": "距離減衰、2人が沼を6つ捨て、AoE誘導、塔4つ（タンク用2、2人用2、それぞれ線持ち1人）。最後にツーウェイ/フォーウェイの直線頭割り。"
+     },
+     "strats": [
+      {
+       "strat": "na-hector",
+       "how": {
+        "en": "Ranged and healers outside (ranged north, healers south), melee and tanks under the boss; prey drop puddles along the north curving in after four. Towers: the two ranged without prey and MT take the first clockwise tower from NE, two melee and OT the first counterclockwise from NW; tethers stretch to the opposite wall. Four-way: inside players bait at the hitbox edge on intercardinals; two-way: one bait per side east/west. Uptime vs Fixed Ecliptic changes details.",
+        "fr": "Distances et heals dehors (distances nord, heals sud), mêlées et tanks sous le boss ; les proies posent le long du nord en tournant après quatre. Tours : les deux distances sans proie et le MT prennent la première en horaire depuis le NE, deux mêlées et OT la première en antihoraire depuis le NO ; les liens s'étirent vers le mur opposé. Quadruple : ceux dedans baitent au bord de la hitbox aux intercardinaux ; double : un par côté est/ouest. Uptime ou Fixed change les détails.",
+        "de": "Fern und Heiler außen (Fern Nord, Heiler Süd), Nah und Tanks unter dem Boss; Beute legt Flächen entlang des Nordens und biegt nach vier ein. Türme: die zwei Fernkämpfer ohne Beute und MT nehmen den ersten im Uhrzeigersinn ab NO, zwei Nahkämpfer und OT den ersten gegen den Uhrzeigersinn ab NW; Verbindungen zur Gegenwand. Vierfach: Innere ködern am Hitbox-Rand auf Zwischenrichtungen; Zweifach: einer pro Seite Ost/West. Uptime oder Fixed ändert Details.",
+        "ja": "遠隔ヒーラーは外（遠隔北・ヒーラー南）、近接タンクはボス下。沼は北側に沿って捨て4つ目で内側へ。塔は沼なし遠隔2人とMTが北東から時計回りの1つ目、近接2人とSTが北西から反時計回りの1つ目、線は反対の壁へ。フォーウェイは内側がタゲサの縁の斜め、ツーウェイは東西に1人ずつ。Uptime/Fixedで細部が違う。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "DXA method: MT takes towers from northwest clockwise, ST from marker 4 counterclockwise; for the final Fireball the players without tethers bait and tether holders never stand in front.",
+        "fr": "Méthode DXA : le MT prend les tours depuis le NO en horaire, l'OT depuis le marqueur 4 en antihoraire ; pour la spirale finale, ceux sans lien baitent et les liés ne sont jamais devant.",
+        "de": "DXA-Methode: MT nimmt Türme ab NW im Uhrzeigersinn, ST ab Marker 4 gegen den Uhrzeigersinn; beim letzten Drehfeuer ködern die ohne Verbindung, Verbundene stehen nie vorne.",
+        "ja": "DXA式：塔はMTが北西から時計回り、STが4マーカーから反時計回り。最後の頭割り誘導は線なしの人、線持ちは先頭に立たない。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Exact NA details depend on Uptime vs Fixed Ecliptic; not confirmed which one each PF uses.",
+      "fr": "Les détails NA dépendent d'Uptime ou Fixed ; non confirmé.",
+      "de": "NA-Details hängen von Uptime oder Fixed ab; nicht bestätigt.",
+      "ja": "NAの細部はUptime式かFixed式で変わる。未確認。"
+     },
+     "tags": [
+      "proximity",
+      "dodge",
+      "tower",
+      "tankbuster",
+      "tether",
+      "stack"
+     ]
+    },
+    {
+     "id": "heartbreak-kick",
+     "names": {
+      "en": "Heartbreak Kick / Heartbreaker (enrage)",
+      "fr": "Talon déchirant / Ruine-cœur (enrage)",
+      "de": "Herzensbrecher-Kick / Herzensbrecher (Finalangriff)",
+      "ja": "ハートブレイクキック / ハートブレイカー（時間切れ）"
+     },
+     "aliases": {
+      "en": [
+       "kick towers",
+       "enrage",
+       "ptt",
+       "ttt"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ハートブレイク"
+      ]
+     },
+     "how": {
+      "en": "Multi-hit tower stacks that gain a hit each time while the boss gets stronger; the soak order rotates between the party and tank invulnerabilities, and the last one is the enrage.",
+      "fr": "Des tours multi-coups qui gagnent un coup à chaque fois pendant que le boss se renforce ; l'ordre alterne entre le groupe et les invincibilités des tanks, la dernière est l'enrage.",
+      "de": "Mehrfache Turm-Sammeln, die jedes Mal einen Treffer mehr haben, während der Boss stärker wird; die Reihenfolge wechselt zwischen Gruppe und Tank-Unverwundbarkeiten, der letzte ist der Finalangriff.",
+      "ja": "多段の塔頭割り、回数ごとに着弾数とダメージが増える。パーティとタンク無敵で交代、最後は時間切れ。"
+     },
+     "strats": [
+      {
+       "strat": "na-hector",
+       "how": {
+        "en": "Tower 1 MT invuln, tower 2 OT invuln with both tanks taking the first hit with short mitigation, tower 3 everyone with all mitigation (orders called PTT, TTT or PPP vary).",
+        "fr": "Tour 1 invincibilité MT, tour 2 invincibilité OT avec les deux tanks sur le premier coup, tour 3 tout le monde avec toute la mitigation (les ordres PTT, TTT ou PPP varient).",
+        "de": "Turm 1 MT-Unverwundbarkeit, Turm 2 OT-Unverwundbarkeit mit beiden Tanks auf dem ersten Treffer, Turm 3 alle mit aller Mitigation (Reihenfolgen PTT, TTT oder PPP variieren).",
+        "ja": "1回目MT無敵、2回目ST無敵（1発目は2人で短い軽減）、3回目は全員全軽減（PTT・TTT・PPPなど順番は様々）。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "First all eight soak, second the two tanks alternate invulns, third both tanks with full buffs.",
+        "fr": "D'abord les huit, ensuite les deux tanks alternent les invincibilités, enfin les deux tanks avec tous les buffs.",
+        "de": "Zuerst alle acht, dann wechseln die Tanks die Unverwundbarkeiten, zuletzt beide Tanks mit allen Buffs.",
+        "ja": "1回目は8人、2回目はタンク2人が無敵交代、3回目はタンク2人フルバフ。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Sources describe different soak orders; follow your group's call.",
+      "fr": "Les sources donnent des ordres différents ; suis ton groupe.",
+      "de": "Quellen nennen unterschiedliche Reihenfolgen; folge deiner Gruppe.",
+      "ja": "受け方の順番はソースで異なる。グループに従う。"
+     },
+     "tags": [
+      "tower",
+      "stack",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Icy Veins - M11S guide",
+   "url": "https://www.icy-veins.com/ffxiv/aac-heavyweight-m3-savage-raid-guide",
+   "lang": "en"
+  },
+  {
+   "title": "NAUR FFXIV - M11S",
+   "url": "https://naurffxiv.com/savage/m11s",
+   "lang": "en"
+  },
+  {
+   "title": "WTFDIG - M11S strat selector",
+   "url": "https://wtfdig.info/74/m11s",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - ヘビー級零式3層",
+   "url": "https://game8.jp/ff14/755154",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot r11s timeline translations",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/raid/r11s.ts",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 (official names, Action/BNpcName/Status sheets)",
+   "url": "https://v2.xivapi.com/api/search",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

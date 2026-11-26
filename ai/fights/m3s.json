@@ -1,0 +1,705 @@
+{
+ "id": "m3s",
+ "type": "savage",
+ "expansion": "DT",
+ "patch": "7.05",
+ "names": {
+  "en": "AAC Light-heavyweight M3 (Savage) - Brute Bomber",
+  "fr": "Poids mi-lourds CCA - match 3 (sadique) - Brute Bomber",
+  "de": "Arkadion - Halbschwergewicht R3 (episch) - Brutalo Bomber",
+  "ja": "至天の座アルカディア零式：ライトヘビー級3 - ブルートボンバー"
+ },
+ "aliases": {
+  "en": [
+   "m3s",
+   "m3 savage",
+   "brute bomber",
+   "bomber",
+   "lh3"
+  ],
+  "fr": [
+   "m3s",
+   "brute bomber"
+  ],
+  "de": [
+   "m3s",
+   "brute bomber",
+   "brutalo bomber"
+  ],
+  "ja": [
+   "m3s",
+   "零式3層",
+   "ライトヘビー級3層",
+   "ボンバー",
+   "ブルートボンバー"
+  ]
+ },
+ "summary": {
+  "en": "Third Light-heavyweight fight: Brute Bomber, a wrestler with bombs. Every Doping Draught makes him stronger and changes his moves (lariats become donuts, dives become knockbacks), raidwides and tankbusters get more hits each time, and the fight is built on knockback towers, Tag Team clone chains and several fuse-bomb puzzles (Final Fusedown, Fusefield, Fuse or Foe).",
+  "fr": "Troisième combat Poids mi-lourds : Brute Bomber, un catcheur à bombes. Chaque Dopage le renforce et change ses attaques (les lariats deviennent des donuts, les plongeons des poussées), les raidwides et tankbusters gagnent des coups, et le combat repose sur des tours à poussée, les chaînes de Combat d'équipe et plusieurs puzzles de bombes à mèche.",
+  "de": "Dritter Halbschwergewicht-Kampf: Brute Bomber, ein Wrestler mit Bomben. Jedes Aufputschen macht ihn stärker und ändert seine Angriffe (Lariats werden Donuts, Stürze werden Rückstöße), Raidwides und Tankbuster bekommen mehr Treffer, und der Kampf besteht aus Rückstoß-Türmen, Wechselspiel-Ketten und mehreren Zündschnur-Bomben-Puzzles.",
+  "ja": "ライトヘビー級3層「ブルートボンバー」戦。ドーピングのたびに強化され技が変化（ラリアットがドーナツに、パワーダイブがノックバックに）、全体攻撃とタンク強攻撃の回数も増える。ノックバック塔、タッグマッチの鎖、複数のフューズボム系ギミックが中心。"
+ },
+ "strats_overview": [
+  {
+   "id": "na-pf",
+   "name": {
+    "en": "NA PF standard (Hector / thepfstrat)",
+    "fr": "Standard PF NA (Hector / thepfstrat)",
+    "de": "NA-PF-Standard (Hector / thepfstrat)",
+    "ja": "NA野良標準（Hector / thepfstrat）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "Most common PF split: tanks with melee, healers with ranged. Fusefield priority and spots vary between PFs, so check the PF description. EU PF not verified separately.",
+    "fr": "Split PF le plus courant : tanks avec mêlées, heals avec distances. L'ordre de Champs de mèches varie selon les PF, regarde la description. PF EU non vérifiée à part.",
+    "de": "Häufigster PF-Split: Tanks mit Nahkämpfern, Heiler mit Fernkämpfern. Die Luntenfeld-Reihenfolge variiert je nach PF, lies die Beschreibung. EU-PF nicht separat geprüft.",
+    "ja": "よくある分け方はタンク＋近接、ヒーラー＋遠隔。フューズフィールドの順番はPFによって違うので募集文を確認。EU野良は未確認。"
+   },
+   "aliases": {
+    "en": [],
+    "fr": [],
+    "de": [],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-pf",
+   "name": {
+    "en": "JP PF (Nukemaru macro Ver. 2.0, game8)",
+    "fr": "PF JP (macro Nukemaru v2.0, game8)",
+    "de": "JP-PF (Nukemaru-Makro v2.0, game8)",
+    "ja": "日本野良（ぬけまるマクロVer.2.0 / game8準拠）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "Melee group and ranged group for towers; Fusefield order by debuff length, searching clockwise from marker A.",
+    "fr": "Groupe mêlée et groupe distance pour les tours ; Champs de mèches par durée de debuff, en cherchant dans le sens horaire depuis le marqueur A.",
+    "de": "Nahkampf- und Fernkampfgruppe für die Türme; Luntenfeld nach Debuff-Länge, im Uhrzeigersinn ab Marker A.",
+    "ja": "塔は近接組と遠隔組。フューズフィールドはデバフ時間順、Aマーカーから時計回りに探す。"
+   },
+   "aliases": {
+    "en": [
+     "nukemaru",
+     "game8"
+    ],
+    "fr": [
+     "nukemaru",
+     "game8"
+    ],
+    "de": [
+     "nukemaru",
+     "game8"
+    ],
+    "ja": [
+     "ぬけまる",
+     "nukemaru"
+    ]
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "前半"
+   },
+   "mechanics": [
+    {
+     "id": "brutal-impact",
+     "names": {
+      "en": "Brutal Impact",
+      "fr": "Impact brutal",
+      "de": "Knallender Impakt",
+      "ja": "スマッシュインパクト"
+     },
+     "aliases": {
+      "en": [
+       "raidwide",
+       "multi hit"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Multi-hit physical raidwide; the number of hits grows after each Doping Draught, so mitigation and shields get heavier over the fight.",
+      "fr": "Dégâts de zone physiques multi-coups ; le nombre de coups augmente après chaque Dopage, donc il faut de plus en plus de mitigation.",
+      "de": "Mehrfacher physischer Raidwide; die Trefferzahl steigt nach jedem Aufputschen, also braucht ihr immer mehr Mitigation.",
+      "ja": "物理の多段全体攻撃。ドーピングごとに回数が増えるので軽減とバリアを厚く。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "knuckle-sandwich",
+     "names": {
+      "en": "Knuckle Sandwich",
+      "fr": "Sandwich de poings",
+      "de": "Knöchelschlag",
+      "ja": "ナックルパート"
+     },
+     "aliases": {
+      "en": [
+       "tankbuster",
+       "tb",
+       "shared buster"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Multi-hit shared tankbuster on the main tank; either one tank invulns it alone or both tanks share it with mitigation. Hits increase over the fight. It is aimed at the main tank; Icy Veins suggests invulns on the 1st, 2nd, 4th and 5th casts and sharing the 3rd.",
+      "fr": "Tankbuster partagé multi-coups sur le MT ; soit un tank l'encaisse sous invincibilité, soit les deux tanks le partagent avec mitigation. Les coups augmentent au fil du combat. Il vise le main tank ; Icy Veins conseille l'invulnérabilité sur les 1er, 2e, 4e et 5e casts et de partager le 3e.",
+      "de": "Mehrfacher geteilter Tankbuster auf den MT; entweder nimmt ein Tank ihn mit Unverwundbarkeit allein oder beide teilen ihn mit Mitigation. Die Treffer nehmen zu. Er zielt auf den Main-Tank; Icy Veins empfiehlt Unverwundbarkeit beim 1., 2., 4. und 5. Cast und das Teilen des 3.",
+      "ja": "MTへの多段頭割りタンク強攻撃。無敵で1人受けか、2人で軽減して頭割り。回数が増えていく（JPは2回目ドーピング後は無敵で交互）。MTが対象。Icy Veinsでは1・2・4・5回目を無敵、3回目を2人で頭割りする案を紹介している。"
+     },
+     "strats": [
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "MT and OT (ST) share each cast; the opener can be taken by MT alone with a mitigation. After the second Doping the two 8-hit casts are taken by MT and ST with one invulnerability each.",
+        "fr": "Le MT et l'OT partagent chaque cast ; le premier peut être pris seul par le MT avec une réduction. Après le second Doping, les deux casts à 8 coups sont pris par le MT et l'OT avec une invulnérabilité chacun.",
+        "de": "MT und OT teilen jeden Cast; den ersten kann der MT mit Mitigation allein nehmen. Nach dem zweiten Doping nehmen MT und OT die beiden 8-Treffer-Casts mit je einer Unverwundbarkeit.",
+        "ja": "毎回MTとSTで頭割り。最初の1回はバフを使えばMT1人でも可。2回目のドーピング後の8連撃2回は、MTとSTが無敵で1回ずつ受ける。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "stack"
+     ]
+    },
+    {
+     "id": "lariats",
+     "names": {
+      "en": "Quadruple Lariat / Octuple Lariat",
+      "fr": "Quadruple lariat / Octuple lariat",
+      "de": "Quattro-Lariat / Okto-Lariat",
+      "ja": "4ウェイ / 8ウェイ・ダブルラリアット"
+     },
+     "aliases": {
+      "en": [
+       "lariat",
+       "pairs or spread"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ラリアット"
+      ]
+     },
+     "how": {
+      "en": "Point-blank circle plus cones: Quadruple = pair stacks on one role, Octuple = everyone spreads. When the boss's arms are on fire after Doping, the circle becomes a donut, so you stay close instead of out.",
+      "fr": "Cercle autour du boss plus cônes : Quadruple = packages à deux, Octuple = tout le monde s'écarte. Quand ses bras brûlent après le Dopage, le cercle devient un donut, donc tu restes près au lieu de sortir.",
+      "de": "Kreis um den Boss plus Kegel: Quattro = Paar-Sammeln, Okto = alle verteilen. Wenn seine Arme nach dem Aufputschen brennen, wird der Kreis zum Donut, also bleibst du nah statt raus.",
+      "ja": "ボス中心の円＋扇。4ウェイはペア頭割り、8ウェイは8方向散開。ドーピング後に腕が燃えていれば円がドーナツになるので内側で処理。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "cleave",
+      "stack",
+      "spread"
+     ]
+    },
+    {
+     "id": "dives",
+     "names": {
+      "en": "Quadroboom Dive / Octoboom Dive",
+      "fr": "Quadruple explongeon / Octuple explongeon",
+      "de": "Quattro-Bombensturz / Okto-Bombensturz",
+      "ja": "4ショック / 8ショック・パワーダイブ"
+     },
+     "aliases": {
+      "en": [
+       "dive",
+       "proximity"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The boss jumps to a wall with proximity damage, then pairs (Quadroboom) or spread (Octoboom). Once doped it becomes a late knockback from the jump point instead.",
+      "fr": "Le boss saute contre un mur avec dégâts de proximité, puis paires (Quadruple) ou dispersion (Octuple). Une fois dopé, ça devient une poussée tardive depuis le point de chute.",
+      "de": "Der Boss springt an eine Wand mit Entfernungsschaden, dann Paare (Quattro) oder Verteilen (Okto). Gedopt wird daraus ein später Rückstoß vom Landepunkt.",
+      "ja": "外周へ跳んで距離減衰、その後4ショックはペア、8ショックは散開。ドーピング後は着地点からのノックバックに変わる。近接は突進で寄る。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Pairs: tank with melee, healer with ranged.",
+        "fr": "Paires : tank avec mêlée, heal avec distance.",
+        "de": "Paare: Tank mit Nahkämpfer, Heiler mit Fernkämpfer.",
+        "ja": "ペアはタンク＋近接、ヒーラー＋遠隔。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "same_as": "na-pf"
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "proximity",
+      "stack",
+      "spread",
+      "knockback"
+     ]
+    },
+    {
+     "id": "barbarous-barrage",
+     "names": {
+      "en": "Barbarous Barrage / Murderous Mist",
+      "fr": "Bombardement brutal / Vapeur venimeuse",
+      "de": "Brutalo-Bomben / Grüner Nebel",
+      "ja": "ボンバリアンボム / グリーンミスト"
+     },
+     "aliases": {
+      "en": [
+       "kb towers",
+       "towers",
+       "mist"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "塔",
+       "ノックバック塔"
+      ]
+     },
+     "how": {
+      "en": "Knockback towers in three steps: soak a tower, get knocked to the next, and finish in the center eight-person tower, which knocks you toward the boss. The boss then does an untelegraphed 270-degree poison cleave (Murderous Mist), so you must end behind him.",
+      "fr": "Tours à poussée en trois étapes : prends une tour, fais-toi pousser vers la suivante, finis dans la tour centrale à huit qui te pousse vers le boss. Ensuite il fait un cône de 270 degrés non signalé (Vapeur venimeuse), donc termine derrière lui.",
+      "de": "Rückstoß-Türme in drei Schritten: Turm nehmen, zum nächsten stoßen lassen, am Ende den Acht-Personen-Turm in der Mitte, der dich zum Boss stößt. Danach kommt ein unangezeigter 270-Grad-Giftkegel (Grüner Nebel), also musst du hinter ihm landen.",
+      "ja": "3段階のノックバック塔。塔を踏み、飛ばされた先で次の塔、最後は中央の塔からボスへ向かって飛ぶ。その後ボスが四隅へ移動して予兆なしの270度扇（グリーンミスト）なので背面へ。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Tank/melee generally take north or west, healer/ranged south or east; check the tower priority in your PF.",
+        "fr": "Tank/mêlée en général nord ou ouest, heal/distance sud ou est ; vérifie la priorité de ta PF.",
+        "de": "Tank/Nahkampf meist Nord oder West, Heiler/Fernkampf Süd oder Ost; prüf die Turm-Priorität deiner PF.",
+        "ja": "タンク・近接が北か西、ヒーラー・遠隔が南か東が多い。PFの優先を確認。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Split into melee group and ranged group; from each knockback landing spot enter the next tower, and from the center tower fly toward the boss.",
+        "fr": "Groupes mêlée et distance ; depuis chaque point d'atterrissage entre dans la tour suivante, et depuis la tour centrale vole vers le boss.",
+        "de": "Nahkampf- und Fernkampfgruppe; vom Landepunkt in den nächsten Turm, vom mittleren Turm Richtung Boss fliegen.",
+        "ja": "近接組と遠隔組に分かれ、飛ばされた先で次の塔、最後は中央の塔からボスに向かって飛ぶ。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "knockback"
+     ]
+    },
+    {
+     "id": "doping-draught",
+     "names": {
+      "en": "Doping Draught",
+      "fr": "Dopage",
+      "de": "Aufputschen",
+      "ja": "ドーピング"
+     },
+     "aliases": {
+      "en": [
+       "doping",
+       "fire arms"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "No damage; gives a permanent damage-up stack and from now on the boss's burning arms change lariats to donuts and dives to knockbacks. Later dopings also enlarge the boss.",
+      "fr": "Pas de dégâts ; donne un bonus de dégâts permanent, et désormais ses bras en feu changent les lariats en donuts et les plongeons en poussées. Les dopages suivants agrandissent aussi le boss.",
+      "de": "Kein Schaden; gibt einen dauerhaften Schadensbonus, und ab jetzt machen die brennenden Arme aus Lariats Donuts und aus Stürzen Rückstöße. Spätere Dopings vergrößern den Boss.",
+      "ja": "ダメージなし。永続の与ダメ上昇が付き、腕が燃えている間はラリアットがドーナツ、パワーダイブがノックバックに。以降のドーピングでボスが巨大化。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2",
+    "fr": "Phase 2",
+    "de": "Phase 2",
+    "ja": "中盤"
+   },
+   "mechanics": [
+    {
+     "id": "tag-team",
+     "names": {
+      "en": "Tag Team / Chain Deathmatch",
+      "fr": "Combat d'équipe / Chaîne de la mort",
+      "de": "Wechselspiel / Ketten-Todeskampf",
+      "ja": "タッグマッチ / チェーンデスマッチ"
+     },
+     "aliases": {
+      "en": [
+       "clones",
+       "chains"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "分身",
+       "鎖"
+      ]
+     },
+     "how": {
+      "en": "Two clones lariat across the arena and you are chained to one: you must take the first hit from your own clone and dodge the other clone. The second lariats you dodge completely; the safe quadrant is diagonal from the first safe spot (both clones raise the same arm twice).",
+      "fr": "Deux clones font des lariats à travers l'arène et tu es enchaîné à l'un : prends le premier coup de ton clone et esquive l'autre. Les seconds lariats s'esquivent entièrement ; le quart sûr est en diagonale du premier.",
+      "de": "Zwei Klone machen Lariats quer durch die Arena und du bist an einen gekettet: nimm den ersten Treffer deines Klons und weich dem anderen aus. Den zweiten Lariats weichst du komplett aus; das sichere Viertel liegt diagonal zum ersten.",
+      "ja": "分身2体のラリアット。鎖で繋がれた分身の1発目には当たり、もう1体は避ける。2回目は両方避け、1回目の安地の対角へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "dodge"
+     ]
+    },
+    {
+     "id": "final-fusedown",
+     "names": {
+      "en": "Final Fusedown",
+      "fr": "Bombos à mèche sadiques",
+      "de": "Epische Zündschnurbomben",
+      "ja": "零式フューズボム"
+     },
+     "aliases": {
+      "en": [
+       "fuses",
+       "short long fuse"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "導火線",
+       "フューズ"
+      ]
+     },
+     "how": {
+      "en": "Bombs with short and long fuses appear and players also get short or long fuses (shown on the character, not as a debuff). Short-fuse players spread in the area of long bombs while long-fuse players wait in the center, then they swap.",
+      "fr": "Des bombes à mèche courte et longue apparaissent et les joueurs ont aussi des mèches courtes ou longues (visibles sur le perso, pas en debuff). Les mèches courtes s'écartent près des bombes longues pendant que les longues attendent au centre, puis on échange.",
+      "de": "Bomben mit kurzen und langen Lunten erscheinen und Spieler bekommen auch kurze oder lange Lunten (am Charakter sichtbar, kein Debuff). Kurze Lunten verteilen sich bei den langen Bomben, lange warten in der Mitte, dann tauschen.",
+      "ja": "短い導火線と長い導火線のボム、プレイヤーにも短/長の導火線（キャラ上に表示）。短い人は長いボム側で散開、長い人は中央で待機し、その後交代。"
+     },
+     "strats": [
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Split TH and DPS into handling groups; the group not exploding waits in the middle.",
+        "fr": "TH et DPS en groupes séparés ; le groupe qui n'explose pas attend au milieu.",
+        "de": "TH und DPS in getrennte Gruppen; die Gruppe, die nicht explodiert, wartet in der Mitte.",
+        "ja": "THとDPSで処理組を分け、処理しない組は中央で待機。"
+       }
+      },
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "The safe zone is the quadrant with three long-fuse bombs; the short-fuse role spreads there and the long-fuse role stays near the middle.",
+        "fr": "La zone sûre est le quart avec trois bombes longues ; le rôle à mèche courte s'y écarte et l'autre reste vers le milieu.",
+        "de": "Die sichere Zone ist das Viertel mit drei langen Bomben; die Rolle mit kurzen Lunten verteilt sich dort, die andere bleibt in der Mitte.",
+        "ja": "長いボムが3つある区画が安地。短い導火線のロールがそこで散開、長い方は中央付近。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "dodge",
+      "debuff"
+     ]
+    },
+    {
+     "id": "fusefield",
+     "names": {
+      "en": "Fusefield",
+      "fr": "Champs de mèches",
+      "de": "Luntenfeld",
+      "ja": "フューズフィールド"
+     },
+     "aliases": {
+      "en": [
+       "sparks",
+       "fuse field"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "導火線消し"
+      ]
+     },
+     "how": {
+      "en": "Sparks run along fuses toward a central puddle; if one reaches it the raid wipes. Players with a Bombarium debuff (short or long) touch a spark to put it out, which causes damage and a short magic vulnerability, so players take turns.",
+      "fr": "Des étincelles courent sur des mèches vers une flaque centrale ; si une l'atteint, c'est le wipe. Les joueurs avec une debuff (courte ou longue) touchent une étincelle pour l'éteindre, ce qui inflige des dégâts et une courte vulnérabilité magique, donc on passe à tour de rôle.",
+      "de": "Funken laufen an Lunten zu einer Fläche in der Mitte; erreicht einer sie, wiped die Gruppe. Spieler mit einem Debuff (kurz oder lang) berühren einen Funken, um ihn zu löschen, das macht Schaden und kurze Magie-Verwundbarkeit, also nacheinander.",
+      "ja": "導火線の火が中央へ向かい、到達すると全滅。デバフ（短/長）を持つ人が火を踏んで消す。消すとダメージと短い被魔法ダメ上昇が付くので順番に。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Short debuffs (1-4) first, then long (1-4), each stepping in from the inside on their turn; exact spots depend on the PF.",
+        "fr": "Debuffs courtes (1-4) d'abord, puis longues (1-4), chacun entre depuis l'intérieur à son tour ; les spots exacts dépendent de la PF.",
+        "de": "Erst kurze Debuffs (1-4), dann lange (1-4), jeder tritt von innen an seiner Reihe ein; genaue Plätze hängen von der PF ab.",
+        "ja": "短いデバフ1〜4、次に長い1〜4の順で内側から消しに行く。位置はPF次第。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Order by debuff time, search clockwise from marker A; the next person steps only after HP recovers and the vulnerability is gone.",
+        "fr": "Ordre par durée de debuff, cherche en sens horaire depuis A ; le suivant ne marche dessus qu'après que les PV sont remontés et la vulnérabilité est partie.",
+        "de": "Reihenfolge nach Debuff-Zeit, im Uhrzeigersinn ab A suchen; der Nächste geht erst, wenn HP wieder voll und die Verwundbarkeit weg ist.",
+        "ja": "デバフ時間で担当を決め、Aから時計回りで探す。HPが戻りデバフが消えてから次の人。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "NA PF has several Fusefield priorities; the exact one depends on the PF description.",
+      "fr": "La PF NA a plusieurs priorités pour Champs de mèches ; ça dépend de la description.",
+      "de": "NA-PF hat mehrere Luntenfeld-Prioritäten; hängt von der Beschreibung ab.",
+      "ja": "NA野良はフューズフィールドの優先が複数あり募集文次第。"
+     },
+     "tags": [
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Phase 3",
+    "fr": "Phase 3",
+    "de": "Phase 3",
+    "ja": "後半"
+   },
+   "mechanics": [
+    {
+     "id": "bombarian-special",
+     "names": {
+      "en": "Quadroboom / Octoboom Bombarian Special",
+      "fr": "Quadruple / Octuple spéciale brutale",
+      "de": "Quattro- / Okto-Brutalo-Spezial",
+      "ja": "4ショック / 8ショック・ボンバリアンスペシャル"
+     },
+     "aliases": {
+      "en": [
+       "special",
+       "bombarian special"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Five raidwide hits, then point-blank circle, donut, a belly-flop knockback and the final shock (pairs for Quadroboom, spread for Octoboom). Get knocked toward the corners, not the middle.",
+      "fr": "Cinq coups de zone, puis cercle, donut, poussée et l'onde finale (paires pour Quadruple, dispersion pour Octuple). Fais-toi pousser vers les coins, pas au centre.",
+      "de": "Fünf Raidwide-Treffer, dann Kreis, Donut, Rückstoß und die letzte Schockwelle (Paare bei Quattro, Verteilen bei Okto). Lass dich in die Ecken stoßen, nicht in die Mitte.",
+      "ja": "5連続全体攻撃→円→ドーナツ→ノックバック→ショック（4はペア、8は散開）。ノックバックは四隅へ飛ぶように。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "dodge",
+      "knockback",
+      "stack",
+      "spread"
+     ]
+    },
+    {
+     "id": "fuses-tag-team-2",
+     "names": {
+      "en": "Fuses of Fury + Tag Team 2",
+      "fr": "Bombos à mèche + Combat d'équipe 2",
+      "de": "Zündschnurbomben + Wechselspiel 2",
+      "ja": "フューズボム＋タッグマッチ2回目"
+     },
+     "aliases": {
+      "en": [
+       "tag team 2"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Short-fuse bombs explode first, then long ones, so stand by the long bombs. This time you are chained to the boss and a clone: take the boss's Murderous Mist and one clone lariat (heal the poison), dodge the rest.",
+      "fr": "Les bombes courtes explosent d'abord, puis les longues, donc place-toi près des longues. Cette fois tu es enchaîné au boss et à un clone : prends sa Vapeur venimeuse et un lariat du clone (soigne le poison), esquive le reste.",
+      "de": "Kurze Bomben explodieren zuerst, dann lange, also stell dich zu den langen. Diesmal bist du an Boss und Klon gekettet: nimm den Grünen Nebel des Bosses und einen Klon-Lariat (Gift heilen), weich dem Rest aus.",
+      "ja": "短いボムから爆発するので長いボム側へ。今回はボスと分身の両方に鎖：ボスのグリーンミストと分身のラリアット1発を受け（毒は回復）、他は避ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "tether"
+     ]
+    },
+    {
+     "id": "fuse-or-foe",
+     "names": {
+      "en": "Fuse or Foe + Infernal Spin",
+      "fr": "Fixation de bombo à mèche + Toupie infernale",
+      "de": "Klebrige Bombe + Ultimativer Feuertornado",
+      "ja": "アタッチ・フューズボム＋極盛り式スピニングファイヤー"
+     },
+     "aliases": {
+      "en": [
+       "spin",
+       "fuse or foe"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "スピニング"
+      ]
+     },
+     "how": {
+      "en": "Everyone gets a fuse with random length, which you can ignore at first: dodge the rotating cone and the expanding donuts by following behind the spin, then spread on your markers when the fuses go off.",
+      "fr": "Tout le monde a une mèche de longueur aléatoire, à ignorer d'abord : esquive le cône tournant et les donuts qui s'élargissent en suivant derrière la rotation, puis écarte-toi sur ton marqueur quand les mèches explosent.",
+      "de": "Jeder bekommt eine Lunte mit zufälliger Länge, die du zuerst ignorierst: weich dem drehenden Kegel und den wachsenden Donuts aus, indem du hinter der Drehung bleibst, dann verteil dich auf deinen Marker, wenn die Lunten zünden.",
+      "ja": "全員にランダム長の導火線が付くが、まず回転扇を避ける（回転の後ろを追う）。その後、自分の散開位置付近で範囲を避ける。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Tanks and melee on cardinals, healers and ranged on intercardinals for the explosions; for the second set six go in if their marker is safe and two ranged/healers stay out on opposite sides.",
+        "fr": "Tanks et mêlées aux cardinaux, heals et distances aux intercardinaux ; pour la deuxième série, six entrent si leur marqueur est sûr et deux distances/heals restent dehors en face.",
+        "de": "Tanks und Nahkämpfer auf Himmelsrichtungen, Heiler und Fernkämpfer auf Zwischenrichtungen; beim zweiten Satz gehen sechs rein, wenn ihr Marker sicher ist, und zwei Fern/Heiler bleiben gegenüber draußen.",
+        "ja": "爆発はタンク・近接が方角、ヒーラー・遠隔が斜め。2回目は安全なら6人が内側、遠隔/ヒーラー2人が対角の外。"
+       }
+      },
+      {
+       "strat": "jp-pf",
+       "how": {
+        "en": "Don't check the fuse length first; dodge the spin, then dodge the telegraphs near your basic spread marker.",
+        "fr": "Ne regarde pas la longueur de mèche d'abord ; esquive la toupie, puis les AoE près de ton marqueur de dispersion de base.",
+        "de": "Prüf die Luntenlänge nicht zuerst; weich der Drehung aus, dann den Anzeigen nahe deinem Grund-Verteilmarker.",
+        "ja": "導火線の長さは見ずにまず回転扇を避け、その後基本散開マーカー付近で予兆を避ける。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "spread",
+      "debuff"
+     ]
+    },
+    {
+     "id": "barrage-lariat-combo",
+     "names": {
+      "en": "Barbarous Barrage + Lariat Combo",
+      "fr": "Bombardement brutal + Combo de lariats",
+      "de": "Brutalo-Bomben + Lariat-Kombination",
+      "ja": "ボンバリアンボム→ラリアットコンビネーション"
+     },
+     "aliases": {
+      "en": [
+       "lariat combo"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "After the last towers the boss jumps to a cardinal and lariats; avoid the side of the glowing arm, and check the arm again because the second lariat can hit the same side.",
+      "fr": "Après les dernières tours, le boss saute sur un cardinal et fait des lariats ; évite le côté du bras lumineux et revérifie, le second peut frapper le même côté.",
+      "de": "Nach den letzten Türmen springt der Boss auf eine Himmelsrichtung und macht Lariats; meide die Seite des leuchtenden Arms und prüf erneut, der zweite kann dieselbe Seite treffen.",
+      "ja": "最後の塔から斜めに飛び、ボスの光っている腕の側を避ける。2回目も同じ側の場合があるので腕を確認。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tower",
+      "knockback",
+      "dodge"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Special Bombarian Special (enrage)",
+      "fr": "Spéciale brutale ultime (enrage)",
+      "de": "Ultimativer Brutalo-Spezial (Finalangriff)",
+      "ja": "アルティメット・ボンバリアンスペシャル（時間切れ）"
+     },
+     "aliases": {
+      "en": [
+       "enrage"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Enrage; there is a short window after the cast where you can still damage the boss, so keep attacking.",
+      "fr": "Enrage ; il reste une courte fenêtre après l'incantation pour taper, donc continue.",
+      "de": "Finalangriff; nach dem Zauber bleibt ein kurzes Fenster zum Schaden machen, also weiter angreifen.",
+      "ja": "時間切れ。詠唱完了後も少しの間攻撃できるので最後まで殴る。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "ConsoleGamesWiki - AAC Light-heavyweight M3 (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/AAC_Light-heavyweight_M3_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins - M3S guide",
+   "url": "https://www.icy-veins.com/ffxiv/aac-light-heavyweight-m3-savage-raid-guide",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - アルカディア零式3層",
+   "url": "https://game8.jp/ff14/630870",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot r3s timeline translations",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/raid/r3s.ts",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

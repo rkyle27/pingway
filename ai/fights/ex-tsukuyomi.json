@@ -1,0 +1,412 @@
+{
+ "id": "ex-tsukuyomi",
+ "type": "extreme",
+ "expansion": "SB",
+ "patch": "4.3",
+ "names": {
+  "en": "The Minstrel's Ballad: Tsukuyomi's Pain",
+  "fr": "Castrum Fluminis (extrême)",
+  "de": "Zenit der Götter - Tsukuyomi",
+  "ja": "極ツクヨミ討滅戦"
+ },
+ "aliases": {
+  "en": [
+   "tsukuyomi ex",
+   "tsukuyomi extreme",
+   "tsukuyomi"
+  ],
+  "fr": [
+   "tsukuyomi extrême"
+  ],
+  "de": [
+   "tsukuyomi extrem"
+  ],
+  "ja": [
+   "極ツクヨミ",
+   "ツクヨミ"
+  ]
+ },
+ "summary": {
+  "en": "Minstrel's Ballad (extreme) against Tsukuyomi. Phase 1 alternates gun and spear, then an add phase (Suffering gauge), a phase 2 built on black/white floor stacks and meteors, and a phase 3 of Full/New Moon blade cones.",
+  "fr": "Ballade du ménestrel (extrême) contre Tsukuyomi. La phase 1 alterne fusil et lance, puis une phase d'adds (jauge de souffrance), une phase 2 basée sur les cumuls de sol noir/blanc et les météores, et une phase 3 de cônes de lame Pleine/Nouvelle lune.",
+  "de": "Heldenlied (Extrem) gegen Tsukuyomi. Phase 1 wechselt zwischen Gewehr und Speer, dann eine Add-Phase (Leidensleiste), Phase 2 mit schwarzen/weißen Bodenstapeln und Meteoren und Phase 3 mit Vollmond/Neumond-Klingenkegeln.",
+  "ja": "極ツクヨミ討滅戦。フェーズ1は銃と槍が交互、続いて雑魚フェーズ（苦痛ゲージ）、白黒の床のスタックとメテオのフェーズ2、満月/新月の刀の扇のフェーズ3。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1 (100-80%)",
+    "fr": "Phase 1 (100-80 %)",
+    "de": "Phase 1 (100-80 %)",
+    "ja": "フェーズ1（100〜80%）"
+   },
+   "mechanics": [
+    {
+     "id": "nightfall",
+     "names": {
+      "en": "Nightfall (gun / spear)",
+      "fr": "Jeune nuit (fusil / lance)",
+      "de": "Einbruch der Dunkelheit (Gewehr / Speer)",
+      "ja": "宵の早替え（銃／槍）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Summons a gun or a spear first, the other one second. Gun = Lead of the Underworld, a line stack: stack together. Spear = Steel of the Underworld, three cleaves on a tank, a healer and a DPS: split into tanks, healers and the four DPS.",
+      "fr": "Invoque d'abord un fusil ou une lance, puis l'autre. Fusil = Tir de l'au-delà, package en ligne : regroupe-toi. Lance = Pointes de l'au-delà, trois cleaves sur un tank, un healer et un DPS : séparez-vous en tanks, healers et les quatre DPS.",
+      "de": "Beschwört zuerst ein Gewehr oder einen Speer, danach das andere. Gewehr = Blei der Unterwelt, Linien-Sammelpunkt: zusammen stehen. Speer = Stahl der Unterwelt, drei Cleaves auf Tank, Heiler und DD: in Tanks, Heiler und die vier DDs aufteilen.",
+      "ja": "最初に銃か槍、2回目はもう一方。銃＝黄泉の銃弾、直線頭割り：全員で集まる。槍＝黄泉の穂先、タンク・ヒーラー・DPSへの3方向の範囲：タンク組・ヒーラー組・DPS4人に分かれます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "cleave"
+     ]
+    },
+    {
+     "id": "nightbloom",
+     "names": {
+      "en": "Nightbloom",
+      "fr": "Lis araignée",
+      "de": "Monddämmerung",
+      "ja": "月下彼岸花"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "At 80%: heavy raid damage and a 15-second knock-down; heal and mitigate.",
+      "fr": "À 80 % : gros dégâts de groupe et 15 secondes au sol ; soigne et mitige.",
+      "de": "Bei 80 %: starker Gruppenschaden und 15 Sekunden am Boden; heilen und reduzieren.",
+      "ja": "80%で強い全体攻撃と15秒のダウン。回復と軽減。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "transition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "adds",
+   "names": {
+    "en": "Suffering phase",
+    "fr": "Phase de souffrance",
+    "de": "Leidensphase",
+    "ja": "苦痛フェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "suffering",
+     "names": {
+      "en": "Suffering gauge / add waves",
+      "fr": "Jauge de souffrance / vagues d'adds",
+      "de": "Leidensleiste / Add-Wellen",
+      "ja": "苦痛ゲージ／雑魚ウェーブ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Yotsuyu is untargetable and a gauge fills over time and as adds hit her (100 = wipe). Kill three waves fast; tethered adds fill it faster, and the Zenos specter in wave 3 must die first.",
+      "fr": "Yotsuyu est inciblable et une jauge monte avec le temps et les coups des adds (100 = wipe). Tue trois vagues vite ; les adds liés la font monter plus vite, et le spectre de Zenos de la vague 3 doit mourir en premier.",
+      "de": "Yotsuyu ist nicht anvisierbar und eine Leiste füllt sich mit der Zeit und durch Treffer der Adds (100 = Wipe). Töte drei Wellen schnell; verbundene Adds füllen sie schneller, und der Zenos-Geist in Welle 3 muss zuerst sterben.",
+      "ja": "ヨツユがターゲット不可になり、時間と雑魚の攻撃でゲージ上昇（100で全滅）。3ウェーブを素早く倒します。線付きの雑魚はゲージを早く上げ、3ウェーブ目のゼノスの幻影は最優先。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "dps-check",
+      "tether",
+      "transition"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2 (80-35%)",
+    "fr": "Phase 2 (80-35 %)",
+    "de": "Phase 2 (80-35 %)",
+    "ja": "フェーズ2（80〜35%）"
+   },
+   "mechanics": [
+    {
+     "id": "selenomancy",
+     "names": {
+      "en": "Supreme Selenomancy / Lunar Halo",
+      "fr": "Sélénomancie suprême / Flamboiement lunaire",
+      "de": "Hohe Mondprophezeiung / Flammender Mond",
+      "ja": "極の月読／百月光"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The floor splits white and black: white gives Moonlit stacks, black Moonshadowed; five stacks give Doom, and standing on the other colour swaps your debuff back to one stack. Lunar Halo donuts make you stand inside or outside to reach the right colour.",
+      "fr": "Le sol se divise en blanc et noir : le blanc donne des cumuls Moonlit, le noir Moonshadowed ; cinq cumuls donnent Glas, et aller sur l'autre couleur échange ton debuff et le remet à un cumul. Les anneaux de Flamboiement lunaire t'obligent à te placer dedans ou dehors pour atteindre la bonne couleur.",
+      "de": "Der Boden teilt sich in Weiß und Schwarz: Weiß gibt Moonlit-Stapel, Schwarz Moonshadowed; fünf Stapel geben Todesurteil, und auf der anderen Farbe wird dein Debuff getauscht und auf einen Stapel gesetzt. Die Ringe von Flammender Mond zwingen dich, innen oder außen zu stehen, um die richtige Farbe zu erreichen.",
+      "ja": "床が白と黒に分かれ、白でMoonlit、黒でMoonshadowedが重なり、5つで死の宣告。反対の色に乗るとデバフが入れ替わり1つに戻ります。百月光のドーナツで内側か外側に立ち、正しい色へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "moonfall",
+     "names": {
+      "en": "Moonfall",
+      "fr": "Impact de fragment lunaire",
+      "de": "Mondfall",
+      "ja": "月片落下"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A tank, a healer and a DPS are marked for big meteor circles that take the colour of the floor they land on and detonate again 15 seconds later, leaving puddles of that colour. Meteors close together both explode with Damage Down. Common placement: two on the north and south corners of the shrinking colour, the third on the opposite edge.",
+      "fr": "Un tank, un healer et un DPS sont marqués pour de grands cercles de météores qui prennent la couleur du sol où ils tombent et explosent à nouveau 15 secondes après, laissant des flaques de cette couleur. Des météores trop proches explosent tous les deux avec Dégâts réduits. Placement courant : deux aux coins nord et sud de la couleur qui rétrécit, le troisième au bord opposé.",
+      "de": "Ein Tank, ein Heiler und ein DD werden für große Meteorkreise markiert, die die Farbe des Bodens annehmen und 15 Sekunden später erneut explodieren und Pfützen dieser Farbe hinterlassen. Meteore zu nah beieinander explodieren beide mit Schaden runter. Übliche Platzierung: zwei an die Nord- und Südecken der schrumpfenden Farbe, der dritte an den gegenüberliegenden Rand.",
+      "ja": "タンク・ヒーラー・DPS各1人に巨大メテオ。落ちた床の色になり、15秒後に再爆発してその色の床を残します。近いと両方爆発し与ダメ低下。一般的には縮む色の北と南の角に2つ、3つ目は反対側の外周。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "CGW lists a second, less common placement (north and east corners); placement is not a fixed standard.",
+      "fr": "CGW donne un deuxième placement moins courant (coins nord et est) ; ce n'est pas un standard fixe.",
+      "de": "CGW nennt eine zweite, seltenere Platzierung (Nord- und Ostecke); kein fester Standard.",
+      "ja": "CGWには別の配置（北と東の角）も記載。固定の標準ではありません。"
+     },
+     "tags": [
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "antitwilight-perilune",
+     "names": {
+      "en": "Antitwilight / Perilune",
+      "fr": "Belle-de-nuit / Zénith lunaire",
+      "de": "Schönheit der Nacht / Zenit des Mondes",
+      "ja": "月下美人／月天心"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Lethal to players whose debuff matches the floor's main colour; right after the meteors detonate, run into a puddle of the opposite colour.",
+      "fr": "Mortel pour les joueurs dont le debuff correspond à la couleur principale du sol ; juste après l'explosion des météores, cours dans une flaque de la couleur opposée.",
+      "de": "Tödlich für Spieler, deren Debuff zur Hauptfarbe des Bodens passt; direkt nach der Meteorexplosion in eine Pfütze der Gegenfarbe laufen.",
+      "ja": "デバフが床の主な色と同じ人は即死。メテオ爆発直後に反対色の床へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "zashiki-torment",
+     "names": {
+      "en": "Zashiki-asobi / Torment unto Death",
+      "fr": "Zashiki asobi / Brimade meurtrière",
+      "de": "Zashiki-Asobi / Todesqualen",
+      "ja": "座敷遊び／なぶり殺し"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Zashiki-asobi: two sets of circles at different times, stand in the safe area then cross after the first set. Torment unto Death: cone tankbuster, face it away and tank swap.",
+      "fr": "Zashiki asobi : deux séries de cercles à des moments différents, place-toi dans la zone sûre puis traverse après la première série. Brimade meurtrière : tankbuster en cône, oriente-le loin et swap.",
+      "de": "Zashiki-Asobi: zwei Serien Kreise zu verschiedenen Zeiten, in den sicheren Bereich, nach der ersten Serie wechseln. Todesqualen: Kegel-Tankbuster, weg ausrichten und Tank-Wechsel.",
+      "ja": "座敷遊び：時間差の円2組、安置に立ち1組目の後に移動。なぶり殺し：扇のタンク強攻撃、外に向けてタンクスイッチ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "tankbuster",
+      "cleave",
+      "tankswap",
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Phase 3 (35-0%)",
+    "fr": "Phase 3 (35-0 %)",
+    "de": "Phase 3 (35-0 %)",
+    "ja": "フェーズ3（35〜0%）"
+   },
+   "mechanics": [
+    {
+     "id": "blades",
+     "names": {
+      "en": "Bright Blade / Dark Blade (Full / New Moon)",
+      "fr": "Lame blafarde / Lame ténébreuse (Pleine / Nouvelle lune)",
+      "de": "Helle Klinge / Dunkle Klinge (Voll- / Neumond)",
+      "ja": "月刀左近／月刀右近（満月／新月）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Big 210-degree cones: Bright Blade hits her left and front (go to her right), Dark Blade her right and front (go to her left). Full Moon adds a circle under her (stay far), New Moon a donut (stay close).",
+      "fr": "Grands cônes à 210° : Lame blafarde frappe sa gauche et l'avant (va à sa droite), Lame ténébreuse sa droite et l'avant (va à sa gauche). Pleine lune ajoute un cercle sous elle (reste loin), Nouvelle lune un anneau (reste près).",
+      "de": "Große 210-Grad-Kegel: Helle Klinge trifft ihre linke Seite und vorne (geh nach rechts von ihr), Dunkle Klinge rechts und vorne (geh nach links). Vollmond fügt einen Kreis unter ihr hinzu (weit weg), Neumond einen Ring (nah ran).",
+      "ja": "210度の大きな扇。月刀左近は左と前（右側へ）、月刀右近は右と前（左側へ）。満月なら足元に円（離れる）、新月ならドーナツ（近づく）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "note": {
+      "en": "Full Moon / New Moon buff names kept as plain words; not verified in game data.",
+      "fr": "Les noms des buffs Pleine/Nouvelle lune ne sont pas vérifiés.",
+      "de": "Die Buff-Namen Voll-/Neumond sind nicht geprüft.",
+      "ja": "満月/新月のバフ名は未確認。"
+     },
+     "tags": [
+      "cleave",
+      "dodge"
+     ]
+    },
+    {
+     "id": "lunacy",
+     "names": {
+      "en": "Lunacy / Tsuki-no-Kakera",
+      "fr": "Efflorescence au clair de lune / Fragments lunaires",
+      "de": "Mondscheinblüte / Mondsplitter",
+      "ja": "月下繚乱／月の欠片"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Lunacy is a multi-hit stack that gains a hit each time. With Tsuki-no-Kakera: a center circle then eight circling AoEs; group on the last one to appear, then move to the center together.",
+      "fr": "Efflorescence au clair de lune est un package multi-coups qui gagne un coup à chaque fois. Avec Fragments lunaires : un cercle au centre puis huit zones en cercle ; regroupe-toi sur la dernière apparue, puis allez au centre ensemble.",
+      "de": "Mondscheinblüte ist ein mehrfacher Sammelpunkt, der jedes Mal einen Treffer mehr hat. Mit Mondsplitter: ein Kreis in der Mitte, dann acht kreisende AoEs; sammelt euch auf der zuletzt erschienenen, dann gemeinsam in die Mitte.",
+      "ja": "月下繚乱は回数が毎回増える多段頭割り。月の欠片と一緒の時：中央の円の後に8つの円が回るので、最後に出た位置に集まり、その後一緒に中央へ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "hagetsu",
+     "names": {
+      "en": "Hagetsu",
+      "fr": "Pulvérisation lunaire",
+      "de": "Hagetsu",
+      "ja": "破月"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A tank, a healer and a DPS get spread arrows and are shot in order; spread them.",
+      "fr": "Un tank, un healer et un DPS reçoivent des flèches de dispersion et sont visés dans l'ordre ; disperse-les.",
+      "de": "Ein Tank, ein Heiler und ein DD bekommen Verteilpfeile und werden der Reihe nach getroffen; verteilen.",
+      "ja": "タンク・ヒーラー・DPS各1人に散開の矢印、順番に撃たれます。散開。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Blood Moon (enrage)",
+      "fr": "Lune de sang (enrage)",
+      "de": "Blutmond (Enrage)",
+      "ja": "ブラッドムーン（時間切れ）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "After too long she casts an endless Lunacy.",
+      "fr": "Si c'est trop long, elle lance un Efflorescence au clair de lune sans fin.",
+      "de": "Dauert es zu lange, wirkt sie eine endlose Mondscheinblüte.",
+      "ja": "時間がかかりすぎると終わらない月下繚乱。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage",
+      "stack"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - The Minstrel's Ballad: Tsukuyomi's Pain",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/The_Minstrel%27s_Ballad:_Tsukuyomi%27s_Pain",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

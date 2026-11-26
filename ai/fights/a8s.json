@@ -1,0 +1,667 @@
+{
+ "id": "a8s",
+ "type": "savage",
+ "expansion": "HW",
+ "patch": "3.2",
+ "names": {
+  "en": "Alexander - The Burden of the Son (Savage)",
+  "fr": "Alexander - Le Fardeau du Fils (sadique)",
+  "de": "Alexander - Last des Sohnes (episch)",
+  "ja": "機工城アレキサンダー零式：律動編4"
+ },
+ "aliases": {
+  "en": [
+   "a8s",
+   "a8 savage",
+   "alexander 8 savage",
+   "brute justice savage",
+   "burden of the son savage",
+   "onslaughter"
+  ],
+  "fr": [
+   "a8s",
+   "alexander 8 sadique",
+   "fardeau du fils sadique"
+  ],
+  "de": [
+   "a8s",
+   "alexander 8 episch",
+   "last des sohnes episch"
+  ],
+  "ja": [
+   "律動編4零式",
+   "律動編零式4層",
+   "アレキ零式8層",
+   "律動4層",
+   "ブルートジャスティス"
+  ]
+ },
+ "summary": {
+  "en": "Floor 4 of Alexander: Midas (Savage), often called a 'mini-Ultimate'. Onslaughter, then the four Midas bosses together, then Brute Justice with split 'trio' phases, the Verdict debuff check and the Finale. It reuses and combines mechanics from A6S.",
+  "fr": "Étage 4 d'Alexander : Midas (sadique), souvent appelé « mini-Ultime ». Onslaughter, puis les quatre boss de Midas ensemble, puis Brute Justice avec des phases « trio » séparées, le test de malus Verdict et le Finale. Il reprend et combine les mécaniques d'A6S.",
+  "de": "Ebene 4 von Alexander: Midas (episch), oft 'Mini-Ultimate' genannt. Onslaughter, dann die vier Midas-Bosse zusammen, dann Brute Justice mit getrennten 'Trio'-Phasen, der Verdict-Debuffprüfung und dem Finale. Es nutzt und kombiniert Mechaniken aus A6S.",
+  "ja": "律動編4層零式（ミニ絶とも呼ばれる）。オンスローター→4体同時戦→ブルートジャスティスと分離フェーズ→Verdict（デバフ条件）→最終フェーズ。律動編2層のギミックを組み合わせて再登場させる。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "This fight is mostly cleared unsynced or at minimum item level today, so strats rarely matter. The entries below explain how each mechanic works. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Aujourd'hui ce combat se fait surtout en mode sans restriction ou en ilvl minimum, donc la strat compte rarement. Les entrées ci-dessous expliquent comment marche chaque mécanique. Les noms des mécaniques sont en anglais (noms FR officiels non vérifiés).",
+  "de": "Heute wird dieser Kampf meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel gemacht, die Strat spielt also selten eine Rolle. Die Einträge unten erklären, wie jede Mechanik funktioniert. Die Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "現在このコンテンツは主に制限解除やIL最低限で攻略されるため、攻略法の違いはほとんど問題になりません。以下では各ギミックの仕組みを説明します。英語名のままのギミック名は日本語の公式名を確認できなかったものです。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Onslaughter",
+    "fr": "Attaqueur",
+    "de": "Schlachter",
+    "ja": "オンスローター"
+   },
+   "mechanics": [
+    {
+     "id": "execution",
+     "names": {
+      "en": "Execution (regulators)",
+      "fr": "Exécution (régulateurs)",
+      "de": "Exekutive (Regulatoren)",
+      "ja": "執行準備"
+     },
+     "aliases": {
+      "en": [
+       "execution (regulators)"
+      ],
+      "fr": [
+       "execution (regulators)"
+      ],
+      "de": [
+       "execution (regulators)"
+      ],
+      "ja": [
+       "Execution"
+      ]
+     },
+     "how": {
+      "en": "Four corner squares hold Steam Regulators A/B. The first player in each square is tethered and gets the matching Final Decree Nisi, which lets them damage it; leaving the square or dying makes it explode and wipe.",
+      "fr": "Quatre carrés en coin contiennent des Steam Regulator A/B. Le premier joueur dans chaque carré est lié et reçoit le Final Decree Nisi correspondant pour pouvoir le frapper ; quitter le carré ou mourir le fait exploser = wipe.",
+      "de": "Vier Eckfelder enthalten Steam Regulators A/B. Der erste Spieler in jedem Feld wird verbunden und bekommt das passende Final Decree Nisi, um ihn zu beschädigen; das Feld verlassen oder sterben lässt ihn explodieren = Wipe.",
+      "ja": "四隅の四角にスチームジャッジA/B。最初に入った人が線で繋がれ対応する仮判決を得て攻撃できる。四角を出るか死ぬと爆発して全滅。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "debuff"
+     ]
+    },
+    {
+     "id": "legislation",
+     "names": {
+      "en": "Legislation (Final Punishment)",
+      "fr": "Législation (Punition ultime)",
+      "de": "Legislative (Letzte Züchtigung)",
+      "ja": "法整備（最後の体罰）"
+     },
+     "aliases": {
+      "en": [
+       "legislation (final punishment)"
+      ],
+      "fr": [
+       "legislation (final punishment)"
+      ],
+      "de": [
+       "legislation (final punishment)"
+      ],
+      "ja": [
+       "Legislation"
+      ]
+     },
+     "how": {
+      "en": "All four DPS get Final Punishment with 1-4 stacks; each hit taken removes one. A DPS dying with stacks, or stacks running out unremoved, wipes. They clear stacks on the Discoid gaskets, sharing orbs by stack count.",
+      "fr": "Les quatre DPS reçoivent Final Punishment avec 1 à 4 cumuls ; chaque coup subi en enlève un. Un DPS qui meurt avec des cumuls, ou des cumuls non enlevés, = wipe. Ils les enlèvent sur les orbes de Discoid, en partageant selon le nombre.",
+      "de": "Alle vier DPS bekommen Final Punishment mit 1-4 Stacks; jeder erlittene Treffer entfernt einen. Stirbt ein DPS mit Stacks oder bleiben Stacks übrig, Wipe. Sie bauen Stacks an den Discoid-Kugeln ab und teilen je nach Stackzahl.",
+      "ja": "DPS4人に1〜4スタックのデバフ。被弾ごとに1減る。スタックが残ったまま死亡・時間切れで全滅。ディスコイドの玉をスタック数に合わせて分担して消す。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "CGW lists two methods for sharing gaskets; no second source confirms which one groups used most.",
+      "fr": "CGW donne deux méthodes ; pas de 2e source sur la plus utilisée.",
+      "de": "CGW nennt zwei Methoden; keine zweite Quelle bestätigt die übliche.",
+      "ja": "CGWに2通りの分担法、主流は第2の資料で未確認。"
+     },
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "onslaughter-other",
+     "names": {
+      "en": "Mega Beam, Seed of the Sky, Perpetual Ray",
+      "fr": "Mégarayon, Graine du ciel, Rayon perpétuel",
+      "de": "Megastrahl, Samen des Himmels, Perpetueller Strahl",
+      "ja": "メガビーム／シード・オブ・スカイ／パーペチュアルレイ"
+     },
+     "aliases": {
+      "en": [
+       "mega beam, seed of the sky, perpetual ray"
+      ],
+      "fr": [
+       "mega beam, seed of the sky, perpetual ray"
+      ],
+      "de": [
+       "mega beam, seed of the sky, perpetual ray"
+      ],
+      "ja": [
+       "メガビーム／シード・オブ・スカイ"
+      ]
+     },
+     "how": {
+      "en": "Mega Beam: an uncast line at a non-tank player, watch the boss turn. Seed of the Sky: ground circles. Perpetual Ray: multi-hit tankbuster with Vulnerability Up. Perpetual Ray: the MT takes the first hit, then the OT (ST) provokes during the cast and takes the rest (or one tank invulns all of it).",
+      "fr": "Mega Beam : ligne sans incantation vers un non-tank, regarde le boss tourner. Seed of the Sky : cercles au sol. Perpetual Ray : tankbuster multiple avec Vulnérabilité. Perpetual Ray : le MT prend le premier coup, puis l'OT provoque pendant l'incantation et prend la suite (ou un tank invu tout).",
+      "de": "Mega Beam: Linie ohne Cast auf einen Nicht-Tank, achte auf die Drehung. Seed of the Sky: Bodenkreise. Perpetual Ray: Mehrfach-Tankbuster mit Verwundbarkeit. Perpetual Ray: Der MT nimmt den ersten Treffer, dann provoziert der OT während des Casts und nimmt den Rest (oder ein Tank nimmt alles mit Unverwundbarkeit).",
+      "ja": "メガビームは詠唱なしの直線（ボスの向きを見る）。シード・オブ・スカイは足元範囲。パーペチュアル・レイはタンクへの連続強攻撃。パーペチュアルレイ：MTが1発目を受け、詠唱中にSTが挑発して残りを受ける（または片方が無敵で全部受ける）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "dodge",
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Blaster, Brawler, Swindler, Vortexer",
+    "fr": "Fracasseur, Bagarreur, Arnaqueur, Tourbillonneur",
+    "de": "Blaster, Blechbrecher, Schwindler, Wirbler",
+    "ja": "4体同時戦"
+   },
+   "mechanics": [
+    {
+     "id": "four-bosses",
+     "names": {
+      "en": "Four bosses",
+      "fr": "Four bosses",
+      "de": "Four bosses",
+      "ja": "4体同時戦"
+     },
+     "aliases": {
+      "en": [
+       "four bosses"
+      ],
+      "fr": [
+       "four bosses"
+      ],
+      "de": [
+       "four bosses"
+      ],
+      "ja": [
+       "4体同時戦"
+      ]
+     },
+     "how": {
+      "en": "Blaster and Brawler come first, then Swindler, then Vortexer. If all four are alive at once they cast Final Judgement and reset the fight. Kill Blaster before Vortexer arrives, then Brawler (clear its plasma orbs at 50%), then Swindler and Vortexer together in two light parties: if one dies alone the other self-destructs.",
+      "fr": "Blaster et Brawler d'abord, puis Swindler, puis Vortexer. Si les quatre sont vivants en même temps, Final Judgement remet le combat à zéro. Tue Blaster avant l'arrivée de Vortexer, puis Brawler (nettoie ses orbes à 50 %), puis Swindler et Vortexer ensemble en deux groupes légers : si l'un meurt seul, l'autre s'autodétruit.",
+      "de": "Erst Blaster und Brawler, dann Swindler, dann Vortexer. Leben alle vier gleichzeitig, setzt Final Judgement den Kampf zurück. Blaster vor Vortexers Ankunft töten, dann Brawler (Plasmakugeln bei 50 % räumen), dann Swindler und Vortexer gleichzeitig in zwei Leichtgruppen: stirbt einer allein, sprengt sich der andere.",
+      "ja": "ブラスターとブロウラーが先に出現、続いてスウィンドラー、ボルテッカー。4体が同時に生存すると戦闘リセット。ボルテッカー到着前にブラスター、次にブロウラー（50%の玉処理）、最後にスウィンドラーとボルテッカーを2組に分かれて同時に倒す（片方だけ倒すと自爆）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "dps-check"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Brute Justice and trios",
+    "fr": "Brute Justice et trios",
+    "de": "Brute Justice und Trios",
+    "ja": "ブルートジャスティスと分離"
+   },
+   "mechanics": [
+    {
+     "id": "flarethrower",
+     "names": {
+      "en": "Flarethrower",
+      "fr": "Lance-brasiers",
+      "de": "Großflammenwerfer",
+      "ja": "大火炎放射"
+     },
+     "aliases": {
+      "en": [
+       "flarethrower"
+      ],
+      "fr": [
+       "flarethrower"
+      ],
+      "de": [
+       "flarethrower"
+      ],
+      "ja": [
+       "大火炎放射"
+      ]
+     },
+     "how": {
+      "en": "Long frontal fire cone; keep the boss facing away (it can also burn a Water Spout later).",
+      "fr": "Long cône de feu frontal ; tourne le boss dos au groupe (sert plus tard à brûler un Water Spout).",
+      "de": "Langer frontaler Feuerkegel; Boss wegdrehen (kann später einen Water Spout verbrennen).",
+      "ja": "前方への長い扇範囲。パーティから外す（終盤は水柱を消すのにも使う）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave"
+     ]
+    },
+    {
+     "id": "double-rocket-punch",
+     "names": {
+      "en": "Double Rocket Punch",
+      "fr": "Double coup de roquette",
+      "de": "Doppelraketenschlag",
+      "ja": "ダブルロケットパンチ"
+     },
+     "aliases": {
+      "en": [
+       "double rocket punch"
+      ],
+      "fr": [
+       "double rocket punch"
+      ],
+      "de": [
+       "double rocket punch"
+      ],
+      "ja": [
+       "ダブルロケットパンチ"
+      ]
+     },
+     "how": {
+      "en": "Shared tankbuster; both tanks take it together.",
+      "fr": "Tankbuster partagé ; les deux tanks le prennent ensemble.",
+      "de": "Geteilter Tankbuster; beide Tanks nehmen ihn zusammen.",
+      "ja": "タンク2人で頭割りする強攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "missile-command",
+     "names": {
+      "en": "Missile Command",
+      "fr": "Commande missile",
+      "de": "Raketenkommando",
+      "ja": "ミサイル全弾発射"
+     },
+     "aliases": {
+      "en": [
+       "missile command"
+      ],
+      "fr": [
+       "missile command",
+       "gros missiles",
+       "petits missiles"
+      ],
+      "de": [
+       "missile command",
+       "großes kaliber",
+       "kleines kaliber"
+      ],
+      "ja": [
+       "大型ミサイル／小型ミサイル",
+       "大型ミサイル",
+       "小型ミサイル"
+      ]
+     },
+     "how": {
+      "en": "Prey markers (big AoEs, stay away from others) and a stack, with Seed of the Sky in between, ending in Mega Beam.",
+      "fr": "Marqueurs Proie (grosses AoE, reste loin) et un partage, avec Seed of the Sky entre, puis Mega Beam.",
+      "de": "Beute-Marker (große AoEs, Abstand halten) und ein Sammeln, dazwischen Seed of the Sky, am Ende Mega Beam.",
+      "ja": "赤玉（大範囲、離れる）と頭割り、間にシード・オブ・スカイ、最後にメガビーム。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "spread",
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "super-jump",
+     "names": {
+      "en": "Super Jump",
+      "fr": "Super saut",
+      "de": "Supersprung",
+      "ja": "スーパージャンプ"
+     },
+     "aliases": {
+      "en": [
+       "super jump"
+      ],
+      "fr": [
+       "super jump"
+      ],
+      "de": [
+       "super jump"
+      ],
+      "ja": [
+       "スーパージャンプ"
+      ]
+     },
+     "how": {
+      "en": "Jumps on the farthest player, damaging and stunning those near; the off-tank usually takes it.",
+      "fr": "Saute sur le joueur le plus loin, blesse et étourdit ceux à côté ; souvent pris par l'off-tank.",
+      "de": "Springt auf den fernsten Spieler, verletzt und betäubt Umstehende; meist nimmt ihn der Off-Tank.",
+      "ja": "最も遠い人へジャンプ、周囲にダメージとスタン。STが受けることが多い。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "proximity"
+     ]
+    },
+    {
+     "id": "apocalyptic-ray",
+     "names": {
+      "en": "Apocalyptic Ray",
+      "fr": "Mégarayon diffractif",
+      "de": "Apokalyptischer Strahl",
+      "ja": "アポカリプティクレイ"
+     },
+     "aliases": {
+      "en": [
+       "apocalyptic ray"
+      ],
+      "fr": [
+       "apocalyptic ray"
+      ],
+      "de": [
+       "apocalyptic ray"
+      ],
+      "ja": [
+       "アポカリティクレイ"
+      ]
+     },
+     "how": {
+      "en": "Long multi-hit cone on a random player that stacks Vulnerability Up; get out.",
+      "fr": "Long cône multi-coups sur un joueur au hasard, Vulnérabilité cumulée ; sors.",
+      "de": "Langer Mehrfachkegel auf einen zufälligen Spieler mit stapelnder Verwundbarkeit; raus.",
+      "ja": "ランダム対象への持続扇範囲、被ダメ上昇が重なる。避ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge",
+      "debuff"
+     ]
+    },
+    {
+     "id": "j-kick",
+     "names": {
+      "en": "J Kick",
+      "fr": "Pied justicier",
+      "de": "Gewissenstritt",
+      "ja": "ジャスティスキック"
+     },
+     "aliases": {
+      "en": [
+       "j kick"
+      ],
+      "fr": [
+       "j kick"
+      ],
+      "de": [
+       "j kick"
+      ],
+      "ja": [
+       "ジャスティスキック"
+      ]
+     },
+     "how": {
+      "en": "Heavy raid damage at the end of each loop; mitigate and heal.",
+      "fr": "Gros dégâts de zone à la fin de chaque boucle ; réduis et soigne.",
+      "de": "Starker Raumschaden am Ende jeder Schleife; mitigieren und heilen.",
+      "ja": "各ループ終わりの全体大ダメージ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "trio-mechanics",
+     "names": {
+      "en": "Trio phases (split)",
+      "fr": "Trio phases (split)",
+      "de": "Trio phases (split)",
+      "ja": "分離フェーズ"
+     },
+     "aliases": {
+      "en": [
+       "trio phases (split)"
+      ],
+      "fr": [
+       "trio phases (split)"
+      ],
+      "de": [
+       "trio phases (split)"
+      ],
+      "ja": [
+       "分離フェーズ"
+      ]
+     },
+     "how": {
+      "en": "Brute Justice splits into its parts and reuses A6S mechanics together: 100-megatonze Shock (proximity, stay away from center), Mirage Supercharge and tethers, Chakrams across the arena, Height with Earth/Ice missiles, mines, Double Drill, Enumeration, and Ultra Flash (hide behind Onslaughter's legs). In the trio phases Brawler's Single Buster goes on the MT (aim it at a wall), and both tanks take the close Double Drill.",
+      "fr": "Brute Justice se sépare et combine les mécaniques d'A6S : 100-megatonze Shock (proximité, reste loin du centre), Mirage Supercharge et liens, Chakram qui traversent l'arène, Height avec missiles terre/glace, mines, Double Drill, Enumeration et Ultra Flash (cache-toi derrière les pattes d'Onslaughter). Dans les phases en trio, le Single Buster de Brawler va sur le MT (vise un mur), et les deux tanks prennent le Double Drill proche.",
+      "de": "Brute Justice teilt sich und kombiniert A6S-Mechaniken: 100-megatonze Shock (Distanz, weg von der Mitte), Mirage Supercharge und Verbindungen, Chakrams quer durch die Arena, Height mit Erd-/Eisraketen, Minen, Double Drill, Enumeration und Ultra Flash (hinter Onslaughters Beinen verstecken). In den Trio-Phasen geht Brawlers Single Buster auf den MT (auf eine Wand richten), und beide Tanks nehmen den nahen Double Drill.",
+      "ja": "分離して律動編2層のギミックを組み合わせる：100メガトンズショック（中央ほど痛い）、ミラージュ、チャクラム、ハイト＋ミサイル、地雷、ダブルドリル、カウント、ウルトラフラッシュ（オンスローターの脚に隠れる）。分離フェーズでは、ブロウラーのシングルバスターはMTへ（壁に向ける）。近い方のダブルドリルはMTとSTで受ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "proximity",
+      "tether",
+      "dodge",
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p5",
+   "names": {
+    "en": "Verdict",
+    "fr": "Ouverture de procès",
+    "de": "Prozesseröffnung",
+    "ja": "最後の審判：開廷"
+   },
+   "mechanics": [
+    {
+     "id": "verdict",
+     "names": {
+      "en": "Verdict (Final Judgement debuffs)",
+      "fr": "Ouverture de procès (débuffs d'injonction)",
+      "de": "Prozesseröffnung (Prozess-Debuffs)",
+      "ja": "最後の審判：開廷"
+     },
+     "aliases": {
+      "en": [
+       "verdict (final judgement debuffs)"
+      ],
+      "fr": [
+       "verdict (final judgement debuffs)"
+      ],
+      "de": [
+       "verdict (final judgement debuffs)"
+      ],
+      "ja": [
+       "Verdict"
+      ]
+     },
+     "how": {
+      "en": "Everyone gets a condition to meet before Gavel: Max HP / Min HP (tanks), Penalty I/II/III (no, two or three enfeeblements), Nisi A/B (have the matching Decree Nisi). Use the J Storms (HP to 1), Steam Gaskets and regulators to meet them; anyone failing at Gavel wipes the party. Then clear the Final Punishment stacks.",
+      "fr": "Chacun reçoit une condition à remplir avant Gavel : Max HP / Min HP (tanks), Penalty I/II/III (zéro, deux ou trois altérations), Nisi A/B (avoir le bon Decree Nisi). Utilise les J Storm (PV à 1), Steam Gasket et regulators ; quiconque échoue à Gavel = wipe. Ensuite enlève les cumuls Final Punishment.",
+      "de": "Jeder bekommt eine Bedingung vor Gavel: Max HP / Min HP (Tanks), Penalty I/II/III (keine, zwei oder drei Schwächungen), Nisi A/B (passendes Decree Nisi haben). Nutze J Storms (LP auf 1), Steam Gaskets und Regulators; wer bei Gavel scheitert, wipet das Team. Danach Final-Punishment-Stacks abbauen.",
+      "ja": "全員に条件付きデバフ：最大HP／最小HP（タンク）、ペナルティI/II/III（弱体0・2・3個）、ナイサイA/B（対応する仮判決）。Jストーム（HP1）、蒸気玉、スチームジャッジで条件を満たす。Gavel時に1人でも未達成なら全滅。その後スタックを消す。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "tankswap"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p6",
+   "names": {
+    "en": "Finale",
+    "fr": "Finale",
+    "de": "Finale",
+    "ja": "最終フェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "final-combo",
+     "names": {
+      "en": "Final Punch / Final Apocalypse / Final Beam",
+      "fr": "Double coup de roquette final / Rayon apocalyptique final / Mégarayon final",
+      "de": "Endgültiger Doppelraketenschlag / Finaler Apokalyptischer Strahl / Finaler Megastrahl",
+      "ja": "ファイナルダブルロケットパンチ／ファイナルアポカリプティクレイ／ファイナルメガビーム"
+     },
+     "aliases": {
+      "en": [
+       "final punch / final apocalypse / final beam"
+      ],
+      "fr": [
+       "final punch / final apocalypse / final beam"
+      ],
+      "de": [
+       "final punch / final apocalypse / final beam"
+      ],
+      "ja": [
+       "Final Punch"
+      ]
+     },
+     "how": {
+      "en": "Tank combo: Final Punch (bind and knockback), then Final Apocalypse on the top-enmity player, then a line stack Final Beam. Use an invuln or swap via provoke. The MT takes Final Punch with an invuln, or with big mitigation while the OT provokes before Final Apocalypse; Final Apocalypse and Final Beam go on whoever has top enmity.",
+      "fr": "Combo tank : Final Punch (entrave et recul), puis Final Apocalypse sur le premier en aggro, puis Final Beam en partage en ligne. Invincibilité ou swap par provocation. Le MT prend Final Punch avec une invu, ou avec de gros cooldowns pendant que l'OT provoque avant Final Apocalypse ; Final Apocalypse et Final Beam visent celui qui a l'aggro.",
+      "de": "Tank-Kombo: Final Punch (Fessel und Rückstoß), dann Final Apocalypse auf den Aggro-Ersten, dann Final Beam als Liniensammeln. Unverwundbarkeit oder Wechsel per Provokation. Der MT nimmt Final Punch mit Unverwundbarkeit, oder mit starker Mitigation, während der OT vor Final Apocalypse provoziert; Final Apocalypse und Final Beam treffen den mit der höchsten Feindseligkeit.",
+      "ja": "タンクへの連続技（拘束とノックバック→強攻撃→直線頭割り）。無敵か挑発で交代。ファイナルパンチはMTが無敵で受けるか、大きな軽減で受けてファイナルアポカリプス前にSTが挑発。アポカリプスとビームは敵視1位に来る。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "knockback",
+      "stack"
+     ]
+    },
+    {
+     "id": "link-up",
+     "names": {
+      "en": "Link-up (Compressed Water)",
+      "fr": "Effort collectif (Compression aqueuse)",
+      "de": "Zusammenschluss (Wasserkompression)",
+      "ja": "システムリンク（水属性圧縮）"
+     },
+     "aliases": {
+      "en": [
+       "link-up (compressed water)"
+      ],
+      "fr": [
+       "link-up (compressed water)"
+      ],
+      "de": [
+       "link-up (compressed water)"
+      ],
+      "ja": [
+       "Link-up"
+      ]
+     },
+     "how": {
+      "en": "A DPS holds Compressed Water for 40 s; stack on it (with Enumeration handled by tanks/healers). A Water Spout appears after; burn it with Flarethrower.",
+      "fr": "Un DPS garde Compressed Water 40 s ; partagez-le (Enumeration géré par tanks/soigneurs). Un Water Spout apparaît ensuite ; brûle-le avec Flarethrower.",
+      "de": "Ein DPS hält Compressed Water 40 s; darauf sammeln (Enumeration machen Tanks/Heiler). Danach erscheint ein Water Spout; mit Flarethrower verbrennen.",
+      "ja": "DPSに40秒の水圧縮。頭割りで受ける（カウントはタンク・ヒーラー）。出現した水柱は大火炎放射で消す。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "debuff"
+     ]
+    },
+    {
+     "id": "j-wave",
+     "names": {
+      "en": "J Wave",
+      "fr": "Onde de choc justicière",
+      "de": "Gerechte Schockwelle",
+      "ja": "ジャスティスショックウェーブ"
+     },
+     "aliases": {
+      "en": [
+       "j wave"
+      ],
+      "fr": [
+       "j wave"
+      ],
+      "de": [
+       "j wave"
+      ],
+      "ja": [
+       "J Wave"
+      ]
+     },
+     "how": {
+      "en": "Endless raid damage that slowly rises: the final burn until the boss dies.",
+      "fr": "Dégâts de zone infinis qui montent : le burn final.",
+      "de": "Endloser, steigender Raumschaden: der letzte Burst.",
+      "ja": "徐々に強くなる全体攻撃が続く最後の削り。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Alexander - The Burden of the Son (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Alexander_-_The_Burden_of_the_Son_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/f93d68d7d3c/",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone blog: アレキサンダー零式〔律動4層〕 攻略メモpart2",
+   "url": "https://jp.finalfantasyxiv.com/lodestone/character/1528666/blog/2865453/",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

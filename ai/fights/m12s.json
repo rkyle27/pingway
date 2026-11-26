@@ -1,0 +1,997 @@
+{
+ "id": "m12s",
+ "type": "savage",
+ "expansion": "DT",
+ "patch": "7.4",
+ "names": {
+  "en": "AAC Heavyweight M4 (Savage) - Lindwurm",
+  "fr": "Poids lourds CCA - match 4 (sadique) - Lindwurm",
+  "de": "Arkadion - Superschwergewicht R4 (episch) - Lindwurm",
+  "ja": "至天の座アルカディア零式：ヘビー級4 - リンドブルム"
+ },
+ "aliases": {
+  "en": [
+   "m12s",
+   "m12 savage",
+   "lindwurm",
+   "hw4",
+   "heavyweight 4",
+   "door boss",
+   "m12s p1",
+   "m12s p2"
+  ],
+  "fr": [
+   "m12s",
+   "lindwurm"
+  ],
+  "de": [
+   "m12s",
+   "lindwurm"
+  ],
+  "ja": [
+   "m12s",
+   "ヘビー級4層",
+   "零式4層",
+   "4層前半",
+   "4層後半",
+   "リンドブルム",
+   "Lindwurm"
+  ]
+ },
+ "summary": {
+  "en": "Final Heavyweight fight, in two halves inside one duty. The first half (door boss) is built on Grotesquerie cell debuffs in four acts (cones and stacks, alpha/beta tethers and towers inside the rotating Cruel Coil, cell towers on split platforms, and Curtain Call), Mortal Slayer orbs and the Slaughtershed/Splattershed enrage loop. The second half against Lindwurm is about Replication clones copying mechanics, Mutating Cells with Blood Mana shapes, and the very long Idyllic Dream memory sequence before Arcadian Hell.",
+  "fr": "Dernier combat Poids lourds, en deux moitiés dans un seul donjon. La première moitié (boss de porte) repose sur les debuffs de cellules en quatre actes (cônes et packages, liens alpha/bêta et tours dans la Spirale cruelle qui tourne, tours de cellules sur des plateformes séparées, et le rappel), les orbes de Pestilence mortelle et la boucle Abattoir/Pulvérisation de chair. La seconde moitié contre Lindwurm tourne autour des clones de Réplication qui copient les mécaniques, des Cellules mutantes avec les formes de Sphère de mana, et la très longue séquence de mémoire du Rêve arcadien avant l'Enfer arcadien.",
+  "de": "Letzter Superschwergewicht-Kampf, in zwei Hälften in einem Inhalt. Die erste Hälfte (Torboss) basiert auf Zellbefall-Debuffs in vier Akten (Kegel und Sammeln, Alpha/Beta-Verbindungen und Türme im drehenden Wurmwickel, Zelltürme auf geteilten Plattformen und Telophase), Tödliche-Plage-Kugeln und der Zellenriss/Venenriss-Schleife. Die zweite Hälfte gegen Lindwurm dreht sich um Zellteilungs-Klone, die Mechaniken kopieren, Mutationszellen mit Manasphären-Formen und die sehr lange Gedächtnis-Sequenz Arkadischer Traum vor der Arkadischen Hölle.",
+  "ja": "ヘビー級4層、1つのコンテンツで前半・後半。前半は細胞付着（前期・中期・後期・終期）のデバフ、リーサルスカージの玉、スローターシェッドのループ。後半のボス（リンドブルム）はレプリケーションの分身がギミックを模倣、変異細胞とマナスフィア、最も長いアルカディアン・ドリームの記憶ギミックの後にアルカディアン・ヘル。"
+ },
+ "strats_overview": [
+  {
+   "id": "na-pf",
+   "name": {
+    "en": "NA PF: Toxic Friends P1 + Modified bin (3VJ0) P2",
+    "fr": "PF NA : Toxic Friends P1 + Modified bin (3VJ0) P2",
+    "de": "NA-PF: Toxic Friends P1 + Modified Bin (3VJ0) P2",
+    "ja": "NA野良：前半Toxic Friends＋後半Modified bin（3VJ0）"
+   },
+   "region": "NA",
+   "note": {
+    "en": "First half: Toxic Friends raidplan, with or without Mortal Slayer, or Roles Mortal Slayer. Second half: Modified bin 3VJ0 (Replication 1, Replication 2, Superchain, Idyllic Dream); PFs may also list Banana Codex (Replication 2, relative D north), Uptime Idyllic, DN Replication/DN Idyllic or 3-1 orb soaks. Always read the PF description.",
+    "fr": "Première moitié : raidplan Toxic Friends, avec ou sans Mortal Slayer, ou Roles Mortal Slayer. Seconde moitié : Modified bin 3VJ0 (Réplication 1, 2, Superchain, Rêve) ; les PF peuvent aussi indiquer Banana Codex (Réplication 2, D relatif au nord), Uptime Idyllic, DN Replication/DN Idyllic ou soaks d'orbes 3-1. Lis toujours la description.",
+    "de": "Erste Hälfte: Toxic-Friends-Raidplan mit oder ohne Mortal Slayer oder Roles Mortal Slayer. Zweite Hälfte: Modified Bin 3VJ0 (Zellteilung 1, 2, Superchain, Traum); PFs nennen auch Banana Codex (Zellteilung 2, relativer D-Norden), Uptime Idyllic, DN Replication/DN Idyllic oder 3-1-Kugel-Soaks. Immer die Beschreibung lesen.",
+    "ja": "前半はToxic Friends（Mortal Slayer込み/抜き）かRoles Mortal Slayer。後半はModified bin 3VJ0（レプリ1・2、Superchain、ドリーム）。Banana Codex（レプリ2、D相対北）、Uptime Idyllic、DN式、3-1玉なども。募集文を必ず確認。"
+   },
+   "aliases": {
+    "en": [
+     "toxic friends",
+     "toxic",
+     "3vj0",
+     "modified bin",
+     "roles mortal slayer"
+    ],
+    "fr": [
+     "toxic friends",
+     "toxic",
+     "3vj0",
+     "modified bin",
+     "roles mortal slayer"
+    ],
+    "de": [
+     "toxic friends",
+     "toxic",
+     "3vj0",
+     "modified bin",
+     "roles mortal slayer"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "eu-caro",
+   "name": {
+    "en": "EU Caro / Zenith (a3V)",
+    "fr": "EU Caro / Zenith (a3V)",
+    "de": "EU Caro / Zenith (a3V)",
+    "ja": "EU Caro / Zenith（a3V）"
+   },
+   "region": "EU",
+   "note": {
+    "en": "WTFDIG's EU option (Caro / Zenith, a3V document). WTFDIG loads the strat text only in the browser and no other written source was found, so no per-mechanic steps are stored; the bot can explain the mechanic itself and point to the a3V document.",
+    "fr": "Option EU de WTFDIG (Caro / Zenith, document a3V). WTFDIG ne charge le texte que dans le navigateur et aucune autre source écrite trouvée, donc pas d'étapes par mécanique ; le bot peut expliquer la mécanique et renvoyer au document a3V.",
+    "de": "EU-Option von WTFDIG (Caro / Zenith, a3V-Dokument). WTFDIG lädt den Text nur im Browser, und keine andere schriftliche Quelle wurde gefunden, daher keine Schritte pro Mechanik; der Bot kann die Mechanik selbst erklären und aufs a3V-Dokument verweisen.",
+    "ja": "WTFDIGのEU版（Caro / Zenith、a3V資料）。WTFDIGの本文はブラウザでしか読めず、他の文章ソースもないため、ギミック別の手順はなし。ギミックの説明とa3V資料の案内のみ。"
+   },
+   "aliases": {
+    "en": [
+     "caro",
+     "zenith",
+     "a3v"
+    ],
+    "fr": [
+     "caro",
+     "zenith",
+     "a3v"
+    ],
+    "de": [
+     "caro",
+     "zenith",
+     "a3v"
+    ],
+    "ja": []
+   }
+  },
+  {
+   "id": "jp-nukemaru",
+   "name": {
+    "en": "JP Game8 / Nukemaru (Idyll-based first half; fixed Replication, Ushiko method, Dream One-Ace method)",
+    "fr": "JP Game8 / Nukemaru (première moitié base Idyll ; Réplication fixe, méthode Ushiko, Dream One-Ace)",
+    "de": "JP Game8 / Nukemaru (erste Hälfte nach Idyll; feste Zellteilung, Ushiko-Methode, Dream-One-Ace)",
+    "ja": "JP game8 / ぬけまる式（前半はイディル準拠、後半はレプリ固定・牛子式・ドリームワンエース式）"
+   },
+   "region": "JP",
+   "note": {
+    "en": "First half follows Nukemaru's video (mostly Idyll's strat) with macro 1 (acts) and macro 2 (Curtain Call and shed). Second half uses fixed Replication positions, the Ushiko method for Staging and the Dream One-Ace method with Nukemaru's position macro.",
+    "fr": "Première moitié selon la vidéo de Nukemaru (surtout la strat Idyll) avec macro 1 (actes) et macro 2 (rappel et Abattoir). Seconde moitié : positions fixes de Réplication, méthode Ushiko pour les Cellules mimétiques et Dream One-Ace avec la macro de positions de Nukemaru.",
+    "de": "Erste Hälfte nach Nukemarus Video (meist Idylls Strat) mit Makro 1 (Akte) und Makro 2 (Telophase und Zellenriss). Zweite Hälfte: feste Zellteilungs-Positionen, Ushiko-Methode für Mimikry-Zellen und Dream-One-Ace mit Nukemarus Positionsmakro.",
+    "ja": "前半はぬけまる氏の動画（ほぼイディル式）、マクロ①（前期〜後期）とマクロ②（終期・シェッド）。後半はレプリ固定、模倣細胞は牛子式、ドリームはワンエース式（ぬけまる氏の位置マクロ）。"
+   },
+   "aliases": {
+    "en": [
+     "nukemaru",
+     "idyll",
+     "ushiko",
+     "one-ace",
+     "game8"
+    ],
+    "fr": [
+     "nukemaru",
+     "idyll",
+     "ushiko",
+     "one-ace",
+     "game8"
+    ],
+    "de": [
+     "nukemaru",
+     "idyll",
+     "ushiko",
+     "one-ace",
+     "game8"
+    ],
+    "ja": [
+     "ぬけまる",
+     "イディル",
+     "牛子式",
+     "ドリームワンエース式",
+     "位置固定式",
+     "nukemaru"
+    ]
+   }
+  }
+ ],
+ "phases": [
+  {
+   "id": "door-act1",
+   "names": {
+    "en": "First half: Mortal Slayer and Act 1",
+    "fr": "Première moitié : Pestilence mortelle et acte 1",
+    "de": "Erste Hälfte: Tödliche Plage und Prophase",
+    "ja": "前半：リーサルスカージ・前期"
+   },
+   "mechanics": [
+    {
+     "id": "the-fixer",
+     "names": {
+      "en": "The Fixer",
+      "fr": "Sauveur de l'Arcadion",
+      "de": "Retter des Arkadions",
+      "ja": "フィクサー・オブ・アルカディア"
+     },
+     "aliases": {
+      "en": [
+       "raidwide"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Very heavy magic raidwide; everyone mitigates (at least half mitigation plus shields).",
+      "fr": "Raidwide magique très lourd ; tout le monde mitige (au moins la moitié plus des boucliers).",
+      "de": "Sehr schwerer magischer Raidwide; alle mitigieren (mindestens die Hälfte plus Schilde).",
+      "ja": "非常に重い魔法全体攻撃。全員軽減、バリアも。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "mortal-slayer",
+     "names": {
+      "en": "Mortal Slayer",
+      "fr": "Pestilence mortelle",
+      "de": "Tödliche Plage",
+      "ja": "リーサルスカージ"
+     },
+     "aliases": {
+      "en": [
+       "orbs",
+       "green purple orbs"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "玉",
+       "緑玉",
+       "紫玉"
+      ]
+     },
+     "how": {
+      "en": "Hands drop green and purple orbs on each side two at a time; each hits the closest player in the hitbox on that side. Purple orbs are magic tankbusters for the tanks, green orbs go to non-tanks; after a hit, step out to the side.",
+      "fr": "Des mains font tomber des orbes verts et violets de chaque côté, deux par deux ; chacun frappe le plus proche dans la hitbox de ce côté. Les violets sont des busters magiques pour les tanks, les verts pour les non-tanks ; après le coup, sors sur le côté.",
+      "de": "Hände lassen grüne und lila Kugeln auf beiden Seiten fallen, je zwei; jede trifft den Nächsten in der Hitbox auf dieser Seite. Lila sind magische Tankbuster für Tanks, grüne für Nicht-Tanks; nach dem Treffer zur Seite raus.",
+      "ja": "左右に緑玉と紫玉が2つずつ、各側のタゲサ内で一番近い人に当たる。紫はタンクの強攻撃、緑はタンク以外。当たったら東西へ逃げる。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "MT takes the first purple, OT the second. Conga version: H1, M1, R1 left and R2, M2, H2 right, outermost take greens. Roles version: tanks and healers on the dark-orb side, DPS on the other.",
+        "fr": "Le MT prend le premier violet, l'OT le second. Version conga : H1, M1, R1 à gauche et R2, M2, H2 à droite, les plus extérieurs prennent les verts. Version rôles : tanks et heals côté orbe sombre, DPS de l'autre.",
+        "de": "MT nimmt die erste lila, OT die zweite. Conga-Version: H1, M1, R1 links und R2, M2, H2 rechts, die äußersten nehmen Grüne. Rollen-Version: Tanks und Heiler auf der dunklen Seite, DPS auf der anderen.",
+        "ja": "紫は1つ目MT、2つ目ST。conga式は左H1・M1・R1、右R2・M2・H2の外側から緑。ロール式はタンクヒーラーが紫側、DPSが反対。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "MT group and ST group split left/right; because purples lean to one side, tanks and a ranged swap sides. Greens in order healer, melee, ranged, adjusted ranged; tanks take purples with buffs (from the boss's center side if purple and green pair).",
+        "fr": "Groupes MT et OT gauche/droite ; comme les violets sont d'un côté, tanks et un distance échangent. Verts dans l'ordre heal, mêlée, distance, distance ajusté ; les tanks prennent les violets avec buffs.",
+        "de": "MT- und ST-Gruppe links/rechts; weil die lila Kugeln auf einer Seite liegen, tauschen Tanks und ein Fernkämpfer. Grüne in Reihenfolge Heiler, Nah, Fern, angepasster Fern; Tanks nehmen lila mit Buffs.",
+        "ja": "左右でMT組・ST組、紫が偏るのでタンクと遠隔を入れ替え。緑はヒーラー→近接→遠隔→調整遠隔、紫はタンクがバフで（ペアの時はボス中心側）。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "proximity"
+     ]
+    },
+    {
+     "id": "act-1",
+     "names": {
+      "en": "Grotesquerie: Act 1 + Ravenous Reach",
+      "fr": "Cellules parasites : premier acte + Voracité putride",
+      "de": "Zellbefall: Prophase + Zellulärstreckung",
+      "ja": "細胞付着・前期＋ラヴェナスリーチ"
+     },
+     "aliases": {
+      "en": [
+       "act 1",
+       "cones",
+       "directed",
+       "Rotting Flesh"
+      ],
+      "fr": [
+       "Rotting Flesh"
+      ],
+      "de": [
+       "Rotting Flesh"
+      ],
+      "ja": [
+       "前期",
+       "Rotting Flesh"
+      ]
+     },
+     "how": {
+      "en": "Everyone gets a cone that fires in the cell's direction; one role gets spread AoEs and the other a shared stack. Point your cone away from others. Ravenous Reach then has four baited ground AoEs and a giant arm cone that leaves growing flesh puddles; follow the arm's sweep to the safe spot. Then a healer stack (tanks go opposite) and a double tankbuster. Both tanks take that double tankbuster on the side opposite the party.",
+      "fr": "Chacun a un cône dans la direction de la cellule ; un rôle a des AoE à écarter et l'autre un package. Oriente ton cône loin des autres. Voracité putride : quatre AoE au sol à baiter et un énorme cône du bras qui laisse des flaques de chair ; suis le balayage vers le safe spot. Puis package sur heal (tanks en face) et double buster. Les deux tanks prennent ce double tankbuster du côté opposé au groupe.",
+      "de": "Jeder bekommt einen Kegel in Zellrichtung; eine Rolle hat Verteil-AoEs, die andere ein Sammeln. Richte deinen Kegel von anderen weg. Zellulärstreckung: vier geköderte Boden-AoEs und ein riesiger Arm-Kegel mit wachsenden Fleischflächen; folge dem Schwung zur sicheren Stelle. Dann Heiler-Sammeln (Tanks gegenüber) und doppelter Tankbuster. Beide Tanks nehmen diesen doppelten Tankbuster auf der Seite gegenüber der Gruppe.",
+      "ja": "全員に向きのある扇、片ロールは散開、もう片方は頭割り。扇は人のいない方へ。ラヴェナスリーチは足元4回と腕の巨大扇、肉床の安地へ。その後ヒーラー頭割り（タンクは反対）とタンク強攻撃。その2連タンク強攻撃は、タンク2人がパーティと反対側で受ける。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Stack role in the corner, spread role in the rest of the safe area (melee near, ranged far); spreaders aim cones inward, stackers outward. Bait the Ravenous Reach puddles toward A.",
+        "fr": "Package dans le coin, dispersion dans le reste du safe (mêlées près, distances loin) ; les dispersés visent vers l'intérieur, les packés vers l'extérieur. Baite les flaques vers A.",
+        "de": "Sammel-Rolle in der Ecke, Verteil-Rolle im Rest (Nah nah, Fern fern); Verteiler richten Kegel nach innen, Sammler nach außen. Zellulärstreckung-Flächen Richtung A ködern.",
+        "ja": "頭割り組は角、散開組は残りの安地（近接は近く、遠隔は遠く）。散開は内向き、頭割りは外向きに扇。リーチの床はA方向へ。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Macro 1 spread from north: MT/D1 > ST/D2 > H1/D3 > H2/D4 (other spots if the dragon head is reversed or DPS have the stack). For the tankbuster on the opposite side the macro puts MT north and ST south.",
+        "fr": "Macro 1 depuis le nord : MT/D1 > ST/D2 > H1/D3 > H2/D4 (autres spots si la tête est inversée ou si les DPS ont le package). Pour le tankbuster du côté opposé, la macro place le MT au nord et l'OT au sud.",
+        "de": "Makro 1 von Norden: MT/D1 > ST/D2 > H1/D3 > H2/D4 (andere Plätze, wenn der Kopf umgekehrt ist oder DPS das Sammeln haben). Für den Tankbuster auf der Gegenseite stellt das Makro den MT nach Norden und den OT nach Süden.",
+        "ja": "マクロ①：北からMT/D1＞ST/D2＞H1/D3＞H2/D4（竜頭が逆やDPS頭割りなら別位置）。反対側でのタンク強攻撃はマクロでMT北・ST南。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "spread",
+      "stack",
+      "dodge",
+      "tankbuster"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "door-act2",
+   "names": {
+    "en": "First half: Act 2 (Cruel Coil)",
+    "fr": "Première moitié : acte 2 (Spirale cruelle)",
+    "de": "Erste Hälfte: Metaphase (Wurmwickel)",
+    "ja": "前半：中期（クルエルコイル）"
+   },
+   "mechanics": [
+    {
+     "id": "act-2",
+     "names": {
+      "en": "Grotesquerie: Act 2 + Roiling Mass + Cruel Coil",
+      "fr": "Cellules parasites : deuxième acte + masse + Spirale cruelle",
+      "de": "Zellbefall: Metaphase + Zellmutation + Wurmwickel",
+      "ja": "細胞付着・中期＋クルエルコイル"
+     },
+     "aliases": {
+      "en": [
+       "act 2",
+       "coil",
+       "alpha beta",
+       "tethers towers"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "中期",
+       "線切り",
+       "塔"
+      ]
+     },
+     "how": {
+      "en": "One role gets Alpha and the other Beta with order numbers 1-4. Everyone is pulled into a coil that rotates with one exit; when your tether appears, Alphas run out the exit and Betas stretch the other way to break it, and towers (from the ground and from Beta breaks) must be soaked in order. Splattershed raidwide follows.",
+      "fr": "Un rôle a Alpha, l'autre Bêta, avec des numéros 1-4. Tout le monde est attiré dans une spirale qui tourne avec une seule sortie ; quand ton lien apparaît, les Alpha sortent par la sortie et les Bêta s'étirent dans l'autre sens pour le casser, et les tours (au sol et des cassures Bêta) se prennent dans l'ordre. Raidwide Pulvérisation ensuite.",
+      "de": "Eine Rolle bekommt Alpha, die andere Beta mit Nummern 1-4. Alle werden in einen drehenden Wickel mit einem Ausgang gezogen; erscheint deine Verbindung, laufen Alphas durch den Ausgang raus und Betas dehnen in die andere Richtung, und Türme (vom Boden und von Beta-Brüchen) werden der Reihe nach genommen. Danach Venenriss-Raidwide.",
+      "ja": "α（1〜4）とβ（1〜4）。回るコイルに引き込まれ、線が出たらαは出口から外へ、βは内側へ伸ばして切る。床の塔とβが切った場所の塔を順番に踏む。その後スプラッターシェッド。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Each player soaks the tower two places ahead: 3 takes the first, 4 the second, 1 the third, 2 the fourth. 3 and 4 soak then break; 1 and 2 break then soak.",
+        "fr": "Chacun prend la tour deux rangs plus loin : 3 la première, 4 la deuxième, 1 la troisième, 2 la quatrième. 3 et 4 prennent puis cassent ; 1 et 2 cassent puis prennent.",
+        "de": "Jeder nimmt den Turm zwei Plätze weiter: 3 den ersten, 4 den zweiten, 1 den dritten, 2 den vierten. 3 und 4 nehmen, dann brechen; 1 und 2 brechen, dann nehmen.",
+        "ja": "塔は番号の2つ先：3が1本目、4が2本目、1が3本目、2が4本目。3・4は踏んでから切る、1・2は切ってから踏む。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Macro 1: tethers 1234, towers 3412. Alpha breaks outward and soaks the field towers; Beta breaks inward and soaks the tower where it broke.",
+        "fr": "Macro 1 : liens 1234, tours 3412. Alpha casse vers l'extérieur et prend les tours du terrain ; Bêta casse vers l'intérieur et prend la tour où il a cassé.",
+        "de": "Makro 1: Verbindungen 1234, Türme 3412. Alpha bricht nach außen und nimmt die Feldtürme; Beta bricht nach innen und nimmt den Turm am Bruchpunkt.",
+        "ja": "マクロ①：線取り1234、塔踏み3412。αは外側へ線を切りフィールドの塔、βは内側へ切りその場の塔。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "dodge",
+      "tether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "door-act3",
+   "names": {
+    "en": "First half: Act 3 and Curtain Call",
+    "fr": "Première moitié : acte 3 et rappel",
+    "de": "Erste Hälfte: Anaphase und Telophase",
+    "ja": "前半：後期・終期"
+   },
+   "mechanics": [
+    {
+     "id": "act-3",
+     "names": {
+      "en": "Grotesquerie: Act 3 + Bring Down the House + Split Scourge",
+      "fr": "Cellules parasites : troisième acte + Effondrement brutal + Streuplage",
+      "de": "Zellbefall: Anaphase + Hals- und Bühnenbruch + Streuplage",
+      "ja": "細胞付着・後期＋ブリングダウン・ハウス＋スプリットスカージ"
+     },
+     "aliases": {
+      "en": [
+       "act 3",
+       "platforms",
+       "cell towers"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "後期",
+       "島"
+      ]
+     },
+     "how": {
+      "en": "Each player has a cell pointing north, east, south or west; on expiry it makes an AoE and a tower in that direction, which another player must soak. The arena breaks into four cardinal or four intercardinal platforms. Then dragon heads east and west bait a wide tankbuster on the closest and AoEs on the farthest.",
+      "fr": "Chaque joueur a une cellule orientée nord, est, sud ou ouest ; à l'expiration elle fait une AoE et une tour dans cette direction qu'un autre joueur doit prendre. L'arène se casse en quatre plateformes cardinales ou intercardinales. Puis des têtes de dragon à l'est et à l'ouest font un large buster sur le plus proche et des AoE sur les plus loin.",
+      "de": "Jeder hat eine Zelle Richtung Nord, Ost, Süd oder West; beim Ablauf macht sie einen AoE und einen Turm in diese Richtung, den ein anderer Spieler nehmen muss. Die Arena bricht in vier Haupt- oder Zwischenrichtungs-Plattformen. Dann ködern Drachenköpfe im Osten und Westen einen breiten Tankbuster auf den Nächsten und AoEs auf die Fernsten.",
+      "ja": "細胞の向き（東西南北）に塔と範囲。島がX字か十字に残る。塔は細胞の方向に出るので踏み損ねると全滅。その後東西の竜頭、近い人に強攻撃、遠い人に範囲。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Go to the cardinal opposite your cell; if that platform is gone, rotate clockwise to the matching intercardinal colour. Supports bottom left, DPS top right (on north/south platforms supports top left, DPS bottom right). Tanks bait the heads, others spread further out.",
+        "fr": "Va au cardinal opposé à ta cellule ; si la plateforme n'existe plus, tourne en horaire vers l'intercardinal de même couleur. Supports en bas à gauche, DPS en haut à droite (sur nord/sud : supports en haut à gauche, DPS en bas à droite). Tanks baitent les têtes, les autres s'écartent plus loin.",
+        "de": "Geh auf die Himmelsrichtung gegenüber deiner Zelle; fehlt die Plattform, im Uhrzeigersinn zur gleichfarbigen Zwischenrichtung. Supporter unten links, DPS oben rechts (Nord/Süd: Supporter oben links, DPS unten rechts). Tanks ködern die Köpfe, andere weiter außen.",
+        "ja": "細胞の逆の方角の島へ、無ければ時計回りで同じ色の斜め。サポート左下・DPS右上（南北の島はサポート左上・DPS右下）。竜頭はタンクが誘導、他はさらに外へ散開。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "X layout: on east/west islands DPS top right, TH bottom left. Plus layout: on north/south islands DPS top left, TH bottom right. Then MT takes west and ST east with invulns for the dragon heads, and the six far players spread.",
+        "fr": "Disposition X : sur les îles est/ouest DPS en haut à droite, TH en bas à gauche. Disposition + : sur les îles nord/sud DPS en haut à gauche, TH en bas à droite. Puis MT à l'ouest et OT à l'est sous invincibilité pour les têtes, les six autres s'écartent.",
+        "de": "X-Anordnung: auf Ost/West-Inseln DPS oben rechts, TH unten links. Plus-Anordnung: auf Nord/Süd-Inseln DPS oben links, TH unten rechts. Dann MT West und ST Ost mit Unverwundbarkeit für die Köpfe, die sechs anderen verteilen sich.",
+        "ja": "X字：東西の島はDPS右上、TH左下。十字：南北の島はDPS左上、TH右下。その後MT西・ST東が無敵で竜頭を誘導、遠い6人は散開。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Sources disagree slightly on which corner each role uses on which layout; follow your PF's board.",
+      "fr": "Les sources divergent un peu sur les coins par rôle ; suis le schéma de ta PF.",
+      "de": "Quellen widersprechen sich leicht bei den Ecken je Rolle; folge dem Board deiner PF.",
+      "ja": "ロールの角はソースで少し異なる。PFの図に従う。"
+     },
+     "tags": [
+      "debuff",
+      "tower",
+      "dodge",
+      "tankbuster",
+      "spread"
+     ]
+    },
+    {
+     "id": "curtain-call",
+     "names": {
+      "en": "Grotesquerie: Curtain Call",
+      "fr": "Cellules parasites : rappel",
+      "de": "Zellbefall: Telophase",
+      "ja": "細胞付着・終期"
+     },
+     "aliases": {
+      "en": [
+       "curtain call"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "終期"
+      ]
+     },
+     "how": {
+      "en": "Everyone gets Alpha; one role gets spread AoEs and the other Rotting Flesh, which is cleansed only by being hit by Ravenous Reach. Bait five sets of ground AoEs, take or avoid the arm by role, regroup to heal, then break tethers and run to safe spots (LB3 is often used here).",
+      "fr": "Tout le monde a Alpha ; un rôle a des AoE à écarter et l'autre Cellules létales, purgée seulement en se faisant toucher par Voracité putride. Baite cinq séries d'AoE au sol, prends ou évite le bras selon ton rôle, regroupe pour les soins, puis casse les liens et cours aux safe spots (LB3 souvent ici).",
+      "de": "Alle bekommen Alpha; eine Rolle hat Verteil-AoEs, die andere Todeszellen, das nur durch einen Treffer der Zellulärstreckung gereinigt wird. Fünf Sätze Boden-AoEs ködern, Arm je nach Rolle nehmen oder meiden, zum Heilen sammeln, dann Verbindungen brechen und zu sicheren Stellen laufen (LB3 oft hier).",
+      "ja": "全員α、片ロールは散開、もう片方は致死細胞（ラヴェナスリーチに当たると解除）。AoEを5回捨て、ロールで腕に当たる/避ける、中央で回復、αの線を切って安地へ（LB3はここ）。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Start baiting from the middle-west edge, rotate via the north edge, spread on the safe or unsafe side per assignment; when the Alpha tether breaks, supports go west and DPS east.",
+        "fr": "Commence les baits au bord ouest-milieu, tourne par le bord nord, écarte-toi du côté sûr ou non selon ton rôle ; quand le lien Alpha casse, supports à l'ouest, DPS à l'est.",
+        "de": "Ködern am Rand Mitte-West beginnen, über den Nordrand drehen, je nach Aufgabe auf der sicheren oder unsicheren Seite verteilen; wenn die Alpha-Verbindung bricht, Supporter West, DPS Ost.",
+        "ja": "西中央の外周から捨て始め、北側を回り、担当で安全/危険側に散開。αの線切りはサポート西、DPS東。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Drop AoEs from the northwest during the cast; purple-debuff players spread on the side of the extended arm, yellow on the other; after Alpha ends, west side MT and healers, east side DPS break tethers and run (Sprint), Betas go to another safe spot.",
+        "fr": "Pose les AoE depuis le NO pendant l'incantation ; debuffs violettes du côté du bras, jaunes de l'autre ; après Alpha, côté ouest MT et heals, côté est DPS cassent les liens et courent (Sprint), les Bêta vont à un autre safe spot.",
+        "de": "AoEs während des Zaubers ab NW ablegen; lila Debuffs auf der Armseite, gelbe gegenüber; nach Alpha brechen West MT und Heiler, Ost DPS die Verbindungen und rennen (Sprint), Betas gehen zu einer anderen sicheren Stelle.",
+        "ja": "詠唱中に北西からAoE捨て、腕が伸びた側に紫、反対に黄色が散開。中央に集まりα解除後、西はMTとヒーラー、東はDPSが線を切って安地へ（スプリント）、βは別の安地。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "spread",
+      "dodge"
+     ]
+    },
+    {
+     "id": "slaughtershed-enrage",
+     "names": {
+      "en": "Slaughtershed / Raptor Knuckles / Serpentine Scourge / Refreshing Overkill",
+      "fr": "Abattoir / Poing du prédateur / Souffle pestilentiel / Soin extrême et frappe suprême",
+      "de": "Zellenriss / Berstender Knöchel / Geißelatem / Übertödliche Überheilung",
+      "ja": "スローターシェッド / ラプターナックル / スカージブレス / オーバーキュア・オーバーキル"
+     },
+     "aliases": {
+      "en": [
+       "shed",
+       "knockbacks",
+       "door enrage"
+      ],
+      "fr": [
+       "Raptor Knuckles"
+      ],
+      "de": [],
+      "ja": [
+       "シェッド",
+       "時間切れ",
+       "Raptor Knuckles"
+      ]
+     },
+     "how": {
+      "en": "After Mortal Slayer again, a loop three times: raidwide, role stack and spreads, then the arms: thin arms are knockbacks (Raptor Knuckles, can be prevented), thick dragon arms are half-room cleaves (Serpentine Scourge), in the order they appeared. Then the half's enrage: the boss must be at almost 0 HP or the party wipes.",
+      "fr": "Après une nouvelle Pestilence, une boucle trois fois : raidwide, package et dispersion par rôle, puis les bras : bras fins = poussées (anti-poussée possible), gros bras de dragon = demi-salles, dans l'ordre d'apparition. Puis l'enrage de la moitié : le boss doit être presque à 0 PV sinon wipe.",
+      "de": "Nach erneuter Tödlicher Plage dreimal eine Schleife: Raidwide, Rollen-Sammeln und Verteilen, dann die Arme: dünne Arme = Rückstöße (verhinderbar), dicke Drachenarme = Halbraum-Angriffe, in Erscheinungsreihenfolge. Dann der Finalangriff der Hälfte: der Boss muss fast 0 HP haben, sonst Wipe.",
+      "ja": "リーサルスカージ後、全体攻撃→ロール別頭割りと散開（頭割りは狭い側、散開は広い側）→腕（細い腕はノックバック、太い竜の手は半面）を3回。その後オーバーキュア・オーバーキル、HPを0.1%まで削れないとワイプ。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Supports move north to find roles; spreads go to the intercardinal without flesh (melee near, ranged at the wall), stacks to the other north intercardinal's small safe spot. Knockbacks: start on the first arm's side near the north intercardinal edge.",
+        "fr": "Les supports vont au nord pour repérer les rôles ; les dispersés vont à l'intercardinal sans chair (mêlées près, distances au mur), le package au petit safe spot de l'autre intercardinal nord. Poussées : commence du côté du premier bras près du bord intercardinal nord.",
+        "de": "Supporter gehen nach Norden, um Rollen zu erkennen; Verteiler zur Zwischenrichtung ohne Fleisch (Nah nah, Fern an der Wand), Sammeln zur kleinen sicheren Stelle der anderen nördlichen Zwischenrichtung. Rückstöße: auf der Seite des ersten Arms nahe dem nördlichen Rand starten.",
+        "ja": "サポートが北でロール確認。散開は肉のない斜め（近接近く、遠隔壁際）、頭割りはもう一方の北斜めの小さい安地。ノックバックは最初の腕側の北斜め端から。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Stack on the narrow side, spread on the wide side; for knockbacks use the floor tiles as a guide.",
+        "fr": "Package du côté étroit, dispersion du côté large ; pour les poussées, repère-toi aux dalles.",
+        "de": "Sammeln auf der schmalen, Verteilen auf der breiten Seite; bei Rückstößen an den Bodenplatten orientieren.",
+        "ja": "頭割りは狭い側、散開は広い側。ノックバックは床のタイルを目安に。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "raidwide",
+      "stack",
+      "spread",
+      "knockback",
+      "enrage"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "final-p1",
+   "names": {
+    "en": "Second half: Replication 1 and 2",
+    "fr": "Seconde moitié : Réplication 1 et 2",
+    "de": "Zweite Hälfte: Zellteilung 1 und 2",
+    "ja": "後半：レプリケーション1・2"
+   },
+   "mechanics": [
+    {
+     "id": "arcadia-aflame",
+     "names": {
+      "en": "Arcadia Aflame",
+      "fr": "Enfer arcadien",
+      "de": "Arkadische Flammen",
+      "ja": "アルカディアン・フレイム"
+     },
+     "aliases": {
+      "en": [
+       "raidwide"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Heavy magic raidwide; full party mitigation.",
+      "fr": "Gros raidwide magique ; mitigation complète.",
+      "de": "Schwerer magischer Raidwide; volle Gruppen-Mitigation.",
+      "ja": "重い魔法全体攻撃。全員で軽減。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide"
+     ]
+    },
+    {
+     "id": "replication-1",
+     "names": {
+      "en": "Replication 1 + Snaking Kick",
+      "fr": "Réplication 1 + Coup de pied du serpent",
+      "de": "Zellteilung 1 + Natterntritt",
+      "ja": "レプリケーション1＋スネークキック"
+     },
+     "aliases": {
+      "en": [
+       "rep 1",
+       "clones"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "レプリ1"
+      ]
+     },
+     "how": {
+      "en": "Clones at the cardinals use pair stacks, cones or circles; taking the same element twice kills, so the second time you must take the opposite one. Clones then reposition in an X; use the dark clone's position as the new north. Snaking Kick is a rotating frontal cleave, get behind.",
+      "fr": "Des clones aux cardinaux font paires, cônes ou cercles ; prendre deux fois le même élément tue, donc la deuxième fois prends l'opposé. Les clones se replacent en X ; prends la position du clone sombre comme nouveau nord. Coup de pied du serpent : cône frontal tournant, mets-toi derrière.",
+      "de": "Klone auf den Himmelsrichtungen machen Paare, Kegel oder Kreise; dasselbe Element zweimal zu nehmen tötet, also beim zweiten Mal das Gegenteil. Danach stellen sich die Klone im X auf; nimm die Position des dunklen Klons als neuen Norden. Natterntritt ist ein drehender Frontalangriff, geh hinter den Boss.",
+      "ja": "分身がペア頭割り・扇・円。同じ属性を2回受けると死亡なので2回目は逆。1回目後は闇分身の位置を北として指定位置へ。スネークキックは背面へ。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Spread on intercardinals: LP1 north, LP2 south, melee left and ranged right, supports left and DPS right; swap fire/dark for the next set.",
+        "fr": "Dispersion aux intercardinaux : LP1 nord, LP2 sud, mêlées à gauche et distances à droite, supports à gauche et DPS à droite ; échange feu/ténèbres pour la suite.",
+        "de": "Verteilen auf Zwischenrichtungen: LG1 Nord, LG2 Süd, Nah links und Fern rechts, Supporter links und DPS rechts; Feuer/Dunkel für den nächsten Satz tauschen.",
+        "ja": "斜めに散開、LP1北・LP2南、近接左・遠隔右、サポート左・DPS右。次は炎と闇を交代。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Fixed positions: after the first hit, take the dark clone as north and go to your macro spot, which handles debuffs and cones at once.",
+        "fr": "Positions fixes : après le premier coup, prends le clone sombre comme nord et va à ton spot de macro, qui gère debuffs et cônes d'un coup.",
+        "de": "Feste Positionen: nach dem ersten Treffer den dunklen Klon als Norden nehmen und auf deinen Makro-Platz gehen, der Debuffs und Kegel gleichzeitig löst.",
+        "ja": "位置固定式：1回目後は闇分身を北とみなし、指定位置でデバフと扇をまとめて処理。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "cleave",
+      "debuff"
+     ]
+    },
+    {
+     "id": "double-sobat",
+     "names": {
+      "en": "Double Sobat",
+      "fr": "Double coup de pied",
+      "de": "Doppel-Sobat",
+      "ja": "ダブルソバット"
+     },
+     "aliases": {
+      "en": [
+       "tankbuster",
+       "sobat"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Several frontal hits on the top-enmity tank, then big circles on the top two enmity, so the tanks separate (northwest/northeast) away from the party.",
+      "fr": "Plusieurs coups frontaux sur le tank principal, puis gros cercles sur les deux premiers en inimitié, donc les tanks se séparent (NO/NE) loin du groupe.",
+      "de": "Mehrere Frontaltreffer auf den Haupttank, dann große Kreise auf die zwei Ersten, also trennen sich die Tanks (NW/NO) weg von der Gruppe.",
+      "ja": "ヘイト1位への前方攻撃が複数回、その後ヘイト1・2位に大円。MTとSTは北西と北東に離れる。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Tanks invuln or stay behind the boss when it turns; after the second cleave MT goes back right, OT back left.",
+        "fr": "Les tanks mettent une invincibilité ou restent derrière quand il tourne ; après le second coup, MT à droite derrière, OT à gauche.",
+        "de": "Tanks mit Unverwundbarkeit oder hinter dem Boss, wenn er dreht; nach dem zweiten Hieb MT hinten rechts, OT hinten links.",
+        "ja": "タンクは無敵か、向きが変わったら背面へ。2回目後はMTが右後ろ、STが左後ろ。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Recommended: MT invulns hits 1 and 3, ST hit 2 (a Paladin takes the second if present).",
+        "fr": "Conseillé : le MT met une invincibilité pour les coups 1 et 3, l'OT pour le 2 (un Paladin prend le 2e s'il y en a un).",
+        "de": "Empfohlen: MT Unverwundbarkeit bei 1 und 3, ST bei 2 (ein Paladin nimmt den zweiten, falls vorhanden).",
+        "ja": "MTが1回目と3回目、STが2回目を無敵で（ナイトがいれば2回目）。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "cleave",
+      "tankswap"
+     ]
+    },
+    {
+     "id": "replication-2",
+     "names": {
+      "en": "Staging + Replication 2 + Firefall Splash + Netherworld Near/Far + Reenactment",
+      "fr": "Cellules mimétiques + Réplication 2 + Écrasement embrasé + Outre-monde + Reconstitution",
+      "de": "Mimikry-Zellen + Zellteilung 2 + Feuerfall-Schmetterer + Unterwelt Nah/Fern + Memento Mimikry",
+      "ja": "模倣細胞＋レプリケーション2＋ファイアフォール・スプラッシュ＋ネザーワールド＋リエナクトメント"
+     },
+     "aliases": {
+      "en": [
+       "rep 2",
+       "player clones",
+       "tethers"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "レプリ2",
+       "牛子式"
+      ]
+     },
+     "how": {
+      "en": "Each player gets a player clone that will later copy whatever mechanic that player resolves. Boss clones tether players with cones, defamations or stacks; the boss jumps on the boss-tether player for Firefall Splash, then Netherworld stacks hit the closest or farthest. Reenactment replays the player clones in spawn order.",
+      "fr": "Chaque joueur a un clone qui recopiera plus tard la mécanique qu'il a résolue. Des clones du boss lient les joueurs avec cônes, défamations ou packages ; le boss saute sur le joueur lié au boss pour Écrasement embrasé, puis les packages Outre-monde frappent les plus proches ou plus éloignés. Reconstitution rejoue les clones dans l'ordre.",
+      "de": "Jeder Spieler bekommt einen Spieler-Klon, der später seine Mechanik kopiert. Boss-Klone verbinden Spieler mit Kegeln, Defamations oder Sammeln; der Boss springt auf den Spieler mit der Boss-Verbindung für Feuerfall-Schmetterer, dann treffen Unterwelt-Sammeln die Nächsten oder Fernsten. Memento Mimikry spielt die Klone in Reihenfolge ab.",
+      "ja": "各プレイヤーに模倣分身が付き、後で自分の処理を再現。ボス分身の線（扇・円・頭割り）を取り、ファイアフォール・スプラッシュに備えて散開、頭割り・扇・ニア/ファー誘導。リエナクトメントで分身が順番に再現。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "Modified bin (or Banana Codex, relative D north): southwest to the west wall, southeast to the east wall, south to the south wall; north player baits Firefall between A and 1. Near is baited inside the hitbox, Far slightly outside. For Reenactment, ranged go west and melee east to soak the clone stacks.",
+        "fr": "Modified bin (ou Banana Codex, D relatif au nord) : SO au mur ouest, SE au mur est, S au mur sud ; le joueur nord bait l'Écrasement entre A et 1. Proche dans la hitbox, éloigné un peu dehors. Pour la Reconstitution, distances à l'ouest et mêlées à l'est.",
+        "de": "Modified Bin (oder Banana Codex, relativer D-Norden): SW zur Westwand, SO zur Ostwand, S zur Südwand; der Nord-Spieler ködert den Schmetterer zwischen A und 1. Nah in der Hitbox, Fern leicht außerhalb. Bei Memento Mimikry Fern nach Westen, Nah nach Osten.",
+        "ja": "Modified bin（またはBanana Codex）：南西は西壁、南東は東壁、南は南壁、北の人はAと1の間でスプラッシュ誘導。ニアはタゲサ内、ファーは少し外。リエナクトメントは遠隔西・近接東。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Ushiko method with B as north: tethers 3/C/4 counted clockwise from B, 2/A/1 counterclockwise; near takers stand between Y and T a bit in front of the inner hitbox.",
+        "fr": "Méthode Ushiko avec B au nord : liens 3/C/4 comptés en horaire depuis B, 2/A/1 en antihoraire ; les proches se placent entre Y et T un peu devant la hitbox intérieure.",
+        "de": "Ushiko-Methode mit B als Norden: Verbindungen 3/C/4 im Uhrzeigersinn ab B, 2/A/1 gegen; Nah-Nehmer stehen zwischen Y und T etwas vor der inneren Hitbox.",
+        "ja": "牛子式（Bを北）：3/C/4はBから時計回り、2/A/1は反時計回りで線を取る。ニア担当はYとTの中間、内周タゲサの少し前。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "NA has several Replication 2 versions (Modified bin, Banana Codex, DN); exact tether order not reproduced here.",
+      "fr": "La NA a plusieurs versions de Réplication 2 ; l'ordre exact des liens n'est pas repris ici.",
+      "de": "NA hat mehrere Zellteilung-2-Versionen; die genaue Verbindungsreihenfolge ist hier nicht enthalten.",
+      "ja": "NAはレプリ2の方式が複数。線の順番の詳細は未掲載。"
+     },
+     "tags": [
+      "tether",
+      "cleave",
+      "stack",
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "final-p2",
+   "names": {
+    "en": "Second half: Mutating Cells",
+    "fr": "Seconde moitié : Cellules mutantes",
+    "de": "Zweite Hälfte: Mutationszellen",
+    "ja": "後半：変異細胞"
+   },
+   "mechanics": [
+    {
+     "id": "mutating-cells-blood-mana",
+     "names": {
+      "en": "Mutating Cells + Blood Mana + Blood Wakening",
+      "fr": "Cellules mutantes + Sphère de mana + Sphère éveillée",
+      "de": "Mutationszellen + Manasphären + Manasphären-Erweckung",
+      "ja": "変異細胞＋マナスフィア"
+     },
+     "aliases": {
+      "en": [
+       "mutation",
+       "shapes",
+       "black holes",
+       "orbs"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "変異細胞",
+       "マナスフィア",
+       "白い球"
+      ]
+     },
+     "how": {
+      "en": "Players get Alpha (takes no damage) or Beta (takes damage), later flipping. Two black holes pull in shapes (donut, circle, east-west cleave, north-south cleave) that later go off in the order they entered; Betas soak shapes to delay them, then everyone stands in the right black hole and switches as the AoEs flip. Then larger Netherworld Near/Far.",
+      "fr": "Les joueurs ont Alpha (pas de dégâts) ou Bêta (prend des dégâts), qui s'inversent ensuite. Deux trous noirs aspirent des formes (donut, cercle, coupe est-ouest, coupe nord-sud) qui partent dans l'ordre d'entrée ; les Bêta touchent les formes pour les retarder, puis tout le monde se met dans le bon trou noir et change quand les AoE s'inversent. Ensuite Outre-monde plus gros.",
+      "de": "Spieler bekommen Alpha (kein Schaden) oder Beta (nimmt Schaden), die später tauschen. Zwei schwarze Löcher saugen Formen ein (Donut, Kreis, Ost-West-Hieb, Nord-Süd-Hieb), die in Eintrittsreihenfolge auslösen; Betas berühren Formen, um sie zu verzögern, dann stehen alle im richtigen Loch und wechseln, wenn die AoEs kippen. Danach größere Unterwelt Nah/Fern.",
+      "ja": "α（ダメージを受けない）とβ（受ける）、後で反転。2つの黒い穴に図形（ドーナツ・円・東西・南北）が吸い込まれ入った順に発動。βが図形に当たって処理、吸われた側の黒い穴で安地を取り、反転後は逆側。その後ニア/ファーと全体攻撃。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "The Beta tank provokes so no Alpha takes autos. Soak the shapes on the evenly spaced side matching the closer shapes on the other side (alternative: Beta tank north, three others south), then for Near new Betas go under the boss and for Far in front, far away.",
+        "fr": "Le tank Bêta provoque pour qu'aucun Alpha ne prenne d'auto. Prends les formes du côté régulier qui correspondent aux formes plus proches de l'autre côté (variante : tank Bêta au nord, trois autres au sud), puis pour Proche les nouveaux Bêta sous le boss, pour Éloigné devant, loin.",
+        "de": "Der Beta-Tank provoziert, damit kein Alpha Autos nimmt. Nimm die Formen auf der gleichmäßigen Seite, die zu den näheren Formen der anderen Seite passen (Alternative: Beta-Tank Nord, drei andere Süd), dann bei Nah neue Betas unter den Boss, bei Fern vorne weit weg.",
+        "ja": "βタンクが挑発しαがAAを受けない。等間隔側で反対側の近い図形と同じものに当たる（別法：βタンク北、他3人南）。ニアは新βがボス下、ファーは前方遠く。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Find the two shapes on the uneven side and touch the matching shapes on the even side as Beta; move to the side pulled into the white orb and take the safe spot north or south of it after the flip.",
+        "fr": "Repère les deux formes du côté irrégulier et touche les formes correspondantes du côté régulier en Bêta ; va du côté aspiré par l'orbe blanc et prends le safe nord ou sud après l'inversion.",
+        "de": "Finde die zwei Formen auf der ungleichmäßigen Seite und berühre als Beta die passenden auf der gleichmäßigen; geh zur Seite, die in die weiße Kugel gesaugt wurde, und nimm nach dem Kippen die sichere Stelle nördlich oder südlich davon.",
+        "ja": "不揃いな側の2つを見つけ、等間隔な側の同じ図形にβが当たる。白い球に吸われた側に移動し、反転後は白い球の南北で安地。"
+       }
+      }
+     ],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "dodge",
+      "tankswap"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "final-p3",
+   "names": {
+    "en": "Second half: Idyllic Dream and enrage",
+    "fr": "Seconde moitié : Rêve arcadien et enrage",
+    "de": "Zweite Hälfte: Arkadischer Traum und Finalangriff",
+    "ja": "後半：アルカディアン・ドリーム〜時間切れ"
+   },
+   "mechanics": [
+    {
+     "id": "idyllic-dream",
+     "names": {
+      "en": "Idyllic Dream",
+      "fr": "Rêve arcadien",
+      "de": "Arkadischer Traum",
+      "ja": "アルカディアン・ドリーム"
+     },
+     "aliases": {
+      "en": [
+       "dream",
+       "idyllic",
+       "twisted vision",
+       "temporal curtain"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": [
+       "ドリーム",
+       "ワンエース式"
+      ]
+     },
+     "how": {
+      "en": "A three-plus-minute memory sequence: player clones and boss clones are set up (stacks on one side, defamations on the other), Twisted Vision freezes them while you go to a split arena with Lindwurm's Meteor and elemental Downfall towers (dark, wind, fire, earth) plus Arcanum hits, then you return and all the frozen clones and the Temporal Curtain clone resolve in order.",
+      "fr": "Une séquence de mémoire de plus de trois minutes : clones joueurs et clones du boss sont placés (packages d'un côté, défamations de l'autre), Projection mentale les fige pendant que tu vas sur une arène coupée avec Météores du Lindwurm et tours élémentaires d'Effondrement absolu (ténèbres, vent, feu, terre) et des coups d'Arcanum, puis tu reviens et tous les clones figés et celui de Rupture spatiale se résolvent dans l'ordre.",
+      "de": "Eine über dreiminütige Gedächtnis-Sequenz: Spieler- und Boss-Klone werden aufgestellt (Sammeln auf einer Seite, Defamations auf der anderen), Raumverschiebung friert sie ein, während du in eine geteilte Arena mit Lindwurm-Meteo und elementaren Vollkommener-Ruin-Türmen (Dunkel, Wind, Feuer, Erde) plus Arkanum-Treffern gehst, dann kommst du zurück und alle eingefrorenen Klone und der Raumspalt-Klon lösen nacheinander aus.",
+      "ja": "3分以上続く記憶ギミック。分身の安地（12か34）、大円と頭割り2セット、別空間で塔（炎・土・光闇・光風）とニア/ファー、模倣細胞のX字/十字と空間裂断の扇。戻ってから凍結されていた分身が順に発動。"
+     },
+     "strats": [
+      {
+       "strat": "na-pf",
+       "how": {
+        "en": "DN is the most popular PF version (Uptime Idyllic is another): remember which clone set came first; defamations on the south-to-northwest side, stacks on the north-to-southeast side; quadrants 1-2 form the north party and 3-4 the south. On the meteor platforms supports left and DPS right, melee front and ranged back; dark players NW/NE, wind east/west slightly north.",
+        "fr": "DN est la version PF la plus populaire (Uptime Idyllic en est une autre) : retiens quel groupe de clones est venu en premier ; défamations côté sud à nord-ouest, packages côté nord à sud-est ; quarts 1-2 = groupe nord, 3-4 = sud. Sur les plateformes, supports à gauche et DPS à droite, mêlées devant et distances derrière ; ténèbres NO/NE, vent est/ouest un peu au nord.",
+        "de": "DN ist die beliebteste PF-Version (Uptime Idyllic eine andere): merk dir, welcher Klon-Satz zuerst kam; Defamations auf der Seite Süd bis Nordwest, Sammeln auf Nord bis Südost; Viertel 1-2 bilden die Nordgruppe, 3-4 die Südgruppe. Auf den Meteor-Plattformen Supporter links, DPS rechts, Nah vorne, Fern hinten; Dunkel NW/NO, Wind Ost/West etwas nördlich.",
+        "ja": "DN式が最も人気（Uptime Idyllicも）。どの分身が先か覚える。散開は南〜北西側、頭割りは北〜南東側。1・2象限が北組、3・4が南組。メテオの足場はサポート左・DPS右、近接前・遠隔後ろ。闇は北西/北東、風は東西のやや北。"
+       }
+      },
+      {
+       "strat": "jp-nukemaru",
+       "how": {
+        "en": "Dream One-Ace method with Nukemaru's position macro: P1 remember 12 or 34 safe; P2 swap depending on whether A is a stack or circle; P3 split fire/earth/light-dark/light-wind towers; P4 remember the first cell shape (X or plus) to find the Temporal Curtain cone safe spot.",
+        "fr": "Méthode Dream One-Ace avec la macro de positions de Nukemaru : P1 retiens 12 ou 34 sûr ; P2 échange selon si A est un package ou un cercle ; P3 répartis les tours feu/terre/lumière-ténèbres/lumière-vent ; P4 retiens la forme de la première cellule (X ou +) pour le cône de Rupture spatiale.",
+        "de": "Dream-One-Ace mit Nukemarus Positionsmakro: P1 merk dir 12 oder 34 sicher; P2 tauschen, je nachdem ob A Sammeln oder Kreis ist; P3 Feuer/Erde/Licht-Dunkel/Licht-Wind-Türme aufteilen; P4 die erste Zellform (X oder Plus) merken für den Raumspalt-Kegel.",
+        "ja": "ドリームワンエース式（ぬけまる氏の位置マクロ）：P1は12安地か34安地、P2はAが頭割りか円かで入れ替え判断、P3は炎・土・光闇・光風の塔を分担、P4は最初の模倣細胞の形（X字/十字）で空間裂断の扇の安地。"
+       }
+      }
+     ],
+     "uncertain": true,
+     "note": {
+      "en": "Idyllic Dream is very long; only the outline per strat is stored here. Use the strat's raidplan or macro for exact spots.",
+      "fr": "Le Rêve est très long ; seul le résumé par strat est stocké ici. Utilise le raidplan ou la macro pour les spots exacts.",
+      "de": "Der Traum ist sehr lang; hier ist nur die Übersicht je Strat gespeichert. Für genaue Plätze den Raidplan oder das Makro nutzen.",
+      "ja": "ドリームは非常に長いので概要のみ。正確な位置はレイドプラン/マクロで確認。"
+     },
+     "tags": [
+      "stack",
+      "spread",
+      "dodge",
+      "debuff"
+     ]
+    },
+    {
+     "id": "arcadian-hell",
+     "names": {
+      "en": "Double Sobat / Arcadian Hell (enrage)",
+      "fr": "Double coup de pied / Enfer arcadien (enrage)",
+      "de": "Doppel-Sobat / Arkadische Hölle (Finalangriff)",
+      "ja": "ダブルソバット / アルカディアン・ヘル（時間切れ）"
+     },
+     "aliases": {
+      "en": [
+       "enrage",
+       "arcadian hell"
+      ],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A last Double Sobat, then two Arcadian Hell raidwides (the second hurts more, save mitigation for it; don't waste it on the Replication in between), then the enrage.",
+      "fr": "Un dernier Double coup de pied, puis deux Enfers arcadiens (le second fait plus mal, garde la mitigation ; ne la gâche pas sur la Réplication entre les deux), puis l'enrage.",
+      "de": "Ein letzter Doppel-Sobat, dann zwei Arkadische Höllen (die zweite tut mehr weh, Mitigation dafür aufheben; nicht auf die Zellteilung dazwischen verschwenden), dann der Finalangriff.",
+      "ja": "ダブルソバット、アルカディアン・ヘル2回（2回目の方が痛いので軽減を合わせる、間のレプリで使わない）、時間切れ。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "raidwide",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Icy Veins - M12S door boss guide",
+   "url": "https://www.icy-veins.com/ffxiv/aac-heavyweight-m4-door-boss-savage-raid-guide",
+   "lang": "en"
+  },
+  {
+   "title": "Icy Veins - M12S final boss guide",
+   "url": "https://www.icy-veins.com/ffxiv/aac-heavyweight-m4-final-boss-savage-raid-guide",
+   "lang": "en"
+  },
+  {
+   "title": "ConsoleGamesWiki - AAC Heavyweight M4 (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/AAC_Heavyweight_M4_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "NAUR FFXIV - M12S",
+   "url": "https://naurffxiv.com/savage/m12s",
+   "lang": "en"
+  },
+  {
+   "title": "WTFDIG - M12S strat selector",
+   "url": "https://wtfdig.info/74/m12s",
+   "lang": "en"
+  },
+  {
+   "title": "game8 JP - ヘビー級4層前半",
+   "url": "https://game8.jp/ff14/756439",
+   "lang": "ja"
+  },
+  {
+   "title": "game8 JP - ヘビー級4層後半",
+   "url": "https://game8.jp/ff14/757988",
+   "lang": "ja"
+  },
+  {
+   "title": "cactbot r12s timeline translations",
+   "url": "https://raw.githubusercontent.com/OverlayPlugin/cactbot/main/ui/raidboss/data/07-dt/raid/r12s.ts",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 (official names, Action/BNpcName/Status sheets)",
+   "url": "https://v2.xivapi.com/api/search",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

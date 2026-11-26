@@ -1,0 +1,462 @@
+{
+ "id": "a5s",
+ "type": "savage",
+ "expansion": "HW",
+ "patch": "3.2",
+ "names": {
+  "en": "Alexander - The Fist of the Son (Savage)",
+  "fr": "Alexander - Le Poing du Fils (sadique)",
+  "de": "Alexander - Faust des Sohnes (episch)",
+  "ja": "機工城アレキサンダー零式：律動編1"
+ },
+ "aliases": {
+  "en": [
+   "a5s",
+   "a5 savage",
+   "alexander 5 savage",
+   "ratfinx savage",
+   "fist of the son savage",
+   "midas 1 savage"
+  ],
+  "fr": [
+   "a5s",
+   "alexander 5 sadique",
+   "poing du fils sadique"
+  ],
+  "de": [
+   "a5s",
+   "alexander 5 episch",
+   "faust des sohnes episch"
+  ],
+  "ja": [
+   "律動編1零式",
+   "律動編零式1層",
+   "アレキ零式5層",
+   "律動1層",
+   "ラットフィンクス"
+  ]
+ },
+ "summary": {
+  "en": "Floor 1 of Alexander: Midas (Savage). A Faust DPS check, then Ratfinx Twinkledinks. Four syringe pools around the arena turn players into a gorilla (knock bombs), a bird (dodge Boost), invisible (drop aggro) or cure them; overusing them is deadly. Later phases add many adds (Cobra, Minotaur, Gawker, Groper, Shabti).",
+  "fr": "Étage 1 d'Alexander : Midas (sadique). Un test de DPS sur Faust, puis Ratfinx Twinkledinks. Quatre bassins de seringues transforment en gorille (renvoyer les bombes), en oiseau (esquiver Boost), en invisible (perdre l'aggro) ou soignent ; en abuser est mortel. Ensuite beaucoup d'adds (Cobra, Minotaure, Gawker, Groper, Shabti).",
+  "de": "Ebene 1 von Alexander: Midas (episch). Ein Faust-DPS-Check, dann Ratfinx Twinkledinks. Vier Spritzen-Pools verwandeln dich in einen Gorilla (Bomben wegschlagen), einen Vogel (Boost ausweichen), unsichtbar (Aggro verlieren) oder heilen; zu oft benutzen ist tödlich. Später viele Adds (Cobra, Minotaurus, Gawker, Groper, Shabti).",
+  "ja": "律動編1層零式。ファウスト系のDPSチェック後、奇才のラットフィンクス戦。周囲の薬液でゴリラ（爆弾を殴る）、鳥（突進回避）、透明化（敵視を外す）、治療などに変身するが、使いすぎると危険。後半はコブラやミノタウロスなど多数の雑魚。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "This fight is mostly cleared unsynced or at minimum item level today, so strats rarely matter. The entries below explain how each mechanic works. Mechanic names in French and German are the English ones (official FR/DE names not verified).",
+  "fr": "Aujourd'hui ce combat se fait surtout en mode sans restriction ou en ilvl minimum, donc la strat compte rarement. Les entrées ci-dessous expliquent comment marche chaque mécanique. Les noms des mécaniques sont en anglais (noms FR officiels non vérifiés).",
+  "de": "Heute wird dieser Kampf meist ohne Stufenbegrenzung oder mit Mindest-Itemlevel gemacht, die Strat spielt also selten eine Rolle. Die Einträge unten erklären, wie jede Mechanik funktioniert. Die Mechaniknamen sind englisch (offizielle DE-Namen nicht geprüft).",
+  "ja": "現在このコンテンツは主に制限解除やIL最低限で攻略されるため、攻略法の違いはほとんど問題になりません。以下では各ギミックの仕組みを説明します。英語名のままのギミック名は日本語の公式名を確認できなかったものです。"
+ },
+ "phases": [
+  {
+   "id": "door",
+   "names": {
+    "en": "Faust and Hummelfaust",
+    "fr": "Faust et Hummelfaust",
+    "de": "Faust und Hummelfaust",
+    "ja": "ファウスト／ネオファウスト"
+   },
+   "mechanics": [
+    {
+     "id": "faust-burn",
+     "names": {
+      "en": "Faust DPS check",
+      "fr": "Faust (test de DPS)",
+      "de": "Faust (DPS-Check)",
+      "ja": "ファウスト（DPSチェック）"
+     },
+     "aliases": {
+      "en": [
+       "faust dps check"
+      ],
+      "fr": [
+       "faust dps check"
+      ],
+      "de": [
+       "faust dps check"
+      ],
+      "ja": [
+       "ファウスト（DPSチェック）"
+      ]
+     },
+     "how": {
+      "en": "Two Fausts cleave the tanks (Kaltstrahl). After about 50 s Hummelfaust lands on a marked player; any Faust still alive explodes for raid damage and gives Hummelfaust Damage Up per % of HP left.",
+      "fr": "Deux Faust cleavent les tanks (Kaltstrahl). Après ~50 s Hummelfaust atterrit sur un joueur marqué ; chaque Faust encore vivant explose et donne à Hummelfaust un Bonus de dégâts par % de PV restant.",
+      "de": "Zwei Fausts cleaven die Tanks (Kaltstrahl). Nach etwa 50 s landet Hummelfaust auf einem markierten Spieler; jeder noch lebende Faust explodiert und gibt Hummelfaust Schaden-erhöht pro übrigem LP-Prozent.",
+      "ja": "ファウスト2体がタンクに前方攻撃。約50秒後にネオファウストが降下し、残っているファウストは爆発して残りHP分の強化を与える。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "tankbuster",
+      "cleave",
+      "dps-check"
+     ]
+    },
+    {
+     "id": "hummelfaust",
+     "names": {
+      "en": "Hummelfaust (Panzerschreck)",
+      "fr": "Hummelfaust (Panzerschreck)",
+      "de": "Hummelfaust (Panzerschreck)",
+      "ja": "ネオ・ファウスト（パンツァーシュレッケ）"
+     },
+     "aliases": {
+      "en": [
+       "hummelfaust (panzerschreck)"
+      ],
+      "fr": [
+       "hummelfaust (panzerschreck)"
+      ],
+      "de": [
+       "hummelfaust (panzerschreck)"
+      ],
+      "ja": [
+       "ネオファウスト"
+      ]
+     },
+     "how": {
+      "en": "Cleaves with stacking vulnerability (tank swap after each chain); its 4th raid-wide Panzerschreck is the enrage, about 90 s.",
+      "fr": "Cleave avec vulnérabilité cumulée (swap après chaque série) ; son 4e Panzerschreck de zone est l'enrage (~90 s).",
+      "de": "Cleavet mit stapelnder Verwundbarkeit (Tankwechsel nach jeder Kette); sein 4. Raum-Panzerschreck ist der Enrage (ca. 90 s).",
+      "ja": "被ダメ上昇付きの前方攻撃（連撃ごとにタンクスイッチ）。4回目の全体攻撃で時間切れ（約90秒）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "tankswap",
+      "debuff",
+      "raidwide",
+      "enrage"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "boss",
+   "names": {
+    "en": "Ratfinx Twinkledinks",
+    "fr": "Ratfinx Twinkledinks",
+    "de": "Ratfinx Twinkledinks",
+    "ja": "奇才のラットフィンクス"
+   },
+   "mechanics": [
+    {
+     "id": "syringes",
+     "names": {
+      "en": "Goblixer syringe pools",
+      "fr": "Goblixer syringe pools",
+      "de": "Goblixer syringe pools",
+      "ja": "薬液（エーテル変換装置）"
+     },
+     "aliases": {
+      "en": [
+       "goblixer syringe pools"
+      ],
+      "fr": [
+       "goblixer syringe pools"
+      ],
+      "de": [
+       "goblixer syringe pools"
+      ],
+      "ja": [
+       "薬液（エーテル変換装置）"
+      ]
+     },
+     "how": {
+      "en": "Each colored pool gives a buff: red = gorilla (can knock a bomb once), purple = bird (immune to Boost), blue = invisible (drops tethers/aggro), green = heals/cleanses. Each use adds Overgulp stacks; too many give a heavy DoT, and filling the central meter wipes. Use only what the mechanic needs.",
+      "fr": "Chaque bassin donne un buff : rouge = gorille (renvoie une bombe une fois), violet = oiseau (immunisé à Boost), bleu = invisible (perd liens/aggro), vert = soin/purification. Chaque usage ajoute des cumuls Overgulp ; trop = gros DoT, et remplir la jauge centrale = wipe. N'utilise que le nécessaire.",
+      "de": "Jeder farbige Pool gibt einen Buff: rot = Gorilla (kann eine Bombe einmal wegschlagen), lila = Vogel (immun gegen Boost), blau = unsichtbar (verliert Verbindungen/Aggro), grün = Heilung/Reinigung. Jede Nutzung gibt Overgulp-Stacks; zu viele geben starken DoT, und eine volle Mittelanzeige ist ein Wipe. Nur benutzen, was die Mechanik braucht.",
+      "ja": "各色の薬液で変身：赤＝ゴリラ（爆弾を1回殴れる）、紫＝鳥（突進無効）、青＝透明（線・敵視解除）、緑＝回復・解除。使うたびにスタックが増え、多すぎると強いDoT、中央のメーターが満タンで全滅。必要な分だけ使う。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Color-to-effect mapping is from CGW's rotation notes plus one JP guide; check in game.",
+      "fr": "Lien couleur/effet tiré de CGW et d'un guide JP ; à vérifier en jeu.",
+      "de": "Farbe-zu-Effekt-Zuordnung aus CGW und einem JP-Guide; im Spiel prüfen.",
+      "ja": "色と効果の対応はCGWと日本の資料1件によるもの。"
+     },
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "gobjab",
+     "names": {
+      "en": "Gobjab (Concussion)",
+      "fr": "Gobcoup du gauche (Commotion cérébrale)",
+      "de": "Hüpfzzu mal (Schädel-Hirn-Trauma)",
+      "ja": "牽制のジャブ（脳しんとう）"
+     },
+     "aliases": {
+      "en": [
+       "gobjab (concussion)"
+      ],
+      "fr": [
+       "gobjab (concussion)"
+      ],
+      "de": [
+       "gobjab (concussion)"
+      ],
+      "ja": [
+       "脳しんとう"
+      ]
+     },
+     "how": {
+      "en": "Giant-form hits stack Headache on the tank; at 4-5 stacks the tank gets Concussion (stunned, any hit kills). Swap tanks before that.",
+      "fr": "En forme géante, les coups cumulent Migraine sur le tank ; à 4-5 cumuls il prend Commotion (étourdi, tout coup tue). Swap avant.",
+      "de": "In Riesenform stapeln Treffer Kopfschmerz auf dem Tank; bei 4-5 Stacks gibt es Gehirnerschütterung (betäubt, jeder Treffer tötet). Vorher wechseln.",
+      "ja": "巨人化中の攻撃でタンクにスタックが溜まり、上限で脳しんとう（スタン＋被弾で即死）。その前にタンクスイッチ。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Sources differ on the exact stack count (CGW 4, JP guide 5).",
+      "fr": "Les sources diffèrent sur le nombre (CGW 4, guide JP 5).",
+      "de": "Quellen nennen unterschiedliche Stackzahlen (CGW 4, JP 5).",
+      "ja": "スタック数は資料により4または5で食い違い。"
+     },
+     "tags": [
+      "tankswap",
+      "debuff"
+     ]
+    },
+    {
+     "id": "gobdash-gobhook",
+     "names": {
+      "en": "Gobdash / Gobhook",
+      "fr": "Gobcharge / Gobcrochet",
+      "de": "Große Karacho / Bogene Haken",
+      "ja": "怒濤のダッシュブロー／剛力のフック"
+     },
+     "aliases": {
+      "en": [
+       "gobdash / gobhook"
+      ],
+      "fr": [
+       "gobdash / gobhook"
+      ],
+      "de": [
+       "gobdash / gobhook"
+      ],
+      "ja": [
+       "怒涛のダッシュブロー／剛力のフック"
+      ]
+     },
+     "how": {
+      "en": "A Prey player is charged (anyone hit gets a heavy debuff), then a deadly 180-degree hook. Target goes far, others step aside, then everyone gets behind the boss for the hook.",
+      "fr": "Un joueur Proie est chargé (toute personne touchée prend un gros malus), puis un crochet mortel à 180°. La cible s'éloigne, les autres s'écartent, puis tout le monde derrière le boss pour le crochet.",
+      "de": "Ein Beute-Spieler wird angesprungen (wer getroffen wird, bekommt einen schweren Debuff), dann ein tödlicher 180°-Haken. Ziel geht weit weg, andere weichen aus, danach alle hinter den Boss.",
+      "ja": "予兆対象への突進（巻き込まれると重いデバフ）、続いて前方180度の即死級フック。対象は遠くへ、他は避け、フックはボスの背後で回避。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "cleave",
+      "dodge",
+      "debuff"
+     ]
+    },
+    {
+     "id": "gobcut",
+     "names": {
+      "en": "Gobcut",
+      "fr": "Gobuppercut",
+      "de": "Gobhaken",
+      "ja": "衝撃のアッパー"
+     },
+     "aliases": {
+      "en": [
+       "gobcut"
+      ],
+      "fr": [
+       "gobcut"
+      ],
+      "de": [
+       "gobcut"
+      ],
+      "ja": [
+       "Gobcut"
+      ]
+     },
+     "how": {
+      "en": "Stack marker that kills everyone inside if fewer than four players share it.",
+      "fr": "Marqueur de partage qui tue tout le monde dedans si moins de quatre le prennent.",
+      "de": "Sammelmarker, der alle darin tötet, wenn weniger als vier teilen.",
+      "ja": "頭割り。4人未満だと中の全員が死亡。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack"
+     ]
+    },
+    {
+     "id": "bombs-away",
+     "names": {
+      "en": "Bombs Away",
+      "fr": "Bombs Away",
+      "de": "Bombs Away",
+      "ja": "爆弾投下"
+     },
+     "aliases": {
+      "en": [
+       "bombs away"
+      ],
+      "fr": [
+       "bombs away"
+      ],
+      "de": [
+       "bombs away"
+      ],
+      "ja": [
+       "爆弾投下"
+      ]
+     },
+     "how": {
+      "en": "Big bombs appear and explode almost arena-wide. A player in gorilla form punches each one (once each) into a far corner.",
+      "fr": "De grosses bombes apparaissent et explosent sur presque toute l'arène. Un joueur en gorille frappe chacune (une fois) vers un coin éloigné.",
+      "de": "Große Bomben erscheinen und explodieren fast arenaweit. Ein Spieler in Gorilla-Form schlägt jede (einmal) in eine ferne Ecke.",
+      "ja": "大型爆弾がほぼ全体に爆発。ゴリラ化した人が殴って遠くの隅へ飛ばす（1個につき1回）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    },
+    {
+     "id": "boost-tetrabomb",
+     "names": {
+      "en": "Boost / Tetrabomb",
+      "fr": "Contraction musculaire / Tetrabomb",
+      "de": "Starksammeln / Tetrabomb",
+      "ja": "力溜め／Tetrabomb"
+     },
+     "aliases": {
+      "en": [
+       "boost / tetrabomb"
+      ],
+      "fr": [
+       "boost / tetrabomb"
+      ],
+      "de": [
+       "boost / tetrabomb"
+      ],
+      "ja": [
+       "Boost / Tetrabomb"
+      ]
+     },
+     "how": {
+      "en": "Boost is four ground slams with knockback; bird-form players are immune. Tetrabombs explode in a + shape: stand diagonally from them.",
+      "fr": "Boost = quatre impacts au sol avec recul ; les joueurs en oiseau sont immunisés. Les Tetrabomb explosent en + : place-toi en diagonale.",
+      "de": "Boost sind vier Bodenschläge mit Rückstoß; Spieler in Vogelform sind immun. Tetrabomben explodieren in +-Form: diagonal davon stehen.",
+      "ja": "Boostは4連続の叩きつけ＋ノックバック、鳥化で無効。トゲ爆弾は十字に爆発するので斜めに避ける。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "note": {
+      "en": "English name used: official Japanese name not found in the sources.",
+      "fr": "Nom anglais utilisé : nom japonais officiel non trouvé.",
+      "de": "Englischer Name verwendet: offizieller japanischer Name nicht gefunden.",
+      "ja": "英語名のまま：日本語の公式名は資料で確認できませんでした。"
+     },
+     "tags": [
+      "knockback",
+      "dodge"
+     ]
+    },
+    {
+     "id": "glupgloop",
+     "names": {
+      "en": "Glupgloop",
+      "fr": "Gobacide gluant",
+      "de": "Sauresaft",
+      "ja": "強酸性劇物薬"
+     },
+     "aliases": {
+      "en": [
+       "glupgloop"
+      ],
+      "fr": [
+       "glupgloop"
+      ],
+      "de": [
+       "glupgloop"
+      ],
+      "ja": [
+       "強酸性劇物薬"
+      ]
+     },
+     "how": {
+      "en": "A marked player drops a large poison puddle; drop it at the edge away from the group.",
+      "fr": "Un joueur marqué pose une grande flaque de poison ; pose-la au bord, loin du groupe.",
+      "de": "Ein markierter Spieler legt eine große Giftpfütze; am Rand weg vom Team ablegen.",
+      "ja": "マーカー対象に大きな毒床。外周に捨てる。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": []
+    },
+    {
+     "id": "adds",
+     "names": {
+      "en": "Adds: Cobra, Minotaur, Gawker, Groper, Shabti",
+      "fr": "Adds : cobra, minotaure et chaouabti au regard vide, gobœil, gobchimère",
+      "de": "Adds: aufgerüstete Kobra, aufgerüsteter Minotaurus, Gobglotzer, Gobgreifer, aufgerüsteter Shabti",
+      "ja": "雑魚：ドーピング・コブラ、ドーピング・ミノタウロス、ゴブリアイ、ゴブリキマイラ、ドーピング・シュワブチ"
+     },
+     "aliases": {
+      "en": [
+       "adds: cobra, minotaur, gawker, groper, shabti"
+      ],
+      "fr": [
+       "adds: cobra, minotaur, gawker, groper, shabti"
+      ],
+      "de": [
+       "adds: cobra, minotaur, gawker, groper, shabti"
+      ],
+      "ja": [
+       "雑魚：ドーピングコブラ、ミノタウロス ほか"
+      ]
+     },
+     "how": {
+      "en": "Cobras stack a lethal poison (8 stacks kill); the Minotaur gets stronger when it eats pigs and dies to cobra poison if it eats a cobra; Gawkers have a gaze (look away); Groper tethers a player (blue/invisible clears it); Shabti always crits, kill it fast.",
+      "fr": "Les Cobra cumulent un poison mortel (8 cumuls tuent) ; le Minotaure se renforce en mangeant des cochons et meurt du poison s'il mange un cobra ; les Gawker ont un regard (détourne-toi) ; Groper lie un joueur (bleu/invisible l'enlève) ; Shabti fait toujours critique, tue-le vite.",
+      "de": "Cobras stapeln tödliches Gift (8 Stacks töten); der Minotaurus wird stärker, wenn er Schweine frisst, und stirbt am Gift, wenn er eine Cobra frisst; Gawker haben einen Blickangriff (wegschauen); Groper verbindet einen Spieler (blau/unsichtbar löst es); Shabti trifft immer kritisch, schnell töten.",
+      "ja": "コブラは毒スタック（8で死亡）。ミノタウロスは豚を食べると強化、コブラを食べさせると毒で倒れる。ゴブリアイ系は視線（背を向ける）。線を付ける雑魚は青（透明化）で外す。Shabtiは常にクリティカル、早く倒す。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds",
+      "gaze",
+      "tether",
+      "debuff"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Alexander - The Fist of the Son (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Alexander_-_The_Fist_of_the_Son_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "Lodestone Eorzea Database",
+   "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/2cf52917501/",
+   "lang": "en"
+  },
+  {
+   "title": "browsegames.net 律動編零式（第1層）",
+   "url": "https://browsegames.net/ff14/ff14%E6%A9%9F%E5%B7%A5%E5%9F%8E%E3%82%A2%E3%83%AC%E3%82%AD%E3%82%B5%E3%83%B3%E3%83%80%E3%83%BC%E5%BE%8B%E5%8B%95%E7%B7%A8%E9%9B%B6%E5%BC%8F%E3%81%AE%E6%94%BB%E7%95%A5.html",
+   "lang": "ja"
+  }
+ ],
+ "updated": "2026-11-26"
+}

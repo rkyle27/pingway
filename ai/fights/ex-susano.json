@@ -1,0 +1,299 @@
+{
+ "id": "ex-susano",
+ "type": "extreme",
+ "expansion": "SB",
+ "patch": "4.0",
+ "names": {
+  "en": "The Pool of Tribute (Extreme)",
+  "fr": "La Crique aux tributs (extrême)",
+  "de": "Zenit der Götter - Susano",
+  "ja": "極スサノオ討滅戦"
+ },
+ "aliases": {
+  "en": [
+   "susano ex",
+   "susano extreme",
+   "pool of tribute"
+  ],
+  "fr": [
+   "susano extrême",
+   "crique aux tributs"
+  ],
+  "de": [
+   "susano extrem",
+   "zenit der götter susano"
+  ],
+  "ja": [
+   "極スサノオ",
+   "スサノオ"
+  ]
+ },
+ "summary": {
+  "en": "Extreme trial against Susano in three phases: an opening with Churn (hold still) and knockback mechanics, a sword phase with two Clash quick-time events, and a final phase where a Sinkhole splits the arena in half for Levinbolt.",
+  "fr": "Défi extrême contre Susano en trois phases : une ouverture avec Agitation (reste immobile) et des projections, une phase d'épée avec deux QTE de Clash, et une phase finale où un trou coupe l'arène en deux pour Levinbolt.",
+  "de": "Extrem-Prüfung gegen Susano in drei Phasen: ein Anfang mit Schaum (stillhalten) und Rückstößen, eine Schwertphase mit zwei Clash-Reaktionsereignissen und eine Endphase, in der ein Sinkhole die Arena für Levinbolt halbiert.",
+  "ja": "スサノオ討滅戦（極）。3フェーズ：禍泡付着（静止）とノックバックの序盤、2回のClash（ATM）がある剣のフェーズ、Sinkholeでフィールドが二分されLevinboltを処理する終盤。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1 (100-75%)",
+    "fr": "Phase 1 (100-75 %)",
+    "de": "Phase 1 (100-75 %)",
+    "ja": "フェーズ1（100〜75%）"
+   },
+   "mechanics": [
+    {
+     "id": "churn",
+     "names": {
+      "en": "Churn / Rasen Kaikyo",
+      "fr": "Agitation / Rasen Kaikyo",
+      "de": "Schaum / Rasen Kaikyo",
+      "ja": "禍泡付着／螺旋海峡"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Churn puts a countdown on four players: when it nears 3 seconds hold still and sheathe, or take big damage. Rasen Kaikyo drops circles under four to six players (Churn players first): move out, then stop.",
+      "fr": "Agitation met un compte à rebours sur quatre joueurs : vers 3 secondes, reste immobile et rengaine, sinon gros dégâts. Rasen Kaikyo pose des cercles sous quatre à six joueurs (les Agitation d'abord) : sors, puis arrête-toi.",
+      "de": "Schaum gibt vier Spielern einen Countdown: bei etwa 3 Sekunden stillhalten und Waffe wegstecken, sonst hoher Schaden. Rasen Kaikyo legt Kreise unter vier bis sechs Spieler (Schaum-Spieler zuerst): rausgehen, dann stehen bleiben.",
+      "ja": "禍泡付着は4人にカウント。残り3秒前後で静止し武器をしまわないと大ダメージ。螺旋海峡は4〜6人（禍泡付着の人優先）の足元に円：出てから止まります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff",
+      "dodge"
+     ]
+    },
+    {
+     "id": "yata-no-kagami",
+     "names": {
+      "en": "Yata-no-Kagami / Thunderhead",
+      "fr": "Yata no Kagami / Nuage orageux",
+      "de": "Yata no Kagami / Thunderhead",
+      "ja": "ヤタノカガミ／雷雲"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A marked player is knocked back and then Seasplitter is aimed at them; players between Susano and the target are safe, so stack behind Susano. A Thunderhead cloud then fires a line at a marked player, keep it out of line with the group.",
+      "fr": "Un joueur marqué est projeté puis Seasplitter le vise ; ceux entre Susano et la cible sont à l'abri, donc regroupe-toi derrière Susano. Un nuage Thunderhead tire ensuite une ligne sur un joueur marqué, ne l'aligne pas avec le groupe.",
+      "de": "Ein markierter Spieler wird zurückgestoßen, dann zielt Seasplitter auf ihn; Spieler zwischen Susano und dem Ziel sind sicher, also hinter Susano sammeln. Eine Thunderhead-Wolke feuert danach eine Linie auf einen markierten Spieler, nicht mit der Gruppe in eine Linie bringen.",
+      "ja": "マーカー対象がノックバックされ、Seasplitterがその人へ。スサノオと対象の間にいれば安全なので、スサノオの後ろに集まります。その後Thunderheadの雲が対象へ直線攻撃、PTと重ねないように。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "knockback",
+      "dodge"
+     ]
+    },
+    {
+     "id": "brightstorm",
+     "names": {
+      "en": "Brightstorm / Assail",
+      "fr": "Claire tempête / Assaut",
+      "de": "Heller Sturm / Schwere Attacke",
+      "ja": "晴嵐／強撃"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Brightstorm is a stack; Assail an instant tankbuster.",
+      "fr": "Claire tempête est un package ; Assail un tankbuster instantané.",
+      "de": "Heller Sturm ist ein Sammelpunkt; Assail ein sofortiger Tankbuster.",
+      "ja": "晴嵐は頭割り、Assailは即時のタンク強攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "tankbuster"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Sword phase",
+    "fr": "Phase de l'épée",
+    "de": "Schwertphase",
+    "ja": "剣フェーズ"
+   },
+   "mechanics": [
+    {
+     "id": "clashing",
+     "names": {
+      "en": "Clashing / Dark Levin",
+      "fr": "Clashing / Dark Levin",
+      "de": "Clashing / Dark Levin",
+      "ja": "Clashing／Dark Levin"
+     },
+     "aliases": {
+      "en": [
+       "atm",
+       "qte",
+       "clash"
+      ],
+      "fr": [
+       "qte"
+      ],
+      "de": [
+       "qte"
+      ],
+      "ja": [
+       "ATM"
+      ]
+     },
+     "how": {
+      "en": "One player starts a 24-second quick-time event at the Blade's Shadow while the party attacks the sword; failing it or that player dying wipes. One tank does the Clash while the other bursts the four Dark Levin orbs (from northeast, clockwise); tanks swap for the second Clash because of the debuff. Then Ame-no-Murakumo hits everyone, lethal on the center line.",
+      "fr": "Un joueur lance un QTE de 24 secondes sur l'Ombre de la lame pendant que le groupe frappe l'épée ; le rater ou que ce joueur meure fait wipe. Un tank fait le Clash pendant que l'autre éclate les quatre orbes Dark Levin (depuis le nord-est, sens horaire) ; les tanks échangent pour le second Clash à cause du debuff. Ensuite Ame no Murakumo frappe tout le monde, mortel sur la ligne centrale.",
+      "de": "Ein Spieler startet am Schatten der Klinge ein 24-Sekunden-Reaktionsereignis, während die Gruppe das Schwert angreift; Scheitern oder Tod dieses Spielers bedeutet Wipe. Ein Tank macht den Clash, der andere lässt die vier Dark-Levin-Kugeln platzen (ab Nordosten im Uhrzeigersinn); wegen des Debuffs wechseln die Tanks beim zweiten Clash. Dann trifft Ame no Murakumo alle, tödlich auf der Mittellinie.",
+      "ja": "1人がBlade's Shadowで24秒のATMを開始し、PTは剣を攻撃。失敗かその人の死亡で全滅。片方のタンクがClash、もう片方がDark Levinの玉4つを北東から時計回りに割ります。デバフがあるので2回目はタンク交代。その後アメノムラクモ、中央線上は即死。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankswap",
+      "debuff",
+      "raidwide"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "names": {
+    "en": "Phase 3 (75-0%)",
+    "fr": "Phase 3 (75-0 %)",
+    "de": "Phase 3 (75-0 %)",
+    "ja": "フェーズ3（75〜0%）"
+   },
+   "mechanics": [
+    {
+     "id": "levinbolt",
+     "names": {
+      "en": "Levinbolt / Sinkhole",
+      "fr": "Fulguration / Sinkhole",
+      "de": "Keraunisches Feld / Sinkhole",
+      "ja": "稲妻／Sinkhole"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A black line splits the arena east/west and kills if you stay in it. Levinbolt marks a player and hits the half they stand on: marked players cross to the other side; if Susano shouts 'Now cometh our part! Make way!' the marked players are stunned instead, so everyone else crosses away from them.",
+      "fr": "Une ligne noire coupe l'arène est/ouest et tue si tu restes dedans. Levinbolt marque un joueur et frappe la moitié où il se tient : les marqués passent de l'autre côté ; si Susano crie la réplique 'Now cometh our part! Make way!', les marqués sont étourdis et ce sont les autres qui changent de côté.",
+      "de": "Eine schwarze Linie teilt die Arena Ost/West und tötet, wenn du darin bleibst. Levinbolt markiert einen Spieler und trifft seine Hälfte: Markierte wechseln auf die andere Seite; ruft Susano den Satz 'Now cometh our part! Make way!', sind die Markierten betäubt, und alle anderen wechseln weg von ihnen.",
+      "ja": "黒い線でフィールドが東西に分かれ、線上にい続けると死亡。Levinboltは対象の立っている半面に攻撃：対象が反対側へ移動。スサノオが特定のセリフ（英語版 'Now cometh our part! Make way!'）を言うと対象はスタンするので、他の全員が反対側へ。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "The shout is quoted from the English client; its FR/DE/JA wording was not found.",
+      "fr": "La réplique est citée du client anglais ; sa version FR n'a pas été trouvée.",
+      "de": "Der Satz stammt aus dem englischen Client; die DE-Version wurde nicht gefunden.",
+      "ja": "セリフは英語版より。日本語版の文言は未確認。"
+     },
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "hidden-gate",
+     "names": {
+      "en": "The Hidden Gate",
+      "fr": "Porte cachée",
+      "de": "Verschwundenes Tor",
+      "ja": "岩戸隠れ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A random DPS is trapped in a rock and three copies are shuffled; free them within 15 seconds. The real one is the last one on the enmity list (if Susano sits between the gaols in the list, it is the one listed above Susano).",
+      "fr": "Un DPS au hasard est enfermé dans un rocher et trois copies sont mélangées ; libère-le en 15 secondes. Le vrai est le dernier de la liste d'inimitié (si Susano est entre les prisons dans la liste, c'est celle juste au-dessus de Susano).",
+      "de": "Ein zufälliger DD wird in einem Fels gefangen, drei Kopien werden gemischt; befreie ihn innerhalb von 15 Sekunden. Der echte ist der letzte in der Feindseligkeitsliste (steht Susano zwischen den Gefängnissen in der Liste, ist es das direkt über Susano).",
+      "ja": "ランダムなDPSが岩に閉じ込められ、偽物3つと入れ替わります。15秒以内に解放。本物は敵視リストの最後（リストでスサノオが岩の間にある場合はスサノオのすぐ上）。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "adds"
+     ]
+    },
+    {
+     "id": "stormsplitter-ukehi",
+     "names": {
+      "en": "Stormsplitter / Ukehi",
+      "fr": "Fendeur de tempêtes / Ukehi",
+      "de": "Sturmspalter / Ukehi",
+      "ja": "海嵐斬／宇気比"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Stormsplitter is a tankbuster with a slashing vulnerability, tanks swap. Ukehi is raid damage, often two or three in a row; the enrage at about 14:40 is an unsurvivable Ukehi. Stormsplitter hits the MT; tanks swap after it so the MT doesn't take the next one with the vulnerability.",
+      "fr": "Fendeur de tempêtes est un tankbuster avec vulnérabilité tranchante, les tanks swap. Ukehi : dégâts de groupe, souvent deux ou trois d'affilée ; l'enrage vers 14:40 est un Ukehi impossible à survivre. Stormsplitter frappe le MT ; les tanks échangent après pour que le MT ne prenne pas le suivant avec la vulnérabilité.",
+      "de": "Sturmspalter ist ein Tankbuster mit Hiebverwundbarkeit, Tanks wechseln. Ukehi ist Gruppenschaden, oft zwei- oder dreimal hintereinander; der Enrage gegen 14:40 ist ein nicht überlebbares Ukehi. Stormsplitter trifft den MT; danach tauschen die Tanks, damit der MT den nächsten nicht mit der Verwundbarkeit abbekommt.",
+      "ja": "海嵐斬は斬属性被ダメ上昇付きのタンク強攻撃、タンクスイッチ。宇気比は全体攻撃で2〜3連続のことも。14:40頃の時間切れは耐えられない宇気比。StormsplitterはMTに来るので、被ダメージ上昇中に次を受けないよう直後にタンクスイッチします。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "tankswap",
+      "debuff",
+      "raidwide",
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - The Pool of Tribute (Extreme)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/The_Pool_of_Tribute_(Extreme)",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}

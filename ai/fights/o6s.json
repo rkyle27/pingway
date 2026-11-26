@@ -1,0 +1,356 @@
+{
+ "id": "o6s",
+ "type": "savage",
+ "expansion": "SB",
+ "patch": "4.2",
+ "names": {
+  "en": "Sigmascape V2.0 (Savage)",
+  "fr": "Sigmastice v2.0 (sadique)",
+  "de": "Sigmametrie 2.0 (episch)",
+  "ja": "次元の狭間オメガ零式：シグマ編2"
+ },
+ "aliases": {
+  "en": [
+   "o6s",
+   "chadarnook",
+   "demon chadarnook",
+   "sigmascape 2 savage"
+  ],
+  "fr": [
+   "o6s",
+   "chadarnook",
+   "sigmastice 2"
+  ],
+  "de": [
+   "o6s",
+   "chadarnook",
+   "sigmametrie 2"
+  ],
+  "ja": [
+   "シグマ零式2層",
+   "チャダルヌーク",
+   "o6s"
+  ]
+ },
+ "summary": {
+  "en": "Second floor of Sigmascape Savage against Demon Chadarnook in a haunted mansion. The boss possesses paintings to change its attacks, and players paint sketches with coloured paint puddles (duty action) to counter them.",
+  "fr": "Deuxième étage de Sigmastice sadique contre Chadarnook démon dans un manoir hanté. Le boss possède des tableaux pour changer ses attaques, et les joueurs peignent des esquisses avec des flaques de peinture colorées (action de mission) pour les contrer.",
+  "de": "Zweite Ebene von Sigmametrie episch gegen Dämon Chadarnook in einem Spukhaus. Der Boss besetzt Gemälde, um seine Angriffe zu ändern, und die Spieler malen mit farbigen Farbpfützen (Inhaltsaktion) Skizzen, um sie zu kontern.",
+  "ja": "シグマ編2層、チャダルヌーク・デーモン戦。ボスが絵画に憑依して攻撃が変わり、コンテンツアクションで色の絵の具を使ってスケッチを描き対処します。"
+ },
+ "strats_overview": [],
+ "note": {
+  "en": "Old content: today it is mostly cleared unsynced or at minimum item level, so fixed strats rarely matter. The mechanics below describe synced play; no strat is listed because no single standard is documented by more than one source.",
+  "fr": "Contenu ancien : aujourd'hui on le fait surtout en non synchronisé ou au niveau d'objet minimum, donc les strats fixes comptent rarement. Les mécaniques ci-dessous décrivent le combat synchronisé ; aucune strat n'est listée car aucun standard n'est documenté par plusieurs sources.",
+  "de": "Alter Content: Heute wird er meist unsynchronisiert oder mit minimaler Gegenstandsstufe gecleart, feste Strats spielen also kaum eine Rolle. Die Mechaniken unten beschreiben synchronisiertes Spielen; es ist keine Strat aufgeführt, weil kein Standard von mehr als einer Quelle belegt ist.",
+  "ja": "古いコンテンツのため、現在は主にアンシンクや最低IL攻略で突破されており、決まった処理法はほとんど重要ではありません。以下はシンク時のギミック解説です。複数の資料で確認できる標準処理法がないため、処理法は載せていません。"
+ },
+ "phases": [
+  {
+   "id": "p1",
+   "names": {
+    "en": "Phase 1",
+    "fr": "Phase 1",
+    "de": "Phase 1",
+    "ja": "フェーズ1"
+   },
+   "mechanics": [
+    {
+     "id": "demonic-basics",
+     "names": {
+      "en": "Demonic Howl / Demonic Shear",
+      "fr": "Hurlement démoniaque / Cisailles démoniaques",
+      "de": "Dämonisches Heulen / Dämonische Schere",
+      "ja": "デモニックハウル／デモニックシアー"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Howl is raid-wide damage, Shear a tankbuster.",
+      "fr": "Hurlement : dégâts de groupe ; Cisailles : tankbuster.",
+      "de": "Heulen ist Gruppenschaden, Schere ein Tankbuster.",
+      "ja": "ハウルは全体攻撃、シアーはタンク強攻撃。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "raidwide",
+      "tankbuster"
+     ]
+    },
+    {
+     "id": "possession",
+     "names": {
+      "en": "Possession (paintings and sketches)",
+      "fr": "Possession (tableaux et esquisses)",
+      "de": "Besessenheit (Gemälde und Skizzen)",
+      "ja": "絵画憑依（絵画とスケッチ）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "The boss possesses a painting and the Goddess casts an element. Counter with the right sketch: blue Waterfall gives fire resistance, black Air Force helps against Flash Flood, yellow Boulder gives cover from the water painting, pink Typhon lets a tank blow the Easterly orbs away. Tornado towers are taken by the stack or by one tank with an invuln.",
+      "fr": "Le boss possède un tableau et la Déesse lance un élément. Contre avec la bonne esquisse : « Waterfall » bleu donne une résistance au feu, « Air Force » noir aide contre Flash Flood, « Boulder » jaune protège du tableau d'eau, « Typhon » rose permet à un tank de souffler les orbes Easterly. Les tours de tornade se prennent en package ou par un tank avec invu.",
+      "de": "Der Boss besetzt ein Gemälde und die Göttin wirkt ein Element. Kontere mit der richtigen Skizze: blaues „Waterfall“ gibt Feuerresistenz, schwarzes „Air Force“ hilft gegen Flash Flood, gelbes „Boulder“ gibt Deckung vor dem Wassergemälde, rosa „Typhon“ lässt einen Tank die Easterly-Kugeln wegpusten. Tornado-Türme nimmt die Gruppe gemeinsam oder ein Tank mit Unverwundbarkeit.",
+      "ja": "ボスが絵画に憑依し、女神が属性攻撃。適切なスケッチで対処：青のWaterfall＝火耐性、黒のAir Force＝Flash Flood対策、黄のBoulder＝水の絵画から隠れる、ピンクのTyphon＝タンクがEasterlyの玉を吹き飛ばす。竜巻の塔は全員で入るか、タンクが無敵で1人で受けます。"
+     },
+     "strats": [],
+     "uncertain": true,
+     "note": {
+      "en": "Sketch names are from the English guide; their FR/DE/JA names are not verified. Possession itself is verified.",
+      "fr": "Les noms des esquisses viennent du guide anglais ; FR non vérifié. Possession est vérifié.",
+      "de": "Die Skizzennamen stammen aus dem englischen Guide; DE nicht geprüft. Besessenheit ist geprüft.",
+      "ja": "スケッチ名は英語攻略によるもので日本語名は未確認。絵画憑依は確認済み。"
+     },
+     "tags": [
+      "tower",
+      "dodge"
+     ]
+    },
+    {
+     "id": "poltergeist-lure",
+     "names": {
+      "en": "Poltergeist + Divine Lure",
+      "fr": "Esprit frappeur + Séduction divine",
+      "de": "Poltergeist + Göttliche Verlockung",
+      "ja": "ポルターガイスト＋女神の誘惑"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A ghost tethers a healer and kills on contact but freezes while looked at; Divine Lure is a gaze. The healer watches the ghost, turns away for the gaze, then looks back.",
+      "fr": "Un fantôme se lie à un healer et tue au contact mais s'arrête quand on le regarde ; Séduction divine est un regard. Le healer fixe le fantôme, se détourne pour le regard, puis le regarde à nouveau.",
+      "de": "Ein Geist verbindet sich mit einem Heiler und tötet bei Berührung, bleibt aber stehen, wenn man ihn ansieht; Göttliche Verlockung ist ein Blickangriff. Der Heiler schaut den Geist an, dreht sich für den Blick weg und schaut dann wieder hin.",
+      "ja": "ゴーストがヒーラーに線を付け、触れると即死、見ている間は止まります。女神の誘惑は視線攻撃。ヒーラーはゴーストを見て、誘惑の時だけ背を向け、また見ます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether",
+      "gaze"
+     ]
+    },
+    {
+     "id": "demonic-pain",
+     "names": {
+      "en": "Demonic Pain",
+      "fr": "Douleur démoniaque",
+      "de": "Dämonischer Schmerz",
+      "ja": "デモニックペイン"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Tethers each tank to a DPS; tethered pairs move apart, a short tether gives Vulnerability Up.",
+      "fr": "Lie chaque tank à un DPS ; les paires s'écartent, un lien trop court donne Vulnérabilité augmentée.",
+      "de": "Verbindet jeden Tank mit einem DD; die Paare gehen auseinander, eine zu kurze Verbindung gibt Verwundbarkeit.",
+      "ja": "タンクとDPSを線でつなぎます。ペアは離れ、線が短いと被ダメージ上昇。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tether"
+     ]
+    },
+    {
+     "id": "demonic-storm",
+     "names": {
+      "en": "Demonic Storm",
+      "fr": "Tempête démoniaque",
+      "de": "Dämonischer Sturm",
+      "ja": "デモニックストーム"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Stack marker on a healer.",
+      "fr": "Package sur un healer.",
+      "de": "Sammelmarker auf einem Heiler.",
+      "ja": "ヒーラーに頭割り。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack"
+     ]
+    },
+    {
+     "id": "last-kiss",
+     "names": {
+      "en": "Last Kiss",
+      "fr": "Baiser fatal",
+      "de": "Todeskuss",
+      "ja": "死の口づけ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "A DPS is marked and takes a tankbuster after 10 seconds; the mark passes by touch and earlier holders can't get it back. The marked DPS goes to the off-tank away from the group, and the off-tank walks away once it has it.",
+      "fr": "Un DPS est marqué et prend un tankbuster au bout de 10 secondes ; la marque se transmet au contact et les anciens porteurs ne peuvent pas la reprendre. Le DPS marqué va voir le off-tank loin du groupe, et le off-tank s'éloigne une fois qu'il l'a.",
+      "de": "Ein DD wird markiert und bekommt nach 10 Sekunden einen Tankbuster; die Markierung wird per Berührung weitergegeben und frühere Träger können sie nicht zurückbekommen. Der markierte DD geht abseits der Gruppe zum Off-Tank, und der Off-Tank geht weg, sobald er sie hat.",
+      "ja": "DPS1人にマーカー、10秒後にタンク強攻撃。接触で移り、一度持った人は再度受けられません。対象DPSはPTから離れてSTに渡し、STは受け取ったら離れます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "tankbuster",
+      "debuff"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "names": {
+    "en": "Phase 2",
+    "fr": "Phase 2",
+    "de": "Phase 2",
+    "ja": "フェーズ2"
+   },
+   "mechanics": [
+    {
+     "id": "lullaby",
+     "names": {
+      "en": "Lullaby (Siren sketch)",
+      "fr": "Berceuse (Siren)",
+      "de": "Wiegenlied (Siren)",
+      "ja": "子守歌（Siren）"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Gives everyone Apathetic (MP to 0, less healing) and the next Howls kill if it isn't cleansed. After everyone has it, players on different paint puddles paint the Siren sketch (all four colours within 10 seconds); painting too early wastes it for the rest of the fight.",
+      "fr": "Donne Apathetic à tout le monde (PM à 0, moins de soins) et les Hurlements suivants tuent si ce n'est pas purifié. Quand tout le monde l'a, des joueurs sur différentes flaques peignent l'esquisse Siren (les quatre couleurs en 10 secondes) ; peindre trop tôt la gâche pour tout le combat.",
+      "de": "Gibt allen Apathetic (MP auf 0, weniger Heilung), und die nächsten Heuler töten, wenn es nicht gereinigt wird. Wenn alle es haben, malen Spieler auf verschiedenen Farbpfützen die Siren-Skizze (alle vier Farben in 10 Sekunden); zu früh malen verschwendet sie für den Rest des Kampfes.",
+      "ja": "全員にApathetic（MP0、被回復低下）。解除しないと次のハウルで死にます。全員に付いてから、別々の絵の具に乗った人が10秒以内に4色でSirenを描きます。早すぎると以降使えなくなります。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "debuff"
+     ]
+    },
+    {
+     "id": "demonic-stone",
+     "names": {
+      "en": "Demonic Stone",
+      "fr": "Pierre démoniaque",
+      "de": "Dämonischer Stein",
+      "ja": "デモニックストーン"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Chasing AoEs follow two DPS; they run away from the group and each other and keep moving.",
+      "fr": "Des zones qui suivent deux DPS ; ils s'éloignent du groupe et l'un de l'autre et continuent de bouger.",
+      "de": "Verfolgende AoEs auf zwei DDs; sie laufen weg von der Gruppe und voneinander und bleiben in Bewegung.",
+      "ja": "DPS2人を追尾する範囲。PTとお互いから離れて動き続けます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "dodge"
+     ]
+    },
+    {
+     "id": "demonic-spout",
+     "names": {
+      "en": "Demonic Spout + Demonic Storm",
+      "fr": "Jaillissement démoniaque + Tempête démoniaque",
+      "de": "Dämonischer Überschwang + Dämonischer Sturm",
+      "ja": "デモニックスパウト＋デモニックストーム"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "Small circles drop under everyone during a stack; stay stacked and dodge in the same direction together.",
+      "fr": "De petits cercles tombent sous chacun pendant un package ; restez groupés et esquivez tous dans la même direction.",
+      "de": "Kleine Kreise fallen unter jeden während eines Sammelpunkts; bleibt zusammen und weicht gemeinsam in dieselbe Richtung aus.",
+      "ja": "頭割り中に全員の足元へ小さな円。まとまったまま同じ方向へ避けます。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "stack",
+      "dodge"
+     ]
+    },
+    {
+     "id": "enrage",
+     "names": {
+      "en": "Enrage",
+      "fr": "Enrage",
+      "de": "Enrage",
+      "ja": "時間切れ"
+     },
+     "aliases": {
+      "en": [],
+      "fr": [],
+      "de": [],
+      "ja": []
+     },
+     "how": {
+      "en": "At about 10:45 a 10-second Demonic Howl wipes the party.",
+      "fr": "Vers 10:45, un Hurlement démoniaque de 10 secondes tue le groupe.",
+      "de": "Gegen 10:45 löscht ein 10-Sekunden-Heulen die Gruppe aus.",
+      "ja": "10:45頃、10秒詠唱のデモニックハウルで全滅。"
+     },
+     "strats": [],
+     "uncertain": false,
+     "tags": [
+      "enrage"
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "title": "Console Games Wiki - Sigmascape V2.0 (Savage)",
+   "url": "https://ffxiv.consolegameswiki.com/wiki/Sigmascape_V2.0_(Savage)",
+   "lang": "en"
+  },
+  {
+   "title": "XIVAPI v2 game data (official action and duty names EN/FR/DE/JA)",
+   "url": "https://v2.xivapi.com/api/search?sheets=Action",
+   "lang": "en"
+  }
+ ],
+ "updated": "2026-11-26"
+}
