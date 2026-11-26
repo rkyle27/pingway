@@ -446,7 +446,7 @@ function fightText(match, lang, stratId) {
             if (hit.mech.uncertain) item += ` (not fully certain: ${pick(hit.mech.note, lang)})`;
             if (chosen) {
                 const entry = stratEntry(hit.mech, chosen);
-                item += entry ? ` | This strat: ${pick(entry.how, lang)}${entry.uncertain ? ' (single source, not certain)' : ''}` : ' | This strat: the guide has no steps for this one.';
+                item += entry ? ` | This strat: ${pick(entry.how, lang)}${entry.uncertain ? ` (not certain: ${pick(entry.note, lang) || 'single source'})` : ''}` : ' | This strat: the guide has no steps for this one.';
             }
             if (lines.join('\n').length + item.length > TAG_TEXT_MAX) { cut = true; break; }
             lines.push(item);
