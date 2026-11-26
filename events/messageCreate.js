@@ -439,6 +439,8 @@ module.exports = {
                         const sameFight = fightMatch && fightMatch.id === stratFightId;
                         const mechId = (sameFight && fightMatch.mechId) || (ctx && ctx.fightId === stratFightId ? ctx.mechId : null);
                         fightMatch = { id: stratFightId, mechId };
+                        // a strat answer is about the fight: a FAQ entry only when it clearly asks about Pingway too
+                        found.faq = found.faq.filter(x => x.score >= aiKnowledge.FAQ_WITH_FIGHT_MIN);
                     }
                 }
 

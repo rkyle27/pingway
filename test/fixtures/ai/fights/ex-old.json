@@ -1,0 +1,16 @@
+{
+ "id": "ex-old", "type": "extreme", "expansion": "ARR", "patch": "2.0",
+ "names": { "en": "Old Bowl (Extreme)", "fr": "Vieux Bol (extrême)", "de": "Alte Schale (extrem)", "ja": "極テスト古" },
+ "aliases": { "en": ["old ex", "titan's old bowl"], "fr": [], "de": [], "ja": ["極テスト古"] },
+ "summary": { "en": "Old summary." },
+ "note": { "en": "OLD-NOTE-EN unsynced", "fr": "OLD-NOTE-FR", "de": "OLD-NOTE-DE", "ja": "OLD-NOTE-JA" },
+ "strats_overview": [],
+ "phases": [ { "id": "all", "names": { "en": "Whole fight" }, "mechanics": [
+   { "id": "nails", "names": { "en": "Infernal Nails / Hellfire" }, "aliases": { "en": [] }, "how": { "en": "NAILS-HOW" },
+     "uncertain": true, "note": { "en": "NAILS-DISAGREE" }, "strats": [] },
+   { "id": "old-loop", "names": { "en": "Program Loop / Storage Violation" }, "aliases": { "en": [] }, "how": { "en": "OLD-LOOP" }, "strats": [] },
+   { "id": "grand-cross-alpha", "names": { "en": "Grand Cross Alpha" }, "aliases": { "en": [] }, "how": { "en": "GCA" }, "strats": [] },
+   { "id": "gaol", "names": { "en": "Granite Gaols" }, "aliases": { "en": [] }, "how": { "en": "GAOL" }, "strats": [] }
+ ] } ],
+ "sources": [], "updated": "2026-11-26"
+}

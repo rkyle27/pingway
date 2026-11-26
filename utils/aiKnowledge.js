@@ -32,8 +32,14 @@ const cache = new Map(); // fightId -> full parsed file (LRU: oldest first)
 const counters = { fileLoads: 0 };
 
 // For matching only: also drop accents (the website FAQ keywords are written without them, e.g. "hinzufugen")
-const clean = text => normalize(text).normalize('NFD').replace(/[\u0300-\u036f]/g, '').normalize('NFC');
+// Apostrophes are dropped without a space ("Titan's" = "titans"), so names match however people type them
+const clean = text => normalize(String(text == null ? '' : text).replace(/['\u2018\u2019\u02bc`]/g, '')).normalize('NFD').replace(/[\u0300-\u036f]/g, '').normalize('NFC');
 const stem = w => (w.length > 3 && w.endsWith('s') && !w.endsWith('ss') ? w.slice(0, -1) : w);
+// Names are compared word by word without a plural "s" ("gaols" = "gaol"); Japanese stays as it is
+const stemPhrase = p => (CJK.test(p) ? p : p.split(' ').map(stem).join(' '));
+// Words that say nothing about WHICH fight or mechanic (never used for partial matches)
+const GENERIC = new Set(('savage ultimate extreme normal door final part phase the and with ex unreal trial raid fight boss mechanic mechanics ' +
+    'how work tip tips strat strats guide do does wipe help explain').split(' '));
 const words = text => clean(text).split(' ').filter(Boolean).map(stem);
 const pick = (obj, lang) => (obj && typeof obj === 'object' ? (obj[lang] || obj.en || '') : (typeof obj === 'string' ? obj : ''));
 
@@ -47,7 +53,7 @@ function hasPhrase(normText, phrase) {
 function cleanList(list) {
     const out = [];
     for (const x of Array.isArray(list) ? list : []) {
-        const n = clean(x);
+        const n = stemPhrase(clean(x));
         if (n.length >= 2 && !out.includes(n)) out.push(n);
     }
     return out;
@@ -88,11 +94,23 @@ function indexFight(data, file) {
         for (const m of (ph && Array.isArray(ph.mechanics)) ? ph.mechanics : []) {
             if (!m || !m.id) continue;
             const keys = {};
-            for (const l of LANGS) keys[l] = cleanList([m.names && m.names[l], ...((m.aliases && m.aliases[l]) || [])].filter(Boolean));
-            mechs.push({ id: String(m.id), phase: String(ph.id || ''), keys });
+            const words = {};
+            for (const l of LANGS) {
+                // a name like "Infernal Nails / Hellfire" or "Snake form 1: Gorgomanteia" also matches each part
+                const names = [m.names && m.names[l], ...((m.aliases && m.aliases[l]) || [])].filter(Boolean);
+                const parts = [];
+                for (const n of names) for (const part of String(n).split(/\s*[\/+(),;:\uff0f\uff08\uff09\u30fb]\s*/)) if (part && part.length >= 4) parts.push(part);
+                keys[l] = cleanList(names);
+                const partKeys = cleanList(parts).filter(k => !keys[l].includes(k));
+                if (partKeys.length) (keys.parts = keys.parts || {})[l] = partKeys;
+                words[l] = [...new Set([...keys[l], ...partKeys].filter(k => !CJK.test(k)).flatMap(k => k.split(' ')).filter(w => w.length >= 3 && !GENERIC.has(w) && !STOP.has(w)))];
+            }
+            mechs.push({ id: String(m.id), phase: String(ph.id || ''), keys, words });
         }
     }
-    return { id: String(data.id), type: data.type || '', expansion: data.expansion || '', file, names: data.names || {}, nameKeys, strats, mechs };
+    const nameWords = {};
+    for (const l of LANGS) nameWords[l] = [...new Set((nameKeys[l] || []).filter(k => !CJK.test(k)).flatMap(k => k.split(' ')).filter(w => w.length >= 4 && !GENERIC.has(w)))];
+    return { id: String(data.id), type: data.type || '', expansion: data.expansion || '', file, names: data.names || {}, nameKeys, nameWords, strats, mechs };
 }
 
 // (Re)build the index. Called once when the bot starts; tests pass their own fixture folder.
@@ -195,32 +213,63 @@ function searchFaq(normText, langs) {
     return scored.filter(x => x.score >= top / 2).slice(0, 3);
 }
 
-function searchFight(normText, langs, contextFightId) {
-    if (!fights.length || !normText) return null;
+function searchFight(rawText, langs, contextFightId) {
+    if (!fights.length || !rawText) return null;
+    const normText = stemPhrase(rawText);
+    const textWords = new Set(normText.split(' ').filter(w => w.length >= 3 && !STOP.has(w) && !GENERIC.has(w)));
     const results = [];
     for (const f of fights) {
         let fightScore = 0;
-        for (const l of langs) for (const k of f.nameKeys[l] || []) if (hasPhrase(normText, k)) fightScore = 6;
+        for (const l of langs) {
+            for (const k of f.nameKeys[l] || []) {
+                if (!hasPhrase(normText, k)) continue;
+                const sc = 6 + Math.min(k.length, 20) / 20; // longer names are more specific (極イフリート beats イフリート)
+                if (sc > fightScore) fightScore = sc;
+            }
+        }
         let mech = null;
         let mechScore = 0;
         for (const m of f.mechs) {
             for (const l of langs) {
                 for (const k of m.keys[l] || []) {
                     if (!hasPhrase(normText, k)) continue;
-                    const s = 5 + Math.min(k.length, 20) / 20; // longer names are more specific
-                    if (s > mechScore) { mechScore = s; mech = m; }
+                    const sc = 5 + Math.min(k.length, 20) / 20;
+                    if (sc > mechScore) { mechScore = sc; mech = m; }
+                }
+                // a part of a longer name counts a little less than a full name or alias
+                for (const k of (m.keys.parts && m.keys.parts[l]) || []) {
+                    if (!hasPhrase(normText, k)) continue;
+                    const sc = 4.95 + Math.min(k.length, 20) / 20;
+                    if (sc > mechScore) { mechScore = sc; mech = m; }
                 }
             }
         }
-        const total = fightScore + mechScore;
+        // The fight is named but no full mechanic name: the mechanic sharing the most words ("grand cross" -> Grand Cross Alpha)
+        if (fightScore && !mech && textWords.size) {
+            const fightWords = new Set(langs.flatMap(l => f.nameWords[l] || []));
+            const query = [...textWords].filter(w => !fightWords.has(w));
+            let bestHits = 0;
+            for (const m of f.mechs) {
+                const mw = new Set(langs.flatMap(l => m.words[l] || []));
+                const hits = query.filter(w => mw.has(w)).length;
+                if (hits > bestHits) { bestHits = hits; mech = m; }
+            }
+            if (mech) mechScore = 4 + Math.min(bestHits, 3) / 10;
+        }
+        // Only a mechanic matched: a fight word in the text breaks ties ("ifrit nails" -> Ifrit EX, not UWU)
+        let bonus = 0;
+        if (!fightScore && mech) {
+            for (const l of langs) if ((f.nameWords[l] || []).some(w => textWords.has(w))) bonus = 1;
+        }
+        const total = fightScore + mechScore + bonus;
         if (total >= FIGHT_MIN) results.push({ id: f.id, score: total, fightScore, mechId: mech ? mech.id : null });
     }
     if (!results.length) return null;
     results.sort((a, b) => b.score - a.score);
     const best = results[0];
-    const tied = results.filter(r => r.score === best.score);
-    if (tied.length > 1 && !best.fightScore) {
-        // the same mechanic name in several fights and no fight named: the fight being talked about wins, else ask
+    const tied = results.filter(r => Math.abs(r.score - best.score) < 1e-9);
+    if (tied.length > 1) {
+        // the same name in several fights: the fight being talked about wins, else ask which fight
         const ctx = tied.find(r => r.id === contextFightId);
         if (ctx) return ctx;
         return { id: null, ambiguous: tied.slice(0, 5).map(r => r.id), score: best.score };
@@ -233,8 +282,22 @@ function search(text, opts = {}) {
     const normText = clean(text);
     const langs = opts.langs || langsFor(opts.userLang || 'en', text);
     const fight = searchFight(normText, langs, opts.contextFightId || null);
-    let faqHits = searchFaq(normText, langs);
-    // A fight question: a FAQ entry is only added when the message clearly asks about Pingway too (2+ keywords)
+    let faqQuery = normText;
+    const f = fight && fight.id ? fightById.get(fight.id) : null;
+    if (f) {
+        // A fight question: the fight's, mechanic's and strats' own words don't count for the FAQ ("top", "world", "pf")
+        const m = fight.mechId ? f.mechs.find(x => x.id === fight.mechId) : null;
+        const used = new Set();
+        const addWords = list => (list || []).forEach(k => k.split(' ').forEach(w => used.add(w)));
+        for (const l of LANGS) {
+            addWords(f.nameKeys[l]);
+            if (m) { addWords(m.keys[l]); addWords(m.keys.parts && m.keys.parts[l]); }
+        }
+        f.strats.forEach(st => addWords(st.keys));
+        faqQuery = normText.split(' ').filter(w => !used.has(stem(w))).join(' ');
+    }
+    let faqHits = searchFaq(faqQuery, langs);
+    // ...and a FAQ entry is only added when the message clearly asks about Pingway too (2+ keywords)
     if (fight) faqHits = faqHits.filter(x => x.score >= FAQ_WITH_FIGHT_MIN);
     return { faq: faqHits, fight };
 }
@@ -243,7 +306,7 @@ function search(text, opts = {}) {
 function matchStrat(text, fightId) {
     const f = fightById.get(fightId);
     if (!f || !f.strats.length) return null;
-    const normText = clean(text);
+    const normText = stemPhrase(clean(text));
     const hits = f.strats.filter(s => s.keys.some(k => hasPhrase(normText, k)));
     return hits.length === 1 ? hits[0].id : null;
 }
@@ -263,16 +326,24 @@ function findMechanic(data, mechId) {
     return null;
 }
 
-// How a strat resolves this mechanic (follows "same_as")
-function stratHow(mech, stratId, lang) {
+// How a strat resolves this mechanic (follows "same_as"): the strat entry, or null when this mechanic has none for it
+function stratEntry(mech, stratId) {
     const list = Array.isArray(mech.strats) ? mech.strats : [];
     let entry = list.find(s => s && s.strat === stratId);
-    const seen = new Set();
+    const seen = new Set([stratId]);
     while (entry && !entry.how && entry.same_as && !seen.has(entry.same_as)) {
         seen.add(entry.same_as);
-        entry = list.find(s => s && s.strat === entry.same_as);
+        const next = list.find(s => s && s.strat === entry.same_as);
+        if (!next) break;
+        // keep a "not certain" flag from any step of the chain
+        entry = Object.assign({}, next, { uncertain: !!(entry.uncertain || next.uncertain), note: next.note || entry.note });
     }
-    return entry && entry.how ? pick(entry.how, lang) : '';
+    return entry && entry.how ? entry : null;
+}
+
+function stratHow(mech, stratId, lang) {
+    const e = stratEntry(mech, stratId);
+    return e ? pick(e.how, lang) : '';
 }
 
 function faqText(results, lang) {
@@ -282,7 +353,10 @@ function faqText(results, lang) {
     }).join('\n\n');
 }
 
-// Knowledge block for the AI about one fight.
+const MECH_LIST_MAX = 1500; // fight-only question: the list of mechanic names stays this short (big fights)
+const UNSURE = 'Tell the user the sources are not sure / they should check with their group; never state it as a fact.';
+
+// Knowledge block for the AI about one fight: only the matched mechanic (+ the chosen strat), never the whole file.
 // stratId: the user's saved strat (or null). Returns { text, askStrat } - askStrat = the AI must ask which strat first.
 function fightText(match, lang, stratId) {
     if (!match) return { text: '', askStrat: false };
@@ -294,9 +368,15 @@ function fightText(match, lang, stratId) {
     if (!data) return { text: '', askStrat: false };
     const idx = fightById.get(match.id);
     const stratsAll = idx.strats;
+    const overview = Array.isArray(data.strats_overview) ? data.strats_overview : [];
     const savedOk = stratId && stratsAll.some(s => s.id === stratId) ? stratId : null;
     const lines = [`FIGHT: ${pick(data.names, lang)} (${data.type || ''}, ${data.expansion || ''}) [fight id: ${data.id}]`];
-    const stratList = stratsAll.map(s => `${pick(s.names, lang) || s.id} [strat id: ${s.id}]`).join('; ');
+    const stratList = overview.filter(s => s && s.id).map(s => {
+        const region = s.region && s.region !== 'all' ? ` (${s.region})` : '';
+        return `${pick(s.name, lang) || s.id}${region} [strat id: ${s.id}]`;
+    }).join('; ');
+    // Old content without strats: the fight's own note (e.g. "mostly cleared unsynced")
+    if (!stratsAll.length && data.note) lines.push(`Fight note: ${pick(data.note, lang)}`);
     const found = match.mechId ? findMechanic(data, match.mechId) : null;
     let askStrat = false;
 
@@ -304,14 +384,21 @@ function fightText(match, lang, stratId) {
         const { phase, mech } = found;
         lines.push(`MECHANIC: ${pick(phase.names, lang)} - ${pick(mech.names, lang)}`);
         if (mech.how) lines.push(`How it works: ${pick(mech.how, lang)}`);
-        if (mech.uncertain) lines.push(`Note: this info is not fully certain. ${pick(mech.note, lang)}`.trim());
+        if (mech.uncertain) lines.push(`Note: this mechanic info is not fully certain. ${pick(mech.note, lang)} ${UNSURE}`.replace(/\s+/g, ' ').trim());
         else if (mech.note) lines.push(`Note: ${pick(mech.note, lang)}`);
-        const mechStrats = Array.isArray(mech.strats) ? mech.strats.filter(s => s && s.strat) : [];
-        const chosen = savedOk || (stratsAll.length === 1 ? stratsAll[0].id : (stratsAll.length === 0 && mechStrats.length === 1 ? mechStrats[0].strat : null));
+        const chosen = savedOk || (stratsAll.length === 1 ? stratsAll[0].id : null);
         if (chosen) {
-            const how = stratHow(mech, chosen, lang);
+            const entry = stratEntry(mech, chosen);
+            const ov = overview.find(s => s && s.id === chosen);
             lines.push(`The user's group uses the strat: ${stratName(match.id, chosen, lang)}.`);
-            lines.push(how ? `How this strat does it: ${how}` : 'This strat has no special notes for this mechanic.');
+            if (entry) {
+                lines.push(`How this strat does it: ${pick(entry.how, lang)}`);
+                if (entry.uncertain) lines.push(`Note: this strat info is not fully certain (single source). ${pick(entry.note, lang)} ${UNSURE}`.replace(/\s+/g, ' ').trim());
+                else if (entry.note) lines.push(`Strat note: ${pick(entry.note, lang)}`);
+            } else {
+                if (ov && ov.note) lines.push(`Strat note: ${pick(ov.note, lang)}`);
+                lines.push('The guide has no steps of this strat for this mechanic (only its name/note). Do NOT invent steps: explain how the mechanic works and say the guide has no details for this strat.');
+            }
             lines.push('Explain ONLY this strat, never the other strats.');
         } else if (stratsAll.length > 1) {
             askStrat = true;
@@ -322,12 +409,19 @@ function fightText(match, lang, stratId) {
         if (data.summary) lines.push(`Summary: ${pick(data.summary, lang)}`);
         if (savedOk) lines.push(`The user's group uses the strat: ${stratName(match.id, savedOk, lang)}.`);
         else if (stratsAll.length) lines.push(`Strats for this fight: ${stratList}.`);
-        const mechNames = [];
+        let list = '';
+        let cut = false;
         for (const ph of Array.isArray(data.phases) ? data.phases : []) {
+            if (cut) break;
             const ms = ((ph && ph.mechanics) || []).map(m => pick(m.names, lang)).filter(Boolean);
-            if (ms.length) mechNames.push(`${pick(ph.names, lang) || ph.id}: ${ms.join(', ')}`);
+            ms.forEach((name, i) => {
+                if (cut) return;
+                const part = i === 0 ? (list ? ' | ' : '') + `${pick(ph.names, lang) || ph.id}: ${name}` : ', ' + name;
+                if (list.length + part.length > MECH_LIST_MAX) { cut = true; return; }
+                list += part;
+            });
         }
-        if (mechNames.length) lines.push('Mechanics: ' + mechNames.join(' | '));
+        if (list) lines.push('Mechanics: ' + list + (cut ? ' | ...and more' : ''));
         lines.push('If they ask about one mechanic, ask which one if it is not clear.');
     }
     return { text: lines.join('\n'), askStrat };
@@ -342,5 +436,5 @@ init(DEFAULT_DIR);
 
 module.exports = {
     init, enabled, search, detectLang, langsFor, matchStrat, stratName, getFight, fightIndex,
-    faqText, fightText, stats, hasPhrase, LANG_NAMES, FIGHT_CACHE_MAX
+    faqText, fightText, stats, hasPhrase, LANG_NAMES, FIGHT_CACHE_MAX, FAQ_WITH_FIGHT_MIN
 };

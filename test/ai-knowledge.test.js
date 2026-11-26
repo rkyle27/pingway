@@ -427,3 +427,76 @@ test('FAQ generator: website list + 4 languages -> clean text, full pingway.app 
     const bad = { ...i18n, en: { ...i18n.en, 'faq.f03.a': 'Open the console and type something' } };
     assert.throws(() => buildFaq(appJs, bad), /console/);
 });
+
+// ---------- 9. what the real research files contain ----------
+test('old fight without strats: the fight note is sent, no strat question', async () => {
+    const u = newUser();
+    await say('old ex nails', u);
+    const sys = systemText();
+    assert.match(sys, /Fight note: OLD-NOTE-EN unsynced/);
+    assert.match(sys, /NAILS-HOW/);
+    assert.doesNotMatch(sys, /has not told you their strat|Strats for this fight/);
+});
+
+test('uncertain mechanic and uncertain strat: the AI is told to say so, not state it as fact', async () => {
+    const u = newUser();
+    await say('old ex nails', u);
+    assert.match(systemText(), /mechanic info is not fully certain\. NAILS-DISAGREE.*check with their group/);
+    const u2 = newUser();
+    userFacts(u2).set('strat:top', 'na-pf');
+    await say('top program loop', u2);
+    assert.match(systemText(), /LOOP-NA-EN/);
+    assert.match(systemText(), /strat info is not fully certain \(single source\)\. NA-SINGLE-SOURCE.*check with their group/);
+});
+
+test('region labels (incl. NA/EU) in the strat list; note-only strat: no invented steps', async () => {
+    const u = newUser();
+    await say('top program loop', u);
+    assert.match(systemText(), /OCE Test \(NA\/EU\) \[strat id: oce-test\]/);
+    assert.match(systemText(), /NA PF standard \(NA\) \[strat id: na-pf\]/);
+    await say('OCE Test', u);
+    assert.equal(userFacts(u).get('strat:top'), 'oce-test');
+    const sys = systemText();
+    assert.match(sys, /Strat note: OCE-NOTE-EN/);
+    assert.match(sys, /no steps of this strat for this mechanic.*Do NOT invent steps/);
+    assert.doesNotMatch(sys, /LOOP-NA-EN|LOOP-JP-EN/);
+});
+
+test('only the matched mechanic is sent, and a fight-only question has a capped mechanic list', () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'pingway-ai-big-'));
+    fs.mkdirSync(path.join(dir, 'fights'));
+    const mechanics = [];
+    for (let i = 0; i < 300; i++) mechanics.push({ id: 'm' + i, names: { en: 'Mechanic number ' + i }, aliases: { en: [] }, how: { en: 'HOW-' + i + ' '.repeat(300) + 'x' }, strats: [] });
+    fs.writeFileSync(path.join(dir, 'fights', 'big.json'), JSON.stringify({ id: 'big', names: { en: 'Big Fight' }, aliases: { en: ['bigfight'] }, strats_overview: [], phases: [{ id: 'p1', names: { en: 'P1' }, mechanics }] }));
+    try {
+        aiKnowledge.init(dir);
+        assert.ok(fs.statSync(path.join(dir, 'fights', 'big.json')).size > 90000);
+        const one = aiKnowledge.fightText(aiKnowledge.search('bigfight mechanic number 250', { userLang: 'en' }).fight, 'en', null).text;
+        assert.match(one, /HOW-250/);
+        assert.doesNotMatch(one, /HOW-249|HOW-1 /);
+        assert.ok(one.length < 1000, 'one mechanic only: ' + one.length);
+        const all = aiKnowledge.fightText(aiKnowledge.search('tips for bigfight', { userLang: 'en' }).fight, 'en', null).text;
+        assert.match(all, /\.\.\.and more/);
+        assert.ok(all.length < 1800, 'capped list: ' + all.length);
+    } finally {
+        fs.rmSync(dir, { recursive: true, force: true });
+    }
+});
+
+test('matching: name parts, apostrophes, plurals, partial names, full names before parts, ties ask', () => {
+    const s = (q, ctx) => aiKnowledge.search(q, { userLang: 'en', contextFightId: ctx }).fight;
+    assert.equal(s('old ex hellfire').mechId, 'nails', 'a part of "Infernal Nails / Hellfire"');
+    assert.equal(s('titans old bowl').id, 'ex-old', "apostrophe: titan's = titans");
+    assert.equal(s('old ex granite gaol').mechId, 'gaol', 'plural: gaols = gaol');
+    assert.equal(s('old ex grand cross').mechId, 'grand-cross-alpha', 'partial name inside a named fight');
+    assert.equal(s('how do I do program loop').id, 'top', 'full name "Program Loop" beats a part of a longer name');
+    const tie = s('how do I do the shared buster');
+    assert.equal(tie.id, null);
+    assert.equal(s('how do I do the shared buster', 'ex-test').id, 'ex-test');
+});
+
+test('fight question: the fight words do not pull in FAQ entries', () => {
+    const r = aiKnowledge.search('top program loop reminder', { userLang: 'en' });
+    assert.equal(r.fight.id, 'top');
+    assert.deepEqual(r.faq, [], 'one FAQ keyword is not enough on a fight question');
+});
