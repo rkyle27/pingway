@@ -70,6 +70,19 @@
             }
         },
         {
+            "id": "2026-11-16-smarter-ai",
+            "date": "2026-11-16",
+            "time": "12:00",
+            "version": "",
+            "newsId": "",
+            "title": "Smarter AI — Pingway's AI channel now answers Pingway FAQs and fight questions for every Ultimate, Savage and Extreme fight. Tell it your strat once and it answers for that strat. Works in English, French, German and Japanese.",
+            "i18n": {
+                "fr": { "title": "IA plus intelligente — le salon IA de Pingway répond maintenant aux FAQ de Pingway et aux questions sur chaque combat Fatal, Sadique et Extrême. Dis-lui ta strat une fois et il répond pour cette strat. Fonctionne en anglais, français, allemand et japonais." },
+                "de": { "title": "Klügere KI — Pingways KI-Kanal beantwortet jetzt Pingway-FAQs und Fragen zu jedem Fatal-, Episch- und Extrem-Kampf. Sag ihm einmal deine Strat und er antwortet für diese Strat. Funktioniert auf Englisch, Französisch, Deutsch und Japanisch." },
+                "ja": { "title": "AIがもっと賢く — PingwayのAIチャンネルが、PingwayのFAQと、すべての絶・零式・極バトルの質問に答えるようになりました。一度あなたの攻略法を伝えれば、その攻略法で答えます。英語・フランス語・ドイツ語・日本語に対応。" }
+            }
+        },
+        {
             "id": "2026-11-11-v2-1-6",
             "date": "2026-11-11",
             "time": "04:15",
